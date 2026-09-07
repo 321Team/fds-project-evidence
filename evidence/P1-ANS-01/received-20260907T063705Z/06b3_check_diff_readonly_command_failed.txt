@@ -1,0 +1,53 @@
+
+PLAY [Apply P1 Ansible operating system baseline] ******************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-control01]
+
+TASK [common : Verify hostname and operating system] ***************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [common : Install required common packages] *******************************
+ok: [k8s-control01]
+
+TASK [common : Enable and start chronyd] ***************************************
+ok: [k8s-control01]
+
+TASK [common : Set Asia Seoul timezone] ****************************************
+ok: [k8s-control01]
+
+TASK [common : Configure bootstrap host mappings] ******************************
+--- before: /etc/hosts (content)
++++ after: /etc/hosts (content)
+@@ -5,3 +5,11 @@
+ # See hosts(5) for proper format and other examples:
+ # 192.168.1.10 foo.example.org foo
+ # 192.168.1.13 bar.example.org bar
++# BEGIN P1-ANS-01 ANSIBLE MANAGED HOSTS
++10.1.93.102 k8s-control01.fds.internal k8s-control01
++10.1.93.103 k8s-control02.fds.internal k8s-control02
++10.1.93.104 k8s-control03.fds.internal k8s-control03
++10.1.93.105 k8s-worker01.fds.internal k8s-worker01
++10.1.93.107 k8s-worker02.fds.internal k8s-worker02
++10.1.93.108 k8s-worker03.fds.internal k8s-worker03
++# END P1-ANS-01 ANSIBLE MANAGED HOSTS
+
+changed: [k8s-control01]
+
+TASK [common : Read SELinux mode] **********************************************
+skipping: [k8s-control01]
+
+TASK [common : Verify SELinux remains enforcing] *******************************
+fatal: [k8s-control01]: FAILED! => {
+    "assertion": "(common_selinux_mode.stdout | trim) == \"Enforcing\"",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "SELinux must remain Enforcing on k8s-control01"
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=6    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+

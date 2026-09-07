@@ -1,0 +1,193 @@
+
+PLAY [CR-P1-ANS-01-01 resolver precheck on all Kubernetes nodes] ***************
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-worker03]
+ok: [k8s-control01]
+ok: [k8s-worker02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-control02]
+
+TASK [dns_resolver : Validate CR DNS execution phase and variables] ************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Require explicit approval token for resolver changes] *****
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Verify the default IPv4 interface is available] ***********
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read active NetworkManager connection for the default interface] ***
+ok: [k8s-worker03]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-control02]
+ok: [k8s-worker02]
+ok: [k8s-control01]
+
+TASK [dns_resolver : Validate the active NetworkManager connection] ************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read current NetworkManager IPv4 DNS servers] *************
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current NetworkManager IPv4 search domains] **********
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current NetworkManager automatic DNS setting] ********
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+
+TASK [dns_resolver : Normalize current resolver state] *************************
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+
+TASK [dns_resolver : Determine resolver drift] *********************************
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+
+TASK [dns_resolver : Read current resolver file] *******************************
+ok: [k8s-control02]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+ok: [k8s-control03]
+ok: [k8s-control01]
+
+TASK [dns_resolver : Read pre-change kubelet state] ****************************
+ok: [k8s-control03]
+ok: [k8s-control02]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read pre-change containerd state] *************************
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-control02]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server] *****
+ok: [k8s-control01] => (item=10.1.93.52)
+ok: [k8s-control02] => (item=10.1.93.52)
+ok: [k8s-worker03] => (item=10.1.93.52)
+ok: [k8s-worker02] => (item=10.1.93.52)
+ok: [k8s-control03] => (item=10.1.93.52)
+ok: [k8s-worker01] => (item=10.1.93.52)
+failed: [k8s-control02] (item=10.1.93.53) => {"ansible_loop_var": "item", "changed": false, "cmd": ["dig", "+time=2", "+tries=1", "+short", "@10.1.93.53", "k8s-api.fds.internal", "A"], "delta": "0:00:02.020211", "end": "2026-09-04 16:45:38.876867", "failed_when_result": true, "item": "10.1.93.53", "msg": "non-zero return code", "rc": 9, "start": "2026-09-04 16:45:36.856656", "stderr": "", "stderr_lines": [], "stdout": ";; communications error to 10.1.93.53#53: timed out\n;; no servers could be reached", "stdout_lines": [";; communications error to 10.1.93.53#53: timed out", ";; no servers could be reached"]}
+failed: [k8s-control01] (item=10.1.93.53) => {"ansible_loop_var": "item", "changed": false, "cmd": ["dig", "+time=2", "+tries=1", "+short", "@10.1.93.53", "k8s-api.fds.internal", "A"], "delta": "0:00:02.019747", "end": "2026-09-04 16:45:38.876699", "failed_when_result": true, "item": "10.1.93.53", "msg": "non-zero return code", "rc": 9, "start": "2026-09-04 16:45:36.856952", "stderr": "", "stderr_lines": [], "stdout": ";; communications error to 10.1.93.53#53: timed out\n;; no servers could be reached", "stdout_lines": [";; communications error to 10.1.93.53#53: timed out", ";; no servers could be reached"]}
+failed: [k8s-worker03] (item=10.1.93.53) => {"ansible_loop_var": "item", "changed": false, "cmd": ["dig", "+time=2", "+tries=1", "+short", "@10.1.93.53", "k8s-api.fds.internal", "A"], "delta": "0:00:02.019710", "end": "2026-09-04 16:45:38.904624", "failed_when_result": true, "item": "10.1.93.53", "msg": "non-zero return code", "rc": 9, "start": "2026-09-04 16:45:36.884914", "stderr": "", "stderr_lines": [], "stdout": ";; communications error to 10.1.93.53#53: timed out\n;; no servers could be reached", "stdout_lines": [";; communications error to 10.1.93.53#53: timed out", ";; no servers could be reached"]}
+failed: [k8s-control03] (item=10.1.93.53) => {"ansible_loop_var": "item", "changed": false, "cmd": ["dig", "+time=2", "+tries=1", "+short", "@10.1.93.53", "k8s-api.fds.internal", "A"], "delta": "0:00:02.020053", "end": "2026-09-04 16:45:38.909822", "failed_when_result": true, "item": "10.1.93.53", "msg": "non-zero return code", "rc": 9, "start": "2026-09-04 16:45:36.889769", "stderr": "", "stderr_lines": [], "stdout": ";; communications error to 10.1.93.53#53: timed out\n;; no servers could be reached", "stdout_lines": [";; communications error to 10.1.93.53#53: timed out", ";; no servers could be reached"]}
+failed: [k8s-worker02] (item=10.1.93.53) => {"ansible_loop_var": "item", "changed": false, "cmd": ["dig", "+time=2", "+tries=1", "+short", "@10.1.93.53", "k8s-api.fds.internal", "A"], "delta": "0:00:02.020170", "end": "2026-09-04 16:45:38.907917", "failed_when_result": true, "item": "10.1.93.53", "msg": "non-zero return code", "rc": 9, "start": "2026-09-04 16:45:36.887747", "stderr": "", "stderr_lines": [], "stdout": ";; communications error to 10.1.93.53#53: timed out\n;; no servers could be reached", "stdout_lines": [";; communications error to 10.1.93.53#53: timed out", ";; no servers could be reached"]}
+failed: [k8s-worker01] (item=10.1.93.53) => {"ansible_loop_var": "item", "changed": false, "cmd": ["dig", "+time=2", "+tries=1", "+short", "@10.1.93.53", "k8s-api.fds.internal", "A"], "delta": "0:00:02.020117", "end": "2026-09-04 16:45:38.937805", "failed_when_result": true, "item": "10.1.93.53", "msg": "non-zero return code", "rc": 9, "start": "2026-09-04 16:45:36.917688", "stderr": "", "stderr_lines": [], "stdout": ";; communications error to 10.1.93.53#53: timed out\n;; no servers could be reached", "stdout_lines": [";; communications error to 10.1.93.53#53: timed out", ";; no servers could be reached"]}
+
+NO MORE HOSTS LEFT *************************************************************
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=13   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-control02              : ok=13   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-control03              : ok=13   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-worker01               : ok=13   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-worker02               : ok=13   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-worker03               : ok=13   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+

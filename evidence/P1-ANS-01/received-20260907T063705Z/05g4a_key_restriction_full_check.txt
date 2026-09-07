@@ -1,0 +1,78 @@
+
+PLAY [Harden P1 Ansible managed SSH key] ***************************************
+
+TASK [Count P1 managed SSH keys] ***********************************************
+ok: [k8s-control02]
+
+TASK [Preserve original authorized keys] ***************************************
+changed: [k8s-control02]
+
+TASK [Restrict P1 managed SSH key] *********************************************
+changed: [k8s-control02]
+
+TASK [Verify restricted P1 managed SSH key] ************************************
+skipping: [k8s-control02]
+
+PLAY [Harden P1 Ansible managed SSH key] ***************************************
+
+TASK [Count P1 managed SSH keys] ***********************************************
+ok: [k8s-control03]
+
+TASK [Preserve original authorized keys] ***************************************
+changed: [k8s-control03]
+
+TASK [Restrict P1 managed SSH key] *********************************************
+changed: [k8s-control03]
+
+TASK [Verify restricted P1 managed SSH key] ************************************
+skipping: [k8s-control03]
+
+PLAY [Harden P1 Ansible managed SSH key] ***************************************
+
+TASK [Count P1 managed SSH keys] ***********************************************
+ok: [k8s-worker01]
+
+TASK [Preserve original authorized keys] ***************************************
+changed: [k8s-worker01]
+
+TASK [Restrict P1 managed SSH key] *********************************************
+changed: [k8s-worker01]
+
+TASK [Verify restricted P1 managed SSH key] ************************************
+skipping: [k8s-worker01]
+
+PLAY [Harden P1 Ansible managed SSH key] ***************************************
+
+TASK [Count P1 managed SSH keys] ***********************************************
+ok: [k8s-worker02]
+
+TASK [Preserve original authorized keys] ***************************************
+changed: [k8s-worker02]
+
+TASK [Restrict P1 managed SSH key] *********************************************
+changed: [k8s-worker02]
+
+TASK [Verify restricted P1 managed SSH key] ************************************
+skipping: [k8s-worker02]
+
+PLAY [Harden P1 Ansible managed SSH key] ***************************************
+
+TASK [Count P1 managed SSH keys] ***********************************************
+ok: [k8s-worker03]
+
+TASK [Preserve original authorized keys] ***************************************
+changed: [k8s-worker03]
+
+TASK [Restrict P1 managed SSH key] *********************************************
+changed: [k8s-worker03]
+
+TASK [Verify restricted P1 managed SSH key] ************************************
+skipping: [k8s-worker03]
+
+PLAY RECAP *********************************************************************
+k8s-control02              : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+k8s-control03              : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+k8s-worker01               : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+k8s-worker02               : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+k8s-worker03               : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

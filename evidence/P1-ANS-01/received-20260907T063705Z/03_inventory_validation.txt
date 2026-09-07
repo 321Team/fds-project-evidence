@@ -1,0 +1,109 @@
+===== INVENTORY LIST =====
+{
+    "_meta": {
+        "hostvars": {
+            "k8s-control01": {
+                "ansible_host": "10.1.93.102",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_ssh_private_key_file": "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+                "ansible_user": "svc_ansible",
+                "expected_hostname": "k8s-control01"
+            },
+            "k8s-control02": {
+                "ansible_host": "10.1.93.103",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_ssh_private_key_file": "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+                "ansible_user": "svc_ansible",
+                "expected_hostname": "k8s-control02"
+            },
+            "k8s-control03": {
+                "ansible_host": "10.1.93.104",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_ssh_private_key_file": "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+                "ansible_user": "svc_ansible",
+                "expected_hostname": "k8s-control03"
+            },
+            "k8s-worker01": {
+                "ansible_host": "10.1.93.105",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_ssh_private_key_file": "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+                "ansible_user": "svc_ansible",
+                "expected_hostname": "k8s-worker01"
+            },
+            "k8s-worker02": {
+                "ansible_host": "10.1.93.107",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_ssh_private_key_file": "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+                "ansible_user": "svc_ansible",
+                "expected_hostname": "k8s-worker02"
+            },
+            "k8s-worker03": {
+                "ansible_host": "10.1.93.108",
+                "ansible_python_interpreter": "/usr/bin/python3",
+                "ansible_ssh_private_key_file": "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+                "ansible_user": "svc_ansible",
+                "expected_hostname": "k8s-worker03"
+            }
+        }
+    },
+    "all": {
+        "children": [
+            "ungrouped",
+            "k8s_nodes"
+        ]
+    },
+    "k8s_control_plane": {
+        "hosts": [
+            "k8s-control01",
+            "k8s-control02",
+            "k8s-control03"
+        ]
+    },
+    "k8s_nodes": {
+        "children": [
+            "k8s_control_plane",
+            "k8s_workers"
+        ]
+    },
+    "k8s_workers": {
+        "hosts": [
+            "k8s-worker01",
+            "k8s-worker02",
+            "k8s-worker03"
+        ]
+    }
+}
+
+===== INVENTORY GRAPH =====
+@all:
+  |--@ungrouped:
+  |--@k8s_nodes:
+  |  |--@k8s_control_plane:
+  |  |  |--k8s-control01
+  |  |  |--k8s-control02
+  |  |  |--k8s-control03
+  |  |--@k8s_workers:
+  |  |  |--k8s-worker01
+  |  |  |--k8s-worker02
+  |  |  |--k8s-worker03
+
+===== CONTROL PLANE =====
+  hosts (3):
+    k8s-control01
+    k8s-control02
+    k8s-control03
+
+===== WORKERS =====
+  hosts (3):
+    k8s-worker01
+    k8s-worker02
+    k8s-worker03
+
+===== ALL KUBERNETES NODES =====
+  hosts (6):
+    k8s-control01
+    k8s-control02
+    k8s-control03
+    k8s-worker01
+    k8s-worker02
+    k8s-worker03

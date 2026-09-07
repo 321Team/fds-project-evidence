@@ -1,0 +1,76 @@
+===== LOGIN USER =====
+k8s-control01 | CHANGED | rc=0 >>
+svc_ansible
+k8s-control03 | CHANGED | rc=0 >>
+svc_ansible
+k8s-control02 | CHANGED | rc=0 >>
+svc_ansible
+k8s-worker02 | CHANGED | rc=0 >>
+svc_ansible
+k8s-worker01 | CHANGED | rc=0 >>
+svc_ansible
+k8s-worker03 | CHANGED | rc=0 >>
+svc_ansible
+===== BECOME UID =====
+k8s-control02 | CHANGED | rc=0 >>
+0
+k8s-worker02 | CHANGED | rc=0 >>
+0
+k8s-worker03 | CHANGED | rc=0 >>
+0
+k8s-control01 | CHANGED | rc=0 >>
+0
+k8s-control03 | CHANGED | rc=0 >>
+0
+k8s-worker01 | CHANGED | rc=0 >>
+0
+===== NON-INTERACTIVE SUDO =====
+k8s-worker02 | CHANGED | rc=0 >>
+0
+k8s-control03 | CHANGED | rc=0 >>
+0
+k8s-control01 | CHANGED | rc=0 >>
+0
+k8s-worker01 | CHANGED | rc=0 >>
+0
+k8s-worker03 | CHANGED | rc=0 >>
+0
+k8s-control02 | CHANGED | rc=0 >>
+0
+===== SUDO POLICY =====
+k8s-control01 | CHANGED | rc=0 >>
+k8s-control01에서 svc_ansible에 일치하는 기본 항목:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+svc_ansible 사용자는  k8s-control01에서 다음 명령을 실행해야 합니다:
+    (root) NOPASSWD: ALL
+k8s-control02 | CHANGED | rc=0 >>
+k8s-control02에서 svc_ansible에 일치하는 기본 항목:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+svc_ansible 사용자는  k8s-control02에서 다음 명령을 실행해야 합니다:
+    (root) NOPASSWD: ALL
+k8s-worker02 | CHANGED | rc=0 >>
+k8s-worker02에서 svc_ansible에 일치하는 기본 항목:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+svc_ansible 사용자는  k8s-worker02에서 다음 명령을 실행해야 합니다:
+    (root) NOPASSWD: ALL
+k8s-worker03 | CHANGED | rc=0 >>
+k8s-worker03에서 svc_ansible에 일치하는 기본 항목:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+svc_ansible 사용자는  k8s-worker03에서 다음 명령을 실행해야 합니다:
+    (root) NOPASSWD: ALL
+k8s-worker01 | CHANGED | rc=0 >>
+k8s-worker01에서 svc_ansible에 일치하는 기본 항목:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+svc_ansible 사용자는  k8s-worker01에서 다음 명령을 실행해야 합니다:
+    (root) NOPASSWD: ALL
+k8s-control03 | CHANGED | rc=0 >>
+k8s-control03에서 svc_ansible에 일치하는 기본 항목:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+svc_ansible 사용자는  k8s-control03에서 다음 명령을 실행해야 합니다:
+    (root) NOPASSWD: ALL

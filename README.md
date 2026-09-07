@@ -34,4 +34,6 @@ FDS 프로젝트의 티켓별 실행 증적, 검증 결과, 승인·인수 기�
 - [ansible01 수집 실행 절차](runbooks/ANSIBLE_SOURCE_RECEIPT.md)
 - [Stage A 실제 인수 체크리스트](handoffs/P1-LB-01_STAGE_A_RECEIVER_CHECKLIST.md)
 
-수집 스크립트는 로컬 모의 파일 검증을 완료했으며 실제 서버 원본 수신은 대기다. 본 증적 PR의 최종 승인·병합과 Stage A 실제 인수는 별도 Gate다.
+ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DNS 원본 수신 검증 완료, CR 보완 원본 대기, P1-ANS Manifest 2개 불일치로 정합성 보완 대기다. 본 증적 PR의 최종 승인·병합과 Stage A 실제 인수는 별도 Gate다.
+
+- [2026-09-07 Ansible 원본 수신 검토](receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md)

@@ -1,0 +1,57 @@
+
+===== EVIDENCE METADATA =====
+Ticket: P1-DNS-01
+Test ID: DNS-PT-04, DNS-EV-02
+Role: dns02 Fresh TSIG Zone Transfer
+Change authorization flag: --approved
+Sensitive data: TSIG secret, key hash, authenticated AXFR MAC are EXCLUDED
+2026-09-02T21:29:08+09:00
+dns02
+uid=1002(server08) gid=1002(server08) groups=1002(server08),10(wheel) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+
+===== PRECONDITION =====
+name: fds.internal
+type: secondary
+files: slaves/fds.internal.zone
+serial: 2026090101
+nodes: 14
+last loaded: Wed, 02 Sep 2026 10:39:29 GMT
+next refresh: Wed, 02 Sep 2026 12:32:05 GMT
+expires: Wed, 09 Sep 2026 12:27:37 GMT
+secure: no
+dynamic: no
+reconfigurable via modzone: no
+PASS: pre-transfer serial 2026090101
+
+===== FRESH RETRANSFER =====
+Transfer start: 2026-09-02T21:29:08+09:00
+PASS: rndc retransfer command accepted
+
+===== TIMESTAMPED TRANSFER LOG =====
+2026-09-02T21:29:08.747659+09:00 dns02 named[5423]: received control channel command 'zonestatus fds.internal'
+2026-09-02T21:29:08.764650+09:00 dns02 named[5423]: received control channel command 'retransfer fds.internal'
+2026-09-02T21:29:08.766216+09:00 dns02 named[5423]: zone fds.internal/IN: Transfer started.
+2026-09-02T21:29:08.767142+09:00 dns02 named[5423]: transfer of 'fds.internal/IN' from 10.1.93.52#53: connected using 10.1.93.52#53 TSIG fds-transfer-key
+2026-09-02T21:29:08.768320+09:00 dns02 named[5423]: zone fds.internal/IN: transferred serial 2026090101: TSIG 'fds-transfer-key'
+2026-09-02T21:29:08.768362+09:00 dns02 named[5423]: transfer of 'fds.internal/IN' from 10.1.93.52#53: Transfer status: success
+2026-09-02T21:29:08.768366+09:00 dns02 named[5423]: transfer of 'fds.internal/IN' from 10.1.93.52#53: Transfer completed: 1 messages, 17 records, 537 bytes, 0.001 secs (537000 bytes/sec) (serial 2026090101)
+2026-09-02T21:29:08.768416+09:00 dns02 named[5423]: zone fds.internal/IN: sending notifies (serial 2026090101)
+PASS: fresh TSIG-authenticated transfer of serial 2026090101 observed
+PASS: no BADKEY/BADSIG occurred in the fresh transfer window
+
+===== POSTCONDITION =====
+name: fds.internal
+type: secondary
+files: slaves/fds.internal.zone
+serial: 2026090101
+nodes: 14
+last loaded: Wed, 02 Sep 2026 12:29:08 GMT
+next refresh: Wed, 02 Sep 2026 12:33:44 GMT
+expires: Wed, 09 Sep 2026 12:29:08 GMT
+secure: no
+dynamic: no
+reconfigurable via modzone: no
+PASS: secondary post-transfer serial remains 2026090101
+
+===== COLLECTOR RESULT =====
+PASS: fresh timestamped TSIG zone transfer was observed

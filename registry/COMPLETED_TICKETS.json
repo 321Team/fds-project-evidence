@@ -101,13 +101,16 @@
       "evidence_category": "runtime_or_network_validation",
       "record_receipt": "COLLECTED",
       "migration_status": "CANDIDATE_REVIEW_PENDING",
-      "original_manifest_verification": "NOT_PERFORMED",
+      "original_manifest_verification": "MISMATCH_2_OF_37",
       "repository_review": "PENDING",
       "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
       "documents": [
         "records/received-20260907/FDS_Notion_Technical_PASS_P1-ANS-01_v1.3.md"
       ],
-      "next_action": "v1.3 종결·승인 문서 수신. 원본 로그와 05h/05j 반영 후 99_SHA256SUMS 검증 자료 미수신. 원래 티켓 Done 유지."
+      "next_action": "38개 원본 수신. 기존 Manifest 35/37 일치, 05h/05j 2개 불일치. 05j 실제명 review_approval과 지정명 reviewer_approver 차이 보완 필요. 기존 Done 유지.",
+      "runtime_evidence_receipt": "COLLECTED_REMEDIATION_REQUIRED",
+      "receipt_review": "receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md",
+      "receipt_verification_date": "2026-09-07"
     },
     {
       "ticket_id": "DEC-P1-ENTRY-01",
@@ -209,20 +212,23 @@
       "evidence_category": "runtime_or_network_validation",
       "record_receipt": "COLLECTED",
       "migration_status": "CANDIDATE_REVIEW_PENDING",
-      "original_manifest_verification": "NOT_PERFORMED",
+      "original_manifest_verification": "MATCH_12_OF_12_AND_11_SIDECARS",
       "repository_review": "PENDING",
       "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
       "documents": [
         "records/received-20260907/P1-DNS-01_Notion_Description_v1.3_Review.md"
       ],
-      "next_action": "v1.3-R5 종결 설명 수신. R2 ZIP·sidecar·내부 Manifest 원본 미수신. 기록된 Hash만 확보했으므로 이번 원본 검증 PASS를 선언하지 않음.",
+      "next_action": "R2 ZIP·Sidecar 수신, 기록 Hash 일치. 내부 Manifest 12/12·개별 Sidecar 11/11 검증 완료. 원본 ZIP 재생성 없음. 독립 편입 검토 대기.",
       "original_archive": {
         "host": "ansible01",
         "path": "/home/server01_ansible/p1-dns-01-r2/docs/evidence/P1-DNS-01/P1-DNS-01-FRESH-20260902-R2.zip",
         "sha256_recorded": "e23d02a8422fdc4943ce2e255b5b087f0e58e5ad2a0439ddcf7d041276f315ab",
         "bytes_received": false,
         "source": "P1-DNS-01_Notion_Description_v1.3_Review.md"
-      }
+      },
+      "runtime_evidence_receipt": "COLLECTED_VERIFIED",
+      "receipt_review": "receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md",
+      "receipt_verification_date": "2026-09-07"
     },
     {
       "ticket_id": "CR-P1-ANS-01-01",
@@ -233,14 +239,17 @@
       "evidence_category": "runtime_or_network_validation",
       "record_receipt": "GITHUB_CLOSURE_RECORDED_RAW_PENDING",
       "migration_status": "CANDIDATE_REVIEW_PENDING",
-      "original_manifest_verification": "NOT_PERFORMED",
+      "original_manifest_verification": "MATCH_16_OF_16",
       "repository_review": "PENDING",
       "receipt_recorded_at": "2026-09-07T06:17:34.536670+00:00",
       "documents": [
         "records/post-merge-20260907/CR-P1-ANS-01-01_CLOSURE.md",
         "records/post-merge-20260907/github-verification.json"
       ],
-      "next_action": "승인·병합 종료 기록은 확보. ansible01의 CR 원본 Index·SHA256SUMS·실행/무결성/복구 자료 수신 대기. runbooks/ANSIBLE_SOURCE_RECEIPT.md에 따라 수집."
+      "next_action": "17개 수신·Manifest 16/16 및 주요 Hash 4/4 일치. Refinalization 원본·Rollback 상태자료 보완 대기.",
+      "runtime_evidence_receipt": "PARTIAL_COLLECTED",
+      "receipt_review": "receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md",
+      "receipt_verification_date": "2026-09-07"
     }
   ],
   "publication_prepared_at": "2026-09-07T05:06:39.139879+00:00",

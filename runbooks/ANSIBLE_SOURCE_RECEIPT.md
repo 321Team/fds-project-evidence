@@ -47,6 +47,7 @@ sha256sum --check FDS_Evidence_Receipt_v1.0.tar.gz.sha256
 
 | 출력 | 의미 |
 |---|---|
+| issues=0 | 파일 읽기·필터 issues 목록만 0건. missing_required·Manifest 불일치·Refinalization 미수신을 포함한 총 결함 수가 아님 |
 | REVIEW EXPORT READY | 새 묶음의 내부 파일 바이트 재대조 완료. 모든 원본의 완비 또는 시험 PASS를 뜻하지 않음 |
 | original_manifest.result=MATCH | 수집 바이트가 기존 Manifest의 모든 기재 항목과 일치 |
 | unlisted_files | 기존 Manifest에 없는 수집 파일. 신규 수신 Hash와 기존 Manifest 검증 범위를 구분해 검토 |
@@ -74,3 +75,7 @@ DNS R2 ZIP은 기록된 SHA-256과 일치하는 기존 바이트만 포함한다
 ## 검증 범위
 
 로컬 모의 파일로 11건을 검증했다: 원본 바이트·mode·mtime 보존, Manifest 정상/누락/불일치, 경로 이탈·symlink·FIFO 거부, Secret 패턴 제외, 기록 Hash 대조, DNS 바이트 보존/불일치 제외, 새 묶음 바이트·권한 검증, sudo 소유권 변경 요청 범위. 서로 다른 UID로의 소유권 변경 요청은 mock으로 검증했으며 실제 ansible01 실행은 대기다.
+
+## 2026-09-07 수신 결과
+
+[수신 검토 보고서](../receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md)를 확인한다. FUP-01/02의 보완 원본만 별도 회차로 제출하며 전체 수집 또는 DNS ZIP 재제출은 요구하지 않는다.
