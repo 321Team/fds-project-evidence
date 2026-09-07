@@ -1,6 +1,6 @@
-# P1-LB-01 Stage A 실제 인수 체크리스트
+# P1-LB-01 Stage A 증적 인수 확인 체크리스트
 
-상태: 인수 검토 준비 완료 / 실제 인수 승인 PENDING. 이 문서는 서명이나 승인 결과가 아니다.
+상태: 기존 Stage A Technical/Evidence PASS 유지 / 증적 제출 완료 / 인수 기록 확인 대기. D36 승인정본과 CR 리뷰에 반영된 Stage A PASS는 재승인 대상이 아니다. [승인 범위 정정](../registry/STAGE_A_APPROVAL_SCOPE_CORRECTION.md)을 따른다. 이 체크리스트는 실제 인수 서명을 대신하지 않는다.
 
 - 인계자: 이권욱
 - 인수자: 이하영
@@ -23,23 +23,24 @@
 
 ## 실제 기록 양식
 
-아래 값은 실제 인수자와 승인자가 작성한다. Codex가 대신 APPROVED로 채우지 않는다.
+실제 인수 여부는 인수자의 기존 기록 또는 인수 결과로 확인한다. 기존 기록이 있으면 참조를 연결한다. Codex가 인수 서명을 대신 작성하지 않는다.
 
 | 필드 | 실제 입력 |
 |---|---|
 | 검토 Commit | 미입력 |
 | 인수자 | 이하영 |
-| 인수 결과 | PENDING |
+| 인수 결과 | 기록 미확인 — 실제 미수행으로 단정하지 않음 |
 | 인수 일시 | 미입력 |
 | 원본·Hash 대조 결과 | 미입력 |
 | 미해결 조건 / 인수 범위 | 미입력 |
 | 인수 리뷰 URL | 미입력 |
-| 최종 승인자 | 이권욱 |
-| Stage A 최종 승인 / 일시 | PENDING / 미입력 |
+| 기존 Stage A 판정 | Technical/Evidence PASS — D36 승인정본 반영 |
+| CR 재확인 | 이하영 2026-09-07 리뷰: Listener Ready PASS |
+| Stage A PASS 재승인 | 요구하지 않음 |
 | OS/Node Gate 참조 | 미입력 |
 | Bootstrap Gate | HOLD |
 
-GitHub에서 리뷰를 제출할 때 실제 검토한 HEAD와 위 인수 범위를 본문에 기록한다. 증적 편입 PR 승인이 Stage A 실제 인수를 포함하는지는 리뷰 문구에 명시해야 한다. infra-ansible의 이미 완료된 리뷰를 이 인수 승인으로 전용하지 않는다.
+GitHub에서 리뷰를 제출할 때 실제 검토한 HEAD와 위 인수 범위를 본문에 기록한다. 증적 편입 PR 승인이 Stage A 실제 인수를 포함하는지는 리뷰 문구에 명시해야 한다. infra-ansible의 완료된 리뷰는 기존 Listener Ready PASS의 재확인 근거로 재사용한다. 해당 리뷰에 명시되지 않은 실제 증적 인수까지 완료됐다고 확대하지 않는다.
 
 ## 인수 후 후속 조건
 

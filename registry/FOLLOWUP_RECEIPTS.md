@@ -1,4 +1,4 @@
-# 후속 증적 수신·인수 대장 v1.1
+# 후속 증적 수신·인수 대장 v1.2
 
 기준일: 2026-09-07. infra-ansible PR #1은 최종 승인·병합 완료다. 아래 항목은 기존 완료 티켓의 재구현이 아닌 증적 수신·편입 및 실제 인수 절차로 관리한다.
 
@@ -12,7 +12,7 @@
 | FUP-06 | D-ARC-01 | v3.1.2 논리·물리 도면 후보를 찾음 | 같은 이름의 원본·Final 패키지 후보가 있어 동결 당시 승인 대상과 참조를 먼저 확정 | 승인본 식별 대기 |
 | FUP-07 | D-WBS-01 | 종결 설명 v1.1 및 후속 v1.2 후보 확인 | 동결 당시 WBS와 승인 기록의 고정 참조. 최신 WBS를 과거 승인본으로 대체하지 않음 | 참조 확인 대기 |
 | FUP-08 | DEC-P1-MON-01/D33 | 개별 문서 본문에서 승인·완료 기록 확인 | 원본 바이트 다운로드가 HTTP 502로 실패해 원본 수신·Hash 확인은 미완료 | 내용 확인 / 원본 수신 대기 |
-| FUP-09 | P1-LB-01 Stage A | 기존 원본 21개·콘솔 보완 3건 재사용, 인수 체크리스트 작성 | 이하영 실제 인수·검토 HEAD·범위·일시 및 이권욱 Stage A 최종 승인 | 실제 인수 대기 |
+| FUP-09 | P1-LB-01 Stage A | D36 승인정본과 CR 리뷰의 Stage A PASS 유지·증적 제출 완료 | 이하영 증적 인수 여부를 확인할 범위·일시·참조 연결. Stage A PASS 재승인 요구 없음 | 인수 기록 확인 대기 |
 
 FUP는 증적 수집용 관리 ID이며 WBS 티켓이나 별도 Change Request를 발행한 것이 아니다.
 
@@ -22,7 +22,7 @@ FUP-01~03 수집은 실행·수신됐다. 전체 수집기를 재실행할 필�
 
 FUP-04의 원본 보관 위치는 현재 확보 자료만으로 확정할 수 없다. Closure Report만 다시 제출하는 대신 실제 로그·캡처의 보관 위치 또는 파일을 연결한다.
 
-FUP-09는 [실제 인수 체크리스트](../handoffs/P1-LB-01_STAGE_A_RECEIVER_CHECKLIST.md)를 사용한다. 인수자에게 리뷰 요청 메시지를 보내거나 인수 서명을 대신 작성하지 않았다. 기존 SELinux·임시 키 폐기 콘솔 보완은 재제출 요구 대상이 아니다.
+FUP-09는 [Stage A 승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)과 [인수 확인 체크리스트](../handoffs/P1-LB-01_STAGE_A_RECEIVER_CHECKLIST.md)를 사용한다. Stage A 기존 PASS와 증적 제출 완료는 유지하며, 인수 기록 확인만 남긴다. 인수자에게 리뷰 요청 메시지를 보내거나 인수 서명을 대신 작성하지 않았다. 기존 SELinux·임시 키 폐기 콘솔 보완은 재제출 요구 대상이 아니다.
 
 ## D33 문서 확인 근거
 
@@ -40,3 +40,5 @@ FUP-09는 [실제 인수 체크리스트](../handoffs/P1-LB-01_STAGE_A_RECEIVER_
 증적 PR은 Draft / 독립 검토 대기다. 증적 편입 main 병합, Stage A 실제 인수, OS/Node Gate 및 kubeadm Bootstrap 해제는 자동 완료 처리하지 않는다. 기존 완료 티켓의 Done·종결일은 유지한다.
 
 [이번 수신 검토 상세](../receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md)
+
+현재 Stage A 판정은 [승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)을 따른다. 과거 보고서의 별도 Stage A 최종 승인 대기 표시는 중복 요구로 정정됐다.
