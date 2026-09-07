@@ -1,0 +1,7 @@
+test=P1-LB-01 Stage A HAProxy configuration validation
+timestamp=2026-09-03T12:00:38+09:00
+source_host=k8s-api-lb01
+command=haproxy -c -f /etc/haproxy/haproxy.cfg
+exit_code=0
+output=(no output returned by haproxy)
+verdict=PASS

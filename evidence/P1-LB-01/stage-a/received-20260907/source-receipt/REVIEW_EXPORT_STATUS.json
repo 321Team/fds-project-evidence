@@ -1,0 +1,149 @@
+{
+  "format_version": "1.1",
+  "purpose": "REVIEW_INPUT_ONLY",
+  "export_timestamp_utc": "2026-09-07T02:37:47.779184+00:00",
+  "source": "/var/log/fds-evidence/P1-LB-01/stage-a",
+  "required_technical_files": 21,
+  "review_record": "MISSING_PENDING",
+  "existing_manifest": {
+    "status": "MISSING_NOT_VERIFIED",
+    "entries": {}
+  },
+  "reference_hash_comparison": {
+    "16_positive_test_nodes.txt": "MATCH",
+    "17_positive_test_runner.txt": "MATCH",
+    "18_negative_test.txt": "MATCH"
+  },
+  "files": {
+    "01_hostnamectl.txt": {
+      "sha256": "a5ce041cc7116c1f705dc5bb0d1e35ee262b3f9b97d98a97c3a5bb0a12106486",
+      "size": 691,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404279835106240
+    },
+    "02_ip_address.txt": {
+      "sha256": "2a32a648e0512307d3c65ee08da1878115ba44050a977b4978283270b38820d5",
+      "size": 101,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404279857106530
+    },
+    "03_ip_route.txt": {
+      "sha256": "f84ee4c9cae3b13435640224bd0ec45c04410938a0ac032d72daa41826e8718a",
+      "size": 202,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404279881106846
+    },
+    "04_nmcli_connection.txt": {
+      "sha256": "e17762950d29e4926203e2726614e45e72f9b3991a81e7b1679d4f3c43a94d72",
+      "size": 7392,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404279908107202
+    },
+    "05_haproxy_version.txt": {
+      "sha256": "0122c9a0b46a3318c3287ef9f32629eb71224dc8b7f188b14dbb1d3138802f5a",
+      "size": 2963,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404279939107610
+    },
+    "06_haproxy_config_check.txt": {
+      "sha256": "f056b0e532d74563f0282b1ae6228485b2a53fbc746c7a8c23835defd7e97e23",
+      "size": 227,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404438821200518
+    },
+    "07_haproxy.cfg": {
+      "sha256": "afd19086ab8529d621185c231fa3c588eaeeb2025a08445e90f28cf27b00504f",
+      "size": 778,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788166549972639257
+    },
+    "08_haproxy_status.txt": {
+      "sha256": "c2c64562765c1de1e4d4900e041b9b73174cad61731cc8c000dd422a684e9a80",
+      "size": 3206,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404280026108756
+    },
+    "09_listener.txt": {
+      "sha256": "e427156c42a0560958dc673b0c30dced4fefa9a0e3bbac5721d37556bb6a4253",
+      "size": 516,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404280063109244
+    },
+    "10_firewalld.txt": {
+      "sha256": "2f4fcdf0eff6df7084bc4655c72259013b64f11f0f5d4865e2b602c9a738edd6",
+      "size": 1028,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404280209111167
+    },
+    "11_selinux_boolean.txt": {
+      "sha256": "b00c5db73c9da12b7f5454f8a10b346bf06ee78255fe7f3142eec0ac45f856f8",
+      "size": 27,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404280246126886
+    },
+    "12_selinux_avc.txt": {
+      "sha256": "abbeccd04bb8df5d433c14b8de8d5ab7e5e7e4d1d2c91ac1280c611a949575b7",
+      "size": 13,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404280276112049
+    },
+    "13_haproxy_stats.csv": {
+      "sha256": "011c403ae6667a95ff480e9868231f7f1cf8ea6205112fec585af5ed3d9b9938",
+      "size": 3007,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404280309112484
+    },
+    "14_haproxy_journal.txt": {
+      "sha256": "3f668e0982a9e757ee4ee971a4c58712b6e806545dfbf96fef11070e1ddbd774",
+      "size": 4721,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404280330112761
+    },
+    "15_backend_prebootstrap_test.txt": {
+      "sha256": "50f88cf1507d97c76b12eb391bebb588d492fff004043cff6785ef90d2f6a81f",
+      "size": 597,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788404280366113235
+    },
+    "16_positive_test_nodes.txt": {
+      "sha256": "3386bfd4cf821c16aa3b522cfa11dafcca72e3c63124b1c1d19b65761eedfcc2",
+      "size": 1411,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788414660817211713
+    },
+    "17_positive_test_runner.txt": {
+      "sha256": "1e6b8d5f9f44deb8be37cf9b6bbdb8d93942a454a714b23196118825827cdb54",
+      "size": 422,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788425836590850861
+    },
+    "18_negative_test.txt": {
+      "sha256": "4cf3d23fe3d2b019aedb15604667c226f706b48d3879e2ccff3dc2182e50361c",
+      "size": 343,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788414660963213615
+    },
+    "18a_secure_evidence_transfer_control.txt": {
+      "sha256": "5734159c16749200d92f3b2821d3ce775aa7d9d442e1de800455a930bd2ed677",
+      "size": 1767,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788426768292806183
+    },
+    "18b_secure_transfer_ansible_client.txt": {
+      "sha256": "3c66b039c0fc0f37287b35d2e5bd199307c2f873871d03bf94a48854157d73f0",
+      "size": 2410,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788414661105215465
+    },
+    "18c_secure_transfer_runner_client.txt": {
+      "sha256": "841438daa9fdab2b1d913e23ad631d2fa0f7b6556c217979b73cbd1352c9059a",
+      "size": 1882,
+      "source_mode": "0o640",
+      "source_mtime_ns": 1788425836743852794
+    }
+  },
+  "handoff_acceptance": "PENDING",
+  "technical_verdict": "NOT_REASSESSED",
+  "bootstrap_release": "NOT_AUTHORIZED_BY_THIS_EXPORT",
+  "note": "PACKAGE_SHA256SUMS proves current transfer integrity only; it does not replace 99_SHA256SUMS.txt."
+}

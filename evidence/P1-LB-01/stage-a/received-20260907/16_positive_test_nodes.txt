@@ -1,0 +1,57 @@
+test=P1-LB-01 Stage A Kubernetes node positive tests
+destination=10.1.93.109:6443/tcp
+execution=TCP tests executed on each remote k8s_nodes host
+
+inventory_host=k8s-control01
+timestamp=2026-09-03T12:13:30+09:00
+hostname=k8s-control01
+route=10.1.93.109 dev ens160 src 10.1.93.102 uid 1001 
+    cache 
+failed=False
+message=TCP handshake accepted
+verdict=PASS
+
+inventory_host=k8s-control02
+timestamp=2026-09-03T12:13:30+09:00
+hostname=k8s-control02
+route=10.1.93.109 dev ens160 src 10.1.93.103 uid 1001 
+    cache 
+failed=False
+message=TCP handshake accepted
+verdict=PASS
+
+inventory_host=k8s-control03
+timestamp=2026-09-03T12:13:30+09:00
+hostname=k8s-control03
+route=10.1.93.109 dev ens160 src 10.1.93.104 uid 1001 
+    cache 
+failed=False
+message=TCP handshake accepted
+verdict=PASS
+
+inventory_host=k8s-worker01
+timestamp=2026-09-03T12:13:30+09:00
+hostname=k8s-worker01
+route=10.1.93.109 dev ens160 src 10.1.93.105 uid 1001 
+    cache 
+failed=False
+message=TCP handshake accepted
+verdict=PASS
+
+inventory_host=k8s-worker02
+timestamp=2026-09-03T12:13:30+09:00
+hostname=k8s-worker02
+route=10.1.93.109 dev ens160 src 10.1.93.107 uid 1001 
+    cache 
+failed=False
+message=TCP handshake accepted
+verdict=PASS
+
+inventory_host=k8s-worker03
+timestamp=2026-09-03T12:13:30+09:00
+hostname=k8s-worker03
+route=10.1.93.109 dev ens160 src 10.1.93.108 uid 1001 
+    cache 
+failed=False
+message=TCP handshake accepted
+verdict=PASS

@@ -1,0 +1,67 @@
+test=P1-LB-01 Stage A secure transfer client control
+timestamp=2026-09-03T14:40:09+09:00
+role=ansible
+source_host=ansible01
+expected_source_ip=10.250.10.10
+client_script_sha256=4d0d1fce2410b8e189767da29248b6e1547468204bbbd9660be393df2acc695f
+authentication=publickey-only
+password_authentication=disabled
+keyboard_interactive_authentication=disabled
+identity_agent=none
+identities_only=yes
+strict_host_key_checking=yes
+known_hosts_file=/home/server01_ansible/.ssh/known_hosts_p1_lb_01
+known_hosts_mode=600
+===== KEY PREPARATION =====
+test=P1-LB-01 Stage A ephemeral transfer key preparation
+timestamp=2026-09-03T14:30:35+09:00
+role=ansible
+source_host=ansible01
+expected_source_ip=10.250.10.10
+key_tag=p1-lb-01-stage-a-ansible-20260903
+key_fingerprint=SHA256:IMzyrRaluEPISRA8a6++E2ljufMna9QL3/kLUJIrPSo
+private_key_mode=600
+verdict=PASS
+===== HOST KEY PINNING =====
+test=P1-LB-01 Stage A LB host key pinning
+timestamp=2026-09-03T14:30:35+09:00
+source_host=ansible01
+lb_ip=10.1.93.109
+algorithm=ED25519
+console_expected_fingerprint=SHA256:pcRP9mSF4Wb3aJWeht2PyfonCk/u/NVDpD11zKzf080
+scanned_fingerprint=SHA256:pcRP9mSF4Wb3aJWeht2PyfonCk/u/NVDpD11zKzf080
+known_hosts_file=/home/server01_ansible/.ssh/known_hosts_p1_lb_01
+known_hosts_mode=600
+verdict=PASS
+===== FILE TRANSFERS =====
+test=P1-LB-01 Stage A policy-controlled Evidence transfer
+timestamp=2026-09-03T14:40:05+09:00
+role=ansible
+source_host=ansible01
+source_ip=10.250.10.10
+destination=10.1.93.109
+authentication=publickey-only
+identities_only=yes
+identity_agent=none
+strict_host_key_checking=yes
+file=16_positive_test_nodes.txt
+sha256=3386bfd4cf821c16aa3b522cfa11dafcca72e3c63124b1c1d19b65761eedfcc2
+exit_code=0
+UPLOAD_OK role=ansible source=10.250.10.10 file=16_positive_test_nodes.txt size=1411 sha256=3386bfd4cf821c16aa3b522cfa11dafcca72e3c63124b1c1d19b65761eedfcc2
+verdict=PASS
+test=P1-LB-01 Stage A policy-controlled Evidence transfer
+timestamp=2026-09-03T14:40:09+09:00
+role=ansible
+source_host=ansible01
+source_ip=10.250.10.10
+destination=10.1.93.109
+authentication=publickey-only
+identities_only=yes
+identity_agent=none
+strict_host_key_checking=yes
+file=18_negative_test.txt
+sha256=4cf3d23fe3d2b019aedb15604667c226f706b48d3879e2ccff3dc2182e50361c
+exit_code=0
+UPLOAD_OK role=ansible source=10.250.10.10 file=18_negative_test.txt size=343 sha256=4cf3d23fe3d2b019aedb15604667c226f706b48d3879e2ccff3dc2182e50361c
+verdict=PASS
+control_verdict=PASS
