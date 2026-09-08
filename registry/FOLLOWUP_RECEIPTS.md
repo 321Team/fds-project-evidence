@@ -72,7 +72,7 @@ FUP-09는 [Stage A 승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)�
 - 사용자 실행 20:30:07–20:30:13 KST, 직접 SFTP get 6/6 PASS, 외부 sidecar 일치·내부 25/25·원본 26개 보존.
 - 6대 공개키 인증·subsystem 수락·rc=0·다운로드 Hash·키 상태 보존을 원본으로 대조. PR4 최종 키 상태와도 일치.
 - 적용 키트 v1.2가 SSH 전용 -T를 SFTP 공통 인자에 전달하는 결함을 로컬 재현하고 v1.3에서 분리 수정. 승인 main 코드 28개는 동일.
-- 직접 SFTP 성공과 수정 후 Ansible 업로드 검증은 구분. 후자는 별도 SFTP-only ping 검증기 배포 후 원본 수신 대기. 기존 6대 apply 재실행 불필요.
+- 직접 SFTP 성공과 수정 후 Ansible 업로드 검증은 구분. 당시 대기였던 후자는 아래 21:25 KST 수신에서 6/6 PASS·경고 0건으로 완료했다. 기존 6대 apply 재실행 불필요.
 - 이번 수신은 FUP-01/02 보완 상태와 기존 독립 승인·인수·엔진 전환·Bootstrap을 자동 변경하지 않음.
 
 ## 2026-09-08 20:51 KST FUP-01 Rollback 원본 수신
@@ -82,3 +82,14 @@ FUP-09는 [Stage A 승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)�
 - 원격 root:root/0600 및 읽기 전후 불변성은 수집기 보고 기반이다. stat-before/after 원시 출력은 미첨부여서 독립 서버 측정으로 주장하지 않는다.
 - Refinalization은 MISSING/matches=0이며 수신 멤버에서도 기대 해시 일치 파일이 없다. 검색 범위 밖 원본의 부재까지 입증한 것은 아니다.
 - FUP-01 전체 완료 및 새 Commit의 독립 편입 승인은 계속 대기. FUP-02와 SFTP 등 다른 후속 항목, 기존 Done·승인·Bootstrap 상태는 변경하지 않는다.
+
+## 2026-09-08 21:25 KST Ansible SFTP 수정 후 서버 검증 수신
+
+[검토서·원본 시작점](../evidence/P1-ANS-01/pr4-ansible-sftp-verify-20260908/README.md).
+
+- 원본 SHA-256 `70c16442626426f0c57ab55d402c53fd62799df9cf44621b4831c1f1627d2e30`, 6,335 bytes. 외부 sidecar 일치, 내부 22/22, 원본 23개 보존.
+- 수정된 옵션의 실제 SFTP put 6/6 rc=0, ping pong/changed=false 6/6, 임시 모듈 정리 6/6 rc=0, 이번 Ansible 경고 0건. 노드별 SSH 5회·SFTP 1회 전송 명령 모두 rc=0.
+- -T 음성 대조는 예상대로 rc=1이며, 실제 SFTP 명령에는 -T가 없다. 이번 성공을 다른 전송 방식 fallback으로 처리하지 않는다.
+- 12개 원시 snapshot 대조 및 이전 직접 SFTP 수신 최종 키 상태와 일치. 승인 main/28개 소스·known_hosts 보존은 수집기 검사 성공 보고 기반이며 별도 원시 측정값은 미첨부다.
+- SFTP 기술 후속 완료. 운영 이슈 #10의 독립 운영 증적 검토는 대기이며, 기존 전체 apply 재실행·main 코드 수정은 필요하지 않다. 과거 36건 fallback 재구성은 미완료 이력으로 보존한다.
+- 이번 수신은 다른 FUP 보완 상태·기존 승인·엔진 전환·Bootstrap을 변경하지 않는다.

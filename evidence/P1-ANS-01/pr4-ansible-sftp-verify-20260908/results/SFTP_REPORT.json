@@ -1,0 +1,57 @@
+{
+  "status": "SFTP_ONLY_ANSIBLE_VERIFIED_REVIEW_REQUIRED",
+  "schema_version": 1,
+  "scope": "ANSIBLE_PING_ONLY_WITH_SFTP_UPLOAD_AND_TEMP_MODULE_CLEANUP",
+  "code_commit": "3a02dc8934adb1f80df48ec6763689c401a1e8d6",
+  "started_at": "2026-09-08T12:25:22.576616+00:00",
+  "nodes": [
+    {
+      "host": "k8s-worker01",
+      "ip": "10.1.93.105",
+      "status": "PASS",
+      "rc": 0,
+      "state_unchanged": true
+    },
+    {
+      "host": "k8s-worker02",
+      "ip": "10.1.93.107",
+      "status": "PASS",
+      "rc": 0,
+      "state_unchanged": true
+    },
+    {
+      "host": "k8s-worker03",
+      "ip": "10.1.93.108",
+      "status": "PASS",
+      "rc": 0,
+      "state_unchanged": true
+    },
+    {
+      "host": "k8s-control01",
+      "ip": "10.1.93.102",
+      "status": "PASS",
+      "rc": 0,
+      "state_unchanged": true
+    },
+    {
+      "host": "k8s-control02",
+      "ip": "10.1.93.103",
+      "status": "PASS",
+      "rc": 0,
+      "state_unchanged": true
+    },
+    {
+      "host": "k8s-control03",
+      "ip": "10.1.93.104",
+      "status": "PASS",
+      "rc": 0,
+      "state_unchanged": true
+    }
+  ],
+  "runtime_upgrade": "NOT_PERFORMED",
+  "bootstrap": "HOLD",
+  "original_fallback": "NOT_RECONSTRUCTED",
+  "invalid_T_reproduced": true,
+  "source_and_known_hosts_preserved": true,
+  "finished_at": "2026-09-08T12:25:35.709764+00:00"
+}
