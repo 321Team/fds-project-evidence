@@ -1,0 +1,13 @@
+{
+  "svc_ansible_authorized_keys": "/home/svc_ansible/.ssh/authorized_keys",
+  "svc_ansible_key_comment": "P1-ANS-01 svc_ansible",
+  "svc_ansible_key_options": "from=\"10.250.10.10\",restrict",
+  "ssh_guards_file": "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/ssh-guards.yml",
+  "ansible_ssh_common_args": "-o BatchMode=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o KbdInteractiveAuthentication=no -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/home/server01_ansible/.ssh/known_hosts -o IdentitiesOnly=yes -o IdentityAgent=none -o ControlMaster=no -o ControlPath=none -o ControlPersist=no -o ConnectTimeout=10",
+  "ansible_connection": "ssh",
+  "ansible_become": true,
+  "ansible_become_method": "sudo",
+  "ansible_become_user": "root",
+  "ansible_become_flags": "-H -S -n",
+  "cr_dns_phase": "verify"
+}

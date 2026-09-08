@@ -1,0 +1,284 @@
+
+PLAY [SSH guard localhost regression] ******************************************
+
+TASK [Reset observation: empty: 0] *********************************************
+ok: [localhost]
+
+TASK [Execute source guard: empty: Count P1 managed SSH keys] ******************
+[ERROR]: Task failed: Module failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:13:7
+
+11   - name: 'Observe guard: empty: 0'
+12     block:
+13     - name: 'Execute source guard: empty: Count P1 managed SSH keys'
+         ^ column 7
+
+fatal: [localhost]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3.12"}, "changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/empty"], "delta": "0:00:00.002392", "end": "2026-09-08 10:27:22.656809", "failed_when_result": true, "failed_when_suppressed_exception": "(traceback unavailable)", "msg": "The command exited with a non-zero return code.", "rc": 1, "start": "2026-09-08 10:27:22.654417", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: empty: 0] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: empty: 1] *********************************************
+ok: [localhost]
+
+TASK [Execute source guard: empty: Verify restricted P1 managed SSH key] *******
+[ERROR]: Task failed: Module failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:45:7
+
+43   - name: 'Observe guard: empty: 1'
+44     block:
+45     - name: 'Execute source guard: empty: Verify restricted P1 managed SSH key'
+         ^ column 7
+
+fatal: [localhost]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3.12"}, "changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/empty"], "delta": "0:00:00.002921", "end": "2026-09-08 10:27:22.910862", "failed_when_result": true, "failed_when_suppressed_exception": "(traceback unavailable)", "msg": "The command exited with a non-zero return code.", "rc": 1, "start": "2026-09-08 10:27:22.907941", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: empty: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: one_plain: 0] *****************************************
+ok: [localhost]
+
+TASK [Execute source guard: one_plain: Count P1 managed SSH keys] **************
+ok: [localhost]
+
+TASK [Assert contract: one_plain: 0] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: one_plain: 1] *****************************************
+ok: [localhost]
+
+TASK [Execute source guard: one_plain: Verify restricted P1 managed SSH key] ***
+[ERROR]: Task failed: Module failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:108:7
+
+106   - name: 'Observe guard: one_plain: 1'
+107     block:
+108     - name: 'Execute source guard: one_plain: Verify restricted P1 managed SSH key'
+          ^ column 7
+
+fatal: [localhost]: FAILED! => {"changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/one_plain"], "delta": "0:00:00.002218", "end": "2026-09-08 10:27:23.324070", "failed_when_result": true, "failed_when_suppressed_exception": "(traceback unavailable)", "msg": "The command exited with a non-zero return code.", "rc": 1, "start": "2026-09-08 10:27:23.321852", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: one_plain: 1] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: one_restricted: 0] ************************************
+ok: [localhost]
+
+TASK [Execute source guard: one_restricted: Count P1 managed SSH keys] *********
+ok: [localhost]
+
+TASK [Assert contract: one_restricted: 0] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: one_restricted: 1] ************************************
+ok: [localhost]
+
+TASK [Execute source guard: one_restricted: Verify restricted P1 managed SSH key] ***
+ok: [localhost]
+
+TASK [Assert contract: one_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: two_plain: 0] *****************************************
+ok: [localhost]
+
+TASK [Execute source guard: two_plain: Count P1 managed SSH keys] **************
+[ERROR]: Task failed: Action failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:203:7
+
+201   - name: 'Observe guard: two_plain: 0'
+202     block:
+203     - name: 'Execute source guard: two_plain: Count P1 managed SSH keys'
+          ^ column 7
+
+fatal: [localhost]: FAILED! => {"changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/two_plain"], "delta": "0:00:00.002412", "end": "2026-09-08 10:27:23.921601", "failed_when_result": true, "msg": "Task failed: Action failed: A 'failed_when' expression evaluated to 'True'.", "rc": 0, "start": "2026-09-08 10:27:23.919189", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: two_plain: 0] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: two_plain: 1] *****************************************
+ok: [localhost]
+
+TASK [Execute source guard: two_plain: Verify restricted P1 managed SSH key] ***
+[ERROR]: Task failed: Module failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:235:7
+
+233   - name: 'Observe guard: two_plain: 1'
+234     block:
+235     - name: 'Execute source guard: two_plain: Verify restricted P1 managed SSH key'
+          ^ column 7
+
+fatal: [localhost]: FAILED! => {"changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/two_plain"], "delta": "0:00:00.002290", "end": "2026-09-08 10:27:24.135505", "failed_when_result": true, "failed_when_suppressed_exception": "(traceback unavailable)", "msg": "The command exited with a non-zero return code.", "rc": 1, "start": "2026-09-08 10:27:24.133215", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: two_plain: 1] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: two_restricted: 0] ************************************
+ok: [localhost]
+
+TASK [Execute source guard: two_restricted: Count P1 managed SSH keys] *********
+[ERROR]: Task failed: Action failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:266:7
+
+264   - name: 'Observe guard: two_restricted: 0'
+265     block:
+266     - name: 'Execute source guard: two_restricted: Count P1 managed SSH keys'
+          ^ column 7
+
+fatal: [localhost]: FAILED! => {"changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/two_restricted"], "delta": "0:00:00.002501", "end": "2026-09-08 10:27:24.348458", "failed_when_result": true, "msg": "Task failed: Action failed: A 'failed_when' expression evaluated to 'True'.", "rc": 0, "start": "2026-09-08 10:27:24.345957", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: two_restricted: 0] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: two_restricted: 1] ************************************
+ok: [localhost]
+
+TASK [Execute source guard: two_restricted: Verify restricted P1 managed SSH key] ***
+[ERROR]: Task failed: Action failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:298:7
+
+296   - name: 'Observe guard: two_restricted: 1'
+297     block:
+298     - name: 'Execute source guard: two_restricted: Verify restricted P1 managed SSH
+          ^ column 7
+
+fatal: [localhost]: FAILED! => {"changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/two_restricted"], "delta": "0:00:00.002387", "end": "2026-09-08 10:27:24.560074", "failed_when_result": true, "msg": "Task failed: Action failed: A 'failed_when' expression evaluated to 'True'.", "rc": 0, "start": "2026-09-08 10:27:24.557687", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: two_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: mixed: 0] *********************************************
+ok: [localhost]
+
+TASK [Execute source guard: mixed: Count P1 managed SSH keys] ******************
+[ERROR]: Task failed: Action failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:330:7
+
+328   - name: 'Observe guard: mixed: 0'
+329     block:
+330     - name: 'Execute source guard: mixed: Count P1 managed SSH keys'
+          ^ column 7
+
+fatal: [localhost]: FAILED! => {"changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/mixed"], "delta": "0:00:00.002355", "end": "2026-09-08 10:27:24.786470", "failed_when_result": true, "msg": "Task failed: Action failed: A 'failed_when' expression evaluated to 'True'.", "rc": 0, "start": "2026-09-08 10:27:24.784115", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: mixed: 0] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: mixed: 1] *********************************************
+ok: [localhost]
+
+TASK [Execute source guard: mixed: Verify restricted P1 managed SSH key] *******
+ok: [localhost]
+
+TASK [Assert contract: mixed: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: missing: 0] *******************************************
+ok: [localhost]
+
+TASK [Execute source guard: missing: Count P1 managed SSH keys] ****************
+[ERROR]: Task failed: Module failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:393:7
+
+391   - name: 'Observe guard: missing: 0'
+392     block:
+393     - name: 'Execute source guard: missing: Count P1 managed SSH keys'
+          ^ column 7
+
+fatal: [localhost]: FAILED! => {"changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/missing"], "delta": "0:00:00.002255", "end": "2026-09-08 10:27:25.206156", "failed_when_result": true, "failed_when_suppressed_exception": "(traceback unavailable)", "msg": "The command exited with a non-zero return code.", "rc": 2, "start": "2026-09-08 10:27:25.203901", "stderr": "grep: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/missing: 그런 파일이나 디렉터리가 없습니다", "stderr_lines": ["grep: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/missing: 그런 파일이나 디렉터리가 없습니다"], "stdout": "", "stdout_lines": []}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: missing: 0] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: missing: 1] *******************************************
+ok: [localhost]
+
+TASK [Execute source guard: missing: Verify restricted P1 managed SSH key] *****
+[ERROR]: Task failed: Module failed: A 'failed_when' expression evaluated to 'True'.
+Origin: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml:425:7
+
+423   - name: 'Observe guard: missing: 1'
+424     block:
+425     - name: 'Execute source guard: missing: Verify restricted P1 managed SSH key'
+          ^ column 7
+
+fatal: [localhost]: FAILED! => {"changed": false, "changed_when_result": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/missing"], "delta": "0:00:00.002218", "end": "2026-09-08 10:27:25.431133", "failed_when_result": true, "failed_when_suppressed_exception": "(traceback unavailable)", "msg": "The command exited with a non-zero return code.", "rc": 2, "start": "2026-09-08 10:27:25.428915", "stderr": "grep: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/missing: 그런 파일이나 디렉터리가 없습니다", "stderr_lines": ["grep: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/fixtures/missing: 그런 파일이나 디렉터리가 없습니다"], "stdout": "", "stdout_lines": []}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: missing: 1] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=42   changed=0    unreachable=0    failed=0    skipped=0    rescued=10   ignored=0   
+

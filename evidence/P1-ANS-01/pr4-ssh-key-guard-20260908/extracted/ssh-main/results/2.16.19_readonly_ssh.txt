@@ -1,0 +1,242 @@
+
+PLAY [Verify SSH guards on the six real Kubernetes nodes] **********************
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+ok: [k8s-control02]
+
+TASK [Require the full expected inventory and successful fact gathering] *******
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Verify Python module execution over SSH] *********************************
+ok: [k8s-control03]
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-control02]
+ok: [k8s-worker03]
+
+TASK [Read effective privileged user] ******************************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+
+TASK [Require working sudo] ****************************************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Read authorized keys metadata and checksum before verification] **********
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-control02]
+ok: [k8s-worker03]
+
+TASK [Verify protected authorized keys file] ***********************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute the two guards copied from the corrected source] *****************
+included: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/ssh-guards.yml for k8s-control01, k8s-control02, k8s-control03, k8s-worker01, k8s-worker02, k8s-worker03
+
+TASK [Count P1 managed SSH keys] ***********************************************
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-control03]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+
+TASK [Verify restricted P1 managed SSH key] ************************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+
+TASK [Read authorized keys metadata and checksum after verification] ***********
+ok: [k8s-control01]
+ok: [k8s-worker02]
+ok: [k8s-control03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+
+TASK [Verify authorized keys remained unchanged] *******************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Record per-node verification result without key material] ****************
+ok: [k8s-control01] => {
+    "msg": {
+        "authorized_keys_unchanged": true,
+        "effective_user": "root",
+        "host": "k8s-control01",
+        "managed_key_count": "1",
+        "python_version": "3.12.13",
+        "restricted_key_count": "1",
+        "verdict": "SSH_READONLY_PASS"
+    }
+}
+ok: [k8s-control02] => {
+    "msg": {
+        "authorized_keys_unchanged": true,
+        "effective_user": "root",
+        "host": "k8s-control02",
+        "managed_key_count": "1",
+        "python_version": "3.12.13",
+        "restricted_key_count": "1",
+        "verdict": "SSH_READONLY_PASS"
+    }
+}
+ok: [k8s-control03] => {
+    "msg": {
+        "authorized_keys_unchanged": true,
+        "effective_user": "root",
+        "host": "k8s-control03",
+        "managed_key_count": "1",
+        "python_version": "3.12.13",
+        "restricted_key_count": "1",
+        "verdict": "SSH_READONLY_PASS"
+    }
+}
+ok: [k8s-worker01] => {
+    "msg": {
+        "authorized_keys_unchanged": true,
+        "effective_user": "root",
+        "host": "k8s-worker01",
+        "managed_key_count": "1",
+        "python_version": "3.12.13",
+        "restricted_key_count": "1",
+        "verdict": "SSH_READONLY_PASS"
+    }
+}
+ok: [k8s-worker02] => {
+    "msg": {
+        "authorized_keys_unchanged": true,
+        "effective_user": "root",
+        "host": "k8s-worker02",
+        "managed_key_count": "1",
+        "python_version": "3.12.13",
+        "restricted_key_count": "1",
+        "verdict": "SSH_READONLY_PASS"
+    }
+}
+ok: [k8s-worker03] => {
+    "msg": {
+        "authorized_keys_unchanged": true,
+        "effective_user": "root",
+        "host": "k8s-worker03",
+        "managed_key_count": "1",
+        "python_version": "3.12.13",
+        "restricted_key_count": "1",
+        "verdict": "SSH_READONLY_PASS"
+    }
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=13   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-control02              : ok=13   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-control03              : ok=13   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker01               : ok=13   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker02               : ok=13   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker03               : ok=13   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

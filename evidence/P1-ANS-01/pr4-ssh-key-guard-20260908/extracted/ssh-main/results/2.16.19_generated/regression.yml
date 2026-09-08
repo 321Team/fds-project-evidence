@@ -1,0 +1,449 @@
+- name: SSH guard localhost regression
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
+  - name: 'Reset observation: empty: 0'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: empty: 0'
+    block:
+    - name: 'Execute source guard: empty: Count P1 managed SSH keys'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/empty
+      register: p1_managed_key_count
+      changed_when: false
+      check_mode: false
+      failed_when: p1_managed_key_count.rc not in [0, 1] or (p1_managed_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: empty: 0'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: empty:
+        Count P1 managed SSH keys'
+  - name: 'Reset observation: empty: 1'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: empty: 1'
+    block:
+    - name: 'Execute source guard: empty: Verify restricted P1 managed SSH key'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/empty
+      register: p1_restricted_key_count
+      changed_when: false
+      failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: empty: 1'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: empty:
+        Verify restricted P1 managed SSH key'
+  - name: 'Reset observation: one_plain: 0'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: one_plain: 0'
+    block:
+    - name: 'Execute source guard: one_plain: Count P1 managed SSH keys'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/one_plain
+      register: p1_managed_key_count
+      changed_when: false
+      check_mode: false
+      failed_when: p1_managed_key_count.rc not in [0, 1] or (p1_managed_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: one_plain: 0'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == False
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: one_plain:
+        Count P1 managed SSH keys'
+  - name: 'Reset observation: one_plain: 1'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: one_plain: 1'
+    block:
+    - name: 'Execute source guard: one_plain: Verify restricted P1 managed SSH key'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/one_plain
+      register: p1_restricted_key_count
+      changed_when: false
+      failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: one_plain: 1'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: one_plain:
+        Verify restricted P1 managed SSH key'
+  - name: 'Reset observation: one_restricted: 0'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: one_restricted: 0'
+    block:
+    - name: 'Execute source guard: one_restricted: Count P1 managed SSH keys'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/one_restricted
+      register: p1_managed_key_count
+      changed_when: false
+      check_mode: false
+      failed_when: p1_managed_key_count.rc not in [0, 1] or (p1_managed_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: one_restricted: 0'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == False
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: one_restricted:
+        Count P1 managed SSH keys'
+  - name: 'Reset observation: one_restricted: 1'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: one_restricted: 1'
+    block:
+    - name: 'Execute source guard: one_restricted: Verify restricted P1 managed SSH
+        key'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/one_restricted
+      register: p1_restricted_key_count
+      changed_when: false
+      failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: one_restricted: 1'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == False
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: one_restricted:
+        Verify restricted P1 managed SSH key'
+  - name: 'Reset observation: two_plain: 0'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: two_plain: 0'
+    block:
+    - name: 'Execute source guard: two_plain: Count P1 managed SSH keys'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/two_plain
+      register: p1_managed_key_count
+      changed_when: false
+      check_mode: false
+      failed_when: p1_managed_key_count.rc not in [0, 1] or (p1_managed_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: two_plain: 0'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: two_plain:
+        Count P1 managed SSH keys'
+  - name: 'Reset observation: two_plain: 1'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: two_plain: 1'
+    block:
+    - name: 'Execute source guard: two_plain: Verify restricted P1 managed SSH key'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/two_plain
+      register: p1_restricted_key_count
+      changed_when: false
+      failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: two_plain: 1'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: two_plain:
+        Verify restricted P1 managed SSH key'
+  - name: 'Reset observation: two_restricted: 0'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: two_restricted: 0'
+    block:
+    - name: 'Execute source guard: two_restricted: Count P1 managed SSH keys'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/two_restricted
+      register: p1_managed_key_count
+      changed_when: false
+      check_mode: false
+      failed_when: p1_managed_key_count.rc not in [0, 1] or (p1_managed_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: two_restricted: 0'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: two_restricted:
+        Count P1 managed SSH keys'
+  - name: 'Reset observation: two_restricted: 1'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: two_restricted: 1'
+    block:
+    - name: 'Execute source guard: two_restricted: Verify restricted P1 managed SSH
+        key'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/two_restricted
+      register: p1_restricted_key_count
+      changed_when: false
+      failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: two_restricted: 1'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: two_restricted:
+        Verify restricted P1 managed SSH key'
+  - name: 'Reset observation: mixed: 0'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: mixed: 0'
+    block:
+    - name: 'Execute source guard: mixed: Count P1 managed SSH keys'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/mixed
+      register: p1_managed_key_count
+      changed_when: false
+      check_mode: false
+      failed_when: p1_managed_key_count.rc not in [0, 1] or (p1_managed_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: mixed: 0'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: mixed:
+        Count P1 managed SSH keys'
+  - name: 'Reset observation: mixed: 1'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: mixed: 1'
+    block:
+    - name: 'Execute source guard: mixed: Verify restricted P1 managed SSH key'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/mixed
+      register: p1_restricted_key_count
+      changed_when: false
+      failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: mixed: 1'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == False
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: mixed:
+        Verify restricted P1 managed SSH key'
+  - name: 'Reset observation: missing: 0'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: missing: 0'
+    block:
+    - name: 'Execute source guard: missing: Count P1 managed SSH keys'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/missing
+      register: p1_managed_key_count
+      changed_when: false
+      check_mode: false
+      failed_when: p1_managed_key_count.rc not in [0, 1] or (p1_managed_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: missing: 0'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: missing:
+        Count P1 managed SSH keys'
+  - name: 'Reset observation: missing: 1'
+    ansible.builtin.set_fact:
+      guard_rejected: false
+      guard_condition_was_true: false
+  - name: 'Observe guard: missing: 1'
+    block:
+    - name: 'Execute source guard: missing: Verify restricted P1 managed SSH key'
+      ansible.builtin.command:
+        argv:
+        - grep
+        - -cE
+        - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+          svc_ansible$
+        - /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/missing
+      register: p1_restricted_key_count
+      changed_when: false
+      failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+        | int) != 1
+    rescue:
+    - name: Record intended rejection
+      ansible.builtin.set_fact:
+        guard_rejected: true
+        guard_condition_was_true: '{{ ansible_failed_result.failed_when_result | default(false)
+          is sameas true }}'
+  - name: 'Assert contract: missing: 1'
+    ansible.builtin.assert:
+      that:
+      - guard_rejected == True
+      - not guard_rejected or guard_condition_was_true
+      fail_msg: 'Guard did not satisfy the independent fixture expectation: missing:
+        Verify restricted P1 managed SSH key'

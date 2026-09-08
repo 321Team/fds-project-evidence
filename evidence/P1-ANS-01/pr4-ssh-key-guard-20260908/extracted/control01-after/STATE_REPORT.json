@@ -1,0 +1,664 @@
+{
+  "schema": "FDS_CONTROL_FOLLOWUP_1",
+  "phase": "after",
+  "timestamp_utc": "2026-09-08T02:58:10.602788+00:00",
+  "script_sha256": "cf37a6d6a585123de9006cc680a13f1a5932076c3b967f69f3b4f07b23d3625d",
+  "status": "POST_REBOOT_LOCAL_PASS_REMOTE_PENDING",
+  "collection": "READ_ONLY",
+  "login_user": "server02",
+  "commands": [
+    {
+      "command": [
+        "hostnamectl",
+        "--static"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.602871+00:00",
+      "rc": 0,
+      "stdout": "k8s-control01\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-g",
+        "UUID",
+        "connection",
+        "show"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.606075+00:00",
+      "rc": 0,
+      "stdout": "2403bbcc-41f3-4439-81f7-4a3b6a3f582e\ndff273cc-6766-413f-a443-7d27fb5e0598\nb49ddc16-3a4a-355b-8ed0-2ee5d7eae93a\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.id",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.615412+00:00",
+      "rc": 0,
+      "stdout": "fds-k8s-control01\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.type",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.623540+00:00",
+      "rc": 0,
+      "stdout": "802-3-ethernet\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.interface-name",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.631248+00:00",
+      "rc": 0,
+      "stdout": "ens160\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.autoconnect",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.639444+00:00",
+      "rc": 0,
+      "stdout": "yes\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.id",
+        "connection",
+        "show",
+        "uuid",
+        "dff273cc-6766-413f-a443-7d27fb5e0598"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.647528+00:00",
+      "rc": 0,
+      "stdout": "lo\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.type",
+        "connection",
+        "show",
+        "uuid",
+        "dff273cc-6766-413f-a443-7d27fb5e0598"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.655262+00:00",
+      "rc": 0,
+      "stdout": "loopback\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.interface-name",
+        "connection",
+        "show",
+        "uuid",
+        "dff273cc-6766-413f-a443-7d27fb5e0598"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.662897+00:00",
+      "rc": 0,
+      "stdout": "lo\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.autoconnect",
+        "connection",
+        "show",
+        "uuid",
+        "dff273cc-6766-413f-a443-7d27fb5e0598"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.670797+00:00",
+      "rc": 0,
+      "stdout": "yes\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.id",
+        "connection",
+        "show",
+        "uuid",
+        "b49ddc16-3a4a-355b-8ed0-2ee5d7eae93a"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.678514+00:00",
+      "rc": 0,
+      "stdout": "ens160\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.type",
+        "connection",
+        "show",
+        "uuid",
+        "b49ddc16-3a4a-355b-8ed0-2ee5d7eae93a"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.686211+00:00",
+      "rc": 0,
+      "stdout": "802-3-ethernet\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.interface-name",
+        "connection",
+        "show",
+        "uuid",
+        "b49ddc16-3a4a-355b-8ed0-2ee5d7eae93a"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.693689+00:00",
+      "rc": 0,
+      "stdout": "ens160\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "connection.autoconnect",
+        "connection",
+        "show",
+        "uuid",
+        "b49ddc16-3a4a-355b-8ed0-2ee5d7eae93a"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.701372+00:00",
+      "rc": 0,
+      "stdout": "no\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "802-3-ethernet.mac-address",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.709284+00:00",
+      "rc": 0,
+      "stdout": "\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "802-3-ethernet.mac-address",
+        "connection",
+        "show",
+        "uuid",
+        "b49ddc16-3a4a-355b-8ed0-2ee5d7eae93a"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.716944+00:00",
+      "rc": 0,
+      "stdout": "\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "ipv4.method",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.724960+00:00",
+      "rc": 0,
+      "stdout": "manual\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "ipv4.addresses",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.732834+00:00",
+      "rc": 0,
+      "stdout": "10.1.93.102/24\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "ipv4.gateway",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.740449+00:00",
+      "rc": 0,
+      "stdout": "10.1.93.254\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "ipv4.routes",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.748380+00:00",
+      "rc": 0,
+      "stdout": "10.250.10.0/24 10.1.93.58\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "ipv4.dns",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.756264+00:00",
+      "rc": 0,
+      "stdout": "10.1.93.52,10.1.93.53\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "ipv4.dns-search",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.764249+00:00",
+      "rc": 0,
+      "stdout": "fds.internal\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "ipv4.ignore-auto-dns",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.772023+00:00",
+      "rc": 0,
+      "stdout": "yes\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "802-3-ethernet.cloned-mac-address",
+        "connection",
+        "show",
+        "uuid",
+        "2403bbcc-41f3-4439-81f7-4a3b6a3f582e"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.779697+00:00",
+      "rc": 0,
+      "stdout": "\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ip",
+        "-j",
+        "-4",
+        "address",
+        "show",
+        "dev",
+        "ens160"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.787485+00:00",
+      "rc": 0,
+      "stdout": "[{\"ifindex\":2,\"ifname\":\"ens160\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"mq\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"altnames\":[\"enp3s0\",\"enx000c2954e24b\"],\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.1.93.102\",\"prefixlen\":24,\"broadcast\":\"10.1.93.255\",\"scope\":\"global\",\"noprefixroute\":true,\"label\":\"ens160\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "GENERAL.CON-UUID",
+        "device",
+        "show",
+        "ens160"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.789850+00:00",
+      "rc": 0,
+      "stdout": "2403bbcc-41f3-4439-81f7-4a3b6a3f582e\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "GENERAL.HWADDR",
+        "device",
+        "show",
+        "ens160"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.797754+00:00",
+      "rc": 0,
+      "stdout": "00:0C:29:54:E2:4B\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ip",
+        "-j",
+        "-4",
+        "route",
+        "show",
+        "default"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.805386+00:00",
+      "rc": 0,
+      "stdout": "[{\"dst\":\"default\",\"gateway\":\"10.1.93.254\",\"dev\":\"ens160\",\"protocol\":\"static\",\"metric\":100,\"flags\":[]}]\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ip",
+        "-j",
+        "-4",
+        "route",
+        "get",
+        "10.250.10.10"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.806676+00:00",
+      "rc": 0,
+      "stdout": "[{\"dst\":\"10.250.10.10\",\"gateway\":\"10.1.93.58\",\"dev\":\"ens160\",\"prefsrc\":\"10.1.93.102\",\"flags\":[],\"uid\":0,\"cache\":[]}]\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nmcli",
+        "-t",
+        "-e",
+        "no",
+        "-g",
+        "IP4.DNS",
+        "device",
+        "show",
+        "ens160"
+      ],
+      "timestamp_utc": "2026-09-08T02:58:10.807786+00:00",
+      "rc": 0,
+      "stdout": "10.1.93.52 | 10.1.93.53\n",
+      "stderr": ""
+    }
+  ],
+  "errors": [],
+  "recovery_candidates": [
+    {
+      "directory": "/home/server02/FDS_Control_Profile_Recovery.276zc5lt",
+      "timestamp_utc": "2026-09-07T11:08:44.507577+00:00",
+      "status": "PREFLIGHT_BLOCKED_NO_CHANGE",
+      "archive_sha256": "d14276eae737917136a04941207c13cea72f60b74e3e2fee3837185186236e78",
+      "backup_present": false
+    },
+    {
+      "directory": "/home/server02/FDS_Control_Profile_Recovery.beaba6ah",
+      "timestamp_utc": "2026-09-07T10:44:06.217200+00:00",
+      "status": "PREFLIGHT_BLOCKED_NO_CHANGE",
+      "archive_sha256": "97f3ed451df7d31142f9dd580ff791a0d6b4c38fd99d9f6e6918e555e7255a25",
+      "backup_present": false
+    },
+    {
+      "directory": "/home/server02/FDS_Control_Profile_Recovery.dzb914cx",
+      "timestamp_utc": "2026-09-07T11:13:06.636725+00:00",
+      "status": "PREFLIGHT_BLOCKED_NO_CHANGE",
+      "archive_sha256": "072b791ee402e1a29f1fa31ae802366e9c8384d7512f294dbf7b79fa962c7f1c",
+      "backup_present": false
+    },
+    {
+      "directory": "/home/server02/FDS_Control_Profile_Recovery.xuftacoy",
+      "timestamp_utc": "2026-09-08T01:22:42.169265+00:00",
+      "status": "PREFLIGHT_BLOCKED_NO_CHANGE",
+      "archive_sha256": "f984dfeafa3293344cfbbaff1b42100e77fe69f8657f68763aaf41412487337a",
+      "backup_present": false
+    }
+  ],
+  "recovery_issues": [],
+  "scope": "Current local network state, boot identity and existing recovery archive bytes. No reboot or configuration changes.",
+  "host": "k8s-control01",
+  "state": {
+    "profiles": {
+      "2403bbcc-41f3-4439-81f7-4a3b6a3f582e": {
+        "connection.id": "fds-k8s-control01",
+        "connection.type": "802-3-ethernet",
+        "connection.interface-name": "ens160",
+        "connection.autoconnect": "yes",
+        "802-3-ethernet.mac-address": "",
+        "ipv4.method": "manual",
+        "ipv4.addresses": "10.1.93.102/24",
+        "ipv4.gateway": "10.1.93.254",
+        "ipv4.routes": "10.250.10.0/24 10.1.93.58",
+        "ipv4.dns": "10.1.93.52,10.1.93.53",
+        "ipv4.dns-search": "fds.internal",
+        "ipv4.ignore-auto-dns": "yes",
+        "802-3-ethernet.cloned-mac-address": ""
+      },
+      "dff273cc-6766-413f-a443-7d27fb5e0598": {
+        "connection.id": "lo",
+        "connection.type": "loopback",
+        "connection.interface-name": "lo",
+        "connection.autoconnect": "yes",
+        "802-3-ethernet.mac-address": ""
+      },
+      "b49ddc16-3a4a-355b-8ed0-2ee5d7eae93a": {
+        "connection.id": "ens160",
+        "connection.type": "802-3-ethernet",
+        "connection.interface-name": "ens160",
+        "connection.autoconnect": "no",
+        "802-3-ethernet.mac-address": ""
+      }
+    },
+    "active_uuid": "2403bbcc-41f3-4439-81f7-4a3b6a3f582e",
+    "mac": "00:0C:29:54:E2:4B",
+    "ipv4": [
+      [
+        "10.1.93.102",
+        24
+      ]
+    ],
+    "default_routes": [
+      {
+        "dst": "default",
+        "gateway": "10.1.93.254",
+        "dev": "ens160",
+        "protocol": "static",
+        "metric": 100,
+        "flags": []
+      }
+    ],
+    "management_route": {
+      "dst": "10.250.10.10",
+      "gateway": "10.1.93.58",
+      "dev": "ens160",
+      "prefsrc": "10.1.93.102",
+      "flags": [],
+      "uid": 0,
+      "cache": []
+    },
+    "runtime_dns": [
+      "10.1.93.52",
+      "10.1.93.53"
+    ],
+    "resolver_dns": [
+      "10.1.93.52",
+      "10.1.93.53"
+    ],
+    "resolver_search": [
+      "fds.internal"
+    ],
+    "boot_id": "bfa5774a-4df9-448e-adb8-e6cf17984a71",
+    "uptime_seconds": "137.22"
+  },
+  "checks": {
+    "active_uuid": true,
+    "runtime_mac": true,
+    "runtime_ipv4": true,
+    "default_gateway": true,
+    "management_route": true,
+    "runtime_dns": true,
+    "resolver_dns": true,
+    "resolver_search": true,
+    "target_name": true,
+    "target_type_interface": true,
+    "target_autoconnect": true,
+    "competing_autoconnect_disabled": true,
+    "stored_ipv4": true,
+    "stored_gateway": true,
+    "stored_route": true,
+    "stored_dns": true,
+    "stored_search": true,
+    "ignore_auto_dns": true,
+    "target_mac_binding": true,
+    "target_cloned_mac": true,
+    "boot_id_available": true
+  },
+  "baseline_sha256": "c2292626b86aaceaee20bb79838e9c28e7a5bad9a1ce4593641cf05b1edfe7e7",
+  "boot_id_changed": true,
+  "selected_recovery": {
+    "directory": "/home/server02/FDS_Control_Profile_Recovery.xuftacoy",
+    "timestamp_utc": "2026-09-08T01:22:42.169265+00:00",
+    "status": "PREFLIGHT_BLOCKED_NO_CHANGE",
+    "archive_sha256": "f984dfeafa3293344cfbbaff1b42100e77fe69f8657f68763aaf41412487337a",
+    "backup_present": false
+  },
+  "recovery_receipt": "LATEST_VALID_PAIR_INCLUDED_REVIEW_REQUIRED"
+}

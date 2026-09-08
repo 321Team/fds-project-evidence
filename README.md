@@ -41,3 +41,7 @@ ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DN
 ## Stage A 승인 범위 정정
 
 [Stage A 승인 범위 정정](registry/STAGE_A_APPROVAL_SCOPE_CORRECTION.md): D36에 반영된 Technical/Evidence PASS와 CR 리뷰의 Listener Ready PASS를 유지한다. 증적 제출은 완료됐고 별도 Stage A PASS 재승인은 요구하지 않는다. FUP-09는 이하영의 증적 인수 기록 확인으로 한정하며 OS/Node Bootstrap Gate는 별도다.
+
+## 2026-09-08 PR #4 재검토 자료
+
+[PR #4 증적 열람](./evidence/P1-ANS-01/pr4-ssh-key-guard-20260908/README.md) · [재환님 인계](handoffs/INFRA_ANSIBLE_PR4_REVIEW.md). 원본 텍스트·검토서의 읽기 경로를 제공하며 독립 검토·사람 확인·병합은 대기다.
