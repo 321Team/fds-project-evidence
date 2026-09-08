@@ -1,6 +1,6 @@
 # PR #4 증적 열람 시작점
 
-이 폴더는 [infra-ansible PR #4](https://github.com/321Team/infra-ansible/pull/4)의 수신 증적을 GitHub에서 직접 읽기 위한 등록본이다. 코드 검토 HEAD는 `5a2c3786f6af9f107200654aa12c92c3b09700f0`로 고정한다. 최신 판정은 재환님 재검토 v2의 **PENDING / 사람 확인 PENDING**이며 자료 등록은 승인이나 독립 검증 완료를 뜻하지 않는다.
+이 폴더는 [infra-ansible PR #4](https://github.com/321Team/infra-ansible/pull/4)의 수신 증적을 GitHub에서 직접 읽기 위한 등록본이다. 코드 검토 HEAD는 `5a2c3786f6af9f107200654aa12c92c3b09700f0`로 고정한다. 현재 PR #4는 **APPROVED / 사람 확인 CONFIRMED / MERGED·CLOSED**이다. [승인·병합 종결 기록](../../../records/post-merge-20260908/INFRA_ANSIBLE_PR4_CLOSURE.md)을 따른다. 리뷰어가 확인한 증적은 `d948fbb6bfc5e48bad19135034a1db35347e09e9`로 고정하고, 이 후속 갱신은 관리 기록만 변경한다. 증적 편입 PR 전체의 승인·병합은 별도 대기다.
 
 ## 검토 순서
 

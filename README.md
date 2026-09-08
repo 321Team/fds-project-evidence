@@ -44,4 +44,4 @@ ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DN
 
 ## 2026-09-08 PR #4 재검토 자료
 
-[PR #4 증적 열람](./evidence/P1-ANS-01/pr4-ssh-key-guard-20260908/README.md) · [재환님 인계](handoffs/INFRA_ANSIBLE_PR4_REVIEW.md). 원본 텍스트·검토서의 읽기 경로를 제공하며 독립 검토·사람 확인·병합은 대기다.
+[PR #4 증적 열람](./evidence/P1-ANS-01/pr4-ssh-key-guard-20260908/README.md) · [재환님 인계](handoffs/INFRA_ANSIBLE_PR4_REVIEW.md). PR #4는 독립 승인·사람 확인·main 병합을 완료했다. [종결 기록](records/post-merge-20260908/INFRA_ANSIBLE_PR4_CLOSURE.md)을 참조한다. 본 증적 편입 PR 전체의 승인·병합은 별도 대기다.
