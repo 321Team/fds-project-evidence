@@ -63,3 +63,14 @@ FUP-09는 [Stage A 승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)�
 - 운영 적용 기술 검토 완료, 이슈의 독립 운영 증적 검토 대기. 기존 PR #4 코드 승인·병합 유지, 본 증적 편입 PR Draft 유지.
 - 운영 엔진 2.16.19 유지, Bootstrap HOLD. FUP-01/02의 과거 원본·Manifest 보완을 이번 실행으로 해소 처리하지 않음.
 
+
+
+## 2026-09-08 SFTP 후속 수신
+
+[수신 검토와 키트 전송 수정](../evidence/P1-ANS-01/pr4-sftp-followup-20260908/README.md).
+
+- 사용자 실행 20:30:07–20:30:13 KST, 직접 SFTP get 6/6 PASS, 외부 sidecar 일치·내부 25/25·원본 26개 보존.
+- 6대 공개키 인증·subsystem 수락·rc=0·다운로드 Hash·키 상태 보존을 원본으로 대조. PR4 최종 키 상태와도 일치.
+- 적용 키트 v1.2가 SSH 전용 -T를 SFTP 공통 인자에 전달하는 결함을 로컬 재현하고 v1.3에서 분리 수정. 승인 main 코드 28개는 동일.
+- 직접 SFTP 성공과 수정 후 Ansible 업로드 검증은 구분. 후자는 별도 SFTP-only ping 검증기 배포 후 원본 수신 대기. 기존 6대 apply 재실행 불필요.
+- 이번 수신은 FUP-01/02 보완 상태와 기존 독립 승인·인수·엔진 전환·Bootstrap을 자동 변경하지 않음.

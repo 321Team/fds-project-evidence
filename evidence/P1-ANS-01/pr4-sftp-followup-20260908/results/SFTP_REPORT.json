@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "status": "DIAGNOSTICS_COMPLETE_REVIEW_REQUIRED",
+  "started_at": "2026-09-08T11:30:07.784106+00:00",
+  "code_commit": "3a02dc8934adb1f80df48ec6763689c401a1e8d6",
+  "scope": "REMOTE_READ_ONLY_SFTP_GET_OS_RELEASE; no put/config/apply/service/engine change",
+  "original_warning_replay": false,
+  "successful_original_fallback": "NOT_DETERMINED",
+  "bootstrap": "HOLD",
+  "nodes": [
+    {
+      "host": "k8s-worker01",
+      "ip": "10.1.93.105",
+      "status": "SFTP_READ_TRANSFER_PASS",
+      "probe_run": true,
+      "sftp_rc": 0,
+      "download_sha256": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68"
+    },
+    {
+      "host": "k8s-worker02",
+      "ip": "10.1.93.107",
+      "status": "SFTP_READ_TRANSFER_PASS",
+      "probe_run": true,
+      "sftp_rc": 0,
+      "download_sha256": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68"
+    },
+    {
+      "host": "k8s-worker03",
+      "ip": "10.1.93.108",
+      "status": "SFTP_READ_TRANSFER_PASS",
+      "probe_run": true,
+      "sftp_rc": 0,
+      "download_sha256": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68"
+    },
+    {
+      "host": "k8s-control01",
+      "ip": "10.1.93.102",
+      "status": "SFTP_READ_TRANSFER_PASS",
+      "probe_run": true,
+      "sftp_rc": 0,
+      "download_sha256": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68"
+    },
+    {
+      "host": "k8s-control02",
+      "ip": "10.1.93.103",
+      "status": "SFTP_READ_TRANSFER_PASS",
+      "probe_run": true,
+      "sftp_rc": 0,
+      "download_sha256": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68"
+    },
+    {
+      "host": "k8s-control03",
+      "ip": "10.1.93.104",
+      "status": "SFTP_READ_TRANSFER_PASS",
+      "probe_run": true,
+      "sftp_rc": 0,
+      "download_sha256": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68"
+    }
+  ],
+  "commands": {
+    "engine": {
+      "rc": 0,
+      "stdout": "ansible [core 2.16.19]\n  config file = /home/server01_ansible/p1-ans-01/ansible.cfg\n  configured module search path = ['/home/server01_ansible/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']\n  ansible python module location = /usr/lib/python3.12/site-packages/ansible\n  ansible collection location = /home/server01_ansible/.ansible/collections:/usr/share/ansible/collections\n  executable location = /usr/bin/ansible\n  python version = 3.12.13 (main, Jul 20 2026, 00:00:00) [GCC 14.3.1 20251022 (Red Hat 14.3.1-4)] (/usr/bin/python3)\n  jinja version = 3.1.6\n  libyaml = True\n",
+      "stderr": ""
+    },
+    "packages": {
+      "rc": 0,
+      "stdout": "ansible-core-2.16.19-2.el10.noarch\nVendor=CentOS\npython3-3.12.13-3.el10.x86_64\nVendor=CentOS\nopenssh-clients-9.9p1-29.el10.x86_64\nVendor=CentOS\n",
+      "stderr": ""
+    },
+    "ssh_version": {
+      "rc": 0,
+      "stdout": "",
+      "stderr": "OpenSSH_9.9p1, OpenSSL 3.5.7 9 Jun 2026\n"
+    }
+  },
+  "selected_connection_config": {
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "selected_environment": {},
+  "controller_sftp_executable": {
+    "path": "/usr/bin/sftp",
+    "exists": true
+  },
+  "source_and_known_hosts_preserved": true,
+  "finished_at": "2026-09-08T11:30:13.412229+00:00",
+  "sftp_pass_count": 6,
+  "expected_nodes": [
+    "k8s-worker01",
+    "k8s-worker02",
+    "k8s-worker03",
+    "k8s-control01",
+    "k8s-control02",
+    "k8s-control03"
+  ],
+  "all_nodes_probed": true
+}

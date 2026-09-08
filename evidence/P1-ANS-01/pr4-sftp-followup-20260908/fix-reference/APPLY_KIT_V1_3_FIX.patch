@@ -1,0 +1,27 @@
+--- v1.2/apply-approved-main.py
++++ v1.3/apply-approved-main.py
+@@ -86,12 +86,13 @@
+                ANSIBLE_STDOUT_CALLBACK='default', ANSIBLE_HOST_KEY_CHECKING='True',
+                ANSIBLE_SSH_ARGS='-F /dev/null -o ControlMaster=no -o ControlPersist=no -o ControlPath=none',
+                ANSIBLE_SSH_USETTY='False', ANSIBLE_LOCAL_TEMP=str(output/'ansible-local'), PYTHONDONTWRITEBYTECODE='1')
+-    ssh_args = ['-F', '/dev/null', '-T', '-i', str(key)]
++    ssh_common_args = ['-F', '/dev/null', '-i', str(key)]
+     for option in ['BatchMode=yes', 'PreferredAuthentications=publickey', 'PasswordAuthentication=no',
+                    'KbdInteractiveAuthentication=no', 'StrictHostKeyChecking=yes', 'UserKnownHostsFile='+str(known),
+                    'IdentitiesOnly=yes', 'IdentityAgent=none', 'ControlMaster=no', 'ControlPersist=no',
+                    'ControlPath=none', 'ConnectTimeout=10', 'ConnectionAttempts=1', 'ServerAliveInterval=10', 'ServerAliveCountMax=2']:
+-        ssh_args += ['-o', option]
++        ssh_common_args += ['-o', option]
++    ssh_args = ['-T'] + ssh_common_args
+ 
+     def save():
+         (results/'APPLY_REPORT.json').write_text(json.dumps(report, indent=2)+'\n')
+@@ -163,7 +164,7 @@
+         operational_version = run('operational_engine_version', ['/usr/bin/ansible-playbook', '--version'], release)
+         if '[core 2.16.19]' not in operational_version:
+             raise RuntimeError('Operational engine version changed after Git synchronization')
+-        variables = dict(ansible_ssh_common_args=shlex.join(ssh_args), ansible_connection='ssh',
++        variables = dict(ansible_ssh_common_args=shlex.join(ssh_common_args), ansible_ssh_extra_args='-T', ansible_connection='ssh',
+                          ansible_become=True, ansible_become_method='sudo', ansible_become_user='root',
+                          ansible_become_flags='-H -S -n', ansible_python_interpreter='/usr/bin/python3', cr_dns_phase='verify')
+         context = output/'execution-vars.json'
