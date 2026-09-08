@@ -21,7 +21,18 @@
 
 ## 1. 승인된 수집기 준비
 
+수집기는 `fds-project-evidence` PR #1에 있으며 운영 `infra-ansible` 저장소에는 추가하지 않는다. GitHub에서 검토 대상 Commit의 파일을 내려받아 `ansible01`의 별도 임시 도구 디렉터리에 둔다.
+
 ```bash
+install -d -m 700 /home/server01_ansible/fup-tools
+# GitHub 화면에서 아래 파일의 Raw 원본을 내려받아 이 경로로 전송한다.
+# tools/collect-fup-01-02-remediation.py
+chmod 700 /home/server01_ansible/fup-tools/collect-fup-01-02-remediation.py
+printf '%s  %s\n' \
+  '685306c52117d3aed0db9ae29afd58d89155a6f0f4bf171bb866b4ff044af546' \
+  '/home/server01_ansible/fup-tools/collect-fup-01-02-remediation.py' \
+  | sha256sum --check
+
 cd /home/server01_ansible/p1-ans-01
 git status --short
 source ~/.config/ansible/p1-ans-01.env
@@ -36,15 +47,18 @@ ansible --version
 Refinalization 원본의 기존 경로를 아는 경우에만 그 경로를 명시한다.
 
 ```bash
-python3 tools/collect-fup-01-02-remediation.py \
+python3 /home/server01_ansible/fup-tools/collect-fup-01-02-remediation.py \
   --ticket FUP-01 \
+  --project-root /home/server01_ansible/p1-ans-01 \
   --refinalization-original /기존/원본/경로
 ```
 
 경로를 모르면 옵션을 빼고 실행할 수 있다. 이 경우 승인된 CR 증적 디렉터리 안에서 기대 SHA-256과 정확히 같은 기존 파일만 찾는다.
 
 ```bash
-python3 tools/collect-fup-01-02-remediation.py --ticket FUP-01
+python3 /home/server01_ansible/fup-tools/collect-fup-01-02-remediation.py \
+  --ticket FUP-01 \
+  --project-root /home/server01_ansible/p1-ans-01
 ```
 
 수집기는 다음 5개 노드에서 `/var/lib/fds-change/CR-P1-ANS-01-01/original-resolver.json`을 읽는다.
@@ -62,7 +76,9 @@ python3 tools/collect-fup-01-02-remediation.py --ticket FUP-01
 2026-09-08 사용자 제출 `evidence.zip` 수신으로 FUP-02 정합성 보완 자료는 이미 생성됐다. 서버 원본을 다시 받아야 할 때만 아래를 실행한다.
 
 ```bash
-python3 tools/collect-fup-01-02-remediation.py --ticket FUP-02
+python3 /home/server01_ansible/fup-tools/collect-fup-01-02-remediation.py \
+  --ticket FUP-02 \
+  --project-root /home/server01_ansible/p1-ans-01
 ```
 
 이 모드는 05h, 실제 수신명 05j, 구 `99_SHA256SUMS.txt`를 그대로 보존한다. 지정명 `05j_reviewer_approver_record.md`와 실제명 `05j_review_approval_record.md`는 rename이 아니라 alias 기록으로 연결한다.
