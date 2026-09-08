@@ -1,0 +1,42 @@
+{
+  "scope": "READ_ONLY_CONTROLLER_PACKAGE_METADATA",
+  "python": "3.12.13 (main, Jul 20 2026, 00:00:00) [GCC 14.3.1 20251022 (Red Hat 14.3.1-4)]",
+  "executable": "/usr/bin/python3",
+  "packages": {
+    "ansible-core": "2.16.19",
+    "Jinja2": "3.1.6",
+    "PyYAML": "6.0.1",
+    "cryptography": "49.0.0",
+    "packaging": "24.2",
+    "resolvelib": "1.0.1"
+  },
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/rpm",
+        "-q",
+        "--qf",
+        "%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\nVendor=%{VENDOR}\n",
+        "ansible-core",
+        "python3"
+      ],
+      "rc": 0,
+      "stdout": "ansible-core-2.16.19-2.el10.noarch\nVendor=CentOS\npython3-3.12.13-3.el10.x86_64\nVendor=CentOS\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/ansible-galaxy",
+        "collection",
+        "list"
+      ],
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "os_config_present": true,
+  "execution_config": null,
+  "vendor_backport_support": "NOT_VERIFIED",
+  "scheduled_and_runner_paths": "NOT_SURVEYED"
+}

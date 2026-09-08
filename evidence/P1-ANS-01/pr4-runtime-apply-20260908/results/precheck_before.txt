@@ -1,0 +1,1109 @@
+
+PLAY [P1-ANS-01 Kubernetes node prerequisite precheck] *************************
+
+TASK [Gathering Facts] *********************************************************
+[WARNING]: sftp transfer mechanism failed on [10.1.93.102]. Use ANSIBLE_DEBUG=1
+to see detailed information
+[WARNING]: sftp transfer mechanism failed on [10.1.93.107]. Use ANSIBLE_DEBUG=1
+to see detailed information
+[WARNING]: sftp transfer mechanism failed on [10.1.93.108]. Use ANSIBLE_DEBUG=1
+to see detailed information
+[WARNING]: sftp transfer mechanism failed on [10.1.93.104]. Use ANSIBLE_DEBUG=1
+to see detailed information
+[WARNING]: sftp transfer mechanism failed on [10.1.93.105]. Use ANSIBLE_DEBUG=1
+to see detailed information
+[WARNING]: sftp transfer mechanism failed on [10.1.93.103]. Use ANSIBLE_DEBUG=1
+to see detailed information
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-control03]
+ok: [k8s-control02]
+
+TASK [Verify inventory hostname and operating system] **************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "Host and OS verified: k8s-control01 / CentOS Stream 10"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "Host and OS verified: k8s-control02 / CentOS Stream 10"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "Host and OS verified: k8s-control03 / CentOS Stream 10"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "Host and OS verified: k8s-worker01 / CentOS Stream 10"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "Host and OS verified: k8s-worker02 / CentOS Stream 10"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "Host and OS verified: k8s-worker03 / CentOS Stream 10"
+}
+
+TASK [Read effective user] *****************************************************
+ok: [k8s-worker02]
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+
+TASK [Read SELinux mode] *******************************************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+
+TASK [Read timezone] ***********************************************************
+ok: [k8s-control01]
+ok: [k8s-worker02]
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+
+TASK [Read NTP synchronization state] ******************************************
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+
+TASK [Read chronyd service state] **********************************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+
+TASK [Read active swap] ********************************************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+
+TASK [Check overlay kernel module] *********************************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+ok: [k8s-control02]
+
+TASK [Check br_netfilter kernel module] ****************************************
+ok: [k8s-control01]
+ok: [k8s-worker02]
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+
+TASK [Read Kubernetes prerequisite sysctl values] ******************************
+ok: [k8s-worker02] => (item=net.bridge.bridge-nf-call-iptables)
+ok: [k8s-worker03] => (item=net.bridge.bridge-nf-call-iptables)
+ok: [k8s-control01] => (item=net.bridge.bridge-nf-call-iptables)
+ok: [k8s-control03] => (item=net.bridge.bridge-nf-call-iptables)
+ok: [k8s-worker01] => (item=net.bridge.bridge-nf-call-iptables)
+ok: [k8s-control02] => (item=net.bridge.bridge-nf-call-iptables)
+ok: [k8s-worker02] => (item=net.bridge.bridge-nf-call-ip6tables)
+ok: [k8s-control01] => (item=net.bridge.bridge-nf-call-ip6tables)
+ok: [k8s-worker03] => (item=net.bridge.bridge-nf-call-ip6tables)
+ok: [k8s-worker01] => (item=net.bridge.bridge-nf-call-ip6tables)
+ok: [k8s-control03] => (item=net.bridge.bridge-nf-call-ip6tables)
+ok: [k8s-control02] => (item=net.bridge.bridge-nf-call-ip6tables)
+ok: [k8s-worker02] => (item=net.ipv4.ip_forward)
+ok: [k8s-control01] => (item=net.ipv4.ip_forward)
+ok: [k8s-worker03] => (item=net.ipv4.ip_forward)
+ok: [k8s-control03] => (item=net.ipv4.ip_forward)
+ok: [k8s-worker01] => (item=net.ipv4.ip_forward)
+ok: [k8s-control02] => (item=net.ipv4.ip_forward)
+
+TASK [Read management return route] ********************************************
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-control03]
+
+TASK [Verify operating system prerequisite state] ******************************
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "OS prerequisite verified on k8s-control02"
+}
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "OS prerequisite verified on k8s-control01"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "OS prerequisite verified on k8s-control03"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "OS prerequisite verified on k8s-worker01"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "OS prerequisite verified on k8s-worker02"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "OS prerequisite verified on k8s-worker03"
+}
+
+TASK [Verify Kubernetes sysctl values] *****************************************
+ok: [k8s-control01] => (item=net.bridge.bridge-nf-call-iptables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-iptables"
+        ],
+        "delta": "0:00:00.002120",
+        "end": "2026-09-08 19:23:39.413841",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-iptables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-iptables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:39.411721",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control01: net.bridge.bridge-nf-call-iptables=1"
+}
+ok: [k8s-control01] => (item=net.bridge.bridge-nf-call-ip6tables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-ip6tables"
+        ],
+        "delta": "0:00:00.001847",
+        "end": "2026-09-08 19:23:40.573145",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-ip6tables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-ip6tables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:40.571298",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control01: net.bridge.bridge-nf-call-ip6tables=1"
+}
+ok: [k8s-control02] => (item=net.bridge.bridge-nf-call-iptables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-iptables"
+        ],
+        "delta": "0:00:00.001852",
+        "end": "2026-09-08 19:23:39.488182",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-iptables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-iptables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:39.486330",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control02: net.bridge.bridge-nf-call-iptables=1"
+}
+ok: [k8s-control02] => (item=net.bridge.bridge-nf-call-ip6tables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-ip6tables"
+        ],
+        "delta": "0:00:00.001985",
+        "end": "2026-09-08 19:23:40.737353",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-ip6tables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-ip6tables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:40.735368",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control02: net.bridge.bridge-nf-call-ip6tables=1"
+}
+ok: [k8s-control01] => (item=net.ipv4.ip_forward) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.ipv4.ip_forward"
+        ],
+        "delta": "0:00:00.001840",
+        "end": "2026-09-08 19:23:41.726615",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.ipv4.ip_forward"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.ipv4.ip_forward",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:41.724775",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control01: net.ipv4.ip_forward=1"
+}
+ok: [k8s-control03] => (item=net.bridge.bridge-nf-call-iptables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-iptables"
+        ],
+        "delta": "0:00:00.001970",
+        "end": "2026-09-08 19:23:39.435363",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-iptables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-iptables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:39.433393",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control03: net.bridge.bridge-nf-call-iptables=1"
+}
+ok: [k8s-control02] => (item=net.ipv4.ip_forward) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.ipv4.ip_forward"
+        ],
+        "delta": "0:00:00.001978",
+        "end": "2026-09-08 19:23:41.968903",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.ipv4.ip_forward"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.ipv4.ip_forward",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:41.966925",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control02: net.ipv4.ip_forward=1"
+}
+ok: [k8s-control03] => (item=net.bridge.bridge-nf-call-ip6tables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-ip6tables"
+        ],
+        "delta": "0:00:00.002375",
+        "end": "2026-09-08 19:23:40.707246",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-ip6tables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-ip6tables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:40.704871",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control03: net.bridge.bridge-nf-call-ip6tables=1"
+}
+ok: [k8s-control03] => (item=net.ipv4.ip_forward) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.ipv4.ip_forward"
+        ],
+        "delta": "0:00:00.001962",
+        "end": "2026-09-08 19:23:41.928701",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.ipv4.ip_forward"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.ipv4.ip_forward",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:41.926739",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-control03: net.ipv4.ip_forward=1"
+}
+ok: [k8s-worker01] => (item=net.bridge.bridge-nf-call-iptables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-iptables"
+        ],
+        "delta": "0:00:00.001906",
+        "end": "2026-09-08 19:23:39.477259",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-iptables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-iptables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:39.475353",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker01: net.bridge.bridge-nf-call-iptables=1"
+}
+ok: [k8s-worker01] => (item=net.bridge.bridge-nf-call-ip6tables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-ip6tables"
+        ],
+        "delta": "0:00:00.002221",
+        "end": "2026-09-08 19:23:40.698459",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-ip6tables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-ip6tables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:40.696238",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker01: net.bridge.bridge-nf-call-ip6tables=1"
+}
+ok: [k8s-worker02] => (item=net.bridge.bridge-nf-call-iptables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-iptables"
+        ],
+        "delta": "0:00:00.001989",
+        "end": "2026-09-08 19:23:39.409663",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-iptables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-iptables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:39.407674",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker02: net.bridge.bridge-nf-call-iptables=1"
+}
+ok: [k8s-worker01] => (item=net.ipv4.ip_forward) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.ipv4.ip_forward"
+        ],
+        "delta": "0:00:00.002034",
+        "end": "2026-09-08 19:23:41.944639",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.ipv4.ip_forward"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.ipv4.ip_forward",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:41.942605",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker01: net.ipv4.ip_forward=1"
+}
+ok: [k8s-worker02] => (item=net.bridge.bridge-nf-call-ip6tables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-ip6tables"
+        ],
+        "delta": "0:00:00.001915",
+        "end": "2026-09-08 19:23:40.541172",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-ip6tables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-ip6tables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:40.539257",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker02: net.bridge.bridge-nf-call-ip6tables=1"
+}
+ok: [k8s-worker03] => (item=net.bridge.bridge-nf-call-iptables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-iptables"
+        ],
+        "delta": "0:00:00.002031",
+        "end": "2026-09-08 19:23:39.443980",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-iptables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-iptables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:39.441949",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker03: net.bridge.bridge-nf-call-iptables=1"
+}
+ok: [k8s-worker02] => (item=net.ipv4.ip_forward) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.ipv4.ip_forward"
+        ],
+        "delta": "0:00:00.002034",
+        "end": "2026-09-08 19:23:41.729108",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.ipv4.ip_forward"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.ipv4.ip_forward",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:41.727074",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker02: net.ipv4.ip_forward=1"
+}
+ok: [k8s-worker03] => (item=net.bridge.bridge-nf-call-ip6tables) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.bridge.bridge-nf-call-ip6tables"
+        ],
+        "delta": "0:00:00.001987",
+        "end": "2026-09-08 19:23:40.622835",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.bridge.bridge-nf-call-ip6tables"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.bridge.bridge-nf-call-ip6tables",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:40.620848",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker03: net.bridge.bridge-nf-call-ip6tables=1"
+}
+ok: [k8s-worker03] => (item=net.ipv4.ip_forward) => {
+    "ansible_loop_var": "item",
+    "changed": false,
+    "item": {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "cmd": [
+            "sysctl",
+            "-n",
+            "net.ipv4.ip_forward"
+        ],
+        "delta": "0:00:00.002057",
+        "end": "2026-09-08 19:23:41.818399",
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "_raw_params": null,
+                "_uses_shell": false,
+                "argv": [
+                    "sysctl",
+                    "-n",
+                    "net.ipv4.ip_forward"
+                ],
+                "chdir": null,
+                "creates": null,
+                "executable": null,
+                "expand_argument_vars": true,
+                "removes": null,
+                "stdin": null,
+                "stdin_add_newline": true,
+                "strip_empty_ends": true
+            }
+        },
+        "item": "net.ipv4.ip_forward",
+        "msg": "",
+        "rc": 0,
+        "start": "2026-09-08 19:23:41.816342",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "1",
+        "stdout_lines": [
+            "1"
+        ]
+    },
+    "msg": "Sysctl verified on k8s-worker03: net.ipv4.ip_forward=1"
+}
+
+TASK [Print precheck summary] **************************************************
+ok: [k8s-control01] => {
+    "msg": {
+        "address": "10.1.93.102",
+        "br_netfilter": true,
+        "chronyd": "active",
+        "effective_user": "root",
+        "host": "k8s-control01",
+        "hostname": "k8s-control01",
+        "management_route": "10.250.10.10 via 10.1.93.58 dev ens160 src 10.1.93.102 uid 0 \n    cache",
+        "ntp_synchronized": "yes",
+        "os": "CentOS 10",
+        "overlay": true,
+        "selinux": "Enforcing",
+        "swap": "disabled",
+        "timezone": "Asia/Seoul"
+    }
+}
+ok: [k8s-control02] => {
+    "msg": {
+        "address": "10.1.93.103",
+        "br_netfilter": true,
+        "chronyd": "active",
+        "effective_user": "root",
+        "host": "k8s-control02",
+        "hostname": "k8s-control02",
+        "management_route": "10.250.10.10 via 10.1.93.58 dev ens160 src 10.1.93.103 uid 0 \n    cache",
+        "ntp_synchronized": "yes",
+        "os": "CentOS 10",
+        "overlay": true,
+        "selinux": "Enforcing",
+        "swap": "disabled",
+        "timezone": "Asia/Seoul"
+    }
+}
+ok: [k8s-control03] => {
+    "msg": {
+        "address": "10.1.93.104",
+        "br_netfilter": true,
+        "chronyd": "active",
+        "effective_user": "root",
+        "host": "k8s-control03",
+        "hostname": "k8s-control03",
+        "management_route": "10.250.10.10 via 10.1.93.58 dev ens160 src 10.1.93.104 uid 0 \n    cache",
+        "ntp_synchronized": "yes",
+        "os": "CentOS 10",
+        "overlay": true,
+        "selinux": "Enforcing",
+        "swap": "disabled",
+        "timezone": "Asia/Seoul"
+    }
+}
+ok: [k8s-worker01] => {
+    "msg": {
+        "address": "10.1.93.105",
+        "br_netfilter": true,
+        "chronyd": "active",
+        "effective_user": "root",
+        "host": "k8s-worker01",
+        "hostname": "k8s-worker01",
+        "management_route": "10.250.10.10 via 10.1.93.58 dev ens160 src 10.1.93.105 uid 0 \n    cache",
+        "ntp_synchronized": "yes",
+        "os": "CentOS 10",
+        "overlay": true,
+        "selinux": "Enforcing",
+        "swap": "disabled",
+        "timezone": "Asia/Seoul"
+    }
+}
+ok: [k8s-worker02] => {
+    "msg": {
+        "address": "10.1.93.107",
+        "br_netfilter": true,
+        "chronyd": "active",
+        "effective_user": "root",
+        "host": "k8s-worker02",
+        "hostname": "k8s-worker02",
+        "management_route": "10.250.10.10 via 10.1.93.58 dev ens160 src 10.1.93.107 uid 0 \n    cache",
+        "ntp_synchronized": "yes",
+        "os": "CentOS 10",
+        "overlay": true,
+        "selinux": "Enforcing",
+        "swap": "disabled",
+        "timezone": "Asia/Seoul"
+    }
+}
+ok: [k8s-worker03] => {
+    "msg": {
+        "address": "10.1.93.108",
+        "br_netfilter": true,
+        "chronyd": "active",
+        "effective_user": "root",
+        "host": "k8s-worker03",
+        "hostname": "k8s-worker03",
+        "management_route": "10.250.10.10 via 10.1.93.58 dev ens160 src 10.1.93.108 uid 0 \n    cache",
+        "ntp_synchronized": "yes",
+        "os": "CentOS 10",
+        "overlay": true,
+        "selinux": "Enforcing",
+        "swap": "disabled",
+        "timezone": "Asia/Seoul"
+    }
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=15   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-control02              : ok=15   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-control03              : ok=15   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker01               : ok=15   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker02               : ok=15   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker03               : ok=15   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

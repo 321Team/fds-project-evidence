@@ -42,3 +42,16 @@ FUP-09는 [Stage A 승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)�
 [이번 수신 검토 상세](../receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md)
 
 현재 Stage A 판정은 [승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)을 따른다. 과거 보고서의 별도 Stage A 최종 승인 대기 표시는 중복 요구로 정정됐다.
+
+
+## 2026-09-08 PR #4 운영 적용 결과 수신
+
+[운영 적용 원본·검토 시작점](../evidence/P1-ANS-01/pr4-runtime-apply-20260908/README.md) · [운영 이슈 #10](https://github.com/321Team/infra-ansible/issues/10).
+
+- 실행 Run ID: `20260908T102238Z-7dcfedd0`, 종료 2026-09-08 19:26:18 KST.
+- 기술 결과: 승인 main을 기존 `~/p1-ans-01`에 동기화, 28개 소스 일치, 기존 증적 등 59개 보존, 6/6 실제 apply·멱등성·신규 SSH 및 OS/DNS 전후 검사 PASS.
+- 원본 수신: 외부 sidecar 일치, 내부 55/55 일치, 원본 텍스트 56개 바이트 보존. 원본 압축 패키지는 별도 수신 첨부로 보존.
+- 첫 실행의 HTTPS 인증 입력 불가 문제는 이번 실제 fetch 성공으로 해소.
+- 비차단 특이사항: SFTP 경고 36건. 실제 작업은 성공했지만 실패 원인과 성공한 전송 방식은 현재 로그로 확정하지 않음. 이슈 #10에서 후속 확인.
+- 운영 적용 기술 검토 완료, 이슈의 독립 운영 증적 검토 대기. 기존 PR #4 코드 승인·병합 유지, 본 증적 편입 PR Draft 유지.
+- 운영 엔진 2.16.19 유지, Bootstrap HOLD. FUP-01/02의 과거 원본·Manifest 보완을 이번 실행으로 해소 처리하지 않음.
