@@ -1,10 +1,10 @@
-# 후속 증적 수신·인수 대장 v1.5
+# 후속 증적 수신·인수 대장 v1.6
 
 기준일: 2026-09-08. infra-ansible PR #1은 최종 승인·병합 완료다. 아래 항목은 기존 완료 티켓의 재구현이 아닌 증적 수신·편입 및 실제 인수 절차로 관리한다.
 
 | ID | 대상 | 이번 조치 | 다음 수신·확인 항목 | 상태 |
 |---|---|---|---|---|
-| FUP-01 | CR-P1-ANS-01-01 | 기존 17개 보존 + Rollback 원본 5/5 수신·내부 Hash 6/6 일치. 보관 권한은 수집 보고 기반 | Refinalization 원본 또는 당시 고정 참조. 독립 편입 검토 | Rollback 수신 검증 완료·Refinalization 대기 |
+| FUP-01 | CR-P1-ANS-01-01 | 기존 17개·Rollback 5/5 보존. Refinalization 검색 결과 수신·내부 Hash 1/1 일치, 홈 검색 미발견·보고 오류 0건 | 다른 당시 보관 위치의 원본 또는 조회 가능한 고정 참조. 독립 편입 검토 | Rollback 검증 완료·Refinalization 보관 위치 확인 대기 |
 | FUP-02 | P1-ANS-01 | 기존 종결 증적 ZIP 재수신·Git 수신본 38/38 동일·05h/05j 원인 규명·파일명 Alias·신규 매니페스트 생성 | 독립 증적 편입 검토 | 정합성 보완 완료·검토 대기 |
 | FUP-03 | P1-DNS-01 | ZIP·Sidecar 수신, 기록 Hash·내부 12/12·개별 Sidecar 11/11 일치 | 독립 편입 검토. 원본 재제출·ZIP 재생성 불필요 | 원본 수신 검증 완료 |
 | FUP-04 | D-NET-01/P1-NET-01/P1-LNX-01 | 공통 원본은 한 번 수집하도록 유지 | 인덱스 01~10 중 미수신 Windows/VMware/Linux/Return Route/Source Preservation 로그·캡처·기존 Manifest. 실제 보관 위치 확인 필요 | 원본 수신 대기 |
@@ -100,3 +100,11 @@ FUP-09는 [Stage A 승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)�
 - 승인 대상 Commit의 기대 해시를 재확인했다. 기존 보관 문서 검색에서는 참조 기록만 확인됐고 Refinalization 원본은 확보하지 못했다. 모든 보관소에서 유실됐다는 판정은 아니다.
 - 로컬 fixture 10/10 PASS. 원본 바이트·출처·전후 메타데이터·무결성을 보존하며 미발견 시 진단 자료만 생성한다. 서버 실행·원본 수신은 대기다.
 - FUP-01/02 상태, 기존 종결·승인·SFTP·Bootstrap 및 증적 PR Draft/미병합 상태는 유지한다.
+
+## 2026-09-08 21:45 KST Refinalization 전용 검색 결과 수신
+
+- [한국어 수신 검토](../receipts/ansible01/20260908T124550Z/FDS_FUP01_Refinalization_Search_Review_v1.0.md): 외부 sidecar 일치, 내부 1/1, 검색 보고서·Manifest 원본 2개 보존. Refinalization 원본은 포함되지 않았다.
+- 보고서 상태는 NOT_FOUND_IN_SCOPE, matches=0, issues=0. /home/server01_ansible 및 압축 내부를 지정 필터로 검색했고 숨김·링크 24개, 비대상 62개를 제외했다. 모든 보관소의 유실을 입증하지 않는다.
+- 이름 후보 2건은 배포 수집기와 수집기 해시 목록이며 Refinalization 원본이 아니다. 수집기 보고 해시는 배포본과 일치하나 서버 직접 독립 측정 결과로 주장하지 않는다.
+- 같은 범위의 재검색·Rollback 재수집은 요구하지 않는다. 당시 작성·다운로드한 원본의 다른 보관 위치 또는 조회 가능한 고정 참조를 먼저 확인한다. 기존 해시 인용문만으로 원본 수신을 대체하지 않는다.
+- FUP-01 원본 수신은 계속 대기. FUP-02·기존 종결·승인·SFTP·Bootstrap 및 증적 PR Draft/미병합 상태 유지.
