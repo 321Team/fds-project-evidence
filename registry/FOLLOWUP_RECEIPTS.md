@@ -1,10 +1,10 @@
-# 후속 증적 수신·인수 대장 v1.3
+# 후속 증적 수신·인수 대장 v1.4
 
 기준일: 2026-09-08. infra-ansible PR #1은 최종 승인·병합 완료다. 아래 항목은 기존 완료 티켓의 재구현이 아닌 증적 수신·편입 및 실제 인수 절차로 관리한다.
 
 | ID | 대상 | 이번 조치 | 다음 수신·확인 항목 | 상태 |
 |---|---|---|---|---|
-| FUP-01 | CR-P1-ANS-01-01 | 17개 기존 수신·Role상 Rollback 원본 경로 확정·읽기 전용 수집기 검증 | Refinalization 원본 및 변경 Node 5대 Rollback 상태자료·보관 증명 실제 수령 | 수집 경로 확정·원본 실행 대기 |
+| FUP-01 | CR-P1-ANS-01-01 | 기존 17개 보존 + Rollback 원본 5/5 수신·내부 Hash 6/6 일치. 보관 권한은 수집 보고 기반 | Refinalization 원본 또는 당시 고정 참조. 독립 편입 검토 | Rollback 수신 검증 완료·Refinalization 대기 |
 | FUP-02 | P1-ANS-01 | 기존 종결 증적 ZIP 재수신·Git 수신본 38/38 동일·05h/05j 원인 규명·파일명 Alias·신규 매니페스트 생성 | 독립 증적 편입 검토 | 정합성 보완 완료·검토 대기 |
 | FUP-03 | P1-DNS-01 | ZIP·Sidecar 수신, 기록 Hash·내부 12/12·개별 Sidecar 11/11 일치 | 독립 편입 검토. 원본 재제출·ZIP 재생성 불필요 | 원본 수신 검증 완료 |
 | FUP-04 | D-NET-01/P1-NET-01/P1-LNX-01 | 공통 원본은 한 번 수집하도록 유지 | 인덱스 01~10 중 미수신 Windows/VMware/Linux/Return Route/Source Preservation 로그·캡처·기존 Manifest. 실제 보관 위치 확인 필요 | 원본 수신 대기 |
@@ -18,7 +18,7 @@ FUP는 증적 수집용 관리 ID이며 WBS 티켓이나 별도 Change Request�
 
 ## 다음 보완 항목
 
-FUP-02는 2026-09-08 사용자 제출 기존 종결 증적 ZIP으로 정합성 보완을 완료했다. FUP-01은 전체 수집기를 재실행하지 않고 전용 읽기 수집기로 Refinalization 원본과 변경 노드 5대 보존 파일만 새 수신회차로 제출한다. 기존 원본·Manifest는 그대로 보존하며 원본 수신 검증과 독립 인수 승인은 분리한다.
+FUP-02는 2026-09-08 사용자 제출 기존 종결 증적 ZIP으로 정합성 보완을 완료했다. FUP-01은 변경 노드 5대 보존 파일의 수신·해시 검증을 완료했다. 다음 제출은 미수신 Refinalization 원본 또는 당시 보관 경로·고정 참조로 한정하며, 5대 재수집이나 finalize 재실행은 요구하지 않는다. 기존 원본·Manifest는 그대로 보존하며 원본 수신 검증과 독립 인수 승인은 분리한다.
 
 FUP-04의 원본 보관 위치는 현재 확보 자료만으로 확정할 수 없다. Closure Report만 다시 제출하는 대신 실제 로그·캡처의 보관 위치 또는 파일을 연결한다.
 
@@ -74,3 +74,11 @@ FUP-09는 [Stage A 승인 범위 정정](STAGE_A_APPROVAL_SCOPE_CORRECTION.md)�
 - 적용 키트 v1.2가 SSH 전용 -T를 SFTP 공통 인자에 전달하는 결함을 로컬 재현하고 v1.3에서 분리 수정. 승인 main 코드 28개는 동일.
 - 직접 SFTP 성공과 수정 후 Ansible 업로드 검증은 구분. 후자는 별도 SFTP-only ping 검증기 배포 후 원본 수신 대기. 기존 6대 apply 재실행 불필요.
 - 이번 수신은 FUP-01/02 보완 상태와 기존 독립 승인·인수·엔진 전환·Bootstrap을 자동 변경하지 않음.
+
+## 2026-09-08 20:51 KST FUP-01 Rollback 원본 수신
+
+- [보완 수신 검토](../receipts/ansible01/20260908T115139Z/FDS_FUP01_Rollback_Receipt_Review_v1.0.md): 외부 sidecar 일치, 내부 6/6, Rollback 상태 5/5 원본 바이트 보존. 원본 CR 파일은 기존 17개에서 상태자료 5개가 추가됐다.
+- JSON은 2026-09-04 변경 전 8.8.8.8 상태를 보존한다. 현재 DNS drift나 실제 rollback 실행의 증거로 해석하지 않는다.
+- 원격 root:root/0600 및 읽기 전후 불변성은 수집기 보고 기반이다. stat-before/after 원시 출력은 미첨부여서 독립 서버 측정으로 주장하지 않는다.
+- Refinalization은 MISSING/matches=0이며 수신 멤버에서도 기대 해시 일치 파일이 없다. 검색 범위 밖 원본의 부재까지 입증한 것은 아니다.
+- FUP-01 전체 완료 및 새 Commit의 독립 편입 승인은 계속 대기. FUP-02와 SFTP 등 다른 후속 항목, 기존 Done·승인·Bootstrap 상태는 변경하지 않는다.

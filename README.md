@@ -34,7 +34,7 @@ FDS 프로젝트의 티켓별 실행 증적, 검증 결과, 승인·인수 기�
 - [ansible01 수집 실행 절차](runbooks/ANSIBLE_SOURCE_RECEIPT.md)
 - [Stage A 실제 인수 체크리스트](handoffs/P1-LB-01_STAGE_A_RECEIVER_CHECKLIST.md)
 
-ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DNS 원본 수신 검증은 완료됐다. P1-ANS Manifest 2개 불일치는 2026-09-08 사용자 제출 종결 증적과 대조해 원인·파일명 Alias·신규 수신회차 Manifest를 등록했으며 독립 검토 대기다. CR은 보완 원본 수령 대기다. 본 증적 PR의 최종 승인·병합과 Stage A 실제 인수는 별도 Gate다.
+ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DNS 원본 수신 검증은 완료됐다. P1-ANS Manifest 2개 불일치는 2026-09-08 사용자 제출 종결 증적과 대조해 원인·파일명 Alias·신규 수신회차 Manifest를 등록했으며 독립 검토 대기다. CR은 변경 노드 Rollback 원본 5개를 추가 수령했고 Refinalization 원본만 미수신이다. 본 증적 PR의 최종 승인·병합과 Stage A 실제 인수는 별도 Gate다.
 
 - [2026-09-07 Ansible 원본 수신 검토](receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md)
 
@@ -51,3 +51,7 @@ ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DN
 - [FUP-02 사용자 제출 수신·판정](receipts/user-upload/20260908T111104Z/README.md): 기존 Git 수신본 38/38 동일, 05h/05j 승인본 반영 후 구 Manifest 갱신 누락 원인 확인, 파일명 Alias와 신규 수신회차 Manifest 등록.
 - [FUP-01/02 읽기 전용 보완 절차](runbooks/FUP-01-02_REMEDIATION.md): FUP-01 변경 노드 5대의 보존 파일 경로를 확정하고 stat/slurp 전용 수집기를 제공. 실제 원본 수령 전에는 FUP-01을 완료 처리하지 않음.
 
+
+## 2026-09-08 FUP-01 Rollback 원본 수신
+
+[보완 수신 검토](receipts/ansible01/20260908T115139Z/FDS_FUP01_Rollback_Receipt_Review_v1.0.md): 외부 sidecar 일치·내부 6/6·변경 노드 5/5 수신. JSON은 9월 4일 변경 전 상태이며 현재 DNS나 rollback 재시험 결과가 아니다. 보관 권한은 수집 보고 기반으로 표시한다. FUP-01 전체는 Refinalization 원본 미수신으로 대기하며 기존 Done·FUP-02·독립 검토·병합 상태는 유지한다.

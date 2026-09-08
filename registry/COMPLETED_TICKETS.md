@@ -1,4 +1,4 @@
-# 완료 티켓 증적 편입 대장 v1.3
+# 완료 티켓 증적 편입 대장 v1.4
 
 기존 기준선의 완료 티켓 12개와 2026-09-07 승인·병합 완료된 CR-P1-ANS-01-01을 포함해 13개를 관리한다. 기존 12개는 v3.1.16 Closed/Project Status Register 및 v3.1.17 WBS 대조 기록, 추가 CR은 infra-ansible PR #1의 실제 승인·병합 기록을 근거로 한다. 기준선·WBS 원본은 이 작업에서 변경하지 않는다.
 
@@ -16,11 +16,10 @@
 | [D-SEC-01](../tickets/D-SEC-01/README.md) | 2026-09-01 | 종결·승인 관련 문서 | D34 승인·조치 기록 수신. 보안 설계 정본은 baseline 고정 참조; P1-SEC Runtime 범위와 분리. |
 | [MS-G0-01](../tickets/MS-G0-01/README.md) | 2026-09-01 | 종결·승인 관련 문서 | D34 G0 Full PASS 상태 전이 기록 수신. G1/G2 또는 Bootstrap 승인으로 사용하지 않음. |
 | [P1-DNS-01](../tickets/P1-DNS-01/README.md) | 2026-09-03 | COLLECTED_VERIFIED | R2 ZIP·Sidecar 수신, 기록 Hash 일치. 내부 Manifest 12/12·개별 Sidecar 11/11 검증 완료. 원본 ZIP 재생성 없음. 독립 편입 검토 대기. |
-| [CR-P1-ANS-01-01](../tickets/CR-P1-ANS-01-01/README.md) | 2026-09-07 | PARTIAL_COLLECTED_COLLECTION_READY | 17개 수신·Manifest 16/16 및 주요 Hash 4/4 일치. 변경 노드 5대의 Rollback 원본 경로와 읽기 전용 수집 절차를 확정했으나 Refinalization 원본·Rollback 상태자료 실제 수령은 대기. |
+| [CR-P1-ANS-01-01](../tickets/CR-P1-ANS-01-01/README.md) | 2026-09-07 | ROLLBACK_RECEIPT_VERIFIED_REFINALIZATION_PENDING | 기존 17개 보존 + 변경 노드 Rollback 원본 5개 수신. 새 회차 내부 Hash 6/6·노드 식별자 5/5 일치. 권한·불변성은 수집 보고 기반. Refinalization 원본만 미수신, 독립 편입 검토 대기. |
 
 저장소 편입은 모든 행에서 CANDIDATE_REVIEW_PENDING이다. 기존 원본 문서 8개는 그대로 보존했다. 사후 작성한 CR 종료 기록을 서버 원본이나 과거 증적으로 간주하지 않는다.
 
 P1-LB-01은 진행 중 티켓이며 Stage A 부분 증적을 별도로 관리한다. [후속 수신·인수 대장](FOLLOWUP_RECEIPTS.md), [관련 결정](RELATED_DECISIONS.md)을 참조한다.
 
 [2026-09-07 ansible01 수신 검토](../receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md) · [2026-09-08 FUP-02 보완 판정](../receipts/user-upload/20260908T111104Z/P1-ANS-01_FUP-02_REMEDIATION.md)
-
