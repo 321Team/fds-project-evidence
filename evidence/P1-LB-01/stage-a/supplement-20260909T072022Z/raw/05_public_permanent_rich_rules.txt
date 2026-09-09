@@ -1,0 +1,14 @@
+SCOPE=PERMANENT
+UTC_START=2026-09-09T07:20:23Z
+COMMAND=sudo -n firewall-cmd --permanent --zone=public --list-rich-rules 
+rule family="ipv4" source address="10.1.93.102/32" port port="6443" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.103/32" port port="6443" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.104/32" port port="6443" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.105/32" port port="6443" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.107/32" port port="6443" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.108/32" port port="6443" protocol="tcp" accept
+rule family="ipv4" source address="10.250.10.20/32" port port="6443" protocol="tcp" accept
+rule family="ipv4" source address="10.250.10.30/32" port port="6443" protocol="tcp" accept
+
+EXIT_CODE=0
+UTC_END=2026-09-09T07:20:23Z
