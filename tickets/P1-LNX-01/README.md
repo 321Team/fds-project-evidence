@@ -8,9 +8,13 @@
 
 ## 현재 후속 상태 — 2026-09-09
 
-D-NET 공통 Closure Report만 수신. 04_K8s_Linux_Prerequisites 등 실제 원본 미수신.
+8/28 6대 precheck/postcheck의 SELinux·Swap·모듈·sysctl 원본 연결. 8/26 Linux Prerequisite 최초 원본으로 소급하지 않음.
 
 [PR #1 병합 기록](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) · [후속 실행표](../../runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
+
+[공통 매핑](../../records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.md) · [잔여 원본·참조 실행표](../../runbooks/FUP-04-09_REMAINING_SOURCE_ACTIONS.md)
+
+이번 매핑 변경은 독립 검토 대기이며 기존 수신·편입 승인은 그대로다.
 
 ## 기존 수신 기록 — 당시 이력
 

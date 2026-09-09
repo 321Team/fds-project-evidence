@@ -8,9 +8,13 @@
 
 ## 현재 후속 상태 — 2026-09-09
 
-D-NET 공통 증적을 참조. 원본 로그·캡처 미수신; 종결 문서의 Reviewer/Approver는 미입력이므로 임의 지정하지 않음.
+8/28 6대 연결·반환 경로·sshd Source 보존 원본 연결. 8/26 최초 원본과 당시 Reviewer/Approver·승인일시는 별도 미확인. 기존 Done 유지.
 
 [PR #1 병합 기록](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) · [후속 실행표](../../runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
+
+[공통 매핑](../../records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.md) · [잔여 원본·참조 실행표](../../runbooks/FUP-04-09_REMAINING_SOURCE_ACTIONS.md)
+
+이번 매핑 변경은 독립 검토 대기이며 기존 수신·편입 승인은 그대로다.
 
 ## 기존 수신 기록 — 당시 이력
 

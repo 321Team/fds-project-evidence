@@ -8,9 +8,13 @@
 
 ## 현재 후속 상태 — 2026-09-09
 
-Closure Report 수신. docs/evidence/D-NET-01/의 01~10 원본 로그·캡처 및 기존 Manifest 미수신.
+Index 10 종결 보고서와 Index 09 IP 예외 문서 연결. Index 03~06은 8/28 원본으로 보완 매핑. 8/26 최초 로그·Windows/VMware 캡처 등 미확보 부분은 별도 대기.
 
 [PR #1 병합 기록](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) · [후속 실행표](../../runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
+
+[공통 매핑](../../records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.md) · [잔여 원본·참조 실행표](../../runbooks/FUP-04-09_REMAINING_SOURCE_ACTIONS.md)
+
+이번 매핑 변경은 독립 검토 대기이며 기존 수신·편입 승인은 그대로다.
 
 ## 기존 수신 기록 — 당시 이력
 
