@@ -1,4 +1,4 @@
-# 후속 증적 수신·인수 대장 v1.8
+# 후속 증적 수신·인수 대장 v1.9
 
 기준일: 2026-09-09. infra-ansible PR #1은 최종 승인·병합 완료다. 아래 항목은 기존 완료 티켓의 재구현이 아닌 증적 수신·편입 및 실제 인수 절차로 관리한다.
 
@@ -9,12 +9,22 @@
 | FUP-03 | P1-DNS-01 | 기존 원본 수신 검증 기록을 포함한 PR #1 편입·병합 완료 | 독립 리뷰의 원본 ZIP 외부 대조 NOT VERIFIED 유지 | 기존 편입 기록 병합 완료 |
 | FUP-04 | D-NET-01/P1-NET-01/P1-LNX-01 | 공통 원본은 한 번 수집하도록 유지 | 인덱스 01~10 중 미수신 Windows/VMware/Linux/Return Route/Source Preservation 로그·캡처·기존 Manifest. 실제 보관 위치 확인 필요 | 원본 수신 대기 |
 | FUP-05 | P1-NET-01 | Reviewer/Approver 미입력 상태 유지 | 실제 검토자·승인자·일시를 확인할 원본 또는 고정 참조 | 참조 확인 대기 |
-| FUP-06 | D-ARC-01 | 종결 설명의 Freeze 메타데이터가 있는 논리·물리 원본 2개 수신·Hash 기록 | 당시 승인 참조 최종 연결 및 새 편입 독립 검토 | 원본 수신 / 승인 참조·독립 검토 대기 |
-| FUP-07 | D-WBS-01 | 종결 설명 지정 WBS v3.1.3 원본·Hash·CRC 확인, 별도 보관 참조 등록 | 동결/갱신 승인 참조 연결·검토자 원본 접근·독립 편입 검토 | 후보 원본 수신 / 승인 참조·독립 검토 대기 |
-| FUP-08 | DEC-P1-MON-01/D33 | 동일 파일 Version 1 원본 11,237 bytes 정상 수신·Revision/승인 내용·Hash 확인 | 새 원본의 독립 편입 검토 | 원본 수신 완료 / 독립 검토 대기 |
-| FUP-09 | P1-LB-01 Stage A | D36 승인정본과 CR 리뷰의 Stage A PASS 유지·증적 제출 완료 | 이하영 증적 인수 여부를 확인할 범위·일시·참조 연결. Stage A PASS 재승인 요구 없음 | 인수 기록 확인 대기 |
+| FUP-06 | D-ARC-01 | 후보 원본 2개 수신·독립 APPROVED·사용자 수용·PR #3 병합 | 당시 승인 참조의 추후 연결. 과거 Hash/출처 접근 한계 수용 유지 | 후보 편입 완료 / 과거 참조 미확인 |
+| FUP-07 | D-WBS-01 | WBS 참조 수신·독립 APPROVED·사용자 수용·PR #3 병합 | 동결/갱신 승인 참조·검토자 원본 접근 확인 | 참조 편입 완료 / 과거 참조·접근 미확인 |
+| FUP-08 | DEC-P1-MON-01/D33 | 원본 수신·Hash·독립 APPROVED·PR #3 병합 | 수용된 과거 비교 Hash 부재 한계 유지 | 원본 수신·편입 완료 |
+| FUP-09 | P1-LB-01 Stage A | [이하영의 9/8 조건부 인수 회신](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5582767564) 확인. 보존본 28/28 동일 | LB-A-01 IP 중복검사 원본·firewalld Permanent 출력의 기존 승인 근거 참조 | 조건부 인수 / 잔여 조건 확인 대기 |
 
 FUP는 증적 수집용 관리 ID이며 WBS 티켓이나 별도 Change Request를 발행한 것이 아니다.
+
+## 2026-09-09 현재 상태 — PR #3 병합 및 인수 회신 연결
+
+PR #3은 `39ead0567327cf45ed9f8b81cecdf9848f542d5d`로 병합됐다. FUP-06/07의 후보 편입·미검증 한계는 최종 수용됐고, FUP-08의 수신·편입은 완료됐다. [이하영의 기존 회신](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5582767564)을 확인해 FUP-09를 **조건부 인수 / 미포함 2개 항목의 참조 확인 대기**로 정정한다.
+
+[현재 후속 추적](https://github.com/321Team/fds-project-evidence/issues/4) · [병합·정정 근거](../records/post-merge-20260909/PR3_CLOSURE_AND_FUP09_CORRECTION.md)
+
+## 기존 수신·보완 기록 — 당시 이력
+
+이하 서술의 독립 검토·인수 대기 표기는 당시 이력이다. 현재 상태는 위 표와 이슈 #4를 적용한다.
 
 ## 다음 보완 항목
 

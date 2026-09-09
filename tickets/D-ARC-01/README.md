@@ -3,12 +3,14 @@
 - Ticket status: Done
 - Closed date: 2026-08-26
 - Migration status: MERGED_REGISTERED_RECORDS — PR #1에 등록된 기록 기준
-- Repository review: TECHNICAL_PASS_CONFIRMED_FOR_PRIOR_IMPORT
+- Repository review: APPROVED_FOR_SUPPLEMENTAL_IMPORT — PR #3 병합
 - 상태 근거: [기준선 v3.1.16](https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority)
 
 ## 현재 후속 상태 — 2026-09-09
 
-Freeze 메타데이터가 종결 설명과 일치하는 논리·물리 원본 2개 수신·Hash 기록. 당시 승인 참조 최종 연결 및 새 편입 독립 검토 대기.
+[PR #3 독립 승인](https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987) · [최종 수용](https://github.com/321Team/fds-project-evidence/pull/3#issuecomment-5597170385) · [후속 추적](https://github.com/321Team/fds-project-evidence/issues/4)
+
+후보 원본 2개 수신·독립 APPROVED·사용자 한계 수용·PR #3 편입 완료. 과거 승인 참조는 미확인으로 유지하며 확보 시 연결.
 
 [PR #1 병합 기록](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) · [후속 실행표](../../runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
 
