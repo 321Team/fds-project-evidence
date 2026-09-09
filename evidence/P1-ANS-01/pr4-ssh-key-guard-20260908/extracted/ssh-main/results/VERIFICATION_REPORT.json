@@ -1,0 +1,689 @@
+{
+  "overall": "PASS_READONLY_SCOPE",
+  "operational_upgrade": "NOT_APPROVED_BY_THIS_RUN",
+  "scope": "localhost fixtures and real-node read-only checks; no configuration apply or rollback",
+  "steps": [
+    {
+      "name": "2.16.19_version",
+      "started_at": "2026-09-08T01:25:44.465073+00:00",
+      "rc": 0,
+      "command": [
+        "/usr/bin/ansible-playbook",
+        "--version"
+      ],
+      "remote": false,
+      "status": "PASS"
+    },
+    {
+      "name": "2.16.19_expressions",
+      "started_at": "2026-09-08T01:25:44.653597+00:00",
+      "rc": 0,
+      "command": [
+        "/usr/bin/python3",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/tests/test-ssh-key-guards.py",
+        "--output",
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_expressions.json",
+        "--export-dir",
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated"
+      ],
+      "remote": false,
+      "status": "PASS"
+    },
+    {
+      "name": "2.16.19_localhost_tasks",
+      "started_at": "2026-09-08T01:25:44.849901+00:00",
+      "rc": 0,
+      "command": [
+        "/usr/bin/ansible-playbook",
+        "-i",
+        "localhost,",
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/regression.yml"
+      ],
+      "remote": false,
+      "status": "PASS"
+    },
+    {
+      "name": "2.16.19_readonly_ssh",
+      "started_at": "2026-09-08T01:25:47.774680+00:00",
+      "rc": 0,
+      "command": [
+        "/usr/bin/ansible-playbook",
+        "-i",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/inventory/hosts.yml",
+        "--private-key",
+        "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+        "-e",
+        "@/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/execution-vars.json",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/tests/ssh-server-readonly.yml"
+      ],
+      "remote": true,
+      "recap": {
+        "k8s-control01": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control02": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control03": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker01": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker02": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker03": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "all_six_verified": true,
+      "changed_total": 0,
+      "ssh_pass_count": 6,
+      "status": "PASS"
+    },
+    {
+      "name": "2.16.19_hardening_check",
+      "started_at": "2026-09-08T01:25:58.379812+00:00",
+      "rc": 0,
+      "command": [
+        "/usr/bin/ansible-playbook",
+        "-i",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/inventory/hosts.yml",
+        "--private-key",
+        "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+        "-e",
+        "@/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/execution-vars.json",
+        "--check",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/playbooks/harden_svc_ansible_key.yml"
+      ],
+      "remote": true,
+      "recap": {
+        "k8s-control01": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control02": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control03": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker01": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker02": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker03": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "all_six_verified": true,
+      "changed_total": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "2.16.19_main_precheck",
+      "started_at": "2026-09-08T01:26:29.709549+00:00",
+      "rc": 0,
+      "command": [
+        "/usr/bin/ansible-playbook",
+        "-i",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/inventory/hosts.yml",
+        "--private-key",
+        "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+        "-e",
+        "@/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/execution-vars.json",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/playbooks/precheck.yml"
+      ],
+      "remote": true,
+      "recap": {
+        "k8s-control01": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control02": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control03": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker01": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker02": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker03": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "all_six_verified": true,
+      "changed_total": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "2.16.19_dns_verify",
+      "started_at": "2026-09-08T01:26:48.308877+00:00",
+      "rc": 0,
+      "command": [
+        "/usr/bin/ansible-playbook",
+        "-i",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/inventory/hosts.yml",
+        "--private-key",
+        "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+        "-e",
+        "@/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/execution-vars.json",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/playbooks/cr-p1-ans-01-01-verify.yml"
+      ],
+      "remote": true,
+      "recap": {
+        "k8s-control01": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control02": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control03": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker01": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker02": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker03": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "all_six_verified": true,
+      "changed_total": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "2.21.3_version",
+      "started_at": "2026-09-08T01:27:21.619497+00:00",
+      "rc": 0,
+      "command": [
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/venv221/bin/ansible-playbook",
+        "--version"
+      ],
+      "remote": false,
+      "status": "PASS"
+    },
+    {
+      "name": "2.21.3_expressions",
+      "started_at": "2026-09-08T01:27:21.872350+00:00",
+      "rc": 0,
+      "command": [
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/venv221/bin/python",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/tests/test-ssh-key-guards.py",
+        "--output",
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_expressions.json",
+        "--export-dir",
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated"
+      ],
+      "remote": false,
+      "status": "PASS"
+    },
+    {
+      "name": "2.21.3_localhost_tasks",
+      "started_at": "2026-09-08T01:27:22.129907+00:00",
+      "rc": 0,
+      "command": [
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/venv221/bin/ansible-playbook",
+        "-i",
+        "localhost,",
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/regression.yml"
+      ],
+      "remote": false,
+      "status": "PASS"
+    },
+    {
+      "name": "2.21.3_readonly_ssh",
+      "started_at": "2026-09-08T01:27:25.542701+00:00",
+      "rc": 0,
+      "command": [
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/venv221/bin/ansible-playbook",
+        "-i",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/inventory/hosts.yml",
+        "--private-key",
+        "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+        "-e",
+        "@/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/execution-vars.json",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/tests/ssh-server-readonly.yml"
+      ],
+      "remote": true,
+      "recap": {
+        "k8s-control01": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control02": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control03": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker01": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker02": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker03": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "all_six_verified": true,
+      "changed_total": 0,
+      "ssh_pass_count": 6,
+      "status": "PASS"
+    },
+    {
+      "name": "2.21.3_hardening_check",
+      "started_at": "2026-09-08T01:27:36.607114+00:00",
+      "rc": 0,
+      "command": [
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/venv221/bin/ansible-playbook",
+        "-i",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/inventory/hosts.yml",
+        "--private-key",
+        "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+        "-e",
+        "@/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/execution-vars.json",
+        "--check",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/playbooks/harden_svc_ansible_key.yml"
+      ],
+      "remote": true,
+      "recap": {
+        "k8s-control01": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control02": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control03": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker01": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker02": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker03": {
+          "ok": 3,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "all_six_verified": true,
+      "changed_total": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "2.21.3_main_precheck",
+      "started_at": "2026-09-08T01:28:08.486131+00:00",
+      "rc": 0,
+      "command": [
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/venv221/bin/ansible-playbook",
+        "-i",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/inventory/hosts.yml",
+        "--private-key",
+        "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+        "-e",
+        "@/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/execution-vars.json",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/playbooks/precheck.yml"
+      ],
+      "remote": true,
+      "recap": {
+        "k8s-control01": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control02": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control03": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker01": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker02": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker03": {
+          "ok": 15,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "all_six_verified": true,
+      "changed_total": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "2.21.3_dns_verify",
+      "started_at": "2026-09-08T01:28:27.201317+00:00",
+      "rc": 0,
+      "command": [
+        "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/venv221/bin/ansible-playbook",
+        "-i",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/inventory/hosts.yml",
+        "--private-key",
+        "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+        "-e",
+        "@/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.21.3_generated/execution-vars.json",
+        "/home/server01_ansible/FDS_SSH_Main_Verification_Kit_v1.0/repo/playbooks/cr-p1-ans-01-01-verify.yml"
+      ],
+      "remote": true,
+      "recap": {
+        "k8s-control01": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control02": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-control03": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker01": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker02": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "k8s-worker03": {
+          "ok": 32,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "all_six_verified": true,
+      "changed_total": 0,
+      "status": "PASS"
+    }
+  ]
+}

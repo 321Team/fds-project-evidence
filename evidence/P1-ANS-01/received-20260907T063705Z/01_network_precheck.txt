@@ -1,0 +1,53 @@
+===== P1-ANS-01 NETWORK PRECHECK =====
+2026-08-28T10:57:19+09:00
+ansible01
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens160           UP             10.250.10.10/24 
+default via 10.250.10.1 dev ens160 proto static metric 100 
+10.250.10.0/24 dev ens160 proto kernel scope link src 10.250.10.10 metric 100 
+
+===== ROUTE SELECTION =====
+--- 10.1.93.102 ---
+10.1.93.102 via 10.250.10.1 dev ens160 src 10.250.10.10 uid 1000 
+    cache 
+--- 10.1.93.103 ---
+10.1.93.103 via 10.250.10.1 dev ens160 src 10.250.10.10 uid 1000 
+    cache 
+--- 10.1.93.104 ---
+10.1.93.104 via 10.250.10.1 dev ens160 src 10.250.10.10 uid 1000 
+    cache 
+--- 10.1.93.105 ---
+10.1.93.105 via 10.250.10.1 dev ens160 src 10.250.10.10 uid 1000 
+    cache 
+--- 10.1.93.107 ---
+10.1.93.107 via 10.250.10.1 dev ens160 src 10.250.10.10 uid 1000 
+    cache 
+--- 10.1.93.108 ---
+10.1.93.108 via 10.250.10.1 dev ens160 src 10.250.10.10 uid 1000 
+    cache 
+
+===== TCP 22 REACHABILITY =====
+--- 10.1.93.102:22 ---
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Connected to 10.1.93.102:22.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+--- 10.1.93.103:22 ---
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Connected to 10.1.93.103:22.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+--- 10.1.93.104:22 ---
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Connected to 10.1.93.104:22.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+--- 10.1.93.105:22 ---
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Connected to 10.1.93.105:22.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+--- 10.1.93.107:22 ---
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Connected to 10.1.93.107:22.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+--- 10.1.93.108:22 ---
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Connected to 10.1.93.108:22.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.

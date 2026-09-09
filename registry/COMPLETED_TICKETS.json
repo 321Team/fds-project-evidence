@@ -1,0 +1,276 @@
+{
+  "recorded_at": "2026-09-07T03:44:12.862621+00:00",
+  "target_repository": "321Team/fds-project-evidence",
+  "target_branch": "evidence/initial-import-20260907",
+  "source_commit": "8515ecd97e69035f329032ba17206972c7b0739d",
+  "status_source_note": "v3.1.16 Closed/Project Status Register에서 완료 12개를 추출하고 승인된 v3.1.17 내용 Commit 8515ecd97e69035f329032ba17206972c7b0739d 및 WBS와 대조했다. 2026-09-07 최신 CURRENT.md의 ACTIVE / CANONICAL, v3.1.17 RELEASED 표시를 확인했다. 본 편입은 WBS나 기준선 상태를 변경하지 않는다. 2026-09-07 infra-ansible PR #1의 명시적 최종 승인·병합 완료에 따라 CR-P1-ANS-01-01을 증적 대장에 추가했다. WBS 원본 수정은 수행하지 않았다.",
+  "tickets": [
+    {
+      "ticket_id": "D-ARC-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-26",
+      "closure_basis": "Architecture v3.1.2 Freeze",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "design_or_gate_approval",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/FDS_Notion_Closed_Descriptions_D-ARC-01_D-NET-01_D-WBS-01_v1.1.md"
+      ],
+      "next_action": "종결 설명 수신. 동결 당시 Architecture 승인본·승인 참조 확인 필요. Runtime 시험 대상 아님."
+    },
+    {
+      "ticket_id": "D-NET-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-26",
+      "closure_basis": "Network Baseline v2.3 / Validation PASS",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "runtime_or_network_validation",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/FDS_Notion_Closed_Descriptions_D-ARC-01_D-NET-01_D-WBS-01_v1.1.md",
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
+      ],
+      "next_action": "Closure Report 수신. docs/evidence/D-NET-01/의 01~10 원본 로그·캡처 및 기존 Manifest 미수신."
+    },
+    {
+      "ticket_id": "D-WBS-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-26",
+      "closure_basis": "WBS/Backlog 관리체계 Freeze",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "design_or_gate_approval",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/FDS_Notion_Closed_Descriptions_D-ARC-01_D-NET-01_D-WBS-01_v1.1.md"
+      ],
+      "next_action": "종결 설명 수신. 동결 당시 WBS 및 승인 기록의 고정 참조 확인 필요. 현 WBS를 과거 증적으로 대체하지 않음."
+    },
+    {
+      "ticket_id": "P1-LNX-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-26",
+      "closure_basis": "Linux Prerequisite PASS / Network Verify `FAIL=0`",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "runtime_or_network_validation",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
+      ],
+      "next_action": "D-NET 공통 Closure Report만 수신. 04_K8s_Linux_Prerequisites 등 실제 원본 미수신."
+    },
+    {
+      "ticket_id": "P1-NET-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-26",
+      "closure_basis": "Bridged Node 6대 / Source Preservation `PASS=6`, `FAIL=0`",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "runtime_or_network_validation",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md",
+        "records/received-20260907/FDS_Notion_Closed_Ticket_P1-NET-01_v1.0.md"
+      ],
+      "next_action": "D-NET 공통 증적을 참조. 원본 로그·캡처 미수신; 종결 문서의 Reviewer/Approver는 미입력이므로 임의 지정하지 않음."
+    },
+    {
+      "ticket_id": "P1-ANS-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-31",
+      "closure_basis": "Inventory/SSH `PASS=6`, OS·Node Bootstrap, `changed=0`; `HO-ANS-08·09 PASS`, Reviewer/Approver 이하영",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "runtime_or_network_validation",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "MISMATCH_2_OF_37",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/FDS_Notion_Technical_PASS_P1-ANS-01_v1.3.md"
+      ],
+      "next_action": "38개 원본 수신. 기존 Manifest 35/37 일치, 05h/05j 2개 불일치. 05j 실제명 review_approval과 지정명 reviewer_approver 차이 보완 필요. 기존 Done 유지.",
+      "runtime_evidence_receipt": "COLLECTED_REMEDIATION_REQUIRED",
+      "receipt_review": "receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md",
+      "receipt_verification_date": "2026-09-07"
+    },
+    {
+      "ticket_id": "DEC-P1-ENTRY-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-31",
+      "closure_basis": "D18 PASS; HAProxy + 제한 NodePort 및 `externalTrafficPolicy: Local`; Reviewer 이하영 / Approver 이권욱",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "design_or_gate_approval",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/DEC-P1-ENTRY-01_Notion_Description_UserStory.md"
+      ],
+      "next_action": "D18 설계 승인 문서 수신. 실제 Service/접근 제어 Runtime은 후속 구현 티켓 범위."
+    },
+    {
+      "ticket_id": "DEC-P1-TLS-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-31",
+      "closure_basis": "D19 PASS; Private CA + Harbor/edge01 별도 Leaf + Consumer CA Trust; Reviewer/Approver 이하영",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "design_or_gate_approval",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/DEC-P1-TLS-01_Notion_Description_UserStory_v1.1.md"
+      ],
+      "next_action": "D19 설계 승인 문서 수신. Private Key 제외; 인증서 배포·Push/Pull Runtime은 후속 구현 티켓 범위."
+    },
+    {
+      "ticket_id": "DEC-P1-MON-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-08-31",
+      "closure_basis": "D33 User Approved; Kubernetes-Integrated Hybrid Monitoring 설계 고정, Runtime은 P1-MON-01로 분리",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "design_or_gate_approval",
+      "record_receipt": "CONTENT_REVIEWED_BYTES_PENDING",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [],
+      "next_action": "개별 문서 본문 Revision v1.1의 Done/APPROVED/D33 Fixed/2026-08-31을 확인했다. 다운로드 HTTP 502로 원본 바이트·Hash 수신은 대기. FOLLOWUP_RECEIPTS.md 참조.",
+      "content_source": {
+        "library_file_id": "libfile_bd4195787cbc8191a4ec670936aefa25",
+        "version": "1",
+        "name": "DEC-P1-MON-01_Notion_Description_UserStory_v1.0.md",
+        "document_revision": "v1.1",
+        "bytes_received": false,
+        "full_content_reviewed": true
+      }
+    },
+    {
+      "ticket_id": "D-SEC-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-09-01",
+      "closure_basis": "D17/D34 User Approved; Namespace/PSA, SecurityContext, NetworkPolicy, RBAC, Secret/Resource/Probe, System Exception과 P1-SEC-01 구현 경계 확정",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "design_or_gate_approval",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/D34_D-SEC-01_Approval_and_Disposition_Record_v1.0.md"
+      ],
+      "next_action": "D34 승인·조치 기록 수신. 보안 설계 정본은 baseline 고정 참조; P1-SEC Runtime 범위와 분리."
+    },
+    {
+      "ticket_id": "MS-G0-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-09-01",
+      "closure_basis": "D-ARC-01/D-NET-01/D-WBS-01/D-SEC-01 승인 완료; G0 FULL PASS",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
+      "evidence_category": "design_or_gate_approval",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "NOT_PERFORMED",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/D34_D-SEC-01_Approval_and_Disposition_Record_v1.0.md"
+      ],
+      "next_action": "D34 G0 Full PASS 상태 전이 기록 수신. G1/G2 또는 Bootstrap 승인으로 사용하지 않음."
+    },
+    {
+      "ticket_id": "P1-DNS-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-09-03",
+      "closure_basis": "Forward Zone `fds.internal`, `.109` ACL/Resolver/Failover Delta 및 Support Review 완료. Management DNS는 P1 N/A, Reverse/PTR `N/A`",
+      "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md",
+      "evidence_category": "runtime_or_network_validation",
+      "record_receipt": "COLLECTED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "MATCH_12_OF_12_AND_11_SIDECARS",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
+      "documents": [
+        "records/received-20260907/P1-DNS-01_Notion_Description_v1.3_Review.md"
+      ],
+      "next_action": "R2 ZIP·Sidecar 수신, 기록 Hash 일치. 내부 Manifest 12/12·개별 Sidecar 11/11 검증 완료. 원본 ZIP 재생성 없음. 독립 편입 검토 대기.",
+      "original_archive": {
+        "host": "ansible01",
+        "path": "/home/server01_ansible/p1-dns-01-r2/docs/evidence/P1-DNS-01/P1-DNS-01-FRESH-20260902-R2.zip",
+        "sha256_recorded": "e23d02a8422fdc4943ce2e255b5b087f0e58e5ad2a0439ddcf7d041276f315ab",
+        "bytes_received": false,
+        "source": "P1-DNS-01_Notion_Description_v1.3_Review.md"
+      },
+      "runtime_evidence_receipt": "COLLECTED_VERIFIED",
+      "receipt_review": "receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md",
+      "receipt_verification_date": "2026-09-07"
+    },
+    {
+      "ticket_id": "CR-P1-ANS-01-01",
+      "ticket_status": "Done",
+      "closed_date": "2026-09-07",
+      "closure_basis": "Support 이하영 APPROVED + 이권욱 명시적 최종 승인 + infra-ansible PR #1 main merge 4f9bdb7c08704eebb3d1b294751e51b0721b6af4",
+      "status_source": "https://github.com/321Team/infra-ansible/pull/1",
+      "evidence_category": "runtime_or_network_validation",
+      "record_receipt": "COLLECTED_VERIFIED",
+      "migration_status": "CANDIDATE_REVIEW_PENDING",
+      "original_manifest_verification": "MATCH_16_OF_16",
+      "repository_review": "PENDING",
+      "receipt_recorded_at": "2026-09-07T06:17:34.536670+00:00",
+      "documents": [
+        "records/post-merge-20260907/CR-P1-ANS-01-01_CLOSURE.md",
+        "records/post-merge-20260907/github-verification.json"
+      ],
+      "next_action": "Refinalization 원본과 Rollback 5대 보완 완료. CR 원본 총 23개, 참조 Hash 4/4·Commit/Tree 대조 완료. 독립 증적 편입 검토 대기.",
+      "runtime_evidence_receipt": "COLLECTED_VERIFIED_REVIEW_PENDING",
+      "receipt_review": "receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md",
+      "receipt_verification_date": "2026-09-09",
+      "latest_receipt_collected_at": "2026-09-09T00:37:26.218094+00:00",
+      "refinalization_receipt": {
+        "path": "evidence/CR-P1-ANS-01-01/received-20260909T003726Z/evidence_refinalization.20260904T183221+0900.txt",
+        "sha256": "db7da7eae13c1b07e6b073003a23229e76f3a86f6903a66ac9a2cf522f84395d",
+        "verification": "MATCH_APPROVED_RECORD",
+        "review": "receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md"
+      },
+      "rollback_receipt": {
+        "count": 5,
+        "verification": "MATCH_EXISTING_RECEIPT",
+        "source": "receipts/ansible01/20260908T115139Z/RECEIPT_VERIFICATION.json"
+      },
+      "raw_evidence_file_count": 23,
+      "receipt_review_history": [
+        "receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md",
+        "receipts/ansible01/20260908T115139Z/FDS_FUP01_Rollback_Receipt_Review_v1.0.md",
+        "receipts/ansible01/20260908T124550Z/FDS_FUP01_Refinalization_Search_Review_v1.0.md",
+        "receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md"
+      ]
+    }
+  ],
+  "publication_prepared_at": "2026-09-07T05:06:39.139879+00:00",
+  "updated_at": "2026-09-09T00:44:13.465304+00:00"
+}

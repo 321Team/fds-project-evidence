@@ -1,0 +1,38 @@
+===== ANSIBLE PING =====
+k8s-worker03 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+k8s-worker02 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+k8s-control02 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+k8s-worker01 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+k8s-control03 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+k8s-control01 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+===== ANSIBLE BECOME =====
+k8s-control03 | CHANGED | rc=0 >>
+0
+k8s-control02 | CHANGED | rc=0 >>
+0
+k8s-control01 | CHANGED | rc=0 >>
+0
+k8s-worker02 | CHANGED | rc=0 >>
+0
+k8s-worker01 | CHANGED | rc=0 >>
+0
+k8s-worker03 | CHANGED | rc=0 >>
+0

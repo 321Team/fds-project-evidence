@@ -1,0 +1,95 @@
+{
+  "tool": "collect-fup01-refinalization.py",
+  "version": "1.0",
+  "collected_at_utc": "2026-09-08T12:45:50.022323+00:00",
+  "expected_sha256": "db7da7eae13c1b07e6b073003a23229e76f3a86f6903a66ac9a2cf522f84395d",
+  "search_roots": [
+    "/home/server01_ansible"
+  ],
+  "include_archives": true,
+  "matches": [],
+  "named_candidates": [
+    {
+      "path": "/home/server01_ansible/fup-refinalization-tools/FUP01_REFINALIZATION_SHA256SUMS",
+      "kind": "file",
+      "source_stat": {
+        "before": {
+          "device": 64770,
+          "inode": 101958414,
+          "size": 98,
+          "mode": "0o644",
+          "uid": 1000,
+          "gid": 1000,
+          "mtime_ns": 1788871497000000000,
+          "ctime_ns": 1788871537102012797
+        },
+        "after": {
+          "device": 64770,
+          "inode": 101958414,
+          "size": 98,
+          "mode": "0o644",
+          "uid": 1000,
+          "gid": 1000,
+          "mtime_ns": 1788871497000000000,
+          "ctime_ns": 1788871537102012797
+        },
+        "stable_fields_match": true,
+        "atime_preservation": "NOT_CLAIMED"
+      },
+      "sha256": "306e78d2e56ae01cf85d9785bcd4e9fc920fb6a6ee491feff4e130b1e1254b17"
+    },
+    {
+      "path": "/home/server01_ansible/fup-refinalization-tools/collect-fup01-refinalization.py",
+      "kind": "file",
+      "source_stat": {
+        "before": {
+          "device": 64770,
+          "inode": 101958415,
+          "size": 13601,
+          "mode": "0o644",
+          "uid": 1000,
+          "gid": 1000,
+          "mtime_ns": 1788871481000000000,
+          "ctime_ns": 1788871537113012933
+        },
+        "after": {
+          "device": 64770,
+          "inode": 101958415,
+          "size": 13601,
+          "mode": "0o644",
+          "uid": 1000,
+          "gid": 1000,
+          "mtime_ns": 1788871481000000000,
+          "ctime_ns": 1788871537113012933
+        },
+        "stable_fields_match": true,
+        "atime_preservation": "NOT_CLAIMED"
+      },
+      "sha256": "82036ab647de267a2846e4c0ab0eb5bb3d80f7652d445d1fba1ba795e1d72eb3"
+    }
+  ],
+  "issues": [],
+  "skipped": {
+    "hidden_or_link": 24,
+    "non_candidate": 62,
+    "archives_disabled": 0
+  },
+  "limits": {
+    "file_bytes": 8388608,
+    "archive_bytes": 134217728,
+    "total_read_bytes": 536870912,
+    "entries": 20000
+  },
+  "scope": "LOCAL_FILES_ONLY_NO_NETWORK_NO_ANSIBLE_NO_RUNTIME",
+  "source_changes": "NO_WRITE_OPERATIONS; reads may update access time",
+  "excluded": "Hidden paths, symlinks, special files, non-text candidates, nested archives",
+  "global_absence": "NOT_ESTABLISHED",
+  "independent_review": "PENDING",
+  "host": "ansible01",
+  "operator": "server01_ansible",
+  "collector_sha256": "82036ab647de267a2846e4c0ab0eb5bb3d80f7652d445d1fba1ba795e1d72eb3",
+  "read_bytes": 4565205,
+  "entries_examined": 1154,
+  "status": "NOT_FOUND_IN_SCOPE",
+  "search_complete_within_filters": true
+}

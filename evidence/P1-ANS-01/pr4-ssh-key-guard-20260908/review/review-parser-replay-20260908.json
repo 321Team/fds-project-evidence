@@ -1,0 +1,35 @@
+{
+  "scope": "Original run() function, recorded stdout replay with stubbed subprocess; no SSH, no Ansible execution",
+  "results": [
+    {
+      "case": "original",
+      "observed": "PASS",
+      "expected": "PASS",
+      "pass": true
+    },
+    {
+      "case": "verdict-format-changed",
+      "observed": "REVIEW_REQUIRED",
+      "expected": "REVIEW_REQUIRED",
+      "pass": true
+    },
+    {
+      "case": "recap-marker-missing",
+      "observed": "REVIEW_REQUIRED",
+      "expected": "REVIEW_REQUIRED",
+      "pass": true
+    },
+    {
+      "case": "one-host-recap-missing",
+      "observed": "REVIEW_REQUIRED",
+      "expected": "REVIEW_REQUIRED",
+      "pass": true
+    },
+    {
+      "case": "nonzero-exit",
+      "observed": "REVIEW_REQUIRED",
+      "expected": "REVIEW_REQUIRED",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "tool": "collect-fup01-refinalization.py",
+  "version": "1.0",
+  "collected_at_utc": "2026-09-09T00:37:26.218094+00:00",
+  "expected_sha256": "db7da7eae13c1b07e6b073003a23229e76f3a86f6903a66ac9a2cf522f84395d",
+  "search_roots": [
+    "/home/server01_ansible/.local/state/cr-p1-ans-01-01-repository/evidence_refinalization.20260904T183221+0900.txt"
+  ],
+  "include_archives": false,
+  "matches": [
+    {
+      "path": "/home/server01_ansible/.local/state/cr-p1-ans-01-01-repository/evidence_refinalization.20260904T183221+0900.txt",
+      "kind": "file",
+      "source_stat": {
+        "before": {
+          "device": 64770,
+          "inode": 69177174,
+          "size": 1181,
+          "mode": "0o600",
+          "uid": 1000,
+          "gid": 1000,
+          "mtime_ns": 1788514341583644485,
+          "ctime_ns": 1788514341585167023
+        },
+        "after": {
+          "device": 64770,
+          "inode": 69177174,
+          "size": 1181,
+          "mode": "0o600",
+          "uid": 1000,
+          "gid": 1000,
+          "mtime_ns": 1788514341583644485,
+          "ctime_ns": 1788514341585167023
+        },
+        "stable_fields_match": true,
+        "atime_preservation": "NOT_CLAIMED"
+      },
+      "sha256": "db7da7eae13c1b07e6b073003a23229e76f3a86f6903a66ac9a2cf522f84395d",
+      "bytes": 1181
+    }
+  ],
+  "named_candidates": [
+    {
+      "path": "/home/server01_ansible/.local/state/cr-p1-ans-01-01-repository/evidence_refinalization.20260904T183221+0900.txt",
+      "kind": "file",
+      "source_stat": {
+        "before": {
+          "device": 64770,
+          "inode": 69177174,
+          "size": 1181,
+          "mode": "0o600",
+          "uid": 1000,
+          "gid": 1000,
+          "mtime_ns": 1788514341583644485,
+          "ctime_ns": 1788514341585167023
+        },
+        "after": {
+          "device": 64770,
+          "inode": 69177174,
+          "size": 1181,
+          "mode": "0o600",
+          "uid": 1000,
+          "gid": 1000,
+          "mtime_ns": 1788514341583644485,
+          "ctime_ns": 1788514341585167023
+        },
+        "stable_fields_match": true,
+        "atime_preservation": "NOT_CLAIMED"
+      },
+      "sha256": "db7da7eae13c1b07e6b073003a23229e76f3a86f6903a66ac9a2cf522f84395d"
+    }
+  ],
+  "issues": [],
+  "skipped": {
+    "hidden_or_link": 0,
+    "non_candidate": 0,
+    "archives_disabled": 0
+  },
+  "limits": {
+    "file_bytes": 8388608,
+    "archive_bytes": 134217728,
+    "total_read_bytes": 536870912,
+    "entries": 20000
+  },
+  "scope": "LOCAL_FILES_ONLY_NO_NETWORK_NO_ANSIBLE_NO_RUNTIME",
+  "source_changes": "NO_WRITE_OPERATIONS; reads may update access time",
+  "excluded": "Hidden paths, symlinks, special files, non-text candidates, nested archives",
+  "global_absence": "NOT_ESTABLISHED",
+  "independent_review": "PENDING",
+  "host": "ansible01",
+  "operator": "server01_ansible",
+  "collector_sha256": "82036ab647de267a2846e4c0ab0eb5bb3d80f7652d445d1fba1ba795e1d72eb3",
+  "read_bytes": 1181,
+  "entries_examined": 1,
+  "status": "MATCH_FOUND_REVIEW_REQUIRED",
+  "search_complete_within_filters": true
+}

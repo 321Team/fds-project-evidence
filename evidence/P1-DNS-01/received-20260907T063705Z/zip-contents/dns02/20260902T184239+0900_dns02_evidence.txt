@@ -1,0 +1,306 @@
+
+===== EVIDENCE METADATA =====
+Ticket: P1-DNS-01
+Role: dns02 Secondary
+2026-09-02T18:42:39+09:00
+dns02
+uid=1002(server08) gid=1002(server08) groups=1002(server08),10(wheel) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+
+===== PLATFORM =====
+NAME="CentOS Stream"
+VERSION="10 (Coughlan)"
+RELEASE_TYPE=stable
+ID="centos"
+ID_LIKE="rhel fedora"
+VERSION_ID="10"
+PLATFORM_ID="platform:el10"
+PRETTY_NAME="CentOS Stream 10 (Coughlan)"
+ANSI_COLOR="0;31"
+LOGO="fedora-logo-icon"
+CPE_NAME="cpe:/o:centos:centos:10"
+HOME_URL="https://centos.org/"
+VENDOR_NAME="CentOS"
+VENDOR_URL="https://centos.org/"
+BUG_REPORT_URL="https://issues.redhat.com/"
+REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux 10"
+REDHAT_SUPPORT_PRODUCT_VERSION="CentOS Stream"
+Timezone=Asia/Seoul
+NTPSynchronized=yes
+Enforcing
+bind-9.18.33-26.el10.x86_64
+bind-utils-9.18.33-26.el10.x86_64
+
+===== SERVICE AND LISTENER =====
+enabled
+active
+udp   UNCONN 0      0         10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=80))
+udp   UNCONN 0      0         10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=79))
+udp   UNCONN 0      0         10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=78))
+udp   UNCONN 0      0         10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=77))
+udp   UNCONN 0      0         10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=76))
+udp   UNCONN 0      0         10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=75))
+udp   UNCONN 0      0          127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=61))
+udp   UNCONN 0      0          127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=60))
+udp   UNCONN 0      0          127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=58))
+udp   UNCONN 0      0          127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=59))
+udp   UNCONN 0      0          127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=62))
+udp   UNCONN 0      0          127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=57))
+tcp   LISTEN 0      10         127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=66))
+tcp   LISTEN 0      10         127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=68))
+tcp   LISTEN 0      10         127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=64))
+tcp   LISTEN 0      10         127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=67))
+tcp   LISTEN 0      10         127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=69))
+tcp   LISTEN 0      10         127.0.0.1:53        0.0.0.0:*    users:(("named",pid=5423,fd=63))
+tcp   LISTEN 0      10        10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=83))
+tcp   LISTEN 0      10        10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=85))
+tcp   LISTEN 0      10        10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=84))
+tcp   LISTEN 0      10        10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=86))
+tcp   LISTEN 0      10        10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=81))
+tcp   LISTEN 0      10        10.1.93.53:53        0.0.0.0:*    users:(("named",pid=5423,fd=82))
+
+===== FIREWALL =====
+running
+public (default)
+  interfaces: ens160
+rule family="ipv4" source ipset="fds-dns-clients" service name="dns" accept
+10.1.93.50
+10.1.93.51
+10.1.93.52
+10.1.93.53
+10.1.93.54
+10.1.93.55
+10.1.93.102
+10.1.93.103
+10.1.93.104
+10.1.93.105
+10.1.93.107
+10.1.93.108
+10.1.93.109
+PASS: broad firewalld DNS service is disabled
+
+===== REQUIRED LB DNS CONSUMER =====
+PASS: 10.1.93.109 exists in BIND configuration
+PASS: 10.1.93.109 exists in firewalld IPSet
+
+===== CONFIG AND ZONE VALIDATION =====
+zone localhost.localdomain/IN: loaded serial 0
+zone localhost/IN: loaded serial 0
+zone 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa/IN: loaded serial 0
+zone 1.0.0.127.in-addr.arpa/IN: loaded serial 0
+zone 0.in-addr.arpa/IN: loaded serial 0
+name: fds.internal
+type: secondary
+files: slaves/fds.internal.zone
+serial: 2026090101
+nodes: 14
+last loaded: Tue, 01 Sep 2026 06:18:43 GMT
+next refresh: Wed, 02 Sep 2026 09:43:17 GMT
+expires: Wed, 09 Sep 2026 09:38:37 GMT
+secure: no
+dynamic: no
+reconfigurable via modzone: no
+
+===== TSIG METADATA WITHOUT SECRET =====
+/etc/named/keys/fds-transfer.key | 108 bytes | 640 | root:named
+PASS: HMAC-SHA256
+TSIG secret content and key hash: EXCLUDED
+
+===== AUTHORITATIVE QUERIES =====
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.53 fds.internal SOA +norecurse +nocookie
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 31711
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;fds.internal.			IN	SOA
+
+;; ANSWER SECTION:
+fds.internal.		300	IN	SOA	dns01.fds.internal. hostmaster.fds.internal. 2026090101 300 120 604800 300
+
+;; AUTHORITY SECTION:
+fds.internal.		300	IN	NS	dns01.fds.internal.
+fds.internal.		300	IN	NS	dns02.fds.internal.
+
+;; ADDITIONAL SECTION:
+dns01.fds.internal.	300	IN	A	10.1.93.52
+dns02.fds.internal.	300	IN	A	10.1.93.53
+
+;; Query time: 0 msec
+;; SERVER: 10.1.93.53#53(10.1.93.53) (UDP)
+;; WHEN: Wed Sep 02 18:42:40 KST 2026
+;; MSG SIZE  rcvd: 160
+PASS: 10.1.93.53 fds.internal SOA
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.53 k8s-api.fds.internal A +norecurse +nocookie
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 8167
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;k8s-api.fds.internal.		IN	A
+
+;; ANSWER SECTION:
+k8s-api.fds.internal.	300	IN	A	10.1.93.109
+
+;; AUTHORITY SECTION:
+fds.internal.		300	IN	NS	dns01.fds.internal.
+fds.internal.		300	IN	NS	dns02.fds.internal.
+
+;; ADDITIONAL SECTION:
+dns01.fds.internal.	300	IN	A	10.1.93.52
+dns02.fds.internal.	300	IN	A	10.1.93.53
+
+;; Query time: 0 msec
+;; SERVER: 10.1.93.53#53(10.1.93.53) (UDP)
+;; WHEN: Wed Sep 02 18:42:40 KST 2026
+;; MSG SIZE  rcvd: 137
+PASS: 10.1.93.53 k8s-api.fds.internal A
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.53 worker03.fds.internal A +tcp +norecurse +nocookie
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 325
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;worker03.fds.internal.		IN	A
+
+;; ANSWER SECTION:
+worker03.fds.internal.	300	IN	A	10.1.93.108
+
+;; AUTHORITY SECTION:
+fds.internal.		300	IN	NS	dns01.fds.internal.
+fds.internal.		300	IN	NS	dns02.fds.internal.
+
+;; ADDITIONAL SECTION:
+dns01.fds.internal.	300	IN	A	10.1.93.52
+dns02.fds.internal.	300	IN	A	10.1.93.53
+
+;; Query time: 0 msec
+;; SERVER: 10.1.93.53#53(10.1.93.53) (TCP)
+;; WHEN: Wed Sep 02 18:42:40 KST 2026
+;; MSG SIZE  rcvd: 138
+PASS: 10.1.93.53 worker03.fds.internal A
+
+===== PRIMARY REACHABILITY =====
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.52 fds.internal SOA +norecurse +time=3 +tries=1 +nocookie
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 55196
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;fds.internal.			IN	SOA
+
+;; ANSWER SECTION:
+fds.internal.		300	IN	SOA	dns01.fds.internal. hostmaster.fds.internal. 2026090101 300 120 604800 300
+
+;; AUTHORITY SECTION:
+fds.internal.		300	IN	NS	dns02.fds.internal.
+fds.internal.		300	IN	NS	dns01.fds.internal.
+
+;; ADDITIONAL SECTION:
+dns01.fds.internal.	300	IN	A	10.1.93.52
+dns02.fds.internal.	300	IN	A	10.1.93.53
+
+;; Query time: 0 msec
+;; SERVER: 10.1.93.52#53(10.1.93.52) (UDP)
+;; WHEN: Wed Sep 02 18:42:40 KST 2026
+;; MSG SIZE  rcvd: 160
+PASS: 10.1.93.52 fds.internal SOA
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.52 fds.internal SOA +tcp +norecurse +time=3 +tries=1 +nocookie
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51150
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;fds.internal.			IN	SOA
+
+;; ANSWER SECTION:
+fds.internal.		300	IN	SOA	dns01.fds.internal. hostmaster.fds.internal. 2026090101 300 120 604800 300
+
+;; AUTHORITY SECTION:
+fds.internal.		300	IN	NS	dns01.fds.internal.
+fds.internal.		300	IN	NS	dns02.fds.internal.
+
+;; ADDITIONAL SECTION:
+dns01.fds.internal.	300	IN	A	10.1.93.52
+dns02.fds.internal.	300	IN	A	10.1.93.53
+
+;; Query time: 0 msec
+;; SERVER: 10.1.93.52#53(10.1.93.52) (TCP)
+;; WHEN: Wed Sep 02 18:42:40 KST 2026
+;; MSG SIZE  rcvd: 160
+PASS: 10.1.93.52 fds.internal SOA
+
+===== EXTERNAL FORWARDING =====
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.53 example.com A +time=5 +tries=1 +nocookie
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 33775
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;example.com.			IN	A
+
+;; ANSWER SECTION:
+example.com.		300	IN	A	172.66.147.243
+example.com.		300	IN	A	104.20.23.154
+
+;; Query time: 75 msec
+;; SERVER: 10.1.93.53#53(10.1.93.53) (UDP)
+;; WHEN: Wed Sep 02 18:42:40 KST 2026
+;; MSG SIZE  rcvd: 72
+PASS: 10.1.93.53 example.com A
+
+===== UNAUTHENTICATED AXFR NEGATIVE TEST =====
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.52 fds.internal AXFR +tcp +time=3 +tries=1 +nocookie
+; (1 server found)
+;; global options: +cmd
+; Transfer failed.
+PASS: unauthenticated AXFR denied
+
+===== RECENT TSIG TRANSFER LOG =====
+client @0x7fc5fc012668 10.1.93.52#58258: request has invalid signature: TSIG fds-transfer-key: tsig verify failure (BADKEY)
+transfer of 'fds.internal/IN' from 10.1.93.52#53: connected using 10.1.93.52#53 TSIG fds-transfer-key
+zone fds.internal/IN: transferred serial 2026090101: TSIG 'fds-transfer-key'
+transfer of 'fds.internal/IN' from 10.1.93.52#53: Transfer status: success
+transfer of 'fds.internal/IN' from 10.1.93.52#53: Transfer completed: 1 messages, 17 records, 537 bytes, 0.001 secs (537000 bytes/sec) (serial 2026090101)
+transfer of 'fds.internal/IN' from 10.1.93.52#53: connected using 10.1.93.52#53 TSIG fds-transfer-key
+zone fds.internal/IN: transferred serial 2026090101: TSIG 'fds-transfer-key'
+transfer of 'fds.internal/IN' from 10.1.93.52#53: Transfer status: success
+transfer of 'fds.internal/IN' from 10.1.93.52#53: Transfer completed: 1 messages, 17 records, 537 bytes, 0.001 secs (537000 bytes/sec) (serial 2026090101)
+PASS: TSIG-authenticated transfer success observed
+
+===== NON-SECRET CONFIG HASHES =====
+df71f7468aec44e823beab7e2d2c681252d6ef094b050ba77a4c2fd82e07c926  /etc/named.conf
+9e3ad16599e7a9cd95fa34a0cc9abd3df5766ccf12b279fb6bde099d45ccf90c  /var/named/slaves/fds.internal.zone
+
+===== COLLECTOR RESULT =====
+PASS: required dns02 controls were observed

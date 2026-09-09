@@ -1,0 +1,50 @@
+===== CONTROLLER KEY FILE =====
+server01_ansible:server01_ansible 700 /home/server01_ansible/.ssh
+server01_ansible:server01_ansible 600 /home/server01_ansible/.ssh/p1_ansible_ed25519
+===== CONTROLLER KEY FINGERPRINT =====
+256 SHA256:VPGV/RGA8TrwO/3FC4YPxGzRNhBWuB+9hCzPV5plkws P1-ANS-01 svc_ansible (ED25519)
+===== REMOTE SSH DIRECTORY PERMISSIONS =====
+k8s-control01 | CHANGED | rc=0 >>
+svc_ansible:svc_ansible:700:/home/svc_ansible/.ssh
+svc_ansible:svc_ansible:600:/home/svc_ansible/.ssh/authorized_keys
+k8s-worker02 | CHANGED | rc=0 >>
+svc_ansible:svc_ansible:700:/home/svc_ansible/.ssh
+svc_ansible:svc_ansible:600:/home/svc_ansible/.ssh/authorized_keys
+k8s-worker03 | CHANGED | rc=0 >>
+svc_ansible:svc_ansible:700:/home/svc_ansible/.ssh
+svc_ansible:svc_ansible:600:/home/svc_ansible/.ssh/authorized_keys
+k8s-control02 | CHANGED | rc=0 >>
+svc_ansible:svc_ansible:700:/home/svc_ansible/.ssh
+svc_ansible:svc_ansible:600:/home/svc_ansible/.ssh/authorized_keys
+k8s-worker01 | CHANGED | rc=0 >>
+svc_ansible:svc_ansible:700:/home/svc_ansible/.ssh
+svc_ansible:svc_ansible:600:/home/svc_ansible/.ssh/authorized_keys
+k8s-control03 | CHANGED | rc=0 >>
+svc_ansible:svc_ansible:700:/home/svc_ansible/.ssh
+svc_ansible:svc_ansible:600:/home/svc_ansible/.ssh/authorized_keys
+===== REMOTE AUTHORIZED KEY FINGERPRINT =====
+k8s-control03 | CHANGED | rc=0 >>
+256 SHA256:VPGV/RGA8TrwO/3FC4YPxGzRNhBWuB+9hCzPV5plkws P1-ANS-01 svc_ansible (ED25519)
+k8s-control02 | CHANGED | rc=0 >>
+256 SHA256:VPGV/RGA8TrwO/3FC4YPxGzRNhBWuB+9hCzPV5plkws P1-ANS-01 svc_ansible (ED25519)
+k8s-worker03 | CHANGED | rc=0 >>
+256 SHA256:VPGV/RGA8TrwO/3FC4YPxGzRNhBWuB+9hCzPV5plkws P1-ANS-01 svc_ansible (ED25519)
+k8s-worker02 | CHANGED | rc=0 >>
+256 SHA256:VPGV/RGA8TrwO/3FC4YPxGzRNhBWuB+9hCzPV5plkws P1-ANS-01 svc_ansible (ED25519)
+k8s-control01 | CHANGED | rc=0 >>
+256 SHA256:VPGV/RGA8TrwO/3FC4YPxGzRNhBWuB+9hCzPV5plkws P1-ANS-01 svc_ansible (ED25519)
+k8s-worker01 | CHANGED | rc=0 >>
+256 SHA256:VPGV/RGA8TrwO/3FC4YPxGzRNhBWuB+9hCzPV5plkws P1-ANS-01 svc_ansible (ED25519)
+===== REMOTE AUTHORIZED KEY OPTIONS =====
+k8s-control02 | CHANGED | rc=0 >>
+ssh-ed25519 <PUBLIC-KEY-REDACTED> P1-ANS-01 svc_ansible
+k8s-control03 | CHANGED | rc=0 >>
+ssh-ed25519 <PUBLIC-KEY-REDACTED> P1-ANS-01 svc_ansible
+k8s-worker03 | CHANGED | rc=0 >>
+ssh-ed25519 <PUBLIC-KEY-REDACTED> P1-ANS-01 svc_ansible
+k8s-control01 | CHANGED | rc=0 >>
+ssh-ed25519 <PUBLIC-KEY-REDACTED> P1-ANS-01 svc_ansible
+k8s-worker02 | CHANGED | rc=0 >>
+ssh-ed25519 <PUBLIC-KEY-REDACTED> P1-ANS-01 svc_ansible
+k8s-worker01 | CHANGED | rc=0 >>
+ssh-ed25519 <PUBLIC-KEY-REDACTED> P1-ANS-01 svc_ansible

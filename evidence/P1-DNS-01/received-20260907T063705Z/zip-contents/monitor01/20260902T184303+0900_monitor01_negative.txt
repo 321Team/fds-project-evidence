@@ -1,0 +1,48 @@
+
+===== EVIDENCE METADATA =====
+Ticket: P1-DNS-01
+Role: Unauthorized Source Negative Test
+2026-09-02T18:43:03+09:00
+monitor01
+uid=1000(server01_monitor) gid=1000(server01_monitor) groups=1000(server01_monitor),10(wheel),1001(linux-admins) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens160           UP             10.250.10.30/24 
+
+===== DNS01 INTERNAL QUERY - EXPECT BLOCK =====
+;; communications error to 10.1.93.52#53: host unreachable
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.52 k8s-api.fds.internal A +time=3 +tries=1 +nocookie +noall +comments +answer
+; (1 server found)
+;; global options: +cmd
+;; no servers could be reached
+PASS: 10.1.93.52 did not provide an allowed DNS answer
+
+===== DNS01 RECURSIVE QUERY - EXPECT BLOCK =====
+;; communications error to 10.1.93.52#53: host unreachable
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.52 example.com A +time=3 +tries=1 +nocookie +noall +comments +answer
+; (1 server found)
+;; global options: +cmd
+;; no servers could be reached
+PASS: 10.1.93.52 did not provide an allowed DNS answer
+
+===== DNS02 INTERNAL QUERY - EXPECT BLOCK =====
+;; communications error to 10.1.93.53#53: host unreachable
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.53 k8s-api.fds.internal A +time=3 +tries=1 +nocookie +noall +comments +answer
+; (1 server found)
+;; global options: +cmd
+;; no servers could be reached
+PASS: 10.1.93.53 did not provide an allowed DNS answer
+
+===== DNS02 RECURSIVE QUERY - EXPECT BLOCK =====
+;; communications error to 10.1.93.53#53: host unreachable
+
+; <<>> DiG 9.18.33 <<>> @10.1.93.53 example.com A +time=3 +tries=1 +nocookie +noall +comments +answer
+; (1 server found)
+;; global options: +cmd
+;; no servers could be reached
+PASS: 10.1.93.53 did not provide an allowed DNS answer
+
+===== EXPECTED RESULT =====
+PASS: all four queries were blocked or refused.

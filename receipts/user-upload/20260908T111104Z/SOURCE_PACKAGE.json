@@ -1,0 +1,47 @@
+{
+  "receipt_id": "USER-UPLOAD-20260908T111104Z",
+  "received_at": "2026-09-08T11:11:04Z",
+  "source_assertion": "사용자 제출: 기존 종결 티켓의 증적자료",
+  "archive": {
+    "name": "evidence.zip",
+    "bytes": 1651904,
+    "sha256": "915be6e1df8c3718a344b0e07dd69a3e57362684749495f246e964391206e1da",
+    "library_file_id": "libfile_91bb8fc817a48191909d1164bacce412",
+    "handling": "UNCHANGED_BYTES; NO_REPACK; NO_BINARY_GIT_UPLOAD"
+  },
+  "zip_validation": {
+    "crc": "PASS",
+    "path_safety": "PASS",
+    "entry_count": 264,
+    "total_uncompressed_bytes": 2589099,
+    "maximum_entry_bytes": 147585
+  },
+  "p1_ans_comparison": {
+    "archive_file_count": 46,
+    "existing_git_receipt_file_count": 38,
+    "byte_matches": "38/38",
+    "missing": [],
+    "mismatches": [],
+    "excluded_from_fup02_import": [
+      "02_source_preservation/Server01_ansible.png",
+      "02_source_preservation/Server02_02_source_preservation.png",
+      "02_source_preservation/Server03_02_source_preservation.png",
+      "02_source_preservation/Server04_02_source_preservation.png",
+      "02_source_preservation/Server05_02_source_preservation.png",
+      "02_source_preservation/Server06_02_source_preservation.png",
+      "02_source_preservation/Server07_02_source_preservation.png",
+      "04_ansible_ping.txt"
+    ]
+  },
+  "target_hash_search": {
+    "legacy_05h_sha256": "NOT_FOUND",
+    "legacy_05j_sha256": "NOT_FOUND",
+    "cr_refinalization_sha256": "NOT_FOUND"
+  },
+  "content_scan": {
+    "scope": "P1-ANS-01 text files",
+    "strong_secret_pattern_hits": [],
+    "binary_and_nested_archive_content": "NOT_SCANNED"
+  },
+  "approval": "PENDING_INDEPENDENT_PR_REVIEW"
+}

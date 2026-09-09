@@ -1,0 +1,25 @@
+ 8월 31 17:52:46 k8s-api-lb01 systemd[1]: Starting haproxy.service - HAProxy Load Balancer...
+ 8월 31 17:52:46 k8s-api-lb01 haproxy[15782]: [NOTICE]   (15782) : haproxy version is 3.0.5-8e879a5
+ 8월 31 17:52:46 k8s-api-lb01 haproxy[15782]: [NOTICE]   (15782) : path to executable is /usr/sbin/haproxy
+ 8월 31 17:52:46 k8s-api-lb01 haproxy[15782]: [ALERT]    (15782) : Binding [/etc/haproxy/haproxy.cfg:8] for frontend GLOBAL: protocol unix_stream: cannot bind UNIX socket (No such file or directory) [/run/haproxy/admin.sock].
+ 8월 31 17:52:46 k8s-api-lb01 haproxy[15782]: [ALERT]    (15782) : [/usr/sbin/haproxy.main()] Some protocols failed to start their listeners! Exiting.
+ 8월 31 17:52:46 k8s-api-lb01 systemd[1]: haproxy.service: Main process exited, code=exited, status=1/FAILURE
+ 8월 31 17:52:46 k8s-api-lb01 systemd[1]: haproxy.service: Failed with result 'exit-code'.
+ 8월 31 17:52:46 k8s-api-lb01 systemd[1]: Failed to start haproxy.service - HAProxy Load Balancer.
+ 8월 31 17:56:28 k8s-api-lb01 systemd[1]: Starting haproxy.service - HAProxy Load Balancer...
+ 8월 31 17:56:29 k8s-api-lb01 haproxy[16026]: [NOTICE]   (16026) : New worker (16028) forked
+ 8월 31 17:56:29 k8s-api-lb01 haproxy[16026]: [NOTICE]   (16026) : Loading success.
+ 8월 31 17:56:29 k8s-api-lb01 systemd[1]: Started haproxy.service - HAProxy Load Balancer.
+ 8월 31 17:56:29 k8s-api-lb01 haproxy[16028]: [WARNING]  (16028) : Server kubernetes_api_backend/k8s-control01 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 2 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:29 k8s-api-lb01 haproxy[16028]: Server kubernetes_api_backend/k8s-control01 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 2 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:29 k8s-api-lb01 haproxy[16028]: Server kubernetes_api_backend/k8s-control01 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 2 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:29 k8s-api-lb01 haproxy[16028]: [WARNING]  (16028) : Server kubernetes_api_backend/k8s-control02 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 1 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:29 k8s-api-lb01 haproxy[16028]: Server kubernetes_api_backend/k8s-control02 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 1 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:29 k8s-api-lb01 haproxy[16028]: Server kubernetes_api_backend/k8s-control02 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 1 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:30 k8s-api-lb01 haproxy[16028]: [WARNING]  (16028) : Server kubernetes_api_backend/k8s-control03 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 0 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:30 k8s-api-lb01 haproxy[16028]: [ALERT]    (16028) : backend 'kubernetes_api_backend' has no server available!
+ 8월 31 17:56:30 k8s-api-lb01 haproxy[16028]: Server kubernetes_api_backend/k8s-control03 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 0 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:30 k8s-api-lb01 haproxy[16028]: Server kubernetes_api_backend/k8s-control03 is DOWN, reason: Layer4 connection problem, info: "No route to host at initial connection step of tcp-check", check duration: 2ms. 0 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+ 8월 31 17:56:30 k8s-api-lb01 haproxy[16028]: backend kubernetes_api_backend has no server available!
+ 8월 31 17:56:30 k8s-api-lb01 haproxy[16028]: backend kubernetes_api_backend has no server available!
+ 8월 31 18:53:34 k8s-api-lb01 haproxy[16028]: 10.250.10.20:60022 [31/Aug/2026:18:53:34.642] kubernetes_api_frontend kubernetes_api_backend/<NOSRV> -1/-1/0 0 SC 1/1/0/0/0 0/0

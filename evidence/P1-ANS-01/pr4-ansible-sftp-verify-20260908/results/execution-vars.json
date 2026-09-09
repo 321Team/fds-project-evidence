@@ -1,0 +1,12 @@
+{
+  "ansible_ssh_common_args": "-F /dev/null -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o PreferredAuthentications=publickey -o PasswordAuthentication=no -o KbdInteractiveAuthentication=no -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/home/server01_ansible/.ssh/known_hosts -o IdentitiesOnly=yes -o IdentityAgent=none -o ControlMaster=no -o ControlPersist=no -o ControlPath=none -o ConnectTimeout=10 -o ConnectionAttempts=1 -o ServerAliveInterval=10 -o ServerAliveCountMax=2",
+  "ansible_ssh_extra_args": "-T",
+  "ansible_connection": "ssh",
+  "ansible_user": "svc_ansible",
+  "ansible_become": false,
+  "ansible_python_interpreter": "/usr/bin/python3",
+  "ansible_pipelining": false,
+  "ansible_ssh_use_tty": false,
+  "ansible_ssh_transfer_method": "sftp",
+  "ansible_sftp_batch_mode": true
+}

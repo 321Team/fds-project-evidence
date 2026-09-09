@@ -1,0 +1,204 @@
+
+PLAY [SSH guard localhost regression] ******************************************
+
+TASK [Reset observation: empty: 0] *********************************************
+ok: [localhost]
+
+TASK [Execute source guard: empty: Count P1 managed SSH keys] ******************
+fatal: [localhost]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"}, "changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/empty"], "delta": "0:00:00.002380", "end": "2026-09-08 10:25:45.325937", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-08 10:25:45.323557", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: empty: 0] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: empty: 1] *********************************************
+ok: [localhost]
+
+TASK [Execute source guard: empty: Verify restricted P1 managed SSH key] *******
+fatal: [localhost]: FAILED! => {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3"}, "changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/empty"], "delta": "0:00:00.002519", "end": "2026-09-08 10:25:45.532428", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-08 10:25:45.529909", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: empty: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: one_plain: 0] *****************************************
+ok: [localhost]
+
+TASK [Execute source guard: one_plain: Count P1 managed SSH keys] **************
+ok: [localhost]
+
+TASK [Assert contract: one_plain: 0] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: one_plain: 1] *****************************************
+ok: [localhost]
+
+TASK [Execute source guard: one_plain: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/one_plain"], "delta": "0:00:00.002305", "end": "2026-09-08 10:25:45.915338", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-08 10:25:45.913033", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: one_plain: 1] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: one_restricted: 0] ************************************
+ok: [localhost]
+
+TASK [Execute source guard: one_restricted: Count P1 managed SSH keys] *********
+ok: [localhost]
+
+TASK [Assert contract: one_restricted: 0] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: one_restricted: 1] ************************************
+ok: [localhost]
+
+TASK [Execute source guard: one_restricted: Verify restricted P1 managed SSH key] ***
+ok: [localhost]
+
+TASK [Assert contract: one_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: two_plain: 0] *****************************************
+ok: [localhost]
+
+TASK [Execute source guard: two_plain: Count P1 managed SSH keys] **************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/two_plain"], "delta": "0:00:00.002264", "end": "2026-09-08 10:25:46.409377", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-08 10:25:46.407113", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: two_plain: 0] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: two_plain: 1] *****************************************
+ok: [localhost]
+
+TASK [Execute source guard: two_plain: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/two_plain"], "delta": "0:00:00.002497", "end": "2026-09-08 10:25:46.587285", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-08 10:25:46.584788", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: two_plain: 1] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: two_restricted: 0] ************************************
+ok: [localhost]
+
+TASK [Execute source guard: two_restricted: Count P1 managed SSH keys] *********
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/two_restricted"], "delta": "0:00:00.002565", "end": "2026-09-08 10:25:46.770451", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-08 10:25:46.767886", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: two_restricted: 0] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: two_restricted: 1] ************************************
+ok: [localhost]
+
+TASK [Execute source guard: two_restricted: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/two_restricted"], "delta": "0:00:00.002309", "end": "2026-09-08 10:25:46.967703", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-08 10:25:46.965394", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: two_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: mixed: 0] *********************************************
+ok: [localhost]
+
+TASK [Execute source guard: mixed: Count P1 managed SSH keys] ******************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/mixed"], "delta": "0:00:00.002351", "end": "2026-09-08 10:25:47.147522", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-08 10:25:47.145171", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: mixed: 0] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: mixed: 1] *********************************************
+ok: [localhost]
+
+TASK [Execute source guard: mixed: Verify restricted P1 managed SSH key] *******
+ok: [localhost]
+
+TASK [Assert contract: mixed: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: missing: 0] *******************************************
+ok: [localhost]
+
+TASK [Execute source guard: missing: Count P1 managed SSH keys] ****************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/missing"], "delta": "0:00:00.002202", "end": "2026-09-08 10:25:47.489488", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2026-09-08 10:25:47.487286", "stderr": "grep: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/missing: 그런 파일이나 디렉터리가 없습니다", "stderr_lines": ["grep: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/missing: 그런 파일이나 디렉터리가 없습니다"], "stdout": "", "stdout_lines": []}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: missing: 0] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Reset observation: missing: 1] *******************************************
+ok: [localhost]
+
+TASK [Execute source guard: missing: Verify restricted P1 managed SSH key] *****
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/missing"], "delta": "0:00:00.002466", "end": "2026-09-08 10:25:47.672950", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2026-09-08 10:25:47.670484", "stderr": "grep: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/missing: 그런 파일이나 디렉터리가 없습니다", "stderr_lines": ["grep: /home/server01_ansible/FDS_SSH_Main_Verification.dJXZuVxY/results/2.16.19_generated/fixtures/missing: 그런 파일이나 디렉터리가 없습니다"], "stdout": "", "stdout_lines": []}
+
+TASK [Record intended rejection] ***********************************************
+ok: [localhost]
+
+TASK [Assert contract: missing: 1] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=42   changed=0    unreachable=0    failed=0    skipped=0    rescued=10   ignored=0   
+

@@ -1,0 +1,281 @@
+
+===== EVIDENCE METADATA =====
+Ticket: P1-DNS-01
+Test ID: DNS-PT-01, DNS-PT-02, DNS-EV-01, DNS-EV-02
+Role: Approved A Record Inventory Validator
+Safety: read-only DNS queries; no configuration change
+2026-09-02T21:27:24+09:00
+dns01
+uid=1000(server01_dns01) gid=1000(server01_dns01) groups=1000(server01_dns01),10(wheel) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens160           UP             10.1.93.52/24 
+
+===== APPROVED RECORDS VIA 10.1.93.52 =====
+CHECK: dns01.fds.internal -> 10.1.93.52 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42368
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+dns01.fds.internal.	300	IN	A	10.1.93.52
+PASS: dns01.fds.internal returned authoritative A 10.1.93.52
+CHECK: dns02.fds.internal -> 10.1.93.53 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 46698
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+dns02.fds.internal.	300	IN	A	10.1.93.53
+PASS: dns02.fds.internal returned authoritative A 10.1.93.53
+CHECK: edge.fds.internal -> 10.1.93.50 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39047
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+edge.fds.internal.	300	IN	A	10.1.93.50
+PASS: edge.fds.internal returned authoritative A 10.1.93.50
+CHECK: vpn-gw.fds.internal -> 10.1.93.51 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42109
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+vpn-gw.fds.internal.	300	IN	A	10.1.93.51
+PASS: vpn-gw.fds.internal returned authoritative A 10.1.93.51
+CHECK: harbor.fds.internal -> 10.1.93.54 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 18487
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+harbor.fds.internal.	300	IN	A	10.1.93.54
+PASS: harbor.fds.internal returned authoritative A 10.1.93.54
+CHECK: db.fds.internal -> 10.1.93.55 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36647
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+db.fds.internal.	300	IN	A	10.1.93.55
+PASS: db.fds.internal returned authoritative A 10.1.93.55
+CHECK: control01.fds.internal -> 10.1.93.102 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 7887
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+control01.fds.internal.	300	IN	A	10.1.93.102
+PASS: control01.fds.internal returned authoritative A 10.1.93.102
+CHECK: control02.fds.internal -> 10.1.93.103 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 19781
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+control02.fds.internal.	300	IN	A	10.1.93.103
+PASS: control02.fds.internal returned authoritative A 10.1.93.103
+CHECK: control03.fds.internal -> 10.1.93.104 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1388
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+control03.fds.internal.	300	IN	A	10.1.93.104
+PASS: control03.fds.internal returned authoritative A 10.1.93.104
+CHECK: worker01.fds.internal -> 10.1.93.105 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 65475
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+worker01.fds.internal.	300	IN	A	10.1.93.105
+PASS: worker01.fds.internal returned authoritative A 10.1.93.105
+CHECK: worker02.fds.internal -> 10.1.93.107 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3588
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+worker02.fds.internal.	300	IN	A	10.1.93.107
+PASS: worker02.fds.internal returned authoritative A 10.1.93.107
+CHECK: worker03.fds.internal -> 10.1.93.108 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23707
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+worker03.fds.internal.	300	IN	A	10.1.93.108
+PASS: worker03.fds.internal returned authoritative A 10.1.93.108
+CHECK: k8s-api.fds.internal -> 10.1.93.109 via 10.1.93.52
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 45046
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+k8s-api.fds.internal.	300	IN	A	10.1.93.109
+PASS: k8s-api.fds.internal returned authoritative A 10.1.93.109
+SERVER SUMMARY: 10.1.93.52 passed 13/13 records
+
+===== APPROVED RECORDS VIA 10.1.93.53 =====
+CHECK: dns01.fds.internal -> 10.1.93.52 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 18328
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+dns01.fds.internal.	300	IN	A	10.1.93.52
+PASS: dns01.fds.internal returned authoritative A 10.1.93.52
+CHECK: dns02.fds.internal -> 10.1.93.53 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23343
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+dns02.fds.internal.	300	IN	A	10.1.93.53
+PASS: dns02.fds.internal returned authoritative A 10.1.93.53
+CHECK: edge.fds.internal -> 10.1.93.50 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 2433
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+edge.fds.internal.	300	IN	A	10.1.93.50
+PASS: edge.fds.internal returned authoritative A 10.1.93.50
+CHECK: vpn-gw.fds.internal -> 10.1.93.51 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 17666
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+vpn-gw.fds.internal.	300	IN	A	10.1.93.51
+PASS: vpn-gw.fds.internal returned authoritative A 10.1.93.51
+CHECK: harbor.fds.internal -> 10.1.93.54 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 61676
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+harbor.fds.internal.	300	IN	A	10.1.93.54
+PASS: harbor.fds.internal returned authoritative A 10.1.93.54
+CHECK: db.fds.internal -> 10.1.93.55 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49358
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+db.fds.internal.	300	IN	A	10.1.93.55
+PASS: db.fds.internal returned authoritative A 10.1.93.55
+CHECK: control01.fds.internal -> 10.1.93.102 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 45010
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+control01.fds.internal.	300	IN	A	10.1.93.102
+PASS: control01.fds.internal returned authoritative A 10.1.93.102
+CHECK: control02.fds.internal -> 10.1.93.103 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 38198
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+control02.fds.internal.	300	IN	A	10.1.93.103
+PASS: control02.fds.internal returned authoritative A 10.1.93.103
+CHECK: control03.fds.internal -> 10.1.93.104 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 38894
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+control03.fds.internal.	300	IN	A	10.1.93.104
+PASS: control03.fds.internal returned authoritative A 10.1.93.104
+CHECK: worker01.fds.internal -> 10.1.93.105 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 39326
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+worker01.fds.internal.	300	IN	A	10.1.93.105
+PASS: worker01.fds.internal returned authoritative A 10.1.93.105
+CHECK: worker02.fds.internal -> 10.1.93.107 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23799
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+worker02.fds.internal.	300	IN	A	10.1.93.107
+PASS: worker02.fds.internal returned authoritative A 10.1.93.107
+CHECK: worker03.fds.internal -> 10.1.93.108 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51372
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+worker03.fds.internal.	300	IN	A	10.1.93.108
+PASS: worker03.fds.internal returned authoritative A 10.1.93.108
+CHECK: k8s-api.fds.internal -> 10.1.93.109 via 10.1.93.53
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 50805
+;; flags: qr aa ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; ANSWER SECTION:
+k8s-api.fds.internal.	300	IN	A	10.1.93.109
+PASS: k8s-api.fds.internal returned authoritative A 10.1.93.109
+SERVER SUMMARY: 10.1.93.53 passed 13/13 records
+
+===== COLLECTOR RESULT =====
+TOTAL: 26/26 approved authoritative answers
+PASS: all 13 approved A records matched on dns01 and dns02

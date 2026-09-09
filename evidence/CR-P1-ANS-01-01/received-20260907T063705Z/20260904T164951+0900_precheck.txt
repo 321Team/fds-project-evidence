@@ -1,0 +1,608 @@
+
+PLAY [CR-P1-ANS-01-01 resolver precheck on all Kubernetes nodes] ***************
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-worker03]
+ok: [k8s-control01]
+ok: [k8s-worker02]
+ok: [k8s-control03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+
+TASK [dns_resolver : Validate CR DNS execution phase and variables] ************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Require explicit approval token for resolver changes] *****
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Verify the default IPv4 interface is available] ***********
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read active NetworkManager connection for the default interface] ***
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+ok: [k8s-control02]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+
+TASK [dns_resolver : Validate the active NetworkManager connection] ************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read current NetworkManager IPv4 DNS servers] *************
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current NetworkManager IPv4 search domains] **********
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current NetworkManager automatic DNS setting] ********
+ok: [k8s-control02]
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Normalize current resolver state] *************************
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+
+TASK [dns_resolver : Determine resolver drift] *********************************
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+
+TASK [dns_resolver : Read current resolver file] *******************************
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+ok: [k8s-worker01]
+ok: [k8s-control01]
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read pre-change kubelet state] ****************************
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+ok: [k8s-worker01]
+
+TASK [dns_resolver : Read pre-change containerd state] *************************
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server] *****
+ok: [k8s-control02] => (item=10.1.93.52)
+ok: [k8s-control01] => (item=10.1.93.52)
+ok: [k8s-control03] => (item=10.1.93.52)
+ok: [k8s-worker03] => (item=10.1.93.52)
+ok: [k8s-worker02] => (item=10.1.93.52)
+ok: [k8s-worker01] => (item=10.1.93.52)
+ok: [k8s-control02] => (item=10.1.93.53)
+ok: [k8s-control03] => (item=10.1.93.53)
+ok: [k8s-control01] => (item=10.1.93.53)
+ok: [k8s-worker03] => (item=10.1.93.53)
+ok: [k8s-worker02] => (item=10.1.93.53)
+ok: [k8s-worker01] => (item=10.1.93.53)
+
+TASK [dns_resolver : Verify external name resolution before change] ************
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-control02]
+ok: [k8s-control01]
+
+TASK [dns_resolver : Verify Kubernetes API listener before change] *************
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-control01]
+
+TASK [dns_resolver : Create protected CR rollback state directory] *************
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Preserve original resolver state once] ********************
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Configure NetworkManager resolver state] ******************
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Reapply NetworkManager connection without down and up] ****
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Report resolver drift during check mode] ******************
+ok: [k8s-control01] => {
+    "msg": {
+        "connection": "fds-k8s-control01",
+        "current_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [
+            "fds.internal"
+        ],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": true,
+        "host": "k8s-control01",
+        "phase": "precheck"
+    }
+}
+ok: [k8s-control02] => {
+    "msg": {
+        "connection": "fds-k8s-control02",
+        "current_dns": [
+            "8.8.8.8"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": true,
+        "host": "k8s-control02",
+        "phase": "precheck"
+    }
+}
+ok: [k8s-control03] => {
+    "msg": {
+        "connection": "fds-k8s-control03",
+        "current_dns": [
+            "8.8.8.8"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": true,
+        "host": "k8s-control03",
+        "phase": "precheck"
+    }
+}
+ok: [k8s-worker01] => {
+    "msg": {
+        "connection": "fds-k8s-worker01",
+        "current_dns": [
+            "8.8.8.8"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": true,
+        "host": "k8s-worker01",
+        "phase": "precheck"
+    }
+}
+ok: [k8s-worker02] => {
+    "msg": {
+        "connection": "fds-k8s-worker02",
+        "current_dns": [
+            "8.8.8.8"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": true,
+        "host": "k8s-worker02",
+        "phase": "precheck"
+    }
+}
+ok: [k8s-worker03] => {
+    "msg": {
+        "connection": "fds-k8s-worker03",
+        "current_dns": [
+            "8.8.8.8"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": true,
+        "host": "k8s-worker03",
+        "phase": "precheck"
+    }
+}
+
+TASK [dns_resolver : Run CR DNS post-run verification tasks] *******************
+included: /home/server01_ansible/p1-ans-01/roles/dns_resolver/tasks/verify.yml for k8s-control01, k8s-control02, k8s-control03, k8s-worker01, k8s-worker02, k8s-worker03
+
+TASK [dns_resolver : Read post-run NetworkManager IPv4 DNS servers] ************
+ok: [k8s-control01]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-control03]
+ok: [k8s-control02]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read post-run NetworkManager IPv4 search domains] *********
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+
+TASK [dns_resolver : Read post-run NetworkManager automatic DNS setting] *******
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-worker02]
+ok: [k8s-worker01]
+
+TASK [dns_resolver : Read post-run resolver file] ******************************
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-control02]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Verify persistent resolver target state] ******************
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Verify internal FQDN resolution through the active resolver] ***
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Verify internal short-name resolution through the search domain] ***
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server after run] ***
+ok: [k8s-control01] => (item=10.1.93.52)
+ok: [k8s-control03] => (item=10.1.93.52)
+ok: [k8s-control02] => (item=10.1.93.52)
+ok: [k8s-worker01] => (item=10.1.93.52)
+ok: [k8s-worker03] => (item=10.1.93.52)
+ok: [k8s-worker02] => (item=10.1.93.52)
+ok: [k8s-control02] => (item=10.1.93.53)
+ok: [k8s-control03] => (item=10.1.93.53)
+ok: [k8s-worker01] => (item=10.1.93.53)
+ok: [k8s-worker03] => (item=10.1.93.53)
+ok: [k8s-control01] => (item=10.1.93.53)
+ok: [k8s-worker02] => (item=10.1.93.53)
+
+TASK [dns_resolver : Verify external name resolution after run] ****************
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+ok: [k8s-worker02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+
+TASK [dns_resolver : Verify Kubernetes API listener after run] *****************
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-control01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read post-run kubelet state] ******************************
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-worker01]
+
+TASK [dns_resolver : Read post-run containerd state] ***************************
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Verify node service state did not regress] ****************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Print CR DNS node verdict] ********************************
+ok: [k8s-control01] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-control01",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-control01",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "precheck",
+        "search": [
+            "fds.internal"
+        ],
+        "service_regression": "NONE"
+    }
+}
+ok: [k8s-control02] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-control02",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "8.8.8.8"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-control02",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "precheck",
+        "search": [],
+        "service_regression": "NONE"
+    }
+}
+ok: [k8s-control03] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-control03",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "8.8.8.8"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-control03",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "precheck",
+        "search": [],
+        "service_regression": "NONE"
+    }
+}
+ok: [k8s-worker01] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-worker01",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "8.8.8.8"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-worker01",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "precheck",
+        "search": [],
+        "service_regression": "NONE"
+    }
+}
+ok: [k8s-worker02] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-worker02",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "8.8.8.8"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-worker02",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "precheck",
+        "search": [],
+        "service_regression": "NONE"
+    }
+}
+ok: [k8s-worker03] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-worker03",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "8.8.8.8"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-worker03",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "precheck",
+        "search": [],
+        "service_regression": "NONE"
+    }
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=29   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+k8s-control02              : ok=29   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+k8s-control03              : ok=29   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+k8s-worker01               : ok=29   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+k8s-worker02               : ok=29   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+k8s-worker03               : ok=29   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+

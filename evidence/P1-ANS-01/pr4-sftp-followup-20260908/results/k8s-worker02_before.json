@@ -1,0 +1,45 @@
+{
+  "rc": 0,
+  "stdout": "{\"hostname\": \"k8s-worker02\", \"source\": \"10.250.10.10\", \"destination\": \"10.1.93.107\", \"key_state\": {\"sha256\": \"b7923e8c646b7a7dd2ccba1ac48ddf02d264780db9100317644dcf87216cc834\", \"uid\": 1001, \"gid\": 1001, \"mode\": 384, \"mtime_ns\": 1787903330706929285}, \"os_release_sha256\": \"e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68\", \"commands\": [{\"command\": [\"/usr/bin/rpm\", \"-q\", \"openssh-server\", \"openssh-clients\"], \"rc\": 0, \"stdout\": \"openssh-server-9.9p1-30.el10.x86_64\\nopenssh-clients-9.9p1-30.el10.x86_64\", \"stderr\": \"\"}, {\"command\": [\"/usr/bin/sudo\", \"-n\", \"/usr/sbin/sshd\", \"-T\", \"-C\", \"user=svc_ansible,addr=10.250.10.10,laddr=10.1.93.107,lport=22\"], \"rc\": 0, \"stdout\": \"pubkeyauthentication yes\\npasswordauthentication yes\\nkbdinteractiveauthentication no\\npermittty yes\\ndisableforwarding no\\nforcecommand none\\nchrootdirectory none\\nsubsystem sftp /usr/libexec/openssh/sftp-server\", \"stderr\": \"\"}], \"sshd_context_limit\": \"Default sshd config; observed address/user context. Match Host and custom daemon -f overrides require separate confirmation.\"}\n",
+  "stderr": "",
+  "parsed": {
+    "hostname": "k8s-worker02",
+    "source": "10.250.10.10",
+    "destination": "10.1.93.107",
+    "key_state": {
+      "sha256": "b7923e8c646b7a7dd2ccba1ac48ddf02d264780db9100317644dcf87216cc834",
+      "uid": 1001,
+      "gid": 1001,
+      "mode": 384,
+      "mtime_ns": 1787903330706929285
+    },
+    "os_release_sha256": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68",
+    "commands": [
+      {
+        "command": [
+          "/usr/bin/rpm",
+          "-q",
+          "openssh-server",
+          "openssh-clients"
+        ],
+        "rc": 0,
+        "stdout": "openssh-server-9.9p1-30.el10.x86_64\nopenssh-clients-9.9p1-30.el10.x86_64",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "/usr/bin/sudo",
+          "-n",
+          "/usr/sbin/sshd",
+          "-T",
+          "-C",
+          "user=svc_ansible,addr=10.250.10.10,laddr=10.1.93.107,lport=22"
+        ],
+        "rc": 0,
+        "stdout": "pubkeyauthentication yes\npasswordauthentication yes\nkbdinteractiveauthentication no\npermittty yes\ndisableforwarding no\nforcecommand none\nchrootdirectory none\nsubsystem sftp /usr/libexec/openssh/sftp-server",
+        "stderr": ""
+      }
+    ],
+    "sshd_context_limit": "Default sshd config; observed address/user context. Match Host and custom daemon -f overrides require separate confirmation."
+  }
+}

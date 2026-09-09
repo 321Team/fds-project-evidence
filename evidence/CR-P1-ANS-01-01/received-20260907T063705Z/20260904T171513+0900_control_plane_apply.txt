@@ -1,0 +1,349 @@
+
+PLAY [CR-P1-ANS-01-01 apply resolver to remaining control-plane nodes] *********
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Validate CR DNS execution phase and variables] ************
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Require explicit approval token for resolver changes] *****
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Verify the default IPv4 interface is available] ***********
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read active NetworkManager connection for the default interface] ***
+ok: [k8s-control02]
+
+TASK [dns_resolver : Validate the active NetworkManager connection] ************
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read current NetworkManager IPv4 DNS servers] *************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read current NetworkManager IPv4 search domains] **********
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read current NetworkManager automatic DNS setting] ********
+ok: [k8s-control02]
+
+TASK [dns_resolver : Normalize current resolver state] *************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Determine resolver drift] *********************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read current resolver file] *******************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read pre-change kubelet state] ****************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read pre-change containerd state] *************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server] *****
+ok: [k8s-control02] => (item=10.1.93.52)
+ok: [k8s-control02] => (item=10.1.93.53)
+
+TASK [dns_resolver : Verify external name resolution before change] ************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Verify Kubernetes API listener before change] *************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Create protected CR rollback state directory] *************
+changed: [k8s-control02]
+
+TASK [dns_resolver : Preserve original resolver state once] ********************
+changed: [k8s-control02]
+
+TASK [dns_resolver : Configure NetworkManager resolver state] ******************
+changed: [k8s-control02]
+
+TASK [dns_resolver : Reapply NetworkManager connection without down and up] ****
+changed: [k8s-control02]
+
+TASK [dns_resolver : Report resolver drift during check mode] ******************
+ok: [k8s-control02] => {
+    "msg": {
+        "connection": "fds-k8s-control02",
+        "current_dns": [
+            "8.8.8.8"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": true,
+        "host": "k8s-control02",
+        "phase": "apply"
+    }
+}
+
+TASK [dns_resolver : Run CR DNS post-run verification tasks] *******************
+included: /home/server01_ansible/p1-ans-01/roles/dns_resolver/tasks/verify.yml for k8s-control02
+
+TASK [dns_resolver : Read post-run NetworkManager IPv4 DNS servers] ************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read post-run NetworkManager IPv4 search domains] *********
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read post-run NetworkManager automatic DNS setting] *******
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read post-run resolver file] ******************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Verify persistent resolver target state] ******************
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Verify internal FQDN resolution through the active resolver] ***
+ok: [k8s-control02]
+
+TASK [dns_resolver : Verify internal short-name resolution through the search domain] ***
+ok: [k8s-control02]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server after run] ***
+ok: [k8s-control02] => (item=10.1.93.52)
+ok: [k8s-control02] => (item=10.1.93.53)
+
+TASK [dns_resolver : Verify external name resolution after run] ****************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Verify Kubernetes API listener after run] *****************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read post-run kubelet state] ******************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Read post-run containerd state] ***************************
+ok: [k8s-control02]
+
+TASK [dns_resolver : Verify node service state did not regress] ****************
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Print CR DNS node verdict] ********************************
+ok: [k8s-control02] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-control02",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-control02",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "apply",
+        "search": [
+            "fds.internal"
+        ],
+        "service_regression": "NONE"
+    }
+}
+
+PLAY [CR-P1-ANS-01-01 apply resolver to remaining control-plane nodes] *********
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Validate CR DNS execution phase and variables] ************
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Require explicit approval token for resolver changes] *****
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Verify the default IPv4 interface is available] ***********
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read active NetworkManager connection for the default interface] ***
+ok: [k8s-control03]
+
+TASK [dns_resolver : Validate the active NetworkManager connection] ************
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read current NetworkManager IPv4 DNS servers] *************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read current NetworkManager IPv4 search domains] **********
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read current NetworkManager automatic DNS setting] ********
+ok: [k8s-control03]
+
+TASK [dns_resolver : Normalize current resolver state] *************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Determine resolver drift] *********************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read current resolver file] *******************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read pre-change kubelet state] ****************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read pre-change containerd state] *************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server] *****
+ok: [k8s-control03] => (item=10.1.93.52)
+ok: [k8s-control03] => (item=10.1.93.53)
+
+TASK [dns_resolver : Verify external name resolution before change] ************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Verify Kubernetes API listener before change] *************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Create protected CR rollback state directory] *************
+changed: [k8s-control03]
+
+TASK [dns_resolver : Preserve original resolver state once] ********************
+changed: [k8s-control03]
+
+TASK [dns_resolver : Configure NetworkManager resolver state] ******************
+changed: [k8s-control03]
+
+TASK [dns_resolver : Reapply NetworkManager connection without down and up] ****
+changed: [k8s-control03]
+
+TASK [dns_resolver : Report resolver drift during check mode] ******************
+ok: [k8s-control03] => {
+    "msg": {
+        "connection": "fds-k8s-control03",
+        "current_dns": [
+            "8.8.8.8"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": true,
+        "host": "k8s-control03",
+        "phase": "apply"
+    }
+}
+
+TASK [dns_resolver : Run CR DNS post-run verification tasks] *******************
+included: /home/server01_ansible/p1-ans-01/roles/dns_resolver/tasks/verify.yml for k8s-control03
+
+TASK [dns_resolver : Read post-run NetworkManager IPv4 DNS servers] ************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read post-run NetworkManager IPv4 search domains] *********
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read post-run NetworkManager automatic DNS setting] *******
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read post-run resolver file] ******************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Verify persistent resolver target state] ******************
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Verify internal FQDN resolution through the active resolver] ***
+ok: [k8s-control03]
+
+TASK [dns_resolver : Verify internal short-name resolution through the search domain] ***
+ok: [k8s-control03]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server after run] ***
+ok: [k8s-control03] => (item=10.1.93.52)
+ok: [k8s-control03] => (item=10.1.93.53)
+
+TASK [dns_resolver : Verify external name resolution after run] ****************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Verify Kubernetes API listener after run] *****************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read post-run kubelet state] ******************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Read post-run containerd state] ***************************
+ok: [k8s-control03]
+
+TASK [dns_resolver : Verify node service state did not regress] ****************
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Print CR DNS node verdict] ********************************
+ok: [k8s-control03] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-control03",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-control03",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "apply",
+        "search": [
+            "fds.internal"
+        ],
+        "service_regression": "NONE"
+    }
+}
+
+PLAY RECAP *********************************************************************
+k8s-control02              : ok=37   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-control03              : ok=37   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,51 @@
+{
+  "receipt_id": "FUP01-REFINALIZATION-20260908T124550Z",
+  "reviewed_at_utc": "2026-09-08T12:49:26.726876+00:00",
+  "collected_at_utc": "2026-09-08T12:45:50.022323+00:00",
+  "package_integrity": "PASS",
+  "archive_sha256": "ab55227d39bd1ced4474a3d7dfade613aa7cb2dc98a7d2c6839d35c1af14a207",
+  "external_sidecar": "MATCH",
+  "internal_manifest": "1/1 MATCH",
+  "regular_members": 2,
+  "path_safety": "PASS",
+  "collector_reported_sha256": "82036ab647de267a2846e4c0ab0eb5bb3d80f7652d445d1fba1ba795e1d72eb3",
+  "issued_collector_hash_comparison": "MATCH",
+  "collector_execution_independently_attested": false,
+  "search_status": "NOT_FOUND_IN_SCOPE",
+  "search_root": [
+    "/home/server01_ansible"
+  ],
+  "matches": 0,
+  "reported_issues": 0,
+  "reported_entries_examined": 1154,
+  "reported_read_bytes": 4565205,
+  "reported_skipped": {
+    "hidden_or_link": 24,
+    "non_candidate": 62,
+    "archives_disabled": 0
+  },
+  "named_candidates": "Only issued collector and its checksum list; neither is Refinalization original",
+  "refinalization_original_received": false,
+  "server_metadata_verification": "COLLECTOR_REPORT_ONLY_NO_LIVE_ACCESS",
+  "global_absence": "NOT_ESTABLISHED",
+  "source_file_map": [
+    {
+      "source_member": "review-input/SEARCH_REPORT.json",
+      "repository_path": "receipts/ansible01/20260908T124550Z/SEARCH_REPORT.json",
+      "sha256": "73f82b8074e59758779c017a45701763ed9fd583f0986a21fbf2d097894b9368",
+      "bytes": 2902
+    },
+    {
+      "source_member": "review-input/SHA256SUMS",
+      "repository_path": "receipts/ansible01/20260908T124550Z/SHA256SUMS",
+      "sha256": "3627f8a2ced64f67af86c2fb6153101b85e58c36fb32c6799dc6248700d1e1a1",
+      "bytes": 85
+    }
+  ],
+  "secret_scan": "No strong Private Key/GitHub Token/AWS Key/Bearer patterns in received text; not exhaustive",
+  "fup01": "ROLLBACK_VERIFIED_REFINALIZATION_LOCATION_PENDING",
+  "fup02": "NO_NEW_EVIDENCE_STATUS_UNCHANGED",
+  "next_action": "Locate original or fixed original reference in a different known prior storage location; do not repeat identical home search or regenerate evidence",
+  "merge": "NOT_PERFORMED",
+  "prior_done_and_approval": "UNCHANGED"
+}

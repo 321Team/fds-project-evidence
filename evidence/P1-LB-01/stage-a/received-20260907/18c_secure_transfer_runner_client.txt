@@ -1,0 +1,52 @@
+test=P1-LB-01 Stage A secure transfer client control
+timestamp=2026-09-03T17:41:05+09:00
+role=runner
+source_host=cicd-runner01
+expected_source_ip=10.250.10.20
+client_script_sha256=4d0d1fce2410b8e189767da29248b6e1547468204bbbd9660be393df2acc695f
+authentication=publickey-only
+password_authentication=disabled
+keyboard_interactive_authentication=disabled
+identity_agent=none
+identities_only=yes
+strict_host_key_checking=yes
+known_hosts_file=/home/server01_cicd-runner/.ssh/known_hosts_p1_lb_01
+known_hosts_mode=600
+===== KEY PREPARATION =====
+test=P1-LB-01 Stage A ephemeral transfer key preparation
+timestamp=2026-09-03T15:17:24+09:00
+role=runner
+source_host=cicd-runner01
+expected_source_ip=10.250.10.20
+key_tag=p1-lb-01-stage-a-runner-20260903
+key_fingerprint=SHA256:iJ7UOsZJHE8U/HDICq2/Mai7Wsqn3dTjgR9NQFPSacw
+private_key_mode=600
+verdict=PASS
+===== HOST KEY PINNING =====
+test=P1-LB-01 Stage A LB host key pinning
+timestamp=2026-09-03T16:15:34+09:00
+source_host=cicd-runner01
+lb_ip=10.1.93.109
+algorithm=ED25519
+console_expected_fingerprint=SHA256:pcRP9mSF4Wb3aJWeht2PyfonCk/u/NVDpD11zKzf080
+scanned_fingerprint=SHA256:pcRP9mSF4Wb3aJWeht2PyfonCk/u/NVDpD11zKzf080
+known_hosts_file=/home/server01_cicd-runner/.ssh/known_hosts_p1_lb_01
+known_hosts_mode=600
+verdict=PASS
+===== FILE TRANSFERS =====
+test=P1-LB-01 Stage A policy-controlled Evidence transfer
+timestamp=2026-09-03T17:40:33+09:00
+role=runner
+source_host=cicd-runner01
+source_ip=10.250.10.20
+destination=10.1.93.109
+authentication=publickey-only
+identities_only=yes
+identity_agent=none
+strict_host_key_checking=yes
+file=17_positive_test_runner.txt
+sha256=1e6b8d5f9f44deb8be37cf9b6bbdb8d93942a454a714b23196118825827cdb54
+exit_code=0
+UPLOAD_OK role=runner source=10.250.10.20 file=17_positive_test_runner.txt size=422 sha256=1e6b8d5f9f44deb8be37cf9b6bbdb8d93942a454a714b23196118825827cdb54
+verdict=PASS
+control_verdict=PASS

@@ -1,0 +1,13 @@
+test=P1-LB-01 Stage A positive-runner
+timestamp=2026-09-03T12:22:37+09:00
+source_host=cicd-runner01
+source_ip=10.250.10.20
+source_check=PASS
+route=10.1.93.109 via 10.250.10.1 dev ens160 src 10.250.10.20 uid 1000 
+    cache 
+command=nc -zv -w 2 10.1.93.109 6443
+exit_code=0
+Ncat: Version 7.92 ( https://nmap.org/ncat )
+Ncat: Connected to 10.1.93.109:6443.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+verdict=PASS

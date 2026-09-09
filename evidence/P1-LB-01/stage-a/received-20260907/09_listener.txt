@@ -1,0 +1,6 @@
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      4096       127.0.0.1:631       0.0.0.0:*    users:(("cupsd",pid=1260,fd=8))
+LISTEN 0      128          0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=1231,fd=7))
+LISTEN 0      2048     10.1.93.109:6443      0.0.0.0:*    users:(("haproxy",pid=16028,fd=7))
+LISTEN 0      128             [::]:22           [::]:*    users:(("sshd",pid=1231,fd=8))
+LISTEN 0      4096           [::1]:631          [::]:*    users:(("cupsd",pid=1260,fd=7))

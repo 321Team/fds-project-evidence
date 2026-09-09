@@ -1,0 +1,64 @@
+{
+  "status": "SFTP_READ_TRANSFER_TECHNICAL_PASS",
+  "internal_checksums": 25,
+  "raw_files": 26,
+  "archive_sha256": "6570cbdaf29d7c321d9d249949d068730fd154896fe5c440af3e0e271c6425df",
+  "archive_bytes": 8039,
+  "hosts": [
+    {
+      "host": "k8s-worker01",
+      "sftp_rc": 0,
+      "bytes": 491,
+      "hash_match": true,
+      "key_state_matches_pr4_final": true,
+      "subsystem_accepted": true
+    },
+    {
+      "host": "k8s-worker02",
+      "sftp_rc": 0,
+      "bytes": 491,
+      "hash_match": true,
+      "key_state_matches_pr4_final": true,
+      "subsystem_accepted": true
+    },
+    {
+      "host": "k8s-worker03",
+      "sftp_rc": 0,
+      "bytes": 491,
+      "hash_match": true,
+      "key_state_matches_pr4_final": true,
+      "subsystem_accepted": true
+    },
+    {
+      "host": "k8s-control01",
+      "sftp_rc": 0,
+      "bytes": 491,
+      "hash_match": true,
+      "key_state_matches_pr4_final": true,
+      "subsystem_accepted": true
+    },
+    {
+      "host": "k8s-control02",
+      "sftp_rc": 0,
+      "bytes": 491,
+      "hash_match": true,
+      "key_state_matches_pr4_final": true,
+      "subsystem_accepted": true
+    },
+    {
+      "host": "k8s-control03",
+      "sftp_rc": 0,
+      "bytes": 491,
+      "hash_match": true,
+      "key_state_matches_pr4_final": true,
+      "subsystem_accepted": true
+    }
+  ],
+  "finished_at": "2026-09-08T11:30:13.412229+00:00",
+  "finding": "APPLY_KIT_COMMON_ARGS_CONTAINS_SSH_ONLY_T",
+  "historical_fallback": "NOT_RECORDED",
+  "fixed_ansible_sftp_server_retest": "PENDING",
+  "scope": "READ_DOWNLOAD_ONLY; NOT_ANSIBLE_PUT_TEST",
+  "independent_review": "PENDING",
+  "source": "USER_SUBMITTED_SERVER_EXPORT"
+}
