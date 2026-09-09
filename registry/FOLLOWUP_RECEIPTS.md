@@ -1,4 +1,4 @@
-# 후속 증적 수신·인수 대장 v1.9
+# 후속 증적 수신·인수 대장 v2.0
 
 기준일: 2026-09-09. infra-ansible PR #1은 최종 승인·병합 완료다. 아래 항목은 기존 완료 티켓의 재구현이 아닌 증적 수신·편입 및 실제 인수 절차로 관리한다.
 
@@ -12,7 +12,7 @@
 | FUP-06 | D-ARC-01 | 후보 원본 2개 수신·독립 APPROVED·사용자 수용·PR #3 병합 | 당시 승인 참조의 추후 연결. 과거 Hash/출처 접근 한계 수용 유지 | 후보 편입 완료 / 과거 참조 미확인 |
 | FUP-07 | D-WBS-01 | WBS 참조 수신·독립 APPROVED·사용자 수용·PR #3 병합 | 동결/갱신 승인 참조·검토자 원본 접근 확인 | 참조 편입 완료 / 과거 참조·접근 미확인 |
 | FUP-08 | DEC-P1-MON-01/D33 | 원본 수신·Hash·독립 APPROVED·PR #3 병합 | 수용된 과거 비교 Hash 부재 한계 유지 | 원본 수신·편입 완료 |
-| FUP-09 | P1-LB-01 Stage A | [이하영의 9/8 조건부 인수 회신](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5582767564) 확인. 보존본 28/28 동일 | LB-A-01 IP 중복검사 원본·firewalld Permanent 출력의 기존 승인 근거 참조 | 조건부 인수 / 잔여 조건 확인 대기 |
+| FUP-09 | P1-LB-01 Stage A | 기존 조건부 인수 확인. [9/9 Permanent Supplement](../evidence/P1-LB-01/stage-a/supplement-20260909T072022Z/README.md) 수신·7/7 Hash·8개 규칙 정합성 PASS | 새 시각 Supplement의 독립 검토·이하영 조건 판단, IP 중복검사 원본·고정 참조 연결 | 조건부 인수 / Permanent 현재 출력 수신 완료·인수 조건 판단 대기 |
 
 FUP는 증적 수집용 관리 ID이며 WBS 티켓이나 별도 Change Request를 발행한 것이 아니다.
 

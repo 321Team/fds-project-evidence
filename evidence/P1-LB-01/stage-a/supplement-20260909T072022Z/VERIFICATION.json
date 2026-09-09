@@ -1,0 +1,214 @@
+{
+  "recorded_at_utc": "2026-09-09T08:42:33.744599+00:00",
+  "status": "CURRENT_PERMANENT_RULES_VERIFIED_ACCEPTANCE_REVIEW_REQUIRED",
+  "archive": {
+    "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm.tar.gz",
+    "bytes": 1560,
+    "sha256": "ee5021db732caaa2892dd17ecdf6f08aff86eef5f1cd3b9776d433680b7409b9",
+    "sidecar_match": true,
+    "library_file_id": "libfile_8ef49db06ac88191932240cd269412eb",
+    "sidecar_library_file_id": "libfile_76826d7e992081919a0e1bdb525aa64e",
+    "git_archive_bytes_included": false
+  },
+  "members": [
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm",
+      "size": 0,
+      "mode": "0o700",
+      "type": "directory"
+    },
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm/00_collection_metadata.txt",
+      "size": 197,
+      "mode": "0o600",
+      "type": "file"
+    },
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm/01_firewalld_version.txt",
+      "size": 133,
+      "mode": "0o600",
+      "type": "file"
+    },
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm/02_active_zones.txt",
+      "size": 174,
+      "mode": "0o600",
+      "type": "file"
+    },
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm/03_public_runtime.txt",
+      "size": 1170,
+      "mode": "0o600",
+      "type": "file"
+    },
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm/04_public_permanent.txt",
+      "size": 1170,
+      "mode": "0o600",
+      "type": "file"
+    },
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm/05_public_permanent_rich_rules.txt",
+      "size": 885,
+      "mode": "0o600",
+      "type": "file"
+    },
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm/06_collection_result.txt",
+      "size": 257,
+      "mode": "0o600",
+      "type": "file"
+    },
+    {
+      "name": "FDS_FUP09_Permanent_Supplement.nYqKNrHm/SHA256SUMS",
+      "size": 640,
+      "mode": "0o600",
+      "type": "file"
+    }
+  ],
+  "raw_files": [
+    {
+      "name": "00_collection_metadata.txt",
+      "bytes": 197,
+      "sha256": "c0623a46dafc28a4b2bb8392d80fa0621c9fb0bb8354bba86fa8877bd0309b82",
+      "internal_manifest_match": true
+    },
+    {
+      "name": "01_firewalld_version.txt",
+      "bytes": 133,
+      "sha256": "c9961bdae758badd2532dc0273cf0a16bbf7724abb74f508b9950e61fced850f",
+      "internal_manifest_match": true
+    },
+    {
+      "name": "02_active_zones.txt",
+      "bytes": 174,
+      "sha256": "8a408f8de68f642b4b95cc84aa9c9367ea8197245efb5d4959cf17374678fb6d",
+      "internal_manifest_match": true
+    },
+    {
+      "name": "03_public_runtime.txt",
+      "bytes": 1170,
+      "sha256": "1a46988dd90e4a66eebffc276b52dcd5945a36d45775b8e0dea9b331e318469d",
+      "internal_manifest_match": true
+    },
+    {
+      "name": "04_public_permanent.txt",
+      "bytes": 1170,
+      "sha256": "dc21702a07907086b8c2de2ed38d75a39d2e12ea949c64f300a0dc4957f9efad",
+      "internal_manifest_match": true
+    },
+    {
+      "name": "05_public_permanent_rich_rules.txt",
+      "bytes": 885,
+      "sha256": "d799ae0ea0f471ae470db2da9f7dce9f533f4eea550e8038a3e99447d549d592",
+      "internal_manifest_match": true
+    },
+    {
+      "name": "06_collection_result.txt",
+      "bytes": 257,
+      "sha256": "b06abce9928123a5a3151ea3bfae042a8dc26e6798a0ee71f8dd12e677df115d",
+      "internal_manifest_match": true
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 640,
+      "sha256": "1a43f1a7f254f0fbdd6ea8cfbbc6e200945a6a4abae8cedbf45135c3497b33da",
+      "internal_manifest_match": null
+    }
+  ],
+  "metadata": {
+    "TYPE": "CURRENT_STATE_SUPPLEMENT",
+    "TICKET": "P1-LB-01",
+    "FOLLOWUP": "FUP-09",
+    "HOST": "k8s-api-lb01",
+    "USER": "server01_k8s-api-lb",
+    "COLLECTION_START_UTC": "2026-09-09T07:20:22Z",
+    "ZONE": "public",
+    "HISTORICAL_EVIDENCE_REPLACEMENT": "false"
+  },
+  "collection_end_utc": "2026-09-09T07:20:23+00:00",
+  "queries": [
+    {
+      "file": "01_firewalld_version.txt",
+      "scope": "VERSION",
+      "command": "sudo -n firewall-cmd --version",
+      "utc_start": "2026-09-09T07:20:22Z",
+      "utc_end": "2026-09-09T07:20:23Z",
+      "exit_code": 0
+    },
+    {
+      "file": "02_active_zones.txt",
+      "scope": "RUNTIME",
+      "command": "sudo -n firewall-cmd --get-active-zones",
+      "utc_start": "2026-09-09T07:20:23Z",
+      "utc_end": "2026-09-09T07:20:23Z",
+      "exit_code": 0
+    },
+    {
+      "file": "03_public_runtime.txt",
+      "scope": "RUNTIME",
+      "command": "sudo -n firewall-cmd --zone=public --list-all",
+      "utc_start": "2026-09-09T07:20:23Z",
+      "utc_end": "2026-09-09T07:20:23Z",
+      "exit_code": 0
+    },
+    {
+      "file": "04_public_permanent.txt",
+      "scope": "PERMANENT",
+      "command": "sudo -n firewall-cmd --permanent --zone=public --list-all",
+      "utc_start": "2026-09-09T07:20:23Z",
+      "utc_end": "2026-09-09T07:20:23Z",
+      "exit_code": 0
+    },
+    {
+      "file": "05_public_permanent_rich_rules.txt",
+      "scope": "PERMANENT",
+      "command": "sudo -n firewall-cmd --permanent --zone=public --list-rich-rules",
+      "utc_start": "2026-09-09T07:20:23Z",
+      "utc_end": "2026-09-09T07:20:23Z",
+      "exit_code": 0
+    }
+  ],
+  "comparison": {
+    "rule_count_each": 8,
+    "runtime_permanent_rich_rules_equal": true,
+    "permanent_two_query_outputs_equal": true,
+    "previous_runtime_rich_rules_equal": true,
+    "previous_runtime_blob_sha": "724f369f8b7a59cde4c82486539044535d20ab2f",
+    "previous_runtime_url": "https://github.com/321Team/fds-project-evidence/blob/39ead0567327cf45ed9f8b81cecdf9848f542d5d/evidence/P1-LB-01/stage-a/received-20260907/10_firewalld.txt",
+    "normalized_field_differences": {
+      "interfaces": {
+        "runtime": "ens160",
+        "permanent": ""
+      }
+    },
+    "runtime_header": "public (default, active)",
+    "permanent_header": "public (default)",
+    "ignored_for_rule_comparison": [
+      "rule order",
+      "leading whitespace"
+    ]
+  },
+  "scope": {
+    "current_permanent_output_received": true,
+    "historical_permanent_state_proven": false,
+    "full_runtime_permanent_configuration_identical": false,
+    "networkmanager_profile_received": false,
+    "reboot_persistence_test_received": false,
+    "ip_duplicate_original_received": false,
+    "human_acceptance_received": false,
+    "bootstrap_released": false
+  },
+  "interpretation_source": "https://firewalld.org/documentation/zone/connections-interfaces-and-sources.html",
+  "independent_review": "PENDING",
+  "receiver_condition_decision": "PENDING",
+  "repository_registration": {
+    "status": "UPLOAD_AUTHORIZED_PENDING_REGISTRATION",
+    "destination": "321Team/fds-project-evidence",
+    "private_verified": true,
+    "user_authorization": "사용자가 내부 IP·호스트·계정을 포함한 이번 증적과 검토 결과의 비공개 저장소 Draft PR 등록 요청에 승인이라고 명시적으로 응답함.",
+    "authorization_scope": "Draft PR 등록·기존 지정 독립 리뷰어 요청·후속 이슈 연결. 병합·인수 조건 종결 제외.",
+    "prior_block": "자동 승인 검토의 명시적 업로드 승인 요구 이후 사용자 승인 접수.",
+    "actual_pr_reference": "실제 등록 결과는 PR 본문과 후속 이슈 #4에서 확인."
+  }
+}
