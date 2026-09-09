@@ -7,6 +7,15 @@
 - 원본 수신: COLLECTED_VERIFIED_REVIEW_PENDING — 기존 17개 + Rollback 5개 + Refinalization 1개, 총 23개 수신·보완 검증 완료
 - 증적 저장소 편입 검토: PENDING
 
+## 현재 후속 상태 — 2026-09-09
+
+Refinalization·Rollback 원본 보완 및 독립 편입 기술 검토 확인, PR #1 병합 완료. 서버측 보관 메타데이터 등 독립 리뷰의 NOT VERIFIED 유지.
+
+[PR #1 병합 기록](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) · [후속 실행표](../../runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
+
+## 기존 수신 기록 — 당시 이력
+
+
 기존 P1-ANS-01 Done/2026-08-31과 분리한다. 이 CR 승인은 Stage A 인수나 Bootstrap 승인을 대신하지 않는다.
 
 ## 2026-09-07 원본 수신

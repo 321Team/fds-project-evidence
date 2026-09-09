@@ -2,13 +2,13 @@
 
 FDS 프로젝트의 티켓별 실행 증적, 검증 결과, 승인·인수 기록과 SHA-256 무결성 정보를 관리하는 비공개 저장소입니다. 기준선·WBS 정본은 fds-project-baseline에서 별도로 관리합니다.
 
-이 브랜치는 최초 증적 편입 검토 후보입니다. 기존 완료 상태와 증적의 수집·검토 상태를 별도로 기록합니다.
+최초 편입 PR #1은 2026-09-09 독립 기술 검토 후 main 병합을 완료했습니다. 이 후속 브랜치는 FUP-06/07/08 원본 수신과 FUP-04~09 잔여 관리 기록의 검토 후보입니다. 기존 완료 상태와 증적 완비·인수 상태를 구분합니다.
 
 | 항목 | 상태 |
 |---|---|
 | 대상 저장소 | `321Team/fds-project-evidence` — Private / 연결 확인 |
-| 준비 브랜치 | `evidence/initial-import-20260907` — 증적 편입 검토 후보 |
-| 검토 Commit / PR | [PR #1](https://github.com/321Team/fds-project-evidence/pull/1) 본문에 HEAD 고정 · Draft / 독립 검토 대기 |
+| 후속 브랜치 | `evidence/post-merge-followup-20260909` — 신규 수신·관리 기록 검토 후보 |
+| 기존 편입 PR | [PR #1](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) 병합 완료 · `0f16942b2c0525a90fe75a1c17fd19c295352658` |
 | 기존 완료 티켓 | 13개 — 기존 12개 + 승인·병합 완료 CR 1개 |
 | 과거 종결·승인 문서 | 8개 수신 사본 |
 | P1-LB-01 | Stage A 원본 21개 및 사후 검토 자료; 전체 티켓 In Progress |
@@ -26,6 +26,15 @@ FDS 프로젝트의 티켓별 실행 증적, 검증 결과, 승인·인수 기�
 `fds-project-baseline`은 기준선·WBS·티켓 정본을, 이 저장소는 증적과 그 인수 이력을 관리한다. 기존 문서의 수신 사본은 당시 종결 근거이며 새로운 기준선 정본을 만들지 않는다. 설계 승인·Gate 승인과 실제 Runtime 시험을 구분한다.
 
 `sha256sum --check REGISTRY_SHA256SUMS`로 준비본 파일의 현재 무결성을 확인할 수 있다. 이 결과는 과거 원본 Manifest 검증 또는 담당자의 인수 승인을 대체하지 않는다.
+
+## 2026-09-09 후속 착수
+
+- [담당별 실행표](runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
+- [신규 원본 수신 검토](receipts/library/20260909T054024Z/RECEIPT_REVIEW.md)
+- [병합 결과 기록](records/post-merge-20260909/EVIDENCE_PR1_CLOSURE.md)
+- [Stage A 인수 참조 회신 양식](handoffs/FUP-09_RECEIPT_REFERENCE_FORM.md)
+
+FUP-06/07/08 새 수신본은 독립 편입 검토 대기입니다. FUP-04/05 원본·승인 참조와 FUP-09 실제 인수 기록은 확인 대기입니다. 아래 날짜별 서술은 당시 수신 이력이며 현재 상태는 수신 대장 첫 표를 따릅니다.
 
 ## 2026-09-07 Ansible 병합 후속
 

@@ -2,9 +2,18 @@
 
 - Ticket status: Done
 - Closed date: 2026-09-03
-- Migration status: CANDIDATE_REVIEW_PENDING
-- Repository review: PENDING
+- Migration status: MERGED_REGISTERED_RECORDS — PR #1에 등록된 기록 기준
+- Repository review: TECHNICAL_PASS_CONFIRMED_FOR_PRIOR_IMPORT
 - 상태 근거: [기준선 v3.1.16](https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md)
+
+## 현재 후속 상태 — 2026-09-09
+
+기존 수신·검증 기록을 포함한 PR #1 편입 기술 검토·병합 완료. 독립 리뷰의 원본 ZIP 외부 대조 NOT VERIFIED 범위 유지.
+
+[PR #1 병합 기록](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) · [후속 실행표](../../runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
+
+## 기존 수신 기록 — 당시 이력
+
 
 Forward Zone `fds.internal`, `.109` ACL/Resolver/Failover Delta 및 Support Review 완료. Management DNS는 P1 N/A, Reverse/PTR `N/A`
 
