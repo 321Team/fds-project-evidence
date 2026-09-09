@@ -1,0 +1,111 @@
+{
+  "recorded_at": "2026-09-09T06:44:38.183111+00:00",
+  "source_comment": {
+    "author_association": "MEMBER",
+    "body": "### Reviewer\r\n이하영 / hayeounglee\r\n\r\n### 실제 검토 Commit\r\n`7dfec0a042c6f833cb246bb89560ec3eb0af892b`\r\n※ 회신 제출 직전 PR #1의 현재 HEAD를 다시 확인해서, 바뀌었으면 새 SHA로 교체할 것\r\n\r\n### 검토 일시·시간대\r\n[2026-09-08]\r\n\r\n### Stage A 증적 인수 여부·범위\r\n- 기존 Stage A Technical/Evidence PASS(D36 반영) 및 CR 리뷰의 Listener Ready PASS는 유지하며, 재승인 대상이 아님을 확인함\r\n- 원본 21개(01~18c) 및 콘솔 보완 3건(LB-HO-OBS-01/02/03: SELinux Enforcing, ansible01·Runner 임시 키 폐기)의 수신·검토 자료를 확인함\r\n- 위 자료를 근거로 **Stage A 증적을 조건부 인수함** (아래 미해결 사항 참조)\r\n- 수신 묶음 SHA-256(`62c64dfb...236a3`)과 PR 검토 HEAD 대조 완료\r\n\r\n### Stage A 인수 조건·미해결 사항\r\n- LB-A-01 IP 중복검사 원본, firewalld Permanent 출력은 이번 수신 묶음에 미포함 — 기존 Stage A 승인 근거 참조 확인 필요, 신규 확인 필요 시 별도 Supplement로 진행\r\n- Bootstrap 전 Backend 3대 DOWN 기록은 Stage A 기대 결과와 일치하는 것으로, Stage B 완료 근거로 사용하지 않음\r\n- 콘솔 보완 3건은 서버 원본 파일(.txt/.sha256) 자체의 Hash 검증이 아닌 콘솔 제출본 검토 결과임을 확인함\r\n- SELinux Enforcing 확인은 2026-09-07 조회 시점 기준이며 9/3 당시 상태를 소급 증명하지 않음\r\n\r\n### CR/P1-ANS/DNS 수신 검토 결과\r\n- **CR-P1-ANS-01-01**: 원본 17개 수신, Manifest 16/16 및 주요 Hash 4/4 일치. Refinalization 원본(기대 SHA-256: `db7da7ea...84395d`) 및 Rollback 상태자료 미수신 — 보완 필요. 기존 CR 승인·병합은 유지\r\n- **P1-ANS-01**: 원본 38개 수신, 기존 Manifest 35/37 일치. `05h_ssh_key_lifecycle_record.md`, `05j_review_approval_record.md` 2건 Hash 불일치 확인. `05j`는 지정명(reviewer_approver)과 실제 수신 파일명(review_approval)도 상이함. 승인 내용 자체는 수신됨. 변경 이력·승인 배포 근거 확인 후 새 배포회차로 재검증 필요 — 현재 소급 PASS 처리하지 않음\r\n- **P1-DNS-01**: ZIP Hash 일치, 내부 Manifest 12/12·Sidecar 11/11 일치. 원본 수신 검증 완료, 재제출 불필요. 저장소 독립 편입 검토는 별도 대기\r\n\r\n### 증적 편입 보완 요청·종합 판정\r\n- **Stage A**: 조건부 인수 (미포함 2개 항목은 기존 승인 근거 참조로 별도 확인)\r\n- **CR-P1-ANS-01-01**: 부분 수신 — Refinalization/Rollback 자료 보완 후 편입 가능\r\n- **P1-ANS-01**: 보완 필요 — 05h/05j Hash 불일치 및 파일명 정합성 해소, 새 배포회차 검증 후 편입 가능\r\n- **P1-DNS-01**: 편입 가능 (검증 완료)\r\n- 전체 PR은 위 보완 사항이 해소될 때까지 Draft 유지 권고. main 병합·Bootstrap 해제는 이번 회신 범위에 포함하지 않음\r\n\r\n### 근거 링크\r\n- Stage A Evidence Index: `evidence/P1-LB-01/stage-a/received-20260907/EVIDENCE_INDEX.md`\r\n- Stage A Handoff Review v1.3: `evidence/P1-LB-01/stage-a/received-20260907/19_stage_a_handoff_review.md`\r\n- 콘솔 보완 검토: `evidence/P1-LB-01/stage-a/received-20260907/supplements/20260907_console_supplement_review.md`\r\n- Stage A 인수 확인 체크리스트: `handoffs/P1-LB-01_STAGE_A_RECEIVER_CHECKLIST.md`\r\n- Ansible 수신 검토 보고서: `receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md`\r\n- 완료 티켓 13개 편입 대장 v1.2: `registry/COMPLETED_TICKETS.md`\r\n- 기존 CR 승인·병합: infra-ansible PR #1",
+    "created_at": "2026-09-08T09:33:45Z",
+    "html_url": "https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5582767564",
+    "id": 5582767564,
+    "issue_url": "https://api.github.com/repos/321Team/fds-project-evidence/issues/1",
+    "minimized": null,
+    "node_id": "IC_kwDOUQvpi88AAAABTMJFzA",
+    "performed_via_github_app": null,
+    "reactions": {
+      "+1": 0,
+      "-1": 0,
+      "confused": 0,
+      "eyes": 0,
+      "heart": 0,
+      "hooray": 0,
+      "laugh": 0,
+      "rocket": 0,
+      "total_count": 0,
+      "url": "https://api.github.com/repos/321Team/fds-project-evidence/issues/comments/5582767564/reactions"
+    },
+    "updated_at": "2026-09-08T09:33:45Z",
+    "url": "https://api.github.com/repos/321Team/fds-project-evidence/issues/comments/5582767564",
+    "user": {
+      "avatar_url": "https://avatars.githubusercontent.com/u/95111439?v=4",
+      "events_url": "https://api.github.com/users/hayeounglee/events{/privacy}",
+      "followers_url": "https://api.github.com/users/hayeounglee/followers",
+      "following_url": "https://api.github.com/users/hayeounglee/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hayeounglee/gists{/gist_id}",
+      "gravatar_id": "",
+      "html_url": "https://github.com/hayeounglee",
+      "id": 95111439,
+      "login": "hayeounglee",
+      "node_id": "U_kgDOBatJDw",
+      "organizations_url": "https://api.github.com/users/hayeounglee/orgs",
+      "received_events_url": "https://api.github.com/users/hayeounglee/received_events",
+      "repos_url": "https://api.github.com/users/hayeounglee/repos",
+      "site_admin": false,
+      "starred_url": "https://api.github.com/users/hayeounglee/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hayeounglee/subscriptions",
+      "type": "User",
+      "url": "https://api.github.com/users/hayeounglee",
+      "user_view_type": "public"
+    }
+  },
+  "interpretation": {
+    "status": "CONDITIONALLY_ACCEPTED",
+    "review_commit_in_comment": "7dfec0a042c6f833cb246bb89560ec3eb0af892b",
+    "review_date_in_comment": "2026-09-08",
+    "exact_review_time_and_timezone": null,
+    "comment_posted_at": "2026-09-08T09:33:45Z",
+    "pending_conditions": [
+      "LB-A-01 IP 중복검사 원본의 기존 승인 근거 참조",
+      "firewalld Permanent 출력의 기존 승인 근거 참조"
+    ],
+    "new_receipt_signature_created": false,
+    "bootstrap_released": false
+  },
+  "stage_a_git_comparison": {
+    "receipt_review_commit": "7dfec0a042c6f833cb246bb89560ec3eb0af892b",
+    "current_merge": "39ead0567327cf45ed9f8b81cecdf9848f542d5d",
+    "compared_stage_a_files": 28,
+    "differences": [],
+    "additional_stage_a_files": []
+  },
+  "dnet_archive_inspection": {
+    "size_bytes": 18691,
+    "sha256": "e121b166c6e3e3c67ac489cd3cb277015a4630aff61ea0e0d070471026b66bfc",
+    "zip_crc": "PASS",
+    "members": [
+      {
+        "name": "D-NET-01_Final_v1.0/",
+        "bytes": 0
+      },
+      {
+        "name": "D-NET-01_Final_v1.0/README.md",
+        "bytes": 1225
+      },
+      {
+        "name": "D-NET-01_Final_v1.0/FDS_Phase1_Physical_Architecture_v3.1.2.mmd",
+        "bytes": 1380
+      },
+      {
+        "name": "D-NET-01_Final_v1.0/FDS_Project_Implementation_Baseline_v3.1.2.md",
+        "bytes": 16802
+      },
+      {
+        "name": "D-NET-01_Final_v1.0/FDS_Phase1_Logical_Architecture_v3.1.2.mmd",
+        "bytes": 1449
+      },
+      {
+        "name": "D-NET-01_Final_v1.0/FDS_Network_Baseline_v2.3.md",
+        "bytes": 10411
+      },
+      {
+        "name": "D-NET-01_Final_v1.0/D-NET-01_Closure_Report_v1.0.md",
+        "bytes": 3324
+      },
+      {
+        "name": "D-NET-01_Final_v1.0/FDS_Notion_Network_Parameter_Patch_v1.2.md",
+        "bytes": 3603
+      }
+    ],
+    "library_file_id": "libfile_f251a61064508191a9cc84d02abfce66",
+    "library_path": "/D-NET-01_Final_v1.0/D-NET-01_Final_v1.0.zip",
+    "finding": "7개 문서만 포함. Index 01~10 실제 로그·캡처·기존 Manifest는 패키지에 없음. 모든 보관소의 부재를 뜻하지 않음."
+  }
+}

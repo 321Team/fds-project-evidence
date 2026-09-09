@@ -1,7 +1,7 @@
 {
   "recorded_at": "2026-09-07T03:44:12.862621+00:00",
   "target_repository": "321Team/fds-project-evidence",
-  "target_branch": "evidence/post-merge-followup-20260909",
+  "target_branch": "evidence/stage-a-receipt-correction-20260909",
   "source_commit": "8515ecd97e69035f329032ba17206972c7b0739d",
   "status_source_note": "v3.1.16 Closed/Project Status Register에서 완료 12개를 추출하고 승인된 v3.1.17 내용 Commit 8515ecd97e69035f329032ba17206972c7b0739d 및 WBS와 대조했다. 2026-09-07 최신 CURRENT.md의 ACTIVE / CANONICAL, v3.1.17 RELEASED 표시를 확인했다. 본 편입은 WBS나 기준선 상태를 변경하지 않는다. 2026-09-07 infra-ansible PR #1의 명시적 최종 승인·병합 완료에 따라 CR-P1-ANS-01-01을 증적 대장에 추가했다. WBS 원본 수정은 수행하지 않았다.",
   "tickets": [
@@ -15,16 +15,16 @@
       "record_receipt": "COLLECTED",
       "migration_status": "MERGED_REGISTERED_RECORDS",
       "original_manifest_verification": "NOT_PERFORMED",
-      "repository_review": "TECHNICAL_PASS_CONFIRMED_FOR_PRIOR_IMPORT",
+      "repository_review": "APPROVED_FOR_SUPPLEMENTAL_IMPORT",
       "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
       "documents": [
         "records/received-20260907/FDS_Notion_Closed_Descriptions_D-ARC-01_D-NET-01_D-WBS-01_v1.1.md"
       ],
-      "next_action": "Freeze 메타데이터가 종결 설명과 일치하는 논리·물리 원본 2개 수신·Hash 기록. 당시 승인 참조 최종 연결 및 새 편입 독립 검토 대기.",
-      "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595735387",
-      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658",
+      "next_action": "후보 원본 2개 수신·독립 APPROVED·사용자 한계 수용·PR #3 편입 완료. 과거 승인 참조는 미확인으로 유지하며 확보 시 연결.",
+      "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987",
+      "merged_commit": "39ead0567327cf45ed9f8b81cecdf9848f542d5d",
       "supplemental_receipt": {
-        "status": "COLLECTED_HASHED_REVIEW_PENDING",
+        "status": "COLLECTED_APPROVED_MERGED",
         "receipt": "receipts/library/20260909T054024Z/RECEIPT_REVIEW.md",
         "files": [
           {
@@ -81,7 +81,9 @@
             "historical_hash_verification": "NOT_VERIFIED_NO_PRIOR_HASH",
             "independent_review": "PENDING"
           }
-        ]
+        ],
+        "status_at_receipt": "COLLECTED_HASHED_REVIEW_PENDING",
+        "source_file_observations_scope": "files는 수신 당시 관찰·PENDING 스냅샷. 현재 편입 판정은 supplemental_receipt.status와 supplemental_import_resolution을 따른다."
       }
     },
     {
@@ -114,16 +116,16 @@
       "record_receipt": "COLLECTED",
       "migration_status": "MERGED_REGISTERED_RECORDS",
       "original_manifest_verification": "NOT_PERFORMED",
-      "repository_review": "TECHNICAL_PASS_CONFIRMED_FOR_PRIOR_IMPORT",
+      "repository_review": "APPROVED_FOR_SUPPLEMENTAL_IMPORT",
       "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
       "documents": [
         "records/received-20260907/FDS_Notion_Closed_Descriptions_D-ARC-01_D-NET-01_D-WBS-01_v1.1.md"
       ],
-      "next_action": "종결 설명 지정 WBS v3.1.3 원본 수신·Hash·CRC 확인, 별도 보관 참조 등록. 동결/갱신 승인 참조 연결 및 원본 접근·독립 검토 대기.",
-      "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595735387",
-      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658",
+      "next_action": "WBS 원본 참조·독립 APPROVED·사용자 한계 수용·PR #3 편입 완료. 과거 승인 참조 및 검토자 원본 접근은 확인 대기.",
+      "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987",
+      "merged_commit": "39ead0567327cf45ed9f8b81cecdf9848f542d5d",
       "supplemental_receipt": {
-        "status": "COLLECTED_HASHED_REVIEW_PENDING",
+        "status": "COLLECTED_APPROVED_MERGED",
         "receipt": "receipts/library/20260909T054024Z/RECEIPT_REVIEW.md",
         "files": [
           {
@@ -154,7 +156,9 @@
             "historical_hash_verification": "NOT_VERIFIED_NO_PRIOR_HASH",
             "independent_review": "PENDING"
           }
-        ]
+        ],
+        "status_at_receipt": "COLLECTED_HASHED_REVIEW_PENDING",
+        "source_file_observations_scope": "files는 수신 당시 관찰·PENDING 스냅샷. 현재 편입 판정은 supplemental_receipt.status와 supplemental_import_resolution을 따른다."
       }
     },
     {
@@ -264,13 +268,13 @@
       "closure_basis": "D33 User Approved; Kubernetes-Integrated Hybrid Monitoring 설계 고정, Runtime은 P1-MON-01로 분리",
       "status_source": "https://github.com/321Team/fds-project-baseline/blob/8515ecd97e69035f329032ba17206972c7b0739d/releases/v3.1.16/FDS_Project_Implementation_Baseline_v3.1.16.md#31-closed-ticket-register--remaining-backlog-authority",
       "evidence_category": "design_or_gate_approval",
-      "record_receipt": "COLLECTED_HASHED_SUPPLEMENT_REVIEW_PENDING",
+      "record_receipt": "COLLECTED_APPROVED_MERGED",
       "migration_status": "MERGED_REGISTERED_RECORDS",
       "original_manifest_verification": "NOT_PERFORMED",
-      "repository_review": "TECHNICAL_PASS_CONFIRMED_FOR_PRIOR_IMPORT",
+      "repository_review": "APPROVED_FOR_SUPPLEMENTAL_IMPORT",
       "receipt_recorded_at": "2026-09-07T03:44:12.862621+00:00",
       "documents": [],
-      "next_action": "동일 파일 Version 1 원본 11,237 bytes 수신·Revision v1.1·D33 승인 내용·Hash 확인. 새 원본 편입 독립 검토 대기. 과거 HTTP 502 이력 보존.",
+      "next_action": "원본 수신·독립 APPROVED·PR #3 편입 완료. FUP-08 수신 보완 종결; 수용된 과거 비교 Hash 부재 한계 유지.",
       "content_source": {
         "library_file_id": "libfile_bd4195787cbc8191a4ec670936aefa25",
         "version": "1",
@@ -280,10 +284,10 @@
         "full_content_reviewed": true,
         "receipt": "receipts/library/20260909T054024Z/SOURCE_FILE_MAP.json"
       },
-      "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595735387",
-      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658",
+      "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987",
+      "merged_commit": "39ead0567327cf45ed9f8b81cecdf9848f542d5d",
       "supplemental_receipt": {
-        "status": "COLLECTED_HASHED_REVIEW_PENDING",
+        "status": "COLLECTED_APPROVED_MERGED",
         "receipt": "receipts/library/20260909T054024Z/RECEIPT_REVIEW.md",
         "files": [
           {
@@ -313,7 +317,9 @@
             "historical_hash_verification": "NOT_VERIFIED_NO_PRIOR_HASH",
             "independent_review": "PENDING"
           }
-        ]
+        ],
+        "status_at_receipt": "COLLECTED_HASHED_REVIEW_PENDING",
+        "source_file_observations_scope": "files는 수신 당시 관찰·PENDING 스냅샷. 현재 편입 판정은 supplemental_receipt.status와 supplemental_import_resolution을 따른다."
       }
     },
     {
@@ -427,7 +433,7 @@
     }
   ],
   "publication_prepared_at": "2026-09-07T05:06:39.139879+00:00",
-  "updated_at": "2026-09-09T05:50:48.758890+00:00",
+  "updated_at": "2026-09-09T06:44:38.183111+00:00",
   "prior_import": {
     "head": "4863e532c00a9f758d1130cd1c8e7316e881ebcf",
     "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658",
@@ -435,5 +441,13 @@
     "merge_url": "https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292",
     "status": "MERGED_REGISTERED_RECORDS",
     "meaning": "기존 등록 기록의 병합. 전체 원본 완비나 실제 인수 완료를 뜻하지 않음."
+  },
+  "latest_followup_issue": "https://github.com/321Team/fds-project-evidence/issues/4",
+  "supplemental_import_resolution": {
+    "reviewed_head": "00d1080a1c8f44b133eef81dd2b58be31bf86d9d",
+    "merged_commit": "39ead0567327cf45ed9f8b81cecdf9848f542d5d",
+    "review_ref": "https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987",
+    "acceptance_ref": "https://github.com/321Team/fds-project-evidence/pull/3#issuecomment-5597170385",
+    "status": "MERGED_WITH_EXPLICIT_LIMITATIONS_ACCEPTED"
   }
 }

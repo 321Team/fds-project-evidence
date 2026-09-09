@@ -1,23 +1,26 @@
-# FUP-09 Stage A 인수 참조 회신 양식
+# FUP-09 기존 조건부 인수 참조 및 잔여 조건 확인
 
-대상 인수자: 이하영. 상태: 전달 준비 / 실제 인수 기록 미확인.
+상태: 조건부 인수 기록 확인 / 잔여 조건 대기. 대상 인수자: 이하영.
 
-기존 Stage A Technical/Evidence PASS와 증적 제출 완료는 유지한다. 필요한 것은 기존 원본·보완 자료를 실제 인수했는지 확인할 기록이다. 이미 남긴 기록이 있으면 그 링크를 연결한다.
+[2026-09-08 실제 회신](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5582767564)을 재사용한다. 인수자의 새 서명을 대신 작성한 것이 아니다.
 
-- [고정된 원본·Index](https://github.com/321Team/fds-project-evidence/blob/0f16942b2c0525a90fe75a1c17fd19c295352658/evidence/P1-LB-01/stage-a/received-20260907/EVIDENCE_INDEX.md)
-- [기존 인수 체크리스트](https://github.com/321Team/fds-project-evidence/blob/0f16942b2c0525a90fe75a1c17fd19c295352658/handoffs/P1-LB-01_STAGE_A_RECEIVER_CHECKLIST.md)
-- 검토 기준으로 제시하는 보존 Commit: `0f16942b2c0525a90fe75a1c17fd19c295352658`. 아래 실제 검토 Commit은 인수자가 확인한 값으로 기록한다.
-- [기존 Listener Ready PASS 확인](https://github.com/321Team/infra-ansible/pull/1#issuecomment-5564021283)
-
-| 필드 | 실제 입력 |
+| 필드 | 확인된 값 |
 |---|---|
-| 인수자 | 이하영 |
-| 실제 인수 결과 | 미입력 |
-| 실제 검토 Commit | 미입력 |
-| 확인한 파일·원본/보완 범위 | 미입력 |
-| 원본·체크섬 확인 방법 및 결과 | 미입력 |
-| 인수 일시 및 시간대 | 미입력 |
-| 미해결 조건 | 미입력 |
-| 기존 기록 URL 또는 새 인수 기록 URL | 미입력 |
+| 인수자 | 이하영 / hayeounglee |
+| 결과 | 조건부 인수 |
+| 실제 검토 Commit 기재값 | `7dfec0a042c6f833cb246bb89560ec3eb0af892b` |
+| 범위 | 원본 21개와 LB-HO-OBS-01/02/03 콘솔 보완 3건 |
+| 검토일 | 2026-09-08, 정확한 시각·시간대 미기재 |
+| GitHub 게시 시각 | 2026-09-08 18:33:45 KST |
+| 현 보존본 연결 | 병합 Commit `39ead0567327cf45ed9f8b81cecdf9848f542d5d`의 Stage A 28개 파일이 기재 Commit과 동일 |
 
-원본 21개와 사용자 콘솔 보완 3건을 동일 조건으로 재제출하거나 이미 통과한 시험을 다시 수행할 필요는 없다. 기록 부재를 실제 미수행으로 단정하지 않는다. 본 양식의 작성만으로 OS/Node Gate 또는 Bootstrap을 해제하지 않는다.
+## 남은 조건의 참조 입력
+
+| 항목 | 기존 승인 근거 URL·파일 | 확인 결과 |
+|---|---|---|
+| LB-A-01 IP 중복검사 원본 | 미확인 | 대기 |
+| firewalld Permanent 출력 | 미확인 | 대기 |
+
+기존 승인 근거가 있으면 먼저 연결한다. 신규 확인이 필요하면 별도 시각의 Supplement로 구분한다. 원본 21개와 콘솔 보완 3건을 다시 제출하거나 Stage A PASS를 재승인할 필요는 없다. 조건부 인수의 잔여 조건과 OS/Node·Bootstrap Gate를 각각 확인한다.
+
+[체크리스트](P1-LB-01_STAGE_A_RECEIVER_CHECKLIST.md) · [정정 근거](../records/post-merge-20260909/PR3_CLOSURE_AND_FUP09_CORRECTION.md) · [후속 이슈](https://github.com/321Team/fds-project-evidence/issues/4)

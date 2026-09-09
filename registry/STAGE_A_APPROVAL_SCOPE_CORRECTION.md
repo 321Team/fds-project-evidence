@@ -1,6 +1,16 @@
-# P1-LB-01 Stage A 승인 범위 정정 v1.0
+# P1-LB-01 Stage A 승인 범위 정정 v1.1
 
 확인일: 2026-09-07 · 정정 대상: Stage A PASS에 대한 중복 최종 승인 대기 표시
+
+## 2026-09-09 현재 상태 — PR #3 병합 및 인수 회신 연결
+
+PR #3은 `39ead0567327cf45ed9f8b81cecdf9848f542d5d`로 병합됐다. FUP-06/07의 후보 편입·미검증 한계는 최종 수용됐고, FUP-08의 수신·편입은 완료됐다. [이하영의 기존 회신](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5582767564)을 확인해 FUP-09를 **조건부 인수 / 미포함 2개 항목의 참조 확인 대기**로 정정한다.
+
+[현재 후속 추적](https://github.com/321Team/fds-project-evidence/issues/4) · [병합·정정 근거](../records/post-merge-20260909/PR3_CLOSURE_AND_FUP09_CORRECTION.md)
+
+## 2026-09-07 당시 정정 기록
+
+아래는 당시 조회 결과이며 인수 미확인 표기는 2026-09-09 확인한 조건부 인수 회신으로 갱신됐다.
 
 ## 결론
 
