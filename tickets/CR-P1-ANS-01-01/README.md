@@ -4,7 +4,7 @@
 - 상태 근거: [infra-ansible PR #1](https://github.com/321Team/infra-ansible/pull/1)
 - [종료 기록](../../records/post-merge-20260907/CR-P1-ANS-01-01_CLOSURE.md)
 - [원본 수집 절차](../../runbooks/ANSIBLE_SOURCE_RECEIPT.md)
-- 원본 수신: ROLLBACK_RECEIPT_VERIFIED_REFINALIZATION_PENDING — 기존 17개 + Rollback 상태 5개 수신, Refinalization 원본 대기
+- 원본 수신: COLLECTED_VERIFIED_REVIEW_PENDING — 기존 17개 + Rollback 5개 + Refinalization 1개, 총 23개 수신·보완 검증 완료
 - 증적 저장소 편입 검토: PENDING
 
 기존 P1-ANS-01 Done/2026-08-31과 분리한다. 이 CR 승인은 Stage A 인수나 Bootstrap 승인을 대신하지 않는다.
@@ -22,3 +22,10 @@
 Refinalization 원본은 미수신이다. 다음 제출은 당시 원본 또는 고정 참조로 한정하며, 5대 재수집·rollback·finalize 재실행은 불필요하다.
 
 [보완 수신 검토](../../receipts/ansible01/20260908T115139Z/FDS_FUP01_Rollback_Receipt_Review_v1.0.md)
+
+
+## 2026-09-09 Refinalization 보완 완료
+
+[원본](../../evidence/CR-P1-ANS-01-01/received-20260909T003726Z/evidence_refinalization.20260904T183221+0900.txt) · [수신 검토](../../receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md).
+
+승인 당시 SHA-256과 원본 1,181 bytes가 일치한다. 내부 Manifest 2/2·참조 파일 4/4 및 검증 Commit/Tree가 일치하며, 기존 Rollback 5개 Hash도 유지된다. FUP-01 원본 보완 완료·독립 편입 검토 대기다. 위 9월 7~8일 미수신 설명은 당시 수신 이력이며 이번 결과로 보완됐다.

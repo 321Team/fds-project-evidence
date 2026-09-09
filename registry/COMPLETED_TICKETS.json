@@ -237,7 +237,7 @@
       "closure_basis": "Support 이하영 APPROVED + 이권욱 명시적 최종 승인 + infra-ansible PR #1 main merge 4f9bdb7c08704eebb3d1b294751e51b0721b6af4",
       "status_source": "https://github.com/321Team/infra-ansible/pull/1",
       "evidence_category": "runtime_or_network_validation",
-      "record_receipt": "GITHUB_CLOSURE_RECORDED_RAW_PENDING",
+      "record_receipt": "COLLECTED_VERIFIED",
       "migration_status": "CANDIDATE_REVIEW_PENDING",
       "original_manifest_verification": "MATCH_16_OF_16",
       "repository_review": "PENDING",
@@ -246,12 +246,31 @@
         "records/post-merge-20260907/CR-P1-ANS-01-01_CLOSURE.md",
         "records/post-merge-20260907/github-verification.json"
       ],
-      "next_action": "17개 수신·Manifest 16/16 및 주요 Hash 4/4 일치. Refinalization 원본·Rollback 상태자료 보완 대기.",
-      "runtime_evidence_receipt": "PARTIAL_COLLECTED",
-      "receipt_review": "receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md",
-      "receipt_verification_date": "2026-09-07"
+      "next_action": "Refinalization 원본과 Rollback 5대 보완 완료. CR 원본 총 23개, 참조 Hash 4/4·Commit/Tree 대조 완료. 독립 증적 편입 검토 대기.",
+      "runtime_evidence_receipt": "COLLECTED_VERIFIED_REVIEW_PENDING",
+      "receipt_review": "receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md",
+      "receipt_verification_date": "2026-09-09",
+      "latest_receipt_collected_at": "2026-09-09T00:37:26.218094+00:00",
+      "refinalization_receipt": {
+        "path": "evidence/CR-P1-ANS-01-01/received-20260909T003726Z/evidence_refinalization.20260904T183221+0900.txt",
+        "sha256": "db7da7eae13c1b07e6b073003a23229e76f3a86f6903a66ac9a2cf522f84395d",
+        "verification": "MATCH_APPROVED_RECORD",
+        "review": "receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md"
+      },
+      "rollback_receipt": {
+        "count": 5,
+        "verification": "MATCH_EXISTING_RECEIPT",
+        "source": "receipts/ansible01/20260908T115139Z/RECEIPT_VERIFICATION.json"
+      },
+      "raw_evidence_file_count": 23,
+      "receipt_review_history": [
+        "receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md",
+        "receipts/ansible01/20260908T115139Z/FDS_FUP01_Rollback_Receipt_Review_v1.0.md",
+        "receipts/ansible01/20260908T124550Z/FDS_FUP01_Refinalization_Search_Review_v1.0.md",
+        "receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md"
+      ]
     }
   ],
   "publication_prepared_at": "2026-09-07T05:06:39.139879+00:00",
-  "updated_at": "2026-09-07T06:17:34.536670+00:00"
+  "updated_at": "2026-09-09T00:44:13.465304+00:00"
 }

@@ -34,7 +34,7 @@ FDS 프로젝트의 티켓별 실행 증적, 검증 결과, 승인·인수 기�
 - [ansible01 수집 실행 절차](runbooks/ANSIBLE_SOURCE_RECEIPT.md)
 - [Stage A 실제 인수 체크리스트](handoffs/P1-LB-01_STAGE_A_RECEIVER_CHECKLIST.md)
 
-ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DNS 원본 수신 검증은 완료됐다. P1-ANS Manifest 2개 불일치는 2026-09-08 사용자 제출 종결 증적과 대조해 원인·파일명 Alias·신규 수신회차 Manifest를 등록했으며 독립 검토 대기다. CR은 변경 노드 Rollback 원본 5개를 추가 수령했고 Refinalization 원본만 미수신이다. 본 증적 PR의 최종 승인·병합과 Stage A 실제 인수는 별도 Gate다.
+ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DNS 원본 수신 검증은 완료됐다. P1-ANS Manifest 2개 불일치는 2026-09-08 사용자 제출 종결 증적과 대조해 원인·파일명 Alias·신규 수신회차 Manifest를 등록했으며 독립 검토 대기다. CR은 2026-09-09 Refinalization 원본까지 수령하여 기존 17개·Rollback 5개·Refinalization 1개, 총 23개의 수신·보완 검증을 완료했다. 독립 편입 검토는 대기다. 본 증적 PR의 최종 승인·병합과 Stage A 실제 인수는 별도 Gate다.
 
 - [2026-09-07 Ansible 원본 수신 검토](receipts/ansible01/20260907T063705Z/FDS_Ansible_Evidence_Receipt_Review_v1.0.md)
 
@@ -55,3 +55,8 @@ ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DN
 ## 2026-09-08 FUP-01 Rollback 원본 수신
 
 [보완 수신 검토](receipts/ansible01/20260908T115139Z/FDS_FUP01_Rollback_Receipt_Review_v1.0.md): 외부 sidecar 일치·내부 6/6·변경 노드 5/5 수신. JSON은 9월 4일 변경 전 상태이며 현재 DNS나 rollback 재시험 결과가 아니다. 보관 권한은 수집 보고 기반으로 표시한다. FUP-01 전체는 Refinalization 원본 미수신으로 대기하며 기존 Done·FUP-02·독립 검토·병합 상태는 유지한다.
+
+
+## 2026-09-09 FUP-01 원본 보완 완료
+
+[Refinalization 수신 검토](receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md) · [원본](evidence/CR-P1-ANS-01-01/received-20260909T003726Z/evidence_refinalization.20260904T183221+0900.txt). 승인 당시 Hash 일치, 내부 Manifest 2/2·기존 참조 4/4·Commit/Tree 대조 완료. FUP-01은 원본 보완 완료·독립 편입 검토 대기다. 위 날짜별 미수신 기록은 당시 이력으로 보존한다.

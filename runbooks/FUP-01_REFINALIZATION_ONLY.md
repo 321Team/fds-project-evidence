@@ -1,6 +1,10 @@
-# FUP-01 Refinalization 원본 전용 수집 v1.0
+# FUP-01 Refinalization 원본 전용 수집 v1.1
 
-기준일: 2026-09-08. 상태: **도구 준비·로컬 검증 완료 / 서버 실행·Refinalization 원본 수신 대기**.
+기준일: 2026-09-09. 상태: **원본 수신·Hash 검증 완료 / 독립 편입 검토 대기**.
+
+[수신 검토](../receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md) · [수신 원본](../evidence/CR-P1-ANS-01-01/received-20260909T003726Z/evidence_refinalization.20260904T183221+0900.txt). 9월 4일 기록 `/home/server01_ansible/.local/state/cr-p1-ans-01-01-repository/evidence_refinalization.20260904T183221+0900.txt`를 명시 파일로 지정해 수집했고 기대 Hash가 일치했다. FUP-01 원본 보완이 완료됐으므로 추가 수집은 필요 없다.
+
+아래 1~6절은 2026-09-08 도구 배포 당시의 절차·판정 이력이다. 당시의 원본 대기·경로 미확인 설명은 위 9월 9일 수신 결과로 보완됐다. 수집기 코드는 변경하지 않았다.
 
 ## 1. 이번 후속 범위
 

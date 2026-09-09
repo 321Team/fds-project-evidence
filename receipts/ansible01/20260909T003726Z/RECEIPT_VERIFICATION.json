@@ -1,0 +1,117 @@
+{
+  "version": "1.0",
+  "reviewed_at_utc": "2026-09-09T00:44:13.465304+00:00",
+  "review_type": "CODEX_RECEIPT_TECHNICAL_REVIEW",
+  "result": "PASS",
+  "fup_01_status": "COLLECTED_VERIFIED_REVIEW_PENDING",
+  "base_evidence_commit": "69c88e835bd5287a76534a0cd2d1277ed7106b38",
+  "archive_sha256": "6998cbbf93b20def23f235d37af70f916ea045a771b1e61716e831ef14ed6c97",
+  "external_sidecar": "MATCH",
+  "internal_manifest": [
+    {
+      "path": "SEARCH_REPORT.json",
+      "sha256": "20ae54f8c9f840f2be9ee879340f3f2c2339209292ddb1d626cab0de39ef7c41",
+      "result": "MATCH"
+    },
+    {
+      "path": "originals/refinalization-original.bin",
+      "sha256": "db7da7eae13c1b07e6b073003a23229e76f3a86f6903a66ac9a2cf522f84395d",
+      "result": "MATCH"
+    }
+  ],
+  "refinalization_original": {
+    "sha256": "db7da7eae13c1b07e6b073003a23229e76f3a86f6903a66ac9a2cf522f84395d",
+    "bytes": 1181,
+    "result": "MATCH_APPROVED_CR_RECORD",
+    "repository_path": "evidence/CR-P1-ANS-01-01/received-20260909T003726Z/evidence_refinalization.20260904T183221+0900.txt"
+  },
+  "approved_cr_commit": "507d8882a04f53640b07251bcc234b7d6ee81c09",
+  "validated_commit_tree": {
+    "commit": "12412cd6beae7039de74be16258b8fb20c5d64b2",
+    "tree": "3e41df12845cc79b6f6154554e4d11ec42200508",
+    "result": "MATCH_GITHUB_GIT_OBJECT"
+  },
+  "referenced_evidence": [
+    {
+      "field": "authoritative_verify_log",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260907T063705Z/20260904T180632+0900_verify_all_nodes.txt",
+      "sha256": "18cbda0fc7d91ebf58c89c230dccabaf9ad8239305856da03067210582194e83",
+      "result": "MATCH"
+    },
+    {
+      "field": "evidence_index",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260907T063705Z/EVIDENCE_INDEX.md",
+      "sha256": "6f5568d805a5d7f43130d2fdca2ba631358f4f8be23e1f7d0799ae8243c7db1e",
+      "result": "MATCH"
+    },
+    {
+      "field": "sha256_manifest",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260907T063705Z/SHA256SUMS",
+      "sha256": "05de9ba6b22d36ef8fc67bdf3dd8c6629c3e334fbb61620a265a46acdbfd4115",
+      "result": "MATCH"
+    },
+    {
+      "field": "latest_integrity_log",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260907T063705Z/20260904T182705+0900_integrity_check.txt",
+      "sha256": "35a320650312e343764a5d7eecfe70c42bafcf43c8043a422d920030a20dee14",
+      "result": "MATCH"
+    }
+  ],
+  "verify_log_count": {
+    "recorded": 2,
+    "repository_count": 2
+  },
+  "rollback_existing_receipts": [
+    {
+      "host": "k8s-control02",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260908T115139Z/rollback-state/k8s-control02/original-resolver.json",
+      "sha256": "1e68eefd617f707263df8628182231af395e5091d249c223d97e2e60df90cf8e",
+      "result": "MATCH_EXISTING_RECEIPT"
+    },
+    {
+      "host": "k8s-control03",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260908T115139Z/rollback-state/k8s-control03/original-resolver.json",
+      "sha256": "f748e1a930e8d388f983d31bc46e98b10e2d2e3adc33527f93b3994b386f5fc1",
+      "result": "MATCH_EXISTING_RECEIPT"
+    },
+    {
+      "host": "k8s-worker01",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260908T115139Z/rollback-state/k8s-worker01/original-resolver.json",
+      "sha256": "518538adafa51fbd3cd99a5c85a74ff1199cd43c094b1625488962942e8bbf26",
+      "result": "MATCH_EXISTING_RECEIPT"
+    },
+    {
+      "host": "k8s-worker02",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260908T115139Z/rollback-state/k8s-worker02/original-resolver.json",
+      "sha256": "8c2b0fefdcd8a7070ff5d8128c7c0ed22dfcb838431eb88385546c589e44cc70",
+      "result": "MATCH_EXISTING_RECEIPT"
+    },
+    {
+      "host": "k8s-worker03",
+      "repository_path": "evidence/CR-P1-ANS-01-01/received-20260908T115139Z/rollback-state/k8s-worker03/original-resolver.json",
+      "sha256": "438db046335547b44b510240ae15d49d9c4ba645827c1628dbb96da0fa23f751",
+      "result": "MATCH_EXISTING_RECEIPT"
+    }
+  ],
+  "source_metadata": {
+    "before_after": "MATCH_IN_COLLECTOR_REPORT",
+    "mode": "0600",
+    "uid": 1000,
+    "gid": 1000,
+    "independent_remote_measurement": false,
+    "atime_preservation": "NOT_CLAIMED"
+  },
+  "secret_scan": {
+    "result": "NO_MATCH_IN_SUBMITTED_MEMBERS",
+    "scope": "KNOWN_PRIVATE_KEY_TOKEN_CREDENTIAL_PATTERNS_AND_TEXT_REVIEW",
+    "exhaustive": false
+  },
+  "prior_not_found_explanation": "HOME_DIRECTORY_WALK_EXCLUDED_DOT_LOCAL; EXPLICIT_FILE_INPUT_READS_EXACT_PATH",
+  "collector_report_note": "excluded 문구는 일반 재귀 검색의 설명이다. 명시한 파일은 root.is_file 분기로 직접 검사되어 .local 아래 파일도 수집한다.",
+  "independent_repository_review": "PENDING",
+  "merge": "NOT_PERFORMED",
+  "historical_cr_status": "Done",
+  "historical_cr_closed_date": "2026-09-07",
+  "runtime_reexecution": "NOT_PERFORMED",
+  "other_gates": "UNCHANGED"
+}
