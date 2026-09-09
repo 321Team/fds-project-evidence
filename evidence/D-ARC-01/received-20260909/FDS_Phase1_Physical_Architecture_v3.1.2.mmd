@@ -1,0 +1,56 @@
+%% FDS Phase 1 Physical Architecture
+%% Release: v3.1.2
+%% Freeze Ticket: D-ARC-01
+%% Freeze Date: 2026-08-26
+%% Status: APPROVED / DONE
+flowchart TB
+    SPEC["Physical Host Baseline × 8<br/>Intel Core i5-13400 · RAM 64GB · SSD 932GB<br/>Windows + VMware Workstation Pro"]
+    LAN["Physical LAN / VMnet0<br/>10.1.93.0/24<br/>GW 10.1.93.254 · Project Unmanaged"]
+    VMNET1["VMnet1 Host-only<br/>10.250.10.0/24 · DHCP Off"]
+    VMNET8["VMnet8 NAT<br/>192.168.10.0/24"]
+
+    subgraph S01["server01 · Windows 10.1.93.23"]
+        HAD["VMnet1 Host Adapter<br/>10.250.10.254 · No default route"]
+        MGW["mgmt-gw01<br/>ens160 .58 / ens224 10.250.10.1"]
+        ANS["ansible01<br/>10.250.10.10"]
+        RUN["cicd-runner01<br/>10.250.10.20"]
+        MON["monitor01<br/>10.250.10.30"]
+        LB["k8s-api-lb01<br/>10.1.93.109"]
+        DNS1["dns01 · P1<br/>10.1.93.52"]
+    end
+
+    S02["server02 · Windows .30<br/>k8s-control01 .102"]
+    S03["server03 · Windows .31<br/>k8s-control02 .103"]
+    S04["server04 · Windows .22<br/>k8s-control03 .104"]
+    S05["server05 · Windows .26<br/>k8s-worker01 .105"]
+    S06["server06 · Windows .24<br/>k8s-worker02 .107"]
+    S07["server07 · Windows .25<br/>k8s-worker03 .108"]
+    S08["server08 · Windows .29<br/>edge .50 / harbor .54 / db .55<br/>dns02 .53 P1 / vpn .51 Phase 2"]
+
+    SPEC --- LAN
+
+    LAN --- MGW
+    LAN --- LB
+    LAN --- DNS1
+    LAN --- S02
+    LAN --- S03
+    LAN --- S04
+    LAN --- S05
+    LAN --- S06
+    LAN --- S07
+    LAN --- S08
+
+    VMNET1 --- HAD
+    VMNET1 --- MGW
+    VMNET1 --- ANS
+    VMNET1 --- RUN
+    VMNET1 --- MON
+
+    ISOLATE["Isolation Rule<br/>No FDS workload VM NIC attachment"]
+    VMNET8 -.-> ISOLATE
+
+    RET["All Physical FDS VMs<br/>10.250.10.0/24 via 10.1.93.58<br/>Internal source NAT prohibited"]
+    RET --- LAN
+
+    IPAM["Reserved .56 / .57 / .59<br/>DO_NOT_USE .100 / .101 / .106"]
+    IPAM --- LAN

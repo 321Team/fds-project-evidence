@@ -1,0 +1,72 @@
+%% FDS Phase 1 Logical Architecture
+%% Release: v3.1.2
+%% Freeze Ticket: D-ARC-01
+%% Freeze Date: 2026-08-26
+%% Status: APPROVED / DONE
+flowchart TB
+    subgraph EXT["External Systems"]
+        CLIENT["Client"]
+        GIT["GitHub / GitHub Actions"]
+        UPDNS["Upstream DNS<br/>8.8.8.8"]
+    end
+
+    subgraph MGMT["Management Network · VMnet1 · 10.250.10.0/24"]
+        HOST["server01 Host Adapter<br/>10.250.10.254"]
+        ANS["ansible01<br/>10.250.10.10"]
+        RUN["cicd-runner01<br/>10.250.10.20"]
+        MON["monitor01 / Prometheus<br/>10.250.10.30"]
+        MGW_M["mgmt-gw01 ens224<br/>10.250.10.1"]
+    end
+
+    subgraph PHY["Physical FDS Network · VMnet0 · 10.1.93.0/24"]
+        MGW_P["mgmt-gw01 ens160<br/>10.1.93.58"]
+        LB["k8s-api-lb01<br/>10.1.93.109:6443"]
+        EDGE["edge01<br/>10.1.93.50"]
+        HAR["harbor01<br/>10.1.93.54:443"]
+        DB["db01 / PostgreSQL<br/>10.1.93.55:5432"]
+        DNS["dns01 .52 / dns02 .53<br/>fds.internal · P1"]
+
+        subgraph K8S["Kubernetes Cluster · 3 Control Plane + 3 Worker"]
+            CP["Control Plane<br/>.102 / .103 / .104"]
+            WK["Worker<br/>.105 / .107 / .108"]
+            TX["transaction-api<br/>Service 80 → target 8000"]
+            FDS["fds-engine<br/>TCP 8001"]
+            SEC["Business Namespace<br/>Default Deny · Required Allowlist<br/>RBAC · non-root · seccomp"]
+        end
+    end
+
+    HOST --- MGW_M
+    MGW_M --- MGW_P
+
+    ANS -->|"SSH 22 · Source .10"| MGW_M
+    RUN -->|"GitHub / Harbor / API · Source .20"| MGW_M
+    MON -->|"Metrics · Source .30"| MGW_M
+    MGW_P -->|"Source preserved"| CP
+    MGW_P -->|"Source preserved"| WK
+    MGW_P -->|"Runner deploy 6443 · Source .20"| LB
+    MGW_P -->|"Runner image push 443 · Source .20"| HAR
+    MGW_P -->|"Source preserved"| DNS
+
+    LB -->|"6443"| CP
+    WK -->|"Image pull 443"| HAR
+
+    CLIENT -->|"HTTP/HTTPS"| EDGE
+    EDGE -->|"Service 80 / target 8000"| TX
+    TX -->|"Internal REST 8001"| FDS
+    TX -->|"Transaction + FDS result 5432"| DB
+    MON -->|"App metrics 8000 · routed by MGW"| TX
+    MON -->|"App metrics 8001 · routed by MGW"| FDS
+    MON -->|"Node 9100 / Kubelet 10250 · routed by MGW"| WK
+
+    ANS -->|"Resolver query UDP/TCP 53 · P1"| DNS
+    DNS -->|"Forward UDP/TCP 53 via 10.1.93.254"| UPDNS
+    MGW_P -->|"Conditional NAT · external destinations only"| GIT
+
+    SEC --- TX
+    SEC --- FDS
+
+    RET["All Physical FDS VMs<br/>Return route 10.250.10.0/24 via 10.1.93.58"]
+    RET -.-> MGW_P
+
+    NOTE["Internal Source NAT prohibited<br/>.100 / .101 / .106 DO_NOT_USE<br/>VMnet8 192.168.10.0/24 attachment prohibited"]
+    NOTE --- MGW_P
