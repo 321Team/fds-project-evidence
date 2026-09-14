@@ -1,0 +1,441 @@
+{
+  "schema_version": 1,
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "scope": "six LOCAL aliases; no operational SSH",
+  "status": "PASS",
+  "same_baseline_results": true,
+  "runs": [
+    {
+      "engine": "2.16.19",
+      "case": "baseline",
+      "passed": true,
+      "status": "PASS",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_complete",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_node",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_node",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_node",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_marker",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_result",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-sequence_gap",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_code",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_engine",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_stage",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-truncated",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_key",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-whitespace",
+      "passed": true,
+      "status": "PASS",
+      "origin": "mutated callback fixture",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "wording",
+      "passed": true,
+      "status": "PASS",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "serial",
+      "passed": true,
+      "status": "PASS",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expected_negative",
+      "passed": true,
+      "status": "EXPECTED_FAILURE_CONFIRMED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expected_expression",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "failure",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 2,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "ignored",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "rescued",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expression",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 2,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "hidden_rc",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "changed",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "transport_error",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 4,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "limited_nodes",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "timeout",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 124,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "baseline",
+      "passed": true,
+      "status": "PASS",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_complete",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_node",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_node",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_node",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_marker",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_result",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-sequence_gap",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_code",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_engine",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_stage",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-truncated",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_key",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-whitespace",
+      "passed": true,
+      "status": "PASS",
+      "origin": "mutated callback fixture",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "wording",
+      "passed": true,
+      "status": "PASS",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "serial",
+      "passed": true,
+      "status": "PASS",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expected_negative",
+      "passed": true,
+      "status": "EXPECTED_FAILURE_CONFIRMED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expected_expression",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "failure",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 2,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "ignored",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "rescued",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expression",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 2,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "hidden_rc",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "changed",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "transport_error",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 4,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "limited_nodes",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 0,
+      "origin": "real CLI on local fixture aliases"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "timeout",
+      "passed": true,
+      "status": "REVIEW_REQUIRED",
+      "cli_rc": 124,
+      "origin": "real CLI on local fixture aliases"
+    }
+  ]
+}

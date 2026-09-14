@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run_id": "f0d4ff47-d913-47ae-88b2-378674db3a43",
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "engine": "2.16.19",
+  "stage_id": "2.16.19_expected_expression",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": false,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "REVIEW_REQUIRED",
+  "expected_negative": true,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-2",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-3",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-4",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-5",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-6",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [
+    "Expression evaluation error"
+  ],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-7-rerun-vTSSk1w5/evidence/matrix/2.16.19-inventory.json",
+      "-c",
+      "local",
+      "/tmp/issue-7-rerun-vTSSk1w5/evidence/matrix/2.16.19-expected_expression.json"
+    ],
+    "cwd": "/tmp/issue-7-rerun-vTSSk1w5/repo",
+    "artifacts": {
+      "context.json": "a50c5221a34ccd7f42a79af901497853f292be4143bb88f3226e96cd2d9391cc",
+      "events.jsonl": "790878e5abbc418e00b015d766fb0fe8a945e66f264f652f626aab090385e904",
+      "stdout.log": "c06c5970e064cd3ee278e359b1d08fa6b8efa53eda1453fa09e078b803d8cbad",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
