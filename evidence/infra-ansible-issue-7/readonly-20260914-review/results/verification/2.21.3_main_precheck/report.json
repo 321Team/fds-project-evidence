@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run_id": "9425e946-a8eb-4d7c-ae91-35b2437729f7",
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "engine": "2.21.3",
+  "stage_id": "2.21.3_main_precheck",
+  "expected_nodes": [
+    "k8s-control01",
+    "k8s-control02",
+    "k8s-control03",
+    "k8s-worker01",
+    "k8s-worker02",
+    "k8s-worker03"
+  ],
+  "completed": true,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "PASS",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "k8s-control01",
+      "ok": 16,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-control02",
+      "ok": 16,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-control03",
+      "ok": 16,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-worker01",
+      "ok": 16,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-worker02",
+      "ok": 16,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-worker03",
+      "ok": 16,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-7-readonly-ilYDDmpN/repo/inventory/hosts.yml",
+      "--private-key",
+      "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+      "-e",
+      "@/tmp/issue-7-readonly-ilYDDmpN/evidence/verification/2.21.3_generated/execution-vars.json",
+      "/tmp/issue-7-readonly-ilYDDmpN/evidence/verification/2.21.3_generated/main_precheck-scope.json"
+    ],
+    "cwd": "/tmp/issue-7-readonly-ilYDDmpN/repo",
+    "artifacts": {
+      "context.json": "035d2f79438a11253026b30757da7c9a6a6413cf8498420c0b39e3e4d68a1c7b",
+      "events.jsonl": "e40d36e31f796f2a5cbb009b1caafc0f6a70a56c744412effb85cefbe84bda75",
+      "stdout.log": "33e3118518929b4e637a478d87a7088cb272b59244ae3738e09bf5819085013c",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

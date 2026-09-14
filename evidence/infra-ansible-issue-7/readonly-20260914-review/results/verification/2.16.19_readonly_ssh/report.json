@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "run_id": "9425e946-a8eb-4d7c-ae91-35b2437729f7",
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "engine": "2.16.19",
+  "stage_id": "2.16.19_readonly_ssh",
+  "expected_nodes": [
+    "k8s-control01",
+    "k8s-control02",
+    "k8s-control03",
+    "k8s-worker01",
+    "k8s-worker02",
+    "k8s-worker03"
+  ],
+  "completed": false,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "REVIEW_REQUIRED",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "k8s-control01",
+      "ok": 14,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "k8s-control02",
+      "ok": 14,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "k8s-control03",
+      "ok": 14,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "k8s-worker01",
+      "ok": 14,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "k8s-worker02",
+      "ok": 14,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "k8s-worker03",
+      "ok": 14,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [
+    "Invalid SSH proof"
+  ],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-7-readonly-ilYDDmpN/repo/inventory/hosts.yml",
+      "--private-key",
+      "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+      "-e",
+      "@/tmp/issue-7-readonly-ilYDDmpN/evidence/verification/2.16.19_generated/execution-vars.json",
+      "/tmp/issue-7-readonly-ilYDDmpN/evidence/verification/2.16.19_generated/readonly_ssh-scope.json"
+    ],
+    "cwd": "/tmp/issue-7-readonly-ilYDDmpN/repo",
+    "artifacts": {
+      "context.json": "d7e5ae6d7e36c260d61996e9b00cfb7afa1db7c373e1623af12b27d314d23607",
+      "events.jsonl": "107649439b8d7180982fe56b94b6724995e073ddd59b9af3d214c672df3b85f5",
+      "stdout.log": "d7e96657a96deb051c1d2a4f78983f6684db986a353df48620a9f9792528623b",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
