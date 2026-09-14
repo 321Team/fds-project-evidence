@@ -1,0 +1,18 @@
+test_all_independent_expectations (test_ssh_guard_harness.HarnessTests.test_all_independent_expectations) ... ok
+test_cli_contract_and_stale_results (test_ssh_guard_harness.HarnessTests.test_cli_contract_and_stale_results) ... ok
+test_engine221_expected_rejection_with_exception_diagnostics (test_ssh_guard_harness.HarnessTests.test_engine221_expected_rejection_with_exception_diagnostics) ... ok
+test_engine_mismatch_stops_before_playbook (test_ssh_guard_harness.HarnessTests.test_engine_mismatch_stops_before_playbook) ... ok
+test_exception_diagnostics_do_not_hide_missing_or_wrong_grep_results (test_ssh_guard_harness.HarnessTests.test_exception_diagnostics_do_not_hide_missing_or_wrong_grep_results) ... ok
+test_expression_errors_cannot_pass_as_expected_rejection (test_ssh_guard_harness.HarnessTests.test_expression_errors_cannot_pass_as_expected_rejection) ... ok
+test_fixture_export_and_source_preservation (test_ssh_guard_harness.HarnessTests.test_fixture_export_and_source_preservation) ... ok
+test_missing_fixture_collision_rejected (test_ssh_guard_harness.HarnessTests.test_missing_fixture_collision_rejected) ... ok
+test_transport_and_missing_results_fail_closed (test_ssh_guard_harness.HarnessTests.test_transport_and_missing_results_fail_closed) ... ok
+test_unexpected_command_shape_rejected (test_ssh_guard_harness.HarnessTests.test_unexpected_command_shape_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.092s
+
+OK
+{"engine": "2.16.19", "total": 14, "outcomes": {"PASS": 14, "FAIL": 0, "ERROR": 0}, "status": "PASS"}
+{"engine": null, "total": 14, "outcomes": {"PASS": 0, "FAIL": 0, "ERROR": 14}, "status": "FAIL"}
+{"engine": "2.16.19", "total": 14, "outcomes": {"PASS": 0, "FAIL": 0, "ERROR": 14}, "status": "FAIL"}

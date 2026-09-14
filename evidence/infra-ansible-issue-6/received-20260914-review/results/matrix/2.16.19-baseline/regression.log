@@ -1,0 +1,190 @@
+
+PLAY [SSH guard localhost regression] ******************************************
+
+TASK [Execute source guard: empty: Count P1 managed SSH keys] ******************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/empty"], "delta": "0:00:00.002153", "end": "2026-09-14 12:39:49.765803", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-14 12:39:49.763650", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: empty: 0] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: empty: Verify restricted P1 managed SSH key] *******
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/empty"], "delta": "0:00:00.002307", "end": "2026-09-14 12:39:50.296815", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-14 12:39:50.294508", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: empty: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: one_plain: Count P1 managed SSH keys] **************
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_plain: 0] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: one_plain: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/one_plain"], "delta": "0:00:00.002231", "end": "2026-09-14 12:39:51.198255", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-14 12:39:51.196024", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_plain: 1] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: one_restricted: Count P1 managed SSH keys] *********
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_restricted: 0] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: one_restricted: Verify restricted P1 managed SSH key] ***
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_plain: Count P1 managed SSH keys] **************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/two_plain"], "delta": "0:00:00.002219", "end": "2026-09-14 12:39:52.512505", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-14 12:39:52.510286", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_plain: 0] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_plain: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/two_plain"], "delta": "0:00:00.002246", "end": "2026-09-14 12:39:52.904858", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-14 12:39:52.902612", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_plain: 1] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_restricted: Count P1 managed SSH keys] *********
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/two_restricted"], "delta": "0:00:00.002422", "end": "2026-09-14 12:39:53.302289", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-14 12:39:53.299867", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_restricted: 0] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_restricted: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/two_restricted"], "delta": "0:00:00.002447", "end": "2026-09-14 12:39:53.714337", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-14 12:39:53.711890", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: mixed: Count P1 managed SSH keys] ******************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/mixed"], "delta": "0:00:00.002272", "end": "2026-09-14 12:39:54.113678", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-14 12:39:54.111406", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: mixed: 0] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: mixed: Verify restricted P1 managed SSH key] *******
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: mixed: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: missing: Count P1 managed SSH keys] ****************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/missing"], "delta": "0:00:00.002369", "end": "2026-09-14 12:39:54.913114", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2026-09-14 12:39:54.910745", "stderr": "grep: /tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/missing: 그런 파일이나 디렉터리가 없습니다", "stderr_lines": ["grep: /tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/missing: 그런 파일이나 디렉터리가 없습니다"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: missing: 0] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: missing: Verify restricted P1 managed SSH key] *****
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/missing"], "delta": "0:00:00.002190", "end": "2026-09-14 12:39:55.316887", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2026-09-14 12:39:55.314697", "stderr": "grep: /tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/missing: 그런 파일이나 디렉터리가 없습니다", "stderr_lines": ["grep: /tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/2.16.19-baseline/fixtures/missing: 그런 파일이나 디렉터리가 없습니다"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: missing: 1] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Require every fixture contract] ******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=43   changed=14   unreachable=0    failed=0    skipped=0    rescued=0    ignored=10  
+

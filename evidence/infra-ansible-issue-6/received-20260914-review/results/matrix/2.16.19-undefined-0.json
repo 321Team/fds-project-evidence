@@ -1,0 +1,141 @@
+{
+  "engine": "2.16.19",
+  "source": "/tmp/issue-6-rerun-dHhdsPhq/evidence/matrix/undefined-0.yml",
+  "scope": "public ansible-playbook CLI; synthetic localhost fixtures only",
+  "total": 14,
+  "results": [
+    {
+      "case": "empty",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 1,
+      "count": "0",
+      "outcome": "ERROR",
+      "error": "Missing/invalid CLI observation or expression/module error"
+    },
+    {
+      "case": "empty",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 1,
+      "count": "0",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "one_plain",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": false,
+      "rc": 0,
+      "count": "1",
+      "outcome": "ERROR",
+      "error": "Missing/invalid CLI observation or expression/module error"
+    },
+    {
+      "case": "one_plain",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 1,
+      "count": "0",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "one_restricted",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": false,
+      "rc": 0,
+      "count": "1",
+      "outcome": "ERROR",
+      "error": "Missing/invalid CLI observation or expression/module error"
+    },
+    {
+      "case": "one_restricted",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": false,
+      "rc": 0,
+      "count": "1",
+      "observed_failure": false,
+      "outcome": "PASS"
+    },
+    {
+      "case": "two_plain",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 0,
+      "count": "2",
+      "outcome": "ERROR",
+      "error": "Missing/invalid CLI observation or expression/module error"
+    },
+    {
+      "case": "two_plain",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 1,
+      "count": "0",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "two_restricted",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 0,
+      "count": "2",
+      "outcome": "ERROR",
+      "error": "Missing/invalid CLI observation or expression/module error"
+    },
+    {
+      "case": "two_restricted",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 0,
+      "count": "2",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "mixed",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 0,
+      "count": "2",
+      "outcome": "ERROR",
+      "error": "Missing/invalid CLI observation or expression/module error"
+    },
+    {
+      "case": "mixed",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": false,
+      "rc": 0,
+      "count": "1",
+      "observed_failure": false,
+      "outcome": "PASS"
+    },
+    {
+      "case": "missing",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 2,
+      "count": "",
+      "outcome": "ERROR",
+      "error": "Missing/invalid CLI observation or expression/module error"
+    },
+    {
+      "case": "missing",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 2,
+      "count": "",
+      "observed_failure": true,
+      "outcome": "PASS"
+    }
+  ],
+  "cli_rc": 2,
+  "outcomes": {
+    "PASS": 7,
+    "FAIL": 0,
+    "ERROR": 7
+  },
+  "status": "FAIL"
+}
