@@ -1,0 +1,1093 @@
+{
+  "schema_version": 1,
+  "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+  "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+  "source_verified_after_run": true,
+  "started_at": "2026-09-14T09:42:17.736322+00:00",
+  "expected_nodes": [
+    "k8s-control01",
+    "k8s-control02",
+    "k8s-control03",
+    "k8s-worker01",
+    "k8s-worker02",
+    "k8s-worker03"
+  ],
+  "expected_steps": [
+    "2.16.19_version",
+    "2.16.19_runtime",
+    "2.16.19_cli_guards",
+    "2.16.19_localhost_tasks",
+    "2.16.19_readonly_ssh",
+    "2.16.19_hardening_check",
+    "2.16.19_main_precheck",
+    "2.16.19_dns_verify",
+    "2.21.3_version",
+    "2.21.3_runtime",
+    "2.21.3_cli_guards",
+    "2.21.3_localhost_tasks",
+    "2.21.3_readonly_ssh",
+    "2.21.3_hardening_check",
+    "2.21.3_main_precheck",
+    "2.21.3_dns_verify"
+  ],
+  "completed": true,
+  "overall": "PASS_READONLY_SCOPE",
+  "operational_upgrade": "NOT_PERFORMED",
+  "scope": "fixtures and six-node read-only checks",
+  "steps": [
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.16.19",
+      "stage_id": "2.16.19_version",
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "origin": {
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+          "--version"
+        ],
+        "kind": "public CLI",
+        "artifacts": {
+          "2.16.19_version.stdout.log": "b1a7b329681f2f05cb643c38b4fc59c020e2a5a4875c3933c13952432a028496",
+          "2.16.19_version.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.16.19",
+      "stage_id": "2.16.19_runtime",
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "origin": {
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/python",
+          "-I",
+          "-c",
+          "import importlib.metadata as m,json,sys; pins=json.loads(sys.argv[1]); actual={p.split(\"==\")[0]:m.version(p.split(\"==\")[0]) for p in pins}; print(json.dumps({\"python\":sys.version,\"packages\":actual})); assert sys.version_info[:2] == (3,12); assert all(actual[p.split(\"==\")[0]]==p.split(\"==\")[1] for p in pins)",
+          "[\"ansible-core==2.16.19\", \"cffi==2.1.1\", \"cryptography==50.0.1\", \"Jinja2==3.1.6\", \"MarkupSafe==3.0.3\", \"packaging==26.3\", \"pycparser==3.0\", \"PyYAML==6.0.2\", \"resolvelib==1.0.1\"]"
+        ],
+        "kind": "public CLI",
+        "artifacts": {
+          "2.16.19_runtime.stdout.log": "4d4358c8535f729629d4b91aed2589d997a03d14afbd199f2d45647e67e00a5f",
+          "2.16.19_runtime.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.16.19",
+      "stage_id": "2.16.19_cli_guards",
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "origin": {
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/python",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/tests/test-ssh-key-guards.py",
+          "--output",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_cli_guards.json",
+          "--export-dir",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated",
+          "--ansible-playbook",
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+          "--expect-engine",
+          "2.16.19"
+        ],
+        "kind": "public CLI",
+        "artifacts": {
+          "2.16.19_cli_guards.stdout.log": "bd7c708718239b00c3326ce9dbd14410b714c85b9ca447a47854a9f215f4e18c",
+          "2.16.19_cli_guards.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.16.19",
+      "stage_id": "2.16.19_localhost_tasks",
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "origin": {
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+          "-i",
+          "localhost,",
+          "-c",
+          "local",
+          "-e",
+          "{\"ansible_python_interpreter\": \"/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/python\"}",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/regression.yml"
+        ],
+        "kind": "public CLI",
+        "artifacts": {
+          "2.16.19_localhost_tasks.stdout.log": "93b7a9105d21cdf597fdc44b8204e164f4edf2ccfb3bc16e5d9afc6f44d1fbcf",
+          "2.16.19_localhost_tasks.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.16.19",
+      "stage_id": "2.16.19_readonly_ssh",
+      "expected_nodes": [
+        "k8s-control01",
+        "k8s-control02",
+        "k8s-control03",
+        "k8s-worker01",
+        "k8s-worker02",
+        "k8s-worker03"
+      ],
+      "completed": true,
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "expected_negative": false,
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "expected_changed_per_node": [
+        0
+      ],
+      "errors": [],
+      "origin": {
+        "kind": "ansible-playbook callback",
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+          "-i",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/inventory/hosts.yml",
+          "--private-key",
+          "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+          "-e",
+          "@/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/execution-vars.json",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/readonly_ssh-scope.json"
+        ],
+        "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+        "artifacts": {
+          "context.json": "90b9dbeb9e2d62fdf1ff07716d851907088e87f9375cd542e08e4936dd48314b",
+          "events.jsonl": "596a17f1e40a9e67dc0aeaf2338fbba5f775fcfefb1e85b742bd0e35e7f1633b",
+          "stdout.log": "bba684680c607ccd1892c7b22d892bb22037461c4f5e7e69c8b24719bb769c86",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.16.19",
+      "stage_id": "2.16.19_hardening_check",
+      "expected_nodes": [
+        "k8s-control01",
+        "k8s-control02",
+        "k8s-control03",
+        "k8s-worker01",
+        "k8s-worker02",
+        "k8s-worker03"
+      ],
+      "completed": true,
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "expected_negative": false,
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "expected_changed_per_node": [
+        0,
+        1
+      ],
+      "errors": [],
+      "origin": {
+        "kind": "ansible-playbook callback",
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+          "-i",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/inventory/hosts.yml",
+          "--private-key",
+          "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+          "-e",
+          "@/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/execution-vars.json",
+          "--check",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/hardening_check-scope.json"
+        ],
+        "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+        "artifacts": {
+          "context.json": "86d258aea7d1ce9eed3eae7e261bb5582c9c256fc3cbbdeec5713cdb6e789995",
+          "events.jsonl": "b19354a1efb42eff34016aec0b4acd16954d868c4382861bb2306d040f7039bf",
+          "stdout.log": "12ba080599ea2e6beb5823d2cfaf5024e07461eab13a79fa983044f21ad19c0c",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.16.19",
+      "stage_id": "2.16.19_main_precheck",
+      "expected_nodes": [
+        "k8s-control01",
+        "k8s-control02",
+        "k8s-control03",
+        "k8s-worker01",
+        "k8s-worker02",
+        "k8s-worker03"
+      ],
+      "completed": true,
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "expected_negative": false,
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "expected_changed_per_node": [
+        0
+      ],
+      "errors": [],
+      "origin": {
+        "kind": "ansible-playbook callback",
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+          "-i",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/inventory/hosts.yml",
+          "--private-key",
+          "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+          "-e",
+          "@/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/execution-vars.json",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/main_precheck-scope.json"
+        ],
+        "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+        "artifacts": {
+          "context.json": "4a0b8064c5ece7a0fa06648a96518dafc0ad119a5ad0a50ed554ad7a6324e3aa",
+          "events.jsonl": "d6ffdac8f08c88e297b9642560a9ad45dbeac58ec3aefe67dede372b249ef408",
+          "stdout.log": "384b9ccdb196dfc178efeb4eaa3150ff7da493b770836045d447e5c7c639e288",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.16.19",
+      "stage_id": "2.16.19_dns_verify",
+      "expected_nodes": [
+        "k8s-control01",
+        "k8s-control02",
+        "k8s-control03",
+        "k8s-worker01",
+        "k8s-worker02",
+        "k8s-worker03"
+      ],
+      "completed": true,
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "expected_negative": false,
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "expected_changed_per_node": [
+        0
+      ],
+      "errors": [],
+      "origin": {
+        "kind": "ansible-playbook callback",
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+          "-i",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/inventory/hosts.yml",
+          "--private-key",
+          "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+          "-e",
+          "@/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/execution-vars.json",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.16.19_generated/dns_verify-scope.json"
+        ],
+        "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+        "artifacts": {
+          "context.json": "d01d514b5c3a0a4ac86df6de18ed347ede08eba3669299ca498366af3e828770",
+          "events.jsonl": "14103b5f28bc912c70d9ef4aefb3199d1920c18b64e339ece41ddc4e3c511beb",
+          "stdout.log": "3d3b5d16c50e80b40ff63a0c601ddf14bcfc6a1dbf4280d7ebfc9a79566d7e4f",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.21.3",
+      "stage_id": "2.21.3_version",
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "origin": {
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+          "--version"
+        ],
+        "kind": "public CLI",
+        "artifacts": {
+          "2.21.3_version.stdout.log": "8acc1bebb17dec73e22a0d25eb6743ae09134e644420f6b3c654aa9ba6b803e3",
+          "2.21.3_version.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.21.3",
+      "stage_id": "2.21.3_runtime",
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "origin": {
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/python",
+          "-I",
+          "-c",
+          "import importlib.metadata as m,json,sys; pins=json.loads(sys.argv[1]); actual={p.split(\"==\")[0]:m.version(p.split(\"==\")[0]) for p in pins}; print(json.dumps({\"python\":sys.version,\"packages\":actual})); assert sys.version_info[:2] == (3,12); assert all(actual[p.split(\"==\")[0]]==p.split(\"==\")[1] for p in pins)",
+          "[\"ansible-core==2.21.3\", \"cffi==2.1.1\", \"cryptography==50.0.1\", \"Jinja2==3.1.6\", \"MarkupSafe==3.0.3\", \"packaging==26.3\", \"pycparser==3.0\", \"PyYAML==6.0.2\", \"resolvelib==1.2.1\"]"
+        ],
+        "kind": "public CLI",
+        "artifacts": {
+          "2.21.3_runtime.stdout.log": "6613ec6e7ddf40d1a590062c7b979a38cfafd1b6a1d2cc18de4651c571145ec6",
+          "2.21.3_runtime.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.21.3",
+      "stage_id": "2.21.3_cli_guards",
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "origin": {
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/python",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/tests/test-ssh-key-guards.py",
+          "--output",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_cli_guards.json",
+          "--export-dir",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated",
+          "--ansible-playbook",
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+          "--expect-engine",
+          "2.21.3"
+        ],
+        "kind": "public CLI",
+        "artifacts": {
+          "2.21.3_cli_guards.stdout.log": "eab91c4b19f8367564960830662b1bdca4ce2c87e30125d6198d86c07feeec4c",
+          "2.21.3_cli_guards.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.21.3",
+      "stage_id": "2.21.3_localhost_tasks",
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "origin": {
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+          "-i",
+          "localhost,",
+          "-c",
+          "local",
+          "-e",
+          "{\"ansible_python_interpreter\": \"/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/python\"}",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/regression.yml"
+        ],
+        "kind": "public CLI",
+        "artifacts": {
+          "2.21.3_localhost_tasks.stdout.log": "b812b7fd9d5a1a06dc10fd171e5213e001e2af2f19081f3baed04bf5d0880ede",
+          "2.21.3_localhost_tasks.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.21.3",
+      "stage_id": "2.21.3_readonly_ssh",
+      "expected_nodes": [
+        "k8s-control01",
+        "k8s-control02",
+        "k8s-control03",
+        "k8s-worker01",
+        "k8s-worker02",
+        "k8s-worker03"
+      ],
+      "completed": true,
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "expected_negative": false,
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "expected_changed_per_node": [
+        0
+      ],
+      "errors": [],
+      "origin": {
+        "kind": "ansible-playbook callback",
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+          "-i",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/inventory/hosts.yml",
+          "--private-key",
+          "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+          "-e",
+          "@/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/execution-vars.json",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/readonly_ssh-scope.json"
+        ],
+        "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+        "artifacts": {
+          "context.json": "92b384bc29a19f2965a3e629dba558bbde4a73855794193958134e1532bfaae7",
+          "events.jsonl": "faf7c98ac3e1c86a5be27b3df1d3dada765a39cdd9ee9370d2b0724b7833c6e7",
+          "stdout.log": "44531a400593e36ea8307087a4ba0a6e487312119820816ae698d0137f3ecaf1",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.21.3",
+      "stage_id": "2.21.3_hardening_check",
+      "expected_nodes": [
+        "k8s-control01",
+        "k8s-control02",
+        "k8s-control03",
+        "k8s-worker01",
+        "k8s-worker02",
+        "k8s-worker03"
+      ],
+      "completed": true,
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "expected_negative": false,
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "expected_changed_per_node": [
+        0,
+        1
+      ],
+      "errors": [],
+      "origin": {
+        "kind": "ansible-playbook callback",
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+          "-i",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/inventory/hosts.yml",
+          "--private-key",
+          "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+          "-e",
+          "@/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/execution-vars.json",
+          "--check",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/hardening_check-scope.json"
+        ],
+        "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+        "artifacts": {
+          "context.json": "eab93627ebbb558cb6a09c0f4dacc91f8f33f93d86aa35577c481b0f76eed8e8",
+          "events.jsonl": "91f072a9aef367cdce3870afe55ea66de3805f5b0f175a2021c7ec23ce8eddf9",
+          "stdout.log": "12ba080599ea2e6beb5823d2cfaf5024e07461eab13a79fa983044f21ad19c0c",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.21.3",
+      "stage_id": "2.21.3_main_precheck",
+      "expected_nodes": [
+        "k8s-control01",
+        "k8s-control02",
+        "k8s-control03",
+        "k8s-worker01",
+        "k8s-worker02",
+        "k8s-worker03"
+      ],
+      "completed": true,
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "expected_negative": false,
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "expected_changed_per_node": [
+        0
+      ],
+      "errors": [],
+      "origin": {
+        "kind": "ansible-playbook callback",
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+          "-i",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/inventory/hosts.yml",
+          "--private-key",
+          "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+          "-e",
+          "@/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/execution-vars.json",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/main_precheck-scope.json"
+        ],
+        "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+        "artifacts": {
+          "context.json": "f19eb9b42a88647830ac9add76d1afebef91121feac8317b1552fe0ee7c4b644",
+          "events.jsonl": "b038de738369c772a9abc87cebb699bda671077355549929c1e58b2028d46532",
+          "stdout.log": "8e460591c90217e82099cce09ad31ccc3719c76ff6125356223f9078f0f661ea",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "schema_version": 1,
+      "run_id": "fdf359bd-9671-4577-8e22-5f74e3bb0bf4",
+      "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "engine": "2.21.3",
+      "stage_id": "2.21.3_dns_verify",
+      "expected_nodes": [
+        "k8s-control01",
+        "k8s-control02",
+        "k8s-control03",
+        "k8s-worker01",
+        "k8s-worker02",
+        "k8s-worker03"
+      ],
+      "completed": true,
+      "cli_rc": 0,
+      "timed_out": false,
+      "status": "PASS",
+      "expected_negative": false,
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "expected_changed_per_node": [
+        0
+      ],
+      "errors": [],
+      "origin": {
+        "kind": "ansible-playbook callback",
+        "command": [
+          "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+          "-i",
+          "/tmp/issue-7-combined-zzJn0Bb1/repo/inventory/hosts.yml",
+          "--private-key",
+          "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+          "-e",
+          "@/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/execution-vars.json",
+          "/tmp/issue-7-combined-zzJn0Bb1/evidence/verification/2.21.3_generated/dns_verify-scope.json"
+        ],
+        "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+        "artifacts": {
+          "context.json": "ed23a502ab40e49b0f425b3bb8a5ae5cfc3b01234bc2fa05e084c69e85b436f6",
+          "events.jsonl": "affddef2914450a66d842d7aa610148fa23d5f73da86fd6a11d5c8466926f304",
+          "stdout.log": "77073a0fcefb5723fd2163924b5bca273827bcb057aa2fbf7ed2129c9c8afb2a",
+          "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}
