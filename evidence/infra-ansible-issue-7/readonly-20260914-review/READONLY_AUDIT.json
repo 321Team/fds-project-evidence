@@ -1,0 +1,451 @@
+{
+  "kind": "receipt review; no new Ansible execution",
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "archive_sha256": "5e26f8f10968d1fd87615e5e29062eca72e1af9ea83eeaa37f8f39eff7ad8789",
+  "archive_files": 115,
+  "manifest_verified_files": 114,
+  "origin_hashes_checked": 36,
+  "source_root": "/tmp/issue-7-readonly-ilYDDmpN/repo",
+  "expected_stages": 16,
+  "executed_stages": 13,
+  "passing_stages": 12,
+  "overall": "REVIEW_REQUIRED",
+  "engine216": "4 stages PASS; SSH CLI rc 0, strict proof type rejected; 3 stages NOT RUN",
+  "engine221": "8/8 stages PASS on all six nodes",
+  "all_observed_remote_changed": 0,
+  "observed_ssh_files_unchanged": "6/6 each engine",
+  "original_files_unchanged": true,
+  "limited_secret_pattern_findings": [],
+  "operational_upgrade": "NOT_PERFORMED",
+  "failure_cause": "2.16.19 renders nested scalar count templates as strings; expected integer proof contract",
+  "remote_stages": [
+    {
+      "stage_id": "2.16.19_readonly_ssh",
+      "status": "REVIEW_REQUIRED",
+      "errors": [
+        "Invalid SSH proof"
+      ],
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "ssh_proofs": [
+        {
+          "host": "k8s-control01",
+          "effective_user": "root",
+          "managed_key_count": "1",
+          "restricted_key_count": "1",
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-control02",
+          "effective_user": "root",
+          "managed_key_count": "1",
+          "restricted_key_count": "1",
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-control03",
+          "effective_user": "root",
+          "managed_key_count": "1",
+          "restricted_key_count": "1",
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-worker01",
+          "effective_user": "root",
+          "managed_key_count": "1",
+          "restricted_key_count": "1",
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-worker02",
+          "effective_user": "root",
+          "managed_key_count": "1",
+          "restricted_key_count": "1",
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-worker03",
+          "effective_user": "root",
+          "managed_key_count": "1",
+          "restricted_key_count": "1",
+          "authorized_keys_unchanged": true
+        }
+      ]
+    },
+    {
+      "stage_id": "2.21.3_readonly_ssh",
+      "status": "PASS",
+      "errors": [],
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 14,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "ssh_proofs": [
+        {
+          "host": "k8s-control01",
+          "effective_user": "root",
+          "managed_key_count": 1,
+          "restricted_key_count": 1,
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-control02",
+          "effective_user": "root",
+          "managed_key_count": 1,
+          "restricted_key_count": 1,
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-control03",
+          "effective_user": "root",
+          "managed_key_count": 1,
+          "restricted_key_count": 1,
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-worker01",
+          "effective_user": "root",
+          "managed_key_count": 1,
+          "restricted_key_count": 1,
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-worker02",
+          "effective_user": "root",
+          "managed_key_count": 1,
+          "restricted_key_count": 1,
+          "authorized_keys_unchanged": true
+        },
+        {
+          "host": "k8s-worker03",
+          "effective_user": "root",
+          "managed_key_count": 1,
+          "restricted_key_count": 1,
+          "authorized_keys_unchanged": true
+        }
+      ]
+    },
+    {
+      "stage_id": "2.21.3_hardening_check",
+      "status": "PASS",
+      "errors": [],
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 4,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "ssh_proofs": []
+    },
+    {
+      "stage_id": "2.21.3_main_precheck",
+      "status": "PASS",
+      "errors": [],
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 16,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "ssh_proofs": []
+    },
+    {
+      "stage_id": "2.21.3_dns_verify",
+      "status": "PASS",
+      "errors": [],
+      "nodes": [
+        {
+          "host": "k8s-control01",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control02",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-control03",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker01",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker02",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        },
+        {
+          "host": "k8s-worker03",
+          "ok": 33,
+          "changed": 0,
+          "unreachable": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0,
+          "failed": 0
+        }
+      ],
+      "ssh_proofs": []
+    }
+  ]
+}

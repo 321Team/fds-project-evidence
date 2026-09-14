@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "439b90be-8642-4ce5-9026-5b5556065c75",
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "engine": "2.21.3",
+  "stage_id": "2.21.3_baseline",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": true,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "PASS",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-2",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-3",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-4",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-5",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-6",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-7-rerun-vTSSk1w5/evidence/matrix/2.21.3-inventory.json",
+      "-c",
+      "local",
+      "/tmp/issue-7-rerun-vTSSk1w5/evidence/matrix/2.21.3-baseline.json"
+    ],
+    "cwd": "/tmp/issue-7-rerun-vTSSk1w5/repo",
+    "artifacts": {
+      "context.json": "b4935f3bf6b167a081707076a37e7cef5fcbd7a9628ae8b2df50b8d78fef98aa",
+      "events.jsonl": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d",
+      "stdout.log": "c314d169de38b62fda79c9cadb6f535e6e0f81025ad17203c6de1546661f99f9",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

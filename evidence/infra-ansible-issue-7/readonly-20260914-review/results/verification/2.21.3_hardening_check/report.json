@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "run_id": "9425e946-a8eb-4d7c-ae91-35b2437729f7",
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "engine": "2.21.3",
+  "stage_id": "2.21.3_hardening_check",
+  "expected_nodes": [
+    "k8s-control01",
+    "k8s-control02",
+    "k8s-control03",
+    "k8s-worker01",
+    "k8s-worker02",
+    "k8s-worker03"
+  ],
+  "completed": true,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "PASS",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "k8s-control01",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-control02",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-control03",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-worker01",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-worker02",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "k8s-worker03",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0,
+    1
+  ],
+  "errors": [],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-7-readonly-ilYDDmpN/repo/inventory/hosts.yml",
+      "--private-key",
+      "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+      "-e",
+      "@/tmp/issue-7-readonly-ilYDDmpN/evidence/verification/2.21.3_generated/execution-vars.json",
+      "--check",
+      "/tmp/issue-7-readonly-ilYDDmpN/evidence/verification/2.21.3_generated/hardening_check-scope.json"
+    ],
+    "cwd": "/tmp/issue-7-readonly-ilYDDmpN/repo",
+    "artifacts": {
+      "context.json": "ea40096651b06960e65977df1fd14ebf04b7099650b15a69f94335eaa734328e",
+      "events.jsonl": "f0fe596b72d3d0f2321bc99f797f1a7c31e7c5622941bee5f3ea72b2b6b03ff6",
+      "stdout.log": "12ba080599ea2e6beb5823d2cfaf5024e07461eab13a79fa983044f21ad19c0c",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

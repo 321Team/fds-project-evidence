@@ -1,0 +1,402 @@
+{
+  "kind": "receipt audit of user-submitted real CLI run; no fresh execution on reviewer host",
+  "archive_sha256": "be5c98f5455fab020dfa31c95082ae5de9f5a3c1f2839c502400d5297cf75b3e",
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "source_root": "/tmp/issue-7-rerun-vTSSk1w5/repo",
+  "archive_files": 217,
+  "outer_manifest_hashes": 216,
+  "inner_manifest_hashes": 205,
+  "origin_hashes_checked": 112,
+  "actual_cli_cases": 28,
+  "derived_cases": 26,
+  "expectations_matched": "54/54",
+  "server_unit_tests": "27/27 PASS",
+  "status": "PASS_LOCAL_SCOPE",
+  "same_baseline_results": true,
+  "runtime_pins_match": true,
+  "source_status_reported_clean": true,
+  "original_files_unchanged": true,
+  "limited_secret_pattern_findings": [],
+  "six_operational_nodes": "NOT RUN",
+  "independent_review": "PENDING",
+  "observations": [
+    {
+      "engine": "2.16.19",
+      "case": "baseline",
+      "status": "PASS",
+      "source_sha256": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_complete",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "90f5514f0636634838f87e1d01cc0a517d6bdfa3aef793f908c1fb277848b8eb",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_node",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "b822367c156819eb600753a46872c7eada9b8e3679e5fc25ad9b79e66a4ae3d6",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_node",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "2de83f3278ceece7007b9aab2e9d68178bd0ba80661136020190ff5a72f529e9",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_node",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "04895725fd77ca9f1b32535cc26294f987c53b2847cfe2c26a83327bfa0698e0",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_marker",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "9471619b82308bd6707b03879fdccfbe69484cfede20a16b5537f1edf854bce7",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_result",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "67bf32188e4e69bb608a323922a9b64156e1104eb6b01b3758bda906e6d95888",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-sequence_gap",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "9edfbfdc41499f81b3a5afdcab68dc5e0ffc37f6240f4cd0f19a0ed5edbbba3f",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_code",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "3f45d3105ad27be78d03028055957ed3ec8ed3ad315b2be76423ef37e1b6ef7d",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_engine",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "65db71099aa369df44b8bf4d4bff6ab365da4b6397f650c4962f7cfb947030a0",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_stage",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "62eb9d114128026533efb6a21a0f4edd3664c41355bea497bf453f9f96e6416c",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-truncated",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "778c1191ab18925e69a6bcb025a45e81f923b61f3bd7123718f3b19ada9bcc6b",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_key",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "d55cbbd2f08aad50be4818a4a3bc7b17568c0f6615bdfc2dd7d05ae438344054",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-whitespace",
+      "status": "PASS",
+      "source_sha256": "9bf96f029b2352b556bb20bfddb8f7fde983b575c5ca9f45b26afc8d01994f45",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.16.19",
+      "case": "wording",
+      "status": "PASS",
+      "source_sha256": "b0e981f46a10f0e1063026ed362946dfa565b86cabc3cb17338d274185d9c261",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "serial",
+      "status": "PASS",
+      "source_sha256": "2e5e175c13779bf3134d450a90c2b039ebdbede945cf9a85653682478114777a",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expected_negative",
+      "status": "EXPECTED_FAILURE_CONFIRMED",
+      "source_sha256": "350b95f4301ee5b41d901a79fe04aa327144db6eedd2c46d47716efcca681d01",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expected_expression",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "790878e5abbc418e00b015d766fb0fe8a945e66f264f652f626aab090385e904",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "failure",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "d05d6dbf7b1d3a54e365f1843e2d7de485327c646f8016807a7557a6cfe6c70d",
+      "cli_rc": 2
+    },
+    {
+      "engine": "2.16.19",
+      "case": "ignored",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "aceb3e08790910df0a85ec3ed38de5ce0a4a14ed2157451d07c9aff58328378b",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "rescued",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "464d0a0fb2cd717040cb2e19cffe3a15dcd297d9db2987521ec070dd7e41c4ed",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expression",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "dd24e67a401996ffb250a2ad379768f5216913636a9dac14465334e792bb56b5",
+      "cli_rc": 2
+    },
+    {
+      "engine": "2.16.19",
+      "case": "hidden_rc",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "d70af238b1840bd9c6b0c5186616d6f337f4f4fe247af038260f5088c6939d8a",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "changed",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "a49a9716529ce294a2a356a09495a16b4ad8ab659faf19a5cba51a507628a8e9",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "transport_error",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "d1886878eaad871540eef986cf7a6e98eed61c6adc2489d8dcf701d8d090f058",
+      "cli_rc": 4
+    },
+    {
+      "engine": "2.16.19",
+      "case": "limited_nodes",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "a33f4c0e34026f6bfbcd9a7ba8fd3684997e4b40de98d140d1c584f9351421f0",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "case": "timeout",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "a5d9bef94a9dc75b06d2de9c3bca004909b9f0dad574b8e3cc8babdca58211cf",
+      "cli_rc": 124
+    },
+    {
+      "engine": "2.21.3",
+      "case": "baseline",
+      "status": "PASS",
+      "source_sha256": "33770e7a216c7839ebf58417187f67ea152e92b811c2326cc869a692900c629d",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_complete",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "32a7979b4f89feb8210ad4c9b5c9dc102c4772b0abf3700791fdb8db03245534",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_node",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "335affbde9541acd5d9a3afd404942e245c4063d61a603de8426ab8051c7c7a0",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_node",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "2975c017919901e77877d26a702f3abb06aad823f0dd0373fea263b4b5d3404e",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_node",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "2c947e6cc443cc058aaa0179b293d10c73f0a06870a7586f2bbf87317d0d76b7",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_marker",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "a72fc6266d678f04c3332c4182657c8fa26ac30f737437b0edfc7a3c23a8a47e",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_result",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "c99f0b986d351f0b2d9806084c52a76783c5bf2acc6ae41178f157b9e9f78305",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-sequence_gap",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "47dd394103177d203f6fe72420524e96abc88b049fbe6c1305a16fd4ee115f2a",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_code",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "3af5b007221dc25da3937ad41abda10e944bc215cb88ab67ab904bcb79b9baa9",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_engine",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "0041700c1a5a54f28d08e262db054d98baf7ab577c33488220255b5291e8bbbc",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_stage",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "6ab53a290f86fc4da02ca55e70a72a9834536d0c7f9ca664f74a8563ab702ee6",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-truncated",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "1951351d29a695f15cadca13c01cb14d72cf66a4c88ab4e9a1df64a0b71dd60f",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_key",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "01be176f759f4f5599108afd73073e2dd6d3f834c3709c03e318ee001caf21d2",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-whitespace",
+      "status": "PASS",
+      "source_sha256": "1b2a877299bdd203148a5e6e7819cb5ddfe26b39a71deece92fd5da0bef3953a",
+      "cli_rc": null
+    },
+    {
+      "engine": "2.21.3",
+      "case": "wording",
+      "status": "PASS",
+      "source_sha256": "0975d8dbf2398da4293de5f20bac98bc5e5b1cd75504990d68514e1e6f061f11",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "serial",
+      "status": "PASS",
+      "source_sha256": "82048071468f2cda1a05feaff572778bb5b71a33ab7bae3f84da9d5cfc705c1e",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expected_negative",
+      "status": "EXPECTED_FAILURE_CONFIRMED",
+      "source_sha256": "7fbdd7ad4809fa6b329e61ae49b8375e28287f1b942d7a9e225466551d1b57cf",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expected_expression",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "03dd556c4570aa78abac3bce7d8a6caadc2849a3e1b749a3c49a462c7af928bc",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "failure",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "68e948af3e47b3b40f73583d4eae10187def52d4d490e3f64b557dc0f878f402",
+      "cli_rc": 2
+    },
+    {
+      "engine": "2.21.3",
+      "case": "ignored",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "d92ed51a737c6f8c7b4fccabd523c7d77a9f1fb79e77820557554c847d91f1f8",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "rescued",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "975019eb7e2f9f54ee252859e352c1d1ad8102e594072aa9e0976c7c506f2700",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expression",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "7e2b575b3b47bce76d8542f5ec0844df82716592d364b7bf97bcc35a6f465c15",
+      "cli_rc": 2
+    },
+    {
+      "engine": "2.21.3",
+      "case": "hidden_rc",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "b9a8d9cb0eba8f46992cb5aa842e9191a19259992a8799b7d175641115fb4617",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "changed",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "ebbf5ca85595c1b360a0ee51662886859383ad801a71640dff58a2cea2ecbc82",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "transport_error",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "1f4a983f25834ea7afa1ec747710c0e3a59961f28738f2440e9be116afd29761",
+      "cli_rc": 4
+    },
+    {
+      "engine": "2.21.3",
+      "case": "limited_nodes",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "6428020c7918e55c45257a30e2faec9b79867919e14a753e3e83421fa08999a0",
+      "cli_rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "case": "timeout",
+      "status": "REVIEW_REQUIRED",
+      "source_sha256": "78c04f49e69815004895603f660afceb00b9eee413167bf9a1a665c9fabc32c1",
+      "cli_rc": 124
+    }
+  ]
+}

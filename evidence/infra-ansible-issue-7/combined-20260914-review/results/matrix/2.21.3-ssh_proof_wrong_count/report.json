@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run_id": "93732bd8-12ef-494a-a8e1-5cb49d12a2ad",
+  "code_sha": "357965058cdcaa129b14c29a09b3e4e19215195f",
+  "engine": "2.21.3",
+  "stage_id": "2.21.3_ssh_proof_wrong_count",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": false,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "REVIEW_REQUIRED",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-2",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-3",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-4",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-5",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-6",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [
+    "Invalid SSH proof"
+  ],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-6-cli-wBjVuRl1/venv-2.21.3/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-7-combined-zzJn0Bb1/evidence/matrix/2.21.3-inventory.json",
+      "-c",
+      "local",
+      "/tmp/issue-7-combined-zzJn0Bb1/evidence/matrix/2.21.3-ssh_proof_wrong_count.json"
+    ],
+    "cwd": "/tmp/issue-7-combined-zzJn0Bb1/repo",
+    "artifacts": {
+      "context.json": "32a97ad2818be165363f1c5e307ea0140749e13f650d688df1c136397eaf3401",
+      "events.jsonl": "7b6713fc0b3741d2c7ce6fc801f36616b8b09bc0c802a9d8304aa6a8492a8f6a",
+      "stdout.log": "8a8dc1fc5374c1f61b77e2e9118b9331d54d10c60776e8617e7a63bc2d664889",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

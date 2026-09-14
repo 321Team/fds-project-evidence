@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "b95be58b-ef0a-48e0-a3d8-3c4fbcb5b9f7",
+  "code_sha": "27cf2683cce2331ae83266c627991dcf9d000ac7",
+  "engine": "2.16.19",
+  "stage_id": "2.16.19_baseline",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": true,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "PASS",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-2",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-3",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-4",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-5",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-6",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-6-cli-wBjVuRl1/venv-2.16.19/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-7-rerun-vTSSk1w5/evidence/matrix/2.16.19-inventory.json",
+      "-c",
+      "local",
+      "/tmp/issue-7-rerun-vTSSk1w5/evidence/matrix/2.16.19-baseline.json"
+    ],
+    "cwd": "/tmp/issue-7-rerun-vTSSk1w5/repo",
+    "artifacts": {
+      "context.json": "37035003e4fb3ca47d69ea00cc7a8815f2acf236ed16db6a47bc34d3b352395c",
+      "events.jsonl": "f578fca9d70ccfef4a98f0eef6e36f7fbdcc058308c45985edcc6a246075f582",
+      "stdout.log": "7fe95c2db0131c503b5c179378b344d7a509e5e2251d2fcf955a5e70277bba42",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

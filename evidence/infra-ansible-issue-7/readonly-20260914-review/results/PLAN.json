@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "engines": [
+    "2.16.19",
+    "2.21.3"
+  ],
+  "remote_nodes": [
+    "k8s-control01",
+    "k8s-control02",
+    "k8s-control03",
+    "k8s-worker01",
+    "k8s-worker02",
+    "k8s-worker03"
+  ],
+  "phases": [
+    "version",
+    "runtime",
+    "cli_guards",
+    "localhost_tasks",
+    "readonly_ssh",
+    "hardening_check",
+    "main_precheck",
+    "dns_verify"
+  ],
+  "collector": "fds_verification callback",
+  "changes": "Read-only checks; hardening check mode only. No operational engine switch."
+}
