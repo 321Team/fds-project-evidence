@@ -1,0 +1,240 @@
+{
+  "scope": "Receipt audit of user-submitted fresh CLI run; local audit executes no Ansible",
+  "code_sha": "37544b443fc9b11a35210ee087cb17811e23362d",
+  "archive_sha256": "e06a8d6cd3f871f4ceccfd2a97a052b4982e9180b3f6806f7a2189a4aecce3e5",
+  "internal_hashes_verified": 398,
+  "archive_files": 399,
+  "source_status_clean": true,
+  "matrix_exit_code": 0,
+  "secret_pattern_scan": "NO_MATCH",
+  "original_matrix_status": "PASS",
+  "receipt_audit_status": "PASS",
+  "same_baseline_results": true,
+  "observations": 196,
+  "runs": [
+    {
+      "engine": "2.16.19",
+      "variant": "baseline",
+      "original_outcomes": {
+        "PASS": 14,
+        "FAIL": 0,
+        "ERROR": 0
+      },
+      "corrected_outcomes": {
+        "PASS": 14,
+        "FAIL": 0,
+        "ERROR": 0
+      },
+      "original_cli_rc": 0,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.16.19",
+      "variant": "and-0",
+      "original_outcomes": {
+        "PASS": 10,
+        "FAIL": 4,
+        "ERROR": 0
+      },
+      "corrected_outcomes": {
+        "PASS": 10,
+        "FAIL": 4,
+        "ERROR": 0
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.16.19",
+      "variant": "broken-list-0",
+      "original_outcomes": {
+        "PASS": 9,
+        "FAIL": 4,
+        "ERROR": 1
+      },
+      "corrected_outcomes": {
+        "PASS": 9,
+        "FAIL": 4,
+        "ERROR": 1
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.16.19",
+      "variant": "undefined-0",
+      "original_outcomes": {
+        "PASS": 7,
+        "FAIL": 0,
+        "ERROR": 7
+      },
+      "corrected_outcomes": {
+        "PASS": 7,
+        "FAIL": 0,
+        "ERROR": 7
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.16.19",
+      "variant": "and-1",
+      "original_outcomes": {
+        "PASS": 13,
+        "FAIL": 1,
+        "ERROR": 0
+      },
+      "corrected_outcomes": {
+        "PASS": 13,
+        "FAIL": 1,
+        "ERROR": 0
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.16.19",
+      "variant": "broken-list-1",
+      "original_outcomes": {
+        "PASS": 9,
+        "FAIL": 1,
+        "ERROR": 4
+      },
+      "corrected_outcomes": {
+        "PASS": 9,
+        "FAIL": 1,
+        "ERROR": 4
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.16.19",
+      "variant": "undefined-1",
+      "original_outcomes": {
+        "PASS": 7,
+        "FAIL": 0,
+        "ERROR": 7
+      },
+      "corrected_outcomes": {
+        "PASS": 7,
+        "FAIL": 0,
+        "ERROR": 7
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.21.3",
+      "variant": "baseline",
+      "original_outcomes": {
+        "PASS": 14,
+        "FAIL": 0,
+        "ERROR": 0
+      },
+      "corrected_outcomes": {
+        "PASS": 14,
+        "FAIL": 0,
+        "ERROR": 0
+      },
+      "original_cli_rc": 0,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.21.3",
+      "variant": "and-0",
+      "original_outcomes": {
+        "PASS": 10,
+        "FAIL": 4,
+        "ERROR": 0
+      },
+      "corrected_outcomes": {
+        "PASS": 10,
+        "FAIL": 4,
+        "ERROR": 0
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.21.3",
+      "variant": "broken-list-0",
+      "original_outcomes": {
+        "PASS": 9,
+        "FAIL": 4,
+        "ERROR": 1
+      },
+      "corrected_outcomes": {
+        "PASS": 9,
+        "FAIL": 4,
+        "ERROR": 1
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.21.3",
+      "variant": "undefined-0",
+      "original_outcomes": {
+        "PASS": 7,
+        "FAIL": 0,
+        "ERROR": 7
+      },
+      "corrected_outcomes": {
+        "PASS": 7,
+        "FAIL": 0,
+        "ERROR": 7
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.21.3",
+      "variant": "and-1",
+      "original_outcomes": {
+        "PASS": 13,
+        "FAIL": 1,
+        "ERROR": 0
+      },
+      "corrected_outcomes": {
+        "PASS": 13,
+        "FAIL": 1,
+        "ERROR": 0
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.21.3",
+      "variant": "broken-list-1",
+      "original_outcomes": {
+        "PASS": 9,
+        "FAIL": 1,
+        "ERROR": 4
+      },
+      "corrected_outcomes": {
+        "PASS": 9,
+        "FAIL": 1,
+        "ERROR": 4
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    },
+    {
+      "engine": "2.21.3",
+      "variant": "undefined-1",
+      "original_outcomes": {
+        "PASS": 7,
+        "FAIL": 0,
+        "ERROR": 7
+      },
+      "corrected_outcomes": {
+        "PASS": 7,
+        "FAIL": 0,
+        "ERROR": 7
+      },
+      "original_cli_rc": 2,
+      "contract_passed_on_replay": true
+    }
+  ]
+}
