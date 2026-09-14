@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "41943eb5-8044-4cdf-8187-03a20f52064f",
+  "code_sha": "d2d46bd95ece3935373303187ef47cfc5e3e2eb7",
+  "engine": "2.16.19",
+  "stage_id": "2.16.19_expected_negative",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": true,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "EXPECTED_FAILURE_CONFIRMED",
+  "expected_negative": true,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1,
+      "failed": 0
+    },
+    {
+      "host": "fixture-2",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1,
+      "failed": 0
+    },
+    {
+      "host": "fixture-3",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1,
+      "failed": 0
+    },
+    {
+      "host": "fixture-4",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1,
+      "failed": 0
+    },
+    {
+      "host": "fixture-5",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1,
+      "failed": 0
+    },
+    {
+      "host": "fixture-6",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1,
+      "failed": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-8-offline-qSPCHwDz/runtime/venv-2.16.19/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-8-offline-qSPCHwDz/evidence/results/contract-results/2.16.19-inventory.json",
+      "-c",
+      "local",
+      "/tmp/issue-8-offline-qSPCHwDz/evidence/results/contract-results/2.16.19-expected_negative.json"
+    ],
+    "cwd": "/tmp/issue-8-offline-qSPCHwDz/runtime/repo",
+    "artifacts": {
+      "context.json": "5c96547a5c8cac93cc875db271527b0c35b3618d24c80e618980ebcfbe412a13",
+      "events.jsonl": "2a1d0608430e995560bc0c3d9bf1955647bafde9f58ef19d905aa62f40053308",
+      "stdout.log": "d20703483f076b97679db649b9d0946aa10fb3eca807441b828f04114f042076",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

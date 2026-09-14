@@ -1,0 +1,388 @@
+{
+  "status": "PASS_FRESH_OFFLINE_FIXTURES_VERIFIED",
+  "kind": "Audit of submitted Linux execution; no new Ansible execution on reviewer PC",
+  "archive_sha256": "4a97906428522dc9668ed9b9d65c742607df8125bbbbe57f3b99f3470f0f0748",
+  "kit_sha256": "b3914ebbffa1f19cdf619b090be4edb10b711db74039bc40441d05523ea4b42c",
+  "code_sha": "d2d46bd95ece3935373303187ef47cfc5e3e2eb7",
+  "source_tree": "214191ff55bf70b7f03837ecf2f549332e081209",
+  "source_files_checked": 48,
+  "kit_payload_verified": 69,
+  "work_directory": "/tmp/issue-8-offline-qSPCHwDz",
+  "python": "3.12.14 (main, Aug 13 2026, 00:00:00) [GCC 14.4.1 20260724 (Red Hat 14.4.1-3)]",
+  "platform": "Linux-6.12.0-266.el10.x86_64-x86_64-with-glibc2.39",
+  "started_at": "2026-09-14T12:42:08.420474+00:00",
+  "finished_at": "2026-09-14T12:44:35.267278+00:00",
+  "fresh_venvs": 2,
+  "installation_commands_exit_zero": 8,
+  "pinned_runtime_dependencies_per_engine": 9,
+  "installer": "pip 25.2",
+  "offline_install_argv_verified": true,
+  "unit_tests": "43/43 PASS",
+  "guard_runs": "14/14 expectations matched; baseline 14/14 per engine; 12 mutation cases",
+  "guard_observations_reclassified": 196,
+  "contract_cases": "58/58 expectations matched",
+  "actual_contract_cli_runs": 32,
+  "derived_contract_cases": 26,
+  "contract_origin_hashes": 128,
+  "dns_localhost_runs": "2/2 PASS, changed=0",
+  "runner_exit_code": 0,
+  "all_five_steps_exit_zero": true,
+  "source_clean": "Enforced by the hash-pinned verifier before and after run; no separate status transcript",
+  "network_scope": "pip no-index and local wheel logs verified; no independent network trace",
+  "operational_readonly_run": "NOT_RUN in this receipt; prior Issue #7 receipt is separate",
+  "production_apply": false,
+  "operational_engine_transition": false,
+  "existing_operational_checkout_sync": "UNCONFIRMED",
+  "independent_review": "PENDING",
+  "original_archive_preserved": true,
+  "contract_observations": [
+    {
+      "engine": "2.16.19",
+      "case": "baseline",
+      "status": "PASS",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_complete",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_node",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_node",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_node",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-missing_marker",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_result",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-sequence_gap",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_code",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_engine",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-wrong_stage",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-truncated",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-duplicate_key",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "derived-whitespace",
+      "status": "PASS",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "wording",
+      "status": "PASS",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "serial",
+      "status": "PASS",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "ssh_proof",
+      "status": "PASS",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "ssh_proof_wrong_count",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expected_negative",
+      "status": "EXPECTED_FAILURE_CONFIRMED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expected_expression",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "failure",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "ignored",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "rescued",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "expression",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "hidden_rc",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "changed",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "transport_error",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "limited_nodes",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.16.19",
+      "case": "timeout",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "baseline",
+      "status": "PASS",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_complete",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_node",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_node",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_node",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-missing_marker",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_result",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-sequence_gap",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_code",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_engine",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-wrong_stage",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-truncated",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-duplicate_key",
+      "status": "REVIEW_REQUIRED",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "derived-whitespace",
+      "status": "PASS",
+      "origin": "derived"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "wording",
+      "status": "PASS",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "serial",
+      "status": "PASS",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "ssh_proof",
+      "status": "PASS",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "ssh_proof_wrong_count",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expected_negative",
+      "status": "EXPECTED_FAILURE_CONFIRMED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expected_expression",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "failure",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "ignored",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "rescued",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "expression",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "hidden_rc",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "changed",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "transport_error",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "limited_nodes",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    },
+    {
+      "engine": "2.21.3",
+      "case": "timeout",
+      "status": "REVIEW_REQUIRED",
+      "origin": "real CLI"
+    }
+  ]
+}

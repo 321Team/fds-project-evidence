@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run_id": "40182e32-5c23-4848-8e49-6f4f70b56336",
+  "code_sha": "d2d46bd95ece3935373303187ef47cfc5e3e2eb7",
+  "engine": "2.21.3",
+  "stage_id": "2.21.3_expected_expression",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": false,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "REVIEW_REQUIRED",
+  "expected_negative": true,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-2",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-3",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-4",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-5",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-6",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [
+    "Expression evaluation error"
+  ],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-8-offline-qSPCHwDz/runtime/venv-2.21.3/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-8-offline-qSPCHwDz/evidence/results/contract-results/2.21.3-inventory.json",
+      "-c",
+      "local",
+      "/tmp/issue-8-offline-qSPCHwDz/evidence/results/contract-results/2.21.3-expected_expression.json"
+    ],
+    "cwd": "/tmp/issue-8-offline-qSPCHwDz/runtime/repo",
+    "artifacts": {
+      "context.json": "b5883733b4c53f632c85a75a00b4255cbc8d0615f35a71022e427d31a594f3ad",
+      "events.jsonl": "55df3f19d944baeca425e0a0b18de3843f299754e7fd1af12dc28084543ae507",
+      "stdout.log": "6b1723a6866134361e4b728de0c9edaeef767f58b8d0673921c999171e09e7c0",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
