@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "281724d8-ea51-44f2-8d69-3bcc108b5fc6",
+  "code_sha": "d2d46bd95ece3935373303187ef47cfc5e3e2eb7",
+  "engine": "2.16.19",
+  "stage_id": "2.16.19_baseline",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": true,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "PASS",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-2",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-3",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-4",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-5",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-6",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/tmp/issue-8-offline-qSPCHwDz/runtime/venv-2.16.19/bin/ansible-playbook",
+      "-i",
+      "/tmp/issue-8-offline-qSPCHwDz/evidence/results/contract-results/2.16.19-inventory.json",
+      "-c",
+      "local",
+      "/tmp/issue-8-offline-qSPCHwDz/evidence/results/contract-results/2.16.19-baseline.json"
+    ],
+    "cwd": "/tmp/issue-8-offline-qSPCHwDz/runtime/repo",
+    "artifacts": {
+      "context.json": "e8ca27c70b02c38a917908b2ec756a1c789af22049477f3639a0b8de8714e84d",
+      "events.jsonl": "0b963ab11027be63d9b03838e90e2658b88d9d0e9a3168dea2eaaef6271394f2",
+      "stdout.log": "cff9aac8e5add86add568384e89d94b39f6f88d88adb72ea1af5f3777dbf2c8c",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
