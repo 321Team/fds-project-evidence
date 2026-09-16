@@ -1,0 +1,31 @@
+{
+  "scope": "LOCAL STATIC/UNIT/MODEL and actual child UID1000 DAC checks; no Podman",
+  "runs": [
+    {
+      "name": "account",
+      "rc": 0,
+      "tests": 8
+    },
+    {
+      "name": "wrapper",
+      "rc": 0,
+      "tests": 12
+    },
+    {
+      "name": "home",
+      "rc": 0,
+      "tests": 12
+    },
+    {
+      "name": "entry-fix",
+      "rc": 1,
+      "tests": 7
+    }
+  ],
+  "total_tests": 39,
+  "python_ast": "PASS",
+  "bash_syntax": "PASS",
+  "actual_server_r3": "NOT_RUN",
+  "github_actions": "NOT_RUN",
+  "input_r2_status": "FAIL retained"
+}

@@ -1,0 +1,22 @@
+test_build_self_test_runs_after_user_before_entrypoint (__main__.EntryFix.test_build_self_test_runs_after_user_before_entrypoint) ... ok
+test_exact_containerfile_permission_step_repairs_actual_uid1000_read (__main__.EntryFix.test_exact_containerfile_permission_step_repairs_actual_uid1000_read) ... skipped 'ENVIRONMENT_BLOCKED: UID/GID1000 unavailable in local namespace; actual build self-test pending'
+test_oom_exit_mismatch_invalid_types_and_bounded_log_tail (__main__.EntryFix.test_oom_exit_mismatch_invalid_types_and_bounded_log_tail) ... ok
+test_self_test_decision_models_reject_identity_permissions_drift (__main__.EntryFix.test_self_test_decision_models_reject_identity_permissions_drift) ... {"check": "entry-self-test", "checks": {"mode": true, "owner": true, "readable": true, "uid_gid": true, "writable_absent": true}, "gid": 1000, "mode": "0o444", "owner": [0, 0], "passed": true, "uid": 1000}
+{"check": "entry-self-test", "checks": {"mode": true, "owner": true, "readable": true, "uid_gid": false, "writable_absent": true}, "gid": 1000, "mode": "0o444", "owner": [0, 0], "passed": false, "uid": 0}
+{"check": "entry-self-test", "checks": {"mode": true, "owner": true, "readable": true, "uid_gid": false, "writable_absent": true}, "gid": 0, "mode": "0o444", "owner": [0, 0], "passed": false, "uid": 1000}
+{"check": "entry-self-test", "checks": {"mode": true, "owner": false, "readable": true, "uid_gid": true, "writable_absent": true}, "gid": 1000, "mode": "0o444", "owner": [1000, 0], "passed": false, "uid": 1000}
+{"check": "entry-self-test", "checks": {"mode": true, "owner": false, "readable": true, "uid_gid": true, "writable_absent": true}, "gid": 1000, "mode": "0o444", "owner": [0, 1000], "passed": false, "uid": 1000}
+{"check": "entry-self-test", "checks": {"mode": false, "owner": true, "readable": true, "uid_gid": true, "writable_absent": true}, "gid": 1000, "mode": "0o600", "owner": [0, 0], "passed": false, "uid": 1000}
+{"check": "entry-self-test", "checks": {"mode": true, "owner": true, "readable": false, "uid_gid": true, "writable_absent": true}, "gid": 1000, "mode": "0o444", "owner": [0, 0], "passed": false, "uid": 1000}
+{"check": "entry-self-test", "checks": {"mode": true, "owner": true, "readable": true, "uid_gid": true, "writable_absent": false}, "gid": 1000, "mode": "0o444", "owner": [0, 0], "passed": false, "uid": 1000}
+ok
+test_self_test_never_enters_runtime_or_ansible (__main__.EntryFix.test_self_test_never_enters_runtime_or_ansible) ... {"check": "entry-self-test", "checks": {"mode": false, "owner": true, "readable": true, "uid_gid": false, "writable_absent": false}, "gid": 0, "mode": "0o644", "owner": [0, 0], "passed": false, "uid": 0}
+ok
+test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) ... skipped 'ENVIRONMENT_BLOCKED: UID/GID1000 unavailable in local namespace; actual build self-test pending'
+test_submitted_rc2_preserves_first_error_before_any_result_read (__main__.EntryFix.test_submitted_rc2_preserves_first_error_before_any_result_read) ... ok
+test_zero_exit_still_requires_every_regular_result_file (__main__.EntryFix.test_zero_exit_still_requires_every_regular_result_file) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.008s
+
+OK (skipped=2)

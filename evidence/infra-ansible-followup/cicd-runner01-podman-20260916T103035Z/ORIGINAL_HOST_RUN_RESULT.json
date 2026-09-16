@@ -1,0 +1,17 @@
+{
+  "status": "FAIL",
+  "started_at": "2026-09-16T10:30:35.586979+00:00",
+  "hostname": "cicd-runner01",
+  "uid": 1001,
+  "account": "ansible-verify",
+  "source_commits": {
+    "ci": "169571801d1b0cee0ba75137380149a48d6b56dd",
+    "egress": "d5147ebff0febbb8ab2afca28fe64d68301e033c"
+  },
+  "github_actions": "NOT_RUN",
+  "production_apply": false,
+  "engine_transition": false,
+  "container_cleanup": "REMOVED",
+  "error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/ansible-verify/ansible-podman-d0d6a156c4d040c7ab426c7e576faf55/work/CONTAINER_RESULT.json'",
+  "ended_at": "2026-09-16T10:31:00.161214+00:00"
+}
