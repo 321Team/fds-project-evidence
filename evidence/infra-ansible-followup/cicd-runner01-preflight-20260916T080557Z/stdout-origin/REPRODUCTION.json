@@ -1,0 +1,17 @@
+{
+  "status": "STDOUT_ORIGIN_REPRODUCED",
+  "source_commit": "a487c4fc5185bf0b9cd82f7f739651d4d580ba6b",
+  "source_dirty": false,
+  "tests": 3,
+  "original_stdout_sha256": "05355062e41e382f7b03cf1cc10cb31db49a039ec3cabe2a00f22e9814953dd9",
+  "reproduced_stdout_sha256": "05355062e41e382f7b03cf1cc10cb31db49a039ec3cabe2a00f22e9814953dd9",
+  "byte_equal": true,
+  "scope": "mocked CLI unit tests only; no actual engine run",
+  "source_files_unchanged_at_current_pr17": [
+    "tests/test_ci_regression.py",
+    "tests/test_ssh_guard_harness.py",
+    "tests/test-ssh-key-guards.py",
+    "tools/verification-kit.py",
+    "tools/run-ansible-ci.py"
+  ]
+}
