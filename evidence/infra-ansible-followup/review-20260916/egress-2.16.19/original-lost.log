@@ -1,0 +1,14 @@
+
+PLAY [original-lost] ***********************************************************
+
+TASK [Verify every original firewall rule is still present] ********************
+fatal: [localhost]: FAILED! => {
+    "assertion": "cr_mon_original_state.firewalld_permanent_rules_before | difference(cr_mon_firewalld_permanent_rules_after.stdout_lines) | length == 0",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Rollback lost an original firewall rule; do not report ROLLED_BACK."
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

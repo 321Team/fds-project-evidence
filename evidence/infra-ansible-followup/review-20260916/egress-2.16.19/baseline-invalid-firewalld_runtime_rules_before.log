@@ -1,0 +1,14 @@
+
+PLAY [baseline-invalid-firewalld_runtime_rules_before] *************************
+
+TASK [Validate preserved baseline identity and restoration fields] *************
+fatal: [localhost]: FAILED! => {
+    "assertion": "cr_mon_baseline.firewalld_runtime_rules_before | type_debug == 'list'",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Incomplete or invalid preserved baseline. Preserve original-state.json, original-squid.conf and evidence, and reconcile their provenance before any apply or rollback. Re-running apply does not repair a partial baseline."
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
