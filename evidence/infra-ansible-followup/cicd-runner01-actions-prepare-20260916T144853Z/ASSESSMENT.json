@@ -1,0 +1,65 @@
+{
+  "verdict": "PASS_PREPARE_EVIDENCE_RECONCILED",
+  "archive_sha256": "879789b3d542e23703990c2cd71475c5d217281c12fa77f619452e5e0b091bc5",
+  "archive_bytes": 21915,
+  "code_head": "5fd76293da7bbcdb238cc8edeb8206e47283e395",
+  "bundle_sha256": "ecff16d871d7b08cd9aa72e580e54830b61d438ec9dcbbf3847bbac2f690ff46",
+  "image_id": "sha256:104b262f24146c8cb5068f8e577bff0ed438bd7941ff1a43ab74a04dc735573f",
+  "run_directory": "/home/ansible-verify/ansible-actions-a1a17a5e782944ab924a6af14fae7a52",
+  "prepared_path": "/home/ansible-verify/ansible-actions-a1a17a5e782944ab924a6af14fae7a52/evidence/PREPARED.json",
+  "started_at": "2026-09-16T14:48:53.020153+00:00",
+  "ended_at": "2026-09-16T14:50:38.394073+00:00",
+  "commands_checked": 12,
+  "isolation_checks": 14,
+  "network_allow": [
+    {
+      "target": "https://api.github.com/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "target": "https://github.com/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "target": "https://pypi.org/simple/ansible-core/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "target": "https://files.pythonhosted.org/",
+      "status": 404,
+      "passed": true
+    }
+  ],
+  "network_deny": [
+    {
+      "target": "10.1.93.102",
+      "passed": true
+    },
+    {
+      "target": "169.254.169.254",
+      "passed": true
+    },
+    {
+      "target": "example.com",
+      "passed": true
+    },
+    {
+      "target": "github.com.evil.invalid",
+      "passed": true
+    }
+  ],
+  "cleanup": {
+    "runner": "REMOVED",
+    "proxy": "REMOVED",
+    "workspace": "REMOVED"
+  },
+  "nonblocking_observation": "proxy SIGTERM timed out at 15 seconds; SIGKILL fallback followed by rm rc0 and exists rc1",
+  "runner_registration": "NOT_RUN",
+  "github_actions": "NOT_RUN",
+  "production_apply": false,
+  "old_v1_direct_cause": "NOT_ESTABLISHED_FROM_MISSING_LOG",
+  "integrity_scope": "submitted included bytes; not independent remote attestation"
+}
