@@ -1,0 +1,65 @@
+{
+  "source_commit": "5ed6d3947a15d59cf6c360c0419f961b8143c707",
+  "base_files_verified": 64,
+  "source_restored": true,
+  "activation_template_identical": true,
+  "negative_patch_changed_files": [
+    "playbooks/harden_svc_ansible_key.yml"
+  ],
+  "negative_patch_added_lines": 1,
+  "negative_patch_removed_lines": 1,
+  "normal_216": {
+    "harness_rc": 0,
+    "outcomes": {
+      "PASS": 14,
+      "FAIL": 0,
+      "ERROR": 0
+    }
+  },
+  "negative_216": {
+    "harness_rc": 1,
+    "cli_rc": 2,
+    "outcomes": {
+      "PASS": 9,
+      "FAIL": 5,
+      "ERROR": 0
+    }
+  },
+  "new_negative_generation": {
+    "reached_first_cli": true,
+    "generated_variants": [
+      "and-0.yml",
+      "and-1.yml",
+      "broken-list-0.yml",
+      "broken-list-1.yml",
+      "undefined-0.yml",
+      "undefined-1.yml"
+    ],
+    "scope": "generation only; subprocess boundary intercepted; no matrix engine execution"
+  },
+  "old_negative_generation": {
+    "reached_first_cli": false,
+    "error": "Source changed: mutation requires explicit OR",
+    "scope": "generation only"
+  },
+  "engine_221": "NOT_RUN in this preparation; prior local IPC limitation",
+  "full_ci": "NOT_RUN",
+  "github_actions": "NOT_RUN",
+  "workflow_activation": "NOT_PERFORMED",
+  "independent_approval": "PENDING",
+  "patches": {
+    "intentional-count-defect.patch": {
+      "sha256": "c4bd7a352ddbfc0739053659637062776a4f6b37e70ebe7bf2be26d334b7baf5",
+      "bytes": 472
+    },
+    "activate-workflow.patch": {
+      "sha256": "ca38dafd209a792d6992465954b6cfbe02ac5e8e07251a645f08f04c756408fb",
+      "bytes": 2738
+    }
+  },
+  "negative_unit": {
+    "tests": 57,
+    "rc": 0,
+    "scope": "local unit tests on one-line count-defect source; not full CI"
+  }
+}

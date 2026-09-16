@@ -1,0 +1,24 @@
+{
+  "recorded_at_utc": "2026-09-16T18:36:23.242571+00:00",
+  "repository": "321Team/infra-ansible",
+  "tested_source_commit": "5ed6d3947a15d59cf6c360c0419f961b8143c707",
+  "tested_source_tree": "a63c5392d5930f29c77772b6a608f3a1c060a96b",
+  "pre_patch_review_commit": "d9711b330dc213b0d5b8fea81dcb2a6d8b48e40a",
+  "published_source_commit": "9b019ad4213539e9a6edf2409e1d0bd0d4ef46f6",
+  "published_source_tree": "7e7dd83f5b5700dfae304af418c6dad02e84ba11",
+  "published_files": 68,
+  "preserved_old_files": 63,
+  "modified": [
+    "docs/runbooks/Ansible-CI.md"
+  ],
+  "added": [
+    "docs/ci/ACCEPTANCE_DEEP_REVIEW.md",
+    "docs/ci/ACTIONS_ACCEPTANCE.md",
+    "docs/ci/patches/activate-workflow.patch",
+    "docs/ci/patches/intentional-count-defect.patch"
+  ],
+  "runtime_source_changes": false,
+  "source_diff_note": "Count-defect applied only in a fresh local reproduction checkout, then reversed; remote playbook blob unchanged.",
+  "evidence_scope": "Selected original CLI summaries/logs/14 observations per normal and negative run, unit stdout/stderr/rc, patch validation result. Not an Actions artifact or full runtime archive.",
+  "excluded": "Runtime/venv/wheels/generated module caches; no token packets or credentials collected."
+}
