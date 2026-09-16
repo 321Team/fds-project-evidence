@@ -1,0 +1,15 @@
+test_allowed_or_empty_rc_zero_never_passes (__main__.AccountChecks.test_allowed_or_empty_rc_zero_never_passes) ... ok
+test_denial_rc_one_and_stderr_stream (__main__.AccountChecks.test_denial_rc_one_and_stderr_stream) ... ok
+test_errors_mixed_output_and_other_exit_codes_rejected (__main__.AccountChecks.test_errors_mixed_output_and_other_exit_codes_rejected) ... ok
+test_live_query_wiring_models (__main__.AccountChecks.test_live_query_wiring_models) ... {"check": "sudo-policy", "command": ["sudo", "-n", "-ll", "-U", "ansible-verify"], "rc": 0, "stdout": "User ansible-verify is not allowed to run sudo on cicd-runner01.\n", "stderr": "", "denial_confirmed": true}
+{"check": "sudo-policy", "command": ["sudo", "-n", "-ll", "-U", "ansible-verify"], "rc": 0, "stdout": "(ALL) ALL", "stderr": "", "denial_confirmed": false}
+ok
+test_observed_el10_denial_rc_zero (__main__.AccountChecks.test_observed_el10_denial_rc_zero) ... ok
+test_resume_matches_observed_uid_gid_with_verified_home_model (__main__.AccountChecks.test_resume_matches_observed_uid_gid_with_verified_home_model) ... ok
+test_resume_rejects_identity_home_group_password_or_credentials_drift (__main__.AccountChecks.test_resume_rejects_identity_home_group_password_or_credentials_drift) ... ok
+test_wrong_identity_or_host_rejected (__main__.AccountChecks.test_wrong_identity_or_host_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

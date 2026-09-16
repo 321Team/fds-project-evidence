@@ -1,0 +1,25 @@
+{
+  "archive_sha256": "5978d07425cf14658b28a906dc7e9452decc65b89c7950ab97828d7ec8798717",
+  "archive_bytes": 1042,
+  "external_sidecar": "PASS",
+  "internal_hashes": "PASS",
+  "exact_file_set": "PASS",
+  "original_record": {
+    "status": "FAIL",
+    "started_at": "2026-09-16T09:54:36.778554+00:00",
+    "hostname": "cicd-runner01",
+    "uid": 1001,
+    "account": "ansible-verify",
+    "source_commits": {
+      "ci": "169571801d1b0cee0ba75137380149a48d6b56dd",
+      "egress": "d5147ebff0febbb8ab2afca28fe64d68301e033c"
+    },
+    "github_actions": "NOT_RUN",
+    "production_apply": false,
+    "engine_transition": false,
+    "container_cleanup": "NOT_CREATED",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: 'getenforce'",
+    "ended_at": "2026-09-16T09:54:37.110126+00:00"
+  },
+  "conclusion": "FAIL retained; image/container/Ansible not reached"
+}
