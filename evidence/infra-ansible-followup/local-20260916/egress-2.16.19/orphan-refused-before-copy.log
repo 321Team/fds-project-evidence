@@ -1,0 +1,17 @@
+
+PLAY [orphan-refused-before-copy] **********************************************
+
+TASK [Inspect the original configuration backup before any state writes] *******
+ok: [localhost]
+
+TASK [Refuse an orphan backup or a non-regular baseline] ***********************
+fatal: [localhost]: FAILED! => {
+    "assertion": "cr_mon_baseline_file.stat.exists or not cr_mon_original_backup.stat.exists",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Existing rollback state is inconsistent. Preserve the original backup and current configuration; reconcile provenance before applying. An orphan original-squid.conf must not be overwritten or deleted."
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

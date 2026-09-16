@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run_id": "509aef94-6268-434c-bcf7-8adad8b18f26",
+  "code_sha": "a487c4fc5185bf0b9cd82f7f739651d4d580ba6b",
+  "engine": "2.16.19",
+  "stage_id": "2.16.19_ignored",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": false,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "REVIEW_REQUIRED",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-2",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-3",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-4",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-5",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    },
+    {
+      "host": "fixture-6",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 1
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [
+    "Failure, ignored error, or unreachable node"
+  ],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/runtime/venv-2.16.19/bin/ansible-playbook",
+      "-i",
+      "/workspace/scratch/d7770f5e34f6/ansible-contract-linux-1/2.16.19-inventory.json",
+      "-c",
+      "local",
+      "/workspace/scratch/d7770f5e34f6/ansible-contract-linux-1/2.16.19-ignored.json"
+    ],
+    "cwd": "/workspace/scratch/d7770f5e34f6/ansible-followup",
+    "artifacts": {
+      "context.json": "d908cd1d045b9eb1c120fa46cc8dfc9d10025413ff1b8b10c3aaaea7add1cf0a",
+      "events.jsonl": "b9b847f4f7ee633df0acf553007786be9d3351764f392fa40d80aae90b65a159",
+      "stdout.log": "97f5dda6623c9b147774890afd5c48d09b70e254f396dd0d09383b18e0d6b8e8",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "engine": "2.21.3",
+  "source": "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/undefined-0.yml",
+  "scope": "public ansible-playbook CLI; synthetic localhost fixtures only",
+  "total": 14,
+  "results": [
+    {
+      "case": "empty",
+      "guard": "Count P1 managed SSH keys",
+      "index": 0,
+      "expected_failure": true,
+      "expected_rc": 1,
+      "expected_count": "0",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-empty-0.json'"
+    },
+    {
+      "case": "empty",
+      "guard": "Verify restricted P1 managed SSH key",
+      "index": 1,
+      "expected_failure": true,
+      "expected_rc": 1,
+      "expected_count": "0",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-empty-1.json'"
+    },
+    {
+      "case": "one_plain",
+      "guard": "Count P1 managed SSH keys",
+      "index": 0,
+      "expected_failure": false,
+      "expected_rc": 0,
+      "expected_count": "1",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-one_plain-0.json'"
+    },
+    {
+      "case": "one_plain",
+      "guard": "Verify restricted P1 managed SSH key",
+      "index": 1,
+      "expected_failure": true,
+      "expected_rc": 1,
+      "expected_count": "0",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-one_plain-1.json'"
+    },
+    {
+      "case": "one_restricted",
+      "guard": "Count P1 managed SSH keys",
+      "index": 0,
+      "expected_failure": false,
+      "expected_rc": 0,
+      "expected_count": "1",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-one_restricted-0.json'"
+    },
+    {
+      "case": "one_restricted",
+      "guard": "Verify restricted P1 managed SSH key",
+      "index": 1,
+      "expected_failure": false,
+      "expected_rc": 0,
+      "expected_count": "1",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-one_restricted-1.json'"
+    },
+    {
+      "case": "two_plain",
+      "guard": "Count P1 managed SSH keys",
+      "index": 0,
+      "expected_failure": true,
+      "expected_rc": 0,
+      "expected_count": "2",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-two_plain-0.json'"
+    },
+    {
+      "case": "two_plain",
+      "guard": "Verify restricted P1 managed SSH key",
+      "index": 1,
+      "expected_failure": true,
+      "expected_rc": 1,
+      "expected_count": "0",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-two_plain-1.json'"
+    },
+    {
+      "case": "two_restricted",
+      "guard": "Count P1 managed SSH keys",
+      "index": 0,
+      "expected_failure": true,
+      "expected_rc": 0,
+      "expected_count": "2",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-two_restricted-0.json'"
+    },
+    {
+      "case": "two_restricted",
+      "guard": "Verify restricted P1 managed SSH key",
+      "index": 1,
+      "expected_failure": true,
+      "expected_rc": 0,
+      "expected_count": "2",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-two_restricted-1.json'"
+    },
+    {
+      "case": "mixed",
+      "guard": "Count P1 managed SSH keys",
+      "index": 0,
+      "expected_failure": true,
+      "expected_rc": 0,
+      "expected_count": "2",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-mixed-0.json'"
+    },
+    {
+      "case": "mixed",
+      "guard": "Verify restricted P1 managed SSH key",
+      "index": 1,
+      "expected_failure": false,
+      "expected_rc": 0,
+      "expected_count": "1",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-mixed-1.json'"
+    },
+    {
+      "case": "missing",
+      "guard": "Count P1 managed SSH keys",
+      "index": 0,
+      "expected_failure": true,
+      "expected_rc": 2,
+      "expected_count": "",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-missing-0.json'"
+    },
+    {
+      "case": "missing",
+      "guard": "Verify restricted P1 managed SSH key",
+      "index": 1,
+      "expected_failure": true,
+      "expected_rc": 2,
+      "expected_count": "",
+      "outcome": "ERROR",
+      "error": "[Errno 2] No such file or directory: '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.21.3-undefined-0/result-missing-1.json'"
+    }
+  ],
+  "cli_rc": 250,
+  "outcomes": {
+    "PASS": 0,
+    "FAIL": 0,
+    "ERROR": 14
+  },
+  "status": "FAIL"
+}
