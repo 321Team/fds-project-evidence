@@ -1,0 +1,87 @@
+test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) ... 
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-malformed') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-empty-array') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-null') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-group-object') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-broad') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-hosted') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-missing-isolation') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-reordered') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-spaced') ... FAIL
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-malformed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-malformed', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-empty-array')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-empty-array', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-null')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-null', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-group-object')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-group-object', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-broad')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-broad', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-hosted')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-hosted', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-missing-isolation')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-missing-isolation', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-reordered')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-reordered', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='labels-spaced')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-9c58v_qu/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'labels-spaced', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (failures=9)

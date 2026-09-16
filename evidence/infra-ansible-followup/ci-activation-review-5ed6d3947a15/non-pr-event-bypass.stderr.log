@@ -1,0 +1,42 @@
+test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) ... 
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='pull-request-target') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='push') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='workflow-call') ... FAIL
+  test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='unknown-event') ... FAIL
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='pull-request-target')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-llljezzp/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'pull-request-target', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='push')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-llljezzp/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'push', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='workflow-call')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-llljezzp/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'workflow-call', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+======================================================================
+FAIL: test_workflow_gate_and_fixed_selector_for_each_scenario (test_ci_regression.CIGateTests.test_workflow_gate_and_fixed_selector_for_each_scenario) (case='unknown-event')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/ansible-workflow-mutation-llljezzp/repo/tests/test_ci_regression.py", line 202, in test_workflow_gate_and_fixed_selector_for_each_scenario
+    self.assertTrue(result['passed'], result)
+AssertionError: False is not true : {'case': 'unknown-event', 'expected': False, 'observed_model': True, 'selector': ['self-hosted', 'Linux', 'X64', 'fds-ci', 'ansible-isolated'], 'passed': False}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (failures=4)

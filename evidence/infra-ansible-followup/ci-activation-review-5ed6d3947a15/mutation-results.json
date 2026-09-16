@@ -1,0 +1,27 @@
+{
+  "status": "PASS_EXPECTED_FAILURES",
+  "cases": [
+    {
+      "mutation": "variable-selector",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "assertion_failure_observed": true,
+      "unexpected_error": false
+    },
+    {
+      "mutation": "broad-label-setting",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "assertion_failure_observed": true,
+      "unexpected_error": false
+    },
+    {
+      "mutation": "non-pr-event-bypass",
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "assertion_failure_observed": true,
+      "unexpected_error": false
+    }
+  ],
+  "scope": "Synthetic local mutations only; not deliberate-defect GitHub Actions runs."
+}
