@@ -1,0 +1,75 @@
+{
+  "started_at": "2026-09-16T12:24:18.370983+00:00",
+  "scope": "all",
+  "host": "cicd-runner01",
+  "login": "server01_cicd-runner",
+  "uid": 1000,
+  "home": "/home/server01_cicd-runner",
+  "execution_readiness": "NOT_ASSESSED",
+  "github_actions": "NOT_RUN",
+  "configuration_changed": false,
+  "host_observation": {
+    "state": "OBSERVED",
+    "queries": [
+      {
+        "operation": "list-units",
+        "state": "OK",
+        "rc": 0
+      },
+      {
+        "operation": "list-unit-files",
+        "state": "OK",
+        "rc": 0
+      }
+    ],
+    "services": [
+      {
+        "unit": "actions.runner.321Team-infra-cicd.cicd-runner01.service",
+        "query": {
+          "state": "OK",
+          "rc": 0
+        },
+        "properties": {
+          "Id": "actions.runner.321Team-infra-cicd.cicd-runner01.service",
+          "User": "server01_cicd-runner",
+          "Group": "",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "SubState": "running",
+          "WorkingDirectory": "/home/server01_cicd-runner/actions-runner",
+          "FragmentPath": "/etc/systemd/system/actions.runner.321Team-infra-cicd.cicd-runner01.service",
+          "MainPID": "14210"
+        },
+        "account": {
+          "name": "server01_cicd-runner",
+          "uid": 1000,
+          "gid": 1000,
+          "home": "/home/server01_cicd-runner"
+        },
+        "registration_metadata": {
+          "state": "OBSERVED",
+          "fields": {
+            "agentId": 2,
+            "agentName": "cicd-runner01",
+            "poolId": 1,
+            "poolName": "Default",
+            "workFolder": "_work",
+            "gitHubUrl": "https://github.com/321Team/infra-cicd"
+          },
+          "note": "local metadata is not proof of current server registration"
+        }
+      }
+    ],
+    "scope": "system services only; user services/manual processes not covered",
+    "credential_isolation": "NOT_ASSESSED",
+    "cleanup": "NOT_ASSESSED",
+    "sudo_policy": "NOT_ASSESSED"
+  },
+  "github_observation": {
+    "state": "UNKNOWN",
+    "reason": "GH_NOT_INSTALLED",
+    "repositories": {}
+  },
+  "collection_status": "INFO_INCOMPLETE",
+  "ended_at": "2026-09-16T12:24:18.398935+00:00"
+}
