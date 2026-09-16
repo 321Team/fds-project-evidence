@@ -1,0 +1,120 @@
+{
+  "status": "PASS_LOCAL_CONTRACT",
+  "scope": "static YAML and local condition model only",
+  "cases": [
+    {
+      "case": "positive",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "case": "negative",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "case": "event-push",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "event-pull_request_target",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "event-workflow_dispatch",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "event-workflow_call",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "event-unknown",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "event-",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "fork",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "missing-head-repo",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "other-repository",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "other-base",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "missing-base",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "ordinary-pr",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "similar-name",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "old-window",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "missing-ref",
+      "expected": false,
+      "observed": false
+    },
+    {
+      "case": "case-insensitive",
+      "expected": true,
+      "observed": true
+    }
+  ],
+  "mutations": [
+    {
+      "mutation": "allow-any-ref",
+      "rejected": true
+    },
+    {
+      "mutation": "allow-fork",
+      "rejected": true
+    },
+    {
+      "mutation": "drop-isolation-label",
+      "rejected": true
+    },
+    {
+      "mutation": "write-token",
+      "rejected": true
+    },
+    {
+      "mutation": "manual-trigger",
+      "rejected": true
+    }
+  ],
+  "unchanged_execution_steps": true,
+  "github_actions": "NOT_RUN at validation time"
+}
