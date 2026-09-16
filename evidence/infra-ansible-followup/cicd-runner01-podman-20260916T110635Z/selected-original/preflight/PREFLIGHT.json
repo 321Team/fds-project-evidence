@@ -1,0 +1,50 @@
+{
+  "status": "CAPABILITY_READY",
+  "hostname": "60cf0f829ec2",
+  "uid": 1000,
+  "scope": "local capabilities only; Runner access/isolation/approval NOT VERIFIED",
+  "checks": [
+    {
+      "check": "linux-x86_64-python312",
+      "passed": true,
+      "detail": {
+        "platform": "linux",
+        "machine": "x86_64",
+        "python": "3.12.14 (main, Aug 25 2026, 03:41:50) [GCC 12.2.0]"
+      }
+    },
+    {
+      "check": "glibc",
+      "passed": true,
+      "detail": {
+        "name": "glibc",
+        "version": "2.36"
+      }
+    },
+    {
+      "check": "git",
+      "passed": true,
+      "detail": "/usr/bin/git"
+    },
+    {
+      "check": "bash",
+      "passed": true,
+      "detail": "/usr/bin/bash"
+    },
+    {
+      "check": "grep",
+      "passed": true,
+      "detail": "/usr/bin/grep"
+    },
+    {
+      "check": "venv-ensurepip",
+      "passed": true,
+      "detail": "25.0.1"
+    },
+    {
+      "check": "local-ipc",
+      "passed": true,
+      "detail": "Python multiprocessing Server created and closed"
+    }
+  ]
+}

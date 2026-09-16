@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "check": "uid-gid",
+      "passed": true,
+      "detail": [
+        1000,
+        1000
+      ]
+    },
+    {
+      "check": "cpu-limit",
+      "passed": true,
+      "detail": [
+        "200000",
+        "100000"
+      ]
+    },
+    {
+      "check": "memory-limit",
+      "passed": true,
+      "detail": "4294967296"
+    },
+    {
+      "check": "pids-limit",
+      "passed": true,
+      "detail": "512"
+    },
+    {
+      "check": "no-new-privileges",
+      "passed": true,
+      "detail": "\t1"
+    },
+    {
+      "check": "no-effective-capabilities",
+      "passed": true,
+      "detail": "0000000000000000"
+    },
+    {
+      "check": "no-bounding-capabilities",
+      "passed": true,
+      "detail": "0000000000000000"
+    },
+    {
+      "check": "seccomp-filter",
+      "passed": true,
+      "detail": "\t2"
+    },
+    {
+      "check": "selinux-container-domain",
+      "passed": true,
+      "detail": "system_u:system_r:container_t:s0:c255,c593"
+    },
+    {
+      "check": "network-interfaces",
+      "passed": true,
+      "detail": [
+        "lo"
+      ]
+    },
+    {
+      "check": "root-readonly",
+      "passed": true,
+      "detail": "statvfs"
+    },
+    {
+      "check": "kit-readonly",
+      "passed": true,
+      "detail": "statvfs"
+    },
+    {
+      "check": "work-writable",
+      "passed": true,
+      "detail": "statvfs"
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,9 @@
+[
+  "/usr/bin/podman",
+  "--remote=false",
+  "--cgroup-manager=systemd",
+  "pull",
+  "--tls-verify=true",
+  "--authfile=/home/ansible-verify/ansible-podman-fa9bbcf33bd84702acca5110685aa161/empty-auth.json",
+  "docker.io/library/python:3.12-bookworm"
+]

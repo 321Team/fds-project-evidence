@@ -1,0 +1,24 @@
+PINNED.json: OK
+README.md: OK
+ci/verification-kit-169571801d1b0cee0ba75137380149a48d6b56dd.tar.gz: OK
+ci/verification-kit-169571801d1b0cee0ba75137380149a48d6b56dd.tar.gz.sha256: OK
+ci/verify-kit.py: OK
+ci/verify-kit.py.sha256: OK
+egress/verification-kit-d5147ebff0febbb8ab2afca28fe64d68301e033c.tar.gz: OK
+egress/verification-kit-d5147ebff0febbb8ab2afca28fe64d68301e033c.tar.gz.sha256: OK
+egress/verify-kit.py: OK
+egress/verify-kit.py.sha256: OK
+packaging-evidence/PREFLIGHT.json: OK
+packaging-evidence/RUN_RESULT.json: OK
+packaging-evidence/source-verification.json: OK
+packaging-evidence/wrapper-tests.log: OK
+packaging-evidence/wrapper-tests.rc: OK
+run.py: OK
+test-runner.py: OK
+STAGE=preflight
+EVIDENCE=/work/preflight/ansible-revalidation-evidence.tar.gz
+STATUS=PREFLIGHT_ONLY
+STAGE=run
+EVIDENCE=/work/result/ansible-revalidation-evidence.tar.gz
+STATUS=PASS_LOCAL_REVALIDATION
+{"status": "PASS_LOCAL_REVALIDATION", "preflight_rc": 0, "run_rc": 0}

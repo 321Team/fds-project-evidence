@@ -1,0 +1,26 @@
+STEP 1/9: FROM sha256:e8565fa265f973c06f0515fac7aa9d102edae01b5677d69216900b84029c6ad0
+STEP 2/9: RUN command -v bash && command -v git && command -v grep  && groupadd --gid 1000 verifier  && useradd --uid 1000 --gid 1000 --no-create-home --home-dir /work/home verifier  && python3 --version && git --version  && dpkg-query -W bash git grep ca-certificates libc6
+--> Using cache 6c2ee19ab7540e4331c974299fe5320fc7ac733172a6ff47fbc084e47db3238c
+--> 6c2ee19ab754
+STEP 3/9: COPY container-entry.py /usr/local/lib/fds-container-entry.py
+--> Using cache 508d3ff4548acb12e473e860eca7ae138122290652130a3beae5f8d850ada1d0
+--> 508d3ff4548a
+STEP 4/9: RUN chown 0:0 /usr/local/lib/fds-container-entry.py  && chmod 0444 /usr/local/lib/fds-container-entry.py
+--> Using cache c03b92890cd30d74a1174c75c56cd06b19e9e95175f0d583f213bd4384598124
+--> c03b92890cd3
+STEP 5/9: USER 1000:1000
+--> Using cache bf5f542bbf24fecaadedc1a734254d0076fc7f7e936716f1bc46135f8e3fb389
+--> bf5f542bbf24
+STEP 6/9: RUN ["/usr/local/bin/python3", "-I", "-B", "/usr/local/lib/fds-container-entry.py", "--self-test"]
+--> Using cache a8ea7fba6eec70eb21243b8e6611c76740f4bcea52f9f8c0e36782a9757bd384
+--> a8ea7fba6eec
+STEP 7/9: WORKDIR /work
+--> Using cache 9a7b53fde78f54ad93e3390981ab1c3b26b2d22d9ba07ceb4e96bac5e760b809
+--> 9a7b53fde78f
+STEP 8/9: ENTRYPOINT ["/usr/local/bin/python3", "-I", "-B", "/usr/local/lib/fds-container-entry.py"]
+--> Using cache 655e68ac3e7180de027237c80f1e87c6365710fd291150f4789bec773e065443
+--> 655e68ac3e71
+STEP 9/9: CMD []
+--> Using cache 6c175e1fc8143f9ddbc3d8d9f883565f6d844850a14c728732ca7e89a0efd409
+--> 6c175e1fc814
+6c175e1fc8143f9ddbc3d8d9f883565f6d844850a14c728732ca7e89a0efd409
