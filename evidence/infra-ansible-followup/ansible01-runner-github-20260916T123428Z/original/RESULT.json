@@ -1,0 +1,52 @@
+{
+  "started_at": "2026-09-16T12:34:28.519252+00:00",
+  "scope": "github",
+  "host": "ansible01",
+  "login": "server01_ansible",
+  "uid": 1000,
+  "home": "/home/server01_ansible",
+  "execution_readiness": "NOT_ASSESSED",
+  "github_actions": "NOT_RUN",
+  "configuration_changed": false,
+  "github_observation": {
+    "state": "OBSERVED",
+    "repositories": {
+      "321Team/infra-ansible": {
+        "state": "OBSERVED",
+        "query": {
+          "state": "OK",
+          "rc": 0
+        },
+        "runners": []
+      },
+      "321Team/infra-cicd": {
+        "state": "OBSERVED",
+        "query": {
+          "state": "OK",
+          "rc": 0
+        },
+        "runners": [
+          {
+            "id": 2,
+            "name": "cicd-runner01",
+            "os": "Linux",
+            "status": "online",
+            "busy": false,
+            "labels": [
+              "self-hosted",
+              "Linux",
+              "X64",
+              "p1-cicd",
+              "onprem",
+              "podman"
+            ]
+          }
+        ]
+      }
+    },
+    "approval": "NOT_ASSESSED",
+    "scope_note": "repository-accessible runners; registration/group policy not proven"
+  },
+  "collection_status": "COLLECTED",
+  "ended_at": "2026-09-16T12:34:29.962520+00:00"
+}
