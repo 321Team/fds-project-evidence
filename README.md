@@ -73,3 +73,8 @@ ansible01에서 CR 17개·P1-ANS 38개·DNS ZIP/Sidecar 2개가 수신됐다. DN
 ## 2026-09-09 FUP-01 원본 보완 완료
 
 [Refinalization 수신 검토](receipts/ansible01/20260909T003726Z/FDS_FUP01_Refinalization_Receipt_Review_v1.0.md) · [원본](evidence/CR-P1-ANS-01-01/received-20260909T003726Z/evidence_refinalization.20260904T183221+0900.txt). 승인 당시 Hash 일치, 내부 Manifest 2/2·기존 참조 4/4·Commit/Tree 대조 완료. FUP-01은 원본 보완 완료·독립 편입 검토 대기다. 위 날짜별 미수신 기록은 당시 이력으로 보존한다.
+
+
+## P1-LB-01 Stage B 사전점검 — 2026-09-17 수신 후보
+
+[수신 검토](evidence/P1-LB-01/stage-b/preflight-20260917T031743Z/README.md): 12:17:43 KST 현재 LB 설정·서비스·리스너 정상, CP1 UP/TCP 성공, CP2·CP3 DOWN/Connection refused. 무결성46/46·조회20rc0 확인, PRECHECK_NOT_READY. 인증 API·장애복구는 미수행이며 Stage B·최종 인수는 미완료다. 기존 Stage A 및 DAD 증적과 별도 회차로 보존한다.
