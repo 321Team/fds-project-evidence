@@ -1,0 +1,69 @@
+{
+  "changed_paths": [
+    "tests/test_ci_regression.py",
+    "tools/run-ansible-ci.py"
+  ],
+  "git_apply_check": 0,
+  "git_reverse_check": 0,
+  "red_control_rc": 1,
+  "red_control_expected_failure": true,
+  "suites": [
+    {
+      "suite": "proposal-ci-58",
+      "path": "DISCOVER",
+      "expected_tests": 58,
+      "observed_tests": 58,
+      "rc": 0,
+      "seconds": 1.1783,
+      "passed": true
+    },
+    {
+      "suite": "proposal-runner-37",
+      "path": "tools/ansible-runner/test-kit.py",
+      "expected_tests": 37,
+      "observed_tests": 37,
+      "rc": 0,
+      "seconds": 0.5643,
+      "passed": true
+    },
+    {
+      "suite": "proposal-registration-13",
+      "path": "tools/ansible-runner/test-registration.py",
+      "expected_tests": 13,
+      "observed_tests": 13,
+      "rc": 0,
+      "seconds": 0.1113,
+      "passed": true
+    },
+    {
+      "suite": "proposal-ipc-7",
+      "path": "tools/ansible-runner/test-ipc.py",
+      "expected_tests": 7,
+      "observed_tests": 7,
+      "rc": 0,
+      "seconds": 0.1322,
+      "passed": true
+    },
+    {
+      "suite": "proposal-admin-22",
+      "path": "tools/ansible-admin-token/test-admin-token.py",
+      "expected_tests": 22,
+      "observed_tests": 22,
+      "rc": 0,
+      "seconds": 0.1165,
+      "passed": true
+    },
+    {
+      "suite": "proposal-input-20",
+      "path": "tools/ansible-runner-input/test_safe_input.py",
+      "expected_tests": 20,
+      "observed_tests": 20,
+      "rc": 0,
+      "seconds": 0.1017,
+      "passed": true
+    }
+  ],
+  "source_unchanged": true,
+  "proposal_applied_to_github": false,
+  "limitations": "Best effort status repair only. Persistent/all-path storage failure cannot guarantee writing diagnostics; rc and manifest are still mandatory."
+}

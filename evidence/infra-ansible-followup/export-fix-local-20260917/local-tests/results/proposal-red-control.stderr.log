@@ -1,0 +1,22 @@
+test_artifact_export_failure_marks_writable_results_failed (test_ci_regression.CIGateTests.test_artifact_export_failure_marks_writable_results_failed) ... ERROR
+
+======================================================================
+ERROR: test_artifact_export_failure_marks_writable_results_failed (test_ci_regression.CIGateTests.test_artifact_export_failure_marks_writable_results_failed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/red-control/tests/test_ci_regression.py", line 190, in test_artifact_export_failure_marks_writable_results_failed
+    result, _, _ = self.run_fake(out)
+                   ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/red-control/tests/test_ci_regression.py", line 137, in run_fake
+    result = ci.execute(ROOT, CODE, output, Path('/preloaded-wheels'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/red-control/tools/run-ansible-ci.py", line 111, in execute
+    (artifact / 'SHA256SUMS').write_text(''.join(kit.sha(p.read_bytes()) + '  ' + p.relative_to(artifact).as_posix() + '\n'
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/red-control/tests/test_ci_regression.py", line 185, in fail_manifest
+    raise OSError(28, 'SYNTHETIC_STORAGE_FAULT')
+OSError: [Errno 28] SYNTHETIC_STORAGE_FAULT
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (errors=1)

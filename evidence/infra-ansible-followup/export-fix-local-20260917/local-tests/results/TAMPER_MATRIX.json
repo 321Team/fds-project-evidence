@@ -1,0 +1,426 @@
+{
+  "scope": "synthetic fixtures only; original uploaded evidence not altered or reaccepted",
+  "cases": [
+    {
+      "implementation": "existing common.manifest",
+      "case": "control",
+      "accepted": true,
+      "passed": true,
+      "error": null
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "changed-byte",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "missing-file",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "extra-file",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "duplicate-row",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "missing-row",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "wrong-hash",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "traversal",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "absolute",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "noncanonical",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "symlink-file",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "symlink-directory",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "hardlink",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing common.manifest",
+      "case": "fifo",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "control",
+      "accepted": true,
+      "passed": true,
+      "error": null
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "missing-result",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "duplicate-result",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "invalid-json",
+      "accepted": false,
+      "passed": true,
+      "error": "JSONDecodeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "oversize-result",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "too-many-members",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "linked-result",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "corrupt-gzip",
+      "accepted": false,
+      "passed": true,
+      "error": "ReadError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "wrong-sidecar-hash",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "wrong-sidecar-name",
+      "accepted": false,
+      "passed": true,
+      "error": "RuntimeError"
+    },
+    {
+      "implementation": "existing launch.copy_original (bounded host-result reader, not full archive verifier)",
+      "case": "linked-archive",
+      "accepted": false,
+      "passed": true,
+      "error": "OSError"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "positive-control",
+      "accepted": true,
+      "passed": true,
+      "error": null
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "expected-negative-control",
+      "accepted": true,
+      "passed": true,
+      "error": null
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "pr.head.sha=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:source:pr"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "run.head_sha=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:source:run"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "job.head_sha=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:source:job"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "check.head_sha=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:source:check"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "ci.source_commit=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:source:ci"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "pr.number=98",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:pr"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "run.id=102",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:run"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "job.run_id=102",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:run"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "run.run_attempt=1",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:attempt"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "job.run_attempt=1",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:attempt"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "job.id=202",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:job/check"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "check.id=202",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:job/check"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "ci.github.GITHUB_RUN_ID=102",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:GITHUB_RUN_ID"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "ci.github.GITHUB_RUN_ATTEMPT=1",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:GITHUB_RUN_ATTEMPT"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "ci.github.GITHUB_REPOSITORY=different/repo",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:GITHUB_REPOSITORY"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "ci.github.RUNNER_NAME=different",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:RUNNER_NAME"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "job.runner_id=8",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:job_runner_id"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "host.runner.agentId=8",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:host_runner_id"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "host.runner.agentId=True",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:host_runner_id"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "host.runner.agentName=different",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:host_runner_name"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "host.bundle_sha256=eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:bundle"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "host.image_id=sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:image"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "host.cleanup.runner=FAILED",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:cleanup:runner"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "host.cleanup.proxy=FAILED",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:cleanup:proxy"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "host.cleanup.workspace=FAILED",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:cleanup:workspace"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "pagination_complete=False",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:pagination"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "pagination_complete=1",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:pagination"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "runners.total_count=1",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:runner_count"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "run.status=queued",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:status"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "check.conclusion=failure",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:conclusion"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "ci.status=FAIL",
+      "accepted": false,
+      "passed": true,
+      "error": "BINDING_MISMATCH:ci_status"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "id-present",
+      "accepted": false,
+      "passed": true,
+      "error": "TARGET_RUNNER_STILL_REGISTERED"
+    },
+    {
+      "implementation": "NEW proposed review_binding.py; synthetic model, not deployed",
+      "case": "name-present",
+      "accepted": false,
+      "passed": true,
+      "error": "TARGET_RUNNER_STILL_REGISTERED"
+    }
+  ],
+  "source_unchanged": true
+}

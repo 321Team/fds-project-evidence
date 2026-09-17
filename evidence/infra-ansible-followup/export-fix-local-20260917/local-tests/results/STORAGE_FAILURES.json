@@ -1,0 +1,174 @@
+{
+  "scope": "SYNTHETIC; real CI entrypoint/artifact export, mocked engines; OSError injection not real disk exhaustion",
+  "cases": [
+    {
+      "case": "success-control",
+      "injection_observed": true,
+      "rc": 0,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": "PASS"
+      },
+      "manifest_complete": true,
+      "raw_log_preserved": true,
+      "acceptance_allowed": true,
+      "standalone_pass_remaining_after_failure": false,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "fixture-fail-control",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "FAIL",
+        "artifact/CI_RESULT.json": "FAIL"
+      },
+      "manifest_complete": true,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": false,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "result-enospc",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": null,
+        "artifact/CI_RESULT.json": null
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": false,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "result-eacces",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": null,
+        "artifact/CI_RESULT.json": null
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": false,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "artifact-mkdir",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": null
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": true,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "copy-result",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": null
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": true,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "copy-log",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": "PASS"
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": true,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "read-log",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": "PASS"
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": true,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "scope-write",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": "PASS"
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": true,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "manifest-write",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": "PASS"
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": true,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "manifest-partial",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": "PASS"
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": true,
+      "passed_exit_and_preservation": true
+    },
+    {
+      "case": "persistent-write-outage",
+      "injection_observed": true,
+      "rc": 1,
+      "result_statuses": {
+        "CI_RESULT.json": "PASS",
+        "artifact/CI_RESULT.json": "PASS"
+      },
+      "manifest_complete": false,
+      "raw_log_preserved": true,
+      "acceptance_allowed": false,
+      "standalone_pass_remaining_after_failure": true,
+      "passed_exit_and_preservation": true
+    }
+  ],
+  "source_unchanged": true
+}

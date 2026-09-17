@@ -1,0 +1,60 @@
+{
+  "suites": [
+    {
+      "suite": "ci-57",
+      "path": "DISCOVER",
+      "expected_tests": 57,
+      "observed_tests": 57,
+      "rc": 0,
+      "seconds": 1.1634,
+      "passed": true
+    },
+    {
+      "suite": "runner-37",
+      "path": "tools/ansible-runner/test-kit.py",
+      "expected_tests": 37,
+      "observed_tests": 37,
+      "rc": 0,
+      "seconds": 0.6246,
+      "passed": true
+    },
+    {
+      "suite": "registration-13",
+      "path": "tools/ansible-runner/test-registration.py",
+      "expected_tests": 13,
+      "observed_tests": 13,
+      "rc": 0,
+      "seconds": 0.1196,
+      "passed": true
+    },
+    {
+      "suite": "ipc-7",
+      "path": "tools/ansible-runner/test-ipc.py",
+      "expected_tests": 7,
+      "observed_tests": 7,
+      "rc": 0,
+      "seconds": 0.1302,
+      "passed": true
+    },
+    {
+      "suite": "admin-22",
+      "path": "tools/ansible-admin-token/test-admin-token.py",
+      "expected_tests": 22,
+      "observed_tests": 22,
+      "rc": 0,
+      "seconds": 0.1526,
+      "passed": true
+    },
+    {
+      "suite": "input-20",
+      "path": "tools/ansible-runner-input/test_safe_input.py",
+      "expected_tests": 20,
+      "observed_tests": 20,
+      "rc": 0,
+      "seconds": 0.0806,
+      "passed": true
+    }
+  ],
+  "source_unchanged": true,
+  "scope": "local unit/subprocess/mock only; no Ansible engine/Podman/GitHub execution"
+}
