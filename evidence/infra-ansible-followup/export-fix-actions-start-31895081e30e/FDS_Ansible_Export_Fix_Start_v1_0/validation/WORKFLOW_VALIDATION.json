@@ -1,0 +1,126 @@
+{
+  "scope": "STATIC; exact previous Workflow comparison and local condition model, not GitHub scheduler execution",
+  "workflow_contract_unchanged_except_single_allowed_ref": true,
+  "model_cases": 19,
+  "model": [
+    {
+      "event": "pull_request",
+      "ref": "test/issue-5-export-fix-positive-20260917",
+      "allowed": true
+    },
+    {
+      "event": "pull_request",
+      "ref": "test/issue-5-isolated-positive-20260917",
+      "allowed": false
+    },
+    {
+      "event": "pull_request",
+      "ref": "test/issue-5-isolated-negative-20260917",
+      "allowed": false
+    },
+    {
+      "event": "pull_request",
+      "ref": "unrelated",
+      "allowed": false
+    },
+    {
+      "event": "push",
+      "ref": "test/issue-5-export-fix-positive-20260917",
+      "allowed": false
+    },
+    {
+      "event": "push",
+      "ref": "test/issue-5-isolated-positive-20260917",
+      "allowed": false
+    },
+    {
+      "event": "push",
+      "ref": "test/issue-5-isolated-negative-20260917",
+      "allowed": false
+    },
+    {
+      "event": "push",
+      "ref": "unrelated",
+      "allowed": false
+    },
+    {
+      "event": "pull_request_target",
+      "ref": "test/issue-5-export-fix-positive-20260917",
+      "allowed": false
+    },
+    {
+      "event": "pull_request_target",
+      "ref": "test/issue-5-isolated-positive-20260917",
+      "allowed": false
+    },
+    {
+      "event": "pull_request_target",
+      "ref": "test/issue-5-isolated-negative-20260917",
+      "allowed": false
+    },
+    {
+      "event": "pull_request_target",
+      "ref": "unrelated",
+      "allowed": false
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "test/issue-5-export-fix-positive-20260917",
+      "allowed": false
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "test/issue-5-isolated-positive-20260917",
+      "allowed": false
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "test/issue-5-isolated-negative-20260917",
+      "allowed": false
+    },
+    {
+      "event": "workflow_dispatch",
+      "ref": "unrelated",
+      "allowed": false
+    },
+    {
+      "changed_field": "repository",
+      "allowed": false
+    },
+    {
+      "changed_field": "head_repository",
+      "allowed": false
+    },
+    {
+      "changed_field": "base_ref",
+      "allowed": false
+    }
+  ],
+  "mutation_rejections": [
+    {
+      "mutation": "write-permission",
+      "rejected": true
+    },
+    {
+      "mutation": "broad-ref",
+      "rejected": true
+    },
+    {
+      "mutation": "missing-isolation",
+      "rejected": true
+    },
+    {
+      "mutation": "wrong-checkout",
+      "rejected": true
+    },
+    {
+      "mutation": "credential-persistence",
+      "rejected": true
+    },
+    {
+      "mutation": "no-always-upload",
+      "rejected": true
+    }
+  ],
+  "runtime_tests_rerun": false
+}

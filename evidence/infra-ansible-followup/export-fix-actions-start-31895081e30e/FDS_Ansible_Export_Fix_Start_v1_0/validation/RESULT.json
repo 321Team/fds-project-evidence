@@ -1,0 +1,53 @@
+{
+  "scope": "STATIC/LOCAL/MOCK only; server and new Actions not executed here",
+  "unit_tests": 9,
+  "passed": true,
+  "preflight_negative_subcases": 35,
+  "readiness_binding_negative_subcases": 12,
+  "bash_syntax": [
+    "00-runner-readiness.sh",
+    "01-admin-token.sh",
+    "02-runner-serve.sh",
+    "common-start.sh"
+  ],
+  "wrong_login_rejected": [
+    {
+      "script": "00-runner-readiness.sh",
+      "rc": 1,
+      "fixed_error": "STOP: wrong login account; use the original normal login"
+    },
+    {
+      "script": "01-admin-token.sh",
+      "rc": 1,
+      "fixed_error": "STOP: wrong login account; use the original normal login"
+    },
+    {
+      "script": "02-runner-serve.sh",
+      "rc": 1,
+      "fixed_error": "STOP: wrong login account; use the original normal login"
+    }
+  ],
+  "unchanged_serve_and_common": true,
+  "payloads": [
+    {
+      "file": "FDS_Ansible_Actions_Runner_v1_3.zip",
+      "sha256": "87d97358b30bf8c99c8d9d48a8b4c391941c1b8008010232d500214ee0ac67f0",
+      "bytes": 62882,
+      "identical_to_previous": true
+    },
+    {
+      "file": "FDS_Ansible_Admin_Token_v1_1_1.zip",
+      "sha256": "8363df3ef37866f8fb16d3c92abcc8073b5c7ee07ac4359e7fbef9405cbf2d9c",
+      "bytes": 18740,
+      "identical_to_previous": true
+    },
+    {
+      "file": "FDS_Ansible_Runner_Input_Guard_v1_0.zip",
+      "sha256": "19c916f826a3ff0178f07f3b1a2b0b62f9359902f73196cadf330a08b070f34d",
+      "bytes": 16465,
+      "identical_to_previous": true
+    }
+  ],
+  "workflow_model_cases": 19,
+  "workflow_mutations_rejected": 6
+}
