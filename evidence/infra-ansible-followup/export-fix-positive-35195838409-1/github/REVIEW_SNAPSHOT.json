@@ -1,0 +1,139 @@
+{
+  "checked_at": "2026-09-17T08:42:46.352Z",
+  "pr17": "6b2ac7a80be1acd187ac73cbd1cf957f708edf85",
+  "pr19": "4da96621fd05a4943b76ca32b860a5779ec65e00",
+  "evidence13": "4b318aac4fb0df36b668fcd4e7f9325511e9b740",
+  "reviews": {
+    "pr17": [
+      {
+        "_links": {
+          "html": {
+            "href": "https://github.com/321Team/infra-ansible/pull/17#pullrequestreview-5232880227"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/321Team/infra-ansible/pulls/17"
+          }
+        },
+        "author_association": "MEMBER",
+        "body": "Ansible 독립 리뷰 (재환, Reviewer 임시 대체) — Draft, 9커밋/15파일 대형 변경. 아래는 최고 위험 지점(Workflow 권한, CI 실행기 격리) 집중 검토입니다. docs/ci/ACCEPTANCE_DEEP_REVIEW.md, ACTIVATION_DEEP_REVIEW.md 등 자체 심층 리뷰 문서가 이미 포함돼 있는 것도 확인했습니다.\n\n대상 HEAD: 6b2ac7a80be1acd187ac73cbd1cf957f708edf85 (Draft, 병합 대상 아님)\n\n## 코드 지적과 근거\n- `docs/ci/ansible-regression.workflow.yml`(.github/workflows 밖 비활성 템플릿)이 `permissions: contents: read`만 부여하고, `pull_request_target`을 쓰지 않으며, fork PR을 `head.repo.full_name == github.repository` 조건으로 걸러내는 것을 확인했습니다. 모든 외부 Action이 `@<40자리 SHA>` 고정인지 `test_template_cannot_activate_and_leak_token_by_default`가 정규식으로 검증합니다.\n- `tools/run-ansible-ci.py`의 `execute()`가 CI 출력 디렉터리를 checkout 바깥에 강제(`output.is_relative_to(repo)` 거부)하고, syntax-check만 수행하며 실제 playbook apply 옵션이 없는 것을 확인했습니다.\n- `regression_expectations.py`의 `complete_matrix()`가 누락·중복·타입 위조를 모두 거부하는 것을 `test_wrong_engine_extra_case_and_nonboolean_pass_rejected` 등에서 직접 확인했습니다 — \"완료 행 수만 같아도 통과\"하는 취약점을 실제로 막습니다.\n- 이전 라운드에서 hayeounglee(추정)의 리뷰로 고정 상수(14, 58 등)가 `ENGINES`/`guard_case_count()` 기반 동적 계산으로 교체된 것으로 보이는 diff를 확인했으며, 하드코딩 우회 위험이 줄었습니다.\n- 특이사항 없음.\n\n## 확인한 시험·증적 및 미검증 항목\n- GitHub 연동으로 위 핵심 파일들의 diff를 직접 읽었습니다 (GitHub-read).\n- 나머지 파일(ACCEPTANCE_DEEP_REVIEW.md, ACTIVATION_DEEP_REVIEW.md 등 자체 심층 리뷰 문서, verification-kit.py 등)은 이번에 전부 대조하지 못했습니다 → NOT VERIFIED.\n- PR 설명에 기재된 실제 Actions Run(정상/count 고의결함 등)과 원격 Runner 격리 검증은 제가 재현하지 않았습니다 → NOT RUN.\n\n## 잔여 위험·후속 Gate\n- Draft 상태이며 \"독립 리뷰 대기\"로 명시돼 있어, 실제 활성화(`.github/workflows/`로 편입) 전에는 병합/활성화 판단을 내리지 않는 것이 맞아 보입니다.\n- 실제 격리 Runner 등록·정리 증명은 여전히 사람이 확인할 운영 사실입니다.\n\n## 최종 판정: PENDING — 사람 결정\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조 (최고 위험 지점 집중, 전체 라인 대조 아님)\n사람 확인: PENDING — 사람 확인 후 기입",
+        "commit_id": "6b2ac7a80be1acd187ac73cbd1cf957f708edf85",
+        "html_url": "https://github.com/321Team/infra-ansible/pull/17#pullrequestreview-5232880227",
+        "id": 5232880227,
+        "node_id": "PRR_kwDOULzL-M8AAAABN-dqYw",
+        "pull_request_url": "https://api.github.com/repos/321Team/infra-ansible/pulls/17",
+        "state": "COMMENTED",
+        "submitted_at": "2026-09-17T08:10:30Z",
+        "user": {
+          "avatar_url": "https://avatars.githubusercontent.com/u/116513704?v=4",
+          "events_url": "https://api.github.com/users/supreme33-kr/events{/privacy}",
+          "followers_url": "https://api.github.com/users/supreme33-kr/followers",
+          "following_url": "https://api.github.com/users/supreme33-kr/following{/other_user}",
+          "gists_url": "https://api.github.com/users/supreme33-kr/gists{/gist_id}",
+          "gravatar_id": "",
+          "html_url": "https://github.com/supreme33-kr",
+          "id": 116513704,
+          "login": "supreme33-kr",
+          "node_id": "U_kgDOBvHbqA",
+          "organizations_url": "https://api.github.com/users/supreme33-kr/orgs",
+          "received_events_url": "https://api.github.com/users/supreme33-kr/received_events",
+          "repos_url": "https://api.github.com/users/supreme33-kr/repos",
+          "site_admin": false,
+          "starred_url": "https://api.github.com/users/supreme33-kr/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/supreme33-kr/subscriptions",
+          "type": "User",
+          "url": "https://api.github.com/users/supreme33-kr",
+          "user_view_type": "public"
+        }
+      }
+    ],
+    "pr19": [
+      {
+        "_links": {
+          "html": {
+            "href": "https://github.com/321Team/infra-ansible/pull/19#pullrequestreview-5232900696"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/321Team/infra-ansible/pulls/19"
+          }
+        },
+        "author_association": "MEMBER",
+        "body": "Ansible 독립 리뷰 (재환, Reviewer 임시 대체) — Draft, 8커밋/57파일 최대 규모 PR. 아래는 전체 라인 대조가 아니라 최고 위험 지점(컨테이너 격리) 집중 검토입니다. CODE_REVIEW.md/DEEP_REVIEW.md/IPC_FAILURE_REVIEW.md/PREPARE_FAILURE_REVIEW.md/REGISTRATION_FAILURE_REVIEW.md 등 자체 심층 리뷰·장애 분석 문서가 이미 다수 포함돼 있는 것도 확인했습니다.\n\n대상 HEAD: 4da96621fd05a4943b76ca32b860a5779ec65e00 (Draft, 병합 대상 아님)\n\n## 집중 검토: tools/ansible-runner/container.py의 isolation()/probe()\n- 컨테이너 실행 설정값을 믿지 않고, 컨테이너 **내부에서 런타임에 직접 재검증**하는 것을 확인했습니다: uid/gid 1000, `CapEff`/`CapBnd` 0, `NoNewPrivs=1`, `Seccomp=2`, SELinux `container_t` 도메인, 네트워크 인터페이스가 `lo`뿐인지, root 파일시스템 read-only, cgroup memory/pids/cpu 상한, `/dev/shm`이 정확히 64MiB·nosuid/nodev/noexec 옵션을 가진 별도 tmpfs인지까지 `/proc/self/status`, `/proc/net/dev`, `/proc/self/mountinfo`, cgroup 파일을 직접 읽어 확인합니다. 하나라도 실패하면 토큰 등록 전에 `require()`로 중단합니다.\n- `probe()`가 실제로 임의 목적지(`10.1.93.102`, `169.254.169.254`, 링크로컬 메타데이터 주소, `example.com`, 가짜 도메인)로의 CONNECT를 프록시에 시도해 `403 Forbidden`으로 거부되는지 실측하는 것을 확인했습니다 — egress 프록시 우회 여부를 설정이 아니라 실제 동작으로 검증합니다.\n- `native()`가 Runner의 원본 로그(`_diag` 등 자격증명 포함 가능)를 이벤트 스트림에는 `'EXCLUDED_PRIVATE_WORKSPACE'`로만 표시하고 실제 파일은 일회성 세션 워크스페이스에만 남기는 것을 확인했습니다.\n- `registered_identity()`가 Runner가 실제로 등록한 URL/이름/agentId를 기대값과 재대조하는 것도 확인했습니다.\n- 특이사항 없음.\n\n## 확인한 시험·증적 및 미검증 항목\n- GitHub 연동으로 `container.py` 전문을 직접 읽었습니다 (GitHub-read).\n- 나머지 56개 파일(admin-token.py, launch.py, proxy.py, 20개 input guard 회귀 등)은 이번에 전부 대조하지 못했습니다 → NOT VERIFIED.\n- PR 설명의 실제 Actions Run(v1.1→v1.3 반복 수정, /dev/shm 문제 등)과 원격 Runner 부재 확인은 제가 재현하지 않았습니다 → NOT RUN. 다만 이 이력 자체가 실서버에서 여러 번 실행·디버깅된 근거로 보이며, 문서화된 자체 장애 리뷰(IPC_FAILURE_REVIEW.md 등)와 일치하는 패턴입니다.\n\n## 잔여 위험·후속 Gate\n- 57파일 규모상, 병합/활성화 전 이하영님 또는 별도 라운드의 전체 라인 리뷰를 권장드립니다. 특히 `admin-token.py`(관리 토큰 처리)와 `launch.py`(실제 컨테이너 기동 인자 조합)는 이번에 제가 못 봤습니다.\n- Issue #5 최종 AC 인수·운영 apply·엔진 전환은 여전히 NOT RUN 상태입니다.\n\n## 최종 판정: PENDING — 사람 결정\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조 (최고 위험 지점 집중, 전체 라인 대조 아님 — PR 규모상 후속 라운드 권장)\n사람 확인: PENDING — 사람 확인 후 기입",
+        "commit_id": "4da96621fd05a4943b76ca32b860a5779ec65e00",
+        "html_url": "https://github.com/321Team/infra-ansible/pull/19#pullrequestreview-5232900696",
+        "id": 5232900696,
+        "node_id": "PRR_kwDOULzL-M8AAAABN-e6WA",
+        "pull_request_url": "https://api.github.com/repos/321Team/infra-ansible/pulls/19",
+        "state": "COMMENTED",
+        "submitted_at": "2026-09-17T08:12:54Z",
+        "user": {
+          "avatar_url": "https://avatars.githubusercontent.com/u/116513704?v=4",
+          "events_url": "https://api.github.com/users/supreme33-kr/events{/privacy}",
+          "followers_url": "https://api.github.com/users/supreme33-kr/followers",
+          "following_url": "https://api.github.com/users/supreme33-kr/following{/other_user}",
+          "gists_url": "https://api.github.com/users/supreme33-kr/gists{/gist_id}",
+          "gravatar_id": "",
+          "html_url": "https://github.com/supreme33-kr",
+          "id": 116513704,
+          "login": "supreme33-kr",
+          "node_id": "U_kgDOBvHbqA",
+          "organizations_url": "https://api.github.com/users/supreme33-kr/orgs",
+          "received_events_url": "https://api.github.com/users/supreme33-kr/received_events",
+          "repos_url": "https://api.github.com/users/supreme33-kr/repos",
+          "site_admin": false,
+          "starred_url": "https://api.github.com/users/supreme33-kr/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/supreme33-kr/subscriptions",
+          "type": "User",
+          "url": "https://api.github.com/users/supreme33-kr",
+          "user_view_type": "public"
+        }
+      }
+    ],
+    "pr13": [
+      {
+        "_links": {
+          "html": {
+            "href": "https://github.com/321Team/fds-project-evidence/pull/13#pullrequestreview-5219964286"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/13"
+          }
+        },
+        "author_association": "MEMBER",
+        "body": "## 리뷰 요약\n\n편입된 증적 파일들의 해시 무결성과 본문 수치 주장을 직접 대조 검증했습니다.\n\n**검증 완료 (문제 없음)**\n- source_commit 일치: `REVIEW.json` / `ci-artifact/CI_RESULT.json` / `egress-2.21.3/RESULTS.json`의 source_commit이 PR 본문에 명시된 PR17(`a487c4f...`)·PR18(`ca3a5c1...`) SHA와 모두 일치합니다.\n- 바이트 무결성: `environment/local-ipc.json`, `ci-artifact/CI_RESULT.json`을 직접 내려받아 sha256을 재계산했고, `SHA256SUMS`/`REGISTRY_SHA256SUMS` 값과 정확히 일치합니다.\n- `SHA256SUMS` ↔ `REGISTRY_SHA256SUMS` 정합성: 경로 목록 diff 결과 차이는 REGISTRY가 로컬 SHA256SUMS 자기 자신을 추가로 해시한 한 줄뿐으로, 정상적인 자기참조 차이입니다.\n- 원본 FAIL 보존: `CI_RESULT.json.status`, `REVIEW.json.overall_ci`가 모두 FAIL로 유지되어 있고 actions/operational_runtime은 NOT_RUN으로 정확히 표기되어, PASS로 승격되지 않았음을 확인했습니다.\n- PR17 구문 32 PASS: `CI_RESULT.json.syntax`에 2엔진×16 playbook = 32건, 전부 rc:0.\n- PR17 단위 56 PASS: `fixtures/unit-tests/stderr.log`에 `Ran 56 tests ... OK` 확인.\n- 2.21.3 환경 차단 근거: `environment/local-ipc.json`의 PermissionError errno=1, `egress-2.21.3/RESULTS.json`의 localhost-cli-preflight 케이스(expected_rc:0, actual_rc:250, passed:false)로 뒷받침됩니다.\n- 기존 완료 기록(#6/#7/#8/#10) 불변: 이번 PR은 신규 디렉터리(`evidence/infra-ansible-followup/`)만 추가하며 기존 evidence 경로를 수정하지 않았습니다.\n\n**확인 요청 사항**\n- `ci-artifact/fixtures/unit-tests/stdout.log`의 내용이 의도한 unittest discover 출력이 아니라, `{\"status\":\"PASS\"}` / `{\"status\":\"FAIL\"}` 및 engine/total/outcomes 형태의 요약 3줄을 담고 있습니다. 이 값들은 같은 실행의 `fixtures/guards/stdout.log`(SSH guard matrix 결과)와 유사한 포맷이지만 수치가 정확히 일치하지 않습니다 (engine: null 항목 및 2.16.19 전체 ERROR:14 케이스는 guards 결과에 존재하지 않음). 최종 판정(56 PASS, overall FAIL)에는 영향이 없어 보이나, 병렬 fixture 캡처 과정에서 stdout 버퍼가 다른 실행과 섞였을 가능성이 있어 원본 캡처 스크립트 확인을 요청드립니다.\n\n위 확인 요청 사항 외에는 병합에 문제 없어 보입니다.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+        "commit_id": "6a6a384c2870729d26767ec8d6e745ee75567ffe",
+        "html_url": "https://github.com/321Team/fds-project-evidence/pull/13#pullrequestreview-5219964286",
+        "id": 5219964286,
+        "node_id": "PRR_kwDOUQvpi88AAAABNyJVfg",
+        "pull_request_url": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/13",
+        "state": "COMMENTED",
+        "submitted_at": "2026-09-16T07:54:01Z",
+        "user": {
+          "avatar_url": "https://avatars.githubusercontent.com/u/95111439?u=d531f1f1f2702ca476594fcc6fc88b9406d97d4b&v=4",
+          "events_url": "https://api.github.com/users/hayeounglee/events{/privacy}",
+          "followers_url": "https://api.github.com/users/hayeounglee/followers",
+          "following_url": "https://api.github.com/users/hayeounglee/following{/other_user}",
+          "gists_url": "https://api.github.com/users/hayeounglee/gists{/gist_id}",
+          "gravatar_id": "",
+          "html_url": "https://github.com/hayeounglee",
+          "id": 95111439,
+          "login": "hayeounglee",
+          "node_id": "U_kgDOBatJDw",
+          "organizations_url": "https://api.github.com/users/hayeounglee/orgs",
+          "received_events_url": "https://api.github.com/users/hayeounglee/received_events",
+          "repos_url": "https://api.github.com/users/hayeounglee/repos",
+          "site_admin": false,
+          "starred_url": "https://api.github.com/users/hayeounglee/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/hayeounglee/subscriptions",
+          "type": "User",
+          "url": "https://api.github.com/users/hayeounglee",
+          "user_view_type": "public"
+        }
+      }
+    ]
+  },
+  "runner_remote_absence": "PENDING",
+  "check_endpoint": "CONNECTOR_ENDPOINT_UNAVAILABLE",
+  "token_issued": false,
+  "rerun": false,
+  "merge": false
+}

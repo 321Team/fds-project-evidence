@@ -1,0 +1,458 @@
+﻿2026-09-17T08:16:39.1591659Z Current runner version: '2.337.0'
+2026-09-17T08:16:39.1597595Z Runner name: 'ansible-ci-a6b75591ba3d4d38b5a3c3797afd8d37'
+2026-09-17T08:16:39.1598242Z Runner group name: 'Default'
+2026-09-17T08:16:39.1598930Z Machine name: '6cb5e0737360'
+2026-09-17T08:16:39.1602144Z ##[group]GITHUB_TOKEN Permissions
+2026-09-17T08:16:39.1604648Z Contents: read
+2026-09-17T08:16:39.1605357Z Metadata: read
+2026-09-17T08:16:39.1606058Z ##[endgroup]
+2026-09-17T08:16:39.1607913Z Secret source: Actions
+2026-09-17T08:16:39.1609019Z Cache mode: write
+2026-09-17T08:16:39.1609996Z Runner is running behind proxy server 'http://127.0.0.1:3128' for all HTTP requests.
+2026-09-17T08:16:39.1611252Z Runner is running behind proxy server 'http://127.0.0.1:3128' for all HTTPS requests.
+2026-09-17T08:16:39.1612042Z Prepare workflow directory
+2026-09-17T08:16:39.2071593Z Prepare all required actions
+2026-09-17T08:16:39.2107067Z Getting action download info
+2026-09-17T08:16:40.2486778Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-09-17T08:16:40.7333243Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-09-17T08:16:41.3661238Z Complete job name: regression
+2026-09-17T08:16:41.4169957Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-17T08:16:41.4176271Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+2026-09-17T08:16:41.4176672Z with:
+2026-09-17T08:16:41.4176875Z   ref: 31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:16:41.4177105Z   fetch-depth: 1
+2026-09-17T08:16:41.4177301Z   persist-credentials: false
+2026-09-17T08:16:41.4177505Z   clean: true
+2026-09-17T08:16:41.4178719Z   repository: 321Team/infra-ansible
+2026-09-17T08:16:41.4180422Z   token: ***
+2026-09-17T08:16:41.4180615Z   ssh-strict: true
+2026-09-17T08:16:41.4180794Z   ssh-user: git
+2026-09-17T08:16:41.4181022Z   sparse-checkout-cone-mode: true
+2026-09-17T08:16:41.4181989Z   fetch-tags: false
+2026-09-17T08:16:41.4182258Z   show-progress: true
+2026-09-17T08:16:41.4182459Z   lfs: false
+2026-09-17T08:16:41.4182638Z   submodules: false
+2026-09-17T08:16:41.4182835Z   set-safe-directory: true
+2026-09-17T08:16:41.4183062Z   allow-unsafe-pr-checkout: false
+2026-09-17T08:16:41.4183821Z env:
+2026-09-17T08:16:41.4184061Z   CI_SOURCE_SHA: 31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:16:41.4184312Z   CI_WHEEL_DIR: 
+2026-09-17T08:16:41.4184491Z ##[endgroup]
+2026-09-17T08:16:41.5142259Z Syncing repository: 321Team/infra-ansible
+2026-09-17T08:16:41.5143740Z ##[group]Getting Git version info
+2026-09-17T08:16:41.5144141Z Working directory is '/session/runner/_work/infra-ansible/infra-ansible'
+2026-09-17T08:16:41.5144693Z [command]/usr/bin/git version
+2026-09-17T08:16:41.5144918Z git version 2.39.5
+2026-09-17T08:16:41.5145664Z ##[endgroup]
+2026-09-17T08:16:41.5153873Z Temporarily overriding HOME='/session/runner/_work/_temp/de38c83c-364f-4e41-9b6d-d341d00701bf' before making global git config changes
+2026-09-17T08:16:41.5155084Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-17T08:16:41.5157335Z [command]/usr/bin/git config --global --add safe.directory /session/runner/_work/infra-ansible/infra-ansible
+2026-09-17T08:16:41.5189669Z Deleting the contents of '/session/runner/_work/infra-ansible/infra-ansible'
+2026-09-17T08:16:41.5192929Z ##[group]Initializing the repository
+2026-09-17T08:16:41.5195773Z [command]/usr/bin/git init /session/runner/_work/infra-ansible/infra-ansible
+2026-09-17T08:16:41.5221972Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-17T08:16:41.5222556Z hint: is subject to change. To configure the initial branch name to use in all
+2026-09-17T08:16:41.5224426Z hint: of your new repositories, which will suppress this warning, call:
+2026-09-17T08:16:41.5224926Z hint: 
+2026-09-17T08:16:41.5225642Z hint: 	git config --global init.defaultBranch <name>
+2026-09-17T08:16:41.5225941Z hint: 
+2026-09-17T08:16:41.5226231Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-17T08:16:41.5226622Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-17T08:16:41.5226913Z hint: 
+2026-09-17T08:16:41.5227110Z hint: 	git branch -m <name>
+2026-09-17T08:16:41.5227448Z Initialized empty Git repository in /session/runner/_work/infra-ansible/infra-ansible/.git/
+2026-09-17T08:16:41.5231727Z [command]/usr/bin/git remote add origin https://github.com/321Team/infra-ansible
+2026-09-17T08:16:41.5255405Z ##[endgroup]
+2026-09-17T08:16:41.5256023Z ##[group]Disabling automatic garbage collection
+2026-09-17T08:16:41.5257205Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-17T08:16:41.5277047Z ##[endgroup]
+2026-09-17T08:16:41.5277679Z ##[group]Setting up auth
+2026-09-17T08:16:41.5280809Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-17T08:16:41.5304267Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-17T08:16:41.5494391Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-17T08:16:41.5515394Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-17T08:16:41.5682627Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-17T08:16:41.5703499Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-17T08:16:41.5881479Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-17T08:16:41.5909226Z ##[endgroup]
+2026-09-17T08:16:41.5909694Z ##[group]Fetching the repository
+2026-09-17T08:16:41.5915480Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:16:42.3389984Z From https://github.com/321Team/infra-ansible
+2026-09-17T08:16:42.3390674Z  * branch            31895081e30e27481e7c17407047c9454e3b247a -> FETCH_HEAD
+2026-09-17T08:16:42.3403750Z ##[endgroup]
+2026-09-17T08:16:42.3404285Z ##[group]Determining the checkout info
+2026-09-17T08:16:42.3405026Z ##[endgroup]
+2026-09-17T08:16:42.3411878Z [command]/usr/bin/git sparse-checkout disable
+2026-09-17T08:16:42.3443129Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-17T08:16:42.3462872Z ##[group]Checking out the ref
+2026-09-17T08:16:42.3465465Z [command]/usr/bin/git checkout --progress --force 31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:16:42.3525975Z Note: switching to '31895081e30e27481e7c17407047c9454e3b247a'.
+2026-09-17T08:16:42.3526237Z 
+2026-09-17T08:16:42.3526423Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-09-17T08:16:42.3526766Z changes and commit them, and you can discard any commits you make in this
+2026-09-17T08:16:42.3527190Z state without impacting any branches by switching back to a branch.
+2026-09-17T08:16:42.3527370Z 
+2026-09-17T08:16:42.3527501Z If you want to create a new branch to retain commits you create, you may
+2026-09-17T08:16:42.3527813Z do so (now or later) by using -c with the switch command. Example:
+2026-09-17T08:16:42.3527982Z 
+2026-09-17T08:16:42.3528066Z   git switch -c <new-branch-name>
+2026-09-17T08:16:42.3528180Z 
+2026-09-17T08:16:42.3528263Z Or undo this operation with:
+2026-09-17T08:16:42.3528363Z 
+2026-09-17T08:16:42.3528427Z   git switch -
+2026-09-17T08:16:42.3528741Z 
+2026-09-17T08:16:42.3528904Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-09-17T08:16:42.3529118Z 
+2026-09-17T08:16:42.3529276Z HEAD is now at 3189508 test: run isolated positive CI for artifact export status fix
+2026-09-17T08:16:42.3537090Z ##[endgroup]
+2026-09-17T08:16:42.3566075Z [command]/usr/bin/git log -1 --format=%H
+2026-09-17T08:16:42.3623324Z 31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:16:42.3996465Z ##[group]Removing auth
+2026-09-17T08:16:42.3997203Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-17T08:16:42.3999846Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-17T08:16:42.4001139Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-17T08:16:42.4001703Z http.https://github.com/.extraheader
+2026-09-17T08:16:42.4004580Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-17T08:16:42.4006811Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-17T08:16:42.4152999Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-17T08:16:42.4175523Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-17T08:16:42.4379202Z ##[endgroup]
+2026-09-17T08:16:42.4565521Z ##[group]Run set -euo pipefail
+2026-09-17T08:16:42.4565895Z [36;1mset -euo pipefail[0m
+2026-09-17T08:16:42.4566215Z [36;1mwork=$(mktemp -d "${RUNNER_TEMP:?}/ansible-ci-${GITHUB_RUN_ID:?}-${GITHUB_RUN_ATTEMPT:?}-XXXXXXXX")[0m
+2026-09-17T08:16:42.4566568Z [36;1mprintf 'CI_OUTPUT=%s\n' "$work/result" >> "$GITHUB_ENV"[0m
+2026-09-17T08:16:42.4575943Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-17T08:16:42.4576185Z env:
+2026-09-17T08:16:42.4576371Z   CI_SOURCE_SHA: 31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:16:42.4576578Z   CI_WHEEL_DIR: 
+2026-09-17T08:16:42.4576729Z ##[endgroup]
+2026-09-17T08:16:42.4660364Z ##[group]Run set -euo pipefail
+2026-09-17T08:16:42.4660599Z [36;1mset -euo pipefail[0m
+2026-09-17T08:16:42.4660860Z [36;1margs=(--repo "$GITHUB_WORKSPACE" --commit "$CI_SOURCE_SHA" --output "$CI_OUTPUT")[0m
+2026-09-17T08:16:42.4661204Z [36;1mif [[ -n "$CI_WHEEL_DIR" ]]; then args+=(--wheels "$CI_WHEEL_DIR"); fi[0m
+2026-09-17T08:16:42.4661493Z [36;1mpython3.12 -I -B tools/run-ansible-ci.py "${args[@]}"[0m
+2026-09-17T08:16:42.4665537Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-17T08:16:42.4665764Z env:
+2026-09-17T08:16:42.4665936Z   CI_SOURCE_SHA: 31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:16:42.4666137Z   CI_WHEEL_DIR: 
+2026-09-17T08:16:42.4666375Z   CI_OUTPUT: /session/runner/_work/_temp/ansible-ci-35195838409-1-vSeyRJ2f/result
+2026-09-17T08:16:42.4666630Z ##[endgroup]
+2026-09-17T08:23:39.5089348Z {
+2026-09-17T08:23:39.5089994Z   "schema_version": 1,
+2026-09-17T08:23:39.5090671Z   "source_commit": "31895081e30e27481e7c17407047c9454e3b247a",
+2026-09-17T08:23:39.5091158Z   "status": "PASS",
+2026-09-17T08:23:39.5091428Z   "syntax": [
+2026-09-17T08:23:39.5091676Z     {
+2026-09-17T08:23:39.5091920Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5092341Z       "playbook": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+2026-09-17T08:23:39.5092797Z       "rc": 0
+2026-09-17T08:23:39.5093036Z     },
+2026-09-17T08:23:39.5094784Z     {
+2026-09-17T08:23:39.5095134Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5095537Z       "playbook": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+2026-09-17T08:23:39.5095967Z       "rc": 0
+2026-09-17T08:23:39.5096221Z     },
+2026-09-17T08:23:39.5096480Z     {
+2026-09-17T08:23:39.5096711Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5097586Z       "playbook": "playbooks/cr-p1-ans-01-01-precheck.yml",
+2026-09-17T08:23:39.5097974Z       "rc": 0
+2026-09-17T08:23:39.5098877Z     },
+2026-09-17T08:23:39.5099141Z     {
+2026-09-17T08:23:39.5099376Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5099753Z       "playbook": "playbooks/cr-p1-ans-01-01-rollback.yml",
+2026-09-17T08:23:39.5100157Z       "rc": 0
+2026-09-17T08:23:39.5100421Z     },
+2026-09-17T08:23:39.5100648Z     {
+2026-09-17T08:23:39.5100886Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5101256Z       "playbook": "playbooks/cr-p1-ans-01-01-verify.yml",
+2026-09-17T08:23:39.5101642Z       "rc": 0
+2026-09-17T08:23:39.5101963Z     },
+2026-09-17T08:23:39.5102419Z     {
+2026-09-17T08:23:39.5102657Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5103010Z       "playbook": "playbooks/cr-p1-mon-01-01-apply.yml",
+2026-09-17T08:23:39.5103394Z       "rc": 0
+2026-09-17T08:23:39.5104156Z     },
+2026-09-17T08:23:39.5104454Z     {
+2026-09-17T08:23:39.5104698Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5105099Z       "playbook": "playbooks/cr-p1-mon-01-01-precheck.yml",
+2026-09-17T08:23:39.5105530Z       "rc": 0
+2026-09-17T08:23:39.5105799Z     },
+2026-09-17T08:23:39.5106047Z     {
+2026-09-17T08:23:39.5106934Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5107411Z       "playbook": "playbooks/cr-p1-mon-01-01-rollback.yml",
+2026-09-17T08:23:39.5107818Z       "rc": 0
+2026-09-17T08:23:39.5108062Z     },
+2026-09-17T08:23:39.5108291Z     {
+2026-09-17T08:23:39.5108512Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5109505Z       "playbook": "playbooks/cr-p1-mon-01-01-verify.yml",
+2026-09-17T08:23:39.5109903Z       "rc": 0
+2026-09-17T08:23:39.5110141Z     },
+2026-09-17T08:23:39.5110667Z     {
+2026-09-17T08:23:39.5110956Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5111304Z       "playbook": "playbooks/harden_svc_ansible_key.yml",
+2026-09-17T08:23:39.5111920Z       "rc": 0
+2026-09-17T08:23:39.5112208Z     },
+2026-09-17T08:23:39.5112454Z     {
+2026-09-17T08:23:39.5112707Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5113459Z       "playbook": "playbooks/p1-k8s-01-gate0-precheck.yml",
+2026-09-17T08:23:39.5114155Z       "rc": 0
+2026-09-17T08:23:39.5114676Z     },
+2026-09-17T08:23:39.5114831Z     {
+2026-09-17T08:23:39.5114959Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5115520Z       "playbook": "playbooks/p1-lb-01-stage-a-nodes.yml",
+2026-09-17T08:23:39.5115741Z       "rc": 0
+2026-09-17T08:23:39.5115868Z     },
+2026-09-17T08:23:39.5116018Z     {
+2026-09-17T08:23:39.5116190Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5116357Z       "playbook": "playbooks/precheck.yml",
+2026-09-17T08:23:39.5116530Z       "rc": 0
+2026-09-17T08:23:39.5116662Z     },
+2026-09-17T08:23:39.5116780Z     {
+2026-09-17T08:23:39.5117044Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5117232Z       "playbook": "playbooks/site.yml",
+2026-09-17T08:23:39.5117399Z       "rc": 0
+2026-09-17T08:23:39.5117519Z     },
+2026-09-17T08:23:39.5117638Z     {
+2026-09-17T08:23:39.5117758Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5117938Z       "playbook": "tests/ssh-server-readonly.yml",
+2026-09-17T08:23:39.5118123Z       "rc": 0
+2026-09-17T08:23:39.5118241Z     },
+2026-09-17T08:23:39.5118369Z     {
+2026-09-17T08:23:39.5118487Z       "engine": "2.16.19",
+2026-09-17T08:23:39.5119037Z       "playbook": "tests/test-dns-resolver-normalization.yml",
+2026-09-17T08:23:39.5119287Z       "rc": 0
+2026-09-17T08:23:39.5119421Z     },
+2026-09-17T08:23:39.5119541Z     {
+2026-09-17T08:23:39.5119675Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5119904Z       "playbook": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+2026-09-17T08:23:39.5120135Z       "rc": 0
+2026-09-17T08:23:39.5120255Z     },
+2026-09-17T08:23:39.5120370Z     {
+2026-09-17T08:23:39.5120494Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5120688Z       "playbook": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+2026-09-17T08:23:39.5120894Z       "rc": 0
+2026-09-17T08:23:39.5121019Z     },
+2026-09-17T08:23:39.5121137Z     {
+2026-09-17T08:23:39.5121262Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5121610Z       "playbook": "playbooks/cr-p1-ans-01-01-precheck.yml",
+2026-09-17T08:23:39.5121816Z       "rc": 0
+2026-09-17T08:23:39.5121939Z     },
+2026-09-17T08:23:39.5122056Z     {
+2026-09-17T08:23:39.5122175Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5122354Z       "playbook": "playbooks/cr-p1-ans-01-01-rollback.yml",
+2026-09-17T08:23:39.5122546Z       "rc": 0
+2026-09-17T08:23:39.5122673Z     },
+2026-09-17T08:23:39.5122791Z     {
+2026-09-17T08:23:39.5122920Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5123093Z       "playbook": "playbooks/cr-p1-ans-01-01-verify.yml",
+2026-09-17T08:23:39.5123282Z       "rc": 0
+2026-09-17T08:23:39.5123400Z     },
+2026-09-17T08:23:39.5123515Z     {
+2026-09-17T08:23:39.5123745Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5123976Z       "playbook": "playbooks/cr-p1-mon-01-01-apply.yml",
+2026-09-17T08:23:39.5124181Z       "rc": 0
+2026-09-17T08:23:39.5124306Z     },
+2026-09-17T08:23:39.5124436Z     {
+2026-09-17T08:23:39.5124558Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5124739Z       "playbook": "playbooks/cr-p1-mon-01-01-precheck.yml",
+2026-09-17T08:23:39.5124936Z       "rc": 0
+2026-09-17T08:23:39.5125056Z     },
+2026-09-17T08:23:39.5125171Z     {
+2026-09-17T08:23:39.5125288Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5125467Z       "playbook": "playbooks/cr-p1-mon-01-01-rollback.yml",
+2026-09-17T08:23:39.5125657Z       "rc": 0
+2026-09-17T08:23:39.5125779Z     },
+2026-09-17T08:23:39.5125893Z     {
+2026-09-17T08:23:39.5126010Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5126182Z       "playbook": "playbooks/cr-p1-mon-01-01-verify.yml",
+2026-09-17T08:23:39.5126366Z       "rc": 0
+2026-09-17T08:23:39.5126485Z     },
+2026-09-17T08:23:39.5126603Z     {
+2026-09-17T08:23:39.5126722Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5126891Z       "playbook": "playbooks/harden_svc_ansible_key.yml",
+2026-09-17T08:23:39.5127075Z       "rc": 0
+2026-09-17T08:23:39.5127196Z     },
+2026-09-17T08:23:39.5127307Z     {
+2026-09-17T08:23:39.5127765Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5128006Z       "playbook": "playbooks/p1-k8s-01-gate0-precheck.yml",
+2026-09-17T08:23:39.5128268Z       "rc": 0
+2026-09-17T08:23:39.5128446Z     },
+2026-09-17T08:23:39.5128607Z     {
+2026-09-17T08:23:39.5129086Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5129488Z       "playbook": "playbooks/p1-lb-01-stage-a-nodes.yml",
+2026-09-17T08:23:39.5129900Z       "rc": 0
+2026-09-17T08:23:39.5130100Z     },
+2026-09-17T08:23:39.5130279Z     {
+2026-09-17T08:23:39.5130493Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5130729Z       "playbook": "playbooks/precheck.yml",
+2026-09-17T08:23:39.5130969Z       "rc": 0
+2026-09-17T08:23:39.5131151Z     },
+2026-09-17T08:23:39.5131336Z     {
+2026-09-17T08:23:39.5131533Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5131741Z       "playbook": "playbooks/site.yml",
+2026-09-17T08:23:39.5131954Z       "rc": 0
+2026-09-17T08:23:39.5132145Z     },
+2026-09-17T08:23:39.5132311Z     {
+2026-09-17T08:23:39.5147165Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5147407Z       "playbook": "tests/ssh-server-readonly.yml",
+2026-09-17T08:23:39.5147615Z       "rc": 0
+2026-09-17T08:23:39.5147746Z     },
+2026-09-17T08:23:39.5147872Z     {
+2026-09-17T08:23:39.5147998Z       "engine": "2.21.3",
+2026-09-17T08:23:39.5148210Z       "playbook": "tests/test-dns-resolver-normalization.yml",
+2026-09-17T08:23:39.5148422Z       "rc": 0
+2026-09-17T08:23:39.5148551Z     }
+2026-09-17T08:23:39.5148842Z   ],
+2026-09-17T08:23:39.5149007Z   "started_at": "2026-09-17T08:16:42.692609+00:00",
+2026-09-17T08:23:39.5149352Z   "scope": "syntax and localhost fixtures; no deployment",
+2026-09-17T08:23:39.5149557Z   "github": {
+2026-09-17T08:23:39.5149712Z     "GITHUB_REPOSITORY": "321Team/infra-ansible",
+2026-09-17T08:23:39.5149912Z     "GITHUB_RUN_ID": "35195838409",
+2026-09-17T08:23:39.5150091Z     "GITHUB_RUN_ATTEMPT": "1",
+2026-09-17T08:23:39.5150422Z     "GITHUB_WORKFLOW_SHA": "c1bad37e7fe8fafb9297f1fc1bbc015e4de7caa9",
+2026-09-17T08:23:39.5150808Z     "GITHUB_SHA": "c1bad37e7fe8fafb9297f1fc1bbc015e4de7caa9",
+2026-09-17T08:23:39.5151217Z     "GITHUB_EVENT_NAME": "pull_request",
+2026-09-17T08:23:39.5151438Z     "RUNNER_NAME": "ansible-ci-a6b75591ba3d4d38b5a3c3797afd8d37",
+2026-09-17T08:23:39.5151654Z     "RUNNER_OS": "Linux",
+2026-09-17T08:23:39.5151806Z     "RUNNER_ARCH": "X64"
+2026-09-17T08:23:39.5151947Z   },
+2026-09-17T08:23:39.5152080Z   "production_apply": false,
+2026-09-17T08:23:39.5152257Z   "operational_engine_transition": false,
+2026-09-17T08:23:39.5152433Z   "plan": {
+2026-09-17T08:23:39.5152564Z     "schema_version": 1,
+2026-09-17T08:23:39.5152748Z     "source_commit": "31895081e30e27481e7c17407047c9454e3b247a",
+2026-09-17T08:23:39.5152951Z     "engines": [
+2026-09-17T08:23:39.5153188Z       "2.16.19",
+2026-09-17T08:23:39.5153333Z       "2.21.3"
+2026-09-17T08:23:39.5153458Z     ],
+2026-09-17T08:23:39.5153588Z     "syntax_playbooks": [
+2026-09-17T08:23:39.5153879Z       "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+2026-09-17T08:23:39.5154127Z       "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+2026-09-17T08:23:39.5154354Z       "playbooks/cr-p1-ans-01-01-precheck.yml",
+2026-09-17T08:23:39.5154564Z       "playbooks/cr-p1-ans-01-01-rollback.yml",
+2026-09-17T08:23:39.5154783Z       "playbooks/cr-p1-ans-01-01-verify.yml",
+2026-09-17T08:23:39.5155240Z       "playbooks/cr-p1-mon-01-01-apply.yml",
+2026-09-17T08:23:39.5155445Z       "playbooks/cr-p1-mon-01-01-precheck.yml",
+2026-09-17T08:23:39.5155642Z       "playbooks/cr-p1-mon-01-01-rollback.yml",
+2026-09-17T08:23:39.5155842Z       "playbooks/cr-p1-mon-01-01-verify.yml",
+2026-09-17T08:23:39.5156030Z       "playbooks/harden_svc_ansible_key.yml",
+2026-09-17T08:23:39.5156224Z       "playbooks/p1-k8s-01-gate0-precheck.yml",
+2026-09-17T08:23:39.5156416Z       "playbooks/p1-lb-01-stage-a-nodes.yml",
+2026-09-17T08:23:39.5156599Z       "playbooks/precheck.yml",
+2026-09-17T08:23:39.5156917Z       "playbooks/site.yml",
+2026-09-17T08:23:39.5157095Z       "tests/ssh-server-readonly.yml",
+2026-09-17T08:23:39.5157294Z       "tests/test-dns-resolver-normalization.yml"
+2026-09-17T08:23:39.5157485Z     ],
+2026-09-17T08:23:39.5157634Z     "scope": "syntax + localhost fixtures only",
+2026-09-17T08:23:39.5157926Z     "runner_registration": "external approved input; never inferred from host address",
+2026-09-17T08:23:39.5158325Z     "production_apply": false,
+2026-09-17T08:23:39.5158499Z     "operational_engine_transition": false
+2026-09-17T08:23:39.5158929Z   },
+2026-09-17T08:23:39.5159189Z   "archive_sha256": "b2be17d2831fe7f269b1ecbc6782d1cc6e6378994f06035e85fbde59492969aa",
+2026-09-17T08:23:39.5159463Z   "fixtures": {
+2026-09-17T08:23:39.5159696Z     "archive_sha256": "b2be17d2831fe7f269b1ecbc6782d1cc6e6378994f06035e85fbde59492969aa",
+2026-09-17T08:23:39.5160143Z     "created_at": "2026-09-17T08:17:00.039599+00:00",
+2026-09-17T08:23:39.5160390Z     "platform": "Linux-6.12.0-266.el10.x86_64-x86_64-with-glibc2.36",
+2026-09-17T08:23:39.5160659Z     "python": "3.12.14 (main, Aug 25 2026, 03:41:50) [GCC 12.2.0]",
+2026-09-17T08:23:39.5160864Z     "schema_version": 1,
+2026-09-17T08:23:39.5161023Z     "scope": "fixture_local_only",
+2026-09-17T08:23:39.5161220Z     "source_commit": "31895081e30e27481e7c17407047c9454e3b247a",
+2026-09-17T08:23:39.5161451Z     "status": "PASS_FRESH_OFFLINE_FIXTURES",
+2026-09-17T08:23:39.5161780Z     "started_at": "2026-09-17T08:17:22.745580+00:00",
+2026-09-17T08:23:39.5161979Z     "steps": [
+2026-09-17T08:23:39.5162105Z       {
+2026-09-17T08:23:39.5162234Z         "name": "unit-tests",
+2026-09-17T08:23:39.5162384Z         "rc": 0
+2026-09-17T08:23:39.5162509Z       },
+2026-09-17T08:23:39.5162635Z       {
+2026-09-17T08:23:39.5162761Z         "name": "guards",
+2026-09-17T08:23:39.5162905Z         "rc": 0
+2026-09-17T08:23:39.5163024Z       },
+2026-09-17T08:23:39.5163139Z       {
+2026-09-17T08:23:39.5163262Z         "name": "contract",
+2026-09-17T08:23:39.5163532Z         "rc": 0
+2026-09-17T08:23:39.5163748Z       },
+2026-09-17T08:23:39.5163884Z       {
+2026-09-17T08:23:39.5164012Z         "name": "dns-2.16.19",
+2026-09-17T08:23:39.5164270Z         "rc": 0
+2026-09-17T08:23:39.5164596Z       },
+2026-09-17T08:23:39.5164825Z       {
+2026-09-17T08:23:39.5164979Z         "name": "dns-2.21.3",
+2026-09-17T08:23:39.5165129Z         "rc": 0
+2026-09-17T08:23:39.5165248Z       }
+2026-09-17T08:23:39.5165361Z     ],
+2026-09-17T08:23:39.5165615Z     "original_readonly_result": "NOT_RUN; no operational inventory or SSH execution in this kit run",
+2026-09-17T08:23:39.5165931Z     "finished_at": "2026-09-17T08:23:39.355621+00:00"
+2026-09-17T08:23:39.5166107Z   },
+2026-09-17T08:23:39.5166245Z   "finished_at": "2026-09-17T08:23:39.395593+00:00"
+2026-09-17T08:23:39.5166422Z }
+2026-09-17T08:23:39.5259918Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-17T08:23:39.5261161Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-09-17T08:23:39.5261437Z with:
+2026-09-17T08:23:39.5261635Z   name: ansible-ci-35195838409-1-31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:23:39.5261959Z   path: /session/runner/_work/_temp/ansible-ci-35195838409-1-vSeyRJ2f/result/artifact/
+2026-09-17T08:23:39.5262226Z   if-no-files-found: error
+2026-09-17T08:23:39.5262384Z   retention-days: 14
+2026-09-17T08:23:39.5262528Z   compression-level: 6
+2026-09-17T08:23:39.5262668Z   overwrite: false
+2026-09-17T08:23:39.5262808Z   include-hidden-files: false
+2026-09-17T08:23:39.5262961Z env:
+2026-09-17T08:23:39.5263154Z   CI_SOURCE_SHA: 31895081e30e27481e7c17407047c9454e3b247a
+2026-09-17T08:23:39.5263347Z   CI_WHEEL_DIR: 
+2026-09-17T08:23:39.5263562Z   CI_OUTPUT: /session/runner/_work/_temp/ansible-ci-35195838409-1-vSeyRJ2f/result
+2026-09-17T08:23:39.5263930Z ##[endgroup]
+2026-09-17T08:23:39.6599494Z (node:21684) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-17T08:23:39.6599969Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-17T08:23:39.8211689Z With the provided path, there will be 832 files uploaded
+2026-09-17T08:23:39.8215853Z Artifact name is valid!
+2026-09-17T08:23:39.8217317Z Root directory input is valid!
+2026-09-17T08:23:39.8287770Z ##[warning]Retention days cannot be greater than the maximum allowed retention set within the repository. Using 7 instead.
+2026-09-17T08:23:40.7145591Z Beginning upload of artifact content to blob storage
+2026-09-17T08:23:41.1701531Z (node:21684) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-09-17T08:23:42.9065960Z Uploaded bytes 459726
+2026-09-17T08:23:43.7037308Z Finished uploading artifact content to blob storage!
+2026-09-17T08:23:43.7038311Z SHA256 digest of uploaded artifact zip is b973ff4e2b021fb7de017684d4b928c3958349d339df58fda360a3987352d9a5
+2026-09-17T08:23:43.7039040Z Finalizing artifact upload
+2026-09-17T08:23:44.6407564Z Artifact ansible-ci-35195838409-1-31895081e30e27481e7c17407047c9454e3b247a.zip successfully finalized. Artifact ID 10487510294
+2026-09-17T08:23:44.6408879Z Artifact ansible-ci-35195838409-1-31895081e30e27481e7c17407047c9454e3b247a has been successfully uploaded! Final size is 459726 bytes. Artifact ID is 10487510294
+2026-09-17T08:23:44.6413878Z Artifact download URL: https://github.com/321Team/infra-ansible/actions/runs/35195838409/artifacts/10487510294
+2026-09-17T08:23:44.6565034Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-17T08:23:44.6565952Z Post job cleanup.
+2026-09-17T08:23:44.7160274Z [command]/usr/bin/git version
+2026-09-17T08:23:44.7191645Z git version 2.39.5
+2026-09-17T08:23:44.7220744Z Temporarily overriding HOME='/session/runner/_work/_temp/3d78102b-dc45-43e8-8ca2-f43670c43dd7' before making global git config changes
+2026-09-17T08:23:44.7221715Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-17T08:23:44.7224194Z [command]/usr/bin/git config --global --add safe.directory /session/runner/_work/infra-ansible/infra-ansible
+2026-09-17T08:23:44.7249850Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-17T08:23:44.7272052Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-17T08:23:44.7429086Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-17T08:23:44.7451469Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-17T08:23:44.7653136Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-17T08:23:44.7673673Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-17T08:23:44.7917014Z Cleaning up orphan processes
+2026-09-17T08:23:44.8093579Z Terminate orphan process: pid (21565) (ansible-playbook)
+2026-09-17T08:23:44.8118731Z Terminate orphan process: pid (21566) (ansible-playbook)
+2026-09-17T08:23:44.8130935Z Terminate orphan process: pid (21571) (ansible-playbook)
+2026-09-17T08:23:44.8141760Z Terminate orphan process: pid (21579) (ansible-playbook)
+2026-09-17T08:23:44.8152196Z Terminate orphan process: pid (21583) (ansible-playbook)
+2026-09-17T08:23:44.8162624Z Terminate orphan process: pid (21629) (sh)
+2026-09-17T08:23:44.8173219Z Terminate orphan process: pid (21630) (sh)
+2026-09-17T08:23:44.8183675Z Terminate orphan process: pid (21632) (sh)
+2026-09-17T08:23:44.8194255Z Terminate orphan process: pid (21633) (sh)
+2026-09-17T08:23:44.8252016Z Terminate orphan process: pid (21634) (sh)
+2026-09-17T08:23:44.8263236Z Terminate orphan process: pid (21636) (python)
+2026-09-17T08:23:44.8273997Z Terminate orphan process: pid (21638) (python)
+2026-09-17T08:23:44.8284566Z Terminate orphan process: pid (21640) (sh)
+2026-09-17T08:23:44.8296093Z Terminate orphan process: pid (21642) (python)
+2026-09-17T08:23:44.8306940Z Terminate orphan process: pid (21643) (sh)
+2026-09-17T08:23:44.8317800Z Terminate orphan process: pid (21645) (sh)
+2026-09-17T08:23:44.8328806Z Terminate orphan process: pid (21646) (python)
+2026-09-17T08:23:44.8347232Z Terminate orphan process: pid (21647) (sh)
+2026-09-17T08:23:44.8358437Z Terminate orphan process: pid (21648) (sh)
+2026-09-17T08:23:44.8369198Z Terminate orphan process: pid (21649) (python)
+2026-09-17T08:23:44.8379780Z Terminate orphan process: pid (21650) (python)
+2026-09-17T08:23:44.8390496Z Terminate orphan process: pid (21651) (python)
+2026-09-17T08:23:44.8401067Z Terminate orphan process: pid (21652) (python)
+2026-09-17T08:23:44.8411765Z Terminate orphan process: pid (21653) (python)
+2026-09-17T08:23:44.8422422Z Terminate orphan process: pid (21654) (python)
+2026-09-17T08:23:44.8447098Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
