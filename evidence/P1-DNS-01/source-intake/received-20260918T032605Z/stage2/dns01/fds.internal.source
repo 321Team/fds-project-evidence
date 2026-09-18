@@ -1,0 +1,25 @@
+$TTL 300
+@   IN  SOA dns01.fds.internal. hostmaster.fds.internal. (
+        2026090101 ; Serial
+        300        ; Refresh
+        120        ; Retry
+        604800     ; Expire
+        300        ; Negative Cache TTL
+)
+
+    IN  NS  dns01.fds.internal.
+    IN  NS  dns02.fds.internal.
+
+dns01       IN  A   10.1.93.52
+dns02       IN  A   10.1.93.53
+edge        IN  A   10.1.93.50
+vpn-gw      IN  A   10.1.93.51
+harbor      IN  A   10.1.93.54
+db          IN  A   10.1.93.55
+control01   IN  A   10.1.93.102
+control02   IN  A   10.1.93.103
+control03   IN  A   10.1.93.104
+worker01    IN  A   10.1.93.105
+worker02    IN  A   10.1.93.107
+worker03    IN  A   10.1.93.108
+k8s-api     IN  A   10.1.93.109
