@@ -6,6 +6,7 @@
 - 최초 준비 브랜치: evidence/initial-import-20260907. 이후 evidence/<ticket-id>-<수집회차>를 사용한다.
 - Draft PR에서 범위, 수신 파일, 검증 결과, 미수신 항목, 기존 완료 상태와 편입 상태를 제시한다.
 - 최소 1인의 독립 검토 후 이권욱이 검토 Commit을 확인하여 병합한다. 이번 준비 요청은 최종 승인·병합·Runtime 실행을 포함하지 않는다.
+- 2026-09-23 [사전 검증(Pre-check) 코드 예외](https://github.com/321Team/fds-project-baseline/blob/ea2488b33a870d35c16bd303af568c5fe48c2e44/governance/REVIEW_AUTHORITY_POLICY.md)([baseline PR #93](https://github.com/321Team/fds-project-baseline/pull/93))는 이 저장소에 적용하지 않는다. Pre-check 도구의 실행 결과·로그·사본을 편입하는 PR도 독립 검토를 거친다. 소스 저장소에서 리뷰 없이 병합된 Pre-check 코드의 결과는 `REVIEW=NOT PERFORMED (Pre-check)` 상태의 소스 SHA로 연결한다. 이를 리뷰된 코드의 실행 결과로 표시하지 않는다.
 - GitHub Free 제약으로 보호 규칙을 적용할 수 없는 경우 PR·정확한 Commit 확인·독립 검토·수동 병합을 기록한다. 설정이 강제 적용됐다고 미리 표시하지 않는다.
 
 ## 완료 티켓의 편입
