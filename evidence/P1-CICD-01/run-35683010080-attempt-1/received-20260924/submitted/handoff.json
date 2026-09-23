@@ -1,0 +1,100 @@
+{
+  "HANDOFF": "PASS",
+  "source": {
+    "repository": "321Team/fds-msa",
+    "commit": "ec69b67067decf35abbfed0a6a99f3073132787b",
+    "approved_by": "이재환 (supreme33-kr)",
+    "approval_reference": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-5757298518"
+  },
+  "files": {
+    "transaction-api/requirements.txt": {
+      "sha256": "0b8f3430a64f4b81429277bf651b2e1b62a68084f8d79b36a63d09d065b76947",
+      "mode": "100644"
+    },
+    "transaction-api/requirements-test.txt": {
+      "sha256": "b0a7d247aa0d498de1e71fd299c79d5022874cf1b36347697f52ba88b194f5f2",
+      "mode": "100644"
+    },
+    "fds-engine/requirements.txt": {
+      "sha256": "11b1f940e83bded8fa8e901005f0467c4652bfac332657b11c118ee8f9b80ca3",
+      "mode": "100644"
+    },
+    "fds-engine/requirements-test.txt": {
+      "sha256": "2f41764074d9ca19782db366262c28015930c16e2e0b135a8b615f5d15dbae78",
+      "mode": "100644"
+    },
+    "transaction-api/Dockerfile": {
+      "sha256": "01ab8a025e976b3563fca51b88fc299315b4c5edb85f965d200844f971b77e99",
+      "mode": "100644"
+    },
+    "transaction-api/requirements-runtime.lock": {
+      "sha256": "3a71d0d227415f3f818642b5370920f02a23a9bcb28f4dd31aac1d59d96c756e",
+      "mode": "100644"
+    },
+    "transaction-api/requirements-test.lock": {
+      "sha256": "72137816616e16e2b88f86630c507800414c3b37c14c7f624b9042fd66a8ef85",
+      "mode": "100644"
+    },
+    "fds-engine/Dockerfile": {
+      "sha256": "5849c5f9c225a54be8d6b4d0d602f443cb4e797688f867d6b7962f8c4b671607",
+      "mode": "100644"
+    },
+    "fds-engine/requirements-runtime.lock": {
+      "sha256": "c9d6138da341b431f0b7fdaf4aee78d59f9207e9d3f2bf4636b0505681c1f80b",
+      "mode": "100644"
+    },
+    "fds-engine/requirements-test.lock": {
+      "sha256": "3a51dbbb6dd56d09658f0d2343e4b4847394f006f1f2aa082886bc468e797b65",
+      "mode": "100644"
+    }
+  },
+  "test_scope": {
+    "transaction-api": {
+      "unit": {
+        "status": "NOT_APPLICABLE",
+        "reason": "transaction-api는 자체 판정 로직이 없는 라우팅/영속성 계층이다 — 요청 수신, R01/R07용 context 사전 계산 후 fds-engine 호출, DB 저장만 수행한다. 실제 판정 로직(R01/R02/R04/R07)은 fds-engine에 있으며 fds-engine의 Unit test_rules.py(16개 함수)가 전담 커버한다. transaction-api 자체 동작(기동/DB 연결/metrics)은 위 Contract 테스트가 커버한다.",
+        "approved_by": "이재환 (supreme33-kr)",
+        "approval_reference": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-5757298518"
+      },
+      "contract": {
+        "cwd": "transaction-api",
+        "argv": [
+          ".venv/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/test_health.py",
+          "tests/test_metrics.py"
+        ],
+        "timeout_seconds": 300
+      }
+    },
+    "fds-engine": {
+      "unit": {
+        "cwd": "fds-engine",
+        "argv": [
+          ".venv/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/test_rules.py"
+        ],
+        "timeout_seconds": 300
+      },
+      "contract": {
+        "cwd": "fds-engine",
+        "argv": [
+          ".venv/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/test_health.py",
+          "tests/test_metrics.py"
+        ],
+        "timeout_seconds": 300
+      }
+    }
+  },
+  "SOURCE_APPROVAL": "DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+  "APP_TEST_BUILD_SCAN": "NOT_EXECUTED"
+}

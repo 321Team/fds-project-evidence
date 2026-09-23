@@ -1,0 +1,148 @@
+{
+  "schema": "P1-CICD-received-evidence-review-1",
+  "reviewed_at_kst": "2026-09-24T00:20:20+09:00",
+  "record_id": "P1-CICD-01",
+  "scope": "RECEIVER_VALIDATION_NOT_FULL_RUNTIME_ACCEPTANCE",
+  "archive": {
+    "uploaded_name": "app-evidence.tar(1).gz",
+    "bytes": 7367,
+    "sha256": "11578ae33211f569df91830a2b26314c01ffcaea70a67dc7165f9e3dad4b1c79",
+    "sidecar_uploaded_name": "app-evidence.tar.gz(1).sha256",
+    "sidecar_reference": "app-evidence.tar.gz",
+    "external_original_library_file_id": "libfile_447da44053b881919cdab259b8cdc3ef",
+    "external_sidecar_library_file_id": "libfile_3f207ff50dbc8191a09c094befa474df",
+    "storage": "Original user-uploaded archive preserved externally; not recompressed or committed"
+  },
+  "expected": {
+    "workflow_sha": "7e939d7f77c38c13fd331b38f6649580bf0d05bd",
+    "source_sha": "ec69b67067decf35abbfed0a6a99f3073132787b",
+    "run_id": "35683010080",
+    "attempt": 1,
+    "input_sha256": "ea375a00811923cfb415e6c851ceed55227b5978835953eb2227b03552ab5728",
+    "source_repository": "321Team/fds-msa"
+  },
+  "verifier_sha256": "644362b79e89362dd6343cd8c973951d38523f39f8625c260e29ffc199e4308f",
+  "receiver_verify": {
+    "BINDING": "COMPLETE",
+    "DELIVERY_GATE": "NOT_VERIFIED",
+    "EVIDENCE_CHECK": "PASS",
+    "RAW_PAYLOAD_CHECK": "NOT_INCLUDED_SERVER_RECORD_ONLY",
+    "RECORDED_APP_WORKFLOW": "BLOCK",
+    "SOURCE_APPROVAL": "NOT_INDEPENDENTLY_VERIFIED",
+    "SOURCE_BINDING": "MATCH"
+  },
+  "receiver_exit_code": 0,
+  "receipt_count": 6,
+  "payload_record_count": 56,
+  "raw_payloads_included": false,
+  "config_source_test_scope_requirements_locks_match": true,
+  "github_attempt_and_job_log_match": true,
+  "source_approval_reference": "CORROBORATED_AGAINST_APP_LEAD_COMMENTS_5725640696_AND_5757298518",
+  "source_approval_is_new_review": false,
+  "workflow_record": {
+    "started_at": "2026-09-22T03:24:08.425869+00:00",
+    "finished_at": "2026-09-22T03:25:29.460129+00:00",
+    "outcome": "BLOCK",
+    "error_code": "NONE",
+    "push": "NOT_EXECUTED",
+    "deploy": "NOT_EXECUTED"
+  },
+  "test_and_build_step_records": [
+    {
+      "name": "transaction-api-offline-install",
+      "exit_code": 0
+    },
+    {
+      "name": "transaction-api-offline-check",
+      "exit_code": 0
+    },
+    {
+      "name": "fds-engine-offline-install",
+      "exit_code": 0
+    },
+    {
+      "name": "fds-engine-offline-check",
+      "exit_code": 0
+    },
+    {
+      "name": "fds-engine-unit-0",
+      "exit_code": 0
+    },
+    {
+      "name": "transaction-api-contract-0",
+      "exit_code": 0
+    },
+    {
+      "name": "fds-engine-contract-0",
+      "exit_code": 0
+    },
+    {
+      "name": "transaction-api-build",
+      "exit_code": 0
+    },
+    {
+      "name": "transaction-api-save",
+      "exit_code": 0
+    },
+    {
+      "name": "fds-engine-build",
+      "exit_code": 0
+    },
+    {
+      "name": "fds-engine-save",
+      "exit_code": 0
+    }
+  ],
+  "not_applicable_tests": [
+    {
+      "service": "transaction-api",
+      "phase": "unit",
+      "status": "NOT_APPLICABLE",
+      "reason": "transaction-api는 자체 판정 로직이 없는 라우팅/영속성 계층이다 — 요청 수신, R01/R07용 context 사전 계산 후 fds-engine 호출, DB 저장만 수행한다. 실제 판정 로직(R01/R02/R04/R07)은 fds-engine에 있으며 fds-engine의 Unit test_rules.py(16개 함수)가 전담 커버한다. transaction-api 자체 동작(기동/DB 연결/metrics)은 위 Contract 테스트가 커버한다.",
+      "approved_by": "이재환 (supreme33-kr)",
+      "approval_reference": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-5757298518"
+    }
+  ],
+  "image_identities": {
+    "transaction-api": {
+      "manifest_digest": "sha256:d97ff91bd7704147b1097a4c74245721811057f501a45cb29b619993521b57ed",
+      "config_digest": "sha256:f3e21e7198ffebf4888b2df56349c34f0fa63be430474820e24c4b227657b590",
+      "archive_sha256": "218c57b0613dc37e9628745d3ae580886543902714bbb9ab6249b5ac90d1266f",
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "manifest_digest": "sha256:1eeaba0e0c6022cf6b65ea1f9740d8e1fe9e7b74c41aef14355f515e71afe916",
+      "config_digest": "sha256:7873085bf7505b4000e6f3df7e33589e76758bb04cb8b8d013de0364e89b0988",
+      "archive_sha256": "a8895e245ea2a2f30aa106524bf858020fccc65a12fc543d26f3c09a87f04d1c",
+      "platform": "linux/amd64"
+    }
+  },
+  "scan_status": {
+    "transaction-api": "BLOCK",
+    "fds-engine": "NOT_SCANNED"
+  },
+  "findings": {
+    "CRITICAL": 3,
+    "HIGH": 57
+  },
+  "unique_cves": 24,
+  "source_report": {
+    "kind": "trivy-report",
+    "sha256": "a9a0c6eff7961d95af7fb3a5f51093568e0ce50ab03c86859733341b0260769c",
+    "size": 565430
+  },
+  "findings_summary_sha256": "bd8a38006307e9a716826e8fa04be4d5be825548863266081c38d523b8f12f48",
+  "db_valid_at_original_scan": true,
+  "limitations": [
+    "Original command logs, Source archive, OCI, Trivy report and database bytes were not included or revalidated at receiver.",
+    "Archive and sidecar match; a separately supplied server console hash was not provided with these two attachments.",
+    "Collector exit stdout and collection timestamp were not provided; original Run timestamps are not collector timestamps.",
+    "Test command exit codes are recorded; raw test counts and assertions were not re-read.",
+    "Source approval references corroborate historical input approval, not a new independent code/evidence review.",
+    "Local OCI manifest/config digests are not Harbor registry digest or Kubernetes deployment evidence.",
+    "Runtime AC remains 1/10; AC03/05/06 only have partial supporting evidence.",
+    "Independent evidence review, archive shared-access handoff, merge, release and full delivery acceptance are pending."
+  ],
+  "server_commands_executed_this_turn": false,
+  "recovery": "No server state change; preserve original Run and uploaded bytes. Correct any intake error by a new review record."
+}
