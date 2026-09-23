@@ -1,6 +1,6 @@
 # Evidence 잔여 작업 — 2026-09-24 착수 결과
 
-조회·검증 기준: 2026-09-24 04:26 KST (2026-09-23 19:26 UTC). main 기준 `9a3d03341d8878f43e97d5ab9fc040b0037c9250`.
+조회·검증 기준: 2026-09-24 04:33 KST (2026-09-23 19:33 UTC). main 기준 `9a3d03341d8878f43e97d5ab9fc040b0037c9250`. 진행 중 새로 확인한 PR24까지 반영했다.
 사용자 요청: “evidence 잔여 작업 착수”. 수행: GWONUK 계정의 CODEX_ASSISTED 정리·검증·병합. 이번 자체 점검은 독립 사람 리뷰가 아니다.
 
 ## 완료한 편입
@@ -24,13 +24,15 @@ PR21은 README 1파일 범위다. 원본 precheck의 `tree=dirty`, 후속 4단�
 |---|---|---|
 | [#22 CICD](https://github.com/321Team/fds-project-evidence/pull/22), `a6aa1d86723051fcb30196d7f26223b8d1cf7683` | Run35683010080/Attempt1 수신 18파일, 내부 Manifest17/17; receipt 검증 PASS. 원 실행 APP_WORKFLOW=BLOCK, HIGH57/CRITICAL3, fds-engine NOT_SCANNED, Runtime AC1/10 | GWONUK: 기존 collect stdout/rc·종료 화면·서버 수집 시각을 기존 출력 폴더에서 확보하고 archive 접근을 인계. 요청된 Reviewer 이하영: 정확한 HEAD의 원본 출처·누락·판정 범위 독립 검토. 이후 증적 병합 판단 |
 | [#23 ICR MON](https://github.com/321Team/fds-project-evidence/pull/23), `2f8a238142ad669a35800bb3e8ecc6d372354d60` | 01:21·02:05·02:40 KST의 세 회차 46파일. counter 보완 수집 완료, worker01 host GNP source .108 매칭 및 DROP46 packets/2,760 bytes 증가 | GWONUK: 세 archive의 독립 검토자 접근 경로 인계 및 적격 Reviewer 연결. 정확한 HEAD의 3회차 원본·수집 source·분석 한계 독립 검토 후 병합 판단 |
+| [#24 Ansible PR47](https://github.com/321Team/fds-project-evidence/pull/24), `1eaa62b6ce96f4e7090da6201e2a6dd56d25648d` | 02:00:56~58 KST cicd-runner01의 기존 PREPARED·rootless image 수신, 11파일 추가·내부 Manifest6/6. PASS_PREPARED_IMAGE_READINESS | GWONUK: 적격 Reviewer 연결. 원본 무결성·source·검사기 보고 한계·과거 완료 범위 보존을 독립 검토한 뒤 편입 판단 |
 
 - PR22는 reviewer 요청이 있지만 실제 제출된 독립 리뷰는 0건이다. raw payload는 포함되지 않았다. 수신 검증 성공은 원 Workflow 성공이나 Push/Deploy 완료를 뜻하지 않는다. 서버 수집 시각은 원 Actions 실행 시각으로 대체하지 않는다.
 - PR22 원 archive: 7,367 bytes, SHA-256 `11578ae33211f569df91830a2b26314c01ffcaea70a67dc7165f9e3dad4b1c79`. 파일 식별자·기존 보관 경로는 [수신 README](https://github.com/321Team/fds-project-evidence/blob/a6aa1d86723051fcb30196d7f26223b8d1cf7683/evidence/P1-CICD-01/run-35683010080-attempt-1/received-20260924/README.md)에 있다. 식별자 기재만으로 Reviewer 접근 확인을 완료 처리하지 않는다.
 - PR23은 실제 독립 리뷰 0건, 요청된 Reviewer 0명이다. 새 수집 source `91b9792e0e276c0f97c36a0124fda14cf56a6b3b`의 query9/9 성공과 counter 보완을 기존 02:05 PARTIAL과 분리한다. 같은 수집을 반복할 필요가 없다.
 - PR23 counter archive: 60,846 bytes, SHA-256 `85e57eb5ab91562209538677fe1658fa4e3c6e6bc4810371a93d0d19f550ef47`. [수신 README](https://github.com/321Team/fds-project-evidence/blob/2f8a238142ad669a35800bb3e8ecc6d372354d60/evidence/ICR-D-NET-01-01/scrape-counters-20260924T024027/README.md). 02:05의 64패킷과 02:40의 DROP46을 동일 모집단으로 합치지 않는다.
 - PR23의 세 source는 `REVIEW=NOT PERFORMED (Pre-check)`다. 이 증적 PR의 독립 리뷰는 별도 필수다. host-policy DROP 관측을 통신 복구, target API/TLS/Auth, 음성 workload, IF-06B 또는 AC07 인수로 확대하지 않는다. 운영 후보 [infra-kubernetes PR27](https://github.com/321Team/infra-kubernetes/pull/27)의 검토·적용 판단은 해당 Lead 범위다.
-- 현재 두 PR은 Draft다. 이 기록 정리는 두 브랜치의 원본·본문·수신 분석을 변경하지 않는다.
+- PR24는 실제 독립 리뷰 0건, 요청된 Reviewer 0명이다. 원 archive 1,361 bytes, SHA-256 `d58c76fa3818c30f273115d4f18b515aeb8ed079b6e6ab712ba7fa7d598f1153`. source `c6ba5f87711acc3eeeba12c13c72cedd09d178f8`은 현재 독립 APPROVED가 없고 Run35889332032/1은 skipped다. PREPARED/image inspect 원문 미포함 한계가 있으므로 검사기 보고를 일반 CI PASS·격리/IPC·새 Runner 등록·infra-ansible #5 완료로 확대하지 않는다. 새 prepare·이미지 build·기존 격리 Actions 반복은 필요하지 않다.
+- 현재 세 PR은 Draft다. 이 기록 정리는 세 브랜치의 원본·본문·수신 분석을 변경하지 않는다.
 
 ## 공통 FUP — 이미 완료된 항목 반영
 

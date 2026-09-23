@@ -1,6 +1,6 @@
 # FDS Project Evidence
 
-> **2026-09-24 현재 상태:** [Evidence 후속 현황](registry/EVIDENCE_FOLLOWUP_20260924.md)을 먼저 확인한다. PR7·17·21 및 DB 증적 PR2는 main 편입 완료다. FUP-09 Permanent 조건 해소와 DAD 증적 편입은 확인됐으며 DAD 잔여 인수 판단은 별도다. PR22·23은 독립 검토·archive 접근 인계가 남아 있다. 아래 과거 검토·병합 대기 표기는 각 작성 시점의 이력이다.
+> **2026-09-24 현재 상태:** [Evidence 후속 현황](registry/EVIDENCE_FOLLOWUP_20260924.md)을 먼저 확인한다. PR7·17·21 및 DB 증적 PR2는 main 편입 완료다. FUP-09 Permanent 조건 해소와 DAD 증적 편입은 확인됐으며 DAD 잔여 인수 판단은 별도다. PR22·23·24의 독립 검토와 필요한 원본 접근 인계는 후속 현황에서 추적한다. 아래 과거 검토·병합 대기 표기는 각 작성 시점의 이력이다.
 
 FDS 프로젝트의 티켓별 실행 증적, 검증 결과, 승인·인수 기록과 SHA-256 무결성 정보를 관리하는 비공개 저장소입니다. 기준선·WBS 정본은 fds-project-baseline에서 별도로 관리합니다.
 
