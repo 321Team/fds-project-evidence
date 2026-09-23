@@ -1,0 +1,110 @@
+{
+  "checked_at_kst": "2026-09-19T20:41:35+09:00",
+  "scope": "local verification of public certificates reconstructed from user console screenshots; no server connection",
+  "source_csr_sha256": "37fda6d9fb99f101bf213a8e6a070c3e6dce3ba5238b54f178d9c62c8ddd3fa1",
+  "spki_der_sha256": "175f4b5dcc4563d2a42096de853ea8eb45d9d808ef06e8dcdb806cd101085028",
+  "receipt_spki_pem_sha256": "bf57594c8523171e05df87a118daf6b06e0cac1af91914c5cecf25e71e9313a9",
+  "root_fingerprint_sha256": "6a75baf4dbe03ef24cce944e616384d318f7ca919cd7bd914624b4cebac06b10",
+  "leaf_fingerprint_sha256": "98424fca698e250c72c3c1c0fb7bc3de84f34926fc1fc3ebf82e2d059efdf7a4",
+  "files": {
+    "monitor01.crt": {
+      "sha256": "85620544c77fb1b8e7a4ab5acfaf491ed45244a51fdfaebde951c05572d0a3ec",
+      "bytes": 1834
+    },
+    "fds-root-ca.crt": {
+      "sha256": "20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f",
+      "bytes": 2004
+    }
+  },
+  "result": "PUBLIC_RETURN_VERIFICATION=PASS",
+  "ca_runtime": "signing PASS reported in user screenshot; not independently accessed",
+  "monitor01_private_key_match": "NOT_EXECUTED",
+  "tls_deployment": "NOT_EXECUTED",
+  "ca_volume_lock": "NOT_CONFIRMED_FROM_SCREENSHOTS",
+  "commands": [
+    {
+      "argv": [
+        "openssl",
+        "version"
+      ],
+      "rc": 0,
+      "stdout": "OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "sha256sum",
+        "-c",
+        "SHA256SUMS"
+      ],
+      "rc": 0,
+      "stdout": "monitor01.crt: OK\nfds-root-ca.crt: OK\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "openssl",
+        "verify",
+        "-x509_strict",
+        "-CAfile",
+        "fds-root-ca.crt",
+        "-purpose",
+        "sslserver",
+        "-verify_ip",
+        "10.250.10.30",
+        "monitor01.crt"
+      ],
+      "rc": 0,
+      "stdout": "monitor01.crt: OK\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "openssl",
+        "verify",
+        "-x509_strict",
+        "-check_ss_sig",
+        "-CAfile",
+        "fds-root-ca.crt",
+        "fds-root-ca.crt"
+      ],
+      "rc": 0,
+      "stdout": "fds-root-ca.crt: OK\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-in",
+        "monitor01.crt",
+        "-noout",
+        "-subject",
+        "-issuer",
+        "-serial",
+        "-dates",
+        "-fingerprint",
+        "-sha256",
+        "-ext",
+        "subjectAltName,basicConstraints,keyUsage,extendedKeyUsage"
+      ],
+      "rc": 0,
+      "stdout": "subject=C = KR, O = FDS, OU = Monitoring, CN = monitor01\nissuer=C = KR, O = FDS, OU = Project PKI, CN = FDS Project Root CA 2026\nserial=1001\nnotBefore=Sep 19 10:57:32 2026 GMT\nnotAfter=Sep 19 10:57:32 2027 GMT\nsha256 Fingerprint=98:42:4F:CA:69:8E:25:0C:72:C3:C1:C0:FB:7B:C3:DE:84:F3:49:26:FC:1F:C3:EB:F8:2E:2D:05:9E:FD:F7:A4\nX509v3 Basic Constraints: critical\n    CA:FALSE\nX509v3 Key Usage: critical\n    Digital Signature, Key Encipherment\nX509v3 Extended Key Usage: \n    TLS Web Server Authentication\nX509v3 Subject Alternative Name: \n    IP Address:10.250.10.30\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "openssl",
+        "x509",
+        "-in",
+        "fds-root-ca.crt",
+        "-noout",
+        "-fingerprint",
+        "-sha256"
+      ],
+      "rc": 0,
+      "stdout": "sha256 Fingerprint=6A:75:BA:F4:DB:E0:3E:F2:4C:CE:94:4E:61:63:84:D3:18:F7:CA:91:9C:D7:BD:91:46:24:B4:CE:BA:C0:6B:10\n",
+      "stderr": ""
+    }
+  ]
+}

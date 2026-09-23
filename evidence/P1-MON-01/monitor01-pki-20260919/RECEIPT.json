@@ -1,0 +1,99 @@
+{
+  "schema": "fds.monitor01-pki-console-receipt.v1",
+  "recorded_at_kst": "2026-09-19T21:04:49+09:00",
+  "executor": "user console; assistant did not connect to servers",
+  "source_pr": "https://github.com/321Team/infra-pki/pull/4",
+  "source_merge_sha": "aeda506aebf89d86fd788f64227e898af8f0e324",
+  "csr_sha256": "37fda6d9fb99f101bf213a8e6a070c3e6dce3ba5238b54f178d9c62c8ddd3fa1",
+  "status": {
+    "signing": "PASS_FROM_CONSOLE",
+    "public_return_sha256": "PASS_LOCAL_AND_CONSOLE",
+    "monitor01_key_csr_leaf_match": "PASS_FROM_CONSOLE",
+    "monitor01_chain_ip_server_purpose": "PASS_FROM_CONSOLE",
+    "ca_volume_closed": "CONFIRMED_FROM_CONSOLE",
+    "ca_vm_power_off": "UNCONFIRMED",
+    "tls_deployment": "NOT_EXECUTED",
+    "if06b_acceptance": "NOT_COMPLETED"
+  },
+  "screenshots": [
+    {
+      "path": "screenshots/3ebedbfd-13a9-42d9-a39f-12b68b7a45be.png",
+      "sha256": "687fb86dfb34e7e757dafa0851b993e950c7643b0df69e4e6a492cb49f279494",
+      "bytes": 17906,
+      "observation": "ca01 signing/serial/fingerprint and CA_SIGN_AND_VERIFY=PASS",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    },
+    {
+      "path": "screenshots/e9b366e1-e592-4aa4-8586-873729158cdf.png",
+      "sha256": "2af76eacf2dcea1990cf7fa20e3401a605cdee04aeb99e2fba9de14ecbd34684",
+      "bytes": 9370,
+      "observation": "ca01 original public PEM file SHA256 and line counts",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    },
+    {
+      "path": "screenshots/996f28ca-f0ef-4aee-a589-a374030025c4.png",
+      "sha256": "fc3f1977160e27a43d7c82e9715715653c92a50a0725afaecb49e3dc5d86b124",
+      "bytes": 26981,
+      "observation": "Leaf PEM lines 1-20",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    },
+    {
+      "path": "screenshots/ca5442e4-9ef6-4883-b74d-bc91c8f194ea.png",
+      "sha256": "22f7c50fd0a95bfe791896bbfaf5617c9842916ebabfedb0eff20e58db9fe73e",
+      "bytes": 12814,
+      "observation": "Leaf PEM remaining lines",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    },
+    {
+      "path": "screenshots/ab93ea4f-606c-4841-b0f7-900473ec5be3.png",
+      "sha256": "5c64ad50cb412974d79d5e8b689eb8377f617c95b2c3fad738c8d06e44c6bdf6",
+      "bytes": 26250,
+      "observation": "Root PEM lines 1-20",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    },
+    {
+      "path": "screenshots/520600bc-3546-4dd4-90f5-19f83abadcd8.png",
+      "sha256": "745f7f79964b6fb3d8803d9a7bc44452ebe64506b11c0438fefd96be483843da",
+      "bytes": 16606,
+      "observation": "Root PEM remaining lines",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    },
+    {
+      "path": "screenshots/0eb650bf-0ffe-4738-a099-ec668dc9d1d2.png",
+      "sha256": "fa86a3e74da9a1731c8e98a9b0021984ecc3036326b8ecec950abe89d8018992",
+      "bytes": 9097,
+      "observation": "monitor01 sha256sum -c SHA256SUMS: both successful",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    },
+    {
+      "path": "screenshots/8945b870-6e3e-4826-924e-c3a9f5f30905.png",
+      "sha256": "545e09c15d4fcf37ff816c5d9af5115a876dcdc52fd61671c14fd3cec90825e3",
+      "bytes": 16664,
+      "observation": "monitor01 PUBLIC_KEY_MATCH=PASS / CHAIN_IP_SERVER_PURPOSE=PASS",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    },
+    {
+      "path": "screenshots/702693a6-0723-4c67-bd50-94579677c3f4.png",
+      "sha256": "4c881ceaf137b77c5e718f4d270a738703dad480d01ee7e41ae24fd23f85c068",
+      "bytes": 4868,
+      "observation": "ca01 XFS unmount / fds-ca is inactive",
+      "execution_timestamp": null,
+      "provenance": "user-provided console screenshot"
+    }
+  ],
+  "limitations": [
+    "No complete server text log or explicit return-code record was received.",
+    "Screenshot file hashes cover received image bytes, not server log provenance.",
+    "PEM files were reconstructed from screenshots and match displayed original file SHA256.",
+    "The older local verification JSON describes the earlier pre-return inspection, not later server state.",
+    "No CA private key, monitor01 private key, password or token is included."
+  ]
+}
