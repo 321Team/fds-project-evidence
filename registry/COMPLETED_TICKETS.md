@@ -1,5 +1,7 @@
 # 완료 티켓 증적 편입 대장 v1.8
 
+> **2026-09-24 현재 상태:** [Evidence 후속 현황](EVIDENCE_FOLLOWUP_20260924.md)을 먼저 확인한다. PR7·17·21 및 DB 증적 PR2는 main 편입 완료다. FUP-09 Permanent 조건 해소와 DAD 증적 편입은 확인됐으며 DAD 잔여 인수 판단은 별도다. PR22·23은 독립 검토·archive 접근 인계가 남아 있다. 아래 과거 검토·병합 대기 표기는 각 작성 시점의 이력이다.
+
 기존 기준선의 완료 티켓 12개와 2026-09-07 승인·병합 완료된 CR-P1-ANS-01-01을 포함해 13개를 관리한다. 기존 12개는 v3.1.16 Closed/Project Status Register 및 v3.1.17 WBS 대조 기록, 추가 CR은 infra-ansible PR #1의 실제 승인·병합 기록을 근거로 한다. 기준선·WBS 원본은 이 작업에서 변경하지 않는다.
 
 2026-09-19 조회에서 baseline CLOSED는 18건이다. 추가 5건 Decision과 원본 미수신 한계는 [공백 기록](CLOSED_TICKET_EVIDENCE_GAP_20260919.md)에 정리했다. 이 링크만으로 대장 13건이 원본 완비·실제 인수 완료가 되지 않는다.
