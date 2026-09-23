@@ -2,6 +2,8 @@
 
 상태: 검토 자료 정리 완료 / 원 archive 접근 인계 미확인 / 독립 편입 리뷰 대기 / 병합 없음.
 
+05:20 후보 메타데이터 회차를 추가했다. 아래 기존 3회차 설명은 해당 기준 commit의 이력이며, 최신 네 번째 회차와 접근 조건은 문서 끝 추록을 함께 확인한다.
+
 이 문서는 기존 3회차 증적의 접근 경로와 검토 범위를 모은 인계 기록이다. 새 현장 실행, 원본 수정, 통신 복구, Runtime AC 인수 또는 독립 승인을 기록하지 않는다.
 
 ## 검토 대상
@@ -65,3 +67,15 @@ Ready 전환은 독립 승인 완료가 아니다. 본 건은 아직 원 archive
 GitHub 최신 PR·정책·RECEIPT 및 01:21 원문을 읽고 경로/해시/회차/원문 수를 대조했다. 새 문서 링크와 게시 diff/blob 보존 여부는 게시 검증 댓글에 기록한다. 원 archive 재다운로드, 새 서버 실행, 음성 probe, 독립 승인, 병합은 수행하지 않았다. CI는 최종 HEAD의 실제 상태를 별도 기록하며 0건이면 NOT RUN이다.
 
 AI assistance: CODEX_ASSISTED.
+
+## 05:20 후보 메타데이터 회차 추가 — 2026-09-24 KST
+
+- [새 회차 분석](../evidence/ICR-D-NET-01-01/negative-candidates-20260924T052009/README.md), [RECEIPT](../evidence/ICR-D-NET-01-01/negative-candidates-20260924T052009/RECEIPT.json), [후보 대조표](../evidence/ICR-D-NET-01-01/negative-candidates-20260924T052009/CANDIDATE_SUMMARY.json).
+- `ICR_Negative_Candidates_tJeRl5.tar.gz`, 4,604 bytes, SHA256 `9f19fd8f06d932f1a3e2c8fe0789414e763bfac9b81c605fb806b83f914c4b30`.
+- source `fa33b0dec11d3e02c97739b8a77524c365b939c4` / Pre-check PR33, source REVIEW=NOT PERFORMED (Pre-check).
+- 외부·내부7/소스3 해시 대조와 실제 syntax-check·조회3/3 성공. Pod8개 중 일반 후보4개를 확인했다. 원문8개 및 sidecar/분석/receipt/manifest 등 새13파일이다.
+- 기존 증적3회차46파일과 원문32파일은 그대로 보존한다. 이 추록까지 ICR 증적은4회차59파일, 그중 original40파일이며 인계 문서는 별도다.
+- 권고 후보는 Grafana이나 시험 대상 승인·도구·현재 정책·실제 음성 probe는 미완료다. 과거01:21 정책과05:20 Pod 신원은 서로 다른 시점이다.
+- archive 접근 인계 대상은 이제4개 archive와 각 sidecar다. 이번 원본은 사용자 첨부의 파일 식별자로만 연결돼 있고 팀 다운로드 URI/검토자 실제 접근 확인은 아직 없다. 원문을 다시 수집하거나 재압축하지 않는다.
+- 이 인계 문서 갱신과 새 회차는 최신 PR HEAD의 독립 편입 검토 범위다. 기존 source/PARTIAL 판정, PR27 운영 리뷰·적용 HOLD, 다른 업무의 AC·담당·일정은 유지한다.
+
