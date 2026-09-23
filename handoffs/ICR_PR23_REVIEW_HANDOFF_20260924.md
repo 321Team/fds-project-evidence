@@ -2,7 +2,7 @@
 
 상태: 검토 자료 정리 완료 / 원 archive 접근 인계 미확인 / 독립 편입 리뷰 대기 / 병합 없음.
 
-05:20 후보 메타데이터 회차를 추가했다. 아래 기존 3회차 설명은 해당 기준 commit의 이력이며, 최신 네 번째 회차와 접근 조건은 문서 끝 추록을 함께 확인한다.
+05:54 Grafana 정책 입력을 다섯 번째 회차로 추가했다. 아래 기존3회차·05:20 회차 설명은 각 기준 시점의 이력이다. 현재 분석·운영 PR27 HEAD·5개 archive 접근 조건은 문서 끝 최신 추록을 확인한다.
 
 이 문서는 기존 3회차 증적의 접근 경로와 검토 범위를 모은 인계 기록이다. 새 현장 실행, 원본 수정, 통신 복구, Runtime AC 인수 또는 독립 승인을 기록하지 않는다.
 
@@ -78,4 +78,17 @@ AI assistance: CODEX_ASSISTED.
 - 권고 후보는 Grafana이나 시험 대상 승인·도구·현재 정책·실제 음성 probe는 미완료다. 과거01:21 정책과05:20 Pod 신원은 서로 다른 시점이다.
 - archive 접근 인계 대상은 이제4개 archive와 각 sidecar다. 이번 원본은 사용자 첨부의 파일 식별자로만 연결돼 있고 팀 다운로드 URI/검토자 실제 접근 확인은 아직 없다. 원문을 다시 수집하거나 재압축하지 않는다.
 - 이 인계 문서 갱신과 새 회차는 최신 PR HEAD의 독립 편입 검토 범위다. 기존 source/PARTIAL 판정, PR27 운영 리뷰·적용 HOLD, 다른 업무의 AC·담당·일정은 유지한다.
+
+## 05:54 Grafana 정책 입력 회차 추가 — 2026-09-24 KST
+
+- [새 회차 분석](../evidence/ICR-D-NET-01-01/grafana-policy-20260924T055428/README.md), [RECEIPT](../evidence/ICR-D-NET-01-01/grafana-policy-20260924T055428/RECEIPT.json), [정책 대조](../evidence/ICR-D-NET-01-01/grafana-policy-20260924T055428/POLICY_SUMMARY.json).
+- `ICR_Grafana_Policy_oBrOMu.tar.gz`, 7,481 bytes, SHA256 `23b3c72d285395c7ad09ad309607d781d542aed892bdc62bc892a75a664547d5`.
+- source `bded227a045847059dda657afbd9503ecc5db159` / PR34, merge `479bb55f53dadc7b8625cd037332483a0ed4e470`. REVIEW=NOT PERFORMED (Pre-check).
+- 외부·내부7/소스3 해시와 실행 collector hash 일치. 실제 Ansible syntax-check·조회11/11 성공(로컬 API주소1+API GET10), Grafana 전후 투영 신원/RV 동일.
+- K8s NP17개 중 Grafana를 선택하는5개의 egress 허용 합집합은 Prometheus TCP9090 및 DNS TCP/UDP53. .105:9100 허용 없음. Calico NP0/GNP7/Tier3/NetworkSet0/GlobalNetworkSet0. 관측 GNP selector는 Grafana Pod labels에 직접 일치하지 않는다. 실제 차단 성공·전체 dataplane 유효 정책 증명은 아님.
+- 기존4회차59파일(원문40개)을 보존하고 새13파일(원문8개 포함)을 추가했다. 이제5회차72파일, 그중 original48파일이며 인계 문서는 별도다.
+- 사용자는 Grafana 권고안으로 착수를 지시했고 운영 PR27은 `ffbfff8ebcd1ed53ebff7f3e70fb734e93221a0c`에서 신원·도구 확인·bounded 명령을 검토 제안으로 준비했다. 현재 정책 입력 수신은 보완됐으나 도구 확인/실제 probe/운영 실행 수용/독립 리뷰는 미완료다. 같은 후보·정책 조회 반복은 필요하지 않다.
+- 원 archive 인계 대상은5개와 각각의 sidecar다. 파일 식별자와 Git 원문은 있으나 팀 archive 접근 URI/검토자 실제 다운로드 확인은 아직 없다. 기존 Draft 유지 이유이며 새로운 공통 Ready 게이트를 만든 것이 아니다.
+- 원 API 전체 body는 미보존이며 투영 결과의 hash 검증과 구분한다. 원본·과거 PARTIAL·기존 AC·담당·일정·운영 manifest를 수정하지 않았다. 독립 편입 리뷰는 최신 PR HEAD 전체에 대해 진행한다.
+
 
