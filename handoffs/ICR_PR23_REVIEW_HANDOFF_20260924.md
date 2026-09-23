@@ -1,10 +1,10 @@
 # ICR PR23 독립 편입 검토 인계 — 2026-09-24 KST
 
-상태: 검토 자료 정리 완료 / 원 archive 접근 인계 미확인 / 독립 편입 리뷰 대기 / 병합 없음.
+상태: 원본 5개 전달본 작성·바이트 검증 완료 / 팀 archive 접근 인계 미확인 / 독립 편입 리뷰 대기 / 병합 없음.
 
-05:54 Grafana 정책 입력을 다섯 번째 회차로 추가했다. 아래 기존3회차·05:20 회차 설명은 각 기준 시점의 이력이다. 현재 분석·운영 PR27 HEAD·5개 archive 접근 조건은 문서 끝 최신 추록을 확인한다.
+현재 대상은5회차72개 증적 파일(그중 original48개)과 원본 archive5개/sidecar5개다. 전달본·AC20개 대조 결과는 문서 끝 최신 추록 및 [AC 대조표](ICR_AC_RECONCILIATION_20260924.md)를 확인한다. 아래 기존3회차·05:20·05:54 절의 수량·검증 수행·PR HEAD는 각각 당시 이력이며 최신 상태를 대신하지 않는다.
 
-이 문서는 기존 3회차 증적의 접근 경로와 검토 범위를 모은 인계 기록이다. 새 현장 실행, 원본 수정, 통신 복구, Runtime AC 인수 또는 독립 승인을 기록하지 않는다.
+이 문서는 누적5회차 증적의 접근 경로와 검토 범위를 모은 인계 기록이다. 새 현장 실행, 원본 수정, 통신 복구, Runtime AC 인수 또는 독립 승인을 기록하지 않는다.
 
 ## 검토 대상
 
@@ -91,4 +91,39 @@ AI assistance: CODEX_ASSISTED.
 - 원 archive 인계 대상은5개와 각각의 sidecar다. 파일 식별자와 Git 원문은 있으나 팀 archive 접근 URI/검토자 실제 다운로드 확인은 아직 없다. 기존 Draft 유지 이유이며 새로운 공통 Ready 게이트를 만든 것이 아니다.
 - 원 API 전체 body는 미보존이며 투영 결과의 hash 검증과 구분한다. 원본·과거 PARTIAL·기존 AC·담당·일정·운영 manifest를 수정하지 않았다. 독립 편입 리뷰는 최신 PR HEAD 전체에 대해 진행한다.
 
+## 원본 전달본 및 AC20개 대조 — 2026-09-24 KST
 
+원본 보관 근거와 사용자 첨부를 다시 대조하여, 아래 archive5개 및 각각의 원본 sidecar를 묶었다. 이번에는 로컬에서 제공된 원본 바이트를 직접 읽어 outer SHA256·sidecar와 확인하고 ZIP 안에서도10파일 전부 바이트 동일성을 확인했다. 앞선 인계 작성 단계의 “원 archive 재검증 없음”은 그 당시 수행 범위이며 이번 검증과 구분한다.
+
+| 원본 파일 | bytes | SHA256 |
+|---|---:|---|
+| ICR_MON_Precheck_N11a7g.tar.gz | 9,443 | `c7ef76c9e7a4b314df96e946ee4db5d7b71e96bb22224903b713cace31a2b724` |
+| ICR_Scrape_Source_Q9M3kW.tar.gz | 10,233 | `2d4014cd30af788438a62a3d166bec372b7ac4919c9ae6527ea6a1427cb6c9f3` |
+| ICR_Scrape_Counters_cXoiN1.tar.gz | 60,846 | `85e57eb5ab91562209538677fe1658fa4e3c6e6bc4810371a93d0d19f550ef47` |
+| ICR_Negative_Candidates_tJeRl5.tar.gz | 4,604 | `9f19fd8f06d932f1a3e2c8fe0789414e763bfac9b81c605fb806b83f914c4b30` |
+| ICR_Grafana_Policy_oBrOMu.tar.gz | 7,481 | `23b3c72d285395c7ad09ad309607d781d542aed892bdc62bc892a75a664547d5` |
+
+전달본:
+
+- 파일: `FDS_ICR_PR23_Original_Handoff_20260924_v1.0.zip`
+- 크기: **101,021 bytes**
+- SHA256: `119c0edc2d89ddf30ab95aa7ffe4a99b35b4b449b75965235043db3419b4b08d`
+- 외부 해시 파일: `FDS_ICR_PR23_Original_Handoff_20260924_v1.0.zip.sha256`
+- 구성: 원본 archive5개 + 원본 sidecar5개 + README.md + INDEX.json + SHA256SUMS =13개 항목. wrapper manifest는 자신을 제외한12항목을 검증한다.
+- 검증: 원본 archive5/5 외부 hash 일치, 원본 sidecar5/5 Git 편입본 일치, ZIP에서 꺼낸 원본10/10 바이트 동일, wrapper manifest12/12 일치, ZIP CRC 이상 없음.
+- ZIP_STORED 전달용 외피다. 원본 tar.gz를 풀거나 재압축하지 않았고, archive 내부 manifest도 수정하지 않았다. Git binary/Release Asset 업로드는 없다.
+- README에는 사용자 다운로드 후 외부 hash·wrapper manifest·원본 sidecar를 확인하는 절차와 추출 폴더를 기록했다. 이 ZIP은 서버 실행 키트가 아니다.
+
+사용자에게 전달본과 외부 해시 파일을 다운로드 제공한다. **이 제공은 팀 검토자의 접근 확인을 의미하지 않는다.** Git에 대화 내부 file ID나 사용자 전용 링크를 팀 접근 URI처럼 기록하지 않는다. 기존 승인된 팀 전용 보관 위치에 두 파일을 전달하고 기존 PR23에 URI와 실제 수신 결과를 연결한다. 새 공유 권한·계정·별도 승인 양식은 만들지 않는다.
+
+- 전달본 준비·로컬 바이트 검증: COMPLETE
+- 팀 archive 접근 URI: UNCONFIRMED
+- 검토자의 실제 다운로드·outer hash 확인: NOT CONFIRMED
+- 독립 편입 리뷰: PENDING / MERGE: NOT DONE
+- Draft 유지: 원본 접근 인계 미확인 사유 유지. 준비 완료를 독립 승인으로 처리하지 않는다.
+
+[AC20개 대조표](ICR_AC_RECONCILIATION_20260924.md)는 기존3 PASS/8 PARTIAL/2 FAIL(보고)/6 NOT_VERIFIED/1 BLOCKED를 유지하며 과거 원본 연결과 실제 잔여 시험을 구분한다. CP 변경 전 route와 Gate2·지정 Worker pull의 당시 원본은 이번5archive에 포함됐다고 주장하지 않는다. 기존08/13/14 PASS는 재사용하며 완료 작업을 다시 시작하지 않는다.
+
+MON05:59 K8s 수집 완료와 monitor01 콘솔 준비는 [MON PR9](https://github.com/321Team/infra-monitoring/pull/9), source `efcbed006d9e777a23ae145bfb425c33a4c742b5`에 연결한다. monitor01 실제 결과는 미수신이고 CM에는 remote_write가 없어 IF-06B 송신/수신 인수는 남는다. 별도 TLS PR31·MON·LB 작업을 이 PR에서 중복 실행하지 않는다.
+
+이번 Git 변경은 이 인계 문서와 AC 대조표뿐이다. 기존72증적/48original 파일의 보존과 최종HEAD의 CI·리뷰 상태는 게시 검증 댓글로 연결한다. 서버 조회·active probe·운영 manifest 변경·AC 상태 변경은 수행하지 않았다.
