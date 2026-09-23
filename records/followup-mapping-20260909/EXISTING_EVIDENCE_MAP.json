@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-09T11:34:16.808Z",
+  "base_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+  "record_type": "EXISTING_EVIDENCE_REFERENCE_MAPPING",
+  "authorization": "사용자: 결과서에 정리한 내용으로 매핑 및 후속 작업 착수",
+  "source_report": "FDS_Followup_Chat_History_Mapping_v1.0.md",
+  "chat_search_conditions": 20,
+  "complete_chat_inventory_available": false,
+  "chat_excerpt_is_primary_raw_evidence": false,
+  "existing_logs": [
+    {
+      "path": "evidence/P1-ANS-01/received-20260907T063705Z/01_network_precheck.txt",
+      "bytes": 1902,
+      "sha256": "b770f87cb71b25a992bbd9f9825814de704f2664137450c6b6d043d653b87364",
+      "blob": "57d6bdfa837632cd621ceb314a271441c814fe37",
+      "blob_match": true,
+      "original_manifest_match": true,
+      "receipt_map_match": true
+    },
+    {
+      "path": "evidence/P1-ANS-01/received-20260907T063705Z/05c_source_preservation.txt",
+      "bytes": 1284,
+      "sha256": "8bb453665f2d6d17411a767ec50a5801d4f45a6c3665592d31c88280974a89ed",
+      "blob": "8746285480b8fb66da3167fa1cbb345b69047d2f",
+      "blob_match": true,
+      "original_manifest_match": true,
+      "receipt_map_match": true
+    },
+    {
+      "path": "evidence/P1-ANS-01/received-20260907T063705Z/05b_node_precheck.txt",
+      "bytes": 33255,
+      "sha256": "1fa33b73d7364532fff25c56447d237d9d09d8384df28b81b7b6419023ecea30",
+      "blob": "6aadc9eeb0c2b807ece8304789906a7d8050ee04",
+      "blob_match": true,
+      "original_manifest_match": true,
+      "receipt_map_match": true
+    },
+    {
+      "path": "evidence/P1-ANS-01/received-20260907T063705Z/06d_canary_postcheck.txt",
+      "bytes": 6718,
+      "sha256": "8a4fd2170e2a79d59de9cc51b60ed69b67710e5b60e008a4973e13aedbb81deb",
+      "blob": "a267351e6c35b5ac32b680f11526b51fe1014c37",
+      "blob_match": true,
+      "original_manifest_match": true,
+      "receipt_map_match": true
+    },
+    {
+      "path": "evidence/P1-ANS-01/received-20260907T063705Z/06g_full_postcheck.txt",
+      "bytes": 33255,
+      "sha256": "16d9198a9215f8f1248aa5b32bd13ce7e2dd7d47310e9908123a7d53fae8f4d3",
+      "blob": "a29b912d36c3b199a73523a59b96befc2fb8c002",
+      "blob_match": true,
+      "original_manifest_match": true,
+      "receipt_map_match": true
+    }
+  ],
+  "existing_log_validation_scope": "Selected 5 logs: Git blob + original Manifest SHA-256 + SOURCE_FILE_MAP SHA-256, all match; no new server execution",
+  "original_manifest_path": "evidence/P1-ANS-01/received-20260907T063705Z/99_SHA256SUMS.txt",
+  "original_receipt_map_path": "receipts/ansible01/20260907T063705Z/SOURCE_FILE_MAP.json",
+  "later_evidence_date": "2026-08-28",
+  "receipt_date_not_execution_date": "20260907T063705Z",
+  "fup04_indexes": [
+    {
+      "index": "01",
+      "name": "Windows PostBuild server01~08",
+      "status": "SUMMARY_ONLY",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
+      ],
+      "limitation": "원래 Windows 실행 로그·캡처 미확보",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "02",
+      "name": "VMware Virtual Network Editor",
+      "status": "GUIDE_AND_SUMMARY_ONLY",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
+      ],
+      "limitation": "실제 VMnet0/1/8 화면 캡처 미확보",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "03",
+      "name": "Linux Node Network Verify",
+      "status": "LATER_EVIDENCE_LINKED",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "evidence/P1-ANS-01/received-20260907T063705Z/01_network_precheck.txt",
+        "evidence/P1-ANS-01/received-20260907T063705Z/05b_node_precheck.txt",
+        "evidence/P1-ANS-01/received-20260907T063705Z/06g_full_postcheck.txt"
+      ],
+      "limitation": "8/28 연결·노드 상태 보완 근거. 8/26 fds-node-verify 전문 아님",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "04",
+      "name": "K8s Linux Prerequisites",
+      "status": "LATER_EVIDENCE_LINKED",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "evidence/P1-ANS-01/received-20260907T063705Z/05b_node_precheck.txt",
+        "evidence/P1-ANS-01/received-20260907T063705Z/06d_canary_postcheck.txt",
+        "evidence/P1-ANS-01/received-20260907T063705Z/06g_full_postcheck.txt"
+      ],
+      "limitation": "8/28 6대 사전·사후 점검. canary는 control01 1대",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "05",
+      "name": "Physical Return Route",
+      "status": "LATER_EVIDENCE_LINKED",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "evidence/P1-ANS-01/received-20260907T063705Z/05b_node_precheck.txt",
+        "evidence/P1-ANS-01/received-20260907T063705Z/06g_full_postcheck.txt"
+      ],
+      "limitation": "8/28 management_route .58 경유. 8/26 최초 원본·영구 프로필 전체는 미확보",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "06",
+      "name": "Source Preservation PASS6",
+      "status": "LATER_EVIDENCE_LINKED",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "evidence/P1-ANS-01/received-20260907T063705Z/05c_source_preservation.txt"
+      ],
+      "limitation": "8/28 6대 sshd 실제 Source .10. 8/26 배치 결과와 별도",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "07",
+      "name": "Management VM Verify",
+      "status": "PARTIAL_LATER_EVIDENCE",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md",
+        "evidence/P1-ANS-01/received-20260907T063705Z/01_network_precheck.txt"
+      ],
+      "limitation": "ansible 일부 출력만 연결. 관리 VM 3대 전체 Verify 전문 미확보",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "08",
+      "name": "mgmt-gw01 Verify",
+      "status": "SUMMARY_ONLY",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
+      ],
+      "limitation": "gateway 자체 전체 Verify 원문 미확보",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "09",
+      "name": "DO_NOT_USE_IP Exception",
+      "status": "DECISION_DOCUMENT_LINKED",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
+      ],
+      "limitation": "§3·§5 IP 예외 문서. 당시 응답 장비 조사 원문 미확보",
+      "historical_20260826_raw_complete": false
+    },
+    {
+      "index": "10",
+      "name": "D-NET-01 Closure",
+      "status": "EXISTING_DOCUMENT_LINKED",
+      "source_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+      "repository_paths": [
+        "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
+      ],
+      "limitation": "기존 main의 종결 보고서. 01~09 원본 완비를 뜻하지 않음",
+      "historical_20260826_raw_complete": null
+    }
+  ],
+  "fup05": {
+    "existing_done_preserved": true,
+    "historical_reviewer": null,
+    "historical_approver": null,
+    "actual_approval_timestamp": null
+  },
+  "fup06_07": {
+    "approval_metadata_reference": "records/followup-mapping-20260909/HISTORICAL_APPROVAL_METADATA.json",
+    "individual_approval_record_received": false,
+    "wbs_binary_access_verified": false,
+    "prior_candidate_import_accepted": true
+  },
+  "fup09": {
+    "supplement_pr": 6,
+    "supplement_merge_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+    "independent_review": "https://github.com/321Team/fds-project-evidence/pull/6#pullrequestreview-5152271791",
+    "receiver_acceptance_of_new_supplement": false,
+    "ip_duplicate_original_received": false
+  },
+  "new_mapping_review": "PENDING",
+  "new_mapping_merged": false,
+  "runtime_executed": false,
+  "bootstrap_released": false,
+  "remaining_actions": "runbooks/FUP-04-09_REMAINING_SOURCE_ACTIONS.md"
+}

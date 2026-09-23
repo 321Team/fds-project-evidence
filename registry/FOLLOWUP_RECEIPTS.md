@@ -1,4 +1,4 @@
-# 후속 증적 수신·인수 대장 v2.0
+# 후속 증적 수신·인수 대장 v2.1
 
 기준일: 2026-09-09. infra-ansible PR #1은 최종 승인·병합 완료다. 아래 항목은 기존 완료 티켓의 재구현이 아닌 증적 수신·편입 및 실제 인수 절차로 관리한다.
 
@@ -7,16 +7,22 @@
 | FUP-01 | CR-P1-ANS-01-01 | 원본 23개 보완·독립 편입 기술 검토 확인·PR #1 병합 | 기존 독립 리뷰의 NOT VERIFIED 범위 유지 | 기존 편입 기록 병합 완료 |
 | FUP-02 | P1-ANS-01 | 05h/05j 보완·alias·신규 Manifest 독립 편입 검토 확인·PR #1 병합 | 구 Manifest 불일치 이력·겸임 관찰사항 유지 | 기존 편입 기록 병합 완료 |
 | FUP-03 | P1-DNS-01 | 기존 원본 수신 검증 기록을 포함한 PR #1 편입·병합 완료 | 독립 리뷰의 원본 ZIP 외부 대조 NOT VERIFIED 유지 | 기존 편입 기록 병합 완료 |
-| FUP-04 | D-NET-01/P1-NET-01/P1-LNX-01 | 공통 원본은 한 번 수집하도록 유지 | 인덱스 01~10 중 미수신 Windows/VMware/Linux/Return Route/Source Preservation 로그·캡처·기존 Manifest. 실제 보관 위치 확인 필요 | 원본 수신 대기 |
-| FUP-05 | P1-NET-01 | Reviewer/Approver 미입력 상태 유지 | 실제 검토자·승인자·일시를 확인할 원본 또는 고정 참조 | 참조 확인 대기 |
-| FUP-06 | D-ARC-01 | 후보 원본 2개 수신·독립 APPROVED·사용자 수용·PR #3 병합 | 당시 승인 참조의 추후 연결. 과거 Hash/출처 접근 한계 수용 유지 | 후보 편입 완료 / 과거 참조 미확인 |
-| FUP-07 | D-WBS-01 | WBS 참조 수신·독립 APPROVED·사용자 수용·PR #3 병합 | 동결/갱신 승인 참조·검토자 원본 접근 확인 | 참조 편입 완료 / 과거 참조·접근 미확인 |
+| FUP-04 | D-NET-01/P1-NET-01/P1-LNX-01 | [공통 매핑](../records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.md): Index 10 종결 보고서·09 IP 예외 연결, 03~06에 8/28 원본 5개 보완 참조 | 8/26 최초 로그·Windows/VMware 캡처·관리 VM/gateway 전문 등 미확보 부분의 보관 위치·원본 | 일부 기존 원본 연결 / 이번 매핑 독립 검토 대기 |
+| FUP-05 | P1-NET-01 | 기존 Done 언급과 과거 Reviewer/Approver 미확인을 구분 | 당시 검토자·승인자·일시·범위의 실제 회신 또는 고정 참조 | 기존 Done 유지 / 개별 승인 참조 미확인 |
+| FUP-06 | D-ARC-01 | 후보 편입·PR #3 수용 유지, [과거 정본 APPROVED 메타데이터](../records/followup-mapping-20260909/HISTORICAL_APPROVAL_METADATA.json) 연결 | 개인별 승인 회신·정확한 승인 시각. 과거 Hash 한계 유지 | 후보 편입 완료 / 메타데이터 연결 검토 대기 |
+| FUP-07 | D-WBS-01 | 후보 참조·PR #3 수용 유지, [WBS v3.1.3 APPROVED 메타데이터](../records/followup-mapping-20260909/HISTORICAL_APPROVAL_METADATA.json) 연결 | 개인별 승인 회신·승인 시각·검토자의 바이너리 실제 열람 | 후보 참조 편입 완료 / 개별 승인·접근 미확인 |
 | FUP-08 | DEC-P1-MON-01/D33 | 원본 수신·Hash·독립 APPROVED·PR #3 병합 | 수용된 과거 비교 Hash 부재 한계 유지 | 원본 수신·편입 완료 |
-| FUP-09 | P1-LB-01 Stage A | 기존 조건부 인수 확인. [9/9 Permanent Supplement](../evidence/P1-LB-01/stage-a/supplement-20260909T072022Z/README.md) 수신·7/7 Hash·8개 규칙 정합성 PASS | 새 시각 Supplement의 독립 검토·이하영 조건 판단, IP 중복검사 원본·고정 참조 연결 | 조건부 인수 / Permanent 현재 출력 수신 완료·인수 조건 판단 대기 |
+| FUP-09 | P1-LB-01 Stage A | 기존 조건부 인수 유지. PR #6 Permanent 보완 원본 독립 APPROVED·CONFIRMED 및 main 편입 완료 | 이하영의 새 Supplement 인수 조건 판단, IP 중복검사 원본·고정 참조 | 조건부 인수 / 현재 Permanent 편입 완료·인수 판단 대기 |
 
 FUP는 증적 수집용 관리 ID이며 WBS 티켓이나 별도 Change Request를 발행한 것이 아니다.
 
-## 2026-09-09 현재 상태 — PR #3 병합 및 인수 회신 연결
+## 2026-09-09 현재 상태 — 기존 증적 매핑 착수
+
+[매핑·5개 원본 검증](../records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.md) · [잔여 원본·참조 실행표](../runbooks/FUP-04-09_REMAINING_SOURCE_ACTIONS.md) · [추적 이슈 #4](https://github.com/321Team/fds-project-evidence/issues/4).
+
+이번 매핑은 새 변경분 독립 검토 대기다. 기존 8/28 원본과 8/26 최초 기록을 구분한다. PR #6은 이재환 독립 APPROVED·CONFIRMED 및 사용자의 명시적 승인 후 `493c09e728b643d620debe29738f1b47b3cafa8a`로 병합 완료됐다. 이하영의 새 인수 회신은 미수신이다.
+
+## 기존 PR #3 병합 및 인수 회신 연결 — 당시 이력
 
 PR #3은 `39ead0567327cf45ed9f8b81cecdf9848f542d5d`로 병합됐다. FUP-06/07의 후보 편입·미검증 한계는 최종 수용됐고, FUP-08의 수신·편입은 완료됐다. [이하영의 기존 회신](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5582767564)을 확인해 FUP-09를 **조건부 인수 / 미포함 2개 항목의 참조 확인 대기**로 정정한다.
 

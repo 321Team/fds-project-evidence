@@ -20,7 +20,7 @@
       "documents": [
         "records/received-20260907/FDS_Notion_Closed_Descriptions_D-ARC-01_D-NET-01_D-WBS-01_v1.1.md"
       ],
-      "next_action": "후보 원본 2개 수신·독립 APPROVED·사용자 한계 수용·PR #3 편입 완료. 과거 승인 참조는 미확인으로 유지하며 확보 시 연결.",
+      "next_action": "후보 원본 2개·PR #3 편입 완료 유지. 과거 정본의 Architecture v3.1.2 APPROVED 메타데이터 연결. 개인별 승인 회신·승인 시각은 미확인.",
       "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987",
       "merged_commit": "39ead0567327cf45ed9f8b81cecdf9848f542d5d",
       "supplemental_receipt": {
@@ -84,6 +84,13 @@
         ],
         "status_at_receipt": "COLLECTED_HASHED_REVIEW_PENDING",
         "source_file_observations_scope": "files는 수신 당시 관찰·PENDING 스냅샷. 현재 편입 판정은 supplemental_receipt.status와 supplemental_import_resolution을 따른다."
+      },
+      "existing_evidence_mapping": {
+        "path": "records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.json",
+        "status": "MAPPED_REVIEW_PENDING",
+        "base_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+        "original_closure_date_preserved": true,
+        "historical_first_execution_replaced": false
       }
     },
     {
@@ -102,9 +109,16 @@
         "records/received-20260907/FDS_Notion_Closed_Descriptions_D-ARC-01_D-NET-01_D-WBS-01_v1.1.md",
         "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
       ],
-      "next_action": "Closure Report 수신. docs/evidence/D-NET-01/의 01~10 원본 로그·캡처 및 기존 Manifest 미수신.",
+      "next_action": "Index 10 종결 보고서와 Index 09 IP 예외 문서 연결. Index 03~06은 8/28 원본으로 보완 매핑. 8/26 최초 로그·Windows/VMware 캡처 등 미확보 부분은 별도 대기.",
       "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595735387",
-      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658"
+      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658",
+      "existing_evidence_mapping": {
+        "path": "records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.json",
+        "status": "MAPPED_REVIEW_PENDING",
+        "base_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+        "original_closure_date_preserved": true,
+        "historical_first_execution_replaced": false
+      }
     },
     {
       "ticket_id": "D-WBS-01",
@@ -121,7 +135,7 @@
       "documents": [
         "records/received-20260907/FDS_Notion_Closed_Descriptions_D-ARC-01_D-NET-01_D-WBS-01_v1.1.md"
       ],
-      "next_action": "WBS 원본 참조·독립 APPROVED·사용자 한계 수용·PR #3 편입 완료. 과거 승인 참조 및 검토자 원본 접근은 확인 대기.",
+      "next_action": "WBS 후보 참조·PR #3 편입 완료 유지. 과거 정본의 WBS v3.1.3 APPROVED 메타데이터 연결. 개인별 승인 회신·승인 시각·바이너리 실제 열람은 미확인.",
       "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987",
       "merged_commit": "39ead0567327cf45ed9f8b81cecdf9848f542d5d",
       "supplemental_receipt": {
@@ -159,6 +173,13 @@
         ],
         "status_at_receipt": "COLLECTED_HASHED_REVIEW_PENDING",
         "source_file_observations_scope": "files는 수신 당시 관찰·PENDING 스냅샷. 현재 편입 판정은 supplemental_receipt.status와 supplemental_import_resolution을 따른다."
+      },
+      "existing_evidence_mapping": {
+        "path": "records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.json",
+        "status": "MAPPED_REVIEW_PENDING",
+        "base_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+        "original_closure_date_preserved": true,
+        "historical_first_execution_replaced": false
       }
     },
     {
@@ -176,9 +197,16 @@
       "documents": [
         "records/received-20260907/D-NET-01_Closure_Report_v1.0.md"
       ],
-      "next_action": "D-NET 공통 Closure Report만 수신. 04_K8s_Linux_Prerequisites 등 실제 원본 미수신.",
+      "next_action": "8/28 6대 precheck/postcheck의 SELinux·Swap·모듈·sysctl 원본 연결. 8/26 Linux Prerequisite 최초 원본으로 소급하지 않음.",
       "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595735387",
-      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658"
+      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658",
+      "existing_evidence_mapping": {
+        "path": "records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.json",
+        "status": "MAPPED_REVIEW_PENDING",
+        "base_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+        "original_closure_date_preserved": true,
+        "historical_first_execution_replaced": false
+      }
     },
     {
       "ticket_id": "P1-NET-01",
@@ -196,9 +224,16 @@
         "records/received-20260907/D-NET-01_Closure_Report_v1.0.md",
         "records/received-20260907/FDS_Notion_Closed_Ticket_P1-NET-01_v1.0.md"
       ],
-      "next_action": "D-NET 공통 증적을 참조. 원본 로그·캡처 미수신; 종결 문서의 Reviewer/Approver는 미입력이므로 임의 지정하지 않음.",
+      "next_action": "8/28 6대 연결·반환 경로·sshd Source 보존 원본 연결. 8/26 최초 원본과 당시 Reviewer/Approver·승인일시는 별도 미확인. 기존 Done 유지.",
       "repository_review_ref": "https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595735387",
-      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658"
+      "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658",
+      "existing_evidence_mapping": {
+        "path": "records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.json",
+        "status": "MAPPED_REVIEW_PENDING",
+        "base_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+        "original_closure_date_preserved": true,
+        "historical_first_execution_replaced": false
+      }
     },
     {
       "ticket_id": "P1-ANS-01",
@@ -433,7 +468,7 @@
     }
   ],
   "publication_prepared_at": "2026-09-07T05:06:39.139879+00:00",
-  "updated_at": "2026-09-09T06:44:38.183111+00:00",
+  "updated_at": "2026-09-09T11:34:16.808Z",
   "prior_import": {
     "head": "4863e532c00a9f758d1130cd1c8e7316e881ebcf",
     "merged_commit": "0f16942b2c0525a90fe75a1c17fd19c295352658",
@@ -449,5 +484,11 @@
     "review_ref": "https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987",
     "acceptance_ref": "https://github.com/321Team/fds-project-evidence/pull/3#issuecomment-5597170385",
     "status": "MERGED_WITH_EXPLICIT_LIMITATIONS_ACCEPTED"
+  },
+  "existing_evidence_mapping_resolution": {
+    "path": "records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.json",
+    "status": "MAPPED_REVIEW_PENDING",
+    "base_commit": "493c09e728b643d620debe29738f1b47b3cafa8a",
+    "complete_chat_search_claimed": false
   }
 }

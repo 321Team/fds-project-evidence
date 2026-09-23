@@ -10,9 +10,13 @@
 
 [PR #3 독립 승인](https://github.com/321Team/fds-project-evidence/pull/3#pullrequestreview-5150486987) · [최종 수용](https://github.com/321Team/fds-project-evidence/pull/3#issuecomment-5597170385) · [후속 추적](https://github.com/321Team/fds-project-evidence/issues/4)
 
-후보 원본 2개 수신·독립 APPROVED·사용자 한계 수용·PR #3 편입 완료. 과거 승인 참조는 미확인으로 유지하며 확보 시 연결.
+후보 원본 2개·PR #3 편입 완료 유지. 과거 정본의 Architecture v3.1.2 APPROVED 메타데이터 연결. 개인별 승인 회신·승인 시각은 미확인.
 
 [PR #1 병합 기록](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) · [후속 실행표](../../runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
+
+[공통 매핑](../../records/followup-mapping-20260909/EXISTING_EVIDENCE_MAP.md) · [잔여 원본·참조 실행표](../../runbooks/FUP-04-09_REMAINING_SOURCE_ACTIONS.md)
+
+이번 매핑 변경은 독립 검토 대기이며 기존 수신·편입 승인은 그대로다.
 
 ## 기존 수신 기록 — 당시 이력
 
