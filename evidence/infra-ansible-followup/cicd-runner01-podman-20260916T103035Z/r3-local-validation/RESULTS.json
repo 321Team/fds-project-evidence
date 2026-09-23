@@ -1,0 +1,38 @@
+{
+  "scope": "LOCAL STATIC/UNIT/MODEL only; actual child UID1000 checks ENVIRONMENT_BLOCKED",
+  "runs": [
+    {
+      "name": "account",
+      "rc": 0,
+      "tests": 8
+    },
+    {
+      "name": "wrapper",
+      "rc": 0,
+      "tests": 12
+    },
+    {
+      "name": "home",
+      "rc": 0,
+      "tests": 12
+    },
+    {
+      "name": "entry-fix",
+      "rc": 0,
+      "tests": 8,
+      "passed": 6,
+      "environment_blocked": 2
+    }
+  ],
+  "total_tests": 40,
+  "python_ast": "PASS",
+  "bash_syntax": "PASS",
+  "actual_server_r3": "NOT_RUN",
+  "github_actions": "NOT_RUN",
+  "input_r2_status": "FAIL retained",
+  "passed": 38,
+  "environment_blocked": 2,
+  "actual_uid1000_dac": "ENVIRONMENT_BLOCKED: uid/gid maps each 0 0 1; EPERM/EINVAL",
+  "actual_image_build": "NOT_RUN",
+  "actual_container": "NOT_RUN"
+}

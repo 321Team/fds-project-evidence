@@ -1,0 +1,17 @@
+[
+  "/usr/bin/podman",
+  "--remote=false",
+  "--cgroup-manager=systemd",
+  "build",
+  "--pull=never",
+  "--network=none",
+  "--http-proxy=false",
+  "--force-rm",
+  "--cpu-period=100000",
+  "--cpu-quota=200000",
+  "--memory=4g",
+  "--iidfile=/home/ansible-verify/ansible-podman-fa9bbcf33bd84702acca5110685aa161/image.id",
+  "--build-arg=BASE_IMAGE=sha256:e8565fa265f973c06f0515fac7aa9d102edae01b5677d69216900b84029c6ad0",
+  "--file=/home/ansible-verify/FDS_Ansible_Podman_20260916_r3/build/Containerfile",
+  "/home/ansible-verify/FDS_Ansible_Podman_20260916_r3/build"
+]

@@ -1,0 +1,38 @@
+{
+  "status": "PASS_LOCAL_WRAPPER_CHECKS",
+  "shell_syntax": "3 PASS",
+  "checks": [
+    {
+      "script": "01-admin-token.sh",
+      "rc": 1,
+      "stderr": "STOP: wrong login account; use the original normal login\n",
+      "stopped_before_api_and_staging": true
+    },
+    {
+      "script": "02-runner-serve.sh",
+      "rc": 1,
+      "stderr": "STOP: wrong login account; use the original normal login\n",
+      "stopped_before_api_and_staging": true
+    },
+    {
+      "payload": "FDS_Ansible_Admin_Token_v1_1_1",
+      "manifest_files": 10,
+      "exact_manifest_set": true,
+      "unchanged_archive_sha256": "8363df3ef37866f8fb16d3c92abcc8073b5c7ee07ac4359e7fbef9405cbf2d9c"
+    },
+    {
+      "payload": "FDS_Ansible_Actions_Runner_v1_2",
+      "manifest_files": 23,
+      "exact_manifest_set": true,
+      "unchanged_archive_sha256": "72ce31155f8879c6719a880113dfd35999c95bde43c3621e587a54ffaa3ada88"
+    },
+    {
+      "payload": "FDS_Ansible_Runner_Input_Guard_v1_0",
+      "manifest_files": 9,
+      "exact_manifest_set": true,
+      "unchanged_archive_sha256": "19c916f826a3ff0178f07f3b1a2b0b62f9359902f73196cadf330a08b070f34d"
+    }
+  ],
+  "actual_admin_token": "NOT_RUN",
+  "actual_runner_serve": "NOT_RUN"
+}

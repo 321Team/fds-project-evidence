@@ -1,0 +1,353 @@
+{
+  "commit": "6b2ac7a80be1acd187ac73cbd1cf957f708edf85",
+  "parent": "a9785da3485ffd61840a82a3e9bd14ceb4edb50b",
+  "tree": "83a2d75e22315c1a1246d2fadc45f140f0db62b5",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha": "7aa51cc7c819e2a1dd6faed660e03891b5a39208",
+      "mode": "100644"
+    },
+    {
+      "path": ".gitignore",
+      "sha": "27d504e35ac7474783ef5e1ab3f9a788cd29a8c4",
+      "mode": "100644"
+    },
+    {
+      "path": "README.md",
+      "sha": "17799b88630102efb972fbb811657de895b06b51",
+      "mode": "100644"
+    },
+    {
+      "path": "ansible.cfg",
+      "sha": "8e0d710834ff070e8fb043cd5074b8393ad821cb",
+      "mode": "100644"
+    },
+    {
+      "path": "callback_plugins/fds_verification.py",
+      "sha": "22cb11203ae1dc118eeccea31b2eca67d43488aa",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/change/CR-P1-ANS-01-01.md",
+      "sha": "d6ad465debd7357deee2ba51b852977f648f433d",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/change/issue-6-cli-guard-handoff.md",
+      "sha": "e9e7a549dcf204aa6d73bbbcecd13239f0f7c31a",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/ci/ACCEPTANCE_DEEP_REVIEW.md",
+      "sha": "e43e81874a9cbff955d422c51eac8495dde57941",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/ci/ACTIONS_ACCEPTANCE.md",
+      "sha": "b030f25cafe959e1b0ab5afca2b318f28f942919",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/ci/ACTIVATION_DEEP_REVIEW.md",
+      "sha": "39baddabf54593a583fc691722212ee95b571469",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/ci/ARTIFACT_EXPORT_CI_PLAN.md",
+      "sha": "8967409692b8024f87cafc52e3bde7c8042d47c8",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/ci/ansible-regression.workflow.yml",
+      "sha": "a6741487ae1a3b96afef6c7ae05e4c63942b42b8",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/ci/patches/activate-workflow.patch",
+      "sha": "2dbeb8beac7061e47b08508b87a149da01670590",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/ci/patches/intentional-count-defect.patch",
+      "sha": "c82e48ca25d6413f712075f87a986df7f437ae6a",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/runbooks/Ansible-CI.md",
+      "sha": "c3aa87ff7aed1e202eb920c0d1195bc3679a5e22",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/runbooks/CR-P1-ANS-01-01.md",
+      "sha": "c63eb6d6c2b800ad620555f57cd5c8689e16aa02",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/runbooks/CR-P1-MON-01-01.md",
+      "sha": "5cd09b9d3c19f7892dc9f8a38002406c8b639c37",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/runbooks/SSH-Key-Guard-Verification.md",
+      "sha": "770603c1cf999afcb11edfd5f4031ccb7b2538f9",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/runbooks/Structured-SSH-Verification.md",
+      "sha": "da9aed7580bdc7fa62c7601ac598696bb504241f",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/runbooks/Verification-Kit.md",
+      "sha": "3b724131c0de8b45a032a3c526fe296fbb769589",
+      "mode": "100644"
+    },
+    {
+      "path": "inventory/group_vars/all.yml",
+      "sha": "2bdb29afda10b1966fce76c43b00c40d7bed6c93",
+      "mode": "100644"
+    },
+    {
+      "path": "inventory/hosts.yml",
+      "sha": "c737cf3b1ef4ffb7f36cc3f7704454934f9899d2",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+      "sha": "1dd6766ff89c01e7261dcc2dc5355e984428fc1d",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+      "sha": "e29f8199a86531f46da247c78404278a73819a8f",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-ans-01-01-precheck.yml",
+      "sha": "aba2ed3db43394a1c2e34f07f4d884476e3a218d",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-ans-01-01-rollback.yml",
+      "sha": "dd30fee72586fd16ee0799f1ad91bf7b07ff067c",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-ans-01-01-verify.yml",
+      "sha": "9e36f40df56cc4d617539755c69e45aaf1c0fd38",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-mon-01-01-apply.yml",
+      "sha": "914193f6cd7f74367deeacbdf7592585f9c43eca",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-mon-01-01-precheck.yml",
+      "sha": "1487cd4d5ce406f1807772fd90012441a9d7dafe",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-mon-01-01-rollback.yml",
+      "sha": "cdd7afd140ce3e22c368961d70c5f9fd5ba3d406",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/cr-p1-mon-01-01-verify.yml",
+      "sha": "4c738fa417f5f9a80bfb33069eb6c61f1e953cd4",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/harden_svc_ansible_key.yml",
+      "sha": "c393dcefdfbd0252e1c2c43e26fce3138dae2f62",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/p1-k8s-01-gate0-precheck.yml",
+      "sha": "b0b1cfb7779f881ab0b4501d19d52e3c51840934",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/p1-lb-01-stage-a-nodes.yml",
+      "sha": "6c5b093d305ee50a0f283573c49399aab64eda0b",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/precheck.yml",
+      "sha": "a8aef9e9cf262971a67e7f2f51de85f6de5218f6",
+      "mode": "100644"
+    },
+    {
+      "path": "playbooks/site.yml",
+      "sha": "ccd33a142e7719c928aa26f79579c6efff8ccea0",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/common/tasks/main.yml",
+      "sha": "6b4c79e90aba106dc9a7321b7cfb5d8d9914ebc1",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/dns_resolver/tasks/main.yml",
+      "sha": "7b0070a853de811ca5aac60027586066716c66d6",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/dns_resolver/tasks/verify.yml",
+      "sha": "b417c70373f2f3cd3487fdc926d819cb6d4c4b0a",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/egress_proxy/defaults/main.yml",
+      "sha": "e996ae5cb07e5aaa364e68503c92b5c4f2f94c72",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/egress_proxy/tasks/main.yml",
+      "sha": "f047efe59ae8d3edebddd7a2fc7a4869cf4069d9",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/egress_proxy/tasks/verify.yml",
+      "sha": "5eb06706336ac766db6b4ff14251e905b2e92c1d",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/egress_proxy/templates/squid.conf.j2",
+      "sha": "323db2b3acdb2e00cc82bc1a287284dfe79c02ad",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/k8s_gate0/tasks/cross_node.yml",
+      "sha": "ba953d8c185f76f9b1019c82697c34a1a0cc9290",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/k8s_gate0/tasks/main.yml",
+      "sha": "32b6c1148f5f15e9688e0e035d169c93ee9f97a0",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/k8s_prereq/handlers/main.yml",
+      "sha": "bb8955361d6d440eb209510cef44250b2a5dbcf5",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/k8s_prereq/tasks/main.yml",
+      "sha": "4cb227c137d93dbe67093ebb9088116f38968c40",
+      "mode": "100644"
+    },
+    {
+      "path": "roles/k8s_prereq/tasks/verify.yml",
+      "sha": "0c3a9753307f0e20c789c65f53c8a6b49acad57a",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/cr-p1-ans-01-01-run.sh",
+      "sha": "2e244f02ceba494669fd8c2ee6cc14a632ca2bdf",
+      "mode": "100755"
+    },
+    {
+      "path": "scripts/cr-p1-mon-01-01-run.sh",
+      "sha": "258e7605361eb519529a8555a0fa4eff295a0424",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/p1-k8s-01-gate0-run.sh",
+      "sha": "f9fddedb6381f0bf95b2e60066396e7b7c625ae4",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/verification_contract.py",
+      "sha": "9c041859a3c5044aacb0e7e87853a04e3415667e",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/verify-ssh-main.py",
+      "sha": "0d225fca380ef2956e4954c474ff713101d68c31",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/regression_expectations.py",
+      "sha": "9f747cfc51ef8a080ca055915954ceac1a52eb08",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/requirements-verification-2.16.19.txt",
+      "sha": "98b9fac7c3ebb9ae9de208b675d25448a9e285e5",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/requirements-verification-2.21.3.txt",
+      "sha": "5229fb69af20c436cd8e1f8e6281dc6716917d24",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/run-ssh-guard-matrix.py",
+      "sha": "b494c0cc48b736cc196299d92059f0e2146d58ad",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/run-verification-contract-matrix.py",
+      "sha": "3383287d3799fe021effa93e2bda6d85efa786b8",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/ssh-server-readonly.yml",
+      "sha": "d73c3c5031164aabde6a4d93170d3855824566cb",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/ssh_guard_fixtures.py",
+      "sha": "c51417e6bb40a1537090ba20ffaf8a1bc00dfc4c",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test-dns-resolver-normalization.yml",
+      "sha": "94d716dd626c962a2b927438e0b96c5d0922d6ed",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test-ssh-key-guards.py",
+      "sha": "e626f865f67fb8a26a0c0db8fafc9e13d77a061d",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_ci_regression.py",
+      "sha": "88711431014812f4365044bd72b67155300e2b0e",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_ssh_guard_harness.py",
+      "sha": "21a7ceaaa3f818cee099bb7c4485be77ea330369",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_verification_contract.py",
+      "sha": "b47e16a76c99285d3e4b490bf27f71c478fdffa0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_verification_kit.py",
+      "sha": "954fe2e849dc7936b02f4300fd616c2345106c7d",
+      "mode": "100644"
+    },
+    {
+      "path": "tools/run-ansible-ci.py",
+      "sha": "3cfc253ca61a190b06a2af3ed1cf019e8f23114a",
+      "mode": "100644"
+    },
+    {
+      "path": "tools/verification-kit.py",
+      "sha": "1266f5890846fba2e411db6cddc354f81bcbc3c6",
+      "mode": "100644"
+    },
+    {
+      "path": "tools/verification-wheels.lock.json",
+      "sha": "a9a8025ac1f62e83fddec92c2236fda683302573",
+      "mode": "100644"
+    }
+  ],
+  "scope": "3 documentation files; runtime and test blobs unchanged; no new test execution"
+}

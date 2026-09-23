@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run_id": "3e828f75-ce45-4153-98f7-60ad318023bf",
+  "code_sha": "a487c4fc5185bf0b9cd82f7f739651d4d580ba6b",
+  "engine": "2.16.19",
+  "stage_id": "2.16.19_ssh_proof_wrong_count",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": false,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "REVIEW_REQUIRED",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-2",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-3",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-4",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-5",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    },
+    {
+      "host": "fixture-6",
+      "ok": 4,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [
+    "Invalid SSH proof"
+  ],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/runtime/venv-2.16.19/bin/ansible-playbook",
+      "-i",
+      "/workspace/scratch/d7770f5e34f6/ansible-contract-linux-1/2.16.19-inventory.json",
+      "-c",
+      "local",
+      "/workspace/scratch/d7770f5e34f6/ansible-contract-linux-1/2.16.19-ssh_proof_wrong_count.json"
+    ],
+    "cwd": "/workspace/scratch/d7770f5e34f6/ansible-followup",
+    "artifacts": {
+      "context.json": "7ada1939f171cca6edeb2308e3c713125b29b049cb915fe5dc0fd6a8bb721259",
+      "events.jsonl": "0d975c0b36ef1aa7610054d89021b3adccb678398fcb0e4662f7e195a98c4740",
+      "stdout.log": "c93df4ee35eb407f4a5a16cdc8f889004852fb9a543bc557f8fe9f7bd1f9c5a3",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

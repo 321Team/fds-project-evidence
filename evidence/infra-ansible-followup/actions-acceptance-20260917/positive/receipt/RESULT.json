@@ -1,0 +1,172 @@
+{
+  "artifact_metadata_bound": true,
+  "artifact_zip_bytes": 459427,
+  "artifact_zip_sha256": "396253ca61721f663988404d3db1d9f55a14ce3881068084b34ba3555240bcda",
+  "artifact_zip_verified": true,
+  "attempt": 2,
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/gh",
+        "api",
+        "--hostname",
+        "github.com",
+        "--method",
+        "GET",
+        "-H",
+        "Accept: application/vnd.github+json",
+        "-H",
+        "X-GitHub-Api-Version: 2022-11-28",
+        "repos/321Team/infra-ansible/pulls/20"
+      ],
+      "ended_at_utc": "2026-09-17T01:58:25.638490+00:00",
+      "rc": 0,
+      "started_at_utc": "2026-09-17T01:58:24.976080+00:00",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/usr/bin/gh",
+        "api",
+        "--hostname",
+        "github.com",
+        "--method",
+        "GET",
+        "-H",
+        "Accept: application/vnd.github+json",
+        "-H",
+        "X-GitHub-Api-Version: 2022-11-28",
+        "repos/321Team/infra-ansible/actions/runs/35139314896/attempts/2"
+      ],
+      "ended_at_utc": "2026-09-17T01:58:26.137653+00:00",
+      "rc": 0,
+      "started_at_utc": "2026-09-17T01:58:25.639120+00:00",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/usr/bin/gh",
+        "api",
+        "--hostname",
+        "github.com",
+        "--method",
+        "GET",
+        "-H",
+        "Accept: application/vnd.github+json",
+        "-H",
+        "X-GitHub-Api-Version: 2022-11-28",
+        "repos/321Team/infra-ansible/actions/runs/35139314896/attempts/2/jobs?per_page=100"
+      ],
+      "ended_at_utc": "2026-09-17T01:58:26.750610+00:00",
+      "rc": 0,
+      "started_at_utc": "2026-09-17T01:58:26.137850+00:00",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/usr/bin/gh",
+        "api",
+        "--hostname",
+        "github.com",
+        "--method",
+        "GET",
+        "-H",
+        "Accept: application/vnd.github+json",
+        "-H",
+        "X-GitHub-Api-Version: 2022-11-28",
+        "repos/321Team/infra-ansible/check-runs/104963520513"
+      ],
+      "ended_at_utc": "2026-09-17T01:58:27.264637+00:00",
+      "rc": 0,
+      "started_at_utc": "2026-09-17T01:58:26.750783+00:00",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/usr/bin/gh",
+        "api",
+        "--hostname",
+        "github.com",
+        "--method",
+        "GET",
+        "-H",
+        "Accept: application/vnd.github+json",
+        "-H",
+        "X-GitHub-Api-Version: 2022-11-28",
+        "repos/321Team/infra-ansible/actions/artifacts/10470072587"
+      ],
+      "ended_at_utc": "2026-09-17T01:58:27.694176+00:00",
+      "rc": 0,
+      "started_at_utc": "2026-09-17T01:58:27.264900+00:00",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/usr/bin/gh",
+        "api",
+        "--hostname",
+        "github.com",
+        "--method",
+        "GET",
+        "-H",
+        "Accept: application/vnd.github+json",
+        "-H",
+        "X-GitHub-Api-Version: 2022-11-28",
+        "repos/321Team/infra-ansible/actions/runners?per_page=100",
+        "--paginate",
+        "--slurp"
+      ],
+      "ended_at_utc": "2026-09-17T01:58:28.188272+00:00",
+      "rc": 0,
+      "started_at_utc": "2026-09-17T01:58:27.694498+00:00",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/usr/bin/gh",
+        "api",
+        "--hostname",
+        "github.com",
+        "--method",
+        "GET",
+        "-H",
+        "Accept: application/vnd.github+json",
+        "-H",
+        "X-GitHub-Api-Version: 2022-11-28",
+        "repos/321Team/infra-ansible/actions/artifacts/10470072587/zip"
+      ],
+      "ended_at_utc": "2026-09-17T01:58:30.318353+00:00",
+      "rc": 0,
+      "started_at_utc": "2026-09-17T01:58:28.188697+00:00",
+      "timed_out": false
+    }
+  ],
+  "current_pr_same_source": true,
+  "ended_at_utc": "2026-09-17T01:58:30.319431+00:00",
+  "errors": [],
+  "execution_bound": true,
+  "fixture_originals_review": "PENDING",
+  "host_cleanup": "NOT_VERIFIED_BY_MANAGEMENT_COLLECTOR",
+  "hostname": "ansible01",
+  "independent_approval": "NOT_GRANTED",
+  "job_id": 104963520513,
+  "repository": "321Team/infra-ansible",
+  "rerun": false,
+  "run_id": 35139314896,
+  "runner_absence": {
+    "absent": true,
+    "complete_query": true,
+    "deletion_performed": false,
+    "matching_count": 0,
+    "runner_id": 5,
+    "runner_name": "ansible-ci-3b46463efffc4a2c861f839e80fdfbd9"
+  },
+  "schema": 1,
+  "script_sha256": "07fbd7406b97be704dfae6dd2e6632fb544d22c5551ebf924d743d9886a70e63",
+  "server_changes": false,
+  "source": "2750634766862d7fe19479acacc4259ee8315061",
+  "started_at_utc": "2026-09-17T01:58:24.975783+00:00",
+  "status": "COLLECTED_BOUND_REVIEW_REQUIRED",
+  "token_issuance": false,
+  "uid": 1000
+}

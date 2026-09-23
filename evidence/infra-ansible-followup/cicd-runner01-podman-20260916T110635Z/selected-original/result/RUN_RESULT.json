@@ -1,0 +1,812 @@
+{
+  "status": "PASS_LOCAL_REVALIDATION",
+  "mode": "run",
+  "source_commits": {
+    "ci": "169571801d1b0cee0ba75137380149a48d6b56dd",
+    "egress": "d5147ebff0febbb8ab2afca28fe64d68301e033c"
+  },
+  "started_at": "2026-09-16T11:06:39.147275+00:00",
+  "results": {
+    "ci": {
+      "rc": 0,
+      "passed": true,
+      "result": {
+        "archive_sha256": "5a44e2b88a00f31f1ddd928862cbf0428cbe7a6e5c61f4d75802a877d5414b05",
+        "finished_at": "2026-09-16T11:12:52.872000+00:00",
+        "fixtures": {
+          "archive_sha256": "5a44e2b88a00f31f1ddd928862cbf0428cbe7a6e5c61f4d75802a877d5414b05",
+          "created_at": "2026-09-16T11:06:51.745203+00:00",
+          "finished_at": "2026-09-16T11:12:52.831253+00:00",
+          "original_readonly_result": "NOT_RUN; no operational inventory or SSH execution in this kit run",
+          "platform": "Linux-6.12.0-266.el10.x86_64-x86_64-with-glibc2.36",
+          "python": "3.12.14 (main, Aug 25 2026, 03:41:50) [GCC 12.2.0]",
+          "schema_version": 1,
+          "scope": "fixture_local_only",
+          "source_commit": "169571801d1b0cee0ba75137380149a48d6b56dd",
+          "started_at": "2026-09-16T11:07:11.689959+00:00",
+          "status": "PASS_FRESH_OFFLINE_FIXTURES",
+          "steps": [
+            {
+              "name": "unit-tests",
+              "rc": 0
+            },
+            {
+              "name": "guards",
+              "rc": 0
+            },
+            {
+              "name": "contract",
+              "rc": 0
+            },
+            {
+              "name": "dns-2.16.19",
+              "rc": 0
+            },
+            {
+              "name": "dns-2.21.3",
+              "rc": 0
+            }
+          ]
+        },
+        "github": {
+          "GITHUB_EVENT_NAME": null,
+          "GITHUB_REPOSITORY": null,
+          "GITHUB_RUN_ATTEMPT": null,
+          "GITHUB_RUN_ID": null,
+          "GITHUB_SHA": null,
+          "GITHUB_WORKFLOW_SHA": null,
+          "RUNNER_ARCH": null,
+          "RUNNER_NAME": null,
+          "RUNNER_OS": null
+        },
+        "operational_engine_transition": false,
+        "plan": {
+          "engines": [
+            "2.16.19",
+            "2.21.3"
+          ],
+          "operational_engine_transition": false,
+          "production_apply": false,
+          "runner_registration": "external approved input; never inferred from host address",
+          "schema_version": 1,
+          "scope": "syntax + localhost fixtures only",
+          "source_commit": "169571801d1b0cee0ba75137380149a48d6b56dd",
+          "syntax_playbooks": [
+            "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+            "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+            "playbooks/cr-p1-ans-01-01-precheck.yml",
+            "playbooks/cr-p1-ans-01-01-rollback.yml",
+            "playbooks/cr-p1-ans-01-01-verify.yml",
+            "playbooks/cr-p1-mon-01-01-apply.yml",
+            "playbooks/cr-p1-mon-01-01-precheck.yml",
+            "playbooks/cr-p1-mon-01-01-rollback.yml",
+            "playbooks/cr-p1-mon-01-01-verify.yml",
+            "playbooks/harden_svc_ansible_key.yml",
+            "playbooks/p1-k8s-01-gate0-precheck.yml",
+            "playbooks/p1-lb-01-stage-a-nodes.yml",
+            "playbooks/precheck.yml",
+            "playbooks/site.yml",
+            "tests/ssh-server-readonly.yml",
+            "tests/test-dns-resolver-normalization.yml"
+          ]
+        },
+        "production_apply": false,
+        "schema_version": 1,
+        "scope": "syntax and localhost fixtures; no deployment",
+        "source_commit": "169571801d1b0cee0ba75137380149a48d6b56dd",
+        "started_at": "2026-09-16T11:06:39.799473+00:00",
+        "status": "PASS",
+        "syntax": [
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-ans-01-01-precheck.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-ans-01-01-rollback.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-ans-01-01-verify.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-mon-01-01-apply.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-mon-01-01-precheck.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-mon-01-01-rollback.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/cr-p1-mon-01-01-verify.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/harden_svc_ansible_key.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/p1-k8s-01-gate0-precheck.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/p1-lb-01-stage-a-nodes.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/precheck.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "playbooks/site.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "tests/ssh-server-readonly.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.16.19",
+            "playbook": "tests/test-dns-resolver-normalization.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-ans-01-01-precheck.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-ans-01-01-rollback.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-ans-01-01-verify.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-mon-01-01-apply.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-mon-01-01-precheck.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-mon-01-01-rollback.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/cr-p1-mon-01-01-verify.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/harden_svc_ansible_key.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/p1-k8s-01-gate0-precheck.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/p1-lb-01-stage-a-nodes.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/precheck.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "playbooks/site.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "tests/ssh-server-readonly.yml",
+            "rc": 0
+          },
+          {
+            "engine": "2.21.3",
+            "playbook": "tests/test-dns-resolver-normalization.yml",
+            "rc": 0
+          }
+        ]
+      }
+    },
+    "egress-2.16.19": {
+      "rc": 0,
+      "passed": true,
+      "result": {
+        "status": "PASS",
+        "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime",
+        "source_commit": "d5147ebff0febbb8ab2afca28fe64d68301e033c",
+        "source_dirty": false,
+        "cases": [
+          {
+            "case": "syntax-precheck",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "syntax-apply",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "syntax-verify",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "syntax-rollback",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "bash-syntax",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "one-proxy",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "changed-proxy",
+            "expected_rc": 1,
+            "actual_rc": 1,
+            "passed": true
+          },
+          {
+            "case": "localhost-only",
+            "expected_rc": 1,
+            "actual_rc": 1,
+            "passed": true
+          },
+          {
+            "case": "wrong-target",
+            "expected_rc": 1,
+            "actual_rc": 1,
+            "passed": true
+          },
+          {
+            "case": "extra-target",
+            "expected_rc": 1,
+            "actual_rc": 1,
+            "passed": true
+          },
+          {
+            "case": "localhost-cli-preflight",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "orphan-refused-before-copy",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "orphan-bytes-preserved",
+            "passed": true
+          },
+          {
+            "case": "copy-defence-preserves-existing",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "copy-defence-bytes-preserved",
+            "passed": true
+          },
+          {
+            "case": "fresh-baseline-can-backup",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "fresh-backup-bytes-match",
+            "passed": true
+          },
+          {
+            "case": "baseline-complete",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "baseline-missing-rule-history",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-firewalld_permanent_rules_before",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-firewalld_runtime_rules_before",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-squid_preinstalled",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-proxy_port",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-proxy_allowed_clients",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-squid_conf_mode",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-inventory_hostname",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-regular",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-missing",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-symlink",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-directory",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-originally-absent",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-unexpected",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-regular",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-missing",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-symlink",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-directory",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-originally-absent",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-unexpected",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "original-kept",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "original-lost",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "unrelated-added",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "invalidation-before-first-rollback-change",
+            "passed": true
+          },
+          {
+            "case": "invalidate-before-interruption",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "interrupted-rollback-has-no-stale-marker",
+            "passed": true
+          },
+          {
+            "case": "reapply-selects-reload-after-interruption",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          }
+        ]
+      }
+    },
+    "egress-2.21.3": {
+      "rc": 0,
+      "passed": true,
+      "result": {
+        "status": "PASS",
+        "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime",
+        "source_commit": "d5147ebff0febbb8ab2afca28fe64d68301e033c",
+        "source_dirty": false,
+        "cases": [
+          {
+            "case": "syntax-precheck",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "syntax-apply",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "syntax-verify",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "syntax-rollback",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "bash-syntax",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "one-proxy",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "changed-proxy",
+            "expected_rc": 1,
+            "actual_rc": 1,
+            "passed": true
+          },
+          {
+            "case": "localhost-only",
+            "expected_rc": 1,
+            "actual_rc": 1,
+            "passed": true
+          },
+          {
+            "case": "wrong-target",
+            "expected_rc": 1,
+            "actual_rc": 1,
+            "passed": true
+          },
+          {
+            "case": "extra-target",
+            "expected_rc": 1,
+            "actual_rc": 1,
+            "passed": true
+          },
+          {
+            "case": "localhost-cli-preflight",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "orphan-refused-before-copy",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "orphan-bytes-preserved",
+            "passed": true
+          },
+          {
+            "case": "copy-defence-preserves-existing",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "copy-defence-bytes-preserved",
+            "passed": true
+          },
+          {
+            "case": "fresh-baseline-can-backup",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "fresh-backup-bytes-match",
+            "passed": true
+          },
+          {
+            "case": "baseline-complete",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "baseline-missing-rule-history",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-firewalld_permanent_rules_before",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-firewalld_runtime_rules_before",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-squid_preinstalled",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-proxy_port",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-proxy_allowed_clients",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-squid_conf_mode",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "baseline-invalid-inventory_hostname",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-regular",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-missing",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-symlink",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-directory",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-originally-absent",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "backup-apply-unexpected",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-regular",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-missing",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-symlink",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-directory",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-originally-absent",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "backup-rollback-unexpected",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "original-kept",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "original-lost",
+            "expected_rc": 2,
+            "actual_rc": 2,
+            "passed": true
+          },
+          {
+            "case": "unrelated-added",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "invalidation-before-first-rollback-change",
+            "passed": true
+          },
+          {
+            "case": "invalidate-before-interruption",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          },
+          {
+            "case": "interrupted-rollback-has-no-stale-marker",
+            "passed": true
+          },
+          {
+            "case": "reapply-selects-reload-after-interruption",
+            "expected_rc": 0,
+            "actual_rc": 0,
+            "passed": true
+          }
+        ]
+      }
+    }
+  },
+  "github_actions": "NOT_RUN",
+  "production_apply": false,
+  "engine_transition": false,
+  "finished_at": "2026-09-16T11:13:58.951122+00:00"
+}

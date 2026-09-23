@@ -1,0 +1,30 @@
+test_archive_tamper_stops_before_extraction (__main__.Contracts.test_archive_tamper_stops_before_extraction) ... ok
+test_container_isolation_failure_prevents_kit_execution (__main__.Contracts.test_container_isolation_failure_prevents_kit_execution) ... {"status": "FAIL", "preflight_rc": null, "run_rc": null, "error": "RuntimeError: Container restriction check failed; Ansible NOT RUN"}
+ok
+test_container_preflight_failure_prevents_full_run (__main__.Contracts.test_container_preflight_failure_prevents_full_run) ... STAGE=preflight
+{"status": "FAIL", "preflight_rc": 1, "run_rc": null, "error": "RuntimeError: preflight failed; original result retained"}
+ok
+test_container_start_failure_collects_logs_and_removes_exact_id_model (__main__.Contracts.test_container_start_failure_collects_logs_and_removes_exact_id_model) ... RuntimeError: Container process failed: podman rc=125, ExitCode=125, OOMKilled=False; container.log tail:
+MOCK container
+STATUS=FAIL
+EVIDENCE=/tmp/tmpx8f4aq3m/ansible-podman-z73qy2r4/ansible-podman-evidence.tar.gz
+ok
+test_evidence_preserves_failure_and_excludes_runtime (__main__.Contracts.test_evidence_preserves_failure_and_excludes_runtime) ... STATUS=FAIL
+EVIDENCE=/tmp/tmpqwyz85gs/ansible-podman-evidence.tar.gz
+ok
+test_local_host_gate_stops_before_podman (__main__.Contracts.test_local_host_gate_stops_before_podman) ... ok
+test_manifest_rejects_extra_changed_and_linked_files (__main__.Contracts.test_manifest_rejects_extra_changed_and_linked_files) ... ok
+test_original_archive_hash_and_source_identity (__main__.Contracts.test_original_archive_hash_and_source_identity) ... ok
+test_podman_command_boundary (__main__.Contracts.test_podman_command_boundary) ... ok
+test_preparation_error_produces_failure_evidence (__main__.Contracts.test_preparation_error_produces_failure_evidence) ... RuntimeError: MOCK Podman unavailable
+STATUS=FAIL
+EVIDENCE=/tmp/tmpsroiq75r/ansible-podman-mxq1yeve/ansible-podman-evidence.tar.gz
+ok
+test_real_subprocess_nonzero_is_preserved (__main__.Contracts.test_real_subprocess_nonzero_is_preserved) ... STAGE=failure LOG=/tmp/tmpvu48q0we/failure.log
+ok
+test_result_failure_propagation_models (__main__.Contracts.test_result_failure_propagation_models) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.128s
+
+OK

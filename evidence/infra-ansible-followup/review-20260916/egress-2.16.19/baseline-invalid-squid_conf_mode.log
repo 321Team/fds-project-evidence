@@ -1,0 +1,20 @@
+
+PLAY [baseline-invalid-squid_conf_mode] ****************************************
+
+TASK [Validate preserved baseline identity and restoration fields] *************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate metadata needed to restore an existing configuration] ***********
+fatal: [localhost]: FAILED! => {
+    "assertion": "cr_mon_baseline.squid_conf_mode is match('^0[0-7]{3}$')",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Missing or invalid original configuration metadata; preserve state and stop."
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

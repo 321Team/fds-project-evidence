@@ -1,0 +1,215 @@
+
+PLAY [SSH guard localhost regression] ******************************************
+
+TASK [Execute source guard: empty: Count P1 managed SSH keys] ******************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/empty"], "delta": "0:00:00.004201", "end": "2026-09-16 14:14:49.542158", "failed_when_result": "The conditional check 'undefined_ssh_guard_probe.value == 1' failed. The error was: error while evaluating conditional (undefined_ssh_guard_probe.value == 1): 'undefined_ssh_guard_probe' is undefined. 'undefined_ssh_guard_probe' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/regression.yml': line 18, column 18, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    check_mode: false\n    failed_when: undefined_ssh_guard_probe.value == 1\n                 ^ here\n", "msg": "non-zero return code", "rc": 1, "start": "2026-09-16 14:14:49.537957", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: empty: 0] ***********************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_managed_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: empty: Verify restricted P1 managed SSH key] *******
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/empty"], "delta": "0:00:00.003323", "end": "2026-09-16 14:14:50.231537", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-16 14:14:50.228214", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: empty: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: one_plain: Count P1 managed SSH keys] **************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/one_plain"], "delta": "0:00:00.002721", "end": "2026-09-16 14:14:50.827043", "failed_when_result": "The conditional check 'undefined_ssh_guard_probe.value == 1' failed. The error was: error while evaluating conditional (undefined_ssh_guard_probe.value == 1): 'undefined_ssh_guard_probe' is undefined. 'undefined_ssh_guard_probe' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/regression.yml': line 74, column 18, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    check_mode: false\n    failed_when: undefined_ssh_guard_probe.value == 1\n                 ^ here\n", "msg": "", "rc": 0, "start": "2026-09-16 14:14:50.824322", "stderr": "", "stderr_lines": [], "stdout": "1", "stdout_lines": ["1"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_plain: 0] *******************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_managed_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: one_plain: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/one_plain"], "delta": "0:00:00.002646", "end": "2026-09-16 14:14:51.311033", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-16 14:14:51.308387", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_plain: 1] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: one_restricted: Count P1 managed SSH keys] *********
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/one_restricted"], "delta": "0:00:00.002710", "end": "2026-09-16 14:14:51.851571", "failed_when_result": "The conditional check 'undefined_ssh_guard_probe.value == 1' failed. The error was: error while evaluating conditional (undefined_ssh_guard_probe.value == 1): 'undefined_ssh_guard_probe' is undefined. 'undefined_ssh_guard_probe' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/regression.yml': line 130, column 18, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    check_mode: false\n    failed_when: undefined_ssh_guard_probe.value == 1\n                 ^ here\n", "msg": "", "rc": 0, "start": "2026-09-16 14:14:51.848861", "stderr": "", "stderr_lines": [], "stdout": "1", "stdout_lines": ["1"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_restricted: 0] **************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_managed_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: one_restricted: Verify restricted P1 managed SSH key] ***
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_plain: Count P1 managed SSH keys] **************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/two_plain"], "delta": "0:00:00.009804", "end": "2026-09-16 14:14:52.902095", "failed_when_result": "The conditional check 'undefined_ssh_guard_probe.value == 1' failed. The error was: error while evaluating conditional (undefined_ssh_guard_probe.value == 1): 'undefined_ssh_guard_probe' is undefined. 'undefined_ssh_guard_probe' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/regression.yml': line 187, column 18, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    check_mode: false\n    failed_when: undefined_ssh_guard_probe.value == 1\n                 ^ here\n", "msg": "", "rc": 0, "start": "2026-09-16 14:14:52.892291", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_plain: 0] *******************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_managed_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: two_plain: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/two_plain"], "delta": "0:00:01.004082", "end": "2026-09-16 14:14:54.477696", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-16 14:14:53.473614", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_plain: 1] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_restricted: Count P1 managed SSH keys] *********
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/two_restricted"], "delta": "0:00:00.003230", "end": "2026-09-16 14:14:55.069195", "failed_when_result": "The conditional check 'undefined_ssh_guard_probe.value == 1' failed. The error was: error while evaluating conditional (undefined_ssh_guard_probe.value == 1): 'undefined_ssh_guard_probe' is undefined. 'undefined_ssh_guard_probe' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/regression.yml': line 243, column 18, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    check_mode: false\n    failed_when: undefined_ssh_guard_probe.value == 1\n                 ^ here\n", "msg": "", "rc": 0, "start": "2026-09-16 14:14:55.065965", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_restricted: 0] **************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_managed_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: two_restricted: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/two_restricted"], "delta": "0:00:00.003291", "end": "2026-09-16 14:14:55.639682", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-16 14:14:55.636391", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: mixed: Count P1 managed SSH keys] ******************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/mixed"], "delta": "0:00:00.003123", "end": "2026-09-16 14:14:56.185180", "failed_when_result": "The conditional check 'undefined_ssh_guard_probe.value == 1' failed. The error was: error while evaluating conditional (undefined_ssh_guard_probe.value == 1): 'undefined_ssh_guard_probe' is undefined. 'undefined_ssh_guard_probe' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/regression.yml': line 300, column 18, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    check_mode: false\n    failed_when: undefined_ssh_guard_probe.value == 1\n                 ^ here\n", "msg": "", "rc": 0, "start": "2026-09-16 14:14:56.182057", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: mixed: 0] ***********************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_managed_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: mixed: Verify restricted P1 managed SSH key] *******
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: mixed: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: missing: Count P1 managed SSH keys] ****************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/missing"], "delta": "0:00:00.003779", "end": "2026-09-16 14:14:58.205520", "failed_when_result": "The conditional check 'undefined_ssh_guard_probe.value == 1' failed. The error was: error while evaluating conditional (undefined_ssh_guard_probe.value == 1): 'undefined_ssh_guard_probe' is undefined. 'undefined_ssh_guard_probe' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/regression.yml': line 356, column 18, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    check_mode: false\n    failed_when: undefined_ssh_guard_probe.value == 1\n                 ^ here\n", "msg": "non-zero return code", "rc": 2, "start": "2026-09-16 14:14:58.201741", "stderr": "grep: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/missing: No such file or directory", "stderr_lines": ["grep: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/missing: No such file or directory"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: missing: 0] *********************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_managed_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: missing: Verify restricted P1 managed SSH key] *****
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/missing"], "delta": "0:00:00.003586", "end": "2026-09-16 14:14:58.673437", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2026-09-16 14:14:58.669851", "stderr": "grep: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/missing: No such file or directory", "stderr_lines": ["grep: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-undefined-0/fixtures/missing: No such file or directory"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: missing: 1] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Require every fixture contract] ******************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "contract_2 is succeeded",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=42   changed=14   unreachable=0    failed=1    skipped=0    rescued=0    ignored=19  
+

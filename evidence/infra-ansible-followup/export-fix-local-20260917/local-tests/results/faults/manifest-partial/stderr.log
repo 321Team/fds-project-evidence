@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/fault_child.py", line 78, in <module>
+    raise SystemExit(ci.main())
+                     ^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/candidate/tools/run-ansible-ci.py", line 126, in main
+    result = execute(args.repo, args.commit, args.output, args.wheels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/candidate/tools/run-ansible-ci.py", line 111, in execute
+    (artifact / 'SHA256SUMS').write_text(''.join(kit.sha(p.read_bytes()) + '  ' + p.relative_to(artifact).as_posix() + '\n'
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/fault_child.py", line 46, in wt
+    fail('wt',path,data);return real_wt(path,data,*a,**kw)
+    ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/fault_child.py", line 42, in fail
+    raise OSError(code,'SYNTHETIC_STORAGE_FAULT')
+OSError: [Errno 28] SYNTHETIC_STORAGE_FAULT

@@ -1,0 +1,206 @@
+
+PLAY [SSH guard localhost regression] ******************************************
+
+TASK [Execute source guard: empty: Count P1 managed SSH keys] ******************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/empty"], "delta": "0:00:00.002659", "end": "2026-09-16 14:15:09.903087", "failed_when_result": true, "msg": "non-zero return code", "rc": 1, "start": "2026-09-16 14:15:09.900428", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: empty: 0] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: empty: Verify restricted P1 managed SSH key] *******
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/empty"], "delta": "0:00:00.002533", "end": "2026-09-16 14:15:10.518591", "failed_when_result": "The conditional check 'or' failed. The error was: error while evaluating conditional (or): 'or' is undefined. 'or' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/regression.yml': line 48, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    - p1_restricted_key_count.rc != 0\n    - or\n      ^ here\n", "msg": "non-zero return code", "rc": 1, "start": "2026-09-16 14:15:10.516058", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: empty: 1] ***********************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_restricted_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: one_plain: Count P1 managed SSH keys] **************
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_plain: 0] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: one_plain: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/one_plain"], "delta": "0:00:00.003160", "end": "2026-09-16 14:15:12.502933", "failed_when_result": "The conditional check 'or' failed. The error was: error while evaluating conditional (or): 'or' is undefined. 'or' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/regression.yml': line 107, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    - p1_restricted_key_count.rc != 0\n    - or\n      ^ here\n", "msg": "non-zero return code", "rc": 1, "start": "2026-09-16 14:15:12.499773", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_plain: 1] *******************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_restricted_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: one_restricted: Count P1 managed SSH keys] *********
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_restricted: 0] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: one_restricted: Verify restricted P1 managed SSH key] ***
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: one_restricted: 1] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_plain: Count P1 managed SSH keys] **************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/two_plain"], "delta": "0:00:01.003868", "end": "2026-09-16 14:15:15.042950", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-16 14:15:14.039082", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_plain: 0] *******************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_plain: Verify restricted P1 managed SSH key] ***
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/two_plain"], "delta": "0:00:00.002913", "end": "2026-09-16 14:15:15.518271", "failed_when_result": "The conditional check 'or' failed. The error was: error while evaluating conditional (or): 'or' is undefined. 'or' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/regression.yml': line 226, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    - p1_restricted_key_count.rc != 0\n    - or\n      ^ here\n", "msg": "non-zero return code", "rc": 1, "start": "2026-09-16 14:15:15.515358", "stderr": "", "stderr_lines": [], "stdout": "0", "stdout_lines": ["0"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_plain: 1] *******************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_restricted_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: two_restricted: Count P1 managed SSH keys] *********
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/two_restricted"], "delta": "0:00:00.003579", "end": "2026-09-16 14:15:15.966508", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-16 14:15:15.962929", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_restricted: 0] **************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: two_restricted: Verify restricted P1 managed SSH key] ***
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: two_restricted: 1] **************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_restricted_key_count.failed_when_result == True",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Execute source guard: mixed: Count P1 managed SSH keys] ******************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/mixed"], "delta": "0:00:00.002841", "end": "2026-09-16 14:15:16.905726", "failed_when_result": true, "msg": "", "rc": 0, "start": "2026-09-16 14:15:16.902885", "stderr": "", "stderr_lines": [], "stdout": "2", "stdout_lines": ["2"]}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: mixed: 0] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: mixed: Verify restricted P1 managed SSH key] *******
+ok: [localhost]
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: mixed: 1] ***********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: missing: Count P1 managed SSH keys] ****************
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^(from=\"10\\.250\\.10\\.10\",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/missing"], "delta": "0:00:00.003332", "end": "2026-09-16 14:15:17.821564", "failed_when_result": true, "msg": "non-zero return code", "rc": 2, "start": "2026-09-16 14:15:17.818232", "stderr": "grep: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/missing: No such file or directory", "stderr_lines": ["grep: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/missing: No such file or directory"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: missing: 0] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute source guard: missing: Verify restricted P1 managed SSH key] *****
+fatal: [localhost]: FAILED! => {"changed": false, "cmd": ["grep", "-cE", "^from=\"10\\.250\\.10\\.10\",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01 svc_ansible$", "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/missing"], "delta": "0:00:00.002713", "end": "2026-09-16 14:15:18.286466", "failed_when_result": "The conditional check 'or' failed. The error was: error while evaluating conditional (or): 'or' is undefined. 'or' is undefined\n\nThe error appears to be in '/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/regression.yml': line 404, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    - p1_restricted_key_count.rc != 0\n    - or\n      ^ here\n", "msg": "non-zero return code", "rc": 2, "start": "2026-09-16 14:15:18.283753", "stderr": "grep: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/missing: No such file or directory", "stderr_lines": ["grep: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-1/fixtures/missing: No such file or directory"], "stdout": "", "stdout_lines": []}
+...ignoring
+
+TASK [Persist guard observation] ***********************************************
+changed: [localhost]
+
+TASK [Assert contract: missing: 1] *********************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "p1_restricted_key_count.failed_when_result is boolean",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+...ignoring
+
+TASK [Require every fixture contract] ******************************************
+fatal: [localhost]: FAILED! => {
+    "assertion": "contract_5 is succeeded",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Assertion failed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=42   changed=14   unreachable=0    failed=1    skipped=0    rescued=0    ignored=14  
+

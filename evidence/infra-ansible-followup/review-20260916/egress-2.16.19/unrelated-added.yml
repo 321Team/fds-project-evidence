@@ -1,0 +1,51 @@
+- name: unrelated-added
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    cr_mon_phase: apply
+    cr_mon_state_dir: /workspace/scratch/d7770f5e34f6/egress-review-216/state
+    cr_mon_change_id: CR-P1-MON-01-01
+    cr_mon_baseline_file:
+      stat:
+        exists: false
+    cr_mon_squid_conf_before:
+      stat:
+        exists: true
+    cr_mon_original_state:
+      change_id: CR-P1-MON-01-01
+      inventory_hostname: localhost
+      squid_preinstalled: true
+      squid_conf_preexisted: true
+      squid_service_active_state: active
+      squid_service_enabled_state: enabled
+      squid_conf_owner: root
+      squid_conf_group: root
+      squid_conf_mode: '0644'
+      firewalld_default_zone: public
+      proxy_port: 3128
+      proxy_allowed_clients:
+      - 10.1.93.105
+      firewalld_permanent_rules_before:
+      - rule family="ipv4" source address="10.1.93.105" port port="3128" protocol="tcp"
+        accept
+      firewalld_runtime_rules_before:
+      - rule family="ipv4" source address="10.1.93.105" port port="3128" protocol="tcp"
+        accept
+    cr_mon_firewalld_permanent_rules_after:
+      stdout_lines: &id001
+      - rule family="ipv4" source address="10.1.93.105" port port="3128" protocol="tcp"
+        accept
+      - other-rule
+    cr_mon_firewalld_runtime_rules_after:
+      stdout_lines: *id001
+    ansible_python_interpreter: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/runtime/venv-2.16.19/bin/python
+  tasks:
+  - name: Verify every original firewall rule is still present
+    ansible.builtin.assert:
+      that:
+      - cr_mon_original_state.firewalld_permanent_rules_before | difference(cr_mon_firewalld_permanent_rules_after.stdout_lines)
+        | length == 0
+      - cr_mon_original_state.firewalld_runtime_rules_before | difference(cr_mon_firewalld_runtime_rules_after.stdout_lines)
+        | length == 0
+      fail_msg: Rollback lost an original firewall rule; do not report ROLLED_BACK.

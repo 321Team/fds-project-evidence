@@ -1,0 +1,438 @@
+- name: SSH guard localhost regression
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
+  - name: 'Execute source guard: empty: Count P1 managed SSH keys'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/empty
+    register: p1_managed_key_count
+    changed_when: false
+    check_mode: false
+    failed_when:
+    - p1_managed_key_count.rc not in [0, 1]
+    - or
+    - (p1_managed_key_count.stdout | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-empty-0.json
+      mode: '0600'
+      content: '{{ p1_managed_key_count | to_json }}'
+  - name: 'Assert contract: empty: 0'
+    ansible.builtin.assert:
+      that:
+      - p1_managed_key_count.failed_when_result is boolean
+      - p1_managed_key_count.failed_when_result == True
+      - p1_managed_key_count.failed == True
+      - p1_managed_key_count.rc == 1
+      - (p1_managed_key_count.stdout | trim) == '0'
+    ignore_errors: true
+    register: contract_2
+  - name: 'Execute source guard: empty: Verify restricted P1 managed SSH key'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/empty
+    register: p1_restricted_key_count
+    changed_when: false
+    failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+      | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-empty-1.json
+      mode: '0600'
+      content: '{{ p1_restricted_key_count | to_json }}'
+  - name: 'Assert contract: empty: 1'
+    ansible.builtin.assert:
+      that:
+      - p1_restricted_key_count.failed_when_result is boolean
+      - p1_restricted_key_count.failed_when_result == True
+      - p1_restricted_key_count.failed == True
+      - p1_restricted_key_count.rc == 1
+      - (p1_restricted_key_count.stdout | trim) == '0'
+    ignore_errors: true
+    register: contract_5
+  - name: 'Execute source guard: one_plain: Count P1 managed SSH keys'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/one_plain
+    register: p1_managed_key_count
+    changed_when: false
+    check_mode: false
+    failed_when:
+    - p1_managed_key_count.rc not in [0, 1]
+    - or
+    - (p1_managed_key_count.stdout | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-one_plain-0.json
+      mode: '0600'
+      content: '{{ p1_managed_key_count | to_json }}'
+  - name: 'Assert contract: one_plain: 0'
+    ansible.builtin.assert:
+      that:
+      - p1_managed_key_count.failed_when_result is boolean
+      - p1_managed_key_count.failed_when_result == False
+      - p1_managed_key_count.failed == False
+      - p1_managed_key_count.rc == 0
+      - (p1_managed_key_count.stdout | trim) == '1'
+    ignore_errors: true
+    register: contract_8
+  - name: 'Execute source guard: one_plain: Verify restricted P1 managed SSH key'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/one_plain
+    register: p1_restricted_key_count
+    changed_when: false
+    failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+      | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-one_plain-1.json
+      mode: '0600'
+      content: '{{ p1_restricted_key_count | to_json }}'
+  - name: 'Assert contract: one_plain: 1'
+    ansible.builtin.assert:
+      that:
+      - p1_restricted_key_count.failed_when_result is boolean
+      - p1_restricted_key_count.failed_when_result == True
+      - p1_restricted_key_count.failed == True
+      - p1_restricted_key_count.rc == 1
+      - (p1_restricted_key_count.stdout | trim) == '0'
+    ignore_errors: true
+    register: contract_11
+  - name: 'Execute source guard: one_restricted: Count P1 managed SSH keys'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/one_restricted
+    register: p1_managed_key_count
+    changed_when: false
+    check_mode: false
+    failed_when:
+    - p1_managed_key_count.rc not in [0, 1]
+    - or
+    - (p1_managed_key_count.stdout | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-one_restricted-0.json
+      mode: '0600'
+      content: '{{ p1_managed_key_count | to_json }}'
+  - name: 'Assert contract: one_restricted: 0'
+    ansible.builtin.assert:
+      that:
+      - p1_managed_key_count.failed_when_result is boolean
+      - p1_managed_key_count.failed_when_result == False
+      - p1_managed_key_count.failed == False
+      - p1_managed_key_count.rc == 0
+      - (p1_managed_key_count.stdout | trim) == '1'
+    ignore_errors: true
+    register: contract_14
+  - name: 'Execute source guard: one_restricted: Verify restricted P1 managed SSH
+      key'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/one_restricted
+    register: p1_restricted_key_count
+    changed_when: false
+    failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+      | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-one_restricted-1.json
+      mode: '0600'
+      content: '{{ p1_restricted_key_count | to_json }}'
+  - name: 'Assert contract: one_restricted: 1'
+    ansible.builtin.assert:
+      that:
+      - p1_restricted_key_count.failed_when_result is boolean
+      - p1_restricted_key_count.failed_when_result == False
+      - p1_restricted_key_count.failed == False
+      - p1_restricted_key_count.rc == 0
+      - (p1_restricted_key_count.stdout | trim) == '1'
+    ignore_errors: true
+    register: contract_17
+  - name: 'Execute source guard: two_plain: Count P1 managed SSH keys'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/two_plain
+    register: p1_managed_key_count
+    changed_when: false
+    check_mode: false
+    failed_when:
+    - p1_managed_key_count.rc not in [0, 1]
+    - or
+    - (p1_managed_key_count.stdout | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-two_plain-0.json
+      mode: '0600'
+      content: '{{ p1_managed_key_count | to_json }}'
+  - name: 'Assert contract: two_plain: 0'
+    ansible.builtin.assert:
+      that:
+      - p1_managed_key_count.failed_when_result is boolean
+      - p1_managed_key_count.failed_when_result == True
+      - p1_managed_key_count.failed == True
+      - p1_managed_key_count.rc == 0
+      - (p1_managed_key_count.stdout | trim) == '2'
+    ignore_errors: true
+    register: contract_20
+  - name: 'Execute source guard: two_plain: Verify restricted P1 managed SSH key'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/two_plain
+    register: p1_restricted_key_count
+    changed_when: false
+    failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+      | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-two_plain-1.json
+      mode: '0600'
+      content: '{{ p1_restricted_key_count | to_json }}'
+  - name: 'Assert contract: two_plain: 1'
+    ansible.builtin.assert:
+      that:
+      - p1_restricted_key_count.failed_when_result is boolean
+      - p1_restricted_key_count.failed_when_result == True
+      - p1_restricted_key_count.failed == True
+      - p1_restricted_key_count.rc == 1
+      - (p1_restricted_key_count.stdout | trim) == '0'
+    ignore_errors: true
+    register: contract_23
+  - name: 'Execute source guard: two_restricted: Count P1 managed SSH keys'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/two_restricted
+    register: p1_managed_key_count
+    changed_when: false
+    check_mode: false
+    failed_when:
+    - p1_managed_key_count.rc not in [0, 1]
+    - or
+    - (p1_managed_key_count.stdout | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-two_restricted-0.json
+      mode: '0600'
+      content: '{{ p1_managed_key_count | to_json }}'
+  - name: 'Assert contract: two_restricted: 0'
+    ansible.builtin.assert:
+      that:
+      - p1_managed_key_count.failed_when_result is boolean
+      - p1_managed_key_count.failed_when_result == True
+      - p1_managed_key_count.failed == True
+      - p1_managed_key_count.rc == 0
+      - (p1_managed_key_count.stdout | trim) == '2'
+    ignore_errors: true
+    register: contract_26
+  - name: 'Execute source guard: two_restricted: Verify restricted P1 managed SSH
+      key'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/two_restricted
+    register: p1_restricted_key_count
+    changed_when: false
+    failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+      | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-two_restricted-1.json
+      mode: '0600'
+      content: '{{ p1_restricted_key_count | to_json }}'
+  - name: 'Assert contract: two_restricted: 1'
+    ansible.builtin.assert:
+      that:
+      - p1_restricted_key_count.failed_when_result is boolean
+      - p1_restricted_key_count.failed_when_result == True
+      - p1_restricted_key_count.failed == True
+      - p1_restricted_key_count.rc == 0
+      - (p1_restricted_key_count.stdout | trim) == '2'
+    ignore_errors: true
+    register: contract_29
+  - name: 'Execute source guard: mixed: Count P1 managed SSH keys'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/mixed
+    register: p1_managed_key_count
+    changed_when: false
+    check_mode: false
+    failed_when:
+    - p1_managed_key_count.rc not in [0, 1]
+    - or
+    - (p1_managed_key_count.stdout | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-mixed-0.json
+      mode: '0600'
+      content: '{{ p1_managed_key_count | to_json }}'
+  - name: 'Assert contract: mixed: 0'
+    ansible.builtin.assert:
+      that:
+      - p1_managed_key_count.failed_when_result is boolean
+      - p1_managed_key_count.failed_when_result == True
+      - p1_managed_key_count.failed == True
+      - p1_managed_key_count.rc == 0
+      - (p1_managed_key_count.stdout | trim) == '2'
+    ignore_errors: true
+    register: contract_32
+  - name: 'Execute source guard: mixed: Verify restricted P1 managed SSH key'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/mixed
+    register: p1_restricted_key_count
+    changed_when: false
+    failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+      | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-mixed-1.json
+      mode: '0600'
+      content: '{{ p1_restricted_key_count | to_json }}'
+  - name: 'Assert contract: mixed: 1'
+    ansible.builtin.assert:
+      that:
+      - p1_restricted_key_count.failed_when_result is boolean
+      - p1_restricted_key_count.failed_when_result == False
+      - p1_restricted_key_count.failed == False
+      - p1_restricted_key_count.rc == 0
+      - (p1_restricted_key_count.stdout | trim) == '1'
+    ignore_errors: true
+    register: contract_35
+  - name: 'Execute source guard: missing: Count P1 managed SSH keys'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/missing
+    register: p1_managed_key_count
+    changed_when: false
+    check_mode: false
+    failed_when:
+    - p1_managed_key_count.rc not in [0, 1]
+    - or
+    - (p1_managed_key_count.stdout | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-missing-0.json
+      mode: '0600'
+      content: '{{ p1_managed_key_count | to_json }}'
+  - name: 'Assert contract: missing: 0'
+    ansible.builtin.assert:
+      that:
+      - p1_managed_key_count.failed_when_result is boolean
+      - p1_managed_key_count.failed_when_result == True
+      - p1_managed_key_count.failed == True
+      - p1_managed_key_count.rc == 2
+      - (p1_managed_key_count.stdout | trim) == ''
+    ignore_errors: true
+    register: contract_38
+  - name: 'Execute source guard: missing: Verify restricted P1 managed SSH key'
+    ansible.builtin.command:
+      argv:
+      - grep
+      - -cE
+      - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+        svc_ansible$
+      - /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/fixtures/missing
+    register: p1_restricted_key_count
+    changed_when: false
+    failed_when: p1_restricted_key_count.rc != 0 or (p1_restricted_key_count.stdout
+      | int) != 1
+    ignore_errors: true
+  - name: Persist guard observation
+    ansible.builtin.copy:
+      dest: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards-results/2.16.19-broken-list-0/result-missing-1.json
+      mode: '0600'
+      content: '{{ p1_restricted_key_count | to_json }}'
+  - name: 'Assert contract: missing: 1'
+    ansible.builtin.assert:
+      that:
+      - p1_restricted_key_count.failed_when_result is boolean
+      - p1_restricted_key_count.failed_when_result == True
+      - p1_restricted_key_count.failed == True
+      - p1_restricted_key_count.rc == 2
+      - (p1_restricted_key_count.stdout | trim) == ''
+    ignore_errors: true
+    register: contract_41
+  - name: Require every fixture contract
+    ansible.builtin.assert:
+      that:
+      - contract_2 is succeeded
+      - contract_5 is succeeded
+      - contract_8 is succeeded
+      - contract_11 is succeeded
+      - contract_14 is succeeded
+      - contract_17 is succeeded
+      - contract_20 is succeeded
+      - contract_23 is succeeded
+      - contract_26 is succeeded
+      - contract_29 is succeeded
+      - contract_32 is succeeded
+      - contract_35 is succeeded
+      - contract_38 is succeeded
+      - contract_41 is succeeded

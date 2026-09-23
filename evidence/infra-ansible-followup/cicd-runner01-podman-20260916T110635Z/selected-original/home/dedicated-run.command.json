@@ -1,0 +1,21 @@
+[
+  "/usr/sbin/runuser",
+  "-u",
+  "ansible-verify",
+  "--",
+  "env",
+  "-i",
+  "HOME=/home/ansible-verify",
+  "USER=ansible-verify",
+  "LOGNAME=ansible-verify",
+  "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+  "LANG=C.UTF-8",
+  "XDG_RUNTIME_DIR=/run/user/1001",
+  "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1001/bus",
+  "python3",
+  "-I",
+  "-B",
+  "/home/ansible-verify/FDS_Ansible_Podman_20260916_r3/run-podman.py",
+  "--output",
+  "/home/ansible-verify/ansible-podman-fa9bbcf33bd84702acca5110685aa161"
+]

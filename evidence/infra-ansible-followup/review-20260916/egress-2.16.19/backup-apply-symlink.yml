@@ -1,0 +1,47 @@
+- name: backup-apply-symlink
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    cr_mon_phase: apply
+    cr_mon_state_dir: /workspace/scratch/d7770f5e34f6/egress-review-216/state
+    cr_mon_change_id: CR-P1-MON-01-01
+    cr_mon_baseline_file:
+      stat:
+        exists: true
+    cr_mon_squid_conf_before:
+      stat:
+        exists: true
+    cr_mon_existing_baseline: &id001
+      change_id: CR-P1-MON-01-01
+      inventory_hostname: localhost
+      squid_preinstalled: true
+      squid_conf_preexisted: true
+      squid_service_active_state: active
+      squid_service_enabled_state: enabled
+      squid_conf_owner: root
+      squid_conf_group: root
+      squid_conf_mode: '0644'
+      firewalld_default_zone: public
+      proxy_port: 3128
+      proxy_allowed_clients:
+      - 10.1.93.105
+      firewalld_permanent_rules_before: []
+      firewalld_runtime_rules_before: []
+    cr_mon_original_state: *id001
+    ansible_python_interpreter: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/runtime/venv-2.16.19/bin/python
+  tasks:
+  - name: Inspect the original configuration backup before any state writes
+    ansible.builtin.stat:
+      path: '{{ cr_mon_state_dir }}/original-squid.conf'
+      follow: false
+    register: cr_mon_original_backup
+    when: cr_mon_phase == 'apply'
+  - name: Validate the complete existing baseline before re-apply
+    ansible.builtin.include_tasks: /workspace/scratch/d7770f5e34f6/ansible-egress-fix/roles/egress_proxy/tasks/validate-baseline.yml
+    vars:
+      cr_mon_baseline: '{{ cr_mon_existing_baseline }}'
+      cr_mon_backup_stat: '{{ cr_mon_original_backup.stat }}'
+    when:
+    - cr_mon_phase == 'apply'
+    - cr_mon_baseline_file.stat.exists

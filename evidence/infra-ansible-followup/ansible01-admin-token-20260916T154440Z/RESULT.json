@@ -1,0 +1,66 @@
+{
+  "actions_executed": false,
+  "common_sha256": "1cf7cbc14b3a861a74d7eb014ad13495dd4781ef186a9c7e00c9e43a62af0811",
+  "ended_at": "2026-09-16T15:44:44.926583+00:00",
+  "packet_written": true,
+  "repository": "321Team/infra-ansible",
+  "runner_registration_attempted": false,
+  "schema": 1,
+  "stages": [
+    {
+      "expected_host": true,
+      "passed": true,
+      "stage": "identity",
+      "uid": 1000
+    },
+    {
+      "errno": 0,
+      "passed": true,
+      "returncode": 0,
+      "stage": "memory-protection"
+    },
+    {
+      "passed": true,
+      "stage": "gh-discovery"
+    },
+    {
+      "hint": "UNCLASSIFIED",
+      "http_status": 200,
+      "passed": true,
+      "repository_admin_reported": true,
+      "returncode": 0,
+      "stage": "repository-read"
+    },
+    {
+      "hint": "UNCLASSIFIED",
+      "http_status": 201,
+      "passed": true,
+      "returncode": 0,
+      "stage": "registration-token"
+    },
+    {
+      "hint": "UNCLASSIFIED",
+      "http_status": 201,
+      "passed": true,
+      "returncode": 0,
+      "stage": "removal-token"
+    },
+    {
+      "passed": true,
+      "remaining_seconds": {
+        "registration": 3599.449,
+        "removal": 3599.889
+      },
+      "stage": "packet-validation"
+    },
+    {
+      "passed": true,
+      "stage": "packet-write"
+    }
+  ],
+  "started_at": "2026-09-16T15:44:40.712811+00:00",
+  "status": "PASS_TOKEN_PACKET",
+  "token_post_attempted": true,
+  "tool": "admin-token-v1.1.1",
+  "tool_sha256": "0c4ee7d9ad3e3d21998ffcbf25f61e08e9482ae6af159762713ad7895719670c"
+}

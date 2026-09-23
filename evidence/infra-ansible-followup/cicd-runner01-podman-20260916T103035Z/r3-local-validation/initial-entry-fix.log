@@ -1,0 +1,101 @@
+test_build_self_test_runs_after_user_before_entrypoint (__main__.EntryFix.test_build_self_test_runs_after_user_before_entrypoint) ... ok
+test_exact_containerfile_permission_step_repairs_actual_uid1000_read (__main__.EntryFix.test_exact_containerfile_permission_step_repairs_actual_uid1000_read) ... ERROR
+test_oom_exit_mismatch_invalid_types_and_bounded_log_tail (__main__.EntryFix.test_oom_exit_mismatch_invalid_types_and_bounded_log_tail) ... ok
+test_self_test_never_enters_runtime_or_ansible (__main__.EntryFix.test_self_test_never_enters_runtime_or_ansible) ... {"check": "entry-self-test", "checks": {"mode": false, "owner": true, "readable": true, "uid_gid": false, "writable_absent": false}, "gid": 0, "mode": "0o644", "owner": [0, 0], "passed": false, "uid": 0}
+ok
+test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) ... 
+  test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) (case='owner') ... ERROR
+  test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) (case='mode') ... ERROR
+  test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) (case='uid') ... ERROR
+  test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) (case='gid') ... ERROR
+test_submitted_rc2_preserves_first_error_before_any_result_read (__main__.EntryFix.test_submitted_rc2_preserves_first_error_before_any_result_read) ... ok
+test_zero_exit_still_requires_every_regular_result_file (__main__.EntryFix.test_zero_exit_still_requires_every_regular_result_file) ... ok
+
+======================================================================
+ERROR: test_exact_containerfile_permission_step_repairs_actual_uid1000_read (__main__.EntryFix.test_exact_containerfile_permission_step_repairs_actual_uid1000_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 50, in test_exact_containerfile_permission_step_repairs_actual_uid1000_read
+    failed = self.execute_entry()
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 43, in execute_entry
+    return subprocess.run([sys.executable, '-I', '-B', str(self.entry), '--self-test'],
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1957, in _execute_child
+    raise child_exception_type(errno_num, err_msg)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) (case='owner')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 81, in test_self_test_rejects_wrong_owner_mode_and_execution_uid
+    os.chown(self.entry, *owner)
+OSError: [Errno 22] Invalid argument: '/tmp/tmpd_4erffc/entry.py'
+
+======================================================================
+ERROR: test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) (case='mode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 83, in test_self_test_rejects_wrong_owner_mode_and_execution_uid
+    result = self.execute_entry(uid, gid)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 43, in execute_entry
+    return subprocess.run([sys.executable, '-I', '-B', str(self.entry), '--self-test'],
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1957, in _execute_child
+    raise child_exception_type(errno_num, err_msg)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) (case='uid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 83, in test_self_test_rejects_wrong_owner_mode_and_execution_uid
+    result = self.execute_entry(uid, gid)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 43, in execute_entry
+    return subprocess.run([sys.executable, '-I', '-B', str(self.entry), '--self-test'],
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1957, in _execute_child
+    raise child_exception_type(errno_num, err_msg)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_self_test_rejects_wrong_owner_mode_and_execution_uid (__main__.EntryFix.test_self_test_rejects_wrong_owner_mode_and_execution_uid) (case='gid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 83, in test_self_test_rejects_wrong_owner_mode_and_execution_uid
+    result = self.execute_entry(uid, gid)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/d7770f5e34f6/FDS_Ansible_Podman_EntryFix_r3/test-entry-fix.py", line 43, in execute_entry
+    return subprocess.run([sys.executable, '-I', '-B', str(self.entry), '--self-test'],
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 1957, in _execute_child
+    raise child_exception_type(errno_num, err_msg)
+PermissionError: [Errno 1] Operation not permitted
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.011s
+
+FAILED (errors=5)

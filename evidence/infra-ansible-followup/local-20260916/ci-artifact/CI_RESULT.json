@@ -1,0 +1,235 @@
+{
+  "archive_sha256": "d353f0696fd868cd081611e146a404e1549032561c9e4ebb707c3ac8667076a0",
+  "error": "Fixture failure or wrong source SHA",
+  "finished_at": "2026-09-16T06:16:06.901355+00:00",
+  "fixtures": {
+    "archive_sha256": "d353f0696fd868cd081611e146a404e1549032561c9e4ebb707c3ac8667076a0",
+    "created_at": "2026-09-16T06:14:05.639749+00:00",
+    "error": "Command failed; original logs retained at /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/fixtures/guards",
+    "finished_at": "2026-09-16T06:16:06.876738+00:00",
+    "original_readonly_result": "NOT_RUN; no operational inventory or SSH execution in this kit run",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "schema_version": 1,
+    "scope": "fixture_local_only",
+    "source_commit": "a487c4fc5185bf0b9cd82f7f739651d4d580ba6b",
+    "started_at": "2026-09-16T06:14:18.784472+00:00",
+    "status": "FAIL",
+    "steps": [
+      {
+        "name": "unit-tests",
+        "rc": 0
+      }
+    ]
+  },
+  "github": {
+    "GITHUB_EVENT_NAME": null,
+    "GITHUB_REPOSITORY": null,
+    "GITHUB_RUN_ATTEMPT": null,
+    "GITHUB_RUN_ID": null,
+    "GITHUB_SHA": null,
+    "GITHUB_WORKFLOW_SHA": null,
+    "RUNNER_ARCH": null,
+    "RUNNER_NAME": null,
+    "RUNNER_OS": null
+  },
+  "operational_engine_transition": false,
+  "plan": {
+    "engines": [
+      "2.16.19",
+      "2.21.3"
+    ],
+    "operational_engine_transition": false,
+    "production_apply": false,
+    "runner_registration": "external approved input; never inferred from host address",
+    "schema_version": 1,
+    "scope": "syntax + localhost fixtures only",
+    "source_commit": "a487c4fc5185bf0b9cd82f7f739651d4d580ba6b",
+    "syntax_playbooks": [
+      "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+      "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+      "playbooks/cr-p1-ans-01-01-precheck.yml",
+      "playbooks/cr-p1-ans-01-01-rollback.yml",
+      "playbooks/cr-p1-ans-01-01-verify.yml",
+      "playbooks/cr-p1-mon-01-01-apply.yml",
+      "playbooks/cr-p1-mon-01-01-precheck.yml",
+      "playbooks/cr-p1-mon-01-01-rollback.yml",
+      "playbooks/cr-p1-mon-01-01-verify.yml",
+      "playbooks/harden_svc_ansible_key.yml",
+      "playbooks/p1-k8s-01-gate0-precheck.yml",
+      "playbooks/p1-lb-01-stage-a-nodes.yml",
+      "playbooks/precheck.yml",
+      "playbooks/site.yml",
+      "tests/ssh-server-readonly.yml",
+      "tests/test-dns-resolver-normalization.yml"
+    ]
+  },
+  "production_apply": false,
+  "schema_version": 1,
+  "scope": "syntax and localhost fixtures; no deployment",
+  "source_commit": "a487c4fc5185bf0b9cd82f7f739651d4d580ba6b",
+  "started_at": "2026-09-16T06:11:34.939742+00:00",
+  "status": "FAIL",
+  "syntax": [
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-mon-01-01-apply.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-mon-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-mon-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-mon-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/harden_svc_ansible_key.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-k8s-01-gate0-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-lb-01-stage-a-nodes.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/site.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "tests/ssh-server-readonly.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "tests/test-dns-resolver-normalization.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-mon-01-01-apply.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-mon-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-mon-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-mon-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/harden_svc_ansible_key.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-k8s-01-gate0-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-lb-01-stage-a-nodes.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/site.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "tests/ssh-server-readonly.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "tests/test-dns-resolver-normalization.yml",
+      "rc": 0
+    }
+  ]
+}

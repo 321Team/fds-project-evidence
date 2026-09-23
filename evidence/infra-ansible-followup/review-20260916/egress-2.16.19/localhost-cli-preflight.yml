@@ -1,0 +1,11 @@
+- name: localhost-cli-preflight
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/runtime/venv-2.16.19/bin/python
+  tasks:
+  - name: Require working localhost task execution
+    ansible.builtin.assert:
+      that:
+      - true

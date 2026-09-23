@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Local callback fixture",
+    "hosts": "fixtures",
+    "gather_facts": false,
+    "connection": "local",
+    "become": false,
+    "tasks": [
+      {
+        "name": "Positive fixture",
+        "ansible.builtin.debug": {
+          "msg": "fixture success"
+        }
+      },
+      {
+        "name": "Loop result fixture",
+        "ansible.builtin.command": {
+          "argv": [
+            "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/runtime/venv-2.16.19/bin/python",
+            "-c",
+            "pass"
+          ]
+        },
+        "loop": [
+          1,
+          2
+        ],
+        "changed_when": false
+      }
+    ],
+    "serial": 1
+  },
+  {
+    "name": "Record verification scope completion",
+    "hosts": "fixtures",
+    "gather_facts": false,
+    "become": false,
+    "tasks": [
+      {
+        "name": "Record completed node",
+        "tags": [
+          "fds_stage_complete"
+        ],
+        "ansible.builtin.debug": {
+          "msg": {
+            "run_id": "7b7f776c-f9ce-4ff5-833d-4df7bd133a0f",
+            "stage_id": "2.16.19_serial",
+            "completed": true
+          }
+        }
+      }
+    ]
+  }
+]

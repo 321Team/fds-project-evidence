@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "7b7f776c-f9ce-4ff5-833d-4df7bd133a0f",
+  "code_sha": "a487c4fc5185bf0b9cd82f7f739651d4d580ba6b",
+  "engine": "2.16.19",
+  "stage_id": "2.16.19_serial",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": true,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "PASS",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-2",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-3",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-4",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-5",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-6",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/runtime/venv-2.16.19/bin/ansible-playbook",
+      "-i",
+      "/workspace/scratch/d7770f5e34f6/ansible-contract-linux-1/2.16.19-inventory.json",
+      "-c",
+      "local",
+      "/workspace/scratch/d7770f5e34f6/ansible-contract-linux-1/2.16.19-serial.json"
+    ],
+    "cwd": "/workspace/scratch/d7770f5e34f6/ansible-followup",
+    "artifacts": {
+      "context.json": "73076c445ee09f7b33e730e4782cc7ad5c7802e33bf73a921e2d713194cb1700",
+      "events.jsonl": "e041c0147804febcf107df08d2b153083f880d93ea1ccb5a8ac575089c9c53d1",
+      "stdout.log": "6a2572a259d6055a65b575eca48efba4b8bb7b19c8e09da1cabff39060969329",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

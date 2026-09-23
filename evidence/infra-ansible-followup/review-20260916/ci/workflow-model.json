@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "scope": "YAML parse and local string-condition/JSON model; GitHub dispatch/skip/config validation NOT RUN",
+  "source_commit": "169571801d1b0cee0ba75137380149a48d6b56dd",
+  "source_dirty": false,
+  "job_if": "vars.ANSIBLE_CI_ENABLED == 'true' && vars.ANSIBLE_CI_RUNNER_LABELS != '' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)",
+  "runs_on": "${{ fromJSON(vars.ANSIBLE_CI_RUNNER_LABELS || '[\"self-hosted\",\"ansible-ci-unconfigured\"]') }}",
+  "cases": [
+    {
+      "case": "disabled-unset",
+      "expected_gate": false,
+      "model_gate": false,
+      "expected_json_error": false,
+      "json_error": false,
+      "selector": [
+        "self-hosted",
+        "ansible-ci-unconfigured"
+      ],
+      "passed": true
+    },
+    {
+      "case": "enabled-unset",
+      "expected_gate": false,
+      "model_gate": false,
+      "expected_json_error": false,
+      "json_error": false,
+      "selector": [
+        "self-hosted",
+        "ansible-ci-unconfigured"
+      ],
+      "passed": true
+    },
+    {
+      "case": "disabled-configured",
+      "expected_gate": false,
+      "model_gate": false,
+      "expected_json_error": false,
+      "json_error": false,
+      "selector": [
+        "self-hosted",
+        "linux",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "same-repo",
+      "expected_gate": true,
+      "model_gate": true,
+      "expected_json_error": false,
+      "json_error": false,
+      "selector": [
+        "self-hosted",
+        "linux",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "fork",
+      "expected_gate": false,
+      "model_gate": false,
+      "expected_json_error": false,
+      "json_error": false,
+      "selector": [
+        "self-hosted",
+        "linux",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "manual",
+      "expected_gate": true,
+      "model_gate": true,
+      "expected_json_error": false,
+      "json_error": false,
+      "selector": [
+        "self-hosted",
+        "linux",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "malformed-labels",
+      "expected_gate": true,
+      "model_gate": true,
+      "expected_json_error": true,
+      "json_error": true,
+      "selector": null,
+      "passed": true
+    }
+  ]
+}

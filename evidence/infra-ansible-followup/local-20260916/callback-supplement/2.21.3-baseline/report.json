@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "run_id": "02f70626-af9b-48c3-9e25-f217b6a982be",
+  "code_sha": "a487c4fc5185bf0b9cd82f7f739651d4d580ba6b",
+  "engine": "2.21.3",
+  "stage_id": "2.21.3_baseline",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": false,
+  "cli_rc": 250,
+  "timed_out": false,
+  "status": "REVIEW_REQUIRED",
+  "expected_negative": false,
+  "nodes": [],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [
+    "CLI did not complete successfully"
+  ],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/workspace/scratch/d7770f5e34f6/ansible-ci-linux-1/runtime/venv-2.21.3/bin/ansible-playbook",
+      "-i",
+      "/workspace/scratch/d7770f5e34f6/ansible-contract-linux-1/2.21.3-inventory.json",
+      "-c",
+      "local",
+      "/workspace/scratch/d7770f5e34f6/ansible-contract-linux-1/2.21.3-baseline.json"
+    ],
+    "cwd": "/workspace/scratch/d7770f5e34f6/ansible-followup",
+    "artifacts": {
+      "context.json": "d539772653361cda9f84fffa03a22575acb123a22f6cf49b5bf616b5f94eff8f",
+      "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr.log": "8f3291fb1f69114975e35a995c2bdbcdfeaf91096f09b517645efbc6c66f9ec0"
+    }
+  }
+}

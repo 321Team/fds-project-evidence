@@ -1,0 +1,141 @@
+{
+  "engine": "2.21.3",
+  "source": "/session/runner/_work/_temp/ansible-ci-35195838409-1-vSeyRJ2f/result/runtime/repo/playbooks/harden_svc_ansible_key.yml",
+  "scope": "public ansible-playbook CLI; synthetic localhost fixtures only",
+  "total": 14,
+  "results": [
+    {
+      "case": "empty",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 1,
+      "count": "0",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "empty",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 1,
+      "count": "0",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "one_plain",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": false,
+      "rc": 0,
+      "count": "1",
+      "observed_failure": false,
+      "outcome": "PASS"
+    },
+    {
+      "case": "one_plain",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 1,
+      "count": "0",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "one_restricted",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": false,
+      "rc": 0,
+      "count": "1",
+      "observed_failure": false,
+      "outcome": "PASS"
+    },
+    {
+      "case": "one_restricted",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": false,
+      "rc": 0,
+      "count": "1",
+      "observed_failure": false,
+      "outcome": "PASS"
+    },
+    {
+      "case": "two_plain",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 0,
+      "count": "2",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "two_plain",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 1,
+      "count": "0",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "two_restricted",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 0,
+      "count": "2",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "two_restricted",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 0,
+      "count": "2",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "mixed",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 0,
+      "count": "2",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "mixed",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": false,
+      "rc": 0,
+      "count": "1",
+      "observed_failure": false,
+      "outcome": "PASS"
+    },
+    {
+      "case": "missing",
+      "guard": "Count P1 managed SSH keys",
+      "expected_failure": true,
+      "rc": 2,
+      "count": "",
+      "observed_failure": true,
+      "outcome": "PASS"
+    },
+    {
+      "case": "missing",
+      "guard": "Verify restricted P1 managed SSH key",
+      "expected_failure": true,
+      "rc": 2,
+      "count": "",
+      "observed_failure": true,
+      "outcome": "PASS"
+    }
+  ],
+  "cli_rc": 0,
+  "outcomes": {
+    "PASS": 14,
+    "FAIL": 0,
+    "ERROR": 0
+  },
+  "status": "PASS"
+}

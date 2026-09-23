@@ -1,0 +1,75 @@
+{
+  "status": "FAIL",
+  "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime",
+  "source_commit": "d5147ebff0febbb8ab2afca28fe64d68301e033c",
+  "source_dirty": false,
+  "cases": [
+    {
+      "case": "syntax-precheck",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true
+    },
+    {
+      "case": "syntax-apply",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true
+    },
+    {
+      "case": "syntax-verify",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true
+    },
+    {
+      "case": "syntax-rollback",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true
+    },
+    {
+      "case": "bash-syntax",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true
+    },
+    {
+      "case": "one-proxy",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true
+    },
+    {
+      "case": "changed-proxy",
+      "expected_rc": 1,
+      "actual_rc": 1,
+      "passed": true
+    },
+    {
+      "case": "localhost-only",
+      "expected_rc": 1,
+      "actual_rc": 1,
+      "passed": true
+    },
+    {
+      "case": "wrong-target",
+      "expected_rc": 1,
+      "actual_rc": 1,
+      "passed": true
+    },
+    {
+      "case": "extra-target",
+      "expected_rc": 1,
+      "actual_rc": 1,
+      "passed": true
+    },
+    {
+      "case": "localhost-cli-preflight",
+      "expected_rc": 0,
+      "actual_rc": 250,
+      "passed": false
+    }
+  ],
+  "error": "Localhost CLI preflight failed; behavioral cases NOT RUN. Inspect the original log before classifying the cause."
+}

@@ -1,0 +1,93 @@
+{
+  "jobs": [
+    {
+      "check_run_url": "https://api.github.com/repos/321Team/infra-ansible/check-runs/104939547998",
+      "completed_at": "2026-09-16T19:40:20Z",
+      "conclusion": "failure",
+      "created_at": "2026-09-16T19:14:06Z",
+      "head_branch": "test/issue-5-isolated-positive-20260917",
+      "head_sha": "2750634766862d7fe19479acacc4259ee8315061",
+      "html_url": "https://github.com/321Team/infra-ansible/actions/runs/35139314896/job/104939547998",
+      "id": 104939547998,
+      "labels": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "name": "regression",
+      "node_id": "CR_kwDOULzL-M8AAAAYbuJtXg",
+      "run_attempt": 1,
+      "run_id": 35139314896,
+      "run_url": "https://api.github.com/repos/321Team/infra-ansible/actions/runs/35139314896",
+      "runner_group_id": 1,
+      "runner_group_name": "Default",
+      "runner_id": 4,
+      "runner_name": "ansible-ci-cffaab5978b74334828fc94e91fc9de7",
+      "started_at": "2026-09-16T19:39:08Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-09-16T19:39:13Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-09-16T19:39:10Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-16T19:39:14Z",
+          "conclusion": "success",
+          "name": "Checkout exact source",
+          "number": 2,
+          "started_at": "2026-09-16T19:39:13Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-16T19:39:14Z",
+          "conclusion": "success",
+          "name": "Create a new run directory",
+          "number": 3,
+          "started_at": "2026-09-16T19:39:14Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-16T19:40:10Z",
+          "conclusion": "failure",
+          "name": "Syntax and both pinned engines",
+          "number": 4,
+          "started_at": "2026-09-16T19:39:14Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-16T19:40:15Z",
+          "conclusion": "success",
+          "name": "Preserve result and original logs on success or failure",
+          "number": 5,
+          "started_at": "2026-09-16T19:40:10Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-16T19:40:15Z",
+          "conclusion": "success",
+          "name": "Post Checkout exact source",
+          "number": 10,
+          "started_at": "2026-09-16T19:40:15Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-09-16T19:40:15Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 11,
+          "started_at": "2026-09-16T19:40:15Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://api.github.com/repos/321Team/infra-ansible/actions/jobs/104939547998",
+      "workflow_name": "Ansible isolated acceptance"
+    }
+  ],
+  "total_count": 1
+}

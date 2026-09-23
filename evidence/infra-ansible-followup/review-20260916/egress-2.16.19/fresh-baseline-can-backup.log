@@ -1,0 +1,18 @@
+
+PLAY [fresh-baseline-can-backup] ***********************************************
+
+TASK [Inspect the original configuration backup before any state writes] *******
+ok: [localhost]
+
+TASK [Refuse an orphan backup or a non-regular baseline] ***********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Preserve original squid configuration once] ******************************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

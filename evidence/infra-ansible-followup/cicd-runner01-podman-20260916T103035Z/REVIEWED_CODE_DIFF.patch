@@ -1,0 +1,105 @@
+--- r2/build/Containerfile
++++ r3/build/Containerfile
+@@ -6,6 +6,10 @@
+  && python3 --version && git --version \
+  && dpkg-query -W bash git grep ca-certificates libc6
+ COPY container-entry.py /usr/local/lib/fds-container-entry.py
++RUN chown 0:0 /usr/local/lib/fds-container-entry.py \
++ && chmod 0444 /usr/local/lib/fds-container-entry.py
+ USER 1000:1000
++RUN ["/usr/local/bin/python3", "-I", "-B", "/usr/local/lib/fds-container-entry.py", "--self-test"]
+ WORKDIR /work
+ ENTRYPOINT ["/usr/local/bin/python3", "-I", "-B", "/usr/local/lib/fds-container-entry.py"]
++CMD []
+--- r2/build/container-entry.py
++++ r3/build/container-entry.py
+@@ -1,13 +1,30 @@
+ #!/usr/bin/env python3
+ """Check actual container restrictions, then invoke the unchanged pinned kit."""
++import argparse
+ import json
+ import os
+ from pathlib import Path
++import stat
+ import subprocess
+ import sys
+ 
+ WORK = Path('/work')
+ KIT = Path('/kit')
++
++
++def self_test():
++    """Build-time entry readability check; never accesses kit/work or runs Ansible."""
++    entry = Path(__file__)
++    info = entry.stat()
++    checks = dict(uid_gid=(os.getuid() == 1000 and os.getgid() == 1000),
++                  owner=(info.st_uid == 0 and info.st_gid == 0),
++                  mode=(stat.S_IMODE(info.st_mode) == 0o444),
++                  readable=os.access(entry, os.R_OK), writable_absent=not os.access(entry, os.W_OK))
++    passed = all(checks.values())
++    print(json.dumps(dict(check='entry-self-test', passed=passed, checks=checks,
++                         uid=os.getuid(), gid=os.getgid(), owner=[info.st_uid, info.st_gid],
++                         mode=oct(stat.S_IMODE(info.st_mode))), sort_keys=True), flush=True)
++    return 0 if passed else 1
+ 
+ 
+ def write(path, obj):
+@@ -69,4 +86,7 @@
+ 
+ 
+ if __name__ == '__main__':
+-    raise SystemExit(main())
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('--self-test', action='store_true')
++    args = parser.parse_args()
++    raise SystemExit(self_test() if args.self_test else main())
+--- r2/run-podman.py
++++ r3/run-podman.py
+@@ -212,6 +212,27 @@
+                     or not all(c.get('passed') is True for c in cases)):
+                 return False
+     return True
++
++
++def require_container_outputs(rc, state, work, evidence):
++    """Keep the first process failure visible before trying to load result JSON."""
++    expected = ['CONTAINER_RESULT.json', 'ISOLATION.json', 'result/evidence/RUN_RESULT.json']
++    missing = [name for name in expected if not (work / name).is_file() or (work / name).is_symlink()]
++    log = evidence / 'container.log'
++    tail = ''
++    if log.is_file() and not log.is_symlink():
++        with log.open('rb') as handle:
++            handle.seek(max(0, log.stat().st_size - 8192))
++            tail = handle.read(8192).decode('utf-8', errors='replace')
++    diagnostic = dict(podman_rc=rc, exit_code=state.get('ExitCode'), oom_killed=state.get('OOMKilled'),
++                      missing_results=missing, log='container.log', log_tail=tail)
++    write(evidence / 'CONTAINER_DIAGNOSTIC.json', diagnostic)
++    require(type(rc) is int and rc == 0 and type(state.get('ExitCode')) is int
++            and state['ExitCode'] == 0 and state.get('OOMKilled') is False,
++            'Container process failed: podman rc=' + str(rc) + ', ExitCode=' + str(state.get('ExitCode'))
++            + ', OOMKilled=' + str(state.get('OOMKilled')) + '; container.log tail:\n' + tail)
++    require(not missing, 'Container result files missing/linked: ' + ', '.join(missing)
++            + '; container.log tail:\n' + tail)
+ 
+ 
+ def collect(work, evidence):
+@@ -319,14 +340,18 @@
+             entry_sha256=digest(ROOT / 'build/container-entry.py')))
+         command = container_command(podman, built, kit, work, cidfile)
+         rc = logged(command, evidence, 'container', env, timeout=7320)
+-        require(cidfile.is_file(), 'Container did not start')
++        record['container_rc'] = rc
++        require(cidfile.is_file(), 'Container did not start; podman rc=' + str(rc) + '; see container.log')
+         cid = cidfile.read_text().strip()
+         require(re.fullmatch(r'[0-9a-f]{64}', cid), 'Invalid container ID')
+         inspection = json.loads(capture(podman + ['container', 'inspect', cid], env))[0]
+         # Deliberately omit full Config.Env and other incidental host configuration.
+         write(evidence / 'CONTAINER_STATE.json', dict(id=cid, image=inspection['Image'],
+               state=inspection['State'], mounts=inspection['Mounts']))
++        record['container_exit_code'] = inspection['State'].get('ExitCode')
++        record['container_oom_killed'] = inspection['State'].get('OOMKilled')
+         require(image_id(inspection['Image']) == built, 'Unexpected container image')
++        require_container_outputs(rc, inspection['State'], work, evidence)
+         ok = result_ok(rc, inspection['State'], read(work / 'CONTAINER_RESULT.json'),
+                        read(work / 'ISOLATION.json'), read(work / 'result/evidence/RUN_RESULT.json'), pins)
+         require(ok, 'Container/original test results failed or were incomplete')

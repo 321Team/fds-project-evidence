@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "c7a4e608-6124-488b-b65f-16bdbfb02278",
+  "code_sha": "31895081e30e27481e7c17407047c9454e3b247a",
+  "engine": "2.21.3",
+  "stage_id": "2.21.3_baseline",
+  "expected_nodes": [
+    "fixture-1",
+    "fixture-2",
+    "fixture-3",
+    "fixture-4",
+    "fixture-5",
+    "fixture-6"
+  ],
+  "completed": true,
+  "cli_rc": 0,
+  "timed_out": false,
+  "status": "PASS",
+  "expected_negative": false,
+  "nodes": [
+    {
+      "host": "fixture-1",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-2",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-3",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-4",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-5",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    },
+    {
+      "host": "fixture-6",
+      "ok": 3,
+      "changed": 0,
+      "unreachable": 0,
+      "skipped": 0,
+      "rescued": 0,
+      "ignored": 0,
+      "failed": 0
+    }
+  ],
+  "expected_changed_per_node": [
+    0
+  ],
+  "errors": [],
+  "origin": {
+    "kind": "ansible-playbook callback",
+    "command": [
+      "/session/runner/_work/_temp/ansible-ci-35195838409-1-vSeyRJ2f/result/runtime/venv-2.21.3/bin/ansible-playbook",
+      "-i",
+      "/session/runner/_work/_temp/ansible-ci-35195838409-1-vSeyRJ2f/result/fixtures/contract-results/2.21.3-inventory.json",
+      "-c",
+      "local",
+      "/session/runner/_work/_temp/ansible-ci-35195838409-1-vSeyRJ2f/result/fixtures/contract-results/2.21.3-baseline.json"
+    ],
+    "cwd": "/session/runner/_work/_temp/ansible-ci-35195838409-1-vSeyRJ2f/result/runtime/repo",
+    "artifacts": {
+      "context.json": "12963f4f7befe45c838cbabaa5b337508017ceb8694210e8bf643821ad635bf3",
+      "events.jsonl": "1cb1c22b5d2e02b9bab85a474c317f8173b10fe4d00a492ed708e3a6cec962e8",
+      "stdout.log": "938d2b03c7a7c41c773f6bd90be81f2855bf21a11d1a4b8cfc0575362643ebda",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

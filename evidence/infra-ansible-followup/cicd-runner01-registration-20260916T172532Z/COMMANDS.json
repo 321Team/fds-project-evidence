@@ -1,0 +1,192 @@
+[
+  {
+    "stage": "selinux",
+    "command": [
+      "getenforce"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 0,
+    "timed_out": false
+  },
+  {
+    "stage": "podman-info",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "info",
+      "--format=json"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 0,
+    "timed_out": false
+  },
+  {
+    "stage": "image-inspect",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "image",
+      "inspect",
+      "sha256:02d097ce453f4011218a081286e02be2c4d64599d1b329d6d98e049b9c34fd85"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 0,
+    "timed_out": false
+  },
+  {
+    "stage": "proxy-start",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "run",
+      "--cidfile",
+      "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8/proxy.cid",
+      "--name",
+      "ansible-ci-f9e3ef4d85e44573891eaebcaffd5b1d-proxy",
+      "--pull=never",
+      "--userns=keep-id:uid=1000,gid=1000",
+      "--user",
+      "1000:1000",
+      "--cap-drop=ALL",
+      "--security-opt=no-new-privileges",
+      "--read-only",
+      "--read-only-tmpfs=false",
+      "--log-driver=none",
+      "--stop-timeout=15",
+      "--network=pasta",
+      "--cpus=0.25",
+      "--memory=256m",
+      "--memory-swap=256m",
+      "--pids-limit=128",
+      "--volume",
+      "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8/proxy:/proxy:rw,z",
+      "--workdir=/proxy",
+      "--entrypoint=/usr/local/bin/python3",
+      "-d",
+      "sha256:02d097ce453f4011218a081286e02be2c4d64599d1b329d6d98e049b9c34fd85",
+      "-I",
+      "-B",
+      "/opt/fds/proxy.py"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 0,
+    "timed_out": false
+  },
+  {
+    "stage": "container",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "run",
+      "--cidfile",
+      "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8/runner.cid",
+      "--name",
+      "ansible-ci-f9e3ef4d85e44573891eaebcaffd5b1d-runner",
+      "--pull=never",
+      "--userns=keep-id:uid=1000,gid=1000",
+      "--user",
+      "1000:1000",
+      "--cap-drop=ALL",
+      "--security-opt=no-new-privileges",
+      "--read-only",
+      "--read-only-tmpfs=false",
+      "--log-driver=none",
+      "--stop-timeout=15",
+      "--network=none",
+      "--cpus=2",
+      "--memory=4g",
+      "--memory-swap=4g",
+      "--pids-limit=512",
+      "--volume",
+      "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8/session:/session:rw,Z",
+      "--volume",
+      "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8/proxy:/proxy:ro,z",
+      "--env",
+      "FDS_RUNNER_NAME=ansible-ci-f9e3ef4d85e44573891eaebcaffd5b1d",
+      "-i",
+      "sha256:02d097ce453f4011218a081286e02be2c4d64599d1b329d6d98e049b9c34fd85",
+      "registration-check"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 0,
+    "timed_out": false
+  },
+  {
+    "stage": "container-inspect",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "container",
+      "inspect",
+      "f7f7aaadf0355897dd4d8c9cef92b1ca2ea04983a0d93f6b50a34aba9ad916f0"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 0,
+    "timed_out": false
+  },
+  {
+    "stage": "runner-remove",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "rm",
+      "--force",
+      "--time",
+      "15",
+      "f7f7aaadf0355897dd4d8c9cef92b1ca2ea04983a0d93f6b50a34aba9ad916f0"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 0,
+    "timed_out": false
+  },
+  {
+    "stage": "runner-absent",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "container",
+      "exists",
+      "f7f7aaadf0355897dd4d8c9cef92b1ca2ea04983a0d93f6b50a34aba9ad916f0"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 1,
+    "timed_out": false
+  },
+  {
+    "stage": "proxy-remove",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "rm",
+      "--force",
+      "--time",
+      "15",
+      "235dea161a2f8d1e4fdc6bd6190e1993530febffe6a394f5ac89c9d8c54493d6"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 0,
+    "timed_out": false
+  },
+  {
+    "stage": "proxy-absent",
+    "command": [
+      "podman",
+      "--remote=false",
+      "--cgroup-manager=systemd",
+      "container",
+      "exists",
+      "235dea161a2f8d1e4fdc6bd6190e1993530febffe6a394f5ac89c9d8c54493d6"
+    ],
+    "cwd": "/home/ansible-verify/ansible-actions-e13699664c5b4933a3d78ba99fa4dbf8",
+    "rc": 1,
+    "timed_out": false
+  }
+]

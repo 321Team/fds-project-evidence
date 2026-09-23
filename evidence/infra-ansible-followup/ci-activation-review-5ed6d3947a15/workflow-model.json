@@ -1,0 +1,292 @@
+{
+  "status": "PASS_LOCAL_MODEL",
+  "cases": [
+    {
+      "case": "same-repo",
+      "expected": true,
+      "observed_model": true,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "manual",
+      "expected": true,
+      "observed_model": true,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "case-insensitive",
+      "expected": true,
+      "observed_model": true,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "disabled",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "enabled-unset",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "enabled-not-boolean-text",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-unset",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-malformed",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-empty-array",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-null",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-group-object",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-broad",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-hosted",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-missing-isolation",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-reordered",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "labels-spaced",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "fork",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "missing-pr-repository",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "pull-request-target",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "push",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "workflow-call",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    },
+    {
+      "case": "unknown-event",
+      "expected": false,
+      "observed_model": false,
+      "selector": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "fds-ci",
+        "ansible-isolated"
+      ],
+      "passed": true
+    }
+  ],
+  "scope": "YAML parse plus string-only expression/selector model. GitHub scheduler/expression engine NOT_RUN."
+}

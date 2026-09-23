@@ -1,0 +1,27 @@
+- name: Count P1 managed SSH keys
+  ansible.builtin.command:
+    argv:
+    - grep
+    - -cE
+    - ^(from="10\.250\.10\.10",restrict )?ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+      svc_ansible$
+    - '{{ svc_ansible_authorized_keys }}'
+  register: p1_managed_key_count
+  changed_when: false
+  check_mode: false
+  failed_when: p1_managed_key_count.rc not in [0, 1] or (p1_managed_key_count.stdout
+    | int) != 1
+- name: Verify restricted P1 managed SSH key
+  ansible.builtin.command:
+    argv:
+    - grep
+    - -cE
+    - ^from="10\.250\.10\.10",restrict ssh-ed25519[[:space:]]+[^[:space:]]+[[:space:]]+P1-ANS-01
+      svc_ansible$
+    - '{{ svc_ansible_authorized_keys }}'
+  register: p1_restricted_key_count
+  changed_when: false
+  failed_when:
+  - p1_restricted_key_count.rc != 0
+  - or
+  - (p1_restricted_key_count.stdout | int) != 1

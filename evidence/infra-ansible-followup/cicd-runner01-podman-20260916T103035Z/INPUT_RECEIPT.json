@@ -1,0 +1,43 @@
+{
+  "archive_sha256": "146ec68d70bc744230a1561df01abe62139ca76fd8924d1cbbf19cf40597059c",
+  "archive_bytes": 7932,
+  "inner_archive_sha256": "009f63ffc4455d4a6a20559c9af31d115d64118c27770bed208d638ec6cf87e6",
+  "external_sidecar": "PASS",
+  "outer_manifest_and_file_set": "PASS",
+  "inner_sidecar": "PASS",
+  "inner_manifest_and_file_set": "PASS",
+  "home_run": {
+    "status": "FAIL",
+    "started_at": "2026-09-16T10:30:35.361676+00:00",
+    "login_account": "server01_cicd-runner",
+    "login_uid": 1000,
+    "source_commits": {
+      "ci": "169571801d1b0cee0ba75137380149a48d6b56dd",
+      "egress": "d5147ebff0febbb8ab2afca28fe64d68301e033c"
+    },
+    "dedicated_run": "/home/ansible-verify/ansible-podman-d0d6a156c4d040c7ab426c7e576faf55",
+    "host_rc": 1,
+    "github_actions": "NOT_RUN",
+    "production_apply": false,
+    "engine_transition": false,
+    "ended_at": "2026-09-16T10:31:00.176637+00:00"
+  },
+  "host_run": {
+    "status": "FAIL",
+    "started_at": "2026-09-16T10:30:35.586979+00:00",
+    "hostname": "cicd-runner01",
+    "uid": 1001,
+    "account": "ansible-verify",
+    "source_commits": {
+      "ci": "169571801d1b0cee0ba75137380149a48d6b56dd",
+      "egress": "d5147ebff0febbb8ab2afca28fe64d68301e033c"
+    },
+    "github_actions": "NOT_RUN",
+    "production_apply": false,
+    "engine_transition": false,
+    "container_cleanup": "REMOVED",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: '/home/ansible-verify/ansible-podman-d0d6a156c4d040c7ab426c7e576faf55/work/CONTAINER_RESULT.json'",
+    "ended_at": "2026-09-16T10:31:00.161214+00:00"
+  },
+  "conclusion": "FAIL retained; entry unreadable, container exit2; Ansible NOT_RUN"
+}

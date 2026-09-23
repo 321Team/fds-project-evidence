@@ -1,0 +1,46 @@
+{
+  "id": "60cf0f829ec22cf623f06450f0baf10d24c2bd1553d35031ca93b5872a6e30c4",
+  "image": "6c175e1fc8143f9ddbc3d8d9f883565f6d844850a14c728732ca7e89a0efd409",
+  "state": {
+    "OciVersion": "1.3.0",
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-09-16T20:06:38.489500313+09:00",
+    "FinishedAt": "2026-09-16T20:13:59.182905074+09:00",
+    "CheckpointedAt": "0001-01-01T00:00:00Z",
+    "RestoredAt": "0001-01-01T00:00:00Z"
+  },
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/home/ansible-verify/ansible-podman-fa9bbcf33bd84702acca5110685aa161/work",
+      "Destination": "/work",
+      "Driver": "",
+      "Mode": "",
+      "Options": [
+        "rbind"
+      ],
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/ansible-verify/ansible-podman-fa9bbcf33bd84702acca5110685aa161/FDS_Ansible_Revalidation_20260916",
+      "Destination": "/kit",
+      "Driver": "",
+      "Mode": "",
+      "Options": [
+        "rbind"
+      ],
+      "RW": false,
+      "Propagation": "rprivate"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/fault_child.py", line 78, in <module>
+    raise SystemExit(ci.main())
+                     ^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/candidate/tools/run-ansible-ci.py", line 126, in main
+    result = execute(args.repo, args.commit, args.output, args.wheels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/candidate/tools/run-ansible-ci.py", line 94, in execute
+    artifact = output / 'artifact'; artifact.mkdir()
+                                    ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/fault_child.py", line 48, in mkdir
+    fail('mkdir',path);return real_mkdir(path,*a,**kw)
+    ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/de9613d2608d/ansible-extra-tests.yKoNNlkF/fault_child.py", line 42, in fail
+    raise OSError(code,'SYNTHETIC_STORAGE_FAULT')
+PermissionError: [Errno 13] SYNTHETIC_STORAGE_FAULT
