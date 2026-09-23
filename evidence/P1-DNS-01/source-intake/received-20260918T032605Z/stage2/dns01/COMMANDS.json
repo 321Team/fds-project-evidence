@@ -1,0 +1,298 @@
+[
+  {
+    "label": "named-mainpid-before",
+    "command": [
+      "systemctl",
+      "show",
+      "named",
+      "--property=MainPID",
+      "--value"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.578420+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.584956+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "named-executable",
+    "command": [
+      "sudo",
+      "-n",
+      "readlink",
+      "-e",
+      "/proc/1266/exe"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.585296+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.758252+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "named-root",
+    "command": [
+      "sudo",
+      "-n",
+      "readlink",
+      "-e",
+      "/proc/1266/root"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.758632+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.784845+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "process-arguments-read-in-memory",
+    "command": [
+      "sudo",
+      "-n",
+      "cat",
+      "/proc/1266/cmdline"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.787509+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.810932+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "masked-config",
+    "command": [
+      "sudo",
+      "-n",
+      "named-checkconf",
+      "-p",
+      "-x",
+      "/etc/named.conf"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.811087+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.837188+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "zonestatus-before",
+    "command": [
+      "sudo",
+      "-n",
+      "rndc",
+      "zonestatus",
+      "fds.internal"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.837618+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.876758+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "zone-resolved-path",
+    "command": [
+      "sudo",
+      "-n",
+      "readlink",
+      "-e",
+      "/var/named/fds.internal.zone"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.876997+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.897465+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "journal-presence",
+    "command": [
+      "sudo",
+      "-n",
+      "sh",
+      "-c",
+      "if [ -e \"$1\" ] || [ -L \"$1\" ]; then printf \"present\\n\"; else printf \"absent\\n\"; fi",
+      "sh",
+      "/var/named/fds.internal.zone.jnl"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.897604+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.919514+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "zone-stat-before",
+    "command": [
+      "sudo",
+      "-n",
+      "stat",
+      "-Lc",
+      "%F|%d|%i|%s|%y|%z",
+      "/var/named/fds.internal.zone"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.919530+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.945176+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "zone-file-read",
+    "command": [
+      "sudo",
+      "-n",
+      "cat",
+      "/var/named/fds.internal.zone"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.945724+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.968324+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "named-version",
+    "command": [
+      "named",
+      "-v"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.969576+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.978444+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "checkzone-version",
+    "command": [
+      "named-checkzone",
+      "-v"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.978589+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.983742+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "checkzone-text",
+    "command": [
+      "named-checkzone",
+      "-q",
+      "-D",
+      "-f",
+      "text",
+      "-F",
+      "text",
+      "-o",
+      "-",
+      "fds.internal",
+      "/home/server01_dns01/dns-zone-intake.dns01.tg3sf_2w/fds.internal.source"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.983885+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:50.988364+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "zone-stat-after",
+    "command": [
+      "sudo",
+      "-n",
+      "stat",
+      "-Lc",
+      "%F|%d|%i|%s|%y|%z",
+      "/var/named/fds.internal.zone"
+    ],
+    "started_at_kst": "2026-09-18T12:24:50.988571+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:51.010578+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "zonestatus-after",
+    "command": [
+      "sudo",
+      "-n",
+      "rndc",
+      "zonestatus",
+      "fds.internal"
+    ],
+    "started_at_kst": "2026-09-18T12:24:51.012563+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:51.052045+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "firewall-zones-runtime",
+    "command": [
+      "sudo",
+      "-n",
+      "firewall-cmd",
+      "--list-all-zones"
+    ],
+    "started_at_kst": "2026-09-18T12:24:51.052212+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:51.266670+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "dns-ipset-runtime",
+    "command": [
+      "sudo",
+      "-n",
+      "firewall-cmd",
+      "--ipset=fds-dns-clients",
+      "--get-entries"
+    ],
+    "started_at_kst": "2026-09-18T12:24:51.266893+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:51.428145+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "firewall-zones-permanent",
+    "command": [
+      "sudo",
+      "-n",
+      "firewall-cmd",
+      "--permanent",
+      "--list-all-zones"
+    ],
+    "started_at_kst": "2026-09-18T12:24:51.428299+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:51.685300+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "dns-ipset-permanent",
+    "command": [
+      "sudo",
+      "-n",
+      "firewall-cmd",
+      "--permanent",
+      "--ipset=fds-dns-clients",
+      "--get-entries"
+    ],
+    "started_at_kst": "2026-09-18T12:24:51.685483+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:51.846877+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "named-mainpid-after",
+    "command": [
+      "systemctl",
+      "show",
+      "named",
+      "--property=MainPID",
+      "--value"
+    ],
+    "started_at_kst": "2026-09-18T12:24:51.847025+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:51.853240+09:00",
+    "exit_code": 0
+  },
+  {
+    "label": "process-arguments-recheck-in-memory",
+    "command": [
+      "sudo",
+      "-n",
+      "cat",
+      "/proc/1266/cmdline"
+    ],
+    "started_at_kst": "2026-09-18T12:24:51.853362+09:00",
+    "stderr": "suppressed; may contain sensitive diagnostics",
+    "finished_at_kst": "2026-09-18T12:24:51.871386+09:00",
+    "exit_code": 0
+  }
+]
