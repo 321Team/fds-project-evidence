@@ -10,7 +10,7 @@
 
 ## baseline CLOSED Decision (v1.7 대장 외)
 
-2026-09-19 조회. Issue 본문을 결정 증적으로 본다. `tickets/` 사본·대장 13건 폭대가 아니다. 상세 [CLOSED_TICKET_EVIDENCE_GAP_20260919.md](CLOSED_TICKET_EVIDENCE_GAP_20260919.md).
+2026-09-19 조회. Issue 본문을 결정 증적으로 본다. `tickets/` 사본·대장 13건 확대가 아니다. 상세 [CLOSED_TICKET_EVIDENCE_GAP_20260919.md](CLOSED_TICKET_EVIDENCE_GAP_20260919.md).
 
 | Record ID | Issue |
 |---|---|
