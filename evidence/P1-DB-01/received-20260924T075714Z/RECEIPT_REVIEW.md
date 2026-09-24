@@ -39,6 +39,12 @@
 
 이 아티팩트는 공개 링크이며 내부 주소(`10.1.93.x`, `10.250.10.x`)와 DB 접근 통제 구조를 담고 있다. 자격정보 문자열은 발견하지 못했다. 공개 범위 조정 여부는 작성자와 이권욱이 판단한다.
 
+## 같은 아티팩트를 근거로 쓰는 다른 티켓
+
+- [baseline #20](https://github.com/321Team/fds-project-baseline/issues/20) P1-E2E-01 AC "비인가 DB/Management 접근 차단"도 이 폴더의 `S1/TC-NET-DB` 카드를 근거로 쓴다 → [`evidence/P1-E2E-01/received-20260924T075714Z/`](../../P1-E2E-01/received-20260924T075714Z/)
+- [baseline #17](https://github.com/321Team/fds-project-baseline/issues/17) P1-MON-01 AC "Test Alert 전이"는 `S8-CANON` 카드를 근거로 쓴다 → [`evidence/P1-MON-01/received-20260924T075714Z/`](../../P1-MON-01/received-20260924T075714Z/)
+- 아티팩트 원본은 이 폴더에 한 부만 둔다.
+
 ## 이번에 하지 않은 것
 
 - 서버·클러스터 재조회, AC 체크 변경, baseline #11 본문 수정
