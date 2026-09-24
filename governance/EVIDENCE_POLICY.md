@@ -25,7 +25,7 @@
 - `receipts/`(수신 검증), `records/`(수신 사본·병합 후 기록), `registry/`(대장), `handoffs/`, `runbooks/`는 기존 역할을 유지한다. 원본 증적 자체를 이 경로에 새로 두지 않는다.
 - 수신 원본이나 과거 문서에 적힌 서버 수집 경로·논리 경로(예: 서버의 `docs/evidence/<ID>/`)는 출처 정보이므로 고치지 않는다.
 - 2026-09-24 `docs/evidence/P1-DB-01/evidence-20260907.md`를 `evidence/P1-DB-01/evidence-20260907.md`로 옮겼다. 내용은 바꾸지 않았다(SHA-256 `f8f3151e4dabfb7d2d4e7a0e74124eaa6d140001d8d00ec49dfa22a547e34b65` 동일). 이전 경로의 고정 Commit 링크(예: `90093f8`)는 계속 유효하다.
-- 예외: `evidence/infra-ansible-followup/`, `evidence/infra-ansible-issue-6/`, `-7/`, `-8/`은 경로 통일 전 `infra-ansible` 저장소의 Issue 단위로 편입된 기록이다. 폴더 안 13개 파일(Manifest·수신 검증 기록)이 자기 경로를 기록하고 있어, 옮기면 원본과 Manifest를 고쳐야 한다. 그래서 현재 경로를 유지한다. 새 증적은 이 경로에 추가하지 않고 책임 Record ID 경로를 사용한다.
+- 예외: `evidence/infra-ansible-followup/`, `evidence/infra-ansible-issue-6/`, `-7/`, `-8/`은 경로 통일 전 `infra-ansible` 저장소의 Issue 단위로 편입된 기록이다. 내용이 P1-ANS-01·P1-CICD-01 등 여러 Record에 걸쳐 있어 단일 Record ID로 대응되지 않는다. 또한 `infra-ansible-issue-8/received-20260914-4a9790642852/SOURCE_SELECTION.json`은 폴더 Manifest(`REVIEW_SHA256SUMS`)로 고정된 수신 기록인데 파일 81개의 git 경로를 담고 있어, 옮기면 기록과 실제 위치가 어긋난다. 그래서 현재 경로를 유지한다. 이 폴더들을 가리키는 기존 링크는 확인한 범위(이 저장소, baseline 감사 기록)에서 모두 Commit 고정 링크다. 새 증적은 이 경로에 추가하지 않고 책임 Record ID 경로를 사용한다.
 
 ## 원본 보존과 무결성
 
