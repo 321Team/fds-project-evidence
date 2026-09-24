@@ -6,7 +6,8 @@
 - 최초 준비 브랜치: evidence/initial-import-20260907. 이후 evidence/<ticket-id>-<수집회차>를 사용한다.
 - Draft PR에서 범위, 수신 파일, 검증 결과, 미수신 항목, 기존 완료 상태와 편입 상태를 제시한다.
 - 최소 1인의 독립 검토 후 이권욱이 검토 Commit을 확인하여 병합한다. 이번 준비 요청은 최종 승인·병합·Runtime 실행을 포함하지 않는다.
-- 2026-09-23 [사전 검증(Pre-check) 코드 예외](https://github.com/321Team/fds-project-baseline/blob/e491eb8363533828fe00aab103c369c6626edd2e/governance/REVIEW_AUTHORITY_POLICY.md)([baseline PR #93](https://github.com/321Team/fds-project-baseline/pull/93))는 이 저장소에 적용하지 않는다. Pre-check 도구의 실행 결과·로그·사본을 편입하는 PR도 독립 검토를 거친다. 소스 저장소에서 리뷰 없이 병합된 Pre-check 코드의 결과는 `REVIEW=NOT PERFORMED (Pre-check)` 상태의 소스 SHA로 연결한다. 이를 리뷰된 코드의 실행 결과로 표시하지 않는다.
+- 독립 검토는 [중앙 리뷰 권한 정책 §3.1](https://github.com/321Team/fds-project-baseline/blob/f3dc4cfa1584cd4a9c4435bc7324bd12d1dd297d/governance/REVIEW_AUTHORITY_POLICY.md#31-증적-저장소-예외)에 따라 다음을 확인한다: 원본 출처, 수신 바이트·해시, 실제 실행 여부, AC와 판정의 대응, 누락·오표기·민감정보, 정정 이유. 작성자·실행자의 자체 검토나 AI 보조 점검만으로 독립 검토 완료로 표시하지 않는다.
+- 2026-09-23 [사전 검증(Pre-check) 코드 예외](https://github.com/321Team/fds-project-baseline/blob/f3dc4cfa1584cd4a9c4435bc7324bd12d1dd297d/governance/REVIEW_AUTHORITY_POLICY.md)([baseline PR #93](https://github.com/321Team/fds-project-baseline/pull/93))는 이 저장소에 적용하지 않는다. Pre-check 도구의 실행 결과·로그·사본을 편입하는 PR도 독립 검토를 거친다. 소스 저장소에서 리뷰 없이 병합된 Pre-check 코드의 결과는 `REVIEW=NOT PERFORMED (Pre-check)` 상태의 소스 SHA로 연결한다. 이를 리뷰된 코드의 실행 결과로 표시하지 않는다.
 - GitHub Free 제약으로 보호 규칙을 적용할 수 없는 경우 PR·정확한 Commit 확인·독립 검토·수동 병합을 기록한다. 설정이 강제 적용됐다고 미리 표시하지 않는다.
 
 ## 완료 티켓의 편입
@@ -18,6 +19,13 @@
 - 설계 티켓은 승인된 설계·결정 기록을, 구현 티켓은 실제 시험·로그·검토 기록을 수집한다.
 - D-NET/P1-NET/P1-LNX의 공통 원본은 한 번 보관하고 여러 티켓에서 참조한다.
 
+## 저장 경로
+
+- 이 저장소에 편입하는 증적은 `evidence/<Record ID>/` 아래에 둔다. Record ID는 책임 티켓·Decision·CR ID다. 수집회차는 그 아래 하위 경로(예: `received-<수신시각>/`)로 구분한다. 2026-09-23 사용자 결정으로 티켓의 Evidence Path를 `321Team/fds-project-evidence:evidence/<Record ID>/`로 통일했다([baseline Phase 2 기록 §3](https://github.com/321Team/fds-project-baseline/blob/f3dc4cfa1584cd4a9c4435bc7324bd12d1dd297d/audit/phase2-repo-bootstrap-20260923/README.md)).
+- `receipts/`(수신 검증), `records/`(수신 사본·병합 후 기록), `registry/`(대장), `handoffs/`, `runbooks/`는 기존 역할을 유지한다. 원본 증적 자체를 이 경로에 새로 두지 않는다.
+- 수신 원본이나 과거 문서에 적힌 서버 수집 경로·논리 경로(예: 서버의 `docs/evidence/<ID>/`)는 출처 정보이므로 고치지 않는다.
+- 2026-09-24 `docs/evidence/P1-DB-01/evidence-20260907.md`를 `evidence/P1-DB-01/evidence-20260907.md`로 옮겼다. 내용은 바꾸지 않았다(SHA-256 `f8f3151e4dabfb7d2d4e7a0e74124eaa6d140001d8d00ec49dfa22a547e34b65` 동일). 이전 경로의 고정 Commit 링크(예: `90093f8`)는 계속 유효하다.
+
 ## 원본 보존과 무결성
 
 - 원본 21개 등 수신 파일은 바이트 그대로 복사한다. 자동 줄바꿈 정규화를 끈다.
@@ -26,6 +34,7 @@
 - P1-ANS 승인본 05h/05j 실제 배포 여부는 별도 확인한다. 로컬에서 생성한 Manifest를 과거 서버 검증으로 대체하지 않는다.
 - 사용자 콘솔 보완은 콘솔 제출 자료로 표시한다. 서버 .txt/.sha256을 받지 않았으면 서버 원본 Hash 검증을 주장하지 않는다.
 - Index에는 수신 바이트의 SHA-256과 그 검증 범위를 기록한다. Hash 일치가 시험 PASS 또는 승인 진위의 단독 증거가 되지는 않는다.
+- 중앙 정책 §3.2 4-1의 순수 검증기를 운영 서버에서 리뷰 없이 실행한 결과는 대상 서버, 실행 SHA, 명령, 계정, KST 시각, 순수 검증기 판단 근거, 결과 경로와 함께 편입한다. 빠진 항목은 미수신으로 표시한다. 이 결과를 운영 적용·AC 인수·리뷰된 코드의 실행 결과로 표시하지 않는다.
 
 ## 자료 유형과 접근
 
@@ -37,5 +46,7 @@
 ## 단계 구분
 
 수신 문서 확보 → 원본·기존 Manifest 대조 → 편입 PR 검토 → 승인된 편입 기록 병합 순서로 진행한다. 기록만 먼저 등록한 티켓은 원본 미수신 표시를 유지한다. 원본 완비가 필요한 Runtime Gate는 해당 티켓의 승인 규칙으로 별도 판단한다.
+
+Lead의 자체 Runtime 판정과 이 저장소의 편입 심사는 별개다. 증적 PR의 독립 검토·병합만으로 업무 티켓을 Done 처리하지 않는다. 종결은 해당 Lead가 필수 AC와 남은 작업을 근거로 판단한다(중앙 정책 §3.1).
 
 P1-LB Stage A 자료 등록은 전체 P1-LB Done 또는 Kubernetes Bootstrap 해제를 자동 의미하지 않는다. Stage B, 이하영 실제 인수와 OS/Node·Runtime Gate는 별도로 확인한다.
