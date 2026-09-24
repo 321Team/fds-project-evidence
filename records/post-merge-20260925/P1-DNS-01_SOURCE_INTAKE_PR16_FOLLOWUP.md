@@ -19,7 +19,6 @@
   - 리뷰어 환경에서도 전 항목 실패가 보고됐다.
 - 도구와 관계없이 쓸 수 있는 확인 명령(수집회차 폴더에서 실행): `tr -d '\r' < RECEIPT_SHA256SUMS | sha256sum -c -` → 66/66 OK.
 - 기록된 해시 값은 정상이다. 수집회차 README의 `sha256sum -c RECEIPT_SHA256SUMS` 안내는 위 명령으로 읽는다.
-- 폴더를 직접 여는 사람도 알 수 있도록 수집회차에 [NOTICE-20260925.md](../../evidence/P1-DNS-01/source-intake/received-20260918T032605Z/NOTICE-20260925.md)를 추가했다. 이 파일은 수신 목록 밖의 관리 안내이며 루트 대장으로 확인한다.
 
 ## 후속 2 — dns02 원본 Zone 해시의 재현성
 
