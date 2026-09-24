@@ -98,6 +98,17 @@ class LayoutCheckerTests(unittest.TestCase):
             errors = C.check(root, files, None)
             self.assertTrue(any(e.startswith("MANIFEST:") and "해시 불일치" in e for e in errors), errors)
 
+    def test_archive_requires_matching_sidecar(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            data = b"PK-archive-bytes"
+            files = self.build(root, {"evidence/P1-DB-01/received-1/pkg.zip": data})
+            errors = C.check(root, files, None)
+            self.assertTrue(any("ARCHIVE:" in e and "sidecar가 없다" in e for e in errors), errors)
+            (root / "evidence/P1-DB-01/received-1/pkg.zip.sha256").write_text(digest(b"other") + "  pkg.zip\n")
+            errors = C.check(root, files + ["evidence/P1-DB-01/received-1/pkg.zip.sha256"], None)
+            self.assertTrue(any("sidecar 해시와 바이트가 다르다" in e for e in errors), errors)
+
 
 if __name__ == "__main__":
     unittest.main()

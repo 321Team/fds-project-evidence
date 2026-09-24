@@ -20,6 +20,7 @@ import sys
 REGISTRY = "REGISTRY_SHA256SUMS"
 EXCEPTIONS = "governance/EVIDENCE_LAYOUT_EXCEPTIONS.json"
 MANIFEST_NAME = re.compile(r"SHA256SUMS[^/]*$")
+ARCHIVE_NAME = re.compile(r"\.(zip|tar|tar\.gz|tgz|tar\.xz|7z)$")
 
 
 def sha256(path: Path) -> str:
@@ -137,7 +138,19 @@ def check(root: Path, files: list[str], new_files: list[str] | None) -> list[str
                 continue
             covered.add(name)
 
-    # 6. 모든 추적 파일은 대장 또는 대장에 연결된 Manifest로 확인된다
+    # 6. Git에 둔 압축 파일은 같은 이름의 .sha256 sidecar와 바이트 해시가 일치해야 한다
+    for name in files:
+        if not ARCHIVE_NAME.search(name):
+            continue
+        sidecar = name + ".sha256"
+        if sidecar not in file_set:
+            errors.append(f"ARCHIVE: {name} — .sha256 sidecar가 없다")
+            continue
+        recorded = re.findall(r"\b[0-9a-f]{64}\b", (root / sidecar).read_text(encoding="utf-8", errors="replace"))
+        if sha256(root / name) not in recorded:
+            errors.append(f"ARCHIVE: {name} — sidecar 해시와 바이트가 다르다")
+
+    # 7. 모든 추적 파일은 대장 또는 대장에 연결된 Manifest로 확인된다
     for name in files:
         if name != REGISTRY and name not in covered:
             errors.append(f"COVERAGE: {name} — 대장에도, 대장에 등록된 Manifest에도 없다")
