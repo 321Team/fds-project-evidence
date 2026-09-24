@@ -35,7 +35,7 @@ sha256sum --check SHA256SUMS-20260922.txt
 
 ## 참고 사항
 
-1. **CP1 GNP 중복 규칙:** `fds-k8s-host-k8s-control01`에 UDP 123 ingress 규칙이 3개 있다(다른 5개 GNP는 1개). render 산출물 외에 `kubectl patch`로 NTP ingress를 직접 추가했고 같은 patch가 중복 적용된 결과다. 이 규칙은 v4 render 입력(`runtime-input.json`)에 없다. 코드 편입과 정리는 [infra-kubernetes PR #26](https://github.com/321Team/infra-kubernetes/pull/26)에서 추적한다.
+1. **CP1 GNP 중복 규칙:** `07-gnp-full.yaml` 기준 `fds-k8s-host-k8s-control01`에는 UDP 123 규칙이 **ingress 2개(같은 spec 중복) + egress 1개**(Cloudflare `162.159.200.1/32`·`162.159.200.123/32`)가 있다. 다른 5개 GNP는 ingress 0개, egress 1개(CP1 `10.1.93.102/32`)다. render 산출물 외에 `kubectl patch`로 NTP ingress를 직접 추가했고 같은 patch가 중복 적용된 결과다. (2026-09-24 정정: 최초 편입본은 "ingress 3개, 다른 5개 GNP는 1개"로 잘못 셌다.) Cloudflare NTP egress는 ansible01 upstream 설계와 다를 수 있으며, 이 스냅샷이 그 값을 승인하지 않는다. 이 규칙은 v4 render 입력(`runtime-input.json`)에 없다. 코드 편입과 정리는 [infra-kubernetes PR #26](https://github.com/321Team/infra-kubernetes/pull/26)에서 추적한다.
 2. **중간 증적 소실:** 전환 중 각 노드 `/var/log/fds-evidence/P1-K8S-01/` 아래 생성된 중간 증적(`avc.*`, firewalld checkpoint, felix·policy overlap 조사, 노드별 collect 사본)은 이후 재부팅으로 소실된 것으로 확인됐다. 따라서 **Gate 2 AVC 판정의 원본 rc·stderr는 확인할 수 없다(NOT VERIFIABLE).** 이 폴더의 8개 파일은 `/root` 아래 보관돼 영향이 없다. 원인은 별도 확인 중.
 3. `06`은 `is-active` 결과만 담는다. 부팅 시 비활성(`is-enabled`)은 이 파일로 확인되지 않는다.
 4. 이 스냅샷은 수집 시점 상태다. 이후 적용된 변경(예: NodePort 30080 GNP)은 포함하지 않는다.
