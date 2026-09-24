@@ -1,0 +1,65 @@
+=== k8s-control01: kubectl get clusterrole prometheus-role prometheus-kubelet-scrape kube-state-metrics-role -o yaml ===
+apiVersion: v1
+items:
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: prometheus-role
+    creationTimestamp: "2026-09-22T00:17:40Z"
+    resourceVersion: "1066108"
+    uid: 6dabcc38-0f5d-4c7d-b14f-995c38e388d6
+  rules:
+  - apiGroups: [""]
+    resources: [pods, services, endpoints, namespaces, nodes]
+    verbs: [get, list, watch]
+  - apiGroups: [""]
+    resources: [nodes/metrics]
+    verbs: [get]
+  - nonResourceURLs: ["/metrics"]
+    verbs: [get]
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: prometheus-kubelet-scrape
+    creationTimestamp: "2026-09-22T05:45:34Z"
+    resourceVersion: "1115777"
+    uid: 23357c50-755a-4bfd-98f3-cedf51cfe849
+  rules:
+  - apiGroups: [""]
+    resources: [nodes, nodes/metrics]
+    verbs: [get, list, watch]
+  - nonResourceURLs: ["/metrics", "/metrics/cadvisor"]
+    verbs: [get]
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: kube-state-metrics-role
+    creationTimestamp: "2026-09-22T00:17:40Z"
+    resourceVersion: "1115779"
+    uid: fe9ddd80-54af-4896-bec9-3cf09a89774a
+  rules:
+  - apiGroups: [""]
+    resources: [nodes, pods, services, endpoints, namespaces, configmaps, persistentvolumeclaims, resourcequotas, replicationcontrollers, limitranges]
+    verbs: [get, list, watch]
+  - apiGroups: [apps]
+    resources: [deployments, replicasets, statefulsets, daemonsets]
+    verbs: [get, list, watch]
+  - apiGroups: [batch]
+    resources: [jobs, cronjobs]
+    verbs: [get, list, watch]
+  - apiGroups: [networking.k8s.io]
+    resources: [networkpolicies, ingresses]
+    verbs: [get, list, watch]
+
+관찰: 3개 ClusterRole 전부 get/list/watch만 부여, secrets 접근 규칙 0건.
+
+=== k8s-control01: kubectl auth can-i --list --as=system:serviceaccount:monitoring-api:prometheus ===
+Resources                                       Non-Resource URLs   Resource Names   Verbs
+selfsubjectreviews.authentication.k8s.io        []                  []               [create]
+selfsubjectaccessreviews.authorization.k8s.io   []                  []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                  []               [create]
+nodes/metrics                                   []                  []               [get list watch]
+nodes                                           []                  []               [get list watch]
+                                                 [/metrics]          []               [get]
+                                                 [/metrics/cadvisor] []               [get]
+                                                 (기타 표준 API discovery 경로 생략 - 전부 read-only get)

@@ -1,0 +1,29 @@
+=== db01: sudo firewall-cmd --list-all ===
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160 ens192
+  sources:
+  services:
+  ports: 5432/tcp
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+	rule family="ipv4" source address="10.1.93.23/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.29/32" service name="ssh" accept
+	rule family="ipv4" source address="10.250.10.10/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+
+=== db01: sudo firewall-cmd --list-rich-rules ===
+rule family="ipv4" source address="10.1.93.23/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.29/32" service name="ssh" accept
+rule family="ipv4" source address="10.250.10.10/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+
+관찰: 5432/tcp는 firewalld 레벨에서 소스 제한 없이 전체 개방(포트만 개방, source 미지정).
+DB 접근 통제는 firewalld가 아니라 pg_hba.conf(4개 IP + scram-sha-256/hostssl)와
+K8s NetworkPolicy(아래 fds-engine-allow 참고)가 실질적 통제 지점.

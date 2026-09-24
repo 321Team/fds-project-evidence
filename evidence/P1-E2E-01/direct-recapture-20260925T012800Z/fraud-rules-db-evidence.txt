@@ -1,0 +1,42 @@
+=== db01: psql -U fds_app -h 127.0.0.1 -d fdsdb -c "SELECT occurred_at, fds_rules FROM transactions WHERE fds_rules IS NOT NULL ORDER BY occurred_at DESC LIMIT 20;" ===
+(최근 20건 중 R01/R02 트리거 사례)
+
+occurred_at: 2026-09-23 10:18:54.923974+09
+fds_rules: [
+  {"detail": "10분 내 인출 24회 (threshold 3)", "rule_id": "R01", "triggered": true},
+  {"detail": "고액 거래 3,500,000원 (threshold 3,000,000원)", "rule_id": "R02", "triggered": true},
+  {"detail": null, "rule_id": "R04", "triggered": false},
+  {"detail": null, "rule_id": "R07", "triggered": false}
+]
+(같은 패턴으로 09:18:47~09:18:54 사이 10여 건 연속 R01/R02 triggered:true 확인됨 — 원본 결과는
+PR 코멘트 전문 참조)
+
+=== db01: R04/R07 트리거 사례 (WHERE fds_rules::text LIKE '%rule_id": "R04", "triggered": true%' OR
+     '%rule_id": "R07", "triggered": true%' ORDER BY occurred_at DESC LIMIT 5) ===
+
+occurred_at: 2026-09-23 01:18:25.510017+09
+fds_rules: [
+  {"detail": null, "rule_id": "R01", "triggered": false},
+  {"detail": null, "rule_id": "R02", "triggered": false},
+  {"detail": "심야(KST 01시) 고액 거래 1,500,000원", "rule_id": "R04", "triggered": true},
+  {"detail": null, "rule_id": "R07", "triggered": false}
+]
+
+occurred_at: 2026-09-22 17:00:40.111063+09
+fds_rules: [
+  {"detail": null, "rule_id": "R01", "triggered": false},
+  {"detail": null, "rule_id": "R02", "triggered": false},
+  {"detail": null, "rule_id": "R04", "triggered": false},
+  {"detail": "1시간 내 소액 분산 이체 3건 / 합산 2,100,000원", "rule_id": "R07", "triggered": true}
+]
+
+occurred_at: 2026-09-09 09:51:46.216414+09
+fds_rules: [
+  {"detail": null, "rule_id": "R01", "triggered": false},
+  {"detail": "고액 거래 15,000,000원 (threshold 3,000,000원)", "rule_id": "R02", "triggered": true},
+  {"detail": null, "rule_id": "R04", "triggered": false},
+  {"detail": "1시간 내 소액 분산 이체 3건 / 합산 4,200,000원", "rule_id": "R07", "triggered": true}
+]
+
+결론: R01/R02/R04/R07 4개 룰 전부 정본 클러스터 실거래 DB 레코드로 triggered:true 사례 확인.
+(단위테스트 결과는 별도, fds-msa/fds-engine/tests/test_rules.py 16개 PASS는 기존 기록 참조)

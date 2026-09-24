@@ -1,0 +1,11 @@
+=== db01: pg_hba.conf (sudo grep -v '^#' /var/lib/pgsql/data/pg_hba.conf | grep -v '^$') ===
+local   all             all                                     peer
+host    all             all             127.0.0.1/32            scram-sha-256
+host    all             all             ::1/128                 ident
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            ident
+host    replication     all             ::1/128                 ident
+hostssl    fdsdb    fds_app    10.1.93.105/32    scram-sha-256
+hostssl    fdsdb    fds_app    10.1.93.107/32    scram-sha-256
+hostssl    fdsdb    fds_app    10.1.93.108/32    scram-sha-256
+hostssl    fdsdb    fds_app    10.1.93.50/32    scram-sha-256
