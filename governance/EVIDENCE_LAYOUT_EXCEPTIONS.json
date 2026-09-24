@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "decided": "2026-09-24",
+  "policy": "governance/EVIDENCE_POLICY.md",
+  "record_id_pattern": "^[A-Z][A-Z0-9]*(-[A-Z0-9]+)+$",
+  "path_exceptions": [
+    {
+      "path": "evidence/infra-ansible-followup/",
+      "reason": "경로 통일 전 infra-ansible 후속 기록. 여러 Record(P1-ANS-01, P1-CICD-01 등)에 걸쳐 단일 Record ID가 없다.",
+      "allow_new_content": false
+    },
+    {
+      "path": "evidence/infra-ansible-issue-6/",
+      "reason": "경로 통일 전 infra-ansible Issue #6 단위 편입 기록.",
+      "allow_new_content": false
+    },
+    {
+      "path": "evidence/infra-ansible-issue-7/",
+      "reason": "경로 통일 전 infra-ansible Issue #7 단위 편입 기록.",
+      "allow_new_content": false
+    },
+    {
+      "path": "evidence/infra-ansible-issue-8/",
+      "reason": "경로 통일 전 infra-ansible Issue #8 단위 편입 기록. SOURCE_SELECTION.json이 파일 81개의 git 경로를 담고 폴더 Manifest로 고정돼 있다.",
+      "allow_new_content": false
+    }
+  ]
+}

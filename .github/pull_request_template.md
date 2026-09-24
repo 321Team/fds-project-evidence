@@ -9,5 +9,6 @@
 - 누락·오표기·민감정보 점검 결과:
 - 과거 승인 기록과 이번 편입 검토 상태:
 - downstream Gate 영향:
+- `tools/check-evidence-layout.py --base origin/main` 결과(예외 경로 추가·예외 목록 변경 여부 포함):
 
 검토 대상 HEAD는 실제 PR 생성 후 본문에 고정 기록합니다. 준비 문서의 PASS를 담당자 승인이나 CI 실행 결과로 해석하지 않습니다.

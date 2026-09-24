@@ -25,7 +25,9 @@
 - `receipts/`(수신 검증), `records/`(수신 사본·병합 후 기록), `registry/`(대장), `handoffs/`, `runbooks/`는 기존 역할을 유지한다. 원본 증적 자체를 이 경로에 새로 두지 않는다.
 - 수신 원본이나 과거 문서에 적힌 서버 수집 경로·논리 경로(예: 서버의 `docs/evidence/<ID>/`)는 출처 정보이므로 고치지 않는다.
 - 2026-09-24 `docs/evidence/P1-DB-01/evidence-20260907.md`를 `evidence/P1-DB-01/evidence-20260907.md`로 옮겼다. 내용은 바꾸지 않았다(SHA-256 `f8f3151e4dabfb7d2d4e7a0e74124eaa6d140001d8d00ec49dfa22a547e34b65` 동일). 이전 경로의 고정 Commit 링크(예: `90093f8`)는 계속 유효하다.
-- 예외: `evidence/infra-ansible-followup/`, `evidence/infra-ansible-issue-6/`, `-7/`, `-8/`은 경로 통일 전 `infra-ansible` 저장소의 Issue 단위로 편입된 기록이다. 내용이 P1-ANS-01·P1-CICD-01 등 여러 Record에 걸쳐 있어 단일 Record ID로 대응되지 않는다. 또한 `infra-ansible-issue-8/received-20260914-4a9790642852/SOURCE_SELECTION.json`은 폴더 Manifest(`REVIEW_SHA256SUMS`)로 고정된 수신 기록인데 파일 81개의 git 경로를 담고 있어, 옮기면 기록과 실제 위치가 어긋난다. 그래서 현재 경로를 유지한다. 이 폴더들을 가리키는 기존 링크는 확인한 범위(이 저장소, baseline 감사 기록)에서 모두 Commit 고정 링크다. 새 증적은 이 경로에 추가하지 않고 책임 Record ID 경로를 사용한다.
+- 예외 목록의 정본은 [`governance/EVIDENCE_LAYOUT_EXCEPTIONS.json`](EVIDENCE_LAYOUT_EXCEPTIONS.json)이다. 예외를 추가·변경·삭제할 때는 이 파일과 아래 목록을 같은 PR에서 함께 고친다. 약칭(`-7/` 등)을 쓰지 않고 전체 경로를 적는다.
+- 현재 예외(2026-09-24): `evidence/infra-ansible-followup/`, `evidence/infra-ansible-issue-6/`, `evidence/infra-ansible-issue-7/`, `evidence/infra-ansible-issue-8/`. 경로 통일 전 `infra-ansible` 저장소의 Issue 단위로 편입된 기록이다. 내용이 P1-ANS-01·P1-CICD-01 등 여러 Record에 걸쳐 있어 단일 Record ID로 대응되지 않는다. 또한 `evidence/infra-ansible-issue-8/received-20260914-4a9790642852/SOURCE_SELECTION.json`은 폴더 Manifest(`REVIEW_SHA256SUMS`)로 고정된 수신 기록인데 파일 81개의 git 경로를 담고 있어, 옮기면 기록과 실제 위치가 어긋난다. 그래서 현재 경로를 유지한다. 이 폴더들을 가리키는 기존 링크는 확인한 범위(2026-09-24, 정책 적용 대상 저장소 main)에서 모두 Commit 고정 링크다. 예외 경로에는 새 증적을 추가하지 않고 책임 Record ID 경로를 사용한다.
+- 점검: 편입 PR은 `python3 tools/check-evidence-layout.py --base origin/main` 결과를 PR에 적는다. 이 도구는 Record ID 형식, 예외 목록과 정책의 일치, 예외 경로의 새 파일, 대장·수집회차 Manifest 해시, 모든 추적 파일의 대장 연결을 확인한다. 결과는 경로·목록·현재 바이트 점검이며 원본 진위·시험 PASS·인수 승인을 뜻하지 않는다.
 
 ## 원본 보존과 무결성
 
