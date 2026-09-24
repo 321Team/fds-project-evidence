@@ -107,6 +107,10 @@ def check(root: Path, files: list[str], new_files: list[str] | None) -> list[str
     config = json.loads((root / EXCEPTIONS).read_text(encoding="utf-8"))
     pattern = re.compile(config["record_id_pattern"])
     exceptions = {item["path"].rstrip("/") + "/": item for item in config["path_exceptions"]}
+    for path, item in exceptions.items():
+        record_id = item.get("record_id", "")
+        if not pattern.match(record_id):
+            errors.append(f"EXCEPTION: {path} — 상위 Record ID(record_id)가 없거나 형식이 맞지 않다")
 
     # 1. 정책 문서와 예외 목록의 일치
     policy_text = (root / config["policy"]).read_text(encoding="utf-8")

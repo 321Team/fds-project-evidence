@@ -20,7 +20,7 @@ EXCEPTIONS = {
     "policy": "governance/EVIDENCE_POLICY.md",
     "record_id_pattern": "^[A-Z][A-Z0-9]*(-[A-Z0-9]+)+$",
     "path_exceptions": [
-        {"path": "evidence/infra-ansible-issue-6/", "reason": "test", "allow_new_content": False}
+        {"path": "evidence/infra-ansible-issue-6/", "record_id": "P1-ANS-01", "reason": "test", "allow_new_content": False}
     ],
 }
 
@@ -68,6 +68,15 @@ class LayoutCheckerTests(unittest.TestCase):
             files = self.build(root, {"evidence/infra-ansible-issue-9/x/d.txt": b"d\n"})
             errors = C.check(root, files, None)
             self.assertTrue(any("LAYOUT: evidence/infra-ansible-issue-9/" in e for e in errors), errors)
+
+    def test_exception_requires_parent_record_id(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            config = json.loads(json.dumps(EXCEPTIONS))
+            del config["path_exceptions"][0]["record_id"]
+            files = self.build(root, exceptions=config)
+            errors = C.check(root, files, None)
+            self.assertTrue(any(e.startswith("EXCEPTION:") for e in errors), errors)
 
     def test_exception_missing_from_policy_fails(self):
         with tempfile.TemporaryDirectory() as folder:
