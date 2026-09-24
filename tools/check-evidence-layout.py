@@ -10,17 +10,22 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import sys
+import tarfile
+import zipfile
 
 
 REGISTRY = "REGISTRY_SHA256SUMS"
 EXCEPTIONS = "governance/EVIDENCE_LAYOUT_EXCEPTIONS.json"
 MANIFEST_NAME = re.compile(r"SHA256SUMS[^/]*$")
 ARCHIVE_NAME = re.compile(r"\.(zip|tar|tar\.gz|tgz|tar\.xz|7z)$")
+ARCHIVE_INDEX = "registry/ARCHIVE_CONTENTS.json"
+ARCHIVE_MAX_BYTES = 1024 * 1024
 
 
 def sha256(path: Path) -> str:
@@ -52,6 +57,30 @@ def normalize(base: PurePosixPath, name: str) -> str:
             continue
         parts.append(part)
     return "/".join(parts)
+
+
+def archive_entries(path: Path) -> list[dict]:
+    """압축 파일 안의 일반 파일 목록(이름·크기·SHA-256)을 바이트에서 직접 계산한다."""
+    data = path.read_bytes()
+    entries = []
+    if path.name.endswith(".zip"):
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            for info in archive.infolist():
+                if info.is_dir():
+                    continue
+                body = archive.read(info)
+                entries.append({"name": info.filename, "size": len(body), "sha256": hashlib.sha256(body).hexdigest()})
+    else:
+        with tarfile.open(fileobj=io.BytesIO(data)) as archive:
+            for member in archive.getmembers():
+                if member.isdir():
+                    continue
+                if not member.isfile():
+                    entries.append({"name": member.name, "size": 0, "sha256": None, "type": "link-or-special"})
+                    continue
+                body = archive.extractfile(member).read()
+                entries.append({"name": member.name, "size": len(body), "sha256": hashlib.sha256(body).hexdigest()})
+    return sorted(entries, key=lambda item: item["name"])
 
 
 def tracked_files(root: Path) -> list[str]:
@@ -150,7 +179,34 @@ def check(root: Path, files: list[str], new_files: list[str] | None) -> list[str
         if sha256(root / name) not in recorded:
             errors.append(f"ARCHIVE: {name} — sidecar 해시와 바이트가 다르다")
 
-    # 7. 모든 추적 파일은 대장 또는 대장에 연결된 Manifest로 확인된다
+    # 7. Git에 둔 압축 파일은 1MB 이하이고, 내부 파일 목록이 ARCHIVE_INDEX에 있으며
+    #    그 목록이 압축 파일 바이트에서 다시 계산한 값과 같아야 한다(리뷰에서 내용이 보이도록).
+    archives = [name for name in files if ARCHIVE_NAME.search(name)]
+    index_path = root / ARCHIVE_INDEX
+    index = json.loads(index_path.read_text(encoding="utf-8")).get("archives", {}) if index_path.is_file() else {}
+    for name in archives:
+        target = root / name
+        size = target.stat().st_size
+        if size > ARCHIVE_MAX_BYTES:
+            errors.append(f"ARCHIVE: {name} — {size} bytes, Git 보관 한도 {ARCHIVE_MAX_BYTES} bytes 초과(별도 보관소 사용)")
+        record = index.get(name)
+        if record is None:
+            errors.append(f"ARCHIVE: {name} — {ARCHIVE_INDEX}에 내부 파일 목록이 없다")
+            continue
+        if record.get("sha256") != sha256(target):
+            errors.append(f"ARCHIVE: {name} — {ARCHIVE_INDEX}의 sha256이 파일과 다르다")
+        try:
+            actual = archive_entries(target)
+        except Exception as exc:  # 형식 미지원·손상
+            errors.append(f"ARCHIVE: {name} — 내부 목록을 계산할 수 없다({type(exc).__name__})")
+            continue
+        if record.get("entries") != actual:
+            errors.append(f"ARCHIVE: {name} — {ARCHIVE_INDEX}의 내부 목록이 실제 내용과 다르다")
+    for name in index:
+        if name not in file_set:
+            errors.append(f"ARCHIVE: {ARCHIVE_INDEX}에 있는 {name}가 추적 파일이 아니다")
+
+    # 8. 모든 추적 파일은 대장 또는 대장에 연결된 Manifest로 확인된다
     for name in files:
         if name != REGISTRY and name not in covered:
             errors.append(f"COVERAGE: {name} — 대장에도, 대장에 등록된 Manifest에도 없다")
@@ -162,10 +218,21 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--root", default=".", help="저장소 루트")
     parser.add_argument("--base", help="새로 추가된 파일을 가릴 기준 ref (예: origin/main)")
+    parser.add_argument("--archive-index-draft", action="store_true",
+                        help=f"{ARCHIVE_INDEX} 초안을 표준 출력으로 낸다(파일은 쓰지 않는다)")
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
     files = tracked_files(root)
+    if args.archive_index_draft:
+        draft = {"version": 1, "max_bytes": ARCHIVE_MAX_BYTES, "archives": {}}
+        for name in files:
+            if ARCHIVE_NAME.search(name):
+                target = root / name
+                draft["archives"][name] = {"sha256": sha256(target), "size": target.stat().st_size,
+                                           "entries": archive_entries(target)}
+        print(json.dumps(draft, ensure_ascii=False, indent=2))
+        return 0
     new_files = added_files(root, args.base) if args.base else None
     errors = check(root, files, new_files)
     for line in errors:

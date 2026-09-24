@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import unittest.mock
 
 
 SCRIPT = Path(__file__).resolve().parents[1] / "tools" / "check-evidence-layout.py"
@@ -98,17 +99,54 @@ class LayoutCheckerTests(unittest.TestCase):
             errors = C.check(root, files, None)
             self.assertTrue(any(e.startswith("MANIFEST:") and "해시 불일치" in e for e in errors), errors)
 
+    def add_zip(self, root: Path, files: list[str], name: str, members: dict[str, bytes],
+                index: bool = True, tamper: bool = False) -> list[str]:
+        import io, zipfile
+        buffer = io.BytesIO()
+        with zipfile.ZipFile(buffer, "w") as archive:
+            for member, body in members.items():
+                archive.writestr(member, body)
+        data = buffer.getvalue()
+        path = f"evidence/P1-DB-01/received-1/{name}"
+        (root / path).write_bytes(data)
+        (root / (path + ".sha256")).write_text(digest(data) + f"  {name}\n")
+        entries = sorted(({"name": m, "size": len(b), "sha256": digest(b)} for m, b in members.items()),
+                         key=lambda item: item["name"])
+        if tamper:
+            entries = entries[:-1]
+        if index:
+            (root / "registry").mkdir(exist_ok=True)
+            payload = {"version": 1, "archives": {path: {"sha256": digest(data), "size": len(data), "entries": entries}}}
+            (root / "registry/ARCHIVE_CONTENTS.json").write_text(json.dumps(payload))
+        return files + [path, path + ".sha256"]
+
     def test_archive_requires_matching_sidecar(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
-            data = b"PK-archive-bytes"
-            files = self.build(root, {"evidence/P1-DB-01/received-1/pkg.zip": data})
-            errors = C.check(root, files, None)
-            self.assertTrue(any("ARCHIVE:" in e and "sidecar가 없다" in e for e in errors), errors)
+            files = self.add_zip(root, self.build(root), "pkg.zip", {"a.txt": b"a"})
             (root / "evidence/P1-DB-01/received-1/pkg.zip.sha256").write_text(digest(b"other") + "  pkg.zip\n")
-            errors = C.check(root, files + ["evidence/P1-DB-01/received-1/pkg.zip.sha256"], None)
+            errors = C.check(root, files, None)
             self.assertTrue(any("sidecar 해시와 바이트가 다르다" in e for e in errors), errors)
 
+    def test_archive_listing_is_recomputed(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            files = self.add_zip(root, self.build(root), "pkg.zip", {"a.txt": b"a", "b.txt": b"b"})
+            self.assertFalse([e for e in C.check(root, files, None) if e.startswith("ARCHIVE:")])
+            files = self.add_zip(root, self.build(root), "pkg.zip", {"a.txt": b"a", "b.txt": b"b"}, tamper=True)
+            errors = C.check(root, files, None)
+            self.assertTrue(any("내부 목록이 실제 내용과 다르다" in e for e in errors), errors)
+
+    def test_archive_without_listing_or_oversized_fails(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            files = self.add_zip(root, self.build(root), "pkg.zip", {"a.txt": b"a"}, index=False)
+            errors = C.check(root, files, None)
+            self.assertTrue(any("내부 파일 목록이 없다" in e for e in errors), errors)
+            with unittest.mock.patch.object(C, "ARCHIVE_MAX_BYTES", 10):
+                files = self.add_zip(root, self.build(root), "pkg.zip", {"a.txt": b"a" * 100})
+                errors = C.check(root, files, None)
+            self.assertTrue(any("보관 한도" in e for e in errors), errors)
 
 if __name__ == "__main__":
     unittest.main()

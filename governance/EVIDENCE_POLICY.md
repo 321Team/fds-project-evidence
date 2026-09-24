@@ -48,7 +48,7 @@
 
 - Git: 검토할 텍스트 로그·설정 사본·Index·Manifest·수신/승인 기록. 비밀키, 토큰, 암호, 실제 credential 포함 파일은 제외한다.
 - 기존 ZIP/tar.gz: 승인된 별도 패키지 보관 위치 또는 Private Release Asset에서 원래 바이트를 보존하고 URI·SHA-256을 연결한다. 이 준비 단계는 Release Asset 업로드를 수행하지 않는다.
-- 압축 파일의 무결성 조건(2026-09-24): 보관 위치와 관계없이 원래 바이트를 재압축하지 않고, SHA-256을 기록한다. Git에 둔 압축 파일은 같은 이름의 `.sha256` sidecar가 있어야 하고 그 값이 파일 바이트와 일치해야 한다(`tools/check-evidence-layout.py`가 확인). Git에 압축 파일을 둘 수 있는 크기·내용 공개 조건은 별도로 정한다.
+- 압축 파일의 무결성 조건(2026-09-24): 보관 위치와 관계없이 원래 바이트를 재압축하지 않고, SHA-256을 기록한다. Git에 둔 압축 파일은 같은 이름의 `.sha256` sidecar가 있어야 하고 그 값이 파일 바이트와 일치해야 한다(`tools/check-evidence-layout.py`가 확인). Git에 둘 수 있는 압축 파일은 1MB 이하이며, 내부 파일 목록(이름·크기·SHA-256)을 [`registry/ARCHIVE_CONTENTS.json`](../registry/ARCHIVE_CONTENTS.json)에 함께 편입한다. 점검 도구는 이 목록을 압축 파일 바이트에서 다시 계산해 대조한다. 목록 초안은 `python3 tools/check-evidence-layout.py --archive-index-draft`로 만든다. 1MB를 넘으면 별도 보관소에 두고 URI·SHA-256만 연결한다. 목록은 리뷰에서 내용물의 존재를 보이게 하는 장치이며, 내부 파일 내용 검토는 리뷰어가 압축을 풀어 수행한다.
 - 내부 주소와 Host 식별자를 포함하므로 필요한 팀원에게만 접근을 부여한다. 신규 팀 권한은 본 준비에서 변경하지 않는다.
 - Git은 서버 mode 0640/소유자를 그대로 복구하는 도구가 아니다. 서버 권한은 수집 메타데이터로 기록한다.
 
