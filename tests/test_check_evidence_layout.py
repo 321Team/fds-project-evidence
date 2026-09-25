@@ -157,5 +157,40 @@ class LayoutCheckerTests(unittest.TestCase):
                 errors = C.check(root, files, None)
             self.assertTrue(any("보관 한도" in e for e in errors), errors)
 
+    def test_new_file_in_existing_collection_fails(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            before = self.build(root)
+            name = "evidence/P1-DB-01/received-1/NOTICE.md"
+            files = self.build(root, {name: b"n\n"})
+            errors = C.check(root, files, [name], [("A", name)], before)
+            self.assertTrue(any(e.startswith("SEALED:") and "received-1/" in e for e in errors), errors)
+
+    def test_new_file_in_subfolder_of_existing_collection_fails(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            before = self.build(root)
+            name = "evidence/P1-DB-01/received-1/extra/x.txt"
+            files = self.build(root, {name: b"x\n"})
+            errors = C.check(root, files, [name], [("A", name)], before)
+            self.assertTrue(any(e.startswith("SEALED:") for e in errors), errors)
+
+    def test_changed_or_deleted_existing_evidence_fails(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            before = self.build(root)
+            name = "evidence/P1-DB-01/received-1/a.txt"
+            errors = C.check(root, before, [], [("M", name), ("D", name)], before)
+            self.assertEqual(2, sum(e.startswith("SEALED:") for e in errors), errors)
+
+    def test_new_collection_and_record_level_file_pass(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            before = self.build(root)
+            new = {"evidence/P1-DB-01/received-2/b.txt": b"b\n", "evidence/P1-DB-01/NOTE.md": b"n\n"}
+            files = self.build(root, new)
+            errors = C.check(root, files, list(new), [("A", name) for name in new], before)
+            self.assertFalse([e for e in errors if e.startswith("SEALED:")], errors)
+
 if __name__ == "__main__":
     unittest.main()

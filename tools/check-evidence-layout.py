@@ -90,17 +90,41 @@ def tracked_files(root: Path) -> list[str]:
     return [name for name in output.split("\0") if name]
 
 
-def added_files(root: Path, base: str) -> list[str]:
+def changed_files(root: Path, base: str) -> list[tuple[str, str]]:
+    """기준 ref와의 merge-base 대비 변경을 (상태, 경로)로 돌려준다. 이름 변경은 삭제+추가로 본다."""
     output = subprocess.run(
-        ["git", "diff", "--name-only", "--diff-filter=A", "-z", f"{base}...HEAD"],
+        ["git", "diff", "--name-status", "--no-renames", "-z", f"{base}...HEAD"],
         cwd=root,
         check=True,
         capture_output=True,
     ).stdout.decode("utf-8")
+    parts = [part for part in output.split("\0") if part]
+    return [(parts[i][0], parts[i + 1]) for i in range(0, len(parts) - 1, 2)]
+
+
+def base_files(root: Path, base: str) -> list[str]:
+    """기준 ref와의 merge-base에 있던 추적 파일 목록."""
+    merge_base = subprocess.run(
+        ["git", "merge-base", base, "HEAD"], cwd=root, check=True, capture_output=True, text=True
+    ).stdout.strip()
+    output = subprocess.run(
+        ["git", "ls-tree", "-r", "--name-only", "-z", merge_base], cwd=root, check=True, capture_output=True
+    ).stdout.decode("utf-8")
     return [name for name in output.split("\0") if name]
 
 
-def check(root: Path, files: list[str], new_files: list[str] | None) -> list[str]:
+def sealed_collections(names: list[str]) -> set[str]:
+    """이미 있는 수집회차 폴더: evidence/<ID>/ 아래에서 파일을 직접 가진 폴더."""
+    sealed = set()
+    for name in names:
+        parts = name.split("/")
+        if parts[0] == "evidence" and len(parts) >= 4:
+            sealed.add("/".join(parts[:-1]) + "/")
+    return sealed
+
+
+def check(root: Path, files: list[str], new_files: list[str] | None,
+          changes: list[tuple[str, str]] | None = None, before: list[str] | None = None) -> list[str]:
     errors: list[str] = []
     file_set = set(files)
 
@@ -136,6 +160,25 @@ def check(root: Path, files: list[str], new_files: list[str] | None) -> list[str
             for path, item in exceptions.items():
                 if name.startswith(path) and not item.get("allow_new_content", False):
                     errors.append(f"FROZEN: {name} — 예외 경로 {path}에는 새 증적을 추가하지 않는다")
+
+    # 3-1. 기준 ref에 이미 있는 증적은 바꾸지 않는다. 기존 evidence/ 파일의 변경·삭제와
+    #      기존 수집회차 폴더(하위 폴더 포함) 안의 새 파일을 막는다. 정정·보완은 새 경로에 둔다.
+    if changes is not None and before is not None:
+        before_set = set(before)
+        sealed = sealed_collections(before)
+        for status, name in changes:
+            if not name.startswith("evidence/") or any(name.startswith(path) for path in exceptions):
+                continue
+            if status != "A" and name in before_set:
+                errors.append(f"SEALED: {name} — 기준에 있는 증적을 변경·삭제하지 않는다(정정은 새 기록으로)")
+                continue
+            if status == "A":
+                parts = name.split("/")
+                for depth in range(3, len(parts)):
+                    folder = "/".join(parts[:depth]) + "/"
+                    if folder in sealed:
+                        errors.append(f"SEALED: {name} — 기존 수집회차 {folder} 안에 새 파일을 두지 않는다(새 경로 사용)")
+                        break
 
     # 4. 대장 해시 확인
     registry = read_sums(root / REGISTRY)
@@ -237,11 +280,13 @@ def main() -> int:
                                            "entries": archive_entries(target)}
         print(json.dumps(draft, ensure_ascii=False, indent=2))
         return 0
-    new_files = added_files(root, args.base) if args.base else None
-    errors = check(root, files, new_files)
+    changes = changed_files(root, args.base) if args.base else None
+    new_files = [name for status, name in changes if status == "A"] if changes is not None else None
+    before = base_files(root, args.base) if args.base else None
+    errors = check(root, files, new_files, changes, before)
     for line in errors:
         print(line)
-    scope = f", 기준 {args.base}" if args.base else ", 기준 ref 없음(FROZEN 점검 생략)"
+    scope = f", 기준 {args.base}" if args.base else ", 기준 ref 없음(FROZEN·SEALED 점검 생략)"
     status = "FAIL" if errors else "PASS"
     print(f"evidence-layout: {status} — 추적 파일 {len(files)}개, 오류 {len(errors)}건{scope}")
     print("이 결과는 경로·목록·현재 바이트 점검이며 원본 진위, 시험 PASS, 인수 승인을 뜻하지 않는다.")
