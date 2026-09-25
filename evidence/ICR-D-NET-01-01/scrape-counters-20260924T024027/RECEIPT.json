@@ -1,0 +1,98 @@
+{
+  "reviewed_kst": "2026-09-24T03:23:35.334704+09:00",
+  "archive_name": "ICR_Scrape_Counters_cXoiN1.tar.gz",
+  "archive_bytes": 60846,
+  "archive_sha256": "85e57eb5ab91562209538677fe1658fa4e3c6e6bc4810371a93d0d19f550ef47",
+  "archive_file_citation_id": "file_00000000b0ac81fa86293299c1db1858",
+  "sidecar_file_citation_id": "file_000000005e24820bb00d9167d40f1765",
+  "library_id": "NOT_PROVIDED",
+  "archive_storage": "Original user attachment; not recompressed, not uploaded as Git binary or Release asset; independent reviewer attachment access not yet confirmed",
+  "sidecar_match": true,
+  "internal_hashes_matched": 10,
+  "source_hashes_matched": 5,
+  "source_manifest_git_blob": "786274386b560c0e537827254ebff103b2c798fe",
+  "raw_read_stdout_hashes_matched": 7,
+  "guard_raw_stdout": "not preserved; selected sender fields only",
+  "controller_rc": 0,
+  "envelope_rc0": 4,
+  "read_rc0": 9,
+  "read_failures": 0,
+  "counter_snapshots_rc0": 4,
+  "source_sha": "91b9792e0e276c0f97c36a0124fda14cf56a6b3b",
+  "source_merge": "07dcd51ffda40dd467ff3792ed6736d5d166291d",
+  "source_review": "NOT PERFORMED (Pre-check)",
+  "sender_guard_equal": true,
+  "sender": {
+    "name": "prometheus-58c848c688-kzvhp",
+    "uid": "46c00f91-2073-440a-800c-6cedba89d291",
+    "node": "k8s-worker03",
+    "ip": "10.244.39.219",
+    "host_ip": "10.1.93.108",
+    "sa": "prometheus",
+    "image_ids": [
+      "10.1.93.54/fds/prometheus@sha256:b77f9cee82fd1c61521634d2d6b192fc526ffd938e904b8e6836b6c0cf8d875a"
+    ],
+    "ready": true
+  },
+  "receive_classification": "COLLECTED_COMPLETE_WITHIN_COUNTER_ONLY_SCOPE",
+  "runtime_findings": "Worker01 named host-GNP terminal DROP increased by46 packets/2760 bytes; source .108 match and sender .105:9100/10250 egress counters have matching aggregate totals. Per-packet attribution not collected.",
+  "runtime_ac": "NOT_ASSESSED; existing AC unchanged",
+  "evidence_review": "PENDING",
+  "original_text_files": [
+    {
+      "path": "original/SHA256SUMS",
+      "bytes": 904,
+      "sha256": "79af0ad01e45d3c356ced8da076d757b341af013ecead8665aa18981517a6cb4"
+    },
+    {
+      "path": "original/ansible.log",
+      "bytes": 2926,
+      "sha256": "2af35eede2343a6194e3c0f7aa891afb619f4baceb89505504ccad44162358c8"
+    },
+    {
+      "path": "original/controller-exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "original/execution-input.json",
+      "bytes": 144,
+      "sha256": "f2bb5b094ff2caddde5ebf75a34e6911e4038f78e73ef819089e31b6dcda7a6f"
+    },
+    {
+      "path": "original/k8s-control01-guard-after.json",
+      "bytes": 1771,
+      "sha256": "b032f0637f51114bacfae73c82e704d3fbebf5c93295b131cb5aae08888b3896"
+    },
+    {
+      "path": "original/k8s-control01-guard-before.json",
+      "bytes": 1772,
+      "sha256": "ef09afc5f356e0839bcfeccb8a4066793cf5d226eaa963fd0f040c87cf598e0b"
+    },
+    {
+      "path": "original/k8s-worker01-counters.json",
+      "bytes": 146684,
+      "sha256": "b76323c31441244b5c86edb40031266f1bff4559994cb0e032e79614afa06886"
+    },
+    {
+      "path": "original/k8s-worker03-counters.json",
+      "bytes": 210135,
+      "sha256": "11b8b58be375704abedbeddaa80929a2fca47fdb5c98379fd3d48ae67d7e40d7"
+    },
+    {
+      "path": "original/run-metadata.json",
+      "bytes": 542,
+      "sha256": "f5ebeda1113aaa64ae26611c6ac04f58e464f149a21fe81bd1f50746e19c9ada"
+    },
+    {
+      "path": "original/source-SHA256SUMS",
+      "bytes": 383,
+      "sha256": "ab7583f1d1a420aca31fb6da38a01ffa3872c3f6124a410939af9ced3866deef"
+    },
+    {
+      "path": "original/syntax-check.log",
+      "bytes": 76,
+      "sha256": "3019af061bf8d648f227973555f591ab001671df85351bd142ac64b9580356ff"
+    }
+  ]
+}
