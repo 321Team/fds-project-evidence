@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "receipt_scope": "SUBMITTED_SERVER_PRECHECK_METADATA",
+  "receipt_status": "PASS_RECEIPT_INTEGRITY_PARTIAL_CALLPATH_INVENTORY",
+  "reviewed_at": "2026-09-23T21:22:10.817861+00:00",
+  "source_pr": "https://github.com/321Team/infra-ansible/pull/48",
+  "source_head": "03d8ca003f6945f2df92794326cb0855553911ad",
+  "source_review": "NOT PERFORMED (Pre-check)",
+  "reported_collector_sha256": "ef85fdb6609bdc3e860d77ed311ba5fddce46b96cdbd0240d29ebfeef936f1ce",
+  "reported_started_at": "2026-09-23T21:14:55.370237+00:00",
+  "reported_finished_at": "2026-09-23T21:14:55.490125+00:00",
+  "host": "ansible01",
+  "user": "server01_ansible",
+  "uid": 1000,
+  "checks": {
+    "reported_completed": true,
+    "status_is_collection_review_required": true,
+    "manifest_matches": true,
+    "collector_sha_matches_distributed_bytes": true,
+    "known_source_files_match": true,
+    "file_sum_matches": true
+  },
+  "original_files": {
+    "REPORT.json": {
+      "bytes": 177653,
+      "sha256": "b6d2383e077261dee8b36a7a9b0f3cdd65b92eed88e1180b52c428a22369e69f"
+    },
+    "SHA256SUMS": {
+      "bytes": 78,
+      "sha256": "edf8181f05d3ddf5846d9a83d8fd55c7d4b85b0129ddd5e303839d199380ab24"
+    }
+  },
+  "collection_file_status_counts": {
+    "READ": 309,
+    "FileNotFoundError": 2,
+    "SYMLINK_PATH_NOT_READ": 21,
+    "SENSITIVE_PATH_NOT_READ": 4
+  },
+  "collection_bytes": 240988,
+  "reported_crontab_rc": 1,
+  "server_precheck": "SUBMITTED_RESULT_REVIEWED",
+  "reviewer_server_reexecution": false,
+  "process_exit_code_independently_received": false,
+  "whole_working_tree_clean_confirmed": false,
+  "ansible_runtime": "NOT_RUN",
+  "production_apply": false,
+  "engine_transition": false,
+  "first_inventory_ac": "PARTIAL_NOT_COMPLETE",
+  "independent_evidence_review": "PENDING",
+  "limitations": [
+    "Collector source hash is reported; no independent remote re-hash.",
+    "Cron stderr text, effective CLI config/collections, other account schedules, Runner job identity and RPM install origin remain unconfirmed.",
+    "Git tree comparison is not a verification of every server working-tree file."
+  ]
+}

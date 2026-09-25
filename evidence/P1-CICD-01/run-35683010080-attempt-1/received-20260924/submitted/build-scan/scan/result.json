@@ -1,0 +1,51 @@
+{
+  "IMAGE_SCAN": "BLOCK",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "push": "NOT_EXECUTED",
+  "deploy": "NOT_EXECUTED",
+  "context": {
+    "workflow_sha": "7e939d7f77c38c13fd331b38f6649580bf0d05bd",
+    "run_id": "35683010080",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/35683010080",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "input_sha256": "ea375a00811923cfb415e6c851ceed55227b5978835953eb2227b03552ab5728",
+    "handoff_sha256": "f79d0c073448d29b9705ba9e6454fa010b85af97eeace97dab0c6a499411fefd"
+  },
+  "source_sha": "ec69b67067decf35abbfed0a6a99f3073132787b",
+  "source_approval": "NOT_VERIFIED",
+  "images": {
+    "transaction-api": {
+      "scan": "BLOCK",
+      "exit_code": 10,
+      "counts": {
+        "HIGH": 57,
+        "CRITICAL": 3
+      },
+      "report_sha256": "a9a0c6eff7961d95af7fb3a5f51093568e0ce50ab03c86859733341b0260769c",
+      "archive_sha256": "218c57b0613dc37e9628745d3ae580886543902714bbb9ab6249b5ac90d1266f",
+      "manifest_digest": "sha256:d97ff91bd7704147b1097a4c74245721811057f501a45cb29b619993521b57ed",
+      "config_digest": "sha256:f3e21e7198ffebf4888b2df56349c34f0fa63be430474820e24c4b227657b590",
+      "diff_ids": [
+        "sha256:411a86676185cb54d695a805b238194a64e9b77e0c723f3802fbb87d333ea0b3",
+        "sha256:3070bb8623db07ca38569112f9b296043371a00bfb3ee4d9f8f63ddfd2f2efca",
+        "sha256:3d664d274420a79749a26f9e5115b2120d46037264011773ca4c52e22780b2ca",
+        "sha256:24257af4ce5bde01d3c7ebd6d366ec4a298ed27c794bbd6832ef5ce934a66170",
+        "sha256:f81f8ec4898e5a77bad35791debe9ef0b7255c64454761d17691b3133275b943",
+        "sha256:7f2933818ed1d896a9a7b5e3a8717dce44c052e615bc196b78b3c6633cd4589a",
+        "sha256:9dacd55d57f4c74fc19e7fd98849ed727015800a51de27facf7360832529810d",
+        "sha256:4b37efda6261e02a64b4fabc144fab0474f6f87e1fd4131799d1f1ea34e8a593",
+        "sha256:ac6e50f1c2ba015e24e8f008b20e33e0e223bb0891855784b74686d518380463",
+        "sha256:5b39f01877f30d62d4193ea34c279d4f5ce1a09d86511776b94e28f499f6be38"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "binary_sha256": "d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791",
+  "started_at": "2026-09-22T03:25:11.119029+00:00",
+  "db_result_sha256": "b40f423e8f1cda33c4cc0da34faf499d5f7d80f4898891ae22ae1b503a7844ab",
+  "error_code": "HIGH_CRITICAL_FINDINGS",
+  "finished_at": "2026-09-22T03:25:29.366238+00:00"
+}

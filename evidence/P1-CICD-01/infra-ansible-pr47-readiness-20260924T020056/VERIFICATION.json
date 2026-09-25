@@ -1,0 +1,53 @@
+{
+  "verification_time_kst": "2026-09-24T04:18:59.146185+09:00",
+  "archive": {
+    "filename": "ansible-pr47-readiness.tar.gz",
+    "bytes": 1361,
+    "sha256": "d58c76fa3818c30f273115d4f18b515aeb8ed079b6e6ab712ba7fa7d598f1153",
+    "sidecar_match": true,
+    "library_file_id": "libfile_0fad781a3fe48191b623f2ea7e81fba1"
+  },
+  "file_set_exact": true,
+  "manifest_verified_count": 6,
+  "manifest_entries": [
+    {
+      "path": "evidence/CONTEXT.json",
+      "sha256": "3eaac2c04e76badcaac67eea61ef76821cb789642fabbc44da195e7985eb4232",
+      "verified": true
+    },
+    {
+      "path": "evidence/READINESS.json",
+      "sha256": "f342135baad10c280b80cc69150a92e13a3bc6b9ba22b4b7f806a6cef0eb9893",
+      "verified": true
+    },
+    {
+      "path": "evidence/collected_at_utc.txt",
+      "sha256": "816a93cceba7e64d5383df7eaba511686901f7f40438e9071eb2619c0654eca6",
+      "verified": true
+    },
+    {
+      "path": "evidence/host.txt",
+      "sha256": "142f51f4ebe4aaf60bef028a69ed4d35a220dbd9a887ba28d1d81dccf854ed75",
+      "verified": true
+    },
+    {
+      "path": "evidence/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "evidence/execution.rc",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    }
+  ],
+  "receipt_status": "PASS_PREPARED_IMAGE_READINESS",
+  "execution_rc": 0,
+  "stderr_bytes": 0,
+  "collected_at_utc": "2026-09-23T17:00:56Z",
+  "checked_at_utc": "2026-09-23T17:00:58.858930+00:00",
+  "candidate_head": "c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+  "local_verification_only": true,
+  "full_host_isolation": "NOT_VERIFIED_THIS_RECEIPT",
+  "general_workflow_ci": "NOT_RUN_THIS_RECEIPT"
+}
