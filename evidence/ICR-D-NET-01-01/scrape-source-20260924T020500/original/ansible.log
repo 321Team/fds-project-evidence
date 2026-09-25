@@ -1,0 +1,100 @@
+
+PLAY [Guard the exact collected Prometheus identity before observation] ********
+
+TASK [Check approved inventory and output identity] ****************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ansible.builtin.include_tasks] *******************************************
+included: /home/server01_ansible/ICR_Scrape_Readonly.NKDMBb/stage.yml for k8s-control01
+
+TASK [Execute bounded collector from stdin] ************************************
+ok: [k8s-control01]
+
+TASK [Preserve output on ansible01 only] ***************************************
+changed: [k8s-control01 -> localhost]
+
+TASK [Stop on identity, access or observation failure] *************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY [Observe existing scrape on sender and one failing destination] ***********
+
+TASK [Check approved worker inventory] *****************************************
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ansible.builtin.include_tasks] *******************************************
+included: /home/server01_ansible/ICR_Scrape_Readonly.NKDMBb/stage.yml for k8s-worker01, k8s-worker03
+
+TASK [Execute bounded collector from stdin] ************************************
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+
+TASK [Preserve output on ansible01 only] ***************************************
+changed: [k8s-worker03 -> localhost]
+changed: [k8s-worker01 -> localhost]
+
+TASK [Stop on identity, access or observation failure] *************************
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ansible.builtin.include_tasks] *******************************************
+included: /home/server01_ansible/ICR_Scrape_Readonly.NKDMBb/stage.yml for k8s-worker01, k8s-worker03
+
+TASK [Execute bounded collector from stdin] ************************************
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+
+TASK [Preserve output on ansible01 only] ***************************************
+changed: [k8s-worker03 -> localhost]
+changed: [k8s-worker01 -> localhost]
+
+TASK [Stop on identity, access or observation failure] *************************
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY [Guard sender identity again; invalidate attribution on change] ***********
+
+TASK [ansible.builtin.include_tasks] *******************************************
+included: /home/server01_ansible/ICR_Scrape_Readonly.NKDMBb/stage.yml for k8s-control01
+
+TASK [Execute bounded collector from stdin] ************************************
+ok: [k8s-control01]
+
+TASK [Preserve output on ansible01 only] ***************************************
+changed: [k8s-control01 -> localhost]
+
+TASK [Stop on identity, access or observation failure] *************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker01               : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker03               : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

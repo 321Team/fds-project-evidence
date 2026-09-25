@@ -1,0 +1,475 @@
+{
+  "source_sha": "bded227a045847059dda657afbd9503ecc5db159",
+  "source_sha256": {
+    "collect.py": "c1661fd926a3444529bfddc070a3040ecb9ba6fbe8cd300ae666c5badab44cdb",
+    "collect.yml": "504e242a6fa489f6614b07ca18c388e02bdab992f76d284ca97ea8b9e3542acc",
+    "run.sh": "a1a115256883ac2eaa99b20e9ee81ffd73878803a8ac332d3ea6c04b0947985c"
+  },
+  "field_started_kst": "2026-09-24T05:54:29+09:00",
+  "field_finished_kst": "2026-09-24T05:54:30+09:00",
+  "field_queries": 11,
+  "query_types": {
+    "local_kubeconfig_server": 1,
+    "api_get": 10
+  },
+  "selected_pod": {
+    "metadata": {
+      "name": "grafana-7dc57885d4-sk8h2",
+      "namespace": "monitoring-api",
+      "uid": "00396c87-640c-4704-ac6c-dcbacf6fbc90",
+      "resourceVersion": "1429982",
+      "labels": {
+        "app": "grafana",
+        "pod-template-hash": "7dc57885d4"
+      }
+    },
+    "nodeName": "k8s-worker03",
+    "serviceAccountName": "default",
+    "podIP": "10.244.39.217",
+    "hostIP": "10.1.93.108",
+    "container": "grafana",
+    "imageID": "10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b",
+    "running_ready": true,
+    "hostNetwork": false,
+    "hostPID": false,
+    "hostIPC": false,
+    "privileged_containers": false
+  },
+  "pod_projection_unchanged": true,
+  "namespace": {
+    "apiVersion": "v1",
+    "kind": "Namespace",
+    "metadata": {
+      "name": "monitoring-api",
+      "uid": "f7e863e5-9fa6-424d-b3b3-697d697c6066",
+      "resourceVersion": "1115753",
+      "labels": {
+        "kubernetes.io/metadata.name": "monitoring-api",
+        "pod-security.kubernetes.io/audit": "restricted",
+        "pod-security.kubernetes.io/enforce": "restricted",
+        "pod-security.kubernetes.io/warn": "restricted"
+      }
+    }
+  },
+  "serviceaccount": {
+    "apiVersion": "v1",
+    "kind": "ServiceAccount",
+    "metadata": {
+      "name": "default",
+      "namespace": "monitoring-api",
+      "uid": "58ec98ee-0144-4e87-a049-5dc7f336ce9e",
+      "resourceVersion": "1066090",
+      "labels": {}
+    }
+  },
+  "kubernetes_networkpolicy_count": 17,
+  "selecting_grafana_egress_policies": [
+    {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "NetworkPolicy",
+      "metadata": {
+        "name": "allow-grafana-to-prometheus",
+        "namespace": "monitoring-api",
+        "uid": "a2454540-3f24-4fa8-a6fd-8377ac60391c",
+        "resourceVersion": "1115783",
+        "labels": {}
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "app": "grafana"
+          }
+        },
+        "egress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 9090
+              }
+            ],
+            "to": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app": "prometheus"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Egress"
+        ]
+      }
+    },
+    {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "NetworkPolicy",
+      "metadata": {
+        "name": "allow-monitoring-egress-dns",
+        "namespace": "monitoring-api",
+        "uid": "8f51756a-25dd-4c93-86e8-febb5bca891e",
+        "resourceVersion": "1115785",
+        "labels": {}
+      },
+      "spec": {
+        "podSelector": {},
+        "egress": [
+          {
+            "ports": [
+              {
+                "protocol": "UDP",
+                "port": 53
+              },
+              {
+                "protocol": "TCP",
+                "port": 53
+              }
+            ],
+            "to": [
+              {
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "kube-system"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Egress"
+        ]
+      }
+    },
+    {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "NetworkPolicy",
+      "metadata": {
+        "name": "default-deny-all",
+        "namespace": "monitoring-api",
+        "uid": "fb70c68c-eb74-49b8-a541-2550ab3aad4f",
+        "resourceVersion": "1066794",
+        "labels": {}
+      },
+      "spec": {
+        "podSelector": {},
+        "policyTypes": [
+          "Ingress",
+          "Egress"
+        ]
+      }
+    },
+    {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "NetworkPolicy",
+      "metadata": {
+        "name": "grafana-allow",
+        "namespace": "monitoring-api",
+        "uid": "3212f780-ad40-4bd7-9098-4b0461a8863a",
+        "resourceVersion": "1066803",
+        "labels": {}
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "app": "grafana"
+          }
+        },
+        "egress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 9090
+              }
+            ],
+            "to": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app": "prometheus"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Egress"
+        ]
+      }
+    },
+    {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "NetworkPolicy",
+      "metadata": {
+        "name": "monitoring-api-dns-allow",
+        "namespace": "monitoring-api",
+        "uid": "62f183fb-991a-4f0d-818c-01b81dc8f41a",
+        "resourceVersion": "1066798",
+        "labels": {}
+      },
+      "spec": {
+        "podSelector": {},
+        "egress": [
+          {
+            "ports": [
+              {
+                "protocol": "UDP",
+                "port": 53
+              },
+              {
+                "protocol": "TCP",
+                "port": 53
+              }
+            ],
+            "to": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "k8s-app": "kube-dns"
+                  }
+                },
+                "namespaceSelector": {
+                  "matchLabels": {
+                    "kubernetes.io/metadata.name": "kube-system"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Egress"
+        ]
+      }
+    }
+  ],
+  "nonselecting_policy_names": [
+    "alertmanager-allow",
+    "alertmanager-egress",
+    "allow-grafana-ingress-from-prometheus-ns",
+    "allow-prometheus-egress-alertmanager",
+    "allow-prometheus-egress-kube-state-metrics",
+    "allow-prometheus-egress-kubelet",
+    "allow-prometheus-egress-node-exporter",
+    "allow-prometheus-egress-scrape",
+    "allow-prometheus-ingress-to-alertmanager",
+    "kube-state-metrics-allow",
+    "prometheus-allow",
+    "prometheus-remote-write-allow"
+  ],
+  "observed_allow_protocol_ports": [
+    {
+      "protocol": "TCP",
+      "port": 53
+    },
+    {
+      "protocol": "TCP",
+      "port": 9090
+    },
+    {
+      "protocol": "UDP",
+      "port": 53
+    }
+  ],
+  "destination": {
+    "ip": "10.1.93.105",
+    "protocol": "TCP",
+    "port": 9100
+  },
+  "static_policy_result": "NO_ALLOW_IN_COLLECTED_SELECTING_KUBERNETES_POLICIES",
+  "global_policy_count": 7,
+  "global_policy_selection": [
+    {
+      "name": "fds-k8s-host-k8s-control01",
+      "uid": "b0f3db6f-d10d-4e66-a496-2026fa4d6b9a",
+      "resourceVersion": "1006855",
+      "selector": "fds.example/bootstrap == \"p1-k8s-01-v4\" && fds.example/node == \"k8s-control01\"",
+      "tier": "default",
+      "order": 100,
+      "types": [
+        "Ingress",
+        "Egress"
+      ],
+      "applyOnForward": false,
+      "preDNAT": false,
+      "match_observed_pod_labels": false
+    },
+    {
+      "name": "fds-k8s-host-k8s-control02",
+      "uid": "bffd71d5-90a2-477f-8868-bc5df5d07ff4",
+      "resourceVersion": "937122",
+      "selector": "fds.example/bootstrap == \"p1-k8s-01-v4\" && fds.example/node == \"k8s-control02\"",
+      "tier": "default",
+      "order": 100,
+      "types": [
+        "Ingress",
+        "Egress"
+      ],
+      "applyOnForward": false,
+      "preDNAT": false,
+      "match_observed_pod_labels": false
+    },
+    {
+      "name": "fds-k8s-host-k8s-control03",
+      "uid": "6914fbee-2203-40b9-8902-80fa2520db4c",
+      "resourceVersion": "937123",
+      "selector": "fds.example/bootstrap == \"p1-k8s-01-v4\" && fds.example/node == \"k8s-control03\"",
+      "tier": "default",
+      "order": 100,
+      "types": [
+        "Ingress",
+        "Egress"
+      ],
+      "applyOnForward": false,
+      "preDNAT": false,
+      "match_observed_pod_labels": false
+    },
+    {
+      "name": "fds-k8s-host-k8s-worker01",
+      "uid": "5b30e937-bf16-41c1-8ad2-2d905c55b6fb",
+      "resourceVersion": "937118",
+      "selector": "fds.example/bootstrap == \"p1-k8s-01-v4\" && fds.example/node == \"k8s-worker01\"",
+      "tier": "default",
+      "order": 100,
+      "types": [
+        "Ingress",
+        "Egress"
+      ],
+      "applyOnForward": false,
+      "preDNAT": false,
+      "match_observed_pod_labels": false
+    },
+    {
+      "name": "fds-k8s-host-k8s-worker02",
+      "uid": "c744ef50-b58b-4645-af1d-7ec9e510d9d1",
+      "resourceVersion": "937119",
+      "selector": "fds.example/bootstrap == \"p1-k8s-01-v4\" && fds.example/node == \"k8s-worker02\"",
+      "tier": "default",
+      "order": 100,
+      "types": [
+        "Ingress",
+        "Egress"
+      ],
+      "applyOnForward": false,
+      "preDNAT": false,
+      "match_observed_pod_labels": false
+    },
+    {
+      "name": "fds-k8s-host-k8s-worker03",
+      "uid": "597b51e8-13d5-4c29-8599-9e00c44c1e34",
+      "resourceVersion": "937120",
+      "selector": "fds.example/bootstrap == \"p1-k8s-01-v4\" && fds.example/node == \"k8s-worker03\"",
+      "tier": "default",
+      "order": 100,
+      "types": [
+        "Ingress",
+        "Egress"
+      ],
+      "applyOnForward": false,
+      "preDNAT": false,
+      "match_observed_pod_labels": false
+    },
+    {
+      "name": "nodeport-30080-allow",
+      "uid": "f9de0f2e-aa29-4545-8d46-ea2e31c4a3f0",
+      "resourceVersion": "1083332",
+      "selector": "fds.example/role == 'worker'",
+      "tier": "default",
+      "order": 50,
+      "types": [
+        "Ingress"
+      ],
+      "applyOnForward": true,
+      "preDNAT": true,
+      "match_observed_pod_labels": false
+    }
+  ],
+  "calico_namespaced_policy_count": 0,
+  "tiers": {
+    "apiVersion": "crd.projectcalico.org/v1",
+    "kind": "TierList",
+    "resourceVersion": "1473129",
+    "items": [
+      {
+        "apiVersion": "crd.projectcalico.org/v1",
+        "kind": "Tier",
+        "metadata": {
+          "name": "default",
+          "uid": "46acdeef-2828-4acb-b137-1ab878ee29df",
+          "resourceVersion": "644",
+          "labels": {}
+        },
+        "spec": {
+          "defaultAction": "Deny",
+          "order": 1000000
+        }
+      },
+      {
+        "apiVersion": "crd.projectcalico.org/v1",
+        "kind": "Tier",
+        "metadata": {
+          "name": "kube-admin",
+          "uid": "cd66cab1-e13f-4e8a-8bde-0ca0e1116dd4",
+          "resourceVersion": "645",
+          "labels": {}
+        },
+        "spec": {
+          "defaultAction": "Pass",
+          "order": 1000
+        }
+      },
+      {
+        "apiVersion": "crd.projectcalico.org/v1",
+        "kind": "Tier",
+        "metadata": {
+          "name": "kube-baseline",
+          "uid": "7a2f9dca-4279-4635-9845-110df0d152b9",
+          "resourceVersion": "646",
+          "labels": {}
+        },
+        "spec": {
+          "defaultAction": "Pass",
+          "order": 10000000
+        }
+      }
+    ]
+  },
+  "networkset_count": 0,
+  "globalnetworkset_count": 0,
+  "comparison_to_0121_snapshot": {
+    "kubernetes-networkpolicies": {
+      "old_count": 17,
+      "new_count": 17,
+      "equal_uid_rv_spec": true
+    },
+    "globalnetworkpolicies": {
+      "old_count": 7,
+      "new_count": 7,
+      "equal_uid_rv_spec": true
+    },
+    "tiers": {
+      "old_count": 3,
+      "new_count": 3,
+      "equal_uid_rv_spec": true
+    }
+  },
+  "canary_name_in_complete_globalpolicy_list": false,
+  "analysis_method": "All 17 collected K8s podSelectors are empty/matchLabels only; compare all labels, then union selecting Egress rules. All their numeric ports are 53 or 9090. Calico selectors manually checked against observed labels; no dataplane evaluation.",
+  "limits": [
+    "Sequential requests are not an atomic snapshot",
+    "No live dataplane/packet/counter or positive-target result",
+    "Pod exec tools not checked",
+    "Native admin-policy resources and Calico endpoint/profile details were not collected; no complete effective-policy proof",
+    "Raw API bodies were not retained; full-body hash replay is not claimed",
+    "Final operational identity/policy refresh belongs to the reviewed change window"
+  ],
+  "probe": "NOT_RUN",
+  "tool_capability": "NOT_CHECKED",
+  "operational_review": "PENDING",
+  "runtime_ac": "UNCHANGED"
+}
