@@ -1,0 +1,13 @@
+[
+  "/workspace/scratch/b0a5e6e03ee6/app-remediation-followup/bin/trivy",
+  "image",
+  "--cache-dir",
+  "/workspace/scratch/b0a5e6e03ee6/app-remediation-followup/paired-rescan/cache",
+  "--db-repository",
+  "ghcr.io/aquasecurity/trivy-db:2",
+  "--download-db-only",
+  "--skip-version-check",
+  "--no-progress",
+  "--timeout",
+  "5m"
+]
