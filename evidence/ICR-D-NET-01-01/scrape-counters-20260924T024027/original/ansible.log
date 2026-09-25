@@ -1,0 +1,79 @@
+
+PLAY [Guard the existing sender before counter-only supplement] ****************
+
+TASK [Check approved inventory and output identity] ****************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ansible.builtin.include_tasks] *******************************************
+included: /home/server01_ansible/ICR_Counters_Readonly.pB6eJw/stage.yml for k8s-control01
+
+TASK [Execute bounded collector from stdin] ************************************
+ok: [k8s-control01]
+
+TASK [Preserve output on ansible01 only] ***************************************
+changed: [k8s-control01 -> localhost]
+
+TASK [Stop on identity, access or observation failure] *************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY [Read existing kernel counters twice without repeating packet capture] ****
+
+TASK [Check approved worker inventory] *****************************************
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ansible.builtin.include_tasks] *******************************************
+included: /home/server01_ansible/ICR_Counters_Readonly.pB6eJw/stage.yml for k8s-worker01, k8s-worker03
+
+TASK [Execute bounded collector from stdin] ************************************
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+
+TASK [Preserve output on ansible01 only] ***************************************
+changed: [k8s-worker01 -> localhost]
+changed: [k8s-worker03 -> localhost]
+
+TASK [Stop on identity, access or observation failure] *************************
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY [Confirm sender identity after counter-only supplement] *******************
+
+TASK [ansible.builtin.include_tasks] *******************************************
+included: /home/server01_ansible/ICR_Counters_Readonly.pB6eJw/stage.yml for k8s-control01
+
+TASK [Execute bounded collector from stdin] ************************************
+ok: [k8s-control01]
+
+TASK [Preserve output on ansible01 only] ***************************************
+changed: [k8s-control01 -> localhost]
+
+TASK [Stop on identity, access or observation failure] *************************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker01               : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+k8s-worker03               : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

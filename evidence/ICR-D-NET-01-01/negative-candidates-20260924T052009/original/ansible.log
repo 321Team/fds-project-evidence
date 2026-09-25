@@ -1,0 +1,24 @@
+
+PLAY [Observe worker03 candidate metadata once through existing access] ********
+
+TASK [Require the existing inventory identity and controller output path] ******
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Read projected metadata without installing a collector on the server] ****
+ok: [k8s-control01]
+
+TASK [Preserve the projection and execution envelope on ansible01] *************
+changed: [k8s-control01 -> localhost]
+
+TASK [Stop on incomplete metadata without changing permissions or policies] ****
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "COLLECTED_PENDING_OWNER_SELECTION; approval NOT_ESTABLISHED; probe NOT_RUN."
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
