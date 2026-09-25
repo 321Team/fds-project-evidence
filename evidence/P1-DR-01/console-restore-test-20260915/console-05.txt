@@ -1,0 +1,6 @@
+[server08@db01 ~]$ psql -U postgres -h 127.0.0.1 -c "DROP DATABASE fdsdb_repro_test_0915;"
+rm /tmp/fdsdb_backup_20260903.dump
+postgres 사용자의 암호:
+psql: 오류: "127.0.0.1" 포트 5432 서버에 접속 할 수 없음: 치명적오류:  사용자 "postgres"의 password 인증을 실패했습니다
+"127.0.0.1" 포트 5432 서버에 접속 할 수 없음: 치명적오류:  사용자 "postgres"의 password 인증을 실패했습니다
+[server08@db01 ~]$

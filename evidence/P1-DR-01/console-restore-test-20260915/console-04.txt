@@ -1,0 +1,26 @@
+[server08@db01 ~]$ psql -U fds_app -h 127.0.0.1 -d fdsdb_repro_test_0915 -c "SELECT count(*) FROM transactions;"
+psql -U fds_app -h 127.0.0.1 -d fdsdb_repro_test_0915 -c "SELECT transaction_id, account_id, fds_rules FROM transactions LIMIT 3;"
+fds_app 사용자의 암호:
+ count
+-------
+    15
+(1개 행)
+
+fds_app 사용자의 암호:
+            transaction_id            |    account_id    |
+                                                                                         fds_rules
+
+
+--------------------------------------+------------------+-------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+----------------
+ 8625bde2-256f-42e1-80dc-41063f633a18 | K3S_TEST         | [{"detail": null, "rule_id": "R01", "triggered": false
+}, {"detail": "고액 거래 5,000,000원 (threshold 3,000,000원)", "rule_id": "R02", "triggered": true}, {"detail": "
+심야(04시) 고액 거래 5,000,000원", "rule_id": "R04", "triggered": true}, {"detail": null, "rule_id": "R07", "trig
+gered": false}]
+ e227fd83-5b40-44ab-b01a-40d15476f103 | RESTORE_E2E_TEST | null
+ 0f25dcc2-c159-4449-be1c-3d9fbe629cc9 | RESTORE_E2E_TEST | null
+(3개 행)
+
+[server08@db01 ~]$
