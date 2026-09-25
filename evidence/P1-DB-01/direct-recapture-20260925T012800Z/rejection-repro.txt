@@ -1,6 +1,0 @@
-=== k8s-control01: kubectl -n fds-app exec deploy/fds-engine -- python3 -c "socket connect test to 10.1.93.55:5432" ===
-REJECTED as expected: timed out
-
-(스크립트: socket.socket(AF_INET, SOCK_STREAM), settimeout(5), connect(('10.1.93.55', 5432)))
-Calico NetworkPolicy default-deny는 패킷을 조용히 drop하므로 ConnectionRefused가 아니라
-5초 타임아웃으로 나타남 — networkpolicy.txt의 분석과 일치하는 결과.

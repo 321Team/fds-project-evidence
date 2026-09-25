@@ -1,0 +1,15 @@
+NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE     SELECTOR
+service/fds-engine                ClusterIP   10.97.246.223   <none>        8001/TCP,9090/TCP   3d1h    app=fds-engine
+service/fds-engine-metrics        ClusterIP   None            <none>        9090/TCP            2d22h   app=fds-engine
+service/transaction-api           ClusterIP   10.106.27.47    <none>        80/TCP,9091/TCP     3d1h    app=transaction-api
+service/transaction-api-metrics   ClusterIP   None            <none>        9091/TCP            2d22h   app=transaction-api
+
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS        IMAGES                                                                                                   SELECTOR
+deployment.apps/fds-engine        2/2     2            2           3d1h   fds-engine        10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369        app=fds-engine
+deployment.apps/transaction-api   2/2     2            2           3d1h   transaction-api   10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33   app=transaction-api
+
+NAME                                   READY   STATUS    RESTARTS      AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+pod/fds-engine-5699669f6f-5rxbt        1/1     Running   1 (43h ago)   3d1h    10.244.39.220   k8s-worker03   <none>           <none>
+pod/fds-engine-5699669f6f-hrz5c        1/1     Running   1 (43h ago)   2d13h   10.244.69.198   k8s-worker02   <none>           <none>
+pod/transaction-api-7956485bd4-mgdj7   1/1     Running   1 (43h ago)   2d      10.244.79.73    k8s-worker01   <none>           <none>
+pod/transaction-api-7956485bd4-rfsvm   1/1     Running   1 (43h ago)   3d      10.244.39.216   k8s-worker03   <none>           <none>

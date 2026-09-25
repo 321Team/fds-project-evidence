@@ -1,0 +1,19 @@
+                             "public.transactions" 테이블
+         필드명         |           형태           | 정렬규칙 | NULL허용 |   초기값    
+------------------------+--------------------------+----------+----------+-------------
+ transaction_id         | text                     |          | not null | 
+ account_id             | text                     |          | not null | 
+ amount                 | numeric                  |          | not null | 
+ currency               | text                     |          | not null | 'KRW'::text
+ transaction_type       | text                     |          | not null | 
+ source_ip              | text                     |          |          | 
+ occurred_at            | timestamp with time zone |          | not null | 
+ received_at            | timestamp with time zone |          | not null | 
+ fds_detected           | boolean                  |          |          | 
+ fds_rules              | jsonb                    |          |          | 
+ fds_evaluation_skipped | boolean                  |          | not null | false
+인덱스들:
+    "transactions_pkey" PRIMARY KEY, btree (transaction_id)
+    "idx_transactions_account_id" btree (account_id)
+    "idx_transactions_account_type_time" btree (account_id, transaction_type, occurred_at)
+

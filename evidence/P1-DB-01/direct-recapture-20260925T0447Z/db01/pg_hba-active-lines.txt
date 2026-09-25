@@ -1,4 +1,3 @@
-=== db01: pg_hba.conf (sudo grep -v '^#' /var/lib/pgsql/data/pg_hba.conf | grep -v '^$') ===
 local   all             all                                     peer
 host    all             all             127.0.0.1/32            scram-sha-256
 host    all             all             ::1/128                 ident
