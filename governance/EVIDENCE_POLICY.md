@@ -28,14 +28,14 @@
 - 2026-09-24 `docs/evidence/P1-DB-01/evidence-20260907.md`를 `evidence/P1-DB-01/evidence-20260907.md`로 옮겼다. 내용은 바꾸지 않았다(SHA-256 `f8f3151e4dabfb7d2d4e7a0e74124eaa6d140001d8d00ec49dfa22a547e34b65` 동일). 이전 경로의 고정 Commit 링크(예: `90093f8`)는 계속 유효하다.
 - 예외 목록의 정본은 [`governance/EVIDENCE_LAYOUT_EXCEPTIONS.json`](EVIDENCE_LAYOUT_EXCEPTIONS.json)이다. 예외를 추가·변경·삭제할 때는 이 파일과 아래 목록을 같은 PR에서 함께 고친다. 약칭(`-7/` 등)을 쓰지 않고 전체 경로를 적는다.
 - 현재 예외(2026-09-24)와 상위 Record ID: `evidence/infra-ansible-issue-6/`, `evidence/infra-ansible-issue-7/`, `evidence/infra-ansible-issue-8/` → P1-ANS-01, `evidence/infra-ansible-followup/` → P1-CICD-01. 경로 통일 전 `infra-ansible` 저장소의 Issue 단위로 편입된 기록이다. `infra-ansible-issue-8/received-20260914-4a9790642852/SOURCE_SELECTION.json`은 폴더 Manifest(`REVIEW_SHA256SUMS`)로 고정된 수신 기록인데 파일 81개의 git 경로를 담고 있고, `infra-ansible-followup/`은 파일 1,753개가 대장에 개별 등록돼 있어 옮기면 기록과 실제 위치가 어긋난다. 그래서 현재 경로를 유지하고 상위 Record ID를 예외 목록에 기록한다. 이 폴더들을 가리키는 기존 링크는 확인한 범위(2026-09-24, 정책 적용 대상 저장소 main)에서 모두 Commit 고정 링크다. 예외 경로에는 새 증적을 추가하지 않는다.
-- 점검: 편입 PR은 `python3 tools/check-evidence-layout.py --base origin/main` 결과를 PR에 적는다. 이 도구는 Record ID 형식, 예외 목록과 정책의 일치, 예외 경로의 새 파일, 기존 증적의 변경·삭제와 기존 수집회차 폴더 안의 새 파일, 대장·수집회차 Manifest 해시, 모든 추적 파일의 대장 연결을 확인한다. 결과는 경로·목록·현재 바이트 점검이며 원본 진위·시험 PASS·인수 승인을 뜻하지 않는다.
+- 점검: 편입 PR은 `python3 tools/check-evidence-layout.py --base origin/main` 결과를 PR에 적는다. 이 도구는 Record ID 형식, 예외 목록과 정책의 일치, 예외 경로의 새 파일, 기존 증적의 변경·삭제와 기존 수집회차 폴더 안의 새 파일, 대장·수집회차 Manifest 해시(Manifest는 자기 폴더 안의 파일만 확인할 수 있다), 모든 추적 파일의 대장 연결을 확인한다. 대장에 등록된 Manifest의 항목이 모두 Git에 없으면(서버 경로 기록 등) 오류 대신 `WARN`으로 알린다. 결과는 경로·목록·현재 바이트 점검이며 원본 진위·시험 PASS·인수 승인을 뜻하지 않는다.
 
 ## 원본 보존과 무결성
 
 - 원본 21개 등 수신 파일은 바이트 그대로 복사한다. 자동 줄바꿈 정규화를 끈다.
 - P1-DNS-01 R2 ZIP을 재압축하거나 내부 Index/Manifest를 바꾸지 않는다. 기록된 ZIP SHA-256과 수신 바이트, sidecar, 내부 Manifest를 차례로 대조한다.
 - 새 인수 문서는 새 수집회차 경로에 작성한다. 기존 원본에 사후 Commit이나 승인 문구를 삽입하지 않는다.
-- 병합된 수집회차 폴더(`evidence/<Record ID>/` 아래에서 파일을 직접 가진 폴더)는 닫힌 것으로 본다(2026-09-25). 그 폴더와 하위 폴더에 파일을 추가하지 않고, 이미 병합된 `evidence/` 파일을 변경·삭제하지 않는다. 안내·정정·보완 문서는 새 경로(예: `records/post-merge-<날짜>/` 또는 같은 Record ID 아래 새 폴더)에 두고 기존 기록에서 링크한다. 점검 도구는 `--base` 기준으로 이를 `SEALED` 오류로 막는다. 구조 이전처럼 불가피한 변경은 정책 변경 PR로 따로 결정한다.
+- 병합된 수집회차 폴더(`evidence/<Record ID>/` 아래에서 파일을 직접 가진 폴더)는 닫힌 것으로 본다(2026-09-25). 그 폴더와 하위 폴더에 파일을 추가하지 않고, 이미 병합된 `evidence/` 파일을 변경·삭제하지 않는다. 안내·정정·보완 문서는 새 경로(예: `records/post-merge-<날짜>/` 또는 같은 Record ID 아래 새 폴더)에 두고 기존 기록에서 링크한다. 점검 도구는 `--base` 기준으로 이를 `SEALED` 오류로 막는다. `evidence/<Record ID>/` 바로 아래에는 새 파일과 새 수집회차 폴더를 추가할 수 있다(기존 파일의 변경·삭제는 금지). 구조 이전처럼 불가피한 변경은 정책 변경 PR로 따로 결정한다.
 - P1-ANS 승인본 05h/05j 실제 배포 여부는 별도 확인한다. 로컬에서 생성한 Manifest를 과거 서버 검증으로 대체하지 않는다.
 - 사용자 콘솔 보완은 콘솔 제출 자료로 표시한다. 서버 .txt/.sha256을 받지 않았으면 서버 원본 Hash 검증을 주장하지 않는다.
 - Index에는 수신 바이트의 SHA-256과 그 검증 범위를 기록한다. Hash 일치가 시험 PASS 또는 승인 진위의 단독 증거가 되지는 않는다.

@@ -124,8 +124,10 @@ def sealed_collections(names: list[str]) -> set[str]:
 
 
 def check(root: Path, files: list[str], new_files: list[str] | None,
-          changes: list[tuple[str, str]] | None = None, before: list[str] | None = None) -> list[str]:
+          changes: list[tuple[str, str]] | None = None, before: list[str] | None = None,
+          warnings: list[str] | None = None) -> list[str]:
     errors: list[str] = []
+    warnings = warnings if warnings is not None else []
     file_set = set(files)
 
     config = json.loads((root / EXCEPTIONS).read_text(encoding="utf-8"))
@@ -202,6 +204,14 @@ def check(root: Path, files: list[str], new_files: list[str] | None,
     for manifest in trusted_manifests:
         base = PurePosixPath(manifest).parent
         entries = [(value, entry, normalize(base, entry)) for value, entry in read_sums(root / manifest)]
+        # Manifest는 자기 폴더 안의 파일만 확인할 수 있다. 밖을 가리키면 다른 폴더의 파일이
+        # 이 Manifest로 "확인됨" 처리될 수 있으므로 오류로 막는다.
+        outside = [entry for _, entry, name in entries if not name.startswith(f"{base}/")]
+        for entry in outside:
+            errors.append(f"MANIFEST: {manifest} — {entry}는 Manifest 폴더 밖을 가리킨다")
+        entries = [item for item in entries if item[1] not in outside]
+        if entries and not any(name in file_set for _, _, name in entries):
+            warnings.append(f"WARN: {manifest} — 항목 {len(entries)}개가 모두 Git에 없어 대조를 건너뛴다(서버 경로 기록 등 선별 편입)")
         if not any(name in file_set and name not in registered for _, _, name in entries):
             continue
         for value, entry, name in entries:
@@ -283,12 +293,13 @@ def main() -> int:
     changes = changed_files(root, args.base) if args.base else None
     new_files = [name for status, name in changes if status == "A"] if changes is not None else None
     before = base_files(root, args.base) if args.base else None
-    errors = check(root, files, new_files, changes, before)
-    for line in errors:
+    warnings: list[str] = []
+    errors = check(root, files, new_files, changes, before, warnings)
+    for line in errors + warnings:
         print(line)
     scope = f", 기준 {args.base}" if args.base else ", 기준 ref 없음(FROZEN·SEALED 점검 생략)"
     status = "FAIL" if errors else "PASS"
-    print(f"evidence-layout: {status} — 추적 파일 {len(files)}개, 오류 {len(errors)}건{scope}")
+    print(f"evidence-layout: {status} — 추적 파일 {len(files)}개, 오류 {len(errors)}건, 경고 {len(warnings)}건{scope}")
     print("이 결과는 경로·목록·현재 바이트 점검이며 원본 진위, 시험 PASS, 인수 승인을 뜻하지 않는다.")
     return 1 if errors else 0
 
