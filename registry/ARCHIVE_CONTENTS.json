@@ -2,6 +2,78 @@
   "version": 1,
   "max_bytes": 1048576,
   "archives": {
+    "evidence/P1-CICD-01/run-35683010080-attempt-1/collect-record-received-20260924/collect-record.tar.gz": {
+      "sha256": "58ed389299582dc6d69d5d19c94d08c82df730c27c5a693b54408d0cca61b758",
+      "size": 1204,
+      "entries": [
+        {
+          "name": "SHA256SUMS",
+          "size": 357,
+          "sha256": "ca0e1088efd40f0d39275c2b2249530d4707f7270f69b9eb4efc8e2610cbd383"
+        },
+        {
+          "name": "collection-record.json",
+          "size": 1321,
+          "sha256": "9edf06fde0ae088976eec7df3c4bc4e9a2dfa5ba26b01c3a161e2a59cf39a666"
+        },
+        {
+          "name": "original/collect.log",
+          "size": 397,
+          "sha256": "42171897b2ba5319c36c25cc9a9ef2f73c1261c22dc9df65e2512477065bde71"
+        },
+        {
+          "name": "original/finished-at.txt",
+          "size": 26,
+          "sha256": "bb2a6626c9571c892d90a8e737f16fab4de2b6e6bc264254501587ac73321075"
+        },
+        {
+          "name": "original/started-at.txt",
+          "size": 26,
+          "sha256": "07635d905e709d78f220e9956cab63cb1bc2ff1ba5d584ee384b94e4ed6eff80"
+        }
+      ]
+    },
+    "evidence/P1-CICD-01/run-35683010080-attempt-1/received-20260924/app-evidence.tar.gz": {
+      "sha256": "11578ae33211f569df91830a2b26314c01ffcaea70a67dc7165f9e3dad4b1c79",
+      "size": 7367,
+      "entries": [
+        {
+          "name": "build-scan/result.json",
+          "size": 9240,
+          "sha256": "b512188efbd713cd5e05b7a2e8b3f3c8a860d92120fd8362a75f6eed230bad89"
+        },
+        {
+          "name": "build-scan/scan/db/cache/db/metadata.json",
+          "size": 153,
+          "sha256": "8331fd1934762717cbea2baa6515a55241cbb11e7124520fe9f5ad6bb467b378"
+        },
+        {
+          "name": "build-scan/scan/db/result.json",
+          "size": 1348,
+          "sha256": "b40f423e8f1cda33c4cc0da34faf499d5f7d80f4898891ae22ae1b503a7844ab"
+        },
+        {
+          "name": "build-scan/scan/result.json",
+          "size": 2445,
+          "sha256": "a11350083c44f6b9488ce7b2e27376c50a41519bb3a7430f2ee6930b8eefb953"
+        },
+        {
+          "name": "handoff.json",
+          "size": 3471,
+          "sha256": "f79d0c073448d29b9705ba9e6454fa010b85af97eeace97dab0c6a499411fefd"
+        },
+        {
+          "name": "manifest.json",
+          "size": 11372,
+          "sha256": "4bfcc4e5f6682e7c6262e2cc74d8d06f95e9c766b49474a97887d22d9e1303c1"
+        },
+        {
+          "name": "result.json",
+          "size": 5765,
+          "sha256": "3dda5fc2b46f89049b5e36e0cce5c17e8887fb7b140486d3cb4e3d05926ce337"
+        }
+      ]
+    },
     "evidence/infra-ansible-followup/actions-positive-shm-failure-35139314896-1/actions/ansible-ci-35139314896-attempt1.zip": {
       "sha256": "e678eead880bd62a47b6c41428ad519646c54f66b315eb552890b82240eeb1a3",
       "size": 149025,
