@@ -1,0 +1,2260 @@
+{
+  "matched_packets": 64,
+  "unique_flows": 19,
+  "per_destination_port": {
+    "10250": 43,
+    "9100": 21
+  },
+  "flows_per_destination_port": {
+    "10250": 13,
+    "9100": 6
+  },
+  "captured_flags": {
+    "S": 64
+  },
+  "sender_guard_equal": true,
+  "sender": {
+    "name": "prometheus-58c848c688-kzvhp",
+    "uid": "46c00f91-2073-440a-800c-6cedba89d291",
+    "node": "k8s-worker03",
+    "ip": "10.244.39.219",
+    "host_ip": "10.1.93.108",
+    "sa": "prometheus",
+    "image_ids": [
+      "10.1.93.54/fds/prometheus@sha256:b77f9cee82fd1c61521634d2d6b192fc526ffd938e904b8e6836b6c0cf8d875a"
+    ],
+    "ready": true
+  },
+  "match_fields": [
+    "destination IP/port",
+    "flags",
+    "TCP initial sequence",
+    "window/options incl TS val and length"
+  ],
+  "source_nat": "Pod 10.244.39.219 -> worker03 10.1.93.108",
+  "source_port_translation": "observed in every matched flow",
+  "interpretation": "Pod network path attribution; not PID attribution, exact NAT rule or drop verdict",
+  "flows": [
+    {
+      "pod_source": "10.244.39.219:39458",
+      "wire_source": "10.1.93.108:2832",
+      "destination": "10.1.93.105:10250",
+      "seq": "2806707438",
+      "syn_observations": 9,
+      "first_kst": "2026-09-24 02:05:00.917981",
+      "last_kst": "2026-09-24 02:05:20.603831"
+    },
+    {
+      "pod_source": "10.244.39.219:60702",
+      "wire_source": "10.1.93.108:21109",
+      "destination": "10.1.93.105:9100",
+      "seq": "349599148",
+      "syn_observations": 3,
+      "first_kst": "2026-09-24 02:05:01.339771",
+      "last_kst": "2026-09-24 02:05:13.435918"
+    },
+    {
+      "pod_source": "10.244.39.219:39448",
+      "wire_source": "10.1.93.108:35483",
+      "destination": "10.1.93.105:10250",
+      "seq": "2241333585",
+      "syn_observations": 5,
+      "first_kst": "2026-09-24 02:05:01.467883",
+      "last_kst": "2026-09-24 02:05:17.019809"
+    },
+    {
+      "pod_source": "10.244.39.219:49058",
+      "wire_source": "10.1.93.108:13613",
+      "destination": "10.1.93.105:10250",
+      "seq": "1147058525",
+      "syn_observations": 2,
+      "first_kst": "2026-09-24 02:05:01.660090",
+      "last_kst": "2026-09-24 02:05:18.043908"
+    },
+    {
+      "pod_source": "10.244.39.219:52416",
+      "wire_source": "10.1.93.108:63118",
+      "destination": "10.1.93.105:9100",
+      "seq": "1581079475",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:02.172310",
+      "last_kst": "2026-09-24 02:05:02.172310"
+    },
+    {
+      "pod_source": "10.244.39.219:59536",
+      "wire_source": "10.1.93.108:50091",
+      "destination": "10.1.93.105:10250",
+      "seq": "651948400",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:03.195769",
+      "last_kst": "2026-09-24 02:05:03.195769"
+    },
+    {
+      "pod_source": "10.244.39.219:49062",
+      "wire_source": "10.1.93.108:52790",
+      "destination": "10.1.93.105:10250",
+      "seq": "1590210273",
+      "syn_observations": 2,
+      "first_kst": "2026-09-24 02:05:05.244023",
+      "last_kst": "2026-09-24 02:05:21.627852"
+    },
+    {
+      "pod_source": "10.244.39.219:53198",
+      "wire_source": "10.1.93.108:59086",
+      "destination": "10.1.93.105:10250",
+      "seq": "125138971",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:05.756183",
+      "last_kst": "2026-09-24 02:05:05.756183"
+    },
+    {
+      "pod_source": "10.244.39.219:59550",
+      "wire_source": "10.1.93.108:1221",
+      "destination": "10.1.93.105:10250",
+      "seq": "1865675395",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:06.780144",
+      "last_kst": "2026-09-24 02:05:06.780144"
+    },
+    {
+      "pod_source": "10.244.39.219:53208",
+      "wire_source": "10.1.93.108:37597",
+      "destination": "10.1.93.105:10250",
+      "seq": "245500762",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:08.827928",
+      "last_kst": "2026-09-24 02:05:08.827928"
+    },
+    {
+      "pod_source": "10.244.39.219:49754",
+      "wire_source": "10.1.93.108:61877",
+      "destination": "10.1.93.105:9100",
+      "seq": "2108466909",
+      "syn_observations": 9,
+      "first_kst": "2026-09-24 02:05:09.157856",
+      "last_kst": "2026-09-24 02:05:28.795871"
+    },
+    {
+      "pod_source": "10.244.39.219:55342",
+      "wire_source": "10.1.93.108:43659",
+      "destination": "10.1.93.105:10250",
+      "seq": "3238635197",
+      "syn_observations": 8,
+      "first_kst": "2026-09-24 02:05:12.367790",
+      "last_kst": "2026-09-24 02:05:23.547901"
+    },
+    {
+      "pod_source": "10.244.39.219:47714",
+      "wire_source": "10.1.93.108:61137",
+      "destination": "10.1.93.105:9100",
+      "seq": "493567880",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:14.972102",
+      "last_kst": "2026-09-24 02:05:14.972102"
+    },
+    {
+      "pod_source": "10.244.39.219:55350",
+      "wire_source": "10.1.93.108:25018",
+      "destination": "10.1.93.105:10250",
+      "seq": "1001666153",
+      "syn_observations": 8,
+      "first_kst": "2026-09-24 02:05:15.917450",
+      "last_kst": "2026-09-24 02:05:27.131808"
+    },
+    {
+      "pod_source": "10.244.39.219:51776",
+      "wire_source": "10.1.93.108:14344",
+      "destination": "10.1.93.105:9100",
+      "seq": "4052279799",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:17.531892",
+      "last_kst": "2026-09-24 02:05:17.531892"
+    },
+    {
+      "pod_source": "10.244.39.219:37748",
+      "wire_source": "10.1.93.108:58662",
+      "destination": "10.1.93.105:10250",
+      "seq": "3788947786",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:20.603939",
+      "last_kst": "2026-09-24 02:05:20.603939"
+    },
+    {
+      "pod_source": "10.244.39.219:47252",
+      "wire_source": "10.1.93.108:7457",
+      "destination": "10.1.93.105:9100",
+      "seq": "3171087338",
+      "syn_observations": 6,
+      "first_kst": "2026-09-24 02:05:24.157958",
+      "last_kst": "2026-09-24 02:05:29.307750"
+    },
+    {
+      "pod_source": "10.244.39.219:37764",
+      "wire_source": "10.1.93.108:1769",
+      "destination": "10.1.93.105:10250",
+      "seq": "4106483614",
+      "syn_observations": 1,
+      "first_kst": "2026-09-24 02:05:24.188107",
+      "last_kst": "2026-09-24 02:05:24.188107"
+    },
+    {
+      "pod_source": "10.244.39.219:52334",
+      "wire_source": "10.1.93.108:7154",
+      "destination": "10.1.93.105:10250",
+      "seq": "3818710282",
+      "syn_observations": 3,
+      "first_kst": "2026-09-24 02:05:27.366955",
+      "last_kst": "2026-09-24 02:05:29.435873"
+    }
+  ],
+  "packets": [
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:00.917981",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483696999 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:00.918055",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483696999 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:00.918783",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483696999 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:01.339771",
+        "src": "10.244.39.219",
+        "sport": "60702",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240309300 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:01.339836",
+        "src": "10.1.93.108",
+        "sport": "21109",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240309300 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:01.340652",
+        "src": "10.1.93.108",
+        "sport": "21109",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240309300 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:01.467883",
+        "src": "10.244.39.219",
+        "sport": "39448",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92657921 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:01.467944",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92657921 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:01.468715",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92657921 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:01.660090",
+        "src": "10.244.39.219",
+        "sport": "49058",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1147058525",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 791592097 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:01.660169",
+        "src": "10.1.93.108",
+        "sport": "13613",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1147058525",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 791592097 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:01.660877",
+        "src": "10.1.93.108",
+        "sport": "13613",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1147058525",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 791592097 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:01.979942",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483698061 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:01.980011",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483698061 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:01.980786",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483698061 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:02.172310",
+        "src": "10.244.39.219",
+        "sport": "52416",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "1581079475",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1692591923 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:02.172331",
+        "src": "10.1.93.108",
+        "sport": "63118",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "1581079475",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1692591923 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:02.172854",
+        "src": "10.1.93.108",
+        "sport": "63118",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "1581079475",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1692591923 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:02.493007",
+        "src": "10.244.39.219",
+        "sport": "39448",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92658946 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:02.493050",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92658946 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:02.493786",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92658946 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:03.003798",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483699085 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:03.003861",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483699085 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:03.004502",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483699085 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:03.195769",
+        "src": "10.244.39.219",
+        "sport": "59536",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "651948400",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2366912078 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:03.195854",
+        "src": "10.1.93.108",
+        "sport": "50091",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "651948400",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2366912078 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:03.196436",
+        "src": "10.1.93.108",
+        "sport": "50091",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "651948400",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2366912078 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:04.027725",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483700109 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:04.027893",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483700109 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:04.028529",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483700109 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:04.539750",
+        "src": "10.244.39.219",
+        "sport": "39448",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92660993 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:04.539842",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92660993 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:04.540616",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92660993 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:05.051720",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483701133 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:05.051754",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483701133 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:05.052355",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483701133 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:05.244023",
+        "src": "10.244.39.219",
+        "sport": "49062",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1590210273",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2725197555 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:05.244078",
+        "src": "10.1.93.108",
+        "sport": "52790",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1590210273",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2725197555 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:05.244858",
+        "src": "10.1.93.108",
+        "sport": "52790",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1590210273",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2725197555 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:05.372144",
+        "src": "10.244.39.219",
+        "sport": "60702",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240313332 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:05.372191",
+        "src": "10.1.93.108",
+        "sport": "21109",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240313332 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:05.372856",
+        "src": "10.1.93.108",
+        "sport": "21109",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240313332 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:05.756183",
+        "src": "10.244.39.219",
+        "sport": "53198",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "125138971",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3237712916 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:05.756204",
+        "src": "10.1.93.108",
+        "sport": "59086",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "125138971",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3237712916 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:05.756825",
+        "src": "10.1.93.108",
+        "sport": "59086",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "125138971",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3237712916 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:06.075849",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483702157 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:06.075898",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483702157 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:06.076601",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483702157 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:06.780144",
+        "src": "10.244.39.219",
+        "sport": "59550",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1865675395",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1500439834 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:06.780211",
+        "src": "10.1.93.108",
+        "sport": "1221",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1865675395",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1500439834 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:06.781041",
+        "src": "10.1.93.108",
+        "sport": "1221",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1865675395",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1500439834 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:08.124119",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483704205 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:08.124168",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483704205 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:08.124878",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483704205 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:08.571777",
+        "src": "10.244.39.219",
+        "sport": "39448",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92665025 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:08.571829",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92665025 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:08.572488",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92665025 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:08.827928",
+        "src": "10.244.39.219",
+        "sport": "53208",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "245500762",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2557197547 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:08.827970",
+        "src": "10.1.93.108",
+        "sport": "37597",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "245500762",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2557197547 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:08.828674",
+        "src": "10.1.93.108",
+        "sport": "37597",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "245500762",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2557197547 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:09.157856",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002347170 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:09.157908",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002347170 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:09.158570",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002347170 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:10.171874",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002348184 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:10.171918",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002348184 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:10.172558",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002348184 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:11.195958",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002349208 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:11.196022",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002349208 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:11.196814",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002349208 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:12.156001",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483708237 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:12.156074",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483708237 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:12.156877",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483708237 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:12.219886",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002350232 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:12.219924",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002350232 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:12.220479",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002350232 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:12.367790",
+        "src": "10.244.39.219",
+        "sport": "55342",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233941887 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:12.367839",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233941887 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:12.368579",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233941887 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:13.245183",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002351257 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:13.245224",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002351257 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:13.245834",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002351257 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:13.371825",
+        "src": "10.244.39.219",
+        "sport": "55342",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233942891 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:13.371924",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233942891 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:13.372678",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233942891 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:13.435918",
+        "src": "10.244.39.219",
+        "sport": "60702",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240321396 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:13.435964",
+        "src": "10.1.93.108",
+        "sport": "21109",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240321396 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:13.436564",
+        "src": "10.1.93.108",
+        "sport": "21109",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "349599148",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2240321396 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:14.267790",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002352280 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:14.267863",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002352280 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:14.268578",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002352280 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:14.396009",
+        "src": "10.244.39.219",
+        "sport": "55342",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233943915 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:14.396088",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233943915 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:14.396776",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233943915 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:14.972102",
+        "src": "10.244.39.219",
+        "sport": "47714",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "493567880",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1540091387 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:14.972115",
+        "src": "10.1.93.108",
+        "sport": "61137",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "493567880",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1540091387 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:14.972643",
+        "src": "10.1.93.108",
+        "sport": "61137",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "493567880",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1540091387 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:15.420082",
+        "src": "10.244.39.219",
+        "sport": "55342",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233944939 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:15.420139",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233944939 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:15.420915",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233944939 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:15.917450",
+        "src": "10.244.39.219",
+        "sport": "55350",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953820522 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:15.917502",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953820522 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:15.918260",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953820522 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:16.315998",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002354328 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:16.316040",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002354328 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:16.316749",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002354328 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:16.445167",
+        "src": "10.244.39.219",
+        "sport": "55342",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233945964 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:16.445218",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233945964 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:16.446007",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233945964 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:16.955774",
+        "src": "10.244.39.219",
+        "sport": "55350",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953821561 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:16.955817",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953821561 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:16.956599",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953821561 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:17.019809",
+        "src": "10.244.39.219",
+        "sport": "39448",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92673473 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:17.019869",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92673473 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:17.020575",
+        "src": "10.1.93.108",
+        "sport": "35483",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2241333585",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 92673473 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:17.467821",
+        "src": "10.244.39.219",
+        "sport": "55342",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233946987 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:17.467843",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233946987 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:17.468606",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233946987 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:17.531892",
+        "src": "10.244.39.219",
+        "sport": "51776",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "4052279799",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 102606763 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:17.531924",
+        "src": "10.1.93.108",
+        "sport": "14344",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "4052279799",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 102606763 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:17.532702",
+        "src": "10.1.93.108",
+        "sport": "14344",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "4052279799",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 102606763 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:17.979843",
+        "src": "10.244.39.219",
+        "sport": "55350",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953822585 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:17.979922",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953822585 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:17.980661",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953822585 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:18.043908",
+        "src": "10.244.39.219",
+        "sport": "49058",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1147058525",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 791608481 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:18.043995",
+        "src": "10.1.93.108",
+        "sport": "13613",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1147058525",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 791608481 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:18.044701",
+        "src": "10.1.93.108",
+        "sport": "13613",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1147058525",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 791608481 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:19.003979",
+        "src": "10.244.39.219",
+        "sport": "55350",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953823609 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:19.004032",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953823609 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:19.004780",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953823609 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:19.515685",
+        "src": "10.244.39.219",
+        "sport": "55342",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233949035 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:19.515725",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233949035 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:19.516319",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233949035 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:20.028147",
+        "src": "10.244.39.219",
+        "sport": "55350",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953824633 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:20.028202",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953824633 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:20.028888",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953824633 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:20.347920",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002358360 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:20.348005",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002358360 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:20.348793",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002358360 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:20.603831",
+        "src": "10.244.39.219",
+        "sport": "39458",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483716685 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:20.603870",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483716685 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:20.604582",
+        "src": "10.1.93.108",
+        "sport": "2832",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "2806707438",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2483716685 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:20.603939",
+        "src": "10.244.39.219",
+        "sport": "37748",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3788947786",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1262794446 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:20.603958",
+        "src": "10.1.93.108",
+        "sport": "58662",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3788947786",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1262794446 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:20.604583",
+        "src": "10.1.93.108",
+        "sport": "58662",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3788947786",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1262794446 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:21.051728",
+        "src": "10.244.39.219",
+        "sport": "55350",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953825657 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:21.051802",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953825657 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:21.052464",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953825657 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:21.627852",
+        "src": "10.244.39.219",
+        "sport": "49062",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1590210273",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2725213939 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:21.627898",
+        "src": "10.1.93.108",
+        "sport": "52790",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1590210273",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2725213939 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:21.628652",
+        "src": "10.1.93.108",
+        "sport": "52790",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1590210273",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2725213939 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:23.100018",
+        "src": "10.244.39.219",
+        "sport": "55350",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953827705 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:23.100033",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953827705 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:23.100772",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953827705 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:23.547901",
+        "src": "10.244.39.219",
+        "sport": "55342",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233953067 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:23.547979",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233953067 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:23.548790",
+        "src": "10.1.93.108",
+        "sport": "43659",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3238635197",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 4233953067 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:24.157958",
+        "src": "10.244.39.219",
+        "sport": "47252",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990059133 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:24.158014",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990059133 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:24.158825",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990059133 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:24.188107",
+        "src": "10.244.39.219",
+        "sport": "37764",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "4106483614",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1337679477 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:24.188225",
+        "src": "10.1.93.108",
+        "sport": "1769",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "4106483614",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1337679477 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:24.188893",
+        "src": "10.1.93.108",
+        "sport": "1769",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "4106483614",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1337679477 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:25.211771",
+        "src": "10.244.39.219",
+        "sport": "47252",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990060187 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:25.211806",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990060187 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:25.212861",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990060187 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:26.235906",
+        "src": "10.244.39.219",
+        "sport": "47252",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990061211 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:26.235973",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990061211 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:26.236782",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990061211 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:27.131808",
+        "src": "10.244.39.219",
+        "sport": "55350",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953831737 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:27.131851",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953831737 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:27.132553",
+        "src": "10.1.93.108",
+        "sport": "25018",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "1001666153",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 953831737 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:27.259953",
+        "src": "10.244.39.219",
+        "sport": "47252",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990062235 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:27.260000",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990062235 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:27.261341",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990062235 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:27.366955",
+        "src": "10.244.39.219",
+        "sport": "52334",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851976057 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:27.367008",
+        "src": "10.1.93.108",
+        "sport": "7154",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851976057 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:27.367797",
+        "src": "10.1.93.108",
+        "sport": "7154",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851976057 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:28.284323",
+        "src": "10.244.39.219",
+        "sport": "47252",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990063259 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:28.284396",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990063259 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:28.284926",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990063259 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:28.411724",
+        "src": "10.244.39.219",
+        "sport": "52334",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851977102 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:28.411792",
+        "src": "10.1.93.108",
+        "sport": "7154",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851977102 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:28.412451",
+        "src": "10.1.93.108",
+        "sport": "7154",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851977102 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:28.795871",
+        "src": "10.244.39.219",
+        "sport": "49754",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002366808 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:28.795913",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002366808 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:28.796623",
+        "src": "10.1.93.108",
+        "sport": "61877",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "2108466909",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 2002366808 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:29.307750",
+        "src": "10.244.39.219",
+        "sport": "47252",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990064283 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:29.307796",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990064283 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:29.308463",
+        "src": "10.1.93.108",
+        "sport": "7457",
+        "dst": "10.1.93.105",
+        "dport": "9100",
+        "flags": "S",
+        "seq": "3171087338",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 3990064283 ecr 0,nop,wscale 7], length 0"
+      }
+    },
+    {
+      "veth": {
+        "time": "2026-09-24 02:05:29.435873",
+        "src": "10.244.39.219",
+        "sport": "52334",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851978126 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker03_ens160": {
+        "time": "2026-09-24 02:05:29.435942",
+        "src": "10.1.93.108",
+        "sport": "7154",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851978126 ecr 0,nop,wscale 7], length 0"
+      },
+      "worker01_ens160": {
+        "time": "2026-09-24 02:05:29.436566",
+        "src": "10.1.93.108",
+        "sport": "7154",
+        "dst": "10.1.93.105",
+        "dport": "10250",
+        "flags": "S",
+        "seq": "3818710282",
+        "tail": "win 64860, options [mss 1410,sackOK,TS val 1851978126 ecr 0,nop,wscale 7], length 0"
+      }
+    }
+  ]
+}
