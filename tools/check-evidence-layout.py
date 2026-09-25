@@ -204,14 +204,22 @@ def check(root: Path, files: list[str], new_files: list[str] | None,
     for manifest in trusted_manifests:
         base = PurePosixPath(manifest).parent
         entries = [(value, entry, normalize(base, entry)) for value, entry in read_sums(root / manifest)]
-        # Manifest는 자기 폴더 안의 파일만 확인할 수 있다. 밖을 가리키면 다른 폴더의 파일이
-        # 이 Manifest로 "확인됨" 처리될 수 있으므로 오류로 막는다.
-        outside = [entry for _, entry, name in entries if not name.startswith(f"{base}/")]
-        for entry in outside:
-            errors.append(f"MANIFEST: {manifest} — {entry}는 Manifest 폴더 밖을 가리킨다")
+        if not entries:
+            warnings.append(f"WARN: {manifest} — sha256sum 형식으로 읽을 수 있는 항목이 없다(BSD 형식·대문자 hex 등)")
+            continue
+        # Manifest는 자기 폴더 안의 파일만 확인할 수 있다. 밖의 추적 파일을 가리키면 다른
+        # 폴더의 파일이 이 Manifest로 "확인됨" 처리될 수 있으므로 오류로 막는다. 추적 파일이
+        # 아닌 경로(서버 절대경로 등)는 확인 대상이 될 수 없으므로 경고만 낸다.
+        outside = {entry: name for _, entry, name in entries if not name.startswith(f"{base}/")}
+        for entry, name in outside.items():
+            if name in file_set:
+                errors.append(f"MANIFEST: {manifest} — {entry}는 Manifest 폴더 밖의 추적 파일을 가리킨다")
+            else:
+                warnings.append(f"WARN: {manifest} — {entry}는 Manifest 폴더 밖 경로(추적 파일 아님)라 대조하지 않는다")
         entries = [item for item in entries if item[1] not in outside]
         if entries and not any(name in file_set for _, _, name in entries):
-            warnings.append(f"WARN: {manifest} — 항목 {len(entries)}개가 모두 Git에 없어 대조를 건너뛴다(서버 경로 기록 등 선별 편입)")
+            warnings.append(f"WARN: {manifest} — 항목 {len(entries)}개가 이 폴더 기준으로 모두 Git에 없어 대조를 건너뛴다"
+                            "(루트 기준·이전 경로·서버 경로를 적은 Manifest 등)")
         if not any(name in file_set and name not in registered for _, _, name in entries):
             continue
         for value, entry, name in entries:
