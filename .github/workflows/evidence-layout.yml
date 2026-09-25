@@ -1,0 +1,21 @@
+name: evidence-layout
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4; baseline canonical-integrity와 같은 고정 SHA
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -q
+      - name: Evidence layout, exceptions and registry
+        run: |
+          base="origin/${GITHUB_BASE_REF:-main}"
+          python3 tools/check-evidence-layout.py --base "${base}"

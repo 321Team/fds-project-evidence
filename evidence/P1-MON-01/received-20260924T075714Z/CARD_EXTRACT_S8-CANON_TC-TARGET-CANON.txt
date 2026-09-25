@@ -1,0 +1,9 @@
+{ group:'Phase E', id:'S8-CANON / TC-TARGET-CANON', title:'관측 대상 장애/복구 — 정본 클러스터 재현 (Discord)', environment:'E-CANON · K8s 정식 6노드', evidence_mode:'ARCHIVED_RUNTIME', execution:'RUN', verdict:'PASS',
+      purpose:'9/10 E-K3S 데모(S7b+S8, 위 M4 카드)와 별개로, 정본 클러스터에서 실제 kube-state-metrics 장애를 만들었을 때 Alertmanager→Discord 알림 경로가 FIRING부터 RESOLVED까지 끝까지 동작하는가.',
+      path:'kube-state-metrics(monitoring-api ns) replicas 1→0→1(kubectl scale) → Prometheus TargetDown rule → Alertmanager → Discord 웹훅',
+      positive:{expected:'정상 상태에서는 알림 없음(up=1)', observed:'scale 0 이전 정상 스크레이프 상태(Phase D 확인 시점 기준 up)', verdict:'PASS'},
+      negative:{expected:'대상 장애 → 1분 이상 스크레이프 실패 시 critical alert firing → 복구 후 자동 resolved', observed:'2026-09-22 kube-state-metrics를 0으로 축소 → Discord에 `[FIRING:1] TargetDown critical`(job=kube-state-metrics, severity=critical, "1분 이상 스크레이프하지 못함") 실시간 수신 → 1로 복구 → Discord에 동일 alertname으로 `[RESOLVED]` 수신, 사용자가 직접 스크린샷으로 확인', denial:null, verdict:'PASS'},
+      timeline:['kube-state-metrics replicas=0 (2026-09-22)','Discord [FIRING:1] TargetDown 수신','replicas=1 복구','Discord [RESOLVED] 수신'],
+      limitations:['alertname(TargetDown)은 위 M4(S7b+S8)의 9/10 E-K3S 데모 룰명과 다르지만 동일한 "관측 대상 장애→복구" 개념을 정본 클러스터에서 재현한 것 — M4 카드를 대체하지 않고 별도 환경의 독립 증거로 취급','Prometheus rule 표현식이 `up{job=~"transaction-api|fds-engine|kube-state-metrics"} == 0`으로 3개 job을 묶어 감시 중 — 이번엔 kube-state-metrics만 단독으로 내려서 다른 job과의 상호 간섭 여부는 별도 확인 안 함'],
+      evidence:[], authority:['#17 P1-MON-01 AC1/11'],
+      next:'없음 — 정본 클러스터 알림 파이프라인 종단 확인 완료', owner:'이재환' }
