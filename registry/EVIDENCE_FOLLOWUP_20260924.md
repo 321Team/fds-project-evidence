@@ -33,7 +33,7 @@
 
 | 항목 | 상태 | 다음 |
 |---|---|---|
-| [#37](https://github.com/321Team/fds-project-evidence/pull/37) P1-DB-01·MON-01·E2E-01 Lead 직접 재수집 | main 충돌 해소(`ede08d6`), 리뷰 전 | 이하영 독립 리뷰 |
+| [#37](https://github.com/321Team/fds-project-evidence/pull/37) P1-DB-01·MON-01·E2E-01 Lead 직접 재수집 | 이하영 [수정 요청](https://github.com/321Team/fds-project-evidence/pull/37#pullrequestreview-5313449647)(`0110c05`): 정리본을 원본으로 표기, PR 코멘트 참조, 미수신 항목 미기재. main 충돌 해소(`ede08d6`) 후 작성자가 서버 원본 출력으로 교체(`d2096ab`) | 이하영 재검토 |
 | [#39](https://github.com/321Team/fds-project-evidence/pull/39) 점검 도구 후속 | 정정 반영, 재확인 대기 | 이하영 재확인 |
 | 이 PR(#25) | 이 절로 갱신 | 이하영 독립 리뷰 |
 | [evidence #34](https://github.com/321Team/fds-project-evidence/issues/34) P1-SEC-01 원본·보안 후속 | 미제출 | 이하영 |
