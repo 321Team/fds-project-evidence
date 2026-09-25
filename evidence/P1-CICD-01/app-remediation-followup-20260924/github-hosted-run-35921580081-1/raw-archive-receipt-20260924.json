@@ -1,0 +1,51 @@
+{
+  "schema": "P1-CICD-candidate-artifact-raw-receipt-1",
+  "recorded_at": "2026-09-24T13:55:31Z",
+  "note_on_preexisting_files": "This file adds a new receipt record. artifacts.json and receipt-status.json in this same directory are preserved unmodified as the pre-receipt historical record (raw_archive_local=NOT_RECEIVED reflects state before this receipt). This file is the current status.",
+  "artifact_id": 10777267517,
+  "expected_archive_bytes": 278490138,
+  "expected_archive_sha256": "22c0952ccafa9dc5d65506f821e5c125179d9bd4b7bcbfcd193dda36d5415eb8",
+  "chain_of_custody": [
+    {
+      "step": "lead_download",
+      "actor": "이권욱 (Lead)",
+      "method": "GitHub Actions run page browser download from an unrestricted network (not this session's sandbox, which independently confirmed an egress policy block on the Azure Blob Storage domain used by GitHub Actions artifact delivery)",
+      "size_bytes": 278490138,
+      "sha256": "22c0952ccafa9dc5d65506f821e5c125179d9bd4b7bcbfcd193dda36d5415eb8",
+      "result": "MATCH"
+    },
+    {
+      "step": "independent_reviewer_download",
+      "actor": "이하영 (Reviewer)",
+      "recorded_at_kst": "2026-09-24T22:00:00+09:00",
+      "size_bytes": 278490138,
+      "sha256": "22c0952ccafa9dc5d65506f821e5c125179d9bd4b7bcbfcd193dda36d5415eb8",
+      "result": "MATCH",
+      "reference": "https://github.com/321Team/fds-project-evidence/pull/26#issuecomment-5814716383"
+    },
+    {
+      "step": "onprem_server_placement",
+      "host": "cicd-runner01",
+      "account": "server01_cicd-runner",
+      "path": "/home/server01_cicd-runner/evidence-raw/app-remediation-followup-20260924/github-hosted-run-35921580081-1/candidate-images-bbe349c8815ed2ade3de87a1b312221c34f4361b-1.zip",
+      "recorded_at_kst": "2026-09-24T22:55:31+09:00",
+      "verification_method": "sha256sum -c <sidecar>",
+      "result": "PASS"
+    }
+  ],
+  "independent_confirmations": 2,
+  "internal_manifest_verification_by_reviewer": {
+    "SHA256SUMS_42_of_42": "PASS",
+    "DB_SHA256SUMS_2_of_2": "PASS",
+    "reference": "https://github.com/321Team/fds-project-evidence/pull/26#issuecomment-5814716383"
+  },
+  "cve_classification_cross_check": {
+    "result": "44 HIGH / 0 CRITICAL / 8 unique CVE, all Debian OS packages, 0 Python packages",
+    "confirmed_independently_by": ["이권욱 (this record)", "이하영 (comment 5814716383)"],
+    "reference": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-5815281708"
+  },
+  "raw_bytes_in_git": false,
+  "raw_bytes_location": "on-prem cicd-runner01 only (see onprem_server_placement.path above); not committed to this repository, consistent with this evidence folder's existing convention of keeping large binaries out of Git and recording hashes/paths instead",
+  "delivery_gate": "NOT_VERIFIED",
+  "runtime_ac": "1/10 unchanged by this receipt"
+}
