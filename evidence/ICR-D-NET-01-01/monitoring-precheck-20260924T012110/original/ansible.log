@@ -1,0 +1,24 @@
+
+PLAY [ICR one-shot sender and policy observation] ******************************
+
+TASK [Verify existing inventory identity and caller output path] ***************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Execute collector through stdin using existing sudo permission only] *****
+ok: [k8s-control01]
+
+TASK [Store projected output and execution metadata on ansible01 only] *********
+changed: [k8s-control01 -> localhost]
+
+TASK [Stop on incomplete collection without changing access or server settings] ***
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "COLLECTED_PENDING_ANALYSIS; Runtime AC NOT_ASSESSED."
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
