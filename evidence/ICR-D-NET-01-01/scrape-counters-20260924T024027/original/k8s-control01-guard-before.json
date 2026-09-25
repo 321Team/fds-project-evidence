@@ -1,0 +1,10 @@
+{
+    "ansible_host": "10.1.93.102",
+    "ansible_user": "svc_ansible",
+    "collector_sha256": "e425d0fa3cdc02e2ef575ac13a0f04d91ca65661531f5a84fffeb4ebbe293563",
+    "rc": 0,
+    "source_sha": "91b9792e0e276c0f97c36a0124fda14cf56a6b3b",
+    "stderr": "",
+    "stdout": "{\"schema\": \"icr-scrape-source-precheck/v2\", \"started_kst\": \"2026-09-24T02:40:28.878325+09:00\", \"host\": \"k8s-control01\", \"account\": \"svc_ansible\", \"collector_sha256\": \"e425d0fa3cdc02e2ef575ac13a0f04d91ca65661531f5a84fffeb4ebbe293563\", \"phase\": \"guard-before\", \"reads\": [{\"command\": [\"/usr/bin/sudo\", \"-n\", \"/usr/bin/kubectl\", \"--kubeconfig=/etc/kubernetes/admin.conf\", \"--server=https://10.1.93.109:6443\", \"--request-timeout=10s\", \"get\", \"--raw=/api/v1/namespaces/monitoring-api/pods/prometheus-58c848c688-kzvhp\"], \"started_kst\": \"2026-09-24T02:40:28.878500+09:00\", \"finished_kst\": \"2026-09-24T02:40:28.926100+09:00\", \"rc\": 0, \"stdout_sha256\": \"54ec20e10cc29c15db191baeb5ee68ae8883a610d4b0289bb705f9ac12caa640\", \"stderr\": \"\"}], \"captures\": [], \"runtime_ac\": \"NOT_ASSESSED\", \"result\": \"COLLECTED_PENDING_ANALYSIS\", \"sender\": {\"name\": \"prometheus-58c848c688-kzvhp\", \"uid\": \"46c00f91-2073-440a-800c-6cedba89d291\", \"node\": \"k8s-worker03\", \"ip\": \"10.244.39.219\", \"host_ip\": \"10.1.93.108\", \"sa\": \"prometheus\", \"image_ids\": [\"10.1.93.54/fds/prometheus@sha256:b77f9cee82fd1c61521634d2d6b192fc526ffd938e904b8e6836b6c0cf8d875a\"], \"ready\": true}, \"read_failures\": 0, \"reason\": \"Inspect read completeness and correlate the dated evidence; counters alone do not attribute a flow or prove AC. Not IF-06B evidence.\", \"finished_kst\": \"2026-09-24T02:40:28.926409+09:00\"}",
+    "target": "k8s-control01"
+}
