@@ -1,0 +1,87 @@
+{
+  "retrieved_at_kst": "2026-09-24 04:19:53 +09:00",
+  "pr47": {
+    "url": "https://github.com/321Team/infra-ansible/pull/47",
+    "number": 47,
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "draft": false,
+    "title": "ci: Ansible 전용 self-hosted Runner 일반 회귀 활성화 준비",
+    "base": "main",
+    "base_sha": "fa12a35578ba33e6b7fb4e0e037c0a11631f41d1",
+    "head": "claude/bold-einstein-44hhmr",
+    "head_sha": "c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+    "head_repo_id": 1354550264,
+    "head_repo_full_name": "321Team/infra-ansible",
+    "merge_commit_sha": "6e5661a1a89c9e8a39d0a77a4a95f1d086a20fae",
+    "requested_reviewers": [
+      {
+        "login": "hayeounglee",
+        "name": "hayeounglee",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/95111439?v=4",
+        "id": 95111439
+      }
+    ],
+    "requested_team_reviewers": null,
+    "diff": null,
+    "comments": null,
+    "created_at": "2026-09-23T16:31:19Z",
+    "updated_at": "2026-09-23T16:59:21Z",
+    "closed_at": null,
+    "merged_at": null,
+    "commits": 2,
+    "changed_files": 1,
+    "additions": 55,
+    "deletions": 0,
+    "display_url": "https://github.com/321Team/infra-ansible/pull/47",
+    "display_title": "ci: Ansible 전용 self-hosted Runner 일반 회귀 활성화 준비"
+  },
+  "pr47_reviews": {
+    "reviews": [
+      {
+        "id": "PRR_kwDOULzL-M8AAAABO4ojog",
+        "state": "COMMENTED",
+        "body": "HEAD `c6ba5f87711acc3eeeba12c13c72cedd09d178f8` 기술 검토 — Codex 보조 COMMENT입니다. 독립 승인으로 표시하지 않습니다.\n\n현재 확인 범위에서 새 코드 차단 결함은 발견하지 못했습니다.\n- main 대비 Workflow 55줄/1파일이며 비활성 템플릿 blob a6741487과 동일합니다.\n- exact SHA checkout/credential 비보존, 고정 2.16.19·2.21.3, localhost fixture, 새 실행/venv 경로와 완전 matrix 검사, 오류·artifact export 실패의 FAIL 전파를 확인했습니다. 운영 apply/SSH는 해당 시험 실행 경로에 없습니다.\n- 기존 Runner·실행기·회귀시험 blob 일치는 해당 코드 검증의 재사용 근거입니다. 현재 후보에 추가된 Playbook의 실제 syntax/일반 Workflow Actions 결과는 새 실행으로 확보해야 합니다.\n- 현재 기대 syntax 대상은 23개×2엔진=46개입니다. 과거 문서의 32개 성적을 현재 기대 수나 PASS로 사용하지 않고 CI plan의 `(engine,path)` 전체 집합과 대조합니다.\n- Workflow 조건 자체가 호스트 격리를 제공하지는 않으므로 PR19의 전용 1-job rootless Runner 경로를 사용해야 합니다. 기존 영구 앱 Runner 라벨만 넓혀 공유하면 안 됩니다.\n\n이번에 Variables를 준비했고 실제 값은 enabled=false 및 정확한 고정 라벨입니다. Run35889332032/Check107277518128은 skipped이며 정상 CI 통과가 아닙니다. 새 토큰·Runner 등록·원격 명령·워크플로 재실행은 수행하지 않았습니다.\n\n남은 항목: 작성자 외 적격 검토자의 정확한 HEAD 독립 리뷰, 현장 PREPARED/image 상태 확인, 실제 활성화 시점 Runner 공급·일반 정상/고의 결함 인수 및 세션 정리. 같은 승인 코드의 단계별 결과 인수에 별도 반복 리뷰를 추가하지 않습니다.",
+        "submitted_at": "2026-09-23T16:41:15Z",
+        "author": {
+          "login": "GWONUK",
+          "name": "GWONUK",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/277643063?u=02a502dc16151eca688698070718a40a930e3ecf&v=4",
+          "id": null
+        }
+      }
+    ]
+  },
+  "run47": {
+    "id": 35889332032,
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "skipped",
+    "head_sha": "c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+    "path": ".github/workflows/ansible-regression.yml",
+    "event": "pull_request",
+    "head_branch": "claude/bold-einstein-44hhmr",
+    "url": "https://github.com/321Team/infra-ansible/actions/runs/35889332032",
+    "updated_at": "2026-09-23T16:31:24Z"
+  },
+  "source_checker": {
+    "commit": "b90c1d39decb6bfc5adeeebd8591133304a7a9c5",
+    "path": "evidence/infra-ansible-followup/export-fix-actions-start-31895081e30e/FDS_Ansible_Export_Fix_Start_v1_0/check-readiness.py",
+    "blob_sha": "ab0a41b12e1bc743b993d9f27c5658b75311e90a"
+  },
+  "review_policy": {
+    "repo": "321Team/fds-project-baseline",
+    "path": "governance/REVIEW_AUTHORITY_POLICY.md",
+    "blob_sha": "8559913672c06e889e1153d7b8e48cd5d436b158"
+  },
+  "variables": {
+    "current_admin_settings_rechecked": false,
+    "latest_project_record": "https://github.com/321Team/infra-ansible/issues/5#issuecomment-5798806473",
+    "enabled_recorded": "false",
+    "labels_recorded": "[\"self-hosted\",\"Linux\",\"X64\",\"fds-ci\",\"ansible-isolated\"]"
+  }
+}
+

@@ -1,0 +1,295 @@
+﻿2026-09-23T21:18:46.3099147Z Current runner version: '2.337.0'
+2026-09-23T21:18:46.3155056Z ##[group]Runner Image Provisioner
+2026-09-23T21:18:46.3156245Z Hosted Compute Agent
+2026-09-23T21:18:46.3167906Z Version: 20260828.587
+2026-09-23T21:18:46.3168922Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-23T21:18:46.3170164Z Build Date: 2026-08-28T16:44:25Z
+2026-09-23T21:18:46.3171289Z Worker ID: {59bbb49f-4e84-4621-bba8-23181a68c023}
+2026-09-23T21:18:46.3172448Z Azure Region: centralus
+2026-09-23T21:18:46.3173483Z ##[endgroup]
+2026-09-23T21:18:46.3175726Z ##[group]Operating System
+2026-09-23T21:18:46.3182089Z Ubuntu
+2026-09-23T21:18:46.3183035Z 24.04.5
+2026-09-23T21:18:46.3183812Z LTS
+2026-09-23T21:18:46.3184686Z ##[endgroup]
+2026-09-23T21:18:46.3185535Z ##[group]Runner Image
+2026-09-23T21:18:46.3186856Z Image: ubuntu-24.04
+2026-09-23T21:18:46.3187962Z Version: 20260907.300.1
+2026-09-23T21:18:46.3189828Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-23T21:18:46.3192483Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+2026-09-23T21:18:46.3194065Z ##[endgroup]
+2026-09-23T21:18:46.3196008Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T21:18:46.3199400Z Contents: read
+2026-09-23T21:18:46.3200317Z Metadata: read
+2026-09-23T21:18:46.3201158Z ##[endgroup]
+2026-09-23T21:18:46.3204326Z Secret source: Actions
+2026-09-23T21:18:46.3205725Z Cache mode: write
+2026-09-23T21:18:46.3207881Z Prepare workflow directory
+2026-09-23T21:18:46.4038351Z Prepare all required actions
+2026-09-23T21:18:46.4191018Z Getting action download info
+2026-09-23T21:18:46.7903187Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-09-23T21:18:46.9164214Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-09-23T21:18:47.1356890Z Complete job name: candidate-images
+2026-09-23T21:18:47.2094782Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+2026-09-23T21:18:47.2095784Z with:
+2026-09-23T21:18:47.2096237Z   persist-credentials: false
+2026-09-23T21:18:47.2097037Z   ref: bbe349c8815ed2ade3de87a1b312221c34f4361b
+2026-09-23T21:18:47.2097638Z   repository: 321Team/fds-msa
+2026-09-23T21:18:47.2101545Z   token: ***
+2026-09-23T21:18:47.2101989Z   ssh-strict: true
+2026-09-23T21:18:47.2102436Z   ssh-user: git
+2026-09-23T21:18:47.2102874Z   clean: true
+2026-09-23T21:18:47.2103335Z   sparse-checkout-cone-mode: true
+2026-09-23T21:18:47.2103870Z   fetch-depth: 1
+2026-09-23T21:18:47.2104307Z   fetch-tags: false
+2026-09-23T21:18:47.2104759Z   show-progress: true
+2026-09-23T21:18:47.2105218Z   lfs: false
+2026-09-23T21:18:47.2105632Z   submodules: false
+2026-09-23T21:18:47.2106087Z   set-safe-directory: true
+2026-09-23T21:18:47.2107012Z   allow-unsafe-pr-checkout: false
+2026-09-23T21:18:47.2107991Z ##[endgroup]
+2026-09-23T21:18:47.4180201Z Syncing repository: 321Team/fds-msa
+2026-09-23T21:18:47.4184787Z ##[group]Getting Git version info
+2026-09-23T21:18:47.4185859Z Working directory is '/home/runner/work/fds-msa/fds-msa'
+2026-09-23T21:18:47.4187720Z [command]/usr/bin/git version
+2026-09-23T21:18:47.4188495Z git version 2.55.0
+2026-09-23T21:18:47.4190858Z ##[endgroup]
+2026-09-23T21:18:47.4197536Z Temporarily overriding HOME='/home/runner/work/_temp/f93599f5-b547-48fc-8d2d-09b9c21a8497' before making global git config changes
+2026-09-23T21:18:47.4199729Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-23T21:18:47.4201512Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fds-msa/fds-msa
+2026-09-23T21:18:47.4204020Z Deleting the contents of '/home/runner/work/fds-msa/fds-msa'
+2026-09-23T21:18:47.4205651Z ##[group]Determining repository object format
+2026-09-23T21:18:47.4207259Z ##[endgroup]
+2026-09-23T21:18:47.4208317Z ##[group]Initializing the repository
+2026-09-23T21:18:47.4209332Z [command]/usr/bin/git init /home/runner/work/fds-msa/fds-msa
+2026-09-23T21:18:47.4211021Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-23T21:18:47.4212582Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-23T21:18:47.4213999Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-23T21:18:47.4215094Z hint: call:
+2026-09-23T21:18:47.4215683Z hint:
+2026-09-23T21:18:47.4216717Z hint: 	git config --global init.defaultBranch <name>
+2026-09-23T21:18:47.4217722Z hint:
+2026-09-23T21:18:47.4218635Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-23T21:18:47.4220143Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-23T21:18:47.4221297Z hint:
+2026-09-23T21:18:47.4221944Z hint: 	git branch -m <name>
+2026-09-23T21:18:47.4222667Z hint:
+2026-09-23T21:18:47.4223637Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-23T21:18:47.4225236Z Initialized empty Git repository in /home/runner/work/fds-msa/fds-msa/.git/
+2026-09-23T21:18:47.4227923Z [command]/usr/bin/git remote add origin https://github.com/321Team/fds-msa
+2026-09-23T21:18:47.4233201Z ##[endgroup]
+2026-09-23T21:18:47.4234943Z ##[group]Disabling automatic garbage collection
+2026-09-23T21:18:47.4237080Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-23T21:18:47.4240503Z ##[endgroup]
+2026-09-23T21:18:47.4242178Z ##[group]Setting up auth
+2026-09-23T21:18:47.4243292Z Removing SSH command configuration
+2026-09-23T21:18:47.4245041Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-23T21:18:47.4294742Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-23T21:18:47.4983273Z Removing HTTP extra header
+2026-09-23T21:18:47.4985739Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-23T21:18:47.5079112Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-23T21:18:47.5178241Z Removing includeIf entries pointing to credentials config files
+2026-09-23T21:18:47.5179729Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-23T21:18:47.5208135Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-23T21:18:47.5473454Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-23T21:18:47.5514200Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path /home/runner/work/_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:47.5684485Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:47.5691021Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:47.5697146Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:47.5729851Z ##[endgroup]
+2026-09-23T21:18:47.5731582Z ##[group]Fetching the repository
+2026-09-23T21:18:47.5738379Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin bbe349c8815ed2ade3de87a1b312221c34f4361b
+2026-09-23T21:18:48.0298187Z From https://github.com/321Team/fds-msa
+2026-09-23T21:18:48.0301004Z  * branch            bbe349c8815ed2ade3de87a1b312221c34f4361b -> FETCH_HEAD
+2026-09-23T21:18:48.0461653Z [command]/usr/bin/git rev-parse --verify --quiet bbe349c8815ed2ade3de87a1b312221c34f4361b^{object}
+2026-09-23T21:18:48.0463623Z bbe349c8815ed2ade3de87a1b312221c34f4361b
+2026-09-23T21:18:48.0467046Z ##[endgroup]
+2026-09-23T21:18:48.0468943Z ##[group]Determining the checkout info
+2026-09-23T21:18:48.0470697Z ##[endgroup]
+2026-09-23T21:18:48.0471999Z [command]/usr/bin/git sparse-checkout disable
+2026-09-23T21:18:48.0474980Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-23T21:18:48.0478761Z ##[group]Checking out the ref
+2026-09-23T21:18:48.0480368Z [command]/usr/bin/git checkout --progress --force bbe349c8815ed2ade3de87a1b312221c34f4361b
+2026-09-23T21:18:48.0543299Z Note: switching to 'bbe349c8815ed2ade3de87a1b312221c34f4361b'.
+2026-09-23T21:18:48.0546141Z 
+2026-09-23T21:18:48.0547163Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-09-23T21:18:48.0548821Z changes and commit them, and you can discard any commits you make in this
+2026-09-23T21:18:48.0550744Z state without impacting any branches by switching back to a branch.
+2026-09-23T21:18:48.0551922Z 
+2026-09-23T21:18:48.0552712Z If you want to create a new branch to retain commits you create, you may
+2026-09-23T21:18:48.0554422Z do so (now or later) by using -c with the switch command. Example:
+2026-09-23T21:18:48.0555531Z 
+2026-09-23T21:18:48.0556090Z   git switch -c <new-branch-name>
+2026-09-23T21:18:48.0557593Z 
+2026-09-23T21:18:48.0558255Z Or undo this operation with:
+2026-09-23T21:18:48.0559105Z 
+2026-09-23T21:18:48.0559596Z   git switch -
+2026-09-23T21:18:48.0560267Z 
+2026-09-23T21:18:48.0561181Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-09-23T21:18:48.0562386Z 
+2026-09-23T21:18:48.0563372Z HEAD is now at bbe349c ci: build and scan PR7 candidate images in an ephemeral hosted runner
+2026-09-23T21:18:48.0567530Z ##[endgroup]
+2026-09-23T21:18:48.0610269Z [command]/usr/bin/git log -1 --format=%H
+2026-09-23T21:18:48.0642378Z bbe349c8815ed2ade3de87a1b312221c34f4361b
+2026-09-23T21:18:48.0659045Z ##[group]Removing auth
+2026-09-23T21:18:48.0660307Z Removing SSH command configuration
+2026-09-23T21:18:48.0662113Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-23T21:18:48.0714446Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-23T21:18:48.0970148Z Removing HTTP extra header
+2026-09-23T21:18:48.0974573Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-23T21:18:48.1014383Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-23T21:18:48.1281970Z Removing includeIf entries pointing to credentials config files
+2026-09-23T21:18:48.1285337Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-23T21:18:48.1319742Z includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path
+2026-09-23T21:18:48.1321811Z includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path
+2026-09-23T21:18:48.1323791Z includeif.gitdir:/github/workspace/.git.path
+2026-09-23T21:18:48.1325304Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-23T21:18:48.1333344Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path
+2026-09-23T21:18:48.1362775Z /home/runner/work/_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:48.1376956Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path /home/runner/work/_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:48.1419085Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path
+2026-09-23T21:18:48.1448871Z /home/runner/work/_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:48.1461558Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:48.1503122Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-09-23T21:18:48.1553577Z /github/runner_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:48.1578203Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:48.1613871Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-23T21:18:48.1643109Z /github/runner_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:48.1650436Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config
+2026-09-23T21:18:48.1691540Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-23T21:18:48.1934433Z Removing credentials config '/home/runner/work/_temp/git-credentials-83038820-50b5-4da5-a538-294476f0bd4a.config'
+2026-09-23T21:18:48.1942036Z ##[endgroup]
+2026-09-23T21:18:48.2179140Z ##[group]Run python3 tools/candidate_image_validation.py "$RUNNER_TEMP/candidate-evidence"
+2026-09-23T21:18:48.2180471Z [36;1mpython3 tools/candidate_image_validation.py "$RUNNER_TEMP/candidate-evidence"[0m
+2026-09-23T21:18:48.2225865Z shell: /usr/bin/bash -e {0}
+2026-09-23T21:18:48.2226625Z env:
+2026-09-23T21:18:48.2227222Z   CANDIDATE_SHA: bbe349c8815ed2ade3de87a1b312221c34f4361b
+2026-09-23T21:18:48.2227909Z ##[endgroup]
+2026-09-23T21:19:41.0280855Z {"scope": "GITHUB_HOSTED_CANDIDATE_ONLY", "source_sha": "bbe349c8815ed2ade3de87a1b312221c34f4361b", "workflow_sha": "826813d37a52b3aadab6ea79cc2c578cc48b46e0", "run_id": "35921580081", "attempt": "1", "started_at": "2026-09-23T21:18:48.285656+00:00", "decision": "BLOCK", "DELIVERY_GATE": "NOT_VERIFIED", "PUSH": "NOT_EXECUTED", "DEPLOY": "NOT_EXECUTED", "images": {"transaction-api": {"build": "PASS", "scan": "BLOCK", "image": {"Id": "sha256:a3f50d999f84e6bf1d7336812dab2f9a43c10e6fd3bbec4fd38f0d04764e8b7d", "RepoTags": ["fds-candidate/transaction-api:bbe349c8815ed2ade3de87a1b312221c34f4361b"], "RepoDigests": [], "Parent": "", "Comment": "buildkit.dockerfile.v0", "Created": "2026-09-23T21:19:03.590333279Z", "DockerVersion": "", "Author": "", "Config": {"Hostname": "", "Domainname": "", "User": "fdsuser", "AttachStdin": false, "AttachStdout": false, "AttachStderr": false, "ExposedPorts": {"8000/tcp": {}, "9091/tcp": {}}, "Tty": false, "OpenStdin": false, "StdinOnce": false, "Env": ["PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "LANG=C.UTF-8", "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305", "PYTHON_VERSION=3.12.14", "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a"], "Cmd": ["python", "run.py"], "ArgsEscaped": true, "Image": "", "Volumes": null, "WorkingDir": "/app", "Entrypoint": null, "OnBuild": null, "Labels": null}, "Architecture": "amd64", "Os": "linux", "Size": 222363743, "GraphDriver": {"Data": {"LowerDir": "/var/lib/docker/overlay2/psyqwqd5tbqcnr5j760arzjls/diff:/var/lib/docker/overlay2/m4awiks7xotc63tnb5retl0na/diff:/var/lib/docker/overlay2/naqxf3ud6lkdfvmd7yu0w9r7q/diff:/var/lib/docker/overlay2/rzx2ph0fom4iiu99msa3i6dzb/diff:/var/lib/docker/overlay2/crvbfazapkepsfygktuj0dmif/diff:/var/lib/docker/overlay2/vcj9utzywmr0is6f5ofol1jmg/diff:/var/lib/docker/overlay2/60434852c101525b64ad47842a521b8972064bdd9216acd277f9ac7a2ca66c7b/diff:/var/lib/docker/overlay2/f9bfdac58d9e0613efeb91aabc2a2603fb4146ba9ce3e4a4eb3d550a540676b4/diff:/var/lib/docker/overlay2/d04d79f0e7b574312ac39786c44aaa64f99bc20d24169b33a0b61bb6fbfa01e8/diff:/var/lib/docker/overlay2/f6b2db04cdb675f259c6b00a68550f1499877279ba7b55b3863794af2b12ac5a/diff", "MergedDir": "/var/lib/docker/overlay2/h1zt1yxsl04owvkx3ixtna80f/merged", "UpperDir": "/var/lib/docker/overlay2/h1zt1yxsl04owvkx3ixtna80f/diff", "WorkDir": "/var/lib/docker/overlay2/h1zt1yxsl04owvkx3ixtna80f/work"}, "Name": "overlay2"}, "RootFS": {"Type": "layers", "Layers": ["sha256:a6dc765193a52cbaede3c93a9ff48b9540948dd0774bbe7031fcb5847606f9ac", "sha256:7ca599ccfc97fa428fcf941eda7c2d643f066feb947020dcdbbf913cec34d5dc", "sha256:b54011271bdbf69ae643cb5a4af6a5bc2f834ae8bc0833b736b52bbd2396e99f", "sha256:c321a426ca693e386f4df5f198d7f32c2da49e29f53ff77d695ceb02dfb0a421", "sha256:61707780a343bf3bf89c6f4095dfb599a606b5ea6a7c4e71fd8931f465293757", "sha256:0a7730568283a36fdf3ce5bc77a1fe1e80d1c0ef449f48237f96bc6bb01430e7", "sha256:02801bf3eba9e867b4c5c0628172ee9d6086402c0b615d0d6dd5eb6fb899e5b2", "sha256:c3960eb675a4f9ffcc0516d3b980d8fe62cc7d80a3a2ae3ed6414395447dd830", "sha256:94644804a5f3d6586ce017786ba10170e3b0256e69f0163985f5d1edc53801bf", "sha256:a7bfcd596194936528d250102ff70e5324c9845bbc8108734040b0755c189712", "sha256:cff66ca6209f1dd046c00a62e95b864c8653d425f9e0217dba4db3ef19c46f42"]}, "Metadata": {"LastTagTime": "2026-09-23T21:19:05.228276742Z"}}, "archive_sha256": "048d276c2a24da25e06456386dac6caad6ca920606ccc3cb07a7e2cffeab1768", "scan_exit_code": 10, "findings": {"status": "BLOCK", "counts": {"HIGH": 44, "CRITICAL": 0}, "unique_cves": 8}, "report_sha256": "621f420c0f70cca9d8c3919e39c38abe69472bd5c735303b1ebdeddeea0b2ef1"}, "fds-engine": {"build": "PASS", "scan": "NOT_SCANNED", "image": {"Id": "sha256:6b353e755777cb1ec4bb4619daa2c8bd8ef5225bc8fb21c7de04ab1bd18d0289", "RepoTags": ["fds-candidate/fds-engine:bbe349c8815ed2ade3de87a1b312221c34f4361b"], "RepoDigests": [], "Parent": "", "Comment": "buildkit.dockerfile.v0", "Created": "2026-09-23T21:19:15.31059295Z", "DockerVersion": "", "Author": "", "Config": {"Hostname": "", "Domainname": "", "User": "fdsuser", "AttachStdin": false, "AttachStdout": false, "AttachStderr": false, "ExposedPorts": {"8001/tcp": {}, "9090/tcp": {}}, "Tty": false, "OpenStdin": false, "StdinOnce": false, "Env": ["PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "LANG=C.UTF-8", "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305", "PYTHON_VERSION=3.12.14", "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a"], "Cmd": ["python", "run.py"], "ArgsEscaped": true, "Image": "", "Volumes": null, "WorkingDir": "/app", "Entrypoint": null, "OnBuild": null, "Labels": null}, "Architecture": "amd64", "Os": "linux", "Size": 176808961, "GraphDriver": {"Data": {"LowerDir": "/var/lib/docker/overlay2/b6y8uj5o66k6mploqqzw4ndkw/diff:/var/lib/docker/overlay2/hhhccwvtosb8k56g99vit01r2/diff:/var/lib/docker/overlay2/9al5zsef1xzizk7pz48bnq0e0/diff:/var/lib/docker/overlay2/xxulfzc3sueusrw5nw14559ha/diff:/var/lib/docker/overlay2/iycjpwr5855reuscce2xk9fwb/diff:/var/lib/docker/overlay2/vcj9utzywmr0is6f5ofol1jmg/diff:/var/lib/docker/overlay2/60434852c101525b64ad47842a521b8972064bdd9216acd277f9ac7a2ca66c7b/diff:/var/lib/docker/overlay2/f9bfdac58d9e0613efeb91aabc2a2603fb4146ba9ce3e4a4eb3d550a540676b4/diff:/var/lib/docker/overlay2/d04d79f0e7b574312ac39786c44aaa64f99bc20d24169b33a0b61bb6fbfa01e8/diff:/var/lib/docker/overlay2/f6b2db04cdb675f259c6b00a68550f1499877279ba7b55b3863794af2b12ac5a/diff", "MergedDir": "/var/lib/docker/overlay2/kns0bwe6udgr621noqka1muyv/merged", "UpperDir": "/var/lib/docker/overlay2/kns0bwe6udgr621noqka1muyv/diff", "WorkDir": "/var/lib/docker/overlay2/kns0bwe6udgr621noqka1muyv/work"}, "Name": "overlay2"}, "RootFS": {"Type": "layers", "Layers": ["sha256:a6dc765193a52cbaede3c93a9ff48b9540948dd0774bbe7031fcb5847606f9ac", "sha256:7ca599ccfc97fa428fcf941eda7c2d643f066feb947020dcdbbf913cec34d5dc", "sha256:b54011271bdbf69ae643cb5a4af6a5bc2f834ae8bc0833b736b52bbd2396e99f", "sha256:c321a426ca693e386f4df5f198d7f32c2da49e29f53ff77d695ceb02dfb0a421", "sha256:61707780a343bf3bf89c6f4095dfb599a606b5ea6a7c4e71fd8931f465293757", "sha256:c3a21647c754ecf84d2bfd304e7f8811367ef23e7a4f34a0a90421cd9a0b3272", "sha256:49324c91fbf8df5076d597b52b0bac03e1942f8a1f6f606db3aa070d4bb38e1d", "sha256:c4ec514959daac64983a50d8f796458ce171d97724909da49760e1d0d73fbdfc", "sha256:44279ec34b6e4f0273c4257b45d6e2a255a2cc74bba18d01397c20750098675a", "sha256:bc6dd60fc312e26362f25d19b9d07c1e7ffce2ea4e6a50812c2bceb35b07ffa4", "sha256:03cf296b86b272de3b2da6dc49c583e07ed639a3f05da7d7d06a5d3e15dc753a"]}, "Metadata": {"LastTagTime": "2026-09-23T21:19:16.575261794Z"}}, "archive_sha256": "88f0bf731e8749d1fb9229764af3a2598bd92e2bf7afbac6fff573a59256909d"}}, "commands": [{"label": "docker-version", "rc": 0}, {"label": "buildx-version", "rc": 0}, {"label": "base-pull", "rc": 0}, {"label": "base-inspect", "rc": 0}, {"label": "transaction-api-download", "rc": 0}, {"label": "transaction-api-build", "rc": 0}, {"label": "transaction-api-inspect", "rc": 0}, {"label": "transaction-api-save", "rc": 0}, {"label": "fds-engine-download", "rc": 0}, {"label": "fds-engine-build", "rc": 0}, {"label": "fds-engine-inspect", "rc": 0}, {"label": "fds-engine-save", "rc": 0}, {"label": "trivy-download", "rc": 0}, {"label": "db-download", "rc": 0}, {"label": "transaction-api-scan", "rc": 10}], "base": {"reference": "docker.io/library/python@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b", "config": "sha256:9e87977b867847e186d066f531ef783b006d582a985c341c269446088d90f2c4", "diff_ids": ["sha256:a6dc765193a52cbaede3c93a9ff48b9540948dd0774bbe7031fcb5847606f9ac", "sha256:7ca599ccfc97fa428fcf941eda7c2d643f066feb947020dcdbbf913cec34d5dc", "sha256:b54011271bdbf69ae643cb5a4af6a5bc2f834ae8bc0833b736b52bbd2396e99f", "sha256:c321a426ca693e386f4df5f198d7f32c2da49e29f53ff77d695ceb02dfb0a421"]}, "binary_sha256": "d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791", "db_before": {"cache/db/trivy.db": "dd1fd09d5d7ff9cfe0ad84e827f052bb43fee1d7655a6399aa26306448991464", "cache/db/metadata.json": "6af7ed5a7cc43e6ead1b0febce043e6606e43ab2b8ee04e3df8b521d9e3259e2"}, "db_metadata": {"Version": 2, "NextUpdate": "2026-09-24T20:20:57.734987855Z", "UpdatedAt": "2026-09-23T20:20:57.734988316Z", "DownloadedAt": "2026-09-23T21:19:26.501791Z"}, "db_integrity": "PASS", "finished_at": "2026-09-23T21:19:39.568392+00:00"}
+2026-09-23T21:19:41.0348426Z ##[error]Process completed with exit code 10.
+2026-09-23T21:19:41.0417215Z ##[group]Run set -euo pipefail
+2026-09-23T21:19:41.0417643Z [36;1mset -euo pipefail[0m
+2026-09-23T21:19:41.0417992Z [36;1mcd "$RUNNER_TEMP/candidate-evidence"[0m
+2026-09-23T21:19:41.0418361Z [36;1msha256sum --check SHA256SUMS[0m
+2026-09-23T21:19:41.0418798Z [36;1mif test -f DB_SHA256SUMS; then sha256sum --check DB_SHA256SUMS; fi[0m
+2026-09-23T21:19:41.0460766Z shell: /usr/bin/bash -e {0}
+2026-09-23T21:19:41.0461088Z ##[endgroup]
+2026-09-23T21:19:41.0539401Z DB_SHA256SUMS: OK
+2026-09-23T21:19:41.0540184Z base-inspect-argv.json: OK
+2026-09-23T21:19:41.0541067Z base-inspect.log: OK
+2026-09-23T21:19:41.0541774Z base-pull-argv.json: OK
+2026-09-23T21:19:41.0542429Z base-pull.log: OK
+2026-09-23T21:19:41.0543109Z buildx-version-argv.json: OK
+2026-09-23T21:19:41.0543818Z buildx-version.log: OK
+2026-09-23T21:19:41.0544477Z cache/db/metadata.json: OK
+2026-09-23T21:19:42.2323069Z cache/db/trivy.db: OK
+2026-09-23T21:19:42.2334527Z cache/fanal/fanal.db: OK
+2026-09-23T21:19:42.2335219Z db-download-argv.json: OK
+2026-09-23T21:19:42.2335794Z db-download.log: OK
+2026-09-23T21:19:42.2336617Z docker-version-argv.json: OK
+2026-09-23T21:19:42.2343046Z docker-version.log: OK
+2026-09-23T21:19:42.2365298Z empty.ignore: OK
+2026-09-23T21:19:42.2366155Z empty.yaml: OK
+2026-09-23T21:19:42.2369740Z fds-engine-build-argv.json: OK
+2026-09-23T21:19:42.2370572Z fds-engine-build.log: OK
+2026-09-23T21:19:42.2371104Z fds-engine-download-argv.json: OK
+2026-09-23T21:19:42.2371797Z fds-engine-download.log: OK
+2026-09-23T21:19:42.2372933Z fds-engine-inspect-argv.json: OK
+2026-09-23T21:19:42.2397225Z fds-engine-inspect.log: OK
+2026-09-23T21:19:42.2409705Z fds-engine-save-argv.json: OK
+2026-09-23T21:19:42.2430766Z fds-engine-save.log: OK
+2026-09-23T21:19:42.2436893Z fds-engine-wheels.json: OK
+2026-09-23T21:19:42.3830372Z fds-engine.docker.tar: OK
+2026-09-23T21:19:42.3831249Z result.json: OK
+2026-09-23T21:19:42.3831905Z transaction-api-build-argv.json: OK
+2026-09-23T21:19:42.3847120Z transaction-api-build.log: OK
+2026-09-23T21:19:42.3855131Z transaction-api-download-argv.json: OK
+2026-09-23T21:19:42.3877361Z transaction-api-download.log: OK
+2026-09-23T21:19:42.3882299Z transaction-api-inspect-argv.json: OK
+2026-09-23T21:19:42.3906949Z transaction-api-inspect.log: OK
+2026-09-23T21:19:42.3907650Z transaction-api-report.json: OK
+2026-09-23T21:19:42.3926975Z transaction-api-save-argv.json: OK
+2026-09-23T21:19:42.3946924Z transaction-api-save.log: OK
+2026-09-23T21:19:42.3966916Z transaction-api-scan-argv.json: OK
+2026-09-23T21:19:42.3967538Z transaction-api-scan.log: OK
+2026-09-23T21:19:42.3986768Z transaction-api-wheels.json: OK
+2026-09-23T21:19:42.5716728Z transaction-api.docker.tar: OK
+2026-09-23T21:19:42.5717657Z trivy-download-argv.json: OK
+2026-09-23T21:19:42.5718285Z trivy-download.log: OK
+2026-09-23T21:19:43.7462274Z cache/db/trivy.db: OK
+2026-09-23T21:19:43.7462991Z cache/db/metadata.json: OK
+2026-09-23T21:19:43.7558453Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+2026-09-23T21:19:43.7558884Z with:
+2026-09-23T21:19:43.7559222Z   name: candidate-images-bbe349c8815ed2ade3de87a1b312221c34f4361b-1
+2026-09-23T21:19:43.7559646Z   path: /home/runner/work/_temp/candidate-evidence/
+2026-09-23T21:19:43.7559979Z   if-no-files-found: error
+2026-09-23T21:19:43.7560224Z   retention-days: 14
+2026-09-23T21:19:43.7560444Z   compression-level: 6
+2026-09-23T21:19:43.7560674Z   overwrite: false
+2026-09-23T21:19:43.7560892Z   include-hidden-files: false
+2026-09-23T21:19:43.7561135Z ##[endgroup]
+2026-09-23T21:19:43.9245884Z (node:2549) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-23T21:19:43.9247629Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-23T21:19:43.9647999Z With the provided path, there will be 43 files uploaded
+2026-09-23T21:19:43.9649236Z Artifact name is valid!
+2026-09-23T21:19:43.9649903Z Root directory input is valid!
+2026-09-23T21:19:43.9664993Z ##[warning]Retention days cannot be greater than the maximum allowed retention set within the repository. Using 7 instead.
+2026-09-23T21:19:44.2744252Z Beginning upload of artifact content to blob storage
+2026-09-23T21:19:45.9433062Z (node:2549) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-09-23T21:19:46.5811366Z Uploaded bytes 8388608
+2026-09-23T21:19:47.9126780Z Uploaded bytes 16777216
+2026-09-23T21:19:49.5281142Z Uploaded bytes 25165824
+2026-09-23T21:19:51.1337525Z Uploaded bytes 33554432
+2026-09-23T21:19:53.1157367Z Uploaded bytes 41943040
+2026-09-23T21:19:56.1835463Z Uploaded bytes 50331648
+2026-09-23T21:19:57.0745815Z Uploaded bytes 58720256
+2026-09-23T21:19:58.0117329Z Uploaded bytes 67108864
+2026-09-23T21:19:58.6882826Z Uploaded bytes 75497472
+2026-09-23T21:19:59.4476547Z Uploaded bytes 83886080
+2026-09-23T21:20:00.2261384Z Uploaded bytes 92274688
+2026-09-23T21:20:01.1353833Z Uploaded bytes 100663296
+2026-09-23T21:20:01.9951038Z Uploaded bytes 109051904
+2026-09-23T21:20:02.7614362Z Uploaded bytes 117440512
+2026-09-23T21:20:03.7419855Z Uploaded bytes 125829120
+2026-09-23T21:20:04.4302609Z Uploaded bytes 134217728
+2026-09-23T21:20:05.1159743Z Uploaded bytes 142606336
+2026-09-23T21:20:05.8816600Z Uploaded bytes 150994944
+2026-09-23T21:20:06.6439953Z Uploaded bytes 159383552
+2026-09-23T21:20:07.2702256Z Uploaded bytes 167772160
+2026-09-23T21:20:07.5859439Z Uploaded bytes 176160768
+2026-09-23T21:20:08.4792839Z Uploaded bytes 184549376
+2026-09-23T21:20:09.1316584Z Uploaded bytes 192937984
+2026-09-23T21:20:09.4070384Z Uploaded bytes 201326592
+2026-09-23T21:20:09.7878316Z Uploaded bytes 209715200
+2026-09-23T21:20:10.5783537Z Uploaded bytes 218103808
+2026-09-23T21:20:11.2100554Z Uploaded bytes 226492416
+2026-09-23T21:20:11.9449188Z Uploaded bytes 234881024
+2026-09-23T21:20:12.7139044Z Uploaded bytes 243269632
+2026-09-23T21:20:13.4137158Z Uploaded bytes 251658240
+2026-09-23T21:20:14.3067239Z Uploaded bytes 260046848
+2026-09-23T21:20:14.9967946Z Uploaded bytes 268435456
+2026-09-23T21:20:15.9607922Z Uploaded bytes 276824064
+2026-09-23T21:20:16.0397101Z Uploaded bytes 278490138
+2026-09-23T21:20:16.0940801Z Finished uploading artifact content to blob storage!
+2026-09-23T21:20:16.0946119Z SHA256 digest of uploaded artifact zip is 22c0952ccafa9dc5d65506f821e5c125179d9bd4b7bcbfcd193dda36d5415eb8
+2026-09-23T21:20:16.0948250Z Finalizing artifact upload
+2026-09-23T21:20:16.4542258Z Artifact candidate-images-bbe349c8815ed2ade3de87a1b312221c34f4361b-1.zip successfully finalized. Artifact ID 10777267517
+2026-09-23T21:20:16.4544339Z Artifact candidate-images-bbe349c8815ed2ade3de87a1b312221c34f4361b-1 has been successfully uploaded! Final size is 278490138 bytes. Artifact ID is 10777267517
+2026-09-23T21:20:16.4551809Z Artifact download URL: https://github.com/321Team/fds-msa/actions/runs/35921580081/artifacts/10777267517
+2026-09-23T21:20:16.4824704Z Post job cleanup.
+2026-09-23T21:20:16.5747425Z [command]/usr/bin/git version
+2026-09-23T21:20:16.5817081Z git version 2.55.0
+2026-09-23T21:20:16.5867608Z Temporarily overriding HOME='/home/runner/work/_temp/d387ceae-5436-4342-939c-8fc96bd08e1c' before making global git config changes
+2026-09-23T21:20:16.5897233Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-23T21:20:16.5898326Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fds-msa/fds-msa
+2026-09-23T21:20:16.5946122Z Removing SSH command configuration
+2026-09-23T21:20:16.5947276Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-23T21:20:16.6009522Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-23T21:20:16.6425166Z Removing HTTP extra header
+2026-09-23T21:20:16.6446259Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-23T21:20:16.6488479Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-23T21:20:16.6949071Z Removing includeIf entries pointing to credentials config files
+2026-09-23T21:20:16.6949941Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-23T21:20:16.6951581Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-23T21:20:16.7486179Z Cleaning up orphan processes
+2026-09-23T21:20:16.7825743Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

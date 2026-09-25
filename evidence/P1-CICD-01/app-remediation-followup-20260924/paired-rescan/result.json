@@ -1,0 +1,63 @@
+{
+  "scope": "LOCAL_BASE_COMPARISON",
+  "started_at": "2026-09-23T20:51:06.918172+00:00",
+  "status": "COMPARISON_COMPLETE",
+  "binary_sha256": "d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791",
+  "images": {
+    "trixie": {
+      "status": "BLOCK",
+      "exit_code": 10,
+      "counts": {
+        "HIGH": 44,
+        "CRITICAL": 0
+      },
+      "unique_cves": 8,
+      "report_sha256": "d66607cd4851b56e173cbbbdc51a514332d1f286d84af61c8774253444629dc0",
+      "identity": {
+        "archive_sha256": "e1addec5df8ab8583c4900fa1cd928626b2949e8184838c7d0b6119a5e9bc62e",
+        "manifest_digest": "sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b",
+        "config_digest": "sha256:9e87977b867847e186d066f531ef783b006d582a985c341c269446088d90f2c4",
+        "diff_ids": [
+          "sha256:a6dc765193a52cbaede3c93a9ff48b9540948dd0774bbe7031fcb5847606f9ac",
+          "sha256:7ca599ccfc97fa428fcf941eda7c2d643f066feb947020dcdbbf913cec34d5dc",
+          "sha256:b54011271bdbf69ae643cb5a4af6a5bc2f834ae8bc0833b736b52bbd2396e99f",
+          "sha256:c321a426ca693e386f4df5f198d7f32c2da49e29f53ff77d695ceb02dfb0a421"
+        ],
+        "platform": "linux/amd64"
+      }
+    },
+    "bookworm": {
+      "status": "BLOCK",
+      "exit_code": 10,
+      "counts": {
+        "HIGH": 55,
+        "CRITICAL": 5
+      },
+      "unique_cves": 21,
+      "report_sha256": "c8fe5194ca7f30d857bd62b769aca0f8be22483840220acb781ba2d956508e32",
+      "identity": {
+        "archive_sha256": "032791bcb36aaa4681a9ce4e525b4126c10f5bac0f2596eaec1f2fd6c84216f6",
+        "manifest_digest": "sha256:1aaa65a85fda306ffb8b910824d4e93bdce61e212c7e87168123ea3073b41a1a",
+        "config_digest": "sha256:febd0be41adb897a0ab8f1f1c693d8912669ea60c4940e076e9946b60e210ef0",
+        "diff_ids": [
+          "sha256:34467cc93912af891dfee8a3902adf9b4f355a9bca4eaa46f658d1181a21de0d",
+          "sha256:16df0073c13c96653ee2b601b16e514321513eb4af983de156c2d4e17df8a5d9",
+          "sha256:9639007baab8a136bc468bd5d757fdf79cf5d77b6ff2a87889071252e334fab3",
+          "sha256:abca6d63c9dbe51fa3bc42e75e0387da12803ef64430ad151814e468d5e1c203"
+        ],
+        "platform": "linux/amd64"
+      }
+    }
+  },
+  "APP_IMAGE_SCAN": "NOT_RUN",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "db_sha256": "779370a79257ff2384790625b52f6daace2fed7be5fd2ffa158710f179587dc6",
+  "metadata_sha256": "1d52c1801eab8ef7dd59044c3f191dea8f7a64034355305b59d613674b10e012",
+  "metadata": {
+    "Version": 2,
+    "NextUpdate": "2026-09-24T12:53:55.96484865Z",
+    "UpdatedAt": "2026-09-23T12:53:55.964849051Z",
+    "DownloadedAt": "2026-09-23T20:51:34.440700132Z"
+  },
+  "finished_at": "2026-09-23T20:51:41.175807+00:00"
+}
