@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "decided": "2026-09-24",
+  "policy": "governance/EVIDENCE_POLICY.md",
+  "record_id_pattern": "^[A-Z][A-Z0-9]*(-[A-Z0-9]+)+$",
+  "path_exceptions": [
+    {
+      "path": "evidence/infra-ansible-followup/",
+      "record_id": "P1-CICD-01",
+      "reason": "경로 통일 전 infra-ansible #5(P1-CICD-01 연관, CI 회귀·Runner) 후속 기록. 파일 1,753개가 대장에 개별 등록돼 있어 옮기지 않는다.",
+      "allow_new_content": false
+    },
+    {
+      "path": "evidence/infra-ansible-issue-6/",
+      "record_id": "P1-ANS-01",
+      "reason": "경로 통일 전 infra-ansible #6(PR4 후속) 편입 기록.",
+      "allow_new_content": false
+    },
+    {
+      "path": "evidence/infra-ansible-issue-7/",
+      "record_id": "P1-ANS-01",
+      "reason": "경로 통일 전 infra-ansible #7(PR4 후속) 편입 기록.",
+      "allow_new_content": false
+    },
+    {
+      "path": "evidence/infra-ansible-issue-8/",
+      "record_id": "P1-ANS-01",
+      "reason": "경로 통일 전 infra-ansible #8(PR4 후속) 편입 기록. SOURCE_SELECTION.json이 파일 81개의 git 경로를 담고 폴더 Manifest로 고정돼 있어 옮기지 않는다.",
+      "allow_new_content": false
+    }
+  ]
+}
