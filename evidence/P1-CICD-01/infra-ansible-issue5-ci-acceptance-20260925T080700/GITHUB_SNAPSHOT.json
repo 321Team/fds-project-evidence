@@ -121,8 +121,13 @@
     }
   },
   "not_performed_this_snapshot": [
-    "GitHub self-hosted runner registration list re-query (repository Actions runners API) to reconfirm ephemeral runner absence after either session — repeats the historical ID5/ID6-style check, not done here.",
     "Repository Variables (ANSIBLE_CI_ENABLED, ANSIBLE_CI_RUNNER_LABELS) re-read via API in this snapshot; their live-at-run-time value is inferred only from the fact that both jobs reached 'queued'/executed rather than 'skipped'.",
     "Artifact ZIP internal byte-level inspection for either run (proxy-blocked)."
-  ]
+  ],
+  "runner_registration_recheck": {
+    "performed": true,
+    "performed_by": "console submission (not this session's own gh api call)",
+    "file": "RUNNER_REGISTRATION_CHECK.json",
+    "result": "both ephemeral runner names ABSENT, total_count 0"
+  }
 }

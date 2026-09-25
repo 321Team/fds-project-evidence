@@ -1,0 +1,26 @@
+{
+  "purpose": "Reconfirm that the two ephemeral Runners used by the normal (PR47) and negative (PR51) CI sessions are not left registered, same acceptance style as the historical ID5/ID6 checks.",
+  "source": "CONSOLE_SUBMISSION",
+  "source_note": "Command and output were relayed as pasted terminal text by GWONUK from ansible01. This session did not receive a file/sidecar for this output and did not independently hash-verify it; it is recorded as console-submitted material per governance/EVIDENCE_POLICY.md ('사용자 콘솔 보완은 콘솔 제출 자료로 표시한다').",
+  "host": "ansible01",
+  "login_account": "server01_ansible",
+  "command": "gh api --paginate repos/321Team/infra-ansible/actions/runners > /tmp/runner-check-issue5-20260925.jsonl",
+  "command_2": "python3 -c \"...\" # parses the jsonl pages, sums total_count, lists all runner names, checks the two target names",
+  "targets": {
+    "normal-pr47": "ansible-ci-3499aa0db66e4bb3befa22139a289c7f",
+    "negative-pr51": "ansible-ci-2e8fed71949846f9b98b7c9b619113ca"
+  },
+  "raw_console_output": "registered total_count(sum of pages): 0\nall registered names: []\nnormal-pr47 ansible-ci-3499aa0db66e4bb3befa22139a289c7f -> ABSENT\nnegative-pr51 ansible-ci-2e8fed71949846f9b98b7c9b619113ca -> ABSENT",
+  "result": {
+    "registered_total_count": 0,
+    "all_registered_names": [],
+    "normal-pr47_status": "ABSENT",
+    "negative-pr51_status": "ABSENT"
+  },
+  "interpretation": "Both ephemeral runner names are absent from the live repository runner registration list, and no runners are currently registered at all (total_count 0). This matches the expected end state for 1-job ephemeral runners that completed their job and deregistered themselves, consistent with the 'runner-remove'->'runner-absent' log lines already confirmed from each session's local dedicated-run.log.",
+  "not_independently_verified": [
+    "This session did not run the gh api call itself and relied on the pasted console transcript.",
+    "No cryptographic binding (hash/signature) ties this transcript to the actual ansible01 terminal session beyond the user's report."
+  ],
+  "checked_at_utc_approx": "2026-09-25T09:xx (not machine-timestamped in the pasted output; recorded at message receipt time in this session)"
+}
