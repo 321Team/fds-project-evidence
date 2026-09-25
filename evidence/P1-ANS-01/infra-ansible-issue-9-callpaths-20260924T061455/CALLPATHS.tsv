@@ -1,0 +1,9 @@
+entry_id	host	account	entry_type	entry_file	observed_cli_candidate	effective_engine	source_head	source_content_match	evidence	status
+p1-k8s-01-gate0-run.sh	ansible01	server01_ansible	wrapper_text	/home/server01_ansible/p1-ans-01/scripts/p1-k8s-01-gate0-run.sh	/usr/bin/ansible-playbook	NOT_EXECUTED	da7f2ccd52ee407e61376d11375a1361f076f112	MATCHES_OBSERVED_AND_MAIN	original/REPORT.json;SOURCE_COMPARISON.json	PARTIAL
+cr-p1-ans-01-01-run.sh	ansible01	server01_ansible	wrapper_text	/home/server01_ansible/p1-ans-01/scripts/cr-p1-ans-01-01-run.sh	/usr/bin/ansible-playbook	NOT_EXECUTED	da7f2ccd52ee407e61376d11375a1361f076f112	MATCHES_OBSERVED_AND_MAIN	original/REPORT.json;SOURCE_COMPARISON.json	PARTIAL
+cr-p1-ntp-01-01-run.sh	ansible01	server01_ansible	wrapper_text	/home/server01_ansible/p1-ans-01/scripts/cr-p1-ntp-01-01-run.sh	/usr/bin/ansible-playbook	NOT_EXECUTED	da7f2ccd52ee407e61376d11375a1361f076f112	MATCHES_OBSERVED_AND_MAIN	original/REPORT.json;SOURCE_COMPARISON.json	PARTIAL
+cr-p1-mon-01-01-run.sh	ansible01	server01_ansible	wrapper_text	/home/server01_ansible/p1-ans-01/scripts/cr-p1-mon-01-01-run.sh	/usr/bin/ansible-playbook	NOT_EXECUTED	da7f2ccd52ee407e61376d11375a1361f076f112	MATCHES_OBSERVED_AND_MAIN	original/REPORT.json;SOURCE_COMPARISON.json	PARTIAL
+manual	ansible01	server01_ansible	PATH_file	/usr/bin/ansible-playbook	/usr/bin/ansible-playbook	RPM_2.16.19;CLI_NOT_RUN	da7f2ccd52ee407e61376d11375a1361f076f112	N/A	original/REPORT.json	PARTIAL
+cron	ansible01	server01_ansible	crontab	N/A	UNCONFIRMED	UNCONFIRMED	N/A	N/A	rc1;stderr32bytes_without_text	UNCONFIRMED
+runner-ansible	cicd-runner01	UNCONFIRMED	isolated_CI	UNCONFIRMED	UNCONFIRMED	UNCONFIRMED	UNCONFIRMED	N/A	NOT_SUBMITTED	UNCONFIRMED
+runner-cicd	cicd-runner01	UNCONFIRMED	permanent_CI	UNCONFIRMED	UNCONFIRMED	UNCONFIRMED	UNCONFIRMED	N/A	NOT_SUBMITTED	UNCONFIRMED
