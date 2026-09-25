@@ -1,0 +1,37 @@
+{
+  "engines": [
+    "2.16.19",
+    "2.21.3"
+  ],
+  "operational_engine_transition": false,
+  "production_apply": false,
+  "runner_registration": "external approved input; never inferred from host address",
+  "schema_version": 1,
+  "scope": "syntax + localhost fixtures only",
+  "source_commit": "c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+  "syntax_playbooks": [
+    "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+    "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+    "playbooks/cr-p1-ans-01-01-precheck.yml",
+    "playbooks/cr-p1-ans-01-01-rollback.yml",
+    "playbooks/cr-p1-ans-01-01-verify.yml",
+    "playbooks/cr-p1-mon-01-01-apply.yml",
+    "playbooks/cr-p1-mon-01-01-precheck.yml",
+    "playbooks/cr-p1-mon-01-01-rollback.yml",
+    "playbooks/cr-p1-mon-01-01-verify.yml",
+    "playbooks/cr-p1-ntp-01-01-apply-clients.yml",
+    "playbooks/cr-p1-ntp-01-01-apply-source.yml",
+    "playbooks/cr-p1-ntp-01-01-diagnose.yml",
+    "playbooks/cr-p1-ntp-01-01-pathcheck.yml",
+    "playbooks/cr-p1-ntp-01-01-precheck.yml",
+    "playbooks/cr-p1-ntp-01-01-rollback.yml",
+    "playbooks/cr-p1-ntp-01-01-verify.yml",
+    "playbooks/harden_svc_ansible_key.yml",
+    "playbooks/p1-k8s-01-gate0-precheck.yml",
+    "playbooks/p1-lb-01-stage-a-nodes.yml",
+    "playbooks/precheck.yml",
+    "playbooks/site.yml",
+    "tests/ssh-server-readonly.yml",
+    "tests/test-dns-resolver-normalization.yml"
+  ]
+}

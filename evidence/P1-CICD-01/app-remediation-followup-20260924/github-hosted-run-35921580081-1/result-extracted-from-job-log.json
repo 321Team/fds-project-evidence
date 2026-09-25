@@ -1,0 +1,271 @@
+{
+  "scope": "GITHUB_HOSTED_CANDIDATE_ONLY",
+  "source_sha": "bbe349c8815ed2ade3de87a1b312221c34f4361b",
+  "workflow_sha": "826813d37a52b3aadab6ea79cc2c578cc48b46e0",
+  "run_id": "35921580081",
+  "attempt": "1",
+  "started_at": "2026-09-23T21:18:48.285656+00:00",
+  "decision": "BLOCK",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "PUSH": "NOT_EXECUTED",
+  "DEPLOY": "NOT_EXECUTED",
+  "images": {
+    "transaction-api": {
+      "build": "PASS",
+      "scan": "BLOCK",
+      "image": {
+        "Id": "sha256:a3f50d999f84e6bf1d7336812dab2f9a43c10e6fd3bbec4fd38f0d04764e8b7d",
+        "RepoTags": [
+          "fds-candidate/transaction-api:bbe349c8815ed2ade3de87a1b312221c34f4361b"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-23T21:19:03.590333279Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+          "Hostname": "",
+          "Domainname": "",
+          "User": "fdsuser",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "ExposedPorts": {
+            "8000/tcp": {},
+            "9091/tcp": {}
+          },
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "LANG=C.UTF-8",
+            "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+            "PYTHON_VERSION=3.12.14",
+            "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a"
+          ],
+          "Cmd": [
+            "python",
+            "run.py"
+          ],
+          "ArgsEscaped": true,
+          "Image": "",
+          "Volumes": null,
+          "WorkingDir": "/app",
+          "Entrypoint": null,
+          "OnBuild": null,
+          "Labels": null
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 222363743,
+        "GraphDriver": {
+          "Data": {
+            "LowerDir": "/var/lib/docker/overlay2/psyqwqd5tbqcnr5j760arzjls/diff:/var/lib/docker/overlay2/m4awiks7xotc63tnb5retl0na/diff:/var/lib/docker/overlay2/naqxf3ud6lkdfvmd7yu0w9r7q/diff:/var/lib/docker/overlay2/rzx2ph0fom4iiu99msa3i6dzb/diff:/var/lib/docker/overlay2/crvbfazapkepsfygktuj0dmif/diff:/var/lib/docker/overlay2/vcj9utzywmr0is6f5ofol1jmg/diff:/var/lib/docker/overlay2/60434852c101525b64ad47842a521b8972064bdd9216acd277f9ac7a2ca66c7b/diff:/var/lib/docker/overlay2/f9bfdac58d9e0613efeb91aabc2a2603fb4146ba9ce3e4a4eb3d550a540676b4/diff:/var/lib/docker/overlay2/d04d79f0e7b574312ac39786c44aaa64f99bc20d24169b33a0b61bb6fbfa01e8/diff:/var/lib/docker/overlay2/f6b2db04cdb675f259c6b00a68550f1499877279ba7b55b3863794af2b12ac5a/diff",
+            "MergedDir": "/var/lib/docker/overlay2/h1zt1yxsl04owvkx3ixtna80f/merged",
+            "UpperDir": "/var/lib/docker/overlay2/h1zt1yxsl04owvkx3ixtna80f/diff",
+            "WorkDir": "/var/lib/docker/overlay2/h1zt1yxsl04owvkx3ixtna80f/work"
+          },
+          "Name": "overlay2"
+        },
+        "RootFS": {
+          "Type": "layers",
+          "Layers": [
+            "sha256:a6dc765193a52cbaede3c93a9ff48b9540948dd0774bbe7031fcb5847606f9ac",
+            "sha256:7ca599ccfc97fa428fcf941eda7c2d643f066feb947020dcdbbf913cec34d5dc",
+            "sha256:b54011271bdbf69ae643cb5a4af6a5bc2f834ae8bc0833b736b52bbd2396e99f",
+            "sha256:c321a426ca693e386f4df5f198d7f32c2da49e29f53ff77d695ceb02dfb0a421",
+            "sha256:61707780a343bf3bf89c6f4095dfb599a606b5ea6a7c4e71fd8931f465293757",
+            "sha256:0a7730568283a36fdf3ce5bc77a1fe1e80d1c0ef449f48237f96bc6bb01430e7",
+            "sha256:02801bf3eba9e867b4c5c0628172ee9d6086402c0b615d0d6dd5eb6fb899e5b2",
+            "sha256:c3960eb675a4f9ffcc0516d3b980d8fe62cc7d80a3a2ae3ed6414395447dd830",
+            "sha256:94644804a5f3d6586ce017786ba10170e3b0256e69f0163985f5d1edc53801bf",
+            "sha256:a7bfcd596194936528d250102ff70e5324c9845bbc8108734040b0755c189712",
+            "sha256:cff66ca6209f1dd046c00a62e95b864c8653d425f9e0217dba4db3ef19c46f42"
+          ]
+        },
+        "Metadata": {
+          "LastTagTime": "2026-09-23T21:19:05.228276742Z"
+        }
+      },
+      "archive_sha256": "048d276c2a24da25e06456386dac6caad6ca920606ccc3cb07a7e2cffeab1768",
+      "scan_exit_code": 10,
+      "findings": {
+        "status": "BLOCK",
+        "counts": {
+          "HIGH": 44,
+          "CRITICAL": 0
+        },
+        "unique_cves": 8
+      },
+      "report_sha256": "621f420c0f70cca9d8c3919e39c38abe69472bd5c735303b1ebdeddeea0b2ef1"
+    },
+    "fds-engine": {
+      "build": "PASS",
+      "scan": "NOT_SCANNED",
+      "image": {
+        "Id": "sha256:6b353e755777cb1ec4bb4619daa2c8bd8ef5225bc8fb21c7de04ab1bd18d0289",
+        "RepoTags": [
+          "fds-candidate/fds-engine:bbe349c8815ed2ade3de87a1b312221c34f4361b"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-23T21:19:15.31059295Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+          "Hostname": "",
+          "Domainname": "",
+          "User": "fdsuser",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "ExposedPorts": {
+            "8001/tcp": {},
+            "9090/tcp": {}
+          },
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "LANG=C.UTF-8",
+            "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+            "PYTHON_VERSION=3.12.14",
+            "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a"
+          ],
+          "Cmd": [
+            "python",
+            "run.py"
+          ],
+          "ArgsEscaped": true,
+          "Image": "",
+          "Volumes": null,
+          "WorkingDir": "/app",
+          "Entrypoint": null,
+          "OnBuild": null,
+          "Labels": null
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 176808961,
+        "GraphDriver": {
+          "Data": {
+            "LowerDir": "/var/lib/docker/overlay2/b6y8uj5o66k6mploqqzw4ndkw/diff:/var/lib/docker/overlay2/hhhccwvtosb8k56g99vit01r2/diff:/var/lib/docker/overlay2/9al5zsef1xzizk7pz48bnq0e0/diff:/var/lib/docker/overlay2/xxulfzc3sueusrw5nw14559ha/diff:/var/lib/docker/overlay2/iycjpwr5855reuscce2xk9fwb/diff:/var/lib/docker/overlay2/vcj9utzywmr0is6f5ofol1jmg/diff:/var/lib/docker/overlay2/60434852c101525b64ad47842a521b8972064bdd9216acd277f9ac7a2ca66c7b/diff:/var/lib/docker/overlay2/f9bfdac58d9e0613efeb91aabc2a2603fb4146ba9ce3e4a4eb3d550a540676b4/diff:/var/lib/docker/overlay2/d04d79f0e7b574312ac39786c44aaa64f99bc20d24169b33a0b61bb6fbfa01e8/diff:/var/lib/docker/overlay2/f6b2db04cdb675f259c6b00a68550f1499877279ba7b55b3863794af2b12ac5a/diff",
+            "MergedDir": "/var/lib/docker/overlay2/kns0bwe6udgr621noqka1muyv/merged",
+            "UpperDir": "/var/lib/docker/overlay2/kns0bwe6udgr621noqka1muyv/diff",
+            "WorkDir": "/var/lib/docker/overlay2/kns0bwe6udgr621noqka1muyv/work"
+          },
+          "Name": "overlay2"
+        },
+        "RootFS": {
+          "Type": "layers",
+          "Layers": [
+            "sha256:a6dc765193a52cbaede3c93a9ff48b9540948dd0774bbe7031fcb5847606f9ac",
+            "sha256:7ca599ccfc97fa428fcf941eda7c2d643f066feb947020dcdbbf913cec34d5dc",
+            "sha256:b54011271bdbf69ae643cb5a4af6a5bc2f834ae8bc0833b736b52bbd2396e99f",
+            "sha256:c321a426ca693e386f4df5f198d7f32c2da49e29f53ff77d695ceb02dfb0a421",
+            "sha256:61707780a343bf3bf89c6f4095dfb599a606b5ea6a7c4e71fd8931f465293757",
+            "sha256:c3a21647c754ecf84d2bfd304e7f8811367ef23e7a4f34a0a90421cd9a0b3272",
+            "sha256:49324c91fbf8df5076d597b52b0bac03e1942f8a1f6f606db3aa070d4bb38e1d",
+            "sha256:c4ec514959daac64983a50d8f796458ce171d97724909da49760e1d0d73fbdfc",
+            "sha256:44279ec34b6e4f0273c4257b45d6e2a255a2cc74bba18d01397c20750098675a",
+            "sha256:bc6dd60fc312e26362f25d19b9d07c1e7ffce2ea4e6a50812c2bceb35b07ffa4",
+            "sha256:03cf296b86b272de3b2da6dc49c583e07ed639a3f05da7d7d06a5d3e15dc753a"
+          ]
+        },
+        "Metadata": {
+          "LastTagTime": "2026-09-23T21:19:16.575261794Z"
+        }
+      },
+      "archive_sha256": "88f0bf731e8749d1fb9229764af3a2598bd92e2bf7afbac6fff573a59256909d"
+    }
+  },
+  "commands": [
+    {
+      "label": "docker-version",
+      "rc": 0
+    },
+    {
+      "label": "buildx-version",
+      "rc": 0
+    },
+    {
+      "label": "base-pull",
+      "rc": 0
+    },
+    {
+      "label": "base-inspect",
+      "rc": 0
+    },
+    {
+      "label": "transaction-api-download",
+      "rc": 0
+    },
+    {
+      "label": "transaction-api-build",
+      "rc": 0
+    },
+    {
+      "label": "transaction-api-inspect",
+      "rc": 0
+    },
+    {
+      "label": "transaction-api-save",
+      "rc": 0
+    },
+    {
+      "label": "fds-engine-download",
+      "rc": 0
+    },
+    {
+      "label": "fds-engine-build",
+      "rc": 0
+    },
+    {
+      "label": "fds-engine-inspect",
+      "rc": 0
+    },
+    {
+      "label": "fds-engine-save",
+      "rc": 0
+    },
+    {
+      "label": "trivy-download",
+      "rc": 0
+    },
+    {
+      "label": "db-download",
+      "rc": 0
+    },
+    {
+      "label": "transaction-api-scan",
+      "rc": 10
+    }
+  ],
+  "base": {
+    "reference": "docker.io/library/python@sha256:44ff437bba879d4941b710a369a8f19266aea34b29002807f0c487fabc9eec9b",
+    "config": "sha256:9e87977b867847e186d066f531ef783b006d582a985c341c269446088d90f2c4",
+    "diff_ids": [
+      "sha256:a6dc765193a52cbaede3c93a9ff48b9540948dd0774bbe7031fcb5847606f9ac",
+      "sha256:7ca599ccfc97fa428fcf941eda7c2d643f066feb947020dcdbbf913cec34d5dc",
+      "sha256:b54011271bdbf69ae643cb5a4af6a5bc2f834ae8bc0833b736b52bbd2396e99f",
+      "sha256:c321a426ca693e386f4df5f198d7f32c2da49e29f53ff77d695ceb02dfb0a421"
+    ]
+  },
+  "binary_sha256": "d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791",
+  "db_before": {
+    "cache/db/trivy.db": "dd1fd09d5d7ff9cfe0ad84e827f052bb43fee1d7655a6399aa26306448991464",
+    "cache/db/metadata.json": "6af7ed5a7cc43e6ead1b0febce043e6606e43ab2b8ee04e3df8b521d9e3259e2"
+  },
+  "db_metadata": {
+    "Version": 2,
+    "NextUpdate": "2026-09-24T20:20:57.734987855Z",
+    "UpdatedAt": "2026-09-23T20:20:57.734988316Z",
+    "DownloadedAt": "2026-09-23T21:19:26.501791Z"
+  },
+  "db_integrity": "PASS",
+  "finished_at": "2026-09-23T21:19:39.568392+00:00"
+}

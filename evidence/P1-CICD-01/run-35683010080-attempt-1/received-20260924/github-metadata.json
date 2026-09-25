@@ -1,0 +1,30 @@
+{
+  "workflow_sha": "7e939d7f77c38c13fd331b38f6649580bf0d05bd",
+  "run_id": "35683010080",
+  "attempt": 1,
+  "run_url": "https://github.com/321Team/infra-cicd/actions/runs/35683010080",
+  "event": "workflow_dispatch",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-09-22T03:23:59Z",
+  "run_started_at": "2026-09-22T03:23:59Z",
+  "updated_at": "2026-09-22T03:25:35Z",
+  "job_id": 106603847854,
+  "runner_name": "cicd-runner01",
+  "config_path": "config/app-build-scan.json",
+  "config_git_blob": "0438f87045ff1a685385b2d2172289eafbc23138",
+  "approval_comments": [
+    {
+      "id": 5725640696,
+      "url": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-5725640696",
+      "user": "supreme33-kr",
+      "body": "앱 Lead 이재환 — 최종 Source SHA 및 Test/Build/Scan 실행 범위 회신\n\n## 최종 승인 Source\n- 저장소: `supreme33-kr/fds-msa` (조직 Private `321Team/fds-msa` 전환은 별도 소비자 전환 PR·CICD #21 병합 후 진행)\n- 최종 40자리 Source SHA: `ec69b67067decf35abbfed0a6a99f3073132787b`\n  ([fds-msa#2](https://github.com/321Team/fds-msa/pull/2) 방금 병합 — Dockerfile 2개·requirements-runtime/test.lock 4개 반영된 offline 소비 가능 상태)\n- 승인자: 이재환 (supreme33-kr)\n- 승인 근거: 위 PR #2 리뷰(코드/lock hash/Dockerfile 템플릿 대조) + 이전 fds-msa#1 이관 검토\n\n## Test 실행 범위 (config/app-build-scan.json 반영용)\n\n| 서비스·단계 | 입력 |\n|---|---|\n| fds-engine Unit | cwd=`fds-engine`, `argv=[\".venv/bin/python\", \"-m\", \"pytest\", \"-q\", \"tests/test_rules.py\"]` |\n| fds-engine Contract | cwd=`fds-engine`, `argv=[\".venv/bin/python\", \"-m\", \"pytest\", \"-q\", \"tests/test_health.py\", \"tests/test_metrics.py\"]` |\n| transaction-api Contract | cwd=`transaction-api`, `argv=[\".venv/bin/python\", \"-m\", \"pytest\", \"-q\", \"tests/test_health.py\", \"tests/test_metrics.py\"]` |\n| **transaction-api Unit** | **`{\"status\": \"NOT_APPLICABLE\", \"reason\": \"transaction-api는 자체 판정 로직이 없는 라우팅/영속성 계층이다 — 요청 수신, R01/R07용 context 사전 계산 후 fds-engine 호출, DB 저장만 수행한다. 실제 판정 로직(R01/R02/R04/R07)은 fds-engine에 있으며 fds-engine의 Unit test_rules.py(16개 함수)가 전담 커버한다. transaction-api 자체 동작(기동/DB 연결/metrics)은 위 Contract 테스트가 커버한다.\", \"approved_by\": \"이재환 (supreme33-kr)\", \"approval_reference\": \"https://github.com/321Team/infra-cicd/issues/11#issuecomment-이-댓글\"}`** |\n\n## 실행 승인\nTest→Build→Scan 실행을 **승인**합니다. 위 Source SHA·Test 입력 기준으로 config를 갱신한 뒤 실제 Runner 실행을 진행해 주세요.\n\n기존 base digest(`docker.io/library/python@sha256:2fe5997d249a808b8eeea52c58a1dbffbba28754dc11699ef5c029f2d818ce79`)·오프라인 lock 4개는 fds-msa#2에 반영된 그대로이며 재검증 불필요합니다."
+    },
+    {
+      "id": 5757298518,
+      "url": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-5757298518",
+      "user": "supreme33-kr",
+      "body": "저장소/SHA 참조 정정 (재환)\n\n@GWONUK 님이 지적하신 404 문제 확인했습니다 — 제 회신의 저장소 표기가 잘못됐습니다.\n\n- 정정 전: supreme33-kr/fds-msa (조직 이전 전 개인 저장소 이름)\n- 정정 후: 321Team/fds-msa — 저장소는 이미 조직으로 이전 완료됐고(PR #1 병합), 이후 PR #2가 이 조직 저장소에서 병합됐습니다. 제가 회신한 merge SHA ec69b67067decf35abbfed0a6a99f3073132787b는 321Team/fds-msa 기준입니다. (참고: 별도 저장소인 fds-msa-legacy는 무관합니다 — 이쪽은 9/18에 archive 처리된 옛 저장소입니다.)\n\n321Team/fds-msa + 위 SHA 조합으로 config의 approval_reference를 반영해 주시면 될 것 같습니다. public repo 조회 404는 옛 개인 저장소 이름으로 조회하신 결과로 보입니다.\n\n나머지 회신 내용(최종 SHA, Unit/Contract 테스트 커맨드, transaction-api Unit NOT_APPLICABLE 사유, Test→Build→Scan 실행 승인)은 9/18 회신 그대로 유효합니다.\n\nAI 사용: CLAUDE_ASSISTED / AI 활용: 정정 코멘트 정리 보조 / 사람 확인: CONFIRMED (이재환)"
+    }
+  ]
+}

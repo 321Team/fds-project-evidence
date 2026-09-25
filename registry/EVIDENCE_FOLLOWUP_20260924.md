@@ -1,5 +1,50 @@
 # Evidence 잔여 작업 — 2026-09-24 착수 결과
 
+## 현재 상태 — 2026-09-25 갱신 (main `4d2db33` 기준)
+
+이 절이 최신이다. 아래 "2026-09-24 착수 결과" 이하는 2026-09-24 04:33 KST 기준 기록이며 당시 표현을 보존한다.
+
+### 증적 정책·점검 도구
+
+- [#30](https://github.com/321Team/fds-project-evidence/pull/30) 병합(`b676375`, 09-25 10:48 KST): 중앙 정책 반영, `evidence/<Record ID>/` 경로 통일, 파생 이슈 경로, 해시 대장 범위, 압축 파일 조건(1MB 이하·sidecar·`registry/ARCHIVE_CONTENTS.json`), 예외 목록, 병합된 수집회차 보호(SEALED), PR 자동 점검(`evidence-layout`).
+- 리뷰 후속 [#39](https://github.com/321Team/fds-project-evidence/pull/39)(Manifest 폴더 밖 항목·빈 Manifest 경고)는 재확인 대기다.
+
+### 2026-09-24~25 병합된 증적 PR
+
+| PR | 내용 | merge | 독립 검토 |
+|---|---|---|---|
+| [#22](https://github.com/321Team/fds-project-evidence/pull/22) | P1-CICD-01 Run35683010080/1 BLOCK 수신·원본 압축 2개 | `4b78bd2` | 이하영, 이재환(사람 확인) |
+| [#23](https://github.com/321Team/fds-project-evidence/pull/23) | ICR-D-NET-01-01 5개 수집회차·원본 압축 5개 | `87c70e4` | 이하영 |
+| [#24](https://github.com/321Team/fds-project-evidence/pull/24) | P1-CICD-01 Ansible PR47 readiness·구문 46/46 | `67addd8` | 이하영(재확인 포함) |
+| [#26](https://github.com/321Team/fds-project-evidence/pull/26) | P1-CICD-01 앱 후보 Build/Scan BLOCK, 278MB 원본 팀 공유 디렉터리 보관 | `6cb2a4f` | 이하영, 이재환(사람 확인) |
+| [#27](https://github.com/321Team/fds-project-evidence/pull/27) | P1-ANS-01 infra-ansible #9 호출 경로 | `7f96c59` | 이하영(재확인 포함) |
+| [#31](https://github.com/321Team/fds-project-evidence/pull/31) | P1-DB-01·MON-01·E2E-01 외부 아티팩트 참고 사본 | `5535c9f` | 이하영 |
+| [#32](https://github.com/321Team/fds-project-evidence/pull/32) | P1-LB-01 DAD·Stage B 원본 86개·원본 압축 2개 | `fb41ffe` | 이하영 |
+| [#33](https://github.com/321Team/fds-project-evidence/pull/33) | P1-SEC-01 Gate 2 실행 기록 참고 사본 | `455d1c1` | 이재환 |
+| [#35](https://github.com/321Team/fds-project-evidence/pull/35) | P1-K8S-01 CR-P1-NTP-01-01 읽기 전용 재수집 | `b803b9b` | 이재환(사람 확인) |
+| [#36](https://github.com/321Team/fds-project-evidence/pull/36) | P1-K8S-01 CR-P1-NTP-01-01 이전 실행 원본 7개 | `4d2db33` | 이하영 |
+| [#38](https://github.com/321Team/fds-project-evidence/pull/38) | P1-DNS-01 PR #16 후속 정정 기록(squash) | `c99de09` | 이하영 |
+
+- 병합은 증적 보존이다. 각 티켓의 AC·Status·Runtime 판정은 바꾸지 않았다. 특히 P1-CICD-01의 CVE BLOCK(HIGH 44)은 예외 없이 해소해야 하며([infra-cicd #11](https://github.com/321Team/infra-cicd/issues/11#issuecomment-5817229485)), 해소 결과는 새 Build/Scan 회차로 제출한다.
+- #26은 병합 전 PR CI가 실행되지 않았다. 병합 커밋 메시지의 "CI success"는 오기이며 [정정 댓글](https://github.com/321Team/fds-project-evidence/pull/26#issuecomment-5826837827)을 남겼다. 병합 전후 로컬 점검은 PASS다.
+- #36의 원본 3건은 ansible01에서 다른 출처로 해시를 대조해 모두 일치했다: [교차 대조 기록](../records/post-merge-20260925/P1-K8S-01_NTP_ORIGINALS_HASH_CROSSCHECK.md).
+
+### 열린 PR과 남은 입력
+
+| 항목 | 상태 | 다음 |
+|---|---|---|
+| [#37](https://github.com/321Team/fds-project-evidence/pull/37) P1-DB-01·MON-01·E2E-01 Lead 직접 재수집 | main 충돌 해소(`ede08d6`), 리뷰 전 | 이하영 독립 리뷰 |
+| [#39](https://github.com/321Team/fds-project-evidence/pull/39) 점검 도구 후속 | 정정 반영, 재확인 대기 | 이하영 재확인 |
+| 이 PR(#25) | 이 절로 갱신 | 이하영 독립 리뷰 |
+| [evidence #34](https://github.com/321Team/fds-project-evidence/issues/34) P1-SEC-01 원본·보안 후속 | 미제출 | 이하영 |
+| baseline #10·#11·#17·#19·#20·#21 증적 보완 요청 | 담당자 회신 대기 | 각 Lead(#37이 #11·#17·#20 일부 대응) |
+
+### 현재 main 점검
+
+`check-evidence-layout.py`: PASS(추적 파일 3,135개, 오류 0건). `sha256sum -c REGISTRY_SHA256SUMS` OK. `registry/ARCHIVE_CONTENTS.json` 압축 파일 39개.
+
+---
+
 조회·검증 기준: 2026-09-24 04:33 KST (2026-09-23 19:33 UTC). main 기준 `9a3d03341d8878f43e97d5ab9fc040b0037c9250`. 진행 중 새로 확인한 PR24까지 반영했다.
 사용자 요청: “evidence 잔여 작업 착수”. 수행: GWONUK 계정의 CODEX_ASSISTED 정리·검증·병합. 이번 자체 점검은 독립 사람 리뷰가 아니다.
 

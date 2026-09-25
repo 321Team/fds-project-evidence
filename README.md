@@ -1,6 +1,6 @@
 # FDS Project Evidence
 
-> **2026-09-24 현재 상태:** [Evidence 후속 현황](registry/EVIDENCE_FOLLOWUP_20260924.md)을 먼저 확인한다. PR7·17·21 및 DB 증적 PR2는 main 편입 완료다. FUP-09 Permanent 조건 해소와 DAD 증적 편입은 확인됐으며 DAD 잔여 인수 판단은 별도다. PR22·23·24의 독립 검토와 필요한 원본 접근 인계는 후속 현황에서 추적한다. 아래 과거 검토·병합 대기 표기는 각 작성 시점의 이력이다.
+> **증적 현황 안내(2026-09-25 갱신):** [Evidence 후속 현황](registry/EVIDENCE_FOLLOWUP_20260924.md)의 맨 위 절에 main `4d2db33` 기준 병합·잔여 상태를 정리했다. 그 이후 변경은 PR 이력과 해당 문서를 따른다. 아래 과거 검토·병합 대기 표기는 각 작성 시점의 이력이다.
 
 FDS 프로젝트의 티켓별 실행 증적, 검증 결과, 승인·인수 기록과 SHA-256 무결성 정보를 관리하는 비공개 저장소입니다. 기준선·WBS 정본은 fds-project-baseline에서 별도로 관리합니다.
 
@@ -27,7 +27,7 @@ FDS 프로젝트의 티켓별 실행 증적, 검증 결과, 승인·인수 기�
 
 `fds-project-baseline`은 기준선·WBS·티켓 정본을, 이 저장소는 증적과 그 인수 이력을 관리한다. 기존 문서의 수신 사본은 당시 종결 근거이며 새로운 기준선 정본을 만들지 않는다. 설계 승인·Gate 승인과 실제 Runtime 시험을 구분한다.
 
-`sha256sum --check REGISTRY_SHA256SUMS`로 준비본 파일의 현재 무결성을 확인할 수 있다. 이 결과는 과거 원본 Manifest 검증 또는 담당자의 인수 승인을 대체하지 않는다.
+`sha256sum --check REGISTRY_SHA256SUMS`로 관리 문서와 각 수집회차 Manifest의 현재 무결성을 확인할 수 있다. 자체 Manifest가 있는 `evidence/` 수집회차의 개별 파일은 그 폴더에서 해당 Manifest로 확인한다(등록 범위: [증적 관리 규칙](governance/EVIDENCE_POLICY.md) '원본 보존과 무결성'). 이 결과는 과거 원본 Manifest 검증 또는 담당자의 인수 승인을 대체하지 않는다.
 
 ## 2026-09-09 병합 후 정정
 

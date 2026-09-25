@@ -1,0 +1,27 @@
+{
+  "assessed_at": "2026-09-23T20:55:30.897304+00:00",
+  "decision": "SCAN_ACCEPTANCE_BLOCKED_EVIDENCE_INTEGRITY",
+  "scope": "Codex local base-only diagnostic; no runner/server execution",
+  "raw_findings_observed": {
+    "trixie": {
+      "HIGH": 44,
+      "CRITICAL": 0
+    },
+    "bookworm": {
+      "HIGH": 55,
+      "CRITICAL": 5
+    }
+  },
+  "raw_comparison_status": "COMPARISON_COMPLETE",
+  "recorded_db_sha256": "779370a79257ff2384790625b52f6daace2fed7be5fd2ffa158710f179587dc6",
+  "postcheck_db_sha256": "c15fd665f6ac153cd2f7046a47728974b6a6fd18cb540c8224c8b7dedc8bcb03",
+  "recorded_hash_matches_postcheck": false,
+  "diagnostic_db_bytes": 392839168,
+  "diagnostic_replay_exit_code": 2,
+  "diagnostic_failure": "Trivy fatal error / SIGSEGV in bbolt Page.FastCheck; raw log preserved",
+  "root_cause": "UNKNOWN",
+  "bookworm_replay": "NOT_RUN_AFTER_ERROR",
+  "app_image_build_scan": "NOT_RUN",
+  "delivery_gate": "NOT_VERIFIED",
+  "recommendation": "Do not select bookworm or approve trixie from these runs. Review dependency/CI changes independently; repeat base/app scan in a confirmed isolated runtime with stable evidence bytes."
+}
