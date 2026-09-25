@@ -14,7 +14,9 @@
 | 실행 결과 | `UPDATE 1` |
 | 실행 후 재조회 | 이 콘솔 자료에는 없다. 이후 2026-09-25 15:31 KST GWONUK의 읽기 전용 실측(fds-msa PR #8 코멘트)에서 `alembic_version = 0003`으로 확인됨 |
 
-실행 이유: db01에는 저장소가 없어 `alembic stamp`를 쓸 수 없어, `alembic stamp`가 하는 일(단일 head의 버전 표식 변경)을 psql로 직접 수행했다. 이 시점에 fds-msa PR #8(0003 revision)은 아직 없었다(2026-09-25 작성) — 즉 표식이 코드보다 먼저 바뀌었다.
+실행 목적: P1-DB-01 AC("Schema/Migration이 재현 가능하다")의 근거인 TC-SCHEMA 증적 카드를 PARTIAL_VERIFIED → PASS로 올리기 위해서였다(당시 작업 세션의 기록). 리뷰·승인 없이 실행됐다.
+
+실행 경위: 작업 지시(AI 보조 세션)에 따라 db01 셸에서 `alembic stamp 0003`을 시도했으나 db01에는 저장소가 없어 실패했고(`cd: fds-msa: 그런 파일이나 디렉터리가 없습니다`, `No config file 'alembic.ini' found`), `alembic stamp`가 하는 일(단일 head의 버전 표식 변경)을 psql로 직접 수행했다. 해당 지시는 "승인 불필요"로 안내됐으나 운영 DB 변경이라 POLICY §3.1상 사전 리뷰 대상이었으므로 절차 이탈로 기록한다. 이 시점에 fds-msa PR #8(0003 revision)은 아직 없었다(2026-09-25 작성) — 즉 표식이 코드보다 먼저 바뀌었다.
 
 ## 자료의 성격과 한계
 
