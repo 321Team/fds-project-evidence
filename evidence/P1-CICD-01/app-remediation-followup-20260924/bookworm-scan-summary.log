@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/b0a5e6e03ee6/app-remediation-followup/scan_bookworm_base.py", line 26, in <module>
+    assert sha(cache/'db/trivy.db') == prior['db_sha256']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

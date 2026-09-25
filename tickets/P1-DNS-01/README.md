@@ -12,6 +12,10 @@
 
 [PR #1 병합 기록](https://github.com/321Team/fds-project-evidence/pull/1#issuecomment-5595784292) · [후속 실행표](../../runbooks/FUP-04-09_POST_MERGE_FOLLOWUP.md)
 
+## 후속 상태 — 2026-09-25
+
+DNS Source 이관 수집회차 [`source-intake/received-20260918T032605Z`](../../evidence/P1-DNS-01/source-intake/received-20260918T032605Z/README.md)가 PR #16(merge `bb21915`)으로 편입됐다. 리뷰 후속 3건의 정정·확인은 [병합 후속 기록](../../records/post-merge-20260925/P1-DNS-01_SOURCE_INTAKE_PR16_FOLLOWUP.md)에 있다. 티켓 Done / 2026-09-03은 유지한다.
+
 ## 기존 수신 기록 — 당시 이력
 
 

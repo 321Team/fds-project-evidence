@@ -1,0 +1,72 @@
+{
+  "observed_head": "da7f2ccd52ee407e61376d11375a1361f076f112",
+  "main_head": "fa12a35578ba33e6b7fb4e0e037c0a11631f41d1",
+  "source_checks": [
+    {
+      "path": "ansible.cfg",
+      "received_sha256": "73e6f6b5844a7a2dee8cf042b67a1c7b61c3e4b4198f4f7f7b65907e883de90e",
+      "observed_commit_sha256": "73e6f6b5844a7a2dee8cf042b67a1c7b61c3e4b4198f4f7f7b65907e883de90e",
+      "matches_observed_commit": true,
+      "blob_same_at_current_main": true,
+      "mode_observed": "0o644",
+      "git_mode": "100644"
+    },
+    {
+      "path": "scripts/p1-k8s-01-gate0-run.sh",
+      "received_sha256": "49bb00b0e1f8b04affc952f57656e6e6f980adbd267d5691a5f1e39b764b00c8",
+      "observed_commit_sha256": "49bb00b0e1f8b04affc952f57656e6e6f980adbd267d5691a5f1e39b764b00c8",
+      "matches_observed_commit": true,
+      "blob_same_at_current_main": true,
+      "mode_observed": "0o600",
+      "git_mode": "100644"
+    },
+    {
+      "path": "scripts/cr-p1-ans-01-01-run.sh",
+      "received_sha256": "62bdfe8dfa3785952da91d97554616f73eee314d56537efd951689a0776846b2",
+      "observed_commit_sha256": "62bdfe8dfa3785952da91d97554616f73eee314d56537efd951689a0776846b2",
+      "matches_observed_commit": true,
+      "blob_same_at_current_main": true,
+      "mode_observed": "0o700",
+      "git_mode": "100755"
+    },
+    {
+      "path": "scripts/cr-p1-ntp-01-01-run.sh",
+      "received_sha256": "c95929999f0fea727844dd779b985b5dadeec42853b6b82539becfff4a58b3ba",
+      "observed_commit_sha256": "c95929999f0fea727844dd779b985b5dadeec42853b6b82539becfff4a58b3ba",
+      "matches_observed_commit": true,
+      "blob_same_at_current_main": true,
+      "mode_observed": "0o755",
+      "git_mode": "100755"
+    },
+    {
+      "path": "scripts/verify-ssh-main.py",
+      "received_sha256": "8a2eea74f2fcc60bf7fcfd0c0acf2db58ba3621d3fff17365a2757d768f940ce",
+      "observed_commit_sha256": "8a2eea74f2fcc60bf7fcfd0c0acf2db58ba3621d3fff17365a2757d768f940ce",
+      "matches_observed_commit": true,
+      "blob_same_at_current_main": true,
+      "mode_observed": "0o644",
+      "git_mode": "100644"
+    },
+    {
+      "path": "scripts/cr-p1-mon-01-01-run.sh",
+      "received_sha256": "e31ac5d72d39245c361928f469fdb364a7862860c33a2c6789b394f07b98fbf3",
+      "observed_commit_sha256": "e31ac5d72d39245c361928f469fdb364a7862860c33a2c6789b394f07b98fbf3",
+      "matches_observed_commit": true,
+      "blob_same_at_current_main": true,
+      "mode_observed": "0o644",
+      "git_mode": "100644"
+    }
+  ],
+  "tree_delta": [
+    {
+      "path": "docs/REVIEW_POLICY.md",
+      "observed_blob": "8f6acfee28673d4e5106f93c0cae01f5c321caa5",
+      "main_blob": "263c25634c6a8d332d5ce46abb70c7093551d46e"
+    },
+    {
+      "path": "docs/ci/ACTIONS_ACCEPTANCE.md",
+      "observed_blob": "b030f25cafe959e1b0ab5afca2b318f28f942919",
+      "main_blob": "4b292153ee4e010e7db4ef352b1d59e7f6f79281"
+    }
+  ]
+}

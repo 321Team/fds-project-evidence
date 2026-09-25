@@ -1,0 +1,165 @@
+{
+  "APP_WORKFLOW": "BLOCK",
+  "started_at": "2026-09-22T03:24:08.425869+00:00",
+  "context": {
+    "workflow_sha": "7e939d7f77c38c13fd331b38f6649580bf0d05bd",
+    "run_id": "35683010080",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/35683010080",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "input_sha256": "ea375a00811923cfb415e6c851ceed55227b5978835953eb2227b03552ab5728"
+  },
+  "steps": [
+    {
+      "name": "source-init",
+      "exit_code": 0,
+      "log_sha256": "e0560793ae752bc45aeab2c1db8f1ce628e09966b880d12161b551a9f1188272"
+    },
+    {
+      "name": "source-origin-set",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-fetch",
+      "exit_code": 0,
+      "log_sha256": "70f46536de3f09d61524bc4d189aa28c6abb0007c7325cb9c08d942d9002d81c"
+    },
+    {
+      "name": "source-fetched",
+      "exit_code": 0,
+      "log_sha256": "30c9c1ba2cf3f259c9d1307de69cb9953a07de3d77059556f8131489cde2ccda"
+    },
+    {
+      "name": "source-head-set",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "handoff-head",
+      "exit_code": 0,
+      "log_sha256": "30c9c1ba2cf3f259c9d1307de69cb9953a07de3d77059556f8131489cde2ccda"
+    },
+    {
+      "name": "handoff-origin",
+      "exit_code": 0,
+      "log_sha256": "5fc74ed436b1d0f0f51253de816f45379ff9dd19517fd733d58a429e1293aecc"
+    },
+    {
+      "name": "handoff-tree",
+      "exit_code": 0,
+      "log_sha256": "5b94fbc848d43cd5521a0c643a87af449eaa4d754c4522be7c8f6d05d9175887"
+    },
+    {
+      "name": "handoff-transaction-api-requirements.txt-size",
+      "exit_code": 0,
+      "log_sha256": "9d9b18720961e9b4689fd763b85e7b6f36160ccd3a8a1c9ddc5103bb0f66c396"
+    },
+    {
+      "name": "handoff-transaction-api-requirements.txt",
+      "exit_code": 0,
+      "log_sha256": "0b8f3430a64f4b81429277bf651b2e1b62a68084f8d79b36a63d09d065b76947"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-test.txt-size",
+      "exit_code": 0,
+      "log_sha256": "ea243e5457028e97f9bc93b37a72f8e80ea61ae081911bb037765590ee6aa435"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-test.txt",
+      "exit_code": 0,
+      "log_sha256": "b0a7d247aa0d498de1e71fd299c79d5022874cf1b36347697f52ba88b194f5f2"
+    },
+    {
+      "name": "handoff-fds-engine-requirements.txt-size",
+      "exit_code": 0,
+      "log_sha256": "ff393127b5a059b172af9b9eed820368071cf24d46df1b8326623c8e79178379"
+    },
+    {
+      "name": "handoff-fds-engine-requirements.txt",
+      "exit_code": 0,
+      "log_sha256": "11b1f940e83bded8fa8e901005f0467c4652bfac332657b11c118ee8f9b80ca3"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-test.txt-size",
+      "exit_code": 0,
+      "log_sha256": "654ee9da442fa353f59f11beb688fc7f76c8de62a6c18b2a181fdde2a27cc3ef"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-test.txt",
+      "exit_code": 0,
+      "log_sha256": "2f41764074d9ca19782db366262c28015930c16e2e0b135a8b615f5d15dbae78"
+    },
+    {
+      "name": "handoff-transaction-api-Dockerfile-size",
+      "exit_code": 0,
+      "log_sha256": "8cf2c564a259ec0c36ecb9b94125e825938d21ada0c1016959bde8e0cd055cc4"
+    },
+    {
+      "name": "handoff-transaction-api-Dockerfile",
+      "exit_code": 0,
+      "log_sha256": "01ab8a025e976b3563fca51b88fc299315b4c5edb85f965d200844f971b77e99"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-runtime.lock-size",
+      "exit_code": 0,
+      "log_sha256": "d1f5ebf98bdcd6aaa55349ef6b3f321e4f26d6ab905cd9aab6c3f777b910ea53"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-runtime.lock",
+      "exit_code": 0,
+      "log_sha256": "3a71d0d227415f3f818642b5370920f02a23a9bcb28f4dd31aac1d59d96c756e"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-test.lock-size",
+      "exit_code": 0,
+      "log_sha256": "e8f73157af54133665886b950107c231013684d74bfe92968cc74bb3687b0ef3"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-test.lock",
+      "exit_code": 0,
+      "log_sha256": "72137816616e16e2b88f86630c507800414c3b37c14c7f624b9042fd66a8ef85"
+    },
+    {
+      "name": "handoff-fds-engine-Dockerfile-size",
+      "exit_code": 0,
+      "log_sha256": "8cf2c564a259ec0c36ecb9b94125e825938d21ada0c1016959bde8e0cd055cc4"
+    },
+    {
+      "name": "handoff-fds-engine-Dockerfile",
+      "exit_code": 0,
+      "log_sha256": "5849c5f9c225a54be8d6b4d0d602f443cb4e797688f867d6b7962f8c4b671607"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-runtime.lock-size",
+      "exit_code": 0,
+      "log_sha256": "81a0a00423a6188370dc494cb5f7f1c3050d2fa435498ed3979bc83f4a142deb"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-runtime.lock",
+      "exit_code": 0,
+      "log_sha256": "c9d6138da341b431f0b7fdaf4aee78d59f9207e9d3f2bf4636b0505681c1f80b"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-test.lock-size",
+      "exit_code": 0,
+      "log_sha256": "75c6c7818ff82704297acbf6dcff0903f27cf0be085b05827a063bd45748231f"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-test.lock",
+      "exit_code": 0,
+      "log_sha256": "3a51dbbb6dd56d09658f0d2343e4b4847394f006f1f2aa082886bc468e797b65"
+    }
+  ],
+  "APP_TEST_BUILD_SCAN": "BLOCK",
+  "PUSH": "NOT_EXECUTED",
+  "DEPLOY": "NOT_EXECUTED",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "handoff_sha256": "f79d0c073448d29b9705ba9e6454fa010b85af97eeace97dab0c6a499411fefd",
+  "HANDOFF": "PASS",
+  "build_result_sha256": "b512188efbd713cd5e05b7a2e8b3f3c8a860d92120fd8362a75f6eed230bad89",
+  "error_code": "NONE",
+  "finished_at": "2026-09-22T03:25:29.460129+00:00"
+}
