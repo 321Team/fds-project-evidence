@@ -43,6 +43,11 @@ run1의 `ingress-all.txt`, `grafana-health-via-pf.txt`, `grafana-search-noauth.t
 ## 콘솔 제출 자료 — Discord 수신 화면 (`console-discord/`)
 `discord-targetdown-firing-resolved.png`는 사용자가 채팅에 첨부한 Discord 화면 캡처다(SHA-256 `a2a60316…46ffd3`, 수신 파일 그대로). `[FIRING:1] TargetDown critical`(메시지 묶음 시각 "오후 2:05")과 `[RESOLVED] TargetDown critical`이 보인다. 캡처에 날짜와 RESOLVED 개별 시각은 표시되지 않는다. 시각 근거는 run4 타임라인과 Alertmanager 기록이다.
 
+## 같은 PR의 다른 수집 폴더 — `../supplement-20260926/`
+[evidence#48](https://github.com/321Team/fds-project-evidence/pull/48)로 따로 올렸던 수집(2026-09-26 05:16~05:24Z, 같은 MON Lead, 다른 작업 세션)을 이 PR에 합쳤다. 폴더와 내용은 바꾸지 않았다. 이 폴더에 없는 근거는 다음과 같다.
+- 노드 6대 IP × 3000/9090/9093 직접 접근 18건 모두 실패
+- **두 번째 테스트 거래**(계좌 `SIM_mon_ac2_20260926T051949Z`, 3,500,000원, R02 탐지): `fds_detected_total{rule_id="R02"}` 1→2. run4의 거래와 합쳐 **운영 fdsdb에 테스트 거래 2건**이 저장됐다
+
 ## 이번에 확보하지 못한 것
 - Prometheus 재시작 전후 같은 query 결과
 - p0 Test Alert(`FDSMonitoringPipelineTest`) 전환 전후 ConfigMap: 이번 재시험은 TargetDown 방식으로 했다
