@@ -1,0 +1,11 @@
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE     SELECTOR
+service/alertmanager         ClusterIP   10.111.196.9     <none>        9093/TCP   2d23h   app=alertmanager
+service/grafana              ClusterIP   10.111.143.44    <none>        3000/TCP   2d23h   app=grafana
+service/kube-state-metrics   ClusterIP   10.104.51.147    <none>        8080/TCP   2d23h   app=kube-state-metrics
+service/prometheus           ClusterIP   10.100.128.161   <none>        9090/TCP   2d23h   app=prometheus
+
+NAME                                      READY   STATUS    RESTARTS      AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+pod/alertmanager-cdb7cf764-q2vsh          1/1     Running   0             5m43s   10.244.39.221   k8s-worker03   <none>           <none>
+pod/grafana-6cd7cbccbc-78m22              1/1     Running   0             4m48s   10.244.39.222   k8s-worker03   <none>           <none>
+pod/kube-state-metrics-854b8b5499-msjgd   1/1     Running   1 (43h ago)   2d12h   10.244.79.74    k8s-worker01   <none>           <none>
+pod/prometheus-845b49cb58-sf62v           1/1     Running   0             3m52s   10.244.39.223   k8s-worker03   <none>           <none>

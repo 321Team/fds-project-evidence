@@ -1,0 +1,22 @@
+2026-09-25T04:47:14Z START hostname.txt :: hostname
+2026-09-25T04:47:14Z END rc=0 hostname.txt
+2026-09-25T04:47:14Z START nodes-wide.txt :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf get nodes -o wide
+2026-09-25T04:47:14Z END rc=0 nodes-wide.txt
+2026-09-25T04:47:14Z START rbac-clusterroles.yaml :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf get clusterrole prometheus-role prometheus-kubelet-scrape kube-state-metrics-role -o yaml
+2026-09-25T04:47:14Z END rc=0 rbac-clusterroles.yaml
+2026-09-25T04:47:14Z START rbac-can-i-list.txt :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf auth can-i --list --as=system:serviceaccount:monitoring-api:prometheus
+2026-09-25T04:47:14Z END rc=0 rbac-can-i-list.txt
+2026-09-25T04:47:14Z START monitoring-api-pvc.txt :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n monitoring-api get pvc
+2026-09-25T04:47:14Z END rc=0 monitoring-api-pvc.txt
+2026-09-25T04:47:14Z START monitoring-api-workloads.txt :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n monitoring-api get svc,pods -o wide
+2026-09-25T04:47:14Z END rc=0 monitoring-api-workloads.txt
+2026-09-25T04:47:14Z START alertmanager-alerts.json :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf get --raw /api/v1/namespaces/monitoring-api/services/alertmanager:9093/proxy/api/v2/alerts
+2026-09-25T04:47:44Z END rc=0 alertmanager-alerts.json
+2026-09-25T04:47:44Z START fds-app-networkpolicy.yaml :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n fds-app get networkpolicy -o yaml
+2026-09-25T04:47:44Z END rc=0 fds-app-networkpolicy.yaml
+2026-09-25T04:47:44Z START fds-app-workloads.txt :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n fds-app get svc,deploy,pods -o wide
+2026-09-25T04:47:44Z END rc=0 fds-app-workloads.txt
+2026-09-25T04:47:44Z START rejection-output.txt :: sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n fds-app exec -i deploy/fds-engine -- python3 - < rejection-test.py
+2026-09-25T04:47:49Z END rc=0 rejection-output.txt
+2026-09-25T04:57:04Z START alertmanager-alerts-pf.json :: curl -s http://127.0.0.1:9093/api/v2/alerts
+2026-09-25T04:57:04Z END rc=0 alertmanager-alerts-pf.json
