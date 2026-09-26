@@ -1,0 +1,56 @@
+-[ RECORD 1 ]----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+rule                   | R01
+transaction_id         | 89da6d0e-873b-4cdf-8eb7-4b9ed578a22c
+account_id             | SIM_burst_20260923
+amount                 | 3500000
+currency               | KRW
+transaction_type       | withdrawal
+source_ip              | 
+occurred_at            | 2026-09-23 10:18:54.923974+09
+received_at            | 2026-09-23 10:18:54.923974+09
+fds_detected           | t
+fds_rules              | [{"detail": "10분 내 인출 24회 (threshold 3)", "rule_id": "R01", "triggered": true}, {"detail": "고액 거래 3,500,000원 (threshold 3,000,000원)", "rule_id": "R02", "triggered": true}, {"detail": null, "rule_id": "R04", "triggered": false}, {"detail": null, "rule_id": "R07", "triggered": false}]
+fds_evaluation_skipped | f
+
+-[ RECORD 1 ]----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+rule                   | R02
+transaction_id         | 151068c3-5e38-45b8-b65e-fee62aa51ef7
+account_id             | SIM_corr_20260925
+amount                 | 3500000
+currency               | KRW
+transaction_type       | withdrawal
+source_ip              | 
+occurred_at            | 2026-09-25 13:33:16.259199+09
+received_at            | 2026-09-25 13:33:16.259199+09
+fds_detected           | t
+fds_rules              | [{"detail": null, "rule_id": "R01", "triggered": false}, {"detail": "고액 거래 3,500,000원 (threshold 3,000,000원)", "rule_id": "R02", "triggered": true}, {"detail": null, "rule_id": "R04", "triggered": false}, {"detail": null, "rule_id": "R07", "triggered": false}]
+fds_evaluation_skipped | f
+
+-[ RECORD 1 ]----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+rule                   | R04
+transaction_id         | 97d1fcbe-fe69-469e-b3c2-1d608d6c283f
+account_id             | SIM_r04_night_20260923
+amount                 | 1500000
+currency               | KRW
+transaction_type       | withdrawal
+source_ip              | 
+occurred_at            | 2026-09-23 01:18:25.510017+09
+received_at            | 2026-09-23 01:18:25.510017+09
+fds_detected           | t
+fds_rules              | [{"detail": null, "rule_id": "R01", "triggered": false}, {"detail": null, "rule_id": "R02", "triggered": false}, {"detail": "심야(KST 01시) 고액 거래 1,500,000원", "rule_id": "R04", "triggered": true}, {"detail": null, "rule_id": "R07", "triggered": false}]
+fds_evaluation_skipped | f
+
+-[ RECORD 1 ]----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+rule                   | R07
+transaction_id         | c4de7164-6555-4520-8b6e-1499a1d17109
+account_id             | SIM_r07_test
+amount                 | 700000
+currency               | KRW
+transaction_type       | transfer
+source_ip              | 203.0.113.77
+occurred_at            | 2026-09-22 17:00:40.111063+09
+received_at            | 2026-09-22 17:00:40.111063+09
+fds_detected           | t
+fds_rules              | [{"detail": null, "rule_id": "R01", "triggered": false}, {"detail": null, "rule_id": "R02", "triggered": false}, {"detail": null, "rule_id": "R04", "triggered": false}, {"detail": "1시간 내 소액 분산 이체 3건 / 합산 2,100,000원", "rule_id": "R07", "triggered": true}]
+fds_evaluation_skipped | f
+
