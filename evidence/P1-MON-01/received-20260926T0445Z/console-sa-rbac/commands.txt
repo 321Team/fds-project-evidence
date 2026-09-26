@@ -1,0 +1,2 @@
+# 2026-09-26 KST, k8s-control01 server02, 사용자가 실행한 명령(Claude가 제시한 원문)
+K="sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf"; $K get rolebinding,clusterrolebinding -A -o wide | grep -E "NAME|node-exporter" ; $K auth can-i --list --as=system:serviceaccount:monitoring-node:node-exporter-sa | head -20; $K -n monitoring-node get sa node-exporter-sa -o jsonpath='{.automountServiceAccountToken}{"\n"}'; $K -n monitoring-node get pod -o jsonpath='{.items[0].spec.automountServiceAccountToken}{"\n"}'

@@ -20,8 +20,13 @@ run1의 `ingress-all.txt`, `grafana-health-via-pf.txt`, `grafana-search-noauth.t
 - **Collector:** `.108` node-exporter collector 49개 중 성공 40개. 실패 9개(bcachefs, bonding, fibrechannel, ipvs, nfs, nfsd, pressure, tapestats, zfs)는 해당 기능·장치가 없는 collector다(원인 미확인).
 - **p0 Test Alert:** ConfigMap `prometheus-p0-test-alert`(2026-09-22T05:45:35Z 생성)의 `FDSMonitoringPipelineTest`는 `expr: vector(1) == 0`(비활성 상태), `severity: info`.
 
+## 콘솔 제출 자료 — node-exporter SA 권한 (`console-sa-rbac/`)
+**콘솔 제출 자료**다. 사용자가 채팅에 붙여넣은 출력 원문이며, 서버 파일·서버 Hash는 없다. 명령은 `commands.txt`에 있다.
+- `rolebinding,clusterrolebinding -A` 결과를 `node-exporter`로 거르면 헤더 2줄만 남는다. 바인딩 0건이다.
+- `auth can-i --list`(SA `node-exporter-sa`)에는 모든 인증 주체 기본 권한(self*reviews create, discovery·health non-resource get)만 있다. 리소스 get/list/쓰기 권한은 없다.
+- `automountServiceAccountToken`은 SA·Pod 모두 미설정(빈 줄 2개)이므로 기본값 true다.
+
 ## 이번에 확보하지 못한 것
-- node-exporter ServiceAccount `node-exporter-sa`의 RoleBinding/ClusterRoleBinding 부재 확인
 - Prometheus 재시작 전후 같은 query 결과, Test Alert 전이, 거래 후 Metric 조회
 
 AI 사용: CLAUDE_ASSISTED (명령 준비·수신 대조·문서화, 실행은 담당자 본인)
