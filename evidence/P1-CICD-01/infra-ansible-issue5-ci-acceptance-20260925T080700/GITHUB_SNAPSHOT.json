@@ -1,0 +1,133 @@
+{
+  "retrieved_by": "Claude Code session (infra-ansible), direct GitHub MCP API calls",
+  "retrieved_at_utc": "2026-09-25T08:20:00Z",
+  "normal_candidate": {
+    "pr": {
+      "url": "https://github.com/321Team/infra-ansible/pull/47",
+      "number": 47,
+      "head_branch": "claude/bold-einstein-44hhmr",
+      "head_sha": "c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+      "base_branch": "main"
+    },
+    "independent_review": {
+      "reviewer": "hayeounglee",
+      "state": "APPROVED",
+      "commit_id": "c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+      "submitted_at": "2026-09-24T07:28:31Z",
+      "url": "https://github.com/321Team/infra-ansible/pull/47#pullrequestreview-5301171361"
+    },
+    "workflow_run": {
+      "id": 35889332032,
+      "run_number": 1,
+      "run_attempt": 2,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+      "started_at": "2026-09-25T07:39:13Z",
+      "completed_at": "2026-09-25T07:46:13Z",
+      "url": "https://github.com/321Team/infra-ansible/actions/runs/35889332032"
+    },
+    "check_run": {
+      "id": 107987104433,
+      "name": "regression",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "job_log_ci_result_summary": {
+      "source_commit": "c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+      "syntax_playbooks_count": 22,
+      "syntax_engines": ["2.16.19", "2.21.3"],
+      "syntax_total_checks": 44,
+      "syntax_all_rc0": true,
+      "fixtures_status": "PASS_FRESH_OFFLINE_FIXTURES",
+      "fixtures_steps": [
+        {"name": "unit-tests", "rc": 0},
+        {"name": "guards", "rc": 0},
+        {"name": "contract", "rc": 0},
+        {"name": "dns-2.16.19", "rc": 0},
+        {"name": "dns-2.21.3", "rc": 0}
+      ],
+      "fixtures_archive_sha256": "14d040b26cf77f561a4fbaf24c89d844594b6fffbf860e65672669ac95cf620e",
+      "runner_name": "ansible-ci-3499aa0db66e4bb3befa22139a289c7f",
+      "source": "GitHub Actions job log (get_job_logs, job 107987104433, tail 150 lines), read directly by this session"
+    },
+    "artifact": {
+      "id": 10852119595,
+      "name": "ansible-ci-35889332032-2-c6ba5f87711acc3eeeba12c13c72cedd09d178f8",
+      "size_bytes": 475395,
+      "digest": "sha256:6bf6bdd58a69f2439b22fee561bf1ad9557995a25be4018f75fd54ecd94ae094",
+      "created_at": "2026-09-25T07:46:08Z",
+      "expires_at": "2026-10-02T07:39:09Z",
+      "expired": false,
+      "internal_contents_verified_by_this_session": false,
+      "internal_contents_verification_note": "Azure Blob artifact download was blocked by this session's egress proxy policy (productionresultssa6.blob.core.windows.net, CONNECT 403). Only the GitHub-reported digest/size and the job log's own CI_RESULT summary were confirmed, not the artifact ZIP bytes."
+    }
+  },
+  "negative_candidate": {
+    "pr": {
+      "url": "https://github.com/321Team/infra-ansible/pull/51",
+      "number": 51,
+      "head_branch": "test/issue-5-normal-pass-negative-20260925",
+      "head_sha": "1408583cdbf6cc257c996dc96d66de6e9c8ec670",
+      "base_branch": "main",
+      "draft": true,
+      "note": "TEST ONLY / DO NOT MERGE. Derived from PR47 HEAD c6ba5f87711acc3eeeba12c13c72cedd09d178f8 by applying docs/ci/patches/intentional-count-defect.patch (1 line) with no independent code review requested, since it is not intended to merge."
+    },
+    "workflow_run": {
+      "id": 36109856584,
+      "run_number": 2,
+      "run_attempt": 1,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_sha": "1408583cdbf6cc257c996dc96d66de6e9c8ec670",
+      "started_at": "2026-09-25T08:02:13Z",
+      "completed_at": "2026-09-25T08:07:10Z",
+      "url": "https://github.com/321Team/infra-ansible/actions/runs/36109856584"
+    },
+    "check_run": {
+      "id": 107990615364,
+      "name": "regression",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    "job_log_ci_result_summary": {
+      "source_commit": "1408583cdbf6cc257c996dc96d66de6e9c8ec670",
+      "top_level_status": "FAIL",
+      "top_level_error": "Fixture failure or wrong source SHA",
+      "syntax_playbooks_count": 22,
+      "syntax_engines": ["2.16.19", "2.21.3"],
+      "syntax_total_checks": 44,
+      "syntax_all_rc0": true,
+      "syntax_includes_harden_svc_ansible_key_yml_rc0": true,
+      "fixtures_status": "FAIL",
+      "fixtures_steps_observed": [
+        {"name": "unit-tests", "rc": 0}
+      ],
+      "fixtures_error": "Command failed; original logs retained at /session/runner/_work/_temp/ansible-ci-36109856584-1-saBYBPfH/result/fixtures/guards",
+      "fixtures_error_interpretation": "Failure location points specifically at the 'guards' fixture stage (the stage exercising playbooks/harden_svc_ansible_key.yml's managed-key count check, the exact line changed by the patch). Checkout, dependency install, all 44 syntax checks, and unit-tests all passed (rc 0) before this point, which is inconsistent with an environment/setup failure and consistent with the intended defect being detected.",
+      "per_guard_combination_breakdown_confirmed": false,
+      "per_guard_combination_breakdown_note": "ACTIONS_ACCEPTANCE.md calls for confirming the failure traces to all five combinations (one_plain/one_restricted/two_plain/two_restricted/mixed). That level of detail lives inside the fixtures/guards log files bundled into the artifact ZIP, which this session could not download (same proxy block as the normal candidate). Only the fixtures-stage-level FAIL and its file path were confirmed from the job log text.",
+      "source": "GitHub Actions job log (get_job_logs, job 107990615364, tail 400 lines), read directly by this session"
+    },
+    "artifact": {
+      "id": 10852659493,
+      "name": "ansible-ci-36109856584-1-1408583cdbf6cc257c996dc96d66de6e9c8ec670",
+      "size_bytes": 318458,
+      "digest": "sha256:83a6db5b0d91f96b877bc73e67a3432e0be4237ce783ffcd74ecb0b93d2b5af3",
+      "internal_contents_verified_by_this_session": false,
+      "internal_contents_verification_note": "Same Azure Blob proxy block as the normal candidate; artifact ZIP bytes not opened."
+    }
+  },
+  "not_performed_this_snapshot": [
+    "Repository Variables (ANSIBLE_CI_ENABLED, ANSIBLE_CI_RUNNER_LABELS) re-read via API in this snapshot; their live-at-run-time value is inferred only from the fact that both jobs reached 'queued'/executed rather than 'skipped'.",
+    "Artifact ZIP internal byte-level inspection for either run (proxy-blocked)."
+  ],
+  "runner_registration_recheck": {
+    "performed": true,
+    "performed_by": "console submission (not this session's own gh api call)",
+    "file": "RUNNER_REGISTRATION_CHECK.json",
+    "result": "both ephemeral runner names ABSENT, total_count 0"
+  }
+}
