@@ -1,0 +1,16 @@
+Enforcing
+파일 시스템          크기  사용  가용 사용% 마운트위치
+/dev/mapper/cs-home  167G  3.3G  163G    2% /home
+합계 0
+drwxr-xr-x. 5 root   root   59  9월 21일  15:03 .
+drwxr-xr-x. 5 root   root   61  9월 21일  15:03 ..
+drwxr-x---. 2 nobody nobody  6  9월 21일  15:03 alertmanager
+drwxr-x---. 2    472    472  6  9월 21일  15:03 grafana
+drwxr-x---. 2 nobody nobody  6  9월 21일  15:03 prometheus
+[server07@k8s-worker03 ~]$ sudo semanage fcontext -a -t container_file_t "/home/fds-local-pv(/.*)?"
+sudo restorecon -Rv /home/fds-local-pv
+Relabeled /home/fds-local-pv from unconfined_u:object_r:user_home_dir_t:s0 to unconfined_u:object_r:container_file_t:s0
+Relabeled /home/fds-local-pv/prometheus from unconfined_u:object_r:user_home_t:s0 to unconfined_u:object_r:container_file_t:s0
+Relabeled /home/fds-local-pv/grafana from unconfined_u:object_r:user_home_t:s0 to unconfined_u:object_r:container_file_t:s0
+Relabeled /home/fds-local-pv/alertmanager from unconfined_u:object_r:user_home_t:s0 to unconfined_u:object_r:container_file_t:s0
+[server07@k8s-worker03 ~]$
