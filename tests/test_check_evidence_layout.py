@@ -192,5 +192,46 @@ class LayoutCheckerTests(unittest.TestCase):
             errors = C.check(root, files, list(new), [("A", name) for name in new], before)
             self.assertFalse([e for e in errors if e.startswith("SEALED:")], errors)
 
+    def test_manifest_entry_outside_folder_fails(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            other = "evidence/P1-DB-01/other/x.txt"
+            manifest = (digest(b"a\n") + "  a.txt\n" + digest(b"x\n") + "  ../other/x.txt\n").encode()
+            files = self.build(root, {other: b"x\n", "evidence/P1-DB-01/received-1/SHA256SUMS": manifest},
+                               registry_skip={other})
+            errors = C.check(root, files, None)
+            self.assertTrue(any("Manifest 폴더 밖의 추적 파일" in e for e in errors), errors)
+            self.assertIn(f"COVERAGE: {other} — 대장에도, 대장에 등록된 Manifest에도 없다", errors)
+
+    def test_manifest_entry_outside_folder_untracked_warns(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            manifest = (digest(b"a\n") + "  a.txt\n" + digest(b"s\n") + "  /home/server/raw.txt\n").encode()
+            files = self.build(root, {"evidence/P1-DB-01/received-1/SHA256SUMS": manifest})
+            warnings: list[str] = []
+            errors = C.check(root, files, None, warnings=warnings)
+            self.assertEqual([], errors)
+            self.assertTrue(any("추적 파일 아님" in w for w in warnings), warnings)
+
+    def test_manifest_without_parsable_entries_warns(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            manifest = ("SHA256 (x.txt) = " + digest(b"x\n") + "\n").encode()
+            files = self.build(root, {"evidence/P1-DB-01/received-3/SHA256SUMS": manifest})
+            warnings: list[str] = []
+            errors = C.check(root, files, None, warnings=warnings)
+            self.assertEqual([], errors)
+            self.assertTrue(any("읽을 수 있는 항목이 없다" in w for w in warnings), warnings)
+
+    def test_manifest_with_no_files_in_git_warns(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            manifest = (digest(b"s\n") + "  server-only.txt\n").encode()
+            files = self.build(root, {"evidence/P1-DB-01/received-2/SHA256SUMS": manifest})
+            warnings: list[str] = []
+            errors = C.check(root, files, None, warnings=warnings)
+            self.assertEqual([], errors)
+            self.assertTrue(any(w.startswith("WARN:") and "received-2/SHA256SUMS" in w for w in warnings), warnings)
+
 if __name__ == "__main__":
     unittest.main()
