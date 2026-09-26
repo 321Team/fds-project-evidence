@@ -1,0 +1,23 @@
+[B] t0
+2026-09-26T14:03:24+09:00 up_ksm="value":[1790399004.945,"1"] alerts=
+deployment.apps/kube-state-metrics scaled
+2026-09-26T14:03:55+09:00 up_ksm="value":[1790399035.318,"0"] alerts=
+2026-09-26T14:04:25+09:00 up_ksm="value":[1790399065.658,"0"] alerts=
+2026-09-26T14:04:56+09:00 up_ksm="value":[1790399096.190,"0"] alerts="alertstate":"pending"
+2026-09-26T14:05:26+09:00 up_ksm="value":[1790399126.536,"0"] alerts="alertstate":"pending"
+2026-09-26T14:05:56+09:00 up_ksm="value":[1790399156.857,"0"] alerts="alertstate":"firing"
+2026-09-26T14:06:27+09:00 up_ksm="value":[1790399187.177,"0"] alerts="alertstate":"firing"
+[B] 복구
+deployment.apps/kube-state-metrics scaled
+Waiting for deployment "kube-state-metrics" rollout to finish: 0 of 1 updated replicas are available...
+deployment "kube-state-metrics" successfully rolled out
+2026-09-26T14:06:58+09:00 up_ksm="value":[1790399219.007,"1"] alerts=
+2026-09-26T14:07:29+09:00 up_ksm="value":[1790399249.326,"1"] alerts=
+2026-09-26T14:07:59+09:00 up_ksm="value":[1790399279.667,"1"] alerts=
+2026-09-26T14:08:29+09:00 up_ksm="value":[1790399309.985,"1"] alerts=
+2026-09-26T14:09:00+09:00 up_ksm="value":[1790399340.296,"1"] alerts=
+2026-09-26T14:09:30+09:00 up_ksm="value":[1790399370.610,"1"] alerts=
+2026-09-26T14:10:00+09:00 up_ksm="value":[1790399400.946,"1"] alerts=
+2026-09-26T14:10:31+09:00 up_ksm="value":[1790399431.250,"1"] alerts=
+2026-09-26T14:11:01+09:00 up_ksm="value":[1790399461.575,"1"] alerts=
+2026-09-26T14:11:31+09:00 up_ksm="value":[1790399491.991,"1"] alerts=

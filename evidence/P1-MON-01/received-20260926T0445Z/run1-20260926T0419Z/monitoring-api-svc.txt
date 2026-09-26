@@ -1,0 +1,12 @@
+Warning: v1 Endpoints is deprecated in v1.33+; use discovery.k8s.io/v1 EndpointSlice
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE     SELECTOR
+service/alertmanager         ClusterIP   10.111.196.9     <none>        9093/TCP   3d22h   app=alertmanager
+service/grafana              ClusterIP   10.111.143.44    <none>        3000/TCP   3d22h   app=grafana
+service/kube-state-metrics   ClusterIP   10.104.51.147    <none>        8080/TCP   3d22h   app=kube-state-metrics
+service/prometheus           ClusterIP   10.100.128.161   <none>        9090/TCP   3d22h   app=prometheus
+
+NAME                           ENDPOINTS            AGE
+endpoints/alertmanager         10.244.39.221:9093   3d22h
+endpoints/grafana              10.244.39.222:3000   3d22h
+endpoints/kube-state-metrics   10.244.79.74:8080    3d22h
+endpoints/prometheus           10.244.39.223:9090   3d22h
