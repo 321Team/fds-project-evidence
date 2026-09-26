@@ -1,0 +1,169 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-monitoring-scrape","namespace":"fds-app"},"spec":{"ingress":[{"from":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"monitoring-api"}},"podSelector":{"matchLabels":{"app":"prometheus"}}}],"ports":[{"port":9091,"protocol":"TCP"},{"port":9090,"protocol":"TCP"}]}],"podSelector":{"matchExpressions":[{"key":"app","operator":"In","values":["transaction-api","fds-engine"]}]},"policyTypes":["Ingress"]}}
+    creationTimestamp: "2026-09-22T05:53:08Z"
+    generation: 1
+    name: allow-monitoring-scrape
+    namespace: fds-app
+    resourceVersion: "1117270"
+    uid: 1ba199ce-959a-40a6-82f7-812cd74a9b0e
+  spec:
+    ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-api
+        podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 9091
+        protocol: TCP
+      - port: 9090
+        protocol: TCP
+    podSelector:
+      matchExpressions:
+      - key: app
+        operator: In
+        values:
+        - transaction-api
+        - fds-engine
+    policyTypes:
+    - Ingress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"default-deny-all","namespace":"fds-app"},"spec":{"podSelector":{},"policyTypes":["Ingress","Egress"]}}
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: default-deny-all
+    namespace: fds-app
+    resourceVersion: "1066792"
+    uid: a1f21208-2e39-4f54-88e4-bb2f2e17d7a8
+  spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"fds-engine-allow","namespace":"fds-app"},"spec":{"egress":[{"ports":[{"port":53,"protocol":"UDP"},{"port":53,"protocol":"TCP"}],"to":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"kube-system"}},"podSelector":{"matchLabels":{"k8s-app":"kube-dns"}}}]}],"ingress":[{"from":[{"podSelector":{"matchLabels":{"app":"transaction-api"}}}],"ports":[{"port":8001,"protocol":"TCP"}]},{"from":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"monitoring-api"}},"podSelector":{"matchLabels":{"app":"prometheus"}}}],"ports":[{"port":9090,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app":"fds-engine"}},"policyTypes":["Ingress","Egress"]}}
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: fds-engine-allow
+    namespace: fds-app
+    resourceVersion: "1066796"
+    uid: b2dfa7a3-31b6-4d13-9dc2-f58bf285422b
+  spec:
+    egress:
+    - ports:
+      - port: 53
+        protocol: UDP
+      - port: 53
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kube-system
+        podSelector:
+          matchLabels:
+            k8s-app: kube-dns
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: transaction-api
+      ports:
+      - port: 8001
+        protocol: TCP
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-api
+        podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 9090
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: fds-engine
+    policyTypes:
+    - Ingress
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"transaction-api-allow","namespace":"fds-app"},"spec":{"egress":[{"ports":[{"port":8001,"protocol":"TCP"}],"to":[{"podSelector":{"matchLabels":{"app":"fds-engine"}}}]},{"ports":[{"port":5432,"protocol":"TCP"}],"to":[{"ipBlock":{"cidr":"10.1.93.55/32"}}]},{"ports":[{"port":53,"protocol":"UDP"},{"port":53,"protocol":"TCP"}],"to":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"kube-system"}},"podSelector":{"matchLabels":{"k8s-app":"kube-dns"}}}]}],"ingress":[{"from":[{"ipBlock":{"cidr":"10.1.93.50/32"}}],"ports":[{"port":8000,"protocol":"TCP"}]},{"from":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"monitoring-api"}},"podSelector":{"matchLabels":{"app":"prometheus"}}}],"ports":[{"port":9091,"protocol":"TCP"}]}],"podSelector":{"matchLabels":{"app":"transaction-api"}},"policyTypes":["Ingress","Egress"]}}
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: transaction-api-allow
+    namespace: fds-app
+    resourceVersion: "1066795"
+    uid: 356b6458-d7e4-4a11-bd64-7a7128448f39
+  spec:
+    egress:
+    - ports:
+      - port: 8001
+        protocol: TCP
+      to:
+      - podSelector:
+          matchLabels:
+            app: fds-engine
+    - ports:
+      - port: 5432
+        protocol: TCP
+      to:
+      - ipBlock:
+          cidr: 10.1.93.55/32
+    - ports:
+      - port: 53
+        protocol: UDP
+      - port: 53
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kube-system
+        podSelector:
+          matchLabels:
+            k8s-app: kube-dns
+    ingress:
+    - from:
+      - ipBlock:
+          cidr: 10.1.93.50/32
+      ports:
+      - port: 8000
+        protocol: TCP
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-api
+        podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 9091
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: transaction-api
+    policyTypes:
+    - Ingress
+    - Egress
+kind: List
+metadata:
+  resourceVersion: ""
