@@ -1,6 +1,6 @@
 # P1-MON-01 — AC 근거 보완 조회 3회차 (2026-09-26, k8s-control01)
 
-[증적 보완 요청 대응표](https://github.com/321Team/fds-project-baseline/issues/17#issuecomment-5843098390)의 "읽기 전용 조회로 보완 가능한 것"을 MON Lead(이재환)가 k8s-control01(`server02`)에서 수집했다. **run1~3은 조회(GET)만 했고 클러스터 변경이 없다. run4는 운영 상태를 바꿨다**(테스트 거래 1건 저장, KSM 약 3분 중단 — 아래 run4 절). 각 회차 파일은 서버에서 tar.gz로 묶어 base64로 받았고, archive SHA-256과 서버 `sha256sum` 결과가 수신본과 일치한다. 각 폴더의 `server-sha256sums.txt`는 서버가 만든 파일을 그대로 옮긴 것이다(원래 이름 `SHA256SUMS`).
+[증적 보완 요청 대응표](https://github.com/321Team/fds-project-baseline/issues/17#issuecomment-5843098390)의 "읽기 전용 조회로 보완 가능한 것"을 MON Lead(이재환)가 k8s-control01(`server02`)에서 수집했다. **run1~3은 조회(GET)만 했고 클러스터 변경이 없다. run4·run5는 운영 상태를 바꿨다**(run4: 테스트 거래 1건 저장·KSM 약 3분 중단, run5: Prometheus 재시작 — 아래 각 절). 각 회차 파일은 서버에서 tar.gz로 묶어 base64로 받았고, archive SHA-256과 서버 `sha256sum` 결과가 수신본과 일치한다. 각 폴더의 `server-sha256sums.txt`는 서버가 만든 파일을 그대로 옮긴 것이다(원래 이름 `SHA256SUMS`).
 
 | 회차 | 시각(UTC) | archive SHA-256 | 내용 |
 |---|---|---|---|
@@ -43,13 +43,21 @@ run1의 `ingress-all.txt`, `grafana-health-via-pf.txt`, `grafana-search-noauth.t
 ## 콘솔 제출 자료 — Discord 수신 화면 (`console-discord/`)
 `discord-targetdown-firing-resolved.png`는 사용자가 채팅에 첨부한 Discord 화면 캡처다(SHA-256 `a2a60316…46ffd3`, 수신 파일 그대로). `[FIRING:1] TargetDown critical`(메시지 묶음 시각 "오후 2:05")과 `[RESOLVED] TargetDown critical`이 보인다. 캡처에 날짜와 RESOLVED 개별 시각은 표시되지 않는다. 시각 근거는 run4 타임라인과 Alertmanager 기록이다.
 
+## run5 — Prometheus 재시작 후 데이터·Dashboard Query 유지 (`run5-prom-restart-20260926T0550Z`)
+2026-09-26 14:50:01~14:51:34 KST(05:50:01~05:51:34Z), k8s-control01. archive `e235a975…7f7db6`(1,517 B)를 채팅으로 수신해 대조했다. **운영 변경 포함:** `kubectl rollout restart deploy/prometheus`를 실행했다(MON Lead 결정). 약 1분간 수집·룰 평가가 중단됐다.
+- Pod: `prometheus-845b49cb58-sf62v`(25h) → `prometheus-7669c8c574-nstkc`(재시작 후 71s). 같은 노드 worker03, 같은 PVC(`prom-pod-before/after.txt`).
+- `up{job="kube-state-metrics"}` query_range, 구간 T0-1800초~, step 60(`window.txt`: T0=1790401801, T1=1790401894):
+  - 재시작 전 Prometheus 직접 조회(`range-before.json`): 31점
+  - 재시작 후 Prometheus 직접 조회(`range-after.json`): 32점, 그중 **T0 이전 30점**(재시작 전 데이터 유지)
+  - 재시작 후 **Grafana Datasource proxy 경유** 조회(`range-after-via-grafana.json`, Grafana Pod 안에서 Pod 환경변수의 관리자 계정으로 호출): 32점, T0 이전 30점
+- `monitoring-api-images.txt`: monitoring-api 4개 Pod의 image·imageID. 모두 `10.1.93.54/fds/...@sha256:` digest로 실행 중이다(Grafana digest 고정 PR infra-monitoring#18의 근거).
+
 ## 같은 PR의 다른 수집 폴더 — `../supplement-20260926/`
 [evidence#48](https://github.com/321Team/fds-project-evidence/pull/48)로 따로 올렸던 수집(2026-09-26 05:16~05:24Z, 같은 MON Lead, 다른 작업 세션)을 이 PR에 합쳤다. 폴더와 내용은 바꾸지 않았다. 이 폴더에 없는 근거는 다음과 같다.
 - 노드 6대 IP × 3000/9090/9093 직접 접근 18건 모두 실패
 - **두 번째 테스트 거래**(계좌 `SIM_mon_ac2_20260926T051949Z`, 3,500,000원, R02 탐지): `fds_detected_total{rule_id="R02"}` 1→2. run4의 거래와 합쳐 **운영 fdsdb에 테스트 거래 2건**이 저장됐다
 
 ## 이번에 확보하지 못한 것
-- Prometheus 재시작 전후 같은 query 결과
 - p0 Test Alert(`FDSMonitoringPipelineTest`) 전환 전후 ConfigMap: 이번 재시험은 TargetDown 방식으로 했다
 
 AI 사용: CLAUDE_ASSISTED (명령 준비·수신 대조·문서화, 실행은 담당자 본인)
