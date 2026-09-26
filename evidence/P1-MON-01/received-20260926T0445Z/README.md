@@ -26,7 +26,25 @@ run1의 `ingress-all.txt`, `grafana-health-via-pf.txt`, `grafana-search-noauth.t
 - `auth can-i --list`(SA `node-exporter-sa`)에는 모든 인증 주체 기본 권한(self*reviews create, discovery·health non-resource get)만 있다. 리소스 get/list/쓰기 권한은 없다.
 - `automountServiceAccountToken`은 SA·Pod 모두 미설정(빈 줄 2개)이므로 기본값 true다.
 
+## run4 — 거래 1건 후 Metric 조회 + Test Alert(TargetDown) 재시험 (`run4-e2e-s8-20260926T0502Z`)
+2026-09-26 14:02:36~14:11:31 KST, k8s-control01. archive `b3155fc5…709846`(2,384 B)를 수신 대조했다. **이 회차는 운영 상태를 바꿨다**(아래 2개). MON Lead가 실행을 결정했다.
+
+**A. 거래 1건 → Metric 조회**(AC "거래 호출 후 API/FDS/DB 저장 Metric과 Kubernetes/Node Metric 조회")
+- `transaction-api` port-forward로 `POST /api/v1/transactions` 1건을 보냈다(계좌 `MON-E2E-20260926`, deposit 10,000 KRW). 응답 `HTTP=201`, `fds_detected:false`, R01/R02/R04/R07 모두 미탐지, `fds_evaluation_skipped:false`(`txn-response.txt`). **fdsdb에 거래 1건이 저장됐다.**
+- 거래 전→후(`metrics-before.txt`→`metrics-after.txt`, 40초 간격): `sum(transaction_save_success_total)` 0→1, `sum(transaction_save_failure_total)` 0→0, `sum(fds_evaluated_total)` 1→2, `fds_detected_total{rule_id="R02"}` 1→1. K8s `kube_deployment_status_replicas_available{namespace="fds-app"}` 2개 Deployment 각 2, Node `node_memory_MemAvailable_bytes` `.108` 조회 성공. `.105`·`.107`은 크로스노드 이슈로 series가 없다.
+- 카운터는 Pod별 합계이며 Pod 재시작 시 초기화된다. 거래 전 값 0은 현재 Pod 수명 기준이다.
+
+**B. TargetDown 재시험**(9/24 요청 1-1·1-2)
+- 방법: `s8_target_down.sh`(infra-monitoring main `72e952c`, H03 수정본)와 같은 절차를 명령 줄로 실행했다. KSM `replicas=0` → 30초 간격 관측 6회 → `replicas=1` → 30초 간격 관측 10회. 중단 시 `replicas=1` 복구 trap을 걸었다. 명령 원문은 PR 코멘트에 있다.
+- 타임라인(`s8-timeline.txt`): 14:03:24 up=1 → 14:03:55 up=0 → 14:04:56 **pending** → 14:05:56 **firing** → 14:06:58 복구 up=1, ALERTS 소멸 → 14:11:31까지 유지. 최종 KSM 1/1(`ksm-final.txt`).
+- Alertmanager `/api/v2/alerts`: firing 중 `TargetDown` active, startsAt `05:05:43Z`, receiver `discord-notifications`(`am-during.json`). 복구 후 빈 목록(`am-after.json`).
+- **KSM 중단 약 3분 동안 kube-state-metrics 지표 공백이 생겼다.**
+
+## 콘솔 제출 자료 — Discord 수신 화면 (`console-discord/`)
+`discord-targetdown-firing-resolved.png`는 사용자가 채팅에 첨부한 Discord 화면 캡처다(SHA-256 `a2a60316…46ffd3`, 수신 파일 그대로). `[FIRING:1] TargetDown critical`(메시지 묶음 시각 "오후 2:05")과 `[RESOLVED] TargetDown critical`이 보인다. 캡처에 날짜와 RESOLVED 개별 시각은 표시되지 않는다. 시각 근거는 run4 타임라인과 Alertmanager 기록이다.
+
 ## 이번에 확보하지 못한 것
-- Prometheus 재시작 전후 같은 query 결과, Test Alert 전이, 거래 후 Metric 조회
+- Prometheus 재시작 전후 같은 query 결과
+- p0 Test Alert(`FDSMonitoringPipelineTest`) 전환 전후 ConfigMap: 이번 재시험은 TargetDown 방식으로 했다
 
 AI 사용: CLAUDE_ASSISTED (명령 준비·수신 대조·문서화, 실행은 담당자 본인)

@@ -1,0 +1,12 @@
+## sum(transaction_save_success_total)
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1790399004.058,"1"]}]}}
+## sum(transaction_save_failure_total)
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1790399004.197,"0"]}]}}
+## sum(fds_evaluated_total)
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1790399004.345,"2"]}]}}
+## sum by (rule_id) (fds_detected_total)
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"rule_id":"R02"},"value":[1790399004.507,"1"]}]}}
+## kube_deployment_status_replicas_available{namespace="fds-app"}
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"kube_deployment_status_replicas_available","deployment":"fds-engine","instance":"kube-state-metrics.monitoring-api.svc.cluster.local:8080","job":"kube-state-metrics","namespace":"fds-app"},"value":[1790399004.657,"2"]},{"metric":{"__name__":"kube_deployment_status_replicas_available","deployment":"transaction-api","instance":"kube-state-metrics.monitoring-api.svc.cluster.local:8080","job":"kube-state-metrics","namespace":"fds-app"},"value":[1790399004.657,"2"]}]}}
+## node_memory_MemAvailable_bytes
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"node_memory_MemAvailable_bytes","instance":"10.1.93.108:9100","job":"node-exporter"},"value":[1790399004.796,"22098874368"]}]}}
