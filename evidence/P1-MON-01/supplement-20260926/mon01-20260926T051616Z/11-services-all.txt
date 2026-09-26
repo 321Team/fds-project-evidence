@@ -1,0 +1,12 @@
+NS                NAME                      TYPE        PORTS        NODEPORTS
+default           kubernetes                ClusterIP   443          <none>
+fds-app           fds-engine                ClusterIP   8001,9090    <none>
+fds-app           fds-engine-metrics        ClusterIP   9090         <none>
+fds-app           transaction-api           ClusterIP   80,9091      <none>
+fds-app           transaction-api-metrics   ClusterIP   9091         <none>
+kube-system       kube-dns                  ClusterIP   53,53,9153   <none>
+monitoring-api    alertmanager              ClusterIP   9093         <none>
+monitoring-api    grafana                   ClusterIP   3000         <none>
+monitoring-api    kube-state-metrics        ClusterIP   8080         <none>
+monitoring-api    prometheus                ClusterIP   9090         <none>
+monitoring-node   node-exporter             ClusterIP   9100         <none>

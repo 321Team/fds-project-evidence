@@ -1,0 +1,10 @@
+logger=provisioning.alerting t=2026-09-25T04:42:28.403422355Z level=info msg="starting to provision alerting"
+logger=provisioning.alerting t=2026-09-25T04:42:28.403442852Z level=info msg="finished to provision alerting"
+logger=provisioning.dashboard t=2026-09-25T04:42:28.408549387Z level=info msg="starting to provision dashboards"
+logger=provisioning.dashboard t=2026-09-25T04:42:28.411159279Z level=info msg="finished to provision dashboards"
+t=2026-09-25T04:42:28.467806394Z level=info caller=logger.go:214 time=2026-09-25T04:42:28.467792649Z msg="Starting ConnectionController" logger=provisioning-connection-controller
+t=2026-09-25T04:42:28.467838529Z level=info caller=logger.go:214 time=2026-09-25T04:42:28.467834761Z msg="Starting workers" logger=provisioning-connection-controller count=1
+t=2026-09-25T04:42:28.467846451Z level=info caller=logger.go:214 time=2026-09-25T04:42:28.467844816Z msg="Started workers" logger=provisioning-connection-controller
+t=2026-09-25T04:42:28.469332857Z level=info caller=logger.go:214 time=2026-09-25T04:42:28.469313465Z msg="Starting RepositoryController" logger=provisioning-repository-controller
+t=2026-09-25T04:42:28.469384828Z level=info caller=logger.go:214 time=2026-09-25T04:42:28.46937793Z msg="Starting workers" logger=provisioning-repository-controller count=1
+t=2026-09-25T04:42:28.469397659Z level=info caller=logger.go:214 time=2026-09-25T04:42:28.469395713Z msg="Started workers" logger=provisioning-repository-controller

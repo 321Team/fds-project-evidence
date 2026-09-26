@@ -1,0 +1,33 @@
+# 실행 명령 기록 (수신 측 작성). k8s-control01, 계정 server02, 2026-09-26 05:16~05:24 UTC.
+# 담당자가 콘솔에 붙여 넣어 실행한 명령이다. 결과 파일은 mon01-20260926T051616Z/ 에 있다.
+
+sudo -v
+k(){ sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf "$@"; }
+O=~/mon01-$(date -u +%Y%m%dT%H%M%SZ); mkdir -p $O; cd $O; echo $O
+
+# 10~12 외부 노출
+k get ingress -A -o wide > 10-ingress-all.txt 2>&1
+k get svc -A -o custom-columns='NS:.metadata.namespace,NAME:.metadata.name,TYPE:.spec.type,PORTS:.spec.ports[*].port,NODEPORTS:.spec.ports[*].nodePort' > 11-services-all.txt 2>&1
+{ k -n monitoring-api get svc; echo; echo "nodeport_or_lb: $(k -n monitoring-api get svc -o jsonpath='{range .items[*]}{.spec.type}{"\n"}{end}' | grep -cE 'NodePort|LoadBalancer')"; echo "ingress: $(k -n monitoring-api get ingress -o name 2>/dev/null | grep -c .)"; } > 12-mon-exposure.txt 2>&1
+
+# 20 승인 단말 port-forward, 21 노드 IP 직접 접근
+sudo -v; k -n monitoring-api port-forward svc/grafana 13000:3000 >/dev/null 2>&1 & PF=$!; sleep 3
+curl -sS -m 10 -w '\nhttp_code: %{http_code}\n' http://127.0.0.1:13000/api/health > 20-grafana-pf-health.txt 2>&1; kill $PF
+for ip in 10.1.93.102 10.1.93.103 10.1.93.104 10.1.93.105 10.1.93.107 10.1.93.108; do for p in 3000 9090 9093; do echo "$ip:$p http_code=$(curl -s -o /dev/null -m 3 -w '%{http_code}' http://$ip:$p/)"; done; done > 21-nodeip-direct.txt
+
+# 30~32 거래 호출 전후 Metric (합성 거래 1건, DB에 시험 행 1개 생성)
+sudo -v
+k -n monitoring-api port-forward svc/prometheus 19090:9090 >/dev/null 2>&1 & PF1=$!
+k -n fds-app port-forward svc/transaction-api 18080:80 >/dev/null 2>&1 & PF2=$!; sleep 3
+q(){ echo "## $1"; curl -sS -m 10 -G http://127.0.0.1:19090/api/v1/query --data-urlencode "query=$1"; echo; }
+snap(){ for x in 'sum(transaction_save_success_total)' 'sum(fds_evaluated_total)' 'sum by (rule_id) (fds_detected_total)' 'up{job=~"transaction-api|fds-engine"}' 'kube_deployment_status_replicas_available{namespace="fds-app"}' 'node_uname_info' 'up'; do q "$x"; done; }
+date -u +%FT%TZ > 30-metrics-before.txt; snap >> 30-metrics-before.txt 2>&1
+ACC=SIM_mon_ac2_$(date -u +%Y%m%dT%H%M%SZ); { date -u +%FT%TZ; echo "account_id=$ACC"; curl -sS -m 15 -w '\nhttp_code: %{http_code}\n' -H 'Content-Type: application/json' -d "{\"account_id\":\"$ACC\",\"amount\":3500000,\"currency\":\"KRW\",\"transaction_type\":\"withdrawal\",\"source_ip\":\"10.1.93.29\"}" http://127.0.0.1:18080/api/v1/transactions; } > 31-transaction.txt 2>&1
+sleep 45; date -u +%FT%TZ > 32-metrics-after.txt; snap >> 32-metrics-after.txt 2>&1
+kill $PF1 $PF2
+
+# 22 Grafana provisioning 로그 (첫 추출이 검색 인덱스 로그로 채워져 logger=provisioning 으로 다시 추출)
+k -n monitoring-api logs deploy/grafana --tail=-1 | grep -E 'logger=provisioning' | grep -viE 'password|token|secret' > 22-grafana-provisioning.txt
+
+# 압축·해시
+cd ~; D=mon01-20260926T051616Z; (cd $D && rm -f SHA256SUMS && sha256sum * > SHA256SUMS); tar czf $D.tar.gz $D; sha256sum $D.tar.gz | tee $D.tar.gz.sha256
