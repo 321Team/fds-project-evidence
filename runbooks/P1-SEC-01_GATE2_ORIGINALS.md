@@ -21,7 +21,7 @@
 
 ## 2. 배치와 실행
 
-CP는 인터넷·저장소 접근이 없다. [collect-p1-sec-01-originals.sh](../tools/collect-p1-sec-01-originals.sh)를 control01 root 콘솔에 `cat > /root/collect-p1-sec-01-originals.sh <<'EOF'` 방식으로 옮긴 뒤 해시를 대조한다. 기대값은 [P1_SEC_01_ORIGINALS_SHA256SUMS](../tools/P1_SEC_01_ORIGINALS_SHA256SUMS)에 있다.
+CP는 인터넷·저장소 접근이 없다. [collect-p1-sec-01-originals.sh](../tools/collect-p1-sec-01-originals.sh)를 control01 root 콘솔에 `cat > /root/collect-p1-sec-01-originals.sh <<'P1SEC01_END'`로 붙여넣고 마지막에 `P1SEC01_END` 한 줄을 입력해 옮긴 뒤 해시를 대조한다. 기대값은 [P1_SEC_01_ORIGINALS_SHA256SUMS](../tools/P1_SEC_01_ORIGINALS_SHA256SUMS)에 있다.
 
 ```bash
 cd /root && sha256sum collect-p1-sec-01-originals.sh
