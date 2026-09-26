@@ -1,0 +1,5 @@
+[server08@db01 ~]$ psql -U fds_app -d fdsdb_repro_test_0915 -c "SELECT count(*) FROM transactions;"
+psql -U fds_app -d fdsdb_repro_test_0915 -c "SELECT transaction_id, account_id, fds_rules FROM transactions LIMIT 3;"
+psql: 오류: "/var/run/postgresql/.s.PGSQL.5432" 소켓으로 서버 접속 할 수 없음: 치명적오류:  사용자 "fds_app"의 peer 인증을 실패했습니다.
+psql: 오류: "/var/run/postgresql/.s.PGSQL.5432" 소켓으로 서버 접속 할 수 없음: 치명적오류:  사용자 "fds_app"의 peer 인증을 실패했습니다.
+[server08@db01 ~]$

@@ -1,0 +1,32 @@
+[server08@db01 ~]$ pg_restore --version
+pg_restore -l /tmp/fdsdb_backup_20260903.dump
+pg_restore (PostgreSQL) 16.14
+;
+; Archive created at 2026-09-03 17:31:15 KST
+;     dbname: fdsdb
+;     TOC Entries: 15
+;     Compression: gzip
+;     Dump Version: 1.15-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 16.14
+;     Dumped by pg_dump version: 16.14
+;
+;
+; Selected TOC Entries:
+;
+4467; 0 0 ACL - SCHEMA public pg_database_owner
+2; 3079 16390 EXTENSION - pgcrypto
+4468; 0 0 COMMENT - EXTENSION pgcrypto
+217; 1259 16477 TABLE public alembic_version fds_app
+216; 1259 16466 TABLE public transactions fds_app
+4460; 0 16477 TABLE DATA public alembic_version fds_app
+4459; 0 16466 TABLE DATA public transactions fds_app
+4315; 2606 16481 CONSTRAINT public alembic_version alembic_version_pkc fds_app
+4313; 2606 16474 CONSTRAINT public transactions transactions_pkey fds_app
+4310; 1259 16475 INDEX public idx_transactions_account_id fds_app
+4311; 1259 16476 INDEX public idx_transactions_account_type_time fds_app
+[server08@db01 ~]$ createdb -U fds_app fdsdb_repro_test_0915
+createdb: 오류: "/var/run/postgresql/.s.PGSQL.5432" 소켓으로 서버 접속 할 수 없음: 치명적오류:  사용자 "fds_app"의 peer 인증을 실패했습니다.
+[server08@db01 ~]$
