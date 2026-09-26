@@ -1,0 +1,8 @@
+NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+alertmanager         ClusterIP   10.111.196.9     <none>        9093/TCP   3d23h
+grafana              ClusterIP   10.111.143.44    <none>        3000/TCP   3d23h
+kube-state-metrics   ClusterIP   10.104.51.147    <none>        8080/TCP   3d23h
+prometheus           ClusterIP   10.100.128.161   <none>        9090/TCP   3d23h
+
+nodeport_or_lb: 0
+ingress: 0
