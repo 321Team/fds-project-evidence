@@ -1,0 +1,11 @@
+[server08@db01 ~]$ psql -h 127.0.0.1 -U fds_app -d fdsdb -c "SELECT version_num FROM alembic_version;"
+fds_app 사용자의 암호:
+ version_num
+-------------
+ 0002
+(1개 행)
+
+[server08@db01 ~]$ psql -h 127.0.0.1 -U fds_app -d fdsdb -c "UPDATE alembic_version SET version_num = '0003';"
+fds_app 사용자의 암호:
+UPDATE 1
+[server08@db01 ~]$
