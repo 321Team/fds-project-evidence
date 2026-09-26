@@ -1,0 +1,12 @@
+NAMESPACE         NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                  AGE     SELECTOR
+default           kubernetes                ClusterIP   10.96.0.1        <none>        443/TCP                  16d     <none>
+fds-app           fds-engine                ClusterIP   10.97.246.223    <none>        8001/TCP,9090/TCP        4d      app=fds-engine
+fds-app           fds-engine-metrics        ClusterIP   None             <none>        9090/TCP                 3d22h   app=fds-engine
+fds-app           transaction-api           ClusterIP   10.106.27.47     <none>        80/TCP,9091/TCP          4d      app=transaction-api
+fds-app           transaction-api-metrics   ClusterIP   None             <none>        9091/TCP                 3d22h   app=transaction-api
+kube-system       kube-dns                  ClusterIP   10.96.0.10       <none>        53/UDP,53/TCP,9153/TCP   16d     k8s-app=kube-dns
+monitoring-api    alertmanager              ClusterIP   10.111.196.9     <none>        9093/TCP                 3d22h   app=alertmanager
+monitoring-api    grafana                   ClusterIP   10.111.143.44    <none>        3000/TCP                 3d22h   app=grafana
+monitoring-api    kube-state-metrics        ClusterIP   10.104.51.147    <none>        8080/TCP                 3d22h   app=kube-state-metrics
+monitoring-api    prometheus                ClusterIP   10.100.128.161   <none>        9090/TCP                 3d22h   app=prometheus
+monitoring-node   node-exporter             ClusterIP   10.108.65.121    <none>        9100/TCP                 3d22h   app=node-exporter
