@@ -1,0 +1,14 @@
+2026-09-25T04:49:02Z START hostname.txt :: hostname
+2026-09-25T04:49:02Z END rc=0 hostname.txt
+2026-09-25T04:49:02Z START ip-addr.txt :: ip -br addr
+2026-09-25T04:49:02Z END rc=0 ip-addr.txt
+2026-09-25T04:49:02Z START pg_hba-active-lines.txt :: sudo grep -Ev ^[[:space:]]*(#|$) /var/lib/pgsql/data/pg_hba.conf
+2026-09-25T04:49:02Z END rc=0 pg_hba-active-lines.txt
+2026-09-25T04:49:02Z START listen_addresses.txt :: sudo grep -n listen_addresses /var/lib/pgsql/data/postgresql.conf
+2026-09-25T04:49:02Z END rc=0 listen_addresses.txt
+2026-09-25T04:49:02Z START firewalld-list-all.txt :: sudo firewall-cmd --list-all
+2026-09-25T04:49:02Z END rc=0 firewalld-list-all.txt
+2026-09-25T04:49:02Z START firewalld-rich-rules.txt :: sudo firewall-cmd --list-rich-rules
+2026-09-25T04:49:02Z END rc=0 firewalld-rich-rules.txt
+2026-09-25T04:49:02Z START psql -U fds_app -h 127.0.0.1 -d fdsdb -f queries.sql
+2026-09-25T04:49:21Z END rc=0 psql

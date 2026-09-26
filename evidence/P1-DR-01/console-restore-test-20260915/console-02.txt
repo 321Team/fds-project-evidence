@@ -1,0 +1,10 @@
+[server08@db01 ~]$ createdb -U fds_app fdsdb_repro_test_0915
+createdb: 오류: "/var/run/postgresql/.s.PGSQL.5432" 소켓으로 서버 접속 할 수 없음: 치명적오류:  사용자 "fds_app"의 peer 인증을 실패했습니다.
+[server08@db01 ~]$ createdb -U fds_app -h 127.0.0.1 fdsdb_repro_test_0915
+암호:
+createdb: 오류: 데이터베이스 만들기 실패: 오류:  데이터베이스를 만들 권한이 없음
+[server08@db01 ~]$ sudo -u postgres createdb -O fds_app fdsdb_repro_test_0915
+[sudo] server08 암호:
+[server08@db01 ~]$ pg_restore -U fds_app -d fdsdb_repro_test_0915 /tmp/fdsdb_backup_20260903.dump
+pg_restore: 오류: "/var/run/postgresql/.s.PGSQL.5432" 소켓으로 서버 접속 할 수 없음: 치명적오류:  사용자 "fds_app"의 peer 인증을 실패했습니다.
+[server08@db01 ~]$

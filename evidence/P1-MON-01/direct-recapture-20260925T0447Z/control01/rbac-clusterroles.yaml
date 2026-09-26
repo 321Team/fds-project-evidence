@@ -1,0 +1,120 @@
+apiVersion: v1
+items:
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRole","metadata":{"annotations":{},"name":"prometheus-role"},"rules":[{"apiGroups":[""],"resources":["pods","services","endpoints","namespaces","nodes"],"verbs":["get","list","watch"]},{"apiGroups":[""],"resources":["nodes/metrics"],"verbs":["get"]},{"nonResourceURLs":["/metrics"],"verbs":["get"]}]}
+    creationTimestamp: "2026-09-22T00:17:40Z"
+    name: prometheus-role
+    resourceVersion: "1066108"
+    uid: 6dabcc38-0f5d-4c7d-b14f-995c38e388d6
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - pods
+    - services
+    - endpoints
+    - namespaces
+    - nodes
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - ""
+    resources:
+    - nodes/metrics
+    verbs:
+    - get
+  - nonResourceURLs:
+    - /metrics
+    verbs:
+    - get
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRole","metadata":{"annotations":{},"name":"prometheus-kubelet-scrape"},"rules":[{"apiGroups":[""],"resources":["nodes","nodes/metrics"],"verbs":["get","list","watch"]},{"nonResourceURLs":["/metrics","/metrics/cadvisor"],"verbs":["get"]}]}
+    creationTimestamp: "2026-09-22T05:45:34Z"
+    name: prometheus-kubelet-scrape
+    resourceVersion: "1115777"
+    uid: 23357c50-755a-4bfd-98f3-cedf51cfe849
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - nodes
+    - nodes/metrics
+    verbs:
+    - get
+    - list
+    - watch
+  - nonResourceURLs:
+    - /metrics
+    - /metrics/cadvisor
+    verbs:
+    - get
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRole","metadata":{"annotations":{},"name":"kube-state-metrics-role"},"rules":[{"apiGroups":[""],"resources":["nodes","pods","services","endpoints","namespaces","configmaps","persistentvolumeclaims","resourcequotas","replicationcontrollers","limitranges"],"verbs":["get","list","watch"]},{"apiGroups":["apps"],"resources":["deployments","replicasets","statefulsets","daemonsets"],"verbs":["get","list","watch"]},{"apiGroups":["batch"],"resources":["jobs","cronjobs"],"verbs":["get","list","watch"]},{"apiGroups":["networking.k8s.io"],"resources":["networkpolicies","ingresses"],"verbs":["get","list","watch"]}]}
+    creationTimestamp: "2026-09-22T00:17:40Z"
+    name: kube-state-metrics-role
+    resourceVersion: "1115779"
+    uid: fe9ddd80-54af-4896-bec9-3cf09a89774a
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - nodes
+    - pods
+    - services
+    - endpoints
+    - namespaces
+    - configmaps
+    - persistentvolumeclaims
+    - resourcequotas
+    - replicationcontrollers
+    - limitranges
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - apps
+    resources:
+    - deployments
+    - replicasets
+    - statefulsets
+    - daemonsets
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - batch
+    resources:
+    - jobs
+    - cronjobs
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - networkpolicies
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+kind: List
+metadata:
+  resourceVersion: ""
