@@ -1,0 +1,2 @@
+# 2026-09-27 17:00 KST, ansible01(10.250.10.10) server01_ansible, 사용자가 실행한 명령(Claude 제시 원문)
+for w in 10.1.93.105 10.1.93.107 10.1.93.108; do for p in 22 9100 10250; do s=$(date +%s%N); timeout 5 bash -c "</dev/tcp/$w/$p" 2>/tmp/e && r=OPEN || { grep -qi refused /tmp/e && r=REFUSED || r=TIMEOUT; }; echo "$(date -Is) .10 -> $w:$p $r $(( ($(date +%s%N)-s)/1000000 ))ms"; done; done | tee ~/np-mgmt-$(date +%Y%m%dT%H%M%S).txt
