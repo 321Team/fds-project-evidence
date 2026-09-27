@@ -1,0 +1,32 @@
+2026-09-27T18:50:10+09:00
+== targets
+     21 "health":"up"
+== fds_monitoring_heartbeat
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"fds_monitoring_heartbeat"},"value":[1790502610.770,"1"]}]}}
+== samples_failed_total
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"prometheus_remote_storage_samples_failed_total","instance":"localhost:9090","job":"prometheus","remote_name":"1c25ec","url":"https://10.250.10.30/api/v1/write"},"value":[1790502610.905,"0"]}]}}
+== samples_pending
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"prometheus_remote_storage_samples_pending","instance":"localhost:9090","job":"prometheus","remote_name":"1c25ec","url":"https://10.250.10.30/api/v1/write"},"value":[1790502611.105,"71"]}]}}
+== shards
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"prometheus_remote_storage_shards","instance":"localhost:9090","job":"prometheus","remote_name":"1c25ec","url":"https://10.250.10.30/api/v1/write"},"value":[1790502611.305,"1"]}]}}
+== remote_write 로그 (최근 60분, 20줄)
+time=2026-09-27T09:32:29.331Z level=INFO source=metadata_watcher.go:90 msg="Starting scraped metadata watcher" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write
+time=2026-09-27T09:32:29.332Z level=INFO source=watcher.go:311 msg="Replaying WAL" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write queue=1c25ec
+time=2026-09-27T09:32:29.347Z level=INFO source=main.go:1729 msg="Completed loading of configuration file" db_storage=43.216µs remote_storage=613.41µs web_handler=582ns query_engine=703ns scrape=373.566µs scrape_sd=77.669µs notify=45.529µs notify_sd=6.365µs rules=16.144281ms tracing=2.997µs filename=/etc/prometheus/prometheus.yml totalDuration=17.646761ms
+time=2026-09-27T09:32:32.209Z level=INFO source=watcher.go:565 msg="Done replaying WAL" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write duration=2.877110421s
+time=2026-09-27T09:33:04.365Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:34:04.549Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:35:05.274Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:36:08.157Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:37:17.000Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:38:27.002Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:39:37.005Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:40:47.008Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:41:57.012Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:43:07.016Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:44:17.022Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:45:27.024Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:46:37.028Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:47:47.031Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:48:57.035Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
+time=2026-09-27T09:50:07.039Z level=WARN source=queue_manager.go:2082 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": context deadline exceeded"
