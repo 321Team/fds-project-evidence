@@ -1,0 +1,160 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: fds-gate2-probe
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-a
+  namespace: fds-gate2-probe
+  labels:
+    app: probe-a
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker01
+  automountServiceAccountToken: false
+  imagePullSecrets:
+  - name: harbor-pull-secret
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+  - name: http
+    image: 10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+    imagePullPolicy: IfNotPresent
+    command:
+    - python3
+    - -m
+    - http.server
+    - '8080'
+    - --bind
+    - 0.0.0.0
+    workingDir: /tmp
+    ports:
+    - containerPort: 8080
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+        - ALL
+    resources:
+      requests:
+        cpu: 10m
+        memory: 32Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-b
+  namespace: fds-gate2-probe
+  labels:
+    app: probe-b
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker02
+  automountServiceAccountToken: false
+  imagePullSecrets:
+  - name: harbor-pull-secret
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+  - name: http
+    image: 10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+    imagePullPolicy: IfNotPresent
+    command:
+    - python3
+    - -m
+    - http.server
+    - '8080'
+    - --bind
+    - 0.0.0.0
+    workingDir: /tmp
+    ports:
+    - containerPort: 8080
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+        - ALL
+    resources:
+      requests:
+        cpu: 10m
+        memory: 32Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: probe-c
+  namespace: fds-gate2-probe
+  labels:
+    app: probe-c
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker03
+  automountServiceAccountToken: false
+  imagePullSecrets:
+  - name: harbor-pull-secret
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    runAsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+  - name: http
+    image: 10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+    imagePullPolicy: IfNotPresent
+    command:
+    - python3
+    - -m
+    - http.server
+    - '8080'
+    - --bind
+    - 0.0.0.0
+    workingDir: /tmp
+    ports:
+    - containerPort: 8080
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+        - ALL
+    resources:
+      requests:
+        cpu: 10m
+        memory: 32Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: probe-b
+  namespace: fds-gate2-probe
+spec:
+  type: ClusterIP
+  selector:
+    app: probe-b
+  ports:
+  - port: 8080
+    targetPort: 8080
