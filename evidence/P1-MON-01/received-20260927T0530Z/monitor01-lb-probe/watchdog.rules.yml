@@ -1,0 +1,10 @@
+groups:
+  - name: fds-monitor01-watchdog
+    interval: 15s
+    rules:
+      - alert: FDSMonitoringHeartbeatMissing
+        expr: absent_over_time(fds_monitoring_heartbeat[5m])
+        labels:
+          severity: critical
+        annotations:
+          summary: monitor01 has no in-cluster heartbeat samples in the last 5 minutes
