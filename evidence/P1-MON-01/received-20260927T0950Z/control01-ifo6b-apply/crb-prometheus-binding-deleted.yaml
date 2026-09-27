@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRoleBinding","metadata":{"annotations":{},"name":"prometheus-binding"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"ClusterRole","name":"prometheus-role"},"subjects":[{"kind":"ServiceAccount","name":"prometheus-sa","namespace":"monitoring-api"}]}
+  creationTimestamp: "2026-09-22T00:17:40Z"
+  name: prometheus-binding
+  resourceVersion: "1066109"
+  uid: 5cd33aba-b69b-4d01-941d-5d8646a765c9
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-role
+subjects:
+- kind: ServiceAccount
+  name: prometheus-sa
+  namespace: monitoring-api
