@@ -1,0 +1,9 @@
+== prometheus-role
+["pods","services","endpoints","namespaces","nodes"]["get","list","watch"]
+["nodes/metrics"]["get"]
+["get"]["/metrics"]
+== prometheus-kubelet-scrape
+["nodes","nodes/metrics"]["get","list","watch"]
+["get"]["/metrics","/metrics/cadvisor"]
+== prometheus-sa-kubelet-metrics
+Error from server (NotFound): clusterroles.rbac.authorization.k8s.io "prometheus-sa-kubelet-metrics" not found

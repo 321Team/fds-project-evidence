@@ -1,0 +1,38 @@
+2026-09-27T18:50:09+09:00
+k8s-control01
+== deploy SA
+NAME                 SA                      READY   IMAGE
+alertmanager         alertmanager-sa         1       10.1.93.54/fds/alertmanager:latest
+grafana              grafana-sa              1       10.1.93.54/fds/grafana:latest
+kube-state-metrics   kube-state-metrics-sa   1       10.1.93.54/fds/kube-state-metrics:v2.13.0
+prometheus           prometheus-sa           1       10.1.93.54/fds/prometheus:latest
+== pods
+NAME                                 READY   STATUS    RESTARTS      AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+alertmanager-774f8866d-ppgqn         1/1     Running   0             17m     10.244.39.246   k8s-worker03   <none>           <none>
+grafana-559b978c69-k2ws6             1/1     Running   0             17m     10.244.39.247   k8s-worker03   <none>           <none>
+kube-state-metrics-f88b9c457-n5n7x   1/1     Running   2 (49m ago)   3h17m   10.244.79.87    k8s-worker01   <none>           <none>
+prometheus-5c6cd4bc84-b2zpq          1/1     Running   0             17m     10.244.39.245   k8s-worker03   <none>           <none>
+== sa
+NAME                    AGE
+alertmanager-sa         5d9h
+default                 5d9h
+grafana-sa              5d9h
+kube-state-metrics-sa   5d9h
+prometheus-sa           5d9h
+== clusterrolebinding (prometheus)
+NAME                                                            ROLE                                                                               AGE    USERS                            GROUPS                                            SERVICEACCOUNTS
+prometheus-sa-kubelet-metrics                                   ClusterRole/prometheus-sa-kubelet-metrics                                          23m                                                                                       monitoring-api/prometheus-sa
+system:controller:namespace-controller                          ClusterRole/system:controller:namespace-controller                                 17d                                                                                       kube-system/namespace-controller
+== clusterrole prometheus-sa-kubelet-metrics
+[{"apiGroups":[""],"resources":["nodes/metrics"],"verbs":["get"]}]
+== 고아 ClusterRole prometheus-kubelet-scrape 참조
+(위 목록이 비어 있으면 참조 없음)
+== auth can-i (prometheus-sa)
+get nodes/metrics  Warning: resource 'nodes' is not namespace scoped
+
+no
+get nodes/proxy    Warning: resource 'nodes' is not namespace scoped
+
+no
+list secrets       no
+get pods           no

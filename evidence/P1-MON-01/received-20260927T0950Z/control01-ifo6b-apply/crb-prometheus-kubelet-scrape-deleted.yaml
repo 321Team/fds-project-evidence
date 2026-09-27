@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRoleBinding","metadata":{"annotations":{},"name":"prometheus-kubelet-scrape"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"ClusterRole","name":"prometheus-kubelet-scrape"},"subjects":[{"kind":"ServiceAccount","name":"prometheus","namespace":"monitoring-api"}]}
+  creationTimestamp: "2026-09-22T05:45:34Z"
+  name: prometheus-kubelet-scrape
+  resourceVersion: "1115778"
+  uid: 8316f723-0789-4655-bd34-a56b83f446de
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-kubelet-scrape
+subjects:
+- kind: ServiceAccount
+  name: prometheus
+  namespace: monitoring-api

@@ -1,0 +1,129 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "7"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"alertmanager","namespace":"monitoring-api"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"alertmanager"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"labels":{"app":"alertmanager"}},"spec":{"automountServiceAccountToken":false,"containers":[{"args":["--config.file=/etc/alertmanager/alertmanager.yml","--storage.path=/alertmanager"],"image":"10.1.93.54/fds/alertmanager:latest","name":"alertmanager","ports":[{"containerPort":9093}],"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"seccompProfile":{"type":"RuntimeDefault"}},"volumeMounts":[{"mountPath":"/etc/alertmanager","name":"config"},{"mountPath":"/alertmanager","name":"storage"},{"mountPath":"/etc/alertmanager/secrets/discord","name":"discord-webhook","readOnly":true}]}],"imagePullSecrets":[{"name":"harbor-pull-secret"}],"securityContext":{"fsGroup":65534,"fsGroupChangePolicy":"OnRootMismatch","runAsNonRoot":true,"runAsUser":65534},"volumes":[{"configMap":{"name":"alertmanager-config"},"name":"config"},{"name":"storage","persistentVolumeClaim":{"claimName":"alertmanager-data"}},{"name":"discord-webhook","secret":{"secretName":"discord-webhook"}}]}}}}
+  creationTimestamp: "2026-09-22T05:45:35Z"
+  generation: 9
+  name: alertmanager
+  namespace: monitoring-api
+  resourceVersion: "2232473"
+  uid: 30a325dd-27ac-475d-acd3-35b6eb49fa67
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: alertmanager
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/restartedAt: "2026-09-22T21:40:38+09:00"
+      labels:
+        app: alertmanager
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - args:
+        - --config.file=/etc/alertmanager/alertmanager.yml
+        - --storage.path=/alertmanager
+        image: 10.1.93.54/fds/alertmanager:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /-/healthy
+            port: 9093
+            scheme: HTTP
+          periodSeconds: 20
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: alertmanager
+        ports:
+        - containerPort: 9093
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /-/ready
+            port: 9093
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 3
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+        startupProbe:
+          failureThreshold: 36
+          httpGet:
+            path: /-/ready
+            port: 9093
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/alertmanager
+          name: config
+        - mountPath: /alertmanager
+          name: storage
+        - mountPath: /etc/alertmanager/secrets/discord
+          name: discord-webhook
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: harbor-pull-secret
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        runAsNonRoot: true
+        runAsUser: 65534
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: alertmanager-config
+        name: config
+      - name: storage
+        persistentVolumeClaim:
+          claimName: alertmanager-data
+      - name: discord-webhook
+        secret:
+          defaultMode: 420
+          secretName: discord-webhook
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2026-09-22T06:26:55Z"
+    lastUpdateTime: "2026-09-25T04:41:37Z"
+    message: ReplicaSet "alertmanager-cdb7cf764" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2026-09-27T08:51:04Z"
+    lastUpdateTime: "2026-09-27T08:51:04Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 9
+  readyReplicas: 1
+  replicas: 1
+  terminatingReplicas: 0
+  updatedReplicas: 1
