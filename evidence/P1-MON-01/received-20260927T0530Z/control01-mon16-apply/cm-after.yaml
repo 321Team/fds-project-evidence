@@ -1,0 +1,61 @@
+apiVersion: v1
+data:
+  prometheus.yml: "global:\n  scrape_interval: 15s\nrule_files:\n  - /etc/prometheus/rules/*.yml\
+    \       # prometheus-alert-rules CM (core)\n  - /etc/prometheus/rules-p0/*.yml\
+    \    # prometheus-p0-test-alert CM (S7b)\n  - /etc/prometheus/rules-opt/*.yml\
+    \   # prometheus-alert-rules-optional CM (E-CANON 전용, optional)\nalerting:\n \
+    \ alertmanagers:\n    - static_configs:\n        - targets: ['alertmanager.monitoring-api.svc.cluster.local:9093']\n\
+    scrape_configs:\n  - job_name: 'prometheus'\n    static_configs:\n      - targets:\
+    \ ['localhost:9090']\n  # transaction-api / fds-engine : 파드 단위(headless Service\
+    \ + dns_sd, headless-services.yaml)\n  # 스크레이프로 전환 완료(2026-09-21, E-CANON). replica\
+    \ 3 라운드로빈에 의한 카운터 리셋\n  # 오인(increase()/rate() 영구 부풀음)을 피한다 — E-K3S 에서는 pod→비Service\
+    \ 경로가\n  # \"No route to host\" 로 실패해 이 방식을 못 썼지만(ClusterIP로 대체), E-CANON 다중 노드에서는\n\
+    \  # Calico가 pod IP 직결을 허용하므로 정석 방식 사용(미검증 가정 — 실측 전 up{job=...} 확인 필요).\n  #\
+    \ 포트 9091/9090 = dedicated-metrics-listener 전용 metrics 포트(transaction-api/run.py,\n\
+    \  # fds-engine/run.py 확인, supreme33-kr/fds-msa#5). main app 포트(8000/8001)와 다르다.\n\
+    \  - job_name: 'transaction-api'\n    dns_sd_configs:\n      - names: ['transaction-api-metrics.fds-app.svc.cluster.local']\n\
+    \        type: A\n        port: 9091\n  - job_name: 'fds-engine'\n    dns_sd_configs:\n\
+    \      - names: ['fds-engine-metrics.fds-app.svc.cluster.local']\n        type:\
+    \ A\n        port: 9090\n\n  - job_name: 'node-exporter'\n    static_configs:\n\
+    \      # GWONUK 리뷰 B3(PR #4) 대응: E-K3S placeholder(.50)를 실제 Worker 3대로 교체.\n \
+    \     # node-exporter DaemonSet에 Control Plane taint toleration이 없으므로(node-exporter.yaml\n\
+    \      # 확인) kubeadm 계열 기본 동작상 CP 3대(.102~.104)에는 스케줄되지 않고 Worker에만 뜬다.\n    \
+    \  # ⚠️ NOT VERIFIED: 이 스케줄 가정 자체는 정본 클러스터에서 실측 전이다 — 실측 후 다르면\n      # (예: CP에도\
+    \ toleration이 있다면) 여기에 CP IP도 추가해야 한다.\n      - targets:\n          - '10.1.93.105:9100'\
+    \   # k8s-worker01\n          - '10.1.93.107:9100'   # k8s-worker02\n        \
+    \  - '10.1.93.108:9100'   # k8s-worker03\n    # 위치 모순 해소(2026-09-21, monitor01/README.md\
+    \ 대조): 이 Prometheus(monitoring-api ns,\n    # in-cluster)가 sender다. monitor01은\
+    \ 별도 독립 Watchdog/receiver(heartbeat-only remote_write\n    # 수신)일 뿐, node-exporter/kubelet을\
+    \ 스크레이프하는 Prometheus 본체가 아니다 — 이전 주석의\n    # \"Prometheus가 monitor01 외부 VM에 위치\"\
+    \ 전제는 틀렸으므로 제거함.\n  - job_name: 'kube-state-metrics'\n    static_configs:\n  \
+    \    - targets: ['kube-state-metrics.monitoring-api.svc.cluster.local:8080']\n\
+    \    # ksm 는 replica 1 → ClusterIP 스크레이프로도 라운드로빈 문제 없음.\n\n  # --- A4 : kubelet(10250)\
+    \ scrape 타깃 ---\n  # RBAC: prometheus-rbac.yaml (ServiceAccount prometheus + ClusterRole\
+    \ nodes/metrics).\n  # 네트워크: allow-prometheus-egress-kubelet.yaml (monitoring-api\
+    \ ns egress → 6-node:10250).\n  #\n  # 아래 static_configs 는 E-CANON(정본 6-node)\
+    \ 값으로 이미 갱신됨(2026-09-21).\n  # E-K3S(edge01 단일 노드) 재적용 시에는 KubeletScrapeDownK3s(info)\
+    \ known-issue 로\n  # 되돌리고 S8/TargetDown 대상에서 제외해야 한다 — 이 파일은 E-CANON 전용으로 유지.\n\
+    \  # CANONICAL_GAPS.md(#17/#19): \"kubelet insecure_skip_verify → 승인 trust/SAN\
+    \ 경로와\n  # TLS 긍정·부정 시험; 우회 금지\". ca_file은 kubeadm 계열 클러스터에서 kubelet serving\n\
+    \  # 인증서가 클러스터 CA로 서명되는 표준 패턴을 전제한 값이며(모든 Pod에 자동 마운트되는\n  # ServiceAccount CA),\
+    \ 이 클러스터의 실제 kubelet 서빙 인증서 체인으로 아직 검증 안 됨\n  # (NOT VERIFIED). 적용 후 TLS 긍정(정상\
+    \ 연결) + 부정(다른 CA·만료 인증서 거부) 시험 필요 —\n  # 실패하면 insecure_skip_verify로 되돌리지 말고 실제\
+    \ kubelet 인증서 체인을 재확인할 것.\n  - job_name: 'kubelet'\n    scheme: https\n    tls_config:\n\
+    \      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n    bearer_token_file:\
+    \ /var/run/secrets/kubernetes.io/serviceaccount/token\n    static_configs:\n \
+    \     # 6-node IP (FDS_VM_Setup_Guideline_v3.1.1.md). kubelet은 노드 구성요소라 스케줄과\n\
+    \      # 무관하게 전 노드에서 항상 뜬다. kubernetes_sd_configs(role: node) 전환은 별도 TODO.\n \
+    \     - targets:\n          - '10.1.93.102:10250'   # k8s-control01\n        \
+    \  - '10.1.93.103:10250'   # k8s-control02\n          - '10.1.93.104:10250'  \
+    \ # k8s-control03\n          - '10.1.93.105:10250'   # k8s-worker01\n        \
+    \  - '10.1.93.107:10250'   # k8s-worker02\n          - '10.1.93.108:10250'   #\
+    \ k8s-worker03\n  - job_name: 'kubelet-cadvisor'\n    scheme: https\n    metrics_path:\
+    \ /metrics/cadvisor\n    tls_config:\n      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n\
+    \    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token\n\
+    \    static_configs:\n      - targets:\n          - '10.1.93.102:10250'\n    \
+    \      - '10.1.93.103:10250'\n          - '10.1.93.104:10250'\n          - '10.1.93.105:10250'\n\
+    \          - '10.1.93.107:10250'\n          - '10.1.93.108:10250'\n"
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring-api
