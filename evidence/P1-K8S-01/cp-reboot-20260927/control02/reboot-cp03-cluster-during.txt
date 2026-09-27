@@ -1,0 +1,17 @@
+2026. 09. 27. (일) 17:36:40 KST
+Error from server (Timeout): the server was unable to return a response in the time allotted, but may still be processing the request (get nodes)
+readyz 10.1.93.102: ok
+readyz 10.1.93.103: ok
+readyz 10.1.93.104: 
+== endpoint health
+error: unexpected EOF
+== endpoint status
+Unable to connect to the server: net/http: TLS handshake timeout
+== member list
++------------------+---------+---------------+--------------------------+--------------------------+------------+
+|        ID        | STATUS  |     NAME      |        PEER ADDRS        |       CLIENT ADDRS       | IS LEARNER |
++------------------+---------+---------------+--------------------------+--------------------------+------------+
+| 185d6d213e59bc52 | started | k8s-control01 | https://10.1.93.102:2380 | https://10.1.93.102:2379 |      false |
+| 7847998e87d09fcb | started | k8s-control03 | https://10.1.93.104:2380 | https://10.1.93.104:2379 |      false |
+| bd5c115d97e3939b | started | k8s-control02 | https://10.1.93.103:2380 | https://10.1.93.103:2379 |      false |
++------------------+---------+---------------+--------------------------+--------------------------+------------+
