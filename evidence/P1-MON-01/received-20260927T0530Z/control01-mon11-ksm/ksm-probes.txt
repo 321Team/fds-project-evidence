@@ -1,0 +1,2 @@
+{"failureThreshold":3,"httpGet":{"path":"/readyz","port":"telemetry","scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":5,"successThreshold":1,"timeoutSeconds":5}
+{"failureThreshold":3,"httpGet":{"path":"/livez","port":"http-metrics","scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":5}
