@@ -1,0 +1,6 @@
+FROM cgr.dev/chainguard/static@sha256:c5fed92d0fda728930795cafb61192d8abc9e2f606b22996b212e0169f1d42e6
+COPY bb/blackbox_exporter /bin/blackbox_exporter
+USER 65532:65532
+EXPOSE 9115
+ENTRYPOINT ["/bin/blackbox_exporter"]
+CMD ["--config.file=/etc/blackbox_exporter/config.yml"]
