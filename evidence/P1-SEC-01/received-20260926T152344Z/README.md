@@ -56,4 +56,18 @@ Record ID: **P1-SEC-01** ([baseline #19](https://github.com/321Team/fds-project-
 - **B3 (RBAC Positive 오기록)**: "Positive 미수신"이 틀렸음을 확인 — `verify-rbac.tsv`에 이미 8개 SA 전체 Positive/Negative 30건이 있었다. 표·한계 절 정정.
 - **B4 (timestamp 시간대 불일치)**: `gnp-cp-backup-20260927T000029Z` 등 세션 내 일부 폴더명의 `Z`가 실제로는 UTC가 아니라 KST임을 확인·명시.
 
+## 후속 정정 — 실제 SA 불일치 발견 (2026-09-27)
+
+**이 편입 자체(원본 tar.gz)는 변경하지 않으며, 아래는 해석상 주의사항 추가다.** 2026-09-27 infra-monitoring 실제 매니페스트·라이브 클러스터 대조 결과, 위 §"내용물 요약"의 `prometheus-sa`/`alertmanager-sa`/`grafana-sa`는 **실제 운영 중인 Pod가 쓰는 SA가 아님**을 확인했다.
+
+```
+kubectl -n monitoring-api get pod -l app=prometheus   -o jsonpath='{.items[0].spec.serviceAccountName}'  → prometheus
+kubectl -n monitoring-api get pod -l app=alertmanager -o jsonpath='{...}'                                 → default
+kubectl -n monitoring-api get pod -l app=grafana      -o jsonpath='{...}'                                 → default
+```
+
+`prometheus-sa`/`alertmanager-sa`/`grafana-sa`는 네임스페이스에 객체로는 존재하나(`kubectl get sa` 확인) 아무 Pod도 참조하지 않는 미사용 SA다. 이 tar.gz의 `can-i-list_monitoring-api_prometheus-sa.txt`·`verify-rbac.tsv`의 prometheus-sa/alertmanager-sa/grafana-sa 관련 행은 **실제 운영 identity가 아닌 미사용 SA를 검증한 결과**이며, kube-state-metrics-sa·node-exporter-sa는 실제 사용 SA와 일치해 그대로 유효하다.
+
+실제 `prometheus` SA(`ClusterRoleBinding prometheus-kubelet-scrape`)는 이번 tar.gz에 포함되지 않은 추가 조회(2026-09-27, baseline #19 참조)로 `nodes`(get/list/watch)·`nodes/metrics`(get/list/watch)·`/metrics/cadvisor`를 가지며, `nodes/proxy`·`secrets`는 여전히 `no`(baseline 보안 요구사항은 유지). 다만 baseline 명세("`nodes/metrics`와 `/metrics`만")보다 넓은 `nodes` 전체 리소스 권한을 갖고 있어 명세 불일치가 있다. 상세: [baseline #19 코멘트](https://github.com/321Team/fds-project-baseline/issues/19#issuecomment-5853235663).
+
 이 편입은 원본 보존이다. P1-SEC-01의 AC 체크, Gate, 티켓 상태는 바꾸지 않는다.
