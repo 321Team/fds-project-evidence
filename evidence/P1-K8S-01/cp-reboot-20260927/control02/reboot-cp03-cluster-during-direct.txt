@@ -1,0 +1,21 @@
+2026. 09. 27. (일) 17:40:07 KST
+(API direct: 10.1.93.103)
+NAME            STATUS   ROLES           AGE   VERSION
+k8s-control01   Ready    control-plane   17d   v1.36.4
+k8s-control02   Ready    control-plane   9d    v1.36.4
+k8s-control03   Ready    control-plane   9d    v1.36.4
+k8s-worker01    Ready    <none>          9d    v1.36.4
+k8s-worker02    Ready    <none>          9d    v1.36.4
+k8s-worker03    Ready    <none>          9d    v1.36.4
+== endpoint health
+https://10.1.93.103:2379 is healthy: successfully committed proposal: took = 5.386769ms
+https://10.1.93.102:2379 is healthy: successfully committed proposal: took = 8.944176ms
+https://10.1.93.104:2379 is healthy: successfully committed proposal: took = 9.906917ms
+== endpoint status
++--------------------------+------------------+---------+-----------------+---------+--------+-----------------------+--------+-----------+------------+-----------+------------+--------------------+--------+--------------------------+-------------------+
+|         ENDPOINT         |        ID        | VERSION | STORAGE VERSION | DB SIZE | IN USE | PERCENTAGE NOT IN USE | QUOTA  | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS | DOWNGRADE TARGET VERSION | DOWNGRADE ENABLED |
++--------------------------+------------------+---------+-----------------+---------+--------+-----------------------+--------+-----------+------------+-----------+------------+--------------------+--------+--------------------------+-------------------+
+| https://10.1.93.102:2379 | 185d6d213e59bc52 |   3.6.8 |           3.6.0 |  9.0 MB | 4.6 MB |                   50% | 2.1 GB |     false |      false |        15 |    3493739 |            3493739 |        |                          |             false |
+| https://10.1.93.104:2379 | 7847998e87d09fcb |   3.6.8 |           3.6.0 |  9.0 MB | 4.6 MB |                   49% | 2.1 GB |     false |      false |        15 |    3493739 |            3493739 |        |                          |             false |
+| https://10.1.93.103:2379 | bd5c115d97e3939b |   3.6.8 |           3.6.0 |  8.8 MB | 4.6 MB |                   48% | 2.1 GB |      true |      false |        15 |    3493739 |            3493739 |        |                          |             false |
++--------------------------+------------------+---------+-----------------+---------+--------+-----------------------+--------+-----------+------------+-----------+------------+--------------------+--------+--------------------------+-------------------+
