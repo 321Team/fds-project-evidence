@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "collection": "P1-DNS-01 follow-up runtime 2026-09-28",
+  "evidence_path": "evidence/P1-DNS-01/followup-runtime-20260928",
+  "source_repo": "321Team/infra-dns",
+  "source_main_sha": "5f7505f9613e4b94aedd4bcdaba52f2b3f1a5f19",
+  "issues": [6, 7],
+  "archives": {
+    "dns01": {
+      "name": "p1-dns-followup-dns01-20260928.tar.gz",
+      "sha256": "d66851969da035d6818407e828a9f3c2c6be862dc9a046be923814155a773fcf",
+      "size_bytes": 10055,
+      "member_count": 38,
+      "internal_sha256_sets": [
+        {"path":"dns-named-structure.dns01.jdtceg7q/SHA256SUMS","ok":true,"count":10},
+        {"path":"dns-firewall.dns01._o_ec2cr/SHA256SUMS","ok":true,"count":23}
+      ],
+      "sidecar_match": true
+    },
+    "dns02": {
+      "name": "p1-dns-followup-dns02-20260928.tar.gz",
+      "sha256": "72d726c35e935c0d8b630605e1f8861a38e625ffa47537b43e2bcc9f045ca73b",
+      "size_bytes": 9901,
+      "member_count": 38,
+      "internal_sha256_sets": [
+        {"path":"dns-named-structure.dns02.q06t98ae/SHA256SUMS","ok":true,"count":10},
+        {"path":"dns-firewall.dns02.barc4maw/SHA256SUMS","ok":true,"count":23}
+      ],
+      "sidecar_match": true
+    }
+  },
+  "validation": {
+    "archive_path_traversal_findings": 0,
+    "archive_link_or_device_findings": 0,
+    "internal_sha256_failures": 0,
+    "secret_scan_findings": 0,
+    "secret_scan_patterns": [
+      "PEM private key header",
+      "ghp_/github_pat_ token pattern",
+      "unmasked secret \"...\" statement"
+    ]
+  },
+  "runtime": {
+    "dns01": {
+      "named": {
+        "status": "COMPLETE_COLLECTION_ONLY",
+        "finished_at_kst": "2026-09-28T02:11:37.065688+09:00",
+        "collector_sha256": "1466aa8fa321e0d86d26e9ecf095d1471924036f64389c2c320e492f4826cb4f",
+        "expanded_sanitized_sha256": "795007395c75647959d829cde7a384c2aeba86954b237c74de531dea694d7f1d",
+        "keys_referenced_but_not_defined": [],
+        "crypto_policy_resolved_path": "/usr/share/crypto-policies/DEFAULT/bind.txt"
+      },
+      "firewall": {
+        "status": "COMPLETE_COLLECTION_ONLY",
+        "finished_at_kst": "2026-09-28T02:20:13.349950+09:00",
+        "collector_sha256": "326cf3676df37a90728fc0b44a7eb447af19958dd51f60de59201a4245c94021",
+        "nm_connection_zone": "",
+        "nm_autoconnect": "yes",
+        "dns_service_ports_expected": true,
+        "ipset_runtime_equals_permanent": true
+      }
+    },
+    "dns02": {
+      "named": {
+        "status": "COMPLETE_COLLECTION_ONLY",
+        "finished_at_kst": "2026-09-28T02:22:55.856544+09:00",
+        "collector_sha256": "1466aa8fa321e0d86d26e9ecf095d1471924036f64389c2c320e492f4826cb4f",
+        "expanded_sanitized_sha256": "ea12325ab17893b25c112914432f045fd574af2a9704d12601a41486fa058f48",
+        "keys_referenced_but_not_defined": [],
+        "crypto_policy_resolved_path": "/usr/share/crypto-policies/DEFAULT/bind.txt"
+      },
+      "firewall": {
+        "status": "COMPLETE_COLLECTION_ONLY",
+        "finished_at_kst": "2026-09-28T02:25:23.618582+09:00",
+        "collector_sha256": "326cf3676df37a90728fc0b44a7eb447af19958dd51f60de59201a4245c94021",
+        "nm_connection_zone": "",
+        "nm_autoconnect": "yes",
+        "dns_service_ports_expected": true,
+        "ipset_runtime_equals_permanent": true
+      }
+    }
+  },
+  "dns01_config_drift": {
+    "reference_20260918_sha256": "3a269aa35800afee638fcc9a6768cfdd21ab81a6b6a5c1945f6b8391bec3345d",
+    "current_sha256": "795007395c75647959d829cde7a384c2aeba86954b237c74de531dea694d7f1d",
+    "classification": "Root DNSSEC KSK-2024 trust anchor (key tag 38696) added; security defect not indicated"
+  },
+  "scope_limits": {
+    "packet_test": "NOT RUN",
+    "reboot_persistence": "NOT RUN",
+    "ac_verdict": "NOT CLAIMED",
+    "independent_review": "PENDING"
+  },
+  "v1_9_terminal_log": "NOT FOUND IN CURRENT infra-dns / fds-project-evidence DEFAULT-BRANCH TREES"
+}
