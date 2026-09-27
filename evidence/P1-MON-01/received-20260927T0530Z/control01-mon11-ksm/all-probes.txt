@@ -1,0 +1,19 @@
+== prometheus
+startup={"failureThreshold":60,"httpGet":{"path":"/-/ready","port":9090,"scheme":"HTTP"},"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1}
+readiness={"failureThreshold":3,"httpGet":{"path":"/-/ready","port":9090,"scheme":"HTTP"},"periodSeconds":10,"successThreshold":1,"timeoutSeconds":3}
+liveness={"failureThreshold":6,"httpGet":{"path":"/-/healthy","port":9090,"scheme":"HTTP"},"periodSeconds":20,"successThreshold":1,"timeoutSeconds":5}
+== grafana
+startup={"failureThreshold":60,"httpGet":{"path":"/api/health","port":3000,"scheme":"HTTP"},"periodSeconds":5,"successThreshold":1,"timeoutSeconds":1}
+readiness={"failureThreshold":3,"httpGet":{"path":"/api/health","port":3000,"scheme":"HTTP"},"periodSeconds":10,"successThreshold":1,"timeoutSeconds":3}
+liveness={"failureThreshold":6,"httpGet":{"path":"/api/health","port":3000,"scheme":"HTTP"},"periodSeconds":20,"successThreshold":1,"timeoutSeconds":5}
+== alertmanager
+startup={"failureThreshold":36,"httpGet":{"path":"/-/ready","port":9093,"scheme":"HTTP"},"periodSeconds":5,"successThreshold":1,"timeoutSeconds":1}
+readiness={"failureThreshold":3,"httpGet":{"path":"/-/ready","port":9093,"scheme":"HTTP"},"periodSeconds":10,"successThreshold":1,"timeoutSeconds":3}
+liveness={"failureThreshold":6,"httpGet":{"path":"/-/healthy","port":9093,"scheme":"HTTP"},"periodSeconds":20,"successThreshold":1,"timeoutSeconds":5}
+== kube-state-metrics
+startup=
+readiness={"failureThreshold":3,"httpGet":{"path":"/readyz","port":"telemetry","scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":5,"successThreshold":1,"timeoutSeconds":5}
+liveness={"failureThreshold":3,"httpGet":{"path":"/livez","port":"http-metrics","scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":5}
+== node-exporter
+readiness={"failureThreshold":3,"httpGet":{"path":"/metrics","port":9100,"scheme":"HTTP"},"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1}
+liveness=
