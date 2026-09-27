@@ -1,0 +1,10 @@
+2026-09-27T19:04:23+09:00
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS        IMAGES                                                                                                   SELECTOR
+deployment.apps/fds-engine        2/2     2            2           5d6h   fds-engine        10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369        app=fds-engine
+deployment.apps/transaction-api   2/2     2            2           5d6h   transaction-api   10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33   app=transaction-api
+
+NAME                                  READY   STATUS    RESTARTS        AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+pod/fds-engine-5699669f6f-5rxbt       1/1     Running   2 (5h14m ago)   5d6h    10.244.39.242   k8s-worker03   <none>           <none>
+pod/fds-engine-5699669f6f-hrz5c       1/1     Running   2 (5h21m ago)   4d18h   10.244.69.208   k8s-worker02   <none>           <none>
+pod/transaction-api-b784c8c5d-l4zqk   1/1     Running   1 (5h21m ago)   45h     10.244.69.207   k8s-worker02   <none>           <none>
+pod/transaction-api-b784c8c5d-rq9b6   1/1     Running   1 (5h28m ago)   45h     10.244.79.84    k8s-worker01   <none>           <none>

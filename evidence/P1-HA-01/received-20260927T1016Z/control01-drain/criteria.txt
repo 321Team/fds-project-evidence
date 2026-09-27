@@ -1,0 +1,10 @@
+P1-HA-01 #22 Worker Drain 합격 기준 (시험 전 기록)
+경로: edge01(10.1.93.50) -> Worker .105/.107/.108:30080 GET /readyz (D18, externalTrafficPolicy Local)
+요청: Worker별 1초 간격, timeout 2초
+관찰: Drain 전 60초 / cordon+앱 Pod 퇴거 / 재배치 Ready 후 60초 / uncordon 후 60초
+가용: 매 1초 구간에 3개 Worker 중 1개 이상 200. 허용 오류: 가용 실패 0초
+Drain 대상 Worker의 000/503은 Local 특성으로 허용. 응답시간은 기록만.
+재배치: worker02의 transaction-api/fds-engine Pod가 다른 Worker에서 180초 내 Ready
+복구: uncordon 후 6노드 Ready, SchedulingDisabled 없음
+Final E2E: edge01 -> 30080 POST /api/v1/transactions 1건(SIM_ha22, 3,500,000) -> 201, fds_detected=true(R02), fds_evaluation_skipped=false
+Drain 방식: drain k8s-worker02 --pod-selector='app in (transaction-api,fds-engine)' (icr39-probe·DaemonSet 유지)
