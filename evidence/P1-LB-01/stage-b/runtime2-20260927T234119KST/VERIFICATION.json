@@ -1,0 +1,99 @@
+{
+  "verified_at_kst": "2026-09-27T23:50:00+09:00",
+  "verification_agent": "ChatGPT/Codex receipt analysis; not independent human approval",
+  "source": {
+    "archive_name": "FDS_P1_LB_01_STAGEB_CONTROLLER_mj1d45e7.tar.gz",
+    "archive_size_bytes": 238269,
+    "archive_sha256": "5672058d58cc1881a887dbe7aeb74dc0ec5de11ad536e833a0cba5d2dbf202bc",
+    "external_sidecar_match": true,
+    "outer_file_count": 72,
+    "outer_manifest_entries": 71,
+    "outer_manifest_match": true,
+    "unsafe_tar_paths_or_links": false,
+    "basic_sensitive_marker_scan_matches": 0,
+    "nested": {
+      "cp": {
+        "sha256": "2e3ec6a37faaf34112972f16d8f4cb577ad7ceb9f4c1d58e3b393194e8220e13",
+        "manifest_entries": 305,
+        "manifest_match": true
+      },
+      "lb": {
+        "sha256": "79f5fde2f947dbad2838d7304657cda2972ee51b75950810a39199eb9ec3a157",
+        "manifest_entries": 297,
+        "manifest_match": true
+      }
+    }
+  },
+  "binding": {
+    "source_revision": "2a7ff5b457e49cf6cfdfbcf3374224f120e735d3",
+    "reviewed_revision": "2a7ff5b457e49cf6cfdfbcf3374224f120e735d3",
+    "review_reference": "infra-lb#14 / hayeounglee APPROVED / PRR_kwDOUeQof88AAAABPbQGiw",
+    "merge_commit": "1fb1b3fd4abcaa5464943e1df7fb5aff986fafb7",
+    "run_id": "0c34c0a4abcc4d12a3ce8668545a65d3",
+    "target": "10.1.93.104:6443",
+    "window_start_kst": "2026-09-27T23:20:00+09:00",
+    "window_end_kst": "2026-09-28T00:00:00+09:00",
+    "maximum_failed_samples": 12,
+    "maximum_continuous_failure_seconds": 24
+  },
+  "controller_result": {
+    "status": "PASS_CANDIDATE",
+    "ansible_rc": 0,
+    "archive_integrity": "PASS",
+    "sample_count": 70,
+    "failed_sample_count": 3,
+    "stage_b": "NOT_COMPLETED",
+    "final_acceptance": "PENDING"
+  },
+  "fault": {
+    "fault_attempted": true,
+    "apply_finished_kst": "2026-09-27T23:42:02.985575+09:00",
+    "automatic_down": true,
+    "first_target_down_kst": "2026-09-27T23:42:14.812540+09:00",
+    "target_down_status": "DOWN/L4TOUT",
+    "other_backends_remained_up": true,
+    "drop_packets": 178,
+    "own_table_delete_finished_kst": "2026-09-27T23:42:58.806258+09:00",
+    "first_target_recovered_kst": "2026-09-27T23:43:03.221776+09:00",
+    "final_all_three_up_l4ok": true,
+    "cleanup": "OWN_TABLE_ABSENT",
+    "lb_pass_candidate_kst": "2026-09-27T23:43:34.686098+09:00"
+  },
+  "api_observer": {
+    "sample_count": 70,
+    "success_count": 67,
+    "failure_count": 3,
+    "failed_sequences": [18, 20, 22],
+    "failure_reason_family": "NodeList COMMAND_FAILED / request timeout",
+    "success_between_failures": true,
+    "longest_continuous_failure_seconds": 3.093857219999336,
+    "failure_budget_exceeded": false
+  },
+  "regression_and_cleanup": {
+    "haproxy_pid_initial": 1267,
+    "haproxy_pid_final": 1267,
+    "haproxy_cmdline_initial_final_identical": true,
+    "haproxy_config_hash_output_initial_final_identical": true,
+    "own_stageb_table_final_absent": true,
+    "final_backends_3_of_3_up_l4ok": true
+  },
+  "assessment": {
+    "automated_runtime": "PASS_CANDIDATE",
+    "receipt_technical_review": "TECH_PASS",
+    "api_continuity_interpretation": "PASS_WITHIN_LEAD_CONFIRMED_FAILURE_BUDGET",
+    "zero_failure_sla_claim": false,
+    "same_fault_runtime_rerun_required": false
+  },
+  "remaining_gates": {
+    "independent_evidence_repo_review": "PENDING",
+    "reboot_persistence": "NOT_RUN",
+    "lb_a_01_final_acceptance": "PENDING",
+    "p1_k8s_final_handoff": "PENDING",
+    "p1_lb_01_ticket_closure": "PENDING"
+  },
+  "prior_attempts": {
+    "attempt1": "PRE_RUNTIME_STOP; no controller evidence; no mutation; baseline#9 comment 5856743809",
+    "attempt2": "SSH_AUTH_SAFE_STOP; remote Runtime not entered; no mutation; baseline#9 comment 5856812077",
+    "included_in_this_collection": false
+  }
+}
