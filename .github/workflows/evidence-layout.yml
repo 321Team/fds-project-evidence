@@ -5,9 +5,14 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+# Cancel superseded runs for the same PR; dispatch runs always finish.
+concurrency:
+  group: evidence-layout-${{ github.event.pull_request.number || github.ref }}-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4; baseline canonical-integrity와 같은 고정 SHA
         with:
