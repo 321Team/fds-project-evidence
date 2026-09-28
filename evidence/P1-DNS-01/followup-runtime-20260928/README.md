@@ -1,59 +1,60 @@
 # P1-DNS-01 follow-up Runtime evidence — 2026-09-28
 
-## 판정
+## 범위와 기준
 
-이 수집회차는 `infra-dns` 후속 이슈 #6과 #7-A의 **읽기 전용 Runtime 원본**을 보존한다.
+이 수집회차는 `infra-dns` 후속 이슈 #6과 #7-A의 읽기 전용 Runtime 원본을 보존한다.
 
-- 기준 `infra-dns/main`: `5f7505f9613e4b94aedd4bcdaba52f2b3f1a5f19`
-- #6 named 구조 collector SHA-256: `1466aa8fa321e0d86d26e9ecf095d1471924036f64389c2c320e492f4826cb4f`
-- #7-A firewall/NM collector SHA-256: `326cf3676df37a90728fc0b44a7eb447af19958dd51f60de59201a4245c94021`
-- dns01/dns02 모두 `COMPLETE_COLLECTION_ONLY`
-- 서버 생성 `SHA256SUMS` 4세트 전 항목 일치
-- 업로드 archive와 사용자 제공 `.sha256` sidecar 일치
-- archive path traversal/link/device entry 0건
-- decoded archive 전체 secret 재검사 0건
+- source repo: `321Team/infra-dns`
+- source main: `5f7505f9613e4b94aedd4bcdaba52f2b3f1a5f19`
+- #6 collector: `collect_named_structure_readonly.py`
+  - SHA-256 `1466aa8fa321e0d86d26e9ecf095d1471924036f64389c2c320e492f4826cb4f`
+  - source PR #15 approved head `ea60d73d6dc79cb8e610315a84f275d5c22f5149`
+  - merge commit `1f7319bd2bbc33fb740c3a9ea13e66b93e6310ab`
+- #7-A collector: `collect_dns_firewall_readonly.py`
+  - SHA-256 `326cf3676df37a90728fc0b44a7eb447af19958dd51f60de59201a4245c94021`
+  - source PR #16 approved head `2b86f06b7d4b7c2d60dd4bcab0cb2e75e2887e27`
+  - merge commit `5f7505f9613e4b94aedd4bcdaba52f2b3f1a5f19`
+- user-upload 수신 시각: `2026-09-28T02:30:38.435+09:00`
 
-## 원본 보존 형식
+## Runtime provenance
 
-GitHub connector의 binary 전송 제약으로 수령한 `.tar.gz`를 **base64 transport representation**으로 보존한다.
-`archives/*.tar.gz.b64`를 base64 decode하면 사용자가 업로드한 원본 archive bytes가 정확히 복원된다.
+| Host | 계정 | 명령 | 결과 경로 | 완료 시각(KST) | 결과 |
+|---|---|---|---|---|---|
+| dns01 | `server01_dns01` | `python3 ./collect_named_structure_readonly.py` | `/home/server01_dns01/dns-named-structure.dns01.jdtceg7q` | `2026-09-28T02:11:37.065688+09:00` | COMPLETE / RC=0 |
+| dns01 | `server01_dns01` | `python3 ./collect_dns_firewall_readonly.py` | `/home/server01_dns01/dns-firewall.dns01._o_ec2cr` | `2026-09-28T02:20:13.349950+09:00` | COMPLETE / RC=0 |
+| dns02 | `server08` | `python3 ./collect_named_structure_readonly.py` | `/home/server08/dns-named-structure.dns02.q06t98ae` | `2026-09-28T02:22:55.856544+09:00` | COMPLETE / RC=0 |
+| dns02 | `server08` | `python3 ./collect_dns_firewall_readonly.py` | `/home/server08/dns-firewall.dns02.barc4maw` | `2026-09-28T02:25:23.618582+09:00` | COMPLETE / RC=0 |
 
-복원 예:
+두 collector는 서버 설정·파일·패키지·서비스·방화벽/네트워크·계정/권한을 변경하지 않고 지정 수집 경로에 결과만 남기는 1회성 read-only validator로 사용됐다. reload/restart/reboot는 수행하지 않았다.
 
-```bash
-base64 -d p1-dns-followup-dns01-20260928.tar.gz.b64 > p1-dns-followup-dns01-20260928.tar.gz
-sha256sum -c SOURCE_ARCHIVES_SHA256SUMS
-```
+## 원본 archive와 무결성
 
-원본 archive SHA-256:
+수신한 tar.gz를 재압축하거나 변환하지 않고 원래 바이트 그대로 Git에 편입한다.
 
-- dns01: `d66851969da035d6818407e828a9f3c2c6be862dc9a046be923814155a773fcf`
-- dns02: `72d726c35e935c0d8b630605e1f8861a38e625ffa47537b43e2bcc9f045ca73b`
+- `archives/p1-dns-followup-dns01-20260928.tar.gz`
+  - size: 10055 bytes
+  - SHA-256: `d66851969da035d6818407e828a9f3c2c6be862dc9a046be923814155a773fcf`
+- `archives/p1-dns-followup-dns02-20260928.tar.gz`
+  - size: 9901 bytes
+  - SHA-256: `72d726c35e935c0d8b630605e1f8861a38e625ffa47537b43e2bcc9f045ca73b`
 
-## #6 Runtime
+각 archive의 같은 이름 `.sha256` sidecar와 수신 바이트가 일치했다. 각 archive 내부 서버 생성 `SHA256SUMS` 4세트도 전 항목 일치했다. 내부 파일 목록·크기·SHA-256은 `registry/ARCHIVE_CONTENTS.json`에 등록한다.
 
-양 노드 공통:
-- `named.conf` 및 include 파일 5개 수집
-- `fds-transfer-key` 정의/참조 일치
+## #6 결과
+
+양 노드에서:
+- `fds-transfer-key` defined/referenced 일치
 - `keys_referenced_but_not_defined=[]`
 - `/etc/crypto-policies/back-ends/bind.config` → `/usr/share/crypto-policies/DEFAULT/bind.txt`
-- TSIG secret 원문/원문 hash는 수집하지 않음
+- TSIG secret 원문과 원문 hash는 수집하지 않음
 
-dns01:
-- result dir: `dns-named-structure.dns01.jdtceg7q`
-- finished: `2026-09-28T02:11:37.065688+09:00`
-- expanded sanitized SHA-256: `795007395c75647959d829cde7a384c2aeba86954b237c74de531dea694d7f1d`
-- 2026-09-18 reference 대비 차이는 Root DNSSEC KSK-2024 trust anchor(key tag 38696) 추가 1건으로 분류
+dns01 expanded sanitized SHA-256은 `795007395c75647959d829cde7a384c2aeba86954b237c74de531dea694d7f1d`이다. 2026-09-18 reference 대비 차이는 Root DNSSEC KSK-2024 trust anchor(key tag 38696) 추가 1건으로 분류했다.
 
-dns02:
-- result dir: `dns-named-structure.dns02.q06t98ae`
-- finished: `2026-09-28T02:22:55.856544+09:00`
-- expanded sanitized SHA-256: `ea12325ab17893b25c112914432f045fd574af2a9704d12601a41486fa058f48`
-- `expanded_matches_20260918_pinned_hash=true`
+dns02 expanded sanitized SHA-256은 `ea12325ab17893b25c112914432f045fd574af2a9704d12601a41486fa058f48`이며 `expanded_matches_20260918_pinned_hash=true`였다.
 
-## #7-A Runtime
+## #7-A 결과
 
-양 노드 공통:
+양 노드에서:
 - firewalld active/enabled = true/true
 - default zone = `public`
 - `ens160` runtime public = true
@@ -64,26 +65,20 @@ dns02:
 - `connection.zone=""` → firewalld default zone 사용
 - `connection.autoconnect=yes`
 - direct rules runtime/permanent = 없음
-- nft ruleset 원본은 decoded archive 내부에 보존
 
-`interface_in_permanent_public=false`만으로 persistence를 주장하지 않는다. NetworkManager profile 기반 연결 상태는 확인했지만 **reboot 후 지속성은 아직 시험하지 않았다.**
+`interface_in_permanent_public=false`만으로 reboot persistence를 주장하지 않는다.
 
 ## Secret-free 검사
 
-decoded archive 전체 텍스트에서 다음을 재검사했다.
+수신 archive 전체 텍스트를 대상으로 PEM private key header, GitHub token pattern, unmasked `secret "..."`을 재검사했고 탐지 0건이었다.
 
-- PEM private key header
-- `ghp_` / `github_pat_` token pattern
-- `secret "..."` 중 `?` 이외 값
+## 판정과 한계
 
-결과: **탐지 0건**.
-
-## 범위 제한 및 잔여 작업
-
-- #6 양 노드 Runtime collection/integrity/TSIG reference: **PASS**
-- #7-A 양 노드 read-only Runtime / NM parser fix: **PASS**
-- Evidence 독립 리뷰: **PENDING**
-- #7-B UDP/TCP 53 packet test: **NOT RUN**
-- #7-C reboot persistence: **NOT RUN**
+- #6 양 노드 Runtime collection / integrity / TSIG reference: PASS
+- #7-A 양 노드 read-only Runtime / NM parser fix: PASS
+- Evidence 독립 리뷰: PENDING
+- #7-B UDP/TCP 53 실제 packet test: NOT RUN
+- #7-C reboot persistence: NOT RUN
 - v1.9 Runbook 원본 terminal log: 현재 `infra-dns` / `fds-project-evidence` 기본 브랜치 tree에서 찾지 못함
-- 이 evidence PR의 병합만으로 #7 전체 완료, packet 허용/차단, reboot persistence, P1-DNS-01 재인수를 주장하지 않는다.
+
+이 수집회차 편입 또는 PR 병합만으로 #7 전체 완료, packet 허용/차단, reboot persistence, P1-DNS-01 재인수를 주장하지 않는다.
