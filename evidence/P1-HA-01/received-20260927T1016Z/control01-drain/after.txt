@@ -1,0 +1,24 @@
+NAME            STATUS   ROLES           AGE   VERSION
+k8s-control01   Ready    control-plane   17d   v1.36.4
+k8s-control02   Ready    control-plane   9d    v1.36.4
+k8s-control03   Ready    control-plane   9d    v1.36.4
+k8s-worker01    Ready    <none>          9d    v1.36.4
+k8s-worker02    Ready    <none>          9d    v1.36.4
+k8s-worker03    Ready    <none>          9d    v1.36.4
+NAME                              READY   STATUS    RESTARTS        AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+fds-engine-5699669f6f-5rxbt       1/1     Running   2 (5h20m ago)   5d6h    10.244.39.242   k8s-worker03   <none>           <none>
+fds-engine-5699669f6f-c5jw6       1/1     Running   0               5m48s   10.244.79.89    k8s-worker01   <none>           <none>
+fds-engine-5699669f6f-sljjn       1/1     Running   0               2m13s   10.244.79.90    k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-gxgcq   1/1     Running   0               2m13s   10.244.79.91    k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-m65z4   1/1     Running   0               5m59s   10.244.39.248   k8s-worker03   <none>           <none>
+transaction-api-b784c8c5d-rq9b6   1/1     Running   1 (5h34m ago)   45h     10.244.79.84    k8s-worker01   <none>           <none>
+NAME                                 READY   STATUS    RESTARTS      AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+alertmanager-774f8866d-ppgqn         1/1     Running   0             37m     10.244.39.246   k8s-worker03   <none>           <none>
+grafana-559b978c69-k2ws6             1/1     Running   0             37m     10.244.39.247   k8s-worker03   <none>           <none>
+kube-state-metrics-f88b9c457-n5n7x   1/1     Running   2 (69m ago)   3h37m   10.244.79.87    k8s-worker01   <none>           <none>
+prometheus-5c6cd4bc84-b2zpq          1/1     Running   0             37m     10.244.39.245   k8s-worker03   <none>           <none>
+NAME         READY   STATUS    RESTARTS   AGE   IP               NODE            NOMINATED NODE   READINESS GATES
+probe-cp01   1/1     Running   0          77m   10.244.246.116   k8s-control01   <none>           <none>
+probe-w01    1/1     Running   0          96m   10.244.79.88     k8s-worker01    <none>           <none>
+probe-w02    1/1     Running   0          96m   10.244.69.210    k8s-worker02    <none>           <none>
+probe-w03    1/1     Running   0          96m   10.244.39.244    k8s-worker03    <none>           <none>

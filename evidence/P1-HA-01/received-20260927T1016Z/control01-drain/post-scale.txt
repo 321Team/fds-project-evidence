@@ -1,0 +1,18 @@
+NAME            STATUS   ROLES           AGE   VERSION
+k8s-control01   Ready    control-plane   17d   v1.36.4
+k8s-control02   Ready    control-plane   9d    v1.36.4
+k8s-control03   Ready    control-plane   9d    v1.36.4
+k8s-worker01    Ready    <none>          9d    v1.36.4
+k8s-worker02    Ready    <none>          9d    v1.36.4
+k8s-worker03    Ready    <none>          9d    v1.36.4
+2026-09-27T19:04:47+09:00
+NAME                              READY   STATUS    RESTARTS        AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+fds-engine-5699669f6f-5rxbt       1/1     Running   2 (5h14m ago)   5d6h    10.244.39.242   k8s-worker03   <none>           <none>
+fds-engine-5699669f6f-c5jw6       1/1     Running   0               13s     10.244.79.89    k8s-worker01   <none>           <none>
+fds-engine-5699669f6f-hrz5c       1/1     Running   2 (5h21m ago)   4d18h   10.244.69.208   k8s-worker02   <none>           <none>
+transaction-api-b784c8c5d-l4zqk   1/1     Running   1 (5h21m ago)   45h     10.244.69.207   k8s-worker02   <none>           <none>
+transaction-api-b784c8c5d-m65z4   1/1     Running   0               24s     10.244.39.248   k8s-worker03   <none>           <none>
+transaction-api-b784c8c5d-rq9b6   1/1     Running   1 (5h29m ago)   45h     10.244.79.84    k8s-worker01   <none>           <none>
+k8s-worker02 10.244.69.207 ready=true
+k8s-worker01 10.244.79.84 ready=true
+k8s-worker03 10.244.39.248 ready=true

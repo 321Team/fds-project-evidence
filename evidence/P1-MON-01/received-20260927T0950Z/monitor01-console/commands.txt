@@ -1,0 +1,2 @@
+# monitor01 (server01_monitor) — 2026-09-27 18:39 KST 무렵 실행
+sudo timeout 60 tcpdump -ni ens160 -c 6 'tcp dst port 443 and (tcp[tcpflags] & tcp-syn != 0)'

@@ -1,0 +1,41 @@
+diff -u -N /tmp/LIVE-254042747/v1.ConfigMap.monitoring-api.prometheus-alert-rules /tmp/MERGED-1797499920/v1.ConfigMap.monitoring-api.prometheus-alert-rules
+--- /tmp/LIVE-254042747/v1.ConfigMap.monitoring-api.prometheus-alert-rules	2026-09-27 18:32:24.506437942 +0900
++++ /tmp/MERGED-1797499920/v1.ConfigMap.monitoring-api.prometheus-alert-rules	2026-09-27 18:32:24.506437942 +0900
+@@ -2,6 +2,11 @@
+ data:
+   alert-rules.yml: |
+     groups:
++    - name: fds-monitoring-heartbeat
++      interval: 15s
++      rules:
++      - record: fds_monitoring_heartbeat
++        expr: vector(1)
+     - name: fds-core-observability
+       rules:
+ 
+diff -u -N /tmp/LIVE-254042747/v1.ConfigMap.monitoring-api.prometheus-config /tmp/MERGED-1797499920/v1.ConfigMap.monitoring-api.prometheus-config
+--- /tmp/LIVE-254042747/v1.ConfigMap.monitoring-api.prometheus-config	2026-09-27 18:32:24.451439033 +0900
++++ /tmp/MERGED-1797499920/v1.ConfigMap.monitoring-api.prometheus-config	2026-09-27 18:32:24.451439033 +0900
+@@ -11,6 +11,22 @@
+       alertmanagers:
+         - static_configs:
+             - targets: ['alertmanager.monitoring-api.svc.cluster.local:9093']
++    remote_write:
++      - url: https://10.250.10.30/api/v1/write
++        follow_redirects: false
++        tls_config:
++          ca_file: /etc/prometheus/monitor01-ca/fds-root-ca.crt
++          insecure_skip_verify: false
++          min_version: TLS12
++        basic_auth:
++          username: fds-heartbeat
++          password_file: /etc/prometheus/monitor01-auth/password
++        write_relabel_configs:
++          - source_labels: [__name__]
++            regex: fds_monitoring_heartbeat
++            action: keep
++          - regex: __name__
++            action: labelkeep
+     scrape_configs:
+       - job_name: 'prometheus'
+         static_configs:
