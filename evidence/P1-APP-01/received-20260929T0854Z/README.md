@@ -6,6 +6,10 @@ APP Lead(이재환)가 승인된 목표 부하로 정본 클러스터의 transac
 - G3 확인(GWONUK APPROVED): [#15 comment 5886568007](https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5886568007)
 - 승인 대상 조정(Support 승인 대기 제외, fail-closed 해석 반영): [#15 comment 5886692226](https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5886692226)
 
+**실행 근거와 시점:** 시험은 승인 대상 조정 코멘트(17:38 KST)를 근거로 17:54:55~18:09:55에 실행했다. 18:05에 올린 G3 확인 요청([5887096583](https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5887096583))의 "시험 착수 전" 표현은 실제 시각과 다르며, G3 재확인([5887187108](https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5887187108), "2차 부하시험 GO")은 시험이 끝난 뒤인 18:11에 받았다.
+
+**스크립트:** `edge01/gen2.py`는 [evidence#71](https://github.com/321Team/fds-project-evidence/pull/71) `gen.py`와 요청 생성 로직(요청 내용·속도 제어·동시 상한 64·timeout 10초)이 같고, 단계 값·상태 코드 집계·30초 진행 로그·epoch 기록만 다르다. `control01/q_range.py`는 Prometheus를 읽기만 하는 새 조회 스크립트다. 둘 다 시험 전에 SHA-256을 고정했고, 중앙 정책 §3 코드 리뷰는 거치지 않았다.
+
 **운영 변경:** 없음(Deployment·Resource·replica 변경 없음). 시험 거래 21,000건(`SIM_load_202609291754_<n>`, 10,000원)이 운영 `fdsdb`에 남아 있다.
 
 ## 수신·대조
