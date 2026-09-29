@@ -1,0 +1,25 @@
+=== P1-MON-01 GRAFANA DATASOURCE EVIDENCE TRANSFER ===
+RECEIVED_AT=2026-09-29T17:44:48+09:00
+RECEIVER_HOST=ansible01
+RECEIVER_USER=server01_ansible
+SOURCE_HOST=k8s-control01
+SOURCE_PATH=/var/tmp/p1-mon-transfer-20260929T170935/p1-mon-grafana-ds-fqdn-20260929T170935.tar.gz
+TRANSFER_METHOD=ansible_fetch
+ANSIBLE_REMOTE_USER=svc_ansible
+EXPECTED_SHA256=f43fa29f681b6a2c73fbb1535c6170e6eb5380bb6e5092daab226c6d505ef918
+ACTUAL_SHA256=f43fa29f681b6a2c73fbb1535c6170e6eb5380bb6e5092daab226c6d505ef918
+TRANSFER_SHA256=PASS
+
+=== ARCHIVE CONTENTS ===
+./
+./cm.before.json
+./pod.before.txt
+./cm.before.sha256
+./port-forward.log
+./cm.patch.json
+./datasource.cm.after.yaml
+./reload.response.json
+./datasource.api.after.json
+./datasource.health.json
+./pod.after.txt
+./SHA256SUMS
