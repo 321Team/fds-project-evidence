@@ -4,7 +4,7 @@
 - **AC 5번째 항목:** "승인 관리 단말의 Port-forward는 성공하고 비승인 외부 접근은 실패한다."
 - **핵심 요구사항 섹션 1:** "Grafana 관리 접근은 승인 관리 단말의 `kubectl port-forward`만 허용한다."
 
-두 줄이 말하는 승인 관리 경로에서 port-forward가 되는지 확인했다. 정본 v3.1.20의 기준은 다음과 같다.
+두 줄이 말하는 승인 관리 경로에서 port-forward가 되는지 확인하려 했다. **결과적으로 이 시험은 OID-01 경로 자체를 검증하지 못했다**(아래 "판정 범위"). 정본 v3.1.20의 기준은 다음과 같다.
 - **700행:** 승인된 `ansible01(.10)` 또는 `cicd-runner01(.20)`에서 API LB `.109:6443`을 경유한 `kubectl port-forward`로만 관리 접근한다.
 - **40·1108행(OID-01):** Approved Admin → API LB는 `ansible01 10.250.10.10/32 + svc_ansible`이다.
 - **1053행:** IF-07의 관리 Source/identity는 `.10/32 + svc_ansible`이다.
@@ -36,14 +36,16 @@
 | ansible01 로그인 계정 `server01_ansible` 자체 | `kubectl=없음`, `server=없음` | `../received-20260929T0656Z/ansible01/pf.txt` |
 | cicd-runner01 로그인 계정 `server01_cicd-runner` 자체 | `kubectl=없음`, `server=없음` | `cicd-runner01/pf.txt` |
 | ansible01의 `svc_ansible` | 계정 없음(`id svc_ansible` → "이 사용자는 없습니다"). 위 설명대로 노드 쪽 계정이라 정상이다 | `ansible01/svc.txt` |
-| **OID-01 경로:** ansible01 `server01_ansible` → SSH(`p1_ansible_ed25519`) `svc_ansible@k8s-control01` → `sudo -n kubectl --kubeconfig=/etc/kubernetes/admin.conf --context=kubernetes-admin@kubernetes --server=https://10.1.93.109:6443 --tls-server-name=10.1.93.109` | `whoami=kubernetes-admin`<br>`port-forward svc/grafana 13000:3000` → `Forwarding from 127.0.0.1:13000 -> 3000`<br>`/api/health` **200**, 비인증 `/api/search` **401**<br>`pf_exit=124`(12초 뒤 자동 종료), `ssh_rc=0` | `ansible01/oid01.txt` |
+| **ansible01에서 시작한 control01 관리 세션:** ansible01 `server01_ansible` → SSH(`p1_ansible_ed25519`) `svc_ansible@k8s-control01` → `sudo -n kubectl --kubeconfig=/etc/kubernetes/admin.conf --context=kubernetes-admin@kubernetes --server=https://10.1.93.109:6443 --tls-server-name=10.1.93.109` | `whoami=kubernetes-admin`<br>`port-forward svc/grafana 13000:3000` → `Forwarding from 127.0.0.1:13000 -> 3000`<br>`/api/health` **200**, 비인증 `/api/search` **401**<br>`pf_exit=124`(12초 뒤 자동 종료), `ssh_rc=0` | `ansible01/oid01.txt` |
 
 ## 판정 영향
 
 - **AC 5번째 항목** "승인 관리 단말의 Port-forward는 성공하고 비승인 외부 접근은 실패한다"
-  - 승인 관리 경로(OID-01: ansible01 출발, `svc_ansible`, API LB `.109:6443` 명시)에서 port-forward 성공, `/api/health` 200, 비인증 401을 관측했다.
-  - 비승인 외부 경로 차단은 9/26 [`received-20260926T0445Z/run2-20260926T0425Z`](../received-20260926T0445Z/run2-20260926T0425Z/)에서 관측했다. Ingress 0건, Worker IP:3000 직접 접근 3/3 실패다.
-  - 두 조건이 모두 관측됐으므로 AC 판정 근거가 된다.
+  - **이 증적은 AC 5 재체크 근거로 쓰지 않는다**(GWONUK 리뷰 해결안 B).
+  - 확인된 것: ansible01에서 승인 SSH identity(`svc_ansible`)로 control01 관리 세션을 시작했고, **control01의 `admin.conf`로** API LB `.109:6443`을 지정해 Grafana port-forward가 동작했다(`/api/health` 200, 비인증 401).
+  - 확인되지 않은 것: 정본 700행·OID-01이 요구하는 **승인 관리 단말(ansible01 `.10` 또는 cicd-runner01 `.20`)이 API LB의 실제 client/source가 되는 경로.** 이번 시험에서 API LB에 접속한 client, port-forward listener, `curl`은 모두 control01(`.102`)이었다. 원본 `oid01.txt`에는 kubectl 명령 원문, `--server`, 출발지 IP가 기록돼 있지 않다.
+  - 따라서 **OID-01 Approved Admin → API LB 경로 = NOT VERIFIED.** 비승인 외부 경로 차단(9/26 [`received-20260926T0445Z/run2-20260926T0425Z`](../received-20260926T0445Z/run2-20260926T0425Z/), Ingress 0건, Worker IP:3000 3/3 실패)은 그대로 유효하다.
+  - 재체크 조건: 승인 관리 단말에서 직접 `kubectl port-forward`(TLS 검증 유지, listener·curl도 같은 단말), 출발지 확인(`ip route get 10.1.93.109`), 명령 원문·RC를 raw에 보존. 승인 관리 단말에 kubectl·kubeconfig가 없으므로(위 결과) 배치 방식은 SEC·K8S Lead 결정이 먼저 필요하다.
 - **핵심 요구사항** "Grafana 관리 접근은 승인 관리 단말의 `kubectl port-forward`**만** 허용한다"
   - 체크하지 않은 상태를 유지한다.
   - 같은 날 control01 로컬 계정(`server02`, sudo `admin.conf`)으로도 port-forward가 됐다(`../received-20260929T0656Z/control01/collect.txt`).
