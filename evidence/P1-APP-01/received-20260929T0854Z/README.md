@@ -6,6 +6,9 @@ APP Lead(이재환)가 승인된 목표 부하로 정본 클러스터의 transac
 - G3 확인(GWONUK APPROVED): [#15 comment 5886568007](https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5886568007)
 - 승인 대상 조정(Support 승인 대기 제외, fail-closed 해석 반영): [#15 comment 5886692226](https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5886692226)
 
+> **판정 상태 — 진단·이력 증적 ([GWONUK 리뷰](https://github.com/321Team/fds-project-evidence/pull/75#pullrequestreview-5350629433) 해결안 B 반영)**
+> 측정값과 산식 결과는 합격 기준 1~5를 모두 충족한다. 그러나 운영 Runtime에 쓴 부하 생성 코드 `gen2.py`와 조회 코드 `q_range.py`가 실행 전에 독립 코드 리뷰(REVIEW_AUTHORITY_POLICY §3, §3.2 4-1(5))를 거치지 않았으므로 `RUNTIME_GOVERNANCE=NONCOMPLIANT`다. 이 RUN은 진단·이력 증적으로만 편입하며, Resource baseline 최종 확정과 #15 핵심 요구 체크의 근거로 쓰지 않는다. 정식 판정은 코드 리뷰를 마친 exact SHA로 결정안 v2 기준 그대로 새 RUN을 실행해 별도 증적으로 한다. 세 파일(`gen2.py`·`q_range.py`·`promql.txt`)은 같은 바이트로 [fds-msa#15](https://github.com/321Team/fds-msa/pull/15)에 올려 독립 코드 리뷰를 요청했다.
+
 **실행 근거와 시점:** 시험은 승인 대상 조정 코멘트(17:38 KST)를 근거로 17:54:55~18:09:55에 실행했다. 18:05에 올린 G3 확인 요청([5887096583](https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5887096583))의 "시험 착수 전" 표현은 실제 시각과 다르며, G3 재확인([5887187108](https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5887187108), "2차 부하시험 GO")은 시험이 끝난 뒤인 18:11에 받았다.
 
 **스크립트:** `edge01/gen2.py`는 [evidence#71](https://github.com/321Team/fds-project-evidence/pull/71) `gen.py`와 요청 생성 로직(요청 내용·속도 제어·동시 상한 64·timeout 10초)이 같고, 단계 값·상태 코드 집계·30초 진행 로그·epoch 기록만 다르다. `control01/q_range.py`는 Prometheus를 읽기만 하는 새 조회 스크립트다. 둘 다 시험 전에 SHA-256을 고정했고, 중앙 정책 §3 코드 리뷰는 거치지 않았다.
@@ -91,12 +94,13 @@ Pod당 판정에 쓴 측정값은 기준 37개, 피크 9개, 메모리 61개다.
 | — | fail-closed(필요 시계열 부재·유효 샘플 없음) | 해당 없음 | — |
 | — | p95 (기록만, 판정 미사용) | B 27.5ms, P 25.0ms | — |
 
-**판정: PASS — 현재 이미지 기준 Resource baseline을 현재 값(requests 250m/256Mi, limits 500m/512Mi) 유지로 확정한다.**
+**측정 결과: 합격 기준 1~5 수치는 모두 충족한다(현재 값 requests 250m/256Mi, limits 500m/512Mi로 관측 부하를 수용). 다만 `RUNTIME_GOVERNANCE=NONCOMPLIANT`(실행 코드 사전 독립 리뷰 누락)이므로 이 RUN으로 Resource baseline을 확정하지 않는다.**
 
 ## 판정 범위
 
-- 이 증적이 확정하는 것: 결정안 v2의 승인 목표 부하(기준 20 rps 10분 → 피크 50 rps 3분, Phase 1 프로젝트 내부 목표)에서, 위 현재 이미지 기준 Resource baseline을 현재 값 유지로 확정한다. P1-APP-01 핵심 요구 "Workload별 Request/Limit을 부하 시험으로 확정한다"의 판정 근거이며, 범위는 "현재 이미지 기준 Resource baseline 확정"이다.
-- 이 증적으로 확정하지 않는 것: 지연 SLO(p95는 기록만), 최종 ingress(edge01 nginx :80) 경로의 지연, 50 rps를 넘는 처리량, 10/5 전환 이미지의 자원 특성, #15의 다른 AC와 종결, MS-G3-01 #29 Gate.
+- 이 증적이 보여 주는 것(진단·이력): 결정안 v2의 승인 목표 부하(기준 20 rps 10분 → 피크 50 rps 3분, Phase 1 프로젝트 내부 목표)에서, 현재 이미지와 현행 Resource로 관측 부하를 수용했다(201 외 응답·throttling·재시작·OOM 0, 산식 결과 ≤ 현재 값).
+- 이 증적을 쓰지 않는 곳: Resource baseline 최종 확정과 P1-APP-01 핵심 요구 "Workload별 Request/Limit을 부하 시험으로 확정한다"의 체크. 실행 코드가 사전 독립 코드 리뷰를 거치지 않았기 때문이다(`RUNTIME_GOVERNANCE=NONCOMPLIANT`). 정식 판정은 리뷰된 exact SHA로 새 RUN을 실행해 별도 증적으로 한다.
+- 이 증적으로도, 새 RUN으로도 확정하지 않는 것: 지연 SLO(p95는 기록만), 최종 ingress(edge01 nginx :80) 경로의 지연, 50 rps를 넘는 처리량, 10/5 전환 이미지의 자원 특성, #15의 다른 AC와 종결, MS-G3-01 #29 Gate.
 - 10/5 이미지 전환 뒤에는 #15를 다시 판정하지 않는다. #20 회귀 2회차에서 축약본(기준 20 rps 2분 → 피크 50 rps 2분)을 regression gate로만 돌리고, 이상이 있으면 #20 Defect·#15 영향 재검토·새 이미지 full profile 재시험으로 연결한다(결정안 v2 8절).
 
 ## 계산 방법
@@ -114,6 +118,7 @@ Pod당 판정에 쓴 측정값은 기준 37개, 피크 9개, 메모리 61개다.
 - [evidence#71](https://github.com/321Team/fds-project-evidence/pull/71)(5/20/50 rps 각 90초, 병합)은 사전 관측 자료이며 이번 판정에 섞지 않았다. #71 README의 "10/5 이미지 전환 이후 같은 방식으로 재검증해 판정" 문구는 결정안 v2로 대체됐다.
 - fds-engine은 산식상 100m/128Mi로도 충분하다. 값을 낮추는 조정은 이 결정 범위 밖이다(별도 제안).
 - 시험 거래 21,000건이 운영 DB에 남아 있다. 기존 시험 거래와 함께 정리 기준·시점을 [#11](https://github.com/321Team/fds-project-baseline/issues/11)에 별도 결정안으로 올린다.
+- 운영 Runtime에 쓴 `gen2.py`(부하 생성)·`q_range.py`(조회)는 실행 전 독립 코드 리뷰를 거치지 않았다(REVIEW_AUTHORITY_POLICY §3, §3.2 4-1(5): 부하 시험은 순수 검증기 예외 대상이 아님). #71 증적 편입 리뷰는 이 코드 리뷰를 대신하지 않는다. 정식 근거는 두 스크립트를 코드 PR로 고정해 독립 리뷰를 받은 뒤 같은 기준으로 새 RUN을 실행해 만든다.
 - #15 Support(이하영) 승인은 휴가로 받지 않았다. 근거는 승인 대상 조정 코멘트(REVIEW_AUTHORITY_POLICY §1·§4)다. 이 증적 PR의 독립 리뷰는 §3.1대로 유지한다.
 
 AI 사용: CLAUDE_ASSISTED (결정안·명령·부하 생성기·판정 계산 준비, 수신 대조·문서화, 서버 명령 실행은 담당자 본인)
