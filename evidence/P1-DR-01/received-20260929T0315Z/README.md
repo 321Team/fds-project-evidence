@@ -15,11 +15,13 @@ DR Lead(이재환)가 db01에서 운영 `fdsdb`를 `pg_dump`로 백업하고 새
 
 | 폴더 | 서버 원본 | archive | 대조 |
 |---|---|---|---|
-| `db01/` | `~/p1-dr-20260929/` 6개 파일 | ① 12:17 1,591 B `5d06c9f3…84e224c8`(`dr-rehearsal.log`·`perm-fix.log`) ② 12:30 2,155 B `3e4cc7be…6ea7205`(`cleanup.log` 외 5개) ③ 12:38 306 B `a4154049…506ec2b8d`(`cleanup.log`) | 세 archive 모두 서버 `sha256sum`과 로컬 복원본 일치. ①의 두 파일은 ② 안의 같은 파일과 바이트 동일 |
-| `edge01/` | `~/p1-dr-e2e-20260929-edge01.log` | 409 B `45566b31…3f750a20` | 서버 `sha256sum`과 로컬 복원본 일치 |
+| `db01/` | `~/p1-dr-20260929/` 6개 파일 | ① `db01/dr-db01.tgz` 12:17 1,591 B `5d06c9f3…84e224c8`(`dr-rehearsal.log`·`perm-fix.log`) ② `db01/dr-e2e-db01.tgz` 12:30 2,155 B `3e4cc7be…6ea7205`(`dr-rehearsal.log`·`perm-fix.log`·`e2e-pre.log`·`e2e-swap.log`·`e2e-swapback.log` 5개) ③ `db01/dr-cleanup-db01.tgz` 12:38 306 B `a4154049…506ec2b8d`(`cleanup.log`) | 세 archive 모두 서버 `sha256sum`과 일치, 원본 보존. ①의 두 파일은 ② 안의 같은 파일과 바이트 동일 |
+| `edge01/` | `~/p1-dr-e2e-20260929-edge01.log` | `edge01/dr-e2e-edge01.tgz` 409 B `45566b31…3f750a20` | 서버 `sha256sum`과 일치, 원본 보존 |
 | `console/` | 없음 | — | control01 Pod 상태 콘솔 제출 원문. 서버 파일·Hash 없음 |
 
-파일별 서버 Hash는 받지 않았다. archive 단위로 대조했다.
+- 수신한 archive 4개를 **바이트 그대로** 보존했다(재압축 없음). 같은 이름의 `.sha256` sidecar를 두고 `registry/ARCHIVE_CONTENTS.json`에 내부 목록을 등록했다.
+- 각 폴더의 개별 로그 파일은 이 archive를 `tar xzf`로 풀어 복사한 것이다. archive 내부 파일과 바이트가 같다(`cmp`, 내부 목록의 sha256과 `SHA256SUMS`가 일치).
+- 파일별 서버 Hash는 받지 않았다. 서버 측 대조는 archive 단위다.
 
 **dump 원본은 이 저장소에 넣지 않았다.** 거래 데이터가 들어 있어 [9/27 보관 위치 결정](https://github.com/321Team/fds-project-baseline/issues/21#issuecomment-5852937013)대로 db01에만 둔다.
 
@@ -66,11 +68,13 @@ DR Lead(이재환)가 db01에서 운영 `fdsdb`를 `pg_dump`로 백업하고 새
 | 12:28:21 | edge01 → Worker 3대 `/readyz` | `200 200 200` |
 | 12:28:21 | **E2E** `POST /api/v1/transactions` (`.105:30080`, `SIM_dr21_20260929`, 3,500,000 KRW, transfer) | **HTTP 201**, `transaction_id=fe2501ac-d2bb-456f-bcc6-dc1fe061229c`, `fds_detected=true`, R02 `triggered=true`, `fds_evaluation_skipped=false` |
 | 12:28:50 | 복구본 확인 | 앱 세션 7개 모두 **oid 32882**에 연결. 복구본 1,210행, E2E 거래 저장(`received_at` 12:28:21.689948) |
-| 12:28:50~54 | 원복: 복구본 접속 차단 → 세션 7개 종료 → 이름 원복 → 접속 허용 | `psql rc=0`, `fdsdb` = oid **16389**, `datallowconn=t` |
+| 12:28:50~54 | 원복: 복구본 접속 차단 → 세션 7개 종료 → 이름 원복 → 접속 허용 | `psql rc=0`, `fdsdb` = oid **16389**, `datallowconn=t`. `ALTER DATABASE` 5회는 아래 주석 참고 |
 | 12:29:14 | 원복 확인 | 원본 **1,209행·md5 `93d60e0f…` 동일·E2E 거래 0건**. 복구본 1,210행(md5 `74b4549a…`)·E2E 거래 1건. 앱 세션 7개가 oid 16389에 재연결 |
 | 12:30 | edge01 `/readyz`, control01 Pod | 3대 200. `restarts` 0/0/1(시험 전과 동일) |
 
 DB 연결이 끊긴 시간은 교체 약 3초, 원복 약 4초다.
+
+**`e2e-swapback.log`의 `ALTER DATABASE` 5회** (리뷰 소견 보완): 로그에는 SQL 원문이 없어, 담당자에게 제시한 붙여넣기 명령 원문과 출력 순서로 대응시켰다. ① `fdsdb`(복구본) `ALLOW_CONNECTIONS false` → (세션 종료 2회) → ② `fdsdb` → `fdsdb_dr_20260929` 이름 변경 → ③ `fdsdb_orig_20260929` → `fdsdb` 이름 원복 → ④ `fdsdb` `ALLOW_CONNECTIONS true` → ⑤ `fdsdb_dr_20260929` `ALLOW_CONNECTIONS true`. ⑤는 복구본의 접속 허용을 원래 값(`t`)으로 되돌린 것이며, 출력의 두 DB 모두 `datallowconn=t`와 일치한다. 복구본은 12:38 `dropdb`로 삭제했다(§4).
 
 ## 4. 정리 (`db01/cleanup.log`, 12:38:37)
 
