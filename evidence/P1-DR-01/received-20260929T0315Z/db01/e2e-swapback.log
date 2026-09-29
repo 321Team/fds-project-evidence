@@ -1,0 +1,27 @@
+== VERIFY ON RESTORED 2026-09-29T12:28:50+09:00
+32882|fdsdb|10.1.93.50|3
+32882|fdsdb|10.1.93.105|2
+32882|fdsdb|10.1.93.107|1
+32882|fdsdb|10.1.93.108|1
+restored(oid 32882)|1210
+fe2501ac-d2bb-456f-bcc6-dc1fe061229c|SIM_dr21_20260929|3500000|t|f|[{"detail": null, "rule_id": "R01", "triggered": false}, {"detail": "고액 거래 3,500,000원 (threshold 3,000,000원)", "rule_id": "R02", "triggered": true}, {"detail": null, "rule_id": "R04", "triggered": false}, {"detail": null, "rule_id": "R07", "triggered": false}]|2026-09-29 12:28:21.689948+09
+== SWAP BACK 2026-09-29T12:28:50+09:00
+ALTER DATABASE
+terminated|7
+
+terminated2|0
+
+ALTER DATABASE
+ALTER DATABASE
+ALTER DATABASE
+ALTER DATABASE
+2026-09-29 12:28:54.01821+09|16389|fdsdb|t
+2026-09-29 12:28:54.01821+09|32882|fdsdb_dr_20260929|t
+psql rc=0
+== POST 2026-09-29T12:29:14+09:00
+fdsdb|1209|93d60e0f4f9801915b4361e716055120|0
+fdsdb_dr_20260929|1210|74b4549a818d95719d8c770c06e7eef5|1
+16389|fdsdb|10.1.93.50|3
+16389|fdsdb|10.1.93.105|2
+16389|fdsdb|10.1.93.107|1
+16389|fdsdb|10.1.93.108|1
