@@ -1,4 +1,4 @@
-# P1-DR-01 — PostgreSQL Backup → 격리 Restore → 원본 비교 → Restore 후 E2E (2026-09-29 12:15~12:30 KST)
+# P1-DR-01 — PostgreSQL Backup → 격리 Restore → 원본 비교 → Restore 후 E2E (2026-09-29 12:15~12:38 KST)
 
 DR Lead(이재환)가 db01에서 운영 `fdsdb`를 `pg_dump`로 백업하고 새 격리 DB `fdsdb_dr_20260929`에 `pg_restore`로 복구해 원본과 행 단위로 비교했다. 이어서 짧은 작업창에서 DB 이름을 맞바꿔 정본 앱이 **복구본을 실제로 쓰게 한 상태로 E2E 거래 1건**을 처리한 뒤 원래대로 되돌렸다. 명령은 담당자가 db01·edge01(`server08`), k8s-control01(`server02`)에서 직접 실행했다.
 
@@ -7,7 +7,7 @@ DR Lead(이재환)가 db01에서 운영 `fdsdb`를 `pg_dump`로 백업하고 새
 **운영 변경 (모두 원복)**
 - 운영 `fdsdb`: `pg_dump`·`SELECT`로 읽음. E2E 작업창 동안 `ALLOW_CONNECTIONS false` → 이름 변경(`fdsdb_orig_20260929`) → 원래 이름·`ALLOW_CONNECTIONS true`로 복구. **데이터는 변경되지 않았다**(행 전체 md5 전후 동일)
 - 앱 DB 세션 7개(`.50`×3, `.105`×2, `.107`×1, `.108`×1)를 두 번 종료. 앱·매니페스트·Secret·`pg_hba`·방화벽 변경 없음, Pod 재시작 없음
-- 새 격리 DB `fdsdb_dr_20260929` 생성·복구. E2E 거래 1건이 추가된 상태로 **현재 유지 중**(삭제 여부는 DR Lead 결정)
+- 새 격리 DB `fdsdb_dr_20260929` 생성·복구 → E2E 후 12:38:37 KST `dropdb`로 삭제(`db01/cleanup.log`)
 - 보관 디렉터리 `/var/lib/pgsql/fds-evidence/`(postgres:postgres 700) 생성, dump 파일 저장 후 권한 600 정정
 - 작업창은 12:23 KST 팀 카카오톡 대화방에 담당자가 공지했다("없으시면 db restore,e2e 테스트 진행을위해 잠깐 끊겠습니다"). 대화방 원문은 이 저장소에 편입하지 않았다
 
@@ -15,7 +15,7 @@ DR Lead(이재환)가 db01에서 운영 `fdsdb`를 `pg_dump`로 백업하고 새
 
 | 폴더 | 서버 원본 | archive | 대조 |
 |---|---|---|---|
-| `db01/` | `~/p1-dr-20260929/` 5개 파일 | ① 12:17 1,591 B `5d06c9f3…84e224c8`(`dr-rehearsal.log`·`perm-fix.log`) ② 12:30 2,155 B `3e4cc7be…6ea7205`(5개 전체) | 두 archive 모두 서버 `sha256sum`과 로컬 복원본 일치. ①의 두 파일은 ② 안의 같은 파일과 바이트 동일 |
+| `db01/` | `~/p1-dr-20260929/` 6개 파일 | ① 12:17 1,591 B `5d06c9f3…84e224c8`(`dr-rehearsal.log`·`perm-fix.log`) ② 12:30 2,155 B `3e4cc7be…6ea7205`(`cleanup.log` 외 5개) ③ 12:38 306 B `a4154049…506ec2b8d`(`cleanup.log`) | 세 archive 모두 서버 `sha256sum`과 로컬 복원본 일치. ①의 두 파일은 ② 안의 같은 파일과 바이트 동일 |
 | `edge01/` | `~/p1-dr-e2e-20260929-edge01.log` | 409 B `45566b31…3f750a20` | 서버 `sha256sum`과 로컬 복원본 일치 |
 | `console/` | 없음 | — | control01 Pod 상태 콘솔 제출 원문. 서버 파일·Hash 없음 |
 
@@ -72,6 +72,12 @@ DR Lead(이재환)가 db01에서 운영 `fdsdb`를 `pg_dump`로 백업하고 새
 
 DB 연결이 끊긴 시간은 교체 약 3초, 원복 약 4초다.
 
+## 4. 정리 (`db01/cleanup.log`, 12:38:37)
+
+- `dropdb fdsdb_dr_20260929` rc=0. `fdsdb%` DB는 `fdsdb`(oid 16389, 접속 허용)만 남았다.
+- 운영 `fdsdb` 1,209행, md5 `93d60e0f…` — 백업 시점과 동일
+- `/var/lib/pgsql/fds-evidence/`에는 새 dump 1개(`-rw------- postgres postgres`, 51,491 B)만 있다.
+
 ## 한계와 후속
 
 - E2E는 거래 1건(R02 고액 거래)이다. 전체 Rule 회귀는 #20 최종 회귀에서 다룬다.
@@ -79,6 +85,6 @@ DB 연결이 끊긴 시간은 교체 약 3초, 원복 약 4초다.
 - E2E 거래는 복구본에만 남아 있고 운영 `fdsdb`에는 없다(의도한 결과).
 - 로그의 SAMPLE·E2E 행에는 `SIM_` 시험 계정의 `account_id`·금액·`fds_rules`만 있다. `source_ip`와 비밀값은 포함하지 않았다.
 - 행 md5 비교는 같은 서버·같은 세션 설정에서 한 것이다. 서버 간 이동 복구는 범위 밖이다.
-- 9/3 dump(`fdsdb_backup_20260903.dump`)의 db01 이전, 격리 DB 삭제, Runbook 작성은 별도로 남아 있다.
+- 9/3 dump(`fdsdb_backup_20260903.dump`)의 db01 이전과 Runbook 작성은 별도로 남아 있다.
 
 AI 사용: CLAUDE_ASSISTED (명령 준비·수신 대조·문서화, 실행은 담당자 본인)
