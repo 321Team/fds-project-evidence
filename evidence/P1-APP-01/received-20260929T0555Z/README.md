@@ -20,7 +20,7 @@ APP Lead(이재환)가 정본 클러스터의 transaction-api·fds-engine에 3�
 - 관측: control01에서 Prometheus 15초 간격 Pod별 `rate(container_cpu_usage_seconds_total[1m])`, `container_memory_working_set_bytes`, CFS throttling 비율(`control01/q.py`, `metrics.log`) / edge01에서 단계별 처리량·상태코드·지연
 - 시험 전 값: 두 서비스 모두 requests 250m/256Mi, limits 500m/512Mi(`control01/env-before.txt`)
 - 산식: CPU request = S2 최대 ×1.5(50m 올림, 최소 100m) / CPU limit = S3 최대 ×2(100m 올림), throttling 25% 이상이면 부족 / 메모리 request = 전 구간 최대 ×1.2(64Mi 올림), limit = request ×2
-- 판정: 현재 값 ≥ 산식, throttling < 25%, 오류 0, 재시작·OOM 0이면 현재 값 유지 확정. p95는 정본 기준이 없어 기록만 한다.
+- 판정: 현재 값 ≥ 산식, throttling < 25%, 오류 0, 재시작·OOM 0이면 현재 값 유지 확정. p95는 정본 기준이 없어 기록만 한다. (시험 전 기록한 `criteria.txt` 문구 그대로다. 이 증적의 판정 범위는 아래 "판정 범위"를 따른다.)
 
 ## 결과
 
@@ -50,7 +50,13 @@ Worker별 요청은 단계마다 정확히 3등분됐다(S3 1,500×3).
 | transaction-api | 89.5×1.5 → 150m ≤ 250m | 174.4×2 → 400m ≤ 500m | 121.5×1.2 → 192Mi ≤ 256Mi | 384Mi ≤ 512Mi | 유지 |
 | fds-engine | 최소 100m ≤ 250m | 100m ≤ 500m | 128Mi ≤ 256Mi | 256Mi ≤ 512Mi | 유지 |
 
-오류 0, 스로틀링 0, 재시작·OOM 0이므로 기준에 따라 **현재 값(250m/500m, 256Mi/512Mi) 유지로 확정**한다.
+오류 0, 스로틀링 0, 재시작·OOM 0이므로 **50 rps·단계별 90초 시험 프로파일에서 현재 값(250m/500m, 256Mi/512Mi)으로 관측 부하를 수용할 수 있음**을 확인했다.
+
+## 판정 범위
+
+- 정본·Decision에 승인된 목표 부하(RPS·동시성·지속시간·성능 SLO)가 정해져 있지 않다. 5/20/50 rps는 이번 시험을 위해 정한 프로파일이며 승인 목표 부하가 아니다.
+- 따라서 이 증적은 **"50 rps 시험 프로파일 기준 현행 Resource 값 유지 가능 확인"**까지의 근거다. P1-APP-01 핵심 요구 "Workload별 Request/Limit을 부하 시험으로 확정한다"의 **최종 확정 근거로 쓰지 않는다**(GWONUK 리뷰 해결안 B).
+- 최종 Request/Limit 확정은 승인 목표 부하를 정의한 뒤, 10/5 이미지 전환 이후 같은 방식으로 재검증해 판정한다.
 
 ## 한계와 후속
 
