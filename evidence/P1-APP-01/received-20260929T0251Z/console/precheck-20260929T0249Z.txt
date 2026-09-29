@@ -1,0 +1,26 @@
+# 사전 확인 — 담당자 콘솔 제출 원문 (서버 파일 미보존, 파일별 서버 Hash 없음)
+# db01 (server08)
+2026-09-29T11:49:57+09:00
+10.1.93.50|fds_app|fdsdb|idle|3
+10.1.93.105|fds_app|fdsdb|idle|2
+10.1.93.107|fds_app|fdsdb|idle|1
+10.1.93.108|fds_app|fdsdb|idle|1
+public (default)
+  interfaces: ens160 ens192
+rule family="ipv4" source address="10.1.93.23/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.29/32" service name="ssh" accept
+rule family="ipv4" source address="10.250.10.10/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+DONE
+# k8s-control01 (server02)
+POD                               NODE           IP              READY   RESTARTS
+transaction-api-b784c8c5d-j4gn2   k8s-worker02   10.244.69.211   true    0
+transaction-api-b784c8c5d-m65z4   k8s-worker03   10.244.39.248   true    0
+transaction-api-b784c8c5d-rq9b6   k8s-worker01   10.244.79.84    true    1
+transaction-api-b784c8c5d-rq9b6 ready=true node=k8s-worker01
+transaction-api-b784c8c5d-m65z4 ready=true node=k8s-worker03
+transaction-api-b784c8c5d-j4gn2 ready=true node=k8s-worker02
+# edge01 (server08) — Worker:30080 /readyz 사전 확인
+worker .105  http=200  t=0.009578
+worker .107  http=200  t=0.009164
+worker .108  http=200  t=0.008538
+DONE
