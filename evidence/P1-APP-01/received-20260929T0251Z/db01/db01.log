@@ -1,0 +1,25 @@
+db01
+2026-09-29T11:53:13+09:00
+== BLOCK
+success
+rule family="ipv4" source address="10.1.93.23/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.29/32" service name="ssh" accept
+rule family="ipv4" source address="10.250.10.10/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.105/32" port port="5432" protocol="tcp" reject
+== TERMINATE .105 sessions
+19372|t
+20250|t
+10.1.93.50|3
+10.1.93.107|1
+10.1.93.108|1
+== HOLD 180s 2026-09-29T11:53:18+09:00
+== RESTORE 2026-09-29T11:56:18+09:00
+success
+rule family="ipv4" source address="10.1.93.23/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+rule family="ipv4" source address="10.1.93.29/32" service name="ssh" accept
+rule family="ipv4" source address="10.250.10.10/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+2026-09-29T11:56:59+09:00
+10.1.93.50|3
+10.1.93.105|2
+10.1.93.107|1
+10.1.93.108|1
