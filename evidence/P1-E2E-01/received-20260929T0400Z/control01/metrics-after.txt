@@ -1,0 +1,7 @@
+2026-09-29T13:02:23+09:00
+sum(transaction_save_success_total) [('-', '24')]
+sum(transaction_save_failure_total) [('-', '0')]
+sum(missing_client_ip_total) [('-', '1')]
+sum(fds_evaluated_total) [('-', '24')]
+sum by (rule_id)(fds_detected_total) [('R01', '1'), ('R02', '3'), ('R04', '1'), ('R07', '1')]
+count(up{job=~"transaction-api|fds-engine"}==1) [('-', '6')]
