@@ -1,0 +1,16 @@
+# edge01 /metrics 외부 출발지 시험 — 로컬 실행 기록 (서버 원본 아님, GET만)
+# 실행: 2026-09-29T16:06:57+09:00, 출발지: 담당자 PC 서비스망 10.1.93.29, 실행: Claude Code가 Git Bash curl 8.19.0로 직접 실행
+# 대상: http://10.1.93.50 (edge01 nginx :80). upstream은 아직 E-K3S 10.1.93.50:30080
+# 열: 경로 | 첫 응답 코드 | -L 최종 코드 | Content-Type | Server | 본문 앞 60바이트
+/metrics | 404 | 404 | text/html | nginx/1.26.3 | <html>  <head><title>404 Not Found</title></head>  <body>  <
+//metrics | 404 | 404 | text/html | nginx/1.26.3 | <html>  <head><title>404 Not Found</title></head>  <body>  <
+/METRICS | 404 | 404 | application/json | nginx/1.26.3 | {"detail":"Not Found"}
+/./metrics | 404 | 404 | text/html | nginx/1.26.3 | <html>  <head><title>404 Not Found</title></head>  <body>  <
+/%6detrics | 404 | 404 | text/html | nginx/1.26.3 | <html>  <head><title>404 Not Found</title></head>  <body>  <
+/metrics/ | 307 | 404 |  | nginx/1.26.3 | 
+/metrics%2f | 307 | 404 |  | nginx/1.26.3 | 
+/ | 404 | 404 | application/json | nginx/1.26.3 | {"detail":"Not Found"}
+/healthz | 404 | 404 | application/json | nginx/1.26.3 | {"detail":"Not Found"}
+/readyz | 200 | 200 | application/json | nginx/1.26.3 | {"status":"ready"}
+/metrics/ Location: http://10.1.93.50/metrics
+# HELP 줄 수: /metrics=0, -L /metrics/=0
