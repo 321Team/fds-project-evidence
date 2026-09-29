@@ -1,0 +1,92 @@
+{
+  "record_id": "P1-CICD-01",
+  "received_kst": "2026-09-29T14:49:00+09:00",
+  "runtime_run": {
+    "repository": "321Team/infra-cicd",
+    "run_id": "36521959454",
+    "attempt": 1,
+    "workflow_sha": "52cf494bec02ab4b814bed07e4cf66f37a3547b6",
+    "input_sha256": "05dadd477f483e8c288acfabb2e785193185b402d8dba3baf24fc4562b9796d8",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "source_repository": "321Team/fds-msa",
+    "source_commit": "368786c1e36b2bfb5424c4da472c1cc319c5c8c3"
+  },
+  "main_archive": {
+    "name": "p1-cicd-run-36521959454-attempt-1-evidence-20260929T143700.tar.gz",
+    "bytes": 17990,
+    "sha256": "32624aef49ca490551df18e0ed777ae7f93fb67fae960b8555aeb9ab9df1b549",
+    "regular_files": 39,
+    "collector_tracked_files": 33,
+    "transport": "conversation attachment",
+    "git_binary_copy": "NOT_INCLUDED_IN_THIS_PR",
+    "independent_reviewer_original_archive_access": "UNCONFIRMED"
+  },
+  "supplement_archive": {
+    "name": "p1-cicd-run-36521959454-attempt-1-supplement-20260929T144739.tar.gz",
+    "bytes": 48300,
+    "sha256": "9dacfae8fd42044965ccf17ea2c570b9acfccf089cf5cd5fb8542f87a309ae9a",
+    "regular_files": 4,
+    "transport": "conversation attachment",
+    "git_binary_copy": "NOT_INCLUDED_IN_THIS_PR",
+    "independent_reviewer_original_archive_access": "UNCONFIRMED"
+  },
+  "receiver_validation": {
+    "path_traversal_or_absolute_path": 0,
+    "secret_pattern_hits": 0,
+    "main_collected_hash_recheck": "PASS",
+    "transaction_api_report_sha256": "fac045ca2c7477a35f1d1af83ce6eb7b97bac169f9920c8aa23938eeb6bbd234",
+    "transaction_api_report_recheck": "PASS",
+    "fds_engine_report_sha256": "fe26ae881ba408728bf6d737bb0dc1939a6173a48003e9fc6b155a485725646e",
+    "fds_engine_report_recheck": "PASS"
+  },
+  "runtime_result": {
+    "APP_WORKFLOW": "PASS",
+    "APP_TEST_BUILD_SCAN": "PASS",
+    "BUILD_SCAN": "PASS",
+    "IMAGE_SCAN": "PASS",
+    "fds_engine_unit": "16 passed",
+    "transaction_api_contract": "14 passed, 1 warning",
+    "fds_engine_contract": "10 passed, 1 warning",
+    "transaction_api_high": 0,
+    "transaction_api_critical": 0,
+    "fds_engine_high": 0,
+    "fds_engine_critical": 0,
+    "PUSH": "NOT_EXECUTED",
+    "DEPLOY": "NOT_EXECUTED",
+    "DELIVERY_GATE": "NOT_VERIFIED"
+  },
+  "image_identity": {
+    "transaction_api": {
+      "archive_sha256": "c13cb05f072c212e0282473c8b60d0037c42d06d1b43d051e3f15c9215e7b256",
+      "local_oci_manifest_digest": "sha256:b4d8675dc350bb6f602196f840a7afc3c034163f28ad83f718496cfc345be966",
+      "config_digest": "sha256:20c72b6b6d35fc92860f7573d9ad67feb3878ede4c807dd3ee84e1f42695c21b"
+    },
+    "fds_engine": {
+      "archive_sha256": "53322489ffe5049e3b21b1cb6c825b313d9737c131aaeefba244b01a114554f1",
+      "local_oci_manifest_digest": "sha256:eea750c2ff3a86d5bbe50a699fc98266b2d9a032c4e1ebeb268526781d8a4f79",
+      "config_digest": "sha256:b07e79980c6b1390dd9de25849281e97ebd58c2bc90daa518ab8acb2914fcc77"
+    }
+  },
+  "harbor_preflight": {
+    "route_source": "10.250.10.20",
+    "route_rc": 0,
+    "dns_rc": 2,
+    "curl_rc": 60,
+    "http_code": "000",
+    "openssl_verify_code": 20,
+    "rootless": true,
+    "authfile_present": false,
+    "matching_ca_candidates": 0,
+    "push": "NOT_EXECUTED",
+    "gate": "BLOCK_TLS_TRUST"
+  },
+  "evidence_limitations": [
+    "Original tar.gz bytes are not copied into Git in this PR; transport archive hashes are fixed and selected original text records are included.",
+    "Full Trivy report.json bytes remain in the supplement archive; this PR records and rechecks their exact SHA256 but does not reproduce the full report bodies.",
+    "OCI archive bytes remain on cicd-runner01 and are not included; their SHA256 must be rechecked immediately before Harbor push.",
+    "Harbor push, registry manifest verification, Kubernetes deploy, Pod imageID verification and delivery acceptance are not executed."
+  ],
+  "independent_evidence_review": "PENDING"
+}
