@@ -68,9 +68,10 @@ pre:
 - named/firewalld/NetworkManager active+enabled
 - default/active zone `public`, `ens160`
 - runtime/permanent DNS rich rule 동일
-- NM `connection.zone=""`, `connection.autoconnect=yes`
+- NM property는 pre raw 파일에 포함되지 않음
+- 사용자 콘솔 확인: `connection.zone=""`, `connection.autoconnect=yes` (infra-dns #7 comment `5882594703`) — **console-only evidence / raw file 미수신**
 - `ens160=10.1.93.53/24`
-- control01 pre UDP/TCP SOA: `NOERROR`, RC=0
+- control01 pre UDP/TCP SOA: `NOERROR`, RC=0 (infra-dns #7 comment `5882582038`) — **console-only evidence / raw file 미수신**
 
 post:
 
@@ -79,7 +80,7 @@ post:
 - boot_id 변경 및 uptime 0 min으로 실제 reboot 확인
 - named/firewalld/NetworkManager active+enabled
 - zone/rich rule/NM/IP/route 유지
-- control01 post UDP/TCP SOA: `NOERROR`, RC=0
+- control01 post UDP/TCP SOA: `NOERROR`, RC=0 (infra-dns #7 comment `5882618815`) — **console-only evidence / raw file 미수신**
 
 Runtime 최종 판정: PASS  
 판정 기록: infra-dns #7 comment `5882644611`
@@ -95,7 +96,7 @@ pre:
 - runtime/permanent DNS rich rule 동일
 - NM `connection.zone=""`, `connection.autoconnect=yes`
 - `ens160=10.1.93.52/24`
-- control01 pre UDP/TCP SOA: `NOERROR`, RC=0
+- control01 pre UDP/TCP SOA: `NOERROR`, RC=0 (infra-dns #7 comment `5882673823`) — **console-only evidence / raw file 미수신**
 
 post:
 
@@ -104,7 +105,7 @@ post:
 - boot_id 변경 및 uptime 1 min으로 실제 reboot 확인
 - named/firewalld/NetworkManager active+enabled
 - zone/rich rule/NM/IP/route 유지
-- control01 post UDP/TCP SOA: `NOERROR`, RC=0
+- control01 post UDP/TCP SOA: `NOERROR`, RC=0 (infra-dns #7 comment `5882717205`) — **console-only evidence / raw file 미수신**
 
 Runtime 최종 판정: PASS  
 판정 기록: infra-dns #7 comment `5882717205`
@@ -128,6 +129,7 @@ Runtime 최종 판정: PASS
 
 ## 판정과 한계
 
+- C의 control01 pre/post `dig` 기능 확인과 dns02 pre NM property는 Issue #7 사용자 콘솔 제출 기록에 근거한다. 이 수집회차에는 해당 콘솔 출력의 별도 서버 생성 raw 파일이 수신되지 않았으므로 SHA-256 원본성을 주장하지 않는다.
 - #7-A: 기존 Evidence PR #61에서 완료
 - #7-B Runtime: PASS
 - #7-C dns02 Runtime: PASS
