@@ -1,0 +1,18 @@
+dropped privs to tcpdump
+tcpdump: listening on ens160, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+2026-09-29 11:24:24.180769 IP (tos 0x0, ttl 64, id 43551, offset 0, flags [none], proto UDP (17), length 81)
+    10.250.10.10.39437 > 10.1.93.52.53: [bad udp cksum 0x7c87 -> 0x7cc4!] 21571+ [1au] SOA? fds.internal. ar: . OPT UDPsize=1232 [COOKIE b295a02ba65b3ec4] (53)
+2026-09-29 11:24:24.181461 IP (tos 0xc0, ttl 63, id 2793, offset 0, flags [none], proto ICMP (1), length 109)
+    10.1.93.52 > 10.250.10.10: ICMP host 10.1.93.52 unreachable - admin prohibited filter, length 89
+	IP (tos 0x0, ttl 63, id 43551, offset 0, flags [none], proto UDP (17), length 81)
+    10.250.10.10.39437 > 10.1.93.52.53: [udp sum ok] 21571+ [1au] SOA? fds.internal. ar: . OPT UDPsize=1232 [COOKIE b295a02ba65b3ec4] (53)
+2026-09-29 11:24:24.200078 IP (tos 0x0, ttl 64, id 3528, offset 0, flags [DF], proto TCP (6), length 60)
+    10.250.10.10.33091 > 10.1.93.52.53: Flags [S], cksum 0x7c67 (incorrect -> 0x319b), seq 4277231935, win 64660, options [mss 1220,sackOK,TS val 464101684 ecr 0,nop,wscale 7], length 0
+2026-09-29 11:24:24.200675 IP (tos 0xc0, ttl 63, id 2801, offset 0, flags [none], proto ICMP (1), length 88)
+    10.1.93.52 > 10.250.10.10: ICMP host 10.1.93.52 unreachable - admin prohibited filter, length 68
+	IP (tos 0x0, ttl 63, id 3528, offset 0, flags [DF], proto TCP (6), length 60)
+    10.250.10.10.33091 > 10.1.93.52.53: Flags [S], cksum 0x319b (correct), seq 4277231935, win 64660, options [mss 1220,sackOK,TS val 464101684 ecr 0,nop,wscale 7], length 0
+
+4 packets captured
+4 packets received by filter
+0 packets dropped by kernel
