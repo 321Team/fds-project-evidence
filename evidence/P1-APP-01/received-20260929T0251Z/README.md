@@ -15,12 +15,14 @@ APP·DB Lead(이재환)가 정본 클러스터에서 worker01의 transaction-api
 
 | 폴더 | 서버 원본 | archive | 대조 |
 |---|---|---|---|
-| `control01/` | `~/p1-app-readyz-20260929/` (`observe.log`, `events.log`) | 546 B, SHA-256 `ad8f24cc…bf309cc` | 서버 `sha256sum`과 로컬 복원본 일치 |
-| `db01/` | `~/p1-app-readyz-20260929/db01.log` | 438 B, SHA-256 `61404a1b…342ab27c` | 서버 `sha256sum`과 로컬 복원본 일치 |
-| `edge01/` | `~/p1-app-readyz-20260929-edge01.log` | 269 B, SHA-256 `443eacd3…2d3159ef9` | 서버 `sha256sum`과 로컬 복원본 일치 |
+| `control01/` | `~/p1-app-readyz-20260929/` (`observe.log`, `events.log`) | `control01/readyz-control01.tgz` 546 B, SHA-256 `ad8f24cc…bf309cc` | 서버 `sha256sum`과 일치, 원본 보존 |
+| `db01/` | `~/p1-app-readyz-20260929/db01.log` | `db01/readyz-db01.tgz` 438 B, SHA-256 `61404a1b…342ab27c` | 서버 `sha256sum`과 일치, 원본 보존 |
+| `edge01/` | `~/p1-app-readyz-20260929-edge01.log` | `edge01/readyz-edge01.tgz` 269 B, SHA-256 `443eacd3…2d3159ef9` | 서버 `sha256sum`과 일치, 원본 보존 |
 | `console/` | 없음 (사전 확인 콘솔 출력) | — | 담당자 콘솔 제출 원문. 서버 파일·Hash 없음 |
 
-파일별 서버 Hash는 받지 않았다. archive 단위로 대조했다.
+- 수신한 archive 3개를 **바이트 그대로** 각 폴더에 보존했다(재압축 없음). 같은 이름의 `.sha256` sidecar를 두고 `registry/ARCHIVE_CONTENTS.json`에 내부 목록을 등록했다.
+- 각 폴더의 개별 로그 파일은 이 archive를 `tar xzf`로 풀어 복사한 것이다. archive 내부 파일과 바이트가 같다(`cmp`, 내부 목록의 sha256과 `SHA256SUMS`가 일치).
+- 파일별 서버 Hash는 받지 않았다. 서버 측 대조는 archive 단위다.
 
 ## 사전 상태 (`console/precheck-20260929T0249Z.txt`)
 
@@ -55,7 +57,7 @@ APP·DB Lead(이재환)가 정본 클러스터에서 worker01의 transaction-api
 
 ## 한계와 후속
 
-- **FDS 장애는 시험하지 않았다.** transaction-api는 fds-engine 호출을 fail-open(connect 1s/read 2s)으로 처리하고 `/readyz`는 DB `SELECT 1`만 확인한다. AC "DB/FDS 장애 시 `/readyz` 503"의 FDS 부분 해석은 APP Lead 판단으로 남긴다.
+- **판정 범위: DB 장애 부분 Runtime PASS다.** FDS 장애는 시험하지 않았다. transaction-api는 fds-engine 호출을 fail-open(connect 1s/read 2s)으로 처리하고 `/readyz`는 DB `SELECT 1`만 확인한다. 현행 AC 문구 "DB/FDS 장애 시 `/readyz` 503와 Endpoint 제외"는 정식 변경 결정으로 정정되지 않았으므로, **이 증적을 literal `DB/FDS` AC 전체 PASS 근거로 쓰지 않는다.** AC 문구와 fail-open 설계의 정합은 별도 CR로 처리한다.
 - 관측 간격이 10초라 503→Endpoint 제외 전이 시각은 10초 단위로만 특정된다.
 - 원인 미상인 기존 `restartCount=1`은 이 시험과 무관하게 남아 있다.
 - edge01 nginx(:80) upstream은 아직 E-K3S라 서비스 입구 경로는 이 시험의 영향을 받지 않았고, 이 시험의 대상도 아니다.
