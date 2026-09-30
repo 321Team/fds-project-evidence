@@ -1,0 +1,69 @@
+diff -u -N /tmp/LIVE-431263504/v1.ConfigMap.monitoring-api.grafana-dashboards /tmp/MERGED-1615732243/v1.ConfigMap.monitoring-api.grafana-dashboards
+--- /tmp/LIVE-431263504/v1.ConfigMap.monitoring-api.grafana-dashboards	2026-09-30 17:32:39.819663479 +0900
++++ /tmp/MERGED-1615732243/v1.ConfigMap.monitoring-api.grafana-dashboards	2026-09-30 17:32:39.821663438 +0900
+@@ -90,15 +90,23 @@
+       "panels": [
+         {
+           "id": 1, "type": "stat", "title": "타깃 UP",
+-          "gridPos": { "h": 4, "w": 8, "x": 0, "y": 0 },
++          "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+           "datasource": { "type": "prometheus", "uid": "prometheus" },
+           "targets": [ { "refId": "A", "datasource": { "type": "prometheus", "uid": "prometheus" }, "expr": "count(up == 1)" } ],
+           "fieldConfig": { "defaults": { "unit": "short", "color": { "mode": "fixed", "fixedColor": "green" } }, "overrides": [] },
+           "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "none" }
+         },
+         {
++          "id": 2, "type": "stat", "title": "타깃 DOWN (k3s hairpin 포함)",
++          "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
++          "datasource": { "type": "prometheus", "uid": "prometheus" },
++          "targets": [ { "refId": "A", "datasource": { "type": "prometheus", "uid": "prometheus" }, "expr": "count(up == 0)" } ],
++          "fieldConfig": { "defaults": { "unit": "short", "thresholds": { "mode": "absolute", "steps": [ { "value": null, "color": "yellow" }, { "value": 4, "color": "red" } ] }, "color": { "mode": "thresholds" } }, "overrides": [] },
++          "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "none" }
++        },
++        {
+           "id": 3, "type": "stat", "title": "fds ns 파드 수 (정상 9)",
+-          "gridPos": { "h": 4, "w": 8, "x": 8, "y": 0 },
++          "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+           "datasource": { "type": "prometheus", "uid": "prometheus" },
+           "targets": [ { "refId": "A", "datasource": { "type": "prometheus", "uid": "prometheus" }, "expr": "count(kube_pod_info{namespace=\"fds-app\"})" } ],
+           "fieldConfig": { "defaults": { "unit": "short", "thresholds": { "mode": "absolute", "steps": [ { "value": null, "color": "green" }, { "value": 10, "color": "red" } ] }, "color": { "mode": "thresholds" } }, "overrides": [] },
+@@ -106,15 +114,23 @@
+         },
+         {
+           "id": 4, "type": "stat", "title": "fds-engine 평가 요청 누계",
+-          "gridPos": { "h": 4, "w": 8, "x": 16, "y": 0 },
++          "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
+           "datasource": { "type": "prometheus", "uid": "prometheus" },
+           "targets": [ { "refId": "A", "datasource": { "type": "prometheus", "uid": "prometheus" }, "expr": "max_over_time(fds_evaluated_total[2m])" } ],
+           "fieldConfig": { "defaults": { "unit": "short", "color": { "mode": "fixed", "fixedColor": "blue" } }, "overrides": [] },
+           "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "area" }
+         },
+         {
++          "id": 5, "type": "timeseries", "title": "스크레이프 타깃 up (job / instance별) — S8",
++          "gridPos": { "h": 8, "w": 14, "x": 0, "y": 4 },
++          "datasource": { "type": "prometheus", "uid": "prometheus" },
++          "targets": [ { "refId": "A", "datasource": { "type": "prometheus", "uid": "prometheus" }, "expr": "up", "legendFormat": "{{job}} / {{instance}}" } ],
++          "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineInterpolation": "stepAfter", "fillOpacity": 15, "lineWidth": 2 }, "min": 0, "max": 1, "unit": "short" }, "overrides": [] },
++          "options": { "legend": { "displayMode": "table", "placement": "right", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } }
++        },
++        {
+           "id": 6, "type": "table", "title": "현재 Firing 알림 + 지속시간 (Alertmanager 로 전달됨)",
+-          "gridPos": { "h": 8, "w": 24, "x": 0, "y": 4 },
++          "gridPos": { "h": 8, "w": 10, "x": 14, "y": 4 },
+           "datasource": { "type": "prometheus", "uid": "prometheus" },
+           "description": "Value = 알림이 active(pending 진입)된 시각으로부터 경과. ALERTS 메트릭 자체엔 시작시각이 없어 ALERTS_FOR_STATE(activeAt) 로 계산.",
+           "targets": [ { "refId": "A", "datasource": { "type": "prometheus", "uid": "prometheus" }, "expr": "time() - ALERTS_FOR_STATE{alertstate=\"firing\", kr!=\"\"}", "format": "table", "instant": true } ],
+diff -u -N /tmp/LIVE-431263504/v1.ConfigMap.monitoring-api.grafana-dashboards-provider /tmp/MERGED-1615732243/v1.ConfigMap.monitoring-api.grafana-dashboards-provider
+--- /tmp/LIVE-431263504/v1.ConfigMap.monitoring-api.grafana-dashboards-provider	2026-09-30 17:32:39.757664777 +0900
++++ /tmp/MERGED-1615732243/v1.ConfigMap.monitoring-api.grafana-dashboards-provider	2026-09-30 17:32:39.757664777 +0900
+@@ -8,7 +8,9 @@
+         folder: 'FDS'
+         type: file
+         disableDeletion: false
+-        allowUiUpdates: true
++        # 2026-09-30: #17 "P0 기본 Dashboard 3종과 기본 Alert Rule을 Source 관리한다" — 화면에서 고친 내용이
++        # 저장돼 소스와 달라지지 않도록 막는다. 대시보드 변경은 이 ConfigMap(소스) PR로만 한다.
++        allowUiUpdates: false
+         updateIntervalSeconds: 30
+         options:
+           path: /etc/grafana/dashboards

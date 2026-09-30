@@ -1,0 +1,3 @@
+Warning: would violate PodSecurity "restricted:latest": host namespaces (hostNetwork=true, hostPID=true), hostPort (container "node-exporter" uses hostPort 9100), restricted volume types (volume "rootfs" uses restricted volume type "hostPath"), runAsNonRoot != true (pod or container "node-exporter" must set securityContext.runAsNonRoot=true)
+daemonset.apps/node-exporter configured
+service/node-exporter unchanged

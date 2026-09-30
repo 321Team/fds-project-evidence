@@ -1,0 +1,12 @@
+group=fds-optional-hardening file=/etc/prometheus/rules-opt/alert-rules-optional.yml
+   alerting FDSDetectionBurst health=ok state=inactive severity=warning known_issue=-
+   alerting FDSDetectionBurstAnyRule health=ok state=inactive severity=info known_issue=-
+   alerting UnexpectedPodInFdsNs health=ok state=inactive severity=warning known_issue=-
+group=fds-p0-test-alert file=/etc/prometheus/rules-p0/p0-test-alert.yml
+   alerting FDSMonitoringPipelineTest health=ok state=inactive severity=info known_issue=-
+group=fds-core-observability file=/etc/prometheus/rules/alert-rules.yml
+   alerting NodeExporterDown health=ok state=inactive severity=warning known_issue=gnp-crossnode-pod-cidr
+   alerting KubeletScrapeDown health=ok state=inactive severity=info known_issue=gnp-crossnode-pod-cidr
+   alerting TargetDown health=ok state=inactive severity=critical known_issue=-
+group=fds-monitoring-heartbeat file=/etc/prometheus/rules/alert-rules.yml
+   recording fds_monitoring_heartbeat health=ok state=- severity=- known_issue=-
