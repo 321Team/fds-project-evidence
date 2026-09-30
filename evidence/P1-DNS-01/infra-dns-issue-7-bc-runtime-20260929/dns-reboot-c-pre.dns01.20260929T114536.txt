@@ -1,0 +1,67 @@
+=== TIME ===
+2026-09-29T11:45:36+09:00
+=== HOST ===
+dns01
+=== BOOT ID ===
+4e25100f-789c-46eb-9ca9-22ae24de92e1
+=== UPTIME ===
+ 11:45:36 up 1 day, 14:31,  2 users,  load average: 0.05, 0.02, 0.00
+=== SERVICES ACTIVE ===
+active
+active
+active
+=== SERVICES ENABLED ===
+enabled
+enabled
+enabled
+=== DEFAULT ZONE ===
+public
+=== ACTIVE ZONES ===
+public (default)
+  interfaces: ens160
+=== PUBLIC RUNTIME ===
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule family="ipv4" source ipset="fds-dns-clients" service name="dns" accept
+=== PUBLIC PERMANENT ===
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule family="ipv4" source ipset="fds-dns-clients" service name="dns" accept
+=== NM PROPERTY ===
+
+yes
+=== IP ===
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens160           UP             10.1.93.52/24 
+=== ROUTE ===
+default via 10.1.93.254 dev ens160 proto static metric 100 
+10.1.93.0/24 dev ens160 proto kernel scope link src 10.1.93.52 metric 100 
+10.250.10.0/24 via 10.1.93.58 dev ens160 proto static metric 100 

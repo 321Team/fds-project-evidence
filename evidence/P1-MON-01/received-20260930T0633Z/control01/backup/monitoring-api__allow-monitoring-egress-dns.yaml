@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-monitoring-egress-dns","namespace":"monitoring-api"},"spec":{"egress":[{"ports":[{"port":53,"protocol":"UDP"},{"port":53,"protocol":"TCP"}],"to":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"kube-system"}}}]}],"podSelector":{},"policyTypes":["Egress"]}}
+  creationTimestamp: "2026-09-22T05:45:35Z"
+  generation: 1
+  name: allow-monitoring-egress-dns
+  namespace: monitoring-api
+  resourceVersion: "1115785"
+  uid: 8f51756a-25dd-4c93-86e8-febb5bca891e
+spec:
+  egress:
+  - ports:
+    - port: 53
+      protocol: UDP
+    - port: 53
+      protocol: TCP
+    to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+  podSelector: {}
+  policyTypes:
+  - Egress
