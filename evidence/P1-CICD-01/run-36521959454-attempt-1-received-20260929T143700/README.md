@@ -49,7 +49,7 @@
 
 main archive는 일반 파일 39개를 포함하며 collector 추적 목록 33개에 대해 수신측 SHA256 재검사를 통과했다. supplement의 두 `report.json`은 원 Scan 영수증의 report SHA와 수신측 재계산값이 각각 일치했다.
 
-이 PR에는 독립 검토에 필요한 선택 원문(시험 결과, Run 요약, Harbor preflight, report checksum, CA discovery)을 텍스트로 편입한다. **원 tar.gz 바이트와 전체 Trivy report 본문은 이 PR에 복제하지 않는다.** 원본 archive는 사용자 제출 attachment로 보존됐으며 독립 리뷰어의 원 archive 접근은 아직 `UNCONFIRMED`다.
+독립 검토를 위해 수신 원 tar.gz 2개와 동명 `.sha256` sidecar를 `originals/`에 **byte-for-byte** 편입한다. 저장소 루트 `registry/ARCHIVE_CONTENTS.json`은 각 archive의 외부 SHA256/크기와 내부 member 이름·크기·SHA256을 기록한다. main archive의 collector 추적 목록은 **33/33 MATCH**, supplement의 report manifest는 **2/2 MATCH**다. 독립 리뷰어의 실제 원본 대조는 아직 `PENDING`이며 이 편입 자체를 독립 승인으로 간주하지 않는다.
 
 ## Harbor preflight — 차단사항
 
