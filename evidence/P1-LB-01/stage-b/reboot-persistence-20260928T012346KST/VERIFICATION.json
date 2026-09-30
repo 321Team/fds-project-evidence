@@ -1,0 +1,58 @@
+{
+  "record_id": "P1-LB-01",
+  "collection": "stage-b/reboot-persistence-20260928T012346KST",
+  "judgement": "REBOOT_PERSISTENCE_PASS",
+  "verification_agent": "OpenAI technical review; not independent human approval",
+  "authorization_comments": [
+    5857600182,
+    5857630950
+  ],
+  "lb": {
+    "host": "k8s-api-lb01",
+    "boot_id_before": "7bc515b7-9f95-48b6-82b8-81d46fee14ce",
+    "boot_id_after": "60e3c690-729a-49ae-92d3-c18a63c95f2c",
+    "boot_start_kst": "2026-09-28 01:23:46",
+    "selinux": "Enforcing",
+    "firewalld": "active/enabled",
+    "haproxy": "active/enabled",
+    "haproxy_mainpid": 1241,
+    "listener": true,
+    "temporary_privilege_files_absent": true,
+    "stage_b_table_present": false,
+    "backends_3_up_l4ok": true
+  },
+  "api": {
+    "host": "k8s-control01",
+    "account": "svc_ansible",
+    "endpoint": "https://10.1.93.109:6443",
+    "route_source": "10.1.93.102",
+    "route_device": "ens160",
+    "status": "API_PRECHECK_READY",
+    "identity": "kubernetes-admin",
+    "nodes_6_ready": true,
+    "readyz": "ok",
+    "configuration_changes_attempted": false,
+    "fault_injection": "NOT_RUN",
+    "reviewed_source": "2a7ff5b457e49cf6cfdfbcf3374224f120e735d3",
+    "collector_git_blob": "b86363349d075ffe983ad987df792748b5b9b697",
+    "helper_git_blob": "8126ee259b2d7656b560bd5ba954c94b895d447f"
+  },
+  "archives": {
+    "lb": {
+      "sha256": "cf06c2799a540b818da19bf60c8f8f1041e01e0d01e3a597846aa7ae9296d611",
+      "size": 1708,
+      "manifest": "16/16 MATCH"
+    },
+    "api": {
+      "sha256": "eb30f27c6355fd86dffe4402cc146f710053ce4eebd686d2779b5c8321354028",
+      "size": 16986,
+      "manifest": "20/20 MATCH"
+    }
+  },
+  "remaining_gates": [
+    "independent evidence review",
+    "Lead exact-HEAD merge decision",
+    "LB-A-01/P1-K8S final handoff",
+    "P1-LB-01 final acceptance"
+  ]
+}

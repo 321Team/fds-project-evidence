@@ -1,0 +1,68 @@
+diff -u -N /tmp/LIVE-3253424365/networking.k8s.io.v1.NetworkPolicy.monitoring-api.allow-prometheus-egress-node-exporter /tmp/MERGED-4168807028/networking.k8s.io.v1.NetworkPolicy.monitoring-api.allow-prometheus-egress-node-exporter
+--- /tmp/LIVE-3253424365/networking.k8s.io.v1.NetworkPolicy.monitoring-api.allow-prometheus-egress-node-exporter	2026-09-30 15:23:08.079364351 +0900
++++ /tmp/MERGED-4168807028/networking.k8s.io.v1.NetworkPolicy.monitoring-api.allow-prometheus-egress-node-exporter	2026-09-30 15:23:08.079364351 +0900
+@@ -5,7 +5,7 @@
+     kubectl.kubernetes.io/last-applied-configuration: |
+       {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-prometheus-egress-node-exporter","namespace":"monitoring-api"},"spec":{"egress":[{"ports":[{"port":9100,"protocol":"TCP"}],"to":[{"ipBlock":{"cidr":"10.1.93.102/32"}},{"ipBlock":{"cidr":"10.1.93.103/32"}},{"ipBlock":{"cidr":"10.1.93.104/32"}},{"ipBlock":{"cidr":"10.1.93.105/32"}},{"ipBlock":{"cidr":"10.1.93.107/32"}},{"ipBlock":{"cidr":"10.1.93.108/32"}}]}],"podSelector":{"matchLabels":{"app":"prometheus"}},"policyTypes":["Egress"]}}
+   creationTimestamp: "2026-09-22T05:45:35Z"
+-  generation: 1
++  generation: 2
+   name: allow-prometheus-egress-node-exporter
+   namespace: monitoring-api
+   resourceVersion: "1115782"
+@@ -17,12 +17,6 @@
+       protocol: TCP
+     to:
+     - ipBlock:
+-        cidr: 10.1.93.102/32
+-    - ipBlock:
+-        cidr: 10.1.93.103/32
+-    - ipBlock:
+-        cidr: 10.1.93.104/32
+-    - ipBlock:
+         cidr: 10.1.93.105/32
+     - ipBlock:
+         cidr: 10.1.93.107/32
+diff -u -N /tmp/LIVE-3253424365/networking.k8s.io.v1.NetworkPolicy.monitoring-api.allow-prometheus-egress-scrape /tmp/MERGED-4168807028/networking.k8s.io.v1.NetworkPolicy.monitoring-api.allow-prometheus-egress-scrape
+--- /tmp/LIVE-3253424365/networking.k8s.io.v1.NetworkPolicy.monitoring-api.allow-prometheus-egress-scrape	2026-09-30 15:23:08.057364814 +0900
++++ /tmp/MERGED-4168807028/networking.k8s.io.v1.NetworkPolicy.monitoring-api.allow-prometheus-egress-scrape	2026-09-30 15:23:08.058364793 +0900
+@@ -5,7 +5,7 @@
+     kubectl.kubernetes.io/last-applied-configuration: |
+       {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"allow-prometheus-egress-scrape","namespace":"monitoring-api"},"spec":{"egress":[{"ports":[{"port":9091,"protocol":"TCP"},{"port":9090,"protocol":"TCP"}],"to":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"fds"}},"podSelector":{"matchExpressions":[{"key":"app","operator":"In","values":["transaction-api","fds-engine"]}]}}]}],"podSelector":{"matchLabels":{"app":"prometheus"}},"policyTypes":["Egress"]}}
+   creationTimestamp: "2026-09-22T05:45:35Z"
+-  generation: 1
++  generation: 2
+   name: allow-prometheus-egress-scrape
+   namespace: monitoring-api
+   resourceVersion: "1115781"
+@@ -15,19 +15,23 @@
+   - ports:
+     - port: 9091
+       protocol: TCP
++    to:
++    - namespaceSelector:
++        matchLabels:
++          kubernetes.io/metadata.name: fds-app
++      podSelector:
++        matchLabels:
++          app: transaction-api
++  - ports:
+     - port: 9090
+       protocol: TCP
+     to:
+     - namespaceSelector:
+         matchLabels:
+-          kubernetes.io/metadata.name: fds
++          kubernetes.io/metadata.name: fds-app
+       podSelector:
+-        matchExpressions:
+-        - key: app
+-          operator: In
+-          values:
+-          - transaction-api
+-          - fds-engine
++        matchLabels:
++          app: fds-engine
+   podSelector:
+     matchLabels:
+       app: prometheus

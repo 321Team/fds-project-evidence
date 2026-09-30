@@ -1,0 +1,49 @@
+{
+  "record_id": "P1-LB-01",
+  "collection": "stage-b/field-rollback-20260928T005018KST",
+  "verification_agent": "OpenAI technical review; not independent human approval",
+  "host": "k8s-api-lb01",
+  "user": "server01_k8s-api-lb",
+  "rollback": {
+    "started_kst": "2026-09-28T00:46:55+09:00",
+    "completed_kst": "2026-09-28T00:46:56+09:00",
+    "postcheck_metadata_kst": "2026-09-28T00:50:18+09:00",
+    "sudoers_absent_rc": 0,
+    "helper_absent_rc": 0,
+    "visudo_rc": 0,
+    "selinux": "Enforcing",
+    "firewalld": "active",
+    "haproxy": "active",
+    "haproxy_mainpid": 1267,
+    "listener_10_1_93_109_6443_rc": 0,
+    "stage_b_table_present": false,
+    "backends": {
+      "k8s-control01": {"status": "UP", "check": "L4OK"},
+      "k8s-control02": {"status": "UP", "check": "L4OK"},
+      "k8s-control03": {"status": "UP", "check": "L4OK"}
+    }
+  },
+  "archive": {
+    "name": "FDS_P1_LB_01_FIELD_ROLLBACK_20260928T005018KST.draXUbjK.tar.gz",
+    "size": 1454,
+    "sha256": "92ab525c60455fb169ff05aa09912c686ab49c4b5d12572ccddb8ad14da77e0f",
+    "sidecar_sha256": "625fe02044009500ac428259f847789f632f9eed22072b46b1e8e8a87bb8b259",
+    "regular_file_count": 15,
+    "internal_manifest_match": "14/14",
+    "unsafe_paths": false,
+    "symlink_or_hardlink": false,
+    "basic_sensitive_marker_hits": []
+  },
+  "collection_repair": {
+    "initial_terminal_paste_malformed": true,
+    "system_mutation_during_repair": false,
+    "backend_rc_and_backend_text_recollected_read_only": true,
+    "manifest_and_archive_regenerated_after_repair": true
+  },
+  "receipts": {
+    "precheck": "fds-project-baseline#9 comment 5857360887",
+    "rollback_console": "fds-project-baseline#9 comment 5857371837"
+  },
+  "judgement": "FIELD_ROLLBACK_PASS",
+  "remaining_gates": ["REBOOT_PERSISTENCE", "independent evidence review", "Lead exact-HEAD merge decision", "LB-A-01/P1-K8S handoff", "P1-LB-01 final acceptance"]
+}
