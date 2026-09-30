@@ -1,0 +1,34 @@
+Warning: would violate PodSecurity "restricted:latest": host namespaces (hostNetwork=true, hostPID=true), hostPort (container "node-exporter" uses hostPort 9100), restricted volume types (volume "rootfs" uses restricted volume type "hostPath"), runAsNonRoot != true (pod or container "node-exporter" must set securityContext.runAsNonRoot=true)
+diff -u -N /tmp/LIVE-3783699946/apps.v1.DaemonSet.monitoring-node.node-exporter /tmp/MERGED-1205643007/apps.v1.DaemonSet.monitoring-node.node-exporter
+--- /tmp/LIVE-3783699946/apps.v1.DaemonSet.monitoring-node.node-exporter	2026-09-30 17:32:39.927661218 +0900
++++ /tmp/MERGED-1205643007/apps.v1.DaemonSet.monitoring-node.node-exporter	2026-09-30 17:32:39.928661197 +0900
+@@ -2,11 +2,11 @@
+ kind: DaemonSet
+ metadata:
+   annotations:
+-    deprecated.daemonset.template.generation: "7"
++    deprecated.daemonset.template.generation: "8"
+     kubectl.kubernetes.io/last-applied-configuration: |
+       {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"labels":{"app":"node-exporter"},"name":"node-exporter","namespace":"monitoring-node"},"spec":{"selector":{"matchLabels":{"app":"node-exporter"}},"template":{"metadata":{"labels":{"app":"node-exporter"}},"spec":{"containers":[{"args":["--path.rootfs=/host"],"image":"10.1.93.54/fds/node-exporter:latest","name":"node-exporter","ports":[{"containerPort":9100,"hostPort":9100}],"readinessProbe":{"httpGet":{"path":"/metrics","port":9100},"periodSeconds":10},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"privileged":false,"readOnlyRootFilesystem":true,"seccompProfile":{"type":"RuntimeDefault"}},"volumeMounts":[{"mountPath":"/host","name":"rootfs","readOnly":true}]}],"hostNetwork":true,"hostPID":true,"imagePullSecrets":[{"name":"harbor-pull-secret"}],"serviceAccountName":"node-exporter-sa","volumes":[{"hostPath":{"path":"/"},"name":"rootfs"}]}}}}
+   creationTimestamp: "2026-09-22T05:45:35Z"
+-  generation: 7
++  generation: 8
+   labels:
+     app: node-exporter
+   name: node-exporter
+@@ -28,6 +28,15 @@
+       containers:
+       - args:
+         - --path.rootfs=/host
++        - --collector.disable-defaults
++        - --collector.cpu
++        - --collector.loadavg
++        - --collector.meminfo
++        - --collector.diskstats
++        - --collector.filesystem
++        - --collector.netdev
++        - --collector.time
++        - --collector.timex
+         image: 10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f
+         imagePullPolicy: Always
+         livenessProbe:

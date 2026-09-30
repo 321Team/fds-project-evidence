@@ -1,0 +1,17 @@
+{
+    "apiVersion": "v1",
+    "data": {
+        "p0-test-alert.yml": "groups:\n- name: fds-p0-test-alert\n  rules:\n  - alert: FDSMonitoringPipelineTest\n    expr: vector(1) == 0\n    for: 0s\n    labels:\n      severity: info\n      purpose: p0-pipeline-test\n      kr: \"관측 알림 전달 시험\"\n    annotations:\n      summary: \"P0 관측 파이프라인 전달 시험 (Prometheus→Alertmanager)\"\n      description: \"S7b. 앱 지표와 무관한 참/거짓 조건으로 Firing→수신→해소 전이를 확인한다. 기본은 비활성.\"\n"
+    },
+    "kind": "ConfigMap",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"p0-test-alert.yml\":\"groups:\\n- name: fds-p0-test-alert\\n  rules:\\n  - alert: FDSMonitoringPipelineTest\\n    expr: vector(1) == 0\\n    for: 0s\\n    labels:\\n      severity: info\\n      purpose: p0-pipeline-test\\n      kr: \\\"관측 알림 전달 시험\\\"\\n    annotations:\\n      summary: \\\"P0 관측 파이프라인 전달 시험 (Prometheus→Alertmanager)\\\"\\n      description: \\\"S7b. 앱 지표와 무관한 참/거짓 조건으로 Firing→수신→해소 전이를 확인한다. 기본은 비활성.\\\"\\n\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{},\"name\":\"prometheus-p0-test-alert\",\"namespace\":\"monitoring-api\"}}\n"
+        },
+        "creationTimestamp": "2026-09-22T05:45:35Z",
+        "name": "prometheus-p0-test-alert",
+        "namespace": "monitoring-api",
+        "resourceVersion": "1181424",
+        "uid": "fc3593b2-2937-49e0-acc9-8709dd1139a3"
+    }
+}

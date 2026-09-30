@@ -1,0 +1,17 @@
+{
+    "apiVersion": "v1",
+    "data": {
+        "provider.yaml": "apiVersion: 1\nproviders:\n  - name: 'fds'\n    orgId: 1\n    folder: 'FDS'\n    type: file\n    disableDeletion: false\n    allowUiUpdates: true\n    updateIntervalSeconds: 30\n    options:\n      path: /etc/grafana/dashboards\n      foldersFromFilesStructure: false\n"
+    },
+    "kind": "ConfigMap",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"provider.yaml\":\"apiVersion: 1\\nproviders:\\n  - name: 'fds'\\n    orgId: 1\\n    folder: 'FDS'\\n    type: file\\n    disableDeletion: false\\n    allowUiUpdates: true\\n    updateIntervalSeconds: 30\\n    options:\\n      path: /etc/grafana/dashboards\\n      foldersFromFilesStructure: false\\n\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{},\"name\":\"grafana-dashboards-provider\",\"namespace\":\"monitoring-api\"}}\n"
+        },
+        "creationTimestamp": "2026-09-22T05:45:35Z",
+        "name": "grafana-dashboards-provider",
+        "namespace": "monitoring-api",
+        "resourceVersion": "1115876",
+        "uid": "a4f9f7ad-964e-4bb5-8d9b-7388daae0177"
+    }
+}

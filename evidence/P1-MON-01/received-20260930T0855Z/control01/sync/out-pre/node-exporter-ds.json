@@ -1,0 +1,141 @@
+{
+    "apiVersion": "apps/v1",
+    "kind": "DaemonSet",
+    "metadata": {
+        "annotations": {
+            "deprecated.daemonset.template.generation": "7",
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"DaemonSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"node-exporter\"},\"name\":\"node-exporter\",\"namespace\":\"monitoring-node\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"node-exporter\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"node-exporter\"}},\"spec\":{\"containers\":[{\"args\":[\"--path.rootfs=/host\"],\"image\":\"10.1.93.54/fds/node-exporter:latest\",\"name\":\"node-exporter\",\"ports\":[{\"containerPort\":9100,\"hostPort\":9100}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/metrics\",\"port\":9100},\"periodSeconds\":10},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"privileged\":false,\"readOnlyRootFilesystem\":true,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}},\"volumeMounts\":[{\"mountPath\":\"/host\",\"name\":\"rootfs\",\"readOnly\":true}]}],\"hostNetwork\":true,\"hostPID\":true,\"imagePullSecrets\":[{\"name\":\"harbor-pull-secret\"}],\"serviceAccountName\":\"node-exporter-sa\",\"volumes\":[{\"hostPath\":{\"path\":\"/\"},\"name\":\"rootfs\"}]}}}}\n"
+        },
+        "creationTimestamp": "2026-09-22T05:45:35Z",
+        "generation": 7,
+        "labels": {
+            "app": "node-exporter"
+        },
+        "name": "node-exporter",
+        "namespace": "monitoring-node",
+        "resourceVersion": "2264151",
+        "uid": "b9e5b455-bdbd-492f-9529-fcea05731ecf"
+    },
+    "spec": {
+        "revisionHistoryLimit": 10,
+        "selector": {
+            "matchLabels": {
+                "app": "node-exporter"
+            }
+        },
+        "template": {
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/restartedAt": "2026-09-22T15:34:56+09:00"
+                },
+                "labels": {
+                    "app": "node-exporter"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "--path.rootfs=/host"
+                        ],
+                        "image": "10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f",
+                        "imagePullPolicy": "Always",
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/",
+                                "port": 9100,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 10,
+                            "periodSeconds": 20,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "node-exporter",
+                        "ports": [
+                            {
+                                "containerPort": 9100,
+                                "hostPort": 9100,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/metrics",
+                                "port": 9100,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {},
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "privileged": false,
+                            "readOnlyRootFilesystem": true,
+                            "seccompProfile": {
+                                "type": "RuntimeDefault"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/host",
+                                "name": "rootfs",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "hostNetwork": true,
+                "hostPID": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "harbor-pull-secret"
+                    }
+                ],
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "node-exporter-sa",
+                "serviceAccountName": "node-exporter-sa",
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/",
+                            "type": ""
+                        },
+                        "name": "rootfs"
+                    }
+                ]
+            }
+        },
+        "updateStrategy": {
+            "rollingUpdate": {
+                "maxSurge": 0,
+                "maxUnavailable": 1
+            },
+            "type": "RollingUpdate"
+        }
+    },
+    "status": {
+        "currentNumberScheduled": 3,
+        "desiredNumberScheduled": 3,
+        "numberAvailable": 3,
+        "numberMisscheduled": 0,
+        "numberReady": 3,
+        "observedGeneration": 7,
+        "updatedNumberScheduled": 3
+    }
+}
