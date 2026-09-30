@@ -1,0 +1,11 @@
+apply alert-rules rc=0
+apply grafana-dashboards rc=0
+2026-09-30T17:36:22+09:00 mount sync try=14 rule=2ffbb7770c2f provider=077da8362b15 overview=2b6c20b0dd17
+2026-09-30T17:36:22+09:00 prometheus reload rc=0
+2026-09-30T17:36:23+09:00 grafana reload rc=0
+2026-09-30T17:37:39+09:00 node-exporter apply start
+apply node-exporter rc=0
+2026-09-30T17:37:56+09:00 rollout rc=0
+post alert-rules diff rc=0
+post grafana-dashboards diff rc=0
+post node-exporter diff rc=0
