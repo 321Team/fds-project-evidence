@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter
+  namespace: monitoring-node
+  labels:
+    app: node-exporter
+spec:
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      imagePullSecrets:
+        - name: harbor-pull-secret
+      serviceAccountName: node-exporter-sa
+      hostNetwork: true
+      hostPID: true
+      containers:
+        - name: node-exporter
+          image: 10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f
+          args:
+            - --path.rootfs=/host
+            # 2026-09-30: 정본 monitoring-node 기준 "불필요 Collector 비활성". 기본 Collector(현장 49개)를 모두 끄고
+            # node-exporter 용도(CPU/Memory/Disk/Network/NTP 관련 Node Metrics)에 맞는 8개만 켠다.
+            # Dashboard·Alert Rule·remote_write는 node_* 지표를 쓰지 않는다(up·scrape_duration_seconds만 사용).
+            - --collector.disable-defaults
+            - --collector.cpu
+            - --collector.loadavg
+            - --collector.meminfo
+            - --collector.diskstats
+            - --collector.filesystem
+            - --collector.netdev
+            - --collector.time
+            - --collector.timex
+          ports:
+            - containerPort: 9100
+              hostPort: 9100
+          volumeMounts:
+            - name: rootfs
+              mountPath: /host
+              readOnly: true
+          securityContext:
+            # GWONUK 리뷰 B4(PR #4): namespace가 enforce=privileged라 privileged:true도
+            # admission을 통과하지만, 실제로 privileged 권한이 필요 없으므로 명시적으로 false 고정
+            # + seccompProfile 추가(CANONICAL_POLICY.md "privileged=true 허용으로 해석하지 않는다").
+            privileged: false
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop: ["ALL"]
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: 9100
+            periodSeconds: 10
+          # #17 보조통제 "각 Monitoring Component 공식 Probe": prometheus-community node-exporter
+          # 차트처럼 liveness 를 둔다. /metrics 전체 수집보다 가벼운 루트 경로(/)를 쓰고, 노드 부하
+          # 순간 지연으로 재시작하지 않도록 timeout 5s·3회 연속 실패 기준을 둔다.
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9100
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+      volumes:
+        - name: rootfs
+          hostPath:
+            path: /
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-exporter
+  namespace: monitoring-node
+spec:
+  selector:
+    app: node-exporter
+  ports:
+    - port: 9100
+      targetPort: 9100

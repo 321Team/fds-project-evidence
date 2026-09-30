@@ -1,0 +1,50 @@
+diff -u -N /tmp/LIVE-2714488567/v1.ConfigMap.monitoring-api.prometheus-alert-rules /tmp/MERGED-3806143580/v1.ConfigMap.monitoring-api.prometheus-alert-rules
+--- /tmp/LIVE-2714488567/v1.ConfigMap.monitoring-api.prometheus-alert-rules	2026-09-30 17:32:39.589668295 +0900
++++ /tmp/MERGED-3806143580/v1.ConfigMap.monitoring-api.prometheus-alert-rules	2026-09-30 17:32:39.589668295 +0900
+@@ -2,6 +2,8 @@
+ data:
+   alert-rules.yml: |
+     groups:
++    # IF-06B heartbeat — 이 in-cluster Prometheus 에서만 평가한다. monitor01 receiver 에는 넣지 않는다
++    # (receiver 가 스스로 만들면 단절을 숨긴다). remote_write 가 이 series 만 monitor01 로 보낸다.
+     - name: fds-monitoring-heartbeat
+       interval: 15s
+       rules:
+@@ -10,28 +12,33 @@
+     - name: fds-core-observability
+       rules:
+ 
++      # node-exporter(Worker 3대 host :9100). 2026-09-23~26의 교차 노드 수집 실패(known_issue)는 해소됐다 —
++      # 2026-09-27부터 node-exporter 3개·kubelet/cadvisor 12개 모두 UP(2026-09-30 현장 23/23 확인).
++      # 그래서 known_issue 라벨과 "상시 firing" 설명을 지웠다. 조회식·for·severity·kr은 바꾸지 않는다.
+       - alert: NodeExporterDown
+         expr: up{job="node-exporter"} == 0
+         for: 30s
+         labels:
+           severity: warning
+-          known_issue: "gnp-crossnode-pod-cidr"
+           kr: "노드 지표 수집 실패"
+         annotations:
+           summary: "node-exporter target is down"
+-          description: "{{ $labels.instance }} 스크레이프 실패. E-CANON Worker 3대(.105/.107/.108) 대상 — DaemonSet Pod 3개 실행은 2026-09-23 확인됨. Prometheus Pod와 다른 노드만 타임아웃이라 kubelet과 동일한 GNP 크로스노드 이슈로 추정(baseline#19). S8/TargetDown 대상 아님."
++          description: "{{ $labels.instance }} node-exporter(:9100) 스크레이프를 30초 이상 실패. 대상은 Worker 3대(.105/.107/.108)의 host 9100이며 경로는 Prometheus egress NetworkPolicy와 Worker host GNP다. S8/TargetDown 대상 아님."
+ 
++      # kubelet(10250, 6노드). 2026-09-23~26의 수집 실패(SNAT된 worker03 출발지 DROP, kubelet 인증서 IP SAN)는
++      # 해소됐다 — 클러스터 CA TLS 검증을 유지한 채 12개 모두 UP(2026-09-30 현장 확인). known_issue 라벨을 지웠다.
+       - alert: KubeletScrapeDown
+         expr: up{job=~"kubelet|kubelet-cadvisor"} == 0
+         for: 2m
+         labels:
+           severity: info
+-          known_issue: "gnp-crossnode-pod-cidr"
+           kr: "kubelet 지표 수집 실패 (Pod→kubelet 경로)"
+         annotations:
+           summary: "kubelet scrape down ({{ $labels.instance }})"
+-          description: "Prometheus Pod→{{ $labels.instance }} kubelet(:10250) 스크레이프 실패. 정본 6노드 전체에서 확인된 알려진 이슈(GNP Pod CIDR 미허용 추정 + kubelet 인증서 IP SAN 부재) — 원인·제안은 baseline#19 참조, 정책 담당 판단 대기. S8/TargetDown 대상 아님."
++          description: "Prometheus Pod→{{ $labels.instance }} kubelet(:10250) 스크레이프를 2분 이상 실패. 2026-09-23~26에 있던 교차 노드 DROP·kubelet 인증서 IP SAN 문제의 재발 여부부터 확인한다(baseline#19). S8/TargetDown 대상 아님."
+ 
++      # S8 / TC-TARGET : 스크레이프 타깃 다운(critical → Discord). node-exporter/kubelet은 위 warning·info 알림으로
++      # 따로 둔다(Discord 발송 범위는 critical·FDSDetectionBurst만 — #75 MON Lead 결정).
+       - alert: TargetDown
+         expr: up{job=~"transaction-api|fds-engine|kube-state-metrics"} == 0
+         for: 1m

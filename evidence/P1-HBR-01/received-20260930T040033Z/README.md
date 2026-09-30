@@ -2,11 +2,17 @@
 
 Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-baseline/issues/13)). 같은 PR의 [`received-20260928T150921Z`](../received-20260928T150921Z/README.md)(read-only 사전 수집)에 이어, 이번엔 `infra-harbor-trivy/scripts/verify/` 검증 스크립트를 실제 서버(cicd-runner01, k8s-worker01/02/03, mgmt-gw01)에서 실행한 결과를 편입한다.
 
+> **상태 (2026-09-30 리뷰 대응, 미병합 회차 정정):**
+> - 이 실행은 harbor01 TLS 인증서가 self-signed로 회귀하기 **이전** 상태(Harbor v2.13.1 + Trivy 재설치 전)에서 수행됐다. 복구 원본은 [baseline #13 코멘트](https://github.com/321Team/fds-project-baseline/issues/13#issuecomment-5907251046) 참고. 복구 후 TLS 재검증은 별도 회차 대상이다.
+> - 실행 스크립트의 원본·해시·저장소 대조는 [`../executed-source-20260930/`](../executed-source-20260930/README.md)에 있다.
+> - **AC-04 판정: `ALLOWLIST_CONFIG=OBSERVED / ACTUAL_SOURCE=NOT_VERIFIED`** — AC-04 PASS가 아니다(아래 표 참고).
+> - **AC 판정 사용 범위: `UNREVIEWED_RUNTIME_TOOL / DIAGNOSTIC_ONLY`** — 실행 스크립트 중 `worker-pull-pod-start-test.sh`(로직 수정 2건)와 `runner-push-test.sh`는 코드 리뷰를 받지 않았다. 이 회차의 로그는 진단·보존용이며 그 자체로 AC를 PASS로 만들지 않는다. 정식 AC 판정은 코드 리뷰 후 같은 SHA로 재실행해야 한다.
+
 | 항목 | 값 |
 |---|---|
 | 원본 | `p1-hbr01-ac-verify-20260930T040033Z.tar.gz` |
 | SHA-256 | 같은 폴더 `.sha256` sidecar와 일치 |
-| 수집 도구 | [infra-harbor-trivy `scripts/verify/`](https://github.com/321Team/infra-harbor-trivy/tree/main/scripts/verify) — `tls-negative-test.sh`, `worker-pull-pod-start-test.sh`(로컬 2건 수정, 아래 참고), 신규 작성 `runner-push-test.sh`(IF-09용, 이 저장소 밖 별도 파일) |
+| 수집 도구 | [infra-harbor-trivy `scripts/verify/`](https://github.com/321Team/infra-harbor-trivy/tree/20ce46b50d8ec4f5f4208d1382bc7bf3ecf5478d/scripts/verify)(@`20ce46b`, 실행본과의 차이는 [대조 결과](../executed-source-20260930/README.md) 참고) — `tls-negative-test.sh`, `worker-pull-pod-start-test.sh`(로직 수정 2건 + 주석 제거 + 메시지 문구 정리, 아래 참고), 신규 작성 `runner-push-test.sh`(IF-09용, 이 저장소 밖 별도 파일) |
 | 실행 | cicd-runner01, k8s-worker01/02/03, mgmt-gw01. 2026-09-30 KST |
 | 수집·제공 | 이하영(P1-HBR-01 Lead). 스크립트 로컬 수정·패키징은 Claude Code(CLAUDE_ASSISTED). 실제 명령 실행은 이하영이 직접 수행 |
 
@@ -22,9 +28,11 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 | `tls-negative-test.sh` 실행 로그 | Harbor Service/Health·Certificate Chain | cicd-runner01에서 실행. 정상 CA로 `/api/v2.0/health` 성공(전 컴포넌트 healthy) + 잘못된 CA로는 curl Exit Code 60(인증서 검증 실패)로 정확히 거부 확인 |
 | `runner-push-run.log` | IF-09 Runner Push/Pull Positive/Negative | cicd-runner01, Robot 계정 `robot$push`로 로그인+push 성공(Positive), 잘못된 credential로는 로그인 거부(Negative) |
 | `worker0{1,2,3}-pull-run.log` | IF-10 Worker Pull/Pod Start/Push DENY, AC-05 일부(Digest Traceability) | 워커 3대 각각: Robot 계정 `robot$worker`로 crictl pull 성공, Push는 인증 성공 후 `action: push` 권한 거부로 정확히 차단, Pod 생성→Ready, Harbor manifest digest와 Pod imageID digest 완전 일치 확인, cleanup까지 정상 |
-| `mgmt-gw01-source-ip-allowlist-evidence.txt` | 실제 Source IP/Host Firewall Allowlist | mgmt-gw01 firewalld policy(`mgmt-to-physical`, target=DROP) 원문 발췌: harbor01(`10.1.93.54`):443은 Runner(`10.250.10.20`)에만 명시적으로 허용, ansible01(`10.250.10.10`)은 SSH/ICMP만 허용(443 없음). 실제 접속 테스트로도 ansible01→harbor01:443은 timeout(Negative), Runner→harbor01:443은 정상(Positive) 확인됨 |
+| `mgmt-gw01-source-ip-allowlist-evidence.txt` | 실제 Source IP/Host Firewall Allowlist | mgmt-gw01 firewalld policy(`mgmt-to-physical`, target=DROP) 원문 발췌: harbor01(`10.1.93.54`):443은 Runner(`10.250.10.20`)에만 명시적으로 허용, ansible01(`10.250.10.10`)은 SSH/ICMP만 허용(443 없음). 실제 접속 결과(ansible01→harbor01:443 timeout, Runner→harbor01:443 정상)는 파일에 명령·종료코드·시각 원본이 없고 사람이 작성한 해석이다. **firewall 설정은 관측됐으나 실제 Source IP 관측 원본은 없다: `ALLOWLIST_CONFIG=OBSERVED / ACTUAL_SOURCE=NOT_VERIFIED`** |
 
-## `worker-pull-pod-start-test.sh`에 적용한 로컬 수정 2건 (미리뷰, 투명성 목적 기록)
+## `worker-pull-pod-start-test.sh`에 적용한 로직 수정 2건 (미리뷰, 투명성 목적 기록)
+
+> 정정: 이전 판에서는 "수정 2건"으로만 적었다. 서버 실행본을 저장소와 대조한 결과, 로직 수정 2건 외에 **주석 제거**와 `digest-traceability-check.sh`의 **메시지 문구 정리**(로직 동일)가 더 있었다. 상세는 [`executed-source-20260930`](../executed-source-20260930/README.md).
 
 원본 스크립트를 실행 중 발견한 문제를 그 자리에서 고쳐서 worker01/02/03에 적용했다. **이 수정은 infra-harbor-trivy 저장소 PR 리뷰를 거치지 않았다** — 정식 반영 여부는 그 저장소 담당자가 별도로 판단해야 한다.
 
@@ -36,7 +44,7 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 - **Robot 계정 정합성 미확인**: IF-09에 실제로 쓴 계정은 `robot$push`("Python3 베이스 이미지 등록용")이다. Harbor UI의 `robot$worker` 계정 설명에는 "Runner(fds-ci)"라는 문구가 있었으나, baseline(`D19`/`D-SEC-01` 등)에는 이 문구의 근거를 찾지 못했고, 실제 CI 워크플로우(`infra-cicd` 저장소, cicd-runner01의 `actions-runner/_work` 하위)에도 Harbor push 로직 자체가 없었다(별도 위치이거나 미구현으로 추정). **어떤 Robot 계정이 실제 운영 CI가 쓰는 계정인지는 이 편입으로 확정되지 않는다.**
 - **AC-05(Digest·Scan·Credential fingerprint)는 부분만 확보**: `digest-traceability-check.sh`로 Harbor manifest ↔ Pod imageID 구간(3대 전부)만 확인했다. CI Scan Digest(P1-CICD-01 #16 담당) 연결은 이 편입 범위 밖이며, 4/4 전체 trace로 표시하지 않는다.
 - **`crictl`/`nerdctl`이 워커 3대에 원래 설치돼 있지 않았음**: 이번 실행을 위해 GitHub 공개 릴리스에서 받아 `/usr/bin/`에 설치했다(`sudo`의 `secure_path`에 `/usr/local/bin`이 없어 처음엔 `/usr/local/bin` 설치가 무시됨 — `/usr/bin`으로 재설치). 이 설치 자체는 되돌리지 않았다.
-- **Source IP/Firewall 항목은 별도 Positive/Negative 전용 스크립트가 아니라, 기존 firewalld 정책 조회 + 우연히 관측된 접속 성공/실패 결과를 근거로 삼았다.** 정식 절차라면 승인된 별도 절차로 재확인이 필요할 수 있다.
+- **Source IP/Firewall 항목은 별도 Positive/Negative 전용 스크립트가 아니라, 기존 firewalld 정책 조회 + 우연히 관측된 접속 성공/실패 결과를 근거로 삼았다.** 정식 절차라면 승인된 별도 절차로 재확인이 필요하다. 실제 Source IP 관측(ansible01/Runner 접속 원본과 gateway/Harbor 측 관측값)은 후속으로 별도 수집한다.
 - 이 실행에도 [`received-20260928T150921Z`](../received-20260928T150921Z/README.md)와 같은 `svc_ansible` 프로비저닝(계정 신설, `NOPASSWD: ALL`, key 미제한)이 전제로 깔려 있으며, 그 잔여 하드닝 상태는 여전히 미해소다.
 
 이 편입은 원본 보존이다. P1-HBR-01의 최종 AC 판정, Gate, 티켓 상태는 Lead/Review Owner가 baseline #13에서 별도로 한다.

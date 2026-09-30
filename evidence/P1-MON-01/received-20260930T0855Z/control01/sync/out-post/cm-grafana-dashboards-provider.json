@@ -1,0 +1,17 @@
+{
+    "apiVersion": "v1",
+    "data": {
+        "provider.yaml": "apiVersion: 1\nproviders:\n  - name: 'fds'\n    orgId: 1\n    folder: 'FDS'\n    type: file\n    disableDeletion: false\n    # 2026-09-30: #17 \"P0 기본 Dashboard 3종과 기본 Alert Rule을 Source 관리한다\" — 화면에서 고친 내용이\n    # 저장돼 소스와 달라지지 않도록 막는다. 대시보드 변경은 이 ConfigMap(소스) PR로만 한다.\n    allowUiUpdates: false\n    updateIntervalSeconds: 30\n    options:\n      path: /etc/grafana/dashboards\n      foldersFromFilesStructure: false\n"
+    },
+    "kind": "ConfigMap",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"provider.yaml\":\"apiVersion: 1\\nproviders:\\n  - name: 'fds'\\n    orgId: 1\\n    folder: 'FDS'\\n    type: file\\n    disableDeletion: false\\n    # 2026-09-30: #17 \\\"P0 기본 Dashboard 3종과 기본 Alert Rule을 Source 관리한다\\\" — 화면에서 고친 내용이\\n    # 저장돼 소스와 달라지지 않도록 막는다. 대시보드 변경은 이 ConfigMap(소스) PR로만 한다.\\n    allowUiUpdates: false\\n    updateIntervalSeconds: 30\\n    options:\\n      path: /etc/grafana/dashboards\\n      foldersFromFilesStructure: false\\n\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{},\"name\":\"grafana-dashboards-provider\",\"namespace\":\"monitoring-api\"}}\n"
+        },
+        "creationTimestamp": "2026-09-22T05:45:35Z",
+        "name": "grafana-dashboards-provider",
+        "namespace": "monitoring-api",
+        "resourceVersion": "2879803",
+        "uid": "a4f9f7ad-964e-4bb5-8d9b-7388daae0177"
+    }
+}
