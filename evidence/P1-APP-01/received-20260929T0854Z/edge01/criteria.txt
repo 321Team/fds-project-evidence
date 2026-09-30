@@ -1,0 +1,9 @@
+P1-APP-01 부하 재시험 기준 (시험 전 기록) RUN=202609291754
+출처: 결정안 v2 https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5885861552 / G3 APPROVED #issuecomment-5886568007 / 승인 대상 조정 #issuecomment-5886692226
+대상: transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33 / fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369, requests 250m/256Mi limits 500m/512Mi, Pod 3개(Worker당 1개) - control01 env-before.txt 2026-09-29T17:46:21+09:00
+목표 부하: B 20 rps 600s -> P 50 rps 180s -> 무부하 120s (21,000건). edge01->Worker:30080 .105/.107/.108 순환, 계정 SIM_load_<RUN>_<n>, deposit60/withdrawal20/transfer20, amount 10000, source_ip 198.51.100.10, 동시 상한 64, 요청마다 새 연결, timeout 10s (gen2.py)
+관측: control01 promql.txt SHA-256 deccc54929862a137de59ae8f4d32b62b23a4461a2de77249381eb19863d91a1 / q_range.py 5b59d0d5d8205154b350377599645734f801154f1532681453a8cf27b65cfd85 (query·조회·집계 규칙은 promql.txt)
+합격: (1) 201 외 응답·timeout·연결 오류 0 (2) Q3 throttling 기준·피크 구간 최대 25% 미만 (3) restartCount 변화 0, OOMKilled 0 (4) 두 워크로드 모두 현재 값 >= 산식 결과 (5) 구간별 달성 처리량(요청 시작 시각 기준) >= 목표의 98%. p95는 기록만(판정 미사용)
+산식: CPU req = B 구간 Q1 최대 x1.5 (50m 올림, 최소 100m) / CPU limit = P 구간 Q1 최대 x2 (100m 올림) / MEM req = 전 구간 Q2 최대 x1.2 (64Mi 올림), MEM limit = req x2
+판정: (1)~(5) 모두 만족 -> 현재 이미지 기준 Resource baseline 현재 값(250m/500m, 256Mi/512Mi) 유지 확정. 하나라도 아니면 불합격(핵심 요구 체크 안 함, 원인 분석 후 새 RUN). 필요한 시계열 통째 부재·유효 샘플 없음 -> NOT_VERIFIED/STOP
+운영 중단 조건(판정 기준 아님): 진행 로그에서 30초 사이 201 외 코드가 10건 이상 늘거나 Pod NotReady·재시작이 보이면 즉시 중지 -> 해당 RUN 불합격

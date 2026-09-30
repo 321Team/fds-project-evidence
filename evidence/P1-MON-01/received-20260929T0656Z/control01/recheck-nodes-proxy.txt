@@ -1,0 +1,49 @@
+2026-09-29T16:00:00+09:00
+# 정정: 'can-i get nodes/proxy'는 이름이 proxy인 노드를 묻는 형식이라 하위 리소스는 --subresource=proxy로 재확인
+Warning: resource 'nodes' is not namespace scoped
+
+monitoring-api:prometheus-sa get nodes --subresource=proxy: no
+Warning: resource 'nodes' is not namespace scoped
+
+monitoring-api:prometheus-sa get nodes (named proxy): no
+Warning: resource 'nodes' is not namespace scoped
+
+monitoring-api:kube-state-metrics-sa get nodes --subresource=proxy: no
+Warning: resource 'nodes' is not namespace scoped
+
+monitoring-api:kube-state-metrics-sa get nodes (named proxy): yes
+Warning: resource 'nodes' is not namespace scoped
+
+monitoring-api:grafana-sa get nodes --subresource=proxy: no
+Warning: resource 'nodes' is not namespace scoped
+
+monitoring-api:grafana-sa get nodes (named proxy): no
+Warning: resource 'nodes' is not namespace scoped
+
+monitoring-api:alertmanager-sa get nodes --subresource=proxy: no
+Warning: resource 'nodes' is not namespace scoped
+
+monitoring-api:alertmanager-sa get nodes (named proxy): no
+== kube-state-metrics-sa can-i --list (리소스 줄)
+Resources                                       Non-Resource URLs                      Resource Names   Verbs
+selfsubjectreviews.authentication.k8s.io        []                                     []               [create]
+selfsubjectaccessreviews.authorization.k8s.io   []                                     []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                     []               [create]
+configmaps                                      []                                     []               [get list watch]
+endpoints                                       []                                     []               [get list watch]
+limitranges                                     []                                     []               [get list watch]
+namespaces                                      []                                     []               [get list watch]
+nodes                                           []                                     []               [get list watch]
+persistentvolumeclaims                          []                                     []               [get list watch]
+pods                                            []                                     []               [get list watch]
+replicationcontrollers                          []                                     []               [get list watch]
+resourcequotas                                  []                                     []               [get list watch]
+services                                        []                                     []               [get list watch]
+daemonsets.apps                                 []                                     []               [get list watch]
+deployments.apps                                []                                     []               [get list watch]
+replicasets.apps                                []                                     []               [get list watch]
+statefulsets.apps                               []                                     []               [get list watch]
+cronjobs.batch                                  []                                     []               [get list watch]
+jobs.batch                                      []                                     []               [get list watch]
+ingresses.networking.k8s.io                     []                                     []               [get list watch]
+networkpolicies.networking.k8s.io               []                                     []               [get list watch]

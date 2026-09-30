@@ -1,0 +1,7 @@
+12:28:21 readyz 200 200 200 
+== E2E 2026-09-29T12:28:21+09:00
+{"transaction_id":"fe2501ac-d2bb-456f-bcc6-dc1fe061229c","fds_detected":true,"fds_rules":[{"rule_id":"R01","triggered":false,"detail":null},{"rule_id":"R02","triggered":true,"detail":"고액 거래 3,500,000원 (threshold 3,000,000원)"},{"rule_id":"R04","triggered":false,"detail":null},{"rule_id":"R07","triggered":false,"detail":null}],"fds_evaluation_skipped":false}
+http=201
+worker .105 http=200
+worker .107 http=200
+worker .108 http=200
