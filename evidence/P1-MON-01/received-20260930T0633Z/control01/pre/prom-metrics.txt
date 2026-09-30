@@ -1,0 +1,14 @@
+prometheus_notifications_alertmanagers_discovered 1
+prometheus_notifications_dropped_total{alertmanager="http://alertmanager.monitoring-api.svc.cluster.local:9093/api/v2/alerts"} 0
+prometheus_notifications_errors_total{alertmanager="http://alertmanager.monitoring-api.svc.cluster.local:9093/api/v2/alerts"} 0
+prometheus_notifications_sent_total{alertmanager="http://alertmanager.monitoring-api.svc.cluster.local:9093/api/v2/alerts"} 0
+prometheus_sd_discovered_targets{config="config-0",name="notify"} 1
+prometheus_sd_discovered_targets{config="fds-engine",name="scrape"} 3
+prometheus_sd_discovered_targets{config="kube-state-metrics",name="scrape"} 1
+prometheus_sd_discovered_targets{config="kubelet",name="scrape"} 6
+prometheus_sd_discovered_targets{config="kubelet-cadvisor",name="scrape"} 6
+prometheus_sd_discovered_targets{config="node-exporter",name="scrape"} 3
+prometheus_sd_discovered_targets{config="prometheus",name="scrape"} 1
+prometheus_sd_discovered_targets{config="transaction-api",name="scrape"} 3
+prometheus_sd_dns_lookup_failures_total 0
+prometheus_sd_dns_lookups_total 16518

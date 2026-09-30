@@ -1,0 +1,223 @@
+# 2026-09-30T15:26:46+09:00 phase=post host=k8s-control01 user=server02
+== targets: health / scrapePool
+     23 "health":"up"
+      3 "scrapePool":"fds-engine"
+      1 "scrapePool":"kube-state-metrics"
+      6 "scrapePool":"kubelet"
+      6 "scrapePool":"kubelet-cadvisor"
+      3 "scrapePool":"node-exporter"
+      1 "scrapePool":"prometheus"
+      3 "scrapePool":"transaction-api"
+== targets: lastError(비어 있지 않은 것)
+(없음)
+== alertmanagers
+{"status":"success","data":{"activeAlertmanagers":[{"url":"http://alertmanager.monitoring-api.svc.cluster.local:9093/api/v2/alerts"}],"droppedAlertmanagers":[]}}
+== prometheus 자체 지표
+prometheus_notifications_alertmanagers_discovered 1
+prometheus_notifications_dropped_total{alertmanager="http://alertmanager.monitoring-api.svc.cluster.local:9093/api/v2/alerts"} 0
+prometheus_notifications_errors_total{alertmanager="http://alertmanager.monitoring-api.svc.cluster.local:9093/api/v2/alerts"} 0
+prometheus_notifications_sent_total{alertmanager="http://alertmanager.monitoring-api.svc.cluster.local:9093/api/v2/alerts"} 0
+prometheus_sd_discovered_targets{config="config-0",name="notify"} 1
+prometheus_sd_discovered_targets{config="fds-engine",name="scrape"} 3
+prometheus_sd_discovered_targets{config="kube-state-metrics",name="scrape"} 1
+prometheus_sd_discovered_targets{config="kubelet",name="scrape"} 6
+prometheus_sd_discovered_targets{config="kubelet-cadvisor",name="scrape"} 6
+prometheus_sd_discovered_targets{config="node-exporter",name="scrape"} 3
+prometheus_sd_discovered_targets{config="prometheus",name="scrape"} 1
+prometheus_sd_discovered_targets{config="transaction-api",name="scrape"} 3
+prometheus_sd_dns_lookup_failures_total 0
+prometheus_sd_dns_lookups_total 16538
+== alertmanager 지표
+alertmanager_notifications_failed_total{integration="discord",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="discord",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="discord",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="discord",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="discord",reason="other"} 0
+alertmanager_notifications_failed_total{integration="discord",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="discord",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="email",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="email",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="email",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="email",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="email",reason="other"} 0
+alertmanager_notifications_failed_total{integration="email",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="email",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="incidentio",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="incidentio",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="incidentio",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="incidentio",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="incidentio",reason="other"} 0
+alertmanager_notifications_failed_total{integration="incidentio",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="incidentio",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="jira",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="jira",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="jira",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="jira",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="jira",reason="other"} 0
+alertmanager_notifications_failed_total{integration="jira",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="jira",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="mattermost",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="mattermost",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="mattermost",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="mattermost",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="mattermost",reason="other"} 0
+alertmanager_notifications_failed_total{integration="mattermost",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="mattermost",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="msteams",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="msteams",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="msteams",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="msteams",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="msteams",reason="other"} 0
+alertmanager_notifications_failed_total{integration="msteams",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="msteams",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="msteamsv2",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="msteamsv2",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="msteamsv2",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="msteamsv2",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="msteamsv2",reason="other"} 0
+alertmanager_notifications_failed_total{integration="msteamsv2",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="msteamsv2",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="opsgenie",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="opsgenie",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="opsgenie",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="opsgenie",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="opsgenie",reason="other"} 0
+alertmanager_notifications_failed_total{integration="opsgenie",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="opsgenie",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="pagerduty",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="pagerduty",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="pagerduty",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="pagerduty",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="pagerduty",reason="other"} 0
+alertmanager_notifications_failed_total{integration="pagerduty",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="pagerduty",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="pushover",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="pushover",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="pushover",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="pushover",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="pushover",reason="other"} 0
+alertmanager_notifications_failed_total{integration="pushover",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="pushover",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="rocketchat",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="rocketchat",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="rocketchat",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="rocketchat",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="rocketchat",reason="other"} 0
+alertmanager_notifications_failed_total{integration="rocketchat",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="rocketchat",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="slack",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="slack",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="slack",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="slack",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="slack",reason="other"} 0
+alertmanager_notifications_failed_total{integration="slack",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="slack",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="sns",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="sns",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="sns",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="sns",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="sns",reason="other"} 0
+alertmanager_notifications_failed_total{integration="sns",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="sns",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="telegram",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="telegram",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="telegram",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="telegram",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="telegram",reason="other"} 0
+alertmanager_notifications_failed_total{integration="telegram",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="telegram",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="victorops",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="victorops",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="victorops",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="victorops",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="victorops",reason="other"} 0
+alertmanager_notifications_failed_total{integration="victorops",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="victorops",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="webex",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="webex",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="webex",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="webex",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="webex",reason="other"} 0
+alertmanager_notifications_failed_total{integration="webex",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="webex",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="webhook",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="webhook",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="webhook",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="webhook",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="webhook",reason="other"} 0
+alertmanager_notifications_failed_total{integration="webhook",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="webhook",reason="serverError"} 0
+alertmanager_notifications_failed_total{integration="wechat",reason="authError"} 0
+alertmanager_notifications_failed_total{integration="wechat",reason="clientError"} 0
+alertmanager_notifications_failed_total{integration="wechat",reason="contextCanceled"} 0
+alertmanager_notifications_failed_total{integration="wechat",reason="contextDeadlineExceeded"} 0
+alertmanager_notifications_failed_total{integration="wechat",reason="other"} 0
+alertmanager_notifications_failed_total{integration="wechat",reason="rateLimited"} 0
+alertmanager_notifications_failed_total{integration="wechat",reason="serverError"} 0
+alertmanager_notifications_total{integration="discord"} 0
+alertmanager_notifications_total{integration="email"} 0
+alertmanager_notifications_total{integration="incidentio"} 0
+alertmanager_notifications_total{integration="jira"} 0
+alertmanager_notifications_total{integration="mattermost"} 0
+alertmanager_notifications_total{integration="msteams"} 0
+alertmanager_notifications_total{integration="msteamsv2"} 0
+alertmanager_notifications_total{integration="opsgenie"} 0
+alertmanager_notifications_total{integration="pagerduty"} 0
+alertmanager_notifications_total{integration="pushover"} 0
+alertmanager_notifications_total{integration="rocketchat"} 0
+alertmanager_notifications_total{integration="slack"} 0
+alertmanager_notifications_total{integration="sns"} 0
+alertmanager_notifications_total{integration="telegram"} 0
+alertmanager_notifications_total{integration="victorops"} 0
+alertmanager_notifications_total{integration="webex"} 0
+alertmanager_notifications_total{integration="webhook"} 0
+alertmanager_notifications_total{integration="wechat"} 0
+== grafana datasource health
+{"details":{"application":"Prometheus","features":{"rulerApiEnabled":false}},"message":"Successfully queried the Prometheus API.","status":"OK"} rc=0
+== monitoring-api pods
+alertmanager-774f8866d-ppgqn         true   0     10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67
+grafana-559b978c69-k2ws6             true   0     10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b
+kube-state-metrics-f88b9c457-n5n7x   true   2     10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1
+prometheus-5c6cd4bc84-b2zpq          true   0     10.1.93.54/fds/prometheus@sha256:b77f9cee82fd1c61521634d2d6b192fc526ffd938e904b8e6836b6c0cf8d875a
+== kube-dns pods
+NAME                       READY   STATUS    RESTARTS         AGE   IP               NODE            NOMINATED NODE   READINESS GATES
+coredns-589f44dc88-f8l54   1/1     Running   12 (2d21h ago)   20d   10.244.246.115   k8s-control01   <none>           <none>
+coredns-589f44dc88-qkcws   1/1     Running   12 (2d21h ago)   20d   10.244.246.114   k8s-control01   <none>           <none>
+== networkpolicy 수
+      1 ci-cd
+      1 default
+      3 fds-app
+     16 monitoring-api
+      2 monitoring-node
+# 2026-09-30T15:26:47+09:00 phase=post host=control01(.102, CP) TA=10.244.69.211 FE=10.244.69.212 KS=10.244.246.113
+## 9/27 evidence#53과 같은 시험
+NEG host .102 -> 10.1.93.105:9100 BLOCKED (5006ms)  (기대 BLOCKED)
+NEG host .102 -> 10.1.93.105:9101 BLOCKED (5004ms)  (기대 BLOCKED)
+POS host .102 -> 10.1.93.105:10250 OPEN (8ms)  (기대 OPEN)
+NEG host .102 -> 10.1.93.107:9100 BLOCKED (5007ms)  (기대 BLOCKED)
+NEG host .102 -> 10.1.93.107:9101 BLOCKED (5004ms)  (기대 BLOCKED)
+POS host .102 -> 10.1.93.107:10250 OPEN (9ms)  (기대 OPEN)
+NEG host .102 -> 10.1.93.108:9100 BLOCKED (5003ms)  (기대 BLOCKED)
+NEG host .102 -> 10.1.93.108:9101 BLOCKED (5003ms)  (기대 BLOCKED)
+POS host .102 -> 10.1.93.108:10250 OPEN (9ms)  (기대 OPEN)
+NEG fds-engine -> prometheus.monitoring-api.svc:9090 TIMEOUT  (기대 TIMEOUT)
+NEG fds-engine -> 10.1.93.105:9100 TIMEOUT  (기대 TIMEOUT)
+POS grafana -> prometheus:9090 rc=0 (135ms)  (기대 rc=0)
+NEG grafana -> 10.1.93.105:9100 wget: download timed out rc=1 (5149ms)  (기대 timed out)
+NEG grafana -> kube-state-metrics:8080 wget: download timed out rc=1 (5141ms)  (기대 timed out)
+POS prometheus -> 10.1.93.107:9100 rc=0 (132ms)  (기대 rc=0)
+NEG prometheus -> 10.1.93.107:9101 wget: download timed out rc=1 (5143ms)  (기대 rc=1)
+## 필요 경로 양성 (이름으로 새 연결: DNS 해석 + 정책 허용을 함께 확인)
+POS prometheus -> alertmanager.monitoring-api.svc.cluster.local:9093 rc=0 (125ms)  (기대 rc=0)
+POS prometheus -> kube-state-metrics.monitoring-api.svc.cluster.local:8080 rc=0 (135ms)  (기대 rc=0)
+POS prometheus -> transaction-api-metrics.fds-app.svc.cluster.local:9091 rc=0 (122ms)  (기대 rc=0)
+POS prometheus -> fds-engine-metrics.fds-app.svc.cluster.local:9090 rc=0 (155ms)  (기대 rc=0)
+POS grafana -> prometheus.monitoring-api.svc:9090 rc=0 (125ms)  (기대 rc=0)
+POS alertmanager -> 10.1.93.56:3128 wget: server returned error: HTTP/1.1 400 Bad Request rc=1 (129ms)  (기대 HTTP 오류 응답=연결됨, timed out이면 실패)
+## 정리로 없어지는 경로 음성
+NEG prometheus -> kube-system 비DNS Pod 10.244.246.113:53 wget: download timed out rc=1 (5151ms)  (기대 적용 전 refused=정책 허용, 적용 후 timed out=차단)
+NEG prometheus -> CP 10.1.93.102:9100 wget: download timed out rc=1 (5123ms)  (기대 적용 후 timed out)
+NEG prometheus -> transaction-api 10.244.69.211:9090 wget: download timed out rc=1 (5131ms)  (기대 timed out)
+NEG prometheus -> fds-engine 10.244.69.212:9091 wget: download timed out rc=1 (5142ms)  (기대 timed out)
+INFO namespace fds: Error from server (NotFound): namespaces "fds" not found
+DONE phase=post dir=/home/server02/p1-mon-np-20260930T152145/post
