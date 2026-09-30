@@ -1,0 +1,49 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"default-deny-all","namespace":"monitoring-node"},"spec":{"podSelector":{},"policyTypes":["Ingress","Egress"]}}
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: default-deny-all
+    namespace: monitoring-node
+    resourceVersion: "1066793"
+    uid: 2271179e-a7f2-4d23-ba3f-7e24045e54d2
+  spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"node-exporter-allow","namespace":"monitoring-node"},"spec":{"ingress":[{"from":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"monitoring-api"}},"podSelector":{"matchLabels":{"app":"prometheus"}}}],"ports":[{"port":9100,"protocol":"TCP"}]}],"podSelector":{},"policyTypes":["Ingress"]}}
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: node-exporter-allow
+    namespace: monitoring-node
+    resourceVersion: "1066797"
+    uid: f4558ce6-bb83-4eda-8f6f-592c14c32006
+  spec:
+    ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-api
+        podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 9100
+        protocol: TCP
+    podSelector: {}
+    policyTypes:
+    - Ingress
+kind: List
+metadata:
+  resourceVersion: ""

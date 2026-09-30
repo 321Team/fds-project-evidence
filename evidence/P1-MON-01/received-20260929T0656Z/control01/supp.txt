@@ -1,0 +1,597 @@
+2026-09-29T16:15:31+09:00
+== grafana env (Secret은 이름/키만)
+[grafana]
+GF_SECURITY_ADMIN_USER= ref=grafana-admin-credentials/admin-user
+GF_SECURITY_ADMIN_PASSWORD= ref=grafana-admin-credentials/admin-password
+GF_AUTH_ANONYMOUS_ENABLED=false ref=/
+GF_USERS_ALLOW_SIGN_UP=false ref=/
+GF_ANALYTICS_REPORTING_ENABLED=false ref=/
+GF_ANALYTICS_CHECK_FOR_UPDATES=false ref=/
+GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES=false ref=/
+GF_PLUGINS_PREINSTALL_DISABLED=true ref=/
+== prometheus args
+prometheus ["--config.file=/etc/prometheus/prometheus.yml","--web.enable-lifecycle","--storage.tsdb.retention.time=15d","--storage.tsdb.retention.size=16GB"]
+== prometheus pvc
+Bound 20Gi
+== prometheus-sa can-i --list
+Resources                                       Non-Resource URLs                      Resource Names   Verbs
+selfsubjectreviews.authentication.k8s.io        []                                     []               [create]
+selfsubjectaccessreviews.authorization.k8s.io   []                                     []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                     []               [create]
+                                                [/.well-known/openid-configuration/]   []               [get]
+                                                [/.well-known/openid-configuration]    []               [get]
+                                                [/api/*]                               []               [get]
+                                                [/api]                                 []               [get]
+                                                [/apis/*]                              []               [get]
+                                                [/apis]                                []               [get]
+                                                [/healthz]                             []               [get]
+                                                [/healthz]                             []               [get]
+                                                [/livez]                               []               [get]
+                                                [/livez]                               []               [get]
+                                                [/openapi/*]                           []               [get]
+                                                [/openapi]                             []               [get]
+                                                [/openid/v1/jwks/]                     []               [get]
+                                                [/openid/v1/jwks]                      []               [get]
+                                                [/readyz]                              []               [get]
+                                                [/readyz]                              []               [get]
+                                                [/version/]                            []               [get]
+                                                [/version/]                            []               [get]
+                                                [/version]                             []               [get]
+                                                [/version]                             []               [get]
+nodes/metrics                                   []                                     []               [get]
+== pod resources
+alertmanager-774f8866d-ppgqn alertmanager={"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"200m","memory":"256Mi"}}
+grafana-559b978c69-k2ws6 grafana={"limits":{"cpu":"1","memory":"1Gi"},"requests":{"cpu":"200m","memory":"256Mi"}}
+kube-state-metrics-f88b9c457-n5n7x kube-state-metrics={"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"200m","memory":"256Mi"}}
+prometheus-5c6cd4bc84-b2zpq prometheus={"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"200m","memory":"256Mi"}}
+== netpol monitoring-api
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 2
+    name: alertmanager-allow
+    namespace: monitoring-api
+    resourceVersion: "2040145"
+    uid: cfa9f7c4-0ac6-4d01-8ee9-83425d79c565
+  spec:
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 9093
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: alertmanager
+    policyTypes:
+    - Ingress
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T11:14:28Z"
+    generation: 2
+    name: alertmanager-egress
+    namespace: monitoring-api
+    resourceVersion: "1729179"
+    uid: 96076ea6-ca77-4a96-8432-73bcf17ff0bd
+  spec:
+    egress:
+    - ports:
+      - port: 3128
+        protocol: TCP
+      to:
+      - ipBlock:
+          cidr: 10.1.93.56/32
+    podSelector:
+      matchLabels:
+        app: alertmanager
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-grafana-ingress-from-prometheus-ns
+    namespace: monitoring-api
+    resourceVersion: "1115784"
+    uid: 265e459e-ace5-4029-bc08-b7710ff4d859
+  spec:
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: grafana
+      ports:
+      - port: 9090
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: prometheus
+    policyTypes:
+    - Ingress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-grafana-to-prometheus
+    namespace: monitoring-api
+    resourceVersion: "1115783"
+    uid: a2454540-3f24-4fa8-a6fd-8377ac60391c
+  spec:
+    egress:
+    - ports:
+      - port: 9090
+        protocol: TCP
+      to:
+      - podSelector:
+          matchLabels:
+            app: prometheus
+    podSelector:
+      matchLabels:
+        app: grafana
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-monitoring-egress-dns
+    namespace: monitoring-api
+    resourceVersion: "1115785"
+    uid: 8f51756a-25dd-4c93-86e8-febb5bca891e
+  spec:
+    egress:
+    - ports:
+      - port: 53
+        protocol: UDP
+      - port: 53
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kube-system
+    podSelector: {}
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-prometheus-egress-alertmanager
+    namespace: monitoring-api
+    resourceVersion: "1115786"
+    uid: 56a084ad-4b5f-4b19-9591-54be07150f14
+  spec:
+    egress:
+    - ports:
+      - port: 9093
+        protocol: TCP
+      to:
+      - podSelector:
+          matchLabels:
+            app: alertmanager
+    podSelector:
+      matchLabels:
+        app: prometheus
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-prometheus-egress-kube-state-metrics
+    namespace: monitoring-api
+    resourceVersion: "1115787"
+    uid: 479d9169-3974-4969-baac-68f30e5dec93
+  spec:
+    egress:
+    - ports:
+      - port: 8080
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-api
+        podSelector:
+          matchLabels:
+            app: kube-state-metrics
+    podSelector:
+      matchLabels:
+        app: prometheus
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-prometheus-egress-kubelet
+    namespace: monitoring-api
+    resourceVersion: "1115788"
+    uid: ee77cff0-b433-4061-b037-f1a15e47b132
+  spec:
+    egress:
+    - ports:
+      - port: 10250
+        protocol: TCP
+      to:
+      - ipBlock:
+          cidr: 10.1.93.102/32
+      - ipBlock:
+          cidr: 10.1.93.103/32
+      - ipBlock:
+          cidr: 10.1.93.104/32
+      - ipBlock:
+          cidr: 10.1.93.105/32
+      - ipBlock:
+          cidr: 10.1.93.107/32
+      - ipBlock:
+          cidr: 10.1.93.108/32
+    podSelector:
+      matchLabels:
+        app: prometheus
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-prometheus-egress-node-exporter
+    namespace: monitoring-api
+    resourceVersion: "1115782"
+    uid: bee3ba6e-637d-4361-a20d-e1e9655e4ecb
+  spec:
+    egress:
+    - ports:
+      - port: 9100
+        protocol: TCP
+      to:
+      - ipBlock:
+          cidr: 10.1.93.102/32
+      - ipBlock:
+          cidr: 10.1.93.103/32
+      - ipBlock:
+          cidr: 10.1.93.104/32
+      - ipBlock:
+          cidr: 10.1.93.105/32
+      - ipBlock:
+          cidr: 10.1.93.107/32
+      - ipBlock:
+          cidr: 10.1.93.108/32
+    podSelector:
+      matchLabels:
+        app: prometheus
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-prometheus-egress-scrape
+    namespace: monitoring-api
+    resourceVersion: "1115781"
+    uid: cbc8e9f4-1393-46e8-821a-e14a0407d80b
+  spec:
+    egress:
+    - ports:
+      - port: 9091
+        protocol: TCP
+      - port: 9090
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: fds
+        podSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - transaction-api
+            - fds-engine
+    podSelector:
+      matchLabels:
+        app: prometheus
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    generation: 1
+    name: allow-prometheus-ingress-to-alertmanager
+    namespace: monitoring-api
+    resourceVersion: "1115789"
+    uid: c144b65d-e0c9-4eb7-bebf-779caf6dc8ac
+  spec:
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 9093
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: alertmanager
+    policyTypes:
+    - Ingress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: default-deny-all
+    namespace: monitoring-api
+    resourceVersion: "1066794"
+    uid: fb70c68c-eb74-49b8-a541-2550ab3aad4f
+  spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: grafana-allow
+    namespace: monitoring-api
+    resourceVersion: "1066803"
+    uid: 3212f780-ad40-4bd7-9098-4b0461a8863a
+  spec:
+    egress:
+    - ports:
+      - port: 9090
+        protocol: TCP
+      to:
+      - podSelector:
+          matchLabels:
+            app: prometheus
+    podSelector:
+      matchLabels:
+        app: grafana
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: kube-state-metrics-allow
+    namespace: monitoring-api
+    resourceVersion: "1066799"
+    uid: 5c1eee23-c370-4da9-b63d-18fe24aaa02e
+  spec:
+    egress:
+    - ports:
+      - port: 6443
+        protocol: TCP
+      to:
+      - ipBlock:
+          cidr: 10.1.93.102/32
+      - ipBlock:
+          cidr: 10.1.93.103/32
+      - ipBlock:
+          cidr: 10.1.93.104/32
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 8080
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: kube-state-metrics
+    policyTypes:
+    - Ingress
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: monitoring-api-dns-allow
+    namespace: monitoring-api
+    resourceVersion: "1066798"
+    uid: 62f183fb-991a-4f0d-818c-01b81dc8f41a
+  spec:
+    egress:
+    - ports:
+      - port: 53
+        protocol: UDP
+      - port: 53
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: kube-system
+        podSelector:
+          matchLabels:
+            k8s-app: kube-dns
+    podSelector: {}
+    policyTypes:
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 2
+    name: prometheus-allow
+    namespace: monitoring-api
+    resourceVersion: "2040144"
+    uid: 8ad6f641-7d2e-4753-8083-e6b10f7b1dbc
+  spec:
+    egress:
+    - ports:
+      - port: 9093
+        protocol: TCP
+      to:
+      - podSelector:
+          matchLabels:
+            app: alertmanager
+    - ports:
+      - port: 9091
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: fds-app
+        podSelector:
+          matchLabels:
+            app: transaction-api
+    - ports:
+      - port: 9090
+        protocol: TCP
+      to:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: fds-app
+        podSelector:
+          matchLabels:
+            app: fds-engine
+    - ports:
+      - port: 9100
+        protocol: TCP
+      to:
+      - ipBlock:
+          cidr: 10.1.93.105/32
+      - ipBlock:
+          cidr: 10.1.93.107/32
+      - ipBlock:
+          cidr: 10.1.93.108/32
+    - ports:
+      - port: 8080
+        protocol: TCP
+      to:
+      - podSelector:
+          matchLabels:
+            app: kube-state-metrics
+    - ports:
+      - port: 10250
+        protocol: TCP
+      to:
+      - ipBlock:
+          cidr: 10.1.93.105/32
+      - ipBlock:
+          cidr: 10.1.93.107/32
+      - ipBlock:
+          cidr: 10.1.93.108/32
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: grafana
+      ports:
+      - port: 9090
+        protocol: TCP
+    podSelector:
+      matchLabels:
+        app: prometheus
+    policyTypes:
+    - Ingress
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: prometheus-remote-write-allow
+    namespace: monitoring-api
+    resourceVersion: "1066802"
+    uid: e54c3300-f8a7-474c-9601-56bd760c7415
+  spec:
+    egress:
+    - ports:
+      - port: 443
+        protocol: TCP
+      to:
+      - ipBlock:
+          cidr: 10.250.10.30/32
+    podSelector:
+      matchLabels:
+        app: prometheus
+    policyTypes:
+    - Egress
+kind: List
+metadata:
+  resourceVersion: ""
+== netpol monitoring-node
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: default-deny-all
+    namespace: monitoring-node
+    resourceVersion: "1066793"
+    uid: 2271179e-a7f2-4d23-ba3f-7e24045e54d2
+  spec:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+    - Egress
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    annotations:
+    creationTimestamp: "2026-09-22T00:22:12Z"
+    generation: 1
+    name: node-exporter-allow
+    namespace: monitoring-node
+    resourceVersion: "1066797"
+    uid: f4558ce6-bb83-4eda-8f6f-592c14c32006
+  spec:
+    ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: monitoring-api
+        podSelector:
+          matchLabels:
+            app: prometheus
+      ports:
+      - port: 9100
+        protocol: TCP
+    podSelector: {}
+    policyTypes:
+    - Ingress
+kind: List
+metadata:
+  resourceVersion: ""
