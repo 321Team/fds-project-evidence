@@ -1,0 +1,16 @@
+2026-09-29T15:57:45+09:00
+42:    #    listen       8000;
+43:    #    listen       somename:8080;
+56:    #    listen       443 ssl;
+178:upstream transaction_api {
+179:    server 10.1.93.50:30080;
+181:    # server 10.1.93.105:30080;
+182:    # server 10.1.93.107:30080;
+183:    # server 10.1.93.108:30080;
+187:    listen 80 default_server;
+190:    location = /metrics { return 404; }
+/metrics http=404
+//metrics http=404
+/METRICS http=404
+/metrics/ http=307
+HELP lines: 0

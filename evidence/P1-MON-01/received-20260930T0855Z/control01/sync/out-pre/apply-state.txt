@@ -1,0 +1,16 @@
+prometheus rule file: bca9426ad45d8116eb652e76ef6dd67a154897314edcc4029dae51160891cb0c  /etc/prometheus/rules/alert-rules.yml
+grafana provider file: e23193cc5981ba530ce35aaa1a1deb1c4bc4ca27df43347e1ebd6beccac681ee  /etc/grafana/provisioning/dashboards/provider.yaml
+prometheus args: ["--config.file=/etc/prometheus/prometheus.yml","--web.enable-lifecycle","--storage.tsdb.retention.time=15d","--storage.tsdb.retention.size=16GB"]
+prometheus reload metrics:
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"prometheus_config_last_reload_successful","instance":"localhost:9090","job":"prometheus"},"value":[1790757158.960,"1"]}]}}
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"prometheus_config_last_reload_success_timestamp_seconds","instance":"localhost:9090","job":"prometheus"},"value":[1790757159.085,"1790501549.3477836"]}]}}
+node_exporter build:
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"node_exporter_build_info","branch":"HEAD","goarch":"amd64","goos":"linux","goversion":"go1.26.5","instance":"10.1.93.108:9100","job":"node-exporter","revision":"6044da783597cc3b57aef7580ddcdcff58a4ee99","tags":"unknown","version":"1.12.1"},"value":[1790757159.207,"1"]},{"metric":{"__name__":"node_exporter_build_info","branch":"HEAD","goarch":"amd64","goos":"linux","goversion":"go1.26.5","instance":"10.1.93.105:9100","job":"node-exporter","revision":"6044da783597cc3b57aef7580ddcdcff58a4ee99","tags":"unknown","version":"1.12.1"},"value":[1790757159.207,"1"]},{"metric":{"__name__":"node_exporter_build_info","branch":"HEAD","goarch":"amd64","goos":"linux","goversion":"go1.26.5","instance":"10.1.93.107:9100","job":"node-exporter","revision":"6044da783597cc3b57aef7580ddcdcff58a4ee99","tags":"unknown","version":"1.12.1"},"value":[1790757159.207,"1"]}]}}
+node-exporter target up:
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"up","instance":"10.1.93.108:9100","job":"node-exporter"},"value":[1790757159.336,"1"]},{"metric":{"__name__":"up","instance":"10.1.93.105:9100","job":"node-exporter"},"value":[1790757159.336,"1"]},{"metric":{"__name__":"up","instance":"10.1.93.107:9100","job":"node-exporter"},"value":[1790757159.336,"1"]}]}}
+daemonset: strategy={"rollingUpdate":{"maxSurge":0,"maxUnavailable":1},"type":"RollingUpdate"} desired=3 updated=3 ready=3 available=3 generation=7 observed=7
+pods monitoring-api:
+alertmanager-774f8866d-ppgqn         true   0     2026-09-27T09:32:25Z
+grafana-559b978c69-k2ws6             true   0     2026-09-27T09:32:25Z
+kube-state-metrics-f88b9c457-n5n7x   true   2     2026-09-27T06:32:40Z
+prometheus-5c6cd4bc84-b2zpq          true   0     2026-09-27T09:32:25Z

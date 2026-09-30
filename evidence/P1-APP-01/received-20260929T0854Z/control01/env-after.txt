@@ -1,0 +1,12 @@
+2026-09-29T18:15:11+09:00
+transaction-api 10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33 {"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"250m","memory":"256Mi"}} replicas=3 ready=3
+fds-engine 10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369 {"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"250m","memory":"256Mi"}} replicas=3 ready=3
+POD                               NODE           READY   RESTARTS   LAST      IMAGEID
+fds-engine-5699669f6f-4rw8m       k8s-worker02   true    0          <none>    10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+fds-engine-5699669f6f-5rxbt       k8s-worker03   true    2          Unknown   10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+fds-engine-5699669f6f-c5jw6       k8s-worker01   true    0          <none>    10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+transaction-api-b784c8c5d-j4gn2   k8s-worker02   true    0          <none>    10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+transaction-api-b784c8c5d-m65z4   k8s-worker03   true    0          <none>    10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+transaction-api-b784c8c5d-rq9b6   k8s-worker01   true    1          Unknown   10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+System time     : 0.000103484 seconds fast of NTP time
+Leap status     : Normal

@@ -1,0 +1,69 @@
+# 2026-09-30T17:38:56+09:00 host=k8s-control01 user=server02
+== 1. ConfigMap 소스 대조 (infra-monitoring main e4acbdc 기준 키별 SHA-256)
+DIFF monitoring-api/grafana-datasources datasource.yaml field=b11d48cd777f source=952e20511d68
+SAME monitoring-api/grafana-dashboards-provider provider.yaml field=077da8362b15 source=077da8362b15
+SAME monitoring-api/grafana-dashboards fds-overview.json field=2b6c20b0dd17 source=2b6c20b0dd17
+SAME monitoring-api/grafana-dashboards application-fds.json field=acb71dc6fccc source=acb71dc6fccc
+SAME monitoring-api/grafana-dashboards kubernetes-workload.json field=3d0ef2d1a85f source=3d0ef2d1a85f
+SAME monitoring-api/grafana-dashboards node-monitoring-health.json field=d762bac80fe3 source=d762bac80fe3
+SAME monitoring-api/prometheus-alert-rules alert-rules.yml field=2ffbb7770c2f source=2ffbb7770c2f
+SAME monitoring-api/prometheus-alert-rules-optional alert-rules-optional.yml field=3d2a0baabd2e source=3d2a0baabd2e
+SAME monitoring-api/prometheus-p0-test-alert p0-test-alert.yml field=c97c60256c4c source=c97c60256c4c
+grafana-dashboards-provider keys: ['provider.yaml']
+grafana-dashboards keys: ['application-fds.json', 'fds-overview.json', 'kubernetes-workload.json', 'node-monitoring-health.json']
+grafana-datasources keys: ['datasource.yaml']
+prometheus-alert-rules-optional keys: ['alert-rules-optional.yml']
+prometheus-alert-rules keys: ['alert-rules.yml']
+prometheus-p0-test-alert keys: ['p0-test-alert.yml']
+== 2. Grafana Provisioning
+uid=fds-app-fds title=Application & FDS provisioned=True file=application-fds.json version=1
+uid=fds-overview title=FDS Overview (발표용 · 한 화면) provisioned=True file=fds-overview.json version=3
+uid=fds-k8s-workload title=Kubernetes Workload provisioned=True file=kubernetes-workload.json version=2
+uid=fds-node-monitoring-health title=Node & Monitoring Health provisioned=True file=node-monitoring-health.json version=1
+dashboard 수: 4
+datasource health: {"details":{"application":"Prometheus","features":{"rulerApiEnabled":false}},"message":"Successfully queried the Prometheus API.","status":"OK"}
+== 3. Prometheus Rule
+group=fds-optional-hardening file=/etc/prometheus/rules-opt/alert-rules-optional.yml
+   alerting FDSDetectionBurst health=ok state=inactive severity=warning known_issue=-
+   alerting FDSDetectionBurstAnyRule health=ok state=inactive severity=info known_issue=-
+   alerting UnexpectedPodInFdsNs health=ok state=inactive severity=warning known_issue=-
+group=fds-p0-test-alert file=/etc/prometheus/rules-p0/p0-test-alert.yml
+   alerting FDSMonitoringPipelineTest health=ok state=inactive severity=info known_issue=-
+group=fds-core-observability file=/etc/prometheus/rules/alert-rules.yml
+   alerting NodeExporterDown health=ok state=inactive severity=warning known_issue=-
+   alerting KubeletScrapeDown health=ok state=inactive severity=info known_issue=-
+   alerting TargetDown health=ok state=inactive severity=critical known_issue=-
+group=fds-monitoring-heartbeat file=/etc/prometheus/rules/alert-rules.yml
+   recording fds_monitoring_heartbeat health=ok state=- severity=- known_issue=-
+== 4. monitoring-node 통제 예외
+ns monitoring-api psa enforce=restricted audit=restricted warn=restricted
+ns monitoring-node psa enforce=privileged audit=restricted warn=restricted
+hostNetwork=True hostPID=True hostIPC=None serviceAccount=node-exporter-sa automountToken=None
+container=node-exporter image=10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f
+   args=['--path.rootfs=/host', '--collector.disable-defaults', '--collector.cpu', '--collector.loadavg', '--collector.meminfo', '--collector.diskstats', '--collector.filesystem', '--collector.netdev', '--collector.time', '--collector.timex']
+   securityContext={"allowPrivilegeEscalation": false, "capabilities": {"drop": ["ALL"]}, "privileged": false, "readOnlyRootFilesystem": true, "seccompProfile": {"type": "RuntimeDefault"}}
+   mount rootfs -> /host readOnly=True hostPath=/
+collectors 10.1.93.105:9100 (8): cpu=1 diskstats=1 filesystem=1 loadavg=1 meminfo=1 netdev=1 time=1 timex=1
+collectors 10.1.93.107:9100 (8): cpu=1 diskstats=1 filesystem=1 loadavg=1 meminfo=1 netdev=1 time=1 timex=1
+collectors 10.1.93.108:9100 (8): cpu=1 diskstats=1 filesystem=1 loadavg=1 meminfo=1 netdev=1 time=1 timex=1
+node-exporter-bbp2t   k8s-worker01   true   0     10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f
+node-exporter-kwd76   k8s-worker03   true   0     10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f
+node-exporter-qtvk2   k8s-worker02   true   0     10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f
+== 5. 반영 상태 (Pod 안 파일·reload·rollout)
+prometheus rule file: 2ffbb7770c2f2c21cfdc6c810567b2d394a49ee5d0b9362d934427c8981c8695  /etc/prometheus/rules/alert-rules.yml
+grafana provider file: 077da8362b15745f8705fd79dce98c22f5b8523b689be8bdf156ae924d2809b5  /etc/grafana/provisioning/dashboards/provider.yaml
+prometheus args: ["--config.file=/etc/prometheus/prometheus.yml","--web.enable-lifecycle","--storage.tsdb.retention.time=15d","--storage.tsdb.retention.size=16GB"]
+prometheus reload metrics:
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"prometheus_config_last_reload_successful","instance":"localhost:9090","job":"prometheus"},"value":[1790757539.161,"1"]}]}}
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"prometheus_config_last_reload_success_timestamp_seconds","instance":"localhost:9090","job":"prometheus"},"value":[1790757539.294,"1790757382.8189306"]}]}}
+node_exporter build:
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"node_exporter_build_info","branch":"HEAD","goarch":"amd64","goos":"linux","goversion":"go1.26.5","instance":"10.1.93.108:9100","job":"node-exporter","revision":"6044da783597cc3b57aef7580ddcdcff58a4ee99","tags":"unknown","version":"1.12.1"},"value":[1790757539.418,"1"]},{"metric":{"__name__":"node_exporter_build_info","branch":"HEAD","goarch":"amd64","goos":"linux","goversion":"go1.26.5","instance":"10.1.93.105:9100","job":"node-exporter","revision":"6044da783597cc3b57aef7580ddcdcff58a4ee99","tags":"unknown","version":"1.12.1"},"value":[1790757539.418,"1"]},{"metric":{"__name__":"node_exporter_build_info","branch":"HEAD","goarch":"amd64","goos":"linux","goversion":"go1.26.5","instance":"10.1.93.107:9100","job":"node-exporter","revision":"6044da783597cc3b57aef7580ddcdcff58a4ee99","tags":"unknown","version":"1.12.1"},"value":[1790757539.418,"1"]}]}}
+node-exporter target up:
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"up","instance":"10.1.93.108:9100","job":"node-exporter"},"value":[1790757539.548,"1"]},{"metric":{"__name__":"up","instance":"10.1.93.105:9100","job":"node-exporter"},"value":[1790757539.548,"1"]},{"metric":{"__name__":"up","instance":"10.1.93.107:9100","job":"node-exporter"},"value":[1790757539.548,"1"]}]}}
+daemonset: strategy={"rollingUpdate":{"maxSurge":0,"maxUnavailable":1},"type":"RollingUpdate"} desired=3 updated=3 ready=3 available=3 generation=8 observed=8
+pods monitoring-api:
+alertmanager-774f8866d-ppgqn         true   0     2026-09-27T09:32:25Z
+grafana-559b978c69-k2ws6             true   0     2026-09-27T09:32:25Z
+kube-state-metrics-f88b9c457-n5n7x   true   2     2026-09-27T06:32:40Z
+prometheus-5c6cd4bc84-b2zpq          true   0     2026-09-27T09:32:25Z
+DONE dir=/home/server02/p1-mon-sync-20260930T173234/out-post
