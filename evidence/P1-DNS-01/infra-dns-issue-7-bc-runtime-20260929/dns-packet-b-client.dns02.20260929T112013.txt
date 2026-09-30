@@ -1,0 +1,42 @@
+dropped privs to tcpdump
+tcpdump: listening on ens160, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+2026-09-29 11:20:18.297781 IP (tos 0x0, ttl 64, id 43456, offset 0, flags [none], proto UDP (17), length 81)
+    10.250.10.10.54235 > 10.1.93.53.53: [bad udp cksum 0x7c88 -> 0xb754!] 53781+ [1au] SOA? fds.internal. ar: . OPT UDPsize=1232 [COOKIE 0360a40c337a2b08] (53)
+2026-09-29 11:20:18.298701 IP (tos 0xc0, ttl 63, id 20648, offset 0, flags [none], proto ICMP (1), length 109)
+    10.1.93.53 > 10.250.10.10: ICMP host 10.1.93.53 unreachable - admin prohibited filter, length 89
+	IP (tos 0x0, ttl 63, id 43456, offset 0, flags [none], proto UDP (17), length 81)
+    10.250.10.10.54235 > 10.1.93.53.53: [udp sum ok] 53781+ [1au] SOA? fds.internal. ar: . OPT UDPsize=1232 [COOKIE 0360a40c337a2b08] (53)
+2026-09-29 11:20:18.317486 IP (tos 0x0, ttl 64, id 49718, offset 0, flags [DF], proto TCP (6), length 60)
+    10.250.10.10.42875 > 10.1.93.53.53: Flags [S], cksum 0x7c68 (incorrect -> 0x2865), seq 2508949445, win 64660, options [mss 1220,sackOK,TS val 2519092372 ecr 0,nop,wscale 7], length 0
+2026-09-29 11:20:18.318535 IP (tos 0xc0, ttl 63, id 20666, offset 0, flags [none], proto ICMP (1), length 88)
+    10.1.93.53 > 10.250.10.10: ICMP host 10.1.93.53 unreachable - admin prohibited filter, length 68
+	IP (tos 0x0, ttl 63, id 49718, offset 0, flags [DF], proto TCP (6), length 60)
+    10.250.10.10.42875 > 10.1.93.53.53: Flags [S], cksum 0x2865 (correct), seq 2508949445, win 64660, options [mss 1220,sackOK,TS val 2519092372 ecr 0,nop,wscale 7], length 0
+2026-09-29 11:20:23.830462 IP (tos 0x0, ttl 64, id 48868, offset 0, flags [none], proto UDP (17), length 81)
+    10.250.10.10.39321 > 10.1.93.53.53: [bad udp cksum 0x7c88 -> 0x97b8!] 17904+ [1au] SOA? fds.internal. ar: . OPT UDPsize=1232 [COOKIE 9316b8fbd8f1e4d0] (53)
+2026-09-29 11:20:23.831765 IP (tos 0xc0, ttl 63, id 22675, offset 0, flags [none], proto ICMP (1), length 109)
+    10.1.93.53 > 10.250.10.10: ICMP host 10.1.93.53 unreachable - admin prohibited filter, length 89
+	IP (tos 0x0, ttl 63, id 48868, offset 0, flags [none], proto UDP (17), length 81)
+    10.250.10.10.39321 > 10.1.93.53.53: [udp sum ok] 17904+ [1au] SOA? fds.internal. ar: . OPT UDPsize=1232 [COOKIE 9316b8fbd8f1e4d0] (53)
+2026-09-29 11:20:23.848884 IP (tos 0x0, ttl 64, id 19238, offset 0, flags [DF], proto TCP (6), length 60)
+    10.250.10.10.41817 > 10.1.93.53.53: Flags [S], cksum 0x7c68 (incorrect -> 0x0ab5), seq 506652544, win 64660, options [mss 1220,sackOK,TS val 146740076 ecr 0,nop,wscale 7], length 0
+2026-09-29 11:20:23.850038 IP (tos 0xc0, ttl 63, id 22679, offset 0, flags [none], proto ICMP (1), length 88)
+    10.1.93.53 > 10.250.10.10: ICMP host 10.1.93.53 unreachable - admin prohibited filter, length 68
+	IP (tos 0x0, ttl 63, id 19238, offset 0, flags [DF], proto TCP (6), length 60)
+    10.250.10.10.41817 > 10.1.93.53.53: Flags [S], cksum 0x0ab5 (correct), seq 506652544, win 64660, options [mss 1220,sackOK,TS val 146740076 ecr 0,nop,wscale 7], length 0
+2026-09-29 11:20:29.586397 IP (tos 0x0, ttl 64, id 50521, offset 0, flags [none], proto UDP (17), length 81)
+    10.250.10.10.48168 > 10.1.93.53.53: [bad udp cksum 0x7c88 -> 0x78ce!] 64332+ [1au] SOA? fds.internal. ar: . OPT UDPsize=1232 [COOKIE 86871a80f51471ff] (53)
+2026-09-29 11:20:29.587673 IP (tos 0xc0, ttl 63, id 28107, offset 0, flags [none], proto ICMP (1), length 109)
+    10.1.93.53 > 10.250.10.10: ICMP host 10.1.93.53 unreachable - admin prohibited filter, length 89
+	IP (tos 0x0, ttl 63, id 50521, offset 0, flags [none], proto UDP (17), length 81)
+    10.250.10.10.48168 > 10.1.93.53.53: [udp sum ok] 64332+ [1au] SOA? fds.internal. ar: . OPT UDPsize=1232 [COOKIE 86871a80f51471ff] (53)
+2026-09-29 11:20:29.607322 IP (tos 0x0, ttl 64, id 16221, offset 0, flags [DF], proto TCP (6), length 60)
+    10.250.10.10.33221 > 10.1.93.53.53: Flags [S], cksum 0x7c68 (incorrect -> 0xf489), seq 2694793681, win 64660, options [mss 1220,sackOK,TS val 2065036310 ecr 0,nop,wscale 7], length 0
+2026-09-29 11:20:29.608369 IP (tos 0xc0, ttl 63, id 28127, offset 0, flags [none], proto ICMP (1), length 88)
+    10.1.93.53 > 10.250.10.10: ICMP host 10.1.93.53 unreachable - admin prohibited filter, length 68
+	IP (tos 0x0, ttl 63, id 16221, offset 0, flags [DF], proto TCP (6), length 60)
+    10.250.10.10.33221 > 10.1.93.53.53: Flags [S], cksum 0xf489 (correct), seq 2694793681, win 64660, options [mss 1220,sackOK,TS val 2065036310 ecr 0,nop,wscale 7], length 0
+
+12 packets captured
+12 packets received by filter
+0 packets dropped by kernel
