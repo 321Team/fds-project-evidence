@@ -1,0 +1,58 @@
+== POST getsebool
+container_read_certs --> on
+== POST getfacl
+# file: /etc/fds/pki
+# owner: root
+# group: root
+user::rwx
+user:server01_monitor:--x
+group::---
+mask::--x
+other::---
+
+# file: /etc/fds/pki/monitor01
+# owner: root
+# group: root
+user::rwx
+user:server01_monitor:--x
+group::---
+mask::--x
+other::---
+
+# file: /etc/fds/pki/monitor01/request
+# owner: root
+# group: root
+user::rwx
+user:server01_monitor:--x
+group::---
+mask::--x
+other::---
+
+# file: /etc/fds/pki/monitor01/request/monitor01.key
+# owner: root
+# group: root
+user::rw-
+user:589819:r--
+group::---
+mask::r--
+other::---
+
+== POST label (unchanged expected)
+drwx--x---+ 3 root root unconfined_u:object_r:cert_t:s0   23  9월 19일  01:51 /etc/fds/pki
+drwx--x---+ 3 root root unconfined_u:object_r:cert_t:s0   21  9월 19일  01:51 /etc/fds/pki/monitor01
+drwx--x---+ 2 root root unconfined_u:object_r:cert_t:s0   89  9월 19일  01:51 /etc/fds/pki/monitor01/request
+-rw-r-----+ 1 root root unconfined_u:object_r:cert_t:s0 2484  9월 19일  01:51 /etc/fds/pki/monitor01/request/monitor01.key
+== POST key spki
+175f4b5dcc4563d2a42096de853ea8eb45d9d808ef06e8dcdb806cd101085028  -
+== server01_monitor direct read (deny expected)
+DENIED (expected)
+== uid 65532 in container (read expected)
+DENIED
+== uid 65534 in container (deny expected)
+DENIED
+== containers mounting key (none expected)
+none
+== tls
+합계 4
+-rw-r--r--. 1 server01_monitor server01_monitor system_u:object_r:etc_t:s0 1834 10월  1일  17:33 monitor01.crt
+85620544c77fb1b8e7a4ab5acfaf491ed45244a51fdfaebde951c05572d0a3ec  /etc/fds/monitor01/tls/monitor01.crt

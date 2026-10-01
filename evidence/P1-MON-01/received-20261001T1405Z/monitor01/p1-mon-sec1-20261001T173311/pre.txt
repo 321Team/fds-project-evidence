@@ -1,0 +1,43 @@
+== time
+2026-10-01 17:33:13 KST
+== uid_map
+         0       1000          1
+         1     524288      65536
+== PRE getsebool
+container_read_certs --> off
+== PRE getfacl
+# file: /etc/fds/pki
+# owner: root
+# group: root
+user::rwx
+group::---
+other::---
+
+# file: /etc/fds/pki/monitor01
+# owner: root
+# group: root
+user::rwx
+group::---
+other::---
+
+# file: /etc/fds/pki/monitor01/request
+# owner: root
+# group: root
+user::rwx
+group::---
+other::---
+
+# file: /etc/fds/pki/monitor01/request/monitor01.key
+# owner: root
+# group: root
+user::rw-
+group::---
+other::---
+
+== PRE label
+drwx------. 3 root root unconfined_u:object_r:cert_t:s0   23  9월 19일  01:51 /etc/fds/pki
+drwx------. 3 root root unconfined_u:object_r:cert_t:s0   21  9월 19일  01:51 /etc/fds/pki/monitor01
+drwx------. 2 root root unconfined_u:object_r:cert_t:s0   89  9월 19일  01:51 /etc/fds/pki/monitor01/request
+-rw-------. 1 root root unconfined_u:object_r:cert_t:s0 2484  9월 19일  01:51 /etc/fds/pki/monitor01/request/monitor01.key
+== PRE key spki
+175f4b5dcc4563d2a42096de853ea8eb45d9d808ef06e8dcdb806cd101085028  -

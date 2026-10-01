@@ -1,0 +1,28 @@
+2026-10-01 23:03:19 KST
+prometheus_remote_storage_samples_total => [('1c25ec', '10432')]
+prometheus_remote_storage_samples_failed_total => [('1c25ec', '2584')]
+prometheus_remote_storage_samples_retried_total => [('1c25ec', '7752')]
+prometheus_remote_storage_samples_dropped_total => [('1c25ec', '74507856')]
+increase(prometheus_remote_storage_samples_total[15m]) => [('1c25ec', '60')]
+increase(prometheus_remote_storage_samples_failed_total[15m]) => [('1c25ec', '0')]
+increase(prometheus_remote_storage_samples_retried_total[15m]) => [('1c25ec', '0')]
+prometheus_remote_storage_highest_timestamp_in_seconds => [('prometheus_remote_storage_highest_timestamp_in_seconds', '1790863388')]
+prometheus_remote_storage_queue_highest_timestamp_seconds => [('1c25ec', '1790863382')]
+prometheus_remote_storage_queue_highest_sent_timestamp_seconds => [('1c25ec', '1790863382')]
+time() => ERR 'float' object is not subscriptable
+== prometheus log (remote write, last 3h)
+time=2026-10-01T13:29:41.825Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: no route to host"
+time=2026-10-01T13:30:41.863Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: no route to host"
+time=2026-10-01T13:31:41.895Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: no route to host"
+time=2026-10-01T13:32:41.927Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: no route to host"
+time=2026-10-01T13:33:41.960Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: connection refused"
+time=2026-10-01T13:34:41.991Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: connection refused"
+time=2026-10-01T13:35:42.023Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: connection refused"
+time=2026-10-01T13:36:42.055Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: connection refused"
+time=2026-10-01T13:37:42.090Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: connection refused"
+time=2026-10-01T13:38:42.120Z level=WARN source=queue_manager.go:2097 msg="Failed to send batch, retrying" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write err="Post \"https://10.250.10.30/api/v1/write\": dial tcp 10.250.10.30:443: connect: connection refused"
+time=2026-10-01T13:39:07.155Z level=ERROR source=queue_manager.go:1731 msg="non-recoverable error" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write failedSampleCount=1 failedHistogramCount=0 failedExemplarCount=0 err="server returned HTTP status 400 Bad Request: out of bounds\n"
+time=2026-10-01T13:39:13.398Z level=INFO source=queue_manager.go:1121 msg="Remote storage resharding" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write from=1 to=50
+time=2026-10-01T13:43:13.397Z level=INFO source=queue_manager.go:1121 msg="Remote storage resharding" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write from=50 to=29
+time=2026-10-01T13:44:23.397Z level=INFO source=queue_manager.go:1121 msg="Remote storage resharding" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write from=10 to=5
+time=2026-10-01T13:45:53.397Z level=INFO source=queue_manager.go:1121 msg="Remote storage resharding" component=remote remote_name=1c25ec url=https://10.250.10.30/api/v1/write from=2 to=1

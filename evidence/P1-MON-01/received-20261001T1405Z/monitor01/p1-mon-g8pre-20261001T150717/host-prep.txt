@@ -1,0 +1,16 @@
+rc=0
+drwx--x--x. 4 root   root   unconfined_u:object_r:etc_t:s0                   34  9월 27일  15:59 /etc/fds
+drwxr-xr-x. 2 root   root   system_u:object_r:container_file_t:s0:c243,c739  26  9월 27일  15:59 /etc/fds/monitor01/blackbox
+drwxr-xr-x. 2 root   root   unconfined_u:object_r:etc_t:s0                   28 10월  1일  15:21 /etc/fds/monitor01/receiver
+drwxr-xr-x. 2 root   root   system_u:object_r:container_file_t:s0:c65,c984   63  9월 27일  15:59 /etc/fds/monitor01/receiver.20260927-rootful-hold
+drwxr-xr-x. 3 589821 589821 unconfined_u:object_r:var_lib_t:s0               19 10월  1일  15:21 /var/lib/fds/monitor01/receiver
+drwxr-xr-x. 6 nobody nobody system_u:object_r:container_file_t:s0:c65,c984  126  9월 27일  21:10 /var/lib/fds/monitor01/receiver.20260927-rootful-hold
+/var/lib/fds/monitor01/receiver:
+합계 0
+drwxr-xr-x. 2 1000 1000 unconfined_u:object_r:var_lib_t:s0 33 10월  1일  15:21 rules
+
+/var/lib/fds/monitor01/receiver/rules:
+합계 4
+-r--r--r--. 1 1000 1000 system_u:object_r:var_lib_t:s0 466 10월  1일  15:21 watchdog.rules.json
+a3b2e89d45a8b552b53619aeafef8520acbf2a5e65cb74c11b717c58ab15c52e  /etc/fds/monitor01/receiver/prometheus.yml
+5626853511bda87f65c27f8f4b518dea3fa310162abfad115a34f8dab85fa14a  /var/lib/fds/monitor01/receiver/rules/watchdog.rules.json
