@@ -1,0 +1,18 @@
+== monitoring-api
+KIND         NAME                 PULLSECRET           SA
+Deployment   alertmanager         harbor-pull-secret   alertmanager-sa
+Deployment   grafana              harbor-pull-secret   grafana-sa
+Deployment   kube-state-metrics   harbor-pull-secret   kube-state-metrics-sa
+Deployment   prometheus           harbor-pull-secret   prometheus-sa
+SA                      PULLSECRET
+alertmanager-sa         <none>
+default                 <none>
+grafana-sa              <none>
+kube-state-metrics-sa   <none>
+prometheus-sa           <none>
+== monitoring-node
+KIND        NAME            PULLSECRET           SA
+DaemonSet   node-exporter   harbor-pull-secret   node-exporter-sa
+SA                 PULLSECRET
+default            <none>
+node-exporter-sa   <none>
