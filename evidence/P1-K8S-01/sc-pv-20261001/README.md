@@ -11,24 +11,30 @@
 | 실행자 | 이하영(K8S/SEC Lead) |
 | 수집 | 2026-10-01 KST (정확한 시각은 파일에 없음) |
 | 전달 경로 | control01 콘솔 `cat` 출력을 Claude Code 세션에 붙여넣기 → 파일 재구성 |
+| 자료 구분 | **CONSOLE_SUBMITTED / RECONSTRUCTED_COPY** (서버 `.yaml`/`.sha256` 파일을 직접 수신하지 않음) |
 | 편입 작성 | Claude Code 세션 (AI 보조) — 독립 검토 필요 |
 
 `/root`에 저장하려 했으나 권한 거부(`server02`는 root 아님)되어 홈 디렉터리에 저장했다. 이 시도는 증적에 영향이 없다.
 
 ## 무결성
 
-control01에서 실행한 `sha256sum ~/sc-pv-pvc.yaml` 결과와 편입본의 해시가 일치한다. 붙여넣기로 옮겼으나 바이트 단위로 원본과 같다.
+**자료 구분: `CONSOLE_SUBMITTED / RECONSTRUCTED_COPY`.** 서버의 `sc-pv-pvc.yaml`과 `.sha256` 파일을 직접 수신하지 않았다. 따라서 **서버 원본 파일의 해시 검증을 주장하지 않는다.**
+
+확인한 범위는 다음으로 한정한다.
+
+- 실행자가 control01 콘솔에서 `sha256sum ~/sc-pv-pvc.yaml`을 실행해 화면에 보고한 SHA256과, 콘솔 `cat` 출력에서 재구성한 이 폴더의 `sc-pv-pvc.yaml`의 SHA256이 일치한다.
+- 편입본은 8,403 bytes, LF 줄바꿈, CR 없음이다. `.gitattributes` `* -text`로 변환 없이 보관한다.
+- 서버에서 `grep -ci password` 0건이 보고됐고, 파일에는 Secret 객체가 없고 StorageClass·PV·PVC 메타데이터만 있다.
 
 ```
-4d463500dc5fa04b53e8942e0e67ffc08fac2aefe969686619d6103e5d781353  sc-pv-pvc.yaml
+4d463500dc5fa04b53e8942e0e67ffc08fac2aefe969686619d6103e5d781353  sc-pv-pvc.yaml   (서버 화면 보고값 = 재구성본)
 ```
-
-- 크기 8,403 bytes, LF 줄바꿈, CR 없음. `.gitattributes` `* -text`로 변환 없이 보관한다.
-- 비밀번호·토큰·키 문자열 검사: 서버에서 `grep -ci password` 0건. 파일에는 Secret 객체가 없고 StorageClass·PV·PVC 메타데이터만 있다.
 
 ```bash
 sha256sum --check SHA256SUMS
 ```
+
+`SHA256SUMS`는 이 폴더에 편입된 파일의 무결성 목록이며 서버 원본의 증명이 아니다. 서버 원본 파일과 `.sha256`을 직접 수신하면 새 수집회차로 보완할 수 있다.
 
 ## 확인한 사실
 
@@ -48,4 +54,4 @@ sha256sum --check SHA256SUMS
 
 ## 검토 상태
 
-이 편입은 AI 세션의 자체 대조(서버 해시와 편입본 해시 일치, 민감정보 검사)이며 `governance/EVIDENCE_POLICY.md`가 요구하는 독립 검토는 아직 없다. AC 인수와 티켓 종결은 K8S Lead가 별도로 판단한다.
+이 편입은 AI 세션의 자체 대조(화면 보고 해시와 재구성본 해시 일치, 민감정보 검사)이며 `governance/EVIDENCE_POLICY.md`가 요구하는 독립 검토는 아직 없다. AC 인수와 티켓 종결은 K8S Lead가 별도로 판단한다.
