@@ -11,21 +11,27 @@
 | 수집 명령 | 아래 "수집 명령" 블록(읽기 전용 `kubectl get/exec cat`, `ip link`, `ping`) |
 | 실행자 | 이하영(K8S/SEC Lead) |
 | 전달 경로 | control02 콘솔 출력 붙여넣기 → Claude Code 세션에서 파일 재구성 |
+| 자료 구분 | **CONSOLE_SUBMITTED / RECONSTRUCTED_COPY** (서버 `.txt`/`.sha256` 파일을 직접 수신하지 않음) |
 | 편입 작성 | Claude Code 세션 (AI 보조) — 독립 검토 필요 |
 
 ## 무결성
 
-control02에서 실행한 `sha256sum ~/mtu-check.txt`와 편입본의 해시가 일치한다. 콘솔 붙여넣기로 옮겼으나 바이트 단위로 원본과 같다(`[sudo]` 암호 프롬프트는 tty로 출력되어 파일에 없다. 재구성 결과가 서버 해시와 일치하여 확인).
+**자료 구분: `CONSOLE_SUBMITTED / RECONSTRUCTED_COPY`.** 서버의 `mtu-check.txt`와 `.sha256` 파일을 직접 수신하지 않았다. 따라서 **서버 원본 파일의 해시 검증을 주장하지 않는다.**
+
+확인한 범위는 다음으로 한정한다.
+
+- 실행자가 control02 콘솔에서 `sha256sum ~/mtu-check.txt`를 실행해 화면에 보고한 SHA256과, 콘솔 출력에서 재구성한 이 폴더의 `mtu-check.txt`의 SHA256이 일치한다.
+- `[sudo]` 암호 프롬프트는 파일에 포함되지 않은 것으로 재구성했고 이 재구성이 보고 해시와 일치한다.
 
 ```
-7d1b9bcbed2a5ffcc2d67370ed30a812201cbc85f5b9bc622b8e54ffbebb43de  mtu-check.txt
+7d1b9bcbed2a5ffcc2d67370ed30a812201cbc85f5b9bc622b8e54ffbebb43de  mtu-check.txt   (서버 화면 보고값 = 재구성본)
 ```
 
 ```bash
 sha256sum --check SHA256SUMS
 ```
 
-암호·토큰 값은 파일에 없다.
+`SHA256SUMS`는 이 폴더에 편입된 파일의 무결성 목록이며 서버 원본의 증명이 아니다. 서버 원본 `.txt`와 `.sha256`을 파일로 수신하면 새 수집회차로 보완할 수 있다. 암호·토큰 값은 파일에 없다.
 
 ## 수집 명령
 
@@ -66,6 +72,12 @@ ping -c 2 -W 1 <Pod IP 10.244.69.210>; ping -c 2 -W 1 <노드 IP 10.1.93.107>
 5. CrossSubnet 노드 간 TCP 통신은 별도 증적(`../icr39-verification-20260927/`)에 있다. 이 폴더의 값과 큰 패킷 경로의 연결은 확인되지 않았다.
 6. FelixConfiguration `default`에는 mtu 관련 설정이 없다(별도 조회, 이 파일 밖). MTU는 `calico-config`의 `veth_mtu`로 지정된다.
 
+## 판정 경계
+
+- `MTU_CONFIG_AND_INTERFACE_VALUES = OBSERVED` (콘솔 제출 자료 기준)
+- `MTU_PATH_ACCEPTANCE = NOT_VERIFIED` (큰 패킷 통과 미시험)
+- AC 충족을 주장하지 않는다.
+
 ## 검토 상태
 
-AI 세션의 자체 대조(해시 일치, 민감정보 확인)이며 `governance/EVIDENCE_POLICY.md`의 독립 검토는 아직 없다. 이 편입은 AC 인수나 티켓 종결을 뜻하지 않는다.
+AI 세션의 자체 대조(화면 보고 해시와 재구성본 해시 일치, 민감정보 확인)이며 `governance/EVIDENCE_POLICY.md`의 독립 검토는 아직 없다. 이 편입은 AC 인수나 티켓 종결을 뜻하지 않는다.
