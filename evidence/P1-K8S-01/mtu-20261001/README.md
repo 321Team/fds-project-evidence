@@ -1,6 +1,6 @@
 # P1-K8S-01 Calico MTU 설정·실측값 증적 — 2026-10-01
 
-[fds-project-baseline#10](https://github.com/321Team/fds-project-baseline/issues/10) 핵심 요구 "MTU 후보 1450 실측 확정"에 대응하는 읽기 전용 조회 결과다. **MTU 값은 확인했으나 큰 패킷 통과(DF ping)는 시험하지 못했다.** 아래 "한계"를 반드시 함께 본다.
+[fds-project-baseline#10](https://github.com/321Team/fds-project-baseline/issues/10) 핵심 요구 "MTU 후보 1450 실측 확정"에 대응하는 읽기 전용 조회 결과다. **MTU 값 3곳을 관측했고, ICMP DF ping은 시험하지 못했으나 ICMP를 쓰지 않는 TCP 큰 데이터 교차 노드 시험은 통과했다.** 아래 "한계"를 반드시 함께 본다.
 
 ## 출처와 수신
 
@@ -13,6 +13,7 @@
 | 전달 경로 | control02 콘솔 출력 붙여넣기 → Claude Code 세션에서 파일 재구성 |
 | 자료 구분 | **CONSOLE_SUBMITTED / RECONSTRUCTED_COPY** (서버 `.txt`/`.sha256` 파일을 직접 수신하지 않음) |
 | 편입 작성 | Claude Code 세션 (AI 보조) — 독립 검토 필요 |
+| 추가 수집 | `mtu-tcp-check.txt` (control02 `server03` 홈 `~/mtu-tcp-check.txt`, 2026-10-01T15:23:51+09:00, 아래 "TCP 큰 데이터 시험") |
 
 ## 무결성
 
@@ -25,6 +26,7 @@
 
 ```
 7d1b9bcbed2a5ffcc2d67370ed30a812201cbc85f5b9bc622b8e54ffbebb43de  mtu-check.txt   (서버 화면 보고값 = 재구성본)
+92ff04600fdb2590e00b425237bc3110940b16ca37db13ec8ecfb2f398aa2f3d  mtu-tcp-check.txt   (서버 화면 보고값 = 재구성본)
 ```
 
 ```bash
@@ -63,9 +65,26 @@ ping -c 2 -W 1 <Pod IP 10.244.69.210>; ping -c 2 -W 1 <노드 IP 10.1.93.107>
 
 설정값, 터널 인터페이스, 서로 다른 두 Worker의 Pod 인터페이스가 모두 1450으로 일치한다.
 
-## 한계 (큰 패킷 통과 미시험)
+## TCP 큰 데이터 시험 (ICMP 미사용)
 
-1. **DF 큰 패킷 ping 시험을 하지 못했다.** control02에서 Pod IP(10.244.69.210)와 worker02 노드 IP(10.1.93.107)로 작은 ping(56바이트)이 모두 100% 손실이다. 작은 패킷도 도달하지 않으므로 큰 패킷 시험은 MTU 증거가 되지 않는다.
+DF ping은 ICMP가 막혀 시험할 수 없어서(아래 한계 1), 허용된 TCP로 큰 데이터를 교차 노드로 보내는 시험을 추가했다. 정책은 변경하지 않았다.
+
+| 항목 | 내용 |
+|---|---|
+| 클라이언트 | `icr39-probe/probe-w01` (worker01, `calico/node` 이미지의 bash `/dev/tcp`) |
+| 서버 | CoreDNS Pod `10.244.246.119` (k8s-control01) TCP 9153 `/metrics` — 기존 서비스, 읽기 요청만 |
+| 요청 | 기준: `GET /x`(작은 요청). 시험: `GET /metrics` + 20,000자 `X-Pad` 헤더 |
+| 결과 | 기준 응답 175자, 시험 응답 **25,951자**, 패딩 20,000자 확인(`pad_chars=20000`) |
+
+- 요청 방향 20KB 이상과 응답 방향 약 26KB가 노드를 건너 정상 수신됐다. Pod MTU 1450 기준 TCP MSS는 약 1410이므로 양방향 모두 가득 찬 크기의 세그먼트가 여러 개 필요한 양이다.
+- 도구 제약(`wc`·`head`·`tr` 없음)으로 응답 길이는 bash 변수 문자 수이며 정확한 바이트 수가 아니다(ASCII라 근사). 마지막 개행은 제거된다.
+- **실제 패킷 크기·MSS는 캡처하거나 읽지 않았다.** 큰 세그먼트가 가득 찬 크기로 전송됐다는 것은 양이 필요로 하는 추정이다.
+- 출발·도착 노드(worker01 → control01)는 같은 서브넷이다. `vxlan=CrossSubnet`이므로 이 경로가 VXLAN으로 캡슐화됐는지는 구분하지 않았다. 경로가 캡슐화 여부와 무관하게 큰 TCP 데이터를 통과시킨다는 것까지만 확인한다.
+- 이 시험은 DF/PMTU 방식의 직접 시험이 아니다. 동등성 판단은 검토자에게 맡긴다.
+
+## 한계
+
+1. **ICMP DF 큰 패킷 ping 시험을 하지 못했다.** control02에서 Pod IP(10.244.69.210)와 worker02 노드 IP(10.1.93.107)로 작은 ping(56바이트)이 모두 100% 손실이다. 작은 패킷도 도달하지 않으므로 이 ping은 MTU 증거가 되지 않는다. 대체로 위 "TCP 큰 데이터 시험"을 수행했다.
 2. 차단 원인은 확정하지 않았다. 현재 GlobalNetworkPolicy 전체에 `icmp` 문자열이 0건이므로 HEP/GNP에 ICMP 허용 규칙이 없는 것과 일치하나, 실제 패킷의 차단 지점은 증명하지 않았다. 담당자는 HEP/GNP 적용 영향으로 추정한다.
 3. 시험을 위해 정책을 일시 변경하지 않았다.
 4. MTU 값은 control02와 Worker 2대의 Pod에서만 조회했다. 다른 노드의 `vxlan.calico` 값은 이 파일에 없다(같은 calico-config가 모든 노드에 적용).
@@ -75,8 +94,9 @@ ping -c 2 -W 1 <Pod IP 10.244.69.210>; ping -c 2 -W 1 <노드 IP 10.1.93.107>
 ## 판정 경계
 
 - `MTU_CONFIG_AND_INTERFACE_VALUES = OBSERVED` (콘솔 제출 자료 기준)
-- `MTU_PATH_ACCEPTANCE = NOT_VERIFIED` (큰 패킷 통과 미시험)
-- AC 충족을 주장하지 않는다.
+- `MTU_TCP_LARGE_TRANSFER_CROSS_NODE = OBSERVED_PASS` (비ICMP 시험, 요청 20KB+·응답 약 26KB 통과)
+- `MTU_DF_PMTU_ICMP_TEST = NOT_PERFORMED` (ICMP가 허용되지 않아 시험 불가)
+- DF/PMTU 직접 시험과의 동등성, AC 충족 여부는 검토자·Lead가 판단한다. 이 문서는 충족을 주장하지 않는다.
 
 ## 검토 상태
 
