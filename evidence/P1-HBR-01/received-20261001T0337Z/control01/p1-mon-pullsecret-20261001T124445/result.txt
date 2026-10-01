@@ -1,0 +1,24 @@
+== monitoring-api
+PHASE       NODE           EXIT   IMAGEID
+Succeeded   k8s-worker02   0      10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19
+TIME                   REASON      MSG
+<nil>                  Scheduled   Successfully assigned monitoring-api/pullcheck-20261001 to k8s-worker02
+2026-10-01T03:47:28Z   Pulling     Pulling image "10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19"
+2026-10-01T03:47:30Z   Pulled      Successfully pulled image "10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19" in 2.197s (2.229s including waiting). Image size: 116714259 bytes.
+2026-10-01T03:47:30Z   Created     Container created
+2026-10-01T03:47:31Z   Started     Container started
+prometheus, version 3.15.0 (branch: HEAD, revision: 5241a27fe3c6983549fccc32f6e65917408c63cd)
+  build user:       root@4635dd007a60
+  build date:       20260925-07:33:45
+== monitoring-node
+PHASE       NODE           EXIT   IMAGEID
+Succeeded   k8s-worker02   0      10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f
+TIME                   REASON      MSG
+<nil>                  Scheduled   Successfully assigned monitoring-node/pullcheck-20261001 to k8s-worker02
+2026-10-01T03:47:28Z   Pulling     Pulling image "10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f"
+2026-10-01T03:47:28Z   Pulled      Successfully pulled image "10.1.93.54/fds/node-exporter@sha256:56566542aacd5be06add01d3456cd6279e2f7ddb4b24237fc8cdfbc3cc5f699f" in 32ms (32ms including waiting). Image size: 13639840 bytes.
+2026-10-01T03:47:28Z   Created     Container created
+2026-10-01T03:47:28Z   Started     Container started
+node_exporter, version 1.12.1 (branch: HEAD, revision: 6044da783597cc3b57aef7580ddcdcff58a4ee99)
+  build user:       root@3a6b59999579
+  build date:       20260714-12:05:11
