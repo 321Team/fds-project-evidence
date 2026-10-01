@@ -1,0 +1,28 @@
+# MTU check
+2026-10-01T12:10:31+09:00
+k8s-control02
+## calico-config veth_mtu
+1450
+## ippool
+default-ipv4-ippool 10.244.0.0/16 ipip=Never vxlan=CrossSubnet
+## node links
+2: ens160: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000\    link/ether 00:0c:29:69:d8:71 brd ff:ff:ff:ff:ff:ff\    altname enp3s0\    altname enx000c2969d871
+3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\    link/ether 66:65:66:a4:34:b1 brd ff:ff:ff:ff:ff:ff
+## pod eth0 mtu (probe-w01)
+1450
+## pod eth0 mtu (probe-w02)
+1450
+## ICMP GNP rule count
+0
+## ping pod IP 10.244.69.210
+PING 10.244.69.210 (10.244.69.210) 자료의 56(84) 바이트.
+
+--- 10.244.69.210 ping 통계 ---
+2 패킷이 전송됨, 0 수신됨, 100% packet loss, time 1011ms
+
+## ping node IP 10.1.93.107
+PING 10.1.93.107 (10.1.93.107) 자료의 56(84) 바이트.
+
+--- 10.1.93.107 ping 통계 ---
+2 패킷이 전송됨, 0 수신됨, 100% packet loss, time 1046ms
+
