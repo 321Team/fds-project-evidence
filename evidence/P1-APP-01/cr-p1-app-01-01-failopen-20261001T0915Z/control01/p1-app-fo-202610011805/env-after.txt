@@ -1,0 +1,41 @@
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS        IMAGES                                                                                                   SELECTOR
+deployment.apps/fds-engine        3/3     3            3           9d    fds-engine        10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369        app=fds-engine
+deployment.apps/transaction-api   3/3     3            3           9d    transaction-api   10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33   app=transaction-api
+
+NAME                                  READY   STATUS    RESTARTS       AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+pod/fds-engine-5699669f6f-bp6t6       1/1     Running   0              2m15s   10.244.79.95    k8s-worker01   <none>           <none>
+pod/fds-engine-5699669f6f-d2vwq       1/1     Running   0              2m15s   10.244.69.219   k8s-worker02   <none>           <none>
+pod/fds-engine-5699669f6f-lt9hb       1/1     Running   0              2m15s   10.244.39.251   k8s-worker03   <none>           <none>
+pod/transaction-api-b784c8c5d-75ws7   1/1     Running   0              6m15s   10.244.69.218   k8s-worker02   <none>           <none>
+pod/transaction-api-b784c8c5d-m65z4   1/1     Running   0              3d23h   10.244.39.248   k8s-worker03   <none>           <none>
+pod/transaction-api-b784c8c5d-rq9b6   1/1     Running   1 (4d4h ago)   5d20h   10.244.79.84    k8s-worker01   <none>           <none>
+6m15s       Normal    Killing                pod/fds-engine-5699669f6f-hcmxb        Stopping container fds-engine
+6m15s       Normal    Pulled                 pod/transaction-api-b784c8c5d-75ws7    Container image "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33" already present on machine and can be accessed by the pod
+6m15s       Normal    Created                pod/transaction-api-b784c8c5d-75ws7    Container created
+6m15s       Normal    Killing                pod/transaction-api-b784c8c5d-2nqhq    Stopping container transaction-api
+6m15s       Normal    Created                pod/fds-engine-5699669f6f-bgtm2        Container created
+6m15s       Normal    SuccessfulCreate       replicaset/fds-engine-5699669f6f       Created pod: fds-engine-5699669f6f-bgtm2
+6m15s       Normal    Pulled                 pod/fds-engine-5699669f6f-bgtm2        Container image "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369" already present on machine and can be accessed by the pod
+6m15s       Normal    SuccessfulCreate       replicaset/transaction-api-b784c8c5d   Created pod: transaction-api-b784c8c5d-75ws7
+6m14s       Normal    Started                pod/transaction-api-b784c8c5d-75ws7    Container started
+6m14s       Normal    Started                pod/fds-engine-5699669f6f-bgtm2        Container started
+3m28s       Normal    Killing                pod/fds-engine-5699669f6f-c5jw6        Stopping container fds-engine
+3m28s       Normal    SuccessfulDelete       replicaset/fds-engine-5699669f6f       Deleted pod: fds-engine-5699669f6f-5rxbt
+3m28s       Normal    Killing                pod/fds-engine-5699669f6f-5rxbt        Stopping container fds-engine
+3m28s       Normal    Killing                pod/fds-engine-5699669f6f-bgtm2        Stopping container fds-engine
+3m28s       Normal    ScalingReplicaSet      deployment/fds-engine                  Scaled down replica set fds-engine-5699669f6f from 3 to 0
+3m28s       Normal    SuccessfulDelete       replicaset/fds-engine-5699669f6f       Deleted pod: fds-engine-5699669f6f-c5jw6
+3m28s       Normal    SuccessfulDelete       replicaset/fds-engine-5699669f6f       Deleted pod: fds-engine-5699669f6f-bgtm2
+2m15s       Normal    Started                pod/fds-engine-5699669f6f-lt9hb        Container started
+2m15s       Normal    ScalingReplicaSet      deployment/fds-engine                  Scaled up replica set fds-engine-5699669f6f from 0 to 3
+2m15s       Normal    SuccessfulCreate       replicaset/fds-engine-5699669f6f       Created pod: fds-engine-5699669f6f-d2vwq
+2m15s       Normal    Created                pod/fds-engine-5699669f6f-lt9hb        Container created
+2m15s       Normal    Pulled                 pod/fds-engine-5699669f6f-lt9hb        Container image "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369" already present on machine and can be accessed by the pod
+2m15s       Normal    Started                pod/fds-engine-5699669f6f-d2vwq        Container started
+2m15s       Normal    Created                pod/fds-engine-5699669f6f-d2vwq        Container created
+2m15s       Normal    Pulled                 pod/fds-engine-5699669f6f-d2vwq        Container image "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369" already present on machine and can be accessed by the pod
+2m15s       Normal    Started                pod/fds-engine-5699669f6f-bp6t6        Container started
+2m15s       Normal    Created                pod/fds-engine-5699669f6f-bp6t6        Container created
+2m15s       Normal    Pulled                 pod/fds-engine-5699669f6f-bp6t6        Container image "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369" already present on machine and can be accessed by the pod
+2m15s       Normal    SuccessfulCreate       replicaset/fds-engine-5699669f6f       Created pod: fds-engine-5699669f6f-lt9hb
+2m15s       Normal    SuccessfulCreate       replicaset/fds-engine-5699669f6f       Created pod: fds-engine-5699669f6f-bp6t6

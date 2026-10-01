@@ -1,0 +1,31 @@
+2026-10-01T18:05:55+09:00
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS        IMAGES                                                                                                   SELECTOR
+deployment.apps/fds-engine        3/3     3            3           9d    fds-engine        10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369        app=fds-engine
+deployment.apps/transaction-api   3/3     3            3           9d    transaction-api   10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33   app=transaction-api
+
+NAME                               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE    SELECTOR
+service/fds-engine                 ClusterIP   10.97.246.223   <none>        8001/TCP,9090/TCP   9d     app=fds-engine
+service/fds-engine-metrics         ClusterIP   None            <none>        9090/TCP            9d     app=fds-engine
+service/transaction-api            ClusterIP   10.106.27.47    <none>        80/TCP,9091/TCP     9d     app=transaction-api
+service/transaction-api-metrics    ClusterIP   None            <none>        9091/TCP            9d     app=transaction-api
+service/transaction-api-nodeport   NodePort    10.110.141.93   <none>        80:30080/TCP        4d2h   app=transaction-api
+POD                               NODE           READY   RESTARTS   IMAGEID
+fds-engine-5699669f6f-4rw8m       k8s-worker02   true    0          10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+fds-engine-5699669f6f-5rxbt       k8s-worker03   true    2          10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+fds-engine-5699669f6f-c5jw6       k8s-worker01   true    0          10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+fds-engine-5699669f6f-hcmxb       k8s-worker01   true    0          10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+transaction-api-b784c8c5d-2nqhq   k8s-worker01   true    0          10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+transaction-api-b784c8c5d-j4gn2   k8s-worker02   true    0          10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+transaction-api-b784c8c5d-m65z4   k8s-worker03   true    0          10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+transaction-api-b784c8c5d-rq9b6   k8s-worker01   true    1          10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+NAME                             ADDRESSTYPE   PORTS       ENDPOINTS                                              AGE
+fds-engine-metrics-lhsvx         IPv4          9090        10.244.39.242,10.244.79.89,10.244.69.212 + 1 more...   9d
+fds-engine-xsrfp                 IPv4          9090,8001   10.244.39.242,10.244.79.89,10.244.69.212 + 1 more...   9d
+transaction-api-metrics-d887p    IPv4          9091        10.244.79.84,10.244.39.248,10.244.69.211 + 1 more...   9d
+transaction-api-nodeport-6shht   IPv4          8000        10.244.79.84,10.244.39.248,10.244.69.211 + 1 more...   4d2h
+transaction-api-zrj92            IPv4          8000,9091   10.244.79.84,10.244.39.248,10.244.69.211 + 1 more...   9d
+3
+
+
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE   LABELS
+fds-engine   3/3     3            3           9d    app=fds-engine

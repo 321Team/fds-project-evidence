@@ -1,0 +1,17 @@
+2026-10-01T18:13:01+09:00
+REBALANCE: delete fds-engine-5699669f6f-hcmxb transaction-api-b784c8c5d-2nqhq (worker01, 20m old)
+pod "fds-engine-5699669f6f-hcmxb" deleted from fds-app namespace
+pod "transaction-api-b784c8c5d-2nqhq" deleted from fds-app namespace
+NAME                              READY   STATUS    RESTARTS       AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+fds-engine-5699669f6f-5rxbt       1/1     Running   2 (4d4h ago)   9d      10.244.39.242   k8s-worker03   <none>           <none>
+fds-engine-5699669f6f-bgtm2       1/1     Running   0              47s     10.244.69.217   k8s-worker02   <none>           <none>
+fds-engine-5699669f6f-c5jw6       1/1     Running   0              3d23h   10.244.79.89    k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-75ws7   1/1     Running   0              47s     10.244.69.218   k8s-worker02   <none>           <none>
+transaction-api-b784c8c5d-m65z4   1/1     Running   0              3d23h   10.244.39.248   k8s-worker03   <none>           <none>
+transaction-api-b784c8c5d-rq9b6   1/1     Running   1 (4d4h ago)   5d20h   10.244.79.84    k8s-worker01   <none>           <none>
+NAME                             ADDRESSTYPE   PORTS       ENDPOINTS                                  AGE
+fds-engine-metrics-lhsvx         IPv4          9090        10.244.39.242,10.244.79.89,10.244.69.217   9d
+fds-engine-xsrfp                 IPv4          9090,8001   10.244.39.242,10.244.79.89,10.244.69.217   9d
+transaction-api-metrics-d887p    IPv4          9091        10.244.79.84,10.244.39.248,10.244.69.218   9d
+transaction-api-nodeport-6shht   IPv4          8000        10.244.79.84,10.244.39.248,10.244.69.218   4d2h
+transaction-api-zrj92            IPv4          8000,9091   10.244.79.84,10.244.39.248,10.244.69.218   9d

@@ -1,0 +1,28 @@
+2026-10-01T18:12:07+09:00
+NAME            STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-
+k8s-control01   Ready    control-plane   21d   v1.36.4   10.1.93.102   <none>   
+k8s-control02   Ready    control-plane   13d   v1.36.4   10.1.93.103   <none>   
+k8s-control03   Ready    control-plane   13d   v1.36.4   10.1.93.104   <none>   
+k8s-worker01    Ready    <none>          13d   v1.36.4   10.1.93.105   <none>   
+k8s-worker02    Ready    <none>          13d   v1.36.4   10.1.93.107   <none>   
+k8s-worker03    Ready    <none>          13d   v1.36.4   10.1.93.108   <none>   
+NAME                              READY   STATUS    RESTARTS       AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+fds-engine-5699669f6f-5rxbt       1/1     Running   2 (4d4h ago)   9d      10.244.39.242   k8s-worker03   <none>           <none>
+fds-engine-5699669f6f-c5jw6       1/1     Running   0              3d23h   10.244.79.89    k8s-worker01   <none>           <none>
+fds-engine-5699669f6f-hcmxb       1/1     Running   0              20m     10.244.79.93    k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-2nqhq   1/1     Running   0              20m     10.244.79.94    k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-m65z4   1/1     Running   0              3d23h   10.244.39.248   k8s-worker03   <none>           <none>
+transaction-api-b784c8c5d-rq9b6   1/1     Running   1 (4d4h ago)   5d20h   10.244.79.84    k8s-worker01   <none>           <none>
+NAME                             ADDRESSTYPE   PORTS       ENDPOINTS                                 AGE
+fds-engine-metrics-lhsvx         IPv4          9090        10.244.39.242,10.244.79.89,10.244.79.93   9d
+fds-engine-xsrfp                 IPv4          9090,8001   10.244.39.242,10.244.79.89,10.244.79.93   9d
+transaction-api-metrics-d887p    IPv4          9091        10.244.79.84,10.244.39.248,10.244.79.94   9d
+transaction-api-nodeport-6shht   IPv4          8000        10.244.79.84,10.244.39.248,10.244.79.94   4d2h
+transaction-api-zrj92            IPv4          8000,9091   10.244.79.84,10.244.39.248,10.244.79.94   9d
+NAMESPACE         NAME                  READY   STATUS    RESTARTS       AGE    IP            NODE           NOMINATED NODE   READINESS GATES
+icr39-probe       probe-w02             0/1     Unknown   0              4d     <none>        k8s-worker02   <none>           <none>
+kube-system       calico-node-mzvw8     1/1     Running   7 (2m3s ago)   13d    10.1.93.107   k8s-worker02   <none>           <none>
+kube-system       kube-proxy-nckdb      1/1     Running   7 (2m3s ago)   13d    10.1.93.107   k8s-worker02   <none>           <none>
+monitoring-node   node-exporter-thcn5   1/1     Running   1 (2m3s ago)   144m   10.1.93.107   k8s-worker02   <none>           <none>
+icr39-probe       probe-cp01                                0/1   Unknown   0                 4d
+icr39-probe       probe-w02                                 0/1   Unknown   0                 4d
