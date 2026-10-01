@@ -1,0 +1,58 @@
+# 서버 실행 파일(worker01/02/03 동일) vs infra-harbor-trivy 20ce46b/scripts/verify — 주석·빈 줄 제거 후 diff
+# 제거 규칙: 줄 전체 주석(^\s*#), 줄 끝 주석(\s+#.*$), 빈 줄. '<'=저장소, '>'=서버 실행본
+
+##### worker-pull-pod-start-test.sh
+66a67,69
+> DENY_TEST_TAG="worker-push-denytest-${REVIEW_RUN_ID}"
+> DENY_TEST_IMAGE="${HARBOR_REGISTRY}/fds/test:${DENY_TEST_TAG}"
+> sudo env DOCKER_CONFIG="${TEST_AUTH_DIR}" nerdctl -n k8s.io tag "${TEST_IMAGE}" "${DENY_TEST_IMAGE}"
+70c73
+<   --hosts-dir /etc/containerd/certs.d push "${TEST_IMAGE}" 2>&1) || PUSH_EXIT_CODE=$?
+---
+>   --hosts-dir /etc/containerd/certs.d push "${DENY_TEST_IMAGE}" 2>&1) || PUSH_EXIT_CODE=$?
+78c81
+<      echo "${PUSH_OUTPUT}" | grep -iq "denied: requested access"; then
+---
+>      echo "${PUSH_OUTPUT}" | grep -iqE "denied: requested access|unauthorized to access repository.*action: push"; then
+
+##### digest-traceability-check.sh
+6c6
+< CONTAINER_NAME="${3:?대상 container name을 명시하세요 (첫 번째 컨테이너를 임의로 선택하지 않음)}"
+---
+> CONTAINER_NAME="${3:?대상 container name을 명시하세요}"
+16c16
+< CA_FILE="${CA_FILE:?CA_FILE 환경변수를 지정하세요 (Harbor manifest 조회용 TLS 검증)}"
+---
+> CA_FILE="${CA_FILE:?CA_FILE 환경변수를 지정하세요}"
+18c18
+<   echo "ERROR: WORKER_ROBOT_USER 또는 WORKER_ROBOT_SECRET 환경변수가 주입되지 않았습니다 (Harbor manifest 조회용)."
+---
+>   echo "ERROR: WORKER_ROBOT_USER 또는 WORKER_ROBOT_SECRET 환경변수가 주입되지 않았습니다."
+23c23
+<   echo "ERROR: WORKER_ROBOT_USER/WORKER_ROBOT_SECRET에 개행 문자가 포함되어 있어 안전하게 전달할 수 없습니다."
+---
+>   echo "ERROR: 개행 문자 포함"
+40c40
+<   echo "ERROR: harbor-image-ref의 registry host가 허용된 Harbor(${HARBOR_REGISTRY})와 다릅니다: ${HARBOR_HOST}"
+---
+>   echo "ERROR: harbor-image-ref의 registry host가 다릅니다: ${HARBOR_HOST}"
+74c74
+<   echo "ERROR: Harbor manifest 조회에서 유효한 Docker-Content-Digest를 얻지 못함 (image=${HARBOR_IMAGE_REF})"
+---
+>   echo "ERROR: Harbor manifest 조회에서 유효한 Docker-Content-Digest를 얻지 못함"
+77c77
+< echo "OK: Harbor manifest에서 직접 조회한 Digest 확인 (image=${HARBOR_IMAGE_REF}): ${HARBOR_DIGEST}"
+---
+> echo "OK: Harbor manifest Digest: ${HARBOR_DIGEST}"
+
+##### pod-restricted-psa-overrides.json
+IDENTICAL (sha256 d863c259416caeaf2b1962d77da09d7c8af365a20dd8c689de305082a7bd1686)
+
+##### lib/load-review-run-env.sh
+IDENTICAL (code)
+
+##### lib/pod-review-binding.sh
+IDENTICAL (code)
+
+##### lib/pod-review-lifecycle.sh
+IDENTICAL (code)
