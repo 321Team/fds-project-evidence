@@ -1,0 +1,21 @@
+TIME=2026-09-29T14:37:00+09:00
+HOST=cicd-runner01
+USER=server01_cicd-runner
+UID=1000
+--- ROUTE ---
+10.1.93.54 via 10.250.10.1 dev ens160 src 10.250.10.20 uid 1000 
+    cache 
+ROUTE_RC=0
+--- DNS ---
+DNS_RC=2
+--- TLS/HEALTH ---
+CURL_RC=60
+HTTP_CODE=000
+--- CERT ---
+Verify return code: 20 (unable to get local issuer certificate)
+CERT_RC=0
+--- PODMAN ---
+podman version 6.1.0
+ROOTLESS=true
+PODMAN_INFO_RC=0
+AUTHFILE_PRESENT=NO
