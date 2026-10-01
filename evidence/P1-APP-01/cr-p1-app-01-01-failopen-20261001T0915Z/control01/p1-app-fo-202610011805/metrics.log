@@ -1,0 +1,128 @@
+2026-10-01T18:06:13+09:00
+[BEFORE]
+## fds_evaluation_error_total
+10.244.79.84:9091 transaction-api 0
+10.244.39.248:9091 transaction-api 0
+10.244.79.94:9091 transaction-api 0
+## transaction_save_success_total
+10.244.79.84:9091 transaction-api 16263
+10.244.39.248:9091 transaction-api 16257
+10.244.79.94:9091 transaction-api 0
+## transaction_save_failure_total
+10.244.79.84:9091 transaction-api 0
+10.244.39.248:9091 transaction-api 0
+10.244.79.94:9091 transaction-api 0
+## fds_evaluated_total
+10.244.39.242:9090 fds-engine 16314
+10.244.79.89:9090 fds-engine 16180
+10.244.79.93:9090 fds-engine 0
+## up{job=~"transaction-api|fds-engine"}
+10.244.79.84:9091 transaction-api 1
+10.244.39.242:9090 fds-engine 1
+10.244.39.248:9091 transaction-api 1
+10.244.79.89:9090 fds-engine 1
+10.244.79.93:9090 fds-engine 1
+10.244.79.94:9091 transaction-api 1
+## ALERTS{alertstate=~"firing|pending"}
+10.1.93.107:9100 node-exporter 1
+10.1.93.107:10250 kubelet 1
+10.1.93.107:10250 kubelet-cadvisor 1
+POD                               NODE           READY   RESTARTS
+fds-engine-5699669f6f-4rw8m       k8s-worker02   true    0
+fds-engine-5699669f6f-5rxbt       k8s-worker03   true    2
+fds-engine-5699669f6f-c5jw6       k8s-worker01   true    0
+fds-engine-5699669f6f-hcmxb       k8s-worker01   true    0
+transaction-api-b784c8c5d-2nqhq   k8s-worker01   true    0
+transaction-api-b784c8c5d-j4gn2   k8s-worker02   true    0
+transaction-api-b784c8c5d-m65z4   k8s-worker03   true    0
+transaction-api-b784c8c5d-rq9b6   k8s-worker01   true    1
+2026-10-01T18:15:48+09:00
+[BASE2]
+## fds_evaluation_error_total
+10.244.79.84:9091 transaction-api 0
+10.244.39.248:9091 transaction-api 0
+10.244.69.218:9091 transaction-api 0
+## transaction_save_success_total
+10.244.79.84:9091 transaction-api 16263
+10.244.39.248:9091 transaction-api 16257
+10.244.69.218:9091 transaction-api 0
+## transaction_save_failure_total
+10.244.79.84:9091 transaction-api 0
+10.244.39.248:9091 transaction-api 0
+10.244.69.218:9091 transaction-api 0
+## fds_evaluated_total
+10.244.39.242:9090 fds-engine 16314
+10.244.79.89:9090 fds-engine 16180
+10.244.69.217:9090 fds-engine 0
+## up{job=~"transaction-api|fds-engine"}
+10.244.79.84:9091 transaction-api 1
+10.244.39.242:9090 fds-engine 1
+10.244.39.248:9091 transaction-api 1
+10.244.79.89:9090 fds-engine 1
+10.244.69.218:9091 transaction-api 1
+10.244.69.217:9090 fds-engine 1
+## ALERTS{alertstate=~"firing|pending"}
+POD                               NODE           READY   RESTARTS
+fds-engine-5699669f6f-5rxbt       k8s-worker03   true    2
+fds-engine-5699669f6f-bgtm2       k8s-worker02   true    0
+fds-engine-5699669f6f-c5jw6       k8s-worker01   true    0
+transaction-api-b784c8c5d-75ws7   k8s-worker02   true    0
+transaction-api-b784c8c5d-m65z4   k8s-worker03   true    0
+transaction-api-b784c8c5d-rq9b6   k8s-worker01   true    1
+2026-10-01T18:17:01+09:00
+[OUTAGE]
+## fds_evaluation_error_total
+10.244.79.84:9091 transaction-api 1
+10.244.39.248:9091 transaction-api 0
+10.244.69.218:9091 transaction-api 0
+## transaction_save_success_total
+10.244.79.84:9091 transaction-api 16264
+10.244.39.248:9091 transaction-api 16257
+10.244.69.218:9091 transaction-api 0
+## transaction_save_failure_total
+10.244.79.84:9091 transaction-api 0
+10.244.39.248:9091 transaction-api 0
+10.244.69.218:9091 transaction-api 0
+## fds_evaluated_total
+## up{job=~"transaction-api|fds-engine"}
+10.244.79.84:9091 transaction-api 1
+10.244.39.248:9091 transaction-api 1
+10.244.69.218:9091 transaction-api 1
+## ALERTS{alertstate=~"firing|pending"}
+POD                               NODE           READY   RESTARTS
+transaction-api-b784c8c5d-75ws7   k8s-worker02   true    0
+transaction-api-b784c8c5d-m65z4   k8s-worker03   true    0
+transaction-api-b784c8c5d-rq9b6   k8s-worker01   true    1
+2026-10-01T18:19:16+09:00
+[AFTER]
+## fds_evaluation_error_total
+10.244.79.84:9091 transaction-api 1
+10.244.39.248:9091 transaction-api 0
+10.244.69.218:9091 transaction-api 0
+## transaction_save_success_total
+10.244.79.84:9091 transaction-api 16265
+10.244.39.248:9091 transaction-api 16257
+10.244.69.218:9091 transaction-api 0
+## transaction_save_failure_total
+10.244.79.84:9091 transaction-api 0
+10.244.39.248:9091 transaction-api 0
+10.244.69.218:9091 transaction-api 0
+## fds_evaluated_total
+10.244.39.251:9090 fds-engine 1
+10.244.69.219:9090 fds-engine 0
+10.244.79.95:9090 fds-engine 0
+## up{job=~"transaction-api|fds-engine"}
+10.244.79.84:9091 transaction-api 1
+10.244.39.248:9091 transaction-api 1
+10.244.69.218:9091 transaction-api 1
+10.244.39.251:9090 fds-engine 1
+10.244.69.219:9090 fds-engine 1
+10.244.79.95:9090 fds-engine 1
+## ALERTS{alertstate=~"firing|pending"}
+POD                               NODE           READY   RESTARTS
+fds-engine-5699669f6f-bp6t6       k8s-worker01   true    0
+fds-engine-5699669f6f-d2vwq       k8s-worker02   true    0
+fds-engine-5699669f6f-lt9hb       k8s-worker03   true    0
+transaction-api-b784c8c5d-75ws7   k8s-worker02   true    0
+transaction-api-b784c8c5d-m65z4   k8s-worker03   true    0
+transaction-api-b784c8c5d-rq9b6   k8s-worker01   true    1

@@ -1,0 +1,51 @@
+2026-10-01T18:11:49+09:00
+NAME            STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                      KERNEL-VERSION                   CONTAINER-RUNTIME
+k8s-control01   Ready    control-plane   21d   v1.36.4   10.1.93.102   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-control02   Ready    control-plane   13d   v1.36.4   10.1.93.103   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-control03   Ready    control-plane   13d   v1.36.4   10.1.93.104   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-worker01    Ready    <none>          13d   v1.36.4   10.1.93.105   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-worker02    Ready    <none>          13d   v1.36.4   10.1.93.107   <none>        CentOS Stream 10 (Coughlan)   6.12.0-267.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-worker03    Ready    <none>          13d   v1.36.4   10.1.93.108   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+NAME                              READY   STATUS    RESTARTS       AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+fds-engine-5699669f6f-5rxbt       1/1     Running   2 (4d4h ago)   9d      10.244.39.242   k8s-worker03   <none>           <none>
+fds-engine-5699669f6f-c5jw6       1/1     Running   0              3d23h   10.244.79.89    k8s-worker01   <none>           <none>
+fds-engine-5699669f6f-hcmxb       1/1     Running   0              19m     10.244.79.93    k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-2nqhq   1/1     Running   0              19m     10.244.79.94    k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-m65z4   1/1     Running   0              3d23h   10.244.39.248   k8s-worker03   <none>           <none>
+transaction-api-b784c8c5d-rq9b6   1/1     Running   1 (4d4h ago)   5d20h   10.244.79.84    k8s-worker01   <none>           <none>
+Taints:             <none>
+Unschedulable:      false
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Thu, 01 Oct 2026 18:10:43 +0900   Thu, 01 Oct 2026 18:10:43 +0900   CalicoIsUp                   Calico is running on this node
+  MemoryPressure       False   Thu, 01 Oct 2026 18:10:05 +0900   Thu, 01 Oct 2026 18:10:05 +0900   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Thu, 01 Oct 2026 18:10:05 +0900   Thu, 01 Oct 2026 18:10:05 +0900   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Thu, 01 Oct 2026 18:10:05 +0900   Thu, 01 Oct 2026 18:10:05 +0900   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Thu, 01 Oct 2026 18:10:05 +0900   Thu, 01 Oct 2026 18:10:05 +0900   KubeletReady                 kubelet is posting ready status
+Addresses:
+kube-system       103s        Normal    Started                   pod/calico-node-mzvw8                  Container started
+monitoring-node   103s        Normal    SandboxChanged            pod/node-exporter-thcn5                Pod sandbox changed, it will be killed and re-created.
+kube-system       103s        Normal    Created                   pod/calico-node-mzvw8                  Container created
+kube-system       103s        Normal    SandboxChanged            pod/calico-node-mzvw8                  Pod sandbox changed, it will be killed and re-created.
+kube-system       103s        Normal    Created                   pod/kube-proxy-nckdb                   Container created
+kube-system       103s        Normal    Pulled                    pod/kube-proxy-nckdb                   Container image "registry.k8s.io/kube-proxy:v1.36.4" already present on machine and can be accessed by the pod
+kube-system       103s        Normal    SandboxChanged            pod/kube-proxy-nckdb                   Pod sandbox changed, it will be killed and re-created.
+kube-system       103s        Normal    Pulled                    pod/calico-node-mzvw8                  Container image "quay.io/calico/cni@sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86" already present on machine and can be accessed by the pod
+fds-app           103s        Warning   FailedKillPod             pod/transaction-api-b784c8c5d-j4gn2    error killing pod: failed to "KillPodSandbox" for "9c66b787-786f-4b16-bc9a-fa27e480cc48" with KillPodSandboxError: "rpc error: code = Unknown desc = failed to destroy network for sandbox \"76d13cd4fcb3e0cb91015b02c2b8046f6dbcd10b5c56de4feb497916ffc61ac9\": plugin type=\"calico\" failed (delete): error getting ClusterInformation: Get \"https://10.96.0.1:443/apis/crd.projectcalico.org/v1/clusterinformations/default\": dial tcp 10.96.0.1:443: connect: no route to host"
+kube-system       103s        Normal    Started                   pod/kube-proxy-nckdb                   Container started
+monitoring-node   102s        Normal    Created                   pod/node-exporter-thcn5                Container created
+monitoring-node   102s        Normal    Pulling                   pod/node-exporter-thcn5                Pulling image "10.1.93.54/fds/node-exporter@sha256:4d5c92fcbea9fd5f2769a13192885366f6d348443ea6b48783590c9d9be43318"
+monitoring-node   102s        Normal    Pulled                    pod/node-exporter-thcn5                Successfully pulled image "10.1.93.54/fds/node-exporter@sha256:4d5c92fcbea9fd5f2769a13192885366f6d348443ea6b48783590c9d9be43318" in 101ms (101ms including waiting). Image size: 13107169 bytes.
+monitoring-node   102s        Normal    Started                   pod/node-exporter-thcn5                Container started
+icr39-probe       88s         Warning   FailedMount               pod/probe-w02                          MountVolume.SetUp failed for volume "kube-api-access-v8wkx" : object "icr39-probe"/"kube-root-ca.crt" not registered
+kube-system       72s         Normal    Started                   pod/calico-node-mzvw8                  Container started
+kube-system       72s         Normal    Created                   pod/calico-node-mzvw8                  Container created
+kube-system       72s         Normal    Pulled                    pod/calico-node-mzvw8                  Container image "quay.io/calico/cni@sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86" already present on machine and can be accessed by the pod
+kube-system       71s         Normal    Pulled                    pod/calico-node-mzvw8                  Container image "quay.io/calico/node@sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240" already present on machine and can be accessed by the pod
+kube-system       71s         Normal    Started                   pod/calico-node-mzvw8                  Container started
+kube-system       71s         Normal    Created                   pod/calico-node-mzvw8                  Container created
+kube-system       70s         Normal    Started                   pod/calico-node-mzvw8                  Container started
+kube-system       70s         Normal    Created                   pod/calico-node-mzvw8                  Container created
+kube-system       70s         Normal    Pulled                    pod/calico-node-mzvw8                  Container image "quay.io/calico/node@sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240" already present on machine and can be accessed by the pod
+kube-system       69s         Warning   Unhealthy                 pod/calico-node-mzvw8                  Readiness probe failed: calico/node is not ready: felix is not ready: Get "http://localhost:9099/readiness": dial tcp [::1]:9099: connect: connection refused
