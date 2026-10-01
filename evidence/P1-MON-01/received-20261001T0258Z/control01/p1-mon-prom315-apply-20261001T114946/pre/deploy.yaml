@@ -1,0 +1,158 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "10"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"prometheus","namespace":"monitoring-api"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"prometheus"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"labels":{"app":"prometheus"}},"spec":{"containers":[{"args":["--config.file=/etc/prometheus/prometheus.yml","--web.enable-lifecycle","--storage.tsdb.retention.time=15d","--storage.tsdb.retention.size=16GB"],"image":"10.1.93.54/fds/prometheus:latest","name":"prometheus","ports":[{"containerPort":9090}],"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"seccompProfile":{"type":"RuntimeDefault"}},"volumeMounts":[{"mountPath":"/etc/prometheus","name":"config"},{"mountPath":"/prometheus","name":"data"},{"mountPath":"/etc/prometheus/rules/","name":"alert-rules"},{"mountPath":"/etc/prometheus/rules-p0/","name":"p0-test-alert"},{"mountPath":"/etc/prometheus/rules-opt/","name":"alert-rules-optional"}]}],"imagePullSecrets":[{"name":"harbor-pull-secret"}],"securityContext":{"fsGroup":65534,"fsGroupChangePolicy":"OnRootMismatch","runAsNonRoot":true,"runAsUser":65534},"serviceAccountName":"prometheus","volumes":[{"configMap":{"name":"prometheus-config"},"name":"config"},{"name":"data","persistentVolumeClaim":{"claimName":"prometheus-data"}},{"configMap":{"name":"prometheus-alert-rules"},"name":"alert-rules"},{"configMap":{"name":"prometheus-p0-test-alert"},"name":"p0-test-alert"},{"configMap":{"name":"prometheus-alert-rules-optional","optional":true},"name":"alert-rules-optional"}]}}}}
+  creationTimestamp: "2026-09-22T05:45:35Z"
+  generation: 11
+  name: prometheus
+  namespace: monitoring-api
+  resourceVersion: "3040507"
+  uid: 3a63a1d9-27c6-44cd-aa5c-5232ff0686c0
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: prometheus
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/restartedAt: "2026-09-26T14:50:03+09:00"
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - args:
+        - --config.file=/etc/prometheus/prometheus.yml
+        - --web.enable-lifecycle
+        - --storage.tsdb.retention.time=15d
+        - --storage.tsdb.retention.size=16GB
+        image: 10.1.93.54/fds/prometheus:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /-/healthy
+            port: 9090
+            scheme: HTTP
+          periodSeconds: 20
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: prometheus
+        ports:
+        - containerPort: 9090
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /-/ready
+            port: 9090
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 3
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+        startupProbe:
+          failureThreshold: 60
+          httpGet:
+            path: /-/ready
+            port: 9090
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 3
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/prometheus
+          name: config
+        - mountPath: /prometheus
+          name: data
+        - mountPath: /etc/prometheus/rules/
+          name: alert-rules
+        - mountPath: /etc/prometheus/rules-p0/
+          name: p0-test-alert
+        - mountPath: /etc/prometheus/rules-opt/
+          name: alert-rules-optional
+        - mountPath: /etc/prometheus/monitor01-ca
+          name: monitor01-root-ca
+          readOnly: true
+        - mountPath: /etc/prometheus/monitor01-auth
+          name: monitor01-remote-write-auth
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: harbor-pull-secret
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        runAsNonRoot: true
+        runAsUser: 65534
+      serviceAccount: prometheus-sa
+      serviceAccountName: prometheus-sa
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: prometheus-config
+        name: config
+      - name: data
+        persistentVolumeClaim:
+          claimName: prometheus-data
+      - configMap:
+          defaultMode: 420
+          name: prometheus-alert-rules
+        name: alert-rules
+      - configMap:
+          defaultMode: 420
+          name: prometheus-p0-test-alert
+        name: p0-test-alert
+      - configMap:
+          defaultMode: 420
+          name: prometheus-alert-rules-optional
+          optional: true
+        name: alert-rules-optional
+      - configMap:
+          defaultMode: 420
+          name: monitor01-root-ca
+        name: monitor01-root-ca
+      - name: monitor01-remote-write-auth
+        secret:
+          defaultMode: 288
+          secretName: monitor01-remote-write-auth
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2026-09-22T06:26:55Z"
+    lastUpdateTime: "2026-09-27T09:32:36Z"
+    message: ReplicaSet "prometheus-5c6cd4bc84" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2026-10-01T02:24:24Z"
+    lastUpdateTime: "2026-10-01T02:24:24Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 11
+  readyReplicas: 1
+  replicas: 1
+  terminatingReplicas: 0
+  updatedReplicas: 1
