@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pullcheck-20261001
+  namespace: monitoring-api
+  labels: {app: pullcheck-20261001}
+spec:
+  restartPolicy: Never
+  automountServiceAccountToken: false
+  imagePullSecrets: [{name: harbor-pull-secret}]
+  securityContext: {runAsNonRoot: true, runAsUser: 65534, runAsGroup: 65534, seccompProfile: {type: RuntimeDefault}}
+  containers:
+  - name: c
+    image: 10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19
+    imagePullPolicy: Always
+    args: ["--version"]
+    securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
+    resources: {requests: {cpu: 10m, memory: 16Mi}, limits: {cpu: 100m, memory: 64Mi}}
