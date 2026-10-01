@@ -1,0 +1,14 @@
+NAME                                    DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES                             SELECTOR
+replicaset.apps/prometheus-5569c74579   0         0         0       8d      prometheus   10.1.93.54/fds/prometheus:latest   app=prometheus,pod-template-hash=5569c74579
+replicaset.apps/prometheus-58c848c688   0         0         0       7d23h   prometheus   10.1.93.54/fds/prometheus:latest   app=prometheus,pod-template-hash=58c848c688
+replicaset.apps/prometheus-5c6cd4bc84   1         1         1       3d17h   prometheus   10.1.93.54/fds/prometheus:latest   app=prometheus,pod-template-hash=5c6cd4bc84
+replicaset.apps/prometheus-6cc5f96c6d   0         0         0       7d23h   prometheus   10.1.93.54/fds/prometheus:latest   app=prometheus,pod-template-hash=6cc5f96c6d
+replicaset.apps/prometheus-6d87b4f989   0         0         0       8d      prometheus   prom/prometheus:latest             app=prometheus,pod-template-hash=6d87b4f989
+replicaset.apps/prometheus-74c5d5b7f6   0         0         0       8d      prometheus   10.1.93.54/fds/prometheus:latest   app=prometheus,pod-template-hash=74c5d5b7f6
+replicaset.apps/prometheus-7669c8c574   0         0         0       4d20h   prometheus   10.1.93.54/fds/prometheus:latest   app=prometheus,pod-template-hash=7669c8c574
+replicaset.apps/prometheus-7986876f78   0         0         0       8d      prometheus   10.1.93.54/fds/prometheus:latest   app=prometheus,pod-template-hash=7986876f78
+replicaset.apps/prometheus-79b8b5c9f7   0         0         0       8d      prometheus   prom/prometheus:latest             app=prometheus,pod-template-hash=79b8b5c9f7
+replicaset.apps/prometheus-845b49cb58   0         0         0       5d22h   prometheus   10.1.93.54/fds/prometheus:latest   app=prometheus,pod-template-hash=845b49cb58
+
+NAME                              READY   STATUS    RESTARTS   AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+pod/prometheus-5c6cd4bc84-b2zpq   1/1     Running   0          3d17h   10.244.39.245   k8s-worker03   <none>           <none>
