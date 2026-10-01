@@ -15788,6 +15788,104 @@
           "sha256": "fac045ca2c7477a35f1d1af83ce6eb7b97bac169f9920c8aa23938eeb6bbd234"
         }
       ]
+    },
+    "evidence/P1-HBR-01/received-20260928T150921Z/p1-hbr01-discover-20260928T150921Z.tar.gz": {
+      "sha256": "32b717c4f6781ddbdad84a495fcc2cb2c12fb229db4090f0200c4047c05d3d63",
+      "size": 2192,
+      "entries": [
+        {
+          "name": "p1-hbr01-discover-20260928T150921Z/SHA256SUMS",
+          "size": 172,
+          "sha256": "b2bccbe546d747ce3b4afcd73206f7a1c9c11a756b986e2bd4744a1a593dcc26"
+        },
+        {
+          "name": "p1-hbr01-discover-20260928T150921Z/hbr01-discover-run.log",
+          "size": 3806,
+          "sha256": "3ae899822d23292cdfd812262be8311474a687f7219381ea7057a5f3b4d7aead"
+        },
+        {
+          "name": "p1-hbr01-discover-20260928T150921Z/hbr01-values.env",
+          "size": 843,
+          "sha256": "1e184908a29cf85a760d0b219ba86acf043729d24159ec8ba6730d7a59fbe907"
+        }
+      ]
+    },
+    "evidence/P1-HBR-01/received-20260930T040033Z/p1-hbr01-ac-verify-20260930T040033Z.tar.gz": {
+      "sha256": "f75553421028ac2b521812844c6cef991b4290b35a7d3494f465f0d5dfa9b65a",
+      "size": 2835,
+      "entries": [
+        {
+          "name": "p1-hbr01-ac-verify-20260930T040033Z/SHA256SUMS",
+          "size": 546,
+          "sha256": "f25d71b6ed0c00fdaeca189c5ce58fae769378173816415c89bb765e528b3343"
+        },
+        {
+          "name": "p1-hbr01-ac-verify-20260930T040033Z/mgmt-gw01-source-ip-allowlist-evidence.txt",
+          "size": 1129,
+          "sha256": "af889f6b1d19e2b2d3a186ccd007918bb2a5b36d1cd78a230417d9367cc7e436"
+        },
+        {
+          "name": "p1-hbr01-ac-verify-20260930T040033Z/runner-push-run.log",
+          "size": 906,
+          "sha256": "a8b905dcebc9af84440681dfdb7ba13bf9f1ffee9f72cf19cd2f929a696826a6"
+        },
+        {
+          "name": "p1-hbr01-ac-verify-20260930T040033Z/tls-negative-run.log",
+          "size": 724,
+          "sha256": "d6ce197194c063098a602691d1faf1233b9f127271803701059a65cbaee0e15a"
+        },
+        {
+          "name": "p1-hbr01-ac-verify-20260930T040033Z/worker01-pull-run.log",
+          "size": 1421,
+          "sha256": "ae4ab02f0c6fd6789552b5aff92b9a7db6a07b9ee7a03b4759b0537ac60771e0"
+        },
+        {
+          "name": "p1-hbr01-ac-verify-20260930T040033Z/worker02-pull-run.log",
+          "size": 1421,
+          "sha256": "ec84dbe9ca6ce6217fba1ff98059c515b6532be6d072fa5dfeaa10a0226801ba"
+        },
+        {
+          "name": "p1-hbr01-ac-verify-20260930T040033Z/worker03-pull-run.log",
+          "size": 1421,
+          "sha256": "7218a2cd48686569a037d0e50a9be76f05fa7ecc19dfe0e5a0b205f95aad0dda"
+        }
+      ]
+    },
+    "evidence/P1-HBR-01/executed-source-20260930/worker-scripts.tgz": {
+      "sha256": "0ed648c8d67da0428315290e9227a83d4919b079d3c897de5c51640dc2f36e50",
+      "size": 6918,
+      "entries": [
+        {
+          "name": "digest-traceability-check.sh",
+          "size": 4321,
+          "sha256": "a9c513572c779d3a7fb3d476a0de3ef0576cd6ebd17a6bb4bcc7141779846cd6"
+        },
+        {
+          "name": "lib/load-review-run-env.sh",
+          "size": 2882,
+          "sha256": "aa7f76c8f3b1d35100175566a8edb5bb3f086bb3fd9be43099afa6a6aa9685e5"
+        },
+        {
+          "name": "lib/pod-review-binding.sh",
+          "size": 2484,
+          "sha256": "bdbe3cf1e8a5852d9c620acea5af22f50e40663d008688d16e1e2180df90a621"
+        },
+        {
+          "name": "lib/pod-review-lifecycle.sh",
+          "size": 3949,
+          "sha256": "900fb82b91fe7889311bc968b5c1a9bfb71fc65f2ad282b73a35c20e9039b60c"
+        },
+        {
+          "name": "pod-restricted-psa-overrides.json",
+          "size": 560,
+          "sha256": "d863c259416caeaf2b1962d77da09d7c8af365a20dd8c689de305082a7bd1686"
+        },
+        {
+          "name": "worker-pull-pod-start-test.sh",
+          "size": 5692,
+          "sha256": "3e8cea37c6f334ff9e867026d097dc73392c783d09ac852eb520fc1b40ac0173"
+        }
+      ]
     }
   }
 }
