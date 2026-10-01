@@ -1,0 +1,228 @@
+apiVersion: v1
+items:
+- apiVersion: storage.k8s.io/v1
+  kind: StorageClass
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"storage.k8s.io/v1","kind":"StorageClass","metadata":{"annotations":{},"name":"fds-local-storage"},"provisioner":"kubernetes.io/no-provisioner","volumeBindingMode":"WaitForFirstConsumer"}
+    creationTimestamp: "2026-09-22T05:45:34Z"
+    name: fds-local-storage
+    resourceVersion: "1115757"
+    uid: 626f1865-9eb8-4c2d-b90f-eec67d0335b9
+  provisioner: kubernetes.io/no-provisioner
+  reclaimPolicy: Delete
+  volumeBindingMode: WaitForFirstConsumer
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolume","metadata":{"annotations":{},"name":"alertmanager-data-pv"},"spec":{"accessModes":["ReadWriteOnce"],"capacity":{"storage":"2Gi"},"local":{"path":"/home/fds-local-pv/alertmanager"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["k8s-worker03"]}]}]}},"persistentVolumeReclaimPolicy":"Retain","storageClassName":"fds-local-storage"}}
+      pv.kubernetes.io/bound-by-controller: "yes"
+    creationTimestamp: "2026-09-22T05:45:34Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: alertmanager-data-pv
+    resourceVersion: "1115771"
+    uid: 087305a1-20ec-4f62-9365-15788b4dba2f
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 2Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: alertmanager-data
+      namespace: monitoring-api
+      resourceVersion: "1115769"
+      uid: 09073d34-659f-4ab9-ab18-83eb54cc8093
+    local:
+      path: /home/fds-local-pv/alertmanager
+    nodeAffinity:
+      required:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - k8s-worker03
+    persistentVolumeReclaimPolicy: Retain
+    storageClassName: fds-local-storage
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2026-09-22T05:45:34Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolume","metadata":{"annotations":{},"name":"grafana-data-pv"},"spec":{"accessModes":["ReadWriteOnce"],"capacity":{"storage":"5Gi"},"local":{"path":"/home/fds-local-pv/grafana"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["k8s-worker03"]}]}]}},"persistentVolumeReclaimPolicy":"Retain","storageClassName":"fds-local-storage"}}
+      pv.kubernetes.io/bound-by-controller: "yes"
+    creationTimestamp: "2026-09-22T05:45:34Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: grafana-data-pv
+    resourceVersion: "1115875"
+    uid: e8258eb5-871d-411d-a175-603179cda032
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 5Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: grafana-data
+      namespace: monitoring-api
+      resourceVersion: "1115870"
+      uid: ae075568-7153-4d47-b30e-01e188c62f88
+    local:
+      path: /home/fds-local-pv/grafana
+    nodeAffinity:
+      required:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - k8s-worker03
+    persistentVolumeReclaimPolicy: Retain
+    storageClassName: fds-local-storage
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2026-09-22T05:45:35Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolume","metadata":{"annotations":{},"name":"prometheus-data-pv"},"spec":{"accessModes":["ReadWriteOnce"],"capacity":{"storage":"20Gi"},"local":{"path":"/home/fds-local-pv/prometheus"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["k8s-worker03"]}]}]}},"persistentVolumeReclaimPolicy":"Retain","storageClassName":"fds-local-storage"}}
+      pv.kubernetes.io/bound-by-controller: "yes"
+    creationTimestamp: "2026-09-22T05:45:34Z"
+    finalizers:
+    - kubernetes.io/pv-protection
+    name: prometheus-data-pv
+    resourceVersion: "1115766"
+    uid: 8bb53b69-c636-48b8-a634-dd0a3cd5c71c
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 20Gi
+    claimRef:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      name: prometheus-data
+      namespace: monitoring-api
+      resourceVersion: "1115764"
+      uid: e1123355-4b6c-4bad-a554-53fa443b1a9f
+    local:
+      path: /home/fds-local-pv/prometheus
+    nodeAffinity:
+      required:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - k8s-worker03
+    persistentVolumeReclaimPolicy: Retain
+    storageClassName: fds-local-storage
+    volumeMode: Filesystem
+  status:
+    lastPhaseTransitionTime: "2026-09-22T05:45:34Z"
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"alertmanager-data","namespace":"monitoring-api"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"2Gi"}},"storageClassName":"fds-local-storage","volumeName":"alertmanager-data-pv"}}
+      pv.kubernetes.io/bind-completed: "yes"
+    creationTimestamp: "2026-09-22T05:45:34Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: alertmanager-data
+    namespace: monitoring-api
+    resourceVersion: "1115773"
+    uid: 09073d34-659f-4ab9-ab18-83eb54cc8093
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 2Gi
+    storageClassName: fds-local-storage
+    volumeMode: Filesystem
+    volumeName: alertmanager-data-pv
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 2Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"grafana-data","namespace":"monitoring-api"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"5Gi"}},"storageClassName":"fds-local-storage","volumeName":"grafana-data-pv"}}
+      pv.kubernetes.io/bind-completed: "yes"
+    creationTimestamp: "2026-09-22T05:45:35Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: grafana-data
+    namespace: monitoring-api
+    resourceVersion: "1115879"
+    uid: ae075568-7153-4d47-b30e-01e188c62f88
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: fds-local-storage
+    volumeMode: Filesystem
+    volumeName: grafana-data-pv
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 5Gi
+    phase: Bound
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"prometheus-data","namespace":"monitoring-api"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"20Gi"}},"storageClassName":"fds-local-storage","volumeName":"prometheus-data-pv"}}
+      pv.kubernetes.io/bind-completed: "yes"
+    creationTimestamp: "2026-09-22T05:45:34Z"
+    finalizers:
+    - kubernetes.io/pvc-protection
+    name: prometheus-data
+    namespace: monitoring-api
+    resourceVersion: "1115768"
+    uid: e1123355-4b6c-4bad-a554-53fa443b1a9f
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 20Gi
+    storageClassName: fds-local-storage
+    volumeMode: Filesystem
+    volumeName: prometheus-data-pv
+  status:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 20Gi
+    phase: Bound
+kind: List
+metadata:
+  resourceVersion: ""
