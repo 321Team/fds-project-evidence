@@ -1,0 +1,11 @@
+pod "pullcheck-20261001" deleted from monitoring-api namespace
+pod "pullcheck-20261001" deleted from monitoring-node namespace
+pod "pullcheck2-20261001" deleted from monitoring-node namespace
+secret "harbor-pull-secret-bak-admin-20261001" deleted from monitoring-api namespace
+delete backup monitoring-api rc=0
+secret "harbor-pull-secret-bak-admin-20261001" deleted from monitoring-node namespace
+delete backup monitoring-node rc=0
+== monitoring-api
+pullcheck·backup 없음
+== monitoring-node
+pullcheck·backup 없음
