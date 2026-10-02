@@ -1,0 +1,17 @@
+nohup: 입력 무시
+T_PRE 2026-10-02 09:43:02 KST
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                                                                              SELECTOR
+prometheus   1/1     1            1           9d    prometheus   10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19   app=prometheus
+prometheus-d8949bd64-tvptk           1/1     Running   0             21h     10.244.39.250   k8s-worker03   <none>           <none>
+T_SCALE0 2026-10-02 09:43:02 KST
+deployment.apps/prometheus scaled
+T_POD_GONE 2026-10-02 09:43:04 KST
+T_SCALE1 2026-10-02 09:50:04 KST
+deployment.apps/prometheus scaled
+Waiting for deployment "prometheus" rollout to finish: 0 of 1 updated replicas are available...
+deployment "prometheus" successfully rolled out
+T_READY 2026-10-02 09:50:15 KST rc=0
+prometheus-d8949bd64-cb7hx           1/1     Running   0             11s     10.244.39.252   k8s-worker03   <none>           <none>
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                                                                              SELECTOR
+prometheus   1/1     1            1           9d    prometheus   10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19   app=prometheus
+RUN_DONE 2026-10-02 09:50:15 KST

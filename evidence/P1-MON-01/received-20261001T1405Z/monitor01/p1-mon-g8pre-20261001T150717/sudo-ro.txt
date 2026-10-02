@@ -1,0 +1,94 @@
+== etc/fds tree
+drwx------ root:root 34 2026-09-27 15:59 /etc/fds
+drwx------ root:root 23 2026-09-19 01:51 /etc/fds/pki
+drwx------ root:root 21 2026-09-19 01:51 /etc/fds/pki/monitor01
+drwx------ root:root 89 2026-09-19 01:51 /etc/fds/pki/monitor01/request
+-rw------- root:root 0 2026-09-19 01:51 /etc/fds/pki/monitor01/request/.request.lock
+-rw------- root:root 2484 2026-09-19 01:51 /etc/fds/pki/monitor01/request/monitor01.key
+-rw------- root:root 1350 2026-09-19 01:51 /etc/fds/pki/monitor01/request/monitor01.csr
+-rw------- root:root 449 2026-09-19 01:51 /etc/fds/pki/monitor01/request/request.json
+drwxr-xr-x root:root 38 2026-09-27 15:59 /etc/fds/monitor01
+drwxr-xr-x root:root 63 2026-09-27 15:59 /etc/fds/monitor01/receiver
+-rw-r--r-- root:root 526 2026-09-27 15:59 /etc/fds/monitor01/receiver/receiver.prometheus.yml
+-rw-r--r-- root:root 329 2026-09-27 15:59 /etc/fds/monitor01/receiver/watchdog.rules.yml
+drwxr-xr-x root:root 26 2026-09-27 15:59 /etc/fds/monitor01/blackbox
+-rw-r--r-- root:root 56 2026-09-27 15:59 /etc/fds/monitor01/blackbox/blackbox.yml
+== etc/fds sha256
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /etc/fds/pki/monitor01/request/.request.lock
+204e9db90486e904f344cbe05961614df1ee01223ce770ad452cc99622f38c44  /etc/fds/pki/monitor01/request/monitor01.key
+37fda6d9fb99f101bf213a8e6a070c3e6dce3ba5238b54f178d9c62c8ddd3fa1  /etc/fds/pki/monitor01/request/monitor01.csr
+6ff9a534a4ab0e4c44e06afd08add1941134de75bb4240cab8d856d262480c04  /etc/fds/pki/monitor01/request/request.json
+f5e9da0f72ff2c7569b9e833aa977406936002b747f342ae823f59abe155d00a  /etc/fds/monitor01/receiver/receiver.prometheus.yml
+85375cb270ff610c33c787dea20669e98744f1e04722e4ca5b8c881f4d27fa79  /etc/fds/monitor01/receiver/watchdog.rules.yml
+e208a7f96cc6ee7e52aa8c1781d4da9ebdd696de71a9c663496e5b42ab5ad7a7  /etc/fds/monitor01/blackbox/blackbox.yml
+== etc/fds selinux
+/etc/fds:
+합계 12
+drwx------.   4 root root unconfined_u:object_r:etc_t:s0    34  9월 27일  15:59 .
+drwxr-xr-x. 135 root root system_u:object_r:etc_t:s0      8192  9월 27일  21:17 ..
+drwxr-xr-x.   4 root root unconfined_u:object_r:etc_t:s0    38  9월 27일  15:59 monitor01
+drwx------.   3 root root unconfined_u:object_r:cert_t:s0   23  9월 19일  01:51 pki
+
+/etc/fds/monitor01:
+합계 0
+drwxr-xr-x. 4 root root unconfined_u:object_r:etc_t:s0                  38  9월 27일  15:59 .
+drwx------. 4 root root unconfined_u:object_r:etc_t:s0                  34  9월 27일  15:59 ..
+drwxr-xr-x. 2 root root system_u:object_r:container_file_t:s0:c243,c739 26  9월 27일  15:59 blackbox
+drwxr-xr-x. 2 root root system_u:object_r:container_file_t:s0:c65,c984  63  9월 27일  15:59 receiver
+
+/etc/fds/monitor01/blackbox:
+합계 4
+drwxr-xr-x. 2 root root system_u:object_r:container_file_t:s0:c243,c739 26  9월 27일  15:59 .
+drwxr-xr-x. 4 root root unconfined_u:object_r:etc_t:s0                  38  9월 27일  15:59 ..
+-rw-r--r--. 1 root root system_u:object_r:container_file_t:s0:c243,c739 56  9월 27일  15:59 blackbox.yml
+
+/etc/fds/monitor01/receiver:
+합계 8
+drwxr-xr-x. 2 root root system_u:object_r:container_file_t:s0:c65,c984  63  9월 27일  15:59 .
+drwxr-xr-x. 4 root root unconfined_u:object_r:etc_t:s0                  38  9월 27일  15:59 ..
+-rw-r--r--. 1 root root system_u:object_r:container_file_t:s0:c65,c984 526  9월 27일  15:59 receiver.prometheus.yml
+-rw-r--r--. 1 root root system_u:object_r:container_file_t:s0:c65,c984 329  9월 27일  15:59 watchdog.rules.yml
+
+/etc/fds/pki:
+합계 0
+drwx------. 3 root root unconfined_u:object_r:cert_t:s0 23  9월 19일  01:51 .
+drwx------. 4 root root unconfined_u:object_r:etc_t:s0  34  9월 27일  15:59 ..
+drwx------. 3 root root unconfined_u:object_r:cert_t:s0 21  9월 19일  01:51 monitor01
+
+/etc/fds/pki/monitor01:
+합계 0
+drwx------. 3 root root unconfined_u:object_r:cert_t:s0 21  9월 19일  01:51 .
+drwx------. 3 root root unconfined_u:object_r:cert_t:s0 23  9월 19일  01:51 ..
+drwx------. 2 root root unconfined_u:object_r:cert_t:s0 89  9월 19일  01:51 request
+
+/etc/fds/pki/monitor01/request:
+합계 12
+drwx------. 2 root root unconfined_u:object_r:cert_t:s0   89  9월 19일  01:51 .
+drwx------. 3 root root unconfined_u:object_r:cert_t:s0   21  9월 19일  01:51 ..
+-rw-------. 1 root root unconfined_u:object_r:cert_t:s0    0  9월 19일  01:51 .request.lock
+-rw-------. 1 root root unconfined_u:object_r:cert_t:s0 1350  9월 19일  01:51 monitor01.csr
+-rw-------. 1 root root unconfined_u:object_r:cert_t:s0 2484  9월 19일  01:51 monitor01.key
+-rw-------. 1 root root unconfined_u:object_r:cert_t:s0  449  9월 19일  01:51 request.json
+== data dir
+drwxr-xr-x root:root 23 2026-09-27 15:59 /var/lib/fds
+drwxr-xr-x root:root 22 2026-09-27 15:59 /var/lib/fds/monitor01
+drwxr-xr-x nobody:nobody 126 2026-09-27 21:10 /var/lib/fds/monitor01/receiver
+-rw-r--r-- nobody:nobody 20001 2026-09-27 21:10 /var/lib/fds/monitor01/receiver/queries.active
+drwxr-xr-x nobody:nobody 54 2026-09-27 20:00 /var/lib/fds/monitor01/receiver/wal
+drwxr-xr-x nobody:nobody 34 2026-09-27 20:01 /var/lib/fds/monitor01/receiver/chunks_head
+drwxr-xr-x nobody:nobody 68 2026-09-27 18:59 /var/lib/fds/monitor01/receiver/01M3H4WCGN2BFSBGM6FMSDVYZV
+drwxr-xr-x nobody:nobody 68 2026-09-27 20:00 /var/lib/fds/monitor01/receiver/01M3H8B7Y9B8ADA6NC2GS1CQYD
+580K	/var/lib/fds/monitor01/receiver
+== rootful containers
+fds-blackbox | Exited (0) 3 days ago | localhost/fds/blackbox-exporter:0.28.0-master.065fc18 | [/etc/blackbox_exporter]
+fds-receiver | Exited (0) 3 days ago | docker.io/prom/prometheus@sha256:86b17a25c2db1d16a61b16b3c8f336679eb19e26333d03e808da387206e40faa | [/etc/fds/monitor01/receiver /var/lib/fds/monitor01/receiver /prometheus]
+== rootful images
+sha256:8d75253e0ba6024d7e9ff0f44cbc0284a496bcf5178eed098c0f2708f4ea7dcb localhost/fds/blackbox-exporter:0.28.0-master.065fc18 sha256:48779ce72f00994d3eee98413348474cb8148dead83dbb6edf8f9367cc25b4f6
+sha256:66416213a3b43651d3521acc3987277b4f97ad0ae29acc581f910ef9bd3959bd docker.io/prom/prometheus:v3.15.0 sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e
+sha256:a47dd5d8e203a3a3a464d2f4d0d88e5293e188bb79efd3f1409ec7694a4eb1ca cgr.dev/chainguard/nginx:latest sha256:f5bfac85024ea2d7c16a28ac21e985c6d19a20a60ae74838f056297d44467525
+sha256:38e944e09e056cfbd0f8583214ffa960969a61caa9d6ecf165cf3b3f8a1b99db cgr.dev/chainguard/static:latest sha256:41e17ed83c594a64a9396b6ab96dd26d5ddc290dacf4c177464712ff21ad534f
+sha256:43d9d8c1f8968f09df8c1aa6c136ecc617e62d64fe4c0b24c97de4eb210bd973 docker.io/library/nginx:1.30.5-alpine sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+sha256:30d1e21bb57d04c9fa6a73bdfb0465dbcd234c8a299d5748e0f0dd7cedf330d9 docker.io/library/nginx:1.30.5 sha256:b972f831f200b19ef0767938224f9711e74cd783718738cd7405d5cabf75c442
+sha256:9bae33b05e4e159803d2ad714fecbda886969dce7ca369216dece578cad664c1 docker.io/library/golang:1.25 sha256:699337d620559a59b4a2bb298ad59611e535d2ee755a34cf2d2a98f37578dc80
+sha256:1105aaf5e7223aac9caeb251ff2ad4eb09d9f4d97ba4e5afde52e0f017f848aa docker.io/aquasec/trivy:0.74.0 sha256:62b1e65e8869bc4b4c6aa4fa2b21595256c7c2f6018a9d9ad61caf87187c1969
+sha256:2bb660d6acaae57b2514fa4d114428b1670c6ef84eee07834710b26fc003796b docker.io/prom/blackbox-exporter:v0.28.0 sha256:e753ff9f3fc458d02cca5eddab5a77e1c175eee484a8925ac7d524f04366c2fc

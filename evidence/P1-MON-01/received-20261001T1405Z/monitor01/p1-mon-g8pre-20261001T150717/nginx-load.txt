@@ -1,0 +1,48 @@
+== load
+Getting image source signatures
+Copying blob sha256:808bba1f7ed07addaf83d9ec5bd20235ac430948d19cfbfb5cf900c83e35f14c
+Copying blob sha256:262e949305d155a985d3b12c1a5bdf6a794a0c4d6a0d8a98b841a023fd0f8d6a
+Copying blob sha256:ff218d5da4398dd6bcca7305b555384716455aab246450aeed3eafc9c6ace3e7
+Copying blob sha256:de09b34d747fd5bd43818fa4621293623951c6c6177d35f66e744abea6fcf61a
+Copying blob sha256:26128273f7f0f8f1cddc6264d2503e322a445a1d5a776bdb184ba585cd2441d5
+Copying blob sha256:274a3a704f3385a257eb759eebedae78fb3348df96bf6727d3e8193a1eb28933
+Copying blob sha256:6a0c47c1ef4cef192b0d073f0d6344d30ab6d3765fc927df4fb5bb5a8043fad6
+Copying blob sha256:1ab0a42ee02036016dadab036eabf4115441fe5a22ec7c5f535665ceec724234
+Copying blob sha256:ae69084725bc53e81bf84e0da42f7eae3c6c57c2089a667d61ade95a4a81854a
+Copying blob sha256:a92e19f3efde5ff9bf0a09d6489cecc1b671437426c9286682f2c2e344883e99
+Copying blob sha256:94097dd7444313465c92cfa5b392381fb47e293a19e17fb03d13e8c9badc1a75
+Copying config sha256:a47dd5d8e203a3a3a464d2f4d0d88e5293e188bb79efd3f1409ec7694a4eb1ca
+Writing manifest to image destination
+Loaded image: 10.1.93.54/fds/nginx:candidate-20260930
+load_rc=0
+== verify-image
+{
+  "status": "IMAGE_IDENTITY_MATCH",
+  "runtime": "NOT_STARTED",
+  "approved_harbor_digest": "10.1.93.54/fds/nginx@sha256:cbb0d105044c201c077d569e9235ea5b1b346d14157730e1ed085c481b061ade",
+  "expected_config_digest": "sha256:a47dd5d8e203a3a3a464d2f4d0d88e5293e188bb79efd3f1409ec7694a4eb1ca",
+  "local_image_id": "sha256:a47dd5d8e203a3a3a464d2f4d0d88e5293e188bb79efd3f1409ec7694a4eb1ca",
+  "local_repo_digests_transfer_only": [
+    "10.1.93.54/fds/nginx@sha256:3b0de96e513298bb91fdd1944296aa136bee7d6567f465e68d15845ad1bda084"
+  ],
+  "rootfs_layers": [
+    "sha256:262e949305d155a985d3b12c1a5bdf6a794a0c4d6a0d8a98b841a023fd0f8d6a",
+    "sha256:ff218d5da4398dd6bcca7305b555384716455aab246450aeed3eafc9c6ace3e7",
+    "sha256:de09b34d747fd5bd43818fa4621293623951c6c6177d35f66e744abea6fcf61a",
+    "sha256:274a3a704f3385a257eb759eebedae78fb3348df96bf6727d3e8193a1eb28933",
+    "sha256:26128273f7f0f8f1cddc6264d2503e322a445a1d5a776bdb184ba585cd2441d5",
+    "sha256:808bba1f7ed07addaf83d9ec5bd20235ac430948d19cfbfb5cf900c83e35f14c",
+    "sha256:6a0c47c1ef4cef192b0d073f0d6344d30ab6d3765fc927df4fb5bb5a8043fad6",
+    "sha256:1ab0a42ee02036016dadab036eabf4115441fe5a22ec7c5f535665ceec724234",
+    "sha256:ae69084725bc53e81bf84e0da42f7eae3c6c57c2089a667d61ade95a4a81854a",
+    "sha256:a92e19f3efde5ff9bf0a09d6489cecc1b671437426c9286682f2c2e344883e99",
+    "sha256:94097dd7444313465c92cfa5b392381fb47e293a19e17fb03d13e8c9badc1a75"
+  ]
+}
+verify_rc=0
+== version
+nginx version: nginx/1.31.6
+version_rc=0
+== uid map
+         0       1000          1
+         1     524288      65536

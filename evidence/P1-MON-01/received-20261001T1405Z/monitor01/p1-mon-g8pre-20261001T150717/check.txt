@@ -1,0 +1,39 @@
+== id
+monitor01
+uid=1000(server01_monitor) gid=1000(server01_monitor) groups=1000(server01_monitor),10(wheel),1001(linux-admins) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+2026-10-01 15:07:17 KST
+== tools
+/usr/bin/python3
+/usr/bin/podman
+/usr/sbin/ss
+/usr/bin/sha256sum
+Python 3.12.14
+podman version 6.1.0
+== launcher copies
+== repo clones
+== paths
+ls: '/etc/fds/monitor01'에 접근할 수 없음: 허가 거부
+ls: '/etc/fds/monitor01/*'에 접근할 수 없음: 허가 거부
+drwx------. 4 root   root   unconfined_u:object_r:etc_t:s0                  34  9월 27일  15:59 /etc/fds
+drwxr-xr-x. 3 root   root   unconfined_u:object_r:var_lib_t:s0              23  9월 27일  15:59 /var/lib/fds
+drwxr-xr-x. 3 root   root   unconfined_u:object_r:var_lib_t:s0              22  9월 27일  15:59 /var/lib/fds/monitor01
+drwxr-xr-x. 6 nobody nobody system_u:object_r:container_file_t:s0:c65,c984 126  9월 27일  21:10 /var/lib/fds/monitor01/receiver
+== config files
+find: ‘/etc/fds/monitor01’: 허가 거부
+== rootless containers
+== rootless images
+sha256:66416213a3b43651d3521acc3987277b4f97ad0ae29acc581f910ef9bd3959bd 10.1.93.54/fds/prometheus:v3.15.0-candidate-20260930 sha256:b3526e4e815887c46a11649fb27ef039fbe7357f7a476fed53fe7c14ad78b531
+== rootful containers (sudo -n)
+sudo: 암호가 필요합니다
+== listeners
+none
+== tars in home
+-rw-------. 1 server01_monitor server01_monitor 266260480  9월 30일  17:57 /home/server01_monitor/prometheus-v3.15.0-2c28708b.tar
+== subuid
+/etc/subuid:server01_monitor:524288:65536
+/etc/subgid:server01_monitor:524288:65536
+== selinux/disk
+Enforcing
+파일 시스템          크기  사용  가용 사용% 마운트위치
+/dev/mapper/cs-home  123G  3.5G  119G    3% /home
+/dev/mapper/cs-root   70G   11G   60G   16% /

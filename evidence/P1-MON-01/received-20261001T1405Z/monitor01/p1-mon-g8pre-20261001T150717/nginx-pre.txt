@@ -1,0 +1,60 @@
+-rw-r--r--. 1 server01_monitor server01_monitor 2004  9월 19일  20:43 /home/server01_monitor/fds-root-ca.crt
+-rw-r--r--. 1 server01_monitor server01_monitor 1834  9월 19일  20:43 /home/server01_monitor/monitor01.crt
+85620544c77fb1b8e7a4ab5acfaf491ed45244a51fdfaebde951c05572d0a3ec  /home/server01_monitor/monitor01.crt
+20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f  /home/server01_monitor/fds-root-ca.crt
+-rw-------. 1 root root unconfined_u:object_r:cert_t:s0 2484  9월 19일  01:51 /etc/fds/pki/monitor01/request/monitor01.key
+# file: /etc/fds/pki
+# owner: root
+# group: root
+user::rwx
+group::---
+other::---
+
+# file: /etc/fds/pki/monitor01
+# owner: root
+# group: root
+user::rwx
+group::---
+other::---
+
+# file: /etc/fds/pki/monitor01/request
+# owner: root
+# group: root
+user::rwx
+group::---
+other::---
+
+# file: /etc/fds/pki/monitor01/request/monitor01.key
+# owner: root
+# group: root
+user::rw-
+group::---
+other::---
+
+key spki sha256:
+175f4b5dcc4563d2a42096de853ea8eb45d9d808ef06e8dcdb806cd101085028  -
+net.ipv4.ip_unprivileged_port_start = 1024
+public (default)
+  interfaces: ens160
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+container_connect_any --> off
+container_manage_cgroup --> off
+container_manage_public_content --> off
+container_read_certs --> off
+/usr/bin/openssl
+443/8443 free
