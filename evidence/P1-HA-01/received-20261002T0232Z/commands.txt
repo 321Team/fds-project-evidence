@@ -1,0 +1,37 @@
+P1-HA-01 Drain 가용성 재시험 — 실제 실행한 명령 (2026-10-02, 담당자가 터미널에 붙여넣어 실행)
+계정: control01 = server02, edge01 = server08, PC = soldesk(PowerShell). 시각은 KST.
+
+[11:29 사전 점검, 읽기 전용] edge01
+  date '+%F %T %Z'; for w in 10.1.93.105 10.1.93.107 10.1.93.108; do echo -n "$w "; curl -s -o /dev/null -m 2 -w '%{http_code} %{time_total}s\n' http://$w:30080/readyz; done; chronyc tracking | grep -E 'System time|Leap'; python3 --version; ls -la ~ | grep -i -E 'probe|judge|ha-01' || true
+
+[11:29 사전 점검, 읽기 전용] control01
+  K="sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf"; date '+%F %T %Z'; $K get nodes -o wide; $K get pods -A -o wide | grep -E 'NAMESPACE|transaction-api|fds-engine'; $K get endpointslices -A | grep -E 'NAMESPACE|transaction-api'; $K get svc -A -o custom-columns=NS:.metadata.namespace,NAME:.metadata.name,ETP:.spec.externalTrafficPolicy,PORT:.spec.ports[*].nodePort | grep -E 'NS|30080'; chronyc tracking | grep -E 'System time|Leap'
+
+[도구 전달] PC → edge01 (infra-kubernetes main c55bad3의 ops/p1-ha-01-availability/probe.py·judge.py, git show로 추출)
+  ssh server08@10.1.93.50 "mkdir -p ~/ha22-20261002"; scp C:\Users\soldesk\ha22\probe.py C:\Users\soldesk\ha22\judge.py server08@10.1.93.50:~/ha22-20261002/
+
+[SHA 대조] edge01
+  cd ~/ha22-20261002 && sha256sum probe.py judge.py && chronyc tracking > chrony-edge01-pre.txt && date '+%F %T %Z' >> chrony-edge01-pre.txt && echo SHA_DONE
+
+[사전 기록] control01
+  sudo -v && mkdir -p ~/ha22-20261002 && cd ~/ha22-20261002 && K="sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf" && $K -n fds-app get deploy,pods -o wide > pre-pods.txt && $K -n fds-app get pods -o jsonpath='{range .items[*]}{.metadata.name} {.spec.nodeName} {.status.containerStatuses[0].restartCount} {.status.containerStatuses[0].imageID}{"\n"}{end}' > pre-images.txt && chronyc tracking > chrony-control01-pre.txt && date '+%F %T %Z' >> chrony-control01-pre.txt
+
+[11:32:26 probe 시작] edge01 (480초)
+  cd ~/ha22-20261002 && nohup python3 probe.py probe.log 480 > probe.stdout 2>&1 & sleep 2; cat ~/ha22-20261002/probe.stdout
+
+[11:32:38 타임라인 + Drain] control01 (probe 시작 직후 한 번에 붙여넣음)
+  cd ~/ha22-20261002 && K="sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf" && ( T=timeline.txt; : > $T; sleep 3; echo "baseline_start $(date +%s.%N)" >> $T; sleep 62; echo "drain_start $(date +%s.%N)" >> $T; $K drain k8s-worker02 --pod-selector='app in (transaction-api,fds-engine)' --ignore-daemonsets --delete-emptydir-data --timeout=180s > drain.out 2>&1; echo "drain rc=$?" >> drain.out; OK=0; for i in $(seq 1 90); do R=$($K -n fds-app get deploy transaction-api fds-engine -o jsonpath='{.items[*].status.readyReplicas}'); N=$($K -n fds-app get pods -o wide | grep -E 'transaction-api|fds-engine' | grep -c k8s-worker02); if [ "$R" = "3 3" ] && [ "$N" = "0" ]; then OK=1; break; fi; sleep 2; done; if [ "$OK" = "1" ]; then echo "rescheduled_ready $(date +%s.%N)" >> $T; sleep 62; $K uncordon k8s-worker02 >> drain.out 2>&1; echo "uncordon $(date +%s.%N)" >> $T; sleep 62; echo "end $(date +%s.%N)" >> $T; echo RUN_DONE; else $K uncordon k8s-worker02 >> drain.out 2>&1; echo "ABORT_NOT_READY uncordon rc=$?"; fi; cat $T; $K -n fds-app get pods -o wide | grep -E 'NAME|transaction-api|fds-engine' )
+
+[배치 복구, 판정 구간 밖] control01
+  cd ~/ha22-20261002 && K="sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf" && $K -n fds-app delete pod fds-engine-5699669f6f-ffhtr transaction-api-b784c8c5d-hpwdv > restore.out 2>&1; for i in $(seq 1 60); do R=$($K -n fds-app get deploy transaction-api fds-engine -o jsonpath='{.items[*].status.readyReplicas}'); if [ "$R" = "3 3" ]; then break; fi; sleep 2; done; $K -n fds-app get deploy,pods -o wide > post-pods.txt; $K -n fds-app get pods -o jsonpath='{range .items[*]}{.metadata.name} {.spec.nodeName} {.status.containerStatuses[0].restartCount} {.status.containerStatuses[0].imageID}{"\n"}{end}' > post-images.txt; $K get nodes > post-nodes.txt; cat post-images.txt; cat post-nodes.txt; sha256sum timeline.txt drain.out restore.out pre-pods.txt post-pods.txt pre-images.txt post-images.txt
+
+[판정] edge01 (probe 종료 11:40:26 뒤. control01 timeline.txt는 출력 5줄을 heredoc으로 옮겨 적고 SHA a1f99fe4…25c7 일치 확인)
+  cd ~/ha22-20261002 && cat > timeline.txt <<'EOF' ... EOF; while pgrep -f "probe.py probe.log" > /dev/null; do sleep 2; done; tail -2 probe.stdout; wc -l probe.log; python3 judge.py probe.log timeline.txt 10.1.93.107 | tee judge.out; echo "judge rc=${PIPESTATUS[0]}"; sha256sum timeline.txt probe.log probe.stdout judge.out
+
+[묶음] edge01·control01
+  cd ~ && tar czf ha22-edge01-20261002.tgz ha22-20261002 && sha256sum ha22-edge01-20261002.tgz | tee ha22-edge01-20261002.tgz.sha256 && tar tzf ha22-edge01-20261002.tgz && ls -l ha22-edge01-20261002.tgz
+  cd ~ && tar czf ha22-control01-20261002.tgz ha22-20261002 && sha256sum ha22-control01-20261002.tgz | tee ha22-control01-20261002.tgz.sha256 && tar tzf ha22-control01-20261002.tgz && ls -l ha22-control01-20261002.tgz && base64 -w76 ha22-control01-20261002.tgz
+
+[수신] PC PowerShell
+  scp server08@10.1.93.50:'~/ha22-edge01-20261002.tgz*' C:\Users\soldesk\ha22\; Get-FileHash C:\Users\soldesk\ha22\ha22-edge01-20261002.tgz -Algorithm SHA256
+  control01 묶음은 base64 붙여넣기를 PC에서 base64 -d로 복원하고 SHA-256 7209701e…2465 일치 확인
