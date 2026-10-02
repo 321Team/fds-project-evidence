@@ -12,11 +12,12 @@ MON Lead(이재환)가 k8s-control01(`server02`)에서 읽기 전용으로 조�
 
 | 폴더 | 서버 원본 | archive | 대조 |
 |---|---|---|---|
-| `control01/` | `~/p1-mon-psa-rbac-20261002T150142/`(서버 파일 12개 중 9개 편입) | `control01-psa-rbac-20261002.tgz` 5,936 B(서버 이름 `p1-mon-psa-rbac-small.tgz`), SHA-256 `3e2d20b0…a61b38` | 15:04 서버에서 묶어 base64로 받았다. 복원본이 서버 `sha256sum`과 일치했다. 개별 파일은 archive를 그대로 푼 것이다 |
+| `control01/` | `~/p1-mon-psa-rbac-20261002T150142/`(서버 파일 12개 중 9개: 설정·출력·스크립트) | `control01-psa-rbac-20261002.tgz` 5,936 B(서버 이름 `p1-mon-psa-rbac-small.tgz`), SHA-256 `3e2d20b0…a61b38` | 15:04 서버에서 묶어 base64로 받았다. 복원본이 서버 `sha256sum`과 일치했다. 개별 파일은 archive를 그대로 푼 것이다 |
+| `control01/` | 같은 서버 폴더의 원본 JSON 3개(`rbac.json` 341,915 B, `np-api.json` 40,796 B, `pods-api.json` 60,301 B) | `control01-psa-rbac-raw-20261002.tgz` 24,172 B(서버 이름 `p1-mon-psa-rbac-raw.tgz`), SHA-256 `823a6bff…c4f07` | 15:29 서버에서 묶어 base64로 받았다(리뷰 BLOCKER 1 반영). 복원본이 서버 `sha256sum`과 일치했고, 풀어낸 3개 파일의 SHA-256이 서버 `SHA256SUMS`(위 archive 안)의 값과 같다. 개별 파일은 archive를 그대로 푼 것이다 |
 
 - archive 내부 목록은 [ARCHIVE_CONTENTS](../../../registry/ARCHIVE_CONTENTS.json)에 올렸다.
-- **서버에만 있는 원본(이 PR에 없음):** `rbac.json`(341,915 B, SHA-256 `dbd26d53…ee06`), `np-api.json`(40,796 B, `1deb17fe…59dc`), `pods-api.json`(60,301 B, `af14139b…087c`). 붙여넣기 전달 한도 때문에 편입하지 않았고 SHA-256만 archive 안 `SHA256SUMS`에 있다. 따라서 아래 2절 RBAC 표는 `summary.txt`(스크립트 출력)에 의존하며, `rbac.json`을 받아 `an.py`로 재현하는 것은 **독립 리뷰 요청 시 제공할 수 있다(현재 NOT VERIFIED)**.
-- 비밀 정보 검색 0건이다. Alertmanager 설정은 `webhook_url` 값을 마스킹했고(실제 설정은 `webhook_url_file` 경로만 사용), Prometheus 설정에는 `password_file` 경로만 있다. `node-ds.yaml`의 `harbor-pull-secret`은 Secret 이름일 뿐 내용이 아니다.
+- **원본 편입과 재현:** `rbac.json`·`np-api.json`·`pods-api.json`은 서버가 `kubectl get -o json`으로 저장한 원본 그대로다. 편입한 원본 폴더에서 `python3 an.py .`를 실행한 출력이 `summary.txt` 1~38줄(PSA 라벨·Pod 생성 시각·NetworkPolicy egress·RBAC 주체)과 줄바꿈을 제외하고 **동일**함을 MON Lead 쪽에서 확인했다. `summary.txt`의 나머지는 같은 폴더 파일을 화면에 출력한 것이다(`node-objects.txt` 전체, `alertmanager-config.masked.yml`의 `grep` 결과, `prom-remote-write.txt` 전체). `an.py`가 `rbac.json`을 읽는 규칙은 아래 2절에 적었다.
+- 비밀 정보 검색 0건이다. Alertmanager 설정은 `webhook_url` 값을 마스킹했고(실제 설정은 `webhook_url_file` 경로만 사용), Prometheus 설정에는 `password_file` 경로만 있다. `node-ds.yaml`의 `harbor-pull-secret`은 Secret 이름일 뿐 내용이 아니다. `pods-api.json`의 환경 변수는 Grafana `GF_SECURITY_ADMIN_USER`·`GF_SECURITY_ADMIN_PASSWORD`가 `secretKeyRef` 참조일 뿐 값이 없고, 나머지는 `false`·`true` 설정값이다. `rbac.json`·`np-api.json`에서 비밀 값 검색 0건이다.
 
 ## 1. namespace PSA 라벨·Pod (`ns.json`, `summary.txt`)
 
@@ -52,7 +53,7 @@ MON Lead(이재환)가 k8s-control01(`server02`)에서 읽기 전용으로 조�
 - `webhook_configs`·monitor01(`10.250.10.30`) 대상은 없다.
 - 이 설정은 CR-P1-MON-01-02([#75](https://github.com/321Team/fds-project-baseline/issues/75)) 승인 예외(Discord 1개 목적지, 정본 D-ID 등록은 [Decision 요청 5842467994](https://github.com/321Team/fds-project-baseline/issues/75#issuecomment-5842467994) 별도)에 해당한다. IF-24(Alertmanager→monitor01 Webhook)와는 별개다.
 
-## 4. monitoring-api NetworkPolicy (`summary.txt`; 원본 `np-api.json`은 서버에만)
+## 4. monitoring-api NetworkPolicy (`summary.txt`; 원본 `np-api.json`)
 
 NetworkPolicy 16개. egress가 있는 규칙만 요약한다.
 
@@ -81,7 +82,7 @@ NetworkPolicy 16개. egress가 있는 규칙만 요약한다.
 ## 판정 범위
 
 - 이 기록이 보여 주는 것: 조회 시점(15:01 KST)의 PSA 라벨, `monitoring-node` 객체 구성과 DaemonSet 보안 설정, Workload 생성·수정 권한 주체 목록(위 자원·verb 범위), Alertmanager 현장 receiver, monitoring-api NetworkPolicy와 Prometheus 송신 설정.
-- **NOT VERIFIED:** 서버에만 있는 `rbac.json`·`np-api.json`·`pods-api.json` 원본 재현(요청 시 제공), 2절 한계에 적은 다른 권한 경로, 이미지 Trivy 결과(별도 기록 #13 5925883099, evidence#88·#89).
+- **NOT VERIFIED:** 2절 한계에 적은 다른 권한 경로(`bind`·`escalate`·`impersonate`, ServiceAccount 토큰 발급, `pods/exec` 등 — 이 기록으로 "임의 Workload 생성 경로가 전부 차단됨"을 주장하지 않는다), 이미지 Trivy 결과(별도 기록 #13 5925883099, evidence#88·#89).
 - **NOT RUN:** `.108` 출발지 시험(잘못된 인증 401·8443 직접 차단·tcpdump) — [QA 5946270938](https://github.com/321Team/fds-project-baseline/issues/17#issuecomment-5946270938) 범위, 별도 수집회차.
 - 운영 변경이 없어 되돌릴 대상은 없다. 서버 원본 폴더는 보존한다.
 
