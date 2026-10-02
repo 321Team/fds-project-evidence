@@ -1,0 +1,38 @@
+2026-10-02 14:58:37 KST
+== fw runtime
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule family="ipv4" source address="10.1.93.108/32" destination address="10.250.10.30/32" forward-port port="443" protocol="tcp" to-port="8443"
+== fw permanent
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule family="ipv4" source address="10.1.93.108/32" destination address="10.250.10.30/32" forward-port port="443" protocol="tcp" to-port="8443"
+== direct
