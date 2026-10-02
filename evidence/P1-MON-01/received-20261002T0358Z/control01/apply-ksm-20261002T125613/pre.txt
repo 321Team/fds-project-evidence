@@ -1,0 +1,10 @@
+2026-10-02 12:56:15 KST
+kube-state-metrics.yaml: 성공
+alertmanager-6bf6dc555-nhtnn         k8s-worker03   10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67         0
+grafana-f65457bfd-p4j4t              k8s-worker03   10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b              0
+kube-state-metrics-f88b9c457-n5n7x   k8s-worker01   10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1   5
+prometheus-d8949bd64-cb7hx           k8s-worker03   10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19           0
+== diff kube-state-metrics.yaml
+-        image: 10.1.93.54/fds/kube-state-metrics:v2.13.0
++        image: 10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1
+rc=1
