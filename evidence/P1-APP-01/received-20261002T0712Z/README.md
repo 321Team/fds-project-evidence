@@ -26,10 +26,13 @@ archive 내부 목록은 [ARCHIVE_CONTENTS](../../../registry/ARCHIVE_CONTENTS.j
 
 ## 판정 범위
 
-| 줄 | 판단 |
+| 줄 | 이 원본이 보여 주는 것 |
 |---|---|
-| Runtime AC "승인 Worker backend에 local endpoint 존재" | 조회 시점(16:12)에 승인 Worker 3대 모두에 준비된 local endpoint가 1개씩 있다. 단 edge01 nginx upstream은 아직 Worker가 아니라 옛 `10.1.93.50:30080`을 가리킨다(P1-MON-01 `received-20260929T0656Z/edge01`). edge01 upstream 전환은 #19/SEC 범위이며 이 조회로 확인하지 않았다 |
-| 핵심 요구 "local endpoint를 **보장**한다" | **미충족 근거.** Worker마다 1개씩 두도록 강제하는 설정(`topologySpreadConstraints`·`podAntiAffinity`)이 없다. 현재 1개씩인 것은 스케줄 결과일 뿐이다. 10/2 Drain 재시험 때 새 Pod가 worker01로 몰렸다가 수동으로 재배치한 사례가 있다(evidence#92) |
+| Runtime AC "승인 Worker backend에 local endpoint 존재" | 조회 시점(16:12:53)에 승인 Worker 3대 모두에 준비된 local endpoint가 1개씩 있다(point-in-time 사실) |
+| 핵심 요구 "local endpoint를 보장한다" | Deployment에서 Worker별 1개 배치를 강제하는 선언적 설정(`topologySpreadConstraints`·`affinity`)은 관측되지 않았다. 현재 3대에 1개씩인 것은 이 시점의 스케줄 결과다. **이 원본만으로는 local endpoint 보장의 충족·미충족을 판정하지 않는다.** #15 Risk Control의 "local endpoint 없는 Worker를 edge01 backend에서 제외" 같은 운영 경로를 포함한 판정은 APP Lead가 #15에서 따로 한다 |
 
-- 이 기록으로 #15 AC를 바꾸지 않는다. 체크 여부는 병합 뒤 APP Lead가 판단한다.
+- 보장 메커니즘을 검토할 때 참고할 이력: 10/2 Drain 재시험에서 새 Pod가 worker01로 몰렸다가 수동으로 재배치한 사례(evidence#92). 이 PR에서 AC 판정 근거로 쓰지 않는다.
+- edge01 nginx upstream이 `10.1.93.50:30080`이라는 사실(P1-MON-01 `received-20260929T0656Z/edge01`)은 참고 경계로만 적는다. 이 PR은 edge01을 조회하지 않았으므로 AC 판정 근거가 아니다.
+- worker01 Pod `rq9b6`의 재시작 3회는 과거 기록이며, 이 조회 중 늘어난 것이 아니다.
+- 이 기록으로 #15 AC를 바꾸지 않는다.
 - 본문 비고가 가리키는 "P1-LB Stage B"는 API LB(`.109:6443`) 시험이라 이 두 줄의 근거가 아니다.
