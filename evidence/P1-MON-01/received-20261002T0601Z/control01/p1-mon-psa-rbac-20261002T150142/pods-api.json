@@ -1,0 +1,1423 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "cni.projectcalico.org/containerID": "0b534f0b91d8c72dde13b08d5bd60563fa898c19641665f0f54c455f14455e0a",
+                    "cni.projectcalico.org/podIP": "10.244.39.253/32",
+                    "cni.projectcalico.org/podIPs": "10.244.39.253/32",
+                    "kubectl.kubernetes.io/restartedAt": "2026-09-22T21:40:38+09:00"
+                },
+                "creationTimestamp": "2026-10-02T02:53:37Z",
+                "generateName": "alertmanager-6bf6dc555-",
+                "generation": 1,
+                "labels": {
+                    "app": "alertmanager",
+                    "pod-template-hash": "6bf6dc555"
+                },
+                "name": "alertmanager-6bf6dc555-nhtnn",
+                "namespace": "monitoring-api",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "alertmanager-6bf6dc555",
+                        "uid": "1a04bb96-7aac-4a7f-bfd3-183c5e4dbce0"
+                    }
+                ],
+                "resourceVersion": "3270100",
+                "uid": "716d19e4-5a46-45af-8124-8c70126597c1"
+            },
+            "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                    {
+                        "args": [
+                            "--config.file=/etc/alertmanager/alertmanager.yml",
+                            "--storage.path=/alertmanager"
+                        ],
+                        "image": "10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67",
+                        "imagePullPolicy": "Always",
+                        "livenessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/-/healthy",
+                                "port": 9093,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 20,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "alertmanager",
+                        "ports": [
+                            {
+                                "containerPort": 9093,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/-/ready",
+                                "port": 9093,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "512Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "256Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "seccompProfile": {
+                                "type": "RuntimeDefault"
+                            }
+                        },
+                        "startupProbe": {
+                            "failureThreshold": 36,
+                            "httpGet": {
+                                "path": "/-/ready",
+                                "port": 9093,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/etc/alertmanager",
+                                "name": "config"
+                            },
+                            {
+                                "mountPath": "/alertmanager",
+                                "name": "storage"
+                            },
+                            {
+                                "mountPath": "/etc/alertmanager/secrets/discord",
+                                "name": "discord-webhook",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "harbor-pull-secret"
+                    }
+                ],
+                "nodeName": "k8s-worker03",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 65534,
+                    "fsGroupChangePolicy": "OnRootMismatch",
+                    "runAsNonRoot": true,
+                    "runAsUser": 65534
+                },
+                "serviceAccount": "alertmanager-sa",
+                "serviceAccountName": "alertmanager-sa",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "alertmanager-config"
+                        },
+                        "name": "config"
+                    },
+                    {
+                        "name": "storage",
+                        "persistentVolumeClaim": {
+                            "claimName": "alertmanager-data"
+                        }
+                    },
+                    {
+                        "name": "discord-webhook",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "discord-webhook"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "allocatedResources": {
+                    "cpu": "200m",
+                    "memory": "256Mi"
+                },
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:38Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:37Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:43Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:43Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:37Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "200m",
+                            "memory": "256Mi"
+                        },
+                        "containerID": "containerd://49d958121204d963f57ad9c2edffe7cf4a9e308f2e499d81b261e432672e0c58",
+                        "image": "10.1.93.54/fds/alertmanager:latest",
+                        "imageID": "10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67",
+                        "lastState": {},
+                        "name": "alertmanager",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "512Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "256Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-02T02:53:38Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 65534,
+                                "supplementalGroups": [
+                                    65534
+                                ],
+                                "uid": 65534
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/etc/alertmanager",
+                                "name": "config"
+                            },
+                            {
+                                "mountPath": "/alertmanager",
+                                "name": "storage"
+                            },
+                            {
+                                "mountPath": "/etc/alertmanager/secrets/discord",
+                                "name": "discord-webhook",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.1.93.108",
+                "hostIPs": [
+                    {
+                        "ip": "10.1.93.108"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.39.253",
+                "podIPs": [
+                    {
+                        "ip": "10.244.39.253"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "resources": {
+                    "limits": {
+                        "cpu": "500m",
+                        "memory": "512Mi"
+                    },
+                    "requests": {
+                        "cpu": "181m",
+                        "memory": "256Mi"
+                    }
+                },
+                "startTime": "2026-10-02T02:53:37Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "cni.projectcalico.org/containerID": "bd5300019e5798d4e7901abe225c7c6f1706971542b326895935a67eb3ca4de6",
+                    "cni.projectcalico.org/podIP": "10.244.39.254/32",
+                    "cni.projectcalico.org/podIPs": "10.244.39.254/32",
+                    "kubectl.kubernetes.io/restartedAt": "2026-09-22T20:45:16+09:00"
+                },
+                "creationTimestamp": "2026-10-02T02:53:37Z",
+                "generateName": "grafana-f65457bfd-",
+                "generation": 1,
+                "labels": {
+                    "app": "grafana",
+                    "pod-template-hash": "f65457bfd"
+                },
+                "name": "grafana-f65457bfd-p4j4t",
+                "namespace": "monitoring-api",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "grafana-f65457bfd",
+                        "uid": "621d498a-8442-400a-ae59-cae7083d0654"
+                    }
+                ],
+                "resourceVersion": "3270105",
+                "uid": "933bca1c-7c8c-4b8d-a03a-3ce18c7efee0"
+            },
+            "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "GF_SECURITY_ADMIN_USER",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "admin-user",
+                                        "name": "grafana-admin-credentials"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "GF_SECURITY_ADMIN_PASSWORD",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "admin-password",
+                                        "name": "grafana-admin-credentials"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "GF_AUTH_ANONYMOUS_ENABLED",
+                                "value": "false"
+                            },
+                            {
+                                "name": "GF_USERS_ALLOW_SIGN_UP",
+                                "value": "false"
+                            },
+                            {
+                                "name": "GF_ANALYTICS_REPORTING_ENABLED",
+                                "value": "false"
+                            },
+                            {
+                                "name": "GF_ANALYTICS_CHECK_FOR_UPDATES",
+                                "value": "false"
+                            },
+                            {
+                                "name": "GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES",
+                                "value": "false"
+                            },
+                            {
+                                "name": "GF_PLUGINS_PREINSTALL_DISABLED",
+                                "value": "true"
+                            }
+                        ],
+                        "image": "10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b",
+                        "imagePullPolicy": "Always",
+                        "livenessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/api/health",
+                                "port": 3000,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 20,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "grafana",
+                        "ports": [
+                            {
+                                "containerPort": 3000,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/api/health",
+                                "port": 3000,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "2304Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "1152Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "seccompProfile": {
+                                "type": "RuntimeDefault"
+                            }
+                        },
+                        "startupProbe": {
+                            "failureThreshold": 60,
+                            "httpGet": {
+                                "path": "/api/health",
+                                "port": 3000,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/lib/grafana",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/tmp",
+                                "name": "tmp"
+                            },
+                            {
+                                "mountPath": "/var/lib/grafana/plugins",
+                                "name": "plugins"
+                            },
+                            {
+                                "mountPath": "/etc/grafana/provisioning/datasources",
+                                "name": "datasources"
+                            },
+                            {
+                                "mountPath": "/etc/grafana/provisioning/dashboards",
+                                "name": "dashboards-provider"
+                            },
+                            {
+                                "mountPath": "/etc/grafana/dashboards",
+                                "name": "dashboards"
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "harbor-pull-secret"
+                    }
+                ],
+                "nodeName": "k8s-worker03",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 472,
+                    "fsGroupChangePolicy": "OnRootMismatch",
+                    "runAsNonRoot": true,
+                    "runAsUser": 472
+                },
+                "serviceAccount": "grafana-sa",
+                "serviceAccountName": "grafana-sa",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "data",
+                        "persistentVolumeClaim": {
+                            "claimName": "grafana-data"
+                        }
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "tmp"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "plugins"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "grafana-datasources"
+                        },
+                        "name": "datasources"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "grafana-dashboards-provider"
+                        },
+                        "name": "dashboards-provider"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "grafana-dashboards"
+                        },
+                        "name": "dashboards"
+                    }
+                ]
+            },
+            "status": {
+                "allocatedResources": {
+                    "cpu": "200m",
+                    "memory": "1152Mi"
+                },
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:38Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:37Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:43Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:43Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T02:53:37Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "200m",
+                            "memory": "1152Mi"
+                        },
+                        "containerID": "containerd://7a9409986c30841f481db6c7dc62534979737d1fdaa4e9bffba66438eae77b92",
+                        "image": "10.1.93.54/fds/grafana:latest",
+                        "imageID": "10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b",
+                        "lastState": {},
+                        "name": "grafana",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "2304Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "1152Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-02T02:53:38Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    472
+                                ],
+                                "uid": 472
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/lib/grafana",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/tmp",
+                                "name": "tmp"
+                            },
+                            {
+                                "mountPath": "/var/lib/grafana/plugins",
+                                "name": "plugins"
+                            },
+                            {
+                                "mountPath": "/etc/grafana/provisioning/datasources",
+                                "name": "datasources"
+                            },
+                            {
+                                "mountPath": "/etc/grafana/provisioning/dashboards",
+                                "name": "dashboards-provider"
+                            },
+                            {
+                                "mountPath": "/etc/grafana/dashboards",
+                                "name": "dashboards"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.1.93.108",
+                "hostIPs": [
+                    {
+                        "ip": "10.1.93.108"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.39.254",
+                "podIPs": [
+                    {
+                        "ip": "10.244.39.254"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "resources": {
+                    "limits": {
+                        "cpu": "1",
+                        "memory": "2304Mi"
+                    },
+                    "requests": {
+                        "cpu": "181m",
+                        "memory": "1152Mi"
+                    }
+                },
+                "startTime": "2026-10-02T02:53:37Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "cni.projectcalico.org/containerID": "022f08adc07a5be4e7c3480817d2ecb73be6abead03ba764eb5a3cb332e0b9d5",
+                    "cni.projectcalico.org/podIP": "10.244.69.222/32",
+                    "cni.projectcalico.org/podIPs": "10.244.69.222/32",
+                    "kubectl.kubernetes.io/restartedAt": "2026-09-22T15:34:56+09:00",
+                    "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu, memory request for container kube-state-metrics; cpu, memory limit for container kube-state-metrics"
+                },
+                "creationTimestamp": "2026-10-02T03:57:01Z",
+                "generateName": "kube-state-metrics-77796bd485-",
+                "generation": 1,
+                "labels": {
+                    "app": "kube-state-metrics",
+                    "pod-template-hash": "77796bd485"
+                },
+                "name": "kube-state-metrics-77796bd485-7rq4h",
+                "namespace": "monitoring-api",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "kube-state-metrics-77796bd485",
+                        "uid": "2a1f0f1b-a85c-453d-b6f0-99a388c35af4"
+                    }
+                ],
+                "resourceVersion": "3272201",
+                "uid": "e639a1ad-adfe-46df-b343-af4d40bb3619"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "--metric-labels-allowlist=pods=[app],deployments=[app]"
+                        ],
+                        "image": "10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1",
+                        "imagePullPolicy": "IfNotPresent",
+                        "livenessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/livez",
+                                "port": "http-metrics",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "kube-state-metrics",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "name": "http-metrics",
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 8081,
+                                "name": "telemetry",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/readyz",
+                                "port": "telemetry",
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "512Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "256Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "runAsNonRoot": true,
+                            "runAsUser": 65534,
+                            "seccompProfile": {
+                                "type": "RuntimeDefault"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-r6hrw",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "harbor-pull-secret"
+                    }
+                ],
+                "nodeName": "k8s-worker02",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "kube-state-metrics-sa",
+                "serviceAccountName": "kube-state-metrics-sa",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-r6hrw",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "allocatedResources": {
+                    "cpu": "200m",
+                    "memory": "256Mi"
+                },
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T03:57:02Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T03:57:01Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T03:57:08Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T03:57:08Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T03:57:01Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "200m",
+                            "memory": "256Mi"
+                        },
+                        "containerID": "containerd://27b0331c9e12ef1aa8817bcb09f4178375d6b188c7378f66dbb2745360b7d907",
+                        "image": "10.1.93.54/fds/kube-state-metrics:v2.13.0",
+                        "imageID": "10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1",
+                        "lastState": {},
+                        "name": "kube-state-metrics",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "512Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "256Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-02T03:57:02Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 65534,
+                                "supplementalGroups": [
+                                    65534
+                                ],
+                                "uid": 65534
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-r6hrw",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.1.93.107",
+                "hostIPs": [
+                    {
+                        "ip": "10.1.93.107"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.69.222",
+                "podIPs": [
+                    {
+                        "ip": "10.244.69.222"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "resources": {
+                    "limits": {
+                        "cpu": "500m",
+                        "memory": "512Mi"
+                    },
+                    "requests": {
+                        "cpu": "181m",
+                        "memory": "256Mi"
+                    }
+                },
+                "startTime": "2026-10-02T03:57:01Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "cni.projectcalico.org/containerID": "e5bd20cdcae169a7dd2218371a6bbcfe4ad5f43b2e81b7e40545612fb37493e3",
+                    "cni.projectcalico.org/podIP": "10.244.39.252/32",
+                    "cni.projectcalico.org/podIPs": "10.244.39.252/32",
+                    "kubectl.kubernetes.io/restartedAt": "2026-09-26T14:50:03+09:00"
+                },
+                "creationTimestamp": "2026-10-02T00:50:04Z",
+                "generateName": "prometheus-d8949bd64-",
+                "generation": 1,
+                "labels": {
+                    "app": "prometheus",
+                    "pod-template-hash": "d8949bd64"
+                },
+                "name": "prometheus-d8949bd64-cb7hx",
+                "namespace": "monitoring-api",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "prometheus-d8949bd64",
+                        "uid": "8df5580b-f95f-40d4-aa57-a7b68fa6c6a8"
+                    }
+                ],
+                "resourceVersion": "3270095",
+                "uid": "7ad72804-6dc7-424b-903a-b269ca4cbc51"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "--config.file=/etc/prometheus/prometheus.yml",
+                            "--web.enable-lifecycle",
+                            "--storage.tsdb.retention.time=15d",
+                            "--storage.tsdb.retention.size=16GB"
+                        ],
+                        "image": "10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19",
+                        "imagePullPolicy": "Always",
+                        "livenessProbe": {
+                            "failureThreshold": 6,
+                            "httpGet": {
+                                "path": "/-/healthy",
+                                "port": 9090,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 20,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 5
+                        },
+                        "name": "prometheus",
+                        "ports": [
+                            {
+                                "containerPort": 9090,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/-/ready",
+                                "port": 9090,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "896Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "448Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "allowPrivilegeEscalation": false,
+                            "capabilities": {
+                                "drop": [
+                                    "ALL"
+                                ]
+                            },
+                            "readOnlyRootFilesystem": true,
+                            "seccompProfile": {
+                                "type": "RuntimeDefault"
+                            }
+                        },
+                        "startupProbe": {
+                            "failureThreshold": 60,
+                            "httpGet": {
+                                "path": "/-/ready",
+                                "port": 9090,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/etc/prometheus",
+                                "name": "config"
+                            },
+                            {
+                                "mountPath": "/prometheus",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/rules/",
+                                "name": "alert-rules"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/rules-p0/",
+                                "name": "p0-test-alert"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/rules-opt/",
+                                "name": "alert-rules-optional"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/monitor01-ca",
+                                "name": "monitor01-root-ca",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/monitor01-auth",
+                                "name": "monitor01-remote-write-auth",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-6srdn",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "harbor-pull-secret"
+                    }
+                ],
+                "nodeName": "k8s-worker03",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 65534,
+                    "fsGroupChangePolicy": "OnRootMismatch",
+                    "runAsNonRoot": true,
+                    "runAsUser": 65534
+                },
+                "serviceAccount": "prometheus-sa",
+                "serviceAccountName": "prometheus-sa",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "prometheus-config"
+                        },
+                        "name": "config"
+                    },
+                    {
+                        "name": "data",
+                        "persistentVolumeClaim": {
+                            "claimName": "prometheus-data"
+                        }
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "prometheus-alert-rules"
+                        },
+                        "name": "alert-rules"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "prometheus-p0-test-alert"
+                        },
+                        "name": "p0-test-alert"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "prometheus-alert-rules-optional",
+                            "optional": true
+                        },
+                        "name": "alert-rules-optional"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "monitor01-root-ca"
+                        },
+                        "name": "monitor01-root-ca"
+                    },
+                    {
+                        "name": "monitor01-remote-write-auth",
+                        "secret": {
+                            "defaultMode": 288,
+                            "secretName": "monitor01-remote-write-auth"
+                        }
+                    },
+                    {
+                        "name": "kube-api-access-6srdn",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "allocatedResources": {
+                    "cpu": "200m",
+                    "memory": "448Mi"
+                },
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T00:50:04Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T00:50:04Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T00:50:15Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T00:50:15Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-02T00:50:04Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "200m",
+                            "memory": "448Mi"
+                        },
+                        "containerID": "containerd://b58f031f00dfa3d22a38306ef7a8f7051323efe5a03518e03649e0b739fb3090",
+                        "image": "sha256:66416213a3b43651d3521acc3987277b4f97ad0ae29acc581f910ef9bd3959bd",
+                        "imageID": "10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19",
+                        "lastState": {},
+                        "name": "prometheus",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "896Mi"
+                            },
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "448Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-02T00:50:05Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 65534,
+                                "supplementalGroups": [
+                                    65534
+                                ],
+                                "uid": 65534
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/etc/prometheus",
+                                "name": "config"
+                            },
+                            {
+                                "mountPath": "/prometheus",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/rules/",
+                                "name": "alert-rules"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/rules-p0/",
+                                "name": "p0-test-alert"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/rules-opt/",
+                                "name": "alert-rules-optional"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/monitor01-ca",
+                                "name": "monitor01-root-ca",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/etc/prometheus/monitor01-auth",
+                                "name": "monitor01-remote-write-auth",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-6srdn",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "10.1.93.108",
+                "hostIPs": [
+                    {
+                        "ip": "10.1.93.108"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.39.252",
+                "podIPs": [
+                    {
+                        "ip": "10.244.39.252"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "resources": {
+                    "limits": {
+                        "cpu": "500m",
+                        "memory": "896Mi"
+                    },
+                    "requests": {
+                        "cpu": "181m",
+                        "memory": "448Mi"
+                    }
+                },
+                "startTime": "2026-10-02T00:50:04Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

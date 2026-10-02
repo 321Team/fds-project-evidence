@@ -1,0 +1,17 @@
+remote_write:
+  - url: https://10.250.10.30/api/v1/write
+    follow_redirects: false
+    tls_config:
+      ca_file: /etc/prometheus/monitor01-ca/fds-root-ca.crt
+      insecure_skip_verify: false
+      min_version: TLS12
+    basic_auth:
+      username: fds-heartbeat
+      password_file: /etc/prometheus/monitor01-auth/password
+    write_relabel_configs:
+      - source_labels: [__name__]
+        regex: fds_monitoring_heartbeat
+        action: keep
+      - regex: __name__
+        action: labelkeep
+scrape_configs:
