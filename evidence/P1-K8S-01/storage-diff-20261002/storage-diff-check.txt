@@ -1,0 +1,7 @@
+# storage source-vs-runtime kubectl diff
+2026-10-02T14:39:23+09:00
+k8s-control01
+source: infra-kubernetes main 7329bf2 manifests/04-storage.yaml (operator-provided via ansible01)
+800105063894a44278e0890260c1b9deeb50a5a4494c5b438a1d140f34e1d67b  /tmp/04-storage.yaml
+## kubectl diff -f /tmp/04-storage.yaml
+rc=0
