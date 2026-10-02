@@ -2,6 +2,8 @@
 
 [fds-project-baseline#10](https://github.com/321Team/fds-project-baseline/issues/10) AC "…복구…" 항목의 시험(T19, `k8s-worker01` 대상)을 2026-10-02에 시도했으나, **사전에 합의한 중지 조건**(앱 Pod 재시작)에 걸려 Review Owner(권욱) 결정으로 **중단**하고 설계 상태로 원복한 기록이다.
 
+> **2026-10-02 정정:** 중단 당시 Pod 재시작의 원인을 firewalld 복원으로 보았으나, 이후 worker01 journal에서 **18:29:56 시험 외 재부팅**(`systemd-logind: The system will reboot now`)이 확인됐다. 재시작은 그 재부팅의 결과이며 firewalld 복원 때문이 아니다. 아래 "확인한 사실 5"와 "한계 7"을 이에 맞춰 고쳤다. 중단 결정이 이 오인에 근거했는지의 판단과 재시험 여부는 Review Owner가 한다.
+
 **이 문서는 T19 완료나 AC 충족을 주장하지 않는다.** T19의 결과는 `ABORTED_BY_PREDEFINED_STOP_CONDITION`이며, 노드 보호 해제(HEP 삭제·node Felix failsafe 복원)와 `rollback-node` 단계는 실행하지 않았다. 재시험은 별도 승인된 창에서 한다.
 
 ## 자료 구분
@@ -37,7 +39,7 @@
 2. **Positive**: 방화벽 복원 후 control01 → worker01 `10250` OK (`matrix-cp-restore.txt`, 18:50:24). 시험 전·원복 후와 같은 결과다(`matrix-cp-before.txt`, `matrix-cp-after-abort.txt`: 9100 FAIL, 10250 OK).
 3. **Negative**: 승인되지 않은 같은 서브넷 비노드 호스트 `edge01`(10.1.93.50) → worker01 `10250`이 FAIL. worker01 `ens160` 캡처에 SYN 5개, SYN-ACK 0, RST 0(`matrix-edge-restore.txt`, `neg-edge-10250.txt`). 한계 2번 참고.
 4. **방화벽 복원 후 SSH 제어 유지**: ansible01 → worker01 ansible ping 성공(`ssh-after-restore.txt`).
-5. **중단 사유**: firewalld 복원 직후 worker01의 앱 Pod가 한 차례 재시작됐다(`fds-engine` 2→3, `transaction-api` 3→4, Pod IP 변경). 시험 계획에 앱 Pod 재시작을 중지 조건으로 합의해 두었고, 권욱이 이 조건을 완화하지 않기로 결정했다(Option C). 원복 후 Pod 재시작 수는 3·4로 64분간 변동 없음(`baseline-after-abort.txt`).
+5. **중단 사유와 정정**: 중단 당시에는 firewalld 복원 직후 worker01 앱 Pod가 재시작된 것(`fds-engine` 2→3, `transaction-api` 3→4, Pod IP 변경)을 방화벽 복원의 영향으로 보았고, 사전 합의한 중지 조건(앱 Pod 재시작)에 걸려 권욱이 조건 완화를 거부했다(Option C). 이후 확인 결과: worker01 노드의 **모든 컨테이너**(앱 2개, calico-node, kube-proxy, node-exporter)가 같은 시각 18:30:07(UTC 09:30:07)에 `Unknown`/종료코드 255로 끝났고, containerd·kubelet이 18:30:07에 새 프로세스로 시작했다. journal에 18:29:56 `The system will reboot now`가 있고 부팅은 18:30:01(`uptime -s`, `last -x`의 `shutdown 18:29 - 18:30`)이다. 재부팅은 SSH 세션(`server05`)에서 일어났다. firewalld 상태 확인은 18:30:43, 복원은 그 이후이며, 복원 이후 재시작 수는 3·4로 64분간 변동이 없었다. 따라서 앱 Pod 재시작은 **시험 직전 재부팅의 결과이며 firewalld 복원의 결과로 관측되지 않았다**. (근거: 사용자가 worker01·control01 콘솔 출력을 화면 캡처·붙여넣기로 제출한 관측이며 이 폴더에 서버 원본 파일은 없다 — `CONSOLE_SUBMITTED`.)
 6. **MON 영향**: 방화벽 복원 구간에 worker01 `9100`을 허용하는 firewalld 규칙이 없어 모니터링 수집이 끊겼다(재환 확인 요청: [#22 코멘트](https://github.com/321Team/fds-project-baseline/issues/22#issuecomment-5950509653)).
 
 ## 한계
@@ -48,13 +50,14 @@
 4. **시험 전 행렬 일부 오류**: `matrix-before.txt`의 probe-w01/w02는 Pod가 완료(Failed) 상태여서 `exec` 오류다. probe-w03만 유효(9100·10250 OK)하다.
 5. **재구성·덮어쓰기**: 방화벽 복원 후 첫 Negative 실행 파일 일부는 재실행으로 덮어써졌다. 이 묶음의 파일이 마지막 실행이다.
 6. **무해한 경고**: `BACKUP_SHA256SUMS` 자기 항목 불일치와 `iptables-save` 경고는 수집 방식에 따른 것으로 증적 값에 영향이 없다.
-7. **Pod 재시작 원인 미분리**: firewalld 복원이 앱 Pod 재시작의 원인인지(kubelet/containerd 연결 단절, probe 실패 등) 아직 분리하지 못했다. 재시험 전에 별도로 분석한다.
+7. **Pod 재시작 원인**: 위 확인한 사실 5와 같이 시험 외 재부팅으로 확인됐다. 재부팅 시점이 시험 직전(18:29:56)이었다는 점은 시험 절차의 사전 상태 확인이 부족했음을 뜻하며, 재시험 절차에 "시험 창 중 재부팅 금지·재부팅 후 기준선 재수집"을 넣을 것을 제안한다. firewalld 복원이 앱 Pod에 영향을 주는지는 이번 시험으로는 판단할 수 없고 재시험에서 확인한다.
 8. **시험 전 부분 묶음 미편입**: 시험 전 시점의 부분 묶음(`t19-pre-20261002.tar.gz`, SHA-256 `7371d211e9977eb76f6e474cabd4fa39dbc7ae7ebce4a538355e679d1f1ea222`)은 `t19-control01-final.tgz`에 포함된 파일의 부분집합이어서 따로 편입하지 않았다.
 9. 이 증적은 **수집 시각 한 시점**의 관측이다.
 
 ## 판정 경계
 
 - `T19_ATTEMPT_20261002 = ABORTED_BY_PREDEFINED_STOP_CONDITION`
+- `POD_RESTART_CAUSE = NODE_REBOOT_18:29:56 (시험 외, firewalld 무관으로 관측)` — 콘솔 제출 자료 기준.
 - 원복 상태: 설계 상태(Calico 보호 + firewalld 비활성)로 확인됨, 검토자 확인 필요.
 - 이 문서와 증적은 AC "복구" 충족을 주장하지 않는다. 충족 판정과 재시험 일정은 Review Owner·Lead가 한다.
 
