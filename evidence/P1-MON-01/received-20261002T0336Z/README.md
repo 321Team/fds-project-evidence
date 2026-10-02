@@ -22,7 +22,7 @@ archive 내부 목록은 [ARCHIVE_CONTENTS](../../../registry/ARCHIVE_CONTENTS.j
 | 항목 | 결과 | 근거 |
 |---|---|---|
 | 전달 묶음 | `units.tgz` `eabf1db3…`(#38 `ffa4809` `monitor01/systemd/`의 3개 파일). 풀어 둔 `x/`의 SHA가 저장소와 같다: local `6283314f…`, nginx `5ef67862…`, `images.env` `d4bc669e…` | `x/` |
-| 실행기 | `~/fds-mon-tools/ffa4809/runtime_launch_local.py` `d2708dfc…`(= `1e33a0b`의 같은 파일, #38은 실행기를 바꾸지 않았다). `current` → `ffa4809` | 화면 출력(파일 없음) |
+| 실행기 | `~/fds-mon-tools/ffa4809/runtime_launch_local.py` `d2708dfc…`(= `1e33a0b`의 같은 파일, #38은 실행기를 바꾸지 않았다). `current` → `ffa4809` | 설치 당시는 화면 출력뿐이었다. 원본 보강: [`received-20261002T0421Z` 1절](../received-20261002T0421Z/README.md)(`current` 링크 mtime 12:20:53, 첫 재부팅 전) |
 | 유닛 환경 | PATH에 `/usr/bin`·`/usr/sbin`이 있다(podman·ss). `systemd-analyze --user verify` rc 0 | 화면 출력 |
 | linger | `Linger=yes` | `boot-check.txt`(세션 1 `Class=manager`) |
 | enable | `default.target.wants/`에 링크 2개(12:28), `is-enabled` enabled 2줄 | `boot-check.txt` |
@@ -62,7 +62,7 @@ archive 내부 목록은 [ARCHIVE_CONTENTS](../../../registry/ARCHIVE_CONTENTS.j
 | 12:32:02 | heartbeat 지연 14.9초, receiver alerts `[]`(Watchdog firing 없음), 컨테이너 3개 Up·listener 3개 | `reboot-post.txt` |
 
 - 12:30:54~12:36:20 nginx 204만 있고 오류가 없다(`[warn]` client body buffering은 기존과 같다). receiver·blackbox `level=warn/error` 0건.
-- 수신 공백은 12:29:35 이후부터 12:30:54까지로, 5분 미만이다. 마지막 수신 시각은 기록하지 않았다.
+- **정확한 remote_write 수신 공백은 NOT MEASURED다.** 관측 창은 12:29:35(재부팅 전 캡처) → 12:30:54(재부팅 뒤 첫 POST)로 79초다. 재부팅 전 마지막 POST는 journal이 영구 저장이 아니어서 얻을 수 없었다. 재부팅 뒤 heartbeat 지연은 14.9초이고 Watchdog firing은 없었다. 보강 기록은 [`received-20261002T0421Z` 2절](../received-20261002T0421Z/README.md)에 있다.
 
 ## 판정 범위
 
