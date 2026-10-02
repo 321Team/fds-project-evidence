@@ -1,0 +1,17 @@
+2026-10-02 14:59:15 KST
+k8s-worker03
+server07
+== route
+10.250.10.30 via 10.1.93.58 dev ens160 src 10.1.93.108 uid 1000 
+    cache 
+src=10.1.93.108
+== T1 wrong auth -> .30:443
+curl: (28) Failed to connect to 10.250.10.30 port 443 after 133268 ms: Could not connect to server
+http=000 ssl_verify=0 local=:-1 remote=:-1
+curl_rc=28
+2026-10-02 15:01:29 KST
+== T2 direct -> .30:8443
+curl: (28) Connection timed out after 5002 milliseconds
+http=000
+curl_rc=28
+2026-10-02 15:01:34 KST
