@@ -1,0 +1,17 @@
+2026-10-02 15:11:25 KST
+== hostendpoint
+fds-k8s-k8s-worker03 node=k8s-worker03 if=ens160 expectedIPs=["10.1.93.108"]
+== gnp fds-k8s-host-k8s-worker03
+types=["Ingress","Egress"] order=100 selector=fds.example/bootstrap == "p1-k8s-01-v4" && fds.example/node == "k8s-worker03" applyOnForward=false doNotTrack=
+== egress
+Allow proto=TCP dst.nets=["10.1.93.109/32"] dst.ports=[6443]
+Allow proto=UDP dst.nets=["10.1.93.105/32","10.1.93.107/32","10.1.93.108/32","10.1.93.102/32","10.1.93.103/32","10.1.93.104/32"] dst.ports=[4789]
+Allow proto=UDP dst.nets=["10.1.93.52/32","10.1.93.53/32"] dst.ports=[53]
+Allow proto=TCP dst.nets=["10.1.93.52/32","10.1.93.53/32"] dst.ports=[53]
+Allow proto=UDP dst.nets=["10.1.93.102/32"] dst.ports=[123]
+Allow proto=TCP dst.nets=["10.1.93.54/32"] dst.ports=[443]
+Allow proto=TCP dst.nets=["10.1.93.102/32","10.1.93.103/32","10.1.93.104/32"] dst.ports=[6443]
+Allow proto=TCP dst.nets=["10.1.93.54/32"] dst.ports=[443]
+Deny proto= dst.nets= dst.ports=
+== probe-w03
+k8s-worker03 hostNetwork= image=quay.io/calico/node@sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240
