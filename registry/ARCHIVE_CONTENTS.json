@@ -17894,6 +17894,424 @@
           "sha256": "3571621ef7dfe96f2331eec0f6b9b8c67b55c6975544a174359b1b559b5ed0b0"
         }
       ]
+    },
+    "evidence/P1-K8S-01/t19-run02-20261002/t19-run02-ansible01-final.tgz": {
+      "sha256": "4d84a5d74ba336537cdf75780edeac033f059baa5cbe28716f7df2f613a06489",
+      "size": 2057,
+      "entries": [
+        {
+          "name": "run02-collect-evidence.txt",
+          "size": 2568,
+          "sha256": "039fd20765299f40c04d2707e3e5f0aaf5a03bfaf495c44e7a36d3c738a41110"
+        },
+        {
+          "name": "run02-matrix-edge-after-off.txt",
+          "size": 1749,
+          "sha256": "98d624472fef22d37b803cd628cba6976f47810acccaab3de9aff3abff4190d7"
+        },
+        {
+          "name": "run02-matrix-edge-after-reapply.txt",
+          "size": 1743,
+          "sha256": "933fb538b4bc929375ecbf042514957d30c79060918d1604fcfc66e2f374d7e1"
+        },
+        {
+          "name": "run02-matrix-edge-after-rollback.txt",
+          "size": 1150,
+          "sha256": "f3848628953bbdea2411e54b4a697463d4d18caef6cb770d0ab8625bcf4a45ae"
+        },
+        {
+          "name": "run02-matrix-edge-restore.txt",
+          "size": 1743,
+          "sha256": "05c2b0b39e6b6566965401cc3fcf5ff866f5f0106e2f4743b6947761c538c484"
+        },
+        {
+          "name": "run02-ssh-after-restore.txt",
+          "size": 172,
+          "sha256": "9e95728e89dd3a15b3f1f569dc8bfa198d9e3d272c491bf39af5a0157943055b"
+        }
+      ]
+    },
+    "evidence/P1-K8S-01/t19-run02-20261002/t19-run02-control01-final.tgz": {
+      "sha256": "1d76a5b58059908eb41bba30a0ffa4df2c8d61506a6978f76bdcf061ade173db",
+      "size": 60436,
+      "entries": [
+        {
+          "name": "t19-run02-20261002/3-5-felix-before.yaml",
+          "size": 598,
+          "sha256": "aeb8e0871d1bb6d25334f1f2df367c7c83f3b5e196deb86e15f82cc039947f4d"
+        },
+        {
+          "name": "t19-run02-20261002/3-5-hep-before.yaml",
+          "size": 461,
+          "sha256": "df41028b3b72e678be0e57b768ae451be0950c2291106d317f7041339c13458d"
+        },
+        {
+          "name": "t19-run02-20261002/3-5-rollback-node.txt",
+          "size": 653,
+          "sha256": "da5edbd4c4f38e043867da3754d52905983abc7f613b1e163bae20f3ef430982"
+        },
+        {
+          "name": "t19-run02-20261002/3-6-control01.txt",
+          "size": 2996,
+          "sha256": "7beee9d975b631c46ceb175f9bdaae7f39985bb95f992fd2c90a26fca6617b4b"
+        },
+        {
+          "name": "t19-run02-20261002/4-felix-recreate.txt",
+          "size": 825,
+          "sha256": "be5efcc151e8fdbef2bacfbaa80022f951b0670e3b8bd5e5a6cc5993d924acb1"
+        },
+        {
+          "name": "t19-run02-20261002/5-create-hep.txt",
+          "size": 523,
+          "sha256": "aca6483e84e1a98d0347b30a801976efc5c15cec586eec21d0c0ca74667247d4"
+        },
+        {
+          "name": "t19-run02-20261002/7-after-firewalld-off-control01.txt",
+          "size": 429,
+          "sha256": "fe5227c85e37ef3522c3d00d34e5a99f7df0798b437945eef156b31f343c7165"
+        },
+        {
+          "name": "t19-run02-20261002/RUN02_FINAL_SHA256SUMS",
+          "size": 4802,
+          "sha256": "e0f93ab3b85358b70a7113aab9a34b74124c665708ea866b846ccd39f525dd55"
+        },
+        {
+          "name": "t19-run02-20261002/RUN02_PREP_SHA256SUMS",
+          "size": 562,
+          "sha256": "019e199e83208bc5c7b855399ea9191b363d9255c48ef8cbcc2e7b0a21321e05"
+        },
+        {
+          "name": "t19-run02-20261002/canonical-sha/bundle.sha256",
+          "size": 1885,
+          "sha256": "e00f1df8320397817e1d259d67bc0dd7d84c466d9d1890e9765744f5cbedd9c3"
+        },
+        {
+          "name": "t19-run02-20261002/canonical-sha/state-copy.sha256",
+          "size": 2956,
+          "sha256": "2a0411a9cf844e776ab31c9adab03e850673ca87fe65944c37d21abbf49146a2"
+        },
+        {
+          "name": "t19-run02-20261002/canonical-sha/state.sha256",
+          "size": 2956,
+          "sha256": "2a0411a9cf844e776ab31c9adab03e850673ca87fe65944c37d21abbf49146a2"
+        },
+        {
+          "name": "t19-run02-20261002/evidence/t19-run02-ansible01-evidence.tgz",
+          "size": 798,
+          "sha256": "db3843101f7160660b4cb76437f44e85fc4a352d6e116d7dd7f80006da7745a6"
+        },
+        {
+          "name": "t19-run02-20261002/evidence/t19-run02-w01-evidence.tgz",
+          "size": 42650,
+          "sha256": "0f8e6b6b0ba175c56c1f2eef815a4fc822cacf817bd62af4508ca09ebadf8443"
+        },
+        {
+          "name": "t19-run02-20261002/felix-k8s-worker01-live.json",
+          "size": 1133,
+          "sha256": "147c22dd49f70a354382e7f5b777df7c6b72f887968a7e7a2ae1e8ea22d98a6c"
+        },
+        {
+          "name": "t19-run02-20261002/felix-k8s-worker01-recreate.json",
+          "size": 486,
+          "sha256": "0eec62b2cc0238dad810b62148a9d09452f76c5302f3e69bc107767314a1b7d6"
+        },
+        {
+          "name": "t19-run02-20261002/final-baseline-control01.txt",
+          "size": 3240,
+          "sha256": "28ec24a014079cd5547acee895e4d28e2b625f9830e0f936c57c7eab673b3eca"
+        },
+        {
+          "name": "t19-run02-20261002/fresh-baseline-control01.txt",
+          "size": 3588,
+          "sha256": "4add005c8922f21592f1803d03df7e17c60a323892d4f9c8dd3382c8ba334357"
+        },
+        {
+          "name": "t19-run02-20261002/hep-created.before-run02.json",
+          "size": 598,
+          "sha256": "aaabb6e01a28517d5463ccdee9534ebf4d66a72f083f84b4b4f3e3d844ebbeb3"
+        },
+        {
+          "name": "t19-run02-20261002/k8s-worker01-protection-receipt.NOT_REVIEWED.json",
+          "size": 769,
+          "sha256": "8d9fe9d9766553de2305436d55b497fcbd3ab36e8ce3fddb89ddc49acc29b415"
+        },
+        {
+          "name": "t19-run02-20261002/k8s-worker01-protection-receipt.json",
+          "size": 894,
+          "sha256": "c7328f74af3fe24886c25fb0ee8368f3a1ab5b82a9e67308dc8883c8b18abd20"
+        },
+        {
+          "name": "t19-run02-20261002/matrix-cp-restore.txt",
+          "size": 87,
+          "sha256": "5a0ef3f7c26b6bd4f3f916fd54bb7a783f211114509309f0bcd5fa4800e438d4"
+        },
+        {
+          "name": "t19-run02-20261002/mon-discover.txt",
+          "size": 1598,
+          "sha256": "eefc72b28ef6d0878d86450119d4a86c130c4624bc49b591a2a10879ecf31345"
+        },
+        {
+          "name": "t19-run02-20261002/mon-post/p1-mon-t19-run02-post-20261002T213016/SHA256SUMS",
+          "size": 470,
+          "sha256": "1f22b3aee0979ecd015d75dcefb378f972a8231f6aa758efa88dbc7a2a12eca7"
+        },
+        {
+          "name": "t19-run02-20261002/mon-post/p1-mon-t19-run02-post-20261002T213016/nodes.txt",
+          "size": 385,
+          "sha256": "b28ac60cc5d90ebafb4bcd9d6695438e23c5455d023fd1a43318436a48a40d58"
+        },
+        {
+          "name": "t19-run02-20261002/mon-post/p1-mon-t19-run02-post-20261002T213016/pf.log",
+          "size": 196,
+          "sha256": "d7eab9da7efc33ae3d64f12b24e6beb8d8d24f41f04c0db92d2355ffb412580e"
+        },
+        {
+          "name": "t19-run02-20261002/mon-post/p1-mon-t19-run02-post-20261002T213016/pods-fds-app.txt",
+          "size": 898,
+          "sha256": "50bb55fe73e9a064be4b0d4887eae7f7d3707bd8e8f5afca47ec318483587d6f"
+        },
+        {
+          "name": "t19-run02-20261002/mon-post/p1-mon-t19-run02-post-20261002T213016/time.txt",
+          "size": 24,
+          "sha256": "d642d8fbbe55d188822368694267c353c7b8b40bf2285974fbda1311f3e4c5b5"
+        },
+        {
+          "name": "t19-run02-20261002/mon-post/p1-mon-t19-run02-post-20261002T213016/up-targets.json",
+          "size": 2635,
+          "sha256": "81a83fb7ae50d8af8cb1c148cea1c050c1174b64d76d27035240f1183cb2ff53"
+        },
+        {
+          "name": "t19-run02-20261002/mon-post/p1-mon-t19-run02-post-20261002T213016/up-targets.txt",
+          "size": 802,
+          "sha256": "c75cfcd1230747ccac942d20d2b58282b2bf7ad68d7a0814fc70faff33c2ef49"
+        },
+        {
+          "name": "t19-run02-20261002/mon-post/p1-mon-t19-run02-post-20261002T213016/up.txt",
+          "size": 311,
+          "sha256": "23e94d6e532ff93b3b689a71860068f91158bbfb909f16603e29a4635b047acd"
+        },
+        {
+          "name": "t19-run02-20261002/mon-pre/p1-mon-t19-run02-pre-20261002T204354/SHA256SUMS",
+          "size": 470,
+          "sha256": "4ad824a57979136c9ede340b14265813de79aef4e2426fcda46c0cbf6d17c5b8"
+        },
+        {
+          "name": "t19-run02-20261002/mon-pre/p1-mon-t19-run02-pre-20261002T204354/nodes.txt",
+          "size": 385,
+          "sha256": "b28ac60cc5d90ebafb4bcd9d6695438e23c5455d023fd1a43318436a48a40d58"
+        },
+        {
+          "name": "t19-run02-20261002/mon-pre/p1-mon-t19-run02-pre-20261002T204354/pf.log",
+          "size": 196,
+          "sha256": "d7eab9da7efc33ae3d64f12b24e6beb8d8d24f41f04c0db92d2355ffb412580e"
+        },
+        {
+          "name": "t19-run02-20261002/mon-pre/p1-mon-t19-run02-pre-20261002T204354/pods-fds-app.txt",
+          "size": 919,
+          "sha256": "96f2c7ce1061304564a749a222743f13cdc71855983dfb67261dde6322ddcefe"
+        },
+        {
+          "name": "t19-run02-20261002/mon-pre/p1-mon-t19-run02-pre-20261002T204354/time.txt",
+          "size": 24,
+          "sha256": "e938863a6eebd98e992330eaaf4e2b75592d4a1d62e05a478ed7a7928588f268"
+        },
+        {
+          "name": "t19-run02-20261002/mon-pre/p1-mon-t19-run02-pre-20261002T204354/up-targets.json",
+          "size": 2635,
+          "sha256": "881446bd8fa632bca3b1aed07e5139945799ba7f22bcc885f0d738f723e5bd26"
+        },
+        {
+          "name": "t19-run02-20261002/mon-pre/p1-mon-t19-run02-pre-20261002T204354/up-targets.txt",
+          "size": 802,
+          "sha256": "c75cfcd1230747ccac942d20d2b58282b2bf7ad68d7a0814fc70faff33c2ef49"
+        },
+        {
+          "name": "t19-run02-20261002/mon-pre/p1-mon-t19-run02-pre-20261002T204354/up.txt",
+          "size": 311,
+          "sha256": "090507c9eca2e8ace1388a7aae17ebbdc9ab938ffdb26d8e31e589fe037c0b6e"
+        },
+        {
+          "name": "t19-run02-20261002/pre-3-5-selfcheck.txt",
+          "size": 1477,
+          "sha256": "e1c1366709789c1f275cd1f74a42fbe55e27039e92f7a63cb7c35b4d37b8f367"
+        },
+        {
+          "name": "t19-run02-20261002/pre-start-check.txt",
+          "size": 824,
+          "sha256": "313d865128b2cfa441be9d4d5935183be3efa0515e0c373cd6fe3a212d7aff3e"
+        },
+        {
+          "name": "t19-run02-20261002/restart-watch.txt",
+          "size": 47665,
+          "sha256": "b5531a965dfcae12eb0c0dbe2ceeef5a25794dcfd501459610f7717b298b8f00"
+        },
+        {
+          "name": "t19-run02-20261002/run-meta.txt",
+          "size": 931,
+          "sha256": "f923231399dffda7b06a2415ed7d49c1afe2dcaf161c2c241c6c1f90cbf3a052"
+        },
+        {
+          "name": "t19-run02-20261002/run02-end.txt",
+          "size": 34,
+          "sha256": "f73085c5ee0814b4de3bc54f0189a1becd16b03ddcc06b1e7efe45d65331abf1"
+        },
+        {
+          "name": "t19-run02-20261002/run02-prep-record.txt",
+          "size": 1505,
+          "sha256": "7f29d60deb04bfd0089dd5fa57b6a00a4acd603f11bd44f77410dcbb82e7280a"
+        },
+        {
+          "name": "t19-run02-20261002/run02-wrapup.txt",
+          "size": 494,
+          "sha256": "2152e8e3af342fc72d5765ce1ec01f154ef9d3bb593cac3d4b6d4804b1bf7976"
+        },
+        {
+          "name": "t19-run02-20261002/watch.sh",
+          "size": 452,
+          "sha256": "f330b37e6d8ce1fc05428f3fc9a3395169a548c4ce40631fbe5a048c99351a0e"
+        }
+      ]
+    },
+    "evidence/P1-K8S-01/t19-run02-20261002/t19-run02-worker01-final.tgz": {
+      "sha256": "24240cdd96f4ddf66ca338e384eff305c8788d4e4c0c48738e241589660e33c7",
+      "size": 154871,
+      "entries": [
+        {
+          "name": "t19-run02-20261002/01-before-restore.txt",
+          "size": 148,
+          "sha256": "3c84b06bef0f3793d89cb3d0202d045cff44ef139a13bf0f67b18b965657e71f"
+        },
+        {
+          "name": "t19-run02-20261002/02-restore-output.txt",
+          "size": 99,
+          "sha256": "3971112f608f76bd1b1eb367a41e68280e687b49d41fadcd39ce9f6f7527fcc5"
+        },
+        {
+          "name": "t19-run02-20261002/03-after-restore.txt",
+          "size": 824,
+          "sha256": "b94f07f2028b0f83165aab314c8df71dc05cfe73dca2c4ee793d61968f0ceae5"
+        },
+        {
+          "name": "t19-run02-20261002/3-6-worker01.txt",
+          "size": 508,
+          "sha256": "607a86f604131ff3d14e50aa357fc0ac26a7cbfce1640f706a68e501bb97445a"
+        },
+        {
+          "name": "t19-run02-20261002/6-firewalld-off.txt",
+          "size": 369,
+          "sha256": "6cc15422983291ba64a3f02f2583d95801f14aa95eeb1564651fe6f56bb65556"
+        },
+        {
+          "name": "t19-run02-20261002/8-final-worker01.txt",
+          "size": 552,
+          "sha256": "aa1e7ac27abf1893839159066622cc4b63c38bfbd7a24b1f3b1eac7ec12c088f"
+        },
+        {
+          "name": "t19-run02-20261002/fresh-baseline-worker01.txt",
+          "size": 185,
+          "sha256": "1297b2f180f60ef63dc5b19a13acf7faa9dfe6a0ba527d81e1e23124153b97a0"
+        },
+        {
+          "name": "t19-run02-20261002/ipt-after.txt",
+          "size": 69593,
+          "sha256": "dae0c04f7cee6b98acb7b99d34d926305e2bab89deb8b635fadf5f561b1ecb98"
+        },
+        {
+          "name": "t19-run02-20261002/ipt-before.txt",
+          "size": 69551,
+          "sha256": "64079fcd126818708e168c98ec032dfa267ff277c6b46f52ef1e037ed371adbb"
+        },
+        {
+          "name": "t19-run02-20261002/neg-edge-10250.txt",
+          "size": 18210,
+          "sha256": "5a9e0cba13d647b2c640987e5a3b97ffe496dd7c018c67add28d65e4f368349e"
+        },
+        {
+          "name": "t19-run02-20261002/nft-after.txt",
+          "size": 65048,
+          "sha256": "6ba2336d9a64bd81c3fe072857b671224627ccf51aaf9f65ff3a056cfe3a061f"
+        },
+        {
+          "name": "t19-run02-20261002/nft-before.txt",
+          "size": 65004,
+          "sha256": "b19905ca94fc9a06faf52ec21f421bad96277aa722f495fb94aa8312c4096ff0"
+        },
+        {
+          "name": "t19-run02-20261002/off-ipt-after.txt",
+          "size": 66570,
+          "sha256": "bff09451daff49d7b68bbb17f3de371c8c403ec66fa4598b6bbfafa72f6fba80"
+        },
+        {
+          "name": "t19-run02-20261002/off-ipt-before.txt",
+          "size": 66495,
+          "sha256": "039994e0cecdcbc573ec83698824036e99024be63db6ca1733f9141cdd32c7ae"
+        },
+        {
+          "name": "t19-run02-20261002/off-neg-edge-10250.txt",
+          "size": 17121,
+          "sha256": "aa1d5330bc0acf76ec3c2b3ab61a5d026a7da23c1341723c13f8817413d6d6de"
+        },
+        {
+          "name": "t19-run02-20261002/off-nft-after.txt",
+          "size": 51086,
+          "sha256": "e92fa73e4da2fe7bd7c7b5d179583b1da9f742b34956f984bddc7df0ec1cd1f5"
+        },
+        {
+          "name": "t19-run02-20261002/off-nft-before.txt",
+          "size": 50996,
+          "sha256": "b2421189b838df3de3e696df2cfb98819a64b9fbf51c0aa21017bbae4cf3b97f"
+        },
+        {
+          "name": "t19-run02-20261002/rb-ipt-after.txt",
+          "size": 47388,
+          "sha256": "5ca5be69d2edfcb24b7f7a58ba030d4f0128684e3fedf7a10fe1217d2192adbe"
+        },
+        {
+          "name": "t19-run02-20261002/rb-ipt-before.txt",
+          "size": 47380,
+          "sha256": "905fabeef44dd1e5cf45e6d64c2e64d35a67957391ae7d4c43b77bf56a839462"
+        },
+        {
+          "name": "t19-run02-20261002/rb-neg-edge-10250.txt",
+          "size": 17374,
+          "sha256": "16ea108abf1c445070741878061d87880c9eda8d6621b7bfe7fb068f24bf9d6d"
+        },
+        {
+          "name": "t19-run02-20261002/rb-nft-after.txt",
+          "size": 49802,
+          "sha256": "ba6b83f79e34719e5e6df4a5bbc32e8862f365746a0a21cb1ffc2d6e56b076df"
+        },
+        {
+          "name": "t19-run02-20261002/rb-nft-before.txt",
+          "size": 49795,
+          "sha256": "2e2fde9542c75288fa217c0bda3ed0bedf2d3d0e41e11e4998cc90440e948112"
+        },
+        {
+          "name": "t19-run02-20261002/re-ipt-after.txt",
+          "size": 69678,
+          "sha256": "3e2aa8b4b12973d542e3f055c0e8a8e797d0b4ec7d3324d468c5a2ca50200883"
+        },
+        {
+          "name": "t19-run02-20261002/re-ipt-before.txt",
+          "size": 69647,
+          "sha256": "72a162cb067bd0501e7d8d560c0f19fdb6b070f7731071367a8c6bcf4e40ae9d"
+        },
+        {
+          "name": "t19-run02-20261002/re-neg-edge-10250.txt",
+          "size": 17881,
+          "sha256": "3cd7768894eb1af0ebe8c8dfd22aef87a0ce782cdf94fc862d70e8dcbca82b7d"
+        },
+        {
+          "name": "t19-run02-20261002/re-nft-after.txt",
+          "size": 65142,
+          "sha256": "112ed4113185c2cdd4eb7d93cfad187d4592247ee22acb1763e160215f36bc8b"
+        },
+        {
+          "name": "t19-run02-20261002/re-nft-before.txt",
+          "size": 65111,
+          "sha256": "e1cf251aea58696ceaf134041165791353f56b78631355a1a1c87ec635c4ac89"
+        }
+      ]
     }
   }
 }
