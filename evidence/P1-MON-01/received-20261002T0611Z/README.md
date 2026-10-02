@@ -43,7 +43,7 @@ archive 내부 목록은 [ARCHIVE_CONTENTS](../../../registry/ARCHIVE_CONTENTS.j
   - **`10.250.10.30`은 허용 목록에 없다.**
 - 따라서 worker03 **호스트 프로세스**(curl)가 보낸 SYN은 worker03에서 버려진다.
 - in-cluster Prometheus Pod의 remote write는 포워딩 트래픽이고 `applyOnForward=false`라 이 정책을 거치지 않는다. 그래서 SNAT된 `.108` 출발지로 계속 도착한다(204 지속).
-- 버려지는 순간의 Calico 카운터·로그는 보지 않았다. 원인은 규칙 조회로 확인한 것이다.
+- 버려지는 순간의 Calico drop 카운터·로그는 수집하지 않았다. 따라서 원인은 "HostEndpoint/GNP 구성과 관측 결과(SYN 미도달, Pod 트래픽만 도달)가 일치하므로 worker03 호스트 egress 정책에 의해 차단된 것으로 판단"하는 수준이다.
 - 기존 `icr39-probe/probe-w03` Pod는 hostNetwork가 아니고 이미지가 `calico/node`다. 출발지와 도구가 이 시험에 맞지 않아 쓰지 않았다.
 
 ## 판정 범위
