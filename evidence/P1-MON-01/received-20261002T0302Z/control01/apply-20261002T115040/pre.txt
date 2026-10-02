@@ -1,0 +1,29 @@
+2026-10-02 11:50:40 KST
+alertmanager-deploy.yaml: 성공
+grafana.yaml: 성공
+alertmanager-774f8866d-ppgqn         10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67         0
+grafana-559b978c69-k2ws6             10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b              0
+kube-state-metrics-f88b9c457-n5n7x   10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1   5
+prometheus-d8949bd64-cb7hx           10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19           0
+== diff alertmanager-deploy.yaml
+-        image: 10.1.93.54/fds/alertmanager:latest
++        image: 10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67
+-        resources: {}
++        resources:
++          limits:
++            cpu: 500m
++            memory: 512Mi
++          requests:
++            cpu: 200m
++            memory: 256Mi
+rc=1
+== diff grafana.yaml
+-        image: 10.1.93.54/fds/grafana:latest
++        image: 10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b
+-            memory: 1Gi
++            memory: 2304Mi
+-            memory: 256Mi
++            memory: 1152Mi
+-        url: http://prometheus.monitoring-api.svc:9090
++        url: http://prometheus.monitoring-api.svc:9090   # #17 요구사항 표기(FQDN). 이전 값 http://prometheus:9090(같은 Service)
+rc=1

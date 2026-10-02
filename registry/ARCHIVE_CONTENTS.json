@@ -17094,6 +17094,133 @@
           "sha256": "28f5fd153a5853dc226b87ecba2a02f71d27364dcda2f46f507e4296b9d167eb"
         }
       ]
+    },
+    "evidence/P1-MON-01/received-20261002T0302Z/control01/control01-digest-pin-20261002.tgz": {
+      "sha256": "ba53008bdaa3c8b4dce5a71b337f60c81e7a1362173b3cef6e2caf8f24be74e5",
+      "size": 14042,
+      "entries": [
+        {
+          "name": "p1-mon-digest-pre-20261002T103421/digest-pre.txt",
+          "size": 2161,
+          "sha256": "16d4d7a94af8beea68bd996eef3a661b20f56087ac1b860e3da3ef751e1c28bd"
+        },
+        {
+          "name": "p1-mon-digest-trivy-20261002T103638/art-alertmanager-pre.json",
+          "size": 1983,
+          "sha256": "3e1533459f479443536670997f11ae0370380929fe3f00ab7ee09798edb93040"
+        },
+        {
+          "name": "p1-mon-digest-trivy-20261002T103638/art-alertmanager.json",
+          "size": 2429,
+          "sha256": "8e8c089de488b1e05c13f0ef43ceb86a61b0d4eb152d63a117d42397675cdec9"
+        },
+        {
+          "name": "p1-mon-digest-trivy-20261002T103638/art-grafana-pre.json",
+          "size": 1997,
+          "sha256": "bbc99f6bf34d74f9e163b2efb791fbf474b0c1bcfe9704c78005caa8d2ad60a6"
+        },
+        {
+          "name": "p1-mon-digest-trivy-20261002T103638/art-grafana.json",
+          "size": 2451,
+          "sha256": "c571e9a2fe3f40d5723011de08cbdf191711b0d18dc2f14e2bb3e13dad85604b"
+        },
+        {
+          "name": "p1-mon-digest-trivy-20261002T103638/art-kube-state-metrics-pre.json",
+          "size": 1729,
+          "sha256": "08c447b4e9f30e5d559fa97a418fd407405c6e586a0c8e3c5369a40c89ac1c9f"
+        },
+        {
+          "name": "p1-mon-digest-trivy-20261002T103638/art-kube-state-metrics.json",
+          "size": 2197,
+          "sha256": "7ba0a7fcef0a6afe0b29728e168b8941377e3562a21b72ad0900e77e5bfbdf2a"
+        },
+        {
+          "name": "p1-mon-digest-trivy-20261002T103638/ca.crt",
+          "size": 2004,
+          "sha256": "20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f"
+        },
+        {
+          "name": "p1-mon-digest-trivy-20261002T103638/summary.txt",
+          "size": 7124,
+          "sha256": "172af2abfaf9a31872f3009d812d5a7d69d54d24fb674024f50e31328cf442eb"
+        },
+        {
+          "name": "p1-mon-pin-20261002T104441/alertmanager-deploy.yaml",
+          "size": 4069,
+          "sha256": "57bc311220ac8f365c1602a5b8d9098eed8c3a78581969790bc1c5ae587d6fb7"
+        },
+        {
+          "name": "p1-mon-pin-20261002T104441/diff.txt",
+          "size": 9024,
+          "sha256": "6ba5d10187b1deb7673d392fd554b9dd201471d0f5e9e1b0e07400f33647cc5d"
+        },
+        {
+          "name": "p1-mon-pin-20261002T104441/grafana.yaml",
+          "size": 6643,
+          "sha256": "e14956e9675dfe3a747343662c29726a4eb15fb757fbb64badb4492f8f0dd007"
+        },
+        {
+          "name": "p1-mon-pin-20261002T104441/kube-state-metrics.yaml",
+          "size": 2513,
+          "sha256": "9a6a68c5a25365d0e66da856bb272e3353d29df12228c4204a5aea6c55430e37"
+        },
+        {
+          "name": "p1-mon-pin-20261002T104441/node-w3.txt",
+          "size": 4828,
+          "sha256": "55517e2848dd0773e282d516301dff046d6db7dcbffcd7c04517a464b900d914"
+        },
+        {
+          "name": "p1-mon-pin-20261002T104441/pre-alertmanager.yaml",
+          "size": 4956,
+          "sha256": "2ab9c4cbe6afc52220a3511be88e5da58cb2a521a5506d0cbde07a7a2b5f5e0f"
+        },
+        {
+          "name": "p1-mon-pin-20261002T104441/pre-grafana.yaml",
+          "size": 6972,
+          "sha256": "b8e53612f9268ea703782120ed3342eafe1c95edd0d2084393507ddb2a1ec578"
+        },
+        {
+          "name": "p1-mon-pin-20261002T104441/pre-kube-state-metrics.yaml",
+          "size": 4026,
+          "sha256": "53bf940ff5f7fe073be4365b42fbb54ca191d8422571c4f2bf6367da4051f011"
+        }
+      ]
+    },
+    "evidence/P1-MON-01/received-20261002T0302Z/control01/control01-pin-apply-20261002.tgz": {
+      "sha256": "9ab60e54018f83ab2e472e2045c926c18d315be5cd5152dc3533a125ff9f730b",
+      "size": 4282,
+      "entries": [
+        {
+          "name": "apply-20261002T115040/apply.txt",
+          "size": 430,
+          "sha256": "f7dd7883403398401166543016dd125ede076e4506029edeab72cfba41e73f99"
+        },
+        {
+          "name": "apply-20261002T115040/post.txt",
+          "size": 2705,
+          "sha256": "928441eb41638e48442545d8d3472ba3e1f5c77411d2a4deadc031414d0132c5"
+        },
+        {
+          "name": "apply-20261002T115040/pre-alertmanager.yaml",
+          "size": 4956,
+          "sha256": "2ab9c4cbe6afc52220a3511be88e5da58cb2a521a5506d0cbde07a7a2b5f5e0f"
+        },
+        {
+          "name": "apply-20261002T115040/pre-cm-grafana-datasources.yaml",
+          "size": 968,
+          "sha256": "254f5428c800ae3c622a1393b95f13f54e285dfdf248afb1116d30b61e841f17"
+        },
+        {
+          "name": "apply-20261002T115040/pre-grafana.yaml",
+          "size": 6972,
+          "sha256": "b8e53612f9268ea703782120ed3342eafe1c95edd0d2084393507ddb2a1ec578"
+        },
+        {
+          "name": "apply-20261002T115040/pre.txt",
+          "size": 1542,
+          "sha256": "656453e75d6e95027dcdedf988ad5bf620d1eb7b8caa5156b20311e94a4d1f45"
+        }
+      ]
     }
   }
 }
