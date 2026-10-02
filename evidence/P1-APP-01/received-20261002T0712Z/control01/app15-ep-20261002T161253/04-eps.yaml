@@ -1,0 +1,68 @@
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.244.39.248
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: k8s-worker03
+    targetRef:
+      kind: Pod
+      name: transaction-api-b784c8c5d-m65z4
+      namespace: fds-app
+      uid: 463c7034-8ccf-4980-847f-405f30136b6c
+  - addresses:
+    - 10.244.79.100
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: k8s-worker01
+    targetRef:
+      kind: Pod
+      name: transaction-api-b784c8c5d-rq9b6
+      namespace: fds-app
+      uid: 0a7efe39-1b64-48ea-9f88-25996530c49b
+  - addresses:
+    - 10.244.69.221
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: k8s-worker02
+    targetRef:
+      kind: Pod
+      name: transaction-api-b784c8c5d-szcdq
+      namespace: fds-app
+      uid: 818fc98b-1d2f-4a4c-9096-d2ab749f2878
+  kind: EndpointSlice
+  metadata:
+    creationTimestamp: "2026-09-27T06:48:51Z"
+    generateName: transaction-api-nodeport-
+    generation: 53
+    labels:
+      app: transaction-api
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: transaction-api-nodeport
+    name: transaction-api-nodeport-6shht
+    namespace: fds-app
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: transaction-api-nodeport
+      uid: 49f24245-ac58-451e-b4f1-7183ac917bb1
+    resourceVersion: "3270118"
+    uid: 44b89beb-3d18-439b-b3b0-8ab57a6b21b4
+  ports:
+  - name: http
+    port: 8000
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,84 @@
+== namespace PSA 라벨
+monitoring-api {'audit': 'restricted', 'enforce': 'restricted', 'warn': 'restricted'}
+monitoring-node {'audit': 'restricted', 'enforce': 'privileged', 'warn': 'restricted'}
+== monitoring-api Pod 생성 시각
+alertmanager-6bf6dc555-nhtnn 2026-10-02T02:53:37Z
+grafana-f65457bfd-p4j4t 2026-10-02T02:53:37Z
+kube-state-metrics-77796bd485-7rq4h 2026-10-02T03:57:01Z
+prometheus-d8949bd64-cb7hx 2026-10-02T00:50:04Z
+== monitoring-api NetworkPolicy egress
+np alertmanager-allow {'app': 'alertmanager'} []
+np alertmanager-egress {'app': 'alertmanager'} ['10.1.93.56/32:3128']
+np allow-grafana-ingress-from-prometheus-ns {'app': 'prometheus'} []
+np allow-grafana-to-prometheus {'app': 'grafana'} ['{"app": "prometheus"}:9090']
+np allow-prometheus-egress-alertmanager {'app': 'prometheus'} ['{"app": "alertmanager"}:9093']
+np allow-prometheus-egress-kube-state-metrics {'app': 'prometheus'} ['{"app": "kube-state-metrics"}:8080']
+np allow-prometheus-egress-kubelet {'app': 'prometheus'} ['10.1.93.102/32+10.1.93.103/32+10.1.93.104/32+10.1.93.105/32+10.1.93.107/32+10.1.93.108/32:10250']
+np allow-prometheus-egress-node-exporter {'app': 'prometheus'} ['10.1.93.105/32+10.1.93.107/32+10.1.93.108/32:9100']
+np allow-prometheus-egress-scrape {'app': 'prometheus'} ['{"app": "transaction-api"}:9091', '{"app": "fds-engine"}:9090']
+np allow-prometheus-ingress-to-alertmanager {'app': 'alertmanager'} []
+np default-deny-all None []
+np grafana-allow {'app': 'grafana'} ['{"app": "prometheus"}:9090']
+np kube-state-metrics-allow {'app': 'kube-state-metrics'} ['10.1.93.102/32+10.1.93.103/32+10.1.93.104/32:6443']
+np monitoring-api-dns-allow None ['{"k8s-app": "kube-dns"}:53,53']
+np prometheus-allow {'app': 'prometheus'} ['{"app": "alertmanager"}:9093', '{"app": "transaction-api"}:9091', '{"app": "fds-engine"}:9090', '10.1.93.105/32+10.1.93.107/32+10.1.93.108/32:9100', '{"app": "kube-state-metrics"}:8080', '10.1.93.105/32+10.1.93.107/32+10.1.93.108/32:10250']
+np prometheus-remote-write-allow {'app': 'prometheus'} ['10.250.10.30/32:443']
+== RBAC: monitoring-node에서 Workload를 만들거나 수정할 수 있는 주체
+-- 기본(system:/kubeadm:) 외 주체
+* CRB system:controller:cronjob-controller system:controller:cronjob-controller ServiceAccount/kube-system/cronjob-controller cronjobs:update | jobs:create,patch,update
+* CRB system:controller:daemon-set-controller system:controller:daemon-set-controller ServiceAccount/kube-system/daemon-set-controller pods:create,patch
+* CRB system:controller:deployment-controller system:controller:deployment-controller ServiceAccount/kube-system/deployment-controller deployments:update | replicasets:create,patch,update | pods:update
+* CRB system:controller:generic-garbage-collector system:controller:generic-garbage-collector ServiceAccount/kube-system/generic-garbage-collector pods,replicationcontrollers,deployments,daemonsets,statefulsets,replicasets,jobs,cronjobs:patch,update
+* CRB system:controller:job-controller system:controller:job-controller ServiceAccount/kube-system/job-controller jobs:patch,update | pods:create,patch
+* CRB system:controller:persistent-volume-binder system:controller:persistent-volume-binder ServiceAccount/kube-system/persistent-volume-binder pods:create
+* CRB system:controller:replicaset-controller system:controller:replicaset-controller ServiceAccount/kube-system/replicaset-controller replicasets:update | pods:create,patch
+* CRB system:controller:replication-controller system:controller:replication-controller ServiceAccount/kube-system/replication-controller replicationcontrollers:update | pods:create,patch
+* CRB system:controller:statefulset-controller system:controller:statefulset-controller ServiceAccount/kube-system/statefulset-controller pods:create,patch,update
+-- 기본 주체: ['Group/kubeadm:cluster-admins', 'Group/system:masters']
+-- monitoring-node RoleBinding 전체
+== monitoring-node 객체
+NAME                      READY   STATUS    RESTARTS      AGE   IP            NODE           NOMINATED NODE   READINESS GATES
+pod/node-exporter-4gtms   1/1     Running   2 (20h ago)   23h   10.1.93.105   k8s-worker01   <none>           <none>
+pod/node-exporter-thcn5   1/1     Running   1 (20h ago)   23h   10.1.93.107   k8s-worker02   <none>           <none>
+pod/node-exporter-zdhnv   1/1     Running   0             23h   10.1.93.108   k8s-worker03   <none>           <none>
+
+NAME                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/node-exporter   ClusterIP   10.108.65.121   <none>        9100/TCP   10d   app=node-exporter
+
+NAME                           DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE   CONTAINERS      IMAGES                                                                                                 SELECTOR
+daemonset.apps/node-exporter   3         3         3       3            3           <none>          10d   node-exporter   10.1.93.54/fds/node-exporter@sha256:4d5c92fcbea9fd5f2769a13192885366f6d348443ea6b48783590c9d9be43318   app=node-exporter
+
+NAME                              AGE
+serviceaccount/default            10d
+serviceaccount/node-exporter-sa   10d
+
+NAME                                                  POD-SELECTOR   AGE
+networkpolicy.networking.k8s.io/default-deny-all      <none>         10d
+networkpolicy.networking.k8s.io/node-exporter-allow   <none>         10d
+
+NAME                                        CREATED AT
+limitrange/monitoring-node-default-limits   2026-09-22T00:17:38Z
+== Alertmanager 현장 설정(마스킹)
+22:  - name: 'screen-only'
+24:  - name: 'discord-notifications'
+25:    discord_configs:
+26:      - webhook_url_file: /etc/alertmanager/secrets/discord/webhook_url
+29:          proxy_url: http://10.1.93.56:3128
+== Prometheus remote_write
+remote_write:
+  - url: https://10.250.10.30/api/v1/write
+    follow_redirects: false
+    tls_config:
+      ca_file: /etc/prometheus/monitor01-ca/fds-root-ca.crt
+      insecure_skip_verify: false
+      min_version: TLS12
+    basic_auth:
+      username: fds-heartbeat
+      password_file: /etc/prometheus/monitor01-auth/password
+    write_relabel_configs:
+      - source_labels: [__name__]
+        regex: fds_monitoring_heartbeat
+        action: keep
+      - regex: __name__
+        action: labelkeep
+scrape_configs:
