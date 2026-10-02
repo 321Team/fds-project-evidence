@@ -1,0 +1,32 @@
+2026-10-02 11:54:02 KST
+alertmanager         10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67   1
+grafana              10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b        1
+kube-state-metrics   10.1.93.54/fds/kube-state-metrics:v2.13.0                                                             1
+alertmanager-6bf6dc555-nhtnn         10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67         0     2026-10-02T02:53:37Z
+grafana-f65457bfd-p4j4t              10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b              0     2026-10-02T02:53:37Z
+kube-state-metrics-f88b9c457-n5n7x   10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1   5     2026-09-27T06:32:40Z
+prometheus-d8949bd64-cb7hx           10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19           0     2026-10-02T00:50:04Z
+== grafana /api/health
+{
+  "database": "ok",
+  "version": "13.2.2",
+  "commit": "1bea008f7e4e858b6824c9e364d608bd4d10b13a"
+}
+== grafana provisioning log
+logger=provisioning.dashboard t=2026-10-02T02:53:39.952287553Z level=info msg="starting to provision dashboards"
+logger=provisioning.dashboard t=2026-10-02T02:53:39.954338407Z level=info msg="finished to provision dashboards"
+t=2026-10-02T02:53:40.01092812Z level=info caller=logger.go:214 time=2026-10-02T02:53:40.010914802Z msg="Starting RepositoryController" logger=provisioning-repository-controller
+t=2026-10-02T02:53:40.010980774Z level=info caller=logger.go:214 time=2026-10-02T02:53:40.010971976Z msg="Starting workers" logger=provisioning-repository-controller count=1
+t=2026-10-02T02:53:40.010931599Z level=info caller=logger.go:214 time=2026-10-02T02:53:40.010908008Z msg="Starting ConnectionController" logger=provisioning-connection-controller
+t=2026-10-02T02:53:40.011000324Z level=info caller=logger.go:214 time=2026-10-02T02:53:40.010994611Z msg="Started workers" logger=provisioning-repository-controller
+t=2026-10-02T02:53:40.01101199Z level=info caller=logger.go:214 time=2026-10-02T02:53:40.011003545Z msg="Starting workers" logger=provisioning-connection-controller count=1
+t=2026-10-02T02:53:40.011031565Z level=info caller=logger.go:214 time=2026-10-02T02:53:40.011027128Z msg="Started workers" logger=provisioning-connection-controller
+== alertmanager /-/ready
+200
+count(up) => ['23']
+count(up==1) => ['23']
+prometheus_notifications_alertmanagers_discovered => ['1']
+== post diff alertmanager-deploy.yaml
+rc=0
+== post diff grafana.yaml
+rc=0

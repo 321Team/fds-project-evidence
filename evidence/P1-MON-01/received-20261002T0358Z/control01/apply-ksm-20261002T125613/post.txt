@@ -1,0 +1,20 @@
+2026-10-02 12:58:10 KST
+kube-state-metrics   10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1   1
+alertmanager-6bf6dc555-nhtnn          k8s-worker03   10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67         0     2026-10-02T02:53:37Z
+grafana-f65457bfd-p4j4t               k8s-worker03   10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b              0     2026-10-02T02:53:37Z
+kube-state-metrics-77796bd485-7rq4h   k8s-worker02   10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1   0     2026-10-02T03:57:01Z
+prometheus-d8949bd64-cb7hx            k8s-worker03   10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19           0     2026-10-02T00:50:04Z
+up{job="kube-state-metrics"} => ['1']
+count(up) => ['23']
+count(up==1) => ['23']
+count(kube_pod_info) => ['44']
+count(kube_deployment_status_replicas) => ['8']
+count(ALERTS{alertstate="firing"}) => []
+== ksm log errors
+E1002 03:57:57.881314       1 reflector.go:150] pkg/mod/k8s.io/client-go@v0.30.3/tools/cache/reflector.go:232: Failed to watch *v1.ValidatingWebhookConfiguration: failed to list *v1.ValidatingWebhookConfiguration: validatingwebhookconfigurations.admissionregistration.k8s.io is forbidden: User "system:serviceaccount:monitoring-api:kube-state-metrics-sa" cannot list resource "validatingwebhookconfigurations" in API group "admissionregistration.k8s.io" at the cluster scope
+W1002 03:58:04.824563       1 reflector.go:547] pkg/mod/k8s.io/client-go@v0.30.3/tools/cache/reflector.go:232: failed to list *v1.CertificateSigningRequest: certificatesigningrequests.certificates.k8s.io is forbidden: User "system:serviceaccount:monitoring-api:kube-state-metrics-sa" cannot list resource "certificatesigningrequests" in API group "certificates.k8s.io" at the cluster scope
+E1002 03:58:04.824637       1 reflector.go:150] pkg/mod/k8s.io/client-go@v0.30.3/tools/cache/reflector.go:232: Failed to watch *v1.CertificateSigningRequest: failed to list *v1.CertificateSigningRequest: certificatesigningrequests.certificates.k8s.io is forbidden: User "system:serviceaccount:monitoring-api:kube-state-metrics-sa" cannot list resource "certificatesigningrequests" in API group "certificates.k8s.io" at the cluster scope
+W1002 03:58:07.178275       1 reflector.go:547] pkg/mod/k8s.io/client-go@v0.30.3/tools/cache/reflector.go:232: failed to list *v1.StorageClass: storageclasses.storage.k8s.io is forbidden: User "system:serviceaccount:monitoring-api:kube-state-metrics-sa" cannot list resource "storageclasses" in API group "storage.k8s.io" at the cluster scope
+E1002 03:58:07.178328       1 reflector.go:150] pkg/mod/k8s.io/client-go@v0.30.3/tools/cache/reflector.go:232: Failed to watch *v1.StorageClass: failed to list *v1.StorageClass: storageclasses.storage.k8s.io is forbidden: User "system:serviceaccount:monitoring-api:kube-state-metrics-sa" cannot list resource "storageclasses" in API group "storage.k8s.io" at the cluster scope
+== post diff
+rc=0

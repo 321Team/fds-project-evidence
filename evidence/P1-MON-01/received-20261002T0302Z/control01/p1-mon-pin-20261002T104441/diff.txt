@@ -1,0 +1,110 @@
+2026-10-02 10:46:33 KST
+===== diff alertmanager-deploy.yaml
+diff -u -N /tmp/LIVE-2818163673/apps.v1.Deployment.monitoring-api.alertmanager /tmp/MERGED-1930600274/apps.v1.Deployment.monitoring-api.alertmanager
+--- /tmp/LIVE-2818163673/apps.v1.Deployment.monitoring-api.alertmanager	2026-10-02 10:46:33.372319011 +0900
++++ /tmp/MERGED-1930600274/apps.v1.Deployment.monitoring-api.alertmanager	2026-10-02 10:46:33.372319011 +0900
+@@ -6,7 +6,7 @@
+     kubectl.kubernetes.io/last-applied-configuration: |
+       {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"alertmanager","namespace":"monitoring-api"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"alertmanager"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"labels":{"app":"alertmanager"}},"spec":{"automountServiceAccountToken":false,"containers":[{"args":["--config.file=/etc/alertmanager/alertmanager.yml","--storage.path=/alertmanager"],"image":"10.1.93.54/fds/alertmanager:latest","name":"alertmanager","ports":[{"containerPort":9093}],"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"seccompProfile":{"type":"RuntimeDefault"}},"volumeMounts":[{"mountPath":"/etc/alertmanager","name":"config"},{"mountPath":"/alertmanager","name":"storage"},{"mountPath":"/etc/alertmanager/secrets/discord","name":"discord-webhook","readOnly":true}]}],"imagePullSecrets":[{"name":"harbor-pull-secret"}],"securityContext":{"fsGroup":65534,"fsGroupChangePolicy":"OnRootMismatch","runAsNonRoot":true,"runAsUser":65534},"volumes":[{"configMap":{"name":"alertmanager-config"},"name":"config"},{"name":"storage","persistentVolumeClaim":{"claimName":"alertmanager-data"}},{"name":"discord-webhook","secret":{"secretName":"discord-webhook"}}]}}}}
+   creationTimestamp: "2026-09-22T05:45:35Z"
+-  generation: 10
++  generation: 11
+   name: alertmanager
+   namespace: monitoring-api
+   resourceVersion: "3040523"
+@@ -32,7 +32,7 @@
+       - args:
+         - --config.file=/etc/alertmanager/alertmanager.yml
+         - --storage.path=/alertmanager
+-        image: 10.1.93.54/fds/alertmanager:latest
++        image: 10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67
+         imagePullPolicy: Always
+         livenessProbe:
+           failureThreshold: 6
+@@ -56,7 +56,13 @@
+           periodSeconds: 10
+           successThreshold: 1
+           timeoutSeconds: 3
+-        resources: {}
++        resources:
++          limits:
++            cpu: 500m
++            memory: 512Mi
++          requests:
++            cpu: 200m
++            memory: 256Mi
+         securityContext:
+           allowPrivilegeEscalation: false
+           capabilities:
+rc=1
+===== diff grafana.yaml
+diff -u -N /tmp/LIVE-3442631866/apps.v1.Deployment.monitoring-api.grafana /tmp/MERGED-568928906/apps.v1.Deployment.monitoring-api.grafana
+--- /tmp/LIVE-3442631866/apps.v1.Deployment.monitoring-api.grafana	2026-10-02 10:46:33.562314896 +0900
++++ /tmp/MERGED-568928906/apps.v1.Deployment.monitoring-api.grafana	2026-10-02 10:46:33.563314874 +0900
+@@ -6,7 +6,7 @@
+     kubectl.kubernetes.io/last-applied-configuration: |
+       {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"grafana","namespace":"monitoring-api"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"grafana"}},"strategy":{"type":"Recreate"},"template":{"metadata":{"labels":{"app":"grafana"}},"spec":{"automountServiceAccountToken":false,"containers":[{"env":[{"name":"GF_SECURITY_ADMIN_USER","valueFrom":{"secretKeyRef":{"key":"admin-user","name":"grafana-admin-credentials"}}},{"name":"GF_SECURITY_ADMIN_PASSWORD","valueFrom":{"secretKeyRef":{"key":"admin-password","name":"grafana-admin-credentials"}}},{"name":"GF_AUTH_ANONYMOUS_ENABLED","value":"false"},{"name":"GF_USERS_ALLOW_SIGN_UP","value":"false"},{"name":"GF_ANALYTICS_REPORTING_ENABLED","value":"false"},{"name":"GF_ANALYTICS_CHECK_FOR_UPDATES","value":"false"},{"name":"GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES","value":"false"},{"name":"GF_PLUGINS_PREINSTALL_DISABLED","value":"true"}],"image":"10.1.93.54/fds/grafana:latest","name":"grafana","ports":[{"containerPort":3000}],"resources":{"limits":{"cpu":"1","memory":"1Gi"},"requests":{"cpu":"200m","memory":"256Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"seccompProfile":{"type":"RuntimeDefault"}},"volumeMounts":[{"mountPath":"/var/lib/grafana","name":"data"},{"mountPath":"/tmp","name":"tmp"},{"mountPath":"/var/lib/grafana/plugins","name":"plugins"},{"mountPath":"/etc/grafana/provisioning/datasources","name":"datasources"},{"mountPath":"/etc/grafana/provisioning/dashboards","name":"dashboards-provider"},{"mountPath":"/etc/grafana/dashboards","name":"dashboards"}]}],"imagePullSecrets":[{"name":"harbor-pull-secret"}],"securityContext":{"fsGroup":472,"fsGroupChangePolicy":"OnRootMismatch","runAsNonRoot":true,"runAsUser":472},"volumes":[{"name":"data","persistentVolumeClaim":{"claimName":"grafana-data"}},{"emptyDir":{},"name":"tmp"},{"emptyDir":{},"name":"plugins"},{"configMap":{"name":"grafana-datasources"},"name":"datasources"},{"configMap":{"name":"grafana-dashboards-provider"},"name":"dashboards-provider"},{"configMap":{"name":"grafana-dashboards"},"name":"dashboards"}]}}}}
+   creationTimestamp: "2026-09-22T05:45:35Z"
+-  generation: 15
++  generation: 16
+   name: grafana
+   namespace: monitoring-api
+   resourceVersion: "3040528"
+@@ -52,7 +52,7 @@
+           value: "false"
+         - name: GF_PLUGINS_PREINSTALL_DISABLED
+           value: "true"
+-        image: 10.1.93.54/fds/grafana:latest
++        image: 10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b
+         imagePullPolicy: Always
+         livenessProbe:
+           failureThreshold: 6
+@@ -79,10 +79,10 @@
+         resources:
+           limits:
+             cpu: "1"
+-            memory: 1Gi
++            memory: 2304Mi
+           requests:
+             cpu: 200m
+-            memory: 256Mi
++            memory: 1152Mi
+         securityContext:
+           allowPrivilegeEscalation: false
+           capabilities:
+diff -u -N /tmp/LIVE-3442631866/v1.ConfigMap.monitoring-api.grafana-datasources /tmp/MERGED-568928906/v1.ConfigMap.monitoring-api.grafana-datasources
+--- /tmp/LIVE-3442631866/v1.ConfigMap.monitoring-api.grafana-datasources	2026-10-02 10:46:33.522315762 +0900
++++ /tmp/MERGED-568928906/v1.ConfigMap.monitoring-api.grafana-datasources	2026-10-02 10:46:33.522315762 +0900
+@@ -7,7 +7,7 @@
+         uid: prometheus            # A3: 대시보드 JSON 이 이 uid 로 참조
+         type: prometheus
+         access: proxy
+-        url: http://prometheus.monitoring-api.svc:9090
++        url: http://prometheus.monitoring-api.svc:9090   # #17 요구사항 표기(FQDN). 이전 값 http://prometheus:9090(같은 Service)
+         isDefault: true
+ kind: ConfigMap
+ metadata:
+rc=1
+===== diff kube-state-metrics.yaml
+diff -u -N /tmp/LIVE-3086911441/apps.v1.Deployment.monitoring-api.kube-state-metrics /tmp/MERGED-4090717750/apps.v1.Deployment.monitoring-api.kube-state-metrics
+--- /tmp/LIVE-3086911441/apps.v1.Deployment.monitoring-api.kube-state-metrics	2026-10-02 10:46:33.698311950 +0900
++++ /tmp/MERGED-4090717750/apps.v1.Deployment.monitoring-api.kube-state-metrics	2026-10-02 10:46:33.699311928 +0900
+@@ -6,7 +6,7 @@
+     kubectl.kubernetes.io/last-applied-configuration: |
+       {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"kube-state-metrics","namespace":"monitoring-api"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"kube-state-metrics"}},"template":{"metadata":{"labels":{"app":"kube-state-metrics"}},"spec":{"containers":[{"args":["--metric-labels-allowlist=pods=[app],deployments=[app]"],"image":"10.1.93.54/fds/kube-state-metrics:v2.13.0","livenessProbe":{"httpGet":{"path":"/healthz","port":8080},"periodSeconds":10},"name":"kube-state-metrics","ports":[{"containerPort":8080,"name":"http-metrics"},{"containerPort":8081,"name":"telemetry"}],"readinessProbe":{"httpGet":{"path":"/healthz","port":8080},"periodSeconds":5},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsNonRoot":true,"runAsUser":65534,"seccompProfile":{"type":"RuntimeDefault"}}}],"imagePullSecrets":[{"name":"harbor-pull-secret"}],"serviceAccountName":"kube-state-metrics-sa"}}}}
+   creationTimestamp: "2026-09-22T05:45:35Z"
+-  generation: 10
++  generation: 11
+   name: kube-state-metrics
+   namespace: monitoring-api
+   resourceVersion: "3108157"
+@@ -33,7 +33,7 @@
+       containers:
+       - args:
+         - --metric-labels-allowlist=pods=[app],deployments=[app]
+-        image: 10.1.93.54/fds/kube-state-metrics:v2.13.0
++        image: 10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1
+         imagePullPolicy: IfNotPresent
+         livenessProbe:
+           failureThreshold: 3
+rc=1

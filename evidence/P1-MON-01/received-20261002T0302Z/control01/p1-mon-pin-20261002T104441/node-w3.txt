@@ -1,0 +1,78 @@
+Name:               k8s-worker03
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=k8s-worker03
+                    kubernetes.io/os=linux
+Annotations:        node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 10.1.93.108/24
+                    projectcalico.org/IPv4VXLANTunnelAddr: 10.244.39.192
+                    projectcalico.org/Interfaces: [{"name":"ens160","addresses":["10.1.93.108"]}]
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Fri, 18 Sep 2026 14:30:28 +0900
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  k8s-worker03
+  AcquireTime:     <unset>
+  RenewTime:       Fri, 02 Oct 2026 10:51:35 +0900
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Sun, 27 Sep 2026 13:50:11 +0900   Sun, 27 Sep 2026 13:50:11 +0900   CalicoIsUp                   Calico is running on this node
+  MemoryPressure       False   Fri, 02 Oct 2026 10:48:55 +0900   Thu, 01 Oct 2026 11:24:20 +0900   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Fri, 02 Oct 2026 10:48:55 +0900   Thu, 01 Oct 2026 11:24:20 +0900   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Fri, 02 Oct 2026 10:48:55 +0900   Thu, 01 Oct 2026 11:24:20 +0900   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Fri, 02 Oct 2026 10:48:55 +0900   Thu, 01 Oct 2026 11:24:20 +0900   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  10.1.93.108
+  Hostname:    k8s-worker03
+Capacity:
+  cpu:                8
+  ephemeral-storage:  71616Mi
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             24310124Ki
+  pods:               110
+Allocatable:
+  cpu:                8
+  ephemeral-storage:  67585336823
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             24207724Ki
+  pods:               110
+System Info:
+  Machine ID:                 0bb03794b5b04dc4bded6bd75d63f701
+  System UUID:                a3394d56-a6ae-2f0f-c17d-c6dc9dff8548
+  Boot ID:                    92d57d89-e1d6-4eb8-a2b5-7b641a6684e7
+  Kernel Version:             6.12.0-266.el10.x86_64
+  OS Image:                   CentOS Stream 10 (Coughlan)
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.3.5
+  Kubelet Version:            v1.36.4
+PodCIDR:                      10.244.5.0/24
+PodCIDRs:                     10.244.5.0/24
+Non-terminated Pods:          (9 in total)
+  Namespace                   Name                               CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                               ------------  ----------  ---------------  -------------  ---
+  fds-app                     fds-engine-5699669f6f-lt9hb        250m (3%)     500m (6%)   256Mi (1%)       512Mi (2%)     16h
+  fds-app                     transaction-api-b784c8c5d-m65z4    250m (3%)     500m (6%)   256Mi (1%)       512Mi (2%)     4d15h
+  icr39-probe                 probe-w03                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         4d17h
+  kube-system                 calico-node-9v746                  250m (3%)     0 (0%)      0 (0%)           0 (0%)         13d
+  kube-system                 kube-proxy-fgxnn                   0 (0%)        0 (0%)      0 (0%)           0 (0%)         13d
+  monitoring-api              alertmanager-774f8866d-ppgqn       200m (2%)     500m (6%)   256Mi (1%)       512Mi (2%)     4d16h
+  monitoring-api              grafana-559b978c69-k2ws6           200m (2%)     1 (12%)     256Mi (1%)       1Gi (4%)       4d16h
+  monitoring-api              prometheus-d8949bd64-cb7hx         200m (2%)     500m (6%)   448Mi (1%)       896Mi (3%)     61m
+  monitoring-node             node-exporter-zdhnv                50m (0%)      100m (1%)   64Mi (0%)        128Mi (0%)     19h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests     Limits
+  --------           --------     ------
+  cpu                1400m (17%)  3100m (38%)
+  memory             1536Mi (6%)  3584Mi (15%)
+  ephemeral-storage  0 (0%)       0 (0%)
+  hugepages-1Gi      0 (0%)       0 (0%)
+  hugepages-2Mi      0 (0%)       0 (0%)
+Events:              <none>
