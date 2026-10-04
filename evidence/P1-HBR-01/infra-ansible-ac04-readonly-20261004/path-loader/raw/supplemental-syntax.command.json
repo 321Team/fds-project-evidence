@@ -1,0 +1,9 @@
+[
+  "ansible-playbook",
+  "-i",
+  "inventory/hbr.yml",
+  "--syntax-check",
+  "/home/server01_ansible/hbr-ac04-path-loader-u1znwfyv/source/ac04-path-loader-supplemental.yml",
+  "-e",
+  "{\"ac04_collector_path\": \"/home/server01_ansible/hbr-ac04-path-loader-u1znwfyv/source/ac04-collect-path-loader.py\"}"
+]
