@@ -1,0 +1,28 @@
+# host=ansible01 user=server01_ansible time=2026-10-04T17:46:27+09:00
+HEAD=f222f1f15c52c74c1800ce1b4040a21e439e19ed
+HEAD_MATCH=OK
+SYNTAX_RC=0 playbooks/p1-hbr-01-ac04-precheck.yml
+SYNTAX_RC=0 playbooks/p1-hbr-01-ac04-forward-discover.yml
+SYNTAX_RC=0 playbooks/p1-hbr-01-ac04-apply.yml
+SYNTAX_RC=0 playbooks/p1-hbr-01-ac04-verify.yml
+SYNTAX_RC=0 playbooks/p1-hbr-01-ac04-rollback.yml
+P1_HBR_AC04_STATIC_CONTRACT=PASS
+CONTRACT_RC=0
+test_firewalld_lifecycle_coupling_is_rejected (tests.test_p1_hbr_ac04_contract.P1HbrAc04StaticContractTest.test_firewalld_lifecycle_coupling_is_rejected) ... ok
+test_required_docker_guard_cannot_be_weakened (tests.test_p1_hbr_ac04_contract.P1HbrAc04StaticContractTest.test_required_docker_guard_cannot_be_weakened) ... ok
+test_static_contract_script_passes (tests.test_p1_hbr_ac04_contract.P1HbrAc04StaticContractTest.test_static_contract_script_passes) ... ok
+test_fixture_approved_set_is_exact (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_fixture_approved_set_is_exact) ... ok
+test_fixture_chain_metadata_and_rules_are_exact (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_fixture_chain_metadata_and_rules_are_exact) ... ok
+test_fixture_is_same_reviewed_nft_version (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_fixture_is_same_reviewed_nft_version) ... ok
+test_verifier_fails_closed_on_unvalidated_nft_version (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_verifier_fails_closed_on_unvalidated_nft_version) ... ok
+test_verifier_uses_v115_canonical_list_form (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_verifier_uses_v115_canonical_list_form) ... ok
+test_real_hash_command_normal_missing_and_tampered (tests.test_p1_hbr_ac04_failure_gates.PrestateSeal.test_real_hash_command_normal_missing_and_tampered) ... ok
+test_dependency_checks_precede_destructive_operations (tests.test_p1_hbr_ac04_failure_gates.RecoveryGates.test_dependency_checks_precede_destructive_operations) ... ok
+test_recovery_failure_prefix (tests.test_p1_hbr_ac04_failure_gates.RecoveryGates.test_recovery_failure_prefix) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.181s
+
+OK
+P1_HBR_AC04_STATIC_CONTRACT=PASS
+TESTS_RC=0

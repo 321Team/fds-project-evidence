@@ -1,0 +1,8 @@
+# host=harbor01 user=server08 time=2026-10-04T19:00:13+09:00 (date/hostname 출력 기준)
+# command: sudo grep -E 'proxy\[[0-9]+\]: 10\.1\.93\.(26|29|30) ' /var/log/harbor/proxy.log | tail -6 | cut -c1-220
+Oct  4 18:26:55 172.18.0.1 proxy[1684]: 10.1.93.30 - "GET /api/v2.0/jobservice/queues HTTP/1.1" 200 579 "https://10.1.93.54/harbor/projects" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Geck
+Oct  4 18:27:24 172.18.0.1 proxy[1684]: 10.1.93.26 - "GET /api/v2.0/jobservice/queues HTTP/1.1" 200 579 "https://10.1.93.54/harbor/robot-accounts" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, lik
+Oct  4 18:41:55 172.18.0.1 proxy[1684]: 10.1.93.30 - "GET /api/v2.0/jobservice/queues HTTP/1.1" 200 579 "https://10.1.93.54/harbor/projects" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Geck
+Oct  4 18:42:24 172.18.0.1 proxy[1684]: 10.1.93.26 - "GET /api/v2.0/jobservice/queues HTTP/1.1" 200 579 "https://10.1.93.54/harbor/robot-accounts" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, lik
+Oct  4 18:56:55 172.18.0.1 proxy[1684]: 10.1.93.30 - "GET /api/v2.0/jobservice/queues HTTP/1.1" 200 579 "https://10.1.93.54/harbor/projects" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Geck
+Oct  4 18:57:24 172.18.0.1 proxy[1684]: 10.1.93.26 - "GET /api/v2.0/jobservice/queues HTTP/1.1" 200 579 "https://10.1.93.54/harbor/robot-accounts" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, lik
