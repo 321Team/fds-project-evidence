@@ -1,0 +1,7 @@
+# host=harbor01 user=server08 (시각 출력 없음: apply 완료 21:33:20 이후 21:3x KST에 실행, 정확한 시각 미기록)
+# command: curl -s -o /dev/null -w "harbor_health=%{http_code}\n" -k https://127.0.0.1/api/v2.0/health; sudo nft list tables | grep -E "p1_hbr|firewalld"; systemctl is-active docker fds-harbor-ac04-guard.service
+harbor_health=200
+table inet firewalld
+table inet p1_hbr_ac04
+active
+active
