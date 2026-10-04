@@ -1,0 +1,7 @@
+
+playbook: /home/server01_ansible/ansible-candidate.8oCqVUwx/source/playbooks/harden_svc_ansible_key.yml
+
+  play #1 (k8s_nodes): Harden P1 Ansible managed SSH key	TAGS: []
+    pattern: ['k8s_nodes']
+    hosts (1):
+      k8s-worker02
