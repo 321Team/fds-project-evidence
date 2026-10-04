@@ -1,0 +1,75 @@
+=== TIME ===
+2026-09-30T17:23:23+09:00
+=== HOST ===
+harbor01
+=== HARBOR VERSION ===
+CONTAINER           REPOSITORY                      TAG                 PLATFORM            IMAGE ID            SIZE                CREATED
+harbor-core         goharbor/harbor-core            v2.13.1             linux/amd64         a22b58594cea        402MB               16 months ago
+harbor-db           goharbor/harbor-db              v2.13.1             linux/amd64         5501021458c2        564MB               16 months ago
+harbor-jobservice   goharbor/harbor-jobservice      v2.13.1             linux/amd64         08af37e4194d        354MB               16 months ago
+harbor-log          goharbor/harbor-log             v2.13.1             linux/amd64         0ceff3e80b06        336MB               16 months ago
+harbor-portal       goharbor/harbor-portal          v2.13.1             linux/amd64         9b31001ccde5        327MB               16 months ago
+nginx               goharbor/nginx-photon           v2.13.1             linux/amd64         18413e62e4bb        310MB               16 months ago
+redis               goharbor/redis-photon           v2.13.1             linux/amd64         7023398c8d85        340MB               16 months ago
+registry            goharbor/registry-photon        v2.13.1             linux/amd64         9e1894bee0ff        174MB               16 months ago
+registryctl         goharbor/harbor-registryctl     v2.13.1             linux/amd64         f606f750f05f        326MB               16 months ago
+trivy-adapter       goharbor/trivy-adapter-photon   v2.13.1             linux/amd64         d39f86d91af1        777MB               16 months ago
+=== STACK ===
+NAME                IMAGE                                   COMMAND                   SERVICE         CREATED         STATUS                   PORTS
+harbor-core         goharbor/harbor-core:v2.13.1            "/harbor/entrypoint.…"   core            4 minutes ago   Up 4 minutes (healthy)   
+harbor-db           goharbor/harbor-db:v2.13.1              "/docker-entrypoint.…"   postgresql      4 minutes ago   Up 4 minutes (healthy)   
+harbor-jobservice   goharbor/harbor-jobservice:v2.13.1      "/harbor/entrypoint.…"   jobservice      4 minutes ago   Up 4 minutes (healthy)   
+harbor-log          goharbor/harbor-log:v2.13.1             "/bin/sh -c /usr/loc…"   log             4 minutes ago   Up 4 minutes (healthy)   127.0.0.1:1514->10514/tcp
+harbor-portal       goharbor/harbor-portal:v2.13.1          "nginx -g 'daemon of…"   portal          4 minutes ago   Up 4 minutes (healthy)   
+nginx               goharbor/nginx-photon:v2.13.1           "nginx -g 'daemon of…"   proxy           4 minutes ago   Up 4 minutes (healthy)   0.0.0.0:80->8080/tcp, [::]:80->8080/tcp, 0.0.0.0:443->8443/tcp, [::]:443->8443/tcp
+redis               goharbor/redis-photon:v2.13.1           "redis-server /etc/r…"   redis           4 minutes ago   Up 4 minutes (healthy)   
+registry            goharbor/registry-photon:v2.13.1        "/home/harbor/entryp…"   registry        4 minutes ago   Up 4 minutes (healthy)   
+registryctl         goharbor/harbor-registryctl:v2.13.1     "/home/harbor/start.…"   registryctl     4 minutes ago   Up 4 minutes (healthy)   
+trivy-adapter       goharbor/trivy-adapter-photon:v2.13.1   "/home/scanner/entry…"   trivy-adapter   4 minutes ago   Up 4 minutes (healthy)   
+=== SERVED CERT ===
+subject=C=KR, O=FDS, OU=Harbor, CN=harbor.fds.internal
+issuer=C=KR, O=FDS, OU=Project PKI, CN=FDS Project Root CA 2026
+serial=1000
+notBefore=Sep 15 04:00:08 2026 GMT
+notAfter=Sep 15 04:00:08 2027 GMT
+sha256 Fingerprint=61:61:7A:F3:57:4F:37:C7:0A:2D:9C:7F:28:4A:75:F8:2C:84:4A:E3:EA:F5:99:CB:3D:0E:C6:49:12:6E:BE:AF
+X509v3 Subject Alternative Name: 
+    DNS:harbor.fds.internal, DNS:harbor01, IP Address:10.1.93.54
+=== TLS VERIFY ===
+5/9saVkJRsSCIX5WLZaYwIWlkaEkhaWTeUTxFniRmpImqyYnRPpAgAO0CpWtvjD3
+N1dfSEg=
+-----END CERTIFICATE-----
+subject=C=KR, O=FDS, OU=Harbor, CN=harbor.fds.internal
+issuer=C=KR, O=FDS, OU=Project PKI, CN=FDS Project Root CA 2026
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: rsa_pss_rsae_sha256
+Peer Temp Key: X25519, 253 bits
+---
+SSL handshake has read 2033 bytes and written 1601 bytes
+Verification: OK
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Protocol: TLSv1.3
+Server public key is 3072 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+---
+DONE
+=== HARBOR HEALTH ===
+{"components":[{"name":"core","status":"healthy"},{"name":"database","status":"healthy"},{"name":"jobservice","status":"healthy"},{"name":"portal","status":"healthy"},{"name":"redis","status":"healthy"},{"name":"registry","status":"healthy"},{"name":"registryctl","status":"healthy"},{"name":"trivy","status":"healthy"}],"status":"healthy"}
+
+CURL_RC=0
+=== TRIVY ===
+STATUS=running RUNNING=true RESTARTS=0 HEALTH=healthy
+=== RUNTIME CERT SOURCE ===
+subject=C=KR, O=FDS, OU=Harbor, CN=harbor.fds.internal
+issuer=C=KR, O=FDS, OU=Project PKI, CN=FDS Project Root CA 2026
+sha256 Fingerprint=61:61:7A:F3:57:4F:37:C7:0A:2D:9C:7F:28:4A:75:F8:2C:84:4A:E3:EA:F5:99:CB:3D:0E:C6:49:12:6E:BE:AF
+=== ROLLBACK DIR ===
+/home/server08/harbor-tls-rollback-20260930T171722
