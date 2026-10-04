@@ -1,0 +1,8 @@
+[
+  "ansible-playbook",
+  "-i",
+  "inventory/hbr.yml",
+  "--limit",
+  "harbor01",
+  "playbooks/p1-hbr-01-ac04-forward-discover.yml"
+]

@@ -1,0 +1,26 @@
+---
+- name: AC04 supplemental read-only network and loader collection
+  hosts: hbr
+  gather_facts: false
+  become: true
+  any_errors_fatal: true
+  tasks:
+    - name: Run fixed read-only collector on exact Harbor host
+      ansible.builtin.script:
+        cmd: "{{ ac04_collector_path }}"
+        executable: /usr/bin/python3
+      register: ac04_surface
+      changed_when: false
+      failed_when: false
+    - name: Preserve collector raw stdout and stderr in Ansible output
+      ansible.builtin.debug:
+        msg:
+          collector_rc: "{{ ac04_surface.rc }}"
+          stdout: "{{ ac04_surface.stdout }}"
+          stderr: "{{ ac04_surface.stderr | default('') }}"
+    - name: Require collection completeness without granting apply approval
+      ansible.builtin.assert:
+        that:
+          - ac04_surface.rc == 0
+          - "'NETWORK_SURFACE_CAPTURED_REVIEW_REQUIRED' in ac04_surface.stdout"
+
