@@ -1,0 +1,49 @@
+# db01 (server08) 명령 출력 — 사용자 화면 붙여넣기 전사본
+# 서버에서 파일·SHA를 만들지 않았다. 아래는 채팅에 붙여넣은 출력을 그대로 옮긴 것이며 서버 원본이 아니다.
+# sudo 암호 프롬프트 줄은 생략했다.
+
+## [1] 2026-10-05 00:23:39 KST — control01 시도 직후
+$ date '+%F %T %Z'
+2026-10-05 00:23:39 KST
+$ sudo sh -c 'L=$(ls -t /var/lib/pgsql/data/log/postgresql-*.log | head -1); echo "LOG=$L"; grep -h "10.1.93.102" "$L" | tail -6'
+LOG=/var/lib/pgsql/data/log/postgresql-Mon.log
+$ sudo grep -v "^#" /var/lib/pgsql/data/pg_hba.conf | grep -v "^$"
+local   all             all                                     peer
+host    all             all             127.0.0.1/32            scram-sha-256
+host    all             all             ::1/128                 ident
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            ident
+host    replication     all             ::1/128                 ident
+hostssl    fdsdb    fds_app    10.1.93.105/32    scram-sha-256
+hostssl    fdsdb    fds_app    10.1.93.107/32    scram-sha-256
+hostssl    fdsdb    fds_app    10.1.93.108/32    scram-sha-256
+hostssl    fdsdb    fds_app    10.1.93.50/32    scram-sha-256
+$ sudo firewall-cmd --get-active-zones
+public (default)
+  interfaces: ens160 ens192
+$ sudo firewall-cmd --zone=public --list-all
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160 ens192
+  sources:
+  services:
+  ports: 5432/tcp
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+        rule family="ipv4" source address="10.1.93.23/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+        rule family="ipv4" source address="10.1.93.29/32" service name="ssh" accept
+        rule family="ipv4" source address="10.250.10.10/32" destination address="10.1.93.55/32" port port="22" protocol="tcp" accept
+
+## [2] PC(.29) 시도 이후
+$ sudo sh -c 'L=$(ls -t /var/lib/pgsql/data/log/postgresql-*.log | head -1); echo "LOG=$L"; grep -h -E "10\.1\.93\.(29|102)" "$L" | tail -6'
+LOG=/var/lib/pgsql/data/log/postgresql-Mon.log
+2026-10-05 00:24:35.219 KST [56055] 치명적오류:  호스트 "10.1.93.29", 사용자 "fds_app", 데이터베이스 "fdsdb", 암호화 안함 연결에 대한 설정이 pg_hba.conf 파일에 없습니다.
+2026-10-05 00:24:35.309 KST [56056] 치명적오류:  호스트 "10.1.93.29", 사용자 "fds_app", 데이터베이스 "fdsdb", SSL 암호화 연결에 대한 설정이 pg_hba.conf 파일에 없습니다.
