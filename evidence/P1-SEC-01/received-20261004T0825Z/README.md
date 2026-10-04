@@ -32,7 +32,9 @@ Record ID: **P1-SEC-01** ([baseline #19](https://github.com/321Team/fds-project-
 
 ## 관측값
 
-**핵심 요구사항 3 — monitoring-node** (대상: `node-exporter-sa`, `default:default`. `monitoring-node` Namespace의 ServiceAccount는 이 둘뿐이다) — 각 28개 점검, **전부 `no`**:
+> **정정 (독립 리뷰 B-107-01 반영):** 이 회차의 두 번째 주체 `system:serviceaccount:default:default`는 **`default` Namespace의 `default` ServiceAccount**이며 monitoring-node의 SA가 아니다. monitoring-node의 SA는 `node-exporter-sa`와 **`monitoring-node:default`**이고(`01-sa-monitoring-node.txt`), 이 회차에서는 `monitoring-node:default`를 시험하지 않았다(**NOT VERIFIED**). 이 주체는 같은 스크립트에서 `DEF` 한 줄만 바꾼 새 스크립트로 [`received-20261004T1012Z`](../received-20261004T1012Z/README.md)에서 확인했다. 이 회차의 원본·스크립트·90행은 수정하지 않았고 새 결과를 소급하지 않았다. 이 README의 설명만 정정했다.
+
+**핵심 요구사항 3 — monitoring-node** (대상: `node-exporter-sa`와 `default` Namespace의 `default:default`. 후자는 monitoring-node에 속한 SA가 아니라 monitoring-node Namespace에서의 권한을 가장해 묻는 **다른 Namespace의 비승인 주체**이다) — 각 28개 점검, **전부 `no`**:
 - 생성: deployments, statefulsets, daemonsets, jobs, cronjobs, replicasets, pods
 - Pod 서브리소스 create: `exec`, `attach`, `portforward`
 - 기존 Workload 수정: daemonsets·deployments 각각 `update`·`patch`·`delete`
@@ -48,7 +50,7 @@ Record ID: **P1-SEC-01** ([baseline #19](https://github.com/321Team/fds-project-
 ## 한계와 주의
 
 1. **RBAC 평가 결과이다.** `auth can-i`는 Authorization 결과를 묻는 것이며 Admission(PSA 등)이나 실제 Pod 생성 시도를 시험하지 않는다.
-2. **주체 범위.** monitoring-node는 SA 2개(`node-exporter-sa`, `default`)만 시험했다. 사용자·그룹 등 SA 외 주체, 다른 Namespace의 SA가 monitoring-node에 접근하는 경로는 시험하지 않았다. Runner는 `cicd-runner-sa`만 시험했다.
+2. **주체 범위.** 이 회차는 `monitoring-node:node-exporter-sa`와 **`default:default`(default Namespace의 SA)** 를 시험했다. **`monitoring-node:default`는 이 회차에서 시험하지 않았다(NOT VERIFIED, [`received-20261004T1012Z`](../received-20261004T1012Z/README.md)에서 확인).** 사용자·그룹 등 SA 외 주체와 다른 Namespace의 SA가 monitoring-node에 접근하는 경로도 시험하지 않았다. Runner는 `cicd-runner-sa`만 시험했다.
 3. **Runner 범위.** `fds-app` 안의 항목과 `kube-system`·`monitoring-api`의 deployments `get`만 대표로 확인했다. 모든 Namespace의 모든 리소스를 열거한 것이 아니며, 전 Namespace `*` 권한이 없음(`no`)을 확인했다.
 4. **TokenRequest 정책은 포함하지 않았다.** `cicd-runner-sa` 토큰의 수명·발급 정책(#19 In Scope의 "Role/TokenRequest 정책")은 이 시험 대상이 아니다.
 5. **한 시점의 결과이다.** 2026-10-04T08:16Z 한 번 실행했다. RBAC가 이후 바뀌면 달라질 수 있다.
@@ -58,7 +60,7 @@ Record ID: **P1-SEC-01** ([baseline #19](https://github.com/321Team/fds-project-
 
 | #19 항목 | 관련 파일 |
 |---|---|
-| 핵심 요구사항 3: monitoring-node 신규 Workload 생성 제한 | `results.tsv`(두 주체 × 28개 = 56개: Namespace 범위 44 + 클러스터 범위 12), `11-nodeexp-list-monitoring-node.txt` |
+| 핵심 요구사항 3: monitoring-node 신규 Workload 생성 제한 | `results.tsv`(`node-exporter-sa` 28 + `default:default` 28 = 56개), `11-nodeexp-list-monitoring-node.txt`. **`monitoring-node:default`는 이 회차에 없음** → `received-20261004T1012Z` |
 | 핵심 요구사항 6: Runner는 기존 2개 Deployment `get/update/patch`만 | `results.tsv`(Runner 34개), `10-runner-list-fds-app.txt` |
 | AC-03 SA별 `can-i` (보강) | 위 두 항목 |
 
