@@ -8,7 +8,7 @@ ansible01/server01_ansible에서 기존 svc_ansible 경로로 harbor01을 수집
 사용자가 원본 tar.gz와 sidecar를 제출했고, 원본 archive 해시·내부116개 manifest 항목을 확인했습니다.
 raw/의119개 파일은 압축에서 추출한 원본 그대로입니다. collector/에는 실제 배포한3개 v1.0 kit 파일24개를 그대로 보존했습니다.
 각 raw와 collector의 원래 SHA256SUMS를 유지합니다. README와 RECEIPT.json은 편입용 신규 기록입니다.
-압축 원본은 사용자 첨부로 보존되며 이 PR에 재압축/업로드하지 않았습니다. 식별자·수신시각·바이트 수·해시는 RECEIPT.json에 기록했습니다.
+압축 원본 3개를 `archives/`에 수신 바이트 그대로 추가 보존했습니다(재압축 없음). 각 `.sha256` sidecar와 `registry/ARCHIVE_CONTENTS.json` 내부 목록을 함께 등록했습니다. 원 첨부 식별자·수신시각·바이트 수·해시는 RECEIPT.json에 유지하고 저장소 경로를 추가했습니다.
 
 - [지원 작업 및 검수 이력](https://github.com/321Team/infra-ansible/issues/62)
 - [검토 대상 문서 PR67](https://github.com/321Team/infra-ansible/pull/67)
@@ -46,3 +46,13 @@ clients/임시 예외/UI fallback/변경창 및 loader 운영 조건 수용은 �
 2. 세 회차 관측이 문서 PR67과 일치하는지 및 미실행/미승인 표시.
 3. 민감정보·누락·대장 연결·새 수집회차 경로·원본 보존.
 4. 편입 승인과 Harbor AC04 인수는 별도임을 확인.
+
+## B-105-01 보완 — 2026-10-04 KST
+
+- 최초 수신 첨부에서 원본 tar.gz 3개를 확보해 RECEIPT의 크기(21,221 / 8,690 / 8,205 bytes)와 SHA-256을 다시 대조했고 모두 일치했습니다.
+- 압축 내부 일반 파일 53 / 33 / 33개와 해당 raw 디렉터리의 파일 집합 및 bytes가 전부 일치합니다(총119개, 원래 SHA256SUMS 포함). 재수집·재압축·raw 수정 없음.
+- 저장소 검사기의 `archive_entries()`와 동일한 계산으로 내부 이름·크기·SHA-256을 대장에 추가했습니다. 기존 archive index 항목은 유지합니다.
+- collector kit zip 원본 추가 보존은 비차단 권고이며 이번 변경에 포함하지 않습니다. collector24파일·각 manifest는 그대로입니다.
+- 이 보완은 작성자 검수이며 새 HEAD 독립 리뷰와 전체 CI는 별도입니다. AC04 Apply·PASS로 승격하지 않습니다.
+
+AI 사용: CODEX_ASSISTED.
