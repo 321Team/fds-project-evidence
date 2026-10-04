@@ -1,0 +1,22 @@
+# host=cicd-runner01 user=server01_cicd-runner time=2026-10-02T16:11:18+09:00
+RUN_ID=hbr-20261002-161052-d57ab5dc  WRAPPER_SHA256=9ffc541874455fe981a762729000de94d575b01cc4b9091eb08c59fd9db7c88a  SCRIPT_SHA256=1305e9affe70132bcc570a646369834dd1ce237570a4c7537bbead6da6b6fe1e  SOURCE=infra-harbor-trivy main 6edf816 (tree 25b8195fe1c1)
+BASE_IMAGE_REF=docker.io/library/alpine@sha256:c64c687cbea9300178b30c95835354e34c4e4febc4badfe27102879de0483b5e
+CA_FILE_SHA256=20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f  tls_verify=on(default, --tls-verify=false 미사용)
+podman: podman version 6.1.0
+INFO: base_image=docker.io/library/alpine@sha256:c64c687cbea9300178b30c95835354e34c4e4febc4badfe27102879de0483b5e
+### 1. Positive: Runner Credential 로그인
+Login Succeeded!
+OK: 로그인 성공
+### 2. Positive: 이미지 push (manifest digest는 push가 기록한 digestfile에서 읽는다)
+Trying to pull docker.io/library/alpine@sha256:c64c687cbea9300178b30c95835354e34c4e4febc4badfe27102879de0483b5e...
+Getting image source signatures
+Copying blob sha256:25f1d6b1951ac8eb3740558fe94cb83d377bdadf95fd9f98b50d2e1b96130471
+Copying config sha256:bf8527eb54c3680e728d5b4b383a8ba730d72dae7236fbc8dff97ed6b224a731
+Writing manifest to image destination
+PASS: Runner Push 성공 image=10.1.93.54/fds/test:ifup-20261002T071118Z manifest_digest=sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+### 3. Positive: 같은 Runner credential로 Harbor에서 exact digest Pull
+PASS: Harbor digest Pull 성공 및 digest 일치 pulled=sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+### 4. Negative: 잘못된 credential 로그인 시도 (인증 거부가 관측돼야 PASS)
+PASS: 잘못된 credential 로그인이 인증 거부로 확인됨
+### 완료 — TEST_TAG=ifup-20261002T071118Z MANIFEST_DIGEST=sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6 BASE_IMAGE_REF=docker.io/library/alpine@sha256:c64c687cbea9300178b30c95835354e34c4e4febc4badfe27102879de0483b5e
+RUN_RC=0 TEE_RC=0
