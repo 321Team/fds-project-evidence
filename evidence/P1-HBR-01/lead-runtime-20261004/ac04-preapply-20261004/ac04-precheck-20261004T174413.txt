@@ -1,0 +1,182 @@
+
+PLAY [P1-HBR-01 AC-04 nftables guard precheck] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [harbor01]
+
+TASK [Observe INPUT/public-zone surface] ***************************************
+included: /home/server01_ansible/p1-ans-01/playbooks/tasks/p1-hbr-01-ac04-observe.yml for harbor01
+
+TASK [Assert AC-04 target identity] ********************************************
+ok: [harbor01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Confirm firewalld service is active] *************************************
+ok: [harbor01]
+
+TASK [Confirm firewalld daemon state] ******************************************
+ok: [harbor01]
+
+TASK [Read default zone] *******************************************************
+ok: [harbor01]
+
+TASK [Read active zones] *******************************************************
+ok: [harbor01]
+
+TASK [Assert expected zone/interface binding] **********************************
+ok: [harbor01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Query runtime generic 443/tcp] *******************************************
+ok: [harbor01]
+
+TASK [Query permanent generic 443/tcp] *****************************************
+ok: [harbor01]
+
+TASK [Read runtime services] ***************************************************
+ok: [harbor01]
+
+TASK [Read permanent services] *************************************************
+ok: [harbor01]
+
+TASK [Read runtime ports] ******************************************************
+ok: [harbor01]
+
+TASK [Read permanent ports] ****************************************************
+ok: [harbor01]
+
+TASK [Read runtime rich rules] *************************************************
+ok: [harbor01]
+
+TASK [Read permanent rich rules] ***********************************************
+ok: [harbor01]
+
+TASK [Check permanent zone XML] ************************************************
+ok: [harbor01]
+
+TASK [Reset expected AC-04 rich-rule contract] *********************************
+ok: [harbor01]
+
+TASK [Build expected AC-04 rich-rule contract] *********************************
+ok: [harbor01] => (item=BASELINE_ALLOW 10.250.10.20)
+ok: [harbor01] => (item=BASELINE_ALLOW 10.1.93.105)
+ok: [harbor01] => (item=BASELINE_ALLOW 10.1.93.107)
+ok: [harbor01] => (item=BASELINE_ALLOW 10.1.93.108)
+ok: [harbor01] => (item=TEMP_EXCEPTION 10.1.93.50)
+ok: [harbor01] => (item=TEMP_MANAGEMENT_EXCEPTION 10.1.93.102)
+
+TASK [Observe Docker and nft enforcement surface] ******************************
+included: /home/server01_ansible/p1-ans-01/playbooks/tasks/p1-hbr-01-ac04-forward-observe.yml for harbor01
+
+TASK [Assert exact Harbor target identity] *************************************
+ok: [harbor01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Read Docker service state] ***********************************************
+ok: [harbor01]
+
+TASK [Read IPv4 forwarding state] **********************************************
+ok: [harbor01]
+
+TASK [Read FORWARD chain] ******************************************************
+ok: [harbor01]
+
+TASK [Read DOCKER-USER chain for non-interference verification] ****************
+ok: [harbor01]
+
+TASK [Read DOCKER-FORWARD chain for non-interference verification] *************
+ok: [harbor01]
+
+TASK [Read Docker filter chain for non-interference verification] **************
+ok: [harbor01]
+
+TASK [Read Docker NAT chain] ***************************************************
+ok: [harbor01]
+
+TASK [Read IPv6 Docker NAT chain when present] *********************************
+ok: [harbor01]
+
+TASK [Read nftables version] ***************************************************
+ok: [harbor01]
+
+TASK [Parse nftables semantic version] *****************************************
+ok: [harbor01]
+
+TASK [Read nft table inventory] ************************************************
+ok: [harbor01]
+
+TASK [Read dedicated nft guard when present] ***********************************
+ok: [harbor01]
+
+TASK [Check managed nft source file] *******************************************
+ok: [harbor01]
+
+TASK [Check managed guard unit] ************************************************
+ok: [harbor01]
+
+TASK [Read guard service enabled state] ****************************************
+ok: [harbor01]
+
+TASK [Read guard service active state] *****************************************
+ok: [harbor01]
+
+TASK [Read Docker Requires dependencies] ***************************************
+ok: [harbor01]
+
+TASK [Read guard Before ordering] **********************************************
+ok: [harbor01]
+
+TASK [Read guard After ordering] ***********************************************
+ok: [harbor01]
+
+TASK [Locate Docker published host 443 DNAT rules] *****************************
+ok: [harbor01]
+
+TASK [Locate IPv6 Docker published host 443 DNAT rules] ************************
+ok: [harbor01]
+
+TASK [Check for existing AC-04 state] ******************************************
+ok: [harbor01]
+
+TASK [Validate HBR Lead source-set and backend contract] ***********************
+ok: [harbor01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Assert exact reviewed pre-change packet path and absence of guard] *******
+ok: [harbor01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate permanent firewalld configuration] ******************************
+ok: [harbor01]
+
+TASK [Print precheck verdict] **************************************************
+ok: [harbor01] => {
+    "msg": {
+        "backend": "nftables-guard",
+        "change_id": "P1-HBR-01-AC04",
+        "docker_forward_path": "REVIEWED_BASELINE_PRESENT",
+        "generic_input_443": "PRESENT",
+        "host": "harbor01",
+        "host_443_dnat": [
+            "-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 443 -j DNAT --to-destination 172.18.0.11:8443"
+        ],
+        "nft_guard": "ABSENT",
+        "nft_minimum_destroy_table": "1.0.6",
+        "nft_version": "1.1.5",
+        "verdict": "PRECHECK_PASS_RUNTIME_NOT_CHANGED"
+    }
+}
+
+PLAY RECAP *********************************************************************
+harbor01                   : ok=47   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

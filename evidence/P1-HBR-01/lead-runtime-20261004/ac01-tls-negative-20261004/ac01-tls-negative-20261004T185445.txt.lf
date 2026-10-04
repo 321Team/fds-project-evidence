@@ -1,0 +1,12 @@
+# host=cicd-runner01 user=server01_cicd-runner time=2026-10-04T18:54:45+09:00
+script_sha256=81b0c2c83ebf01267bfe15bec0114481aa4d72346a59e80dae52791e4092592d
+ca_sha256=20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f
+OK: 정상 CA Positive 확인 완료
+PASS: Wrong CA로 인증서 검증 실패 확인 (Exit Code: 60)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   341  100   341    0     0  41094      0 --:--:-- --:--:-- --:--:-- 42625
+{"components":[{"name":"core","status":"healthy"},{"name":"database","status":"healthy"},{"name":"jobservice","status":"healthy"},{"name":"portal","status":"healthy"},{"name":"redis","status":"healthy"},{"name":"registry","status":"healthy"},{"name":"registryctl","status":"healthy"},{"name":"trivy","status":"healthy"}],"status":"healthy"}
+SCRIPT_RC=0
