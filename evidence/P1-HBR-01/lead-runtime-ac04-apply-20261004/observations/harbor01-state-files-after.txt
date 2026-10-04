@@ -1,0 +1,33 @@
+# host=harbor01 (ansible01 server01_ansible에서 ansible ad-hoc -b -m shell) time=2026-10-04 22:0x KST (시각 출력 없음, 정확한 시각 미기록)
+# command: cd /var/lib/fds-change/P1-HBR-01-AC04 && ls -l && cat PRESTATE_SHA256SUMS && sha256sum -c PRESTATE_SHA256SUMS && cat applied.txt
+harbor01 | CHANGED | rc=0 >>
+합계 40
+-rw-r--r--. 1 root root   444 10월  4일  21:32 PRESTATE_SHA256SUMS
+-rw-------. 1 root root   229 10월  4일  21:33 applied.txt
+-rw-------. 1 root root  1434 10월  4일  21:32 iptables-filter-before.txt
+-rw-------. 1 root root   890 10월  4일  21:32 iptables-nat-before.txt
+-rw-------. 1 root root 15914 10월  4일  21:32 nft-ruleset-before.txt
+-rw-------. 1 root root   392  8월 26일  09:53 original-public.xml
+-rw-------. 1 root root  4066 10월  4일  21:32 original-state.json
+== PRESTATE_SHA256SUMS
+1090de081eb5969f2fc5e1d890f6f022494cf652356a6b8d541be70d6b62d83f  original-state.json
+cbada46d45b3c1756cbdf45fbbb5d104ea3ecab8ac8a85834c831e670d8a862f  original-public.xml
+2b02a2f3f112c6b47e81622c7168298bd07cb8fba06c2b33cf425ebcd002efa0  iptables-filter-before.txt
+1306255da65229fb4cad5ec03051074cea36d039ec66c3ffdb894001815df1a1  iptables-nat-before.txt
+eea8d726e92f3a2f0367a195ef9f38e3019846ead25797bd7deeb6bb52591553  nft-ruleset-before.txt
+== sha256sum -c
+original-state.json: 성공
+original-public.xml: 성공
+iptables-filter-before.txt: 성공
+iptables-nat-before.txt: 성공
+nft-ruleset-before.txt: 성공
+== applied.txt
+change_id=P1-HBR-01-AC04
+backend=nftables-guard
+applied_at_kst=2026-10-04T21:33:19+09:00
+host=harbor01
+nft_table=inet p1_hbr_ac04
+nft_priority=-1
+generic_input_443=REMOVED
+docker_managed_rules=UNCHANGED
+firewalld_reload=NOT_USED
