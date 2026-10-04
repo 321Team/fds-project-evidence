@@ -1,0 +1,10 @@
+[
+  "ansible-playbook",
+  "-i",
+  "inventory/hbr.yml",
+  "--limit",
+  "harbor01",
+  "/home/server01_ansible/hbr-ac04-preapply-lfmfms9r/source/ac04-preapply-supplemental.yml",
+  "-e",
+  "{\"ac04_collector_path\": \"/home/server01_ansible/hbr-ac04-preapply-lfmfms9r/source/ac04-collect-surface.py\"}"
+]
