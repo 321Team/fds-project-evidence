@@ -37,6 +37,7 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 | `harbor01-proxylog-after-20261004T213636.txt` / `…T214505.txt` | `.26/.29/.30` 마지막 기록이 21:31:52(적용 시작 21:32:34 이전)이며 21:45:05에도 새 기록 없음 |
 | `harbor01-proxylog-sources-after-20261004T214948.txt` | 21:34~21:49 출처별 응답 집계: 외부 출처는 허용 `10.1.93.50`(200/401/405)과 `10.250.10.20`뿐, 비허용 `.26/.29/.30/.55/.103/.104` 없음, `127.0.0.1`·`172.18.0.1`은 harbor01 자체 |
 | `ansible01-output-files-listing-20261004.txt` | ansible01 출력 파일 목록·크기·해시 조회 결과 |
+| `harbor01-state-files-after.txt` | harbor01 상태 폴더 `/var/lib/fds-change/P1-HBR-01-AC04/` 7개 파일 목록과 `PRESTATE_SHA256SUMS`(5개 항목 해시, `sha256sum -c` 전부 성공), `applied.txt`(`applied_at_kst=2026-10-04T21:33:19+09:00`, `generic_input_443=REMOVED`, `docker_managed_rules=UNCHANGED`, `firewalld_reload=NOT_USED`). `original-public.xml`은 392 bytes, mtime 8월 26일(원본 보존) |
 
 ## 확인된 사실과 주의
 
@@ -48,6 +49,6 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 ## 한계와 미완 (AC04 = NOT PASSED 유지)
 
 - 비허용 차단의 로그 증거는 해당 PC 브라우저 탭이 15분 주기로 갱신된다는 적용 전 관측에 근거한 추정이며 SYN 드롭 카운터는 수집하지 않았다.
-- **미수행:** Worker 3대·edge01의 실제 Harbor pull/Pod start(허용 출처 positive; Worker는 AC-03 시험), 승인된 Docker restart persistence, 모니터링 Target 23/23 회귀(재환 확인 대기), 임시 예외 `.50`/`.102` 제거 추적, 서버 `/var/lib/fds-change/P1-HBR-01-AC04/` 상태 파일 hash 편입.
+- **미수행:** Worker 3대·edge01의 실제 Harbor pull/Pod start(허용 출처 positive; Worker는 AC-03 시험), 승인된 Docker restart persistence, 모니터링 Target 23/23 회귀(재환 확인 대기), 임시 예외 `.50`/`.102` 제거 추적, (서버 상태 파일 목록·봉인 해시는 `observations/harbor01-state-files-after.txt`로 편입, 해당 파일 원본 bytes는 미편입).
 - `/etc/nftables/main.nft`에 `flush ruleset`이 있다(nftables.service는 disabled/inactive). 수동으로 해당 서비스를 켜면 우리 guard와 Docker 규칙이 지워질 수 있다.
 - 작성자·AI 자체 검수이며 독립 리뷰 완료가 아니다.
