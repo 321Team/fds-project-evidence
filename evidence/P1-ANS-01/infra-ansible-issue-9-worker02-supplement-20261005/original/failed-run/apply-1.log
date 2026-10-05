@@ -1,0 +1,17 @@
+
+PLAY [Harden P1 Ansible managed SSH key] ***************************************
+
+TASK [Count P1 managed SSH keys] ***********************************************
+[ERROR]: Task failed: Failed to connect to the host via ssh: PTY allocation request failed on channel 0
+Origin: /home/server01_ansible/ansible-candidate.8oCqVUwx/source/playbooks/harden_svc_ansible_key.yml:19:7
+
+17
+18   tasks:
+19     - name: Count P1 managed SSH keys
+         ^ column 7
+
+fatal: [k8s-worker02]: UNREACHABLE! => {"changed": false, "msg": "Task failed: Failed to connect to the host via ssh: PTY allocation request failed on channel 0", "unreachable": true}
+
+PLAY RECAP *********************************************************************
+k8s-worker02               : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+
