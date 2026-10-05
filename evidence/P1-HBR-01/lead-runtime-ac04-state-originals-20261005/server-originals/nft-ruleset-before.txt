@@ -1,0 +1,486 @@
+table inet firewalld { # handle 3 progname firewalld
+	flags owner,persist
+
+	chain mangle_PREROUTING { # handle 103
+		type filter hook prerouting priority mangle + 10; policy accept;
+		jump mangle_PREROUTING_POLICIES # handle 105
+	}
+
+	chain mangle_PREROUTING_POLICIES { # handle 104
+		iifname "ens160" jump mangle_PRE_policy_allow-host-ipv6 # handle 314
+		iifname "ens160" jump mangle_PRE_public # handle 306
+		iifname "ens160" return # handle 295
+		jump mangle_PRE_policy_allow-host-ipv6 # handle 288
+		jump mangle_PRE_public # handle 243
+		return # handle 236
+	}
+
+	chain nat_PREROUTING { # handle 106
+		type nat hook prerouting priority dstnat + 10; policy accept;
+		jump nat_PREROUTING_POLICIES # handle 108
+	}
+
+	chain nat_PREROUTING_POLICIES { # handle 107
+		iifname "ens160" jump nat_PRE_policy_allow-host-ipv6 # handle 313
+		iifname "ens160" jump nat_PRE_public # handle 305
+		iifname "ens160" return # handle 294
+		jump nat_PRE_policy_allow-host-ipv6 # handle 287
+		jump nat_PRE_public # handle 242
+		return # handle 235
+	}
+
+	chain nat_POSTROUTING { # handle 109
+		type nat hook postrouting priority srcnat + 10; policy accept;
+		jump nat_POSTROUTING_POLICIES # handle 111
+	}
+
+	chain nat_POSTROUTING_POLICIES { # handle 110
+		iifname "ens160" oifname "ens160" jump nat_POST_public # handle 307
+		iifname "ens160" oifname "ens160" return # handle 296
+		oifname "ens160" jump nat_POST_public # handle 309
+		oifname "ens160" return # handle 298
+		iifname "ens160" jump nat_POST_public # handle 311
+		iifname "ens160" return # handle 300
+		jump nat_POST_public # handle 244
+		return # handle 237
+	}
+
+	chain nat_OUTPUT { # handle 112
+		type nat hook output priority dstnat + 10; policy accept;
+		jump nat_OUTPUT_POLICIES # handle 114
+	}
+
+	chain nat_OUTPUT_POLICIES { # handle 113
+		oifname "ens160" jump nat_OUT_public # handle 303
+		oifname "ens160" return # handle 292
+		jump nat_OUT_public # handle 240
+		return # handle 233
+	}
+
+	chain filter_PREROUTING { # handle 115
+		type filter hook prerouting priority filter + 10; policy accept;
+		icmpv6 type { nd-router-advert, nd-neighbor-solicit } accept # handle 143
+		meta nfproto ipv6 fib saddr . mark . iif check missing drop # handle 141
+	}
+
+	chain filter_INPUT { # handle 116
+		type filter hook input priority filter + 10; policy accept;
+		ct state { established, related } accept # handle 120
+		ct status dnat accept # handle 121
+		iifname "lo" accept # handle 122
+		ct state invalid drop # handle 123
+		jump filter_INPUT_POLICIES # handle 125
+		reject with icmpx admin-prohibited # handle 126
+	}
+
+	chain filter_FORWARD { # handle 117
+		type filter hook forward priority filter + 10; policy accept;
+		ct state { established, related } accept # handle 128
+		ct status dnat accept # handle 129
+		iifname "lo" accept # handle 130
+		ct state invalid drop # handle 131
+		ip6 daddr { ::/96, ::ffff:0.0.0.0/96, 2002::/24, 2002:a00::/24, 2002:7f00::/24, 2002:a9fe::/32, 2002:ac10::/28, 2002:c0a8::/32, 2002:e000::/19 } reject with icmpv6 addr-unreachable # handle 147
+		jump filter_FORWARD_POLICIES # handle 133
+		reject with icmpx admin-prohibited # handle 134
+	}
+
+	chain filter_OUTPUT { # handle 118
+		type filter hook output priority filter + 10; policy accept;
+		ct state { established, related } accept # handle 136
+		ct status dnat accept # handle 137
+		oifname "lo" accept # handle 138
+		ip6 daddr { ::/96, ::ffff:0.0.0.0/96, 2002::/24, 2002:a00::/24, 2002:7f00::/24, 2002:a9fe::/32, 2002:ac10::/28, 2002:c0a8::/32, 2002:e000::/19 } reject with icmpv6 addr-unreachable # handle 145
+		jump filter_OUTPUT_POLICIES # handle 140
+	}
+
+	chain filter_INPUT_POLICIES { # handle 124
+		iifname "ens160" jump filter_IN_policy_allow-host-ipv6 # handle 312
+		iifname "ens160" jump filter_IN_public # handle 301
+		iifname "ens160" reject with icmpx admin-prohibited # handle 290
+		jump filter_IN_policy_allow-host-ipv6 # handle 286
+		jump filter_IN_public # handle 238
+		reject with icmpx admin-prohibited # handle 231
+	}
+
+	chain filter_FORWARD_POLICIES { # handle 132
+		iifname "ens160" oifname "ens160" jump filter_FWD_public # handle 304
+		iifname "ens160" oifname "ens160" reject with icmpx admin-prohibited # handle 293
+		iifname "ens160" jump filter_FWD_public # handle 308
+		iifname "ens160" reject with icmpx admin-prohibited # handle 297
+		oifname "ens160" jump filter_FWD_public # handle 310
+		oifname "ens160" reject with icmpx admin-prohibited # handle 299
+		jump filter_FWD_public # handle 241
+		reject with icmpx admin-prohibited # handle 234
+	}
+
+	chain filter_OUTPUT_POLICIES { # handle 139
+		oifname "ens160" jump filter_OUT_public # handle 302
+		oifname "ens160" return # handle 291
+		jump filter_OUT_public # handle 239
+		return # handle 232
+	}
+
+	chain filter_IN_public { # handle 148
+		jump filter_IN_public_pre # handle 150
+		jump filter_IN_public_log # handle 152
+		jump filter_IN_public_deny # handle 154
+		jump filter_IN_public_allow # handle 156
+		jump filter_IN_public_post # handle 158
+		meta l4proto { icmp, ipv6-icmp } accept # handle 230
+	}
+
+	chain filter_IN_public_pre { # handle 149
+	}
+
+	chain filter_IN_public_log { # handle 151
+	}
+
+	chain filter_IN_public_deny { # handle 153
+	}
+
+	chain filter_IN_public_allow { # handle 155
+		tcp dport 22 accept # handle 159
+		ip6 daddr fe80::/64 udp dport 546 accept # handle 160
+		tcp dport 9090 accept # handle 161
+		tcp dport 443 accept # handle 162
+	}
+
+	chain filter_IN_public_post { # handle 157
+	}
+
+	chain filter_OUT_public { # handle 163
+		jump filter_OUT_public_pre # handle 165
+		jump filter_OUT_public_log # handle 167
+		jump filter_OUT_public_deny # handle 169
+		jump filter_OUT_public_allow # handle 171
+		jump filter_OUT_public_post # handle 173
+	}
+
+	chain filter_OUT_public_pre { # handle 164
+	}
+
+	chain filter_OUT_public_log { # handle 166
+	}
+
+	chain filter_OUT_public_deny { # handle 168
+	}
+
+	chain filter_OUT_public_allow { # handle 170
+	}
+
+	chain filter_OUT_public_post { # handle 172
+	}
+
+	chain nat_OUT_public { # handle 174
+		jump nat_OUT_public_pre # handle 176
+		jump nat_OUT_public_log # handle 178
+		jump nat_OUT_public_deny # handle 180
+		jump nat_OUT_public_allow # handle 182
+		jump nat_OUT_public_post # handle 184
+	}
+
+	chain nat_OUT_public_pre { # handle 175
+	}
+
+	chain nat_OUT_public_log { # handle 177
+	}
+
+	chain nat_OUT_public_deny { # handle 179
+	}
+
+	chain nat_OUT_public_allow { # handle 181
+	}
+
+	chain nat_OUT_public_post { # handle 183
+	}
+
+	chain nat_POST_public { # handle 185
+		jump nat_POST_public_pre # handle 187
+		jump nat_POST_public_log # handle 189
+		jump nat_POST_public_deny # handle 191
+		jump nat_POST_public_allow # handle 193
+		jump nat_POST_public_post # handle 195
+	}
+
+	chain nat_POST_public_pre { # handle 186
+	}
+
+	chain nat_POST_public_log { # handle 188
+	}
+
+	chain nat_POST_public_deny { # handle 190
+	}
+
+	chain nat_POST_public_allow { # handle 192
+	}
+
+	chain nat_POST_public_post { # handle 194
+	}
+
+	chain filter_FWD_public { # handle 196
+		jump filter_FWD_public_pre # handle 198
+		jump filter_FWD_public_log # handle 200
+		jump filter_FWD_public_deny # handle 202
+		jump filter_FWD_public_allow # handle 204
+		jump filter_FWD_public_post # handle 206
+	}
+
+	chain filter_FWD_public_pre { # handle 197
+	}
+
+	chain filter_FWD_public_log { # handle 199
+	}
+
+	chain filter_FWD_public_deny { # handle 201
+	}
+
+	chain filter_FWD_public_allow { # handle 203
+		oifname "ens160" accept # handle 289
+	}
+
+	chain filter_FWD_public_post { # handle 205
+	}
+
+	chain nat_PRE_public { # handle 207
+		jump nat_PRE_public_pre # handle 209
+		jump nat_PRE_public_log # handle 211
+		jump nat_PRE_public_deny # handle 213
+		jump nat_PRE_public_allow # handle 215
+		jump nat_PRE_public_post # handle 217
+	}
+
+	chain nat_PRE_public_pre { # handle 208
+	}
+
+	chain nat_PRE_public_log { # handle 210
+	}
+
+	chain nat_PRE_public_deny { # handle 212
+	}
+
+	chain nat_PRE_public_allow { # handle 214
+	}
+
+	chain nat_PRE_public_post { # handle 216
+	}
+
+	chain mangle_PRE_public { # handle 218
+		jump mangle_PRE_public_pre # handle 220
+		jump mangle_PRE_public_log # handle 222
+		jump mangle_PRE_public_deny # handle 224
+		jump mangle_PRE_public_allow # handle 226
+		jump mangle_PRE_public_post # handle 228
+	}
+
+	chain mangle_PRE_public_pre { # handle 219
+	}
+
+	chain mangle_PRE_public_log { # handle 221
+	}
+
+	chain mangle_PRE_public_deny { # handle 223
+	}
+
+	chain mangle_PRE_public_allow { # handle 225
+	}
+
+	chain mangle_PRE_public_post { # handle 227
+	}
+
+	chain filter_IN_policy_allow-host-ipv6 { # handle 245
+		jump filter_IN_policy_allow-host-ipv6_pre # handle 247
+		jump filter_IN_policy_allow-host-ipv6_log # handle 249
+		jump filter_IN_policy_allow-host-ipv6_deny # handle 251
+		jump filter_IN_policy_allow-host-ipv6_allow # handle 253
+		jump filter_IN_policy_allow-host-ipv6_post # handle 255
+	}
+
+	chain filter_IN_policy_allow-host-ipv6_pre { # handle 246
+	}
+
+	chain filter_IN_policy_allow-host-ipv6_log { # handle 248
+	}
+
+	chain filter_IN_policy_allow-host-ipv6_deny { # handle 250
+	}
+
+	chain filter_IN_policy_allow-host-ipv6_allow { # handle 252
+		icmpv6 type mld-listener-done accept # handle 278
+		icmpv6 type mld-listener-query accept # handle 279
+		icmpv6 type mld-listener-report accept # handle 280
+		icmpv6 type mld2-listener-report accept # handle 281
+		icmpv6 type nd-neighbor-advert icmpv6 code 0 accept # handle 282
+		icmpv6 type nd-neighbor-solicit icmpv6 code 0 accept # handle 283
+		icmpv6 type nd-redirect icmpv6 code 0 accept # handle 284
+		icmpv6 type nd-router-advert icmpv6 code 0 accept # handle 285
+	}
+
+	chain filter_IN_policy_allow-host-ipv6_post { # handle 254
+	}
+
+	chain nat_PRE_policy_allow-host-ipv6 { # handle 256
+		jump nat_PRE_policy_allow-host-ipv6_pre # handle 258
+		jump nat_PRE_policy_allow-host-ipv6_log # handle 260
+		jump nat_PRE_policy_allow-host-ipv6_deny # handle 262
+		jump nat_PRE_policy_allow-host-ipv6_allow # handle 264
+		jump nat_PRE_policy_allow-host-ipv6_post # handle 266
+	}
+
+	chain nat_PRE_policy_allow-host-ipv6_pre { # handle 257
+	}
+
+	chain nat_PRE_policy_allow-host-ipv6_log { # handle 259
+	}
+
+	chain nat_PRE_policy_allow-host-ipv6_deny { # handle 261
+	}
+
+	chain nat_PRE_policy_allow-host-ipv6_allow { # handle 263
+	}
+
+	chain nat_PRE_policy_allow-host-ipv6_post { # handle 265
+	}
+
+	chain mangle_PRE_policy_allow-host-ipv6 { # handle 267
+		jump mangle_PRE_policy_allow-host-ipv6_pre # handle 269
+		jump mangle_PRE_policy_allow-host-ipv6_log # handle 271
+		jump mangle_PRE_policy_allow-host-ipv6_deny # handle 273
+		jump mangle_PRE_policy_allow-host-ipv6_allow # handle 275
+		jump mangle_PRE_policy_allow-host-ipv6_post # handle 277
+	}
+
+	chain mangle_PRE_policy_allow-host-ipv6_pre { # handle 268
+	}
+
+	chain mangle_PRE_policy_allow-host-ipv6_log { # handle 270
+	}
+
+	chain mangle_PRE_policy_allow-host-ipv6_deny { # handle 272
+	}
+
+	chain mangle_PRE_policy_allow-host-ipv6_allow { # handle 274
+	}
+
+	chain mangle_PRE_policy_allow-host-ipv6_post { # handle 276
+	}
+}
+table ip nat { # handle 5
+	chain DOCKER { # handle 1
+		ip daddr 127.0.0.1 iifname != "br-835092bfcbbc" tcp dport 1514 counter packets 0 bytes 0 dnat to 172.18.0.2:10514 # handle 21
+		iifname != "br-835092bfcbbc" tcp dport 80 counter packets 0 bytes 0 dnat to 172.18.0.11:8080 # handle 22
+		iifname != "br-835092bfcbbc" tcp dport 443 counter packets 12866 bytes 758984 dnat to 172.18.0.11:8443 # handle 23
+	}
+
+	chain PREROUTING { # handle 2
+		type nat hook prerouting priority dstnat; policy accept;
+		fib daddr type local counter packets 32223 bytes 1918452 jump DOCKER # handle 3
+	}
+
+	chain OUTPUT { # handle 4
+		type nat hook output priority dstnat; policy accept;
+		ip daddr != 127.0.0.0/8 fib daddr type local counter packets 9 bytes 540 jump DOCKER # handle 5
+	}
+
+	chain POSTROUTING { # handle 6
+		type nat hook postrouting priority srcnat; policy accept;
+		ip saddr 172.18.0.0/16 oifname != "br-835092bfcbbc" counter packets 3 bytes 180 masquerade # handle 20
+		ip saddr 172.17.0.0/16 oifname != "docker0" counter packets 0 bytes 0 masquerade # handle 12
+	}
+}
+table ip filter { # handle 6
+	chain DOCKER { # handle 1
+		ip daddr 172.18.0.11 iifname != "br-835092bfcbbc" oifname "br-835092bfcbbc" tcp dport 8443 counter packets 12859 bytes 758564 accept # handle 44
+		ip daddr 172.18.0.11 iifname != "br-835092bfcbbc" oifname "br-835092bfcbbc" tcp dport 8080 counter packets 0 bytes 0 accept # handle 43
+		ip daddr 172.18.0.2 iifname != "br-835092bfcbbc" oifname "br-835092bfcbbc" tcp dport 10514 counter packets 0 bytes 0 accept # handle 42
+		iifname != "docker0" oifname "docker0" counter packets 0 bytes 0 drop # handle 25
+		iifname != "br-835092bfcbbc" oifname "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 39
+	}
+
+	chain DOCKER-FORWARD { # handle 2
+		counter packets 980839 bytes 1222409627 jump DOCKER-CT # handle 10
+		counter packets 467370 bytes 515760843 jump DOCKER-INTERNAL # handle 9
+		counter packets 467370 bytes 515760843 jump DOCKER-BRIDGE # handle 8
+		iifname "docker0" counter packets 0 bytes 0 accept # handle 24
+		iifname "br-835092bfcbbc" counter packets 196550 bytes 381482856 accept # handle 38
+	}
+
+	chain DOCKER-BRIDGE { # handle 3
+		oifname "docker0" counter packets 0 bytes 0 jump DOCKER # handle 27
+		oifname "br-835092bfcbbc" counter packets 12859 bytes 758564 jump DOCKER # handle 41
+	}
+
+	chain DOCKER-CT { # handle 4
+		oifname "docker0" ct state related,established counter packets 0 bytes 0 accept # handle 26
+		oifname "br-835092bfcbbc" ct state related,established counter packets 232011 bytes 489582726 accept # handle 40
+	}
+
+	chain DOCKER-INTERNAL { # handle 5
+	}
+
+	chain FORWARD { # handle 6
+		type filter hook forward priority filter; policy drop;
+		counter packets 980839 bytes 1222409627 jump DOCKER-USER # handle 23
+		counter packets 980839 bytes 1222409627 jump DOCKER-FORWARD # handle 7
+	}
+
+	chain DOCKER-USER { # handle 22
+	}
+}
+table ip6 nat { # handle 7
+	chain DOCKER { # handle 1
+	}
+
+	chain PREROUTING { # handle 2
+		type nat hook prerouting priority dstnat; policy accept;
+		fib daddr type local counter packets 0 bytes 0 jump DOCKER # handle 3
+	}
+
+	chain OUTPUT { # handle 4
+		type nat hook output priority dstnat; policy accept;
+		ip6 daddr != ::1 fib daddr type local counter packets 0 bytes 0 jump DOCKER # handle 5
+	}
+}
+table ip6 filter { # handle 8
+	chain DOCKER { # handle 1
+	}
+
+	chain DOCKER-FORWARD { # handle 2
+		counter packets 0 bytes 0 jump DOCKER-CT # handle 10
+		counter packets 0 bytes 0 jump DOCKER-INTERNAL # handle 9
+		counter packets 0 bytes 0 jump DOCKER-BRIDGE # handle 8
+	}
+
+	chain DOCKER-BRIDGE { # handle 3
+	}
+
+	chain DOCKER-CT { # handle 4
+	}
+
+	chain DOCKER-INTERNAL { # handle 5
+	}
+
+	chain FORWARD { # handle 6
+		type filter hook forward priority filter; policy accept;
+		counter packets 0 bytes 0 jump DOCKER-USER # handle 12
+		counter packets 0 bytes 0 jump DOCKER-FORWARD # handle 7
+	}
+
+	chain DOCKER-USER { # handle 11
+	}
+}
+table ip raw { # handle 9
+	chain PREROUTING { # handle 1
+		type filter hook prerouting priority raw; policy accept;
+		ip daddr 172.18.0.2 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 36
+		ip daddr 127.0.0.1 iifname != "lo" tcp dport 1514 counter packets 0 bytes 0 drop # handle 37
+		ip daddr 172.18.0.3 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 38
+		ip daddr 172.18.0.4 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 39
+		ip daddr 172.18.0.5 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 40
+		ip daddr 172.18.0.6 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 41
+		ip daddr 172.18.0.7 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 42
+		ip daddr 172.18.0.8 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 43
+		ip daddr 172.18.0.9 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 44
+		ip daddr 172.18.0.10 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 45
+		ip daddr 172.18.0.11 iifname != "br-835092bfcbbc" counter packets 0 bytes 0 drop # handle 46
+	}
+}
