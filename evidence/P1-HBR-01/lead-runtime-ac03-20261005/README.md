@@ -40,7 +40,7 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 | `observations/control01-precheck-20261005T094219.txt`, `workers-precheck1-…`, `workers-precheck2-…` | 09:42~09:44 읽기 전용 사전 점검 | 터미널 전사 |
 | `observations/source-prep-ansible01-20261005T094744.txt` | ansible01 소스 clone(@030a4ce)·파일 8개 해시·번들 준비 | 터미널 전사, 서버 해시 없음 |
 
-원본 로그의 CR 문자(`worker*-node.log` 각 5개)는 비밀번호 입력 프롬프트 출력에 따른 것으로 바이트 그대로 보존한다(저장소 `* -text`).
+원본 로그의 CR 문자는 `worker*-node.log` 3개에 **각 21개**(ESC 문자 각 46개)이며 `nerdctl` pull의 ANSI 진행 표시 출력에 따른 것이다. `*-control.log` 3개는 CR 0개이다. 바이트 그대로 보존한다(저장소 `* -text`). 이전 초안의 "각 5개, 비밀번호 프롬프트"는 CR이 든 *줄* 수(5)를 문자 수로 잘못 적은 것이고 원인도 틀렸으므로 정정한다(권욱·이재환 리뷰 지적).
 
 ## 로그 해시 대조
 
@@ -57,8 +57,9 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 
 ## 로그가 보여 주는 것
 
-- 세 Worker 모두 `AC03_NODE_RESULT=PASS`, RC 0: 승인 `robot$worker`로 로그인·Pull, `crictl inspecti` RepoDigest가 승인 digest와 정확히 일치, 고유 tag Push는 권한으로 DENY.
-- control01(`k8s-control01`)에서 worker01/02/03 대상 Pod 3건 `AC03_CONTROL_RESULT=PASS`: Harbor manifest 직접 조회 digest와 Pod 컨테이너 digest 일치, UID 조건부 삭제 확인(`CLEANUP: confirmed deleted`), 각 RC 0.
+- 세 Worker 모두 `AC03_NODE_RESULT=PASS`(로그 안의 판정 토큰): 승인 `robot$worker`로 로그인·Pull, `crictl inspecti` RepoDigest가 승인 digest와 정확히 일치, 고유 tag Push는 권한으로 DENY.
+- control01(`k8s-control01`)에서 worker01/02/03 대상 Pod 3건 `AC03_CONTROL_RESULT=PASS`: Harbor manifest 직접 조회 digest와 Pod 컨테이너 digest 일치, UID 조건부 삭제 확인(`CLEANUP: confirmed deleted`).
+- **프로세스 종료코드(RC 0)의 근거:** 서버 원본 6개 파일에는 RC 필드가 없고 PASS 토큰·cleanup 토큰만 있다. 각 시험의 `AC03_NODE_RC=0`·`AC03_CONTROL_RC[노드]=0` 값은 **실행자 터미널 출력(콘솔 제출, CONSOLE_SUBMITTED)**이며 별도 RC 원본 파일은 보관하지 않았다. PASS 토큰과 프로세스 RC를 같은 근거로 취급하지 않는다. 1차 시도 전사본에만 `AC03_NODE_RC=1`이 있다(전사본, 원본 아님).
 
 ## 한계·정정 (숨기지 않음)
 
