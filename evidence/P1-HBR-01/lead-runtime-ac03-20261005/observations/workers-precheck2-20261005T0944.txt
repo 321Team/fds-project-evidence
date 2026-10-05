@@ -1,0 +1,6 @@
+# ansible01 server01_ansible -> ssh -t serverNN@worker -> sudo bash (스크립트 ~/ac03-pre2-worker.sh). 터미널 전사, 서버 해시 없음
+# k8s-worker02 (server06) 2026-10-05T09:44:15+09:00: global_hosts_dir=1, sys_trust_health=200 (--cacert 없음, -k 없음),
+#   /etc/containerd/certs.d, /etc/docker/certs.d 없음, /etc/pki/ca-trust/source/anchors/fds-root-ca.crt 2004 bytes (9월 16일 17:24),
+#   sha256 20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f (승인 Root와 일치)
+# k8s-worker03 (server07) 2026-10-05T09:44:16+09:00: global_hosts_dir=1, sys_trust_health=200, certs.d 없음,
+#   fds-root-ca.crt 2004 bytes (9월 16일 17:30), sha256 20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f

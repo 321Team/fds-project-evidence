@@ -1,0 +1,12 @@
+# host=k8s-control01 user=server02 time=2026-10-05T09:42:19+09:00
+kubernetes-admin@kubernetes
+namespace/fds-app
+serviceaccount/transaction-api-sa
+secret_type=kubernetes.io/dockerconfigjson
+node/k8s-control01 node/k8s-control02 node/k8s-control03 node/k8s-worker01 node/k8s-worker02 node/k8s-worker03 
+OK jq
+OK curl
+OK sha256sum
+OK base64
+OK tar
+(end)
