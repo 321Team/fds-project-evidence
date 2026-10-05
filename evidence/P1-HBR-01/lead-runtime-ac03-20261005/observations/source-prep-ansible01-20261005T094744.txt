@@ -1,0 +1,21 @@
+# host=ansible01 user=server01_ansible time=2026-10-05 09:47:44 KST(폴더명 기준) — 터미널 전사, 서버 해시 없음
+# command: git clone https://github.com/321Team/infra-harbor-trivy.git ~/ac03-src-20261005T094744 && git checkout --detach 030a4ce14acdab3a58c4767455b7555aaf8ce949
+HEAD=030a4ce14acdab3a58c4767455b7555aaf8ce949
+b538c197fca78cbd759ea2839ed02355cd810c6ba1f59c3e0c41dd8c1d6ca1a0  scripts/verify/control-plane-pod-start-test.sh
+ec536ddf603a3653da0a120f128dffe3adb945faca23f8bd4b8d6986bc7631af  scripts/verify/digest-traceability-check.sh
+6e84f40206bf6233da9933e6e78f4eaeb13fefb416952fd8640592e2f6b31f17  scripts/verify/worker-node-access-test.sh
+aa4067d5e1ad55f6c3eec51b0b6c52b26f7c063b6a86ca449a6fa52ca50cc1f5  scripts/verify/lib/load-review-run-env.sh
+4c9dcd9713401eee57c16804c1afbb99655c01f1b3b33200a8691b38d4edaeba  scripts/verify/lib/load-review-run-handoff.sh
+9a10d62d56e7b5153b2f6836dcffde7ab7e0c529abe845974cdfd87dab52f320  scripts/verify/lib/pod-review-binding.sh
+3fd1213dfc6123317c460e9a2f9ce0884b3ca4433fe5ee49be257e4e297a7f93  scripts/verify/lib/pod-review-lifecycle.sh
+d863c259416caeaf2b1962d77da09d7c8af365a20dd8c689de305082a7bd1686  scripts/verify/pod-restricted-psa-overrides.json
+# (같은 clone의 다른 스크립트: runner-push-test.sh 1305e9af…fe1e, tls-negative-test.sh 81b0c2c8…2592d, worker-pull-pod-start-test.sh 7763cfc2…62c0, worker-push-deny-test.sh 37a9b677…ad50)
+# 교차확인: 작성자 PC에서 같은 SHA의 blob 해시를 따로 계산해 위 8개와 일치(앞 16자리 대조), reviewed HEAD e7b0aa15와 030a4ce의 scripts/verify·tests·AC-03 runbook 차이 0건
+
+# 단계 A (번들 생성, 터미널 전사): ansible01 ~/ac03-bundle-worker, ~/ac03-bundle-control에 소스(030a4ce)·handoff 복사 후
+#   제출 해시 목록(기대값)으로 MANIFEST.sha256 작성 → worker 7/7, control 11/11 sha256sum -c 성공
+#   ~/ac03-worker.tgz sha256 3ab8bfce4f4552bc36314ad78d9566a4cbaed520d88a00b463401969fe6c1d3e
+#   ~/ac03-control.tgz sha256 fa9c260297c2184823eefddfa6be5623db0c9f89547b1c680978f7713c507a96
+#   handoff 위치 ~/ac03-handoff-20261005T102953 (증적 저장소 main 03acca80, 봉인 5/5 성공)
+# 단계 A 재실행(10:5x, 사용자가 같은 명령을 다시 붙여넣음): mkdir가 "파일이 있습니다"로 실패해 cp는 수행되지 않고 MANIFEST만 같은 기대값으로 다시 작성, 번들 파일은 최초 복사본 그대로이며 worker 7/7·control 11/11 성공.
+#   tgz가 새로 만들어져(tar 시각 차이) 해시가 바뀜: 최신 ~/ac03-worker.tgz bdec5583238909c40fd76417a713a8110b572d53db94ac9b1310e408838839a9, ~/ac03-control.tgz 89b99b9a00db4cb989e23efb8bf59429cee496808f2cbe343003ac956b0f64a4 (이전 3ab8bfce…/fa9c2602…는 폐기)

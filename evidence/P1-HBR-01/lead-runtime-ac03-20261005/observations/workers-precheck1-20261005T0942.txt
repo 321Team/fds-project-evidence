@@ -1,0 +1,7 @@
+# ansible01 server01_ansible -> ssh -t serverNN@worker -> sudo bash (스크립트 ~/ac03-pre-worker.sh, base64 전달, 서버에 파일 미생성). 터미널 전사, 서버 해시 없음
+# k8s-worker01 (server05) 2026-10-05T09:42:00+09:00: nerdctl 2.4.0, crictl v1.37.0, jq/curl/sha256sum/base64/tar OK, git NO,
+#   pull_hosts_dir=0 push_hosts_dir=0 (하위 명령 도움말 기준, --hosts-dir은 전역 옵션이라 오탐), login_password_stdin=1
+#   /etc/containerd/certs.d/10.1.93.54/ca.crt 2004 bytes, sha256 20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f (승인 Root와 일치), hosts.toml 없음
+#   CA 검증 health_http=200, ssh_to_control01=NO
+# k8s-worker02 (server06) 2026-10-05T09:42:08+09:00: 도구·옵션 동일, certs.d/10.1.93.54 없음, --cacert 경로 없어 health_http=000, ssh_to_control01=NO
+# k8s-worker03 (server07) 2026-10-05T09:42:30+09:00: worker02와 동일(certs.d 없음, health_http=000, ssh_to_control01=NO)

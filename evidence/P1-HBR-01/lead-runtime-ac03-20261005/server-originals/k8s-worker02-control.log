@@ -1,0 +1,9 @@
+OK: ./review-run.env 무결성 확인 및 안전 로드 완료 (Run ID: hbr-20261002-161052-d57ab5dc)
+OK: official AC-02 handoff sealed and bound run=hbr-20261002-161052-d57ab5dc tag=ifup-20261002T071118Z digest=sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+CREATED: control_host=k8s-control01 context=kubernetes-admin@kubernetes namespace=fds-app pod=p1-hbr-ab7e4f860fe260e8f646448e9b35a8b7 uid=6975749c-6d60-4dcb-bb9b-23b5f8aaf004 run=hbr-20261002-161052-d57ab5dc invocation=ab7e4f860fe260e8f646448e9b35a8b7 node=k8s-worker02
+pod/p1-hbr-ab7e4f860fe260e8f646448e9b35a8b7 condition met
+OK: Harbor manifest에서 직접 조회한 Digest 확인 (image=10.1.93.54/fds/test@sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6): sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+PASS: Pod/Harbor manifest digest binding uid=6975749c-6d60-4dcb-bb9b-23b5f8aaf004 node=k8s-worker02 container=p1-hbr-verify digest=sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+AC03_CONTROL_RESULT=PASS CONTROL_HOST=k8s-control01 REVIEW_RUN_ID=hbr-20261002-161052-d57ab5dc TEST_TAG=ifup-20261002T071118Z NODE_NAME=k8s-worker02 EXPECTED_HARBOR_DIGEST=sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+CLEANUP: confirmed deleted uid=6975749c-6d60-4dcb-bb9b-23b5f8aaf004
+PASS: local checks + bound Pod/Harbor digest + cleanup (not full AC-03/AC-05 Runtime acceptance)
