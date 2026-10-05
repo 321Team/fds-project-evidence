@@ -1,0 +1,33 @@
+OK: ./review-run.env 무결성 확인 및 안전 로드 완료 (Run ID: hbr-20261002-161052-d57ab5dc)
+OK: official AC-02 handoff sealed and bound run=hbr-20261002-161052-d57ab5dc tag=ifup-20261002T071118Z digest=sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+10.1.93.54/fds/test:ifup-20261002T071118Z	fetching image content	
+application/vnd.oci.image.manifest.v1+json sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+Pulling from OCI Registry (10.1.93.54/fds/test:ifup-20261002T071118Z)	elapsed: 0.0 s	total:   0.0 B	(0.0 B/s)	
+[1A[2K[1A[2K[1A[2K10.1.93.54/fds/test:ifup-20261002T071118Z	fetching image content	
+└──manifest-sha256:7a3b263c938493c827d82	waiting    	|[32m[0m--------------------------------------|	
+application/vnd.oci.image.manifest.v1+json sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+Pulling from OCI Registry (10.1.93.54/fds/test:ifup-20261002T071118Z)	elapsed: 0.0 s	total:   0.0 B	(0.0 B/s)	
+[1A[2K[1A[2K[1A[2K[1A[2K10.1.93.54/fds/test:ifup-20261002T071118Z	fetching image content	
+└──manifest-sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6	already exists	
+application/vnd.oci.image.manifest.v1+json sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+Pulling from OCI Registry (10.1.93.54/fds/test:ifup-20261002T071118Z)	elapsed: 0.0 s	total:  899.0 	(33.6 KiB/s)	
+[1A[2K[1A[2K[1A[2K[1A[2K10.1.93.54/fds/test:ifup-20261002T071118Z	fetching image content	
+└──manifest-sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6	already exists	
+   └──config-sha256:bf8527eb54c3680e728d	waiting    	|[32m[0m--------------------------------------|	
+application/vnd.oci.image.manifest.v1+json sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+Pulling from OCI Registry (10.1.93.54/fds/test:ifup-20261002T071118Z)	elapsed: 0.0 s	total:  899.0 	(31.8 KiB/s)	
+[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K10.1.93.54/fds/test:ifup-20261002T071118Z	fetching image content	
+└──manifest-sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6	already exists	
+   └──config-sha256:bf8527eb54c3680e728d5b4b383a8ba730d72dae7236fbc8dff97ed6b224a731	already exists	
+application/vnd.oci.image.manifest.v1+json sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+Pulling from OCI Registry (10.1.93.54/fds/test:ifup-20261002T071118Z)	elapsed: 0.0 s	total:  1.5 Ki	(53.4 KiB/s)	
+[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K10.1.93.54/fds/test:ifup-20261002T071118Z	saved	
+└──manifest-sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6	already exists	
+   └──config-sha256:bf8527eb54c3680e728d5b4b383a8ba730d72dae7236fbc8dff97ed6b224a731	already exists	
+application/vnd.oci.image.manifest.v1+json sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+Pulling from OCI Registry (10.1.93.54/fds/test:ifup-20261002T071118Z)	elapsed: 0.0 s	total:  1.5 Ki	(50.7 KiB/s)	
+time="2026-10-05T15:47:22+09:00" level=warning msg="Config \"/etc/crictl.yaml\" does not exist, trying next: \"/usr/bin/crictl.yaml\""
+time="2026-10-05T15:47:22+09:00" level=warning msg="Image connect using default endpoints: [unix:///run/containerd/containerd.sock unix:///run/crio/crio.sock unix:///var/run/cri-dockerd.sock]. As the default settings are now deprecated, you should set the endpoint instead."
+PASS: Worker Robot authenticated Pull + exact CRI RepoDigest node=k8s-worker01 image=10.1.93.54/fds/test@sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
+PASS: Worker Push DENY authorization check node=k8s-worker01
+AC03_NODE_RESULT=PASS REVIEW_RUN_ID=hbr-20261002-161052-d57ab5dc TEST_TAG=ifup-20261002T071118Z NODE_NAME=k8s-worker01 EXPECTED_HARBOR_DIGEST=sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6
