@@ -6,7 +6,7 @@
 
 사용자 archive issue9-supplement.EXLlWsaa.tar.gz: 2256 bytes, SHA256 1ef7b3e8eb12a44f857906f9e45adb555fbf484f4aca4871d16579dab2dcf37e. 별도 수신 sidecar와 일치. 경로 검증 및 일반 파일만 허용하여 메모리로 읽었고 실행하지 않았다. 파일11개, 내부 SHA256SUMS의10항목 모두 일치. receipt-fetch.stderr.log는0bytes, 콘솔 RECEIPT_FETCH_RC=0.
 
-original/은 압축본 내부 일반 파일의 바이트를 그대로 보존한다. 압축본 자체는 이번 Git 변경에 포함하지 않으며 해시/크기와 수신 sidecar 텍스트를 보존한다. 바깥 SHA256SUMS는 수신 후 작성한 편입 manifest다. 내부 original/SHA256SUMS는 사용자 수집 단계의 manifest이며 변경하지 않았다.
+original/은 압축본 내부 일반 파일의 바이트를 그대로 보존한다. 최초 편입에서는 압축본을 제외했으나, B-113-01 후속으로 2026-10-05 17:41 KST 사용자가 재첨부한 동일 압축 원본과 같은 이름의 .sha256 sidecar를 재압축 없이 추가했다. 원본 크기·SHA256 및 압축 내부 11개 파일과 기존 original/ Git blob의 일치를 확인했다. registry/ARCHIVE_CONTENTS.json에 내부 목록을 연결한다. 바깥 SHA256SUMS는 수신 후 작성한 편입 manifest다. 내부 original/SHA256SUMS는 사용자 수집 단계의 manifest이며 변경하지 않았다.
 
 ## 미수신 해소 및 범위
 
