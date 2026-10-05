@@ -1,0 +1,10 @@
+[
+  "ansible-playbook",
+  "-i",
+  "inventory/hbr.yml",
+  "--limit",
+  "harbor01",
+  "/home/server01_ansible/hbr-ac04-ipv6-config-dfxh8n9x/source/ac04-ipv6-config-supplemental.yml",
+  "-e",
+  "{\"ac04_collector_path\": \"/home/server01_ansible/hbr-ac04-ipv6-config-dfxh8n9x/source/ac04-collect-ipv6-config.py\"}"
+]

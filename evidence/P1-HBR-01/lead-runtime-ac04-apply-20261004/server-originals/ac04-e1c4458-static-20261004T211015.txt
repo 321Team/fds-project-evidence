@@ -1,0 +1,33 @@
+# host=ansible01 user=server01_ansible time=2026-10-04T21:10:15+09:00
+HEAD=e1c4458cf95dacca76870d7b9b012f8615f6974a
+SYNTAX_RC=0 precheck
+SYNTAX_RC=0 forward-discover
+SYNTAX_RC=0 apply
+SYNTAX_RC=0 verify
+SYNTAX_RC=0 rollback
+P1_HBR_AC04_STATIC_CONTRACT=PASS
+CONTRACT_RC=0
+test_firewalld_lifecycle_coupling_is_rejected (tests.test_p1_hbr_ac04_contract.P1HbrAc04StaticContractTest.test_firewalld_lifecycle_coupling_is_rejected) ... ok
+test_required_docker_guard_cannot_be_weakened (tests.test_p1_hbr_ac04_contract.P1HbrAc04StaticContractTest.test_required_docker_guard_cannot_be_weakened) ... ok
+test_static_contract_script_passes (tests.test_p1_hbr_ac04_contract.P1HbrAc04StaticContractTest.test_static_contract_script_passes) ... ok
+test_fixture_approved_set_is_exact (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_fixture_approved_set_is_exact) ... ok
+test_fixture_chain_metadata_and_rules_are_exact (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_fixture_chain_metadata_and_rules_are_exact) ... ok
+test_fixture_is_same_reviewed_nft_version (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_fixture_is_same_reviewed_nft_version) ... ok
+test_verifier_fails_closed_on_unvalidated_nft_version (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_verifier_fails_closed_on_unvalidated_nft_version) ... ok
+test_verifier_uses_v115_canonical_list_form (tests.test_p1_hbr_ac04_nft_fixture.P1HbrAc04NftFixtureTest.test_verifier_uses_v115_canonical_list_form) ... ok
+test_every_apply_variable_is_defined (tests.test_p1_hbr_ac04_failure_gates.ApplyDataflow.test_every_apply_variable_is_defined) ... ok
+test_prestate_sources_registered_before_preserve (tests.test_p1_hbr_ac04_failure_gates.ApplyDataflow.test_prestate_sources_registered_before_preserve) ... ok
+test_real_hash_command_normal_missing_and_tampered (tests.test_p1_hbr_ac04_failure_gates.PrestateSeal.test_real_hash_command_normal_missing_and_tampered) ... ok
+test_dependency_checks_precede_destructive_operations (tests.test_p1_hbr_ac04_failure_gates.RecoveryGates.test_dependency_checks_precede_destructive_operations) ... ok
+test_recovery_failure_prefix (tests.test_p1_hbr_ac04_failure_gates.RecoveryGates.test_recovery_failure_prefix) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.197s
+
+OK
+P1_HBR_AC04_STATIC_CONTRACT=PASS
+TESTS_RC=0
+== harbor01 iptables-save 읽기 전용
+harbor01 | CHANGED | rc=0 >>
+29
+16

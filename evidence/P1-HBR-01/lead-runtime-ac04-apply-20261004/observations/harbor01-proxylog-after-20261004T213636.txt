@@ -1,0 +1,5 @@
+# host=harbor01 user=server08 time=2026-10-04T21:36:36+09:00 (date 출력 기준)
+# command: sudo grep -E 'proxy\[[0-9]+\]: 10\.1\.93\.(26|29|30) ' /var/log/harbor/proxy.log | tail -3 | cut -c1-90
+Oct  4 21:31:52 172.18.0.1 proxy[1684]: 10.1.93.30 - "GET /api/v2.0/projects?page=1&page_s
+Oct  4 21:31:52 172.18.0.1 proxy[1684]: 10.1.93.30 - "GET /api/v2.0/export/cve/executions 
+Oct  4 21:31:52 172.18.0.1 proxy[1684]: 10.1.93.30 - "GET /api/v2.0/scanners?page_size=15&

@@ -1,0 +1,13 @@
+# host=ansible01 user=server01_ansible (시각 출력 없음, 21:5x KST 조회)
+# command: ls -l ~/ac04-apply*.txt ~/ac04-verify*.txt ~/ac04-e1c4458-*.txt; sha256sum ~/ac04-apply*.txt ~/ac04-verify*.txt; wc -l ~/ac04-apply2-*.txt ~/ac04-verify-*.txt
+-rw-r--r--. 1 server01_ansible server01_ansible  6790 10월  4일  20:02 /home/server01_ansible/ac04-apply-20261004T200228.txt
+-rw-r--r--. 1 server01_ansible server01_ansible 18485 10월  4일  21:33 /home/server01_ansible/ac04-apply2-20261004T213234.txt
+-rw-r--r--. 1 server01_ansible server01_ansible    37 10월  4일  21:10 /home/server01_ansible/ac04-e1c4458-precheck-20261004T211015.txt
+-rw-r--r--. 1 server01_ansible server01_ansible  2475 10월  4일  21:10 /home/server01_ansible/ac04-e1c4458-static-20261004T211015.txt
+-rw-r--r--. 1 server01_ansible server01_ansible  8589 10월  4일  21:34 /home/server01_ansible/ac04-verify-20261004T213405.txt
+74f467cec56732fd3c2cb1fa866868baa127d49522c57ed611cadf2378783f3d  /home/server01_ansible/ac04-apply-20261004T200228.txt
+0195c4f8dac226389614eda393ffab67375ccfc50f35fae28ec697077f77ffd4  /home/server01_ansible/ac04-apply2-20261004T213234.txt
+6d89c5021eb6346d4ae8d12ca81aaa8077e92ee69f39536f03e537b3f5f0e945  /home/server01_ansible/ac04-verify-20261004T213405.txt
+  550 /home/server01_ansible/ac04-apply2-20261004T213234.txt
+  260 /home/server01_ansible/ac04-verify-20261004T213405.txt
+  810 합계

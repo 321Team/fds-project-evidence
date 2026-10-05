@@ -1,0 +1,8 @@
+# host=harbor01 user=server08 time=2026-10-04T21:49:48+09:00 (date 출력 기준)
+# command: sudo awk '$1=="Oct" && $2==4 && $3>="21:34:00" {split($0,a,"\""); split(a[3],s," "); print $6, s[1]}' /var/log/harbor/proxy.log | sort | uniq -c | sort -rn | head -20
+     56 10.1.93.50 200
+     32 127.0.0.1 308
+     28 10.1.93.50 405
+     28 10.1.93.50 401
+      1 172.18.0.1 200
+      1 10.250.10.20 200
