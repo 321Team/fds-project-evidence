@@ -1,0 +1,6 @@
+get pods/grafana-f65457bfd-ghl62 => error: error loading config file "/dev/shm/p1-mon-pf-verify-run-20261005T1640.kubeconfig": yaml: line 4: mapping values are not allowed in this context (expect yes)
+create pods/grafana-f65457bfd-ghl62 --subresource=portforward => error: error loading config file "/dev/shm/p1-mon-pf-verify-run-20261005T1640.kubeconfig": yaml: line 4: mapping values are not allowed in this context (expect yes)
+list pods => error: error loading config file "/dev/shm/p1-mon-pf-verify-run-20261005T1640.kubeconfig": yaml: line 4: mapping values are not allowed in this context (expect no)
+get secrets => error: error loading config file "/dev/shm/p1-mon-pf-verify-run-20261005T1640.kubeconfig": yaml: line 4: mapping values are not allowed in this context (expect no)
+get pods/prometheus-d8949bd64-wsdhd => error: error loading config file "/dev/shm/p1-mon-pf-verify-run-20261005T1640.kubeconfig": yaml: line 4: mapping values are not allowed in this context (expect no)
+create pods/prometheus-d8949bd64-wsdhd --subresource=portforward => error: error loading config file "/dev/shm/p1-mon-pf-verify-run-20261005T1640.kubeconfig": yaml: line 4: mapping values are not allowed in this context (expect no)
