@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata: {name: p1-mon-pf-verify, namespace: monitoring-api}
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    resourceNames: ["grafana-f65457bfd-ghl62"]
+    verbs: ["get"]
+  - apiGroups: [""]
+    resources: ["pods/portforward"]
+    resourceNames: ["grafana-f65457bfd-ghl62"]
+    verbs: ["create"]
