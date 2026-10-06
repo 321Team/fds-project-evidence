@@ -1,0 +1,56 @@
+k8s-worker01 | CHANGED | rc=0 >>
+# host=k8s-worker01 user=svc_ansible time=2026-10-05T11:44:50+09:00
+== 도구 위치
+/bin/ctr
+/bin/crictl
+/bin/nerdctl
+== 이미지 (ctr: REF TYPE DIGEST SIZE PLATFORMS)
+REF                                                                                                       TYPE                                                      DIGEST                                                                  SIZE      PLATFORMS                                                                    LABELS                                                          
+10.1.93.54/fds/calico-cni:v3ef9bbb                                                                        application/vnd.docker.distribution.manifest.v2+json      sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86 66.4 MiB  linux/amd64                                                                  io.cri-containerd.image=managed                                 
+10.1.93.54/fds/calico-node:vc061070                                                                       application/vnd.docker.distribution.manifest.v2+json      sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240 115.9 MiB linux/amd64                                                                  io.cri-containerd.image=managed                                 
+quay.io/calico/cni@sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86                application/vnd.docker.distribution.manifest.v2+json      sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86 66.4 MiB  linux/amd64                                                                  io.cri-containerd.image=managed                                 
+quay.io/calico/node@sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240               application/vnd.docker.distribution.manifest.v2+json      sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240 115.9 MiB linux/amd64                                                                  io.cri-containerd.image=managed                                 
+registry.k8s.io/kube-proxy:v1.36.4                                                                        application/vnd.docker.distribution.manifest.list.v2+json sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603 28.7 MiB  linux/amd64,linux/arm64,linux/ppc64le,linux/s390x                            io.cri-containerd.image=managed                                 
+registry.k8s.io/kube-proxy@sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603        application/vnd.docker.distribution.manifest.list.v2+json sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603 28.7 MiB  linux/amd64,linux/arm64,linux/ppc64le,linux/s390x                            io.cri-containerd.image=managed                                 
+registry.k8s.io/pause:3.10.2                                                                              application/vnd.docker.distribution.manifest.list.v2+json sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4 313.3 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x,windows/amd64 io.cri-containerd.image=managed,io.cri-containerd.pinned=pinned 
+registry.k8s.io/pause@sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4             application/vnd.docker.distribution.manifest.list.v2+json sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4 313.3 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x,windows/amd64 io.cri-containerd.image=managed,io.cri-containerd.pinned=pinned 
+== sandbox(pause) 설정
+28:      sandbox = 'registry.k8s.io/pause:3.10.2'
+78:          sandboxer = 'podsandbox'
+(end)
+k8s-worker03 | CHANGED | rc=0 >>
+# host=k8s-worker03 user=svc_ansible time=2026-10-05T11:44:50+09:00
+== 도구 위치
+/bin/ctr
+/bin/crictl
+/bin/nerdctl
+== 이미지 (ctr: REF TYPE DIGEST SIZE PLATFORMS)
+REF                                                                                                    TYPE                                                      DIGEST                                                                  SIZE      PLATFORMS                                                                    LABELS                                                          
+quay.io/calico/cni@sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86             application/vnd.docker.distribution.manifest.v2+json      sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86 66.4 MiB  linux/amd64                                                                  io.cri-containerd.image=managed                                 
+quay.io/calico/node@sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240            application/vnd.docker.distribution.manifest.v2+json      sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240 115.9 MiB linux/amd64                                                                  io.cri-containerd.image=managed                                 
+registry.k8s.io/kube-proxy:v1.36.4                                                                     application/vnd.docker.distribution.manifest.list.v2+json sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603 28.7 MiB  linux/amd64,linux/arm64,linux/ppc64le,linux/s390x                            io.cri-containerd.image=managed                                 
+registry.k8s.io/kube-proxy@sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603     application/vnd.docker.distribution.manifest.list.v2+json sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603 28.7 MiB  linux/amd64,linux/arm64,linux/ppc64le,linux/s390x                            io.cri-containerd.image=managed                                 
+registry.k8s.io/pause:3.10.2                                                                           application/vnd.docker.distribution.manifest.list.v2+json sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4 313.3 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x,windows/amd64 io.cri-containerd.image=managed,io.cri-containerd.pinned=pinned 
+registry.k8s.io/pause@sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4          application/vnd.docker.distribution.manifest.list.v2+json sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4 313.3 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x,windows/amd64 io.cri-containerd.image=managed,io.cri-containerd.pinned=pinned 
+== sandbox(pause) 설정
+28:      sandbox = 'registry.k8s.io/pause:3.10.2'
+78:          sandboxer = 'podsandbox'
+(end)
+k8s-worker02 | CHANGED | rc=0 >>
+# host=k8s-worker02 user=svc_ansible time=2026-10-05T11:44:50+09:00
+== 도구 위치
+/bin/ctr
+/bin/crictl
+/bin/nerdctl
+== 이미지 (ctr: REF TYPE DIGEST SIZE PLATFORMS)
+REF                                                                                                       TYPE                                                      DIGEST                                                                  SIZE      PLATFORMS                                                                    LABELS                                                          
+quay.io/calico/cni@sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86                application/vnd.docker.distribution.manifest.v2+json      sha256:3ef9bbb3fdb2b3194dff57d7d8496d5e18247afb59606dfc694ab88ed1fa9f86 66.4 MiB  linux/amd64                                                                  io.cri-containerd.image=managed                                 
+quay.io/calico/node@sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240               application/vnd.docker.distribution.manifest.v2+json      sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240 115.9 MiB linux/amd64                                                                  io.cri-containerd.image=managed                                 
+registry.k8s.io/kube-proxy:v1.36.4                                                                        application/vnd.docker.distribution.manifest.list.v2+json sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603 28.7 MiB  linux/amd64,linux/arm64,linux/ppc64le,linux/s390x                            io.cri-containerd.image=managed                                 
+registry.k8s.io/kube-proxy@sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603        application/vnd.docker.distribution.manifest.list.v2+json sha256:b33fcdd8319290736e566f5fc2225ca07d3c2dfc025fb006342791aa31be4603 28.7 MiB  linux/amd64,linux/arm64,linux/ppc64le,linux/s390x                            io.cri-containerd.image=managed                                 
+registry.k8s.io/pause:3.10.2                                                                              application/vnd.docker.distribution.manifest.list.v2+json sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4 313.3 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x,windows/amd64 io.cri-containerd.image=managed,io.cri-containerd.pinned=pinned 
+registry.k8s.io/pause@sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4             application/vnd.docker.distribution.manifest.list.v2+json sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4 313.3 KiB linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x,windows/amd64 io.cri-containerd.image=managed,io.cri-containerd.pinned=pinned 
+== sandbox(pause) 설정
+28:      sandbox = 'registry.k8s.io/pause:3.10.2'
+78:          sandboxer = 'podsandbox'
+(end)
