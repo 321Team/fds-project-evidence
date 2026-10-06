@@ -1,0 +1,103 @@
+k8s-control03 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\n/home/svc_ansible/.ansible/tmp/ansible-tmp-1791167835.9631186-119266-168825347573705/oid02-node.sh: 줄 4: crictl: 명령어를 찾을 수 없음\nShared connection to 10.1.93.104 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "/home/svc_ansible/.ansible/tmp/ansible-tmp-1791167835.9631186-119266-168825347573705/oid02-node.sh: 줄 4: crictl: 명령어를 찾을 수 없음",
+        "Shared connection to 10.1.93.104 closed."
+    ],
+    "stdout": "# host=k8s-control03 user=svc_ansible time=2026-10-05T11:37:16+09:00\n== sandbox(pause) 이미지\n== 이미지(id | tags | repoDigests | size)\n== static pod 이미지\n    image: registry.k8s.io/etcd:3.6.8-0\n    image: registry.k8s.io/kube-apiserver:v1.36.4\n    image: registry.k8s.io/kube-controller-manager:v1.36.4\n    image: registry.k8s.io/kube-scheduler:v1.36.4\n== 반입 원본 후보(tar 파일, 깊이 3)\n/root/ntp-recapture-k8s-control03-20260924T092924Z.tar.gz\n/root/ntp-recapture-k8s-control03-20260924T112704Z.tar.gz\n/root/ntp-recapture-k8s-control03-20260924T112740Z.tar.gz\n/home/server04/FDS_NTP_Ports_k8s-control03_cm9af49n.tar.gz\n(end)\n",
+    "stdout_lines": [
+        "# host=k8s-control03 user=svc_ansible time=2026-10-05T11:37:16+09:00",
+        "== sandbox(pause) 이미지",
+        "== 이미지(id | tags | repoDigests | size)",
+        "== static pod 이미지",
+        "    image: registry.k8s.io/etcd:3.6.8-0",
+        "    image: registry.k8s.io/kube-apiserver:v1.36.4",
+        "    image: registry.k8s.io/kube-controller-manager:v1.36.4",
+        "    image: registry.k8s.io/kube-scheduler:v1.36.4",
+        "== 반입 원본 후보(tar 파일, 깊이 3)",
+        "/root/ntp-recapture-k8s-control03-20260924T092924Z.tar.gz",
+        "/root/ntp-recapture-k8s-control03-20260924T112704Z.tar.gz",
+        "/root/ntp-recapture-k8s-control03-20260924T112740Z.tar.gz",
+        "/home/server04/FDS_NTP_Ports_k8s-control03_cm9af49n.tar.gz",
+        "(end)"
+    ]
+}
+k8s-control01 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\n/home/svc_ansible/.ansible/tmp/ansible-tmp-1791167835.9754875-119264-83311143210888/oid02-node.sh: 줄 4: crictl: 명령어를 찾을 수 없음\nShared connection to 10.1.93.102 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "/home/svc_ansible/.ansible/tmp/ansible-tmp-1791167835.9754875-119264-83311143210888/oid02-node.sh: 줄 4: crictl: 명령어를 찾을 수 없음",
+        "Shared connection to 10.1.93.102 closed."
+    ],
+    "stdout": "# host=k8s-control01 user=svc_ansible time=2026-10-05T11:37:16+09:00\n== sandbox(pause) 이미지\n== 이미지(id | tags | repoDigests | size)\n== static pod 이미지\n    image: registry.k8s.io/etcd:3.6.8-0\n    image: registry.k8s.io/kube-apiserver:v1.36.4\n    image: registry.k8s.io/kube-controller-manager:v1.36.4\n    image: registry.k8s.io/kube-scheduler:v1.36.4\n== 반입 원본 후보(tar 파일, 깊이 3)\n/root/ntp-recapture-k8s-control01-20260924T092924Z.tar.gz\n/root/ntp-recapture-calico-20260924T093015Z.tar.gz\n/root/ntp-recapture-calico-20260924T112712Z.tar.gz\n/root/ntp-recapture-k8s-control01-20260924T112704Z.tar.gz\n/root/ntp-recapture-k8s-control01-20260924T112740Z.tar.gz\n/root/ntp-recapture-calico-20260924T112831Z.tar.gz\n/root/p1-sec-01-originals-20260926T033752Z.tar.gz\n/root/p1-sec01-secretbox-backup-20261002T054208Z.evidence.tar.gz\n/root/t19-20261002/evidence/t19-w01-evidence.tgz\n/root/t19-20261002/evidence/t19-ansible01-evidence.tgz\n/root/t19-run02-20261002/evidence/t19-run02-w01-evidence.tgz\n/root/t19-run02-20261002/evidence/t19-run02-ansible01-evidence.tgz\n/home/server02/p1-sec-01-originals-20260926T033752Z.tar.gz\n/home/server02/FDS_Control_Profile_Recovery.beaba6ah/FDS_Control_Profile_Recovery_k8s-control01.tar.gz\n/home/server02/FDS_Control_Profile_Recovery.276zc5lt/FDS_Control_Profile_Recovery_k8s-control01.tar.gz\n/home/server02/FDS_Control_Profile_Recovery.dzb914cx/FDS_Control_Profile_Recovery_k8s-control01.tar.gz\n/home/server02/FDS_Control_Profile_Recovery.xuftacoy/FDS_Control_Profile_Recovery_k8s-control01.tar.gz\n/home/server02/bb-recv/bb-src-065fc188bd7609e41d9e28039dc4ee2cde5d5d74.tar.gz\n/home/server02/bb-recv/blackbox-exporter-065fc18.tar\n/home/server02/bb-recv/build-evidence-065fc18.tar.gz\n(end)\n",
+    "stdout_lines": [
+        "# host=k8s-control01 user=svc_ansible time=2026-10-05T11:37:16+09:00",
+        "== sandbox(pause) 이미지",
+        "== 이미지(id | tags | repoDigests | size)",
+        "== static pod 이미지",
+        "    image: registry.k8s.io/etcd:3.6.8-0",
+        "    image: registry.k8s.io/kube-apiserver:v1.36.4",
+        "    image: registry.k8s.io/kube-controller-manager:v1.36.4",
+        "    image: registry.k8s.io/kube-scheduler:v1.36.4",
+        "== 반입 원본 후보(tar 파일, 깊이 3)",
+        "/root/ntp-recapture-k8s-control01-20260924T092924Z.tar.gz",
+        "/root/ntp-recapture-calico-20260924T093015Z.tar.gz",
+        "/root/ntp-recapture-calico-20260924T112712Z.tar.gz",
+        "/root/ntp-recapture-k8s-control01-20260924T112704Z.tar.gz",
+        "/root/ntp-recapture-k8s-control01-20260924T112740Z.tar.gz",
+        "/root/ntp-recapture-calico-20260924T112831Z.tar.gz",
+        "/root/p1-sec-01-originals-20260926T033752Z.tar.gz",
+        "/root/p1-sec01-secretbox-backup-20261002T054208Z.evidence.tar.gz",
+        "/root/t19-20261002/evidence/t19-w01-evidence.tgz",
+        "/root/t19-20261002/evidence/t19-ansible01-evidence.tgz",
+        "/root/t19-run02-20261002/evidence/t19-run02-w01-evidence.tgz",
+        "/root/t19-run02-20261002/evidence/t19-run02-ansible01-evidence.tgz",
+        "/home/server02/p1-sec-01-originals-20260926T033752Z.tar.gz",
+        "/home/server02/FDS_Control_Profile_Recovery.beaba6ah/FDS_Control_Profile_Recovery_k8s-control01.tar.gz",
+        "/home/server02/FDS_Control_Profile_Recovery.276zc5lt/FDS_Control_Profile_Recovery_k8s-control01.tar.gz",
+        "/home/server02/FDS_Control_Profile_Recovery.dzb914cx/FDS_Control_Profile_Recovery_k8s-control01.tar.gz",
+        "/home/server02/FDS_Control_Profile_Recovery.xuftacoy/FDS_Control_Profile_Recovery_k8s-control01.tar.gz",
+        "/home/server02/bb-recv/bb-src-065fc188bd7609e41d9e28039dc4ee2cde5d5d74.tar.gz",
+        "/home/server02/bb-recv/blackbox-exporter-065fc18.tar",
+        "/home/server02/bb-recv/build-evidence-065fc18.tar.gz",
+        "(end)"
+    ]
+}
+k8s-control02 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\n/home/svc_ansible/.ansible/tmp/ansible-tmp-1791167836.0108411-119265-264349011855398/oid02-node.sh: 줄 4: crictl: 명령어를 찾을 수 없음\nShared connection to 10.1.93.103 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "/home/svc_ansible/.ansible/tmp/ansible-tmp-1791167836.0108411-119265-264349011855398/oid02-node.sh: 줄 4: crictl: 명령어를 찾을 수 없음",
+        "Shared connection to 10.1.93.103 closed."
+    ],
+    "stdout": "# host=k8s-control02 user=svc_ansible time=2026-10-05T11:37:16+09:00\n== sandbox(pause) 이미지\n== 이미지(id | tags | repoDigests | size)\n== static pod 이미지\n    image: registry.k8s.io/etcd:3.6.8-0\n    image: registry.k8s.io/kube-apiserver:v1.36.4\n    image: registry.k8s.io/kube-controller-manager:v1.36.4\n    image: registry.k8s.io/kube-scheduler:v1.36.4\n== 반입 원본 후보(tar 파일, 깊이 3)\n/root/ntp-recapture-k8s-control02-20260924T092924Z.tar.gz\n/root/ntp-recapture-k8s-control02-20260924T112704Z.tar.gz\n/root/ntp-recapture-k8s-control02-20260924T112740Z.tar.gz\n/home/server03/FDS_Control_Profile_Recovery.fghjbrpg/FDS_Control_Profile_Recovery_k8s-control02.tar.gz\n/home/server03/FDS_Control_Profile_Recovery.yse_wbjw/FDS_Control_Profile_Recovery_k8s-control02.tar.gz\n/home/server03/FDS_Control_Profile_Recovery.r3xx_15i/FDS_Control_Profile_Recovery_k8s-control02.tar.gz\n/home/server03/FDS_Control_Followup.r42dw8wy/FDS_Control_Followup_k8s-control02_before.tar.gz\n/home/server03/FDS_Control_Followup.0een9osv/FDS_Control_Followup_k8s-control02_before.tar.gz\n/home/server03/FDS_Control_Followup.70yk4mgs/FDS_Control_Followup_k8s-control02_after.tar.gz\n/home/server03/FDS_NTP_Ports_k8s-control02_2u1999a1.tar.gz\n(end)\n",
+    "stdout_lines": [
+        "# host=k8s-control02 user=svc_ansible time=2026-10-05T11:37:16+09:00",
+        "== sandbox(pause) 이미지",
+        "== 이미지(id | tags | repoDigests | size)",
+        "== static pod 이미지",
+        "    image: registry.k8s.io/etcd:3.6.8-0",
+        "    image: registry.k8s.io/kube-apiserver:v1.36.4",
+        "    image: registry.k8s.io/kube-controller-manager:v1.36.4",
+        "    image: registry.k8s.io/kube-scheduler:v1.36.4",
+        "== 반입 원본 후보(tar 파일, 깊이 3)",
+        "/root/ntp-recapture-k8s-control02-20260924T092924Z.tar.gz",
+        "/root/ntp-recapture-k8s-control02-20260924T112704Z.tar.gz",
+        "/root/ntp-recapture-k8s-control02-20260924T112740Z.tar.gz",
+        "/home/server03/FDS_Control_Profile_Recovery.fghjbrpg/FDS_Control_Profile_Recovery_k8s-control02.tar.gz",
+        "/home/server03/FDS_Control_Profile_Recovery.yse_wbjw/FDS_Control_Profile_Recovery_k8s-control02.tar.gz",
+        "/home/server03/FDS_Control_Profile_Recovery.r3xx_15i/FDS_Control_Profile_Recovery_k8s-control02.tar.gz",
+        "/home/server03/FDS_Control_Followup.r42dw8wy/FDS_Control_Followup_k8s-control02_before.tar.gz",
+        "/home/server03/FDS_Control_Followup.0een9osv/FDS_Control_Followup_k8s-control02_before.tar.gz",
+        "/home/server03/FDS_Control_Followup.70yk4mgs/FDS_Control_Followup_k8s-control02_after.tar.gz",
+        "/home/server03/FDS_NTP_Ports_k8s-control02_2u1999a1.tar.gz",
+        "(end)"
+    ]
+}
