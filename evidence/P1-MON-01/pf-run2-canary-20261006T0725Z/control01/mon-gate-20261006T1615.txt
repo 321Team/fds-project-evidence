@@ -1,0 +1,25 @@
+targets 23 up 23
+fds-engine 10.244.69.229:9090 up
+fds-engine 10.244.69.231:9090 up
+fds-engine 10.244.69.232:9090 up
+kube-state-metrics kube-state-metrics.monitoring-api.svc.cluster.local:8080 up
+kubelet 10.1.93.102:10250 up
+kubelet 10.1.93.103:10250 up
+kubelet 10.1.93.104:10250 up
+kubelet 10.1.93.105:10250 up
+kubelet 10.1.93.107:10250 up
+kubelet 10.1.93.108:10250 up
+kubelet-cadvisor 10.1.93.102:10250 up
+kubelet-cadvisor 10.1.93.103:10250 up
+kubelet-cadvisor 10.1.93.104:10250 up
+kubelet-cadvisor 10.1.93.105:10250 up
+kubelet-cadvisor 10.1.93.107:10250 up
+kubelet-cadvisor 10.1.93.108:10250 up
+node-exporter 10.1.93.105:9100 up
+node-exporter 10.1.93.107:9100 up
+node-exporter 10.1.93.108:9100 up
+prometheus localhost:9090 up
+transaction-api 10.244.69.230:9091 up
+transaction-api 10.244.69.233:9091 up
+transaction-api 10.244.69.234:9091 up
+rw_failed_15m ['0']
