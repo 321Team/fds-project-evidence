@@ -1,0 +1,2 @@
+10.1.93.54 | FAILED | rc=-1 >>
+template error while templating string: unexpected '.'. String: date "+%F %T %Z"; hostname; echo "== containers (Env 제외)"; for c in $(docker ps -aq); do docker inspect --format "{{.Name}} id={{.Id}} image={{.Image}} netmode={{.HostConfig.NetworkMode}} ports={{json .HostConfig.PortBindings}} mounts={{json .Mounts}}" $c; done; echo "== nft guard"; nft list table inet p1_hbr_ac04; echo "== firewalld public"; firewall-cmd --list-all --zone=public; echo "== listeners 443"; ss -ltnp | grep ":443"; echo "== ipv6 addr"; ip -6 addr. unexpected '.'
