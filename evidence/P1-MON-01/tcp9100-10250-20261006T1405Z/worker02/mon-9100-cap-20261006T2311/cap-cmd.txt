@@ -1,0 +1,1 @@
+timeout 90 sudo tcpdump -i ens160 -nn -s 96 -c 40 -tttt 'tcp dst port 9100 or tcp dst port 10250'
