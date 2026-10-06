@@ -1,0 +1,24 @@
+{
+    "apiVersion": "crd.projectcalico.org/v1",
+    "kind": "HostEndpoint",
+    "metadata": {
+        "creationTimestamp": "2026-09-21T16:41:02Z",
+        "generation": 1,
+        "labels": {
+            "fds.example/bootstrap": "p1-k8s-01-v4",
+            "fds.example/node": "k8s-worker03",
+            "fds.example/package": "p1-k8s-01-v4",
+            "fds.example/role": "worker"
+        },
+        "name": "fds-k8s-k8s-worker03",
+        "resourceVersion": "997111",
+        "uid": "76f476c5-b695-4da7-a921-2db875635dc8"
+    },
+    "spec": {
+        "expectedIPs": [
+            "10.1.93.108"
+        ],
+        "interfaceName": "ens160",
+        "node": "k8s-worker03"
+    }
+}

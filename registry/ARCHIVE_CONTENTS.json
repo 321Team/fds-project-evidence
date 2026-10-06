@@ -21924,6 +21924,530 @@
           "sha256": "7a5b25d1a3e550e4928cbc19d1310dbcf86d59504c2bcc27336a74b11c5e60d9"
         }
       ]
+    },
+    "evidence/P1-MON-01/pf-run2-canary-20261006T0725Z/control01/ev-control01-20261006.tgz": {
+      "sha256": "386f659fc03991d76599d6ff5090e7a238dc8395e15cab0f0964abead17a8f1f",
+      "size": 7544,
+      "entries": [
+        {
+          "name": "canary-20261006/00-time.txt",
+          "size": 24,
+          "sha256": "9311ba10a7d775e803260a15dbe3c2decb2c9e504840ad49979d1641dd59740e"
+        },
+        {
+          "name": "canary-20261006/01-gnp-all.json",
+          "size": 69068,
+          "sha256": "dd072392baef6037adf244de4073da6ac0b61f1e69f045f6625630c438d9beb2"
+        },
+        {
+          "name": "canary-20261006/01-hep-worker03.json",
+          "size": 684,
+          "sha256": "e32f899d8662502f52c408728e1975b57971e67a0ae78d51830d610b1315dfd2"
+        },
+        {
+          "name": "canary-20261006/01-inventory.txt",
+          "size": 1594,
+          "sha256": "66cad8ac4c4b1c3a5d719262524bd7ee2de1d4f01d9b9789ebc20ee1d4b44090"
+        },
+        {
+          "name": "canary-20261006/02-candidate-absent.txt",
+          "size": 128,
+          "sha256": "c7a9ceb691999167500a484536f39ec84ccc212c143cbd6239c0b0c48b42c66d"
+        },
+        {
+          "name": "canary-20261006/03-dryrun.txt",
+          "size": 84,
+          "sha256": "336a41f3ea499b86a4eb363a34b023f6a0afd3b9a2a55d98f89b986905531450"
+        },
+        {
+          "name": "canary-20261006/04-create-time.txt",
+          "size": 36,
+          "sha256": "c0f1bbcf4bbcda7b539adc9c7824ae34d37205bc769e98df815b9b77a2f038a7"
+        },
+        {
+          "name": "canary-20261006/04-create.json",
+          "size": 1181,
+          "sha256": "29583a5699098e3bca06f9119893f9b4cab9aa918f52b8877897b6893af55915"
+        },
+        {
+          "name": "canary-20261006/04-created.txt",
+          "size": 126,
+          "sha256": "cfe731d15e2ebd1aeb1c662bc30ec626c29e6ee68d831826a439214b0eaa6380"
+        },
+        {
+          "name": "canary-20261006/05-pre-delete.txt",
+          "size": 126,
+          "sha256": "630ed1b345f37bc05a77e5d5ac9108d6fb6e191410b7690f7099847ac274c3bc"
+        },
+        {
+          "name": "canary-20261006/06-delete.txt",
+          "size": 240,
+          "sha256": "183bff4570824c0a7023c5743b51ed3b2bf6f85acdb92619bcd8fecd87294a21"
+        },
+        {
+          "name": "canary-20261006/07-post-delete.txt",
+          "size": 128,
+          "sha256": "c7a9ceb691999167500a484536f39ec84ccc212c143cbd6239c0b0c48b42c66d"
+        },
+        {
+          "name": "canary-20261006/08-gnp-after.txt",
+          "size": 495,
+          "sha256": "01e0c0578d68aba0f110dee8ba82c1ed7360edd2c2ff3c9df3d4d80f89f91b2a"
+        },
+        {
+          "name": "canary-20261006/08-hep-after.txt",
+          "size": 44,
+          "sha256": "d5249a24ef6dbc953b258875050f968f85cb1d8e8217960b18131d2b8197be22"
+        },
+        {
+          "name": "canary-20261006/09-mon-after.txt",
+          "size": 119,
+          "sha256": "a79dbe79309a786437496162f651301fc367090624081b844507c331b8ffdd34"
+        },
+        {
+          "name": "canary-20261006/canary.yaml",
+          "size": 754,
+          "sha256": "b4edfca8421615b765415f6bef7ff6509e7436fdec76c241567721ce0952c660"
+        },
+        {
+          "name": "mon-gate-20261006T1615.txt",
+          "size": 862,
+          "sha256": "9ce1e94fc23be3fd755828f02efe7f8443a245ba659549fdc35284664424ac60"
+        },
+        {
+          "name": "run-20261006T1625/00-time.txt",
+          "size": 24,
+          "sha256": "dab5cf9e5751280968083a1c4d56b630186c2a1d23368bef5319d0c2bd1f40ac"
+        },
+        {
+          "name": "run-20261006T1625/01-context.txt",
+          "size": 28,
+          "sha256": "4869d0bbf47c4434e531025c74332c63fd7784e20929d356f95fe6a7b260c4f1"
+        },
+        {
+          "name": "run-20261006T1625/02-pods.txt",
+          "size": 649,
+          "sha256": "b4a15e9c69b08b54dc776dea976447d543a1ffb62c4a15a6ea010685b4e67dd2"
+        },
+        {
+          "name": "run-20261006T1625/03-grafana-pre.txt",
+          "size": 71,
+          "sha256": "fc09811a09686ad7711559dbb6ea68437307c38caf332af5ec11aa841b2e2433"
+        },
+        {
+          "name": "run-20261006T1625/04-absent-role.err",
+          "size": 91,
+          "sha256": "af9a60fab15d85380caf476172f28fa5c41793a431a2c98adcda05164af0550b"
+        },
+        {
+          "name": "run-20261006T1625/04-absent-rolebinding.err",
+          "size": 98,
+          "sha256": "dd3c6113e3d843a9da478589c32bd22065000c05537ca4c4b8379e9884965533"
+        },
+        {
+          "name": "run-20261006T1625/04-absent-serviceaccount.err",
+          "size": 75,
+          "sha256": "9be021a083887ba55c722b4d7e10e03294ae3ab848217debe5c239ae51d1365c"
+        },
+        {
+          "name": "run-20261006T1625/04-absent.txt",
+          "size": 53,
+          "sha256": "4df5eb9c9214d88e953cd9fa6f76ad58a07a72a3cd639094cb816bf7657e6e33"
+        },
+        {
+          "name": "run-20261006T1625/05-grafana-svc-type.txt",
+          "size": 9,
+          "sha256": "d6e79bcb9ebe2da8c86ef1939289fc28e7c5eccd72d5dde3ec3f618e06c13218"
+        },
+        {
+          "name": "run-20261006T1625/06-ingress-count.txt",
+          "size": 2,
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        {
+          "name": "run-20261006T1625/06-ingress.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/06-ingress.json",
+          "size": 119,
+          "sha256": "7a779468a2dde976a9b896541df1e4ef805e813093bd5edb40ef1a6eea588edf"
+        },
+        {
+          "name": "run-20261006T1625/07-grafana-before-create.txt",
+          "size": 71,
+          "sha256": "fc09811a09686ad7711559dbb6ea68437307c38caf332af5ec11aa841b2e2433"
+        },
+        {
+          "name": "run-20261006T1625/08-manifest.sha256",
+          "size": 323,
+          "sha256": "64b17470d828f404231749b9f3971e04c8a8a8a7c419cb9771f14ecefe021449"
+        },
+        {
+          "name": "run-20261006T1625/08-role.yaml",
+          "size": 356,
+          "sha256": "eafb0ec9134d327bc1b4941f39165019d626ebb97d54845d6fdc355abde64694"
+        },
+        {
+          "name": "run-20261006T1625/08-rolebinding.yaml",
+          "size": 290,
+          "sha256": "3f96dc673ad73cd99a860a94d4256351e734ed4597b63b010ceefe85d097b3d7"
+        },
+        {
+          "name": "run-20261006T1625/08-sa.yaml",
+          "size": 134,
+          "sha256": "d4415c7b4e122c64db0502e5fb4be68084570df0982fb203e5ca03b1abf63f1d"
+        },
+        {
+          "name": "run-20261006T1625/09-dryrun.txt",
+          "size": 215,
+          "sha256": "6a9ffacefbc8a640b8328a5a95ac956f8f80f25a50c9f2d106c5ae9e32b3b009"
+        },
+        {
+          "name": "run-20261006T1625/10-create-role.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/10-create-rolebinding.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/10-create-serviceaccount.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/10-create.txt",
+          "size": 170,
+          "sha256": "b9e09ae3b0df6f34563307eabc80536adecc3b73b2bfdc2552108ab318d8097e"
+        },
+        {
+          "name": "run-20261006T1625/12-owned-before-token-role.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/12-owned-before-token-rolebinding.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/12-owned-before-token-serviceaccount.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/12-owned-before-token.txt",
+          "size": 296,
+          "sha256": "8b1666448da5953c2645e97cab6763c77ccbc6e11c184f77731ba7b7ac15b712"
+        },
+        {
+          "name": "run-20261006T1625/13-tokenrequest-caller.txt",
+          "size": 355,
+          "sha256": "c8308431c55bd808e04766cb48d79dccb52dda4fdddaece3fce4c117df9c6fce"
+        },
+        {
+          "name": "run-20261006T1625/14-token.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/15-token-claims.txt",
+          "size": 196,
+          "sha256": "ffe20a6c542a92810530ce60a9df09ba9c40a2b8cfdf9f452689f73efe78a248"
+        },
+        {
+          "name": "run-20261006T1625/17-pre-delete-role.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/17-pre-delete-rolebinding.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/17-pre-delete-serviceaccount.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/17-pre-delete.txt",
+          "size": 296,
+          "sha256": "704dc2028ba023c39316fe6248939b2d29c6801b2a899049b550ce3bc714807b"
+        },
+        {
+          "name": "run-20261006T1625/18-delete-role.txt",
+          "size": 203,
+          "sha256": "a1beb5cd38044bfe0aeac569626fe862564b68886d13a26c54d2be04c83a7dda"
+        },
+        {
+          "name": "run-20261006T1625/18-delete-rolebinding.txt",
+          "size": 210,
+          "sha256": "8237a1e7d527375194500b2c591791b0fbfc28b83ca19d212193dd0fc0016732"
+        },
+        {
+          "name": "run-20261006T1625/18-delete-serviceaccount.txt",
+          "size": 454,
+          "sha256": "060f0f67a88a92cd542a0add380a611926bc50b6098dfdc08fdd3d49e56f668a"
+        },
+        {
+          "name": "run-20261006T1625/19-post-delete-role.err",
+          "size": 91,
+          "sha256": "af9a60fab15d85380caf476172f28fa5c41793a431a2c98adcda05164af0550b"
+        },
+        {
+          "name": "run-20261006T1625/19-post-delete-rolebinding.err",
+          "size": 98,
+          "sha256": "dd3c6113e3d843a9da478589c32bd22065000c05537ca4c4b8379e9884965533"
+        },
+        {
+          "name": "run-20261006T1625/19-post-delete-serviceaccount.err",
+          "size": 75,
+          "sha256": "9be021a083887ba55c722b4d7e10e03294ae3ab848217debe5c239ae51d1365c"
+        },
+        {
+          "name": "run-20261006T1625/19-post-delete.txt",
+          "size": 53,
+          "sha256": "4df5eb9c9214d88e953cd9fa6f76ad58a07a72a3cd639094cb816bf7657e6e33"
+        },
+        {
+          "name": "run-20261006T1625/created.env",
+          "size": 155,
+          "sha256": "0931ec8468cb74418575120e32b916b867091fec19bd066cd0ba70b96af083d2"
+        },
+        {
+          "name": "run-20261006T1625/pf-verify.yaml",
+          "size": 788,
+          "sha256": "13e763b6f5eaecf46e9c15f2c601c4c9ea9c04fde603e5165692e6aeefd98ac2"
+        },
+        {
+          "name": "run-20261006T1625/pinned.env",
+          "size": 73,
+          "sha256": "1941d735a7b0b221dcdcb0e06c3ce728a91d33766eb8a9d6473c714d2679f253"
+        },
+        {
+          "name": "run-20261006T1625/status.txt",
+          "size": 179,
+          "sha256": "890d391bdc66f12639848760beef06e4e630a5a45ac9b84a114c9fc717ff3198"
+        }
+      ]
+    },
+    "evidence/P1-MON-01/pf-run2-canary-20261006T0725Z/runner/ev-runner-20261006.tgz": {
+      "sha256": "370cab854ee40e1bc7bde50c6ab53babe4c7d6818689bde1106eec45ebeb6c21",
+      "size": 1166,
+      "entries": [
+        {
+          "name": "run-20261006T1625/00-time.txt",
+          "size": 24,
+          "sha256": "14c3c8b9e3f79b15f37100fb4c52f5c43f5717ed6abe7ba04e2987fc0071f43a"
+        },
+        {
+          "name": "run-20261006T1625/01-login-accounts.txt",
+          "size": 110,
+          "sha256": "c79975c13c32a0fb45cd69b667f2301b81d6afff020fa9d0db182584e24eda92"
+        },
+        {
+          "name": "run-20261006T1625/02-runner-before.txt",
+          "size": 93,
+          "sha256": "dcc9d3794de417656dd02df6c7992a2a3b2063573d502162d9e7f2eb2d73e6d6"
+        },
+        {
+          "name": "run-20261006T1625/03-runner-stop.txt",
+          "size": 29,
+          "sha256": "f1031a9b8a0df814451603ac3be504f3abd4ea84d853d95b9792528e4dd1b92f"
+        },
+        {
+          "name": "run-20261006T1625/04-kubectl-sha.txt",
+          "size": 80,
+          "sha256": "b8fd7bbf9d51eedbff4f7bfaaa3d49ae2e525d64752c8d5951a1a9001bfc4f3e"
+        },
+        {
+          "name": "run-20261006T1625/05-kubeconfig-place-fail.txt",
+          "size": 11,
+          "sha256": "86566b6124f6868d9e59b72a3a8a3ed47948db997ee1efcc0e13562437673dde"
+        },
+        {
+          "name": "run-20261006T1625/05c-parse-check.txt",
+          "size": 92,
+          "sha256": "b6cc17d862e97f0b6c0ccae60a38bf3d1c83573b806fc3c777fc75c16df159a7"
+        },
+        {
+          "name": "run-20261006T1625/13-runner-restore.txt",
+          "size": 28,
+          "sha256": "de3458091e44cfcc268d64ab456dcd8754477ce0288b1aeae1768adb888932f3"
+        },
+        {
+          "name": "run-20261006T1625/13b-post-restore-check.txt",
+          "size": 265,
+          "sha256": "0c59e4cbeb3c445fb1e95dee6ff0f6f24d60556fc4d031cda1342279949e3f57"
+        },
+        {
+          "name": "run-20261006T1625/ss.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "run-20261006T1625/ss.log",
+          "size": 90,
+          "sha256": "36aef13e0d7b2069f7635587f28b8ac538bbb984f2af46b8a28beb98946acfc3"
+        },
+        {
+          "name": "run-20261006T1625/status.txt",
+          "size": 427,
+          "sha256": "3ee5085b7532a94936770560639c45ef53c7e27686bce99400648d00d9d9e240"
+        }
+      ]
+    },
+    "evidence/P1-MON-01/pf-run2-canary-20261006T0725Z/worker03/ev-worker03-20261006.tgz": {
+      "sha256": "2379e82778f0df7e1454e6e54bd749e2db95559fcc7bc53373d04c1edbf9c09b",
+      "size": 2283,
+      "entries": [
+        {
+          "name": "canary-20261006/ca.sha",
+          "size": 82,
+          "sha256": "afb7a5ade80d28bc6779d2179b8cf29b4461f5aeb8d0b72d59c2a44e4ddc89f5"
+        },
+        {
+          "name": "canary-20261006/fds-root-ca.crt",
+          "size": 2004,
+          "sha256": "20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f"
+        },
+        {
+          "name": "canary-20261006/post-deny.err",
+          "size": 56,
+          "sha256": "250c4981fd235e5279d8f1f0580a9674dbb1eba823cb29721417ecdcea18b7c2"
+        },
+        {
+          "name": "canary-20261006/post-deny.out",
+          "size": 9,
+          "sha256": "0aeb510174a681a181a144605251e7dbaad3178bf2a4a9fe85d637be8bd974ec"
+        },
+        {
+          "name": "canary-20261006/post-deny.rc",
+          "size": 6,
+          "sha256": "2fcf2db4e495e485420923d59960bc81c5ca7fc048cefe40a7f417a04a5e8b6a"
+        },
+        {
+          "name": "canary-20261006/post-deny.time",
+          "size": 34,
+          "sha256": "4c22f98d4a7149c05d780ead0650db5d3c51df42f3401ada47a18b53d3793fae"
+        },
+        {
+          "name": "canary-20261006/t0-route.txt",
+          "size": 76,
+          "sha256": "a9dd03982347a6ccd97eafcc84df7c4fb5f2ca799553a9af3617a2ba335d96b0"
+        },
+        {
+          "name": "canary-20261006/t1.err",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "canary-20261006/t1.out",
+          "size": 66,
+          "sha256": "37dd439af45d65618db0f2877c6a6e7af508be3098238508422c9dbdb78cc18b"
+        },
+        {
+          "name": "canary-20261006/t1.rc",
+          "size": 2,
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        {
+          "name": "canary-20261006/t1.time",
+          "size": 34,
+          "sha256": "0fc6043076f8f21bbe765dfe69184ed6d089bc852249570a8e04c1a8bb0de256"
+        },
+        {
+          "name": "canary-20261006/t2.err",
+          "size": 56,
+          "sha256": "250c4981fd235e5279d8f1f0580a9674dbb1eba823cb29721417ecdcea18b7c2"
+        },
+        {
+          "name": "canary-20261006/t2.out",
+          "size": 9,
+          "sha256": "0aeb510174a681a181a144605251e7dbaad3178bf2a4a9fe85d637be8bd974ec"
+        },
+        {
+          "name": "canary-20261006/t2.rc",
+          "size": 3,
+          "sha256": "9961d158a7e0e2f990765971a9e490af826c0743b7d603020f34cc8944319fcb"
+        },
+        {
+          "name": "canary-20261006/t2.time",
+          "size": 34,
+          "sha256": "60485095c0f5e7885ee5dae5fa6e6ef419e568d154b89df6e29c6e5dd3d51ed7"
+        }
+      ]
+    },
+    "evidence/P1-MON-01/pf-run2-canary-20261006T0725Z/monitor01/ev-monitor01-20261006.tgz": {
+      "sha256": "86d73d1d381aefa680f01eed6085a86dc71e29545d44ea607160d405f8387a10",
+      "size": 5339,
+      "entries": [
+        {
+          "name": "canary-20261006/00-time.txt",
+          "size": 24,
+          "sha256": "20e0b225bdfbd1f8781f17d79becd69856e56fc0080f5edbce648979475ae613"
+        },
+        {
+          "name": "canary-20261006/cap-end.txt",
+          "size": 26,
+          "sha256": "2bcc3e04b13d28d06bd9898a50af3f99b9ee0c31bb32e46672dec65ff08bbeae"
+        },
+        {
+          "name": "canary-20261006/cap-pid.txt",
+          "size": 26,
+          "sha256": "e8ddef6df48fb72a2419a16769a5c331fbab9236bde11ccd8ab860d045c85156"
+        },
+        {
+          "name": "canary-20261006/cap-rc.txt",
+          "size": 5,
+          "sha256": "93ff7811a209e2a8479230bbb9b6bc19f7f311d3af383ec350c1db2a7e7d5494"
+        },
+        {
+          "name": "canary-20261006/cap-start.txt",
+          "size": 26,
+          "sha256": "22b06c19b985b18b4baefa748e651f9ac536033fe7e6133f442330a702d7eb5c"
+        },
+        {
+          "name": "canary-20261006/cap-stats.txt",
+          "size": 258,
+          "sha256": "a0e8594a30edc1a7ac343d459ddf348de3934ea8eed43803c397e9f7ca727fe4"
+        },
+        {
+          "name": "canary-20261006/cap.txt",
+          "size": 38046,
+          "sha256": "72b85a769cdfa46b3114b208894a5a3636ae327beeebc7137408582a123d5c1b"
+        },
+        {
+          "name": "canary-20261006/fw-post.txt",
+          "size": 900,
+          "sha256": "6b65076d8cd52984eabb64464dce7976ff69d21ac8f2698573560268a27c9387"
+        },
+        {
+          "name": "canary-20261006/fw-pre.txt",
+          "size": 900,
+          "sha256": "6b65076d8cd52984eabb64464dce7976ff69d21ac8f2698573560268a27c9387"
+        },
+        {
+          "name": "canary-20261006/hb-after.txt",
+          "size": 72,
+          "sha256": "709c792eac801418e6a5c112a8e6752a6bd1cd0e15401779f37f15f5b46e6e19"
+        },
+        {
+          "name": "canary-20261006/nginx-1639.txt",
+          "size": 2496,
+          "sha256": "f35c44c03c01de34da55b51003d9e2bb44c8c976ee8e2f70c4ed780776905532"
+        },
+        {
+          "name": "canary-20261006/nginx-non204.txt",
+          "size": 436,
+          "sha256": "b4bdcc082106d611c9fc773b26bf971c358212e38ee0218358eee8e0737466a5"
+        }
+      ]
     }
   }
 }

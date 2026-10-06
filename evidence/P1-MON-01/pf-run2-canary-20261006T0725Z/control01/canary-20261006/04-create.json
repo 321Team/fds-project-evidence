@@ -1,0 +1,38 @@
+{
+    "apiVersion": "crd.projectcalico.org/v1",
+    "kind": "GlobalNetworkPolicy",
+    "metadata": {
+        "annotations": {
+            "fds.example/purpose": "Temporary host-origin source-IP acceptance probe for IF-06B (.108 -\u003e monitor01); not a permanent egress allow"
+        },
+        "creationTimestamp": "2026-10-06T07:39:20Z",
+        "generation": 1,
+        "name": "p1-mon-if06b-worker03-to-monitor01-canary",
+        "resourceVersion": "4149284",
+        "uid": "9cfdccea-b371-403f-8724-49779ed4e7c9"
+    },
+    "spec": {
+        "applyOnForward": false,
+        "egress": [
+            {
+                "action": "Allow",
+                "destination": {
+                    "nets": [
+                        "10.250.10.30/32"
+                    ],
+                    "ports": [
+                        443,
+                        8443
+                    ]
+                },
+                "protocol": "TCP"
+            }
+        ],
+        "order": 90,
+        "selector": "fds.example/bootstrap == \"p1-k8s-01-v4\" \u0026\u0026 fds.example/node == \"k8s-worker03\"",
+        "tier": "default",
+        "types": [
+            "Egress"
+        ]
+    }
+}
