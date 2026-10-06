@@ -10,7 +10,7 @@
 
 | 파일 | 만든 곳 | SHA-256 | 내용 |
 |---|---|---|---|
-| `cp02-ansible01-evidence-20261006.tgz` | ansible01 `~/` (`cp02-*20261006*`) | `f683177c42063ac2fa03b1c85f8fecdbcd41723a002bb43afcc0311fcc11e6eb` (PC 복사본 기준) | 단계별 실행 출력과 각 `.sha256`: 도구·render 복원, 시작 직전 Gate, T0~3-6, 원복, firewalld OFF, 첫 OFF Negative, 진단 1~4, attempt02, 최종 기준선, 감시 종료. 내부 `.sha256` 37쌍은 PC에서 모두 일치 확인 |
+| `cp02-ansible01-evidence-20261006.tgz` | ansible01 `~/` (`cp02-*20261006*`) | `f683177c42063ac2fa03b1c85f8fecdbcd41723a002bb43afcc0311fcc11e6eb` (PC 복사본 기준) | 단계별 실행 출력과 각 `.sha256`: 도구·render 복원, 시작 직전 Gate, T0~3-6, 원복, firewalld OFF, 첫 OFF Negative, 진단 1~4, attempt02, 최종 기준선, 감시 종료. 내부 `.sha256` 40쌍 중 **39쌍은 PC에서 일치**하고, 불일치 1쌍은 자기 자신이 포함된 0바이트 `cp02-evidence-20261006.tgz`(아래 참고) |
 | `cp02-server-originals-20261006.tgz` | ansible01이 control01·control02·edge01에서 `tar`/`fetch`로 수집 | `16d4f54b3a30ca3e447c31de42bef6d790e96b3169f46a0ea3aefbe2ab17bf0a` (ansible01 계산값과 일치) | `control01-originals.tgz`(`/root/t19-cp02-run01-20261006`: receipt·감시·health·rollback/recreate 출력), `control02-originals.tgz`(`/var/log/fds-evidence/P1-K8S-01/t19-cp02-run01-20261006`: tcpdump·firewalld 출력·attempt02 폴더), `edge01-attempt02.jsonl`, 이들의 `SHA256SUMS` |
 
 - 전달 경로: 서버 → ansible `tar`/`fetch` → ansible01 → 공유 폴더 → 이 저장소.
@@ -24,7 +24,7 @@
 |---|---|
 | 도구 (고정 커밋 `b4303f2df512a8791d2421203cf159567d076b2a`, `321Team/infra-kubernetes` `ops/p1-k8s-01-v4`) | `RUNBOOK_FINAL.md b5388dc5…`, `cluster-change.py e955a6f9…`, `node-evidence.py 8ce58544…`, `render.py c640831e…` (복원 보고 [6009072708](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6009072708), 승인 [6009176490](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6009176490)) |
 | 실제 T0 | 2026-10-06 14:40:29 KST (첫 방화벽 변경 `restore-firewall`) |
-| 5초 감시 | 14:38:55 ~ 15:51:44, 데이터 782줄, `LEADER_CHANGED_OR_UNKNOWN` 0 |
+| 감시(설정 주기 5초) | 14:38:55 ~ 15:51:44, 데이터 782줄, `LEADER_CHANGED_OR_UNKNOWN` 0. 원본으로 집계한 실제 인접 표본 간격은 5초 611회·6초 102회·10초 52회·11초 16회(최대 11초), leader 표본 131회·최대 간격 36초. 정확히 5초마다 모든 항목을 연속 입증한 것이 아니며 관측 사이의 짧은 변화는 보증하지 않는다 |
 | 승인·판단 | [계획 5979416203](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-5979416203) · [GO 5979476603](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-5979476603) · [GO 재확인 6010041894](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010041894) · [시작 기록 6010108406](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010108406) · [T0 6010138462](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010138462) · [검토 요청 6010214492](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010214492) · [receipt 승인 6010511558](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010511558) · [STOP 보고 6010743768](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010743768) · [Felix 로그 6010763095](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010763095) · [Pod 노드 6010777720](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010777720) · [1회 승인 6010822688](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010822688) · [실행 가이드 6010911166](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6010911166) · [최종 보고 6011043599](https://github.com/321Team/fds-project-baseline/issues/10#issuecomment-6011043599) |
 
 ## 시간순 관측 (판정 아님)
@@ -67,5 +67,9 @@ etcd 3/3 healthy·leader `10.1.93.102`·term 18, Node 6/6 Ready, readyz 5곳 ok,
 6. 최종 보고 시점의 `rules-before/after` 대조(위 538줄 동일)는 이 PR 준비 중 PC에서 한 것이며 #10 최종 보고에는 NOT_VERIFIED로 적었다.
 7. 첫 묶음의 해시는 PC 복사본 기준이다.
 8. 시험 중 etcd leader 변경, quorum·health·API·boot 이상, 예상 밖 restart·policy drift는 관측되지 않았다(감시 782줄 상태 1종). 이는 AC 충족 판정이 아니다.
+
+9. 첫 OFF Negative의 control02 `7-tcpdump.txt`는 edge01→control02 SYN 3개만 담고 있어 **응답 방향은 관측되지 않았다**.
+10. attempt02 `capture.txt`를 만든 실제 tcpdump 필터 명령은 서버 원본에 파일로 남아 있지 않다. 실행자 터미널 출력(heredoc)에 남은 필터식은 `host 10.1.93.50 and host 10.1.93.103 and tcp and (port 6443 or port 10250 or port 2379)`이며, 이 필터의 실행을 독립 재현하지는 않았다.
+11. 재생성한 Felix `node.k8s-control02`에는 제출 manifest(`4-felix-manifest.json`)에 없는 `nftablesMode: Auto`가 재생성 직후 원본(`4-felix-live.json`, 15:17:51)부터 있다. 서버가 채운 기본값일 가능성이 있으나 출처, 시험 전 객체·다른 노드의 같은 값 여부는 확인하지 못했다. 승인 failsafe inbound/outbound 두 필드는 manifest와 live가 일치한다.
 
 AI usage: CLAUDE_CODE_ASSISTED.
