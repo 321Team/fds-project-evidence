@@ -1,0 +1,71 @@
+# READ-ONLY: SELinux + Calico/CoreDNS health
+2026-10-05T11:05:06+09:00
+ansible01
+## SELinux (getenforce, auditd, AVC today) on 6 nodes
+k8s-worker02 | CHANGED | rc=0 >>
+k8s-worker02
+Enforcing
+auditd: active
+--avc-today
+<no matches>
+k8s-control01 | CHANGED | rc=0 >>
+k8s-control01
+Enforcing
+auditd: active
+--avc-today
+<no matches>
+k8s-worker03 | CHANGED | rc=0 >>
+k8s-worker03
+Enforcing
+auditd: active
+--avc-today
+<no matches>
+k8s-control03 | CHANGED | rc=0 >>
+k8s-control03
+Enforcing
+auditd: active
+--avc-today
+<no matches>
+k8s-control02 | CHANGED | rc=0 >>
+k8s-control02
+Enforcing
+auditd: active
+--avc-today
+<no matches>
+k8s-worker01 | CHANGED | rc=0 >>
+k8s-worker01
+Enforcing
+auditd: active
+--avc-today
+<no matches>
+## Calico / CoreDNS / kube-proxy
+k8s-control01 | CHANGED | rc=0 >>
+NAME                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE   CONTAINERS    IMAGES                                                                                        SELECTOR
+daemonset.apps/calico-node   6         6         6       6            6           kubernetes.io/os=linux   25d   calico-node   quay.io/calico/node@sha256:c061070a27292f8152ae6a0582078eb9059d1b6ed5e57c2052e5c22534734240   k8s-app=calico-node
+daemonset.apps/kube-proxy    6         6         6       6            6           kubernetes.io/os=linux   25d   kube-proxy    registry.k8s.io/kube-proxy:v1.36.4                                                            k8s-app=kube-proxy
+NAME                                      READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS                IMAGES                                                                                                    SELECTOR
+deployment.apps/calico-kube-controllers   1/1     1            1           25d   calico-kube-controllers   quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3   k8s-app=calico-kube-controllers
+deployment.apps/coredns                   2/2     2            2           25d   coredns                   registry.k8s.io/coredns/coredns:v1.14.2                                                                   k8s-app=kube-dns
+NAME                                      READY   STATUS    RESTARTS          AGE   IP               NODE            NOMINATED NODE   READINESS GATES
+calico-kube-controllers-74f76ddbd-jbpm9   1/1     Running   16 (2d22h ago)    25d   10.244.246.117   k8s-control01   <none>           <none>
+calico-node-9v746                         1/1     Running   7 (18h ago)       16d   10.1.93.108      k8s-worker03    <none>           <none>
+calico-node-bp7jz                         1/1     Running   9 (3d23h ago)     16d   10.1.93.103      k8s-control02   <none>           <none>
+calico-node-bqzx2                         1/1     Running   13 (3d23h ago)    25d   10.1.93.102      k8s-control01   <none>           <none>
+calico-node-fwq4q                         1/1     Running   8 (2d22h ago)     16d   10.1.93.104      k8s-control03   <none>           <none>
+calico-node-mzvw8                         1/1     Running   7 (3d16h ago)     16d   10.1.93.107      k8s-worker02    <none>           <none>
+calico-node-z9vbt                         1/1     Running   12 (2d16h ago)    16d   10.1.93.105      k8s-worker01    <none>           <none>
+coredns-589f44dc88-f8l54                  1/1     Running   13 (3d23h ago)    25d   10.244.246.119   k8s-control01   <none>           <none>
+coredns-589f44dc88-qkcws                  1/1     Running   13 (3d23h ago)    25d   10.244.246.118   k8s-control01   <none>           <none>
+--coredns-endpoints
+NAME             ADDRESSTYPE   PORTS        ENDPOINTS                       AGE
+kube-dns-mmc5w   IPv4          53,53,9153   10.244.246.118,10.244.246.119   25d
+--coredns-log-tail
+Found 2 pods, using pod/coredns-589f44dc88-qkcws
+maxprocs: Leaving GOMAXPROCS=8: CPU quota undefined
+.:53
+[INFO] plugin/reload: Running configuration SHA512 = 1b226df79860026c6a52e67daa10d7f0d57ec5b023288ec00c5e05f93523c894564e15b91770d3a07ae1cfbe861d15b37d4a0027e69c546ab112970993a3b03b
+CoreDNS-1.14.2
+linux/amd64, go1.26.1, dd1df4f
+[ERROR] plugin/errors: 2 3371855741701723961.3881219646493181116. HINFO: read udp 10.244.246.118:33933->10.1.93.53:53: i/o timeout
+--calico-node-ready-count
+      6 1/1
