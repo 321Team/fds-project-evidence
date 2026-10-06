@@ -1,0 +1,39 @@
+# T09 FOLLOWUP
+2026-10-04T16:18:33+09:00
+ansible01
+## nodes
+k8s-control01 | CHANGED | rc=0 >>
+NAME            STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                      KERNEL-VERSION                   CONTAINER-RUNTIME
+k8s-control01   Ready    control-plane   24d   v1.36.4   10.1.93.102   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-control02   Ready    control-plane   16d   v1.36.4   10.1.93.103   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-control03   Ready    control-plane   16d   v1.36.4   10.1.93.104   <none>        CentOS Stream 10 (Coughlan)   6.12.0-267.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-worker01    Ready    <none>          16d   v1.36.4   10.1.93.105   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-worker02    Ready    <none>          16d   v1.36.4   10.1.93.107   <none>        CentOS Stream 10 (Coughlan)   6.12.0-267.el10.x86_64 (amd64)   containerd://2.3.5
+k8s-worker03    Ready    <none>          16d   v1.36.4   10.1.93.108   <none>        CentOS Stream 10 (Coughlan)   6.12.0-266.el10.x86_64 (amd64)   containerd://2.3.5
+## worker03 pods
+k8s-control01 | CHANGED | rc=0 >>
+NAMESPACE         NAME                           READY   STATUS    RESTARTS        AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+icr39-probe       probe-w03                      0/1     Unknown   0               6d22h   <none>          k8s-worker03   <none>           <none>
+kube-system       calico-node-9v746              1/1     Running   7 (2m38s ago)   16d     10.1.93.108     k8s-worker03   <none>           <none>
+kube-system       kube-proxy-fgxnn               1/1     Running   7 (2m38s ago)   16d     10.1.93.108     k8s-worker03   <none>           <none>
+monitoring-api    alertmanager-6bf6dc555-jks9k   1/1     Running   0               14h     10.244.39.195   k8s-worker03   <none>           <none>
+monitoring-api    grafana-f65457bfd-ghl62        1/1     Running   0               14h     10.244.39.255   k8s-worker03   <none>           <none>
+monitoring-api    prometheus-d8949bd64-wsdhd     1/1     Running   0               14h     10.244.39.198   k8s-worker03   <none>           <none>
+monitoring-node   node-exporter-zdhnv            1/1     Running   1 (2m38s ago)   3d      10.1.93.108     k8s-worker03   <none>           <none>
+## ping worker03 from control01 / ansible01 tcp22
+k8s-control01 | CHANGED | rc=0 >>
+PING 10.1.93.108 (10.1.93.108) 자료의 56(84) 바이트.
+
+--- 10.1.93.108 ping 통계 ---
+2 패킷이 전송됨, 0 수신됨, 100% packet loss, time 1044ms
+
+TCP22_FAIL
+ansible01 TCP22_OK
+## worker01 dig CoreDNS (full output)
+k8s-worker01 | CHANGED | rc=0 >>
+;; communications error to 10.96.0.10#53: timed out
+
+; <<>> DiG 9.18.33 <<>> @10.96.0.10 kubernetes.default.svc.cluster.local +time=3 +tries=1
+; (1 server found)
+;; global options: +cmd
+;; no servers could be reached

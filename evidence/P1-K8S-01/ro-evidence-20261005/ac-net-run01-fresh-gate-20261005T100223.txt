@@ -1,0 +1,150 @@
+# AC-NET-RUN01 FRESH GATE BASELINE (read-only)
+2026-10-05T10:02:23+09:00
+ansible01
+## 1 nodes (Ready, bootID, SchedulingDisabled)
+k8s-control01 | CHANGED | rc=0 >>
+NAME            COND    STATUS   BOOTID                                 UNSCHED
+k8s-control01   Ready   True     1ebe32a5-899b-4eab-8bac-05a10412ce5f   <none>
+k8s-control02   Ready   True     51d31ef9-c6d1-4197-9e0d-20c7c9cec3f3   <none>
+k8s-control03   Ready   True     366db2e3-4eda-4749-804b-980bbbc4f387   <none>
+k8s-worker01    Ready   True     ba183c9b-1ddb-4302-a86d-8176674525f5   <none>
+k8s-worker02    Ready   True     fc5a28cc-652f-40e2-b58c-74987d22e0b9   <none>
+k8s-worker03    Ready   True     a1b3909e-9728-4343-9be3-36bbd8e32d8b   <none>
+## 2 readyz (control01 loopback / LB 10.1.93.109)
+k8s-control01 | CHANGED | rc=0 >>
+readyz check passed
+ok
+## 3 HEP / GNP / Felix (UID, generation, resourceVersion)
+k8s-control01 | CHANGED | rc=0 >>
+--hostendpoints
+NAME                    UID                                    GEN   RV
+fds-k8s-k8s-control01   a947480d-4b53-4994-82be-285e12b1834d   1     1000282
+fds-k8s-k8s-control02   6120fda0-2f52-4e06-b33e-31613b2eb8c5   1     1004549
+fds-k8s-k8s-control03   6bd35726-0d43-4a57-b6c7-18bd56910600   1     1009138
+fds-k8s-k8s-worker01    f650c589-5261-4566-a186-606440cc304a   1     3348536
+fds-k8s-k8s-worker02    52f1ff1b-c1dd-4ca7-9ef6-759a4cab52bf   1     993761
+fds-k8s-k8s-worker03    76f476c5-b695-4da7-a921-2db875635dc8   1     997111
+--globalnetworkpolicies
+NAME                         UID                                    GEN   RV
+fds-k8s-host-k8s-control01   b0f3db6f-d10d-4e66-a496-2026fa4d6b9a   4     2069871
+fds-k8s-host-k8s-control02   bffd71d5-90a2-477f-8868-bc5df5d07ff4   2     2070943
+fds-k8s-host-k8s-control03   6914fbee-2203-40b9-8902-80fa2520db4c   2     2070944
+fds-k8s-host-k8s-worker01    5b30e937-bf16-41c1-8ad2-2d905c55b6fb   4     2096671
+fds-k8s-host-k8s-worker02    c744ef50-b58b-4645-af1d-7ec9e510d9d1   4     2175695
+fds-k8s-host-k8s-worker03    597b51e8-13d5-4c29-8599-9e00c44c1e34   4     2176045
+nodeport-30080-allow         f9de0f2e-aa29-4545-8d46-ea2e31c4a3f0   1     1083332
+--felixconfigurations
+NAME                 UID                                    GEN   RV
+default              c4a70cfb-198d-47df-a666-1abc28c8476b   1     647
+node.k8s-control01   7cdca883-da30-4710-b700-eb2f41f4a534   1     999959
+node.k8s-control02   4159bf99-a79f-4343-9cd9-98bb02b42b74   1     1004330
+node.k8s-control03   26ff9da4-3ac6-4d36-91c1-a0376f8a53b9   1     1008826
+node.k8s-worker01    f85d9eb8-d095-4e53-8117-e5cbeef95a5e   1     3348417
+node.k8s-worker02    189f3683-32a2-4658-8d8d-a72c6403596b   1     993132
+node.k8s-worker03    0bbd624f-4086-40f5-a799-6d49755f9248   1     996898
+## 4 fds-app pods (placement and restart counts) and any non-Running pods
+k8s-control01 | CHANGED | rc=0 >>
+NAME                              READY   STATUS    RESTARTS        AGE     IP              NODE           NOMINATED NODE   READINESS GATES
+fds-engine-5699669f6f-bp6t6       1/1     Running   3 (2d15h ago)   3d15h   10.244.79.104   k8s-worker01   <none>           <none>
+fds-engine-5699669f6f-hxq4n       1/1     Running   0               2d22h   10.244.69.220   k8s-worker02   <none>           <none>
+fds-engine-5699669f6f-t4xbj       1/1     Running   0               32h     10.244.79.106   k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-jn7jc   1/1     Running   0               32h     10.244.69.223   k8s-worker02   <none>           <none>
+transaction-api-b784c8c5d-rq9b6   1/1     Running   4 (2d15h ago)   9d      10.244.79.105   k8s-worker01   <none>           <none>
+transaction-api-b784c8c5d-szcdq   1/1     Running   0               2d22h   10.244.69.221   k8s-worker02   <none>           <none>
+--not-running
+icr39-probe       probe-cp01                                0/1   Unknown   0                 7d16h
+icr39-probe       probe-w01                                 0/1   Unknown   0                 7d16h
+icr39-probe       probe-w02                                 0/1   Unknown   0                 7d16h
+icr39-probe       probe-w03                                 0/1   Unknown   0                 7d16h
+## 5 MON via API service proxy (read-only, no port-forward)
+k8s-control01 | CHANGED | rc=0 >>
+--count%28up%29
+Error from server (ServiceUnavailable): error trying to reach service: dial tcp 10.244.39.198:9090: i/o timeout
+
+--sum%28up%29
+Error from server (ServiceUnavailable): error trying to reach service: dial tcp 10.244.39.198:9090: i/o timeout
+
+--up%3D%3D0
+Error from server (ServiceUnavailable): error trying to reach service: dial tcp 10.244.39.198:9090: i/o timeout
+## 6 test namespace must be NotFound
+k8s-control01 | CHANGED | rc=0 >>
+Error from server (NotFound): namespaces "ac-net-run01" not found
+## 7 probe image digest + exact reference on the 3 workers
+k8s-worker02 | CHANGED | rc=0 >>
+k8s-worker02
+digest_rows=1
+inspecti_rc=0
+k8s-worker01 | CHANGED | rc=0 >>
+k8s-worker01
+digest_rows=1
+inspecti_rc=0
+k8s-worker03 | CHANGED | rc=0 >>
+k8s-worker03
+digest_rows=1
+inspecti_rc=0
+## 8 per-node boot_id / uptime / console sessions
+k8s-control01 | FAILED | rc=3 >>
+k8s-control01
+2026-10-01 11:24:24
+1ebe32a5-899b-4eab-8bac-05a10412ce5f
+--sessions
+165 1001 svc_ansible -     3791988 user    -    no -
+166 1001 svc_ansible -     3791993 manager -    no -
+  2 1000 server02    seat0 3956    user    tty2 no -
+  3 1000 server02    -     3965    manager -    no -
+firewalld: inactivenon-zero return code
+k8s-worker01 | FAILED | rc=3 >>
+k8s-worker01
+2026-10-02 18:30:01
+ba183c9b-1ddb-4302-a86d-8176674525f5
+--sessions
+56 1000 server05    seat0 1120529 user    tty2 no -
+57 1000 server05    -     1120608 manager -    no -
+64 1001 svc_ansible -     1522812 user    -    no -
+65 1001 svc_ansible -     1522817 manager -    no -
+firewalld: inactivenon-zero return code
+k8s-worker02 | FAILED | rc=3 >>
+k8s-worker02
+2026-10-01 18:09:56
+fc5a28cc-652f-40e2-b58c-74987d22e0b9
+--sessions
+ 2 1000 server06    seat0 3433    user    tty2 no -
+ 3 1000 server06    -     3448    manager -    no -
+84 1001 svc_ansible -     2089268 user    -    no -
+85 1001 svc_ansible -     2089273 manager -    no -
+firewalld: inactivenon-zero return code
+k8s-worker03 | FAILED | rc=3 >>
+k8s-worker03
+2026-10-04 16:15:48
+a1b3909e-9728-4343-9be3-36bbd8e32d8b
+--sessions
+13 1001 svc_ansible -     432624 user    -    no -
+14 1001 svc_ansible -     432629 manager -    no -
+ 2 1000 server07    seat0 2932   user    tty2 no -
+ 3 1000 server07    -     2944   manager -    no -
+firewalld: inactivenon-zero return code
+k8s-control03 | FAILED | rc=3 >>
+k8s-control03
+2026-10-02 12:52:46
+366db2e3-4eda-4749-804b-980bbbc4f387
+--sessions
+13 1001 svc_ansible -     1635988 user    -    no -
+14 1001 svc_ansible -     1635993 manager -    no -
+ 2 1000 server04    seat0 4251    user    tty2 no -
+ 3 1000 server04    -     5036    manager -    no -
+firewalld: inactivenon-zero return code
+k8s-control02 | FAILED | rc=3 >>
+k8s-control02
+2026-10-01 11:57:15
+51d31ef9-c6d1-4197-9e0d-20c7c9cec3f3
+--sessions
+ 2 1000 server03    seat0 5584    user    tty2 no -
+ 3 1000 server03    -     5598    manager -    no -
+30 1001 svc_ansible -     2202029 user    -    no -
+31 1001 svc_ansible -     2202034 manager -    no -
+firewalld: inactivenon-zero return code
+## 9 edge01 capabilities (T15 IPIP needs sudo -n there; this only checks)
+10.1.93.50 | CHANGED | rc=0 >>
+edge01
+Python 3.12.14
+SUDO_NOsudo: 암호가 필요합니다

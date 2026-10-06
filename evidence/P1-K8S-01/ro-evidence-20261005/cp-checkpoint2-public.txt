@@ -1,0 +1,61 @@
+# CP checkpoint2 public zone (read-only)
+2026-10-04T19:32:28+09:00
+ansible01
+k8s-control03 | CHANGED | rc=0 >>
+k8s-control03
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule family="ipv4" source address="10.1.93.102/32" destination address="10.1.93.104/32" port port="10250" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.102/32" destination address="10.1.93.104/32" port port="2380" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.102/32" destination address="10.1.93.104/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.103/32" destination address="10.1.93.104/32" port port="10250" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.103/32" destination address="10.1.93.104/32" port port="2380" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.103/32" destination address="10.1.93.104/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.105/32" destination address="10.1.93.104/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.107/32" destination address="10.1.93.104/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.108/32" destination address="10.1.93.104/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.109/32" port port="6443" protocol="tcp" accept
+files= ['direct.xml', 'direct.xml.old', 'firewalld.conf', 'zones/public.xml', 'zones/public.xml.old']
+k8s-control02 | CHANGED | rc=0 >>
+k8s-control02
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+	rule family="ipv4" source address="10.1.93.102/32" destination address="10.1.93.103/32" port port="10250" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.102/32" destination address="10.1.93.103/32" port port="2380" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.102/32" destination address="10.1.93.103/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.104/32" destination address="10.1.93.103/32" port port="10250" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.104/32" destination address="10.1.93.103/32" port port="2380" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.104/32" destination address="10.1.93.103/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.105/32" destination address="10.1.93.103/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.107/32" destination address="10.1.93.103/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.108/32" destination address="10.1.93.103/32" port port="6443" protocol="tcp" accept
+	rule family="ipv4" source address="10.1.93.109/32" port port="6443" protocol="tcp" accept
+files= ['direct.xml', 'direct.xml.old', 'firewalld.conf', 'zones/public.xml', 'zones/public.xml.old']
