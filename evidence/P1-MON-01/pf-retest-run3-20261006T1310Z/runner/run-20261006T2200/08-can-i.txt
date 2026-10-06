@@ -1,0 +1,6 @@
+get pods/grafana-f65457bfd-ckjgj => yes (expect yes)
+create pods/grafana-f65457bfd-ckjgj --subresource=portforward => yes (expect yes)
+list pods => no (expect no)
+get secrets => no (expect no)
+get pods/prometheus-d8949bd64-2zc4m => no (expect no)
+create pods/prometheus-d8949bd64-2zc4m --subresource=portforward => no (expect no)

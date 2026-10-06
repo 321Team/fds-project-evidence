@@ -1,0 +1,9 @@
+# A7 control01 (server02) - token. Read TOKEN_EXP only; do NOT copy the block yet.
+cd ~/pf-retest-d9bc0c8 && bash pf_cp.sh token ~/pf-retest-d9bc0c8/run-20261006T2200
+
+# A8 cicd-runner01 (server01_cicd-runner) - replace <TOKEN_EXP> with the number, run, then (while the cursor waits)
+# copy BEGIN..END from control01, paste here, Enter, Ctrl+D. Never Ctrl+C.
+cd ~/pf-retest-d9bc0c8 && R=~/pf-retest-d9bc0c8/run-20261006T2200 && echo '>>> 지금 붙여넣기: control01에서 복사한 BEGIN~END 블록을 붙여넣고 Enter, 그다음 Ctrl+D (Ctrl+C 금지)' >&2 && awk -v f="$R/05a-marker-check.txt" 'BEGIN{b=0;e=0;inb=0;a=0;c=0;n=0} /^----- BEGIN KUBECONFIG/{b++;inb=1;next} /^----- END KUBECONFIG -----/{e++;inb=0;next} inb{buf=buf $0 "\n"; n++; if($0 ~ /^apiVersion:/)a++; if($0 ~ /^current-context:/)c++} END{ok=(b==1&&e==1&&a==1&&c==1); m="MARKER_CHECK=" (ok?"PASS":"FAIL") " b=" b " e=" e " apiVersion=" a " current-context=" c " lines_in_block=" n " lines_passed=" (ok?n:0); print m > f; print m > "/dev/stderr"; if(ok) printf "%s", buf}' | bash pf_runner.sh place $R <TOKEN_EXP>
+
+# A8b cicd-runner01 - parse/context check (no --raw); verify only if RC0 and context=pf. Pod names from control01 pinned.env.
+R=~/pf-retest-d9bc0c8/run-20261006T2200; KB=$R/bin/kubectl; KC=/dev/shm/p1-mon-pf-verify-run-20261006T2200.kubeconfig; ctx=$("$KB" --kubeconfig "$KC" config view --minify -o jsonpath='{.current-context}' 2>&1); prc=$?; echo "$(date '+%F %T %Z') parse_rc=$prc ctx=$ctx" | tee $R/05c-parse-check.txt; if [ "$prc" = 0 ] && [ "$ctx" = pf ]; then cd ~/pf-retest-d9bc0c8 && bash pf_runner.sh verify $R <GRAFANA_POD> <OTHER_POD>; echo "rc=$?"; cat $R/06-route.txt $R/07-whoami.txt $R/08-can-i.txt; else echo "STOP_PARSE_FAIL: verify skipped"; fi

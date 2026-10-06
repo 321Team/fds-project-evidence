@@ -1,0 +1,36 @@
+## collected 2026-10-06 22:06:37 KST
+## ps lstart
+    PID                  STARTED CMD
+   6852 화 10월  6 16:33:52 2026 /home/server01_cicd-runner/actions-runner/bin/Runner.Listener run --startuptype service
+## systemctl show
+MainPID=6837
+NRestarts=0
+ExecMainStartTimestamp=Tue 2026-10-06 16:33:52 KST
+ActiveState=active
+SubState=running
+## journal 16:25-16:50
+10월 06 16:26:48 cicd-runner01 systemd[1]: Stopping actions.runner.321Team-infra-cicd.cicd-runner01.service - GitHub Actions Runner (321Team-infra-cicd.cicd-runner01)...
+10월 06 16:26:48 cicd-runner01 runsvc.sh[1339]: Shutting down runner listener
+10월 06 16:26:48 cicd-runner01 runsvc.sh[1339]: Sending SIGINT to runner listener to stop
+10월 06 16:26:48 cicd-runner01 runsvc.sh[1339]: Sending SIGKILL to runner listener
+10월 06 16:26:48 cicd-runner01 runsvc.sh[1339]: Exiting...
+10월 06 16:26:49 cicd-runner01 runsvc.sh[1339]: Runner listener exited with error code 0
+10월 06 16:26:49 cicd-runner01 runsvc.sh[1339]: Runner listener exit with 0 return code, stop the service, no retry needed.
+10월 06 16:26:49 cicd-runner01 systemd[1]: actions.runner.321Team-infra-cicd.cicd-runner01.service: Deactivated successfully.
+10월 06 16:26:49 cicd-runner01 systemd[1]: Stopped actions.runner.321Team-infra-cicd.cicd-runner01.service - GitHub Actions Runner (321Team-infra-cicd.cicd-runner01).
+10월 06 16:26:49 cicd-runner01 systemd[1]: actions.runner.321Team-infra-cicd.cicd-runner01.service: Consumed 5.503s CPU time, 196.7M memory peak.
+10월 06 16:33:52 cicd-runner01 systemd[1]: Started actions.runner.321Team-infra-cicd.cicd-runner01.service - GitHub Actions Runner (321Team-infra-cicd.cicd-runner01).
+10월 06 16:33:52 cicd-runner01 runsvc.sh[6837]: .path=/home/server01_cicd-runner/.local/bin:/home/server01_cicd-runner/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin
+10월 06 16:33:52 cicd-runner01 runsvc.sh[6841]: Starting Runner listener with startup type: service
+10월 06 16:33:52 cicd-runner01 runsvc.sh[6841]: Started listener process, pid: 6852
+10월 06 16:33:52 cicd-runner01 runsvc.sh[6841]: Started running service
+10월 06 16:33:54 cicd-runner01 runsvc.sh[6841]: √ Connected to GitHub
+10월 06 16:33:55 cicd-runner01 runsvc.sh[6841]: Current runner version: '2.337.0'
+10월 06 16:33:55 cicd-runner01 runsvc.sh[6841]: 2026-10-06 07:33:55Z: Listening for Jobs
+## _diag Runner logs
+-rw-r--r--. 1 server01_cicd-runner server01_cicd-runner  77159 2026-09-27 21:11:00.342736055 +0900 /home/server01_cicd-runner/actions-runner/_diag/Runner_20260924-113018-utc.log
+-rw-r--r--. 1 server01_cicd-runner server01_cicd-runner  13930 2026-09-27 21:13:02.671304905 +0900 /home/server01_cicd-runner/actions-runner/_diag/Runner_20260927-121121-utc.log
+-rw-r--r--. 1 server01_cicd-runner server01_cicd-runner 202094 2026-10-05 16:41:20.455506266 +0900 /home/server01_cicd-runner/actions-runner/_diag/Runner_20260927-121703-utc.log
+-rw-r--r--. 1 server01_cicd-runner server01_cicd-runner  94891 2026-10-06 01:08:54.323241129 +0900 /home/server01_cicd-runner/actions-runner/_diag/Runner_20261005-091253-utc.log
+-rw-r--r--. 1 server01_cicd-runner server01_cicd-runner  24941 2026-10-06 16:26:49.641767012 +0900 /home/server01_cicd-runner/actions-runner/_diag/Runner_20261006-005728-utc.log
+-rw-r--r--. 1 server01_cicd-runner server01_cicd-runner  30767 2026-10-06 21:47:37.127520525 +0900 /home/server01_cicd-runner/actions-runner/_diag/Runner_20261006-073352-utc.log
