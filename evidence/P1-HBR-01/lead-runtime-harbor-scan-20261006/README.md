@@ -30,10 +30,24 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 | `screenshots/harbor-ui-fds-fds-engine-after-scan-20261006.png` | `fds-engine` 스캔 후: `d77b8095…` "취약점 없음", 나머지 "스캔되지 않음". **화면 위에 `a previous scan process is Running` 경고 표시** | `330c52dc9437ec42054375064981071bf593da0290066de2961cbfe41a1147ce` |
 | `screenshots/harbor-ui-fds-fds-engine-after-scan-nobanner-20261006.png` | 위와 같은 상태에서 경고가 사라진 화면 | `c4542cc821ee8c2042b61527ddac88d4b7f32e712132b814d705efc1ab579791` |
 
+## 상세 화면 캡처 (추가)
+아티팩트 상세 화면(브라우저 화면 축소 후 캡처)이다. 위쪽(digest 제목)이 잘린 캡처가 있어, 화면 안의 내용으로 대상을 식별한 항목은 표에 그 사실을 적었다.
+
+| 파일 | 내용 | SHA-256 |
+|---|---|---|
+| `screenshots/harbor-ui-fds-fds-engine-detail-top-20261006.png` | `fds-engine` `sha256:d77b8095…` 상세 위쪽: **태그 전체 `delivery-716a8ef98f76492786e73a340db35883`**(CI 인계와 일치), 푸시·풀 26.10.6 AM 12:19, amd64, 생성 10/5/26 11:11 PM | `eb74257e2dd3d9d23eec63506434c7e2b79ad6f3b593d1e97647baf9db266081` |
+| `screenshots/harbor-ui-fds-fds-engine-detail-zoomout-20261006.png` | 같은 화면 축소: `org.opencontainers.image.created 2026-10-05T14:11:13Z`, base.name `localhost/fds-apko-runtime:cicd-offline-33b9…` | `44b9dd01832263b86e05c545a72673432281293731cff39fc437aa162437abcf` |
+| `screenshots/harbor-ui-fds-fds-engine-detail-history-20261006.png` | "추가사항" 중 "기록 생성"(빌드 이력) 탭이 열린 화면(취약점 탭 아님) | `393dd1bc0215934f75a70cc7d158f369ee657235ce543a373ceb44acd5a85ee2` |
+| `screenshots/harbor-ui-fds-fds-engine-detail-vulns-20261006.png` | `fds-engine` **취약점 탭**: "인식 가능한 취약점이 감지되지 않았습니다.", 0 아이템, 표 아래 `Trivy@v0.62.1로 보고 됨`(작은 글씨로 읽음) | `0c2075ae47ff4b8e0657bcfe5f824a47530e5d0364efc93317011918cb50e74d` |
+| `screenshots/harbor-ui-fds-transaction-api-detail-vulns-20261006.png` | **위쪽 잘림.** 화면 내용(앱 포트 8000/9091, 생성 `2026-10-05T14:10:57Z`, apko 베이스)으로 `transaction-api`로 식별. 취약점 탭: 같은 문구, 0 아이템, `Trivy@v0.62.1로 보고 됨` | `39715632fbcbc8a9e11125d8e2f5750150557f932bd355335485e63085551076` |
+| `screenshots/harbor-ui-fds-test-detail-vulns-20261006.png` | **위쪽 잘림.** 화면 내용(알파인 3.20.10, 생성 4/17/26, base.name `scratch`)으로 `fds/test`로 식별. 취약점 탭: 같은 문구, 0 아이템, `Trivy@v0.62.1로 보고 됨` | `d7de80c9356e9459abd8956513457a48596ec7e67dd86e5625d4b8f247ee92e3` |
+
+"스캐너 `Trivy v0.62.1`"은 표 하단의 작은 글씨를 읽은 값이며 세 화면에서 같게 읽혔다. 화면에 DB 갱신 정보는 보이지 않는다.
+
 ## 한계 (숨기지 않음)
 1. **스캔 요청 횟수는 실행자 보고이다:** 실행자(이하영)는 `SCAN VULNERABILITY`를 아티팩트당 **1회** 눌렀다고 보고했다(계획과 같음). 이 횟수를 뒷받침하는 화면·로그 증거는 없고 실행자 진술이다. `fds-engine` 화면에는 `a previous scan process is Running` 경고가 표시되었다(Harbor가 이미 실행 중인 스캔이 있는 상태에서 새 요청을 받았을 때 나오는 문구로 보이며, 이 경고가 요청이 2회 이상이었음을 뜻하는지는 확인하지 못했다). 최종 결과 화면은 `취약점 없음`이다.
-2. **스캐너 상세 미수집:** 스캔 완료 시각, 스캐너 이름·버전, DB 갱신 정보, 건수 상세, **digest 전체**는 상세 화면 캡처가 없어 확인하지 못했다. 목록 화면의 `취약점 없음` 표시와 digest 앞 8자리(`7a3b263c`, `fa18dc36`, `d77b8095`)만 확인한다. 새 앱의 앞 8자리는 CI 인계의 manifest digest와 같지만 전체 일치는 확인하지 않았다.
-3. **캡처 시각:** 화면에 날짜·시각이 보이지 않는다. 정확한 스캔 시각은 알 수 없고, 시작 기록 게시(`fds/test` 18:21, 새 앱 18:45 KST)와 캡처 수신(같은 날 18:3x~18:5x) 사이의 일로만 위치를 추정한다.
+2. **digest 전체 미확인:** 아티팩트 digest는 화면 제목·목록의 앞 8자리(`7a3b263c`, `fa18dc36`, `d77b8095`)만 확인했다. 새 앱의 앞 8자리는 CI 인계의 manifest digest와 같지만 전체 일치는 확인하지 않았다. `fds-engine`은 태그 전체가 CI 인계와 일치한다. `transaction-api`와 `fds/test`의 상세 캡처는 위쪽(digest·태그)이 잘려 화면 내용으로 식별했으므로 대상 확정에는 digest 전체 확인이 필요하다(별도 보완 예정).
+3. **스캔 시각 미표시·스캐너 DB 미확인:** 스캔 완료 시각과 DB 갱신 정보는 화면에 표시되지 않았다. 캡처에도 날짜·시각이 보이지 않아 정확한 스캔 시각은 알 수 없고, 시작 기록 게시(`fds/test` 18:21, 새 앱 18:45 KST)와 캡처 수신(같은 날 18:3x~19:xx) 사이의 일로만 위치를 추정한다. 스캐너 이름·버전은 작은 글씨로 읽은 `Trivy@v0.62.1`이다.
 4. **API 조회 시도(403):** 같은 날 18:12 cp1에서 `robot$worker`로 세 저장소의 아티팩트 API를 호출했으나 모두 HTTP 403(forbidden)이었다. 응답 파일(cp1 `~/harbor-scan-read-20261006T181114/`, 각 56바이트 에러 JSON 3개)은 **이 PR에 포함하지 못했다**(미수신).
 5. **전사·화면 증거의 성격:** 모든 파일은 실행자 화면 캡처이며 서버 원본 로그가 아니다. Harbor의 스캔 보고서 원본(취약점 목록)은 보존하지 않았다.
 6. 이 관측은 해당 시점의 Harbor 표시이며 CI fresh Scan의 대체나 새 앱 이미지의 배포·Pod digest 일치를 뜻하지 않는다.
