@@ -44,9 +44,20 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 
 "스캐너 `Trivy v0.62.1`"은 표 하단의 작은 글씨를 읽은 값이며 세 화면에서 같게 읽혔다. 화면에 DB 갱신 정보는 보이지 않는다.
 
+## digest 전체 확인 (추가)
+Harbor 아티팩트 목록의 복사 아이콘으로 복사한 이미지 주소를 실행자가 텍스트로 제공했다(`observations/harbor-ui-copied-pull-commands-20261006.txt`, SHA-256 `6cc166708fb3a6bac730b52061b0e8d5bb34c2824301fb0626ceffbfbe22ba4e`). 원본 파일이 아니라 실행자 제공 텍스트이며 어느 줄의 아이콘을 눌렀는지는 실행자 보고이다. 값은 아래와 같이 다른 기록과 대조했다.
+
+| 이미지 | 전체 digest | 대조 |
+|---|---|---|
+| `fds/test` | `sha256:7a3b263c938493c827d8295e64f23d9386ffcbea75516ea03a6b65196636bfc6` | 앞서 병합된 AC-03 시험 로그(`k8s-worker01-node.log` 등)의 승인 digest와 완전 일치 |
+| `fds/transaction-api` | `sha256:fa18dc36db8de35fb29ae9f5ec7bea7b7a6a0d0cd293649a79ed0d4dbb093b50` | infra-cicd `f8f802c1…` `PUSH_HANDOFF.json`의 `transaction-api` manifest digest와 완전 일치 |
+| `fds/fds-engine` | `sha256:d77b80954fec5c408fb0bb91995d5faf3155ef2b74c76bc4f7e95cf319249e5b` | 같은 인계 파일의 `fds-engine` manifest digest와 완전 일치 |
+
+세 값 모두 `sha256:` 포함 71자이다.
+
 ## 한계 (숨기지 않음)
 1. **스캔 요청 횟수는 실행자 보고이다:** 실행자(이하영)는 `SCAN VULNERABILITY`를 아티팩트당 **1회** 눌렀다고 보고했다(계획과 같음). 이 횟수를 뒷받침하는 화면·로그 증거는 없고 실행자 진술이다. `fds-engine` 화면에는 `a previous scan process is Running` 경고가 표시되었다(Harbor가 이미 실행 중인 스캔이 있는 상태에서 새 요청을 받았을 때 나오는 문구로 보이며, 이 경고가 요청이 2회 이상이었음을 뜻하는지는 확인하지 못했다). 최종 결과 화면은 `취약점 없음`이다.
-2. **digest 전체 미확인:** 아티팩트 digest는 화면 제목·목록의 앞 8자리(`7a3b263c`, `fa18dc36`, `d77b8095`)만 확인했다. 새 앱의 앞 8자리는 CI 인계의 manifest digest와 같지만 전체 일치는 확인하지 않았다. `fds-engine`은 태그 전체가 CI 인계와 일치한다. `transaction-api`와 `fds/test`의 상세 캡처는 위쪽(digest·태그)이 잘려 화면 내용으로 식별했으므로 대상 확정에는 digest 전체 확인이 필요하다(별도 보완 예정).
+2. **digest 전체 확인의 근거:** digest 전체는 위 "digest 전체 확인" 절의 실행자 제공 텍스트와 다른 기록(CI 인계·AC-03 로그)의 대조로 확인했다. 화면 캡처 자체에는 앞 8자리만 있고 `transaction-api`·`fds/test` 상세 캡처는 위쪽(digest·태그)이 잘려 있어, 캡처와 digest의 연결은 화면 내용(포트·베이스 이미지·생성 시각)과 실행자 보고에 근거한다. 같은 digest의 Harbor 표시와 스캔 결과가 같은 대상임을 독립적으로 입증한 것은 아니다.
 3. **스캔 시각 미표시·스캐너 DB 미확인:** 스캔 완료 시각과 DB 갱신 정보는 화면에 표시되지 않았다. 캡처에도 날짜·시각이 보이지 않아 정확한 스캔 시각은 알 수 없고, 시작 기록 게시(`fds/test` 18:21, 새 앱 18:45 KST)와 캡처 수신(같은 날 18:3x~19:xx) 사이의 일로만 위치를 추정한다. 스캐너 이름·버전은 작은 글씨로 읽은 `Trivy@v0.62.1`이다.
 4. **API 조회 시도(403):** 같은 날 18:12 cp1에서 `robot$worker`로 세 저장소의 아티팩트 API를 호출했으나 모두 HTTP 403(forbidden)이었다. 응답 파일(cp1 `~/harbor-scan-read-20261006T181114/`, 각 56바이트 에러 JSON 3개)은 **이 PR에 포함하지 못했다**(미수신).
 5. **전사·화면 증거의 성격:** 모든 파일은 실행자 화면 캡처이며 서버 원본 로그가 아니다. Harbor의 스캔 보고서 원본(취약점 목록)은 보존하지 않았다.
