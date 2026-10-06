@@ -1,0 +1,72 @@
+# CP RECOVERY PREP (read-only, from ansible01)
+2026-10-04T19:25:27+09:00
+ansible01
+## etcd member list / endpoint status (leader 확인)
+k8s-control01 | CHANGED | rc=0 >>
++------------------+---------+---------------+--------------------------+--------------------------+------------+
+|        ID        | STATUS  |     NAME      |        PEER ADDRS        |       CLIENT ADDRS       | IS LEARNER |
++------------------+---------+---------------+--------------------------+--------------------------+------------+
+| 185d6d213e59bc52 | started | k8s-control01 | https://10.1.93.102:2380 | https://10.1.93.102:2379 |      false |
+| 7847998e87d09fcb | started | k8s-control03 | https://10.1.93.104:2380 | https://10.1.93.104:2379 |      false |
+| bd5c115d97e3939b | started | k8s-control02 | https://10.1.93.103:2380 | https://10.1.93.103:2379 |      false |
++------------------+---------+---------------+--------------------------+--------------------------+------------+
++--------------------------+------------------+---------+-----------------+---------+--------+-----------------------+--------+-----------+------------+-----------+------------+--------------------+--------+--------------------------+-------------------+
+|         ENDPOINT         |        ID        | VERSION | STORAGE VERSION | DB SIZE | IN USE | PERCENTAGE NOT IN USE | QUOTA  | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS | DOWNGRADE TARGET VERSION | DOWNGRADE ENABLED |
++--------------------------+------------------+---------+-----------------+---------+--------+-----------------------+--------+-----------+------------+-----------+------------+--------------------+--------+--------------------------+-------------------+
+| https://10.1.93.102:2379 | 185d6d213e59bc52 |   3.6.8 |           3.6.0 |  9.0 MB | 2.8 MB |                   70% | 2.1 GB |      true |      false |        17 |    5943915 |            5943915 |        |                          |             false |
+| https://10.1.93.103:2379 | bd5c115d97e3939b |   3.6.8 |           3.6.0 |  8.8 MB | 2.7 MB |                   69% | 2.1 GB |     false |      false |        17 |    5943915 |            5943915 |        |                          |             false |
+| https://10.1.93.104:2379 | 7847998e87d09fcb |   3.6.8 |           3.6.0 |  9.0 MB | 2.7 MB |                   70% | 2.1 GB |     false |      false |        17 |    5943915 |            5943915 |        |                          |             false |
++--------------------------+------------------+---------+-----------------+---------+--------+-----------------------+--------+-----------+------------+-----------+------------+--------------------+--------+--------------------------+-------------------+
++--------------------------+--------+-------------+-------+
+|         ENDPOINT         | HEALTH |    TOOK     | ERROR |
++--------------------------+--------+-------------+-------+
+| https://10.1.93.102:2379 |   true |  6.093955ms |       |
+| https://10.1.93.103:2379 |   true |  9.701581ms |       |
+| https://10.1.93.104:2379 |   true | 10.795874ms |       |
++--------------------------+--------+-------------+-------+
+## CP별 firewalld / 체크포인트 / HEP·GNP·Felix generation
+k8s-control01 | CHANGED | rc=0 >>
+k8s-control01
+firewalld: disabled
+inactive
+--checkpoints
+/var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint
+/var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint2
+k8s-control03 | CHANGED | rc=0 >>
+k8s-control03
+firewalld: disabled
+inactive
+--checkpoints
+/var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint
+/var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint2
+k8s-control02 | CHANGED | rc=0 >>
+k8s-control02
+firewalld: disabled
+inactive
+--checkpoints
+/var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint
+/var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint2
+k8s-control01 | CHANGED | rc=0 >>
+NAME                    GEN
+fds-k8s-k8s-control01   1
+fds-k8s-k8s-control02   1
+fds-k8s-k8s-control03   1
+NAME                 GEN
+node.k8s-control01   1
+node.k8s-control02   1
+node.k8s-control03   1
+## API 서버 LB 경유/CP 부하: 각 CP의 static pod 상태
+k8s-control01 | CHANGED | rc=0 >>
+calico-kube-controllers-74f76ddbd-jbpm9 Running 16 24d
+etcd-k8s-control01 Running 167 24d
+etcd-k8s-control02 Running 160 16d
+etcd-k8s-control03 Running 161 16d
+kube-apiserver-k8s-control01 Running 5 12d
+kube-apiserver-k8s-control02 Running 3 12d
+kube-apiserver-k8s-control03 Running 9 12d
+kube-controller-manager-k8s-control01 Running 15 24d
+kube-controller-manager-k8s-control02 Running 9 16d
+kube-controller-manager-k8s-control03 Running 8 16d
+kube-scheduler-k8s-control01 Running 14 24d
+kube-scheduler-k8s-control02 Running 9 16d
+kube-scheduler-k8s-control03 Running 8 16d

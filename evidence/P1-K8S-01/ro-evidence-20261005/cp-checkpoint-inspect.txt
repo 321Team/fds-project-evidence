@@ -1,0 +1,45 @@
+# CP CHECKPOINT INSPECT (read-only)
+2026-10-04T19:31:20+09:00
+ansible01
+k8s-control02 | CHANGED | rc=0 >>
+k8s-control02
+=== /var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint
+합계 16
+-rw-------. 1 root root 6968 2026-09-21 17:50 permanent.json
+-rw-------. 1 root root 6968 2026-09-21 17:50 runtime.json
+sha_ok=YES
+=== /var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint2
+합계 60
+-rw-------. 1 root root  7816 2026-09-21 17:54 checkpoint.json
+-rw-------. 1 root root    65 2026-09-21 17:54 checkpoint.sha256
+-rw-------. 1 root root 30720 2026-09-21 17:54 firewalld-config.tar
+-rw-------. 1 root root  6962 2026-09-21 17:54 permanent.json
+-rw-------. 1 root root  6962 2026-09-21 17:54 runtime.json
+sha_ok=YES
+node= k8s-control02 keys= ['archive_sha256', 'firewalld_files', 'nm_file_hashes', 'node', 'runtime']
+runtime= {"--get-default-zone": "public\n", "--list-all-zones": "block\n  target: %%REJECT%%\n  ingress-priority: 0\n  egress-priority: 0\n  icmp-block-inversion: no\n  interfaces: \n  sources: \n  services: \n  ports: \n  protocols: \n  forward: yes\n  masquerade: no\n  forward-ports: \n  source-ports: \n  icmp-blocks: \n  rich rules: \n\ndmz\n  target: default\n  ingress-priority: 0\n  egress-priority: 0\n  icmp-block-inversion: no\n  interfaces: \n  sources: \n  services: ssh\n  ports: \n  protocols: \n  forward: yes\n  masquerade: no\n  forward-ports: \n  source-ports: \n  icmp-blocks: \n  rich rules: \n\ndrop\n  target: DROP\n  ingress-priority: 0\n  egress-priority: 0\n  icmp-block-inversion: no\n  interfaces: \n  sources: \n  services: \n  ports: \n  protocols: \n  forward: yes\n  masquerade: no\n  forward-ports: \n  source-ports: \n  icmp-blocks: \n  rich rules: \n\nexternal\n  target: desha256sum: checkpoint.json: 그런 파일이나 디렉터리가 없습니다
+cat: checkpoint.sha256: 그런 파일이나 디렉터리가 없습니다
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint/checkpoint.json'
+k8s-control03 | CHANGED | rc=0 >>
+k8s-control03
+=== /var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint
+합계 16
+-rw-------. 1 root root 6968 2026-09-21 17:50 permanent.json
+-rw-------. 1 root root 6968 2026-09-21 17:50 runtime.json
+sha_ok=YES
+=== /var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint2
+합계 60
+-rw-------. 1 root root  7816 2026-09-21 17:54 checkpoint.json
+-rw-------. 1 root root    65 2026-09-21 17:54 checkpoint.sha256
+-rw-------. 1 root root 30720 2026-09-21 17:54 firewalld-config.tar
+-rw-------. 1 root root  6962 2026-09-21 17:54 permanent.json
+-rw-------. 1 root root  6962 2026-09-21 17:54 runtime.json
+sha_ok=YES
+node= k8s-control03 keys= ['archive_sha256', 'firewalld_files', 'nm_file_hashes', 'node', 'runtime']
+runtime= {"--get-default-zone": "public\n", "--list-all-zones": "block\n  target: %%REJECT%%\n  ingress-priority: 0\n  egress-priority: 0\n  icmp-block-inversion: no\n  interfaces: \n  sources: \n  services: \n  ports: \n  protocols: \n  forward: yes\n  masquerade: no\n  forward-ports: \n  source-ports: \n  icmp-blocks: \n  rich rules: \n\ndmz\n  target: default\n  ingress-priority: 0\n  egress-priority: 0\n  icmp-block-inversion: no\n  interfaces: \n  sources: \n  services: ssh\n  ports: \n  protocols: \n  forward: yes\n  masquerade: no\n  forward-ports: \n  source-ports: \n  icmp-blocks: \n  rich rules: \n\ndrop\n  target: DROP\n  ingress-priority: 0\n  egress-priority: 0\n  icmp-block-inversion: no\n  interfaces: \n  sources: \n  services: \n  ports: \n  protocols: \n  forward: yes\n  masquerade: no\n  forward-ports: \n  source-ports: \n  icmp-blocks: \n  rich rules: \n\nexternal\n  target: desha256sum: checkpoint.json: 그런 파일이나 디렉터리가 없습니다
+cat: checkpoint.sha256: 그런 파일이나 디렉터리가 없습니다
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/var/log/fds-evidence/P1-K8S-01/gate2-attempt01-checkpoint/checkpoint.json'

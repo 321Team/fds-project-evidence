@@ -1,0 +1,172 @@
+# T15 CONFIG EVIDENCE (read-only, from ansible01)
+2026-10-04T17:42:54+09:00
+ansible01
+## IPPool
+k8s-control01 | CHANGED | rc=0 >>
+default-ipv4-ippool cidr=10.244.0.0/16 ipipMode=Never vxlanMode=CrossSubnet natOutgoing=true
+## BGPConfiguration / BGPPeer
+k8s-control01 | CHANGED | rc=0 >>
+apiVersion: v1
+items:
+- apiVersion: crd.projectcalico.org/v1
+  kind: BGPConfiguration
+  metadata:
+    annotations:
+      projectcalico.org/metadata: '{"creationTimestamp":"2026-09-09T12:36:49Z"}'
+    creationTimestamp: "2026-09-09T12:36:49Z"
+    generation: 1
+    name: default
+    resourceVersion: "648"
+    uid: d7ff6dc8-3633-4afc-ab4a-9f812b98a1f8
+  spec:
+    logSeverityScreen: Info
+    serviceLoadBalancerAggregation: Enabled
+kind: List
+metadata:
+  resourceVersion: ""
+No resources found
+## Felix failsafe per node (179 포함 여부)
+k8s-control01 | CHANGED | rc=0 >>
+default in= out=
+node.k8s-control01 in=[{"net":"10.250.10.10/32","port":22,"protocol":"tcp"},{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.105/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.107/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.108/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.103/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.104/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2380,"protocol":"tcp"}] out=[{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.103/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.104/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2380,"protocol":"tcp"}]
+node.k8s-control02 in=[{"net":"10.250.10.10/32","port":22,"protocol":"tcp"},{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.105/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.107/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.108/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.104/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2380,"protocol":"tcp"}] out=[{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.104/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2380,"protocol":"tcp"}]
+node.k8s-control03 in=[{"net":"10.250.10.10/32","port":22,"protocol":"tcp"},{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.105/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.107/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.108/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.103/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2380,"protocol":"tcp"}] out=[{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.103/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.102/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.103/32","port":2380,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2379,"protocol":"tcp"},{"net":"10.1.93.104/32","port":2380,"protocol":"tcp"}]
+node.k8s-worker01 in=[{"net":"10.250.10.10/32","port":22,"protocol":"tcp"}] out=[{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.103/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.104/32","port":6443,"protocol":"tcp"}]
+node.k8s-worker02 in=[{"net":"10.250.10.10/32","port":22,"protocol":"tcp"}] out=[{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.103/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.104/32","port":6443,"protocol":"tcp"}]
+node.k8s-worker03 in=[{"net":"10.250.10.10/32","port":22,"protocol":"tcp"}] out=[{"net":"10.1.93.109/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.102/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.103/32","port":6443,"protocol":"tcp"},{"net":"10.1.93.104/32","port":6443,"protocol":"tcp"}]
+## GNP/HEP 규칙에서 179 / protocol 4 / IPIP 검색
+k8s-control01 | CHANGED | rc=0 >>
+NONE_IN_GNP
+## nodes: listener/device/module
+k8s-control01 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.102 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.102 closed."
+    ],
+    "stdout": "=== k8s-control01 2026-10-04T17:42:58+09:00\n## listen 179?\nNO_LISTENER_179\n## ipip/tunl devices\nNO_TUNL_IPIP_DEVICE\n## vxlan device\n6: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/ether 66:93:dd:d9:3a:f1 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 \n## ipip module\nIPIP_MODULE_NOT_LOADED\n",
+    "stdout_lines": [
+        "=== k8s-control01 2026-10-04T17:42:58+09:00",
+        "## listen 179?",
+        "NO_LISTENER_179",
+        "## ipip/tunl devices",
+        "NO_TUNL_IPIP_DEVICE",
+        "## vxlan device",
+        "6: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000",
+        "    link/ether 66:93:dd:d9:3a:f1 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 ",
+        "## ipip module",
+        "IPIP_MODULE_NOT_LOADED"
+    ]
+}
+k8s-control02 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.103 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.103 closed."
+    ],
+    "stdout": "=== k8s-control02 2026-10-04T17:42:58+09:00\n## listen 179?\nNO_LISTENER_179\n## ipip/tunl devices\nNO_TUNL_IPIP_DEVICE\n## vxlan device\n3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/ether 66:65:66:a4:34:b1 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 \n## ipip module\nIPIP_MODULE_NOT_LOADED\n",
+    "stdout_lines": [
+        "=== k8s-control02 2026-10-04T17:42:58+09:00",
+        "## listen 179?",
+        "NO_LISTENER_179",
+        "## ipip/tunl devices",
+        "NO_TUNL_IPIP_DEVICE",
+        "## vxlan device",
+        "3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000",
+        "    link/ether 66:65:66:a4:34:b1 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 ",
+        "## ipip module",
+        "IPIP_MODULE_NOT_LOADED"
+    ]
+}
+k8s-control03 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.104 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.104 closed."
+    ],
+    "stdout": "=== k8s-control03 2026-10-04T17:42:58+09:00\n## listen 179?\nNO_LISTENER_179\n## ipip/tunl devices\nNO_TUNL_IPIP_DEVICE\n## vxlan device\n3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/ether 66:11:cb:c4:13:75 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 \n## ipip module\nIPIP_MODULE_NOT_LOADED\n",
+    "stdout_lines": [
+        "=== k8s-control03 2026-10-04T17:42:58+09:00",
+        "## listen 179?",
+        "NO_LISTENER_179",
+        "## ipip/tunl devices",
+        "NO_TUNL_IPIP_DEVICE",
+        "## vxlan device",
+        "3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000",
+        "    link/ether 66:11:cb:c4:13:75 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 ",
+        "## ipip module",
+        "IPIP_MODULE_NOT_LOADED"
+    ]
+}
+k8s-worker03 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.108 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.108 closed."
+    ],
+    "stdout": "=== k8s-worker03 2026-10-04T17:42:58+09:00\n## listen 179?\nNO_LISTENER_179\n## ipip/tunl devices\nNO_TUNL_IPIP_DEVICE\n## vxlan device\n3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/ether 66:fc:06:ba:9d:0e brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 \n## ipip module\nIPIP_MODULE_NOT_LOADED\n",
+    "stdout_lines": [
+        "=== k8s-worker03 2026-10-04T17:42:58+09:00",
+        "## listen 179?",
+        "NO_LISTENER_179",
+        "## ipip/tunl devices",
+        "NO_TUNL_IPIP_DEVICE",
+        "## vxlan device",
+        "3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000",
+        "    link/ether 66:fc:06:ba:9d:0e brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 ",
+        "## ipip module",
+        "IPIP_MODULE_NOT_LOADED"
+    ]
+}
+k8s-worker02 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.107 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.107 closed."
+    ],
+    "stdout": "=== k8s-worker02 2026-10-04T17:42:58+09:00\n## listen 179?\nNO_LISTENER_179\n## ipip/tunl devices\nNO_TUNL_IPIP_DEVICE\n## vxlan device\n3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/ether 66:ff:2b:bc:03:a3 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 \n## ipip module\nIPIP_MODULE_NOT_LOADED\n",
+    "stdout_lines": [
+        "=== k8s-worker02 2026-10-04T17:42:58+09:00",
+        "## listen 179?",
+        "NO_LISTENER_179",
+        "## ipip/tunl devices",
+        "NO_TUNL_IPIP_DEVICE",
+        "## vxlan device",
+        "3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000",
+        "    link/ether 66:ff:2b:bc:03:a3 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 ",
+        "## ipip module",
+        "IPIP_MODULE_NOT_LOADED"
+    ]
+}
+k8s-worker01 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.105 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.105 closed."
+    ],
+    "stdout": "=== k8s-worker01 2026-10-04T17:42:58+09:00\n## listen 179?\nNO_LISTENER_179\n## ipip/tunl devices\nNO_TUNL_IPIP_DEVICE\n## vxlan device\n3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/ether 66:c1:17:77:92:d1 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 \n## ipip module\nIPIP_MODULE_NOT_LOADED\n",
+    "stdout_lines": [
+        "=== k8s-worker01 2026-10-04T17:42:58+09:00",
+        "## listen 179?",
+        "NO_LISTENER_179",
+        "## ipip/tunl devices",
+        "NO_TUNL_IPIP_DEVICE",
+        "## vxlan device",
+        "3: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000",
+        "    link/ether 66:c1:17:77:92:d1 brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 ",
+        "## ipip module",
+        "IPIP_MODULE_NOT_LOADED"
+    ]
+}

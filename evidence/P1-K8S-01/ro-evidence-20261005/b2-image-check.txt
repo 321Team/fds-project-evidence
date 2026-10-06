@@ -1,0 +1,153 @@
+# B2 IMAGE CHECK + T09 remaining nodes (read-only)
+2026-10-04T21:11:05+09:00
+ansible01
+## transaction-api pods: node image imageID
+k8s-control01 | CHANGED | rc=0 >>
+transaction-api-b784c8c5d-jn7jc k8s-worker02 sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8 10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+transaction-api-b784c8c5d-rq9b6 k8s-worker01 sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8 10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+transaction-api-b784c8c5d-szcdq k8s-worker02 sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8 10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+## deployment image
+k8s-control01 | CHANGED | rc=0 >>
+10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+## crictl images on workers (transaction-api / fds-engine, digests)
+k8s-worker03 | CHANGED | rc=0 >>
+k8s-worker03
+10.1.93.54/fds/transaction-api   latest                                   <none>                                                                    sha256:52c579c79f5cddb744c4f3e509e758c8f5d4558f6dfa2cba862699dd7461ce57 
+10.1.93.54/fds/transaction-api   worker-push-denytest                     <none>                                                                    sha256:52c579c79f5cddb744c4f3e509e758c8f5d4558f6dfa2cba862699dd7461ce57 
+10.1.93.54/fds/fds-engine        <none>                                   sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369   sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b 
+10.1.93.54/fds/transaction-api   <none>                                   sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33   sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8 
+k8s-worker02 | CHANGED | rc=0 >>
+k8s-worker02
+10.1.93.54/fds/transaction-api      latest                                   <none>                                                                    sha256:52c579c79f5cddb744c4f3e509e758c8f5d4558f6dfa2cba862699dd7461ce
+10.1.93.54/fds/transaction-api      worker-push-denytest                     <none>                                                                    sha256:52c579c79f5cddb744c4f3e509e758c8f5d4558f6dfa2cba862699dd7461ce
+10.1.93.54/fds/fds-engine           <none>                                   sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369   sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d
+10.1.93.54/fds/transaction-api      <none>                                   sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33   sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdd
+k8s-worker01 | CHANGED | rc=0 >>
+k8s-worker01
+10.1.93.54/fds/transaction-api      latest                                   <none>                                                                    sha256:52c579c79f5cddb744c4f3e509e758c8f5d4558f6dfa2cba862699dd7461ce
+10.1.93.54/fds/fds-engine           <none>                                   sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369   sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d
+10.1.93.54/fds/transaction-api      <none>                                   sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33   sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdd
+## T09 node -> .52/.53 on remaining nodes
+k8s-control03 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.104 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.104 closed."
+    ],
+    "stdout": "=== k8s-control03 2026-10-04T21:11:08+09:00\n-- dig @10.1.93.52  quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 799\nquay.io.\t\t41\tIN\tA\t50.19.190.19\nquay.io.\t\t41\tIN\tA\t52.1.194.203\nquay.io.\t\t41\tIN\tA\t98.84.185.151\n-- dig @10.1.93.52  nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 56364\n-- dig @10.1.93.52 +tcp quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 30442\nquay.io.\t\t41\tIN\tA\t34.235.62.38\nquay.io.\t\t41\tIN\tA\t98.84.185.151\nquay.io.\t\t41\tIN\tA\t184.193.144.223\n-- dig @10.1.93.52 +tcp nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 8855\n-- dig @10.1.93.53  quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 53479\nquay.io.\t\t24\tIN\tA\t52.86.244.251\nquay.io.\t\t24\tIN\tA\t184.193.144.223\nquay.io.\t\t24\tIN\tA\t34.196.223.249\n-- dig @10.1.93.53  nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 15105\n-- dig @10.1.93.53 +tcp quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 41637\nquay.io.\t\t24\tIN\tA\t54.83.51.147\nquay.io.\t\t24\tIN\tA\t35.175.54.45\nquay.io.\t\t24\tIN\tA\t98.84.185.151\n-- dig @10.1.93.53 +tcp nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 39575\n",
+    "stdout_lines": [
+        "=== k8s-control03 2026-10-04T21:11:08+09:00",
+        "-- dig @10.1.93.52  quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 799",
+        "quay.io.\t\t41\tIN\tA\t50.19.190.19",
+        "quay.io.\t\t41\tIN\tA\t52.1.194.203",
+        "quay.io.\t\t41\tIN\tA\t98.84.185.151",
+        "-- dig @10.1.93.52  nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 56364",
+        "-- dig @10.1.93.52 +tcp quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 30442",
+        "quay.io.\t\t41\tIN\tA\t34.235.62.38",
+        "quay.io.\t\t41\tIN\tA\t98.84.185.151",
+        "quay.io.\t\t41\tIN\tA\t184.193.144.223",
+        "-- dig @10.1.93.52 +tcp nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 8855",
+        "-- dig @10.1.93.53  quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 53479",
+        "quay.io.\t\t24\tIN\tA\t52.86.244.251",
+        "quay.io.\t\t24\tIN\tA\t184.193.144.223",
+        "quay.io.\t\t24\tIN\tA\t34.196.223.249",
+        "-- dig @10.1.93.53  nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 15105",
+        "-- dig @10.1.93.53 +tcp quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 41637",
+        "quay.io.\t\t24\tIN\tA\t54.83.51.147",
+        "quay.io.\t\t24\tIN\tA\t35.175.54.45",
+        "quay.io.\t\t24\tIN\tA\t98.84.185.151",
+        "-- dig @10.1.93.53 +tcp nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 39575"
+    ]
+}
+k8s-worker03 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.108 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.108 closed."
+    ],
+    "stdout": "=== k8s-worker03 2026-10-04T21:11:08+09:00\n-- dig @10.1.93.52  quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 16421\nquay.io.\t\t41\tIN\tA\t52.1.194.203\nquay.io.\t\t41\tIN\tA\t34.202.56.160\nquay.io.\t\t41\tIN\tA\t54.83.51.147\n-- dig @10.1.93.52  nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 39685\n-- dig @10.1.93.52 +tcp quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49726\nquay.io.\t\t41\tIN\tA\t50.19.190.19\nquay.io.\t\t41\tIN\tA\t98.84.185.151\nquay.io.\t\t41\tIN\tA\t35.175.54.45\n-- dig @10.1.93.52 +tcp nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 18030\n-- dig @10.1.93.53  quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21837\nquay.io.\t\t24\tIN\tA\t34.196.223.249\nquay.io.\t\t24\tIN\tA\t54.83.51.147\nquay.io.\t\t24\tIN\tA\t34.202.56.160\n-- dig @10.1.93.53  nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 22123\n-- dig @10.1.93.53 +tcp quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 12622\nquay.io.\t\t24\tIN\tA\t54.83.51.147\nquay.io.\t\t24\tIN\tA\t184.193.144.223\nquay.io.\t\t24\tIN\tA\t35.175.54.45\n-- dig @10.1.93.53 +tcp nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 43486\n",
+    "stdout_lines": [
+        "=== k8s-worker03 2026-10-04T21:11:08+09:00",
+        "-- dig @10.1.93.52  quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 16421",
+        "quay.io.\t\t41\tIN\tA\t52.1.194.203",
+        "quay.io.\t\t41\tIN\tA\t34.202.56.160",
+        "quay.io.\t\t41\tIN\tA\t54.83.51.147",
+        "-- dig @10.1.93.52  nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 39685",
+        "-- dig @10.1.93.52 +tcp quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49726",
+        "quay.io.\t\t41\tIN\tA\t50.19.190.19",
+        "quay.io.\t\t41\tIN\tA\t98.84.185.151",
+        "quay.io.\t\t41\tIN\tA\t35.175.54.45",
+        "-- dig @10.1.93.52 +tcp nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 18030",
+        "-- dig @10.1.93.53  quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21837",
+        "quay.io.\t\t24\tIN\tA\t34.196.223.249",
+        "quay.io.\t\t24\tIN\tA\t54.83.51.147",
+        "quay.io.\t\t24\tIN\tA\t34.202.56.160",
+        "-- dig @10.1.93.53  nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 22123",
+        "-- dig @10.1.93.53 +tcp quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 12622",
+        "quay.io.\t\t24\tIN\tA\t54.83.51.147",
+        "quay.io.\t\t24\tIN\tA\t184.193.144.223",
+        "quay.io.\t\t24\tIN\tA\t35.175.54.45",
+        "-- dig @10.1.93.53 +tcp nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 43486"
+    ]
+}
+k8s-control02 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "PTY allocation request failed\r\nShared connection to 10.1.93.103 closed.\r\n",
+    "stderr_lines": [
+        "PTY allocation request failed",
+        "Shared connection to 10.1.93.103 closed."
+    ],
+    "stdout": "=== k8s-control02 2026-10-04T21:11:08+09:00\n-- dig @10.1.93.52  quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42862\nquay.io.\t\t41\tIN\tA\t98.84.185.151\nquay.io.\t\t41\tIN\tA\t35.175.54.45\nquay.io.\t\t41\tIN\tA\t52.1.194.203\n-- dig @10.1.93.52  nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 41523\n-- dig @10.1.93.52 +tcp quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 20672\nquay.io.\t\t41\tIN\tA\t54.83.51.147\nquay.io.\t\t41\tIN\tA\t98.84.185.151\nquay.io.\t\t41\tIN\tA\t34.235.62.38\n-- dig @10.1.93.52 +tcp nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 11421\n-- dig @10.1.93.53  quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36092\nquay.io.\t\t24\tIN\tA\t54.83.51.147\nquay.io.\t\t24\tIN\tA\t34.196.223.249\nquay.io.\t\t24\tIN\tA\t98.84.185.151\n-- dig @10.1.93.53  nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 61188\n-- dig @10.1.93.53 +tcp quay.io\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49639\nquay.io.\t\t24\tIN\tA\t54.83.51.147\nquay.io.\t\t24\tIN\tA\t35.175.54.45\nquay.io.\t\t24\tIN\tA\t98.84.185.151\n-- dig @10.1.93.53 +tcp nonexistent-t09.fds.internal\n;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 34621\n",
+    "stdout_lines": [
+        "=== k8s-control02 2026-10-04T21:11:08+09:00",
+        "-- dig @10.1.93.52  quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42862",
+        "quay.io.\t\t41\tIN\tA\t98.84.185.151",
+        "quay.io.\t\t41\tIN\tA\t35.175.54.45",
+        "quay.io.\t\t41\tIN\tA\t52.1.194.203",
+        "-- dig @10.1.93.52  nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 41523",
+        "-- dig @10.1.93.52 +tcp quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 20672",
+        "quay.io.\t\t41\tIN\tA\t54.83.51.147",
+        "quay.io.\t\t41\tIN\tA\t98.84.185.151",
+        "quay.io.\t\t41\tIN\tA\t34.235.62.38",
+        "-- dig @10.1.93.52 +tcp nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 11421",
+        "-- dig @10.1.93.53  quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36092",
+        "quay.io.\t\t24\tIN\tA\t54.83.51.147",
+        "quay.io.\t\t24\tIN\tA\t34.196.223.249",
+        "quay.io.\t\t24\tIN\tA\t98.84.185.151",
+        "-- dig @10.1.93.53  nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 61188",
+        "-- dig @10.1.93.53 +tcp quay.io",
+        ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 49639",
+        "quay.io.\t\t24\tIN\tA\t54.83.51.147",
+        "quay.io.\t\t24\tIN\tA\t35.175.54.45",
+        "quay.io.\t\t24\tIN\tA\t98.84.185.151",
+        "-- dig @10.1.93.53 +tcp nonexistent-t09.fds.internal",
+        ";; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 34621"
+    ]
+}
