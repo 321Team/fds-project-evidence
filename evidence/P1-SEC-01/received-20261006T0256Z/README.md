@@ -44,7 +44,7 @@ rollback-test(`run_id=20261006023150-006b185d`, 시작 02:31:51Z = **11:31:51 KS
 
 ## 실행 순서와 기록상 편차 (은닉 아님)
 
-1. **시작이 승인 시각보다 늦었다.** 승인 T0는 11:30이었고 실제 시작은 11:31:51 KST(1분 51초 늦음)이다. 이 편차는 [#19 AC-05 결과 기록](https://github.com/321Team/fds-project-baseline/issues/19#issuecomment-6008210758)에 적었으며 Review Owner의 시작 시각 확인은 아직 받지 못했다.
+1. **시작이 승인 시각보다 늦었다.** 승인 T0는 11:30이었고 실제 시작은 11:31:51 KST(1분 51초 늦음)이다. 이 편차는 [#19 AC-05 결과 기록](https://github.com/321Team/fds-project-baseline/issues/19#issuecomment-6008210758)에 적었으며 시작 시각은 권욱(Review Owner)이 카카오톡으로 확인했다(사후 확인, 카톡 원문은 이 폴더에 없음).
 2. precheck(11:06 KST)는 시험 직전 읽기 점검이며 Gate 대체 아님. 3CP 설정 해시 일치(`pre-3cp-config-sha.txt`)와 복구 사본 `/root/enc-config-prechange-20261006.yaml`(모드 600, 소유 root:root, 원본과 해시 동일, `pre-enc-backup.txt`)은 두 아카이브 안의 서버 원본에 기록되어 있다.
 3. **이 폴더에는 LB 제외·복귀(`haproxy`) 조작 기록이 없다.** 시험 시간은 약 47초이며 이 아카이브에서 LB 제외 여부를 확인할 수 있는 파일은 없다. LB 백엔드 상태는 사후 콘솔 조회만 있다.
 
