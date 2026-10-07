@@ -1,0 +1,467 @@
+{
+  "stage": "mon",
+  "hostname": "k8s-control01",
+  "uid": 0,
+  "started_utc": "2026-10-07T17:14:31.016313+00:00",
+  "source_sha256": "63d35599adfcc392626175908cbea0b2eb9d50e259ad98cc50fb2a947b626be8",
+  "scope": "API get only; projected output, raw stdout hash; no traffic tests or configuration writes",
+  "queries": [
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "get",
+        "configmaps",
+        "-A",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:14:31.016324+00:00",
+      "projection": "config",
+      "rc": 0,
+      "stderr": "",
+      "raw_stdout_sha256": "2cda236237c5f5c217bf5005e46a0f3569aa7a6d7317f22982fe60388164e4e5",
+      "list_metadata": {
+        "resourceVersion": ""
+      },
+      "items": [
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "ci-cd",
+            "uid": "cf817280-8b2c-4700-a1fc-32759580b43a",
+            "resourceVersion": "1066094"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "default",
+            "uid": "c6c6047c-2992-41a9-af40-fb6b7a0e38a8",
+            "resourceVersion": "329"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "fds-app",
+            "uid": "9ab18dfe-714b-4c9f-80ea-c01522c0ca52",
+            "resourceVersion": "1066086"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "icr39-probe",
+            "uid": "6466f9be-2319-4e1c-9ab1-b0df5ee8210d",
+            "resourceVersion": "2229504"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "kube-node-lease",
+            "uid": "e9580ec0-7f79-48c7-8bf4-c7f93487f35d",
+            "resourceVersion": "326"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "cluster-info",
+            "namespace": "kube-public",
+            "uid": "b244674a-e0f0-4249-8943-3085a5f58d94",
+            "resourceVersion": "872959"
+          },
+          "data_sha256": {
+            "kubeconfig": "c9327ea2c6c951c4dc899a3c28c7edb91ceb8edc31d9c1b17c0de992192199b2"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "kube-public",
+            "uid": "8616e696-ea5d-4d62-bba6-3080f31202ed",
+            "resourceVersion": "327"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "calico-config",
+            "namespace": "kube-system",
+            "uid": "59aa98c7-f00c-4abb-a880-0dcc5f4c48f3",
+            "resourceVersion": "472"
+          },
+          "data_sha256": {
+            "calico_backend": "4b04463ed778727b3414d3021e98ec6ab5a0d72e65194a35125910210d80f080",
+            "cni_network_config": "227dcb5f40b6a8070656b299d81370aa37d5f6583efcfafa8b3ecd646ede283e",
+            "typha_service_name": "140bedbf9c3f6d56a9846d2ba7088798683f4da0c248231336e6a05679e4fdfe",
+            "veth_mtu": "b0193ceb57d22ae3f35716d0e3d5ee4a45452b7b3af33fdc710013b6a65b3b67"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "coredns",
+            "namespace": "kube-system",
+            "uid": "0860ad45-49ce-4ed5-8ea2-0b45ae20d57f",
+            "resourceVersion": "244"
+          },
+          "data_sha256": {
+            "Corefile": "22847ad9af7452500838865a67e018076226d8fbfcabf54f8673973571f470f6"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "extension-apiserver-authentication",
+            "namespace": "kube-system",
+            "uid": "7d4ec685-f0f7-49eb-ba31-d1312da3f28b",
+            "resourceVersion": "19"
+          },
+          "data_sha256": {
+            "client-ca-file": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c",
+            "requestheader-allowed-names": "c628b9d6fd124b37c28dd9052c25eab7f1c757d1b1b8a4279f5652af3a8e11c5",
+            "requestheader-client-ca-file": "957a2cf6888707ae0cca835db7492816bb0c228ff0cf0ea74ae894884ae1e057",
+            "requestheader-extra-headers-prefix": "c5d1b43551d44d9649771ab74497ff6ba777eb51137ce87027700d31176589ea",
+            "requestheader-group-headers": "6961a4b31119792a3e611c2f07fed2b48eca6e3bd2f63d8a26c1c9aeb9ff2e82",
+            "requestheader-username-headers": "f1002fe7d9b5fcd845d3e0fcd0740e241d507ae025a4efd6f2058375a1e4934d"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-apiserver-legacy-service-account-token-tracking",
+            "namespace": "kube-system",
+            "uid": "28c7f33e-0ae9-4c3f-bb15-ea50eaa48a03",
+            "resourceVersion": "46"
+          },
+          "data_sha256": {
+            "since": "9b723f4d91897e1a8ac6f8ed3cfea22f8423dbfe61aa4748593398110403cc23"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-proxy",
+            "namespace": "kube-system",
+            "uid": "a32c45ca-b370-4aee-8fca-4515dcb56233",
+            "resourceVersion": "260",
+            "labels": {
+              "app": "kube-proxy"
+            }
+          },
+          "data_sha256": {
+            "config.conf": "4182025b184c550c11b5e61368550229f26e6a2759ae9f35641212466f4a1446",
+            "kubeconfig.conf": "5f34ebcbc53c0f74fd295e60553346bb1315b8ff49c24c680a4352967edd3229"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "kube-system",
+            "uid": "d6bebb15-1229-4853-bf90-ef3bdd5c4d79",
+            "resourceVersion": "328"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kubeadm-config",
+            "namespace": "kube-system",
+            "uid": "6110ecac-468f-446e-a89a-9f8a3fb009fe",
+            "resourceVersion": "211"
+          },
+          "data_sha256": {
+            "ClusterConfiguration": "cfd4b2d5645edbc72dfe5574a9fb373f084dca714415b0a548475ac51066cc62"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kubelet-config",
+            "namespace": "kube-system",
+            "uid": "c652d278-fd50-4989-9c53-81bfa20ee616",
+            "resourceVersion": "214"
+          },
+          "data_sha256": {
+            "kubelet": "26488e9fc7c5cb5fdda9996cda2e6651a9af5febce07ea02de11bd3ef3f49e9c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "alertmanager-config",
+            "namespace": "monitoring-api",
+            "uid": "f35f078f-6d71-4c1b-abcc-76ababd814fb",
+            "resourceVersion": "1180928"
+          },
+          "data_sha256": {
+            "alertmanager.yml": "61bdce98a54d2d9b54bf5184c84489262355ebda5004d364406ed5c07883ee6d"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "grafana-dashboards",
+            "namespace": "monitoring-api",
+            "uid": "45ce87bf-6cec-410f-b626-46a517512df0",
+            "resourceVersion": "2879804"
+          },
+          "data_sha256": {
+            "application-fds.json": "acb71dc6fccc8fcaa42537e12c530d70376587c4ac01c874eb121f0b1abb4e9c",
+            "fds-overview.json": "2b6c20b0dd170db80e8552f4ef381ec5ce978c5c3f544300a97979b4b72babc9",
+            "kubernetes-workload.json": "3d0ef2d1a85fb5217fc0724d0211ab5912be0d5c3133ec2e185e36bba8667a9a",
+            "node-monitoring-health.json": "d762bac80fe377d2d967e3a36bcd11f4d6c3413c7d9aa661ffc0a4faeafedfd8"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "grafana-dashboards-provider",
+            "namespace": "monitoring-api",
+            "uid": "a4f9f7ad-964e-4bb5-8d9b-7388daae0177",
+            "resourceVersion": "2879803"
+          },
+          "data_sha256": {
+            "provider.yaml": "077da8362b15745f8705fd79dce98c22f5b8523b689be8bdf156ae924d2809b5"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "grafana-datasources",
+            "namespace": "monitoring-api",
+            "uid": "c6db9283-b592-499a-8117-1201ab0ea7ea",
+            "resourceVersion": "3262602"
+          },
+          "data_sha256": {
+            "datasource.yaml": "952e20511d68c79ddff38ca7fd42f04ad7dd8edcc08608d0fcadb37bd29fcf76"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "monitoring-api",
+            "uid": "2c395576-5b10-4170-9182-7161b73fbf7b",
+            "resourceVersion": "1066091"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "monitor01-root-ca",
+            "namespace": "monitoring-api",
+            "uid": "541552dd-7953-423c-86e0-2fdf498bac04",
+            "resourceVersion": "2238210"
+          },
+          "data_sha256": {
+            "fds-root-ca.crt": "20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "prometheus-alert-rules",
+            "namespace": "monitoring-api",
+            "uid": "12c7006e-3289-40db-b15d-207f6b4966bf",
+            "resourceVersion": "2879801"
+          },
+          "data_sha256": {
+            "alert-rules.yml": "2ffbb7770c2f2c21cfdc6c810567b2d394a49ee5d0b9362d934427c8981c8695"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "prometheus-alert-rules-optional",
+            "namespace": "monitoring-api",
+            "uid": "6f2f6742-2756-4e05-8496-e454f3107164",
+            "resourceVersion": "1115904"
+          },
+          "data_sha256": {
+            "alert-rules-optional.yml": "3d2a0baabd2ecddac0d67585bf8910430fc445266b70c2935d4941a4b7739e78"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "prometheus-config",
+            "namespace": "monitoring-api",
+            "uid": "cf73d5e5-9c5e-4d50-9208-0afef9e5f1ff",
+            "resourceVersion": "3044949"
+          },
+          "data_sha256": {
+            "prometheus.yml": "c9032a2652dce080acf84af91f5c91acae96853472a4b0d599accb37de56da4c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "prometheus-p0-test-alert",
+            "namespace": "monitoring-api",
+            "uid": "fc3593b2-2937-49e0-acc9-8709dd1139a3",
+            "resourceVersion": "1181424"
+          },
+          "data_sha256": {
+            "p0-test-alert.yml": "c97c60256c4caa64cd9699539eccbb5d60f18907b1c8190cea280e0d7e8fb22c"
+          },
+          "binaryData_keys": []
+        },
+        {
+          "apiVersion": "v1",
+          "kind": "ConfigMap",
+          "metadata": {
+            "name": "kube-root-ca.crt",
+            "namespace": "monitoring-node",
+            "uid": "25e37aa6-5108-43de-a4d7-d2f91b7c0c74",
+            "resourceVersion": "1066088"
+          },
+          "data_sha256": {
+            "ca.crt": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+          },
+          "binaryData_keys": []
+        }
+      ],
+      "finished_utc": "2026-10-07T17:14:31.061990+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "get",
+        "prometheusrules.monitoring.coreos.com",
+        "-A",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:14:31.062005+00:00",
+      "projection": "spec",
+      "rc": 1,
+      "stderr": "error: the server doesn't have a resource type \"prometheusrules\"\n",
+      "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finished_utc": "2026-10-07T17:14:31.098726+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "get",
+        "servicemonitors.monitoring.coreos.com",
+        "-A",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:14:31.098742+00:00",
+      "projection": "meta",
+      "rc": 1,
+      "stderr": "error: the server doesn't have a resource type \"servicemonitors\"\n",
+      "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finished_utc": "2026-10-07T17:14:31.131648+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "get",
+        "podmonitors.monitoring.coreos.com",
+        "-A",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:14:31.131664+00:00",
+      "projection": "meta",
+      "rc": 1,
+      "stderr": "error: the server doesn't have a resource type \"podmonitors\"\n",
+      "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finished_utc": "2026-10-07T17:14:31.179968+00:00"
+    }
+  ],
+  "finished_utc": "2026-10-07T17:14:31.179981+00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "source_checks": [
+    {
+      "stage": "policy",
+      "source": "collect.py",
+      "sha256": "63d35599adfcc392626175908cbea0b2eb9d50e259ad98cc50fb2a947b626be8",
+      "source_matches_server_record": true
+    },
+    {
+      "stage": "mon",
+      "source": "collect.py",
+      "sha256": "63d35599adfcc392626175908cbea0b2eb9d50e259ad98cc50fb2a947b626be8",
+      "source_matches_server_record": true
+    },
+    {
+      "stage": "mon-config",
+      "source": "collect-mon.py",
+      "sha256": "0626340e612c370d66b99985df10861f9f25ff74c70c689f3a85634ea3d1f1e4",
+      "source_matches_server_record": true
+    },
+    {
+      "stage": "mon-live",
+      "source": "collect-mon-live.py",
+      "sha256": "76df5716b16da62036b821aae6c9c14fa8e4c5ebf8ee25b96dc93004033d6123",
+      "source_matches_server_record": true
+    }
+  ],
+  "raw_response_limit": "Only hashes and whitelisted projections retained; raw response bytes not revalidated locally"
+}
