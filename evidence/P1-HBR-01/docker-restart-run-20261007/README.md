@@ -40,3 +40,5 @@ Record ID: **P1-HBR-01** ([baseline #13](https://github.com/321Team/fds-project-
 3. 공지 전송 시각·연락 경로·#19/APP 실제 종료 시각의 숫자는 이 폴더에 원본이 없다(실행자 구두 확인).
 4. 원인 분석, 로깅 의존 순서 개선, 영구 verifier 변경은 이 폴더 범위가 아니다.
 5. `docker-go4-pre-…T232344.txt`는 파일명이 pre이지만 사후 수집이다(사전 Gate 스크립트를 다시 실행한 것).
+6. **시험 후 guard 파일 해시는 이 폴더에 원본 파일이 없고 터미널 출력 전사이다.** 23:46:52 KST ansible01에서 `sha256sum /etc/p1-hbr-ac04.nft` = `cdc84effbb370ac394408294e21a4d3cbb67c3d69e93ea53e86667d4326cf5cc`(시험 전 22:49:38 값과 일치), `fds-harbor-ac04-guard` `ActiveEnterTimestamp=Tue 2026-10-06 10:04:40 KST`(시험 중 재시작 없음). 출력 파일은 ansible01 `~/docker-go4-post4-20261007T2346*.txt`에 있으나 이 PR에는 포함하지 않았다. 23:10·23:23 수집 파일에는 해시 줄이 필터로 빠져 있어(헤더만 있음) 이 확인으로 보완했다.
+7. 컨테이너 10개의 전체 ID 집합은 22:49:38, 23:10:05, 23:23:44 세 수집 파일에서 동일하다(파일에서 직접 대조).
