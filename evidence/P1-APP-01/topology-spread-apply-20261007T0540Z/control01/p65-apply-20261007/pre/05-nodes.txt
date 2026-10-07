@@ -1,0 +1,6 @@
+k8s-control01 ready=True unsched= host=k8s-control01 taints=[{"effect":"NoSchedule","key":"node-role.kubernetes.io/control-plane"}]
+k8s-control02 ready=True unsched= host=k8s-control02 taints=[{"effect":"NoSchedule","key":"node-role.kubernetes.io/control-plane"}]
+k8s-control03 ready=True unsched= host=k8s-control03 taints=[{"effect":"NoSchedule","key":"node-role.kubernetes.io/control-plane"}]
+k8s-worker01 ready=True unsched= host=k8s-worker01 taints=
+k8s-worker02 ready=True unsched= host=k8s-worker02 taints=
+k8s-worker03 ready=True unsched= host=k8s-worker03 taints=
