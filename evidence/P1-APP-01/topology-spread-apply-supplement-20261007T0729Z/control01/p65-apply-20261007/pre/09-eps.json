@@ -1,0 +1,98 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.244.69.230"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "k8s-worker02",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "transaction-api-b784c8c5d-7wfj4",
+                        "namespace": "fds-app",
+                        "uid": "c9f71bc0-ea02-4646-a11a-78207e159d17"
+                    }
+                },
+                {
+                    "addresses": [
+                        "10.244.69.233"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "k8s-worker02",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "transaction-api-b784c8c5d-h9zvb",
+                        "namespace": "fds-app",
+                        "uid": "be70f3cf-4b02-4d47-8118-ad2b2fe7024b"
+                    }
+                },
+                {
+                    "addresses": [
+                        "10.244.69.234"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "k8s-worker02",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "transaction-api-b784c8c5d-vvtmz",
+                        "namespace": "fds-app",
+                        "uid": "4219f70c-0dd3-4ad5-b825-5363f834983f"
+                    }
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "creationTimestamp": "2026-09-27T06:48:51Z",
+                "generateName": "transaction-api-nodeport-",
+                "generation": 92,
+                "labels": {
+                    "app": "transaction-api",
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "transaction-api-nodeport"
+                },
+                "name": "transaction-api-nodeport-6shht",
+                "namespace": "fds-app",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "transaction-api-nodeport",
+                        "uid": "49f24245-ac58-451e-b4f1-7183ac917bb1"
+                    }
+                ],
+                "resourceVersion": "4346956",
+                "uid": "44b89beb-3d18-439b-b3b0-8ab57a6b21b4"
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
