@@ -1,0 +1,108 @@
+{
+  "verified_at": "2026-10-07T11:40:42.875281+00:00",
+  "ci": {
+    "artifact_id": 11479579258,
+    "artifact_sha256": "e46958722d6df05bd4cb332954412468e3f2e8e97955946f9997b982c5be61b4",
+    "status": "PASS",
+    "source_commit": "d6914a8f70ce6439979dfbeee902481a648f6dea",
+    "syntax_counts": {
+      "2.16.19": 36,
+      "2.21.3": 36
+    },
+    "fixture_steps": [
+      {
+        "name": "unit-tests",
+        "rc": 0
+      },
+      {
+        "name": "guards",
+        "rc": 0
+      },
+      {
+        "name": "contract",
+        "rc": 0
+      },
+      {
+        "name": "b2-conditions-2.16.19",
+        "rc": 0
+      },
+      {
+        "name": "dns-2.16.19",
+        "rc": 0
+      },
+      {
+        "name": "b2-conditions-2.21.3",
+        "rc": 0
+      },
+      {
+        "name": "dns-2.21.3",
+        "rc": 0
+      }
+    ],
+    "manifests": {
+      "SHA256SUMS": {
+        "verified": 1007,
+        "explicit_cache_exclusions": 0
+      },
+      "fixtures/SHA256SUMS": {
+        "verified": 682,
+        "explicit_cache_exclusions": 3
+      }
+    },
+    "production_apply": false,
+    "operational_engine_transition": false,
+    "scope": "syntax and localhost fixtures; no deployment"
+  },
+  "host_archive_sha256": "ef035835c0aa02f2a48e4f027b270b4694fa9358faf2999a713aa0cc4dd95af7",
+  "host_manifest_files": 16,
+  "nested_host_manifest_files": 9,
+  "host": {
+    "status": "SESSION_ENDED_REQUIRES_CI_REVIEW",
+    "mode": "serve",
+    "account": "ansible-verify",
+    "uid": 1001,
+    "started_at": "2026-10-07T11:31:49.482514+00:00",
+    "repository": "321Team/infra-ansible",
+    "runner_name": "ansible-ci-e60c795b24ca4234ab95eabaf12ecf5b",
+    "github_actions_verdict": "VERIFY_RUN_AND_ARTIFACT",
+    "production_apply": false,
+    "engine_transition": false,
+    "runner_registration_attempted": true,
+    "bundle_sha256": "e2fbefffa01b8a0f401cd4623b497944d0e41264ad13343d42ff2b272707d5c6",
+    "image_id": "sha256:3f96787b2a8db29294002677a3e733689439952ad9e95db721acf8e16ff601f1",
+    "diagnostic_errors": [],
+    "container_cleanup": "REMOVED",
+    "ended_at": "2026-10-07T11:40:02.970661+00:00"
+  },
+  "container": {
+    "mode": "serve",
+    "status": "SESSION_ENDED",
+    "identity_checks": {
+      "utf8_bom": true,
+      "json_parsed": true,
+      "object": true,
+      "url_matches": true,
+      "name_matches": true,
+      "id_valid": true
+    },
+    "listener_version_matches": true,
+    "job_finished_observed": true,
+    "ipc_preflight_passed": true,
+    "configure_rc": 0,
+    "remove_rc": null,
+    "listener_rc": 0,
+    "reported_job_result": "Succeeded",
+    "runner": {
+      "agentId": 58,
+      "agentName": "ansible-ci-e60c795b24ca4234ab95eabaf12ecf5b",
+      "gitHubUrl": "https://github.com/321Team/infra-ansible"
+    },
+    "github_actions_verdict": "VERIFY_RUN_AND_ARTIFACT"
+  },
+  "cleanup": {
+    "runner": "REMOVED",
+    "proxy": "REMOVED",
+    "workspace": "REMOVED"
+  },
+  "head_unchanged": true
+}
