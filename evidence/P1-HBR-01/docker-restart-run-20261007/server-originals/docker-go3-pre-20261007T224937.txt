@@ -1,0 +1,320 @@
+10.1.93.54 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "Shared connection to 10.1.93.54 closed.
+",
+    "stderr_lines": [
+        "Shared connection to 10.1.93.54 closed."
+    ],
+    "stdout": "/home/svc_ansible/.ansible/tmp/ansible-tmp-1791380977.9826288-11702-137660623736504/ac04-gate-v2.py:11: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  print("KST", datetime.datetime.utcnow() + datetime.timedelta(hours=9))
+KST 2026-10-07 22:49:38.147571
+== uptime rc=0
+2026-10-06 10:04:31
+ 22:49:38 up 1 day, 12:45,  2 users,  load average: 0.21, 0.14, 0.14
+original-state.json sha256 1090de081eb5969f2fc5e1d890f6f022494cf652356a6b8d541be70d6b62d83f 4066
+== PRESTATE sha256sum -c rc=0
+original-state.json: 성공
+original-public.xml: 성공
+iptables-filter-before.txt: 성공
+iptables-nat-before.txt: 성공
+nft-ruleset-before.txt: 성공
+== guard file sha256 rc=0
+cdc84effbb370ac394408294e21a4d3cbb67c3d69e93ea53e86667d4326cf5cc  /etc/p1-hbr-ac04.nft
+== nft -c syntax only rc=0
+
+== forward_rules rc=0 current:
+-P FORWARD DROP
+-A FORWARD -j DOCKER-USER
+-A FORWARD -j DOCKER-FORWARD
+== docker_user_rules rc=0 current:
+-N DOCKER-USER
+== docker_forward_rules rc=0 current:
+-N DOCKER-FORWARD
+-A DOCKER-FORWARD -j DOCKER-CT
+-A DOCKER-FORWARD -j DOCKER-INTERNAL
+-A DOCKER-FORWARD -j DOCKER-BRIDGE
+-A DOCKER-FORWARD -i br-835092bfcbbc -j ACCEPT
+-A DOCKER-FORWARD -i docker0 -j ACCEPT
+-- original:
+-N DOCKER-FORWARD
+-A DOCKER-FORWARD -j DOCKER-CT
+-A DOCKER-FORWARD -j DOCKER-INTERNAL
+-A DOCKER-FORWARD -j DOCKER-BRIDGE
+-A DOCKER-FORWARD -i docker0 -j ACCEPT
+-A DOCKER-FORWARD -i br-835092bfcbbc -j ACCEPT
+== docker_filter_rules rc=0 current:
+-N DOCKER
+-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8443 -j ACCEPT
+-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8080 -j ACCEPT
+-A DOCKER -d 172.18.0.2/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 10514 -j ACCEPT
+-A DOCKER ! -i br-835092bfcbbc -o br-835092bfcbbc -j DROP
+-A DOCKER ! -i docker0 -o docker0 -j DROP
+-- original:
+-N DOCKER
+-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8443 -j ACCEPT
+-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8080 -j ACCEPT
+-A DOCKER -d 172.18.0.2/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 10514 -j ACCEPT
+-A DOCKER ! -i docker0 -o docker0 -j DROP
+-A DOCKER ! -i br-835092bfcbbc -o br-835092bfcbbc -j DROP
+== docker_nat_rules rc=0 current:
+-N DOCKER
+-A DOCKER -d 127.0.0.1/32 ! -i br-835092bfcbbc -p tcp -m tcp --dport 1514 -j DNAT --to-destination 172.18.0.2:10514
+-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 80 -j DNAT --to-destination 172.18.0.11:8080
+-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 443 -j DNAT --to-destination 172.18.0.11:8443
+A2_DOCKER_FORWARD = PASS | exact = False
+A2_DOCKER_FILTER  = PASS | exact = False
+EXACT_forward_rules = PASS
+EXACT_docker_user_rules = PASS
+EXACT_docker_nat_rules = PASS
+== nft table (counters before) rc=0
+table inet p1_hbr_ac04 {
+\tset approved_v4 {
+\t\ttype ipv4_addr
+\t\telements = { 10.1.93.50, 10.1.93.102,
+\t\t\t     10.1.93.105, 10.1.93.107,
+\t\t\t     10.1.93.108, 10.250.10.20 }
+\t}
+
+\tchain forward_guard {
+\t\ttype filter hook forward priority filter - 1; policy accept;
+\t\tiifname "ens160" ct status dnat ct original ip daddr 10.1.93.54 ct protocol tcp ct original proto-dst 443 ip saddr @approved_v4 counter packets 62331 bytes 19307810 accept comment "P1-HBR-01-AC04 approved IPv4"
+\t\tiifname "ens160" ct status dnat ct original ip daddr 10.1.93.54 ct protocol tcp ct original proto-dst 443 counter packets 50 bytes 2600 drop comment "P1-HBR-01-AC04 deny unapproved IPv4"
+\t\tiifname "ens160" meta nfproto ipv6 ct status dnat ct protocol tcp ct original proto-dst 443 counter packets 0 bytes 0 drop comment "P1-HBR-01-AC04 deny IPv6 published 443"
+\t}
+}
+== systemd docker rc=0
+NRestarts=0
+Requires=sysinit.target docker.socket system.slice fds-harbor-ac04-guard.service
+After=firewalld.service sysinit.target basic.target network-online.target containerd.service system.slice time-set.target nss-lookup.target fds-harbor-ac04-guard.service systemd-journald.socket docker.socket
+ActiveState=active
+SubState=running
+ActiveEnterTimestamp=Tue 2026-10-06 10:04:47 KST
+== systemd guard rc=0
+RequiredBy=docker.service
+Before=shutdown.target docker.service
+ActiveState=active
+SubState=exited
+UnitFileState=enabled
+ActiveEnterTimestamp=Tue 2026-10-06 10:04:40 KST
+== firewalld state/runtime rc=0
+running
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+== firewalld permanent rc=0
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+== containers (Env/LogConfig.Config 제외) rc=0
+{"config_image": "goharbor/harbor-core:v2.13.1", "exit": 0, "health": "healthy", "id": "d094ae55b7446d13718f72e11cd859b3e208f3d88f9bc797f57dccf2291c1e3d", "image": "sha256:a22b58594cea54a78d1c670a81b9dfa3c5af8b4bdd1f89750fdf1c5876c72eab", "log_type": "syslog", "mounts": [["bind", "/data", "/data", true], ["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/home/server08/harbor/common/config/core/app.conf", "/etc/core/app.conf", true], ["bind", "/data/ca_download", "/etc/core/ca", true], ["bind", "/home/server08/harbor/common/config/core/certificates", "/etc/core/certificates", true], ["bind", "/data/secret/keys/secretkey", "/etc/core/key", true], ["bind", "/data/secret/core/private_key.pem", "/etc/core/private_key.pem", true]], "name": "/harbor-core", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:19:08.574735045Z", "status": "running"}
+{"config_image": "goharbor/harbor-db:v2.13.1", "exit": 0, "health": "healthy", "id": "83cbccfcd09608de11a31908b79640c484464f42bcf0f97791acd5bcc2836296", "image": "sha256:5501021458c229c7663f3c4445dfbc2dcc32a22a5b3e3fb65e3e591311eed9dc", "log_type": "syslog", "mounts": [["bind", "/data/database", "/var/lib/postgresql/data", true]], "name": "/harbor-db", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:17:03.756176012Z", "status": "running"}
+{"config_image": "goharbor/harbor-jobservice:v2.13.1", "exit": 0, "health": "healthy", "id": "ed401ac496657a16dffa945484190a22b8c8ea6e64c0252bcdb4942067022512", "image": "sha256:08af37e4194d0507db57f066b0bc1e3799b657389f10f56b145fdd72296716e6", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/home/server08/harbor/common/config/jobservice/config.yml", "/etc/jobservice/config.yml", true], ["bind", "/data/job_logs", "/var/log/jobs", true]], "name": "/harbor-jobservice", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:20:11.08455231Z", "status": "running"}
+{"config_image": "goharbor/harbor-log:v2.13.1", "exit": 0, "health": "healthy", "id": "79e062ffad82296ea5657e9a5ba94388af431b2de94bab31c8b58f3e2ba699f3", "image": "sha256:0ceff3e80b068525c4f3dbedc1f08af1bdf990c7490cc78d187e7d50aba8510e", "log_type": "json-file", "mounts": [["volume", "/var/lib/docker/volumes/f55eb9431b28c385c25f0c462016c8052f5f9be97a3d45be71b98b33a745da6c/_data", "/run", true], ["volume", "/var/lib/docker/volumes/eea6c4814c536de1c29c27f4d5263f506542132014f60d4825550d43c6755f2f/_data", "/etc/logrotate.d", true], ["bind", "/home/server08/harbor/common/config/log/logrotate.conf", "/etc/logrotate.d/logrotate.conf", true], ["bind", "/home/server08/harbor/common/config/log/rsyslog_docker.conf", "/etc/rsyslog.d/rsyslog_docker.conf", true], ["bind", "/var/log/harbor", "/var/log/docker", true]], "name": "/harbor-log", "netmode": "harbor_harbor", "ports": {"10514/tcp": [{"HostIp": "127.0.0.1", "HostPort": "1514"}]}, "restart": "always", "started": "2026-10-06T01:04:47.105916523Z", "status": "running"}
+{"config_image": "goharbor/harbor-portal:v2.13.1", "exit": 0, "health": "healthy", "id": "910e59d383c4a3b016428cd3c217e86dcf931a7d1874c0ac0b0d767d08771266", "image": "sha256:9b31001ccde53ea0803e41c2555724358f1724152dd6cade530fd81967f10f07", "log_type": "syslog", "mounts": [["volume", "/var/lib/docker/volumes/0e4096d9bd2eb64ad46edd9db6da7235b688574945d1b430f6ff78f13b895cca/_data", "/run", true], ["bind", "/home/server08/harbor/common/config/portal/nginx.conf", "/etc/nginx/nginx.conf", true], ["volume", "/var/lib/docker/volumes/b55846d057a00a9d5e5e5e178da2a17d3d128a1d5dcd9bebaea83e90bb21da1e/_data", "/var/cache/nginx", true], ["volume", "/var/lib/docker/volumes/a9b7161c6bbd8043f04351a1001c7462b977c8002d2fa70a93bab4fa28093f49/_data", "/var/log/nginx", true]], "name": "/harbor-portal", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:19:39.795930321Z", "status": "running"}
+{"config_image": "goharbor/nginx-photon:v2.13.1", "exit": 0, "health": "healthy", "id": "4121c032552050064568802c8882c23188c6d194e95bbb639812d4114aa19082", "image": "sha256:18413e62e4bbdd446303862072c65932b78bd1f0fd6404d5233b91a803ce0198", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["volume", "/var/lib/docker/volumes/b6d04ca8f99e98b95abdf9de0fce19c8e069415f68681811a01fa6f893de5921/_data", "/run", true], ["bind", "/data/secret/cert", "/etc/cert", true], ["bind", "/home/server08/harbor/common/config/nginx", "/etc/nginx", true], ["volume", "/var/lib/docker/volumes/52ba07f0670b8e1fa321c804aa179027d4d3ca588f2026ffa52057a276defcc4/_data", "/var/cache/nginx", true], ["volume", "/var/lib/docker/volumes/1f92adc01e9b15f3c1cee25abd2866af6a1dafd76a0b1190a7f2d86b08482e54/_data", "/var/log/nginx", true]], "name": "/nginx", "netmode": "harbor_harbor", "ports": {"8080/tcp": [{"HostIp": "0.0.0.0", "HostPort": "80"}, {"HostIp": "::", "HostPort": "80"}], "8443/tcp": [{"HostIp": "0.0.0.0", "HostPort": "443"}, {"HostIp": "::", "HostPort": "443"}]}, "restart": "always", "started": "2026-10-06T04:21:13.744396273Z", "status": "running"}
+{"config_image": "goharbor/redis-photon:v2.13.1", "exit": 0, "health": "healthy", "id": "f3d2e23724881d47ffac2baae821b423c0b3908df1a8a7fc1da2311384bedf4a", "image": "sha256:7023398c8d8544fab8f0dab4ccdce871de7a2e0008474ea9167f6726d04f05a0", "log_type": "syslog", "mounts": [["bind", "/data/redis", "/var/lib/redis", true]], "name": "/redis", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:17:34.961395253Z", "status": "running"}
+{"config_image": "goharbor/registry-photon:v2.13.1", "exit": 0, "health": "healthy", "id": "e0c9f693eb52b8ecf2409b3e091809dca5f52aff7d3c1376a9884e3511127999", "image": "sha256:9e1894bee0ff714e6155678627781773792bdb3c6bcff445f7200354ab5435b6", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/data/registry", "/storage", true], ["bind", "/home/server08/harbor/common/config/registry", "/etc/registry", true], ["bind", "/data/secret/registry/root.crt", "/etc/registry/root.crt", true]], "name": "/registry", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:18:06.185310863Z", "status": "running"}
+{"config_image": "goharbor/harbor-registryctl:v2.13.1", "exit": 0, "health": "healthy", "id": "ad38d197cf1c90f4bc9802ce92ab2f44c9643c037d2cf55e3546ab2d9017ace6", "image": "sha256:f606f750f05fa988932cfead651446833f56561dc4f679a4b61e4d52f75ea54a", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/data/registry", "/storage", true], ["bind", "/home/server08/harbor/common/config/registry", "/etc/registry", true], ["bind", "/home/server08/harbor/common/config/registryctl/config.yml", "/etc/registryctl/config.yml", true], ["volume", "/var/lib/docker/volumes/c2814b20435063aa349a787e7c77ae8363124e13192567269260ee2f55e483a6/_data", "/var/lib/registry", true]], "name": "/registryctl", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:18:37.347409814Z", "status": "running"}
+{"config_image": "goharbor/trivy-adapter-photon:v2.13.1", "exit": 0, "health": "healthy", "id": "d9325d000835bd4c026fee3da1756198c96fba70342d13246a1c3b74ce7da76b", "image": "sha256:d39f86d91af113c6302e4faac04a7269e073e1a1093a38ad2ac958ed8e4bf58e", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/data/trivy-adapter/reports", "/home/scanner/.cache/reports", true], ["bind", "/data/trivy-adapter/trivy", "/home/scanner/.cache/trivy", true]], "name": "/trivy-adapter", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:20:42.412057958Z", "status": "running"}
+== docker info rc=0
+live_restore=false logging=json-file
+== 443 listeners rc=0
+State  Recv-Q Send-Q Local Address:Port Peer Address:Port
+LISTEN 0      4096         0.0.0.0:443       0.0.0.0:*
+LISTEN 0      4096            [::]:443          [::]:*
+== localhost resolve rc=0
+::1             STREAM localhost
+::1             DGRAM  
+::1             RAW    
+127.0.0.1       STREAM 
+127.0.0.1       DGRAM  
+127.0.0.1       RAW    
+== localhost:1514 tcp rc=0
+tcp_rc=0
+",
+    "stdout_lines": [
+        "/home/svc_ansible/.ansible/tmp/ansible-tmp-1791380977.9826288-11702-137660623736504/ac04-gate-v2.py:11: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).",
+        "  print("KST", datetime.datetime.utcnow() + datetime.timedelta(hours=9))",
+        "KST 2026-10-07 22:49:38.147571",
+        "== uptime rc=0",
+        "2026-10-06 10:04:31",
+        " 22:49:38 up 1 day, 12:45,  2 users,  load average: 0.21, 0.14, 0.14",
+        "original-state.json sha256 1090de081eb5969f2fc5e1d890f6f022494cf652356a6b8d541be70d6b62d83f 4066",
+        "== PRESTATE sha256sum -c rc=0",
+        "original-state.json: 성공",
+        "original-public.xml: 성공",
+        "iptables-filter-before.txt: 성공",
+        "iptables-nat-before.txt: 성공",
+        "nft-ruleset-before.txt: 성공",
+        "== guard file sha256 rc=0",
+        "cdc84effbb370ac394408294e21a4d3cbb67c3d69e93ea53e86667d4326cf5cc  /etc/p1-hbr-ac04.nft",
+        "== nft -c syntax only rc=0",
+        "",
+        "== forward_rules rc=0 current:",
+        "-P FORWARD DROP",
+        "-A FORWARD -j DOCKER-USER",
+        "-A FORWARD -j DOCKER-FORWARD",
+        "== docker_user_rules rc=0 current:",
+        "-N DOCKER-USER",
+        "== docker_forward_rules rc=0 current:",
+        "-N DOCKER-FORWARD",
+        "-A DOCKER-FORWARD -j DOCKER-CT",
+        "-A DOCKER-FORWARD -j DOCKER-INTERNAL",
+        "-A DOCKER-FORWARD -j DOCKER-BRIDGE",
+        "-A DOCKER-FORWARD -i br-835092bfcbbc -j ACCEPT",
+        "-A DOCKER-FORWARD -i docker0 -j ACCEPT",
+        "-- original:",
+        "-N DOCKER-FORWARD",
+        "-A DOCKER-FORWARD -j DOCKER-CT",
+        "-A DOCKER-FORWARD -j DOCKER-INTERNAL",
+        "-A DOCKER-FORWARD -j DOCKER-BRIDGE",
+        "-A DOCKER-FORWARD -i docker0 -j ACCEPT",
+        "-A DOCKER-FORWARD -i br-835092bfcbbc -j ACCEPT",
+        "== docker_filter_rules rc=0 current:",
+        "-N DOCKER",
+        "-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8443 -j ACCEPT",
+        "-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8080 -j ACCEPT",
+        "-A DOCKER -d 172.18.0.2/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 10514 -j ACCEPT",
+        "-A DOCKER ! -i br-835092bfcbbc -o br-835092bfcbbc -j DROP",
+        "-A DOCKER ! -i docker0 -o docker0 -j DROP",
+        "-- original:",
+        "-N DOCKER",
+        "-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8443 -j ACCEPT",
+        "-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8080 -j ACCEPT",
+        "-A DOCKER -d 172.18.0.2/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 10514 -j ACCEPT",
+        "-A DOCKER ! -i docker0 -o docker0 -j DROP",
+        "-A DOCKER ! -i br-835092bfcbbc -o br-835092bfcbbc -j DROP",
+        "== docker_nat_rules rc=0 current:",
+        "-N DOCKER",
+        "-A DOCKER -d 127.0.0.1/32 ! -i br-835092bfcbbc -p tcp -m tcp --dport 1514 -j DNAT --to-destination 172.18.0.2:10514",
+        "-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 80 -j DNAT --to-destination 172.18.0.11:8080",
+        "-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 443 -j DNAT --to-destination 172.18.0.11:8443",
+        "A2_DOCKER_FORWARD = PASS | exact = False",
+        "A2_DOCKER_FILTER  = PASS | exact = False",
+        "EXACT_forward_rules = PASS",
+        "EXACT_docker_user_rules = PASS",
+        "EXACT_docker_nat_rules = PASS",
+        "== nft table (counters before) rc=0",
+        "table inet p1_hbr_ac04 {",
+        "\tset approved_v4 {",
+        "\t\ttype ipv4_addr",
+        "\t\telements = { 10.1.93.50, 10.1.93.102,",
+        "\t\t\t     10.1.93.105, 10.1.93.107,",
+        "\t\t\t     10.1.93.108, 10.250.10.20 }",
+        "\t}",
+        "",
+        "\tchain forward_guard {",
+        "\t\ttype filter hook forward priority filter - 1; policy accept;",
+        "\t\tiifname "ens160" ct status dnat ct original ip daddr 10.1.93.54 ct protocol tcp ct original proto-dst 443 ip saddr @approved_v4 counter packets 62331 bytes 19307810 accept comment "P1-HBR-01-AC04 approved IPv4"",
+        "\t\tiifname "ens160" ct status dnat ct original ip daddr 10.1.93.54 ct protocol tcp ct original proto-dst 443 counter packets 50 bytes 2600 drop comment "P1-HBR-01-AC04 deny unapproved IPv4"",
+        "\t\tiifname "ens160" meta nfproto ipv6 ct status dnat ct protocol tcp ct original proto-dst 443 counter packets 0 bytes 0 drop comment "P1-HBR-01-AC04 deny IPv6 published 443"",
+        "\t}",
+        "}",
+        "== systemd docker rc=0",
+        "NRestarts=0",
+        "Requires=sysinit.target docker.socket system.slice fds-harbor-ac04-guard.service",
+        "After=firewalld.service sysinit.target basic.target network-online.target containerd.service system.slice time-set.target nss-lookup.target fds-harbor-ac04-guard.service systemd-journald.socket docker.socket",
+        "ActiveState=active",
+        "SubState=running",
+        "ActiveEnterTimestamp=Tue 2026-10-06 10:04:47 KST",
+        "== systemd guard rc=0",
+        "RequiredBy=docker.service",
+        "Before=shutdown.target docker.service",
+        "ActiveState=active",
+        "SubState=exited",
+        "UnitFileState=enabled",
+        "ActiveEnterTimestamp=Tue 2026-10-06 10:04:40 KST",
+        "== firewalld state/runtime rc=0",
+        "running",
+        "public (default, active)",
+        "  target: default",
+        "  ingress-priority: 0",
+        "  egress-priority: 0",
+        "  icmp-block-inversion: no",
+        "  interfaces: ens160",
+        "  sources: ",
+        "  services: cockpit dhcpv6-client ssh",
+        "  ports: ",
+        "  protocols: ",
+        "  forward: yes",
+        "  masquerade: no",
+        "  forward-ports: ",
+        "  source-ports: ",
+        "  icmp-blocks: ",
+        "  rich rules: ",
+        "== firewalld permanent rc=0",
+        "public (default)",
+        "  target: default",
+        "  ingress-priority: 0",
+        "  egress-priority: 0",
+        "  icmp-block-inversion: no",
+        "  interfaces: ",
+        "  sources: ",
+        "  services: cockpit dhcpv6-client ssh",
+        "  ports: ",
+        "  protocols: ",
+        "  forward: yes",
+        "  masquerade: no",
+        "  forward-ports: ",
+        "  source-ports: ",
+        "  icmp-blocks: ",
+        "  rich rules: ",
+        "== containers (Env/LogConfig.Config 제외) rc=0",
+        "{"config_image": "goharbor/harbor-core:v2.13.1", "exit": 0, "health": "healthy", "id": "d094ae55b7446d13718f72e11cd859b3e208f3d88f9bc797f57dccf2291c1e3d", "image": "sha256:a22b58594cea54a78d1c670a81b9dfa3c5af8b4bdd1f89750fdf1c5876c72eab", "log_type": "syslog", "mounts": [["bind", "/data", "/data", true], ["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/home/server08/harbor/common/config/core/app.conf", "/etc/core/app.conf", true], ["bind", "/data/ca_download", "/etc/core/ca", true], ["bind", "/home/server08/harbor/common/config/core/certificates", "/etc/core/certificates", true], ["bind", "/data/secret/keys/secretkey", "/etc/core/key", true], ["bind", "/data/secret/core/private_key.pem", "/etc/core/private_key.pem", true]], "name": "/harbor-core", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:19:08.574735045Z", "status": "running"}",
+        "{"config_image": "goharbor/harbor-db:v2.13.1", "exit": 0, "health": "healthy", "id": "83cbccfcd09608de11a31908b79640c484464f42bcf0f97791acd5bcc2836296", "image": "sha256:5501021458c229c7663f3c4445dfbc2dcc32a22a5b3e3fb65e3e591311eed9dc", "log_type": "syslog", "mounts": [["bind", "/data/database", "/var/lib/postgresql/data", true]], "name": "/harbor-db", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:17:03.756176012Z", "status": "running"}",
+        "{"config_image": "goharbor/harbor-jobservice:v2.13.1", "exit": 0, "health": "healthy", "id": "ed401ac496657a16dffa945484190a22b8c8ea6e64c0252bcdb4942067022512", "image": "sha256:08af37e4194d0507db57f066b0bc1e3799b657389f10f56b145fdd72296716e6", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/home/server08/harbor/common/config/jobservice/config.yml", "/etc/jobservice/config.yml", true], ["bind", "/data/job_logs", "/var/log/jobs", true]], "name": "/harbor-jobservice", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:20:11.08455231Z", "status": "running"}",
+        "{"config_image": "goharbor/harbor-log:v2.13.1", "exit": 0, "health": "healthy", "id": "79e062ffad82296ea5657e9a5ba94388af431b2de94bab31c8b58f3e2ba699f3", "image": "sha256:0ceff3e80b068525c4f3dbedc1f08af1bdf990c7490cc78d187e7d50aba8510e", "log_type": "json-file", "mounts": [["volume", "/var/lib/docker/volumes/f55eb9431b28c385c25f0c462016c8052f5f9be97a3d45be71b98b33a745da6c/_data", "/run", true], ["volume", "/var/lib/docker/volumes/eea6c4814c536de1c29c27f4d5263f506542132014f60d4825550d43c6755f2f/_data", "/etc/logrotate.d", true], ["bind", "/home/server08/harbor/common/config/log/logrotate.conf", "/etc/logrotate.d/logrotate.conf", true], ["bind", "/home/server08/harbor/common/config/log/rsyslog_docker.conf", "/etc/rsyslog.d/rsyslog_docker.conf", true], ["bind", "/var/log/harbor", "/var/log/docker", true]], "name": "/harbor-log", "netmode": "harbor_harbor", "ports": {"10514/tcp": [{"HostIp": "127.0.0.1", "HostPort": "1514"}]}, "restart": "always", "started": "2026-10-06T01:04:47.105916523Z", "status": "running"}",
+        "{"config_image": "goharbor/harbor-portal:v2.13.1", "exit": 0, "health": "healthy", "id": "910e59d383c4a3b016428cd3c217e86dcf931a7d1874c0ac0b0d767d08771266", "image": "sha256:9b31001ccde53ea0803e41c2555724358f1724152dd6cade530fd81967f10f07", "log_type": "syslog", "mounts": [["volume", "/var/lib/docker/volumes/0e4096d9bd2eb64ad46edd9db6da7235b688574945d1b430f6ff78f13b895cca/_data", "/run", true], ["bind", "/home/server08/harbor/common/config/portal/nginx.conf", "/etc/nginx/nginx.conf", true], ["volume", "/var/lib/docker/volumes/b55846d057a00a9d5e5e5e178da2a17d3d128a1d5dcd9bebaea83e90bb21da1e/_data", "/var/cache/nginx", true], ["volume", "/var/lib/docker/volumes/a9b7161c6bbd8043f04351a1001c7462b977c8002d2fa70a93bab4fa28093f49/_data", "/var/log/nginx", true]], "name": "/harbor-portal", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:19:39.795930321Z", "status": "running"}",
+        "{"config_image": "goharbor/nginx-photon:v2.13.1", "exit": 0, "health": "healthy", "id": "4121c032552050064568802c8882c23188c6d194e95bbb639812d4114aa19082", "image": "sha256:18413e62e4bbdd446303862072c65932b78bd1f0fd6404d5233b91a803ce0198", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["volume", "/var/lib/docker/volumes/b6d04ca8f99e98b95abdf9de0fce19c8e069415f68681811a01fa6f893de5921/_data", "/run", true], ["bind", "/data/secret/cert", "/etc/cert", true], ["bind", "/home/server08/harbor/common/config/nginx", "/etc/nginx", true], ["volume", "/var/lib/docker/volumes/52ba07f0670b8e1fa321c804aa179027d4d3ca588f2026ffa52057a276defcc4/_data", "/var/cache/nginx", true], ["volume", "/var/lib/docker/volumes/1f92adc01e9b15f3c1cee25abd2866af6a1dafd76a0b1190a7f2d86b08482e54/_data", "/var/log/nginx", true]], "name": "/nginx", "netmode": "harbor_harbor", "ports": {"8080/tcp": [{"HostIp": "0.0.0.0", "HostPort": "80"}, {"HostIp": "::", "HostPort": "80"}], "8443/tcp": [{"HostIp": "0.0.0.0", "HostPort": "443"}, {"HostIp": "::", "HostPort": "443"}]}, "restart": "always", "started": "2026-10-06T04:21:13.744396273Z", "status": "running"}",
+        "{"config_image": "goharbor/redis-photon:v2.13.1", "exit": 0, "health": "healthy", "id": "f3d2e23724881d47ffac2baae821b423c0b3908df1a8a7fc1da2311384bedf4a", "image": "sha256:7023398c8d8544fab8f0dab4ccdce871de7a2e0008474ea9167f6726d04f05a0", "log_type": "syslog", "mounts": [["bind", "/data/redis", "/var/lib/redis", true]], "name": "/redis", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:17:34.961395253Z", "status": "running"}",
+        "{"config_image": "goharbor/registry-photon:v2.13.1", "exit": 0, "health": "healthy", "id": "e0c9f693eb52b8ecf2409b3e091809dca5f52aff7d3c1376a9884e3511127999", "image": "sha256:9e1894bee0ff714e6155678627781773792bdb3c6bcff445f7200354ab5435b6", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/data/registry", "/storage", true], ["bind", "/home/server08/harbor/common/config/registry", "/etc/registry", true], ["bind", "/data/secret/registry/root.crt", "/etc/registry/root.crt", true]], "name": "/registry", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:18:06.185310863Z", "status": "running"}",
+        "{"config_image": "goharbor/harbor-registryctl:v2.13.1", "exit": 0, "health": "healthy", "id": "ad38d197cf1c90f4bc9802ce92ab2f44c9643c037d2cf55e3546ab2d9017ace6", "image": "sha256:f606f750f05fa988932cfead651446833f56561dc4f679a4b61e4d52f75ea54a", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/data/registry", "/storage", true], ["bind", "/home/server08/harbor/common/config/registry", "/etc/registry", true], ["bind", "/home/server08/harbor/common/config/registryctl/config.yml", "/etc/registryctl/config.yml", true], ["volume", "/var/lib/docker/volumes/c2814b20435063aa349a787e7c77ae8363124e13192567269260ee2f55e483a6/_data", "/var/lib/registry", true]], "name": "/registryctl", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:18:37.347409814Z", "status": "running"}",
+        "{"config_image": "goharbor/trivy-adapter-photon:v2.13.1", "exit": 0, "health": "healthy", "id": "d9325d000835bd4c026fee3da1756198c96fba70342d13246a1c3b74ce7da76b", "image": "sha256:d39f86d91af113c6302e4faac04a7269e073e1a1093a38ad2ac958ed8e4bf58e", "log_type": "syslog", "mounts": [["bind", "/home/server08/harbor/common/config/shared/trust-certificates", "/harbor_cust_cert", true], ["bind", "/data/trivy-adapter/reports", "/home/scanner/.cache/reports", true], ["bind", "/data/trivy-adapter/trivy", "/home/scanner/.cache/trivy", true]], "name": "/trivy-adapter", "netmode": "harbor_harbor", "ports": {}, "restart": "always", "started": "2026-10-06T04:20:42.412057958Z", "status": "running"}",
+        "== docker info rc=0",
+        "live_restore=false logging=json-file",
+        "== 443 listeners rc=0",
+        "State  Recv-Q Send-Q Local Address:Port Peer Address:Port",
+        "LISTEN 0      4096         0.0.0.0:443       0.0.0.0:*",
+        "LISTEN 0      4096            [::]:443          [::]:*",
+        "== localhost resolve rc=0",
+        "::1             STREAM localhost",
+        "::1             DGRAM  ",
+        "::1             RAW    ",
+        "127.0.0.1       STREAM ",
+        "127.0.0.1       DGRAM  ",
+        "127.0.0.1       RAW    ",
+        "== localhost:1514 tcp rc=0",
+        "tcp_rc=0"
+    ]
+}
+== Runner TLS 2026-10-07 22:49:38 KST
+cicd-runner01
+http=200 verify=0
+curl_rc=0
