@@ -88,6 +88,22 @@ MON 회차별 실패 내용은 `apply/<앱>-mon-*.txt`에 있습니다. 실패 t
 - 사전 단계의 `kubectl version` 확인 줄은 grep 패턴이 맞지 않아 화면에 나오지 않았습니다. 원본 파일(`pre/01-version.yaml`)에는 `gitVersion: v1.36.4`가 있습니다.
 - 붙여 넣기 중 터미널 화면에 명령 줄이 겹쳐 보였습니다. 실행 결과·rc·해시는 위와 같고, 전달 묶음 해시로 입력 무결성을 확인했습니다.
 
+## 정정 1 — 종료·관측·봉인 시각 구분 (2026-10-07, 권욱 리뷰 반영)
+
+[권욱 리뷰](https://github.com/321Team/fds-project-evidence/pull/136)의 지적대로 `apply/99-end.txt`(14:55:51) 뒤에도 fds-engine 관측이 이어졌습니다. 원본은 바꾸지 않고, 시각의 의미만 아래처럼 구분합니다. 근거는 각 파일의 내용과 `control01/ev-p65-small.tgz` 안 tar 헤더의 파일 기록 시각(mtime)입니다.
+
+| 구분 | 시각(KST) | 근거 |
+|---|---|---|
+| (1) 마지막 변경(쓰기) | **14:53:33** fds-engine rollout 완료. 이후 쓰기는 없음(되돌림은 `--dry-run=server`만) | `apply/fds-engine-rollout-end.txt` |
+| (1') 주 실행 순서 종료 | 14:55:51 사후 확정·port-forward 19095 종료 | `apply/99-end.txt` |
+| (2) 읽기 관측 종료 | transaction-api watch 마지막 행 14:53:51(110행), **fds-engine watch 마지막 행 14:56:46(110행)**. 두 watch는 `kubectl get deploy` 읽기만 하는 110회 고정 반복이고, 마지막 행 뒤 `sleep 2`로 끝나므로 fds-engine 쪽은 약 14:56:48에 끝남 | `apply/*-watch.txt` 마지막 행, tar mtime 14:53:51·14:56:46 |
+| (3) 해시 목록 생성·묶음 봉인 | `SHA256SUMS.all` 14:57:08(묶음 안 최신 파일), 그 직후 `ev-p65-small.tgz` 생성(서버 `ls -l` 14:57) | tar mtime, 터미널 출력 |
+| (4) 관측 프로세스 종료·잔존 | 두 watch 모두 110행으로 반복이 끝까지 돌았음(transaction-api 쪽은 터미널에 `[3]- 완료` 표시). `SHA256SUMS.all`(14:57:08)이 fds-engine watch 110행 완성본의 해시를 담고 있음. **watch 프로세스 잔존을 `pgrep`으로 직접 확인하지는 않았음(NOT VERIFIED)**. port-forward 19095는 잔존 0 확인 | `SHA256SUMS.all`, 터미널 출력 |
+
+- `apply/81-fds-engine-watch-min.txt`(`lines=82`)는 14:55:48에 집계한 **중간값**입니다. 최종 110행 기준으로도 AVAILABLE은 110/110이 3입니다(위 "2. 변경" 표의 값이 최종값).
+- 따라서 이 창의 **실제 전체 종료는 읽기 관측까지 포함해 약 14:56:48**이고, 마지막 쓰기는 14:53:33입니다.
+- **MON 61.0초는 승인된 최대 60초를 벗어난 절차 이탈로 기록합니다**(권욱 판정). 최종 MON 회복과 절차 준수는 구분하며, 이 회차를 PASS로 소급하지 않습니다.
+
 ## 서버에만 둔 파일 (해시는 `control01/p65-apply-20261007/SHA256SUMS.all`)
 
 전체 Deployment(`pre/pre-deploy.yaml`, `apply/post-deploy.yaml`), server dry-run 전체 JSON 4개(`apply/*-dryrun.json`, `apply/*-unspread-dryrun.json`), MON 회차별 Pod 목록 JSON 11개(`pre/mon-*-pods.json`), EndpointSlice JSON 3개(`pre/09-eps.json`, `apply/transaction-api-eps.json`, `apply/fds-engine-ta-eps.json`). 이 20개 파일을 판정한 결과는 각각 `*-dryrun-check.txt`, `*-eps-summary.txt`, `mon-*` 결과 줄로 이 PR에 있습니다.
