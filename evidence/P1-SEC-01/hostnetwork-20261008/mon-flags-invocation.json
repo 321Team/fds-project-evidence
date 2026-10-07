@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-07T23:32:30.874281+00:00",
+  "finished_utc": "2026-10-07T23:32:31.507956+00:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.102 'sudo -n env COLLECTOR_SHA256=026b4f9ee1f3e00943ce5f4cdaf6b049cbc65a51fa0748981c6e9700d7701394 python3 -'"
+  ],
+  "source": "mon-flags.py",
+  "source_sha256": "026b4f9ee1f3e00943ce5f4cdaf6b049cbc65a51fa0748981c6e9700d7701394",
+  "rc": 0
+}

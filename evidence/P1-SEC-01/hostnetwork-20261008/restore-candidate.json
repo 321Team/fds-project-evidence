@@ -1,0 +1,17 @@
+[
+  {
+    "op": "test",
+    "path": "/metadata/uid",
+    "value": "fc3593b2-2937-49e0-acc9-8709dd1139a3"
+  },
+  {
+    "op": "test",
+    "path": "/data/p0-test-alert.yml",
+    "value": "groups:\n- name: fds-p0-test-alert\n  rules:\n  - alert: FDSMonitoringPipelineTest\n    expr: vector(1) == 1\n    for: 0s\n    labels:\n      severity: info\n      purpose: p0-pipeline-test\n      kr: \"관측 알림 전달 시험\"\n    annotations:\n      summary: \"P0 관측 파이프라인 전달 시험 (Prometheus→Alertmanager)\"\n      description: \"S7b. 앱 지표와 무관한 참/거짓 조건으로 Firing→수신→해소 전이를 확인한다. 기본은 비활성.\"\n"
+  },
+  {
+    "op": "replace",
+    "path": "/data/p0-test-alert.yml",
+    "value": "groups:\n- name: fds-p0-test-alert\n  rules:\n  - alert: FDSMonitoringPipelineTest\n    expr: vector(1) == 0\n    for: 0s\n    labels:\n      severity: info\n      purpose: p0-pipeline-test\n      kr: \"관측 알림 전달 시험\"\n    annotations:\n      summary: \"P0 관측 파이프라인 전달 시험 (Prometheus→Alertmanager)\"\n      description: \"S7b. 앱 지표와 무관한 참/거짓 조건으로 Firing→수신→해소 전이를 확인한다. 기본은 비활성.\"\n"
+  }
+]
