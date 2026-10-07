@@ -1,0 +1,51 @@
+{
+  "backup_label_matches_destination_expectation": true,
+  "captured_at_kst": "2026-10-07T19:14:10.395905+09:00",
+  "concurrent_writer_exclusion": "NOT_ESTABLISHED",
+  "destination_drift": [],
+  "expected_destination": {
+    "context": "unconfined_u:object_r:ssh_home_t:s0",
+    "gid": 1001,
+    "mode": "0600",
+    "sha256": "b7923e8c646b7a7dd2ccba1ac48ddf02d264780db9100317644dcf87216cc834",
+    "uid": 1001
+  },
+  "fresh_ssh": "NOT_RUN",
+  "host": "k8s-worker02",
+  "inspector_sha256": "affa67f1509c62f08270f33e266291f014dbcd717f10ea6e42a372700d594727",
+  "observed": {
+    "backup": {
+      "context": "unconfined_u:object_r:ssh_home_t:s0",
+      "ctime_ns": 1791134989870563476,
+      "dev": 64768,
+      "gid": 1001,
+      "inode": 663075,
+      "mode": "0600",
+      "mtime_ns": 1787903330706929285,
+      "nlink": 1,
+      "sha256": "b7923e8c646b7a7dd2ccba1ac48ddf02d264780db9100317644dcf87216cc834",
+      "size": 132,
+      "uid": 1001
+    },
+    "target": {
+      "context": "unconfined_u:object_r:ssh_home_t:s0",
+      "ctime_ns": 1787903330707175714,
+      "dev": 64770,
+      "gid": 1001,
+      "inode": 469762536,
+      "mode": "0600",
+      "mtime_ns": 1787903330706929285,
+      "nlink": 1,
+      "sha256": "b7923e8c646b7a7dd2ccba1ac48ddf02d264780db9100317644dcf87216cc834",
+      "size": 132,
+      "uid": 1001
+    }
+  },
+  "production_restore": "NOT_RUN",
+  "restore_ready": false,
+  "runtime_go": false,
+  "schema": "fds.issue9.key-recovery-inspection.v1",
+  "snapshot_is_not_write_authorization": true,
+  "status": "UNCHANGED_NO_RESTORE_NEEDED",
+  "target_write": "NOT_IMPLEMENTED"
+}
