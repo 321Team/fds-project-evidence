@@ -1,0 +1,32 @@
+{
+  "forward_rules": [
+    "-P FORWARD DROP",
+    "-A FORWARD -j DOCKER-USER",
+    "-A FORWARD -j DOCKER-FORWARD"
+  ],
+  "docker_user_rules": [
+    "-N DOCKER-USER"
+  ],
+  "docker_forward_rules": [
+    "-N DOCKER-FORWARD",
+    "-A DOCKER-FORWARD -j DOCKER-CT",
+    "-A DOCKER-FORWARD -j DOCKER-INTERNAL",
+    "-A DOCKER-FORWARD -j DOCKER-BRIDGE",
+    "-A DOCKER-FORWARD -i br-835092bfcbbc -j ACCEPT",
+    "-A DOCKER-FORWARD -i docker0 -j ACCEPT"
+  ],
+  "docker_filter_rules": [
+    "-N DOCKER",
+    "-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8443 -j ACCEPT",
+    "-A DOCKER -d 172.18.0.11/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 8080 -j ACCEPT",
+    "-A DOCKER -d 172.18.0.2/32 ! -i br-835092bfcbbc -o br-835092bfcbbc -p tcp -m tcp --dport 10514 -j ACCEPT",
+    "-A DOCKER ! -i br-835092bfcbbc -o br-835092bfcbbc -j DROP",
+    "-A DOCKER ! -i docker0 -o docker0 -j DROP"
+  ],
+  "docker_nat_rules": [
+    "-N DOCKER",
+    "-A DOCKER -d 127.0.0.1/32 ! -i br-835092bfcbbc -p tcp -m tcp --dport 1514 -j DNAT --to-destination 172.18.0.2:10514",
+    "-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 80 -j DNAT --to-destination 172.18.0.11:8080",
+    "-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 443 -j DNAT --to-destination 172.18.0.11:8443"
+  ]
+}

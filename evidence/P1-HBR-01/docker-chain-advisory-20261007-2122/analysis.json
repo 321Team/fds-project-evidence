@@ -1,0 +1,58 @@
+{
+  "schema": "HBR-AC04-offline-docker-chain-analysis-1",
+  "recorded_at_utc": "2026-10-07T12:22:24.476138+00:00",
+  "original_sha256": "1090de081eb5969f2fc5e1d890f6f022494cf652356a6b8d541be70d6b62d83f",
+  "current_sha256": "1d3121ff79dd2521a22fdf5c09761226c3de7224df5bc26ad330c3a532c32096",
+  "expected_original_sha256_match": true,
+  "comparisons": {
+    "forward_rules": {
+      "exact_match": true,
+      "fixed_tail_swap_candidate": false,
+      "original_line_count": 3,
+      "current_line_count": 3,
+      "original_lines_sha256": "d530079f248bed8e4ba6845e6064180a971578fd4b69ef4564842ad31b6e0c87",
+      "current_lines_sha256": "d530079f248bed8e4ba6845e6064180a971578fd4b69ef4564842ad31b6e0c87"
+    },
+    "docker_user_rules": {
+      "exact_match": true,
+      "fixed_tail_swap_candidate": false,
+      "original_line_count": 1,
+      "current_line_count": 1,
+      "original_lines_sha256": "cc2097828f6d28aaa2c4b1799ced3374c99f642fbad38b2dcc7188ddad8f6895",
+      "current_lines_sha256": "cc2097828f6d28aaa2c4b1799ced3374c99f642fbad38b2dcc7188ddad8f6895"
+    },
+    "docker_forward_rules": {
+      "exact_match": false,
+      "fixed_tail_swap_candidate": true,
+      "original_line_count": 6,
+      "current_line_count": 6,
+      "original_lines_sha256": "1a493caffccbdb0b9c7613afd9abea89053fae15afa7a612dcbf008ff21a55f3",
+      "current_lines_sha256": "f62f2adc9820a2b917259c7daa0e38451722ebb20d041e47f8d5ef19f1c702df"
+    },
+    "docker_filter_rules": {
+      "exact_match": false,
+      "fixed_tail_swap_candidate": true,
+      "original_line_count": 6,
+      "current_line_count": 6,
+      "original_lines_sha256": "0c833b68342f47c65f151d066872b3863ed1352b8c05ded3f369a68a953e0541",
+      "current_lines_sha256": "79110de7b45a8e84d2eef3a0ed05ce996755260cccf9556a69b246bdd6eef893"
+    },
+    "docker_nat_rules": {
+      "exact_match": true,
+      "fixed_tail_swap_candidate": false,
+      "original_line_count": 4,
+      "current_line_count": 4,
+      "original_lines_sha256": "d57299ac3c6739c0c2ef761ecf112e3a2c3f5b5f07ce6425d073c46d9ff1606d",
+      "current_lines_sha256": "d57299ac3c6739c0c2ef761ecf112e3a2c3f5b5f07ce6425d073c46d9ff1606d"
+    }
+  },
+  "exact_docker_chain_match": false,
+  "only_fixed_tail_swap_candidates": true,
+  "status": "FIXED_TAIL_SWAP_REVIEW_REQUIRED",
+  "chain_scope_only": true,
+  "capture_freshness_verified": false,
+  "full_verifier_pass": false,
+  "runtime_go": false,
+  "ac04_accepted": false,
+  "runtime_changed": false
+}

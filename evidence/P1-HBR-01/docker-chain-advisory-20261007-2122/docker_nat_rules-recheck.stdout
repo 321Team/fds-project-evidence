@@ -1,0 +1,4 @@
+-N DOCKER
+-A DOCKER -d 127.0.0.1/32 ! -i br-835092bfcbbc -p tcp -m tcp --dport 1514 -j DNAT --to-destination 172.18.0.2:10514
+-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 80 -j DNAT --to-destination 172.18.0.11:8080
+-A DOCKER ! -i br-835092bfcbbc -p tcp -m tcp --dport 443 -j DNAT --to-destination 172.18.0.11:8443
