@@ -1,0 +1,23 @@
+k8s-worker03 | CHANGED | rc=0 >>
+2026-10-07 11:59:18 KST
+k8s-worker03
+== certs.d
+ls: '/etc/containerd/certs.d/10.1.93.54/'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+== docker config.json (harbor 주소 포함 줄 수만)
+(end)
+k8s-worker02 | CHANGED | rc=0 >>
+2026-10-07 11:59:18 KST
+k8s-worker02
+== certs.d
+ls: '/etc/containerd/certs.d/10.1.93.54/'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+== docker config.json (harbor 주소 포함 줄 수만)
+(end)
+k8s-worker01 | CHANGED | rc=0 >>
+2026-10-07 11:59:18 KST
+k8s-worker01
+== certs.d
+합계 4
+-rw-r--r--. 1 root root 2004  9월 30일  12:04 ca.crt
+== docker config.json (harbor 주소 포함 줄 수만)
+/root/.docker/config.json harbor줄수=2
+(end)

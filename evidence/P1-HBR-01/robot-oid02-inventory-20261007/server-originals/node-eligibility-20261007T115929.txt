@@ -1,0 +1,17 @@
+# host=k8s-control01 user=server02 time=2026-10-07T11:59:30+09:00
+== 노드: 이름 | unschedulable | taints | os | arch | Ready | cpu | memory | ephemeral | pods
+k8s-control01	false	node-role.kubernetes.io/control-plane:NoSchedule	linux	amd64	True	8	24207712Ki	67585336823	110
+k8s-control02	false	node-role.kubernetes.io/control-plane:NoSchedule	linux	amd64	True	8	24207728Ki	67585336823	110
+k8s-control03	false	node-role.kubernetes.io/control-plane:NoSchedule	linux	amd64	True	8	24207752Ki	67585336823	110
+k8s-worker01	false		linux	amd64	True	8	24207700Ki	67585336823	110
+k8s-worker02	false		linux	amd64	True	8	24207708Ki	67585336823	110
+k8s-worker03	false		linux	amd64	True	8	24207744Ki	67585336823	110
+== 노드 라벨 전체 (node-role 등)
+NAME            STATUS   ROLES           AGE   VERSION   LABELS
+k8s-control01   Ready    control-plane   27d   v1.36.4   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-control01,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=,node.kubernetes.io/exclude-from-external-load-balancers=
+k8s-control02   Ready    control-plane   18d   v1.36.4   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-control02,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=,node.kubernetes.io/exclude-from-external-load-balancers=
+k8s-control03   Ready    control-plane   18d   v1.36.4   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-control03,kubernetes.io/os=linux,node-role.kubernetes.io/control-plane=,node.kubernetes.io/exclude-from-external-load-balancers=
+k8s-worker01    Ready    <none>          18d   v1.36.4   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-worker01,kubernetes.io/os=linux
+k8s-worker02    Ready    <none>          18d   v1.36.4   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-worker02,kubernetes.io/os=linux
+k8s-worker03    Ready    <none>          18d   v1.36.4   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/arch=amd64,kubernetes.io/hostname=k8s-worker03,kubernetes.io/os=linux
+(end)
