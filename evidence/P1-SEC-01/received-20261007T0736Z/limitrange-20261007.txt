@@ -1,0 +1,27 @@
+[sudo] server02 암호: 
+NAMESPACE         NAME                             CREATED AT
+fds-app           fds-app-default-limits           2026-09-22T00:17:38Z
+monitoring-api    monitoring-api-default-limits    2026-09-22T00:17:38Z
+monitoring-node   monitoring-node-default-limits   2026-09-22T00:17:38Z
+Name:       fds-app-default-limits
+Namespace:  fds-app
+Type        Resource  Min  Max  Default Request  Default Limit  Max Limit/Request Ratio
+----        --------  ---  ---  ---------------  -------------  -----------------------
+Container   memory    -    -    256Mi            512Mi          -
+Container   cpu       -    -    250m             500m           -
+
+
+Name:       monitoring-api-default-limits
+Namespace:  monitoring-api
+Type        Resource  Min  Max  Default Request  Default Limit  Max Limit/Request Ratio
+----        --------  ---  ---  ---------------  -------------  -----------------------
+Container   cpu       -    -    200m             500m           -
+Container   memory    -    -    256Mi            512Mi          -
+
+
+Name:       monitoring-node-default-limits
+Namespace:  monitoring-node
+Type        Resource  Min  Max  Default Request  Default Limit  Max Limit/Request Ratio
+----        --------  ---  ---  ---------------  -------------  -----------------------
+Container   memory    -    -    64Mi             128Mi          -
+Container   cpu       -    -    50m              100m           -

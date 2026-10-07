@@ -1,0 +1,45 @@
+10.1.93.54 | CHANGED | rc=0 >>
+2026-10-07 12:07:25 KST
+harbor01
+2026-10-06 10:04:31
+== 컨테이너 재시작 정책·로그 설정·상태 (Env 제외)
+/harbor-jobservice restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"jobservice"} state=running started=2026-10-06T04:20:11.08455231Z err=
+/nginx restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"proxy"} state=running started=2026-10-06T04:21:13.744396273Z err=
+/trivy-adapter restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"trivy-adapter"} state=running started=2026-10-06T04:20:42.412057958Z err=
+/harbor-core restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"core"} state=running started=2026-10-06T04:19:08.574735045Z err=
+/redis restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"redis"} state=running started=2026-10-06T04:17:34.961395253Z err=
+/harbor-db restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"postgresql"} state=running started=2026-10-06T04:17:03.756176012Z err=
+/registryctl restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"registryctl"} state=running started=2026-10-06T04:18:37.347409814Z err=
+/registry restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"registry"} state=running started=2026-10-06T04:18:06.185310863Z err=
+/harbor-portal restart=always log=syslog logcfg={"syslog-address":"tcp://localhost:1514","tag":"portal"} state=running started=2026-10-06T04:19:39.795930321Z err=
+/harbor-log restart=always log=json-file logcfg={} state=running started=2026-10-06T01:04:47.105916523Z err=
+== docker info
+logging=json-file liveRestore=false cgroup=systemd
+== daemon.json
+cat: /etc/docker/daemon.json: 그런 파일이나 디렉터리가 없습니다
+== docker 서비스
+Requires=sysinit.target docker.socket system.slice fds-harbor-ac04-guard.service
+After=firewalld.service sysinit.target basic.target network-online.target containerd.service system.slice time-set.target nss-lookup.target fds-harbor-ac04-guard.service systemd-journald.socket docker.socket
+ActiveState=active
+UnitFileState=enabled
+== guard 서비스
+Requires=system.slice sysinit.target
+WantedBy=
+Before=shutdown.target docker.service
+After=basic.target firewalld.service system.slice sysinit.target systemd-journald.socket
+ActiveState=active
+UnitFileState=enabled
+# /etc/systemd/system/fds-harbor-ac04-guard.service
+[Unit]
+Description=FDS Harbor AC-04 fail-closed nftables guard
+After=firewalld.service
+Before=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/nft -f /etc/p1-hbr-ac04.nft
+ExecStart=/usr/sbin/nft -n list table inet p1_hbr_ac04
+RemainAfterExit=yes
+
+[Install]
+RequiredBy=docker.service

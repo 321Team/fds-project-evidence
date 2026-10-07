@@ -1,0 +1,24 @@
+# host=k8s-control01 user=server02 time=2026-10-07T11:59:10+09:00
+== Harbor 로그인 Secret 후보 (type이 docker 계열, data는 읽지 않음)
+NS                NAME                             TYPE                             UID                                    RV        CREATED
+fds-app           harbor-pull-secret               kubernetes.io/dockerconfigjson   0f3772b6-c230-40bd-9e38-f27a21df7b88   2832102   2026-09-22T03:28:13Z
+monitoring-api    harbor-pull-secret               kubernetes.io/dockerconfigjson   c0f0bc4b-fd88-4ec6-879b-71a4bd7ed172   3053155   2026-09-22T06:32:48Z
+monitoring-node   harbor-pull-secret               kubernetes.io/dockerconfigjson   616deba6-b104-4420-9e59-4c7cf962317c   3053156   2026-09-22T06:32:48Z
+== ServiceAccount의 imagePullSecrets
+NS                SA                                            PULL
+== Pod의 imagePullSecrets
+NS                POD                                       NODE            PULL
+fds-app           fds-engine-5699669f6f-m46qb               k8s-worker02    harbor-pull-secret
+fds-app           fds-engine-5699669f6f-nw9w4               k8s-worker02    harbor-pull-secret
+fds-app           fds-engine-5699669f6f-xz8kw               k8s-worker02    harbor-pull-secret
+fds-app           transaction-api-b784c8c5d-7wfj4           k8s-worker02    harbor-pull-secret
+fds-app           transaction-api-b784c8c5d-h9zvb           k8s-worker02    harbor-pull-secret
+fds-app           transaction-api-b784c8c5d-vvtmz           k8s-worker02    harbor-pull-secret
+monitoring-api    alertmanager-6bf6dc555-bs8cg              k8s-worker03    harbor-pull-secret
+monitoring-api    grafana-f65457bfd-ckjgj                   k8s-worker03    harbor-pull-secret
+monitoring-api    kube-state-metrics-77796bd485-l8wv6       k8s-worker02    harbor-pull-secret
+monitoring-api    prometheus-d8949bd64-2zc4m                k8s-worker03    harbor-pull-secret
+monitoring-node   node-exporter-4gtms                       k8s-worker01    harbor-pull-secret
+monitoring-node   node-exporter-thcn5                       k8s-worker02    harbor-pull-secret
+monitoring-node   node-exporter-zdhnv                       k8s-worker03    harbor-pull-secret
+(end)
