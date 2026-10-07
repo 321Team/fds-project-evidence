@@ -1,0 +1,118 @@
+{
+  "status": "PASS_CONTROLLER_NATIVE_SYNTAX_ONLY",
+  "host": "ansible01",
+  "user": "server01_ansible",
+  "uid": 1000,
+  "source_sha": "da4e273e7e26a9a0b51211e5146066960df072b5",
+  "source_bundle_sha256": "28a3ab3ff99c46112693a1e0338352bb3c8805a02194e15d901385a9e065e905",
+  "candidate_bin": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin",
+  "commands": [
+    {
+      "name": "system-version",
+      "argv": [
+        "/usr/bin/ansible",
+        "--version"
+      ],
+      "rc": 0,
+      "expected_rc": 0,
+      "started_at": "2026-10-07T15:37:38.354793+00:00",
+      "finished_at": "2026-10-07T15:37:38.527308+00:00"
+    },
+    {
+      "name": "ansible-playbook-selected-version",
+      "argv": [
+        "/bin/bash",
+        "-c",
+        "set -eu; source scripts/lib/ansible-engine.sh; fds_engine_init; fds_engine_exec \"$1\" --version",
+        "engine-native",
+        "ansible-playbook"
+      ],
+      "rc": 0,
+      "expected_rc": 0,
+      "started_at": "2026-10-07T15:37:38.527324+00:00",
+      "finished_at": "2026-10-07T15:37:39.961673+00:00"
+    },
+    {
+      "name": "ansible-inventory-selected-version",
+      "argv": [
+        "/bin/bash",
+        "-c",
+        "set -eu; source scripts/lib/ansible-engine.sh; fds_engine_init; fds_engine_exec \"$1\" --version",
+        "engine-native",
+        "ansible-inventory"
+      ],
+      "rc": 0,
+      "expected_rc": 0,
+      "started_at": "2026-10-07T15:37:39.961687+00:00",
+      "finished_at": "2026-10-07T15:37:41.152095+00:00"
+    },
+    {
+      "name": "ansible-selected-version",
+      "argv": [
+        "/bin/bash",
+        "-c",
+        "set -eu; source scripts/lib/ansible-engine.sh; fds_engine_init; fds_engine_exec \"$1\" --version",
+        "engine-native",
+        "ansible"
+      ],
+      "rc": 0,
+      "expected_rc": 0,
+      "started_at": "2026-10-07T15:37:41.152107+00:00",
+      "finished_at": "2026-10-07T15:37:42.360607+00:00"
+    },
+    {
+      "name": "ansible-config-selected-version",
+      "argv": [
+        "/bin/bash",
+        "-c",
+        "set -eu; source scripts/lib/ansible-engine.sh; fds_engine_init; fds_engine_exec \"$1\" --version",
+        "engine-native",
+        "ansible-config"
+      ],
+      "rc": 0,
+      "expected_rc": 0,
+      "started_at": "2026-10-07T15:37:42.360621+00:00",
+      "finished_at": "2026-10-07T15:37:43.576307+00:00"
+    },
+    {
+      "name": "gate0-selected-syntax",
+      "argv": [
+        "/bin/bash",
+        "scripts/p1-k8s-01-gate0-run.sh",
+        "syntax"
+      ],
+      "rc": 0,
+      "expected_rc": 0,
+      "started_at": "2026-10-07T15:37:43.576320+00:00",
+      "finished_at": "2026-10-07T15:37:44.962850+00:00"
+    },
+    {
+      "name": "mismatch-stop",
+      "argv": [
+        "/bin/bash",
+        "-c",
+        "set -eu; source scripts/lib/ansible-engine.sh; FDS_ANSIBLE_ENGINE_VERSION=2.16.19; fds_engine_init"
+      ],
+      "rc": 64,
+      "expected_rc": 64,
+      "started_at": "2026-10-07T15:37:44.962862+00:00",
+      "finished_at": "2026-10-07T15:37:45.203909+00:00"
+    },
+    {
+      "name": "system-version-after",
+      "argv": [
+        "/usr/bin/ansible",
+        "--version"
+      ],
+      "rc": 0,
+      "expected_rc": 0,
+      "started_at": "2026-10-07T15:37:45.203920+00:00",
+      "finished_at": "2026-10-07T15:37:45.374641+00:00"
+    }
+  ],
+  "managed_host_execution": "NOT_RUN",
+  "key_restore": "NOT_RUN",
+  "global_engine_transition": "NOT_RUN",
+  "dns_mon_ntp_wrapper_runtime": "NOT_RUN",
+  "evidence_root": "/home/server01_ansible/issue9-native-engine-2rz3_9f4/evidence"
+}
