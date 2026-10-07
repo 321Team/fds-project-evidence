@@ -1,0 +1,92 @@
+10.1.93.54 | CHANGED => {
+    "changed": true,
+    "rc": 0,
+    "stderr": "Shared connection to 10.1.93.54 closed.
+",
+    "stderr_lines": [
+        "Shared connection to 10.1.93.54 closed."
+    ],
+    "stdout": "== B start gate 2026-10-07 23:17:21
+harbor-jobservice Exited (128) 4 minutes ago
+nginx Exited (128) 4 minutes ago
+trivy-adapter Exited (128) 4 minutes ago
+harbor-core Exited (128) 4 minutes ago
+redis Exited (128) 4 minutes ago
+harbor-db Exited (128) 4 minutes ago
+registryctl Exited (128) 4 minutes ago
+registry Exited (128) 4 minutes ago
+harbor-portal Exited (128) 4 minutes ago
+harbor-log Up 4 minutes (healthy)
+::1             STREAM localhost
+::1             DGRAM  
+::1             RAW    
+127.0.0.1       STREAM 
+127.0.0.1       DGRAM  
+127.0.0.1       RAW    
+tcp_1514_rc=0
+active
+active
+start harbor-db rc=0 start=23:17:21 end=23:17:52 state=healthy ok=1 err=
+start redis rc=0 start=23:17:52 end=23:18:23 state=healthy ok=1 err=
+start registry rc=0 start=23:18:23 end=23:18:54 state=healthy ok=1 err=
+start registryctl rc=0 start=23:18:54 end=23:19:25 state=healthy ok=1 err=
+start harbor-core rc=0 start=23:19:25 end=23:19:56 state=healthy ok=1 err=
+start harbor-portal rc=0 start=23:19:56 end=23:20:27 state=healthy ok=1 err=
+start harbor-jobservice rc=0 start=23:20:27 end=23:20:57 state=healthy ok=1 err=
+start trivy-adapter rc=0 start=23:20:57 end=23:21:28 state=healthy ok=1 err=
+start nginx rc=0 start=23:21:28 end=23:21:59 state=healthy ok=1 err=
+== B done 2026-10-07 23:21:59
+harbor-jobservice Up About a minute (healthy)
+nginx Up 30 seconds (healthy)
+trivy-adapter Up About a minute (healthy)
+harbor-core Up 2 minutes (healthy)
+redis Up 4 minutes (healthy)
+harbor-db Up 4 minutes (healthy)
+registryctl Up 3 minutes (healthy)
+registry Up 3 minutes (healthy)
+harbor-portal Up 2 minutes (healthy)
+harbor-log Up 9 minutes (healthy)
+",
+    "stdout_lines": [
+        "== B start gate 2026-10-07 23:17:21",
+        "harbor-jobservice Exited (128) 4 minutes ago",
+        "nginx Exited (128) 4 minutes ago",
+        "trivy-adapter Exited (128) 4 minutes ago",
+        "harbor-core Exited (128) 4 minutes ago",
+        "redis Exited (128) 4 minutes ago",
+        "harbor-db Exited (128) 4 minutes ago",
+        "registryctl Exited (128) 4 minutes ago",
+        "registry Exited (128) 4 minutes ago",
+        "harbor-portal Exited (128) 4 minutes ago",
+        "harbor-log Up 4 minutes (healthy)",
+        "::1             STREAM localhost",
+        "::1             DGRAM  ",
+        "::1             RAW    ",
+        "127.0.0.1       STREAM ",
+        "127.0.0.1       DGRAM  ",
+        "127.0.0.1       RAW    ",
+        "tcp_1514_rc=0",
+        "active",
+        "active",
+        "start harbor-db rc=0 start=23:17:21 end=23:17:52 state=healthy ok=1 err=",
+        "start redis rc=0 start=23:17:52 end=23:18:23 state=healthy ok=1 err=",
+        "start registry rc=0 start=23:18:23 end=23:18:54 state=healthy ok=1 err=",
+        "start registryctl rc=0 start=23:18:54 end=23:19:25 state=healthy ok=1 err=",
+        "start harbor-core rc=0 start=23:19:25 end=23:19:56 state=healthy ok=1 err=",
+        "start harbor-portal rc=0 start=23:19:56 end=23:20:27 state=healthy ok=1 err=",
+        "start harbor-jobservice rc=0 start=23:20:27 end=23:20:57 state=healthy ok=1 err=",
+        "start trivy-adapter rc=0 start=23:20:57 end=23:21:28 state=healthy ok=1 err=",
+        "start nginx rc=0 start=23:21:28 end=23:21:59 state=healthy ok=1 err=",
+        "== B done 2026-10-07 23:21:59",
+        "harbor-jobservice Up About a minute (healthy)",
+        "nginx Up 30 seconds (healthy)",
+        "trivy-adapter Up About a minute (healthy)",
+        "harbor-core Up 2 minutes (healthy)",
+        "redis Up 4 minutes (healthy)",
+        "harbor-db Up 4 minutes (healthy)",
+        "registryctl Up 3 minutes (healthy)",
+        "registry Up 3 minutes (healthy)",
+        "harbor-portal Up 2 minutes (healthy)",
+        "harbor-log Up 9 minutes (healthy)"
+    ]
+}
