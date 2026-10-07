@@ -1,0 +1,5 @@
+OLD
+controlmaster ask
+FIXED
+controlmaster true
+{"pid": 15180, "uid": 1000, "cmdline": "ssh -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ControlPath=/home/server01_ansible/if06b-receipt.s9JlV4yW/ssh-control -o ControlMaster=yes -o ControlPersist=300 -MNf server01_mgmt-gw@10.1.93.58 ", "action": "SIGTERM own completed collection master only"}
