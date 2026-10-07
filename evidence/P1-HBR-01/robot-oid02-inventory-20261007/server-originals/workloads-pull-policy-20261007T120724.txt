@@ -1,0 +1,10 @@
+# host=k8s-control01 time=2026-10-07T12:07:24+09:00
+KIND         NS                NAME                      PULLSECRET           POLICY         IMAGE
+Deployment   fds-app           fds-engine                harbor-pull-secret   IfNotPresent   10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+Deployment   fds-app           transaction-api           harbor-pull-secret   IfNotPresent   10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+Deployment   monitoring-api    alertmanager              harbor-pull-secret   Always         10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67
+Deployment   monitoring-api    grafana                   harbor-pull-secret   Always         10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b
+Deployment   monitoring-api    kube-state-metrics        harbor-pull-secret   IfNotPresent   10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1
+Deployment   monitoring-api    prometheus                harbor-pull-secret   Always         10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19
+DaemonSet    monitoring-node   node-exporter             harbor-pull-secret   Always         10.1.93.54/fds/node-exporter@sha256:4d5c92fcbea9fd5f2769a13192885366f6d348443ea6b48783590c9d9be43318
+(end)
