@@ -1,0 +1,72 @@
+{
+  "recorded_kst": "2026-10-08T16:31:31.975042+09:00",
+  "original_status": "STOP_RECOVERY_REQUIRED",
+  "original_error": "PRESERVATION_MOUNTS",
+  "runtime": "APPS_9_RECREATED_LOGGER_ID_UNCHANGED_POSTCHECK_STOP",
+  "fresh_healthy": 10,
+  "current_equals_recorded_after": true,
+  "all_volume_identity_and_other_mount_fields": "PRESERVED",
+  "differences": [
+    {
+      "service": "portal",
+      "destination": "/run",
+      "name": "a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15",
+      "before_mode": "",
+      "after_mode": "z",
+      "all_other_mount_fields": "EQUAL"
+    },
+    {
+      "service": "portal",
+      "destination": "/var/cache/nginx",
+      "name": "6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69",
+      "before_mode": "",
+      "after_mode": "z",
+      "all_other_mount_fields": "EQUAL"
+    },
+    {
+      "service": "portal",
+      "destination": "/var/log/nginx",
+      "name": "ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d",
+      "before_mode": "",
+      "after_mode": "z",
+      "all_other_mount_fields": "EQUAL"
+    },
+    {
+      "service": "proxy",
+      "destination": "/run",
+      "name": "1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428",
+      "before_mode": "",
+      "after_mode": "z",
+      "all_other_mount_fields": "EQUAL"
+    },
+    {
+      "service": "proxy",
+      "destination": "/var/cache/nginx",
+      "name": "ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb",
+      "before_mode": "",
+      "after_mode": "z",
+      "all_other_mount_fields": "EQUAL"
+    },
+    {
+      "service": "proxy",
+      "destination": "/var/log/nginx",
+      "name": "4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec",
+      "before_mode": "",
+      "after_mode": "z",
+      "all_other_mount_fields": "EQUAL"
+    },
+    {
+      "service": "registryctl",
+      "destination": "/var/lib/registry",
+      "name": "093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9",
+      "before_mode": "",
+      "after_mode": "z",
+      "all_other_mount_fields": "EQUAL"
+    }
+  ],
+  "approved_restore_preflight": "RESTORE_MOUNTS_CHANGED",
+  "selinux_effect": "UNCONFIRMED; need current security metadata, pre-label not captured",
+  "DOCKER_RESTART": "NOT_RUN",
+  "RESTORE": "NOT_RUN",
+  "ACCEPTANCE": "HOLD"
+}

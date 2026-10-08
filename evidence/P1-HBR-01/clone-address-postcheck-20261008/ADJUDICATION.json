@@ -1,0 +1,82 @@
+{
+  "recorded_kst": "2026-10-08T16:40:42.301647+09:00",
+  "original_result": "STOP_RECOVERY_REQUIRED/PRESERVATION_MOUNTS; unchanged",
+  "observed_change": "7 local volume Mode empty-to-z only",
+  "changed_mount_coverage": [
+    {
+      "service": "portal",
+      "destination": "/run",
+      "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+      "empty_labels": true,
+      "mount_request_matches": true,
+      "image_declares_destination": true
+    },
+    {
+      "service": "portal",
+      "destination": "/var/cache/nginx",
+      "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+      "empty_labels": true,
+      "mount_request_matches": true,
+      "image_declares_destination": true
+    },
+    {
+      "service": "portal",
+      "destination": "/var/log/nginx",
+      "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+      "empty_labels": true,
+      "mount_request_matches": true,
+      "image_declares_destination": true
+    },
+    {
+      "service": "proxy",
+      "destination": "/run",
+      "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+      "empty_labels": true,
+      "mount_request_matches": true,
+      "image_declares_destination": true
+    },
+    {
+      "service": "proxy",
+      "destination": "/var/cache/nginx",
+      "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+      "empty_labels": true,
+      "mount_request_matches": true,
+      "image_declares_destination": true
+    },
+    {
+      "service": "proxy",
+      "destination": "/var/log/nginx",
+      "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+      "empty_labels": true,
+      "mount_request_matches": true,
+      "image_declares_destination": true
+    },
+    {
+      "service": "registryctl",
+      "destination": "/var/lib/registry",
+      "id": "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+      "empty_labels": true,
+      "mount_request_matches": true,
+      "image_declares_destination": true
+    }
+  ],
+  "docker_engine": "29.8.0",
+  "docker_git_commit": "3ce5872b7950c63ba2ffbc5123101019ff3e6682",
+  "compose": "5.5.1",
+  "compose_tag_commit": "5f94fb0aa42a2cd1248c6e6c7fafb87546b9c8de",
+  "host_selinux": "Enforcing",
+  "docker_advertised_security": [
+    "seccomp",
+    "cgroupns"
+  ],
+  "container_batch_rc": 1,
+  "container_records": 3,
+  "image_batch_rc": 1,
+  "image_records": 8,
+  "interpretation": "Mode transition explained by exact Engine default z on Mounts API local volumes. Empty affected MountLabel causes exact Relabel function to return without relabel. Not direct before/after xattr proof.",
+  "missing": "7 unaffected container optional metadata and 2 image declarations not emitted; private stderr not retrieved, exact batch-error diagnosis unconfirmed",
+  "RUNTIME_RETRY": "NOT_RUN",
+  "RESTORE": "NOT_RUN",
+  "DOCKER_RESTART": "NOT_RUN",
+  "AC_ACCEPTANCE": "NOT_EVALUATED"
+}
