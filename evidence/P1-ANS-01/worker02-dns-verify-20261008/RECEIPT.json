@@ -1,0 +1,37 @@
+{
+  "schema": "fds.worker02.dns.receipt.v1",
+  "executor": "GWONUK",
+  "controller": "ansible01/server01_ansible",
+  "managed_host": "k8s-worker02/10.1.93.107/svc_ansible",
+  "source_commit": "5111c66f233fe0f84e2d63cef3837fe091a2a268",
+  "source_pr": "https://github.com/321Team/infra-ansible/pull/74",
+  "engine": "2.21.3",
+  "start_kst": "2026-10-08T17:18:19+09:00",
+  "end_kst": "2026-10-08T17:18:30+09:00",
+  "runtime_rc": 0,
+  "original_manifest_files_verified": 11,
+  "tracked_source_blob_matches": 332,
+  "window_basis": "Human user explicitly confirmed exclusive 15-minute window and Edge/related trials paused in this chat at about 17:17 KST. This is an operator record, not an independent signed permit.",
+  "recap": {
+    "k8s-worker02": {
+      "ok": 32,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 5,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "localhost": {
+      "ok": 1,
+      "changed": 0,
+      "failed": 0,
+      "unreachable": 0
+    }
+  },
+  "verdict": "WORKER02_DNS_VERIFY_PASS",
+  "runtime_stop_observed_kst": "2026-10-08T17:19:13+09:00",
+  "probe": "NOT_RUN",
+  "apply_rollback_global_transition": "NOT_RUN",
+  "independent_review": "PENDING"
+}
