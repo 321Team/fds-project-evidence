@@ -1,0 +1,31 @@
+{
+  "schema": "fds.harbor.syslog-mechanism.v1",
+  "run_id": "23b3d558ffdc4943aaacdd69397635ff",
+  "source_commit": "f19365f8e0de9d422fe8f62db3fffdb019762244",
+  "results": [
+    {
+      "case": "ipv4-ready",
+      "result": "START_AND_LOG_RECEIPT"
+    },
+    {
+      "case": "ipv6-mismatch",
+      "result": "LOGGING_DRIVER_REFUSED"
+    },
+    {
+      "case": "localhost",
+      "rc": 0,
+      "result": "ENVIRONMENT_DEPENDENT_OBSERVATION"
+    },
+    {
+      "case": "late-logger",
+      "result": "REFUSED_THEN_EXPLICIT_START_AND_RECEIPT",
+      "automatic_recovery": "NOT_TESTED"
+    }
+  ],
+  "failure": null,
+  "cleanup_errors": [],
+  "rc": 0,
+  "HARBOR_AUTOSTART": "NOT_TESTED",
+  "AC04": "NOT_EVALUATED",
+  "production_changes": false
+}

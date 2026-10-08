@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-08T00:20:03.425486+00:00",
+  "host": "k8s-worker01",
+  "containers": [
+    {
+      "container_id": "4b2a29530d03d2737be50af45c384bbbc0267e16e7f587af552380a5690c1287",
+      "pid": 948064,
+      "pod": "transaction-api-5f8b5d7cfd-brztj",
+      "pod_uid": "87eb5c51-4666-4968-b405-2f93bc475e4d",
+      "image": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+      "process_args": [
+        "python",
+        "run.py"
+      ],
+      "running_exe": "/usr/local/bin/python3.12",
+      "info_sha256": "f1394b03225e3fd74517b60612054d62eaa4c9707cd0e3f8f5ad3835ff3b3234",
+      "candidates": {
+        "/venv/bin/python3": {
+          "lexists": false,
+          "symlink_target": null
+        },
+        "/usr/bin/python3": {
+          "lexists": false,
+          "symlink_target": null
+        },
+        "/usr/bin/python3.13": {
+          "lexists": false,
+          "symlink_target": null
+        },
+        "/usr/local/bin/python3": {
+          "lexists": true,
+          "symlink_target": "python3.12"
+        },
+        "/usr/local/bin/python3.13": {
+          "lexists": false,
+          "symlink_target": null
+        }
+      }
+    }
+  ]
+}

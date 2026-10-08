@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sec01-probe-test-1008001545-27123-18877
+  namespace: fds-app
+  labels:
+    app.kubernetes.io/managed-by: sec01-ac06-test
+    sec01-probe-test: "1008001545-27123-18877"
+spec:
+  type: ClusterIP
+  publishNotReadyAddresses: false
+  selector:
+    sec01-probe-test: "1008001545-27123-18877"
+  ports:
+    - name: probe
+      port: 8080
+      targetPort: 8080
+      protocol: TCP

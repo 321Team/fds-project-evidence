@@ -1,0 +1,8 @@
+## delete pods/sec01-probe-test-1008001645-22503-9859 uid=0c0491c7-fd89-45b4-b677-44dfc6f4bd9c rc=0
+body={"apiVersion":"v1","kind":"DeleteOptions","preconditions":{"uid":"0c0491c7-fd89-45b4-b677-44dfc6f4bd9c"}}
+{"kind":"Pod","apiVersion":"v1","metadata":{"name":"sec01-probe-test-1008001645-22503-9859","namespace":"fds-app","uid":"0c0491c7-fd89-45b4-b677-44dfc6f4bd9c","resourceVersion":"4516184","generation":2,"creationTimestamp":"2026-10-08T00:16:45Z","deletionTimestamp":"2026-10-08T00:18:19Z","deletionGracePeriodSeconds":5,"labels":{"app.kubernetes.io/managed-by":"sec01-ac06-test","sec01-probe-test":"10
+## delete services/sec01-probe-test-1008001645-22503-9859 uid=5a289022-02f2-4795-b9ae-d9381798d57f rc=0
+body={"apiVersion":"v1","kind":"DeleteOptions","preconditions":{"uid":"5a289022-02f2-4795-b9ae-d9381798d57f"}}
+{"kind":"Service","apiVersion":"v1","metadata":{"name":"sec01-probe-test-1008001645-22503-9859","namespace":"fds-app","uid":"5a289022-02f2-4795-b9ae-d9381798d57f","resourceVersion":"4516188","creationTimestamp":"2026-10-08T00:16:45Z","labels":{"app.kubernetes.io/managed-by":"sec01-ac06-test","sec01-probe-test":"1008001645-22503-9859"},"managedFields":[{"manager":"kubectl-create","operation":"Updat
+NotFound 확인 pod/sec01-probe-test-1008001645-22503-9859
+NotFound 확인 svc/sec01-probe-test-1008001645-22503-9859
