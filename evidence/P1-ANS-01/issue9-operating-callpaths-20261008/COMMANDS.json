@@ -1,0 +1,260 @@
+[
+  {
+    "name": "operating-checkout-head",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=8",
+      "fds-ansible01",
+      "test \"$(hostname -s)\" = ansible01 && test \"$(id -un)\" = server01_ansible && git -C /home/server01_ansible/p1-ans-01 rev-parse HEAD"
+    ],
+    "started_at": "2026-10-07T16:24:33.554303+00:00",
+    "finished_at": "2026-10-07T16:24:33.744669+00:00",
+    "rc": 0
+  },
+  {
+    "name": "operating-checkout-tracked-status",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=8",
+      "fds-ansible01",
+      "test \"$(hostname -s)\" = ansible01 && test \"$(id -un)\" = server01_ansible && git -C /home/server01_ansible/p1-ans-01 status --porcelain --untracked-files=no"
+    ],
+    "started_at": "2026-10-07T16:24:33.745169+00:00",
+    "finished_at": "2026-10-07T16:24:33.951164+00:00",
+    "rc": 0
+  },
+  {
+    "name": "operating-wrapper-hashes",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=8",
+      "fds-ansible01",
+      "test \"$(hostname -s)\" = ansible01 && test \"$(id -un)\" = server01_ansible && sha256sum /home/server01_ansible/p1-ans-01/ansible.cfg /home/server01_ansible/p1-ans-01/scripts/cr-p1-ans-01-01-run.sh /home/server01_ansible/p1-ans-01/scripts/cr-p1-mon-01-01-run.sh /home/server01_ansible/p1-ans-01/scripts/cr-p1-ntp-01-01-run.sh /home/server01_ansible/p1-ans-01/scripts/p1-k8s-01-gate0-run.sh /home/server01_ansible/p1-ans-01/scripts/lib/ansible-engine.sh"
+    ],
+    "started_at": "2026-10-07T16:24:33.951664+00:00",
+    "finished_at": "2026-10-07T16:24:34.144683+00:00",
+    "rc": 1
+  },
+  {
+    "name": "operating-default-engine",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=8",
+      "fds-ansible01",
+      "test \"$(hostname -s)\" = ansible01 && test \"$(id -un)\" = server01_ansible && cd /home/server01_ansible/p1-ans-01 && /usr/bin/ansible --version"
+    ],
+    "started_at": "2026-10-07T16:24:34.144683+00:00",
+    "finished_at": "2026-10-07T16:24:34.526524+00:00",
+    "rc": 0
+  },
+  {
+    "name": "runner-service-list",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=8",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 server01_cicd-runner@10.250.10.20 'test \"$(hostname -s)\" = cicd-runner01 && test \"$(id -un)\" = server01_cicd-runner && systemctl list-units --all --type=service --no-pager --no-legend '\"'\"'actions.runner*'\"'\"''"
+    ],
+    "started_at": "2026-10-07T16:24:34.527024+00:00",
+    "finished_at": "2026-10-07T16:24:34.914240+00:00",
+    "rc": 0
+  },
+  {
+    "name": "runner-service-files",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=8",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 server01_cicd-runner@10.250.10.20 'test \"$(hostname -s)\" = cicd-runner01 && test \"$(id -un)\" = server01_cicd-runner && systemctl list-unit-files --no-pager --no-legend '\"'\"'actions.runner*'\"'\"''"
+    ],
+    "started_at": "2026-10-07T16:24:34.914741+00:00",
+    "finished_at": "2026-10-07T16:24:35.285565+00:00",
+    "rc": 0
+  },
+  {
+    "name": "ansible-main",
+    "argv": [
+      "gh",
+      "api",
+      "repos/321Team/infra-ansible/commits/main",
+      "--jq",
+      ".sha"
+    ],
+    "started_at": "2026-10-07T16:24:35.286062+00:00",
+    "finished_at": "2026-10-07T16:24:35.729892+00:00",
+    "rc": 0
+  },
+  {
+    "name": "cicd-main",
+    "argv": [
+      "gh",
+      "api",
+      "repos/321Team/infra-cicd/commits/main",
+      "--jq",
+      ".sha"
+    ],
+    "started_at": "2026-10-07T16:24:35.729892+00:00",
+    "finished_at": "2026-10-07T16:24:36.188009+00:00",
+    "rc": 0
+  },
+  {
+    "name": "ci74-state",
+    "argv": [
+      "gh",
+      "pr",
+      "view",
+      "74",
+      "--repo",
+      "321Team/infra-ansible",
+      "--json",
+      "headRefOid,statusCheckRollup,reviewDecision"
+    ],
+    "started_at": "2026-10-07T16:24:36.188509+00:00",
+    "finished_at": "2026-10-07T16:24:36.865960+00:00",
+    "rc": 0
+  },
+  {
+    "name": "ansible-runners",
+    "argv": [
+      "gh",
+      "api",
+      "repos/321Team/infra-ansible/actions/runners"
+    ],
+    "started_at": "2026-10-07T16:24:36.866460+00:00",
+    "finished_at": "2026-10-07T16:24:37.373645+00:00",
+    "rc": 0
+  },
+  {
+    "name": "cicd-runners",
+    "argv": [
+      "gh",
+      "api",
+      "repos/321Team/infra-cicd/actions/runners"
+    ],
+    "started_at": "2026-10-07T16:24:37.374146+00:00",
+    "finished_at": "2026-10-07T16:24:37.953154+00:00",
+    "rc": 0
+  },
+  {
+    "name": "ansible-active-runs",
+    "argv": [
+      "gh",
+      "api",
+      "repos/321Team/infra-ansible/actions/runs?per_page=100",
+      "--jq",
+      "[.workflow_runs[]|select(.status==\"queued\" or .status==\"in_progress\" or .status==\"waiting\" or .status==\"pending\")|{id,status,head_sha,path}]"
+    ],
+    "started_at": "2026-10-07T16:24:37.953653+00:00",
+    "finished_at": "2026-10-07T16:24:41.467117+00:00",
+    "rc": 0
+  },
+  {
+    "name": "cicd-active-runs",
+    "argv": [
+      "gh",
+      "api",
+      "repos/321Team/infra-cicd/actions/runs?per_page=100",
+      "--jq",
+      "[.workflow_runs[]|select(.status==\"queued\" or .status==\"in_progress\" or .status==\"waiting\" or .status==\"pending\")|{id,status,head_sha,path}]"
+    ],
+    "started_at": "2026-10-07T16:24:41.467612+00:00",
+    "finished_at": "2026-10-07T16:24:45.026959+00:00",
+    "rc": 0
+  },
+  {
+    "name": "runner-unit-context",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes server01_cicd-runner@10.250.10.20 'systemctl show actions.runner.321Team-infra-cicd.cicd-runner01.service -p User -p MainPID -p WorkingDirectory -p FragmentPath -p DropInPaths -p ActiveState -p SubState'"
+    ],
+    "started_at": "2026-10-07T16:26:34.525871+00:00",
+    "finished_at": "2026-10-07T16:26:34.891065+00:00",
+    "rc": 0
+  },
+  {
+    "name": "runner-main-executable",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes server01_cicd-runner@10.250.10.20 'readlink /proc/1289/exe'"
+    ],
+    "started_at": "2026-10-07T16:26:34.892065+00:00",
+    "finished_at": "2026-10-07T16:26:35.240155+00:00",
+    "rc": 0
+  },
+  {
+    "name": "runner-working-files",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes server01_cicd-runner@10.250.10.20 'sha256sum /etc/systemd/system/actions.runner.321Team-infra-cicd.cicd-runner01.service /home/server01_cicd-runner/actions-runner/runsvc.sh'"
+    ],
+    "started_at": "2026-10-07T16:26:35.240654+00:00",
+    "finished_at": "2026-10-07T16:26:35.598322+00:00",
+    "rc": 0
+  },
+  {
+    "name": "isolated-prepared-read",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes svc_ansible@10.250.10.20 'sudo -n cat /home/ansible-verify/ansible-actions-1c6c4123b62a4ebcb4b1b9042a02e332/evidence/PREPARED.json'"
+    ],
+    "started_at": "2026-10-07T16:26:35.598822+00:00",
+    "finished_at": "2026-10-07T16:26:36.120375+00:00",
+    "rc": 0
+  },
+  {
+    "name": "isolated-container-state",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes svc_ansible@10.250.10.20 'sudo -n -u ansible-verify env HOME=/home/ansible-verify XDG_RUNTIME_DIR=/run/user/1001 podman ps -a --format json'"
+    ],
+    "started_at": "2026-10-07T16:26:36.120877+00:00",
+    "finished_at": "2026-10-07T16:26:36.493045+00:00",
+    "rc": 1
+  },
+  {
+    "name": "normal-account-sudo-state",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes server01_cicd-runner@10.250.10.20 'sudo -n true'"
+    ],
+    "started_at": "2026-10-07T16:26:36.493543+00:00",
+    "finished_at": "2026-10-07T16:26:36.851336+00:00",
+    "rc": 1
+  }
+]
