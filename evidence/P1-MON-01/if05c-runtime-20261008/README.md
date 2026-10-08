@@ -1,15 +1,5 @@
 # IF-05C 전용 시험 알림 실행·원복 — 2026-10-08 KST
 
-## 최신 연결 — 2026-10-09 상태 정합화
-
-아래 본문은 10/8 09:00경 서버 원본 수신 당시 판정이다. 이후 사용자 제출 PNG·두 알림 본문이 [Discord 수신 폴더](../if05c-discord-receipt-20261008/README.md)에 편입됐고, [PR157](https://github.com/321Team/fds-project-evidence/pull/157)은 독립 승인 후 10/8 12:08:48 KST 병합됐다(merge `6014e9a961af497e78be9c383d270291013db5cf`). 따라서 아래 “원문 추후 제공/두 메시지 원문 NOT_VERIFIED”는 **당시 이력이며 현재 수신 상태가 아니다**. FIRING·RESOLVED 두 수신 화면·본문은 확보됐다.
-
-Spidey Bot 옆 FIRING 표시08:57은 화면 관측이다. RESOLVED는 [사용자가 전달한 담당자 의견](https://github.com/321Team/fds-project-evidence/pull/157#issuecomment-6049824396)에 따라 약1분 후 수신으로 정정됐으며, 이를 정확한08:58 또는 초 단위 시각으로 확정하지 않는다. 개별 메시지 링크·ID·Resolved 정확한 시각은 미확인이다. 원 수집기 rc3, 후속 읽기 점검 rc0·원복 완료와 그 한계는 유지한다. 두 수신 확인을 IF-05C 전체 AC 인수로 확대하지 않는다.
-
-이번 변경은 요약의 시점 연결과 README/manifest hash 갱신뿐이다. `USER_RECEIPT.json`, 서버 원본·분석·화면·수신 기록은 변경하지 않았고 재시험도 없다. 아래 REVIEW=PENDING 등은 작성 당시 기록으로 읽으며, 증적 편입 승인과 Runtime/AC 판단은 구분한다.
-
-## 원 수신 시점의 기록 — 2026-10-08
-
 실행·작성: 이권욱(GWONUK), AI 사용: CODEX_ASSISTED. 책임 티켓 [P1-MON-01 #17](https://github.com/321Team/fds-project-baseline/issues/17), 보안 증적 소비·교차검증 [P1-SEC-01 #19](https://github.com/321Team/fds-project-baseline/issues/19). 사용자 전용 알림 일시 활성화 착수 지시 범위의 1회 시험이다. 소스·증적 독립 REVIEW=PENDING. 이 자료는 AC 체크·티켓 종결·영구 변경 승인이 아니다.
 
 ## 판정과 범위
