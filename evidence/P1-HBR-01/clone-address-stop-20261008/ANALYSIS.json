@@ -1,0 +1,68 @@
+{
+  "classification": "EXECUTED_PRECHECK_STOP; CHANGE_NOT_ATTEMPTED",
+  "error_code": "UNEXPECTED_NON_BIND_DATA",
+  "source_commit": "3a5ee859cecc2997edb12c6399b1f4aea47227fb",
+  "source_sha256": "1b6647b7883dc0458fb0d22d00f3eb88d30e2fa191df353180a41cf46cce8064",
+  "observed_kst": "2026-10-08T15:21:38.330859+09:00",
+  "healthy_containers": 10,
+  "non_bind_mounts": [
+    {
+      "service": "portal",
+      "destination": "/run",
+      "type": "volume",
+      "name": "a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15"
+    },
+    {
+      "service": "portal",
+      "destination": "/var/cache/nginx",
+      "type": "volume",
+      "name": "6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69"
+    },
+    {
+      "service": "portal",
+      "destination": "/var/log/nginx",
+      "type": "volume",
+      "name": "ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d"
+    },
+    {
+      "service": "proxy",
+      "destination": "/run",
+      "type": "volume",
+      "name": "1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428"
+    },
+    {
+      "service": "proxy",
+      "destination": "/var/cache/nginx",
+      "type": "volume",
+      "name": "ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb"
+    },
+    {
+      "service": "proxy",
+      "destination": "/var/log/nginx",
+      "type": "volume",
+      "name": "4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec"
+    },
+    {
+      "service": "registryctl",
+      "destination": "/var/lib/registry",
+      "type": "volume",
+      "name": "093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9"
+    },
+    {
+      "service": "log",
+      "destination": "/run",
+      "type": "volume",
+      "name": "9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963"
+    },
+    {
+      "service": "log",
+      "destination": "/etc/logrotate.d",
+      "type": "volume",
+      "name": "dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516"
+    }
+  ],
+  "fix_pr": "https://github.com/321Team/infra-harbor-trivy/pull/16",
+  "FIXED_RUNTIME": "NOT_RUN",
+  "DOCKER_RESTART": "NOT_RUN",
+  "AC_ACCEPTANCE": "NOT_EVALUATED"
+}
