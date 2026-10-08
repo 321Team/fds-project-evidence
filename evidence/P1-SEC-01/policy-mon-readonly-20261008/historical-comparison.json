@@ -1,0 +1,136 @@
+[
+  {
+    "path": "evidence/P1-MON-01/received-20260926T0445Z/run1-20260926T0419Z/p0-test-alert-cm.yaml",
+    "name": "prometheus-p0-test-alert",
+    "key": "p0-test-alert.yml",
+    "historical_data_sha256": "c97c60256c4caa64cd9699539eccbb5d60f18907b1c8190cea280e0d7e8fb22c",
+    "current_data_sha256": "c97c60256c4caa64cd9699539eccbb5d60f18907b1c8190cea280e0d7e8fb22c",
+    "equal": true,
+    "historical_rules": [
+      {
+        "alert": "FDSMonitoringPipelineTest",
+        "expr": "vector(1) == 0",
+        "for": "0s"
+      }
+    ]
+  },
+  {
+    "path": "evidence/P1-MON-01/received-20260927T0530Z/control01-mon16-apply/cm-after.yaml",
+    "name": "prometheus-config",
+    "key": "prometheus.yml",
+    "historical_data_sha256": "80904f03f73036103526e2ff3373bf8c1574205085d14e8b734611072ca2393d",
+    "current_data_sha256": "c9032a2652dce080acf84af91f5c91acae96853472a4b0d599accb37de56da4c",
+    "equal": false
+  },
+  {
+    "path": "evidence/P1-MON-01/received-20260927T0530Z/control01-mon16-apply/cm-before.yaml",
+    "name": "prometheus-config",
+    "key": "prometheus.yml",
+    "historical_data_sha256": "f8c0b237b1cd4b1c0bd8410bb3d10ac9711e7b3f56f9d189b1589d34689eeef4",
+    "current_data_sha256": "c9032a2652dce080acf84af91f5c91acae96853472a4b0d599accb37de56da4c",
+    "equal": false
+  },
+  {
+    "path": "evidence/P1-MON-01/received-20260927T0950Z/control01-ifo6b-apply/cm-after.yaml",
+    "name": "prometheus-config",
+    "key": "prometheus.yml",
+    "historical_data_sha256": "0fb164f05b59a2eca9265aeba42cffdd1a694f65ef6598e58f15ec3a8f1c54a8",
+    "current_data_sha256": "c9032a2652dce080acf84af91f5c91acae96853472a4b0d599accb37de56da4c",
+    "equal": false
+  },
+  {
+    "path": "evidence/P1-MON-01/received-20260927T0950Z/control01-ifo6b-apply/cm-after.yaml",
+    "name": "prometheus-alert-rules",
+    "key": "alert-rules.yml",
+    "historical_data_sha256": "bca9426ad45d8116eb652e76ef6dd67a154897314edcc4029dae51160891cb0c",
+    "current_data_sha256": "2ffbb7770c2f2c21cfdc6c810567b2d394a49ee5d0b9362d934427c8981c8695",
+    "equal": false,
+    "historical_rules": [
+      {
+        "record": "fds_monitoring_heartbeat",
+        "expr": "vector(1)"
+      },
+      {
+        "alert": "NodeExporterDown",
+        "expr": "up{job=\"node-exporter\"} == 0",
+        "for": "30s"
+      },
+      {
+        "alert": "KubeletScrapeDown",
+        "expr": "up{job=~\"kubelet|kubelet-cadvisor\"} == 0",
+        "for": "2m"
+      },
+      {
+        "alert": "TargetDown",
+        "expr": "up{job=~\"transaction-api|fds-engine|kube-state-metrics\"} == 0",
+        "for": "1m"
+      }
+    ]
+  },
+  {
+    "path": "evidence/P1-MON-01/received-20260930T0855Z/control01/sync/alert-rules.yaml",
+    "name": "prometheus-alert-rules",
+    "key": "alert-rules.yml",
+    "historical_data_sha256": "2ffbb7770c2f2c21cfdc6c810567b2d394a49ee5d0b9362d934427c8981c8695",
+    "current_data_sha256": "2ffbb7770c2f2c21cfdc6c810567b2d394a49ee5d0b9362d934427c8981c8695",
+    "equal": true,
+    "historical_rules": [
+      {
+        "record": "fds_monitoring_heartbeat",
+        "expr": "vector(1)"
+      },
+      {
+        "alert": "NodeExporterDown",
+        "expr": "up{job=\"node-exporter\"} == 0",
+        "for": "30s"
+      },
+      {
+        "alert": "KubeletScrapeDown",
+        "expr": "up{job=~\"kubelet|kubelet-cadvisor\"} == 0",
+        "for": "2m"
+      },
+      {
+        "alert": "TargetDown",
+        "expr": "up{job=~\"transaction-api|fds-engine|kube-state-metrics\"} == 0",
+        "for": "1m"
+      }
+    ]
+  },
+  {
+    "path": "evidence/P1-MON-01/received-20260930T0855Z/control01/sync/backup/prometheus-alert-rules.yaml",
+    "name": "prometheus-alert-rules",
+    "key": "alert-rules.yml",
+    "historical_data_sha256": "bca9426ad45d8116eb652e76ef6dd67a154897314edcc4029dae51160891cb0c",
+    "current_data_sha256": "2ffbb7770c2f2c21cfdc6c810567b2d394a49ee5d0b9362d934427c8981c8695",
+    "equal": false,
+    "historical_rules": [
+      {
+        "record": "fds_monitoring_heartbeat",
+        "expr": "vector(1)"
+      },
+      {
+        "alert": "NodeExporterDown",
+        "expr": "up{job=\"node-exporter\"} == 0",
+        "for": "30s"
+      },
+      {
+        "alert": "KubeletScrapeDown",
+        "expr": "up{job=~\"kubelet|kubelet-cadvisor\"} == 0",
+        "for": "2m"
+      },
+      {
+        "alert": "TargetDown",
+        "expr": "up{job=~\"transaction-api|fds-engine|kube-state-metrics\"} == 0",
+        "for": "1m"
+      }
+    ]
+  },
+  {
+    "path": "evidence/P1-MON-01/received-20261001T0258Z/control01/p1-mon-prom315-apply-20261001T114946/prometheus.yaml",
+    "name": "prometheus-config",
+    "key": "prometheus.yml",
+    "historical_data_sha256": "c9032a2652dce080acf84af91f5c91acae96853472a4b0d599accb37de56da4c",
+    "current_data_sha256": "c9032a2652dce080acf84af91f5c91acae96853472a4b0d599accb37de56da4c",
+    "equal": true
+  }
+]

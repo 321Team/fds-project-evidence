@@ -1,0 +1,37 @@
+{
+  "host": "k8s-control01",
+  "started_utc": "2026-10-07T23:32:31.491859+00:00",
+  "source_sha256": "026b4f9ee1f3e00943ce5f4cdaf6b049cbc65a51fa0748981c6e9700d7701394",
+  "scope": "read-only Prometheus GET; no rule change, alert injection or external message",
+  "queries": [
+    {
+      "route": "/api/v1/status/flags",
+      "started_utc": "2026-10-07T23:32:31.553003+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "e69998d4590e0425811a2cc73e11460cb420164bd38f765a59320d809133992e",
+      "data": {
+        "web.enable-lifecycle": "true",
+        "config.file": "/etc/prometheus/prometheus.yml",
+        "web.listen-address": "0.0.0.0:9090"
+      },
+      "finished_utc": "2026-10-07T23:32:31.571954+00:00"
+    }
+  ],
+  "forward_command": [
+    "kubectl",
+    "--kubeconfig=/etc/kubernetes/admin.conf",
+    "--request-timeout=12s",
+    "-n",
+    "monitoring-api",
+    "port-forward",
+    "--address=127.0.0.1",
+    "service/prometheus",
+    "0:9090"
+  ],
+  "forward_first_line": "Forwarding from 127.0.0.1:36731 -> 9090\n",
+  "forward_tail": "Handling connection for 36731\n",
+  "forward_exit": -15,
+  "forward_reaped": true,
+  "finished_utc": "2026-10-07T23:32:31.572973+00:00"
+}

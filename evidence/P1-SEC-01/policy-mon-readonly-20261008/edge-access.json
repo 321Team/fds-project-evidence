@@ -1,0 +1,78 @@
+[
+  {
+    "target": "10.1.93.50",
+    "command": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "StrictHostKeyChecking=yes",
+      "-o",
+      "ConnectTimeout=6",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=6 svc_ansible@10.1.93.50 'sudo -n python3 -c '\"'\"'import json,os,socket,shutil; print(json.dumps({'\"'\"'\"'\"'\"'\"'\"'\"'hostname'\"'\"'\"'\"'\"'\"'\"'\"':socket.gethostname(),'\"'\"'\"'\"'\"'\"'\"'\"'uid'\"'\"'\"'\"'\"'\"'\"'\"':os.geteuid(),'\"'\"'\"'\"'\"'\"'\"'\"'tools'\"'\"'\"'\"'\"'\"'\"'\"':{x:shutil.which(x) for x in ['\"'\"'\"'\"'\"'\"'\"'\"'python3'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'tcpdump'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'nsenter'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'crictl'\"'\"'\"'\"'\"'\"'\"'\"']}}))'\"'\"''"
+    ],
+    "started_utc": "2026-10-07T17:20:31.161836+00:00",
+    "rc": 1,
+    "stdout": "",
+    "stderr": "sudo: 암호가 필요합니다\n",
+    "finished_utc": "2026-10-07T17:20:31.745936+00:00"
+  },
+  {
+    "target": "10.1.93.105",
+    "command": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "StrictHostKeyChecking=yes",
+      "-o",
+      "ConnectTimeout=6",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=6 svc_ansible@10.1.93.105 'sudo -n python3 -c '\"'\"'import json,os,socket,shutil; print(json.dumps({'\"'\"'\"'\"'\"'\"'\"'\"'hostname'\"'\"'\"'\"'\"'\"'\"'\"':socket.gethostname(),'\"'\"'\"'\"'\"'\"'\"'\"'uid'\"'\"'\"'\"'\"'\"'\"'\"':os.geteuid(),'\"'\"'\"'\"'\"'\"'\"'\"'tools'\"'\"'\"'\"'\"'\"'\"'\"':{x:shutil.which(x) for x in ['\"'\"'\"'\"'\"'\"'\"'\"'python3'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'tcpdump'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'nsenter'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'crictl'\"'\"'\"'\"'\"'\"'\"'\"']}}))'\"'\"''"
+    ],
+    "started_utc": "2026-10-07T17:20:31.745936+00:00",
+    "rc": 0,
+    "stdout": "{\"hostname\": \"k8s-worker01\", \"uid\": 0, \"tools\": {\"python3\": \"/bin/python3\", \"tcpdump\": \"/sbin/tcpdump\", \"nsenter\": \"/bin/nsenter\", \"crictl\": \"/bin/crictl\"}}\n",
+    "stderr": "",
+    "finished_utc": "2026-10-07T17:20:32.263645+00:00"
+  },
+  {
+    "target": "10.1.93.107",
+    "command": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "StrictHostKeyChecking=yes",
+      "-o",
+      "ConnectTimeout=6",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=6 svc_ansible@10.1.93.107 'sudo -n python3 -c '\"'\"'import json,os,socket,shutil; print(json.dumps({'\"'\"'\"'\"'\"'\"'\"'\"'hostname'\"'\"'\"'\"'\"'\"'\"'\"':socket.gethostname(),'\"'\"'\"'\"'\"'\"'\"'\"'uid'\"'\"'\"'\"'\"'\"'\"'\"':os.geteuid(),'\"'\"'\"'\"'\"'\"'\"'\"'tools'\"'\"'\"'\"'\"'\"'\"'\"':{x:shutil.which(x) for x in ['\"'\"'\"'\"'\"'\"'\"'\"'python3'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'tcpdump'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'nsenter'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'crictl'\"'\"'\"'\"'\"'\"'\"'\"']}}))'\"'\"''"
+    ],
+    "started_utc": "2026-10-07T17:20:32.263645+00:00",
+    "rc": 0,
+    "stdout": "{\"hostname\": \"k8s-worker02\", \"uid\": 0, \"tools\": {\"python3\": \"/bin/python3\", \"tcpdump\": \"/sbin/tcpdump\", \"nsenter\": \"/bin/nsenter\", \"crictl\": \"/bin/crictl\"}}\n",
+    "stderr": "",
+    "finished_utc": "2026-10-07T17:20:32.839452+00:00"
+  },
+  {
+    "target": "10.1.93.108",
+    "command": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "StrictHostKeyChecking=yes",
+      "-o",
+      "ConnectTimeout=6",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=6 svc_ansible@10.1.93.108 'sudo -n python3 -c '\"'\"'import json,os,socket,shutil; print(json.dumps({'\"'\"'\"'\"'\"'\"'\"'\"'hostname'\"'\"'\"'\"'\"'\"'\"'\"':socket.gethostname(),'\"'\"'\"'\"'\"'\"'\"'\"'uid'\"'\"'\"'\"'\"'\"'\"'\"':os.geteuid(),'\"'\"'\"'\"'\"'\"'\"'\"'tools'\"'\"'\"'\"'\"'\"'\"'\"':{x:shutil.which(x) for x in ['\"'\"'\"'\"'\"'\"'\"'\"'python3'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'tcpdump'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'nsenter'\"'\"'\"'\"'\"'\"'\"'\"','\"'\"'\"'\"'\"'\"'\"'\"'crictl'\"'\"'\"'\"'\"'\"'\"'\"']}}))'\"'\"''"
+    ],
+    "started_utc": "2026-10-07T17:20:32.839952+00:00",
+    "rc": 0,
+    "stdout": "{\"hostname\": \"k8s-worker03\", \"uid\": 0, \"tools\": {\"python3\": \"/bin/python3\", \"tcpdump\": \"/sbin/tcpdump\", \"nsenter\": \"/bin/nsenter\", \"crictl\": \"/bin/crictl\"}}\n",
+    "stderr": "",
+    "finished_utc": "2026-10-07T17:20:33.387898+00:00"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-07T18:53:27.655690+00:00",
+  "finished_utc": "2026-10-07T18:53:55.500520+00:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.108 'sudo -n env COLLECTOR_SHA256=3aedd0575e8901dfaa7a8da121851c5564f39c8e2d91f5b1e96818c0247e98b0 python3 -'"
+  ],
+  "source": "if13-node108.py",
+  "source_sha256": "3aedd0575e8901dfaa7a8da121851c5564f39c8e2d91f5b1e96818c0247e98b0",
+  "rc": 0
+}
