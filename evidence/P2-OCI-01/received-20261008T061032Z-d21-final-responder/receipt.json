@@ -1,0 +1,70 @@
+{
+  "record_id": "P2-OCI-01",
+  "decision_id": "D21",
+  "artifact_scope": "FINAL_RESPONDER_RAW_ONLY",
+  "received_at_utc": "2026-10-08T06:10:32+00:00",
+  "received_at_kst": "2026-10-08T15:10:32+09:00",
+  "source": {
+    "host_reported": "fds-p2-oci-relay01",
+    "path_reported": "/home/opc/d21-ike-observer-20261003T042646Z.log",
+    "executor_reported": "이권욱",
+    "source_command": null,
+    "source_command_rc": null,
+    "source_capture_tool_version": null,
+    "timezone_in_packet_timestamps": "NOT_EXPLICIT_IN_RAW",
+    "source_sha_or_bundle_version": null
+  },
+  "transfer": {
+    "historical_stage": "Relay -> OCI Cloud Shell SCP and final rehash, reported by issue comment",
+    "historical_receipt": "https://github.com/321Team/fds-project-baseline/issues/36#issuecomment-5965598580",
+    "current_stage": "user-supplied Windows Downloads file -> byte-preserving Git candidate",
+    "fresh_relay_or_cloudshell_read": false
+  },
+  "file": {
+    "name": "d21-ike-observer-20261003T042646Z.log",
+    "bytes": 8706,
+    "sha256": "e5f754a3d66c6fe452605ff914a6294e87aa85bf6a345ec0fadb981f18745cb0",
+    "expected_reference": "https://github.com/321Team/fds-project-baseline/issues/36#issuecomment-5965598580",
+    "matches_expected": true,
+    "line_endings": {
+      "crlf": 0,
+      "lf": 179
+    },
+    "redacted_or_normalized": false
+  },
+  "raw_observations": {
+    "packet_header_lines": [
+      4,
+      74,
+      87,
+      90,
+      93,
+      163
+    ],
+    "packets_captured": 6,
+    "packets_received_by_filter": 6,
+    "packets_dropped_by_kernel": 0,
+    "first_exchange": "IKE_SA_INIT request/response, then UDP4500 IKE_AUTH request/response with same cookie pair and changed public source",
+    "second_exchange": "IKE_SA_INIT request/response only in this file"
+  },
+  "sensitive_pattern_scan": {
+    "private_key": 0,
+    "github_token": 0,
+    "aws_access_key": 0,
+    "credential_assignment": 0,
+    "authorization_header": 0
+  },
+  "limits": [
+    "Encrypted IKE_AUTH result not decoded here; expected AUTHENTICATION_FAILED derives from historical initiator report, not this file alone.",
+    "No authenticated tunnel, Child/IPsec SA or workload acceptance asserted.",
+    "Checksum annotations retained; cause not independently established.",
+    "Initiator/Phase-A/cleanup raw and exact capture command/RC/version not received in this upload."
+  ],
+  "state": {
+    "raw_intake": "RECEIVED_HASH_MATCH",
+    "new_runtime": "NOT_RUN",
+    "independent_review": "PENDING",
+    "merge": "PENDING",
+    "full_d21_publication": "PARTIAL_INTAKE_PENDING_REVIEW_AND_OTHER_RAW"
+  }
+}
