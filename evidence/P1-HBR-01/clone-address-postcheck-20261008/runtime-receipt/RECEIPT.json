@@ -1,0 +1,92 @@
+{
+  "collected_epoch": 1791444395.9961393,
+  "private_source": "/root/hbr-address-trial-20261008-1607",
+  "fresh_private_results": "/root/hbr-a2r1-readonly-hgljpglh",
+  "collector_sha256": "c80849960929afa22f2b1fc43153b41f824f4599088123cd39b8dbaef72bcc28",
+  "scope": "READ_ONLY_FILE_RECEIPT_AND_DOCKER_PS_INSPECT_SS",
+  "commands": [
+    {
+      "name": "container-ids",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=com.docker.compose.project=harbor"
+      ],
+      "rc": 0,
+      "started_epoch": 1791444395.9175258,
+      "finished_epoch": 1791444395.9553874,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "state",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "inspect",
+        "--type",
+        "container",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"image\":{{json .Image}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"status\":{{json .State.Status}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}null{{end}},\"restart\":{{json .HostConfig.RestartPolicy}},\"mounts\":{{json .Mounts}},\"ports\":{{json .HostConfig.PortBindings}},\"logging\":{{json .HostConfig.LogConfig}}}",
+        "e17a0363eed9",
+        "390681b088d9",
+        "002a011193a2",
+        "2d0ee28d711a",
+        "ba662466a77c",
+        "6435156e64d2",
+        "3d069e5fdecc",
+        "c0ccedeb1e92",
+        "c6400b973975",
+        "48ab208afc77"
+      ],
+      "rc": 0,
+      "started_epoch": 1791444395.9555085,
+      "finished_epoch": 1791444395.9774742,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "original-volumes",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9",
+        "1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428",
+        "4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec",
+        "6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69",
+        "9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963",
+        "a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15",
+        "ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb",
+        "dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516",
+        "ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d"
+      ],
+      "rc": 0,
+      "started_epoch": 1791444395.977625,
+      "finished_epoch": 1791444395.992339,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "listener",
+      "argv": [
+        "ss",
+        "-H",
+        "-ltn4",
+        "sport",
+        "=",
+        ":1514"
+      ],
+      "rc": 0,
+      "started_epoch": 1791444395.9923563,
+      "finished_epoch": 1791444395.9961288,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "APPLY_RETRY": "NOT_RUN",
+  "RESTORE": "NOT_RUN",
+  "DOCKER_RESTART": "NOT_RUN"
+}

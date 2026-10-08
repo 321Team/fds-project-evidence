@@ -1,0 +1,114 @@
+{
+  "collected_epoch": 1791444859.1169963,
+  "private_results": "/root/hbr-a2r1-labels-ndt9zda5",
+  "commands": [
+    {
+      "name": "docker-version",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "version",
+        "--format",
+        "{{json .Server}}"
+      ],
+      "rc": 0,
+      "started_epoch": 1791444858.5895674,
+      "finished_epoch": 1791444858.6112902,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "compose-version",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "compose",
+        "version",
+        "--short"
+      ],
+      "rc": 0,
+      "started_epoch": 1791444858.611357,
+      "finished_epoch": 1791444858.641064,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "docker-security",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "info",
+        "--format",
+        "{\"security_options\":{{json .SecurityOptions}},\"root\":{{json .DockerRootDir}},\"driver\":{{json .Driver}}}"
+      ],
+      "rc": 0,
+      "started_epoch": 1791444858.641084,
+      "finished_epoch": 1791444858.8539734,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "getenforce",
+      "argv": [
+        "getenforce"
+      ],
+      "rc": 0,
+      "started_epoch": 1791444858.85399,
+      "finished_epoch": 1791444858.882529,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "container-labels",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "inspect",
+        "--type",
+        "container",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"status\":{{json .State.Status}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}null{{end}},\"mount_label\":{{json .MountLabel}},\"process_label\":{{json .ProcessLabel}},\"security_opt\":{{json .HostConfig.SecurityOpt}},\"privileged\":{{json .HostConfig.Privileged}},\"mount_requests\":{{json .HostConfig.Mounts}},\"mounts\":{{json .Mounts}}}",
+        "002a011193a2671233c0da5a39fd488d5182d9ba604cde207ddf5a944c7e5477",
+        "390681b088d9d4def6648e9dc9bd2ffc495eaa546c4f02f7a64048482803e859",
+        "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+        "c0ccedeb1e92cc9fdbfcdae25623e2398403d443bd6d2c171187375717ead1c8",
+        "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+        "c6400b973975ac8e12aa98b4af88b96a924e0eaff1cc723b40883b79d003dbc5",
+        "6435156e64d290a81fd0ece2a9951df6656d94d2c997d2a1094b0c6f11f48dd1",
+        "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+        "2d0ee28d711aec810708c3eca3927bae143e011e82e3f6d4174de218e04f8db0",
+        "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1"
+      ],
+      "rc": 1,
+      "started_epoch": 1791444858.882647,
+      "finished_epoch": 1791444859.0022624,
+      "stderr_sha256": "5e720693416842910237bf22cd21292a3bc5ef9942dc2b7e307a2fd71a9bd26b"
+    },
+    {
+      "name": "image-volume-declarations",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"declared_volumes\":{{json .Config.Volumes}}}",
+        "sha256:08af37e4194d0507db57f066b0bc1e3799b657389f10f56b145fdd72296716e6",
+        "sha256:0ceff3e80b068525c4f3dbedc1f08af1bdf990c7490cc78d187e7d50aba8510e",
+        "sha256:18413e62e4bbdd446303862072c65932b78bd1f0fd6404d5233b91a803ce0198",
+        "sha256:5501021458c229c7663f3c4445dfbc2dcc32a22a5b3e3fb65e3e591311eed9dc",
+        "sha256:7023398c8d8544fab8f0dab4ccdce871de7a2e0008474ea9167f6726d04f05a0",
+        "sha256:9b31001ccde53ea0803e41c2555724358f1724152dd6cade530fd81967f10f07",
+        "sha256:9e1894bee0ff714e6155678627781773792bdb3c6bcff445f7200354ab5435b6",
+        "sha256:a22b58594cea54a78d1c670a81b9dfa3c5af8b4bdd1f89750fdf1c5876c72eab",
+        "sha256:d39f86d91af113c6302e4faac04a7269e073e1a1093a38ad2ac958ed8e4bf58e",
+        "sha256:f606f750f05fa988932cfead651446833f56561dc4f679a4b61e4d52f75ea54a"
+      ],
+      "rc": 1,
+      "started_epoch": 1791444859.002385,
+      "finished_epoch": 1791444859.1164198,
+      "stderr_sha256": "1f66eb3d621d3e35f7452781cd065c5b83353f63d29d94bcc008f601f5f62162"
+    }
+  ],
+  "collector_sha256": "159d2488aa8d3bfa480e87740381102ec6173283dde2ccac6ecf000584012a77",
+  "scope": "READ_ONLY_METADATA_NO_RELABEL_NO_SECURITY_CHANGE",
+  "RUNTIME_RETRY": "NOT_RUN",
+  "RESTORE": "NOT_RUN",
+  "DOCKER_RESTART": "NOT_RUN"
+}
