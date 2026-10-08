@@ -1,0 +1,44 @@
+[
+  {
+    "name": "identity-supply-lock",
+    "command": "python3 -I -B -",
+    "start_utc": "2026-10-07T15:02:56.650176+00:00",
+    "end_utc": "2026-10-07T15:02:57.260665+00:00",
+    "rc": 0
+  },
+  {
+    "name": "podman-containers",
+    "command": "podman ps -a --format json",
+    "start_utc": "2026-10-07T15:02:57.261165+00:00",
+    "end_utc": "2026-10-07T15:02:57.693342+00:00",
+    "rc": 0
+  },
+  {
+    "name": "podman-version",
+    "command": "podman --version",
+    "start_utc": "2026-10-07T15:02:57.693847+00:00",
+    "end_utc": "2026-10-07T15:02:58.087353+00:00",
+    "rc": 0
+  },
+  {
+    "name": "podman-rootless",
+    "command": "podman info --format '{{.Host.Security.Rootless}}'",
+    "start_utc": "2026-10-07T15:02:58.087353+00:00",
+    "end_utc": "2026-10-07T15:02:58.544078+00:00",
+    "rc": 0
+  },
+  {
+    "name": "trivy-binary",
+    "command": "sha256sum /usr/local/bin/trivy",
+    "start_utc": "2026-10-07T15:02:58.544578+00:00",
+    "end_utc": "2026-10-07T15:02:59.096501+00:00",
+    "rc": 0
+  },
+  {
+    "name": "harbor-tls",
+    "command": "curl --noproxy '*' --connect-timeout 5 --max-time 15 --silent --show-error --output /dev/null --write-out 'http=%{http_code} verify=%{ssl_verify_result}\n' https://10.1.93.54/api/v2.0/health",
+    "start_utc": "2026-10-07T15:02:59.096501+00:00",
+    "end_utc": "2026-10-07T15:02:59.939120+00:00",
+    "rc": 0
+  }
+]
