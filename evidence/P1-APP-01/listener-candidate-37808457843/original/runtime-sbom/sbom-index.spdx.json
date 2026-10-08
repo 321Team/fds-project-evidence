@@ -1,0 +1,101 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "sbom-sha256:52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556",
+  "spdxVersion": "SPDX-2.3",
+  "creationInfo": {
+    "created": "2026-10-06T19:04:03Z",
+    "creators": [
+      "Tool: apko (v1.4.4)",
+      "Organization: Chainguard, Inc"
+    ],
+    "licenseListVersion": "3.27"
+  },
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://spdx.org/spdxdocs/apko/",
+  "documentDescribes": [
+    "SPDXRef-Package-sha256-52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556"
+  ],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-sha256-52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556",
+      "name": "sha256:52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556",
+      "versionInfo": "sha256:52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556",
+      "filesAnalyzed": false,
+      "description": "Multi-arch image index",
+      "downloadLocation": "NOASSERTION",
+      "supplier": "Organization: Chainguard, Inc.",
+      "sourceInfo": "Generated at image build time by apko",
+      "primaryPackagePurpose": "CONTAINER",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:oci/fds-apko-wolfi-runtime@sha256:52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556?mediaType=application%2Fvnd.oci.image.index.v1%2Bjson",
+          "referenceType": "purl"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-sha256-0bb0c7752e81e6dec9704e8c43ba1e3824fb19021324c21c06a78faa4ab33870",
+      "name": "sha256:0bb0c7752e81e6dec9704e8c43ba1e3824fb19021324c21c06a78faa4ab33870",
+      "versionInfo": "sha256:0bb0c7752e81e6dec9704e8c43ba1e3824fb19021324c21c06a78faa4ab33870",
+      "filesAnalyzed": false,
+      "downloadLocation": "NOASSERTION",
+      "supplier": "Organization: Chainguard, Inc.",
+      "primaryPackagePurpose": "CONTAINER",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0bb0c7752e81e6dec9704e8c43ba1e3824fb19021324c21c06a78faa4ab33870"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:oci/fds-apko-wolfi-runtime@sha256:0bb0c7752e81e6dec9704e8c43ba1e3824fb19021324c21c06a78faa4ab33870?arch=amd64\u0026mediaType=application%2Fvnd.oci.image.manifest.v1%2Bjson\u0026os=linux",
+          "referenceType": "purl"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Package-https-C47C47github.comC47321TeamC47fds-msaC64affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+      "name": "github.com/321Team/fds-msa",
+      "versionInfo": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+      "filesAnalyzed": false,
+      "description": "Image configuration source",
+      "downloadLocation": "https://github.com/321Team/fds-msa@affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+      "supplier": "Organization: Chainguard, Inc.",
+      "primaryPackagePurpose": "SOURCE",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "affbc69beef9967f7977d09a6fec14f7fb6c0e94"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:github/321Team/fds-msa@affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+          "referenceType": "purl"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-Package-sha256-52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556",
+      "relationshipType": "VARIANT_OF",
+      "relatedSpdxElement": "SPDXRef-Package-sha256-0bb0c7752e81e6dec9704e8c43ba1e3824fb19021324c21c06a78faa4ab33870"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-sha256-52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556",
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-Package-https-C47C47github.comC47321TeamC47fds-msaC64affbc69beef9967f7977d09a6fec14f7fb6c0e94"
+    }
+  ]
+}
