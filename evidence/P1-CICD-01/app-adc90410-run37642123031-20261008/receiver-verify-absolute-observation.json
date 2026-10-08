@@ -1,0 +1,16 @@
+{
+  "source": "tool execution transcript, chunk 31b70a",
+  "host": "ansible01",
+  "command": "cd /home/server01_ansible/app-evidence-receive.2MLDTvER && python3 -B tools/delivery/app_evidence.py verify --archive /home/server01_ansible/app-evidence-receive.2MLDTvER/app-evidence.tar.gz --sha256 d0762a96741f69ac0fab14f116bdd84b95330d5eb9fe65889ad96853df47b6b4 --expected /home/server01_ansible/app-evidence-receive.2MLDTvER/expected.json",
+  "rc": 0,
+  "result": {
+    "BINDING": "COMPLETE",
+    "DELIVERY_GATE": "NOT_VERIFIED",
+    "EVIDENCE_CHECK": "PASS",
+    "RAW_PAYLOAD_CHECK": "NOT_INCLUDED_SERVER_RECORD_ONLY",
+    "RECORDED_APP_WORKFLOW": "PASS",
+    "SOURCE_APPROVAL": "NOT_INDEPENDENTLY_VERIFIED",
+    "SOURCE_BINDING": "MATCH"
+  },
+  "prior_failure": "Relative paths failed the existing absolute-path gate; archive and verifier were not changed. This is a recorded tool observation, not a regenerated native stdout file."
+}
