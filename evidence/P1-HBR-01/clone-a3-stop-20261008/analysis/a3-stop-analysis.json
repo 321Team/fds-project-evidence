@@ -1,0 +1,871 @@
+{
+  "source_result_sha256": "5df896fd9f501cbac82e1091c6368160d79dbca34baf651681f766f331102fa7",
+  "started_kst": "2026-10-08T19:36:12.246501+09:00",
+  "finished_kst": "2026-10-08T19:39:18.961887+09:00",
+  "t0_kst": "2026-10-08T19:36:13.566698+09:00",
+  "restart_commands": [
+    {
+      "name": "restart-once",
+      "rc": 0,
+      "started_kst": "2026-10-08T19:36:13.567495+09:00",
+      "finished_kst": "2026-10-08T19:36:24.975165+09:00"
+    }
+  ],
+  "same_boot": true,
+  "changed_docker_invocation": true,
+  "sample_count": 37,
+  "errors": [
+    "POSTCHECK_FAILED",
+    "JOURNAL_COLLECTION_FAILED"
+  ],
+  "postcheck_errors": [
+    {
+      "item": "preservation",
+      "phase": "validation",
+      "error_code": "POST_NOT_ALL_HEALTHY"
+    }
+  ],
+  "capture_status_counts": {
+    "COLLECTED": 29,
+    "ERROR": 0
+  },
+  "metadata_difference_excluding_health_status": [],
+  "all_ten_autostart_within_observed_window": "NOT_ACHIEVED",
+  "root_cause": "UNCONFIRMED_PENDING_JOURNAL_AND_STATE_ERROR",
+  "timeline": [
+    {
+      "index": 0,
+      "kst": "2026-10-08T19:36:13.195049+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-log",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ],
+      "healthy": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-log",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ],
+      "exited": []
+    },
+    {
+      "index": 1,
+      "kst": "2026-10-08T19:36:18.219867+09:00",
+      "docker_error": "TIMEOUT",
+      "listener": true,
+      "running": [],
+      "healthy": [],
+      "exited": []
+    },
+    {
+      "index": 2,
+      "kst": "2026-10-08T19:36:27.227819+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 3,
+      "kst": "2026-10-08T19:36:32.255042+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 4,
+      "kst": "2026-10-08T19:36:37.304563+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 5,
+      "kst": "2026-10-08T19:36:42.344509+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 6,
+      "kst": "2026-10-08T19:36:47.385342+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 7,
+      "kst": "2026-10-08T19:36:52.431583+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 8,
+      "kst": "2026-10-08T19:36:57.465151+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 9,
+      "kst": "2026-10-08T19:37:02.494654+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 10,
+      "kst": "2026-10-08T19:37:07.529842+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 11,
+      "kst": "2026-10-08T19:37:12.565820+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 12,
+      "kst": "2026-10-08T19:37:17.592013+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 13,
+      "kst": "2026-10-08T19:37:22.646308+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 14,
+      "kst": "2026-10-08T19:37:27.668840+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 15,
+      "kst": "2026-10-08T19:37:32.694304+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 16,
+      "kst": "2026-10-08T19:37:37.723862+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 17,
+      "kst": "2026-10-08T19:37:42.756305+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 18,
+      "kst": "2026-10-08T19:37:47.785737+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 19,
+      "kst": "2026-10-08T19:37:52.814437+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 20,
+      "kst": "2026-10-08T19:37:57.843216+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 21,
+      "kst": "2026-10-08T19:38:02.872690+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 22,
+      "kst": "2026-10-08T19:38:07.907389+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 23,
+      "kst": "2026-10-08T19:38:12.938259+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 24,
+      "kst": "2026-10-08T19:38:17.965252+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 25,
+      "kst": "2026-10-08T19:38:22.991542+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 26,
+      "kst": "2026-10-08T19:38:28.023155+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 27,
+      "kst": "2026-10-08T19:38:33.047593+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 28,
+      "kst": "2026-10-08T19:38:38.095098+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 29,
+      "kst": "2026-10-08T19:38:43.132727+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 30,
+      "kst": "2026-10-08T19:38:48.162609+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 31,
+      "kst": "2026-10-08T19:38:53.200114+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 32,
+      "kst": "2026-10-08T19:38:58.236889+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 33,
+      "kst": "2026-10-08T19:39:03.261914+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 34,
+      "kst": "2026-10-08T19:39:08.292180+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 35,
+      "kst": "2026-10-08T19:39:13.316791+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    },
+    {
+      "index": 36,
+      "kst": "2026-10-08T19:39:18.356638+09:00",
+      "docker_error": null,
+      "listener": true,
+      "running": [
+        "/harbor-log"
+      ],
+      "healthy": [
+        "/harbor-log"
+      ],
+      "exited": [
+        "/harbor-core",
+        "/harbor-db",
+        "/harbor-jobservice",
+        "/harbor-portal",
+        "/nginx",
+        "/redis",
+        "/registry",
+        "/registryctl",
+        "/trivy-adapter"
+      ]
+    }
+  ],
+  "original_status": "STOP_RECOVERY_REQUIRED_UNCHANGED"
+}
