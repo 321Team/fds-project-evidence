@@ -1,0 +1,16 @@
+{
+  "started_utc": "2026-10-07T17:21:21.848868+00:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=6 svc_ansible@10.1.93.50 'python3 -c '\"'\"'import json,os,socket,shutil; print(json.dumps({'\"'\"'\"'\"'\"'\"'\"'\"'hostname'\"'\"'\"'\"'\"'\"'\"'\"':socket.gethostname(),'\"'\"'\"'\"'\"'\"'\"'\"'uid'\"'\"'\"'\"'\"'\"'\"'\"':os.geteuid(),'\"'\"'\"'\"'\"'\"'\"'\"'curl'\"'\"'\"'\"'\"'\"'\"'\"':shutil.which('\"'\"'\"'\"'\"'\"'\"'\"'curl'\"'\"'\"'\"'\"'\"'\"'\"')}))'\"'\"''"
+  ],
+  "rc": 0,
+  "stdout": "{\"hostname\": \"edge01\", \"uid\": 1003, \"curl\": \"/usr/bin/curl\"}\n",
+  "stderr": "",
+  "finished_utc": "2026-10-07T17:21:22.427668+00:00"
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "name": "logging-endpoints",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes svc_ansible@10.1.93.54 'sudo -n docker inspect --format '\"'\"'{{.Id}} {{.Name}} {{.HostConfig.LogConfig.Type}} {{index .HostConfig.LogConfig.Config \"syslog-address\"}} {{json .HostConfig.PortBindings}}'\"'\"' harbor-db redis registry registryctl harbor-core harbor-portal harbor-jobservice trivy-adapter nginx harbor-log'"
+    ],
+    "started_at": "2026-10-07T16:30:13.900228+00:00",
+    "finished_at": "2026-10-07T16:30:14.432019+00:00",
+    "rc": 0
+  },
+  {
+    "name": "logging-listener",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes svc_ansible@10.1.93.54 'ss -H -lnt '\"'\"'sport = :1514'\"'\"''"
+    ],
+    "started_at": "2026-10-07T16:30:14.432019+00:00",
+    "finished_at": "2026-10-07T16:30:14.785267+00:00",
+    "rc": 0
+  },
+  {
+    "name": "localhost-resolution",
+    "argv": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "fds-ansible01",
+      "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes svc_ansible@10.1.93.54 'getent ahosts localhost'"
+    ],
+    "started_at": "2026-10-07T16:30:14.785267+00:00",
+    "finished_at": "2026-10-07T16:30:15.131891+00:00",
+    "rc": 0
+  }
+]

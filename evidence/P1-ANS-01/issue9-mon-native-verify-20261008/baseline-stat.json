@@ -1,0 +1,5 @@
+{
+  "at": "2026-10-07T15:51:19.707514+00:00",
+  "command": "ssh -T -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.56 'sudo -n stat -c '\"'\"'%U %G %a %s'\"'\"' /var/lib/fds-change/CR-P1-MON-01-01/original-state.json'",
+  "rc": 0
+}

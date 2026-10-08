@@ -1,0 +1,64 @@
+{
+  "reference_head": "b3334d36f0f76b7a1f9803e2ad285a09ceabbf98",
+  "reference_file": "docker-go4-pre-20261007T231004.txt",
+  "reference_file_sha256": "f367a2253d3dc89d696e9121430ffb049c15662af48a242ed11528838c79f13a",
+  "matched_failed_containers": [
+    {
+      "id": "ed401ac496657a16dffa945484190a22b8c8ea6e64c0252bcdb4942067022512",
+      "name": "/harbor-jobservice",
+      "timestamp_us": "1791382353936873",
+      "host": "harbor01"
+    },
+    {
+      "id": "4121c032552050064568802c8882c23188c6d194e95bbb639812d4114aa19082",
+      "name": "/nginx",
+      "timestamp_us": "1791382353933164",
+      "host": "harbor01"
+    },
+    {
+      "id": "d094ae55b7446d13718f72e11cd859b3e208f3d88f9bc797f57dccf2291c1e3d",
+      "name": "/harbor-core",
+      "timestamp_us": "1791382353933164",
+      "host": "harbor01"
+    },
+    {
+      "id": "f3d2e23724881d47ffac2baae821b423c0b3908df1a8a7fc1da2311384bedf4a",
+      "name": "/redis",
+      "timestamp_us": "1791382353929925",
+      "host": "harbor01"
+    },
+    {
+      "id": "910e59d383c4a3b016428cd3c217e86dcf931a7d1874c0ac0b0d767d08771266",
+      "name": "/harbor-portal",
+      "timestamp_us": "1791382353929564",
+      "host": "harbor01"
+    },
+    {
+      "id": "ad38d197cf1c90f4bc9802ce92ab2f44c9643c037d2cf55e3546ab2d9017ace6",
+      "name": "/registryctl",
+      "timestamp_us": "1791382353929564",
+      "host": "harbor01"
+    },
+    {
+      "id": "83cbccfcd09608de11a31908b79640c484464f42bcf0f97791acd5bcc2836296",
+      "name": "/harbor-db",
+      "timestamp_us": "1791382353929484",
+      "host": "harbor01"
+    },
+    {
+      "id": "d9325d000835bd4c026fee3da1756198c96fba70342d13246a1c3b74ce7da76b",
+      "name": "/trivy-adapter",
+      "timestamp_us": "1791382353928014",
+      "host": "harbor01"
+    },
+    {
+      "id": "e0c9f693eb52b8ecf2409b3e091809dca5f52aff7d3c1376a9884e3511127999",
+      "name": "/registry",
+      "timestamp_us": "1791382353927943",
+      "host": "harbor01"
+    }
+  ],
+  "direct_failure": "syslog initialization connection refused to IPv6 loopback port1514",
+  "startup_order_root_cause": "NOT_FULLY_ESTABLISHED",
+  "runtime_fix": "NOT_RUN"
+}
