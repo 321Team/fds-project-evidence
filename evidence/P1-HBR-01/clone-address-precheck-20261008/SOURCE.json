@@ -1,0 +1,16 @@
+{
+  "stage": "ISOLATED_CLONE_READONLY_A1",
+  "commit": "58b9e21bf3af2cfe85fae6fd560dddc6d6e943d7",
+  "expires_epoch": 1791438540,
+  "files": {
+    "override.json": "c67d8a652b94f9f142534d87adce70974f1f72bfe9863181a971b16f12b61d9b",
+    "checker.py": "97c03cf62554eddbb36c0e5fdd2fa560d013d1821df6afb5ca6c189f47fce997",
+    "observer.py": "ac9d42efbcd4f18effc2bcd7a819af29d7cc6aaa5cbd13c94fbd05e37f39e1e1",
+    "precheck.py": "eca692df21f42dea784a1b1cab4f1d056bf703f3ce7f43722cc3baf9029e1997"
+  },
+  "paths": {
+    "override.json": "config/harbor/compose.logging-loopback.override.json",
+    "checker.py": "scripts/verify/validate-logging-override.py",
+    "observer.py": "scripts/verify/observe-harbor-startup.py"
+  }
+}
