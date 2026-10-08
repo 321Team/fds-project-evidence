@@ -1,0 +1,33 @@
+{
+  "application_outputs": {
+    "fds_engine_inspect_sha256": "90acdf226b792bd9c584a04f2ca7757f876f323f311ac7d7b9769deb6d9e7895",
+    "fds_engine_report_sha256": "6b8597d068eabe6e8c27e79b001dfd9201c6b271e0e82500fabaa597e05efc63",
+    "transaction_api_inspect_sha256": "c79eed0bd35eca7cb9b993a1295019f195703beedc7aeed4256fdade7bb6e587",
+    "transaction_api_report_sha256": "d5129ba71114e7b65ae40fe77f97e6651be201e69af45314ab46afa8101b7815"
+  },
+  "harbor_push": "NOT_EXECUTED",
+  "inputs": {
+    "builder_config_sha256": "c2c0d81ec4a20fb06417b66c5a1d1a1c04a068f1c0c76d37a35f2c12bab264b2",
+    "builder_lock_sha256": "58888fd8e05517805bc66661ba2d41055093e006d7d11043e2b4f65efbc0cd55",
+    "runtime_config_sha256": "dc32de753d5b78501fc4654f79f17a285a0d523aaf6f28e6cfcad9ab2cc8c070",
+    "runtime_lock_sha256": "bfa66e14097be03d6db42b3ebd479aa68d5db802faa2d00cdc72f7b80e3541b3"
+  },
+  "kubernetes_deploy": "NOT_EXECUTED",
+  "result_scope": "CANDIDATE_ONLY",
+  "sbom_sha256": {
+    "builder-sbom/sbom-index.spdx.json": "4b790388d6c1dd1b5231d434bd3b795411b82a8e7ef1522070483e928b76111a",
+    "builder-sbom/sbom-x86_64.spdx.json": "fe009a7da183a5a3476ad1d3192aef06fa9b5f1b0b7fe30f71da4637dd6082a5",
+    "runtime-sbom/sbom-index.spdx.json": "8e5e2e7dbbe1c8b565e2afbeae40c265097b3e56d3edc4e0294e3a18f9076496",
+    "runtime-sbom/sbom-x86_64.spdx.json": "be4295005cc1dbd040bd143863e962e9afd7a59a764616c597230c4784f6cab9"
+  },
+  "schema": "fds.apko-provenance-receipt.v1",
+  "security_gate": "HIGH=0,CRITICAL=0",
+  "signed_attestation": "NOT_RUN",
+  "source_sha": "aeb9995d626ffdc24454477038eb82d5d9e4744e",
+  "supply_chain_adoption": "APPROVED_DEC_P1_IMG_01",
+  "tool": {
+    "name": "apko",
+    "release_archive_sha256": "dbd9e8f416903b2d896497c51f3217259d03ecb45c997254cedca5274e8671db",
+    "version": "1.4.4"
+  }
+}

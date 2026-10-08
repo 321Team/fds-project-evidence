@@ -1,0 +1,33 @@
+{
+  "apk_tools_present": false,
+  "builder_lock_subset_of_sbom": true,
+  "builder_package_count": 35,
+  "builder_required": [
+    {
+      "name": "py3.13-pip",
+      "version": "26.2.1-r2"
+    },
+    {
+      "name": "python-3.13",
+      "version": "3.13.16_git20261002-r2"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026e-r0"
+    }
+  ],
+  "decision": "PASS",
+  "runtime_lock_subset_of_sbom": true,
+  "runtime_package_count": 29,
+  "runtime_required": [
+    {
+      "name": "python-3.13",
+      "version": "3.13.16_git20261002-r2"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026e-r0"
+    }
+  ],
+  "schema": "fds.apko-lock-sbom-consistency.v1"
+}

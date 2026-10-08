@@ -1,0 +1,74 @@
+[
+    {
+        "Id": "sha256:a6b616dc788c8b172af8094a06a2988e7cf75f7236c1e71dbeedd76fd74438f0",
+        "RepoTags": [
+            "fds-apko-wolfi-candidate/fds-engine:aeb9995d626ffdc24454477038eb82d5d9e4744e"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-10-08T15:49:24.875318369Z",
+        "DockerVersion": "",
+        "Author": "github.com/chainguard-dev/apko",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "10001:999",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8001/tcp": {},
+                "9090/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"
+            ],
+            "Cmd": [
+                "run.py"
+            ],
+            "ArgsEscaped": true,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": [
+                "/venv/bin/python3"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "org.opencontainers.image.created": "2026-10-06T19:04:03Z"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 104857226,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/840lx7rjzfu4kq6da48ccxb51/diff:/var/lib/docker/overlay2/n1slijosoztgusx8y5157bsal/diff:/var/lib/docker/overlay2/07pqd4ezgz3c6twkronvbszfx/diff:/var/lib/docker/overlay2/24caf0f7f2d9a64490593e9232905a46a09b03e4d5230e18adb46b2d30ddb24c/diff",
+                "MergedDir": "/var/lib/docker/overlay2/j1x1wzl48tgpdhxe105mxmgbj/merged",
+                "UpperDir": "/var/lib/docker/overlay2/j1x1wzl48tgpdhxe105mxmgbj/diff",
+                "WorkDir": "/var/lib/docker/overlay2/j1x1wzl48tgpdhxe105mxmgbj/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+                "sha256:69bd4e509d3eb940c3060930b6db39b3d9d0809c34841affebdca2bf5fecbc45",
+                "sha256:81449fbf1c320e1f71048ae01780bdd09d1a34e95b3f548a69b1348194e3f73f",
+                "sha256:febe4fab1de01e325cadd34505160b6f989062d11e9e664ccf9bd7f8c8fc6b19",
+                "sha256:46df0c01b984a4f47bcfdd846a58a0536b69243d6b05865be3d163fe5ff18b9b"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-10-08T15:49:25.195889737Z"
+        }
+    }
+]

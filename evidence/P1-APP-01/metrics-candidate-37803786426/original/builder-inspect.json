@@ -1,0 +1,58 @@
+[
+    {
+        "Id": "sha256:76cfebb7af7d22c528da8cda75aa8e3f35cb9bbcdcdfc1f70e71be4aaa350b4a",
+        "RepoTags": [
+            "fds-apko-wolfi-builder:aeb9995d626ffdc24454477038eb82d5d9e4744e-amd64"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "This is an apko single-layer image",
+        "Created": "2026-10-06T19:04:03Z",
+        "DockerVersion": "",
+        "Author": "github.com/chainguard-dev/apko",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin",
+                "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"
+            ],
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "org.opencontainers.image.created": "2026-10-06T19:04:03Z"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 82910074,
+        "GraphDriver": {
+            "Data": {
+                "MergedDir": "/var/lib/docker/overlay2/931ee27cd9008426e10fa8d9b7210075647c81162bd2f41d418dcce173e2468e/merged",
+                "UpperDir": "/var/lib/docker/overlay2/931ee27cd9008426e10fa8d9b7210075647c81162bd2f41d418dcce173e2468e/diff",
+                "WorkDir": "/var/lib/docker/overlay2/931ee27cd9008426e10fa8d9b7210075647c81162bd2f41d418dcce173e2468e/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:02eae2f3f119386c5c0e4b7ff85ea44ae89bd9ce26776364c35c853335e2896b"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]
