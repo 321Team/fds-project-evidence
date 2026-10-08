@@ -1,0 +1,291 @@
+{
+  "stage": "A1_READONLY",
+  "started_epoch": 1791436916.1028926,
+  "private_results": "/root/hbr-clone-a1-4yaonwsj",
+  "source": {
+    "stage": "ISOLATED_CLONE_READONLY_A1",
+    "commit": "58b9e21bf3af2cfe85fae6fd560dddc6d6e943d7",
+    "expires_epoch": 1791438540,
+    "files": {
+      "override.json": "c67d8a652b94f9f142534d87adce70974f1f72bfe9863181a971b16f12b61d9b",
+      "checker.py": "97c03cf62554eddbb36c0e5fdd2fa560d013d1821df6afb5ca6c189f47fce997",
+      "observer.py": "ac9d42efbcd4f18effc2bcd7a819af29d7cc6aaa5cbd13c94fbd05e37f39e1e1",
+      "precheck.py": "eca692df21f42dea784a1b1cab4f1d056bf703f3ce7f43722cc3baf9029e1997"
+    },
+    "paths": {
+      "override.json": "config/harbor/compose.logging-loopback.override.json",
+      "checker.py": "scripts/verify/validate-logging-override.py",
+      "observer.py": "scripts/verify/observe-harbor-startup.py"
+    }
+  },
+  "base_sha256": "0a84f57692268335eeedf45411e025d784e520bf749fa3501a3800cdfcb14ef0",
+  "commands": [
+    {
+      "name": "base",
+      "argv": [
+        "docker",
+        "compose",
+        "--project-directory",
+        "/home/server08/harbor",
+        "-f",
+        "/home/server08/harbor/docker-compose.yml",
+        "config",
+        "--format",
+        "json",
+        "--no-env-resolution"
+      ],
+      "rc": 0
+    },
+    {
+      "name": "effective",
+      "argv": [
+        "docker",
+        "compose",
+        "--project-directory",
+        "/home/server08/harbor",
+        "-f",
+        "/home/server08/harbor/docker-compose.yml",
+        "-f",
+        "/root/hbr-clone-a1-4yaonwsj/override.json",
+        "config",
+        "--format",
+        "json",
+        "--no-env-resolution"
+      ],
+      "rc": 0
+    },
+    {
+      "name": "delta",
+      "argv": [
+        "python3",
+        "/root/hbr-clone-a1-4yaonwsj/checker.py",
+        "--base-json",
+        "/root/hbr-clone-a1-4yaonwsj/base.stdout",
+        "--effective-json",
+        "/root/hbr-clone-a1-4yaonwsj/effective.stdout"
+      ],
+      "rc": 0
+    },
+    {
+      "name": "observe",
+      "argv": [
+        "python3",
+        "/root/hbr-clone-a1-4yaonwsj/observer.py",
+        "collect",
+        "--output",
+        "/root/hbr-clone-a1-4yaonwsj/observer.jsonl",
+        "--samples",
+        "1",
+        "--expected-host",
+        "harbor01"
+      ],
+      "rc": 0
+    },
+    {
+      "name": "summary",
+      "argv": [
+        "python3",
+        "/root/hbr-clone-a1-4yaonwsj/observer.py",
+        "summarize",
+        "/root/hbr-clone-a1-4yaonwsj/observer.jsonl"
+      ],
+      "rc": 0
+    }
+  ],
+  "RUNTIME_APPLY": "NOT_RUN",
+  "DOCKER_RESTART": "NOT_RUN",
+  "AUTOSTART": "NOT_TESTED",
+  "delta": {
+    "AC04": "NOT_EVALUATED",
+    "AUTOSTART": "NOT_TESTED",
+    "CONFIG_DELTA": "PASS",
+    "RUNTIME_APPLY": "NOT_PERFORMED",
+    "address_change_count": 9,
+    "changed_services": [
+      "core",
+      "jobservice",
+      "portal",
+      "postgresql",
+      "proxy",
+      "redis",
+      "registry",
+      "registryctl",
+      "trivy-adapter"
+    ],
+    "preserved_scope": "ALL_OTHER_NORMALIZED_FIELDS",
+    "schema": "P1-HBR-logging-override-check-1"
+  },
+  "observer_summary": {
+    "AC04": "NOT_EVALUATED",
+    "AUTOSTART": "NOT_EVALUATED",
+    "SYSLOG_INGESTION": "NOT_TESTED",
+    "all_containers_running_sample_indices": [
+      0
+    ],
+    "capture": "COMPLETE",
+    "capture_sha256": "e9507684e25af0a7ab706c845e0b6a50ac7f0cb5fd343163a05b5dfc5a179fc0",
+    "error_sample_indices": [],
+    "host": "harbor01",
+    "identity_change_observed": false,
+    "identity_comparable_samples": 1,
+    "limitations": [
+      "Sequential observations are not an atomic snapshot.",
+      "Polling cannot prove event order or exclude changes between samples.",
+      "No independent T0, manual-recovery or daemon-journal binding."
+    ],
+    "logger_healthy_and_ipv4_listener_sample_indices": [
+      0
+    ],
+    "run_id": "2c05f280-1bb1-415d-891c-e3a25a4f3147",
+    "schema": "fds.harbor.startup-observation.v1.summary",
+    "source_sha256": "ac9d42efbcd4f18effc2bcd7a819af29d7cc6aaa5cbd13c94fbd05e37f39e1e1"
+  },
+  "observer_records": [
+    {
+      "commands": {
+        "docker": [
+          "docker",
+          "--host=unix:///var/run/docker.sock",
+          "inspect",
+          "--type",
+          "container",
+          "--format",
+          "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"status\":{{json .State.Status}},\"started_at\":{{json .State.StartedAt}},\"exit_code\":{{json .State.ExitCode}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}null{{end}}}",
+          "harbor-log",
+          "harbor-db",
+          "redis",
+          "registry",
+          "registryctl",
+          "harbor-core",
+          "harbor-portal",
+          "harbor-jobservice",
+          "trivy-adapter",
+          "nginx"
+        ],
+        "listener": [
+          "ss",
+          "-H",
+          "-ltn4",
+          "sport",
+          "=",
+          ":1514"
+        ]
+      },
+      "host": "harbor01",
+      "interval_seconds": 5,
+      "kind": "header",
+      "run_id": "2c05f280-1bb1-415d-891c-e3a25a4f3147",
+      "samples": 1,
+      "schema": "fds.harbor.startup-observation.v1",
+      "source_sha256": "ac9d42efbcd4f18effc2bcd7a819af29d7cc6aaa5cbd13c94fbd05e37f39e1e1",
+      "started_at_kst": "2026-10-08T14:21:56.401315+09:00",
+      "uid": 0
+    },
+    {
+      "docker": {
+        "begin_ns": 9137726402134,
+        "end_ns": 9137748575683,
+        "rc": 0,
+        "value": [
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "543e086cb53115d1539af09e7203ac24b888f6219a1e84237d18ab584cba8419",
+            "name": "/harbor-core",
+            "started_at": "2026-10-08T03:39:39.746591112Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "b93d011b7ee8475e9056df86f13a8718d0e773c11cb43d4321af31c3eaee0bf5",
+            "name": "/harbor-db",
+            "started_at": "2026-10-08T03:39:39.122006576Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "a7528154bcba688dd355760437503d68a2132a5192bbcf4d41176af0b33ef948",
+            "name": "/harbor-jobservice",
+            "started_at": "2026-10-08T03:39:40.098458812Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1",
+            "name": "/harbor-log",
+            "started_at": "2026-10-08T03:27:17.967928156Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "1ca197195a5931756c529a0c740c9e5326c90200e7cfa2f7b156cbf13f3d8464",
+            "name": "/harbor-portal",
+            "started_at": "2026-10-08T03:39:39.238183356Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "700205e5a7cd0bbd81cf063bac3bc00d7a68509d4bc19d52af560437bae6655d",
+            "name": "/nginx",
+            "started_at": "2026-10-08T03:39:39.949363048Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "c6c9c2320eca64810f92f3f5148dbb5fffa76929cf74179957ff4d8f448d78d5",
+            "name": "/redis",
+            "started_at": "2026-10-08T03:39:39.548850669Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "513e7ac0612edad6ceb1a1c1c1e16eaed2d40f3772f5a8ae0293f65e597025f0",
+            "name": "/registry",
+            "started_at": "2026-10-08T03:39:39.445746756Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "c26ae8de4b81fd8723cedc1a917d1bf5788d0eeac49e73375b42a09ba408ac49",
+            "name": "/registryctl",
+            "started_at": "2026-10-08T03:39:39.336443302Z",
+            "status": "running"
+          },
+          {
+            "exit_code": 0,
+            "health": "healthy",
+            "id": "07757cdb93e4bf9b1e014ea0c206d733e34e7bd8cafaff58d0df8bb1fd90006c",
+            "name": "/trivy-adapter",
+            "started_at": "2026-10-08T03:39:39.64298096Z",
+            "status": "running"
+          }
+        ]
+      },
+      "index": 0,
+      "kind": "sample",
+      "listener": {
+        "begin_ns": 9137748577033,
+        "end_ns": 9137752208858,
+        "rc": 0,
+        "value": true
+      },
+      "observed_at_kst": "2026-10-08T14:21:56.401929+09:00"
+    },
+    {
+      "finished_at_kst": "2026-10-08T14:21:56.428177+09:00",
+      "kind": "footer",
+      "samples": 1,
+      "samples_with_errors": 0
+    }
+  ],
+  "status": "A1_COLLECTED_REVIEW_REQUIRED",
+  "finished_epoch": 1791436916.5043766
+}
