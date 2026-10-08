@@ -1,0 +1,622 @@
+{
+  "started_utc": "2026-10-07T17:15:39.503847+00:00",
+  "hostname": "k8s-control01",
+  "uid": 0,
+  "source_sha256": "0626340e612c370d66b99985df10861f9f25ff74c70c689f3a85634ea3d1f1e4",
+  "queries": [
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "-n",
+        "monitoring-api",
+        "get",
+        "configmap",
+        "prometheus-config",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:15:39.510851+00:00",
+      "rc": 0,
+      "stderr": "",
+      "raw_stdout_sha256": "238ff5dc4182f3dcd6687ea73631ca4a0b7ce5d52d86e3b3d42d879fd5a6f864",
+      "name": "prometheus-config",
+      "resourceVersion": "3044949",
+      "data": {
+        "prometheus.yml": {
+          "sha256": "c9032a2652dce080acf84af91f5c91acae96853472a4b0d599accb37de56da4c",
+          "projection": {
+            "global": {
+              "scrape_interval": "15s"
+            },
+            "rule_files": [
+              "/etc/prometheus/rules/*.yml",
+              "/etc/prometheus/rules-p0/*.yml",
+              "/etc/prometheus/rules-opt/*.yml"
+            ],
+            "alerting": {
+              "alertmanagers": [
+                {
+                  "static_configs": [
+                    {
+                      "targets": [
+                        "alertmanager.monitoring-api.svc.cluster.local:9093"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "remote_write": [
+              {
+                "tls_config": {
+                  "ca_file": "/etc/prometheus/monitor01-ca/fds-root-ca.crt",
+                  "insecure_skip_verify": false
+                },
+                "write_relabel_configs": [
+                  {
+                    "source_labels": [
+                      "__name__"
+                    ],
+                    "regex": "fds_monitoring_heartbeat",
+                    "action": "keep"
+                  },
+                  {
+                    "regex": "__name__",
+                    "action": "labelkeep"
+                  }
+                ]
+              }
+            ],
+            "scrape_configs": [
+              {
+                "job_name": "prometheus",
+                "static_configs": [
+                  {
+                    "targets": [
+                      "localhost:9090"
+                    ]
+                  }
+                ]
+              },
+              {
+                "job_name": "transaction-api"
+              },
+              {
+                "job_name": "fds-engine"
+              },
+              {
+                "job_name": "node-exporter",
+                "static_configs": [
+                  {
+                    "targets": [
+                      "10.1.93.105:9100",
+                      "10.1.93.107:9100",
+                      "10.1.93.108:9100"
+                    ]
+                  }
+                ]
+              },
+              {
+                "job_name": "kube-state-metrics",
+                "static_configs": [
+                  {
+                    "targets": [
+                      "kube-state-metrics.monitoring-api.svc.cluster.local:8080"
+                    ]
+                  }
+                ]
+              },
+              {
+                "job_name": "kubelet",
+                "scheme": "https",
+                "tls_config": {
+                  "ca_file": "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+                },
+                "bearer_token_file": "/var/run/secrets/kubernetes.io/serviceaccount/token",
+                "static_configs": [
+                  {
+                    "targets": [
+                      "10.1.93.102:10250",
+                      "10.1.93.103:10250",
+                      "10.1.93.104:10250",
+                      "10.1.93.105:10250",
+                      "10.1.93.107:10250",
+                      "10.1.93.108:10250"
+                    ]
+                  }
+                ]
+              },
+              {
+                "job_name": "kubelet-cadvisor",
+                "scheme": "https",
+                "metrics_path": "/metrics/cadvisor",
+                "tls_config": {
+                  "ca_file": "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+                },
+                "bearer_token_file": "/var/run/secrets/kubernetes.io/serviceaccount/token",
+                "static_configs": [
+                  {
+                    "targets": [
+                      "10.1.93.102:10250",
+                      "10.1.93.103:10250",
+                      "10.1.93.104:10250",
+                      "10.1.93.105:10250",
+                      "10.1.93.107:10250",
+                      "10.1.93.108:10250"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "finished_utc": "2026-10-07T17:15:39.549302+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "-n",
+        "monitoring-api",
+        "get",
+        "configmap",
+        "prometheus-alert-rules",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:15:39.549315+00:00",
+      "rc": 0,
+      "stderr": "",
+      "raw_stdout_sha256": "67d84adc2562be349199391e5b769d18cdd488b7f9827df6523c04dc3348eed8",
+      "name": "prometheus-alert-rules",
+      "resourceVersion": "2879801",
+      "data": {
+        "alert-rules.yml": {
+          "sha256": "2ffbb7770c2f2c21cfdc6c810567b2d394a49ee5d0b9362d934427c8981c8695",
+          "projection": {
+            "groups": [
+              {
+                "name": "fds-monitoring-heartbeat",
+                "rules": [
+                  {
+                    "record": "fds_monitoring_heartbeat",
+                    "expr": "vector(1)"
+                  }
+                ]
+              },
+              {
+                "name": "fds-core-observability",
+                "rules": [
+                  {
+                    "alert": "NodeExporterDown",
+                    "expr": "up{job=\"node-exporter\"} == 0",
+                    "for": "30s"
+                  },
+                  {
+                    "alert": "KubeletScrapeDown",
+                    "expr": "up{job=~\"kubelet|kubelet-cadvisor\"} == 0",
+                    "for": "2m"
+                  },
+                  {
+                    "alert": "TargetDown",
+                    "expr": "up{job=~\"transaction-api|fds-engine|kube-state-metrics\"} == 0",
+                    "for": "1m"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "finished_utc": "2026-10-07T17:15:39.583479+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "-n",
+        "monitoring-api",
+        "get",
+        "configmap",
+        "prometheus-alert-rules-optional",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:15:39.583491+00:00",
+      "rc": 0,
+      "stderr": "",
+      "raw_stdout_sha256": "088620bbf7501ce53f43057252c8110dd55fa37f3c985f488a996cc3b8f5d4fd",
+      "name": "prometheus-alert-rules-optional",
+      "resourceVersion": "1115904",
+      "data": {
+        "alert-rules-optional.yml": {
+          "sha256": "3d2a0baabd2ecddac0d67585bf8910430fc445266b70c2935d4941a4b7739e78",
+          "projection": {
+            "groups": [
+              {
+                "name": "fds-optional-hardening",
+                "rules": [
+                  {
+                    "alert": "FDSDetectionBurst",
+                    "expr": "sum(increase(fds_detected_total{rule_id=\"R02\"}[5m])) > 20",
+                    "for": "1m"
+                  },
+                  {
+                    "alert": "FDSDetectionBurstAnyRule",
+                    "expr": "sum by (rule_id) (increase(fds_detected_total[5m])) > 30",
+                    "for": "2m"
+                  },
+                  {
+                    "alert": "UnexpectedPodInFdsNs",
+                    "expr": "count(\n  kube_pod_info{namespace=\"fds\"}\n  unless on (namespace, pod)\n  kube_pod_labels{namespace=\"fds\", label_app=~\"transaction-api|fds-engine\"}\n) > 0\n",
+                    "for": "2m"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "finished_utc": "2026-10-07T17:15:39.614147+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "-n",
+        "monitoring-api",
+        "get",
+        "configmap",
+        "prometheus-p0-test-alert",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:15:39.614159+00:00",
+      "rc": 0,
+      "stderr": "",
+      "raw_stdout_sha256": "ef6cf9eb0918a3860c3473b39eb5a103dbe9e7b0bc35674ab281186dd5677155",
+      "name": "prometheus-p0-test-alert",
+      "resourceVersion": "1181424",
+      "data": {
+        "p0-test-alert.yml": {
+          "sha256": "c97c60256c4caa64cd9699539eccbb5d60f18907b1c8190cea280e0d7e8fb22c",
+          "projection": {
+            "groups": [
+              {
+                "name": "fds-p0-test-alert",
+                "rules": [
+                  {
+                    "alert": "FDSMonitoringPipelineTest",
+                    "expr": "vector(1) == 0",
+                    "for": "0s"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "finished_utc": "2026-10-07T17:15:39.642482+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "-n",
+        "monitoring-api",
+        "get",
+        "configmap",
+        "alertmanager-config",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:15:39.642495+00:00",
+      "rc": 0,
+      "stderr": "",
+      "raw_stdout_sha256": "bd6c8d49962fe53ef6fc908801d82f604da38eff7ebb929e7dc985a34aaa2f36",
+      "name": "alertmanager-config",
+      "resourceVersion": "1180928",
+      "data": {
+        "alertmanager.yml": {
+          "sha256": "61bdce98a54d2d9b54bf5184c84489262355ebda5004d364406ed5c07883ee6d",
+          "projection": {
+            "global": {},
+            "route": {
+              "receiver": "discord-notifications",
+              "group_by": [
+                "alertname",
+                "severity"
+              ],
+              "group_wait": "10s",
+              "group_interval": "30s",
+              "repeat_interval": "1h",
+              "routes": [
+                {
+                  "matchers": [
+                    "alertname = \"NodeExporterDown\""
+                  ],
+                  "receiver": "discord-notifications",
+                  "group_wait": "0s"
+                }
+              ]
+            },
+            "receivers": [
+              {
+                "name": "screen-only"
+              },
+              {
+                "name": "discord-notifications",
+                "discord_configs": [
+                  {
+                    "webhook_url_file": "/etc/alertmanager/secrets/discord/webhook_url",
+                    "send_resolved": true,
+                    "http_config": {
+                      "proxy_url": "http://10.1.93.56:3128"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "finished_utc": "2026-10-07T17:15:39.674837+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "--request-timeout=12s",
+        "-n",
+        "monitoring-api",
+        "get",
+        "pods",
+        "-o",
+        "json"
+      ],
+      "started_utc": "2026-10-07T17:15:39.674849+00:00",
+      "rc": 0,
+      "stderr": "",
+      "raw_stdout_sha256": "eaf5288caea11fcfc3f07988c775a91ce948713b82ed62b92bf58aeca520a6b0",
+      "items": [
+        {
+          "name": "alertmanager-6bf6dc555-bs8cg",
+          "uid": "3add1a86-f390-4123-bb69-8a1f5bba8e4a",
+          "volumes": [
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "alertmanager-config"
+              },
+              "name": "config"
+            },
+            {
+              "name": "storage"
+            },
+            {
+              "name": "discord-webhook"
+            }
+          ],
+          "containers": [
+            {
+              "name": "alertmanager",
+              "config_args": [
+                "--config.file=/etc/alertmanager/alertmanager.yml"
+              ],
+              "volumeMounts": [
+                {
+                  "mountPath": "/etc/alertmanager",
+                  "name": "config"
+                },
+                {
+                  "mountPath": "/alertmanager",
+                  "name": "storage"
+                },
+                {
+                  "mountPath": "/etc/alertmanager/secrets/discord",
+                  "name": "discord-webhook",
+                  "readOnly": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "grafana-f65457bfd-ckjgj",
+          "uid": "916b8c8a-ff21-42ba-9815-11dce4cde848",
+          "volumes": [
+            {
+              "name": "data"
+            },
+            {
+              "name": "tmp"
+            },
+            {
+              "name": "plugins"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "grafana-datasources"
+              },
+              "name": "datasources"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "grafana-dashboards-provider"
+              },
+              "name": "dashboards-provider"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "grafana-dashboards"
+              },
+              "name": "dashboards"
+            }
+          ],
+          "containers": [
+            {
+              "name": "grafana",
+              "config_args": [],
+              "volumeMounts": [
+                {
+                  "mountPath": "/var/lib/grafana",
+                  "name": "data"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/var/lib/grafana/plugins",
+                  "name": "plugins"
+                },
+                {
+                  "mountPath": "/etc/grafana/provisioning/datasources",
+                  "name": "datasources"
+                },
+                {
+                  "mountPath": "/etc/grafana/provisioning/dashboards",
+                  "name": "dashboards-provider"
+                },
+                {
+                  "mountPath": "/etc/grafana/dashboards",
+                  "name": "dashboards"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "kube-state-metrics-77796bd485-l8wv6",
+          "uid": "33ee4ee5-723a-400c-831d-9549bafea1a0",
+          "volumes": [
+            {
+              "name": "kube-api-access-qzggf"
+            }
+          ],
+          "containers": [
+            {
+              "name": "kube-state-metrics",
+              "config_args": [],
+              "volumeMounts": [
+                {
+                  "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                  "name": "kube-api-access-qzggf",
+                  "readOnly": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "prometheus-d8949bd64-2zc4m",
+          "uid": "265ca811-873c-45e1-8c46-6c1ce034e596",
+          "volumes": [
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "prometheus-config"
+              },
+              "name": "config"
+            },
+            {
+              "name": "data"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "prometheus-alert-rules"
+              },
+              "name": "alert-rules"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "prometheus-p0-test-alert"
+              },
+              "name": "p0-test-alert"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "prometheus-alert-rules-optional",
+                "optional": true
+              },
+              "name": "alert-rules-optional"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "monitor01-root-ca"
+              },
+              "name": "monitor01-root-ca"
+            },
+            {
+              "name": "monitor01-remote-write-auth"
+            },
+            {
+              "name": "kube-api-access-7cg47"
+            }
+          ],
+          "containers": [
+            {
+              "name": "prometheus",
+              "config_args": [
+                "--config.file=/etc/prometheus/prometheus.yml"
+              ],
+              "volumeMounts": [
+                {
+                  "mountPath": "/etc/prometheus",
+                  "name": "config"
+                },
+                {
+                  "mountPath": "/prometheus",
+                  "name": "data"
+                },
+                {
+                  "mountPath": "/etc/prometheus/rules/",
+                  "name": "alert-rules"
+                },
+                {
+                  "mountPath": "/etc/prometheus/rules-p0/",
+                  "name": "p0-test-alert"
+                },
+                {
+                  "mountPath": "/etc/prometheus/rules-opt/",
+                  "name": "alert-rules-optional"
+                },
+                {
+                  "mountPath": "/etc/prometheus/monitor01-ca",
+                  "name": "monitor01-root-ca",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/etc/prometheus/monitor01-auth",
+                  "name": "monitor01-remote-write-auth",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                  "name": "kube-api-access-7cg47",
+                  "readOnly": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "finished_utc": "2026-10-07T17:15:39.729673+00:00"
+    }
+  ],
+  "finished_utc": "2026-10-07T17:15:39.729688+00:00"
+}

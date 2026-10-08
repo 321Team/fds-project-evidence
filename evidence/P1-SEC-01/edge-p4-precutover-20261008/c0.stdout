@@ -1,0 +1,27 @@
+control01-cutover-check.sh: 성공
+== 2026-10-08 02:51:51 KST control01 cutover check phase=pre run=20261008T0255
+-- Service
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)           AGE   SELECTOR
+transaction-api            ClusterIP   10.106.27.47    <none>        80/TCP,9091/TCP   15d   app=transaction-api
+transaction-api-nodeport   NodePort    10.110.141.93   <none>        80:30080/TCP      10d   app=transaction-api
+type=NodePort etp=Local ports=80->8000:30080 selector={"app":"transaction-api"}
+-- Worker별 Ready·non-terminating local endpoint(transaction-api-nodeport)
+k8s-worker01 10.244.79.112 ready=true terminating=false
+k8s-worker03 10.244.39.208 ready=true terminating=false
+k8s-worker02 10.244.69.236 ready=true terminating=false
+-- transaction-api Pod 배치
+NAME                               READY   STATUS    RESTARTS   AGE   IP              NODE           NOMINATED NODE   READINESS GATES
+transaction-api-5f8b5d7cfd-2jz62   1/1     Running   0          12h   10.244.39.208   k8s-worker03   <none>           <none>
+transaction-api-5f8b5d7cfd-brztj   1/1     Running   0          12h   10.244.79.112   k8s-worker01   <none>           <none>
+transaction-api-5f8b5d7cfd-fsmgw   1/1     Running   0          12h   10.244.69.236   k8s-worker02   <none>           <none>
+-- GNP nodeport-30080-allow
+order=50 selector=fds.example/role == 'worker' preDNAT=true applyOnForward=true
+ingress=[{"action":"Allow","destination":{"ports":[30080]},"protocol":"TCP","source":{"nets":["10.1.93.50/32"]}},{"action":"Deny","destination":{"ports":[30080]},"protocol":"TCP"}]
+-- 전체 NodePort/LoadBalancer Service(32085 등 metrics NodePort가 없어야 함)
+fds-app/transaction-api-nodeport NodePort 80:30080
+-- nodePort 32085 사용 Service 수=0 (기대 0)
+-- MON (Prometheus port-forward 127.0.0.1:19093)
+   count(up)=23 count(up==1)=23 count(up==0)=EMPTY (기대 23/23/EMPTY 또는 0)
+-- 조회 실패 수=0 (0이 아니면 해당 항목은 판정 불가)
+RESULT control01-pre=COLLECTED 02:51:54 — 수집 완료이며 C0/C2 판정이 아니다. README 판정표에 사람이 기록한다
+TASK_DIR=/root/sec19-edge-c0.Ky13JT1l PRE_RC=0

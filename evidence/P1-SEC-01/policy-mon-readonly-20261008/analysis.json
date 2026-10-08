@@ -1,0 +1,338 @@
+{
+  "nodes_ready": 6,
+  "app_pods": [
+    {
+      "name": "fds-engine-66b8c565c4-dqppp",
+      "labels": {
+        "app": "fds-engine",
+        "pod-template-hash": "66b8c565c4"
+      },
+      "node": "k8s-worker03",
+      "hostNetwork": false
+    },
+    {
+      "name": "fds-engine-66b8c565c4-ml986",
+      "labels": {
+        "app": "fds-engine",
+        "pod-template-hash": "66b8c565c4"
+      },
+      "node": "k8s-worker02",
+      "hostNetwork": false
+    },
+    {
+      "name": "fds-engine-66b8c565c4-vzgm6",
+      "labels": {
+        "app": "fds-engine",
+        "pod-template-hash": "66b8c565c4"
+      },
+      "node": "k8s-worker01",
+      "hostNetwork": false
+    },
+    {
+      "name": "transaction-api-5f8b5d7cfd-2jz62",
+      "labels": {
+        "app": "transaction-api",
+        "pod-template-hash": "5f8b5d7cfd"
+      },
+      "node": "k8s-worker03",
+      "hostNetwork": false
+    },
+    {
+      "name": "transaction-api-5f8b5d7cfd-brztj",
+      "labels": {
+        "app": "transaction-api",
+        "pod-template-hash": "5f8b5d7cfd"
+      },
+      "node": "k8s-worker01",
+      "hostNetwork": false
+    },
+    {
+      "name": "transaction-api-5f8b5d7cfd-fsmgw",
+      "labels": {
+        "app": "transaction-api",
+        "pod-template-hash": "5f8b5d7cfd"
+      },
+      "node": "k8s-worker02",
+      "hostNetwork": false
+    }
+  ],
+  "namespace_labels": {
+    "fds-app": {
+      "kubernetes.io/metadata.name": "fds-app",
+      "pod-security.kubernetes.io/audit": "restricted",
+      "pod-security.kubernetes.io/audit-version": "v1.36",
+      "pod-security.kubernetes.io/enforce": "restricted",
+      "pod-security.kubernetes.io/enforce-version": "v1.36",
+      "pod-security.kubernetes.io/warn": "restricted",
+      "pod-security.kubernetes.io/warn-version": "v1.36"
+    },
+    "kube-system": {
+      "kubernetes.io/metadata.name": "kube-system",
+      "pod-security.kubernetes.io/audit": "restricted",
+      "pod-security.kubernetes.io/audit-version": "v1.36",
+      "pod-security.kubernetes.io/enforce": "privileged",
+      "pod-security.kubernetes.io/enforce-version": "v1.36",
+      "pod-security.kubernetes.io/warn": "restricted",
+      "pod-security.kubernetes.io/warn-version": "v1.36"
+    },
+    "monitoring-api": {
+      "kubernetes.io/metadata.name": "monitoring-api",
+      "pod-security.kubernetes.io/audit": "restricted",
+      "pod-security.kubernetes.io/audit-version": "v1.36",
+      "pod-security.kubernetes.io/enforce": "restricted",
+      "pod-security.kubernetes.io/enforce-version": "v1.36",
+      "pod-security.kubernetes.io/warn": "restricted",
+      "pod-security.kubernetes.io/warn-version": "v1.36"
+    },
+    "monitoring-node": {
+      "kubernetes.io/metadata.name": "monitoring-node",
+      "pod-security.kubernetes.io/audit": "restricted",
+      "pod-security.kubernetes.io/audit-version": "v1.36",
+      "pod-security.kubernetes.io/enforce": "privileged",
+      "pod-security.kubernetes.io/enforce-version": "v1.36",
+      "pod-security.kubernetes.io/warn": "restricted",
+      "pod-security.kubernetes.io/warn-version": "v1.36"
+    }
+  },
+  "hostNetwork_monitoring": [
+    "node-exporter-4gtms",
+    "node-exporter-thcn5",
+    "node-exporter-zdhnv"
+  ],
+  "nodeport_32085": [],
+  "edge_service": [
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "name": "transaction-api-nodeport",
+        "namespace": "fds-app",
+        "uid": "49f24245-ac58-451e-b4f1-7183ac917bb1",
+        "resourceVersion": "2213698",
+        "labels": {
+          "app": "transaction-api"
+        }
+      },
+      "spec": {
+        "clusterIP": "10.110.141.93",
+        "clusterIPs": [
+          "10.110.141.93"
+        ],
+        "externalTrafficPolicy": "Local",
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "nodePort": 30080,
+            "port": 80,
+            "protocol": "TCP",
+            "targetPort": 8000
+          }
+        ],
+        "selector": {
+          "app": "transaction-api"
+        },
+        "sessionAffinity": "None",
+        "type": "NodePort"
+      }
+    }
+  ],
+  "edge_endpoints": [
+    {
+      "apiVersion": "discovery.k8s.io/v1",
+      "kind": "EndpointSlice",
+      "metadata": {
+        "name": "transaction-api-nodeport-6shht",
+        "namespace": "fds-app",
+        "uid": "44b89beb-3d18-439b-b3b0-8ab57a6b21b4",
+        "resourceVersion": "4371652",
+        "generation": 110,
+        "labels": {
+          "app": "transaction-api",
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "transaction-api-nodeport"
+        }
+      },
+      "addressType": "IPv4",
+      "endpoints": [
+        {
+          "addresses": [
+            "10.244.79.112"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "k8s-worker01",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "transaction-api-5f8b5d7cfd-brztj",
+            "namespace": "fds-app",
+            "uid": "87eb5c51-4666-4968-b405-2f93bc475e4d"
+          }
+        },
+        {
+          "addresses": [
+            "10.244.39.208"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "k8s-worker03",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "transaction-api-5f8b5d7cfd-2jz62",
+            "namespace": "fds-app",
+            "uid": "f91fe8a8-6894-49d0-8543-83c55e2fb675"
+          }
+        },
+        {
+          "addresses": [
+            "10.244.69.236"
+          ],
+          "conditions": {
+            "ready": true,
+            "serving": true,
+            "terminating": false
+          },
+          "nodeName": "k8s-worker02",
+          "targetRef": {
+            "kind": "Pod",
+            "name": "transaction-api-5f8b5d7cfd-fsmgw",
+            "namespace": "fds-app",
+            "uid": "713ff99f-6382-4fad-a7d4-53173c243301"
+          }
+        }
+      ],
+      "ports": [
+        {
+          "name": "http",
+          "port": 8000,
+          "protocol": "TCP"
+        }
+      ]
+    }
+  ],
+  "mon_policy_comparison": [
+    {
+      "name": "allow-prometheus-egress-scrape",
+      "present": true,
+      "spec_equal": true
+    },
+    {
+      "name": "allow-prometheus-egress-node-exporter",
+      "present": true,
+      "spec_equal": true
+    },
+    {
+      "name": "allow-grafana-to-prometheus",
+      "present": true,
+      "spec_equal": true
+    },
+    {
+      "name": "allow-grafana-ingress-from-prometheus-ns",
+      "present": true,
+      "spec_equal": true
+    },
+    {
+      "name": "default-deny-all",
+      "present": true,
+      "spec_equal": true
+    },
+    {
+      "name": "default-deny-all",
+      "present": true,
+      "spec_equal": true
+    }
+  ],
+  "receiver_comparison": {
+    "path": "evidence/P1-MON-01/received-20261002T0601Z/control01/p1-mon-psa-rbac-20261002T150142/alertmanager-config.masked.yml",
+    "historical_projection": {
+      "global": {},
+      "route": {
+        "receiver": "discord-notifications",
+        "group_by": [
+          "alertname",
+          "severity"
+        ],
+        "group_wait": "10s",
+        "group_interval": "30s",
+        "repeat_interval": "1h",
+        "routes": [
+          {
+            "matchers": [
+              "alertname = \"NodeExporterDown\""
+            ],
+            "receiver": "discord-notifications",
+            "group_wait": "0s"
+          }
+        ]
+      },
+      "receivers": [
+        {
+          "name": "screen-only"
+        },
+        {
+          "name": "discord-notifications",
+          "discord_configs": [
+            {
+              "webhook_url_file": "/etc/alertmanager/secrets/discord/webhook_url",
+              "send_resolved": true,
+              "http_config": {
+                "proxy_url": "http://10.1.93.56:3128"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "current_projection": {
+      "global": {},
+      "route": {
+        "receiver": "discord-notifications",
+        "group_by": [
+          "alertname",
+          "severity"
+        ],
+        "group_wait": "10s",
+        "group_interval": "30s",
+        "repeat_interval": "1h",
+        "routes": [
+          {
+            "matchers": [
+              "alertname = \"NodeExporterDown\""
+            ],
+            "receiver": "discord-notifications",
+            "group_wait": "0s"
+          }
+        ]
+      },
+      "receivers": [
+        {
+          "name": "screen-only"
+        },
+        {
+          "name": "discord-notifications",
+          "discord_configs": [
+            {
+              "webhook_url_file": "/etc/alertmanager/secrets/discord/webhook_url",
+              "send_resolved": true,
+              "http_config": {
+                "proxy_url": "http://10.1.93.56:3128"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "projection_equal": true,
+    "limitation": "Credential fields and unlisted keys omitted; not full config equality"
+  }
+}
