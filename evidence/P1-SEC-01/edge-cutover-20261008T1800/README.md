@@ -19,7 +19,7 @@ Record ID: **P1-SEC-01** ([baseline #19](https://github.com/321Team/fds-project-
 | `control01-edge-cutover-20261008T1800.tgz` | control01 `/root/edge-cutover-20261008T1800/` pre `173540`, post `174937` | `b763c7f3672647ec1700608c93c7f76cc9a2636b24910531cd74ca7721084b23` |
 | `ansible01-edge-rx-20261008T1800.tgz` | ansible01 `~/edge-rx-20261008T1800/`: Worker report check/apply, 인계 수신본(edge01 check·apply, control01 pre), 최종 judge 출력 2개, P4 출력·`evidence-58` 결과, Worker 3대 캡처 원본 tgz | `b61fca5a975eedd31f821af13f9dc1d3e666d345e8b82af77365f6d879826168` |
 | `control01-post-c3/control01-post-182210.log` | C3 종료 뒤 post(18:22:10). 서버 `sha256sum` 값과 같음 | `c0b9dfc12de73de6bd1fe6d7dc1c6b80f624c5c9a1eaf9cdbb1282648c190683` |
-| `pc/edge-cutover-20261008T1800-{n1,e2e,c3}.txt` | PC PowerShell 출력(P1·P2·N1, #20 D-04 E2E, C3). `Tee-Object` 기본값이라 **UTF-16LE·CRLF**이며 그대로 보존 | `SHA256SUMS` 참고 |
+| `pc/edge-cutover-20261008T1800-{n1,c3}.txt`, `e2e/edge-cutover-20261008T1800-e2e.txt` | PC PowerShell 출력(P1·P2·N1, C3 / #20 D-04 E2E — [수신 기록 6052025082](https://github.com/321Team/fds-project-baseline/issues/19#issuecomment-6052025082)의 Evidence 경로). `Tee-Object` 기본값이라 **UTF-16LE·CRLF**이며 그대로 보존 | `SHA256SUMS` 참고 |
 
 - `.sha256`·`.contents.txt`: edge01 것은 서버에서 만든 sidecar 그대로다. control01·ansible01 것은 서버 콘솔에 출력된 SHA와 일치함을 확인한 묶음으로 PC에서 다시 만든 것이다(내용은 서버 출력과 같다).
 - Worker 캡처 tgz 3개(묶음 안) SHA는 Worker에서 만든 값과 같다: worker01 `b4d1f3d9…b647`, worker02 `2c2f88a3…b701`, worker03 `4b139960…cfef2`.
