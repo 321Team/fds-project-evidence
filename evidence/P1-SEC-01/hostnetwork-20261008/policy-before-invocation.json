@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-07T23:26:00.650945+00:00",
+  "finished_utc": "2026-10-07T23:26:01.489612+00:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.102 'sudo -n env COLLECTOR_SHA256=23f1c425dc0e508fc55539f501274db057bac5b2a6346c856570dd5e00bf8dde python3 -'"
+  ],
+  "source": "collect-policy.py",
+  "source_sha256": "23f1c425dc0e508fc55539f501274db057bac5b2a6346c856570dd5e00bf8dde",
+  "rc": 0
+}

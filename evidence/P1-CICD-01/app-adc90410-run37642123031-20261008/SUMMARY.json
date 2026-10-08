@@ -1,0 +1,61 @@
+{
+  "run_id": 37642123031,
+  "attempt": 1,
+  "job_id": 112863570663,
+  "workflow_sha": "4e9324cd8acf0ba67b35f950b4c952db8064540e",
+  "source_sha": "adc90410f99cb7af5b40bc8ff92c45272e9f8bee",
+  "result": "TEST_BUILD_SCAN_PASS",
+  "tests": {
+    "engine_unit": 16,
+    "api_contract": 14,
+    "engine_contract": 10,
+    "api_unit": "NOT_APPLICABLE_APPROVED"
+  },
+  "images": {
+    "transaction-api": {
+      "scan": "PASS",
+      "exit_code": 0,
+      "counts": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "report_sha256": "5b9aaeb8f9b81756ade7aa849b379aa17daef72ae40bd1b8eefbb494f4810821",
+      "archive_sha256": "ba4e937d15f756fee8499cc74cd26cfd0d1df35b5af9e2f7cd91b8a30044fb1e",
+      "manifest_digest": "sha256:1d5325089674343f6777751310f124b0dd59049dd1dd5a35c15f6e528b532c71",
+      "config_digest": "sha256:a23dfb86a3d0341bc3d0beacdfda960f1c5298f4bc5185a42e70ed6c7be49911",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:a72966c91f558521e82a64b6d47386b06af8e2a1273c784462e6f6255f5f1d2f",
+        "sha256:b814015f4b39a40520bbb0c40ac367af101ccc207f3245c595932f8e71b158ae",
+        "sha256:e1ee0250bd6a7166ef13cf26400201557165e6ed17b2361bcfba889fc69edb9e"
+      ],
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "scan": "PASS",
+      "exit_code": 0,
+      "counts": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "report_sha256": "a938a9d5e6c603e11ccf202dc9ceae9bdc4c77b03176282398e6921e2be40035",
+      "archive_sha256": "12a17b51d5a23f90ef25631d3bfb7d580ec7bd06a5aaa0025ad3e8657e3feb46",
+      "manifest_digest": "sha256:f531dedff9d5a23182abc305d5aad0e017118adb63b79da2ca8ec8354c6de8d7",
+      "config_digest": "sha256:55722bae61c4d4cb0a5014a95025de2f83f033a2534434a26dd2a94ebd10ffa6",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:d182436afe5d970f8b06f5802139f0619dc83f3f6321d3b28f00340e9d9cfb61",
+        "sha256:ef53d2dd686f6dc6f385a8ad587581410fdbd3cb57ea814245b441a30076d1bd",
+        "sha256:5b49efe02c9b6277ede04a1217222e1489bfce0eeca61c2aa80d8fb7e70f1c59"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "archive_sha256": "d0762a96741f69ac0fab14f116bdd84b95330d5eb9fe65889ad96853df47b6b4",
+  "original_payloads_checked_on_server": true,
+  "raw_payloads_in_archive": false,
+  "push": "NOT_EXECUTED",
+  "deploy": "NOT_EXECUTED",
+  "raw_source_directory": "/home/server01_cicd-runner/FDS_CICD_AppWorkflow._6zedcc5",
+  "independent_review": "PENDING"
+}

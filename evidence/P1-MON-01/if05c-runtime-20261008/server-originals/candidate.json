@@ -1,0 +1,3 @@
+{
+  "p0-test-alert.yml": "groups:\n- name: fds-p0-test-alert\n  rules:\n  - alert: FDSMonitoringPipelineTest\n    expr: vector(1) == 1\n    for: 0s\n    labels:\n      severity: info\n      purpose: p0-pipeline-test\n      kr: \"관측 알림 전달 시험\"\n    annotations:\n      summary: \"P0 관측 파이프라인 전달 시험 (Prometheus→Alertmanager)\"\n      description: \"S7b. 앱 지표와 무관한 참/거짓 조건으로 Firing→수신→해소 전이를 확인한다. 기본은 비활성.\"\n"
+}

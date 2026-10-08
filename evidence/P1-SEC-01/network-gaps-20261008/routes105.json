@@ -1,0 +1,14 @@
+{
+  "host": "k8s-worker01",
+  "utc": "2026-10-07T18:55:28.939066+00:00",
+  "source_sha256": "8e84f03261f6417d3caddb1b8b02d5a91ed327afc385ad1e903bba1f3686686b",
+  "command": [
+    "ip",
+    "-j",
+    "route",
+    "show"
+  ],
+  "rc": 0,
+  "stdout": "[{\"dst\":\"default\",\"gateway\":\"10.1.93.254\",\"dev\":\"ens160\",\"protocol\":\"static\",\"metric\":100,\"flags\":[]},{\"dst\":\"10.1.93.0/24\",\"dev\":\"ens160\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.1.93.105\",\"metric\":100,\"flags\":[]},{\"dst\":\"10.244.39.192/26\",\"gateway\":\"10.1.93.108\",\"dev\":\"ens160\",\"protocol\":\"80\",\"flags\":[\"onlink\"]},{\"dst\":\"10.244.41.192/26\",\"gateway\":\"10.1.93.104\",\"dev\":\"ens160\",\"protocol\":\"80\",\"flags\":[\"onlink\"]},{\"dst\":\"10.244.69.192/26\",\"gateway\":\"10.1.93.107\",\"dev\":\"ens160\",\"protocol\":\"80\",\"flags\":[\"onlink\"]},{\"type\":\"blackhole\",\"dst\":\"10.244.79.64/26\",\"protocol\":\"80\",\"flags\":[]},{\"dst\":\"10.244.79.112\",\"dev\":\"calibe9932b700c\",\"scope\":\"link\",\"metric\":1024,\"flags\":[]},{\"dst\":\"10.244.79.113\",\"dev\":\"calic3e07239997\",\"scope\":\"link\",\"metric\":1024,\"flags\":[]},{\"dst\":\"10.244.83.192/26\",\"gateway\":\"10.1.93.103\",\"dev\":\"ens160\",\"protocol\":\"80\",\"flags\":[\"onlink\"]},{\"dst\":\"10.244.246.64/26\",\"gateway\":\"10.1.93.102\",\"dev\":\"ens160\",\"protocol\":\"80\",\"flags\":[\"onlink\"]},{\"dst\":\"10.250.10.0/24\",\"gateway\":\"10.1.93.58\",\"dev\":\"ens160\",\"protocol\":\"static\",\"metric\":100,\"flags\":[]}]\n",
+  "stderr": ""
+}

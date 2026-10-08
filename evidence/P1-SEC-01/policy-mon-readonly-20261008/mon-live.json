@@ -1,0 +1,390 @@
+{
+  "hostname": "k8s-control01",
+  "uid": 0,
+  "started_utc": "2026-10-07T17:18:39.185459+00:00",
+  "source_sha256": "76df5716b16da62036b821aae6c9c14fa8e4c5ebf8ee25b96dc93004033d6123",
+  "queries": [
+    {
+      "route": "/api/v1/status/config",
+      "started_utc": "2026-10-07T17:18:39.253613+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "8df58a35690099f58444f13cc09455cc697a5d4793dd42ac4018e78b64738eca",
+      "config_sha256": "8a1ccf40b894adbdfc235062dceaaa625edc379492f9c446e28027bb77f41aa4",
+      "config_projection": {
+        "global": {
+          "scrape_interval": "15s",
+          "scrape_timeout": "10s",
+          "evaluation_interval": "1m"
+        },
+        "alerting": {
+          "alertmanagers": [
+            {
+              "scheme": "http",
+              "timeout": "10s",
+              "api_version": "v2",
+              "static_configs": [
+                {
+                  "targets": [
+                    "alertmanager.monitoring-api.svc.cluster.local:9093"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "rule_files": [
+          "/etc/prometheus/rules/*.yml",
+          "/etc/prometheus/rules-p0/*.yml",
+          "/etc/prometheus/rules-opt/*.yml"
+        ],
+        "scrape_configs": [
+          {
+            "job_name": "prometheus",
+            "scrape_interval": "15s",
+            "scrape_timeout": "10s",
+            "metrics_path": "/metrics",
+            "scheme": "http",
+            "static_configs": [
+              {
+                "targets": [
+                  "localhost:9090"
+                ]
+              }
+            ]
+          },
+          {
+            "job_name": "transaction-api",
+            "scrape_interval": "15s",
+            "scrape_timeout": "10s",
+            "metrics_path": "/metrics",
+            "scheme": "http",
+            "dns_sd_configs": [
+              {
+                "names": [
+                  "transaction-api-metrics.fds-app.svc.cluster.local"
+                ],
+                "refresh_interval": "30s",
+                "type": "A",
+                "port": 9091
+              }
+            ]
+          },
+          {
+            "job_name": "fds-engine",
+            "scrape_interval": "15s",
+            "scrape_timeout": "10s",
+            "metrics_path": "/metrics",
+            "scheme": "http",
+            "dns_sd_configs": [
+              {
+                "names": [
+                  "fds-engine-metrics.fds-app.svc.cluster.local"
+                ],
+                "refresh_interval": "30s",
+                "type": "A",
+                "port": 9090
+              }
+            ]
+          },
+          {
+            "job_name": "node-exporter",
+            "scrape_interval": "15s",
+            "scrape_timeout": "10s",
+            "metrics_path": "/metrics",
+            "scheme": "http",
+            "static_configs": [
+              {
+                "targets": [
+                  "10.1.93.105:9100",
+                  "10.1.93.107:9100",
+                  "10.1.93.108:9100"
+                ]
+              }
+            ]
+          },
+          {
+            "job_name": "kube-state-metrics",
+            "scrape_interval": "15s",
+            "scrape_timeout": "10s",
+            "metrics_path": "/metrics",
+            "scheme": "http",
+            "static_configs": [
+              {
+                "targets": [
+                  "kube-state-metrics.monitoring-api.svc.cluster.local:8080"
+                ]
+              }
+            ]
+          },
+          {
+            "job_name": "kubelet",
+            "scrape_interval": "15s",
+            "scrape_timeout": "10s",
+            "metrics_path": "/metrics",
+            "scheme": "https",
+            "tls_config": {
+              "ca_file": "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt",
+              "insecure_skip_verify": false
+            },
+            "static_configs": [
+              {
+                "targets": [
+                  "10.1.93.102:10250",
+                  "10.1.93.103:10250",
+                  "10.1.93.104:10250",
+                  "10.1.93.105:10250",
+                  "10.1.93.107:10250",
+                  "10.1.93.108:10250"
+                ]
+              }
+            ]
+          },
+          {
+            "job_name": "kubelet-cadvisor",
+            "scrape_interval": "15s",
+            "scrape_timeout": "10s",
+            "metrics_path": "/metrics/cadvisor",
+            "scheme": "https",
+            "tls_config": {
+              "ca_file": "/var/run/secrets/kubernetes.io/serviceaccount/ca.crt",
+              "insecure_skip_verify": false
+            },
+            "static_configs": [
+              {
+                "targets": [
+                  "10.1.93.102:10250",
+                  "10.1.93.103:10250",
+                  "10.1.93.104:10250",
+                  "10.1.93.105:10250",
+                  "10.1.93.107:10250",
+                  "10.1.93.108:10250"
+                ]
+              }
+            ]
+          }
+        ],
+        "remote_write": [
+          {
+            "write_relabel_configs": [
+              {
+                "source_labels": [
+                  "__name__"
+                ],
+                "separator": ";",
+                "regex": "fds_monitoring_heartbeat",
+                "replacement": "$1",
+                "action": "keep"
+              },
+              {
+                "separator": ";",
+                "regex": "__name__",
+                "replacement": "$1",
+                "action": "labelkeep"
+              }
+            ],
+            "tls_config": {
+              "ca_file": "/etc/prometheus/monitor01-ca/fds-root-ca.crt",
+              "insecure_skip_verify": false
+            },
+            "queue_config": {
+              "capacity": 10000,
+              "max_shards": 50,
+              "min_shards": 1
+            }
+          }
+        ]
+      },
+      "finished_utc": "2026-10-07T17:18:39.280291+00:00"
+    },
+    {
+      "route": "/api/v1/rules?type=alert",
+      "started_utc": "2026-10-07T17:18:39.280303+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "aaee5fb620f1460a9b46e64499a4e558d65d8261a74fe31e773586c4509961d2",
+      "groups": [
+        {
+          "name": "fds-optional-hardening",
+          "file": "/etc/prometheus/rules-opt/alert-rules-optional.yml",
+          "rules": [
+            {
+              "name": "FDSDetectionBurst",
+              "query": "sum(increase(fds_detected_total{rule_id=\"R02\"}[5m])) > 20",
+              "duration": 60,
+              "state": "inactive",
+              "health": "ok",
+              "lastEvaluation": "2026-10-07T17:17:47.127017733Z"
+            },
+            {
+              "name": "FDSDetectionBurstAnyRule",
+              "query": "sum by (rule_id) (increase(fds_detected_total[5m])) > 30",
+              "duration": 120,
+              "state": "inactive",
+              "health": "ok",
+              "lastEvaluation": "2026-10-07T17:17:47.127163823Z"
+            },
+            {
+              "name": "UnexpectedPodInFdsNs",
+              "query": "count(kube_pod_info{namespace=\"fds\"} unless on (namespace, pod) kube_pod_labels{label_app=~\"transaction-api|fds-engine\",namespace=\"fds\"}) > 0",
+              "duration": 120,
+              "state": "inactive",
+              "health": "ok",
+              "lastEvaluation": "2026-10-07T17:17:47.127195174Z"
+            }
+          ]
+        },
+        {
+          "name": "fds-p0-test-alert",
+          "file": "/etc/prometheus/rules-p0/p0-test-alert.yml",
+          "rules": [
+            {
+              "name": "FDSMonitoringPipelineTest",
+              "query": "vector(1) == 0",
+              "duration": 0,
+              "state": "inactive",
+              "health": "ok",
+              "lastEvaluation": "2026-10-07T17:18:21.100545476Z"
+            }
+          ]
+        },
+        {
+          "name": "fds-core-observability",
+          "file": "/etc/prometheus/rules/alert-rules.yml",
+          "rules": [
+            {
+              "name": "NodeExporterDown",
+              "query": "up{job=\"node-exporter\"} == 0",
+              "duration": 30,
+              "state": "inactive",
+              "health": "ok",
+              "lastEvaluation": "2026-10-07T17:17:43.745392733Z"
+            },
+            {
+              "name": "KubeletScrapeDown",
+              "query": "up{job=~\"kubelet|kubelet-cadvisor\"} == 0",
+              "duration": 120,
+              "state": "inactive",
+              "health": "ok",
+              "lastEvaluation": "2026-10-07T17:17:43.745656863Z"
+            },
+            {
+              "name": "TargetDown",
+              "query": "up{job=~\"transaction-api|fds-engine|kube-state-metrics\"} == 0",
+              "duration": 60,
+              "state": "inactive",
+              "health": "ok",
+              "lastEvaluation": "2026-10-07T17:17:43.745864169Z"
+            }
+          ]
+        }
+      ],
+      "finished_utc": "2026-10-07T17:18:39.288818+00:00"
+    },
+    {
+      "route": "/api/v1/query?query=count%20by%20%28job%29%20%28up%29",
+      "started_utc": "2026-10-07T17:18:39.288825+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "c6b672b1203da9ada695d4ed64f1e683170a3e9ee934d5f951e604164db977ef",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {
+              "job": "kubelet"
+            },
+            "value": [
+              1791393519.295,
+              "6"
+            ]
+          },
+          {
+            "metric": {
+              "job": "kubelet-cadvisor"
+            },
+            "value": [
+              1791393519.295,
+              "6"
+            ]
+          },
+          {
+            "metric": {
+              "job": "prometheus"
+            },
+            "value": [
+              1791393519.295,
+              "1"
+            ]
+          },
+          {
+            "metric": {
+              "job": "node-exporter"
+            },
+            "value": [
+              1791393519.295,
+              "3"
+            ]
+          },
+          {
+            "metric": {
+              "job": "kube-state-metrics"
+            },
+            "value": [
+              1791393519.295,
+              "1"
+            ]
+          },
+          {
+            "metric": {
+              "job": "transaction-api"
+            },
+            "value": [
+              1791393519.295,
+              "3"
+            ]
+          },
+          {
+            "metric": {
+              "job": "fds-engine"
+            },
+            "value": [
+              1791393519.295,
+              "3"
+            ]
+          }
+        ]
+      },
+      "finished_utc": "2026-10-07T17:18:39.297517+00:00"
+    },
+    {
+      "route": "/api/v1/query?query=count%28up%20%3D%3D%200%29",
+      "started_utc": "2026-10-07T17:18:39.297523+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "664b0f4a552599ac59d91a24f7e6ea8c7a4499ad237fb76aa25c33d8c25f6ec2",
+      "data": {
+        "resultType": "vector",
+        "result": []
+      },
+      "finished_utc": "2026-10-07T17:18:39.305047+00:00"
+    }
+  ],
+  "forward_command": [
+    "kubectl",
+    "--kubeconfig=/etc/kubernetes/admin.conf",
+    "--request-timeout=12s",
+    "-n",
+    "monitoring-api",
+    "port-forward",
+    "--address=127.0.0.1",
+    "service/prometheus",
+    "0:9090"
+  ],
+  "forward_pid": 2150979,
+  "forward_first_line": "Forwarding from 127.0.0.1:33451 -> 9090\n",
+  "forward_tail": "Handling connection for 33451\nHandling connection for 33451\nHandling connection for 33451\nHandling connection for 33451\n",
+  "forward_exit": -15,
+  "forward_reaped": true,
+  "finished_utc": "2026-10-07T17:18:39.306114+00:00"
+}

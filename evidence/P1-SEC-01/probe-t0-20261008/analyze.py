@@ -8,8 +8,6 @@ source=root/'server-originals'
 receipt=json.loads((root/'RECEIPT.json').read_text())
 checks={}
 for name,meta in receipt['files'].items():
-    if 'publication' in meta:
-        continue
     data=(source/name).read_bytes()
     checks['hash:'+name]=hashlib.sha256(data).hexdigest()==meta['sha256'] and len(data)==meta['size']
 pre=json.loads((source/'precheck.result.json').read_text())

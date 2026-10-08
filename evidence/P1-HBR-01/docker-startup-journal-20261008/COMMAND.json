@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.54 'sudo -n journalctl -u docker.service --since '\"'\"'2026-10-07 23:12:00'\"'\"' --until '\"'\"'2026-10-07 23:14:00'\"'\"' --no-pager --output=json --lines=200 --grep '\"'\"'failed to initialize logging driver|Failed to start container|connection refused'\"'\"''"
+  ],
+  "started_at": "2026-10-07T16:29:34.846893+00:00",
+  "finished_at": "2026-10-07T16:29:35.333601+00:00",
+  "rc": 0,
+  "scope": "bounded existing Docker daemon journal only; no restart/no workload logs"
+}

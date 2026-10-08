@@ -1,0 +1,126 @@
+{
+  "remote_path": "/root/if05c-20261008-oo0o4gd4",
+  "files": {
+    "runtime.py": {
+      "sha256": "554baa1776c061972555367dfa5a5a8461156de651b3646f974738f0454f69bc",
+      "mode": "0o600",
+      "size": 11199
+    },
+    "guard.py": {
+      "sha256": "5b88b92ad1592f2a513bb51b1714dbff77e15248cdef87bdbfa3e14f071a8589",
+      "mode": "0o600",
+      "size": 669
+    },
+    "input.json": {
+      "sha256": "e02ddd6be671ad47ffbcfe65264fc2b7a45c47b670f9fd148bc53fcfc76c8b1c",
+      "mode": "0o600",
+      "size": 1615
+    },
+    "check-events.jsonl": {
+      "sha256": "eee739c18a5def12848a5ed321b25acd01e60b8d371abc213d9b3f142a59c599",
+      "mode": "0o600",
+      "size": 21151
+    },
+    "original.json": {
+      "sha256": "24a11d1511ac7180a84c97d7895bb527dadd2de272137df5e1e80b4541c28908",
+      "mode": "0o600",
+      "size": 715
+    },
+    "candidate.json": {
+      "sha256": "70e209d55634cd249440108b7550c71a91f315ccb860185d07dec2d6a0b5f2fb",
+      "mode": "0o600",
+      "size": 517
+    },
+    "preflight.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o600",
+      "size": 0
+    },
+    "preflight.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o600",
+      "size": 0
+    },
+    "launch-once": {
+      "sha256": "352234e308bc148da7d3aaccbfc41a17541a0e4149fef511b4fcfc3969178b53",
+      "mode": "0o600",
+      "size": 32
+    },
+    "preflight-status.json": {
+      "sha256": "29037232c4431f2c7aec5fd0244491e184fd234b016950353692ccbff565fff2",
+      "mode": "0o600",
+      "size": 275
+    },
+    "runtime.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o600",
+      "size": 0
+    },
+    "runtime.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o600",
+      "size": 0
+    },
+    "launch.json": {
+      "sha256": "45538c6e7187187f0c09850dc5d98c32c4a7fef0d258623f8fc91a5fe776f9c5",
+      "mode": "0o600",
+      "size": 223
+    },
+    "run-events.jsonl": {
+      "sha256": "9727a70504d3b4a8a847a4516e4351cabbf0f114623a8e74a8003514dd4a94f9",
+      "mode": "0o600",
+      "size": 299891
+    },
+    "firing.json": {
+      "sha256": "b21ce3f1dfad2a26de59f4c6983974c383d937ec6dccdedd84d6a2206d3f9f83",
+      "mode": "0o600",
+      "size": 16479
+    },
+    "recovery.lock": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "0o600",
+      "size": 0
+    },
+    "restore-confirmed.json": {
+      "sha256": "f8ea9060c7a0b43de706339fe869b14f854c3e07b7a01bdab5d2c1600f39d468",
+      "mode": "0o600",
+      "size": 15084
+    },
+    "status.json": {
+      "sha256": "2673aba799fdd525d66c1dbf6c933c0a98bc6ff657f100da35224e7413042e2c",
+      "mode": "0o600",
+      "size": 363
+    },
+    "readonly-followup-events.jsonl": {
+      "sha256": "720392d002397ac21aecb6936ba0a77c4269f1a3391d8ebb46dd4cb87685a13d",
+      "mode": "0o644",
+      "size": 18218
+    },
+    "post-observation.json": {
+      "sha256": "81148230bd4304a715214a2d30b3ab2fa077de4cb853170dc942ceafe4f773f4",
+      "mode": "0o644",
+      "size": 15589
+    }
+  },
+  "recovery_unit": {
+    "command": [
+      "systemctl",
+      "show",
+      "if05c-recover-20261008-oo0o4gd4.timer",
+      "if05c-recover-20261008-oo0o4gd4.service",
+      "-p",
+      "LoadState",
+      "-p",
+      "ActiveState",
+      "-p",
+      "SubState",
+      "-p",
+      "Result"
+    ],
+    "rc": 0,
+    "stdout": "Result=success\nLoadState=not-found\nActiveState=inactive\nSubState=dead\n\nResult=success\nLoadState=not-found\nActiveState=inactive\nSubState=dead\n",
+    "stderr": ""
+  },
+  "transport": "drivers/fetched-final-invocation.json",
+  "encoding": "original bytes decoded from SSH JSON base64; no newline conversion"
+}

@@ -1,0 +1,866 @@
+{
+  "checks": [
+    {
+      "name": "nodes_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "six_nodes_ready",
+      "pass": true
+    },
+    {
+      "name": "namespaces_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "namespaces_unchanged",
+      "pass": true
+    },
+    {
+      "name": "pods_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "44_pods_UID_IP_labels_phase_preserved",
+      "pass": true
+    },
+    {
+      "name": "networkpolicies.networking.k8s.io_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "networkpolicies.networking.k8s.io_unchanged",
+      "pass": true
+    },
+    {
+      "name": "globalnetworkpolicies.crd.projectcalico.org_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "globalnetworkpolicies.crd.projectcalico.org_unchanged",
+      "pass": true
+    },
+    {
+      "name": "networkpolicies.crd.projectcalico.org_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "networkpolicies.crd.projectcalico.org_unchanged",
+      "pass": true
+    },
+    {
+      "name": "hostendpoints.crd.projectcalico.org_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "hostendpoints.crd.projectcalico.org_unchanged",
+      "pass": true
+    },
+    {
+      "name": "services_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "services_unchanged",
+      "pass": true
+    },
+    {
+      "name": "endpointslices.discovery.k8s.io_queries_rc0",
+      "pass": true
+    },
+    {
+      "name": "endpointslices.discovery.k8s.io_unchanged",
+      "pass": true
+    },
+    {
+      "name": "102_pins_unchanged",
+      "pass": true
+    },
+    {
+      "name": "102_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "105_pins_unchanged",
+      "pass": true
+    },
+    {
+      "name": "105_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "107_pins_unchanged",
+      "pass": true
+    },
+    {
+      "name": "107_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "108_pins_unchanged",
+      "pass": true
+    },
+    {
+      "name": "108_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "control_expected_collector_exit",
+      "pass": true
+    },
+    {
+      "name": "control_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "control_56107",
+      "pass": true
+    },
+    {
+      "name": "control_56108",
+      "pass": true
+    },
+    {
+      "name": "host105_expected_collector_exit",
+      "pass": true
+    },
+    {
+      "name": "host105_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "host105_56101",
+      "pass": true
+    },
+    {
+      "name": "host105_56102",
+      "pass": true
+    },
+    {
+      "name": "host105_56103",
+      "pass": true
+    },
+    {
+      "name": "host105_56104",
+      "pass": true
+    },
+    {
+      "name": "initial_stop_error_and_drop_preserved",
+      "pass": true
+    },
+    {
+      "name": "host105-continuation_expected_collector_exit",
+      "pass": true
+    },
+    {
+      "name": "host105-continuation_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "host105-continuation_56106",
+      "pass": true
+    },
+    {
+      "name": "host107-continuation_expected_collector_exit",
+      "pass": true
+    },
+    {
+      "name": "host107-continuation_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "host107-continuation_56101",
+      "pass": true
+    },
+    {
+      "name": "host107-continuation_56102",
+      "pass": true
+    },
+    {
+      "name": "host107-continuation_56103",
+      "pass": true
+    },
+    {
+      "name": "host107-continuation_56104",
+      "pass": true
+    },
+    {
+      "name": "host107-continuation_56105",
+      "pass": true
+    },
+    {
+      "name": "host107-continuation_56106",
+      "pass": true
+    },
+    {
+      "name": "host108-continuation_expected_collector_exit",
+      "pass": true
+    },
+    {
+      "name": "host108-continuation_filter_structure_unchanged",
+      "pass": true
+    },
+    {
+      "name": "host108-continuation_56101",
+      "pass": true
+    },
+    {
+      "name": "host108-continuation_56102",
+      "pass": true
+    },
+    {
+      "name": "host108-continuation_56103",
+      "pass": true
+    },
+    {
+      "name": "host108-continuation_56104",
+      "pass": true
+    },
+    {
+      "name": "host108-continuation_56105",
+      "pass": true
+    },
+    {
+      "name": "host108-continuation_56106",
+      "pass": true
+    },
+    {
+      "name": "20_observations",
+      "pass": true
+    },
+    {
+      "name": "10_guard_mock_cases",
+      "pass": true
+    },
+    {
+      "name": "mon-history_forward_reaped",
+      "pass": true
+    },
+    {
+      "name": "mon-history_API_queries_success",
+      "pass": true
+    },
+    {
+      "name": "mon-flags_forward_reaped",
+      "pass": true
+    },
+    {
+      "name": "mon-flags_API_queries_success",
+      "pass": true
+    },
+    {
+      "name": "mon-preparation_forward_reaped",
+      "pass": true
+    },
+    {
+      "name": "all_execution_source_hashes_present",
+      "pass": true
+    }
+  ],
+  "observations": [
+    {
+      "record": "control",
+      "host": "k8s-control01",
+      "pod_uid": "b177ca1d-d26a-4e55-acc6-2cc384e6d281",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.244.246.121",
+          "source_port": 56107,
+          "destination": "8.8.8.8",
+          "port": 53,
+          "expect": "DNS_REPLY",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:27:08.161645+00:00",
+        "bound": [
+          "10.244.246.121",
+          56107
+        ],
+        "actual": "DNS_REPLY",
+        "rcode": 0,
+        "answers": 2,
+        "reply_bytes": 61,
+        "qname": "example.com",
+        "elapsed_seconds": 0.035,
+        "finished_utc": "2026-10-07T23:27:08.196943+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": null
+    },
+    {
+      "record": "control",
+      "host": "k8s-control01",
+      "pod_uid": "b177ca1d-d26a-4e55-acc6-2cc384e6d281",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.244.246.121",
+          "source_port": 56108,
+          "destination": "1.1.1.1",
+          "port": 443,
+          "expect": "CONNECTED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:27:08.221734+00:00",
+        "bound": [
+          "10.244.246.121",
+          56108
+        ],
+        "actual": "CONNECTED",
+        "elapsed_seconds": 0.005,
+        "finished_utc": "2026-10-07T23:27:08.227152+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": null
+    },
+    {
+      "record": "host105",
+      "host": "k8s-worker01",
+      "pod_uid": "c4dcab33-df59-4812-96ad-3ca14e4b9fce",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.105",
+          "source_port": 56101,
+          "destination": "10.1.93.52",
+          "port": 53,
+          "expect": "DNS_REPLY",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:27:21.490218+00:00",
+        "bound": [
+          "10.1.93.105",
+          56101
+        ],
+        "actual": "DNS_REPLY",
+        "rcode": 0,
+        "answers": 2,
+        "reply_bytes": 61,
+        "qname": "example.com",
+        "elapsed_seconds": 0.131,
+        "finished_utc": "2026-10-07T23:27:21.620785+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": null
+    },
+    {
+      "record": "host105",
+      "host": "k8s-worker01",
+      "pod_uid": "c4dcab33-df59-4812-96ad-3ca14e4b9fce",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.105",
+          "source_port": 56102,
+          "destination": "10.1.93.53",
+          "port": 53,
+          "expect": "DNS_REPLY",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:27:21.647981+00:00",
+        "bound": [
+          "10.1.93.105",
+          56102
+        ],
+        "actual": "DNS_REPLY",
+        "rcode": 0,
+        "answers": 2,
+        "reply_bytes": 61,
+        "qname": "example.com",
+        "elapsed_seconds": 0.297,
+        "finished_utc": "2026-10-07T23:27:21.944772+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": null
+    },
+    {
+      "record": "host105",
+      "host": "k8s-worker01",
+      "pod_uid": "c4dcab33-df59-4812-96ad-3ca14e4b9fce",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.105",
+          "source_port": 56103,
+          "destination": "10.1.93.52",
+          "port": 53,
+          "expect": "CONNECTED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:27:21.972105+00:00",
+        "bound": [
+          "10.1.93.105",
+          56103
+        ],
+        "actual": "CONNECTED",
+        "elapsed_seconds": 0.001,
+        "finished_utc": "2026-10-07T23:27:21.973446+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": null
+    },
+    {
+      "record": "host105",
+      "host": "k8s-worker01",
+      "pod_uid": "c4dcab33-df59-4812-96ad-3ca14e4b9fce",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.105",
+          "source_port": 56104,
+          "destination": "10.1.93.53",
+          "port": 53,
+          "expect": "CONNECTED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:27:21.999667+00:00",
+        "bound": [
+          "10.1.93.105",
+          56104
+        ],
+        "actual": "CONNECTED",
+        "elapsed_seconds": 0.001,
+        "finished_utc": "2026-10-07T23:27:22.000791+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": null
+    },
+    {
+      "record": "host105",
+      "host": "k8s-worker01",
+      "pod_uid": "c4dcab33-df59-4812-96ad-3ca14e4b9fce",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.105",
+          "source_port": 56105,
+          "destination": "8.8.8.8",
+          "port": 53,
+          "expect": "TIMEOUT",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:27:22.025331+00:00",
+        "bound": [
+          "10.1.93.105",
+          56105
+        ],
+        "actual": "ERROR",
+        "error": "PermissionError:[Errno 1] Operation not permitted",
+        "elapsed_seconds": 0.0,
+        "finished_utc": "2026-10-07T23:27:22.025441+00:00"
+      },
+      "process_rc": 3,
+      "drop_counter_delta": 1,
+      "runtime_guard": null,
+      "assessment": "EPERM_AND_HEP_DROP_PLUS1; INITIAL_TOOL_STOP_PRESERVED; syscall stage not recorded"
+    },
+    {
+      "record": "host105-continuation",
+      "host": "k8s-worker01",
+      "pod_uid": "c4dcab33-df59-4812-96ad-3ca14e4b9fce",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.105",
+          "source_port": 56106,
+          "destination": "1.1.1.1",
+          "port": 443,
+          "expect": "BLOCKED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:28:59.256756+00:00",
+        "stage": "connect",
+        "bound": [
+          "10.1.93.105",
+          56106
+        ],
+        "actual": "TIMEOUT",
+        "elapsed_seconds": 3.004,
+        "finished_utc": "2026-10-07T23:29:02.260621+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 3,
+      "runtime_guard": true
+    },
+    {
+      "record": "host107-continuation",
+      "host": "k8s-worker02",
+      "pod_uid": "55d1af03-5ffe-48c8-8adc-fd5dd4628420",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.107",
+          "source_port": 56101,
+          "destination": "10.1.93.52",
+          "port": 53,
+          "expect": "DNS_REPLY",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:03.732656+00:00",
+        "stage": "recv",
+        "bound": [
+          "10.1.93.107",
+          56101
+        ],
+        "sent_bytes": 29,
+        "actual": "DNS_REPLY",
+        "rcode": 0,
+        "answers": 2,
+        "reply_bytes": 61,
+        "qname": "example.com",
+        "elapsed_seconds": 0.001,
+        "finished_utc": "2026-10-07T23:29:03.733978+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": true
+    },
+    {
+      "record": "host107-continuation",
+      "host": "k8s-worker02",
+      "pod_uid": "55d1af03-5ffe-48c8-8adc-fd5dd4628420",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.107",
+          "source_port": 56102,
+          "destination": "10.1.93.53",
+          "port": 53,
+          "expect": "DNS_REPLY",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:03.757859+00:00",
+        "stage": "recv",
+        "bound": [
+          "10.1.93.107",
+          56102
+        ],
+        "sent_bytes": 29,
+        "actual": "DNS_REPLY",
+        "rcode": 0,
+        "answers": 2,
+        "reply_bytes": 61,
+        "qname": "example.com",
+        "elapsed_seconds": 0.002,
+        "finished_utc": "2026-10-07T23:29:03.759398+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": true
+    },
+    {
+      "record": "host107-continuation",
+      "host": "k8s-worker02",
+      "pod_uid": "55d1af03-5ffe-48c8-8adc-fd5dd4628420",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.107",
+          "source_port": 56103,
+          "destination": "10.1.93.52",
+          "port": 53,
+          "expect": "CONNECTED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:03.783242+00:00",
+        "stage": "connect",
+        "bound": [
+          "10.1.93.107",
+          56103
+        ],
+        "actual": "CONNECTED",
+        "elapsed_seconds": 0.001,
+        "finished_utc": "2026-10-07T23:29:03.784663+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": true
+    },
+    {
+      "record": "host107-continuation",
+      "host": "k8s-worker02",
+      "pod_uid": "55d1af03-5ffe-48c8-8adc-fd5dd4628420",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.107",
+          "source_port": 56104,
+          "destination": "10.1.93.53",
+          "port": 53,
+          "expect": "CONNECTED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:03.808636+00:00",
+        "stage": "connect",
+        "bound": [
+          "10.1.93.107",
+          56104
+        ],
+        "actual": "CONNECTED",
+        "elapsed_seconds": 0.001,
+        "finished_utc": "2026-10-07T23:29:03.809643+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": true
+    },
+    {
+      "record": "host107-continuation",
+      "host": "k8s-worker02",
+      "pod_uid": "55d1af03-5ffe-48c8-8adc-fd5dd4628420",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.107",
+          "source_port": 56105,
+          "destination": "8.8.8.8",
+          "port": 53,
+          "expect": "BLOCKED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:03.833543+00:00",
+        "stage": "send",
+        "bound": [
+          "10.1.93.107",
+          56105
+        ],
+        "actual": "EPERM",
+        "errno": 1,
+        "error": "[Errno 1] Operation not permitted",
+        "elapsed_seconds": 0.0,
+        "finished_utc": "2026-10-07T23:29:03.833719+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 1,
+      "runtime_guard": true
+    },
+    {
+      "record": "host107-continuation",
+      "host": "k8s-worker02",
+      "pod_uid": "55d1af03-5ffe-48c8-8adc-fd5dd4628420",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.107",
+          "source_port": 56106,
+          "destination": "1.1.1.1",
+          "port": 443,
+          "expect": "BLOCKED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:03.857198+00:00",
+        "stage": "connect",
+        "bound": [
+          "10.1.93.107",
+          56106
+        ],
+        "actual": "TIMEOUT",
+        "elapsed_seconds": 3.003,
+        "finished_utc": "2026-10-07T23:29:06.860670+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 3,
+      "runtime_guard": true
+    },
+    {
+      "record": "host108-continuation",
+      "host": "k8s-worker03",
+      "pod_uid": "78d316e9-75b3-46d9-b012-ed5ce93c322e",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.108",
+          "source_port": 56101,
+          "destination": "10.1.93.52",
+          "port": 53,
+          "expect": "DNS_REPLY",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:08.365382+00:00",
+        "stage": "recv",
+        "bound": [
+          "10.1.93.108",
+          56101
+        ],
+        "sent_bytes": 29,
+        "actual": "DNS_REPLY",
+        "rcode": 0,
+        "answers": 2,
+        "reply_bytes": 61,
+        "qname": "example.com",
+        "elapsed_seconds": 0.002,
+        "finished_utc": "2026-10-07T23:29:08.366932+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": true
+    },
+    {
+      "record": "host108-continuation",
+      "host": "k8s-worker03",
+      "pod_uid": "78d316e9-75b3-46d9-b012-ed5ce93c322e",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.108",
+          "source_port": 56102,
+          "destination": "10.1.93.53",
+          "port": 53,
+          "expect": "DNS_REPLY",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:08.394394+00:00",
+        "stage": "recv",
+        "bound": [
+          "10.1.93.108",
+          56102
+        ],
+        "sent_bytes": 29,
+        "actual": "DNS_REPLY",
+        "rcode": 0,
+        "answers": 2,
+        "reply_bytes": 61,
+        "qname": "example.com",
+        "elapsed_seconds": 0.001,
+        "finished_utc": "2026-10-07T23:29:08.395553+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": true
+    },
+    {
+      "record": "host108-continuation",
+      "host": "k8s-worker03",
+      "pod_uid": "78d316e9-75b3-46d9-b012-ed5ce93c322e",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.108",
+          "source_port": 56103,
+          "destination": "10.1.93.52",
+          "port": 53,
+          "expect": "CONNECTED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:08.422982+00:00",
+        "stage": "connect",
+        "bound": [
+          "10.1.93.108",
+          56103
+        ],
+        "actual": "CONNECTED",
+        "elapsed_seconds": 0.002,
+        "finished_utc": "2026-10-07T23:29:08.424506+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": true
+    },
+    {
+      "record": "host108-continuation",
+      "host": "k8s-worker03",
+      "pod_uid": "78d316e9-75b3-46d9-b012-ed5ce93c322e",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.108",
+          "source_port": 56104,
+          "destination": "10.1.93.53",
+          "port": 53,
+          "expect": "CONNECTED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:08.452437+00:00",
+        "stage": "connect",
+        "bound": [
+          "10.1.93.108",
+          56104
+        ],
+        "actual": "CONNECTED",
+        "elapsed_seconds": 0.001,
+        "finished_utc": "2026-10-07T23:29:08.453572+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 0,
+      "runtime_guard": true
+    },
+    {
+      "record": "host108-continuation",
+      "host": "k8s-worker03",
+      "pod_uid": "78d316e9-75b3-46d9-b012-ed5ce93c322e",
+      "result": {
+        "case": {
+          "protocol": "UDP",
+          "source_ip": "10.1.93.108",
+          "source_port": 56105,
+          "destination": "8.8.8.8",
+          "port": 53,
+          "expect": "BLOCKED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:08.481269+00:00",
+        "stage": "send",
+        "bound": [
+          "10.1.93.108",
+          56105
+        ],
+        "actual": "EPERM",
+        "errno": 1,
+        "error": "[Errno 1] Operation not permitted",
+        "elapsed_seconds": 0.0,
+        "finished_utc": "2026-10-07T23:29:08.481376+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 1,
+      "runtime_guard": true
+    },
+    {
+      "record": "host108-continuation",
+      "host": "k8s-worker03",
+      "pod_uid": "78d316e9-75b3-46d9-b012-ed5ce93c322e",
+      "result": {
+        "case": {
+          "protocol": "TCP",
+          "source_ip": "10.1.93.108",
+          "source_port": 56106,
+          "destination": "1.1.1.1",
+          "port": 443,
+          "expect": "BLOCKED",
+          "qname": "example.com"
+        },
+        "started_utc": "2026-10-07T23:29:08.508914+00:00",
+        "stage": "connect",
+        "bound": [
+          "10.1.93.108",
+          56106
+        ],
+        "actual": "TIMEOUT",
+        "elapsed_seconds": 3.003,
+        "finished_utc": "2026-10-07T23:29:11.512359+00:00"
+      },
+      "process_rc": 0,
+      "drop_counter_delta": 10,
+      "runtime_guard": true
+    }
+  ],
+  "counts": {
+    "external_controls": 2,
+    "host_allowed": 12,
+    "host_denial_observations": 6,
+    "initial_collector_stop": 1
+  },
+  "limits": [
+    "host-network L3/L4 observation; not node-exporter application/UID validation",
+    "HEP counters include other host traffic; Worker03 TCP DROP +10 is not all attributable to 3 test SYNs",
+    "first UDP denial lacks syscall-stage field; original rc3/collector rc2 preserved",
+    "IF05C historical queries empty, no new alert injection/delivery proof",
+    "independent REVIEW and AC acceptance pending"
+  ]
+}

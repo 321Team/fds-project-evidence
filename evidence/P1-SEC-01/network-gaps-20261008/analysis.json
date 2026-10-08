@@ -1,0 +1,1665 @@
+{
+  "schema": "fds.sec-network-gap-observation.v1",
+  "checks": [
+    {
+      "name": "all_44_pod_UIDs_preserved",
+      "pass": true
+    },
+    {
+      "name": "Pod_IP_label_phase_preserved",
+      "pass": true
+    },
+    {
+      "name": "nodes_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "all_6_nodes_ready",
+      "pass": true
+    },
+    {
+      "name": "namespaces_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "namespaces_unchanged",
+      "pass": true
+    },
+    {
+      "name": "pods_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "networkpolicies.networking.k8s.io_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "networkpolicies.networking.k8s.io_unchanged",
+      "pass": true
+    },
+    {
+      "name": "globalnetworkpolicies.crd.projectcalico.org_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "globalnetworkpolicies.crd.projectcalico.org_unchanged",
+      "pass": true
+    },
+    {
+      "name": "networkpolicies.crd.projectcalico.org_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "networkpolicies.crd.projectcalico.org_unchanged",
+      "pass": true
+    },
+    {
+      "name": "hostendpoints.crd.projectcalico.org_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "hostendpoints.crd.projectcalico.org_unchanged",
+      "pass": true
+    },
+    {
+      "name": "services_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "services_unchanged",
+      "pass": true
+    },
+    {
+      "name": "endpointslices.discovery.k8s.io_post_query_rc0",
+      "pass": true
+    },
+    {
+      "name": "endpointslices.discovery.k8s.io_unchanged",
+      "pass": true
+    },
+    {
+      "name": "if03-positive_collector_rc0",
+      "pass": true
+    },
+    {
+      "name": "if03-positive_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "if03-positive_f91fe8a8-6894-49d0-8543-83c55e2fb675_55801",
+      "pass": true
+    },
+    {
+      "name": "if03-positive_f91fe8a8-6894-49d0-8543-83c55e2fb675_55802",
+      "pass": true
+    },
+    {
+      "name": "if03-positive_f91fe8a8-6894-49d0-8543-83c55e2fb675_55803",
+      "pass": true
+    },
+    {
+      "name": "if03-negative_collector_rc0",
+      "pass": true
+    },
+    {
+      "name": "if03-negative_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "if03-negative_b177ca1d-d26a-4e55-acc6-2cc384e6d281_55801",
+      "pass": true
+    },
+    {
+      "name": "if03-negative_b177ca1d-d26a-4e55-acc6-2cc384e6d281_55802",
+      "pass": true
+    },
+    {
+      "name": "if03-negative_b177ca1d-d26a-4e55-acc6-2cc384e6d281_55803",
+      "pass": true
+    },
+    {
+      "name": "if13-control_collector_rc0",
+      "pass": true
+    },
+    {
+      "name": "if13-control_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "if13-control_b177ca1d-d26a-4e55-acc6-2cc384e6d281_55903",
+      "pass": true
+    },
+    {
+      "name": "if13-node105_collector_rc0",
+      "pass": true
+    },
+    {
+      "name": "if13-node105_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "if13-node105_87eb5c51-4666-4968-b405-2f93bc475e4d_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node105_87eb5c51-4666-4968-b405-2f93bc475e4d_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node105_87eb5c51-4666-4968-b405-2f93bc475e4d_55811",
+      "pass": true
+    },
+    {
+      "name": "if13-node105_bf576dfc-f6a4-4ee4-90e6-1ab90fb5d370_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node105_bf576dfc-f6a4-4ee4-90e6-1ab90fb5d370_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_collector_rc0",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_7234e8f5-c357-4997-8850-a46d70dd6fea_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_7234e8f5-c357-4997-8850-a46d70dd6fea_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_713ff99f-6382-4fad-a7d4-53173c243301_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_713ff99f-6382-4fad-a7d4-53173c243301_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_713ff99f-6382-4fad-a7d4-53173c243301_55811",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_33ee4ee5-723a-400c-831d-9549bafea1a0_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_33ee4ee5-723a-400c-831d-9549bafea1a0_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node107_33ee4ee5-723a-400c-831d-9549bafea1a0_55811",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_collector_rc0",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_916b8c8a-ff21-42ba-9815-11dce4cde848_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_916b8c8a-ff21-42ba-9815-11dce4cde848_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_916b8c8a-ff21-42ba-9815-11dce4cde848_55811",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_f91fe8a8-6894-49d0-8543-83c55e2fb675_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_f91fe8a8-6894-49d0-8543-83c55e2fb675_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_f91fe8a8-6894-49d0-8543-83c55e2fb675_55811",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_31e0c4e8-7df3-445e-8c87-320effd549b0_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_31e0c4e8-7df3-445e-8c87-320effd549b0_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_265ca811-873c-45e1-8c46-6c1ce034e596_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_265ca811-873c-45e1-8c46-6c1ce034e596_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_265ca811-873c-45e1-8c46-6c1ce034e596_55811",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_3add1a86-f390-4123-bb69-8a1f5bba8e4a_55901",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_3add1a86-f390-4123-bb69-8a1f5bba8e4a_55902",
+      "pass": true
+    },
+    {
+      "name": "if13-node108_3add1a86-f390-4123-bb69-8a1f5bba8e4a_55811",
+      "pass": true
+    },
+    {
+      "name": "102_sandbox_pins_unchanged",
+      "pass": true
+    },
+    {
+      "name": "102_filter_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "105_sandbox_pins_unchanged",
+      "pass": true
+    },
+    {
+      "name": "105_filter_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "107_sandbox_pins_unchanged",
+      "pass": true
+    },
+    {
+      "name": "107_filter_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "108_sandbox_pins_unchanged",
+      "pass": true
+    },
+    {
+      "name": "108_filter_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "105_capture_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "105_destination_drop_corroborated",
+      "pass": true
+    },
+    {
+      "name": "transaction-api-5f8b5d7cfd-brztj_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "fds-engine-66b8c565c4-vzgm6_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "107_capture_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "107_destination_drop_corroborated",
+      "pass": true
+    },
+    {
+      "name": "fds-engine-66b8c565c4-ml986_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "transaction-api-5f8b5d7cfd-fsmgw_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "kube-state-metrics-77796bd485-l8wv6_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "108_capture_rules_unchanged",
+      "pass": true
+    },
+    {
+      "name": "108_destination_drop_corroborated",
+      "pass": true
+    },
+    {
+      "name": "grafana-f65457bfd-ckjgj_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "transaction-api-5f8b5d7cfd-2jz62_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "fds-engine-66b8c565c4-dqppp_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "prometheus-d8949bd64-2zc4m_egress_drop_matches_probe_count",
+      "pass": true
+    },
+    {
+      "name": "alertmanager-6bf6dc555-bs8cg_egress_drop_matches_probe_count",
+      "pass": true
+    }
+  ],
+  "case_count": 34,
+  "cases": [
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.39.208",
+        "source_port": 55801,
+        "destination": "10.244.39.209",
+        "port": 8001,
+        "expect": "CONNECTED"
+      },
+      "started_utc": "2026-10-07T18:51:40.206910+00:00",
+      "bound": [
+        "10.244.39.208",
+        55801
+      ],
+      "actual": "CONNECTED",
+      "elapsed_seconds": 0.0,
+      "finished_utc": "2026-10-07T18:51:40.207387+00:00",
+      "record": "if03-positive",
+      "pod_uid": "f91fe8a8-6894-49d0-8543-83c55e2fb675",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.39.208",
+        "source_port": 55802,
+        "destination": "10.244.69.237",
+        "port": 8001,
+        "expect": "CONNECTED"
+      },
+      "started_utc": "2026-10-07T18:51:40.223943+00:00",
+      "bound": [
+        "10.244.39.208",
+        55802
+      ],
+      "actual": "CONNECTED",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:51:40.225152+00:00",
+      "record": "if03-positive",
+      "pod_uid": "f91fe8a8-6894-49d0-8543-83c55e2fb675",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.39.208",
+        "source_port": 55803,
+        "destination": "10.244.79.113",
+        "port": 8001,
+        "expect": "CONNECTED"
+      },
+      "started_utc": "2026-10-07T18:51:40.241680+00:00",
+      "bound": [
+        "10.244.39.208",
+        55803
+      ],
+      "actual": "CONNECTED",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:51:40.242809+00:00",
+      "record": "if03-positive",
+      "pod_uid": "f91fe8a8-6894-49d0-8543-83c55e2fb675",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.246.121",
+        "source_port": 55801,
+        "destination": "10.244.39.209",
+        "port": 8001,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:51:42.402053+00:00",
+      "bound": [
+        "10.244.246.121",
+        55801
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:51:45.405618+00:00",
+      "record": "if03-negative",
+      "pod_uid": "b177ca1d-d26a-4e55-acc6-2cc384e6d281",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.246.121",
+        "source_port": 55802,
+        "destination": "10.244.69.237",
+        "port": 8001,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:51:45.428651+00:00",
+      "bound": [
+        "10.244.246.121",
+        55802
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:51:48.432400+00:00",
+      "record": "if03-negative",
+      "pod_uid": "b177ca1d-d26a-4e55-acc6-2cc384e6d281",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.246.121",
+        "source_port": 55803,
+        "destination": "10.244.79.113",
+        "port": 8001,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:51:48.457641+00:00",
+      "bound": [
+        "10.244.246.121",
+        55803
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.001,
+      "finished_utc": "2026-10-07T18:51:51.458821+00:00",
+      "record": "if03-negative",
+      "pod_uid": "b177ca1d-d26a-4e55-acc6-2cc384e6d281",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.246.121",
+        "source_port": 55903,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:00.264582+00:00",
+      "bound": [
+        "10.244.246.121",
+        55903
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 2,
+      "reply_bytes": 61,
+      "qname": "example.com",
+      "elapsed_seconds": 0.035,
+      "finished_utc": "2026-10-07T18:53:00.299149+00:00",
+      "record": "if13-control",
+      "pod_uid": "b177ca1d-d26a-4e55-acc6-2cc384e6d281",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.79.112",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:08.920148+00:00",
+      "bound": [
+        "10.244.79.112",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.002,
+      "finished_utc": "2026-10-07T18:53:08.921652+00:00",
+      "record": "if13-node105",
+      "pod_uid": "87eb5c51-4666-4968-b405-2f93bc475e4d",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.79.112",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:08.943243+00:00",
+      "bound": [
+        "10.244.79.112",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:53:11.946960+00:00",
+      "record": "if13-node105",
+      "pod_uid": "87eb5c51-4666-4968-b405-2f93bc475e4d",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.79.112",
+        "source_port": 55811,
+        "destination": "1.1.1.1",
+        "port": 443,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:53:11.965977+00:00",
+      "bound": [
+        "10.244.79.112",
+        55811
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:53:14.969623+00:00",
+      "record": "if13-node105",
+      "pod_uid": "87eb5c51-4666-4968-b405-2f93bc475e4d",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.79.113",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:14.988479+00:00",
+      "bound": [
+        "10.244.79.113",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:53:14.989718+00:00",
+      "record": "if13-node105",
+      "pod_uid": "bf576dfc-f6a4-4ee4-90e6-1ab90fb5d370",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.79.113",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:15.008976+00:00",
+      "bound": [
+        "10.244.79.113",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:53:18.012651+00:00",
+      "record": "if13-node105",
+      "pod_uid": "bf576dfc-f6a4-4ee4-90e6-1ab90fb5d370",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.69.237",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:19.398926+00:00",
+      "bound": [
+        "10.244.69.237",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:53:19.400199+00:00",
+      "record": "if13-node107",
+      "pod_uid": "7234e8f5-c357-4997-8850-a46d70dd6fea",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.69.237",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:19.416392+00:00",
+      "bound": [
+        "10.244.69.237",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:22.419795+00:00",
+      "record": "if13-node107",
+      "pod_uid": "7234e8f5-c357-4997-8850-a46d70dd6fea",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.69.236",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:22.442301+00:00",
+      "bound": [
+        "10.244.69.236",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:53:22.443796+00:00",
+      "record": "if13-node107",
+      "pod_uid": "713ff99f-6382-4fad-a7d4-53173c243301",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.69.236",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:22.459904+00:00",
+      "bound": [
+        "10.244.69.236",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:53:25.463419+00:00",
+      "record": "if13-node107",
+      "pod_uid": "713ff99f-6382-4fad-a7d4-53173c243301",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.69.236",
+        "source_port": 55811,
+        "destination": "1.1.1.1",
+        "port": 443,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:53:25.487159+00:00",
+      "bound": [
+        "10.244.69.236",
+        55811
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:28.490636+00:00",
+      "record": "if13-node107",
+      "pod_uid": "713ff99f-6382-4fad-a7d4-53173c243301",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.69.235",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:28.515142+00:00",
+      "bound": [
+        "10.244.69.235",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:53:28.516574+00:00",
+      "record": "if13-node107",
+      "pod_uid": "33ee4ee5-723a-400c-831d-9549bafea1a0",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.69.235",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:28.533048+00:00",
+      "bound": [
+        "10.244.69.235",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:53:31.536747+00:00",
+      "record": "if13-node107",
+      "pod_uid": "33ee4ee5-723a-400c-831d-9549bafea1a0",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.69.235",
+        "source_port": 55811,
+        "destination": "1.1.1.1",
+        "port": 443,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:53:31.561026+00:00",
+      "bound": [
+        "10.244.69.235",
+        55811
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:34.564315+00:00",
+      "record": "if13-node107",
+      "pod_uid": "33ee4ee5-723a-400c-831d-9549bafea1a0",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.206",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:29.783926+00:00",
+      "bound": [
+        "10.244.39.206",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.002,
+      "finished_utc": "2026-10-07T18:53:29.785633+00:00",
+      "record": "if13-node108",
+      "pod_uid": "916b8c8a-ff21-42ba-9815-11dce4cde848",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.206",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:29.802518+00:00",
+      "bound": [
+        "10.244.39.206",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:32.805840+00:00",
+      "record": "if13-node108",
+      "pod_uid": "916b8c8a-ff21-42ba-9815-11dce4cde848",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.39.206",
+        "source_port": 55811,
+        "destination": "1.1.1.1",
+        "port": 443,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:53:32.823460+00:00",
+      "bound": [
+        "10.244.39.206",
+        55811
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:35.826823+00:00",
+      "record": "if13-node108",
+      "pod_uid": "916b8c8a-ff21-42ba-9815-11dce4cde848",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.208",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:35.844828+00:00",
+      "bound": [
+        "10.244.39.208",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:53:35.845964+00:00",
+      "record": "if13-node108",
+      "pod_uid": "f91fe8a8-6894-49d0-8543-83c55e2fb675",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.208",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:35.862737+00:00",
+      "bound": [
+        "10.244.39.208",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:53:38.866271+00:00",
+      "record": "if13-node108",
+      "pod_uid": "f91fe8a8-6894-49d0-8543-83c55e2fb675",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.39.208",
+        "source_port": 55811,
+        "destination": "1.1.1.1",
+        "port": 443,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:53:38.883291+00:00",
+      "bound": [
+        "10.244.39.208",
+        55811
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:41.886707+00:00",
+      "record": "if13-node108",
+      "pod_uid": "f91fe8a8-6894-49d0-8543-83c55e2fb675",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.209",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:41.903934+00:00",
+      "bound": [
+        "10.244.39.209",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:53:41.905409+00:00",
+      "record": "if13-node108",
+      "pod_uid": "31e0c4e8-7df3-445e-8c87-320effd549b0",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.209",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:41.921848+00:00",
+      "bound": [
+        "10.244.39.209",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:44.925214+00:00",
+      "record": "if13-node108",
+      "pod_uid": "31e0c4e8-7df3-445e-8c87-320effd549b0",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.207",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:44.942698+00:00",
+      "bound": [
+        "10.244.39.207",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:53:44.944057+00:00",
+      "record": "if13-node108",
+      "pod_uid": "265ca811-873c-45e1-8c46-6c1ce034e596",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.207",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:44.961006+00:00",
+      "bound": [
+        "10.244.39.207",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:47.964159+00:00",
+      "record": "if13-node108",
+      "pod_uid": "265ca811-873c-45e1-8c46-6c1ce034e596",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.39.207",
+        "source_port": 55811,
+        "destination": "1.1.1.1",
+        "port": 443,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:53:47.981583+00:00",
+      "bound": [
+        "10.244.39.207",
+        55811
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.002,
+      "finished_utc": "2026-10-07T18:53:50.984093+00:00",
+      "record": "if13-node108",
+      "pod_uid": "265ca811-873c-45e1-8c46-6c1ce034e596",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.205",
+        "source_port": 55901,
+        "destination": "10.96.0.10",
+        "port": 53,
+        "expect": "DNS_REPLY",
+        "qname": "kubernetes.default.svc.cluster.local"
+      },
+      "started_utc": "2026-10-07T18:53:51.001370+00:00",
+      "bound": [
+        "10.244.39.205",
+        55901
+      ],
+      "actual": "DNS_REPLY",
+      "rcode": 0,
+      "answers": 1,
+      "reply_bytes": 106,
+      "qname": "kubernetes.default.svc.cluster.local",
+      "elapsed_seconds": 0.001,
+      "finished_utc": "2026-10-07T18:53:51.002504+00:00",
+      "record": "if13-node108",
+      "pod_uid": "3add1a86-f390-4123-bb69-8a1f5bba8e4a",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "UDP",
+        "source_ip": "10.244.39.205",
+        "source_port": 55902,
+        "destination": "8.8.8.8",
+        "port": 53,
+        "expect": "TIMEOUT",
+        "qname": "example.com"
+      },
+      "started_utc": "2026-10-07T18:53:51.018987+00:00",
+      "bound": [
+        "10.244.39.205",
+        55902
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.003,
+      "finished_utc": "2026-10-07T18:53:54.022063+00:00",
+      "record": "if13-node108",
+      "pod_uid": "3add1a86-f390-4123-bb69-8a1f5bba8e4a",
+      "process_rc": 0
+    },
+    {
+      "case": {
+        "protocol": "TCP",
+        "source_ip": "10.244.39.205",
+        "source_port": 55811,
+        "destination": "1.1.1.1",
+        "port": 443,
+        "expect": "TIMEOUT"
+      },
+      "started_utc": "2026-10-07T18:53:54.039405+00:00",
+      "bound": [
+        "10.244.39.205",
+        55811
+      ],
+      "actual": "TIMEOUT",
+      "elapsed_seconds": 3.004,
+      "finished_utc": "2026-10-07T18:53:57.042993+00:00",
+      "record": "if13-node108",
+      "pod_uid": "3add1a86-f390-4123-bb69-8a1f5bba8e4a",
+      "process_rc": 0
+    }
+  ],
+  "if03_destination_corroboration": [
+    {
+      "worker": "k8s-worker01",
+      "engine_ip": "10.244.79.113",
+      "route_device": "calic3e07239997",
+      "syn_header_rows": 3,
+      "ingress_drop_rules": [
+        {
+          "rule": "-A cali-tw-calic3e07239997 -m comment --comment \"cali:4fTTrw4QY2oVDO6j\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-tw-calic3e07239997 -m comment --comment \"cali:IIc5vMpXVRsMiFJp\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 3,
+          "delta_packets": 3
+        },
+        {
+          "rule": "-A cali-tw-calic3e07239997 -m comment --comment \"cali:GIgBW6JXjx4XlrO_\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "source_egress_only_explanation_excluded": true
+    },
+    {
+      "worker": "k8s-worker02",
+      "engine_ip": "10.244.69.237",
+      "route_device": "cali55137fcfef8",
+      "syn_header_rows": 3,
+      "ingress_drop_rules": [
+        {
+          "rule": "-A cali-tw-cali55137fcfef8 -m comment --comment \"cali:1cfGT-Ku1ihPqMaq\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-tw-cali55137fcfef8 -m comment --comment \"cali:RUePdijiM26ROHnG\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 3,
+          "delta_packets": 3
+        },
+        {
+          "rule": "-A cali-tw-cali55137fcfef8 -m comment --comment \"cali:J_gS1FaY5Ho02Hx3\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "source_egress_only_explanation_excluded": true
+    },
+    {
+      "worker": "k8s-worker03",
+      "engine_ip": "10.244.39.209",
+      "route_device": "caliaa95c95919e",
+      "syn_header_rows": 3,
+      "ingress_drop_rules": [
+        {
+          "rule": "-A cali-tw-caliaa95c95919e -m comment --comment \"cali:obmjtsXvHAs5Goyc\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-tw-caliaa95c95919e -m comment --comment \"cali:hy7qk1rSNPbju-ma\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 3,
+          "delta_packets": 3
+        },
+        {
+          "rule": "-A cali-tw-caliaa95c95919e -m comment --comment \"cali:pETbD1ebdKVi6jzQ\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "source_egress_only_explanation_excluded": true
+    }
+  ],
+  "if13_egress_corroboration": [
+    {
+      "pod": {
+        "name": "transaction-api-5f8b5d7cfd-brztj",
+        "namespace": "fds-app",
+        "uid": "87eb5c51-4666-4968-b405-2f93bc475e4d"
+      },
+      "ip": "10.244.79.112",
+      "device": "calibe9932b700c",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-calibe9932b700c -m comment --comment \"cali:tIO9gwje3kI34awH\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calibe9932b700c -p udp -m comment --comment \"cali:RLkeoFLxlDLXZ85T\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calibe9932b700c -p 4 -m comment --comment \"cali:vS3bkLVgtP3r76ge\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calibe9932b700c -m comment --comment \"cali:p1KaqcEPRo6E2IZq\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 4,
+          "delta_packets": 4
+        },
+        {
+          "rule": "-A cali-fw-calibe9932b700c -m comment --comment \"cali:fZlh_T7gUHeP9uvd\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 4,
+      "observed_drop_packets": 4
+    },
+    {
+      "pod": {
+        "name": "fds-engine-66b8c565c4-vzgm6",
+        "namespace": "fds-app",
+        "uid": "bf576dfc-f6a4-4ee4-90e6-1ab90fb5d370"
+      },
+      "ip": "10.244.79.113",
+      "device": "calic3e07239997",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-calic3e07239997 -m comment --comment \"cali:wBKEqHKQ5OMxkD6f\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calic3e07239997 -p udp -m comment --comment \"cali:KUDK2QpB8Bl3d828\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calic3e07239997 -p 4 -m comment --comment \"cali:Z0sUj6FXcnxOmvk1\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calic3e07239997 -m comment --comment \"cali:uLvmeu88j21Rnawf\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 1,
+          "delta_packets": 1
+        },
+        {
+          "rule": "-A cali-fw-calic3e07239997 -m comment --comment \"cali:EP5805ZKXXs1Sc9z\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 1,
+      "observed_drop_packets": 1
+    },
+    {
+      "pod": {
+        "name": "fds-engine-66b8c565c4-ml986",
+        "namespace": "fds-app",
+        "uid": "7234e8f5-c357-4997-8850-a46d70dd6fea"
+      },
+      "ip": "10.244.69.237",
+      "device": "cali55137fcfef8",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-cali55137fcfef8 -m comment --comment \"cali:BkKyOZEFAcQDkiJZ\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali55137fcfef8 -p udp -m comment --comment \"cali:Df8x8UjkOvmD7N2p\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali55137fcfef8 -p 4 -m comment --comment \"cali:4Ctm2aACJLYzyJYm\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali55137fcfef8 -m comment --comment \"cali:jJ1yYsQBPE-ZnkE-\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 1,
+          "delta_packets": 1
+        },
+        {
+          "rule": "-A cali-fw-cali55137fcfef8 -m comment --comment \"cali:5x3PADBB5HUJS2c-\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 1,
+      "observed_drop_packets": 1
+    },
+    {
+      "pod": {
+        "name": "transaction-api-5f8b5d7cfd-fsmgw",
+        "namespace": "fds-app",
+        "uid": "713ff99f-6382-4fad-a7d4-53173c243301"
+      },
+      "ip": "10.244.69.236",
+      "device": "calid41f7a354cb",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-calid41f7a354cb -m comment --comment \"cali:8eQGSQCletDWlcAZ\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calid41f7a354cb -p udp -m comment --comment \"cali:2LEuSVx-aKPD-WiI\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calid41f7a354cb -p 4 -m comment --comment \"cali:lVRNuyqkNi-Bdw_k\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calid41f7a354cb -m comment --comment \"cali:jwiNLEnPZkP68yOg\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 4,
+          "delta_packets": 4
+        },
+        {
+          "rule": "-A cali-fw-calid41f7a354cb -m comment --comment \"cali:NjTOrQ0aaF2R087E\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 4,
+      "observed_drop_packets": 4
+    },
+    {
+      "pod": {
+        "name": "kube-state-metrics-77796bd485-l8wv6",
+        "namespace": "monitoring-api",
+        "uid": "33ee4ee5-723a-400c-831d-9549bafea1a0"
+      },
+      "ip": "10.244.69.235",
+      "device": "cali3ef5f293bf1",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-cali3ef5f293bf1 -m comment --comment \"cali:0gvFw5769FAh6Yjv\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali3ef5f293bf1 -p udp -m comment --comment \"cali:FNLGT1RW4ENSz427\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali3ef5f293bf1 -p 4 -m comment --comment \"cali:RnE3etsLZ10UCz7J\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali3ef5f293bf1 -m comment --comment \"cali:TPYlPbvcKRenG9ex\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 4,
+          "delta_packets": 4
+        },
+        {
+          "rule": "-A cali-fw-cali3ef5f293bf1 -m comment --comment \"cali:tFyDFlDZwtzjw0On\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 4,
+      "observed_drop_packets": 4
+    },
+    {
+      "pod": {
+        "name": "grafana-f65457bfd-ckjgj",
+        "namespace": "monitoring-api",
+        "uid": "916b8c8a-ff21-42ba-9815-11dce4cde848"
+      },
+      "ip": "10.244.39.206",
+      "device": "calie8b9b2c2439",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-calie8b9b2c2439 -m comment --comment \"cali:2CIBt4iXsMzSBFLD\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calie8b9b2c2439 -p udp -m comment --comment \"cali:i8djrVpffnv5p2Tq\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calie8b9b2c2439 -p 4 -m comment --comment \"cali:R1CuM9e6f-aorbC0\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calie8b9b2c2439 -m comment --comment \"cali:GOzxjuZtXdcUcYRI\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 18,
+          "after_packets": 22,
+          "delta_packets": 4
+        },
+        {
+          "rule": "-A cali-fw-calie8b9b2c2439 -m comment --comment \"cali:vW3qIbk5Tv22to63\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 4,
+      "observed_drop_packets": 4
+    },
+    {
+      "pod": {
+        "name": "transaction-api-5f8b5d7cfd-2jz62",
+        "namespace": "fds-app",
+        "uid": "f91fe8a8-6894-49d0-8543-83c55e2fb675"
+      },
+      "ip": "10.244.39.208",
+      "device": "calide6f4519e09",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-calide6f4519e09 -m comment --comment \"cali:7tLCwRn7Va0se_D5\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calide6f4519e09 -p udp -m comment --comment \"cali:FS0qFP4Fi0OIp_X_\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calide6f4519e09 -p 4 -m comment --comment \"cali:5B-BDYAd8bGJcuLg\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calide6f4519e09 -m comment --comment \"cali:hiSiZj2W8k08PADc\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 4,
+          "delta_packets": 4
+        },
+        {
+          "rule": "-A cali-fw-calide6f4519e09 -m comment --comment \"cali:GCpit1a8eZaxplDU\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 4,
+      "observed_drop_packets": 4
+    },
+    {
+      "pod": {
+        "name": "fds-engine-66b8c565c4-dqppp",
+        "namespace": "fds-app",
+        "uid": "31e0c4e8-7df3-445e-8c87-320effd549b0"
+      },
+      "ip": "10.244.39.209",
+      "device": "caliaa95c95919e",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-caliaa95c95919e -m comment --comment \"cali:GY6BIv8NdpJpMzIU\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-caliaa95c95919e -p udp -m comment --comment \"cali:USi-M1SMByvBJFpf\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-caliaa95c95919e -p 4 -m comment --comment \"cali:AJR63nNVxnk1MoTA\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-caliaa95c95919e -m comment --comment \"cali:hc1shUeOAjBqPONw\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 1,
+          "delta_packets": 1
+        },
+        {
+          "rule": "-A cali-fw-caliaa95c95919e -m comment --comment \"cali:Ft4PkzerM9SxRX0f\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 1,
+      "observed_drop_packets": 1
+    },
+    {
+      "pod": {
+        "name": "prometheus-d8949bd64-2zc4m",
+        "namespace": "monitoring-api",
+        "uid": "265ca811-873c-45e1-8c46-6c1ce034e596"
+      },
+      "ip": "10.244.39.207",
+      "device": "calic539df56e35",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-calic539df56e35 -m comment --comment \"cali:wneON31wZYN47dAe\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calic539df56e35 -p udp -m comment --comment \"cali:JC3G9mso4Z2Lmym4\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calic539df56e35 -p 4 -m comment --comment \"cali:atW8IUwZl-cGLfNK\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-calic539df56e35 -m comment --comment \"cali:Hhdv4NeDFi7CLGaZ\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 66,
+          "after_packets": 70,
+          "delta_packets": 4
+        },
+        {
+          "rule": "-A cali-fw-calic539df56e35 -m comment --comment \"cali:5bCvDLskxY8tkcSc\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 4,
+      "observed_drop_packets": 4
+    },
+    {
+      "pod": {
+        "name": "alertmanager-6bf6dc555-bs8cg",
+        "namespace": "monitoring-api",
+        "uid": "3add1a86-f390-4123-bb69-8a1f5bba8e4a"
+      },
+      "ip": "10.244.39.205",
+      "device": "cali7bce744bdbe",
+      "egress_drop_rules": [
+        {
+          "rule": "-A cali-fw-cali7bce744bdbe -m comment --comment \"cali:12368DiGUvdtZocm\" -m conntrack --ctstate INVALID -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali7bce744bdbe -p udp -m comment --comment \"cali:1LshkbF72bv8HL--\" -m comment --comment \"Drop VXLAN encapped packets originating in workloads\" -m multiport --dports 4789 -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali7bce744bdbe -p 4 -m comment --comment \"cali:SOZmv9H3Sp_NYgnV\" -m comment --comment \"Drop IPinIP encapped packets originating in workloads\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        },
+        {
+          "rule": "-A cali-fw-cali7bce744bdbe -m comment --comment \"cali:zDo1wjPjuudk0oik\" -m comment --comment \"End of tier default. Drop if no policies passed packet\" -m mark --mark 0x0/0x20000 -j DROP",
+          "before_packets": 0,
+          "after_packets": 4,
+          "delta_packets": 4
+        },
+        {
+          "rule": "-A cali-fw-cali7bce744bdbe -m comment --comment \"cali:avimRf7BpOJJ3uDT\" -m comment --comment \"Drop if no profiles matched\" -j DROP",
+          "before_packets": 0,
+          "after_packets": 0,
+          "delta_packets": 0
+        }
+      ],
+      "expected_probe_packets": 4,
+      "observed_drop_packets": 4
+    }
+  ],
+  "scope_limits": [
+    "Host Python joined only pinned existing Pod network namespace; not application-client or container executable validation.",
+    "Counter intervals are aggregate; correlated with exact source/destination SYN headers for IF03, not per-packet kernel trace.",
+    "hostNetwork/HEP egress, IF05C firing-resolved, Probe injection NOT_RUN.",
+    "WEP API query failed (unsupported resource); route and kernel chain mapping used instead.",
+    "New collection does not retroactively validate earlier incomplete runs; independent review and AC acceptance pending."
+  ]
+}

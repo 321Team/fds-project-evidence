@@ -29,7 +29,17 @@ source/증적 REVIEW=PENDING, MERGE/운영 적용=NOT_RUN.
 원 manifest와 대조한 후 생성 실행파일 `build/emit`만 Git에서 제외했다. 실행파일은 원
 [artifact11520107701](https://github.com/321Team/infra-harbor-trivy/actions/runs/37707666513/artifacts/11520107701)
 및 로컬 수신 사본에 보존하며 크기/hash·원 manifest는 `ARTIFACT_RECEIPT.json`에 기록한다.
-artifact 유효기간은 업로드 후30일이다. `ci-run.json`/`ci-log.txt`는 Run 출처·검증을 연결한다.
+artifact 유효기간의 기존 30일 표기를 정정한다. `ARTIFACT_API.json` 기준 약 **7일**이며
+만료 예정은 **2026-10-15 09:25:11 KST**다. 로컬 원본 경로는 이권욱 PC의
+`C:\Users\soldesk\.codex\.chatgpt-projects\g-p-6a85069945708191b56059da202e4461\phase1-work-20261008\harbor-lab-ci-37707666513\syslog-lab-37707666513-1\`이다.
+제외된 `build/emit`은 785672바이트, SHA-256
+`55d1308a3856ccbebcaf12c249d537d345c52a73447ed51d00d6128ead222eb3`로 로컬 사본을 재대조했다.
+이 로컬 경로는 팀 공용 보관소가 아니며, GitHub artifact의 영구 보존을 뜻하지 않는다.
+`ci-run.json`/`ci-log.txt`는 Run 출처·검증을 연결한다.
+
+후속 상태: 이번 CI 이후 격리 Full Clone을 확보했고, 별도 [증적 PR159](https://github.com/321Team/fds-project-evidence/pull/159)에
+컨테이너 재생성·Docker 재시작 실패·수동 복구를 제출했다. 아래 환경 확보 계획은 당시 이력이며,
+이 폴더의 CI를 복제본 시험이나 후보 수정의 Runtime PASS로 바꾸지 않는다.
 
 후속: 운영과 분리된 Harbor 복제 환경 확보, 실제 compose/override 소비 및 logger 준비·실제
 로그 저장 기준 결정, 기동 책임·재시도 상한·원복 설계에 대한 HBR Lead 검토, 별도 적용·재시험.

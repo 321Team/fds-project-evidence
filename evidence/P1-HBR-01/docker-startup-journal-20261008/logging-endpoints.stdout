@@ -1,0 +1,10 @@
+83cbccfcd09608de11a31908b79640c484464f42bcf0f97791acd5bcc2836296 /harbor-db syslog tcp://localhost:1514 {}
+f3d2e23724881d47ffac2baae821b423c0b3908df1a8a7fc1da2311384bedf4a /redis syslog tcp://localhost:1514 {}
+e0c9f693eb52b8ecf2409b3e091809dca5f52aff7d3c1376a9884e3511127999 /registry syslog tcp://localhost:1514 {}
+ad38d197cf1c90f4bc9802ce92ab2f44c9643c037d2cf55e3546ab2d9017ace6 /registryctl syslog tcp://localhost:1514 {}
+d094ae55b7446d13718f72e11cd859b3e208f3d88f9bc797f57dccf2291c1e3d /harbor-core syslog tcp://localhost:1514 {}
+910e59d383c4a3b016428cd3c217e86dcf931a7d1874c0ac0b0d767d08771266 /harbor-portal syslog tcp://localhost:1514 {}
+ed401ac496657a16dffa945484190a22b8c8ea6e64c0252bcdb4942067022512 /harbor-jobservice syslog tcp://localhost:1514 {}
+d9325d000835bd4c026fee3da1756198c96fba70342d13246a1c3b74ce7da76b /trivy-adapter syslog tcp://localhost:1514 {}
+4121c032552050064568802c8882c23188c6d194e95bbb639812d4114aa19082 /nginx syslog tcp://localhost:1514 {"8080/tcp":[{"HostIp":"","HostPort":"80"}],"8443/tcp":[{"HostIp":"","HostPort":"443"}]}
+79e062ffad82296ea5657e9a5ba94388af431b2de94bab31c8b58f3e2ba699f3 /harbor-log json-file <no value> {"10514/tcp":[{"HostIp":"127.0.0.1","HostPort":"1514"}]}

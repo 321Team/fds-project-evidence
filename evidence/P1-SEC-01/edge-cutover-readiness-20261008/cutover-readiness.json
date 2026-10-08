@@ -1,0 +1,39 @@
+{
+  "hostname": "edge01",
+  "uid": 1003,
+  "started_utc": "2026-10-07T18:05:59.427824+00:00",
+  "candidates": [
+    {
+      "path": "/etc/nginx/conf.d/fds.conf",
+      "before_sha256": "4d13819ab9ff50b34c4c783b0f48db058a22e6503e6df821b5b25feb5d74c562",
+      "mode": "0o644",
+      "uid": 0,
+      "mtime_ns": 1790313211158383605,
+      "start_count": 1,
+      "upstream_block": [
+        "upstream transaction_api {",
+        "    server 10.1.93.50:30080;",
+        "    # 실제 3-worker 클러스터 확보 시 아래처럼 확장:",
+        "    # server 10.1.93.105:30080;",
+        "    # server 10.1.93.107:30080;",
+        "    # server 10.1.93.108:30080;",
+        "}"
+      ],
+      "shape_ready": true,
+      "candidate_diff": "--- /etc/nginx/conf.d/fds.conf\n+++ /etc/nginx/conf.d/fds.conf (candidate, not applied)\n@@ -2 +2 @@\n-    server 10.1.93.50:30080;\n+    # server 10.1.93.50:30080;  # E-K3S, Edge Cutover <RUN>\n@@ -4,3 +4,3 @@\n-    # server 10.1.93.105:30080;\n-    # server 10.1.93.107:30080;\n-    # server 10.1.93.108:30080;\n+    server 10.1.93.105:30080;\n+    server 10.1.93.107:30080;\n+    server 10.1.93.108:30080;",
+      "candidate_note": "RUN unresolved; candidate is not an execution input or applied file"
+    }
+  ],
+  "errors": [],
+  "nginx": {
+    "rc": 0,
+    "stdout": "active\n",
+    "stderr": ""
+  },
+  "k3s": {
+    "rc": 0,
+    "stdout": "active\n",
+    "stderr": ""
+  },
+  "finished_utc": "2026-10-07T18:05:59.436599+00:00"
+}

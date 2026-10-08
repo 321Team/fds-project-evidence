@@ -1,0 +1,38 @@
+{
+  "started_utc": "2026-10-07T23:52:41.199215+00:00",
+  "source_sha256": "ec9560f075d25f38ad3136df7ca1a7c2b762455595d7dbf5bdba5320e10e5a1b",
+  "pods": [
+    {
+      "app": "prometheus",
+      "name": "prometheus-d8949bd64-2zc4m",
+      "uid": "265ca811-873c-45e1-8c46-6c1ce034e596",
+      "node": "k8s-worker03",
+      "ip": "10.244.39.207",
+      "containers": [
+        {
+          "name": "prometheus",
+          "imageID": "10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19",
+          "restartCount": 0,
+          "ready": true
+        }
+      ],
+      "projected_rule_sha256": "c97c60256c4caa64cd9699539eccbb5d60f18907b1c8190cea280e0d7e8fb22c"
+    },
+    {
+      "app": "alertmanager",
+      "name": "alertmanager-6bf6dc555-bs8cg",
+      "uid": "3add1a86-f390-4123-bb69-8a1f5bba8e4a",
+      "node": "k8s-worker03",
+      "ip": "10.244.39.205",
+      "containers": [
+        {
+          "name": "alertmanager",
+          "imageID": "10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67",
+          "restartCount": 0,
+          "ready": true
+        }
+      ]
+    }
+  ],
+  "finished_utc": "2026-10-07T23:52:41.396705+00:00"
+}

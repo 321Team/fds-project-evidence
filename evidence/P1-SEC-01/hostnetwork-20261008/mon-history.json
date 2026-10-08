@@ -1,0 +1,137 @@
+{
+  "host": "k8s-control01",
+  "started_utc": "2026-10-07T23:30:17.751041+00:00",
+  "source_sha256": "f83379018d469fc2065a7293df9ae08358d566cceee77d301a0c71a5663382a5",
+  "scope": "read-only Prometheus GET; no rule change, alert injection or external message",
+  "queries": [
+    {
+      "route": "/api/v1/status/runtimeinfo",
+      "started_utc": "2026-10-07T23:30:17.834884+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "f97da73af30fd4a24891787110470ed1c1487f0527610b61400382e85531ec00",
+      "data": {
+        "startTime": "2026-10-06T04:24:32.272006786Z",
+        "serverTime": "2026-10-07T23:30:17.853713152Z",
+        "reloadConfigSuccess": true,
+        "lastConfigTime": "2026-10-06T04:24:32Z",
+        "storageRetention": "15d or 16GiB"
+      },
+      "finished_utc": "2026-10-07T23:30:17.856565+00:00"
+    },
+    {
+      "route": "/api/v1/rules?type=alert",
+      "started_utc": "2026-10-07T23:30:17.856579+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "1428d2efe9e6e19f03ab95bd285d53b04ebffa480671b25c84c0ffc364e5c948",
+      "data": [
+        {
+          "name": "FDSMonitoringPipelineTest",
+          "query": "vector(1) == 0",
+          "duration": 0,
+          "state": "inactive",
+          "health": "ok",
+          "lastError": null
+        }
+      ],
+      "finished_utc": "2026-10-07T23:30:17.866306+00:00"
+    },
+    {
+      "route": "/api/v1/query?query=count%28up+%3D%3D+0%29",
+      "started_utc": "2026-10-07T23:30:17.866318+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "664b0f4a552599ac59d91a24f7e6ea8c7a4499ad237fb76aa25c33d8c25f6ec2",
+      "data": {
+        "resultType": "vector",
+        "result": []
+      },
+      "finished_utc": "2026-10-07T23:30:17.875683+00:00"
+    },
+    {
+      "route": "/api/v1/query?query=count%28up%29",
+      "started_utc": "2026-10-07T23:30:17.875695+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "d76477a4228e78a93e5a024d7105a8808d6852b84ae3ec15c82a78c3dea32b18",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {},
+            "value": [
+              1791415817.882,
+              "23"
+            ]
+          }
+        ]
+      },
+      "finished_utc": "2026-10-07T23:30:17.883914+00:00"
+    },
+    {
+      "route": "/api/v1/query?query=count_over_time%28ALERTS%7Balertname%3D%22FDSMonitoringPipelineTest%22%2Calertstate%3D%22firing%22%7D%5B12d%5D%29",
+      "started_utc": "2026-10-07T23:30:17.883927+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "664b0f4a552599ac59d91a24f7e6ea8c7a4499ad237fb76aa25c33d8c25f6ec2",
+      "data": {
+        "resultType": "vector",
+        "result": []
+      },
+      "finished_utc": "2026-10-07T23:30:17.892278+00:00"
+    },
+    {
+      "route": "/api/v1/query?query=prometheus_tsdb_lowest_timestamp_seconds",
+      "started_utc": "2026-10-07T23:30:17.892290+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "c1b18ea15eb80e3acb604da349cc3a15f6e0cb67342750888435e735c8364181",
+      "data": {
+        "resultType": "vector",
+        "result": [
+          {
+            "metric": {
+              "__name__": "prometheus_tsdb_lowest_timestamp_seconds",
+              "instance": "localhost:9090",
+              "job": "prometheus"
+            },
+            "value": [
+              1791415817.898,
+              "1790100000"
+            ]
+          }
+        ]
+      },
+      "finished_utc": "2026-10-07T23:30:17.900261+00:00"
+    },
+    {
+      "route": "/api/v1/query_range?query=ALERTS%7Balertname%3D%22FDSMonitoringPipelineTest%22%7D&start=2026-09-26T04%3A00%3A00Z&end=2026-09-26T07%3A00%3A00Z&step=15s",
+      "started_utc": "2026-10-07T23:30:17.900274+00:00",
+      "rc": 0,
+      "api_status": "success",
+      "raw_response_sha256": "5270461ec81028d05a5dc2cd726f822921a8aacd21927e829d8895b3d662f0cc",
+      "data": {
+        "resultType": "matrix",
+        "result": []
+      },
+      "finished_utc": "2026-10-07T23:30:17.909188+00:00"
+    }
+  ],
+  "forward_command": [
+    "kubectl",
+    "--kubeconfig=/etc/kubernetes/admin.conf",
+    "--request-timeout=12s",
+    "-n",
+    "monitoring-api",
+    "port-forward",
+    "--address=127.0.0.1",
+    "service/prometheus",
+    "0:9090"
+  ],
+  "forward_first_line": "Forwarding from 127.0.0.1:35921 -> 9090\n",
+  "forward_tail": "Handling connection for 35921\nHandling connection for 35921\nHandling connection for 35921\nHandling connection for 35921\nHandling connection for 35921\nHandling connection for 35921\nHandling connection for 35921\n",
+  "forward_exit": -15,
+  "forward_reaped": true,
+  "finished_utc": "2026-10-07T23:30:17.925388+00:00"
+}

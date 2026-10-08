@@ -1,0 +1,44 @@
+== 2026-10-08 03:28:01 KST edge01 cutover mode=check run=20261008T0327
+-- nginx -v: nginx version: nginx/1.26.3 / unit active=active
+-- nginx -t: nginx: configuration file /etc/nginx/nginx.conf test is successful
+date: 부적절한 날짜 `화 10월  6 10:04:38 2026'
+-- reload 반영 판정 rc=2 (0=반영, 1=아직 옛 worker, 2=판단 불가)
+-- upstream transaction_api 정의 파일: /etc/nginx/conf.d/fds.conf 
+4d13819ab9ff50b34c4c783b0f48db058a22e6503e6df821b5b25feb5d74c562  /etc/nginx/conf.d/fds.conf
+644 root:root inode=3582431
+unconfined_u:object_r:httpd_config_t:s0
+-- upstream/server/proxy 관련 줄(주석 포함, nginx -T 줄 번호)
+31:    #keepalive_timeout  0;
+32:    keepalive_timeout  65;
+42:    #    listen       8000;
+43:    #    listen       somename:8080;
+46:    #    location / {
+56:    #    listen       443 ssl;
+68:    #    location / {
+178:upstream transaction_api {
+179:    server 10.1.93.50:30080;
+181:    # server 10.1.93.105:30080;
+182:    # server 10.1.93.107:30080;
+183:    # server 10.1.93.108:30080;
+187:    listen 80 default_server;
+190:    location = /metrics { return 404; }
+192:    location / {
+193:        proxy_pass http://transaction_api;
+194:        proxy_set_header Host $host;
+195:        proxy_set_header X-Real-IP $remote_addr;
+196:        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+-- 유효 upstream server(디스크): 10.1.93.50:30080 
+-- 응답: edge .50:80/readyz=200 /metrics=404 E-K3S .50:30080/readyz=200
+   Worker 10.1.93.105:30080/readyz=200
+   Worker 10.1.93.107:30080/readyz=200
+   Worker 10.1.93.108:30080/readyz=200
+-- k3s(E-K3S, rollback 경로) active=active
+-- python3: Python 3.12.14
+-- 관측 방법 사전 검증(표식 GET /readyz, tag=check032801)
+   cutover-20261008T0327-check032801-1 http=200
+   cutover-20261008T0327-check032801-w105 direct 10.1.93.105:30080 http=200
+   cutover-20261008T0327-check032801-w107 direct 10.1.93.107:30080 http=200
+   cutover-20261008T0327-check032801-w108 direct 10.1.93.108:30080 http=200
+TRACE ek3s tag=check032801 pods=6 err=0 found=0 ids=
+-- 기대: edge 경유 check032801-1이 E-K3S 로그에 1번(현재 upstream이 E-K3S), Worker 직접 3건은 control01 `trace 20261008T0327 check032801`에서 w105/w107/w108 각 1번
+RESULT cutover-check=TRACE_NOT_READY 03:28:05 — E-K3S 로그로 표식을 확인하지 못함. C1 시작 전 원인 확인

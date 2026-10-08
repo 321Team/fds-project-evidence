@@ -60,13 +60,13 @@
       "sha256": "6cdecf74d281b34a6774865a8b7487eefd2bc1c8a0dc558f2150be911f180663",
       "size": 9850,
       "mode": "0o600",
-      "publication": "server archive retained; extracted originals included"
+      "publication": "original received bytes now included under server-originals; no recompression"
     },
     "p1-sec01-ac06-probe-precheck-20261008T001545Z.FGLDPa.tar.gz.sha256": {
       "sha256": "e737e79fce7c4adc01f5984d3a84b89ef34d4204b4fd372440b2336f9e66fea8",
       "size": 126,
       "mode": "0o600",
-      "publication": "server archive retained; extracted originals included"
+      "publication": "original received bytes now included under server-originals; no recompression"
     },
     "p1-sec01-ac06-probe-precheck-20261008T001545Z.FGLDPa.completion.txt": {
       "sha256": "5744596b5f4239e82086948c043af5bb1f08784929354c278d85a465bc256b1a",
@@ -117,13 +117,13 @@
       "sha256": "d927fb4179296bef0a70d71ed23e2001696a4807fbd2ef867bda692832616969",
       "size": 18596,
       "mode": "0o600",
-      "publication": "server archive retained; extracted originals included"
+      "publication": "original received bytes now included under server-originals; no recompression"
     },
     "p1-sec01-ac06-probe-run-20261008T001645Z.koLVAA.tar.gz.sha256": {
       "sha256": "539d8a6c5cda67b9fa017ad59c5c9e5c591180b615415f26ca3db11c8a996aa4",
       "size": 121,
       "mode": "0o600",
-      "publication": "server archive retained; extracted originals included"
+      "publication": "original received bytes now included under server-originals; no recompression"
     },
     "p1-sec01-ac06-probe-run-20261008T001645Z.koLVAA.completion.txt": {
       "sha256": "239f6a64113a75f7f37d0471ad9e3c427d71adb703e8bcecf452fe35f0329896",
@@ -517,5 +517,5 @@
     }
   },
   "original_seal_verification": "precheck and run verify=OK before publication",
-  "archive_policy": "Original archives retained locally and remotely without recompression; extracted bytes published. Archive SHA and size in this receipt."
+  "archive_policy": "Original archive/sidecar bytes included; archive members verified equal existing extracted originals. No recompression."
 }

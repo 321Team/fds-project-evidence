@@ -5,6 +5,26 @@
 사용자 현재 창 비중첩 확인 및 권장안 전체 착수 지시에 따라 기존14:00 계획의 1회를 앞당겼다.
 새 창09:15~10:00/착수한계09:35이며 이 회차로 소진했다. 14:00 자동 재실행은 없다.
 
+### 실행 창 기록의 시각 관계 — 리뷰 후 보완
+
+원 GO의 창은 14:00~15:00이었다. 실제 시각은 아래와 같으며 staging·precheck는
+창 조정 코멘트 게시 전에 실행됐다. 사용자 착수 지시와 비중첩 확인을 당시 진행 근거로
+사용했지만, 이를 SEC Lead의 사전 동의나 단톡 공지 완료의 증거로 대신하지 않는다.
+
+| 단계 | 2026-10-08 KST | 출처 |
+|---|---|---|
+| stage 호출 | 09:15:11.264258 | drivers/stage-invocation.json |
+| fresh precheck 시작 | 09:15:45.748659 | server-originals/precheck.result.json |
+| 창 조정 코멘트 게시 | 09:16:25 | 위 GitHub 코멘트 created_at |
+| run-launch 호출 | 09:16:44.292903 | drivers/runlaunch-invocation.json |
+| run 실제 시작 | 09:16:45.000727 | server-originals/run.result.json |
+
+따라서 창 조정 게시를 staging·precheck 이전 승인으로 표현하지 않는다. SEC Lead의
+사전 인지·동의 및 시작 전 단톡 공지는 **미확인**, 사후 확인 요청은 별도 이슈에 남긴다.
+실행 driver는 사전 독립 리뷰 없이 사용됐으며 이번 증적 리뷰는 사후 검토다.
+다음 재시험은 새 source/driver를 리뷰 범위에 넣고, 실행자와 다른 사람이 사전 GO와 창을
+기록하도록 준비한다. 이 보완은 과거 실행의 승인 상태를 소급 변경하지 않는다.
+
 ## 실제 결과
 
 | 단계 | 결과 |
@@ -44,19 +64,21 @@ HEAD `a617a2f505a2ecea4f6b7337871341c87a3caaed`:
 실제 고정 이미지의 interpreter 경로, T0 restart 즉시 중단, 최초 Pending 상태 처리,
 abort 시 최대30초의 Pod/UID 이벤트 진단과 기존 정리 지속. 실패 경로 예산22분.
 로컬 Git Bash MOCK35/35 및 [Linux CI35/35·Bash 구문 SUCCESS](https://github.com/321Team/infra-kubernetes/actions/runs/37707638781/job/113085715017)
-(09:25:36 KST)다. 새 소스 독립 REVIEW=PENDING, 후보 RUNTIME=NOT_RUN, MERGE=NOT_RUN.
+(09:25:36 KST)다. 당시 새 소스는 REVIEW/MERGE 대기였다. 10/8 11:39:47 KST
+PR74 병합을 재확인했으며, 후보의 현장 RUNTIME은 여전히 NOT_RUN이다.
 실제 서버의 승인본은 수정하지 않았고 새 번들을 재시험하지 않았다.
 
-다음은 source 독립 리뷰 → 새 고정 전체 번들·시작 조건·별도 1회 창 확정 → T0부터 재시험이다.
+다음은 병합 source와 리뷰된 driver의 새 고정 전체 번들·시작 조건·별도 1회 창 확정 → T0부터 재시험이다.
 과거 GO를 수정 후보에 자동 적용하거나 정상 APP/보안 통제를 바꿔 우회하지 않는다.
 
 ## 바이트 보존·검증
 
 - `server-originals/`는 원격 바이트 그대로다. 원격102파일의 크기/mode/SHA는 `RECEIPT.json`에 있다.
-- 원 precheck/run의 봉인 검증기를 수신본에 적용해 둘 다 verify=OK를 확인했다. 원 archive와
-  archive SHA sidecar4개는 서버·로컬에 그대로 보존하고 Git에는 원본 추출 파일을 실었다.
-  재압축하지 않았으며 archive별 hash/크기는 receipt에 연결했다. Git에서 원 archive까지
-  재검증하려면 해당 원본 archive 수신이 필요하다.
+- 원 precheck/run의 봉인 검증기를 수신본에 적용해 둘 다 verify=OK를 확인했다.
+  리뷰 보완으로 원 archive 2개와 원 sidecar 2개를 `server-originals/`에 바이트 그대로 추가했다.
+  수신 receipt SHA/크기 및 sidecar 대조, archive 내부 파일 20개/41개와 기존 추출본의
+  바이트 동일성을 확인했다. 재압축하지 않았고 `registry/ARCHIVE_CONTENTS.json`에 목록을 등록했다.
+  현재 서버를 재조회한 결과가 아니라, 최초 수신 메타데이터와 보존된 로컬 원본의 재대조다.
 - `drivers/`에 실제 전달/실행/회수/사후 관측 소스·명령·시각·종료 코드를 보존한다.
 - `ci-run.json`/`ci-log.txt`는 **수정 후보**의 CI다. 실패한 현장 소스의 Runtime 결과와 구분한다.
 - `python3 analyze.py`는 원본 hash와 종료/기준선/이벤트/진입점 대응을 오프라인 재검산한다.
