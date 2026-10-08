@@ -1,0 +1,18 @@
+{
+  "started_at_kst": "2026-10-09T08:20:26.524993+09:00",
+  "finished_at_kst": "2026-10-09T08:20:26.966985+09:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.105 'sudo -n python3 -'"
+  ],
+  "rc": 0,
+  "collector_sha256": "073188e3aee3fcb61aa2f69c20e53fce8e796546e684276b1959a93309eb7c1f",
+  "stdout_sha256": "4259319bdff0e084b1f108954a9d3e9860d0b70c677a51ab6ac6a106eabae7fd"
+}
