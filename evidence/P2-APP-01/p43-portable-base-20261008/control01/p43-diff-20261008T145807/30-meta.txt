@@ -1,0 +1,13 @@
+collected_at=2026-10-08T15:44:45+09:00
+host=k8s-control01
+pwd=/home/server02/p43-diff-20261008T145807
+--- kubectl version
+Client Version: v1.36.4
+Kustomize Version: v5.8.1
+Server Version: v1.36.4
+--- context
+kubernetes-admin@kubernetes
+--- fds-app deployments
+NAME              REVISION   GENERATION   IMAGE
+fds-engine        2          5            10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369
+transaction-api   6          7            10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
