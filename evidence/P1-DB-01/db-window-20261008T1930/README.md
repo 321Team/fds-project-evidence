@@ -72,7 +72,7 @@
 
 ## 한계
 
-- CI NOT RUN. 이 창은 실서버 1회 실행이다.
+- 이 창은 실서버 1회 실행이며, 실행 스크립트 자체를 CI로 시험한 회차가 아니다. 저장소 `check`(evidence-layout)는 이 PR에서 실행됐다: 첫 HEAD `acd71ded`는 대장·archive 목록 미등록으로 FAIL(오류 19건), 등록 커밋 `ff252c48`에서 PASS. (하영 리뷰 지적으로 정정, 이전 문구 "CI NOT RUN"은 사실과 달랐다)
 - 복구 절차는 실행하지 않았다(실패 없음). 복구 경로의 실서버 동작은 이 증적으로 확인되지 않는다.
 - control01 cleanup 로그(`control01-cleanup-203550.log`, 0바이트)는 아카이브 뒤에 생겨 포함되지 않았다. 결과는 전사본에 있다.
 - 옛 E-K3S의 uninstall·데이터 삭제와 `robot$fds-ci` 폐기는 이 창 범위 밖이다(infra-db README 후속 절).
