@@ -1,0 +1,59 @@
+{
+  "started_at_kst": "2026-10-08T11:39:32.074128+09:00",
+  "finished_at_kst": "2026-10-08T11:39:47.981010+09:00",
+  "mode": "READ_ONLY_NO_BOOT",
+  "source_path": "C:\\Project321team\\harbor-clone\\harbor01-test",
+  "manifest_sha256": "622b8d9f6db9a69cc9ea9efc571f309d75130d501767c58b02c778911149b7d1",
+  "files_list_sha256": "24b721d0882063e7ebc5d41a5bc0a25d347afb49d63b96157aa95e16cf0e7b47",
+  "actual_files": [
+    "harbor01-test.nvram",
+    "harbor01-test.vmsd",
+    "harbor01-test.vmx",
+    "harbor01-test.vmxf",
+    "v10test-cl2.vmdk"
+  ],
+  "files": [
+    {
+      "file": "harbor01-test.nvram",
+      "bytes": 270840,
+      "expected_sha256": "36f46a9790f909816ade36807b77ea11b9bd65e6196b9b7a5686d34703fcec04",
+      "observed_sha256": "36f46a9790f909816ade36807b77ea11b9bd65e6196b9b7a5686d34703fcec04",
+      "hash_match": true,
+      "unchanged_during_read": true
+    },
+    {
+      "file": "harbor01-test.vmsd",
+      "bytes": 0,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "hash_match": true,
+      "unchanged_during_read": true
+    },
+    {
+      "file": "harbor01-test.vmx",
+      "bytes": 3911,
+      "expected_sha256": "eaaddd2640dcbcdb6172790ecbc142b3080f6e8af9278c5c02da21b37e76e384",
+      "observed_sha256": "eaaddd2640dcbcdb6172790ecbc142b3080f6e8af9278c5c02da21b37e76e384",
+      "hash_match": true,
+      "unchanged_during_read": true
+    },
+    {
+      "file": "harbor01-test.vmxf",
+      "bytes": 268,
+      "expected_sha256": "51eecdd8641b708af4cf058391fc29abbd2b518f7359a987274c95251820ca3b",
+      "observed_sha256": "51eecdd8641b708af4cf058391fc29abbd2b518f7359a987274c95251820ca3b",
+      "hash_match": true,
+      "unchanged_during_read": true
+    },
+    {
+      "file": "v10test-cl2.vmdk",
+      "bytes": 20877475840,
+      "expected_sha256": "ef83d9512d25e8859675a8dabc438f95aa6cb651c35c335e3df656bc4bc5ca87",
+      "observed_sha256": "ef83d9512d25e8859675a8dabc438f95aa6cb651c35c335e3df656bc4bc5ca87",
+      "hash_match": true,
+      "unchanged_during_read": true
+    }
+  ],
+  "exact_file_set": true,
+  "pass": true
+}

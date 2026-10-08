@@ -1,0 +1,186 @@
+{
+  "started_at_kst": "2026-10-08T11:43:27.334544+09:00",
+  "source": "C:\\Project321team\\harbor-clone\\harbor01-test",
+  "target": "D:\\FDS-Isolated-Lab\\harbor01-20261008",
+  "files": [
+    {
+      "name": "harbor01-test.nvram",
+      "bytes": 270840,
+      "sha256": "36f46a9790f909816ade36807b77ea11b9bd65e6196b9b7a5686d34703fcec04",
+      "source_mtime_ns": 1791425451466971200
+    },
+    {
+      "name": "harbor01-test.vmsd",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns": 1791425451468471300
+    },
+    {
+      "name": "harbor01-test.vmx",
+      "bytes": 3911,
+      "sha256": "eaaddd2640dcbcdb6172790ecbc142b3080f6e8af9278c5c02da21b37e76e384",
+      "source_mtime_ns": 1791426194562254400
+    },
+    {
+      "name": "harbor01-test.vmxf",
+      "bytes": 268,
+      "sha256": "51eecdd8641b708af4cf058391fc29abbd2b518f7359a987274c95251820ca3b",
+      "source_mtime_ns": 1791425516254530300
+    },
+    {
+      "name": "v10test-cl2.vmdk",
+      "bytes": 20877475840,
+      "sha256": "ef83d9512d25e8859675a8dabc438f95aa6cb651c35c335e3df656bc4bc5ca87",
+      "source_mtime_ns": 1791425516202061400
+    }
+  ],
+  "vmx_changes": {
+    "displayName": {
+      "before": "harbor01-test",
+      "after": "harbor01-isolated-firstboot-20261008"
+    },
+    "ehci.present": {
+      "before": "TRUE",
+      "after": "FALSE"
+    },
+    "ethernet0.addressType": {
+      "before": "generated",
+      "after": null
+    },
+    "ethernet0.connectionType": {
+      "before": "custom",
+      "after": null
+    },
+    "ethernet0.displayName": {
+      "before": "VMnet0",
+      "after": null
+    },
+    "ethernet0.generatedAddress": {
+      "before": "00:0c:29:55:a8:50",
+      "after": null
+    },
+    "ethernet0.generatedAddressOffset": {
+      "before": "0",
+      "after": null
+    },
+    "ethernet0.pciSlotNumber": {
+      "before": "160",
+      "after": null
+    },
+    "ethernet0.present": {
+      "before": "TRUE",
+      "after": "FALSE"
+    },
+    "ethernet0.virtualDev": {
+      "before": "vmxnet3",
+      "after": null
+    },
+    "ethernet0.vnet": {
+      "before": "VMnet0",
+      "after": null
+    },
+    "isolation.tools.copy.disable": {
+      "before": null,
+      "after": "TRUE"
+    },
+    "isolation.tools.hgfs.disable": {
+      "before": null,
+      "after": "TRUE"
+    },
+    "isolation.tools.paste.disable": {
+      "before": null,
+      "after": "TRUE"
+    },
+    "policy.vm.mvmtid": {
+      "before": "",
+      "after": null
+    },
+    "sata0:1.deviceType": {
+      "before": "cdrom-image",
+      "after": null
+    },
+    "sata0:1.fileName": {
+      "before": "D:\\하이브리드클라우드09\\Tools\\CentOS-Stream-10-latest-x86_64-dvd1.iso",
+      "after": null
+    },
+    "sata0:1.present": {
+      "before": "TRUE",
+      "after": "FALSE"
+    },
+    "sharedFolder.maxNum": {
+      "before": null,
+      "after": "0"
+    },
+    "sound.present": {
+      "before": "TRUE",
+      "after": "FALSE"
+    },
+    "usb.present": {
+      "before": "TRUE",
+      "after": "FALSE"
+    },
+    "usb:0.deviceType": {
+      "before": "hid",
+      "after": null
+    },
+    "usb:0.parent": {
+      "before": "-1",
+      "after": null
+    },
+    "usb:0.port": {
+      "before": "0",
+      "after": null
+    },
+    "usb:0.present": {
+      "before": "TRUE",
+      "after": null
+    },
+    "usb:1.deviceType": {
+      "before": "hub",
+      "after": null
+    },
+    "usb:1.parent": {
+      "before": "-1",
+      "after": null
+    },
+    "usb:1.port": {
+      "before": "1",
+      "after": null
+    },
+    "usb:1.present": {
+      "before": "TRUE",
+      "after": null
+    },
+    "usb:1.speed": {
+      "before": "2",
+      "after": null
+    },
+    "uuid.action": {
+      "before": null,
+      "after": "create"
+    },
+    "uuid.bios": {
+      "before": "",
+      "after": null
+    },
+    "uuid.location": {
+      "before": "",
+      "after": null
+    },
+    "vc.uuid": {
+      "before": "",
+      "after": null
+    },
+    "vmci0.id": {
+      "before": "2135665362",
+      "after": null
+    },
+    "vmci0.present": {
+      "before": "TRUE",
+      "after": "FALSE"
+    }
+  },
+  "preboot_vmx_sha256": "e243954c1f6029daaa0d9e6406626ee14dac910060c90f1d75003ab669dd0f2d",
+  "finished_at_kst": "2026-10-08T11:49:22.384868+09:00",
+  "boot_executed": false
+}

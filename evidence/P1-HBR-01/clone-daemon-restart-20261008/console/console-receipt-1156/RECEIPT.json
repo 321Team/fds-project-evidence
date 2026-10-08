@@ -1,0 +1,23 @@
+{
+  "recorded_at_kst": "2026-10-08T11:58:06.779640+09:00",
+  "source": "user-supplied console screenshot",
+  "sha256": "805cbb0930df482ef7fabc397b09b93ed857249116fcc1afee1abba6cdc543f1",
+  "image_unmodified": true,
+  "screen_reading": {
+    "date_output": "2026-10-08T11:56:43+09:00",
+    "hostname": "harbor01",
+    "uptime_output": "11:56:48 up 7 min, 1 user, load average: 0.00, 0.11, 0.08",
+    "docker_ps_a": "header only, no container rows",
+    "tcp_listen_ports": [
+      22,
+      631,
+      9090
+    ],
+    "tcp_443_present": false,
+    "tcp_1514_present": false
+  },
+  "command_exit_codes": "NOT_CAPTURED",
+  "guest_identity_limit": "same hostname as original; current working VM configuration checked separately, screenshot alone is not a unique VM identifier",
+  "assessment": "Docker selected by sudo has no listed containers; Harbor automatic startup acceptance cannot be assessed until Docker endpoint/storage and clone completeness are identified",
+  "runtime_changes_after_boot": "NONE_BY_ASSISTANT"
+}
