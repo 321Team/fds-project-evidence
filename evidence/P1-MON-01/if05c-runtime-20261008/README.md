@@ -47,7 +47,7 @@ ConfigMap `monitoring-api/prometheus-p0-test-alert`, UID `fc3593b2-2937-49e0-acc
 
 ## 바이트·분석 검증과 미수신 항목
 
-- `ANALYSIS.json`: 수신 20개 원본 해시, 설치 소스와 로컬 바이트, 전송 명령·소스 hash/rc, 실제 patch 수, 상태 전이·원복·오류 보존 등 50/50 오프라인 대조. 자체 검증이며 독립 리뷰가 아니다.
+- `ANALYSIS.json`: 수신 20개 원본 해시, 설치 소스와 로컬 바이트, 전송 명령·소스 hash/rc, 실제 patch 수, 상태 전이·원복·오류 보존 등 50/50 오프라인 대조. 이 폴더에서 `python3 analyze.py`로 재검산한다(서버 접속·변경 없음). 자체 검증이며 독립 리뷰가 아니다.
 - `drivers/`는 실제 실행한 준비/전송/조회 소스와 invocation·stdout/stderr를 담는다. `fetched-final.json`의 base64는 원본20개와 `RECEIPT.json`으로 무손실 분리했다. 중간 poll01~03 및 첫 fetched의 반복 snapshot은 로컬에 보존하고 편입본에서는 제외했다. 최종 서버 journal·status 원본을 판정 근거로 사용했다.
 - API 전체 원문을 저장한 것이 아니다. journal의 원문 hash와 선택된 응답 필드·알림·counter를 보존했다. 전체 Alertmanager 설정·webhook 자격정보는 편입하지 않았다. 내부 주소·Pod 신원은 private 증적 저장소 범위다.
 - `SHA256SUMS`는 이 폴더 바이트 무결성, 루트 대장은 이 manifest를 연결한다. hash는 시험 성공이나 인수의 단독 근거가 아니다.
