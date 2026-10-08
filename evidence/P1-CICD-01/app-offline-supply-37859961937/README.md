@@ -40,3 +40,7 @@ Workflow step 이름의 `approved application source`는 실제 APP 승인 증�
 ## 추가 consumer 호환성 검증
 
 [consumer-check](consumer-check/README.md)에08:44 정상 Linux 계정에서 실제 consumer stage/verify/source 검증과 잘못된 입력3건 거부 결과를 추가했다.08:45 전용 임시270파일을 검증 후 정리했다. 이는 전체 APP config나 실제 Runner 실행 검증이 아니다. 최초 공급 수신 원본은 변경하지 않았다.
+
+## Runner 읽기 전용 보완
+
+[runner-readonly](runner-readonly/README.md)에08:51~52 정상계정·도구·공간·기존공급 manifest·main입력 관측을 추가했다. Trivy 최초조회 한도초과는 원본에 남기고 해당파일만 후속 hash대조했다. 실행Gate/등록/DB신선도/새공급전달은 미확인 상태를 유지한다.
