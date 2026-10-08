@@ -1,0 +1,16 @@
+{
+  "start": "2026-10-08T13:51:34.040683+00:00",
+  "end": "2026-10-08T13:51:34.577600+00:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.102 'sudo -n sh -c '\"'\"'umask 077; set -C; cat > /root/sec01-probe-20261008t2245/precheck-permit.json'\"'\"''"
+  ],
+  "rc": 0
+}

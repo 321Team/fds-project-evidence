@@ -1,0 +1,16 @@
+{
+  "start": "2026-10-08T13:51:34.579097+00:00",
+  "end": "2026-10-08T13:51:35.620786+00:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.102 'sudo -n python3 -I /root/sec01-probe-20261008t2245/bundle/driver.py execute /root/sec01-probe-20261008t2245/bundle 67d109a7883d00e429f389622b72dfc80ad944263b29830d8331d68c8666ba65 /root/sec01-probe-20261008t2245/precheck-permit.json'"
+  ],
+  "rc": 0
+}
