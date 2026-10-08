@@ -50,7 +50,9 @@
 | PC 수신 | 공유 폴더 경유 | tar.gz SHA256 동일, 내부 8개 파일, 7/7 OK, `openssl x509 -fingerprint -sha256` 일치 |
 | 이 폴더 | 압축 해제 파일을 바이트 그대로 복사, 줄바꿈 정규화 없음(CR 0개) | `sha256sum -c SHA256SUMS` 7/7 OK |
 
-전송용 tar.gz는 10-04 원본이 아니라 10-08 전송을 위해 만든 묶음이라 편입하지 않고 해시만 남긴다. 10-04 수집 때 별도 archive·manifest는 만들지 않았다. runbook이 만드는 `SHA256SUMS`가 원본 manifest다.
+**원본은 10-04 파일 8개, archive는 10-08 전송 묶음이다.** 10-04 수집 때 별도 archive·manifest는 만들지 않았고, runbook이 만드는 `SHA256SUMS`가 원본 manifest다. 10-08 전송용 `d22-harbor-ro-34OMzIfp.tar.gz`(2,668 bytes)는 위 해시 대조의 근거라서, PC가 받은 바이트를 재압축 없이 이 폴더에 함께 두었다(리뷰 B1 반영). 같은 이름의 `.sha256` sidecar를 두었고, 내부 8개 파일의 이름·크기·SHA256은 [`registry/ARCHIVE_CONTENTS.json`](../../../registry/ARCHIVE_CONTENTS.json)에 등록했다. 내부 8개 파일의 해시는 이 폴더의 원본 8개와 같다.
+
+10-08 서버 `ls -l` 출력(mode 0600, 파일 8개)은 사용자 콘솔 화면으로만 확인했고 파일로 편입하지 않았다. archive 안의 tar 헤더에 같은 mode(`-rw-------`)와 10-04 15:37 mtime이 남아 있다.
 
 ## 파일
 
@@ -64,12 +66,16 @@
 | `leaf-metadata.txt` | `3ce125b81c206811ab977bddc678260bae82fe4b35be87bd91c1505a19a78742` |
 | `expiry-check.txt` | `884cfe6153fc074f92defed83aaabbca814ec8e4f43e37b01e55ed76a86aaf8b` |
 | `tls-diagnostics.txt` | `5f4be439d1ed0cdb38553f576d1b4dc1b6d19c0507be2e2a72c26a9689ea7880` |
+| `d22-harbor-ro-34OMzIfp.tar.gz` (10-08 전송 묶음) | `3f941e2a7ab2db0c6e2c415c21611f86eb032f3e997d25ded449fb9e4f337545` |
+| `d22-harbor-ro-34OMzIfp.tar.gz.sha256` (sidecar) | `REGISTRY_SHA256SUMS`에 등록 |
+
+폴더 이름의 `infra-rosa-issue-9-`는 [증적 관리 규칙 「저장 경로」](../../../governance/EVIDENCE_POLICY.md)에 따라 출처 이슈를 표시한 것이다(리뷰 N1 반영, 최초 `harbor-leaf-tls-20261004T153703/`에서 병합 전 변경).
 
 ## 민감정보 점검
 
 공개 인증서(PEM), 시각·호스트·계정 이름·OpenSSL 버전, RC, 검증 진단만 있다. private key, Robot secret, token, Pull Secret, TLS 세션·keying material은 없다(runbook이 s_client 세션 상세를 저장하지 않는다). 내부 주소·호스트 이름이 포함되어 저장소 접근 범위를 따른다.
 
-저장소 `.gitignore`는 개인 키 유출을 막기 위해 `*.pem`을 제외한다. `leaf.pem`·`server-chain.pem`은 `BEGIN/END CERTIFICATE` 블록 1개씩만 있고 `PRIVATE` 문자열이 없음을 확인한 뒤 `git add -f`로 추가했다. 원본 `SHA256SUMS`의 파일명과 맞추기 위해 `.crt`로 바꾸지 않았다.
+저장소 `.gitignore`는 개인 키 유출을 막기 위해 `*.pem`을 제외한다. `leaf.pem`·`server-chain.pem`은 `BEGIN/END CERTIFICATE` 블록 1개씩만 있고 `PRIVATE` 문자열이 없음을 확인한 뒤 `git add -f`로 추가했다. 원본 `SHA256SUMS`의 파일명과 맞추기 위해 `.crt`로 바꾸지 않았다. 같은 이유로 `.gitignore`의 `*.tar.gz` 규칙에 걸리는 전송 묶음도 `git add -f`로 추가했다.
 
 ## 경계
 
