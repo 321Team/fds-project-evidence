@@ -1,5 +1,15 @@
 # IF-05C Discord 수신 보완 — 2026-10-08 KST
 
+## 최신 연결 — 2026-10-09 상태 정합화
+
+[PR157](https://github.com/321Team/fds-project-evidence/pull/157)은 [통합본 독립 승인](https://github.com/321Team/fds-project-evidence/pull/157#pullrequestreview-5450892976) 후 10/8 12:08:48 KST 병합됐다(merge `6014e9a961af497e78be9c383d270291013db5cf`). 아래 REVIEW=PENDING은 포장 당시 상태이며 현재 미편입을 뜻하지 않는다. 이번 README 정합화 자체의 독립 검토는 별도다.
+
+수신 시각에는 [사용자 정정](https://github.com/321Team/fds-project-evidence/pull/157#issuecomment-6049824396)을 적용한다. FIRING은 화면의 Spidey Bot 옆08:57, RESOLVED는 사용자가 전달한 담당자 의견으로 **약1분 뒤**다. “같은 시각”이라는 이전 설명은 더 이상 적용하지 않는다. Resolved의 정확한 개별 시각·메시지 링크/ID는 여전히 미확인이며 휴대전화 상단08:59를 메시지 시각으로 사용하지 않는다.
+
+두 알림 수신 확인·서버 rc3/후속 rc0·원복 완료는 그대로다. PNG·붙여넣은 본문·RECEIPT.json은 원본 bytes를 보존했으며, 수신 확인과 증적 병합을 AC 인수나 추가 시험 승인으로 확대하지 않는다.
+
+## 최초 편입 시점의 기록 — 2026-10-08
+
 작성: 이권욱(GWONUK), CODEX_ASSISTED. 책임 [MON #17](https://github.com/321Team/fds-project-baseline/issues/17), 소비·교차검증 [SEC #19](https://github.com/321Team/fds-project-baseline/issues/19), [증적 PR157](https://github.com/321Team/fds-project-evidence/pull/157).
 
 ## 판정
