@@ -1,0 +1,2263 @@
+{
+  "source_sha256": "b006ea6740435a4ce77a871dad20db2ac86d73f02ba90c3feccc79a668439321",
+  "started_epoch": 1791455772.2465014,
+  "status": "STOP_RECOVERY_REQUIRED",
+  "commands": [
+    {
+      "name": "candidate-check",
+      "argv": [
+        "python3",
+        "-I",
+        "/root/hbr-a3-joz3x6ya/trial.py",
+        "check-current",
+        "--bundle",
+        "/root/hbr-a3-joz3x6ya",
+        "--work",
+        "/root/hbr-address-trial-20261008-1607",
+        "--a2r1-mode-profile"
+      ],
+      "started_epoch": 1791455772.2476735,
+      "begin_ns": 27993572118680,
+      "stdout_file": "0-candidate-check.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455773.1202204,
+      "end_ns": 27994444665051
+    },
+    {
+      "name": "live-restore-before",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "info",
+        "--format",
+        "{{json .LiveRestoreEnabled}}"
+      ],
+      "started_epoch": 1791455773.1223717,
+      "begin_ns": 27994446816675,
+      "stdout_file": "1-live-restore-before.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455773.1551974,
+      "end_ns": 27994479642225
+    },
+    {
+      "name": "unit-before",
+      "argv": [
+        "systemctl",
+        "show",
+        "docker.service",
+        "--no-pager",
+        "--property=ActiveState,SubState,MainPID,InvocationID,ExecMainStartTimestampMonotonic"
+      ],
+      "started_epoch": 1791455773.1559627,
+      "begin_ns": 27994480406990,
+      "stdout_file": "2-unit-before.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455773.1646562,
+      "end_ns": 27994489100324
+    },
+    {
+      "name": "state-immediate",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "inspect",
+        "--type",
+        "container",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"image\":{{json .Image}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"status\":{{json .State.Status}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}null{{end}},\"restart\":{{json .HostConfig.RestartPolicy}},\"mounts\":{{json .Mounts}},\"ports\":{{json .HostConfig.PortBindings}},\"logging\":{{json .HostConfig.LogConfig}}}",
+        "harbor-core",
+        "harbor-jobservice",
+        "harbor-portal",
+        "harbor-db",
+        "nginx",
+        "redis",
+        "registry",
+        "registryctl",
+        "trivy-adapter",
+        "harbor-log"
+      ],
+      "started_epoch": 1791455773.3684282,
+      "begin_ns": 27994692872956,
+      "stdout_file": "3-state-immediate.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455773.5361197,
+      "end_ns": 27994860564301
+    },
+    {
+      "name": "unit-immediate",
+      "argv": [
+        "systemctl",
+        "show",
+        "docker.service",
+        "--no-pager",
+        "--property=ActiveState,SubState,MainPID,InvocationID,ExecMainStartTimestampMonotonic"
+      ],
+      "started_epoch": 1791455773.5372527,
+      "begin_ns": 27994861697262,
+      "stdout_file": "4-unit-immediate.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455773.5461023,
+      "end_ns": 27994870546619
+    },
+    {
+      "name": "restart-once",
+      "argv": [
+        "systemctl",
+        "restart",
+        "docker.service"
+      ],
+      "started_epoch": 1791455773.5674946,
+      "begin_ns": 27994891939243,
+      "stdout_file": "5-restart-once.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455784.975165,
+      "end_ns": 28006299609525
+    },
+    {
+      "name": "unit-after",
+      "argv": [
+        "systemctl",
+        "show",
+        "docker.service",
+        "--no-pager",
+        "--property=ActiveState,SubState,MainPID,InvocationID,ExecMainStartTimestampMonotonic"
+      ],
+      "started_epoch": 1791455958.4527628,
+      "begin_ns": 28179777207642,
+      "stdout_file": "6-unit-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.4611714,
+      "end_ns": 28179785615860
+    },
+    {
+      "name": "state-after",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "inspect",
+        "--type",
+        "container",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"image\":{{json .Image}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"status\":{{json .State.Status}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}null{{end}},\"restart\":{{json .HostConfig.RestartPolicy}},\"mounts\":{{json .Mounts}},\"ports\":{{json .HostConfig.PortBindings}},\"logging\":{{json .HostConfig.LogConfig}}}",
+        "harbor-core",
+        "harbor-jobservice",
+        "harbor-portal",
+        "harbor-db",
+        "nginx",
+        "redis",
+        "registry",
+        "registryctl",
+        "trivy-adapter",
+        "harbor-log"
+      ],
+      "started_epoch": 1791455958.4633226,
+      "begin_ns": 28179787767305,
+      "stdout_file": "7-state-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.4966743,
+      "end_ns": 28179821118724
+    },
+    {
+      "name": "profile-engine-after",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "version",
+        "--format",
+        "{{json .Server}}"
+      ],
+      "started_epoch": 1791455958.4993656,
+      "begin_ns": 28179823810219,
+      "stdout_file": "8-profile-engine-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.5331728,
+      "end_ns": 28179857617199
+    },
+    {
+      "name": "profile-compose-after",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "compose",
+        "version",
+        "--short"
+      ],
+      "started_epoch": 1791455958.5355535,
+      "begin_ns": 28179859998269,
+      "stdout_file": "9-profile-compose-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.5681884,
+      "end_ns": 28179892632728
+    },
+    {
+      "name": "profile-security-after",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "info",
+        "--format",
+        "{\"security_options\":{{json .SecurityOptions}},\"root\":{{json .DockerRootDir}},\"driver\":{{json .Driver}}}"
+      ],
+      "started_epoch": 1791455958.5705848,
+      "begin_ns": 28179895029442,
+      "stdout_file": "10-profile-security-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.6036804,
+      "end_ns": 28179928124587
+    },
+    {
+      "name": "profile-enforcing-after",
+      "argv": [
+        "getenforce"
+      ],
+      "started_epoch": 1791455958.606048,
+      "begin_ns": 28179930492398,
+      "stdout_file": "11-profile-enforcing-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.607668,
+      "end_ns": 28179932112009
+    },
+    {
+      "name": "profile-labels-after",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "inspect",
+        "--type",
+        "container",
+        "--format",
+        "{\"id\":{{json .Id}},\"mount_label\":{{json .MountLabel}},\"process_label\":{{json .ProcessLabel}},\"security_opt\":{{json (index .HostConfig \"SecurityOpt\")}},\"privileged\":{{json .HostConfig.Privileged}}}",
+        "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+        "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+        "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a"
+      ],
+      "started_epoch": 1791455958.61017,
+      "begin_ns": 28179934614319,
+      "stdout_file": "12-profile-labels-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.6276684,
+      "end_ns": 28179952112764
+    },
+    {
+      "name": "volume-a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15"
+      ],
+      "started_epoch": 1791455958.631496,
+      "begin_ns": 28179955940436,
+      "stdout_file": "13-volume-a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.6482143,
+      "end_ns": 28179972659128
+    },
+    {
+      "name": "volume-6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69"
+      ],
+      "started_epoch": 1791455958.6528163,
+      "begin_ns": 28179977260838,
+      "stdout_file": "14-volume-6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.669747,
+      "end_ns": 28179994191750
+    },
+    {
+      "name": "volume-ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d"
+      ],
+      "started_epoch": 1791455958.673942,
+      "begin_ns": 28179998386468,
+      "stdout_file": "15-volume-ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.69074,
+      "end_ns": 28180015184808
+    },
+    {
+      "name": "volume-1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428"
+      ],
+      "started_epoch": 1791455958.6943812,
+      "begin_ns": 28180018825548,
+      "stdout_file": "16-volume-1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.7106695,
+      "end_ns": 28180035114338
+    },
+    {
+      "name": "volume-ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb"
+      ],
+      "started_epoch": 1791455958.714967,
+      "begin_ns": 28180039411556,
+      "stdout_file": "17-volume-ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.7316465,
+      "end_ns": 28180056091598
+    },
+    {
+      "name": "volume-4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec"
+      ],
+      "started_epoch": 1791455958.735331,
+      "begin_ns": 28180059775485,
+      "stdout_file": "18-volume-4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.752193,
+      "end_ns": 28180076637662
+    },
+    {
+      "name": "volume-093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9"
+      ],
+      "started_epoch": 1791455958.7571273,
+      "begin_ns": 28180081572031,
+      "stdout_file": "19-volume-093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.7741747,
+      "end_ns": 28180098619578
+    },
+    {
+      "name": "volume-9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963"
+      ],
+      "started_epoch": 1791455958.7780826,
+      "begin_ns": 28180102526950,
+      "stdout_file": "20-volume-9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.7947075,
+      "end_ns": 28180119152280
+    },
+    {
+      "name": "volume-dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "volume",
+        "inspect",
+        "--format",
+        "{\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"mountpoint\":{{json .Mountpoint}},\"scope\":{{json .Scope}},\"has_options\":{{if .Options}}true{{else}}false{{end}}}",
+        "dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516"
+      ],
+      "started_epoch": 1791455958.80035,
+      "begin_ns": 28180124794451,
+      "stdout_file": "21-volume-dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.8171356,
+      "end_ns": 28180141580079
+    },
+    {
+      "name": "listener-after",
+      "argv": [
+        "ss",
+        "-H",
+        "-ltn4",
+        "sport",
+        "=",
+        ":1514"
+      ],
+      "started_epoch": 1791455958.8212087,
+      "begin_ns": 28180145653178,
+      "stdout_file": "22-listener-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.8255327,
+      "end_ns": 28180149976785
+    },
+    {
+      "name": "live-restore-after",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "info",
+        "--format",
+        "{{json .LiveRestoreEnabled}}"
+      ],
+      "started_epoch": 1791455958.8288486,
+      "begin_ns": 28180153293231,
+      "stdout_file": "23-live-restore-after.stdout",
+      "rc": 0,
+      "finished_epoch": 1791455958.8935976,
+      "end_ns": 28180218042257
+    },
+    {
+      "name": "docker-journal-private",
+      "argv": [
+        "journalctl",
+        "--no-pager",
+        "-u",
+        "docker.service",
+        "-b",
+        "ec7a9c3c-3a91-4d4a-8d42-f68ce23ce92b",
+        "--since",
+        "@1791455773",
+        "--until",
+        "@1791455959",
+        "-o",
+        "short-iso-precise"
+      ],
+      "started_epoch": 1791455958.9552624,
+      "begin_ns": 28180279706760,
+      "stdout_file": "24-docker-journal-private.stdout",
+      "rc": 1,
+      "finished_epoch": 1791455958.9596224,
+      "end_ns": 28180284067064
+    }
+  ],
+  "AUTOSTART": "NOT_EVALUATED",
+  "SYSLOG_INGESTION": "NOT_TESTED",
+  "AC_CLOSE": "NOT_EVALUATED",
+  "HOST_GATE": "OPERATOR_CONFIRMED_NOT_GUEST_VERIFIED",
+  "snapshot": "before-address-A2-20261008-1500",
+  "automatic_recovery": "NONE",
+  "pinned_sources": {
+    "trial.py": "0a79b3b70d18211fcacb94903332b81e71168ade18225909ed4d53e26be3d8c4",
+    "observer.py": "ac9d42efbcd4f18effc2bcd7a819af29d7cc6aaa5cbd13c94fbd05e37f39e1e1"
+  },
+  "boot_before": "ec7a9c3c-3a91-4d4a-8d42-f68ce23ce92b",
+  "profile_before": {
+    "engine": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.8.0",
+      "ApiVersion": "1.56",
+      "MinAPIVersion": "1.40",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.8.0",
+          "Details": {
+            "ApiVersion": "1.56",
+            "Arch": "amd64",
+            "BuildTime": "Thu Sep  3 21:49:53 2026",
+            "Experimental": "false",
+            "GitCommit": "3ce5872",
+            "GoVersion": "go1.26.8",
+            "KernelVersion": "6.12.0-266.el10.x86_64",
+            "MinAPIVersion": "1.40",
+            "Module": "github.com/moby/moby/v2",
+            "ModuleVersion": "v2.0.0+unknown",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.3.5",
+          "Details": {
+            "GitCommit": "1294c24a7da8e5a793ed378161673abe94118892"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.5.1",
+          "Details": {
+            "GitCommit": "v1.5.1-0-g8f2685a4"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "3ce5872",
+      "GoVersion": "go1.26.8",
+      "KernelVersion": "6.12.0-266.el10.x86_64",
+      "BuildTime": "2026-09-03T21:49:53.000000000+00:00"
+    },
+    "security": {
+      "security_options": [
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ],
+      "root": "/var/lib/docker",
+      "driver": "overlayfs"
+    },
+    "labels": [
+      {
+        "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+        "mount_label": "",
+        "process_label": "",
+        "security_opt": null,
+        "privileged": false
+      },
+      {
+        "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+        "mount_label": "",
+        "process_label": "",
+        "security_opt": null,
+        "privileged": false
+      },
+      {
+        "id": "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+        "mount_label": "",
+        "process_label": "",
+        "security_opt": null,
+        "privileged": false
+      }
+    ],
+    "volume_xattrs": {
+      "/var/lib/docker/volumes/a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15/_data": "system_u:object_r:container_file_t:s0",
+      "/var/lib/docker/volumes/6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69/_data": "system_u:object_r:container_file_t:s0",
+      "/var/lib/docker/volumes/ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d/_data": "system_u:object_r:container_file_t:s0",
+      "/var/lib/docker/volumes/1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428/_data": "system_u:object_r:container_file_t:s0",
+      "/var/lib/docker/volumes/ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb/_data": "system_u:object_r:container_file_t:s0",
+      "/var/lib/docker/volumes/4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec/_data": "system_u:object_r:container_file_t:s0",
+      "/var/lib/docker/volumes/093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9/_data": "system_u:object_r:container_file_t:s0",
+      "/var/lib/docker/volumes/9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963/_data": "system_u:object_r:container_file_t:s0",
+      "/var/lib/docker/volumes/dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516/_data": "system_u:object_r:container_file_t:s0"
+    }
+  },
+  "candidate_private": "/root/hbr-a2r1-check-abg_8sqp",
+  "live_restore_before": false,
+  "unit_before": {
+    "MainPID": "10761",
+    "ExecMainStartTimestampMonotonic": "2258211002",
+    "ActiveState": "active",
+    "SubState": "running",
+    "InvocationID": "661962fd4d504108b035fba52c0dca8a"
+  },
+  "first_sample": {
+    "docker": {
+      "begin_ns": 27994519500974,
+      "end_ns": 27994540231782,
+      "rc": 0,
+      "value": [
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "002a011193a2671233c0da5a39fd488d5182d9ba604cde207ddf5a944c7e5477",
+          "name": "/harbor-core",
+          "started_at": "2026-10-08T07:20:19.775733596Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "c0ccedeb1e92cc9fdbfcdae25623e2398403d443bd6d2c171187375717ead1c8",
+          "name": "/harbor-db",
+          "started_at": "2026-10-08T07:20:19.231166966Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "390681b088d9d4def6648e9dc9bd2ffc495eaa546c4f02f7a64048482803e859",
+          "name": "/harbor-jobservice",
+          "started_at": "2026-10-08T07:20:20.230599354Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1",
+          "name": "/harbor-log",
+          "started_at": "2026-10-08T03:27:17.967928156Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+          "name": "/harbor-portal",
+          "started_at": "2026-10-08T07:20:19.430462078Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+          "name": "/nginx",
+          "started_at": "2026-10-08T07:20:19.879634253Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "c6400b973975ac8e12aa98b4af88b96a924e0eaff1cc723b40883b79d003dbc5",
+          "name": "/redis",
+          "started_at": "2026-10-08T07:20:19.669489421Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "6435156e64d290a81fd0ece2a9951df6656d94d2c997d2a1094b0c6f11f48dd1",
+          "name": "/registry",
+          "started_at": "2026-10-08T07:20:19.539910551Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+          "name": "/registryctl",
+          "started_at": "2026-10-08T07:20:19.334108519Z",
+          "status": "running"
+        },
+        {
+          "exit_code": 0,
+          "health": "healthy",
+          "id": "2d0ee28d711aec810708c3eca3927bae143e011e82e3f6d4174de218e04f8db0",
+          "name": "/trivy-adapter",
+          "started_at": "2026-10-08T07:20:20.059311874Z",
+          "status": "running"
+        }
+      ]
+    },
+    "index": 0,
+    "kind": "sample",
+    "listener": {
+      "begin_ns": 27994540232968,
+      "end_ns": 27994543377394,
+      "rc": 0,
+      "value": true
+    },
+    "observed_at_kst": "2026-10-08T19:36:13.195049+09:00"
+  },
+  "t0": {
+    "epoch": 1791455773.5666983,
+    "monotonic_ns": 27994891144010,
+    "boot_id": "ec7a9c3c-3a91-4d4a-8d42-f68ce23ce92b"
+  },
+  "restart_rc": 0,
+  "observer_rc": 2,
+  "observation_summary": {
+    "schema": "fds.harbor.startup-observation.v1.summary",
+    "capture_sha256": "7b3e8bd967e07a0eb149927cf2904a76379acc267df5fcab373057ebeb089d75",
+    "source_sha256": "ac9d42efbcd4f18effc2bcd7a819af29d7cc6aaa5cbd13c94fbd05e37f39e1e1",
+    "host": "harbor01",
+    "run_id": "b112e5ad-1812-4a5a-a2ba-8c03b1d09b35",
+    "capture": "COMPLETE_WITH_ERRORS",
+    "error_sample_indices": [
+      1
+    ],
+    "logger_healthy_and_ipv4_listener_sample_indices": [
+      0,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "all_containers_running_sample_indices": [
+      0
+    ],
+    "identity_comparable_samples": 36,
+    "identity_change_observed": false,
+    "AUTOSTART": "NOT_EVALUATED",
+    "SYSLOG_INGESTION": "NOT_TESTED",
+    "AC04": "NOT_EVALUATED",
+    "limitations": [
+      "Sequential observations are not an atomic snapshot.",
+      "Polling cannot prove event order or exclude changes between samples.",
+      "No independent T0, manual-recovery or daemon-journal binding."
+    ]
+  },
+  "postcheck_capture": {
+    "boot": {
+      "status": "COLLECTED",
+      "value": "ec7a9c3c-3a91-4d4a-8d42-f68ce23ce92b"
+    },
+    "unit": {
+      "status": "COLLECTED",
+      "value": "MainPID=186902\nExecMainStartTimestampMonotonic=28005068013\nActiveState=active\nSubState=running\nInvocationID=0471de28177547e483ec2fa77899a61e\n"
+    },
+    "state": {
+      "status": "COLLECTED",
+      "value": {
+        "core": {
+          "id": "002a011193a2671233c0da5a39fd488d5182d9ba604cde207ddf5a944c7e5477",
+          "name": "/harbor-core",
+          "image": "sha256:a22b58594cea54a78d1c670a81b9dfa3c5af8b4bdd1f89750fdf1c5876c72eab",
+          "service": "core",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/data",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/harbor_cust_cert",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/core/app.conf",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/core/app.conf",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/core/ca",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/ca_download",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/core/certificates",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/core/certificates",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/core/key",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/secret/keys/secretkey",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/core/private_key.pem",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/secret/core/private_key.pem",
+              "Type": "bind"
+            }
+          ],
+          "ports": {},
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "core"
+            },
+            "Type": "syslog"
+          }
+        },
+        "jobservice": {
+          "id": "390681b088d9d4def6648e9dc9bd2ffc495eaa546c4f02f7a64048482803e859",
+          "name": "/harbor-jobservice",
+          "image": "sha256:08af37e4194d0507db57f066b0bc1e3799b657389f10f56b145fdd72296716e6",
+          "service": "jobservice",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/harbor_cust_cert",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/jobservice/config.yml",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/jobservice/config.yml",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/var/log/jobs",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/job_logs",
+              "Type": "bind"
+            }
+          ],
+          "ports": {},
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "jobservice"
+            },
+            "Type": "syslog"
+          }
+        },
+        "portal": {
+          "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+          "name": "/harbor-portal",
+          "image": "sha256:9b31001ccde53ea0803e41c2555724358f1724152dd6cade530fd81967f10f07",
+          "service": "portal",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/run",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15/_data",
+              "Type": "volume"
+            },
+            {
+              "Destination": "/etc/nginx/nginx.conf",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/portal/nginx.conf",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/var/cache/nginx",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69/_data",
+              "Type": "volume"
+            },
+            {
+              "Destination": "/var/log/nginx",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d/_data",
+              "Type": "volume"
+            }
+          ],
+          "ports": {},
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "portal"
+            },
+            "Type": "syslog"
+          }
+        },
+        "postgresql": {
+          "id": "c0ccedeb1e92cc9fdbfcdae25623e2398403d443bd6d2c171187375717ead1c8",
+          "name": "/harbor-db",
+          "image": "sha256:5501021458c229c7663f3c4445dfbc2dcc32a22a5b3e3fb65e3e591311eed9dc",
+          "service": "postgresql",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/postgresql/data",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/database",
+              "Type": "bind"
+            }
+          ],
+          "ports": {},
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "postgresql"
+            },
+            "Type": "syslog"
+          }
+        },
+        "proxy": {
+          "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+          "name": "/nginx",
+          "image": "sha256:18413e62e4bbdd446303862072c65932b78bd1f0fd6404d5233b91a803ce0198",
+          "service": "proxy",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/harbor_cust_cert",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/run",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428/_data",
+              "Type": "volume"
+            },
+            {
+              "Destination": "/etc/cert",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/secret/cert",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/nginx",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/nginx",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/var/cache/nginx",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb/_data",
+              "Type": "volume"
+            },
+            {
+              "Destination": "/var/log/nginx",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec/_data",
+              "Type": "volume"
+            }
+          ],
+          "ports": {
+            "8080/tcp": [
+              {
+                "HostIp": "",
+                "HostPort": "80"
+              }
+            ],
+            "8443/tcp": [
+              {
+                "HostIp": "",
+                "HostPort": "443"
+              }
+            ]
+          },
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "proxy"
+            },
+            "Type": "syslog"
+          }
+        },
+        "redis": {
+          "id": "c6400b973975ac8e12aa98b4af88b96a924e0eaff1cc723b40883b79d003dbc5",
+          "name": "/redis",
+          "image": "sha256:7023398c8d8544fab8f0dab4ccdce871de7a2e0008474ea9167f6726d04f05a0",
+          "service": "redis",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/var/lib/redis",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/redis",
+              "Type": "bind"
+            }
+          ],
+          "ports": {},
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "redis"
+            },
+            "Type": "syslog"
+          }
+        },
+        "registry": {
+          "id": "6435156e64d290a81fd0ece2a9951df6656d94d2c997d2a1094b0c6f11f48dd1",
+          "name": "/registry",
+          "image": "sha256:9e1894bee0ff714e6155678627781773792bdb3c6bcff445f7200354ab5435b6",
+          "service": "registry",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/harbor_cust_cert",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/storage",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/registry",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/registry",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/registry",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/registry/root.crt",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/secret/registry/root.crt",
+              "Type": "bind"
+            }
+          ],
+          "ports": {},
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "registry"
+            },
+            "Type": "syslog"
+          }
+        },
+        "registryctl": {
+          "id": "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+          "name": "/registryctl",
+          "image": "sha256:f606f750f05fa988932cfead651446833f56561dc4f679a4b61e4d52f75ea54a",
+          "service": "registryctl",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/harbor_cust_cert",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/storage",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/registry",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/registry",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/registry",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/registryctl/config.yml",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/registryctl/config.yml",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/var/lib/registry",
+              "Driver": "local",
+              "Mode": "z",
+              "Name": "093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9/_data",
+              "Type": "volume"
+            }
+          ],
+          "ports": {},
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "registryctl"
+            },
+            "Type": "syslog"
+          }
+        },
+        "trivy-adapter": {
+          "id": "2d0ee28d711aec810708c3eca3927bae143e011e82e3f6d4174de218e04f8db0",
+          "name": "/trivy-adapter",
+          "image": "sha256:d39f86d91af113c6302e4faac04a7269e073e1a1093a38ad2ac958ed8e4bf58e",
+          "service": "trivy-adapter",
+          "project": "harbor",
+          "status": "exited",
+          "health": "unhealthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/harbor_cust_cert",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/home/scanner/.cache/reports",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/trivy-adapter/reports",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/home/scanner/.cache/trivy",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/data/trivy-adapter/trivy",
+              "Type": "bind"
+            }
+          ],
+          "ports": {},
+          "logging": {
+            "Config": {
+              "syslog-address": "tcp://127.0.0.1:1514",
+              "tag": "trivy-adapter"
+            },
+            "Type": "syslog"
+          }
+        },
+        "log": {
+          "id": "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1",
+          "name": "/harbor-log",
+          "image": "sha256:0ceff3e80b068525c4f3dbedc1f08af1bdf990c7490cc78d187e7d50aba8510e",
+          "service": "log",
+          "project": "harbor",
+          "status": "running",
+          "health": "healthy",
+          "restart": {
+            "MaximumRetryCount": 0,
+            "Name": "always"
+          },
+          "mounts": [
+            {
+              "Destination": "/run",
+              "Driver": "local",
+              "Mode": "",
+              "Name": "9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963/_data",
+              "Type": "volume"
+            },
+            {
+              "Destination": "/etc/logrotate.d",
+              "Driver": "local",
+              "Mode": "",
+              "Name": "dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516",
+              "Propagation": "",
+              "RW": true,
+              "Source": "/var/lib/docker/volumes/dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516/_data",
+              "Type": "volume"
+            },
+            {
+              "Destination": "/etc/logrotate.d/logrotate.conf",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/log/logrotate.conf",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/etc/rsyslog.d/rsyslog_docker.conf",
+              "Mode": "rw",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/home/server08/harbor/common/config/log/rsyslog_docker.conf",
+              "Type": "bind"
+            },
+            {
+              "Destination": "/var/log/docker",
+              "Mode": "rw,z",
+              "Propagation": "rprivate",
+              "RW": true,
+              "Source": "/var/log/harbor",
+              "Type": "bind"
+            }
+          ],
+          "ports": {
+            "10514/tcp": [
+              {
+                "HostIp": "127.0.0.1",
+                "HostPort": "1514"
+              }
+            ]
+          },
+          "logging": {
+            "Config": {},
+            "Type": "json-file"
+          }
+        }
+      }
+    },
+    "engine": {
+      "status": "COLLECTED",
+      "value": {
+        "Platform": {
+          "Name": "Docker Engine - Community"
+        },
+        "Version": "29.8.0",
+        "ApiVersion": "1.56",
+        "MinAPIVersion": "1.40",
+        "Os": "linux",
+        "Arch": "amd64",
+        "Components": [
+          {
+            "Name": "Engine",
+            "Version": "29.8.0",
+            "Details": {
+              "ApiVersion": "1.56",
+              "Arch": "amd64",
+              "BuildTime": "Thu Sep  3 21:49:53 2026",
+              "Experimental": "false",
+              "GitCommit": "3ce5872",
+              "GoVersion": "go1.26.8",
+              "KernelVersion": "6.12.0-266.el10.x86_64",
+              "MinAPIVersion": "1.40",
+              "Module": "github.com/moby/moby/v2",
+              "ModuleVersion": "v2.0.0+unknown",
+              "Os": "linux"
+            }
+          },
+          {
+            "Name": "containerd",
+            "Version": "v2.3.5",
+            "Details": {
+              "GitCommit": "1294c24a7da8e5a793ed378161673abe94118892"
+            }
+          },
+          {
+            "Name": "runc",
+            "Version": "1.5.1",
+            "Details": {
+              "GitCommit": "v1.5.1-0-g8f2685a4"
+            }
+          },
+          {
+            "Name": "docker-init",
+            "Version": "0.19.0",
+            "Details": {
+              "GitCommit": "de40ad0"
+            }
+          }
+        ],
+        "GitCommit": "3ce5872",
+        "GoVersion": "go1.26.8",
+        "KernelVersion": "6.12.0-266.el10.x86_64",
+        "BuildTime": "2026-09-03T21:49:53.000000000+00:00"
+      }
+    },
+    "compose": {
+      "status": "COLLECTED",
+      "value": "5.5.1"
+    },
+    "security": {
+      "status": "COLLECTED",
+      "value": {
+        "security_options": [
+          "name=seccomp,profile=builtin",
+          "name=cgroupns"
+        ],
+        "root": "/var/lib/docker",
+        "driver": "overlayfs"
+      }
+    },
+    "enforcing": {
+      "status": "COLLECTED",
+      "value": "Enforcing"
+    },
+    "labels": {
+      "status": "COLLECTED",
+      "value": [
+        {
+          "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+          "mount_label": "",
+          "process_label": "",
+          "security_opt": null,
+          "privileged": false
+        },
+        {
+          "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+          "mount_label": "",
+          "process_label": "",
+          "security_opt": null,
+          "privileged": false
+        },
+        {
+          "id": "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+          "mount_label": "",
+          "process_label": "",
+          "security_opt": null,
+          "privileged": false
+        }
+      ]
+    },
+    "volume-a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "volume-6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "volume-ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "volume-1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "volume-ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "volume-4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "volume-093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "volume-9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "volume-dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516": {
+      "status": "COLLECTED",
+      "value": {
+        "name": "dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516",
+        "driver": "local",
+        "mountpoint": "/var/lib/docker/volumes/dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516/_data",
+        "scope": "local",
+        "has_options": false
+      }
+    },
+    "xattr-dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516": {
+      "status": "COLLECTED",
+      "value": "system_u:object_r:container_file_t:s0"
+    },
+    "listener": {
+      "status": "COLLECTED",
+      "value": true
+    },
+    "live_restore": {
+      "status": "COLLECTED",
+      "value": false
+    },
+    "final_guard": {
+      "status": "COLLECTED",
+      "value": null
+    }
+  },
+  "postcheck_validation": {
+    "boot": {
+      "status": "PASS"
+    },
+    "unit": {
+      "status": "PASS"
+    },
+    "preservation": {
+      "status": "FAIL",
+      "error_code": "POST_NOT_ALL_HEALTHY"
+    },
+    "engine": {
+      "status": "PASS"
+    },
+    "compose": {
+      "status": "PASS"
+    },
+    "security": {
+      "status": "PASS"
+    },
+    "enforcing": {
+      "status": "PASS"
+    },
+    "labels": {
+      "status": "PASS"
+    },
+    "volume-a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15": {
+      "status": "PASS"
+    },
+    "xattr-a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15": {
+      "status": "PASS"
+    },
+    "volume-6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69": {
+      "status": "PASS"
+    },
+    "xattr-6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69": {
+      "status": "PASS"
+    },
+    "volume-ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d": {
+      "status": "PASS"
+    },
+    "xattr-ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d": {
+      "status": "PASS"
+    },
+    "volume-1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428": {
+      "status": "PASS"
+    },
+    "xattr-1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428": {
+      "status": "PASS"
+    },
+    "volume-ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb": {
+      "status": "PASS"
+    },
+    "xattr-ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb": {
+      "status": "PASS"
+    },
+    "volume-4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec": {
+      "status": "PASS"
+    },
+    "xattr-4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec": {
+      "status": "PASS"
+    },
+    "volume-093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9": {
+      "status": "PASS"
+    },
+    "xattr-093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9": {
+      "status": "PASS"
+    },
+    "volume-9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963": {
+      "status": "PASS"
+    },
+    "xattr-9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963": {
+      "status": "PASS"
+    },
+    "volume-dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516": {
+      "status": "PASS"
+    },
+    "xattr-dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516": {
+      "status": "PASS"
+    },
+    "listener": {
+      "status": "PASS"
+    },
+    "live_restore": {
+      "status": "PASS"
+    }
+  },
+  "postcheck_errors": [
+    {
+      "item": "preservation",
+      "phase": "validation",
+      "error_code": "POST_NOT_ALL_HEALTHY"
+    }
+  ],
+  "postchecks": "FAIL",
+  "boot_after": "ec7a9c3c-3a91-4d4a-8d42-f68ce23ce92b",
+  "after": {
+    "core": {
+      "id": "002a011193a2671233c0da5a39fd488d5182d9ba604cde207ddf5a944c7e5477",
+      "name": "/harbor-core",
+      "image": "sha256:a22b58594cea54a78d1c670a81b9dfa3c5af8b4bdd1f89750fdf1c5876c72eab",
+      "service": "core",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/data",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/harbor_cust_cert",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/core/app.conf",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/core/app.conf",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/core/ca",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/ca_download",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/core/certificates",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/core/certificates",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/core/key",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/secret/keys/secretkey",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/core/private_key.pem",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/secret/core/private_key.pem",
+          "Type": "bind"
+        }
+      ],
+      "ports": {},
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "core"
+        },
+        "Type": "syslog"
+      }
+    },
+    "jobservice": {
+      "id": "390681b088d9d4def6648e9dc9bd2ffc495eaa546c4f02f7a64048482803e859",
+      "name": "/harbor-jobservice",
+      "image": "sha256:08af37e4194d0507db57f066b0bc1e3799b657389f10f56b145fdd72296716e6",
+      "service": "jobservice",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/harbor_cust_cert",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/jobservice/config.yml",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/jobservice/config.yml",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/var/log/jobs",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/job_logs",
+          "Type": "bind"
+        }
+      ],
+      "ports": {},
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "jobservice"
+        },
+        "Type": "syslog"
+      }
+    },
+    "portal": {
+      "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+      "name": "/harbor-portal",
+      "image": "sha256:9b31001ccde53ea0803e41c2555724358f1724152dd6cade530fd81967f10f07",
+      "service": "portal",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/run",
+          "Driver": "local",
+          "Mode": "z",
+          "Name": "a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/a18a5ec8ea8bf4f590771897ad17ba2d7bdfb9ddc6b9363e7c85b8c9cb232b15/_data",
+          "Type": "volume"
+        },
+        {
+          "Destination": "/etc/nginx/nginx.conf",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/portal/nginx.conf",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/var/cache/nginx",
+          "Driver": "local",
+          "Mode": "z",
+          "Name": "6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/6f3a3d65ca76b9f7e938bc035e5245291a54909e0be773e3a509327972165e69/_data",
+          "Type": "volume"
+        },
+        {
+          "Destination": "/var/log/nginx",
+          "Driver": "local",
+          "Mode": "z",
+          "Name": "ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/ffef2810c4a3eb47ca204d58496fd01025be24e0aadd43ffc754faeed80b2f2d/_data",
+          "Type": "volume"
+        }
+      ],
+      "ports": {},
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "portal"
+        },
+        "Type": "syslog"
+      }
+    },
+    "postgresql": {
+      "id": "c0ccedeb1e92cc9fdbfcdae25623e2398403d443bd6d2c171187375717ead1c8",
+      "name": "/harbor-db",
+      "image": "sha256:5501021458c229c7663f3c4445dfbc2dcc32a22a5b3e3fb65e3e591311eed9dc",
+      "service": "postgresql",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/var/lib/postgresql/data",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/database",
+          "Type": "bind"
+        }
+      ],
+      "ports": {},
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "postgresql"
+        },
+        "Type": "syslog"
+      }
+    },
+    "proxy": {
+      "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+      "name": "/nginx",
+      "image": "sha256:18413e62e4bbdd446303862072c65932b78bd1f0fd6404d5233b91a803ce0198",
+      "service": "proxy",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/harbor_cust_cert",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/run",
+          "Driver": "local",
+          "Mode": "z",
+          "Name": "1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/1dd9bcee2f6dfb253086d19aa91a5fa9eee21b81d33b95ced79b132fa5008428/_data",
+          "Type": "volume"
+        },
+        {
+          "Destination": "/etc/cert",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/secret/cert",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/nginx",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/nginx",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/var/cache/nginx",
+          "Driver": "local",
+          "Mode": "z",
+          "Name": "ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/ce04f9101059091db0bef2691b9c81e079654558d8b8cc6c22007c870b5687eb/_data",
+          "Type": "volume"
+        },
+        {
+          "Destination": "/var/log/nginx",
+          "Driver": "local",
+          "Mode": "z",
+          "Name": "4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/4b3fb8f1dd8d93b1f928d788f9248c4ee1651ad055e8e2e83b765be818674dec/_data",
+          "Type": "volume"
+        }
+      ],
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "",
+            "HostPort": "80"
+          }
+        ],
+        "8443/tcp": [
+          {
+            "HostIp": "",
+            "HostPort": "443"
+          }
+        ]
+      },
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "proxy"
+        },
+        "Type": "syslog"
+      }
+    },
+    "redis": {
+      "id": "c6400b973975ac8e12aa98b4af88b96a924e0eaff1cc723b40883b79d003dbc5",
+      "name": "/redis",
+      "image": "sha256:7023398c8d8544fab8f0dab4ccdce871de7a2e0008474ea9167f6726d04f05a0",
+      "service": "redis",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/var/lib/redis",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/redis",
+          "Type": "bind"
+        }
+      ],
+      "ports": {},
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "redis"
+        },
+        "Type": "syslog"
+      }
+    },
+    "registry": {
+      "id": "6435156e64d290a81fd0ece2a9951df6656d94d2c997d2a1094b0c6f11f48dd1",
+      "name": "/registry",
+      "image": "sha256:9e1894bee0ff714e6155678627781773792bdb3c6bcff445f7200354ab5435b6",
+      "service": "registry",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/harbor_cust_cert",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/storage",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/registry",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/registry",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/registry",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/registry/root.crt",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/secret/registry/root.crt",
+          "Type": "bind"
+        }
+      ],
+      "ports": {},
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "registry"
+        },
+        "Type": "syslog"
+      }
+    },
+    "registryctl": {
+      "id": "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+      "name": "/registryctl",
+      "image": "sha256:f606f750f05fa988932cfead651446833f56561dc4f679a4b61e4d52f75ea54a",
+      "service": "registryctl",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/harbor_cust_cert",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/storage",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/registry",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/registry",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/registry",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/registryctl/config.yml",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/registryctl/config.yml",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/var/lib/registry",
+          "Driver": "local",
+          "Mode": "z",
+          "Name": "093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/093dbe1f9c56aa4c8fab65f57e4f9bde489f45cf9e1a20521d9d9bbebdcd8af9/_data",
+          "Type": "volume"
+        }
+      ],
+      "ports": {},
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "registryctl"
+        },
+        "Type": "syslog"
+      }
+    },
+    "trivy-adapter": {
+      "id": "2d0ee28d711aec810708c3eca3927bae143e011e82e3f6d4174de218e04f8db0",
+      "name": "/trivy-adapter",
+      "image": "sha256:d39f86d91af113c6302e4faac04a7269e073e1a1093a38ad2ac958ed8e4bf58e",
+      "service": "trivy-adapter",
+      "project": "harbor",
+      "status": "exited",
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/harbor_cust_cert",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/shared/trust-certificates",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/home/scanner/.cache/reports",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/trivy-adapter/reports",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/home/scanner/.cache/trivy",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/data/trivy-adapter/trivy",
+          "Type": "bind"
+        }
+      ],
+      "ports": {},
+      "logging": {
+        "Config": {
+          "syslog-address": "tcp://127.0.0.1:1514",
+          "tag": "trivy-adapter"
+        },
+        "Type": "syslog"
+      }
+    },
+    "log": {
+      "id": "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1",
+      "name": "/harbor-log",
+      "image": "sha256:0ceff3e80b068525c4f3dbedc1f08af1bdf990c7490cc78d187e7d50aba8510e",
+      "service": "log",
+      "project": "harbor",
+      "status": "running",
+      "health": "healthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "mounts": [
+        {
+          "Destination": "/run",
+          "Driver": "local",
+          "Mode": "",
+          "Name": "9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/9ea63b126e6678f6229dad152f93fc3bf55395cf9adc6656f1db1bcf63f09963/_data",
+          "Type": "volume"
+        },
+        {
+          "Destination": "/etc/logrotate.d",
+          "Driver": "local",
+          "Mode": "",
+          "Name": "dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516",
+          "Propagation": "",
+          "RW": true,
+          "Source": "/var/lib/docker/volumes/dc2486f7436cb4e8d5acf634fd36b1577380724102d42bc4b527090902f0e516/_data",
+          "Type": "volume"
+        },
+        {
+          "Destination": "/etc/logrotate.d/logrotate.conf",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/log/logrotate.conf",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/etc/rsyslog.d/rsyslog_docker.conf",
+          "Mode": "rw",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/home/server08/harbor/common/config/log/rsyslog_docker.conf",
+          "Type": "bind"
+        },
+        {
+          "Destination": "/var/log/docker",
+          "Mode": "rw,z",
+          "Propagation": "rprivate",
+          "RW": true,
+          "Source": "/var/log/harbor",
+          "Type": "bind"
+        }
+      ],
+      "ports": {
+        "10514/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "1514"
+          }
+        ]
+      },
+      "logging": {
+        "Config": {},
+        "Type": "json-file"
+      }
+    }
+  },
+  "live_restore_after": false,
+  "unit_after": {
+    "MainPID": "186902",
+    "ExecMainStartTimestampMonotonic": "28005068013",
+    "ActiveState": "active",
+    "SubState": "running",
+    "InvocationID": "0471de28177547e483ec2fa77899a61e"
+  },
+  "journal_window": {
+    "since_epoch_floor": 1791455773,
+    "until_epoch": 1791455959
+  },
+  "finished_epoch": 1791455958.9618866,
+  "errors": [
+    "POSTCHECK_FAILED",
+    "JOURNAL_COLLECTION_FAILED"
+  ]
+}

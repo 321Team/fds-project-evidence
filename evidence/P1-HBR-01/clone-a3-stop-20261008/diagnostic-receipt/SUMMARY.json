@@ -1,0 +1,725 @@
+{
+  "collected_epoch": 1791458004.2759614,
+  "source_work": "/root/hbr-a3-joz3x6ya",
+  "source_result_sha256": "5df896fd9f501cbac82e1091c6368160d79dbca34baf651681f766f331102fa7",
+  "collector_sha256": "5cb20a905bb9c644c84257282bb922f219436ddb1cb4a45914023df3313acc22",
+  "private": "/root/hbr-a3-diagnostic-cm16q39r",
+  "scope": "BOUNDED_READ_ONLY_SUPPLEMENT_NOT_ORIGINAL_RUNTIME",
+  "commands": [
+    {
+      "name": "journal-version",
+      "argv": [
+        "journalctl",
+        "--version"
+      ],
+      "rc": 0,
+      "started_epoch": 1791458004.2760317,
+      "finished_epoch": 1791458004.2806838,
+      "stdout_sha256": "6e28ec318d4aba7659f0eebac3f6e958b5c3a414676fdaa9d51a2bcb69d9c9e6",
+      "stdout_bytes": 352,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_fixed_hints": {}
+    },
+    {
+      "name": "same-window-journal",
+      "argv": [
+        "journalctl",
+        "--no-pager",
+        "-u",
+        "docker.service",
+        "_BOOT_ID=ec7a9c3c3a914d4a8d42f68ce23ce92b",
+        "--since",
+        "@1791455773",
+        "--until",
+        "@1791455959",
+        "-o",
+        "json"
+      ],
+      "rc": 0,
+      "started_epoch": 1791458004.2807074,
+      "finished_epoch": 1791458004.2891936,
+      "stdout_sha256": "8feb2f394d65f9ef83ce96ca1165422c097ba59b89600586788aa110c14e250a",
+      "stdout_bytes": 74606,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_fixed_hints": {}
+    },
+    {
+      "name": "current-state-errors",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "inspect",
+        "--type",
+        "container",
+        "--format",
+        "{\"id\":{{json .Id}},\"status\":{{json .State.Status}},\"error\":{{json .State.Error}}}",
+        "002a011193a2671233c0da5a39fd488d5182d9ba604cde207ddf5a944c7e5477",
+        "2d0ee28d711aec810708c3eca3927bae143e011e82e3f6d4174de218e04f8db0",
+        "390681b088d9d4def6648e9dc9bd2ffc495eaa546c4f02f7a64048482803e859",
+        "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+        "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1",
+        "6435156e64d290a81fd0ece2a9951df6656d94d2c997d2a1094b0c6f11f48dd1",
+        "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+        "c0ccedeb1e92cc9fdbfcdae25623e2398403d443bd6d2c171187375717ead1c8",
+        "c6400b973975ac8e12aa98b4af88b96a924e0eaff1cc723b40883b79d003dbc5",
+        "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa"
+      ],
+      "rc": 0,
+      "started_epoch": 1791458004.290011,
+      "finished_epoch": 1791458004.32313,
+      "stdout_sha256": "470b0f454ef65728ef2480f70f3501003a83556cbc8d386d4e808a38279d6479",
+      "stdout_bytes": 2165,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_fixed_hints": {}
+    }
+  ],
+  "restart": "NOT_RUN",
+  "restore": "NOT_RUN",
+  "AUTOSTART": "NOT_EVALUATED",
+  "original_journal_error": {
+    "sha256": "3698c7d93d71bae75723d8a0348b99cde698a217ced285dc568ea3c10c87ae44",
+    "bytes": 77,
+    "fixed_hints": {
+      "failed to add match": 1,
+      "invalid argument": 1
+    }
+  },
+  "journal": {
+    "rc": 0,
+    "parsed_rows": 62,
+    "invalid_rows": 0,
+    "status": "COLLECTED",
+    "events": [
+      {
+        "realtime_us": "1791455773571586",
+        "message_sha256": "28ffbc0e3a9b1182c2981ce129582ac1aeba2075086312429f66e43fbd1e2024",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455773571897",
+        "message_sha256": "b6626ba8173b7359cbcd8569b1ac955d8bc2f043ab27a149d4855454154999f0",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455773572131",
+        "message_sha256": "2071bf52f65004ac37a934f7400d735caf676d5afb77b66453a6fe9db69d191b",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-core"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572131",
+        "message_sha256": "286dc60d161a0f84cc731205e9f3dfe5e8e8473175fbfc75a7cc86cac03a1427",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-portal"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572131",
+        "message_sha256": "7f613cf1ac6e51203b5e8e9fcb826c455ccc8d4c8ccd628676ca0457f9806d7a",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/registryctl"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572131",
+        "message_sha256": "6c67d6bd48fd63643a1a21bc1cbf5b4f48a9b789376301d7f1ac83256e20de07",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-db"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572131",
+        "message_sha256": "94b873c1a9c45ebd82f99d93c6ca98129811ed4e6d20d9c42a2f3a7b47173866",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/trivy-adapter"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572304",
+        "message_sha256": "4e1af5d8acff52f653bac09101bfba6af93fb14ebaf06699a06f0d3697ecbfe8",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-jobservice"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572304",
+        "message_sha256": "ad084ed1965086e5754f1aa86370cdf7112f1452835cd867f00f50348fce6bb4",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-log"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572304",
+        "message_sha256": "e535a3a77731860b16ae47e328bb76eea43f82b2b7f48cf149debad4ea722f00",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/redis"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572304",
+        "message_sha256": "8ee6fb251101ba62b902b270f7d6614e4fb453ab1ec7605bbcb2440d44d3dd42",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/nginx"
+        ]
+      },
+      {
+        "realtime_us": "1791455773572304",
+        "message_sha256": "540c7ff569b60ec8bfd02328df5fce228094e2980e8e311d8337fb8e1998f1c3",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/registry"
+        ]
+      },
+      {
+        "realtime_us": "1791455773617759",
+        "message_sha256": "97dfd7eeda18e4aa403c115c823b20ddc69f145310b46d9e6da12b77e9823451",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-core"
+        ]
+      },
+      {
+        "realtime_us": "1791455773617759",
+        "message_sha256": "b5e728b911f1583a0bab7035b7c6592e88c24566fe0b0a8972db54c7fac915a8",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/nginx"
+        ]
+      },
+      {
+        "realtime_us": "1791455773617759",
+        "message_sha256": "ffe6dcefdb5f6c494e14258a75b532c3ed3f5ee42af46d5e904ed8501d1a55c1",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/registry"
+        ]
+      },
+      {
+        "realtime_us": "1791455773617759",
+        "message_sha256": "dfafb10f6a2a817ab8c0ff205834bca30d16231dc7f3280d5b73fb4aadb571fe",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-portal"
+        ]
+      },
+      {
+        "realtime_us": "1791455773617759",
+        "message_sha256": "548fe8978e5b9f6312cb462a3d0be80b473d3c5baf8d51fc7257dea968d02c1e",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/registryctl"
+        ]
+      },
+      {
+        "realtime_us": "1791455773629194",
+        "message_sha256": "ed7298dedbd05368051fca945a770a64169d8a600096486750aec93c30daa161",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-db"
+        ]
+      },
+      {
+        "realtime_us": "1791455773631988",
+        "message_sha256": "99226f65440a66dbdf105790278b0c0e127f6013ae5014d0ebb6cc243ec99ed6",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/trivy-adapter"
+        ]
+      },
+      {
+        "realtime_us": "1791455773640194",
+        "message_sha256": "2380cdb544c2697d06e5d25230a69001c9bbfef3d057d655f7c33eb01afe7f21",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-jobservice"
+        ]
+      },
+      {
+        "realtime_us": "1791455773651360",
+        "message_sha256": "3fdd7879e24583ce74ccc203508204ccac3b0b86791a55ca5f7de3a21b5638a1",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/redis"
+        ]
+      },
+      {
+        "realtime_us": "1791455783591530",
+        "message_sha256": "6737ae5382b4222cd6b4095fe6ac49e29424431f6215baa41b67b968d0fc6435",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-log"
+        ]
+      },
+      {
+        "realtime_us": "1791455783591530",
+        "message_sha256": "18a60243fc2d00d36e23ffd3a3ef74b8fdbd03ad980d9db143644eb41199d197",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-log"
+        ]
+      },
+      {
+        "realtime_us": "1791455783613372",
+        "message_sha256": "819489fd37c53b6961b667c56856916153a659f131bbb833b8df873c2dee0706",
+        "fixed_hints": {},
+        "matching_containers": [
+          "/harbor-log"
+        ]
+      },
+      {
+        "realtime_us": "1791455783736844",
+        "message_sha256": "8e2d9cc2aca0b6f29fe7af6d452e032bd6eba919cc78a2f1dc8244e6b54f6900",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783738434",
+        "message_sha256": "2d008b85ae892a08b8a25eac39f2af5afffa41733cf5677bd9cffffac819c6b3",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783741682",
+        "message_sha256": "784592652b6477eff1c4755a3d3ed56d854c8cabebd0b05fe9ea933bae23bda8",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783741894",
+        "message_sha256": "330d5ce4993c95f69cbc37ed26d702a018cc413f0c15f3a372f62995dedcd6ff",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783742080",
+        "message_sha256": "e953735bbcc33abb2b586af3d7e463c7f2c70e1271e632238ccf45f57711c20b",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783744012",
+        "message_sha256": "3f8f5bddbf88029a0388bc2e1eb144188162180c230dc73d0091aa22be8272b7",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783809801",
+        "message_sha256": "2970862e5fb7b4c8632bbdff20e60b592e06c699726afa08bb630967a5be050b",
+        "fixed_hints": {
+          "starting up": 1
+        },
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783810274",
+        "message_sha256": "24b7ddd579a6677fced868e3aceea813ba4def32880cb8c3f4eaa23a95a493f1",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783810377",
+        "message_sha256": "fb0baf151061bbf034cc62f9534868e9510c4d83f30bc3b27aff8cb78ae624ea",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783810377",
+        "message_sha256": "01f209fece1b40ed4bca93c82fe9639edfb00fece2a9d7ebc18d529af86aa526",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783818234",
+        "message_sha256": "efafcabd462f5134e186ec8cbb12ce693c51e438846e51b336df55f934e02c5c",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783818863",
+        "message_sha256": "82c0bff4bfdc371ffb125e696160ab59b7a63783fa7e5addabd49340a1174f4d",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783820450",
+        "message_sha256": "05fe8f94df37226feea20b901670aaf1b29408b94b97c699f44a14110cd2a13f",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783821491",
+        "message_sha256": "f703ea04580a7ee51de91b06da55c2e6e34409d3d07b8eed71719268850293e9",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783821491",
+        "message_sha256": "15c12ba01383751aa50bce8c09e2fcd8bb40e446723e85beb0195452cb1b02e5",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783822882",
+        "message_sha256": "ef66e88071b8b9b6921d7eaf36351a3874ad1ad5a6ee2d57c1ecc007ff2eb98c",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783901838",
+        "message_sha256": "6fb9a3c63d8848b1366735505287c43b4efaec9693a2af32b4e1ebf330d642e7",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783928763",
+        "message_sha256": "104e335f899c758370517a20d04ac0f2c00f3668cbae3992b62cd9bf2c40d52d",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455783932811",
+        "message_sha256": "fcd6057fecaa92ef6c6e5ef441e554b55ecbe0cff86273616f41782dd7b3516c",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784504985",
+        "message_sha256": "e2babaebfd619b3c2b12aa8ec8abdf2089acf52f5a7ca262332e2aae7bd3b00d",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784544173",
+        "message_sha256": "93231dac0f40992f5fd3447f22db398fbbb16e4525111d5d34b98d4198090bc2",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784838652",
+        "message_sha256": "7eea5c8e44652ada9a39d5ee72a1152e1b6f481de2d8c22a0423d7e14e735f72",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/harbor-db"
+        ]
+      },
+      {
+        "realtime_us": "1791455784838652",
+        "message_sha256": "638dd45fde18991defcca1960f9869836a6b60269e34c68b73b1645ac20f3ae6",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/harbor-jobservice"
+        ]
+      },
+      {
+        "realtime_us": "1791455784838925",
+        "message_sha256": "0f577b260581e683604f926a7c09b9f096af40ffca698ac33cc0ff98fec9218e",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/harbor-portal"
+        ]
+      },
+      {
+        "realtime_us": "1791455784838986",
+        "message_sha256": "68a532cf50a5632e6d2332e9579df57532d9be39f67f06ab303888db1a0155ae",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/trivy-adapter"
+        ]
+      },
+      {
+        "realtime_us": "1791455784838986",
+        "message_sha256": "f9ac1e79805a0f5af27da7765d99fe093475abf3ae09137b6b56e333ce7c3c52",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/nginx"
+        ]
+      },
+      {
+        "realtime_us": "1791455784839205",
+        "message_sha256": "09c5345049d164216ad8faab66aa2861ec7c62ab32ef909f0500ca92f332700d",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/registryctl"
+        ]
+      },
+      {
+        "realtime_us": "1791455784841864",
+        "message_sha256": "d2d5113cc151a4d8b55c5c43a318bb22c39dadedb35c214823bf3007bb0412da",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/registry"
+        ]
+      },
+      {
+        "realtime_us": "1791455784842023",
+        "message_sha256": "c9cea80c55203c20fa7c5f86f7b631eb5c3dda6e7ce32c637f2c1bd1ff6963ec",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/harbor-core"
+        ]
+      },
+      {
+        "realtime_us": "1791455784842788",
+        "message_sha256": "3a61139ebdcdb241b96e83bb1385ea66d0e8352e4177e7f4beb939502ae5b294",
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "failed to start container": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        },
+        "matching_containers": [
+          "/redis"
+        ]
+      },
+      {
+        "realtime_us": "1791455784895215",
+        "message_sha256": "bb0a9b36057c9553fce85903b81abd67cf64d59f7a4a12acb8d699ceb015dd18",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784927848",
+        "message_sha256": "5aeabfed39dd4327b3e08a041a2f13317339bca77dccd70be98ecb2d0307ec36",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784932142",
+        "message_sha256": "b5984676962adf91323b2f0389e0c6e63840c353e97242cbb1757317ff820ea2",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784932142",
+        "message_sha256": "60f3f8c63f27c003ea4270f5ea353babbe01629b193d63b33185a0f49fe215d0",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784966755",
+        "message_sha256": "7032ad12a43329113b11a7b0a8d14ce3848f6e314ade59e36a41df849e4a1aa6",
+        "fixed_hints": {},
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784969243",
+        "message_sha256": "ab8e13fbe66a4b7596f217051566208ff201518b90dc9d1a6d07af29c62e1719",
+        "fixed_hints": {
+          "daemon has completed initialization": 1
+        },
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784969287",
+        "message_sha256": "b594edb5fa2c8ffd9696cf9371b888fdeb2066c7ba7d7817f74f053408c95404",
+        "fixed_hints": {
+          "api listen on": 1
+        },
+        "matching_containers": []
+      },
+      {
+        "realtime_us": "1791455784969990",
+        "message_sha256": "918dc5cb9cb3b1b89e2aaba91bf548885e62cff22d622f56a42d55fbe94d033b",
+        "fixed_hints": {},
+        "matching_containers": []
+      }
+    ]
+  },
+  "current_state": {
+    "rc": 0,
+    "invalid_rows": 0,
+    "rows": [
+      {
+        "id": "002a011193a2671233c0da5a39fd488d5182d9ba604cde207ddf5a944c7e5477",
+        "name": "/harbor-core",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      },
+      {
+        "id": "2d0ee28d711aec810708c3eca3927bae143e011e82e3f6d4174de218e04f8db0",
+        "name": "/trivy-adapter",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      },
+      {
+        "id": "390681b088d9d4def6648e9dc9bd2ffc495eaa546c4f02f7a64048482803e859",
+        "name": "/harbor-jobservice",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      },
+      {
+        "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+        "name": "/harbor-portal",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      },
+      {
+        "id": "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1",
+        "name": "/harbor-log",
+        "status": "running",
+        "error_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "error_bytes": 0,
+        "fixed_hints": {}
+      },
+      {
+        "id": "6435156e64d290a81fd0ece2a9951df6656d94d2c997d2a1094b0c6f11f48dd1",
+        "name": "/registry",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      },
+      {
+        "id": "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+        "name": "/registryctl",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      },
+      {
+        "id": "c0ccedeb1e92cc9fdbfcdae25623e2398403d443bd6d2c171187375717ead1c8",
+        "name": "/harbor-db",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      },
+      {
+        "id": "c6400b973975ac8e12aa98b4af88b96a924e0eaff1cc723b40883b79d003dbc5",
+        "name": "/redis",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      },
+      {
+        "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+        "name": "/nginx",
+        "status": "exited",
+        "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3",
+        "error_bytes": 126,
+        "fixed_hints": {
+          "failed to initialize logging driver": 1,
+          "connection refused": 1,
+          "dial tcp": 1,
+          "127.0.0.1:1514": 1
+        }
+      }
+    ],
+    "status": "COLLECTED"
+  },
+  "finished_epoch": 1791458004.3232563
+}

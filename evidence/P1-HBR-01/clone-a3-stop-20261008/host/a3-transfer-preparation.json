@@ -1,0 +1,67 @@
+{
+  "created_kst": "2026-10-08T19:26:35.857416+09:00",
+  "expires_epoch": 1791460595,
+  "expires_kst": "2026-10-08T20:56:35+09:00",
+  "approved_head": "b0a1c9ca630ed9c1e76303ebd7a23872816a9c1c",
+  "merge": "5c6266228fa160446aae06595ebed33cdc3bfe67",
+  "files": {
+    "clone-daemon-restart.py": "b006ea6740435a4ce77a871dad20db2ac86d73f02ba90c3feccc79a668439321",
+    "trial.py": "0a79b3b70d18211fcacb94903332b81e71168ade18225909ed4d53e26be3d8c4",
+    "observer.py": "ac9d42efbcd4f18effc2bcd7a819af29d7cc6aaa5cbd13c94fbd05e37f39e1e1"
+  },
+  "manifest_sha256": "07df86d31ae945ab259efaeda9572dda1d2da15db9f9a89886fddb65f317a77e",
+  "stage_sha256": "8d71f7225650beb474dcae644ae24e45375f07a0382444f3363091aba7763f9c",
+  "stage_review": "LOCAL_SELF_CHECK_TRANSFER_ONLY_NOT_INDEPENDENT_REVIEW",
+  "transfer": "D:\\FDS-Isolated-Lab\\harbor-a3-transfer-20261008-192635",
+  "guest_bundle": "/root/hbr-a3-bundle-20261008-192635",
+  "share": "HBR_A3",
+  "target_vmx": "D:\\FDS-Isolated-Lab\\harbor01-20261008\\harbor01-test.vmx",
+  "host_before_selected_vmx": [
+    "displayName = \"harbor01-isolated-firstboot-20261008\"",
+    "ethernet0.present = \"FALSE\"",
+    "isolation.tools.hgfs.disable = \"TRUE\"",
+    "sharedFolder.maxNum = \"0\"",
+    "uuid.bios = \"56 4d 9e 38 f0 24 ef e2-b6 8f 13 7a 50 47 78 8a\""
+  ],
+  "snapshot": "before-address-A2-20261008-1500",
+  "snapshot_files": {
+    "harbor01-test-Snapshot1.vmsn": {
+      "size": 9072102
+    },
+    "harbor01-test-Snapshot1.vmem": {
+      "size": 12884901888
+    },
+    "v10test-cl2.vmdk": {
+      "size": 20878196736
+    },
+    "v10test-cl2-000001.vmdk": {
+      "size": 74383360
+    }
+  },
+  "snapshot_restore": "NOT_TESTED",
+  "preserved_receipts": {
+    "a2-stop-received": {
+      "files_verified": 13,
+      "manifest_sha256": "ff910546a4f53145565a870b5b166354ba68df9b7c53cfb8d8b706d89c2b26c1",
+      "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\harbor-clone-20261008\\a2-stop-received"
+    },
+    "a2r1-recovery-received": {
+      "files_verified": 35,
+      "manifest_sha256": "3361cc07d6ca6ba136650c8693963399b424a6a6973a95eb473edf84cf2fcf63",
+      "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\harbor-clone-20261008\\a2r1-recovery-received"
+    },
+    "profile-check-received": {
+      "files_verified": 30,
+      "manifest_sha256": "00166dba9cfbefee11192e14d8e592c3891b8a73eabb532830e95797a28d4abf",
+      "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\harbor-clone-20261008\\profile-check-received"
+    },
+    "a2-snapshot-complete-1517": {
+      "files_verified": 5,
+      "manifest_sha256": "d44f895337750f3537927b642773c9325b487a9d0e744d7527e4744473373db0",
+      "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\harbor-clone-20261008\\a2-snapshot-complete-1517"
+    }
+  },
+  "STAGING": "PREPARED_NOT_RUN",
+  "A3_RUNTIME": "NOT_RUN",
+  "cleanup": "After receipt, explicitly remove HBR_A3 and disable HGFS; no background cleanup assumed"
+}
