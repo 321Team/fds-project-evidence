@@ -1,0 +1,17 @@
+# generation log
+time_kst: 2026-10-08T18:30:49+09:00
+host: server05 (Windows PC, Git Bash) / Python 3.14.6 / git 2.54.0.windows.1
+source: 321Team/fds-project-evidence@9472f17f13dd6828b6895a47552dcdb9778fb25d:evidence/P1-MON-01/pf-run2-canary-20261006T0725Z/worker03/canary-20261006/fds-root-ca.crt
+source_blob: 0cfb3414d71c4501621e6c4aa6f72b29d317f355
+source_sha256: 20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f
+$ git show 9472f17f13dd6828b6895a47552dcdb9778fb25d:evidence/P1-MON-01/pf-run2-canary-20261006T0725Z/worker03/canary-20261006/fds-root-ca.crt > root-9472f17.crt
+$ python -I make_registry_ca_json.py root-9472f17.crt rosa-hcp-registry-additional-trusted-ca.json 10.1.93.54 harbor.fds.internal
+pem_sha256 20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f
+json_sha256 4d86507ecd81789e376669940f68b2dbb27f5989e6fd4315238c9f61a2401da4 bytes 4114
+keys ['10.1.93.54', 'harbor.fds.internal']
+RC=0
+$ python -I make_registry_ca_json.py root-9472f17.crt rerun.json harbor.fds.internal 10.1.93.54   # determinism check, reversed key order, output not kept
+pem_sha256 20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f
+json_sha256 4d86507ecd81789e376669940f68b2dbb27f5989e6fd4315238c9f61a2401da4 bytes 4114
+keys ['10.1.93.54', 'harbor.fds.internal']
+RC=0
