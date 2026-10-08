@@ -1,0 +1,34 @@
+{
+  "archive_sha256": "b35b12d381994518b244049abb942e934282c7ccc49dcee9ac1445663834282e",
+  "archive_bytes": 4416,
+  "raw_files": 14,
+  "archive_members": 16,
+  "collector_sha256": "cb259bd4a56ded1efa5b63f8bf146c727ab34a5e0c4e2bb3dc9522fffea04337",
+  "captured_at": "2026-10-08T13:25:23.724919+09:00",
+  "dates": {
+    "start.txt": "2026-10-08T12:18:06+09:00",
+    "end.txt": "2026-10-08T12:19:50+09:00",
+    "restart-start.txt": "2026-10-08T12:26:19+09:00",
+    "recovery-start.txt": "2026-10-08T12:38:56+09:00"
+  },
+  "rc": {
+    "up.rc": "0",
+    "restart.rc": "0",
+    "recovery.rc": "0"
+  },
+  "failure_manifest": "807139dab88cd3aec69e958d6e4e5d861f7d0d5b3196ab9522d018a0a4070a2b  /home/server08/harbor-clone-t0-01/state-errors.txt\ne64b02e1c36c9be48190914b12e62e49b53c7809a37ee2ac23b96950f3342cb7  /home/server08/harbor-clone-t0-01/docker-journal.txt\n",
+  "error_lines": [
+    "/harbor-jobservice 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/nginx 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/harbor-core 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/trivy-adapter 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/harbor-portal 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/registry 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/redis 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/harbor-db 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/registryctl 128 failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+    "/harbor-log 0 "
+  ],
+  "journal_lines": 62,
+  "secret_pattern_hits": []
+}
