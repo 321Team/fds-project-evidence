@@ -1,0 +1,29 @@
+# 출처: APP Lead 이재환이 2026-10-08 14:58 KST control01 터미널 출력을 채팅에 붙여 넣은 것 중 발췌.
+# 생략: 묶음 전달용 base64 본문(묶음은 source/p43-deploy-f618377.tgz에 원본 보존), 같은 붙여넣기 안에서 엉켜 표시된
+#       명령 재입력 줄(프롬프트 경로가 바뀌지 않아 실행되지 않은 것으로 판단). 아래 줄은 붙여넣기 원문 그대로다.
+dir=/home/server02/p43-diff-20261008T145807
+p43-deploy-f618377.tgz: 성공
+deploy:
+README.md  base  overlays
+
+deploy/base:
+fds-engine.yaml  kustomization.yaml  networkpolicy.yaml  transaction-api.yaml
+
+deploy/overlays:
+p1-onprem
+
+deploy/overlays/p1-onprem:
+deployment-p1.yaml  kustomization.yaml  services-p1.yaml
+server02@k8s-control01:~/p43-diff-20261008T145807$ K="sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf"
+$K kustomize deploy/overlays/p1-onprem > rendered.yaml; echo "kustomize rc=$?"; grep -c '^kind:' rendered.yaml; sha256sum rendered.yaml
+$K diff -k deploy/overlays/p1-onprem > diff.txt 2> diff.err; echo "diff rc=$?"; wc -l diff.txt diff.err; cat diff.err
+grep -E '^[-+]' diff.txt | grep -v -E '^(\+\+\+|---) ' | grep -v -E 'last-applied-configuration|"apiVersion"' | head -80
+[sudo] server02 암호: 
+kustomize rc=0
+12
+58fafcf70f2818c21d40db0bc9c02c66003bde5ac46e56fb39562d67aa6f0519  rendered.yaml
+diff rc=0
+0 diff.txt
+0 diff.err
+0 합계
+server02@k8s-control01:~/p43-diff-20261008T145807$

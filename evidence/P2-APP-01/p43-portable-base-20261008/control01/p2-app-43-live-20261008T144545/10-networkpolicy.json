@@ -1,0 +1,468 @@
+[
+ {
+  "apiVersion": "networking.k8s.io/v1",
+  "kind": "NetworkPolicy",
+  "metadata": {
+   "annotations": {
+    "kubectl.kubernetes.io/last-applied-configuration": {
+     "bytes": 200,
+     "mentions_postgres": false,
+     "sanitized": {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "NetworkPolicy",
+      "metadata": {
+       "annotations": {},
+       "name": "default-deny-all",
+       "namespace": "fds-app"
+      },
+      "spec": {
+       "podSelector": {},
+       "policyTypes": [
+        "Ingress",
+        "Egress"
+       ]
+      }
+     },
+     "sha256": "2ecb424fa292286f57757142ef1748e9be0eda90a5c309c60ac2452c3746f876"
+    }
+   },
+   "name": "default-deny-all",
+   "namespace": "fds-app"
+  },
+  "spec": {
+   "podSelector": {},
+   "policyTypes": [
+    "Ingress",
+    "Egress"
+   ]
+  }
+ },
+ {
+  "apiVersion": "networking.k8s.io/v1",
+  "kind": "NetworkPolicy",
+  "metadata": {
+   "annotations": {
+    "kubectl.kubernetes.io/last-applied-configuration": {
+     "bytes": 771,
+     "mentions_postgres": false,
+     "sanitized": {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "NetworkPolicy",
+      "metadata": {
+       "annotations": {},
+       "name": "fds-engine-allow",
+       "namespace": "fds-app"
+      },
+      "spec": {
+       "egress": [
+        {
+         "ports": [
+          {
+           "port": 53,
+           "protocol": "UDP"
+          },
+          {
+           "port": 53,
+           "protocol": "TCP"
+          }
+         ],
+         "to": [
+          {
+           "namespaceSelector": {
+            "matchLabels": {
+             "kubernetes.io/metadata.name": "kube-system"
+            }
+           },
+           "podSelector": {
+            "matchLabels": {
+             "k8s-app": "kube-dns"
+            }
+           }
+          }
+         ]
+        }
+       ],
+       "ingress": [
+        {
+         "from": [
+          {
+           "podSelector": {
+            "matchLabels": {
+             "app": "transaction-api"
+            }
+           }
+          }
+         ],
+         "ports": [
+          {
+           "port": 8001,
+           "protocol": "TCP"
+          }
+         ]
+        },
+        {
+         "from": [
+          {
+           "namespaceSelector": {
+            "matchLabels": {
+             "kubernetes.io/metadata.name": "monitoring-api"
+            }
+           },
+           "podSelector": {
+            "matchLabels": {
+             "app": "prometheus"
+            }
+           }
+          }
+         ],
+         "ports": [
+          {
+           "port": 9090,
+           "protocol": "TCP"
+          }
+         ]
+        }
+       ],
+       "podSelector": {
+        "matchLabels": {
+         "app": "fds-engine"
+        }
+       },
+       "policyTypes": [
+        "Ingress",
+        "Egress"
+       ]
+      }
+     },
+     "sha256": "185b17c32a1c8346096ab15f8d3babbb5a5c998076709bdc85b8fa809d7fd303"
+    }
+   },
+   "name": "fds-engine-allow",
+   "namespace": "fds-app"
+  },
+  "spec": {
+   "egress": [
+    {
+     "ports": [
+      {
+       "port": 53,
+       "protocol": "UDP"
+      },
+      {
+       "port": 53,
+       "protocol": "TCP"
+      }
+     ],
+     "to": [
+      {
+       "namespaceSelector": {
+        "matchLabels": {
+         "kubernetes.io/metadata.name": "kube-system"
+        }
+       },
+       "podSelector": {
+        "matchLabels": {
+         "k8s-app": "kube-dns"
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "ingress": [
+    {
+     "from": [
+      {
+       "podSelector": {
+        "matchLabels": {
+         "app": "transaction-api"
+        }
+       }
+      }
+     ],
+     "ports": [
+      {
+       "port": 8001,
+       "protocol": "TCP"
+      }
+     ]
+    },
+    {
+     "from": [
+      {
+       "namespaceSelector": {
+        "matchLabels": {
+         "kubernetes.io/metadata.name": "monitoring-api"
+        }
+       },
+       "podSelector": {
+        "matchLabels": {
+         "app": "prometheus"
+        }
+       }
+      }
+     ],
+     "ports": [
+      {
+       "port": 9090,
+       "protocol": "TCP"
+      }
+     ]
+    }
+   ],
+   "podSelector": {
+    "matchLabels": {
+     "app": "fds-engine"
+    }
+   },
+   "policyTypes": [
+    "Ingress",
+    "Egress"
+   ]
+  }
+ },
+ {
+  "apiVersion": "networking.k8s.io/v1",
+  "kind": "NetworkPolicy",
+  "metadata": {
+   "annotations": {
+    "kubectl.kubernetes.io/last-applied-configuration": {
+     "bytes": 950,
+     "mentions_postgres": false,
+     "sanitized": {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "NetworkPolicy",
+      "metadata": {
+       "annotations": {},
+       "name": "transaction-api-allow",
+       "namespace": "fds-app"
+      },
+      "spec": {
+       "egress": [
+        {
+         "ports": [
+          {
+           "port": 8001,
+           "protocol": "TCP"
+          }
+         ],
+         "to": [
+          {
+           "podSelector": {
+            "matchLabels": {
+             "app": "fds-engine"
+            }
+           }
+          }
+         ]
+        },
+        {
+         "ports": [
+          {
+           "port": 5432,
+           "protocol": "TCP"
+          }
+         ],
+         "to": [
+          {
+           "ipBlock": {
+            "cidr": "10.1.93.55/32"
+           }
+          }
+         ]
+        },
+        {
+         "ports": [
+          {
+           "port": 53,
+           "protocol": "UDP"
+          },
+          {
+           "port": 53,
+           "protocol": "TCP"
+          }
+         ],
+         "to": [
+          {
+           "namespaceSelector": {
+            "matchLabels": {
+             "kubernetes.io/metadata.name": "kube-system"
+            }
+           },
+           "podSelector": {
+            "matchLabels": {
+             "k8s-app": "kube-dns"
+            }
+           }
+          }
+         ]
+        }
+       ],
+       "ingress": [
+        {
+         "from": [
+          {
+           "ipBlock": {
+            "cidr": "10.1.93.50/32"
+           }
+          }
+         ],
+         "ports": [
+          {
+           "port": 8000,
+           "protocol": "TCP"
+          }
+         ]
+        },
+        {
+         "from": [
+          {
+           "namespaceSelector": {
+            "matchLabels": {
+             "kubernetes.io/metadata.name": "monitoring-api"
+            }
+           },
+           "podSelector": {
+            "matchLabels": {
+             "app": "prometheus"
+            }
+           }
+          }
+         ],
+         "ports": [
+          {
+           "port": 9091,
+           "protocol": "TCP"
+          }
+         ]
+        }
+       ],
+       "podSelector": {
+        "matchLabels": {
+         "app": "transaction-api"
+        }
+       },
+       "policyTypes": [
+        "Ingress",
+        "Egress"
+       ]
+      }
+     },
+     "sha256": "ef51d2a6735dc806eeca3cfc507291fa84774e2dafb50e8311955195b8697914"
+    }
+   },
+   "name": "transaction-api-allow",
+   "namespace": "fds-app"
+  },
+  "spec": {
+   "egress": [
+    {
+     "ports": [
+      {
+       "port": 8001,
+       "protocol": "TCP"
+      }
+     ],
+     "to": [
+      {
+       "podSelector": {
+        "matchLabels": {
+         "app": "fds-engine"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ports": [
+      {
+       "port": 5432,
+       "protocol": "TCP"
+      }
+     ],
+     "to": [
+      {
+       "ipBlock": {
+        "cidr": "10.1.93.55/32"
+       }
+      }
+     ]
+    },
+    {
+     "ports": [
+      {
+       "port": 53,
+       "protocol": "UDP"
+      },
+      {
+       "port": 53,
+       "protocol": "TCP"
+      }
+     ],
+     "to": [
+      {
+       "namespaceSelector": {
+        "matchLabels": {
+         "kubernetes.io/metadata.name": "kube-system"
+        }
+       },
+       "podSelector": {
+        "matchLabels": {
+         "k8s-app": "kube-dns"
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "ingress": [
+    {
+     "from": [
+      {
+       "ipBlock": {
+        "cidr": "10.1.93.50/32"
+       }
+      }
+     ],
+     "ports": [
+      {
+       "port": 8000,
+       "protocol": "TCP"
+      }
+     ]
+    },
+    {
+     "from": [
+      {
+       "namespaceSelector": {
+        "matchLabels": {
+         "kubernetes.io/metadata.name": "monitoring-api"
+        }
+       },
+       "podSelector": {
+        "matchLabels": {
+         "app": "prometheus"
+        }
+       }
+      }
+     ],
+     "ports": [
+      {
+       "port": 9091,
+       "protocol": "TCP"
+      }
+     ]
+    }
+   ],
+   "podSelector": {
+    "matchLabels": {
+     "app": "transaction-api"
+    }
+   },
+   "policyTypes": [
+    "Ingress",
+    "Egress"
+   ]
+  }
+ }
+]
