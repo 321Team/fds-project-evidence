@@ -1,0 +1,54 @@
+{
+  "recorded_at_kst": "2026-10-08T12:29:57.651249+09:00",
+  "provenance": "User supplied command/console screenshots; underlying guest log files not yet received",
+  "files": [
+    {
+      "file": "restart-command-rc.png",
+      "sha256": "a192eadc9c03cfa0da42663022751a007ba213e5d60a69107c23f35528344027"
+    },
+    {
+      "file": "containers-and-listeners.png",
+      "sha256": "86ace1e1bac28db5529f4af64d60f1f1d16efd6b4a33497e965414a18fcd4ff3"
+    }
+  ],
+  "restart_command": "sudo timeout 120s systemctl restart docker",
+  "observed_restart_rc_file": "0",
+  "before_observation": "All 10 containers healthy with 443 and 1514 listening",
+  "after_observation": {
+    "exited_128": 9,
+    "healthy": 1,
+    "healthy_container": "harbor-log",
+    "logger_uptime_visible": "55 seconds",
+    "1514_listen": "127.0.0.1:1514",
+    "443_listen": false,
+    "80_listen": false
+  },
+  "short_ids_reread_from_both_before_after_screenshots": {
+    "harbor-jobservice": "a7528154bcba",
+    "nginx": "700205e5a7cd",
+    "harbor-core": "543e086cb531",
+    "trivy-adapter": "07757cdb93e4",
+    "harbor-portal": "1ca197195a59",
+    "registry": "513e7ac0612e",
+    "redis": "c6c9c2320eca",
+    "harbor-db": "b93d011b7ee8",
+    "registryctl": "c26ae8de4b81",
+    "harbor-log": "48ab208afc77"
+  },
+  "short_ids_match_before_after": true,
+  "prior_receipt_transcription_correction": {
+    "harbor-core": {
+      "prior_typed": "436e086cb531",
+      "correct_screen_value": "543e086cb531"
+    },
+    "trivy-adapter": {
+      "prior_typed": "07757cdb9924",
+      "correct_screen_value": "07757cdb93e4"
+    }
+  },
+  "verdict": "Automatic recovery failure observed after daemon restart in reconstructed isolated clone; daemon command rc0 is not Harbor recovery success",
+  "root_cause": "NOT_YET_CONFIRMED; State.Error and daemon journal required to distinguish IPv6 address error and logger readiness race",
+  "observation_limit": "Point-in-time snapshot around one minute; exact event times and eventual later state not established",
+  "runtime_changes_by_assistant_this_turn": "NONE",
+  "next": "Preserve per-container State.Error and current trial daemon journal before recovery; do not repeat restart or reboot."
+}

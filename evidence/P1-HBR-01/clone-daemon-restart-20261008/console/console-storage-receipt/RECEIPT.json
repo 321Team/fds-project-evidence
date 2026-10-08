@@ -1,0 +1,41 @@
+{
+  "recorded_at_kst": "2026-10-08T12:03:39.139847+09:00",
+  "provenance": "User supplied console screenshots; no independent guest command execution",
+  "files": [
+    {
+      "file": "docker-context-images.png",
+      "sha256": "3545bd534c1241dfdb4bfe17833526230fca2137e7db78503b75ffb082377d36",
+      "bytes": 136422
+    },
+    {
+      "file": "storage-network.png",
+      "sha256": "18c65e796950500abcea079fd9640383d14818eb94876bd00c1284b3a08094fc",
+      "bytes": 110504
+    }
+  ],
+  "observed": {
+    "docker_context": "default",
+    "endpoint": "unix:///var/run/docker.sock",
+    "DockerRootDir": "/var/lib/docker",
+    "harbor_v2_13_1_images_present": true,
+    "container_count_from_prior_screenshot": 0,
+    "disk": "sda 250G",
+    "mounts": {
+      "/": "cs-root 160.2G xfs",
+      "/home": "cs-home 29.4G xfs",
+      "/boot": "sda2 2G xfs",
+      "/boot/efi": "sda1 600M vfat"
+    },
+    "compose_file": "/home/server08/harbor/docker-compose.yml",
+    "compose_size_bytes": 6617,
+    "compose_sha256": "NOT_YET_COLLECTED",
+    "network_interfaces": [
+      "lo",
+      "docker0"
+    ],
+    "physical_guest_nic_present": false,
+    "ls_command_typo": "/data/var/lib/docker was supplied as one path; /data and /var/lib/docker were not independently listed"
+  },
+  "assessment": "Harbor images and compose file exist, current daemon lists no containers. Preclone compose down/removal is a hypothesis, not confirmed. Data completeness and startup reproduction prerequisites remain unverified.",
+  "runtime_changes": "NONE"
+}

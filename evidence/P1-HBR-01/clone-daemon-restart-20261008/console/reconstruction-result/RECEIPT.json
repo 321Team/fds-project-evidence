@@ -1,0 +1,96 @@
+{
+  "recorded_at_kst": "2026-10-08T12:22:41.080927+09:00",
+  "provenance": "User-executed commands in working VM console; user-supplied screenshots, not direct agent guest command output",
+  "files": [
+    {
+      "file": "01-up-rc-and-create.png",
+      "sha256": "0af046b9bae96288b0d124d6707b4ea39e8ee84b2309e4282797a29c0ae1e29b"
+    },
+    {
+      "file": "02-up-started.png",
+      "sha256": "a891e99b9eaf262c71b4f78f19b2721457d2405652a05feeb21d88a3011b0781"
+    },
+    {
+      "file": "03-containers.png",
+      "sha256": "a0105b084cb5cea5003e8dd0e02efd5b803b1ea05947239d9893026a955b6ee4"
+    },
+    {
+      "file": "04-listeners.png",
+      "sha256": "c175db02956991b767075402c7e69a8481b53bf9eba68614797e5c0681510612"
+    }
+  ],
+  "command": "sudo docker compose -f /home/server08/harbor/docker-compose.yml up -d --pull never --no-build",
+  "observed_up_rc_file_content": "0",
+  "guest_log_directory": "/home/server08/harbor-clone-t0-01",
+  "guest_log_originals_received": false,
+  "execution_start_end_times": "Files created in guest, values not yet supplied",
+  "containers": [
+    {
+      "name": "harbor-jobservice",
+      "short_id": "a7528154bcba",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "nginx",
+      "short_id": "700205e5a7cd",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "harbor-core",
+      "short_id": "436e086cb531",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "trivy-adapter",
+      "short_id": "07757cdb9924",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "harbor-portal",
+      "short_id": "1ca197195a59",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "registry",
+      "short_id": "513e7ac0612e",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "redis",
+      "short_id": "c6c9c2320eca",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "harbor-db",
+      "short_id": "b93d011b7ee8",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "registryctl",
+      "short_id": "c26ae8de4b81",
+      "observed_status": "Up About a minute (healthy)"
+    },
+    {
+      "name": "harbor-log",
+      "short_id": "48ab208afc77",
+      "observed_status": "Up About a minute (healthy)"
+    }
+  ],
+  "observed_ports": [
+    "127.0.0.1:1514",
+    "0.0.0.0:80",
+    "[::]:80",
+    "0.0.0.0:443",
+    "[::]:443"
+  ],
+  "verdict": "RECONSTRUCTION_STARTUP_OBSERVED_10_HEALTHY; DAEMON_RESTART_AND_VM_REBOOT_NOT_TESTED",
+  "not_proven": [
+    "Exact image digest and full container IDs",
+    "TLS and Harbor API acceptance",
+    "Actual syslog message persistence",
+    "Complete DB/registry data integrity",
+    "External consumer connectivity",
+    "Automatic startup after daemon/VM restart"
+  ],
+  "next": "Preserve full IDs and state before a separate bounded daemon restart trial; do not mix VM reboot or configuration changes."
+}

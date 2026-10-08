@@ -1,0 +1,36 @@
+{
+  "recorded_at_kst": "2026-10-08T12:43:15.243504+09:00",
+  "provenance": "user-executed console commands and user-supplied original screenshots",
+  "files": [
+    {
+      "file": "recovery-command-rc.png",
+      "sha256": "fce1b6cec416855d913736b38ae5f1f3ed411ba1c7c6511f2bfc6c851c8f2bf5"
+    },
+    {
+      "file": "containers-healthy.png",
+      "sha256": "839c671086f6747292df5517b47f3115ea76e7d47d6c1dc5dc8eb94249fe2563"
+    },
+    {
+      "file": "listeners-restored.png",
+      "sha256": "77bc51d8132b6b1854ce443bb8226c2666524635e96e6831b2b0734adcb9dec7"
+    }
+  ],
+  "observed_recovery_rc_file": "0",
+  "command": "sudo docker compose -f /home/server08/harbor/docker-compose.yml start",
+  "healthy_count": 10,
+  "container_short_ids_unchanged_from_corrected_before_after_screenshots": true,
+  "apps_uptime_visible": "2 minutes",
+  "logger_uptime_visible": "14 minutes",
+  "listeners": [
+    "127.0.0.1:1514",
+    "0.0.0.0:80",
+    "[::]:80",
+    "0.0.0.0:443",
+    "[::]:443"
+  ],
+  "config_change_in_recovery": "NONE_IN_SUPPLIED_COMMAND",
+  "failure_hash_command_observed": true,
+  "failure_sha256_values": "NOT_YET_RECEIVED",
+  "verdict": "MANUAL_RECOVERY_OBSERVED; automatic-start defect unresolved",
+  "interpretation": "Success with original localhost syslog configuration after logger readiness supports timing/order involvement. IPv4 fallback behavior and whether explicit IPv4 alone fixes daemon restart remain unproven."
+}

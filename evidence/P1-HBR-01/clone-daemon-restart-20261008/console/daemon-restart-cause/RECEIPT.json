@@ -1,0 +1,48 @@
+{
+  "recorded_at_kst": "2026-10-08T12:36:33.297330+09:00",
+  "provenance": "User supplied console screenshots; original guest files retained in guest but not yet transferred",
+  "files": [
+    {
+      "file": "state-errors.png",
+      "sha256": "e39f9e57f9fec3971c1431a86c7340e392c003c716aa7363016b95ce326ece20"
+    },
+    {
+      "file": "docker-journal-errors.png",
+      "sha256": "2221806c8281aafb3300289b440ca5869979f7caf7304b4e89adb5241c0d0171"
+    }
+  ],
+  "observed_app_errors_count": 9,
+  "error": "failed to create task for container: failed to initialize logging driver: dial tcp [::1]:1514: connect: connection refused",
+  "observed_affected_names": [
+    "harbor-jobservice",
+    "nginx",
+    "harbor-core",
+    "trivy-adapter",
+    "harbor-portal",
+    "registry",
+    "redis",
+    "harbor-db",
+    "registryctl"
+  ],
+  "logger_state_error": "empty; ExitCode field 0 in supplied inspect output",
+  "journal_time_kst": "2026-10-08T12:27:17+09:00",
+  "daemon_pid_in_journal": 10761,
+  "direct_cause": "Docker logging driver initialization failed before application task creation because the attempted IPv6 syslog endpoint refused connection",
+  "not_established": [
+    "IPv4 listener readiness at each failure instant",
+    "IPv4 fallback attempt/order",
+    "Whether explicit IPv4 alone removes daemon startup readiness race",
+    "VM reboot behavior",
+    "Full raw-log integrity/command exit codes beyond supplied screenshots"
+  ],
+  "correlation": "Same unchanged Compose hash and same failure signature as prior production evidence; isolated reconstructed clone has no physical guest NIC",
+  "code_candidate": {
+    "repo": "321Team/infra-harbor-trivy",
+    "pr": 12,
+    "head": "2b3b3b17417c9e1c4d6c8a0fdd9cb95cad5a03f7",
+    "review": "PENDING, reviews empty at latest query",
+    "applied_to_clone": false,
+    "applied_to_production": false
+  },
+  "next": "Preserve failure files, then one manual start of existing objects with logger ready and unchanged config; record separate recovery result before further tests."
+}

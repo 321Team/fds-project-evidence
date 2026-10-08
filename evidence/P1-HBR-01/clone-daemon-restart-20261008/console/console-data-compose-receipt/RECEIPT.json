@@ -1,0 +1,49 @@
+{
+  "recorded_at_kst": "2026-10-08T12:07:25.544832+09:00",
+  "source": "user-supplied console screenshots",
+  "files": [
+    {
+      "file": "data-directories.png",
+      "sha256": "2d7e1fd10c4910ee13d02104fb9a6c29835f3a63124347b817022b8d910926fe"
+    },
+    {
+      "file": "docker-volumes.png",
+      "sha256": "46128d4add84339c1b4146e729a07e1dfb934590f795dbfba4b6f6a2b6b32bd1"
+    },
+    {
+      "file": "compose-hash-services.png",
+      "sha256": "e8560079ff0fa84660699dbf029b7c65d6b428ba46683d3a5636a99fa2c529d5"
+    }
+  ],
+  "compose_sha256_screen": "0a84f57692268335eeedf45411e025d784e520bf749fa3501a3800cdfcb14ef0",
+  "matches_prior_production_compose_sha256": true,
+  "services": [
+    "log",
+    "postgresql",
+    "registry",
+    "redis",
+    "core",
+    "portal",
+    "proxy",
+    "jobservice",
+    "registryctl",
+    "trivy-adapter"
+  ],
+  "data_directories": [
+    "ca_download",
+    "database",
+    "job_logs",
+    "redis",
+    "registry",
+    "secret",
+    "trivy-adapter"
+  ],
+  "docker_local_volumes_present": true,
+  "limits": [
+    "Directory and volume existence do not prove data integrity or service-volume mapping",
+    "Exact preclone shutdown command is unknown",
+    "No containers listed by current daemon in prior screenshot",
+    "No container creation/start has been performed by assistant"
+  ],
+  "next": "Confirm volume mount sources and preclone removal history before reconstructing baseline"
+}

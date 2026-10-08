@@ -1,0 +1,35 @@
+{
+  "recorded_at_kst": "2026-10-08T12:13:21.843148+09:00",
+  "source": "user-forwarded provider correction and console screenshot",
+  "provider_report": {
+    "shutdown_commands": [
+      "cd /home/server08/harbor && sudo docker compose down",
+      "sudo shutdown -h now"
+    ],
+    "guest_shutdown_kst": "2026-10-08T11:10:03+09:00",
+    "reported_vmx_exit_code": 0,
+    "clone_started_kst": "2026-10-08T11:10:51+09:00",
+    "original_recovery": "docker compose up -d followed by 8 healthy components reported from control01 curl",
+    "previous_443_delay_interpretation": "WITHDRAWN; no containers existed after down; not autostart-failure evidence"
+  },
+  "provider_vmware_log_received": false,
+  "provider_health_raw_received": false,
+  "screenshot_sha256": "66b058f656aaa67f75a7f6bdf6595b98e29f2ce5d4da9af07e0329421f25b90b",
+  "visible_bind_mounts": {
+    "/data/registry": "/storage",
+    "/data/database": "/var/lib/postgresql/data",
+    "/data/redis": "/var/lib/redis",
+    "/data/job_logs": "/var/log/jobs",
+    "/data/ca_download": "/etc/core/ca",
+    "/data": "/data",
+    "/data/secret/cert": "/etc/cert"
+  },
+  "visible_du_h": {
+    "/data/database": "67M",
+    "/data/registry": "1.2G",
+    "/data/redis": "108K"
+  },
+  "assessment": "Clone first boot with zero Harbor containers is consistent with preclone compose down, not an automatic-start failure. Recreate containers from unchanged Compose and existing images/bind data in isolated working VM before restart testing.",
+  "data_integrity_limit": "Existence, path mapping and approximate sizes confirmed; database/registry application integrity not yet verified",
+  "next_execution_status": "PREPARED_NOT_EXECUTED"
+}

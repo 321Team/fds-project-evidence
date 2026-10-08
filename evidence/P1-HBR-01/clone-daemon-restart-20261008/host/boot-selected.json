@@ -1,0 +1,71 @@
+{
+  "provenance": "Selected fields from local tool-generated boot-launch.json and boot-observation.json; unrelated VM inventory omitted",
+  "source_sha256": {
+    "boot-launch.json": "50bb06237c0e35e4679a33748a3640ead8e14e779bfd9c6c54a2d788ea6327af",
+    "boot-observation.json": "ff06f9966170206759bf4035b5dc3879fcd55e6f76b344b51e2dcca61e7e0ec7"
+  },
+  "launch": {
+    "started_at_kst": "2026-10-08T11:49:30.664905+09:00",
+    "vmx": "D:\\FDS-Isolated-Lab\\harbor01-20261008\\harbor01-test.vmx",
+    "preboot_vmx_sha256": "e243954c1f6029daaa0d9e6406626ee14dac910060c90f1d75003ab669dd0f2d",
+    "isolation": "NO_VIRTUAL_NIC; shared folders USB ISO disabled",
+    "command": [
+      "C:/Program Files/VMware/VMware Workstation/vmrun.exe",
+      "-T",
+      "ws",
+      "start",
+      "D:\\FDS-Isolated-Lab\\harbor01-20261008\\harbor01-test.vmx",
+      "gui"
+    ],
+    "status": "COMMAND_RETURNED",
+    "rc": 0,
+    "stdout": "",
+    "stderr": "",
+    "finished_at_kst": "2026-10-08T11:49:35.252487+09:00"
+  },
+  "observation": {
+    "checked_at_kst": "2026-10-08T11:51:40.884296+09:00",
+    "tools_state": {
+      "rc": 0,
+      "stdout": "running\n"
+    },
+    "postboot_vmx_selected": {
+      "sata0:1.present": "FALSE",
+      "ethernet0.present": "FALSE",
+      "ethernet0.startConnected": "FALSE",
+      "sata0:1.startConnected": "FALSE",
+      "sharedFolder.maxNum": "0",
+      "uuid.action": "create",
+      "uuid.bios": "56 4d 9e 38 f0 24 ef e2-b6 8f 13 7a 50 47 78 8a",
+      "uuid.location": "56 4d 9e 38 f0 24 ef e2-b6 8f 13 7a 50 47 78 8a"
+    },
+    "source_preservation": {
+      "harbor01-test.nvram": {
+        "same_size_and_mtime": true,
+        "sha256_match": true
+      },
+      "harbor01-test.vmsd": {
+        "same_size_and_mtime": true,
+        "sha256_match": true
+      },
+      "harbor01-test.vmx": {
+        "same_size_and_mtime": true,
+        "sha256_match": true
+      },
+      "harbor01-test.vmxf": {
+        "same_size_and_mtime": true,
+        "sha256_match": true
+      },
+      "v10test-cl2.vmdk": {
+        "same_size_and_mtime": true
+      }
+    },
+    "guest_observation": "PENDING_USER_CONSOLE_OUTPUT",
+    "capture_attempts": [
+      "vmrun captureScreen rejected: authenticated guest session required",
+      "Computer Use screenshot timeout",
+      "Computer Use retry timeout"
+    ],
+    "harbor_runtime_acceptance": "NOT_VERIFIED"
+  }
+}
