@@ -1,0 +1,55 @@
+[
+  {
+    "label": "allocate",
+    "command": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=10",
+      "fds-ansible01",
+      "umask 077; test \"$(id -un)\" = server01_ansible && test \"$(hostname)\" = ansible01 && mktemp -d /home/server01_ansible/worker02-dns-stage.XXXXXXXX"
+    ],
+    "rc": 0,
+    "at": "2026-10-08T17:17:15.974800+09:00"
+  },
+  {
+    "label": "transfer",
+    "command": [
+      "scp",
+      "-o",
+      "BatchMode=yes",
+      "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\probe-ansible-next-20261008\\ansible-source.bundle",
+      "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\probe-ansible-next-20261008\\ANSIBLE_SOURCE_SHA256SUMS",
+      "fds-ansible01:/home/server01_ansible/worker02-dns-stage.yJfHG0vS/"
+    ],
+    "rc": 0,
+    "at": "2026-10-08T17:17:16.192200+09:00"
+  },
+  {
+    "label": "transfer-script",
+    "command": [
+      "scp",
+      "-o",
+      "BatchMode=yes",
+      "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\worker02-controller-stage-20261008\\stage-controller.sh",
+      "fds-ansible01:/home/server01_ansible/worker02-dns-stage.yJfHG0vS/"
+    ],
+    "rc": 0,
+    "at": "2026-10-08T17:17:16.401356+09:00"
+  },
+  {
+    "label": "controller-stage",
+    "command": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=10",
+      "fds-ansible01",
+      "bash /home/server01_ansible/worker02-dns-stage.yJfHG0vS/stage-controller.sh"
+    ],
+    "rc": 0,
+    "at": "2026-10-08T17:17:18.723393+09:00"
+  }
+]
