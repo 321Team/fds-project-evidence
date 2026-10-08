@@ -1,0 +1,11 @@
+create Pod: sec01-probe-test-1008001645-22503-9859
+create Service: sec01-probe-test-1008001645-22503-9859
+ABORT: T0: Pod 조회 실패/시간 초과
+정리 시작
+정리 끝 clean_fail=0
+종료 EXIT_CODE=3 out=p1-sec01-ac06-probe-run-20261008T001645Z.koLVAA
+image_cached_on_target_node=yes(간접 근거: 같은 digest 를 쓰는 Pod 존재) node=k8s-worker01 digest=sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33 pull_policy=Never
+PROVISIONAL=true SEAL_STATUS=PENDING (관측 요약이며 판정이 아님)
+nodes_post=6/6_Ready
+baseline_pods_diff_rc=0 baseline_endpointslices_diff_rc=0
+observation_exit_code=3 cleanup_failed=0 elapsed_sec=92

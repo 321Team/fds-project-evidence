@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sec01-probe-test-1008001645-22503-9859
+  namespace: fds-app
+  labels:
+    app.kubernetes.io/managed-by: sec01-ac06-test
+    sec01-probe-test: "1008001645-22503-9859"
+spec:
+  automountServiceAccountToken: false
+  enableServiceLinks: false
+  hostNetwork: false
+  hostPID: false
+  hostIPC: false
+  nodeSelector:
+    kubernetes.io/hostname: k8s-worker01
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 5
+  activeDeadlineSeconds: 1800
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 10001
+    runAsGroup: 999
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - name: probe
+      image: 10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33
+      imagePullPolicy: Never
+      command: ["/venv/bin/python3", "-I", "-B", "-c", "import pathlib,time; [pathlib.Path('/tmp/'+n).touch() for n in ('ready','alive')]; time.sleep(3600)"]
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        capabilities:
+          drop: ["ALL"]
+      resources:
+        requests:
+          cpu: 20m
+          memory: 32Mi
+        limits:
+          cpu: 200m
+          memory: 128Mi
+      volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+      readinessProbe:
+        exec:
+          command: ["/venv/bin/python3", "-I", "-B", "-c", "import os,sys; sys.exit(0 if os.path.exists('/tmp/ready') else 1)"]
+        initialDelaySeconds: 2
+        periodSeconds: 5
+        timeoutSeconds: 5
+        successThreshold: 1
+        failureThreshold: 2
+      livenessProbe:
+        exec:
+          command: ["/venv/bin/python3", "-I", "-B", "-c", "import os,sys; sys.exit(0 if os.path.exists('/tmp/alive') else 1)"]
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        timeoutSeconds: 5
+        successThreshold: 1
+        failureThreshold: 3
+  volumes:
+    - name: tmp
+      emptyDir:
+        sizeLimit: 1Mi
