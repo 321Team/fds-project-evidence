@@ -1,0 +1,22 @@
+[FIRING:1] FDSMonitoringPipelineTest info (관측 알림 전달 시험 p0-pipeline-test)
+Alerts Firing:
+Labels:
+alertname = FDSMonitoringPipelineTest
+kr = 관측 알림 전달 시험
+purpose = p0-pipeline-test
+severity = info
+Annotations:
+description = S7b. 앱 지표와 무관한 참/거짓 조건으로 Firing→수신→해소 전이를 확인한다. 기본은 비활성.
+summary = P0 관측 파이프라인 전달 시험 (Prometheus→Alertmanager)
+Source: http://prometheus-d8949bd64-2zc4m:9090/graph?g0.expr=vector(1)+%3D%3D+1&g0.tab=1
+[RESOLVED] FDSMonitoringPipelineTest info (관측 알림 전달 시험 p0-pipeline-test)
+Alerts Resolved:
+Labels:
+alertname = FDSMonitoringPipelineTest
+kr = 관측 알림 전달 시험
+purpose = p0-pipeline-test
+severity = info
+Annotations:
+description = S7b. 앱 지표와 무관한 참/거짓 조건으로 Firing→수신→해소 전이를 확인한다. 기본은 비활성.
+summary = P0 관측 파이프라인 전달 시험 (Prometheus→Alertmanager)
+Source: http://prometheus-d8949bd64-2zc4m:9090/graph?g0.expr=vector(1)+%3D%3D+0&g0.tab=1
