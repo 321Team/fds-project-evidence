@@ -1,0 +1,218 @@
+docker-lab	Set up job	﻿2026-10-08T00:25:14.5132871Z Current runner version: '2.337.0'
+docker-lab	Set up job	2026-10-08T00:25:14.5210177Z ##[group]Runner Image Provisioner
+docker-lab	Set up job	2026-10-08T00:25:14.5211846Z Hosted Compute Agent
+docker-lab	Set up job	2026-10-08T00:25:14.5212949Z Version: 20261002.596
+docker-lab	Set up job	2026-10-08T00:25:14.5234474Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+docker-lab	Set up job	2026-10-08T00:25:14.5236022Z Build Date: 2026-10-02T22:28:27Z
+docker-lab	Set up job	2026-10-08T00:25:14.5237472Z Worker ID: {7e69fb22-8999-4132-87ca-aba4b2e7d34f}
+docker-lab	Set up job	2026-10-08T00:25:14.5238949Z Region: eastus2
+docker-lab	Set up job	2026-10-08T00:25:14.5239950Z Cloud: Azure
+docker-lab	Set up job	2026-10-08T00:25:14.5241024Z ##[endgroup]
+docker-lab	Set up job	2026-10-08T00:25:14.5244221Z ##[group]Operating System
+docker-lab	Set up job	2026-10-08T00:25:14.5245428Z Ubuntu
+docker-lab	Set up job	2026-10-08T00:25:14.5246369Z 24.04.5
+docker-lab	Set up job	2026-10-08T00:25:14.5247281Z LTS
+docker-lab	Set up job	2026-10-08T00:25:14.5248446Z ##[endgroup]
+docker-lab	Set up job	2026-10-08T00:25:14.5249520Z ##[group]Runner Image
+docker-lab	Set up job	2026-10-08T00:25:14.5250808Z Image: ubuntu-24.04
+docker-lab	Set up job	2026-10-08T00:25:14.5251871Z Version: 20261004.327.1
+docker-lab	Set up job	2026-10-08T00:25:14.5253772Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+docker-lab	Set up job	2026-10-08T00:25:14.5277278Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+docker-lab	Set up job	2026-10-08T00:25:14.5279181Z ##[endgroup]
+docker-lab	Set up job	2026-10-08T00:25:14.5281171Z ##[group]GITHUB_TOKEN Permissions
+docker-lab	Set up job	2026-10-08T00:25:14.5284834Z Contents: read
+docker-lab	Set up job	2026-10-08T00:25:14.5285867Z Metadata: read
+docker-lab	Set up job	2026-10-08T00:25:14.5286907Z ##[endgroup]
+docker-lab	Set up job	2026-10-08T00:25:14.5290018Z Secret source: Actions
+docker-lab	Set up job	2026-10-08T00:25:14.5291832Z Cache mode: write
+docker-lab	Set up job	2026-10-08T00:25:14.5293363Z Prepare workflow directory
+docker-lab	Set up job	2026-10-08T00:25:14.5856018Z Prepare all required actions
+docker-lab	Set up job	2026-10-08T00:25:14.5947783Z Getting action download info
+docker-lab	Set up job	2026-10-08T00:25:14.9372739Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+docker-lab	Set up job	2026-10-08T00:25:15.0515918Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+docker-lab	Set up job	2026-10-08T00:25:15.2667427Z Complete job name: docker-lab
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	﻿2026-10-08T00:25:15.3642794Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3644170Z with:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3644671Z   persist-credentials: false
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3645218Z   repository: 321Team/infra-harbor-trivy
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3648900Z   token: ***
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3649339Z   ssh-strict: true
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3649779Z   ssh-user: git
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3650268Z   clean: true
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3650780Z   sparse-checkout-cone-mode: true
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3651389Z   fetch-depth: 1
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3652087Z   fetch-tags: false
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3652604Z   show-progress: true
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3653111Z   lfs: false
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3653588Z   submodules: false
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3654434Z   set-safe-directory: true
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3655024Z   allow-unsafe-pr-checkout: false
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.3655917Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.5036467Z Syncing repository: 321Team/infra-harbor-trivy
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6282319Z ##[group]Getting Git version info
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6283779Z Working directory is '/home/runner/work/infra-harbor-trivy/infra-harbor-trivy'
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6286114Z [command]/usr/bin/git version
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6287031Z git version 2.55.0
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6289679Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6296781Z Temporarily overriding HOME='/home/runner/work/_temp/b73de421-fa29-42b9-99bb-058eece3ceee' before making global git config changes
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6299036Z Adding repository directory to the temporary git global config as a safe directory
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6301049Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-harbor-trivy/infra-harbor-trivy
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6304236Z Deleting the contents of '/home/runner/work/infra-harbor-trivy/infra-harbor-trivy'
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6306102Z ##[group]Determining repository object format
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6307434Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6308606Z ##[group]Initializing the repository
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6310171Z [command]/usr/bin/git init /home/runner/work/infra-harbor-trivy/infra-harbor-trivy
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6311869Z hint: Using 'master' as the name for the initial branch. This default branch name
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6313405Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6315241Z hint: to use in all of your new repositories, which will suppress this warning,
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6316620Z hint: call:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6317338Z hint:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6318153Z hint: 	git config --global init.defaultBranch <name>
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6319121Z hint:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6320023Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6321823Z hint: 'development'. The just-created branch can be renamed via this command:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6323051Z hint:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6323692Z hint: 	git branch -m <name>
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6324993Z hint:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6326083Z hint: Disable this message with "git config set advice.defaultBranchName false"
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6327925Z Initialized empty Git repository in /home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git/
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6330985Z [command]/usr/bin/git remote add origin https://github.com/321Team/infra-harbor-trivy
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6333764Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6335182Z ##[group]Disabling automatic garbage collection
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6336458Z [command]/usr/bin/git config --local gc.auto 0
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6338780Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6340152Z ##[group]Setting up auth
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6340981Z Removing SSH command configuration
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6342173Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6347989Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6702506Z Removing HTTP extra header
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6706273Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6711973Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6886207Z Removing includeIf entries pointing to credentials config files
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6888267Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.6903706Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.7259302Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.7267637Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git.path /home/runner/work/_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.7275158Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.7317442Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.7348892Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.7382153Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.7384384Z ##[group]Fetching the repository
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.7550169Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f19365f8e0de9d422fe8f62db3fffdb019762244:refs/remotes/pull/14/merge
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.9994859Z From https://github.com/321Team/infra-harbor-trivy
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:15.9997372Z  * [new ref]         f19365f8e0de9d422fe8f62db3fffdb019762244 -> pull/14/merge
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0015192Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0017535Z ##[group]Determining the checkout info
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0019755Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0021177Z [command]/usr/bin/git sparse-checkout disable
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0077279Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0114294Z ##[group]Checking out the ref
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0117115Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/14/merge
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0205278Z Note: switching to 'refs/remotes/pull/14/merge'.
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0207639Z 
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0209147Z You are in 'detached HEAD' state. You can look around, make experimental
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0214745Z changes and commit them, and you can discard any commits you make in this
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0217972Z state without impacting any branches by switching back to a branch.
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0219710Z 
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0220868Z If you want to create a new branch to retain commits you create, you may
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0222776Z do so (now or later) by using -c with the switch command. Example:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0223737Z 
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0225019Z   git switch -c <new-branch-name>
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0226187Z 
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0226869Z Or undo this operation with:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0227930Z 
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0228561Z   git switch -
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0229372Z 
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0230591Z Turn off this advice by setting config variable advice.detachedHead to false
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0232535Z 
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0235226Z HEAD is now at f19365f Merge 9e7cf84ced5654dd9cd22808b07fa99c83600c63 into a15dbc9925c4c3e3b59488b4f92431d7738028ef
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0243384Z ##[endgroup]
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0273292Z [command]/usr/bin/git log -1 --format=%H
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0307113Z f19365f8e0de9d422fe8f62db3fffdb019762244
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0322514Z ##[group]Removing auth
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0325172Z Removing SSH command configuration
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0328702Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0371641Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0609829Z Removing HTTP extra header
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0613541Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0662464Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0897294Z Removing includeIf entries pointing to credentials config files
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0902085Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0935942Z includeif.gitdir:/home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git.path
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0941426Z includeif.gitdir:/home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git/worktrees/*.path
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0946687Z includeif.gitdir:/github/workspace/.git.path
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0949725Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0958986Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git.path
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0979311Z /home/runner/work/_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.0998067Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git.path /home/runner/work/_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1039477Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git/worktrees/*.path
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1079125Z /home/runner/work/_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1088986Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/infra-harbor-trivy/infra-harbor-trivy/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1128860Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1157986Z /github/runner_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1188166Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1232677Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1262620Z /github/runner_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1289116Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1328475Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1561723Z Removing credentials config '/home/runner/work/_temp/git-credentials-90fb1ce2-c066-4eda-b15f-a9cf6783a328.config'
+docker-lab	Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:16.1579625Z ##[endgroup]
+docker-lab	Guard and receiver unit tests	﻿2026-10-08T00:25:16.1908213Z ##[group]Run python3 -m unittest discover -s tests/syslog-lab -p 'test_*.py' -v
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.1910605Z ^[[36;1mpython3 -m unittest discover -s tests/syslog-lab -p 'test_*.py' -v^[[0m
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.2242585Z shell: /usr/bin/bash -e {0}
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.2243655Z ##[endgroup]
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.2946377Z test_api_error_is_not_expected_refusal (test_lab.Guards.test_api_error_is_not_expected_refusal) ... ok
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.2961559Z test_cleanup_ownership_requires_full_id_and_exact_label (test_lab.Guards.test_cleanup_ownership_requires_full_id_and_exact_label) ... ok
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.2967019Z test_only_github_hosted_expected_repository (test_lab.Guards.test_only_github_hosted_expected_repository) ... ok
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.3972176Z test_receiver_requires_actual_marker_and_closes (test_lab.Guards.test_receiver_requires_actual_marker_and_closes) ... ok
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.3978028Z 
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.3980030Z ----------------------------------------------------------------------
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.3983706Z Ran 4 tests in 0.103s
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.3985850Z 
+docker-lab	Guard and receiver unit tests	2026-10-08T00:25:16.3986797Z OK
+docker-lab	Actual disposable Docker experiment	﻿2026-10-08T00:25:16.4202619Z ##[group]Run python3 scripts/verify/syslog-startup-lab.py --output "$RUNNER_TEMP/syslog-lab-result"
+docker-lab	Actual disposable Docker experiment	2026-10-08T00:25:16.4205462Z ^[[36;1mpython3 scripts/verify/syslog-startup-lab.py --output "$RUNNER_TEMP/syslog-lab-result"^[[0m
+docker-lab	Actual disposable Docker experiment	2026-10-08T00:25:16.4270714Z shell: /usr/bin/bash -e {0}
+docker-lab	Actual disposable Docker experiment	2026-10-08T00:25:16.4271633Z ##[endgroup]
+docker-lab	Preserve experiment result including failures	﻿2026-10-08T00:25:19.3865205Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3865773Z with:
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3866039Z   name: syslog-lab-37707666513-1
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3866392Z   path: /home/runner/work/_temp/syslog-lab-result
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3866772Z   if-no-files-found: error
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3867053Z   retention-days: 30
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3867320Z   compression-level: 6
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3867587Z   overwrite: false
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3867852Z   include-hidden-files: false
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.3868144Z ##[endgroup]
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.5590015Z (node:2598) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.5591888Z (Use `node --trace-deprecation ...` to show where the warning was created)
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.5720209Z With the provided path, there will be 8 files uploaded
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.5732640Z Artifact name is valid!
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.5749902Z Root directory input is valid!
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.5860714Z ##[warning]Retention days cannot be greater than the maximum allowed retention set within the repository. Using 7 instead.
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.7896665Z Beginning upload of artifact content to blob storage
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.8604241Z (node:2598) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.9376929Z Uploaded bytes 356246
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.9587231Z Finished uploading artifact content to blob storage!
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.9599765Z SHA256 digest of uploaded artifact zip is b8b1f8eccf0a1f5ddbe14b19b79d359cba28eee56ea3c5812105aa6188e9de42
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:19.9614935Z Finalizing artifact upload
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:20.1868975Z Artifact syslog-lab-37707666513-1.zip successfully finalized. Artifact ID 11520107701
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:20.1870855Z Artifact syslog-lab-37707666513-1 has been successfully uploaded! Final size is 356246 bytes. Artifact ID is 11520107701
+docker-lab	Preserve experiment result including failures	2026-10-08T00:25:20.1872784Z Artifact download URL: https://github.com/321Team/infra-harbor-trivy/actions/runs/37707666513/artifacts/11520107701
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	﻿2026-10-08T00:25:20.2092039Z Post job cleanup.
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3033767Z [command]/usr/bin/git version
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3103723Z git version 2.55.0
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3167002Z Temporarily overriding HOME='/home/runner/work/_temp/f93b01f5-eb6e-4105-8804-4795d5b86f36' before making global git config changes
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3184904Z Adding repository directory to the temporary git global config as a safe directory
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3205072Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-harbor-trivy/infra-harbor-trivy
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3253705Z Removing SSH command configuration
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3264764Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3324194Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3626312Z Removing HTTP extra header
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3627450Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.3690938Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.4144615Z Removing includeIf entries pointing to credentials config files
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.4153479Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+docker-lab	Post Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803	2026-10-08T00:25:20.4156390Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+docker-lab	Complete job	﻿2026-10-08T00:25:20.4649826Z Cleaning up orphan processes
+docker-lab	Complete job	2026-10-08T00:25:20.5031459Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

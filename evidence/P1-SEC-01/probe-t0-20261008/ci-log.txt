@@ -1,0 +1,193 @@
+mock-and-static	Set up job	﻿2026-10-08T00:24:58.6844355Z Current runner version: '2.337.0'
+mock-and-static	Set up job	2026-10-08T00:24:58.6884890Z ##[group]Runner Image Provisioner
+mock-and-static	Set up job	2026-10-08T00:24:58.6886407Z Hosted Compute Agent
+mock-and-static	Set up job	2026-10-08T00:24:58.6887486Z Version: 20261002.596
+mock-and-static	Set up job	2026-10-08T00:24:58.6890583Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+mock-and-static	Set up job	2026-10-08T00:24:58.6891997Z Build Date: 2026-10-02T22:28:27Z
+mock-and-static	Set up job	2026-10-08T00:24:58.6893200Z Worker ID: {7e3ca553-a4fc-4ebc-83ea-df261c629877}
+mock-and-static	Set up job	2026-10-08T00:24:58.6894600Z Region: westus2
+mock-and-static	Set up job	2026-10-08T00:24:58.6895618Z Cloud: Azure
+mock-and-static	Set up job	2026-10-08T00:24:58.6896758Z ##[endgroup]
+mock-and-static	Set up job	2026-10-08T00:24:58.6919856Z ##[group]Operating System
+mock-and-static	Set up job	2026-10-08T00:24:58.6920945Z Ubuntu
+mock-and-static	Set up job	2026-10-08T00:24:58.6921948Z 24.04.5
+mock-and-static	Set up job	2026-10-08T00:24:58.6922831Z LTS
+mock-and-static	Set up job	2026-10-08T00:24:58.6923839Z ##[endgroup]
+mock-and-static	Set up job	2026-10-08T00:24:58.6924934Z ##[group]Runner Image
+mock-and-static	Set up job	2026-10-08T00:24:58.6926062Z Image: ubuntu-24.04
+mock-and-static	Set up job	2026-10-08T00:24:58.6927197Z Version: 20261004.327.1
+mock-and-static	Set up job	2026-10-08T00:24:58.6929483Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+mock-and-static	Set up job	2026-10-08T00:24:58.6932785Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+mock-and-static	Set up job	2026-10-08T00:24:58.6934611Z ##[endgroup]
+mock-and-static	Set up job	2026-10-08T00:24:58.6936843Z ##[group]GITHUB_TOKEN Permissions
+mock-and-static	Set up job	2026-10-08T00:24:58.6979050Z Contents: read
+mock-and-static	Set up job	2026-10-08T00:24:58.6980195Z Metadata: read
+mock-and-static	Set up job	2026-10-08T00:24:58.6981225Z ##[endgroup]
+mock-and-static	Set up job	2026-10-08T00:24:58.6984684Z Secret source: Actions
+mock-and-static	Set up job	2026-10-08T00:24:58.6986230Z Cache mode: write
+mock-and-static	Set up job	2026-10-08T00:24:58.6988148Z Prepare workflow directory
+mock-and-static	Set up job	2026-10-08T00:24:58.7623231Z Prepare all required actions
+mock-and-static	Set up job	2026-10-08T00:24:58.7699096Z Getting action download info
+mock-and-static	Set up job	2026-10-08T00:24:59.2351435Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+mock-and-static	Set up job	2026-10-08T00:24:59.4484413Z Complete job name: mock-and-static
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-10-08T00:24:59.5309283Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5310455Z with:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5310949Z   persist-credentials: false
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5311515Z   repository: 321Team/infra-kubernetes
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5315636Z   token: ***
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5316092Z   ssh-strict: true
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5316545Z   ssh-user: git
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5316976Z   clean: true
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5317433Z   sparse-checkout-cone-mode: true
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5318166Z   fetch-depth: 1
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5318626Z   fetch-tags: false
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5319082Z   show-progress: true
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5319545Z   lfs: false
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5319979Z   submodules: false
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5320450Z   set-safe-directory: true
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5320981Z   allow-unsafe-pr-checkout: false
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.5321797Z ##[endgroup]
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6669339Z Syncing repository: 321Team/infra-kubernetes
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6672368Z ##[group]Getting Git version info
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6673769Z Working directory is '/home/runner/work/infra-kubernetes/infra-kubernetes'
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6678874Z [command]/usr/bin/git version
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6832654Z git version 2.55.0
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6866614Z ##[endgroup]
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6879523Z Temporarily overriding HOME='/home/runner/work/_temp/fdbea46a-f95d-45ff-b8a5-c7105e56c641' before making global git config changes
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6881875Z Adding repository directory to the temporary git global config as a safe directory
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6883861Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-kubernetes/infra-kubernetes
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6976297Z Deleting the contents of '/home/runner/work/infra-kubernetes/infra-kubernetes'
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6979425Z ##[group]Initializing the repository
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.6981424Z [command]/usr/bin/git init /home/runner/work/infra-kubernetes/infra-kubernetes
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8389784Z hint: Using 'master' as the name for the initial branch. This default branch name
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8409052Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8550968Z hint: to use in all of your new repositories, which will suppress this warning,
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8553177Z hint: call:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8554698Z hint:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8556032Z hint: 	git config --global init.defaultBranch <name>
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8558170Z hint:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8559686Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8572917Z hint: 'development'. The just-created branch can be renamed via this command:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8574829Z hint:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8576296Z hint: 	git branch -m <name>
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8577691Z hint:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8579933Z hint: Disable this message with "git config set advice.defaultBranchName false"
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8582664Z Initialized empty Git repository in /home/runner/work/infra-kubernetes/infra-kubernetes/.git/
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8600864Z [command]/usr/bin/git remote add origin https://github.com/321Team/infra-kubernetes
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8606441Z ##[endgroup]
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8609832Z ##[group]Disabling automatic garbage collection
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8610914Z [command]/usr/bin/git config --local gc.auto 0
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8613375Z ##[endgroup]
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8614466Z ##[group]Setting up auth
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8615636Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8627745Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8639667Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8647183Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8810495Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.8841096Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.9100379Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.9149224Z ##[endgroup]
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.9151687Z ##[group]Fetching the repository
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:24:59.9162532Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8503f6456dfb369a7b07d7ff01af2430eac476cc:refs/remotes/pull/74/merge
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3526320Z From https://github.com/321Team/infra-kubernetes
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3555078Z  * [new ref]         8503f6456dfb369a7b07d7ff01af2430eac476cc -> pull/74/merge
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3560657Z ##[endgroup]
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3562622Z ##[group]Determining the checkout info
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3564637Z ##[endgroup]
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3565818Z [command]/usr/bin/git sparse-checkout disable
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3624627Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3682049Z ##[group]Checking out the ref
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.3686252Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/74/merge
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4071630Z Note: switching to 'refs/remotes/pull/74/merge'.
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4073668Z 
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4074820Z You are in 'detached HEAD' state. You can look around, make experimental
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4077131Z changes and commit them, and you can discard any commits you make in this
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4079717Z state without impacting any branches by switching back to a branch.
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4081173Z 
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4082378Z If you want to create a new branch to retain commits you create, you may
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4084470Z do so (now or later) by using -c with the switch command. Example:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4085858Z 
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4086430Z   git switch -c <new-branch-name>
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4087778Z 
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4088895Z Or undo this operation with:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4089806Z 
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4090424Z   git switch -
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4091539Z 
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4092558Z Turn off this advice by setting config variable advice.detachedHead to false
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4094068Z 
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4095250Z HEAD is now at 8503f64 Merge a617a2f505a2ecea4f6b7337871341c87a3caaed into 95af5b09e50f31f28101fb6f9840aef42c227a3f
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4100392Z ##[endgroup]
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4150451Z [command]/usr/bin/git log -1 --format=%H
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4184631Z 8503f6456dfb369a7b07d7ff01af2430eac476cc
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4194457Z ##[group]Removing auth
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4202052Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4239112Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4562551Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4596965Z http.https://github.com/.extraheader
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4609858Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4653672Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4910210Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.4953248Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+mock-and-static	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:00.5349355Z ##[endgroup]
+mock-and-static	Bash syntax	﻿2026-10-08T00:25:00.5540637Z ##[group]Run for f in ops/p1-sec01-isolated-tests/*.sh; do bash -n "$f" || exit; done
+mock-and-static	Bash syntax	2026-10-08T00:25:00.5542081Z ^[[36;1mfor f in ops/p1-sec01-isolated-tests/*.sh; do bash -n "$f" || exit; done^[[0m
+mock-and-static	Bash syntax	2026-10-08T00:25:00.5853970Z shell: /usr/bin/bash -e {0}
+mock-and-static	Bash syntax	2026-10-08T00:25:00.5855074Z ##[endgroup]
+mock-and-static	Python and Bash regression tests (MOCK only)	﻿2026-10-08T00:25:00.6184951Z ##[group]Run python3 -m unittest discover -s ops/p1-sec01-isolated-tests/tests -v
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:00.6186400Z ^[[36;1mpython3 -m unittest discover -s ops/p1-sec01-isolated-tests/tests -v^[[0m
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:00.6255673Z shell: /usr/bin/bash -e {0}
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:00.6256459Z ##[endgroup]
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:02.9031318Z test_complete_observation (test_backup_inner.BackupInner.test_complete_observation) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:07.0843322Z test_count_failure_and_error_text_fail (test_backup_inner.BackupInner.test_count_failure_and_error_text_fail) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:11.4010740Z test_secret_pipeline_parser_and_producer_fail_closed (test_backup_inner.BackupInner.test_secret_pipeline_parser_and_producer_fail_closed) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:11.4726893Z test_exact_program_pins_accept_different_storage_version (test_backup_tools.BackupTools.test_exact_program_pins_accept_different_storage_version) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:11.5441513Z test_first_mismatch_keeps_all_three_raw_versions_and_hashes (test_backup_tools.BackupTools.test_first_mismatch_keeps_all_three_raw_versions_and_hashes) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:11.8838540Z test_mixed_ambiguous_hash_failure_drift_and_exe_mismatch_rejected (test_backup_tools.BackupTools.test_mixed_ambiguous_hash_failure_drift_and_exe_mismatch_rejected) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.0136463Z test_nonzero_and_timeout_keep_stderr_rc_and_later_tools (test_backup_tools.BackupTools.test_nonzero_and_timeout_keep_stderr_rc_and_later_tools) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.0139941Z test_count_fields_zero_and_positive (test_checks.Checks.test_count_fields_zero_and_positive) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.0142485Z test_count_rejects_error_ambiguous_negative (test_checks.Checks.test_count_rejects_error_ambiguous_negative) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.0145234Z test_eps_baseline_detects_address_uid_port_change (test_checks.Checks.test_eps_baseline_detects_address_uid_port_change) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.0148428Z test_exact_six_node_inventory_and_ready (test_checks.Checks.test_exact_six_node_inventory_and_ready) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.1879962Z test_invalid_secret_json_and_base64_fail_without_leak (test_checks.Checks.test_invalid_secret_json_and_base64_fail_without_leak) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.2019476Z test_pid_match_uses_executable_and_exact_argument (test_checks.Checks.test_pid_match_uses_executable_and_exact_argument) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.3520250Z test_revision_rejects_error_json_and_multiple_endpoints (test_checks.Checks.test_revision_rejects_error_json_and_multiple_endpoints) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.3552161Z test_seal_roundtrip_and_tamper (test_checks.Checks.test_seal_roundtrip_and_tamper) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.3939916Z test_secrets_counts_without_values (test_checks.Checks.test_secrets_counts_without_values) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.3942428Z test_token_automount_and_projection_are_both_gated (test_checks.Checks.test_token_automount_and_projection_are_both_gated) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:12.3974034Z test_verify_rejects_path_escape_and_unlisted_file (test_checks.Checks.test_verify_rejects_path_escape_and_unlisted_file) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:19.5769809Z test_failure_paths_cleanup_without_later_injection (test_integration.ProbeIntegration.test_failure_paths_cleanup_without_later_injection) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:20.4794022Z test_lost_create_response_is_adopted_and_deleted (test_integration.ProbeIntegration.test_lost_create_response_is_adopted_and_deleted) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:23.0134781Z test_normal_all_stages_and_both_uid_deletions (test_integration.ProbeIntegration.test_normal_all_stages_and_both_uid_deletions) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:23.5490027Z test_precheck_never_mutates (test_integration.ProbeIntegration.test_precheck_never_mutates) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:23.5578348Z test_render_uses_interpreter_bound_to_runtime_digest (test_integration.ProbeIntegration.test_render_uses_interpreter_bound_to_runtime_digest) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:24.1737244Z test_stale_and_quota_failure_stop_before_creation (test_integration.ProbeIntegration.test_stale_and_quota_failure_stop_before_creation) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:29.8690312Z test_t0_initial_pending_without_status_can_converge (test_integration.ProbeIntegration.test_t0_initial_pending_without_status_can_converge) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:32.1330880Z test_t0_restart_stops_before_injection_and_keeps_diagnostics (test_integration.ProbeIntegration.test_t0_restart_stops_before_injection_and_keeps_diagnostics) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:32.1437224Z test_cleanup_failure_has_priority_over_observation_success (test_lifecycle.Lifecycle.test_cleanup_failure_has_priority_over_observation_success) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:32.1976904Z test_endpoint_unknown_nil_multiple_and_absent (test_lifecycle.Lifecycle.test_endpoint_unknown_nil_multiple_and_absent) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:32.2048182Z test_expired_cleanup_does_not_query_next_object (test_lifecycle.Lifecycle.test_expired_cleanup_does_not_query_next_object) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:32.2079947Z test_no_command_dispatched_after_deadline (test_lifecycle.Lifecycle.test_no_command_dispatched_after_deadline) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:32.2188118Z test_probe_wait_includes_api_latency_in_stage_limit (test_lifecycle.Lifecycle.test_probe_wait_includes_api_latency_in_stage_limit) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:32.2327065Z test_probe_wait_rejects_success_after_expiry (test_lifecycle.Lifecycle.test_probe_wait_rejects_success_after_expiry) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:34.2440262Z test_real_slow_command_is_bounded (test_lifecycle.Lifecycle.test_real_slow_command_is_bounded) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:34.2685806Z test_repeated_signals_do_not_reenter_finish (test_lifecycle.Lifecycle.test_repeated_signals_do_not_reenter_finish) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:34.2917306Z test_uid_unknown_or_foreign_never_deletes_by_name (test_lifecycle.Lifecycle.test_uid_unknown_or_foreign_never_deletes_by_name) ... ok
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:34.2919301Z 
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:34.2920706Z ----------------------------------------------------------------------
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:34.2921781Z Ran 35 tests in 33.585s
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:34.2922553Z 
+mock-and-static	Python and Bash regression tests (MOCK only)	2026-10-08T00:25:34.2922936Z OK
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-10-08T00:25:34.3208902Z Post job cleanup.
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.4311367Z [command]/usr/bin/git version
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.4379745Z git version 2.55.0
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.4407607Z Temporarily overriding HOME='/home/runner/work/_temp/ef6062d6-47c4-4590-9577-c40be4537099' before making global git config changes
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.4410416Z Adding repository directory to the temporary git global config as a safe directory
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.4521738Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/infra-kubernetes/infra-kubernetes
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.4525405Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.4623346Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.5420341Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.5679543Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.5838999Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+mock-and-static	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-10-08T00:25:34.5949403Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+mock-and-static	Complete job	﻿2026-10-08T00:25:34.6842791Z Cleaning up orphan processes
+mock-and-static	Complete job	2026-10-08T00:25:34.7135535Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
