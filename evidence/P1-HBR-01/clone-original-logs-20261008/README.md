@@ -53,3 +53,5 @@ failed to create task for container: failed to initialize logging driver: dial t
 `verification/export-host-result.json`에서 수신 archive/sidecar hash 일치, **13:25:34.766 KST removeSharedFolder rc0 / disableSharedFolders(runtime) rc0**를 확인했다. 후속 VMX에서 `sharedFolder.maxNum=0`, `isolation.tools.hgfs.disable=TRUE`, `ethernet0.present=FALSE`를 확인했다. 과거 sharedFolder0 문자열 일부는 남아 있어도 활성 목록 수는 0이며, 게스트 내부 mount point의 unmount 완료는 별도 사용자 확인 대상이다. 원본 로그와 수신본은 삭제하지 않았다.
 
 관련: [baseline #13](https://github.com/321Team/fds-project-baseline/issues/13), [주소 후보 #12](https://github.com/321Team/infra-harbor-trivy/pull/12), [관측기 #13](https://github.com/321Team/infra-harbor-trivy/pull/13). 다음은 source 검토와 고정 실행안에 따른 주소/준비 순서 분리 시험이다. 이 수신 완료가 운영 적용·재시험 GO를 대신하지 않는다.
+
+후속 사용자 확인: 두 umount 명령의 정리 요청에 사용자가 완료 취지로 회신했다. `verification/guest-unmount-attestation.json`에 원문과 해석을 보존한다. 게스트 정리는 **USER_REPORTED_COMPLETE**이며 도구로 mount 표를 직접 재조회한 것은 아니다.
