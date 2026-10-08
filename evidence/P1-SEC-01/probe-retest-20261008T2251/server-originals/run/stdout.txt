@@ -1,0 +1,20 @@
+create Pod: sec01-probe-test-1008135212-18955-26231
+create Service: sec01-probe-test-1008135212-18955-26231
+T1: remove /tmp/ready
+T2: create /tmp/ready
+T3: remove /tmp/alive
+정리 시작
+정리 끝 clean_fail=0
+종료 EXIT_CODE=0 out=p1-sec01-ac06-probe-run-20261008T135212Z.F4EV95
+image_cached_on_target_node=yes(간접 근거: 같은 digest 를 쓰는 Pod 존재) node=k8s-worker01 digest=sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33 pull_policy=Never
+PROVISIONAL=true SEAL_STATUS=PENDING (관측 요약이며 판정이 아님)
+T0_ready_and_endpoint_true=yes restart=0
+T1_notready_and_endpoint_not_ready=yes endpoint_value=false restart_unchanged=yes
+T2_recovered_ready_and_endpoint_true=yes restart_unchanged=yes
+T3_restart_count_increased=yes before=0 after=1 container_id_changed=yes
+T3_recovered_ready_and_endpoint_true=yes
+projected_serviceaccount_token_sources=0 automountServiceAccountToken=false
+ALL_STAGES_OBSERVED=yes (관측 완료이며 AC 판정이 아님)
+nodes_post=6/6_Ready
+baseline_pods_diff_rc=0 baseline_endpointslices_diff_rc=0
+observation_exit_code=0 cleanup_failed=0 elapsed_sec=55
