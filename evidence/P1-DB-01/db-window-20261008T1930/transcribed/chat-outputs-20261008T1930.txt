@@ -1,0 +1,167 @@
+# 전사본 — RUN 20261008T1930 중 서버 파일로 남지 않은 터미널 출력
+# 실행자 이재환(supreme33-kr)이 각 호스트 터미널에서 실행하고 채팅에 붙여넣은 출력을 그대로 옮겼다.
+# 서버 SHA가 없는 전사본이다. 서버 로그 원본은 edge01/·db01/·control01/ 아카이브에 있다.
+# 각 블록 머리의 [호스트 계정, 붙여넣은 시각 UTC]는 전사자가 붙인 표시다.
+
+### [W0] PC .29 soldesk — N3 변경 전 (붙여넣기 11:14Z)
+$ date '+%F %T'; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N3 rc=$?"
+2026-10-08 20:13:40
+N3 rc=0
+
+### [W0] control01 server02 — check 뒤 N1 변경 전 (붙여넣기 11:14Z, check 본문은 control01-check-201327.log)
+server02@k8s-control01:~/db-window-bdcc5613$ cd ~/db-window-bdcc5613 && sudo bash control01-secret.sh check 20261008T1930; echo "rc=$?"; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N1 rc=$?"
+(check 출력 생략 — control01-check-201327.log와 같음)
+Python 3.12.14
+rc=0
+N1 rc=124
+
+### [W0] edge01 server08 — T0, check·hba-probe allowed 뒤 N2 변경 전 (붙여넣기 11:14Z, 본문은 edge01-check-201303.log·edge01-hba-probe-201304.log)
+[server08@edge01 db-window-346725c5]$ cd ~/db-window-346725c5 && sudo -v && date '+T0 %F %T'; bash edge01-k3s.sh check 20261008T1930; echo "rc=$?"; bash edge01-k3s.sh hba-probe 20261008T1930 allowed; echo "rc=$?"; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N2 rc=$?"
+T0 2026-10-08 20:13:03
+(check·hba-probe 출력 생략)
+rc=0
+RESULT hba-probe=rc0 20:13:04 (0=기대와 같음, 3=반대, 4=판정 불가)
+rc=0
+N2 rc=0
+
+### [W3] PC .29 soldesk — 거래 POST (붙여넣기 11:19Z, 파일 원본은 pc/)
+$ A=SIM_p2hyb_202610081930_W3_1; O=p2-$A.json; curl -sS --max-time 10 -o "$O" -w '%{http_code}\n' -X POST http://10.1.93.50/api/v1/transactions -H 'Content-Type: application/json' -d "{\"account_id\":\"$A\",\"amount\":10000,\"transaction_type\":\"deposit\",\"source_ip\":\"198.51.100.10\"}" > "$O.code"; echo "curl_rc=$? http=$(cat "$O.code")"; cat "$O"; echo
+curl_rc=0 http=201
+{"transaction_id":"540d89c3-9c14-4f48-b8a7-1d83b6756994","fds_detected":false,"fds_rules":[{"rule_id":"R01","triggered":false,"detail":null},{"rule_id":"R02","triggered":false,"detail":null},{"rule_id":"R04","triggered":false,"detail":null},{"rule_id":"R07","triggered":false,"detail":null}],"fds_evaluation_skipped":false}
+
+### [W3] control01 server02 — 방화벽 적용 뒤 transaction-api rollout (붙여넣기 11:19Z)
+server02@k8s-control01:~/db-window-bdcc5613$ sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n fds-app rollout restart deploy/transaction-api && sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n fds-app rollout status deploy/transaction-api --timeout=180s; echo "rc=$?"; sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n fds-app get pods -l app=transaction-api -o wide
+deployment.apps/transaction-api restarted
+(Waiting 줄 10개 생략)
+deployment "transaction-api" successfully rolled out
+rc=0
+NAME                               READY   STATUS        RESTARTS   AGE   IP              NODE           NOMINATED NODE   READINESS GATES
+transaction-api-5f8b5d7cfd-2jz62   1/1     Terminating   0          29h   10.244.39.208   k8s-worker03   <none>           <none>
+transaction-api-77bd7c6f64-gkldc   1/1     Running       0          11s   10.244.39.202   k8s-worker03   <none>           <none>
+transaction-api-77bd7c6f64-wznlw   1/1     Running       0          34s   10.244.79.115   k8s-worker01   <none>           <none>
+transaction-api-77bd7c6f64-zk2zn   1/1     Running       0          23s   10.244.69.238   k8s-worker02   <none>           <none>
+
+### [W3] db01 server08 — W3 거래 DB 행 (붙여넣기 11:20Z)
+[server08@db01 db-window-346725c5]$ cd /tmp && sudo -u postgres psql -X -A -d fdsdb -v ON_ERROR_STOP=1 -v txid='540d89c3-9c14-4f48-b8a7-1d83b6756994' -v acct='SIM_p2hyb_202610081930_W3_1' <<'SQL'
+SELECT account_id, transaction_id, amount, transaction_type, fds_detected, fds_evaluation_skipped
+FROM transactions
+WHERE transaction_id = :'txid' AND account_id = :'acct';
+SELECT * FROM transactions WHERE transaction_id = :'txid';
+SQL
+echo "P2_DB_QUERY_RC=$?"
+account_id|transaction_id|amount|transaction_type|fds_detected|fds_evaluation_skipped
+SIM_p2hyb_202610081930_W3_1|540d89c3-9c14-4f48-b8a7-1d83b6756994|10000|deposit|f|f
+(1개 행)
+transaction_id|account_id|amount|currency|transaction_type|source_ip|occurred_at|received_at|fds_detected|fds_rules|fds_evaluation_skipped
+540d89c3-9c14-4f48-b8a7-1d83b6756994|SIM_p2hyb_202610081930_W3_1|10000|KRW|deposit|198.51.100.10|2026-10-08 20:19:15.558482+09|2026-10-08 20:19:15.558482+09|f|[{"detail": null, "rule_id": "R01", "triggered": false}, {"detail": null, "rule_id": "R02", "triggered": false}, {"detail": null, "rule_id": "R04", "triggered": false}, {"detail": null, "rule_id": "R07", "triggered": false}]|f
+(1개 행)
+P2_DB_QUERY_RC=0
+
+### [W3] control01 server02 — 새 Pod Ready 시각, N1 변경 후 (붙여넣기 11:21Z)
+server02@k8s-control01:~/db-window-bdcc5613$ sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n fds-app get pods -l app=transaction-api -o custom-columns='NAME:.metadata.name,NODE:.spec.nodeName,CREATED:.metadata.creationTimestamp,READY_AT:.status.conditions[?(@.type=="Ready")].lastTransitionTime'; date '+%T'; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N1 rc=$?"
+NAME                               NODE           CREATED                READY_AT
+transaction-api-77bd7c6f64-gkldc   k8s-worker03   2026-10-08T11:18:50Z   2026-10-08T11:19:01Z
+transaction-api-77bd7c6f64-wznlw   k8s-worker01   2026-10-08T11:18:27Z   2026-10-08T11:18:38Z
+transaction-api-77bd7c6f64-zk2zn   k8s-worker02   2026-10-08T11:18:38Z   2026-10-08T11:18:50Z
+20:20:53
+N1 rc=124
+
+### [W3] edge01 server08 — N2 변경 후 (붙여넣기 11:22Z)
+[server08@edge01 db-window-346725c5]$ date '+%T'; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N2 rc=$?"
+20:21:56
+bash: connect: 호스트로 갈 루트가 없음
+bash: 줄 1: /dev/tcp/10.1.93.55/5432: 호스트로 갈 루트가 없음
+N2 rc=1
+
+### [W3] PC .29 soldesk — N3 변경 후 (붙여넣기 11:22Z)
+$ date '+%T'; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N3 rc=$?"
+20:22:32
+N3 rc=124
+
+### [W4] PC .29 soldesk — 거래 POST (붙여넣기 11:31Z, 파일 원본은 pc/)
+$ date '+%T'; A=SIM_p2hyb_202610081930_W4_1; O=p2-$A.json; curl -sS --max-time 10 -o "$O" -w '%{http_code}\n' -X POST http://10.1.93.50/api/v1/transactions -H 'Content-Type: application/json' -d "{\"account_id\":\"$A\",\"amount\":10000,\"transaction_type\":\"deposit\",\"source_ip\":\"198.51.100.10\"}" > "$O.code"; echo "curl_rc=$? http=$(cat "$O.code")"; cat "$O"; echo
+20:31:19
+curl_rc=0 http=201
+{"transaction_id":"1a615fca-64c0-41a7-9326-d94e23d0ab6d","fds_detected":false,"fds_rules":[{"rule_id":"R01","triggered":false,"detail":null},{"rule_id":"R02","triggered":false,"detail":null},{"rule_id":"R04","triggered":false,"detail":null},{"rule_id":"R07","triggered":false,"detail":null}],"fds_evaluation_skipped":false}
+
+### [W5] edge01 server08 — check 요약, N2 (붙여넣기 11:32Z, check 본문은 edge01-check-203213.log)
+[server08@edge01 db-window-346725c5]$ cd ~/db-window-346725c5 && sudo -v && bash edge01-k3s.sh check 20261008T1930 2>&1 | grep -E 'k3s active|응답|Worker|reload 반영|ESTABLISHED'; date '+%T'; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N2 rc=$?"
+-- k3s active=inactive enabled=disabled shim=0
+-- 유효 설정(주석 제외) 옛 upstream 참조 수((10\.1\.93\.50|127\.0\.0\.1|localhost):30080)=0, 정본 Worker 참조 수=3/3
+-- 옛 E-K3S NodePort(.50/127.0.0.1:30080) ESTABLISHED 연결 수=0
+-- 설정 reload 반영 판정 rc=0 (0=반영, 1=reload 뒤 설정 변경, 2=판단 불가)
+-- 응답: nginx .50:80/readyz=200 E-K3S .50:30080/readyz=000
+   Worker 10.1.93.105:30080/readyz=200
+   Worker 10.1.93.107:30080/readyz=200
+   Worker 10.1.93.108:30080/readyz=200
+20:32:14
+bash: connect: 호스트로 갈 루트가 없음
+bash: 줄 1: /dev/tcp/10.1.93.55/5432: 호스트로 갈 루트가 없음
+N2 rc=1
+
+### [W4·W5] db01 server08 — W4 거래 DB 행, db01 check 요약, 방화벽 check 요약 (붙여넣기 11:33Z, 본문은 db01-check-203204.log·apply-check-W5.txt)
+[server08@db01 db-window-346725c5]$ cd /tmp && sudo -u postgres psql -X -A -d fdsdb -v ON_ERROR_STOP=1 -v txid='1a615fca-64c0-41a7-9326-d94e23d0ab6d' -v acct='SIM_p2hyb_202610081930_W4_1' <<'SQL'
+SELECT account_id, transaction_id, amount, transaction_type, fds_detected, fds_evaluation_skipped, received_at
+FROM transactions
+WHERE transaction_id = :'txid' AND account_id = :'acct';
+SQL
+echo "P2_DB_QUERY_RC=$?"
+account_id|transaction_id|amount|transaction_type|fds_detected|fds_evaluation_skipped|received_at
+SIM_p2hyb_202610081930_W4_1|1a615fca-64c0-41a7-9326-d94e23d0ab6d|10000|deposit|f|f|2026-10-08 20:31:19.384948+09
+(1개 행)
+P2_DB_QUERY_RC=0
+(db01.sh check·apply.sh check 요약 출력 생략 — 같은 내용이 db01-check-203204.log·apply-check-W5.txt에 있음)
+
+### [W5] PC .29 soldesk — P1, N3 (붙여넣기 11:33Z)
+$ date '+%T'; echo "P1 readyz=$(curl -s -o /dev/null -w '%{http_code}' http://10.1.93.50/readyz)"; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N3 rc=$?"
+20:33:00
+P1 readyz=200
+N3 rc=124
+
+### [W5] control01 server02 — Secret 지문, N1, N4, MON (붙여넣기 11:33Z)
+server02@k8s-control01:~/db-window-bdcc5613$ cd ~/db-window-bdcc5613 && sudo bash control01-secret.sh check 20261008T1930 2>&1 | grep -E '지문|replicas|사용처'; date '+%T'; timeout 5 bash -c '</dev/tcp/10.1.93.55/5432'; echo "N1 rc=$?"; sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf -n fds-app exec deploy/fds-engine -- python3 -c "import socket; s=socket.socket(); s.settimeout(5); s.connect(('10.1.93.55', 5432))"; echo "N4 rc=$?"; sudo bash -c 'kubectl --kubeconfig=/etc/kubernetes/admin.conf -n monitoring-api port-forward svc/prometheus 19095:9090 >/dev/null 2>&1 & PF=$!; sleep 3; for q in "count(up)" "count(up==1)" "count(up==0)"; do printf "%s=" "$q"; curl -s --max-time 5 http://127.0.0.1:19095/api/v1/query --data-urlencode "query=$q" | python3 -c "import sys,json; r=json.load(sys.stdin)[\"data\"][\"result\"]; print(r[0][\"value\"][1] if r else \"EMPTY\")"; done; kill $PF'
+-- 현재 값 지문(RUN 키 HMAC)=073d25232749095f URL=postgresql+asyncpg://fds_app:***@10.1.93.55:5432/fdsdb last-applied=absent
+replicas=3 ready=3 updated=3 strategy={"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"}
+-- fds_app 사용처(값 없음). 기대: Secret fds-app/transaction-api-db-credentials DATABASE_URL 1줄 + Deployment fds-app/transaction-api (Secret 참조) 1줄
+-- 사용처 점검 rc=0 (0이어야 판정 가능)
+20:32:41
+N1 rc=124
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+TimeoutError: timed out
+command terminated with exit code 1
+N4 rc=1
+count(up)=23
+count(up==1)=23
+count(up==0)=EMPTY
+
+### [W5] db01 server08 — rich rule 집합·나머지 줄 비교 (붙여넣기 11:34Z)
+[server08@db01 db-window-346725c5]$ diff <(sudo firewall-cmd --zone=public --list-rich-rules | sort) <(sudo firewall-cmd --permanent --zone=public --list-rich-rules | sort) && echo RICH_RULES_SET_EQUAL; diff <(sudo firewall-cmd --zone=public --list-all | sed '1d;/interfaces:/d;/^[[:space:]]*rule /d') <(sudo firewall-cmd --permanent --zone=public --list-all | sed '1d;/interfaces:/d;/^[[:space:]]*rule /d') && echo OTHER_LINES_EQUAL
+RICH_RULES_SET_EQUAL
+OTHER_LINES_EQUAL
+
+### [W6] control01 server02 — 비밀 사본 정리 (붙여넣기 11:36Z)
+server02@k8s-control01:~$ cd ~/db-window-bdcc5613 && sudo bash control01-secret.sh cleanup 20261008T1930; echo "rc=$?"; sudo ls -la /root/p2-hyb01-20261008T1930/secret 2>&1
+합계 36
+drwx------.  2 root root 4096 10월  8일  20:35 .
+dr-xr-x---. 52 root root 4096 10월  8일  20:07 ..
+-rw-------.  1 root root 4919 10월  8일  20:27 control01-apply-202713.log
+-rw-------.  1 root root 2006 10월  8일  20:07 control01-check-200731.log
+-rw-------.  1 root root 2006 10월  8일  20:13 control01-check-201327.log
+-rw-------.  1 root root 2076 10월  8일  20:32 control01-check-203241.log
+-rw-------.  1 root root    0 10월  8일  20:35 control01-cleanup-203550.log
+-rw-------.  1 root root 2009 10월  8일  20:23 control01-prepare-202303.log
+RESULT cleanup=OK
+rc=0
+ls: '/root/p2-hyb01-20261008T1930/secret'에 접근할 수 없음: 그런 파일이나 디렉터리가 없습니다
+
+### [W6] db01 server08 — 검증자 사본 정리 (붙여넣기 11:36Z)
+[server08@db01 ~]$ cd ~/db-window-346725c5 && sudo -v && bash db01.sh cleanup 20261008T1930; echo "rc=$?"
+-- 남은 파일(pg_hba 사본은 비밀 없음, 유지)
+합계 16
+drwx------. 2 postgres postgres   57 10월  8일  20:36 .
+drwx------. 3 postgres postgres   77 10월  8일  20:17 ..
+-rw-------. 1 postgres postgres 5709 10월  8일  20:17 pg_hba.conf.after
+-rw-------. 1 postgres postgres 5771  9월  8일  11:48 pg_hba.conf.before
+RESULT cleanup=OK
+rc=0
