@@ -36,3 +36,7 @@ CODEX_ASSISTED · 이권욱 · 2026-10-09 KST. **격리 CI 공급 생성·로컬
 Workflow step 이름의 `approved application source`는 실제 APP 승인 증거가 아니다. APP27은 리뷰 대기이고 `delivery_authorization=false`를 유지했다. Source/Unit 범위 확정 전 `materialize_app_build_scan_v3.py`를 실행하거나 APPROVED 설정·승인자/참조를 만들지 않았다. 활성 config는 기존 Source를 유지한다.
 
 다음 순서: APP Lead의 최종Source/51개 시험 매핑/API Unit 처분 확정 → 이 공급 bytes와 supply tool 승인 연결 → 정상 Runner 전달 및 consumer config 준비/독립 리뷰 → fresh 선행조건·회차 GO 확인 후 현장 실행. 후보 HEAD·lock/requirements/tool이 바뀌면 이번 공급과 영향 범위를 다시 대조한다. 별도 공급원본·과거승인·artifact ID를 복사해 새 승인을 만들지 않는다. 리뷰는 작업창 종료 후 이재환님께 요청한다.
+
+## 추가 consumer 호환성 검증
+
+[consumer-check](consumer-check/README.md)에08:44 정상 Linux 계정에서 실제 consumer stage/verify/source 검증과 잘못된 입력3건 거부 결과를 추가했다.08:45 전용 임시270파일을 검증 후 정리했다. 이는 전체 APP config나 실제 Runner 실행 검증이 아니다. 최초 공급 수신 원본은 변경하지 않았다.
