@@ -1,0 +1,223 @@
+EVIDENCE=/home/server01_ansible/issue9-mon-verify.NxgAVICW
+# run_id=20261008T005332+0900_14923 commit=da4e273e7e26a9a0b51211e5146066960df072b5 tree=clean label=verify target=egress_proxy input_hash=4493fef29c46c0d697e32d777350054392bc4d5301b92468179a2311a5641f7e started=2026-10-08T00:53:34+09:00
+FDS_ENGINE_EXEC=/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin/ansible-playbook CORE=2.21.3 SSH_USETTY=false
+
+PLAY [CR-P1-MON-01-01 guard against an empty egress_proxy target group] ********
+
+TASK [Fail loudly instead of a silent no-op when no target host is selected] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY [CR-P1-MON-01-01 egress proxy verify] *************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Validate CR-P1-MON-01-01 egress proxy phase and variables] ***
+ok: [egress-proxy01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [egress_proxy : Validate CR-P1-MON-01-01 egress proxy input formats] ******
+ok: [egress-proxy01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [egress_proxy : Verify this host matches its declared inventory identity] ***
+ok: [egress-proxy01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [egress_proxy : Require explicit confirmation that proxy client sources were measured] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Require explicit approval token for proxy changes] ********
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Verify firewalld is active before making any changes] *****
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Read the default firewalld zone] **************************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Check whether squid is already installed] *****************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Check for existing squid configuration] *******************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Read pre-change squid service state] **********************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Read pre-change squid enabled state] **********************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Read pre-change kubelet state] ****************************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Normalize pre-change kubelet state for evidence] **********
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Read current permanent firewalld rich rules] **************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Read current runtime-only firewalld rich rules] ***********
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Check whether a baseline for this change was already captured] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Inspect the original configuration backup before any state writes] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Refuse an orphan backup or a non-regular baseline] ********
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Read previously captured baseline for drift comparison] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Decode previously captured baseline for drift comparison] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Validate the complete existing baseline before re-apply] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Refuse to re-apply with inputs that differ from the captured baseline] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Create protected CR rollback state directory] *************
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Preserve original squid configuration once] ***************
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Preserve original squid and firewalld state once] *********
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Install squid] ********************************************
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Check whether the squid binary is available yet for candidate validation] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Create a scratch file for validating the candidate configuration] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Render the candidate egress allowlist configuration for validation] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Validate the candidate configuration parses (squid binary present)] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Report candidate parse validation was skipped (squid not installed yet)] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Remove the scratch candidate configuration file] **********
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Deploy discord.com-only egress allowlist configuration] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Open the proxy port for approved internal clients only (permanent)] ***
+skipping: [egress-proxy01] => (item=10.1.93.105) 
+skipping: [egress-proxy01] => (item=10.1.93.107) 
+skipping: [egress-proxy01] => (item=10.1.93.108) 
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Open the proxy port for approved internal clients only (runtime, no reload)] ***
+skipping: [egress-proxy01] => (item=10.1.93.105) 
+skipping: [egress-proxy01] => (item=10.1.93.107) 
+skipping: [egress-proxy01] => (item=10.1.93.108) 
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Enable and start squid] ***********************************
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Record the checksum of the configuration just deployed] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Check whether a "squid has loaded this config" marker exists] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Read the marker recording which configuration squid last loaded] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Reload squid when it was already running and the config differs from the marker] ***
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Record which configuration squid now has loaded] **********
+skipping: [egress-proxy01]
+
+TASK [egress_proxy : Run CR-P1-MON-01-01 post-run verification tasks] **********
+included: /home/server01_ansible/issue9-native-engine-2rz3_9f4/source/roles/egress_proxy/tasks/verify.yml for egress-proxy01
+
+TASK [egress_proxy : Read post-run squid service state] ************************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Assert squid is loaded and active] ************************
+ok: [egress-proxy01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [egress_proxy : Read post-run kubelet state] ******************************
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Assert kubelet state did not regress within this run] *****
+ok: [egress-proxy01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [egress_proxy : Read persisted pre-apply baseline state for a standalone verify run] ***
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Fail when a standalone verify has no usable pre-apply baseline] ***
+ok: [egress-proxy01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [egress_proxy : Assert kubelet state did not regress against the persisted apply baseline] ***
+ok: [egress-proxy01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [egress_proxy : Verify an allowed destination is reachable through the proxy] ***
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Verify a non-allowed destination is denied at the proxy's CONNECT layer] ***
+ok: [egress-proxy01]
+
+TASK [egress_proxy : Assert the non-allowed destination was denied at the CONNECT layer] ***
+ok: [egress-proxy01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [egress_proxy : Print CR-P1-MON-01-01 node verdict] ***********************
+ok: [egress-proxy01] => {
+    "msg": {
+        "allowed_domain_probe_status": "200",
+        "change_id": "CR-P1-MON-01-01",
+        "denied_domain_probe": "DENIED_AT_CONNECT",
+        "host": "egress-proxy01",
+        "kubelet_regression": "NONE",
+        "phase": "verify",
+        "squid_active_state": "active",
+        "squid_load_state": "loaded"
+    }
+}
+
+PLAY RECAP *********************************************************************
+egress-proxy01             : ok=26   changed=0    unreachable=0    failed=0    skipped=28   rescued=0    ignored=0   
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+# rc=0 finished=2026-10-08T00:53:41+09:00
+RC=0
