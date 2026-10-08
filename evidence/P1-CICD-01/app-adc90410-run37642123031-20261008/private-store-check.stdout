@@ -1,0 +1,35 @@
+{
+  "at_utc": "2026-10-07T15:12:11.078130+00:00",
+  "command": [
+    "/usr/bin/podman",
+    "--remote=false",
+    "--root",
+    "/home/server01_cicd-runner/FDS_CICD_AppWorkflow._6zedcc5/build-scan/storage",
+    "--runroot",
+    "/home/server01_cicd-runner/FDS_CICD_AppWorkflow._6zedcc5/build-scan/runroot",
+    "--storage-driver",
+    "vfs",
+    "--tmpdir",
+    "/home/server01_cicd-runner/FDS_CICD_AppWorkflow._6zedcc5/build-scan/podman-tmp",
+    "--events-backend",
+    "none",
+    "ps",
+    "-a",
+    "--format",
+    "json"
+  ],
+  "rc": 0,
+  "containers": [],
+  "raw_and_image_store": "RETAINED_FOR_EVIDENCE_AND_LATER_HANDOFF",
+  "test_summary_lines": {
+    "fds-engine-unit-0.log": [
+      "16 passed in 0.02s"
+    ],
+    "transaction-api-contract-0.log": [
+      "14 passed, 1 warning in 0.54s"
+    ],
+    "fds-engine-contract-0.log": [
+      "10 passed, 1 warning in 0.35s"
+    ]
+  }
+}
