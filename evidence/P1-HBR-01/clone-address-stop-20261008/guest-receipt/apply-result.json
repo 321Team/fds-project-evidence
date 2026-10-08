@@ -1,0 +1,234 @@
+{
+  "mode": "apply",
+  "started_epoch": 1791440498.3308592,
+  "source_sha256": "1b6647b7883dc0458fb0d22d00f3eb88d30e2fa191df353180a41cf46cce8064",
+  "commands": [
+    {
+      "name": "base",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "compose",
+        "--project-directory",
+        "/home/server08/harbor",
+        "-f",
+        "/home/server08/harbor/docker-compose.yml",
+        "config",
+        "--format",
+        "json",
+        "--no-env-resolution"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-0-base.stdout"
+    },
+    {
+      "name": "effective",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "compose",
+        "--project-directory",
+        "/home/server08/harbor",
+        "-f",
+        "/home/server08/harbor/docker-compose.yml",
+        "-f",
+        "/root/hbr-address-trial-20261008-1500/override.json",
+        "config",
+        "--format",
+        "json",
+        "--no-env-resolution"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-1-effective.stdout"
+    },
+    {
+      "name": "image-core",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/harbor-core:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-2-image-core.stdout"
+    },
+    {
+      "name": "image-jobservice",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/harbor-jobservice:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-3-image-jobservice.stdout"
+    },
+    {
+      "name": "image-log",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/harbor-log:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-4-image-log.stdout"
+    },
+    {
+      "name": "image-portal",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/harbor-portal:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-5-image-portal.stdout"
+    },
+    {
+      "name": "image-postgresql",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/harbor-db:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-6-image-postgresql.stdout"
+    },
+    {
+      "name": "image-proxy",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/nginx-photon:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-7-image-proxy.stdout"
+    },
+    {
+      "name": "image-redis",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/redis-photon:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-8-image-redis.stdout"
+    },
+    {
+      "name": "image-registry",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/registry-photon:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-9-image-registry.stdout"
+    },
+    {
+      "name": "image-registryctl",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/harbor-registryctl:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-10-image-registryctl.stdout"
+    },
+    {
+      "name": "image-trivy-adapter",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}}",
+        "goharbor/trivy-adapter-photon:v2.13.1"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-11-image-trivy-adapter.stdout"
+    },
+    {
+      "name": "state",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "inspect",
+        "--type",
+        "container",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"image\":{{json .Image}},\"service\":{{json (index .Config.Labels \"com.docker.compose.service\")}},\"project\":{{json (index .Config.Labels \"com.docker.compose.project\")}},\"status\":{{json .State.Status}},\"health\":{{if .State.Health}}{{json .State.Health.Status}}{{else}}null{{end}},\"restart\":{{json .HostConfig.RestartPolicy}},\"mounts\":{{json .Mounts}},\"ports\":{{json .HostConfig.PortBindings}},\"logging\":{{json .HostConfig.LogConfig}}}",
+        "harbor-core",
+        "harbor-jobservice",
+        "harbor-portal",
+        "harbor-db",
+        "nginx",
+        "redis",
+        "registry",
+        "registryctl",
+        "trivy-adapter",
+        "harbor-log"
+      ],
+      "rc": 0,
+      "stdout_file": "apply-12-state.stdout"
+    }
+  ],
+  "status": "STOP_BEFORE_CHANGE",
+  "DOCKER_RESTART": "NOT_RUN",
+  "AUTOSTART": "NOT_TESTED",
+  "delta": {
+    "schema": "P1-HBR-logging-override-check-1",
+    "CONFIG_DELTA": "PASS",
+    "changed_services": [
+      "core",
+      "jobservice",
+      "portal",
+      "postgresql",
+      "proxy",
+      "redis",
+      "registry",
+      "registryctl",
+      "trivy-adapter"
+    ],
+    "address_change_count": 9,
+    "preserved_scope": "ALL_OTHER_NORMALIZED_FIELDS",
+    "RUNTIME_APPLY": "NOT_PERFORMED",
+    "AUTOSTART": "NOT_TESTED",
+    "AC04": "NOT_EVALUATED"
+  },
+  "error_code": "UNEXPECTED_NON_BIND_DATA",
+  "finished_epoch": 1791440498.8336666
+}
