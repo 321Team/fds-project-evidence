@@ -1,0 +1,22 @@
+== fds-engine replicas=3
+labels={'app': 'fds-engine'}
+selector={'matchLabels': {'app': 'fds-engine'}} template.labels={'app': 'fds-engine'}
+annotation_keys=['deployment.kubernetes.io/revision', 'kubectl.kubernetes.io/last-applied-configuration'] template.annotation_keys=[]
+strategy={'rollingUpdate': {'maxSurge': '25%', 'maxUnavailable': '25%'}, 'type': 'RollingUpdate'} revisionHistoryLimit=10 progressDeadline=600
+topologySpread=[{'labelSelector': {'matchLabels': {'app': 'fds-engine'}}, 'matchLabelKeys': ['pod-template-hash'], 'maxSkew': 1, 'nodeTaintsPolicy': 'Honor', 'topologyKey': 'kubernetes.io/hostname', 'whenUnsatisfiable': 'DoNotSchedule'}] affinity=None nodeSelector=None tolerations=None
+sa=fds-engine-sa automount=False dnsPolicy=ClusterFirst grace=30 pullSecrets=[{'name': 'harbor-pull-secret'}]
+container=fds-engine image=10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369 pullPolicy=IfNotPresent
+  env=[] envFrom=None
+  readiness={'failureThreshold': 3, 'httpGet': {'path': '/readyz', 'port': 8001, 'scheme': 'HTTP'}, 'initialDelaySeconds': 5, 'periodSeconds': 10, 'successThreshold': 1, 'timeoutSeconds': 1}
+last_applied={'bytes': 1215, 'mentions_postgres': False, 'sha256': '04f71ef3beba4ac0ae341040e7897a0c0b93920079a1147f16f7cf8052ad8c2b'}
+== transaction-api replicas=3
+labels={'app': 'transaction-api'}
+selector={'matchLabels': {'app': 'transaction-api'}} template.labels={'app': 'transaction-api'}
+annotation_keys=['deployment.kubernetes.io/revision', 'kubectl.kubernetes.io/last-applied-configuration'] template.annotation_keys=['kubectl.kubernetes.io/restartedAt']
+strategy={'rollingUpdate': {'maxSurge': '25%', 'maxUnavailable': '25%'}, 'type': 'RollingUpdate'} revisionHistoryLimit=10 progressDeadline=600
+topologySpread=[{'labelSelector': {'matchLabels': {'app': 'transaction-api'}}, 'matchLabelKeys': ['pod-template-hash'], 'maxSkew': 1, 'nodeTaintsPolicy': 'Honor', 'topologyKey': 'kubernetes.io/hostname', 'whenUnsatisfiable': 'DoNotSchedule'}] affinity=None nodeSelector=None tolerations=None
+sa=transaction-api-sa automount=False dnsPolicy=ClusterFirst grace=30 pullSecrets=[{'name': 'harbor-pull-secret'}]
+container=transaction-api image=10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33 pullPolicy=IfNotPresent
+  env=[('DATABASE_URL', {'secretKeyRef': {'key': 'DATABASE_URL', 'name': 'transaction-api-db-credentials'}})] envFrom=None
+  readiness={'failureThreshold': 3, 'httpGet': {'path': '/readyz', 'port': 8000, 'scheme': 'HTTP'}, 'initialDelaySeconds': 5, 'periodSeconds': 10, 'successThreshold': 1, 'timeoutSeconds': 1}
+last_applied={'bytes': 1250, 'mentions_postgres': False, 'sha256': 'd19dd00cdcbcede3803be2dde750fbbb9e98af305717be28be1fb124b9466319'}

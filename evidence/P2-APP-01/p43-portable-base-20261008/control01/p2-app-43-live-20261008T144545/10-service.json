@@ -1,0 +1,365 @@
+[
+ {
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+   "annotations": {
+    "kubectl.kubernetes.io/last-applied-configuration": {
+     "bytes": 285,
+     "mentions_postgres": false,
+     "sanitized": {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+       "annotations": {},
+       "labels": {
+        "app": "fds-engine"
+       },
+       "name": "fds-engine",
+       "namespace": "fds-app"
+      },
+      "spec": {
+       "ports": [
+        {
+         "name": "grpc",
+         "port": 8001,
+         "targetPort": 8001
+        },
+        {
+         "name": "metrics",
+         "port": 9090,
+         "targetPort": 9090
+        }
+       ],
+       "selector": {
+        "app": "fds-engine"
+       }
+      }
+     },
+     "sha256": "67739287f2a456de9557f6d096b10fd53da96f6811286199fb21ed0dfb2ec174"
+    }
+   },
+   "labels": {
+    "app": "fds-engine"
+   },
+   "name": "fds-engine",
+   "namespace": "fds-app"
+  },
+  "spec": {
+   "clusterIP": "10.97.246.223",
+   "clusterIPs": [
+    "10.97.246.223"
+   ],
+   "internalTrafficPolicy": "Cluster",
+   "ipFamilies": [
+    "IPv4"
+   ],
+   "ipFamilyPolicy": "SingleStack",
+   "ports": [
+    {
+     "name": "grpc",
+     "port": 8001,
+     "protocol": "TCP",
+     "targetPort": 8001
+    },
+    {
+     "name": "metrics",
+     "port": 9090,
+     "protocol": "TCP",
+     "targetPort": 9090
+    }
+   ],
+   "selector": {
+    "app": "fds-engine"
+   },
+   "sessionAffinity": "None",
+   "type": "ClusterIP"
+  }
+ },
+ {
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+   "annotations": {
+    "kubectl.kubernetes.io/last-applied-configuration": {
+     "bytes": 293,
+     "mentions_postgres": false,
+     "sanitized": {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+       "annotations": {},
+       "labels": {
+        "app": "fds-engine",
+        "role": "metrics-discovery"
+       },
+       "name": "fds-engine-metrics",
+       "namespace": "fds-app"
+      },
+      "spec": {
+       "clusterIP": "None",
+       "ports": [
+        {
+         "name": "metrics",
+         "port": 9090,
+         "targetPort": 9090
+        }
+       ],
+       "selector": {
+        "app": "fds-engine"
+       }
+      }
+     },
+     "sha256": "2f1c980433016297778d2855425b6ed4c0e3ed45e67721e0bc6705179a525ebf"
+    }
+   },
+   "labels": {
+    "app": "fds-engine",
+    "role": "metrics-discovery"
+   },
+   "name": "fds-engine-metrics",
+   "namespace": "fds-app"
+  },
+  "spec": {
+   "clusterIP": "None",
+   "clusterIPs": [
+    "None"
+   ],
+   "internalTrafficPolicy": "Cluster",
+   "ipFamilies": [
+    "IPv4"
+   ],
+   "ipFamilyPolicy": "SingleStack",
+   "ports": [
+    {
+     "name": "metrics",
+     "port": 9090,
+     "protocol": "TCP",
+     "targetPort": 9090
+    }
+   ],
+   "selector": {
+    "app": "fds-engine"
+   },
+   "sessionAffinity": "None",
+   "type": "ClusterIP"
+  }
+ },
+ {
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+   "annotations": {
+    "kubectl.kubernetes.io/last-applied-configuration": {
+     "bytes": 298,
+     "mentions_postgres": false,
+     "sanitized": {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+       "annotations": {},
+       "labels": {
+        "app": "transaction-api"
+       },
+       "name": "transaction-api",
+       "namespace": "fds-app"
+      },
+      "spec": {
+       "ports": [
+        {
+         "name": "http",
+         "port": 80,
+         "targetPort": 8000
+        },
+        {
+         "name": "metrics",
+         "port": 9091,
+         "targetPort": 9091
+        }
+       ],
+       "selector": {
+        "app": "transaction-api"
+       }
+      }
+     },
+     "sha256": "5e3e248471fb0c3ea6472e7bc844ce2ca3797cd5b70c2906bfea54e262a18519"
+    }
+   },
+   "labels": {
+    "app": "transaction-api"
+   },
+   "name": "transaction-api",
+   "namespace": "fds-app"
+  },
+  "spec": {
+   "clusterIP": "10.106.27.47",
+   "clusterIPs": [
+    "10.106.27.47"
+   ],
+   "internalTrafficPolicy": "Cluster",
+   "ipFamilies": [
+    "IPv4"
+   ],
+   "ipFamilyPolicy": "SingleStack",
+   "ports": [
+    {
+     "name": "http",
+     "port": 80,
+     "protocol": "TCP",
+     "targetPort": 8000
+    },
+    {
+     "name": "metrics",
+     "port": 9091,
+     "protocol": "TCP",
+     "targetPort": 9091
+    }
+   ],
+   "selector": {
+    "app": "transaction-api"
+   },
+   "sessionAffinity": "None",
+   "type": "ClusterIP"
+  }
+ },
+ {
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+   "annotations": {
+    "kubectl.kubernetes.io/last-applied-configuration": {
+     "bytes": 308,
+     "mentions_postgres": false,
+     "sanitized": {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+       "annotations": {},
+       "labels": {
+        "app": "transaction-api",
+        "role": "metrics-discovery"
+       },
+       "name": "transaction-api-metrics",
+       "namespace": "fds-app"
+      },
+      "spec": {
+       "clusterIP": "None",
+       "ports": [
+        {
+         "name": "metrics",
+         "port": 9091,
+         "targetPort": 9091
+        }
+       ],
+       "selector": {
+        "app": "transaction-api"
+       }
+      }
+     },
+     "sha256": "f45e891bfce0bd2c47d0006d09532e86082d5c3efc2c07316bd59d7deddc3f41"
+    }
+   },
+   "labels": {
+    "app": "transaction-api",
+    "role": "metrics-discovery"
+   },
+   "name": "transaction-api-metrics",
+   "namespace": "fds-app"
+  },
+  "spec": {
+   "clusterIP": "None",
+   "clusterIPs": [
+    "None"
+   ],
+   "internalTrafficPolicy": "Cluster",
+   "ipFamilies": [
+    "IPv4"
+   ],
+   "ipFamilyPolicy": "SingleStack",
+   "ports": [
+    {
+     "name": "metrics",
+     "port": 9091,
+     "protocol": "TCP",
+     "targetPort": 9091
+    }
+   ],
+   "selector": {
+    "app": "transaction-api"
+   },
+   "sessionAffinity": "None",
+   "type": "ClusterIP"
+  }
+ },
+ {
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+   "annotations": {
+    "kubectl.kubernetes.io/last-applied-configuration": {
+     "bytes": 325,
+     "mentions_postgres": false,
+     "sanitized": {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+       "annotations": {},
+       "labels": {
+        "app": "transaction-api"
+       },
+       "name": "transaction-api-nodeport",
+       "namespace": "fds-app"
+      },
+      "spec": {
+       "externalTrafficPolicy": "Local",
+       "ports": [
+        {
+         "name": "http",
+         "nodePort": 30080,
+         "port": 80,
+         "targetPort": 8000
+        }
+       ],
+       "selector": {
+        "app": "transaction-api"
+       },
+       "type": "NodePort"
+      }
+     },
+     "sha256": "97ea9299ba5d6424ff9b467b20de3ea71f054203a69542327bca5da80e0f94f1"
+    }
+   },
+   "labels": {
+    "app": "transaction-api"
+   },
+   "name": "transaction-api-nodeport",
+   "namespace": "fds-app"
+  },
+  "spec": {
+   "clusterIP": "10.110.141.93",
+   "clusterIPs": [
+    "10.110.141.93"
+   ],
+   "externalTrafficPolicy": "Local",
+   "internalTrafficPolicy": "Cluster",
+   "ipFamilies": [
+    "IPv4"
+   ],
+   "ipFamilyPolicy": "SingleStack",
+   "ports": [
+    {
+     "name": "http",
+     "nodePort": 30080,
+     "port": 80,
+     "protocol": "TCP",
+     "targetPort": 8000
+    }
+   ],
+   "selector": {
+    "app": "transaction-api"
+   },
+   "sessionAffinity": "None",
+   "type": "NodePort"
+  }
+ }
+]
