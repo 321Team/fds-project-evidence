@@ -1,0 +1,444 @@
+{
+  "source_commit": "b4303f2df512a8791d2421203cf159567d076b2a",
+  "scope": "current read-only snapshot, not historical approval or runtime behavior",
+  "node_code_comparison": [
+    {
+      "host": "k8s-control01",
+      "files": [
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+          "expected_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "observed_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+          "expected_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+          "observed_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+          "expected_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+          "observed_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+          "expected_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "observed_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+          "expected_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+          "observed_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+          "expected_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "observed_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+          "expected_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "observed_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+          "expected_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "observed_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+          "expected_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+          "observed_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+          "status": "MATCH",
+          "error": null
+        }
+      ]
+    },
+    {
+      "host": "k8s-control03",
+      "files": [
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+          "expected_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "observed_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+          "expected_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+          "observed_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+          "expected_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+          "observed_sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+          "expected_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "observed_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+          "expected_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+          "observed_sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+          "expected_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "observed_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+          "expected_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "observed_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+          "expected_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "observed_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+          "expected_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+          "observed_sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+          "status": "DIFFERENT",
+          "error": null
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker01",
+      "files": [
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+          "expected_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "observed_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+          "expected_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+          "observed_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+          "expected_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+          "observed_sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+          "expected_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "observed_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+          "expected_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+          "observed_sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+          "expected_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "observed_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+          "expected_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "observed_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+          "expected_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "observed_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+          "expected_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+          "observed_sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+          "status": "DIFFERENT",
+          "error": null
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker02",
+      "files": [
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+          "expected_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "observed_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+          "expected_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+          "observed_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+          "expected_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+          "observed_sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+          "expected_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "observed_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+          "expected_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+          "observed_sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+          "expected_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "observed_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+          "expected_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "observed_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+          "expected_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "observed_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+          "expected_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+          "observed_sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+          "status": "DIFFERENT",
+          "error": null
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker03",
+      "files": [
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+          "expected_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "observed_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+          "expected_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+          "observed_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+          "expected_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+          "observed_sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+          "expected_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "observed_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+          "expected_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+          "observed_sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+          "status": "DIFFERENT",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+          "expected_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "observed_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+          "expected_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "observed_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+          "expected_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "observed_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+          "status": "MATCH",
+          "error": null
+        },
+        {
+          "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+          "expected_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+          "observed_sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+          "status": "DIFFERENT",
+          "error": null
+        }
+      ]
+    }
+  ],
+  "rendered_policy_comparison": [
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/gnp/k8s-control01.yaml",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-control01",
+      "rendered_sha256": "e8a8443fcd3c4bacfb44b63f1ef22bf332d30d4315aa0241443d152e042027da",
+      "live_uid": "b0f3db6f-d10d-4e66-a496-2026fa4d6b9a",
+      "status": "SPEC_DIFFERENT"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/gnp/k8s-control02.yaml",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-control02",
+      "rendered_sha256": "1cb8178fa0859e4644f9d4d71c3e517a2f65d164ea35e75032aa15a657ab3a47",
+      "live_uid": "bffd71d5-90a2-477f-8868-bc5df5d07ff4",
+      "status": "SPEC_DIFFERENT"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/gnp/k8s-control03.yaml",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-control03",
+      "rendered_sha256": "2d3afea039a2e43b3fc99bda5301c79b5e97a3c07f2e73462c72603bede9378a",
+      "live_uid": "6914fbee-2203-40b9-8902-80fa2520db4c",
+      "status": "SPEC_DIFFERENT"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/gnp/k8s-worker01.yaml",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-worker01",
+      "rendered_sha256": "6231fa6e8e31bd4d65df4db63e4d4fcf7e9608417cfd31ab1bacab07f168d667",
+      "live_uid": "5b30e937-bf16-41c1-8ad2-2d905c55b6fb",
+      "status": "SPEC_DIFFERENT"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/gnp/k8s-worker02.yaml",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-worker02",
+      "rendered_sha256": "bc2b1653f27a642adcd8857f7e3dff864f5a1b54a36c9bc26e69655f9d965c64",
+      "live_uid": "c744ef50-b58b-4645-af1d-7ec9e510d9d1",
+      "status": "SPEC_DIFFERENT"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/gnp/k8s-worker03.yaml",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-worker03",
+      "rendered_sha256": "e977d0115339c7f67f417f980e300b49af5e5afaf9b7b5236b77a0d2715f0f0c",
+      "live_uid": "597b51e8-13d5-4c29-8599-9e00c44c1e34",
+      "status": "SPEC_DIFFERENT"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/hep/k8s-control01.yaml",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-control01",
+      "rendered_sha256": "76ca8eb3de0766989e3a7385fdcef7a8a2dcabfcbf8e537024bc943b7226367c",
+      "live_uid": "a947480d-4b53-4994-82be-285e12b1834d",
+      "status": "SPEC_EQUAL"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/hep/k8s-control02.yaml",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-control02",
+      "rendered_sha256": "eb76b7f2c719420920e871eba7fa1b50466d88c98679a8ed81fed942ce57995b",
+      "live_uid": "57a3ac72-9ce2-4ee7-bfed-2ffde6fdbd24",
+      "status": "SPEC_EQUAL"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/hep/k8s-control03.yaml",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-control03",
+      "rendered_sha256": "1f62fdf62fdb8318047cc93915010311d5493d8ea40bac157e4c1724ee63fd82",
+      "live_uid": "6bd35726-0d43-4a57-b6c7-18bd56910600",
+      "status": "SPEC_EQUAL"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/hep/k8s-worker01.yaml",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-worker01",
+      "rendered_sha256": "1e8308aea246dde741e7c4c0020baea9998e0b626110f84409fd01789bff2b0a",
+      "live_uid": "f650c589-5261-4566-a186-606440cc304a",
+      "status": "SPEC_EQUAL"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/hep/k8s-worker02.yaml",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-worker02",
+      "rendered_sha256": "f6f95f5e6ff106cae65ee882a2d40db086abd18921da80117717ddc88c0a9881",
+      "live_uid": "52f1ff1b-c1dd-4ca7-9ef6-759a4cab52bf",
+      "status": "SPEC_EQUAL"
+    },
+    {
+      "rendered_path": "/root/generated-gate2-attempt01/hep/k8s-worker03.yaml",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-worker03",
+      "rendered_sha256": "6661d9531537dae084c0e500efa642ab6f80d0a2f05677b6afbf5bd0702f9c1e",
+      "live_uid": "76f476c5-b695-4da7-a921-2db875635dc8",
+      "status": "SPEC_EQUAL"
+    }
+  ]
+}
