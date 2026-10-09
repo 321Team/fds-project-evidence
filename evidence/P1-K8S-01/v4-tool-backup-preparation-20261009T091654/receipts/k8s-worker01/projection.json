@@ -1,0 +1,538 @@
+{
+  "omitted_fields": "files[].content_base64 only; private original retained",
+  "projection": {
+    "backup_readiness": "NOT_ESTABLISHED",
+    "concurrent_writer_exclusion": "NOT_ESTABLISHED",
+    "cross_file_atomic_snapshot": false,
+    "files": [
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/3"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "exported": false,
+        "metadata": {
+          "atime_ns": 1791471628610409665,
+          "ctime_ns": 1788950988668927480,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 135576468,
+          "mode": "0o750",
+          "mtime_ns": 1788945243000000000,
+          "nlink": 1,
+          "size": 32483,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+        "sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "content_storage": "PRIVATE_PC_RECEIPT_NOT_INCLUDED",
+        "exported": true,
+        "metadata": {
+          "atime_ns": 1791471628612409641,
+          "ctime_ns": 1788952150538583512,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 67121343,
+          "mode": "0o750",
+          "mtime_ns": 1788952150538583512,
+          "nlink": 1,
+          "size": 7382,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+        "sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+        "stable_during_read": true,
+        "syntax": "COMPILED_NOT_EXECUTED",
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "content_storage": "PRIVATE_PC_RECEIPT_NOT_INCLUDED",
+        "exported": true,
+        "metadata": {
+          "atime_ns": 1791471628612409641,
+          "ctime_ns": 1789984072501748608,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 68685637,
+          "mode": "0o750",
+          "mtime_ns": 1789984072501748608,
+          "nlink": 1,
+          "size": 13085,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+        "sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+        "stable_during_read": true,
+        "syntax": "COMPILED_NOT_EXECUTED",
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "exported": false,
+        "metadata": {
+          "atime_ns": 1791471628614409617,
+          "ctime_ns": 1788950988668927480,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 68700687,
+          "mode": "0o750",
+          "mtime_ns": 1788945243000000000,
+          "nlink": 1,
+          "size": 1384,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+        "sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "content_storage": "PRIVATE_PC_RECEIPT_NOT_INCLUDED",
+        "exported": true,
+        "metadata": {
+          "atime_ns": 1791471628612409641,
+          "ctime_ns": 1789980809057015238,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 68700690,
+          "mode": "0o750",
+          "mtime_ns": 1789980809057015238,
+          "nlink": 1,
+          "size": 8754,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+        "sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+        "stable_during_read": true,
+        "syntax": "COMPILED_NOT_EXECUTED",
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "exported": false,
+        "metadata": {
+          "atime_ns": 1791471628613409629,
+          "ctime_ns": 1788950988668927480,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 68700692,
+          "mode": "0o750",
+          "mtime_ns": 1788945243000000000,
+          "nlink": 1,
+          "size": 2847,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+        "sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "exported": false,
+        "metadata": {
+          "atime_ns": 1791471628613409629,
+          "ctime_ns": 1788950988668927480,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 68700694,
+          "mode": "0o750",
+          "mtime_ns": 1788945243000000000,
+          "nlink": 1,
+          "size": 4159,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+        "sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "exported": false,
+        "metadata": {
+          "atime_ns": 1791471628613409629,
+          "ctime_ns": 1788950988668927480,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 68700696,
+          "mode": "0o750",
+          "mtime_ns": 1788945243000000000,
+          "nlink": 1,
+          "size": 4610,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+        "sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "content_storage": "PRIVATE_PC_RECEIPT_NOT_INCLUDED",
+        "exported": true,
+        "metadata": {
+          "atime_ns": 1791471628614409617,
+          "ctime_ns": 1788950988668927480,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 68700697,
+          "mode": "0o750",
+          "mtime_ns": 1788945243000000000,
+          "nlink": 1,
+          "size": 11129,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+        "sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+        "stable_during_read": true,
+        "syntax": "COMPILED_NOT_EXECUTED",
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      }
+    ],
+    "finished_at_kst": "2026-10-09T09:16:57.306072+09:00",
+    "host": "k8s-worker01",
+    "parents": [
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+        },
+        "filesystem": {
+          "available_bytes": 66508824576,
+          "available_inodes": 36548029,
+          "readonly": false
+        },
+        "metadata": {
+          "atime_ns": 1790843946390540628,
+          "ctime_ns": 1788958146272066665,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 134494520,
+          "mode": "0o755",
+          "mtime_ns": 1788958146272066665,
+          "nlink": 5,
+          "size": 46,
+          "uid": 0
+        },
+        "path": "/opt",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "c3lzdGVtX3U6b2JqZWN0X3I6dXNyX3Q6czAA",
+            "sha256": "dfd5ce64f0fc26034ee51922fc7772a0031a0e3b5b03527e134e11a7162947f5",
+            "size": 27
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/3"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+        },
+        "filesystem": {
+          "available_bytes": 66508824576,
+          "available_inodes": 36548029,
+          "readonly": false
+        },
+        "metadata": {
+          "atime_ns": 1790843946390540628,
+          "ctime_ns": 1788950957408340430,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 2628,
+          "mode": "0o755",
+          "mtime_ns": 1788950957408340430,
+          "nlink": 3,
+          "size": 26,
+          "uid": 0
+        },
+        "path": "/opt/fds",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzcl90OnMwAA==",
+            "sha256": "4334fa5e312ee79a2d5fa56bb756e34817f247103d88494a9dd59f9df5cbd311",
+            "size": 31
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/4"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "filesystem": {
+          "available_bytes": 66508824576,
+          "available_inodes": 36548029,
+          "readonly": false
+        },
+        "metadata": {
+          "atime_ns": 1790843946390540628,
+          "ctime_ns": 1789982861852127895,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 135196224,
+          "mode": "0o750",
+          "mtime_ns": 1789982861852127895,
+          "nlink": 8,
+          "size": 4096,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      },
+      {
+        "acl": {
+          "command": [
+            "/usr/bin/getfacl",
+            "-c",
+            "-p",
+            "-n",
+            "--",
+            "/proc/self/fd/3"
+          ],
+          "rc": 0,
+          "stderr": "",
+          "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+        },
+        "filesystem": {
+          "available_bytes": 66508824576,
+          "available_inodes": 36548029,
+          "readonly": false
+        },
+        "metadata": {
+          "atime_ns": 1791471628609409677,
+          "ctime_ns": 1790844076062102240,
+          "dev": 64768,
+          "gid": 0,
+          "inode": 67116817,
+          "mode": "0o750",
+          "mtime_ns": 1790844076062102240,
+          "nlink": 3,
+          "size": 4096,
+          "uid": 0
+        },
+        "path": "/opt/fds/P1-K8S-01-v4/code",
+        "stable_during_read": true,
+        "xattrs": {
+          "security.selinux": {
+            "content_base64": "dW5jb25maW5lZF91Om9iamVjdF9yOnVzZXJfaG9tZV90OnMwAA==",
+            "sha256": "60544da78bba8056823d0dd5fa32859888771b6eef83e5c4ab39ee15f0d7be2a",
+            "size": 37
+          }
+        }
+      }
+    ],
+    "remote_write": false,
+    "restore_test": "NOT_RUN",
+    "runtime_apply": "NOT_RUN",
+    "schema": "fds.k8s-tool-backup-readonly.v1",
+    "selinux_enforce": "1",
+    "started_at_kst": "2026-10-09T09:16:57.287342+09:00",
+    "status": "COLLECTED",
+    "tool_execution": "NOT_RUN"
+  },
+  "schema": "fds.private-receipt-projection.v1",
+  "source_stdout_sha256": "72eee0adbe67897da6941d0908dee6ed3a98043cccd5c49edc7ad87f8da21749"
+}

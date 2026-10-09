@@ -1,0 +1,731 @@
+{
+  "approved_different": 17,
+  "approved_match": 28,
+  "backup_readiness": "NOT_ESTABLISHED",
+  "exported_bytes": 168782,
+  "exports": 17,
+  "files": 45,
+  "full_xattr_names": [
+    "security.selinux"
+  ],
+  "hosts": [
+    {
+      "contexts": {
+        "unconfined_u:object_r:usr_t:s0": 9
+      },
+      "exports": 1,
+      "files": 9,
+      "host": "k8s-control01",
+      "parents": [
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 65494179840,
+            "available_inodes": 36550082,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791167836126873902,
+            "ctime_ns": 1788957278435669857,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 234882650,
+            "mode": "0o755",
+            "mtime_ns": 1788957278435669857,
+            "nlink": 5,
+            "size": 46,
+            "uid": 0
+          },
+          "path": "/opt"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 65494179840,
+            "available_inodes": 36550082,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791167836126873902,
+            "ctime_ns": 1788952566076686621,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 101163000,
+            "mode": "0o755",
+            "mtime_ns": 1788952566076686621,
+            "nlink": 3,
+            "size": 26,
+            "uid": 0
+          },
+          "path": "/opt/fds"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 65494179840,
+            "available_inodes": 36550082,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791254937206727512,
+            "ctime_ns": 1788954094557293055,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 134733389,
+            "mode": "0o750",
+            "mtime_ns": 1788952659303779419,
+            "nlink": 7,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 65494179840,
+            "available_inodes": 36550082,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791471627516361240,
+            "ctime_ns": 1791258878038680546,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 234885956,
+            "mode": "0o750",
+            "mtime_ns": 1791258878038680546,
+            "nlink": 3,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4/code"
+        }
+      ]
+    },
+    {
+      "contexts": {
+        "unconfined_u:object_r:usr_t:s0": 9
+      },
+      "exports": 4,
+      "files": 9,
+      "host": "k8s-control03",
+      "parents": [
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66386481152,
+            "available_inodes": 36557675,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791167836112923550,
+            "ctime_ns": 1788957646702162824,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 234882650,
+            "mode": "0o755",
+            "mtime_ns": 1788957646702162824,
+            "nlink": 5,
+            "size": 46,
+            "uid": 0
+          },
+          "path": "/opt"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66386481152,
+            "available_inodes": 36557675,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791167836112923550,
+            "ctime_ns": 1788952897711522135,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 281651,
+            "mode": "0o755",
+            "mtime_ns": 1788952897711522135,
+            "nlink": 3,
+            "size": 26,
+            "uid": 0
+          },
+          "path": "/opt/fds"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66386481152,
+            "available_inodes": 36557675,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791167836112923550,
+            "ctime_ns": 1788954094579748050,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 33722919,
+            "mode": "0o750",
+            "mtime_ns": 1788952897879520924,
+            "nlink": 7,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66386481152,
+            "available_inodes": 36557675,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791471628208096892,
+            "ctime_ns": 1788954094579748050,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 134705932,
+            "mode": "0o750",
+            "mtime_ns": 1788952897856521090,
+            "nlink": 2,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4/code"
+        }
+      ]
+    },
+    {
+      "contexts": {
+        "unconfined_u:object_r:user_home_t:s0": 9
+      },
+      "exports": 4,
+      "files": 9,
+      "host": "k8s-worker01",
+      "parents": [
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66508824576,
+            "available_inodes": 36548029,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1790843946390540628,
+            "ctime_ns": 1788958146272066665,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 134494520,
+            "mode": "0o755",
+            "mtime_ns": 1788958146272066665,
+            "nlink": 5,
+            "size": 46,
+            "uid": 0
+          },
+          "path": "/opt"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66508824576,
+            "available_inodes": 36548029,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1790843946390540628,
+            "ctime_ns": 1788950957408340430,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 2628,
+            "mode": "0o755",
+            "mtime_ns": 1788950957408340430,
+            "nlink": 3,
+            "size": 26,
+            "uid": 0
+          },
+          "path": "/opt/fds"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66508824576,
+            "available_inodes": 36548029,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1790843946390540628,
+            "ctime_ns": 1789982861852127895,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 135196224,
+            "mode": "0o750",
+            "mtime_ns": 1789982861852127895,
+            "nlink": 8,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66508824576,
+            "available_inodes": 36548029,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791471628609409677,
+            "ctime_ns": 1790844076062102240,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 67116817,
+            "mode": "0o750",
+            "mtime_ns": 1790844076062102240,
+            "nlink": 3,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4/code"
+        }
+      ]
+    },
+    {
+      "contexts": {
+        "unconfined_u:object_r:usr_t:s0": 9
+      },
+      "exports": 4,
+      "files": 9,
+      "host": "k8s-worker02",
+      "parents": [
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66214563840,
+            "available_inodes": 36548130,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1787887345470997307,
+            "ctime_ns": 1788957647020660502,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 234882650,
+            "mode": "0o755",
+            "mtime_ns": 1788957647020660502,
+            "nlink": 5,
+            "size": 46,
+            "uid": 0
+          },
+          "path": "/opt"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66214563840,
+            "available_inodes": 36548130,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1790530005966018266,
+            "ctime_ns": 1788952564991302608,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 234885804,
+            "mode": "0o755",
+            "mtime_ns": 1788952564991302608,
+            "nlink": 3,
+            "size": 26,
+            "uid": 0
+          },
+          "path": "/opt/fds"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66214563840,
+            "available_inodes": 36548130,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1790530005966018266,
+            "ctime_ns": 1788954094384179793,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 360220,
+            "mode": "0o750",
+            "mtime_ns": 1788952652716895294,
+            "nlink": 7,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 66214563840,
+            "available_inodes": 36548130,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791471629011456577,
+            "ctime_ns": 1788954094384179793,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 102084755,
+            "mode": "0o750",
+            "mtime_ns": 1788952652694895396,
+            "nlink": 2,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4/code"
+        }
+      ]
+    },
+    {
+      "contexts": {
+        "unconfined_u:object_r:usr_t:s0": 9
+      },
+      "exports": 4,
+      "files": 9,
+      "host": "k8s-worker03",
+      "parents": [
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 63730036736,
+            "available_inodes": 36533377,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1787887335626001010,
+            "ctime_ns": 1788957647716727092,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 234882650,
+            "mode": "0o755",
+            "mtime_ns": 1788957647716727092,
+            "nlink": 5,
+            "size": 46,
+            "uid": 0
+          },
+          "path": "/opt"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::r-x\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 63730036736,
+            "available_inodes": 36533377,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1790530005969437278,
+            "ctime_ns": 1788952565540000793,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 360599,
+            "mode": "0o755",
+            "mtime_ns": 1788952565540000793,
+            "nlink": 3,
+            "size": 26,
+            "uid": 0
+          },
+          "path": "/opt/fds"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/4"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 63730036736,
+            "available_inodes": 36533377,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1790530005969437278,
+            "ctime_ns": 1788954094550821422,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 33728266,
+            "mode": "0o750",
+            "mtime_ns": 1788952655139981801,
+            "nlink": 7,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4"
+        },
+        {
+          "acl": {
+            "command": [
+              "/usr/bin/getfacl",
+              "-c",
+              "-p",
+              "-n",
+              "--",
+              "/proc/self/fd/3"
+            ],
+            "rc": 0,
+            "stderr": "",
+            "stdout": "user::rwx\ngroup::r-x\nother::---\n\n"
+          },
+          "filesystem": {
+            "available_bytes": 63730036736,
+            "available_inodes": 36533377,
+            "readonly": false
+          },
+          "metadata": {
+            "atime_ns": 1791471629418314271,
+            "ctime_ns": 1788954094550821422,
+            "dev": 64768,
+            "gid": 0,
+            "inode": 134900860,
+            "mode": "0o750",
+            "mtime_ns": 1788952655115982090,
+            "nlink": 2,
+            "size": 4096,
+            "uid": 0
+          },
+          "path": "/opt/fds/P1-K8S-01-v4/code"
+        }
+      ]
+    }
+  ],
+  "metadata_objects": 65,
+  "private_byte_hashes_verified": 17,
+  "private_receipt_check": "PASS",
+  "private_receipt_hashes_verified": 10,
+  "remote_backup": "NOT_CREATED",
+  "runtime_restore": "NOT_RUN",
+  "schema": "fds.k8s-tool-backup-analysis.v1",
+  "unchanged_from_plan": 45
+}
