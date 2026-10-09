@@ -1,0 +1,12 @@
+{
+  "rc": 0,
+  "collector_sha256": "3db5e18596c8d4c70ffe4ea7034c8cc089bbd0f2c35725dd043093517328d719",
+  "stdout_sha256": "2d9431b01d8b16934ca1f19b68a0f2ec01742ceef8b30c6ed3dc92d253d80c09",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o StrictHostKeyChecking=yes server01_cicd-runner@10.250.10.20 'python3 -I -B -'"
+  ]
+}
