@@ -1,0 +1,38 @@
+{
+  "canary_apply": "NOT_RUN",
+  "candidate_installation_declaration": {
+    "cli_shebangs": 4,
+    "core": "2.21.3",
+    "python": "3.12.14"
+  },
+  "checkouts": [
+    {
+      "absent": [
+        "scripts/lib/ansible-engine.sh",
+        "playbooks/cr-p1-ans-01-01-verify-worker02.yml"
+      ],
+      "head": "e1c4458cf95dacca76870d7b9b012f8615f6974a",
+      "matched": 10,
+      "path": "/home/server01_ansible/p1-ans-01",
+      "tracked_clean": true,
+      "untracked": "NOT_QUERIED"
+    },
+    {
+      "absent": [],
+      "head": "5111c66f233fe0f84e2d63cef3837fe091a2a268",
+      "matched": 12,
+      "path": "/home/server01_ansible/worker02-dns-stage.yJfHG0vS/source",
+      "tracked_clean": true,
+      "untracked": "NOT_QUERIED"
+    }
+  ],
+  "cli_runtime_version": "NOT_RUN",
+  "engine_switch": "NOT_RUN",
+  "expected_absent": 2,
+  "git_blob_matches": 22,
+  "key_known_hosts": "METADATA_ONLY_NOT_CONTENT_OR_AUTHENTICATION",
+  "managed_host_connections": 0,
+  "new_scope_go": "NOT_GRANTED",
+  "receipt_hashes_verified": 2,
+  "schema": "fds.ansible-controller-comparison.v1"
+}
