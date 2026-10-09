@@ -1,0 +1,58 @@
+{
+  "observed_at_kst": "2026-10-09T19:21:47.507478+09:00",
+  "status": "OBSERVED_INPUTS_NOT_APPROVED_DEPLOY_PLAN",
+  "workflow_source_sha": "c9eff5fb2e50a690818a3e67347ab4a1bfc88f51",
+  "candidate_source_sha": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+  "candidate_run": 37890963668,
+  "service_account_observed": {
+    "metadata": {
+      "name": "cicd-runner-sa",
+      "namespace": "ci-cd",
+      "uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+      "resourceVersion": "1066110",
+      "generation": null,
+      "creationTimestamp": "2026-09-22T00:17:40Z"
+    },
+    "automountServiceAccountToken": false
+  },
+  "deployments": [
+    {
+      "name": "fds-engine",
+      "uid": "bf825dec-465b-4603-8b71-f768d195531c",
+      "generation": 5,
+      "container": "fds-engine",
+      "current_image": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+      "observed_rollback_candidate": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+      "rollback_approved": false,
+      "ready_replicas": 3,
+      "pod_count": 3,
+      "pod_image_ids_match_deployment": true,
+      "candidate_manifest_digest": "sha256:de34afb7a557d6ccc844fb74613ebc971eb493260236acc35ef3051935122813",
+      "current_equals_candidate": false
+    },
+    {
+      "name": "transaction-api",
+      "uid": "8a2af808-ec33-41f2-80b5-addde4e28910",
+      "generation": 9,
+      "container": "transaction-api",
+      "current_image": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+      "observed_rollback_candidate": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+      "rollback_approved": false,
+      "ready_replicas": 3,
+      "pod_count": 3,
+      "pod_image_ids_match_deployment": true,
+      "candidate_manifest_digest": "sha256:ef0afe42feb0f9e50f54b5aaab99a34bbeb01f10bc9fb8a0580519101645dc39",
+      "current_equals_candidate": false
+    }
+  ],
+  "unresolved": [
+    "Fresh Push receipt for candidate digests",
+    "Valid Robot/secret/trust and scan freshness at actual use time",
+    "Runtime plan/rollback approval for exact Deployment identities and images",
+    "Latest RBAC/CA/token binding at execution time",
+    "Harbor session completion/non-overlap and separate Runtime GO"
+  ],
+  "harbor_runtime": "NOT_CONTACTED_OTHER_SESSION",
+  "token_issued": false,
+  "deploy_executed": false
+}
