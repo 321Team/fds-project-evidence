@@ -1,0 +1,38 @@
+{
+  "/home/server01_ansible/p1-ans-01": {
+    "commit": "e1c4458cf95dacca76870d7b9b012f8615f6974a",
+    "inputs": {
+      "ansible.cfg": "73e6f6b5844a7a2dee8cf042b67a1c7b61c3e4b4198f4f7f7b65907e883de90e",
+      "inventory/group_vars/all.yml": "4c079bd5dc95a94e640752cce05f27d778c93f3e3eb7929fcc450714f2a15648",
+      "inventory/hosts.yml": "15daf8f9257473772f8ecd7cfaf08369c88fd5c3775cb3bf67fcd95a1122ec0a",
+      "playbooks/cr-p1-ans-01-01-apply-workers.yml": "8969a68ccf972f5e168ff9f46b64a0efa8e30ae409c80451f94bb10f1b82037b",
+      "playbooks/cr-p1-ans-01-01-verify-worker02.yml": null,
+      "roles/dns_resolver/tasks/main.yml": "a87f15af675cd926da84e1de9b6272bd155fbd99242636d714d83a69262de84e",
+      "roles/dns_resolver/tasks/verify.yml": "a75b7967edc543275ab69cd013bfdc6f89d72f42abe36d5a1e2f7f27f149eb61",
+      "scripts/cr-p1-ans-01-01-run.sh": "62bdfe8dfa3785952da91d97554616f73eee314d56537efd951689a0776846b2",
+      "scripts/cr-p1-mon-01-01-run.sh": "e31ac5d72d39245c361928f469fdb364a7862860c33a2c6789b394f07b98fbf3",
+      "scripts/cr-p1-ntp-01-01-run.sh": "c95929999f0fea727844dd779b985b5dadeec42853b6b82539becfff4a58b3ba",
+      "scripts/lib/ansible-engine.sh": null,
+      "scripts/p1-k8s-01-gate0-run.sh": "49bb00b0e1f8b04affc952f57656e6e6f980adbd267d5691a5f1e39b764b00c8"
+    },
+    "repository": "321Team/infra-ansible"
+  },
+  "/home/server01_ansible/worker02-dns-stage.yJfHG0vS/source": {
+    "commit": "5111c66f233fe0f84e2d63cef3837fe091a2a268",
+    "inputs": {
+      "ansible.cfg": "73e6f6b5844a7a2dee8cf042b67a1c7b61c3e4b4198f4f7f7b65907e883de90e",
+      "inventory/group_vars/all.yml": "4c079bd5dc95a94e640752cce05f27d778c93f3e3eb7929fcc450714f2a15648",
+      "inventory/hosts.yml": "15daf8f9257473772f8ecd7cfaf08369c88fd5c3775cb3bf67fcd95a1122ec0a",
+      "playbooks/cr-p1-ans-01-01-apply-workers.yml": "8969a68ccf972f5e168ff9f46b64a0efa8e30ae409c80451f94bb10f1b82037b",
+      "playbooks/cr-p1-ans-01-01-verify-worker02.yml": "316c2a57bdc08324547e1b3bcb559ac3a696e719a2dfe87316fb25f16f9b2ef0",
+      "roles/dns_resolver/tasks/main.yml": "a87f15af675cd926da84e1de9b6272bd155fbd99242636d714d83a69262de84e",
+      "roles/dns_resolver/tasks/verify.yml": "a75b7967edc543275ab69cd013bfdc6f89d72f42abe36d5a1e2f7f27f149eb61",
+      "scripts/cr-p1-ans-01-01-run.sh": "ebf31e5c7baa6d771a8282b58b05b6dcc8591d5da66c4a36e2c5624a3bbadf6c",
+      "scripts/cr-p1-mon-01-01-run.sh": "bf3d0fe563341d70139c0fe10b3f55c94e91f4f7fc34959c5baaf842f897ea6e",
+      "scripts/cr-p1-ntp-01-01-run.sh": "3b89f74e31b000be343e7e512bf12369708b7ab334cd54a7ae1d0c0dcce20171",
+      "scripts/lib/ansible-engine.sh": "aedf6cd8d2fa656784e5f93e4d507582efb39755655d2e2ad0696e6353f316dd",
+      "scripts/p1-k8s-01-gate0-run.sh": "c1eb995854e496ad74fa04f039f65b7321cafe8798ceea6f58d14f28799f8d3a"
+    },
+    "repository": "321Team/infra-ansible"
+  }
+}
