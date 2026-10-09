@@ -1,0 +1,1043 @@
+[
+  {
+    "kind": "GlobalNetworkPolicy",
+    "name": "fds-k8s-host-k8s-control01",
+    "differences": [
+      {
+        "path": "spec.ingress",
+        "expected": [
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                22
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                10250
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                4789
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.109/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                6443
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                2379,
+                2380
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ],
+        "observed": [
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                22
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                4789
+              ]
+            },
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                6443
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.109/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                2379,
+                2380
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                123
+              ]
+            },
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.103/32",
+                "10.1.93.104/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                123
+              ]
+            },
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.103/32",
+                "10.1.93.104/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32"
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ]
+      },
+      {
+        "path": "spec.tier",
+        "expected": "<absent>",
+        "observed": "default"
+      }
+    ]
+  },
+  {
+    "kind": "GlobalNetworkPolicy",
+    "name": "fds-k8s-host-k8s-control02",
+    "differences": [
+      {
+        "path": "spec.ingress",
+        "expected": [
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                22
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                10250
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                4789
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.109/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                6443
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                2379,
+                2380
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ],
+        "observed": [
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                22
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                4789
+              ]
+            },
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                6443
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.109/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                2379,
+                2380
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ]
+      },
+      {
+        "path": "spec.tier",
+        "expected": "<absent>",
+        "observed": "default"
+      }
+    ]
+  },
+  {
+    "kind": "GlobalNetworkPolicy",
+    "name": "fds-k8s-host-k8s-control03",
+    "differences": [
+      {
+        "path": "spec.ingress",
+        "expected": [
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                22
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                10250
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                4789
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.109/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                6443
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                2379,
+                2380
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ],
+        "observed": [
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                22
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                4789
+              ]
+            },
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                6443
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.109/32",
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                2379,
+                2380
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ]
+      },
+      {
+        "path": "spec.tier",
+        "expected": "<absent>",
+        "observed": "default"
+      }
+    ]
+  },
+  {
+    "kind": "GlobalNetworkPolicy",
+    "name": "fds-k8s-host-k8s-worker01",
+    "differences": [
+      {
+        "path": "spec.ingress",
+        "expected": [
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                22
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                10250
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                4789
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ],
+        "observed": [
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                22
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                4789
+              ]
+            },
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                9100,
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.107/32",
+                "10.1.93.108/32"
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ]
+      },
+      {
+        "path": "spec.tier",
+        "expected": "<absent>",
+        "observed": "default"
+      }
+    ]
+  },
+  {
+    "kind": "GlobalNetworkPolicy",
+    "name": "fds-k8s-host-k8s-worker02",
+    "differences": [
+      {
+        "path": "spec.ingress",
+        "expected": [
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                22
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                10250
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                4789
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ],
+        "observed": [
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                22
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                4789
+              ]
+            },
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                9100,
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.108/32"
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ]
+      },
+      {
+        "path": "spec.tier",
+        "expected": "<absent>",
+        "observed": "default"
+      }
+    ]
+  },
+  {
+    "kind": "GlobalNetworkPolicy",
+    "name": "fds-k8s-host-k8s-worker03",
+    "differences": [
+      {
+        "path": "spec.ingress",
+        "expected": [
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                22
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                10250
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            },
+            "destination": {
+              "ports": [
+                4789
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ],
+        "observed": [
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                22
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.250.10.10/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                4789
+              ]
+            },
+            "protocol": "UDP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32",
+                "10.1.93.108/32",
+                "10.1.93.102/32",
+                "10.1.93.103/32",
+                "10.1.93.104/32"
+              ]
+            }
+          },
+          {
+            "action": "Allow",
+            "destination": {
+              "ports": [
+                9100,
+                10250
+              ]
+            },
+            "protocol": "TCP",
+            "source": {
+              "nets": [
+                "10.1.93.105/32",
+                "10.1.93.107/32"
+              ]
+            }
+          },
+          {
+            "action": "Deny"
+          }
+        ]
+      },
+      {
+        "path": "spec.tier",
+        "expected": "<absent>",
+        "observed": "default"
+      }
+    ]
+  }
+]
