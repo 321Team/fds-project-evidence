@@ -1,0 +1,427 @@
+{
+  "schema": "P1-CICD-private-raw-export-1",
+  "at_utc": "2026-10-09T09:24:56.020945+00:00",
+  "source_run": 37890963668,
+  "source_attempt": 1,
+  "source_root": "/home/server01_cicd-runner/FDS_CICD_AppWorkflow.57rithja",
+  "expected_metadata_archive_sha256": "9dd174dafbbb0f8f198288e5bb7a747948cec97bff86b251db56eeffa6a56ff2",
+  "files": [
+    {
+      "path": "build-scan/fds-engine-build.log",
+      "kind": "command-log",
+      "sha256": "ee3768f7dcab9545929ba5303e0465681f41d0dfaeea069b73edf62aa23143a2",
+      "size": 4781
+    },
+    {
+      "path": "build-scan/fds-engine-contract-0.log",
+      "kind": "command-log",
+      "sha256": "e25e2f778d5b42aa257f3a526979260e406abd4efb7538fd5f43d9794d919271",
+      "size": 583
+    },
+    {
+      "path": "build-scan/fds-engine-offline-check.log",
+      "kind": "command-log",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "size": 30
+    },
+    {
+      "path": "build-scan/fds-engine-offline-install.log",
+      "kind": "command-log",
+      "sha256": "b9d79ffd4f31943dcdda3c1afb5ad4838c5e138238cb070ac18853a3078caed5",
+      "size": 4532
+    },
+    {
+      "path": "build-scan/fds-engine-offline-venv.log",
+      "kind": "command-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "build-scan/fds-engine-save.log",
+      "kind": "command-log",
+      "sha256": "a134015a52a97c12955f5a79a68ada904d9a4c62a504198d14d2e9766f4b5e63",
+      "size": 465
+    },
+    {
+      "path": "build-scan/fds-engine-unit-0.log",
+      "kind": "command-log",
+      "sha256": "cd2d29f925dd318e8d6ebbb62e80e5e5f9e1c2f8cbabec6d3b17ef348a550c51",
+      "size": 99
+    },
+    {
+      "path": "build-scan/fds-engine.oci.tar",
+      "kind": "build-oci",
+      "sha256": "bb5951c6bb2cf113f0d7815fddc41c2b1e2c9cd69ccbd8794f13f2bc277d405f",
+      "size": 38500352
+    },
+    {
+      "path": "build-scan/offline-builder-load.log",
+      "kind": "command-log",
+      "sha256": "5ffc247e72cc41947b606bada1f0e045b42e167b77f68fcb5a7e4e24b91110ff",
+      "size": 344
+    },
+    {
+      "path": "build-scan/offline-builder-resolve.log",
+      "kind": "command-log",
+      "sha256": "9d425623f1ce8601ea8488cddb57fa4d68f151bf4bc277e0182da431a5a5a3fa",
+      "size": 2396
+    },
+    {
+      "path": "build-scan/offline-builder-tag.log",
+      "kind": "command-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "build-scan/offline-runtime-load.log",
+      "kind": "command-log",
+      "sha256": "4bf5bf87ad86e87afda3cded440559e876e70689207e0b5efa7625650a963f70",
+      "size": 344
+    },
+    {
+      "path": "build-scan/offline-runtime-resolve.log",
+      "kind": "command-log",
+      "sha256": "05a840a7bc2d8e62fce9b4e25656fdd86b256d79c4caa3d2af187921a309c1f9",
+      "size": 2524
+    },
+    {
+      "path": "build-scan/offline-runtime-tag.log",
+      "kind": "command-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "build-scan/podman-rootless.log",
+      "kind": "command-log",
+      "sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74",
+      "size": 5
+    },
+    {
+      "path": "build-scan/podman-version.log",
+      "kind": "command-log",
+      "sha256": "5d57fcc5763930d5e2152569c0ff545dccef532baf0b320d221a17e66db8f590",
+      "size": 21
+    },
+    {
+      "path": "build-scan/scan/db/cache/db/trivy.db",
+      "kind": "trivy-db",
+      "sha256": "9bde19614b422dfc28984857f86568e55c28be8bea8fd9ff6c5719caf640777b",
+      "size": 1456386048
+    },
+    {
+      "path": "build-scan/scan/fds-engine.oci.tar",
+      "kind": "scan-oci",
+      "sha256": "bb5951c6bb2cf113f0d7815fddc41c2b1e2c9cd69ccbd8794f13f2bc277d405f",
+      "size": 38500352
+    },
+    {
+      "path": "build-scan/scan/fds-engine/report.json",
+      "kind": "trivy-report",
+      "sha256": "726cad9ff555e6f0100b85e0f519398a54e7861a874b24321e290e38f2102c87",
+      "size": 214625
+    },
+    {
+      "path": "build-scan/scan/transaction-api.oci.tar",
+      "kind": "scan-oci",
+      "sha256": "70da457069443c8b7af55d93d4e942ab4788bcfb9fe11506ee0482cd17bfaec3",
+      "size": 48930304
+    },
+    {
+      "path": "build-scan/scan/transaction-api/report.json",
+      "kind": "trivy-report",
+      "sha256": "a71cd8327c370a53a69976062eb45e68457786804de32d28432eb3c7cdbac39a",
+      "size": 219032
+    },
+    {
+      "path": "build-scan/source-archive.log",
+      "kind": "command-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "build-scan/source-head.log",
+      "kind": "command-log",
+      "sha256": "67d813dbf8e378492e19a1a88ccef9bf74516d8870e23a09d415f8fc7e829a45",
+      "size": 41
+    },
+    {
+      "path": "build-scan/source-origin.log",
+      "kind": "command-log",
+      "sha256": "5fc74ed436b1d0f0f51253de816f45379ff9dd19517fd733d58a429e1293aecc",
+      "size": 39
+    },
+    {
+      "path": "build-scan/source-tree.log",
+      "kind": "command-log",
+      "sha256": "bf6c9010d2e569da2126558e6eed73a97dd0468c02f806626f864be1ece7f8fe",
+      "size": 12651
+    },
+    {
+      "path": "build-scan/source.tar",
+      "kind": "source-archive",
+      "sha256": "4bd051eef69a0ab3fcd6ae01ffc57de707969e39dfd547064c48ade334c8bb6e",
+      "size": 798720
+    },
+    {
+      "path": "build-scan/transaction-api-build.log",
+      "kind": "command-log",
+      "sha256": "653d961ad93fad99a84d11af44422b1e6bacce24556d89f456fdc9eba86284d5",
+      "size": 5779
+    },
+    {
+      "path": "build-scan/transaction-api-contract-0.log",
+      "kind": "command-log",
+      "sha256": "db44abd365b7f7a1be9cb1503d5d36b907e5f901713396d22e5d4a72731507ce",
+      "size": 588
+    },
+    {
+      "path": "build-scan/transaction-api-offline-check.log",
+      "kind": "command-log",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "size": 30
+    },
+    {
+      "path": "build-scan/transaction-api-offline-install.log",
+      "kind": "command-log",
+      "sha256": "3810494a98c31bdcd0a958dab6becd53238ecc9a028af77fc603b1fc9ad85b23",
+      "size": 5239
+    },
+    {
+      "path": "build-scan/transaction-api-offline-venv.log",
+      "kind": "command-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "build-scan/transaction-api-save.log",
+      "kind": "command-log",
+      "sha256": "fe1b6dda5204fcba7d2575c9d2734eabb6494a1bfcc4e195e1a5faca167f7412",
+      "size": 465
+    },
+    {
+      "path": "build-scan/transaction-api.oci.tar",
+      "kind": "build-oci",
+      "sha256": "70da457069443c8b7af55d93d4e942ab4788bcfb9fe11506ee0482cd17bfaec3",
+      "size": 48930304
+    },
+    {
+      "path": "handoff-ci-apko-wolfi-python313-builder.apko.lock.json-size.log",
+      "kind": "command-log",
+      "sha256": "a76bdb17639c868795d35592dd1cc29b25fd08a1d5203c2fa0ac621547753827",
+      "size": 6
+    },
+    {
+      "path": "handoff-ci-apko-wolfi-python313-builder.apko.lock.json.log",
+      "kind": "command-log",
+      "sha256": "58888fd8e05517805bc66661ba2d41055093e006d7d11043e2b4f65efbc0cd55",
+      "size": 22653
+    },
+    {
+      "path": "handoff-ci-apko-wolfi-python313-builder.apko.yaml-size.log",
+      "kind": "command-log",
+      "sha256": "1de9f7ae15d7140aa2141c9ce21518d5e86a93c2c52ed8b9576e4a34896ce09b",
+      "size": 4
+    },
+    {
+      "path": "handoff-ci-apko-wolfi-python313-builder.apko.yaml.log",
+      "kind": "command-log",
+      "sha256": "c2c0d81ec4a20fb06417b66c5a1d1a1c04a068f1c0c76d37a35f2c12bab264b2",
+      "size": 358
+    },
+    {
+      "path": "handoff-ci-apko-wolfi-python313-runtime.apko.lock.json-size.log",
+      "kind": "command-log",
+      "sha256": "995511b239eaafd0812046261507f865fa49e46747794e73a5ea2d986a08f9f9",
+      "size": 6
+    },
+    {
+      "path": "handoff-ci-apko-wolfi-python313-runtime.apko.lock.json.log",
+      "kind": "command-log",
+      "sha256": "bfa66e14097be03d6db42b3ebd479aa68d5db802faa2d00cdc72f7b80e3541b3",
+      "size": 19039
+    },
+    {
+      "path": "handoff-ci-apko-wolfi-python313-runtime.apko.yaml-size.log",
+      "kind": "command-log",
+      "sha256": "308674fe33ad5aa848f48d336f6079c2b668de53a3108da4359ee5a0a2a771e5",
+      "size": 4
+    },
+    {
+      "path": "handoff-ci-apko-wolfi-python313-runtime.apko.yaml.log",
+      "kind": "command-log",
+      "sha256": "dc32de753d5b78501fc4654f79f17a285a0d523aaf6f28e6cfcad9ab2cc8c070",
+      "size": 523
+    },
+    {
+      "path": "handoff-fds-engine-Dockerfile-size.log",
+      "kind": "command-log",
+      "sha256": "6aa04fd93c3dd989e3db6b8b5c1015f8209d62413097e3ad086c7400bef2b88c",
+      "size": 4
+    },
+    {
+      "path": "handoff-fds-engine-Dockerfile.log",
+      "kind": "command-log",
+      "sha256": "a7528a71c284cea12eeda38e47e5a7c6c7ef3b16aaea97badb0593d54aa2a515",
+      "size": 997
+    },
+    {
+      "path": "handoff-fds-engine-requirements-runtime.lock-size.log",
+      "kind": "command-log",
+      "sha256": "1e016a064cc8c05d415e2e005f3b629a1561cace5c816944a152ceffde859cd9",
+      "size": 5
+    },
+    {
+      "path": "handoff-fds-engine-requirements-runtime.lock.log",
+      "kind": "command-log",
+      "sha256": "88e45719485bdeb8c3ea2c70f8f3303127c7136fe465e1330f45775a9e163fc8",
+      "size": 1951
+    },
+    {
+      "path": "handoff-fds-engine-requirements-test.lock-size.log",
+      "kind": "command-log",
+      "sha256": "0fad9df8359fdaa709b729e288299bf29449a57e834743908aa5a6267e07fce7",
+      "size": 5
+    },
+    {
+      "path": "handoff-fds-engine-requirements-test.lock.log",
+      "kind": "command-log",
+      "sha256": "6568bb9c1cf014c229c66579b89c589eb74fdac4749625861e50f1d56bc3f560",
+      "size": 2708
+    },
+    {
+      "path": "handoff-fds-engine-requirements-test.txt-size.log",
+      "kind": "command-log",
+      "sha256": "654ee9da442fa353f59f11beb688fc7f76c8de62a6c18b2a181fdde2a27cc3ef",
+      "size": 3
+    },
+    {
+      "path": "handoff-fds-engine-requirements-test.txt.log",
+      "kind": "command-log",
+      "sha256": "2f41764074d9ca19782db366262c28015930c16e2e0b135a8b615f5d15dbae78",
+      "size": 48
+    },
+    {
+      "path": "handoff-fds-engine-requirements.txt-size.log",
+      "kind": "command-log",
+      "sha256": "496ecdb854d49463f8655b210ddf17d3395d26b20a6f297b07cf99834c6336f0",
+      "size": 4
+    },
+    {
+      "path": "handoff-fds-engine-requirements.txt.log",
+      "kind": "command-log",
+      "sha256": "3a349859f5027154610e2e4160075dfa00eb0cb28e1c37600a8a2ea9c36b378c",
+      "size": 102
+    },
+    {
+      "path": "handoff-head.log",
+      "kind": "command-log",
+      "sha256": "67d813dbf8e378492e19a1a88ccef9bf74516d8870e23a09d415f8fc7e829a45",
+      "size": 41
+    },
+    {
+      "path": "handoff-origin.log",
+      "kind": "command-log",
+      "sha256": "5fc74ed436b1d0f0f51253de816f45379ff9dd19517fd733d58a429e1293aecc",
+      "size": 39
+    },
+    {
+      "path": "handoff-transaction-api-Dockerfile-size.log",
+      "kind": "command-log",
+      "sha256": "6aa04fd93c3dd989e3db6b8b5c1015f8209d62413097e3ad086c7400bef2b88c",
+      "size": 4
+    },
+    {
+      "path": "handoff-transaction-api-Dockerfile.log",
+      "kind": "command-log",
+      "sha256": "7a9eaca1212dd29cd2359d58ff5ce12bb0823684a75e529d66f796701f4569ef",
+      "size": 997
+    },
+    {
+      "path": "handoff-transaction-api-requirements-runtime.lock-size.log",
+      "kind": "command-log",
+      "sha256": "1ce1cb7f51ec45c5c9cf16b718c9baeeae69b964d0e9de2fcaf149eb7113e153",
+      "size": 5
+    },
+    {
+      "path": "handoff-transaction-api-requirements-runtime.lock.log",
+      "kind": "command-log",
+      "sha256": "1b6c12a68a3bdbe4f2d56f0d9ce31054937d17fb46708566d795041c4a153187",
+      "size": 2628
+    },
+    {
+      "path": "handoff-transaction-api-requirements-test.lock-size.log",
+      "kind": "command-log",
+      "sha256": "98e960712e08ff4642d412bbaa379ec8e3d8baba961294307a5701d0f5862921",
+      "size": 5
+    },
+    {
+      "path": "handoff-transaction-api-requirements-test.lock.log",
+      "kind": "command-log",
+      "sha256": "9a047257be36385144d698d81889f707a032a11142c63409189cf944e0fbfc88",
+      "size": 3005
+    },
+    {
+      "path": "handoff-transaction-api-requirements-test.txt-size.log",
+      "kind": "command-log",
+      "sha256": "ea243e5457028e97f9bc93b37a72f8e80ea61ae081911bb037765590ee6aa435",
+      "size": 3
+    },
+    {
+      "path": "handoff-transaction-api-requirements-test.txt.log",
+      "kind": "command-log",
+      "sha256": "b0a7d247aa0d498de1e71fd299c79d5022874cf1b36347697f52ba88b194f5f2",
+      "size": 34
+    },
+    {
+      "path": "handoff-transaction-api-requirements.txt-size.log",
+      "kind": "command-log",
+      "sha256": "1cb3ae0c7cf44aff95d12f73a367a8a51aedeb2a2a4deb4f0c4cb72d5845d2f5",
+      "size": 4
+    },
+    {
+      "path": "handoff-transaction-api-requirements.txt.log",
+      "kind": "command-log",
+      "sha256": "edcf9db9a6d2278565eb2a12ddd72434336864758de91cbf8e9aa49903b80bdc",
+      "size": 160
+    },
+    {
+      "path": "handoff-tree.log",
+      "kind": "command-log",
+      "sha256": "bf6c9010d2e569da2126558e6eed73a97dd0468c02f806626f864be1ece7f8fe",
+      "size": 12651
+    },
+    {
+      "path": "source-fetch.log",
+      "kind": "command-log",
+      "sha256": "70f46536de3f09d61524bc4d189aa28c6abb0007c7325cb9c08d942d9002d81c",
+      "size": 49
+    },
+    {
+      "path": "source-fetched.log",
+      "kind": "command-log",
+      "sha256": "67d813dbf8e378492e19a1a88ccef9bf74516d8870e23a09d415f8fc7e829a45",
+      "size": 41
+    },
+    {
+      "path": "source-head-set.log",
+      "kind": "command-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "source-init.log",
+      "kind": "command-log",
+      "sha256": "7f1ee0524da7b3dcac1a55fcd0377072edbb96e5d61a6e441c8126463e783910",
+      "size": 688
+    },
+    {
+      "path": "source-origin-set.log",
+      "kind": "command-log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    }
+  ],
+  "status": "69_ORIGINAL_MANIFEST_HASHES_MATCH",
+  "originals_preserved": true,
+  "scope": "manifest-listed raw payloads only; excludes container image store/internal caches and credentials not in manifest"
+}

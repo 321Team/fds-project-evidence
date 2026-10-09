@@ -1,0 +1,16 @@
+{
+  "documented_at_kst": "2026-10-09T18:30:43.935096+09:00",
+  "operator": "GWONUK / Codex-assisted",
+  "read_account": "server01_cicd-runner@10.250.10.20 via fds-ansible01",
+  "execution": "python3 -I -B - (template expanded with the 69-entry raw-expected.json; SSH stdin)",
+  "execution_time_source": "app-raw-export.stdout at_utc; share-transfer-receipt.json; app-raw-transfer-receipt.json",
+  "code_review": "NOT_PERFORMED before export; this PR requests independent evidence review",
+  "source_pin_limit": "Template/orchestrator snapshots and current hashes retained after execution. No pre-execution Git commit or server-side script-file hash was recorded. Do not treat this as reviewed-source runtime evidence.",
+  "expected_manifest_matches_merged_evidence190": true,
+  "five_archives": "Existing bytes copied without recompression",
+  "raw_archive": "New transport archive of 69 unchanged manifest-listed payloads plus EXPORT_RECEIPT.json; it is not a pre-existing Actions artifact",
+  "verification": "69 payload hashes against evidence190 manifest; archive server/PC/share hash equality",
+  "changes": "New private export folder/archive, local received copy, new share subfolder/receipts only; no app execution or service/config changes",
+  "shared_access_basis": "User explicitly confirmed approved-person-only SMB sharing; SMB ACL was not independently read. Filesystem ACL alone was broad.",
+  "acceptance": "Human custodian and retention NOT_CONFIRMED; no deletion scheduled; originals retained"
+}
