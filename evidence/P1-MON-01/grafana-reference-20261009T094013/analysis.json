@@ -1,0 +1,52 @@
+{
+  "access_exclusivity": "NOT_VERIFIED",
+  "active_application_password": "NOT_VERIFIED",
+  "admin_references": {
+    "GF_SECURITY_ADMIN_PASSWORD": {
+      "key": "admin-password",
+      "name": "grafana-admin-credentials",
+      "optional": null
+    },
+    "GF_SECURITY_ADMIN_USER": {
+      "key": "admin-user",
+      "name": "grafana-admin-credentials",
+      "optional": null
+    }
+  },
+  "deployment": {
+    "generation": 16,
+    "name": "grafana",
+    "namespace": "monitoring-api",
+    "ownerReferences": null,
+    "resourceVersion": "4371649",
+    "uid": "b74852b0-fe0b-468c-984f-760ef66cf820"
+  },
+  "finished_at_kst": "2026-10-09T09:40:15.109524+09:00",
+  "human_custodian_rotation_audit": "NOT_VERIFIED",
+  "pod": {
+    "generation": 1,
+    "name": "grafana-f65457bfd-ckjgj",
+    "namespace": "monitoring-api",
+    "ownerReferences": [
+      {
+        "apiVersion": "apps/v1",
+        "blockOwnerDeletion": true,
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "grafana-f65457bfd",
+        "uid": "621d498a-8442-400a-ae59-cae7083d0654"
+      }
+    ],
+    "resourceVersion": "4371644",
+    "uid": "916b8c8a-ff21-42ba-9815-11dce4cde848"
+  },
+  "pod_ready": true,
+  "pod_restart_count": 0,
+  "query_rc_zero": 3,
+  "receipt_hashes_matched": 2,
+  "replicaset_owner_chain": "NOT_QUERIED",
+  "runtime_access_test": "NOT_RUN",
+  "secret_object_values_and_existence": "NOT_QUERIED",
+  "started_at_kst": "2026-10-09T09:40:15.020800+09:00",
+  "status": "REFERENCE_METADATA_MATCH"
+}
