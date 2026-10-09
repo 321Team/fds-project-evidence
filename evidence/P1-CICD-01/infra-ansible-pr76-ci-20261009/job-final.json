@@ -1,0 +1,88 @@
+{
+  "id": 113706062449,
+  "run_id": 37895578228,
+  "workflow_name": "Ansible regression",
+  "head_branch": "feat/issue9-worker02-session",
+  "run_url": "https://api.github.com/repos/321Team/infra-ansible/actions/runs/37895578228",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOULzL-M8AAAAaeWjScQ",
+  "head_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+  "url": "https://api.github.com/repos/321Team/infra-ansible/actions/jobs/113706062449",
+  "html_url": "https://github.com/321Team/infra-ansible/actions/runs/37895578228/job/113706062449",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-10-09T06:49:40Z",
+  "started_at": "2026-10-09T07:42:33Z",
+  "completed_at": "2026-10-09T07:51:37Z",
+  "name": "regression",
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-09T07:42:35Z",
+      "completed_at": "2026-10-09T07:42:37Z"
+    },
+    {
+      "name": "Checkout exact source",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-09T07:42:37Z",
+      "completed_at": "2026-10-09T07:42:38Z"
+    },
+    {
+      "name": "Create a new run directory",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-09T07:42:38Z",
+      "completed_at": "2026-10-09T07:42:38Z"
+    },
+    {
+      "name": "Syntax and both pinned engines",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-10-09T07:42:38Z",
+      "completed_at": "2026-10-09T07:51:26Z"
+    },
+    {
+      "name": "Preserve result and original logs on success or failure",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-09T07:51:26Z",
+      "completed_at": "2026-10-09T07:51:31Z"
+    },
+    {
+      "name": "Post Checkout exact source",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10,
+      "started_at": "2026-10-09T07:51:31Z",
+      "completed_at": "2026-10-09T07:51:31Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11,
+      "started_at": "2026-10-09T07:51:31Z",
+      "completed_at": "2026-10-09T07:51:31Z"
+    }
+  ],
+  "check_run_url": "https://api.github.com/repos/321Team/infra-ansible/check-runs/113706062449",
+  "labels": [
+    "self-hosted",
+    "Linux",
+    "X64",
+    "fds-ci",
+    "ansible-isolated"
+  ],
+  "runner_id": 61,
+  "runner_name": "ansible-ci-d98e4f42b2b6465d98b0448555337ec0",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+}
