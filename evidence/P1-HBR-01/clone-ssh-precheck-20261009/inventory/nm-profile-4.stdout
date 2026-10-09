@@ -1,0 +1,12 @@
+connection.id:                          fds-harbor01
+connection.uuid:                        3094c330-0b11-4463-9409-29c11bca6fcb
+connection.type:                        802-3-ethernet
+connection.interface-name:              ens160
+connection.autoconnect:                 yes
+ipv4.method:                            manual
+ipv4.addresses:                         10.1.93.54/24
+ipv4.gateway:                           10.1.93.254
+ipv4.dns:                               8.8.8.8
+ipv4.routes:                            { ip = 10.250.10.0/24, nh = 10.1.93.58, mt = 100 }
+ipv4.never-default:                     no
+ipv6.method:                            disabled
