@@ -1,0 +1,23 @@
+{
+  "started_at_kst": "2026-10-09T08:44:13.768258+09:00",
+  "finished_at_kst": "2026-10-09T08:44:18.138309+09:00",
+  "host": "ansible01",
+  "account": "server01_ansible",
+  "remote_directory": "/home/server01_ansible/app-supply-check.vbuuk32j",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "python3.12 -I -B -c 'import hashlib,pathlib,tarfile; p=pathlib.Path('\"'\"'/home/server01_ansible/app-supply-check.vbuuk32j'\"'\"'); t=p/'\"'\"'input.tar'\"'\"'; assert hashlib.sha256(t.read_bytes()).hexdigest()=='\"'\"'b26795710126dd1fe99b6ad4a42cbdcbe3249fe3cab0f0f2455a1cccea0c2fb1'\"'\"'; tarfile.open(t).extractall(p,filter='\"'\"'data'\"'\"')' && python3.12 -I -B /home/server01_ansible/app-supply-check.vbuuk32j/verify_consumer_supply.py"
+  ],
+  "rc": 0,
+  "input_tar_sha256": "b26795710126dd1fe99b6ad4a42cbdcbe3249fe3cab0f0f2455a1cccea0c2fb1",
+  "stdout_sha256": "12e5088449bf462543a729a4f68c180e612b3bc1cbfa1184e7b2091b1a9bbf63",
+  "transfer_rc": 0,
+  "runtime_changes": "NONE; private temporary files only"
+}

@@ -1,0 +1,217 @@
+{
+  "scope": "READ_ONLY_TARGET_PARSERS",
+  "runtime": "NOT_RUN",
+  "mutations": "NONE",
+  "source_head": "69cfb6a684c061dbb78d37f507781a1188a3d3c8",
+  "started_epoch": 1791473728.6189992,
+  "private": "/root/hbr-ssh-target-syntax-i7ref62c",
+  "collector_sha256": "9da3ada302c3172800dfc202298a2742612e36751120a9c6d1117e24142bfdcf",
+  "commands": [
+    {
+      "name": "sshd-baseline",
+      "argv": [
+        "/usr/sbin/sshd",
+        "-t"
+      ],
+      "rc": 0,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fixed_error_hints": []
+    },
+    {
+      "name": "sshd-combined",
+      "argv": [
+        "/usr/sbin/sshd",
+        "-t",
+        "-f",
+        "/root/hbr-ssh-target-syntax-i7ref62c/sshd_config"
+      ],
+      "rc": 0,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fixed_error_hints": []
+    },
+    {
+      "name": "sshd-context-0",
+      "argv": [
+        "/usr/sbin/sshd",
+        "-T",
+        "-f",
+        "/root/hbr-ssh-target-syntax-i7ref62c/sshd_config",
+        "-C",
+        "user=hbrctl,host=harbor01,addr=192.168.253.1,laddr=192.168.253.2,lport=22"
+      ],
+      "rc": 0,
+      "stdout_bytes": 4876,
+      "stdout_sha256": "5f4591397a065eb9d82998cef20aac418643af1c5d432847f2dd6311b86275d5",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fixed_error_hints": []
+    },
+    {
+      "name": "sshd-context-1",
+      "argv": [
+        "/usr/sbin/sshd",
+        "-T",
+        "-f",
+        "/root/hbr-ssh-target-syntax-i7ref62c/sshd_config",
+        "-C",
+        "user=server08,host=harbor01,addr=192.168.253.1,laddr=192.168.253.2,lport=22"
+      ],
+      "rc": 0,
+      "stdout_bytes": 4876,
+      "stdout_sha256": "5f4591397a065eb9d82998cef20aac418643af1c5d432847f2dd6311b86275d5",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fixed_error_hints": []
+    },
+    {
+      "name": "sshd-context-2",
+      "argv": [
+        "/usr/sbin/sshd",
+        "-T",
+        "-f",
+        "/root/hbr-ssh-target-syntax-i7ref62c/sshd_config",
+        "-C",
+        "user=root,host=harbor01,addr=192.168.253.1,laddr=192.168.253.2,lport=22"
+      ],
+      "rc": 0,
+      "stdout_bytes": 4876,
+      "stdout_sha256": "5f4591397a065eb9d82998cef20aac418643af1c5d432847f2dd6311b86275d5",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fixed_error_hints": []
+    },
+    {
+      "name": "sshd-context-3",
+      "argv": [
+        "/usr/sbin/sshd",
+        "-T",
+        "-f",
+        "/root/hbr-ssh-target-syntax-i7ref62c/sshd_config",
+        "-C",
+        "user=hbrctl,host=harbor01,addr=192.168.253.3,laddr=192.168.253.2,lport=22"
+      ],
+      "rc": 0,
+      "stdout_bytes": 4876,
+      "stdout_sha256": "5f4591397a065eb9d82998cef20aac418643af1c5d432847f2dd6311b86275d5",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fixed_error_hints": []
+    },
+    {
+      "name": "nft-candidate-check",
+      "argv": [
+        "/usr/sbin/nft",
+        "--check",
+        "--file",
+        "/root/hbr-ssh-target-syntax-i7ref62c/guard.nft"
+      ],
+      "rc": 0,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fixed_error_hints": []
+    },
+    {
+      "name": "firewalld-candidate-check",
+      "argv": [
+        "/usr/bin/firewall-offline-cmd",
+        "--system-config=/root/hbr-ssh-target-syntax-i7ref62c/firewalld",
+        "--check-config"
+      ],
+      "rc": 0,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 544,
+      "stderr_sha256": "920ef6367f9fade8ab0df630444f2359cfdb936b6ed5d67f072acb11be1ba73b",
+      "fixed_error_hints": [
+        "No such file"
+      ]
+    },
+    {
+      "name": "nm-help",
+      "argv": [
+        "/usr/sbin/NetworkManager",
+        "--help"
+      ],
+      "rc": 0,
+      "stdout_bytes": 1732,
+      "stdout_sha256": "b7958e096fd9ecf8b5cca9a9f4985f06566ed5c6132117fcf69e9e0e538526bb",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "fixed_error_hints": []
+    }
+  ],
+  "fixtures": "ens160 / synthetic MAC and public-key bytes; NOT allocated or deployable",
+  "issues": [
+    "NM_SHADOW_OPTIONS_UNCONFIRMED"
+  ],
+  "renderer_sha256": "7d488af9114f974186acfe1cf57d9524d859ed56227fac48914f8b9dbe265384",
+  "ssh_selected": {
+    "0": {
+      "context": "user=hbrctl,host=harbor01,addr=192.168.253.1,laddr=192.168.253.2,lport=22",
+      "rc": 0,
+      "values": [
+        "usepam yes",
+        "permitrootlogin no",
+        "passwordauthentication no",
+        "disableforwarding yes",
+        "forcecommand /usr/bin/python3 -I /usr/local/libexec/hbr-ssh-readonly.py",
+        "trustedusercakeys none",
+        "allowusers hbrctl@192.168.253.1",
+        "authenticationmethods publickey"
+      ]
+    },
+    "1": {
+      "context": "user=server08,host=harbor01,addr=192.168.253.1,laddr=192.168.253.2,lport=22",
+      "rc": 0,
+      "values": [
+        "usepam yes",
+        "permitrootlogin no",
+        "passwordauthentication no",
+        "disableforwarding yes",
+        "forcecommand /usr/bin/python3 -I /usr/local/libexec/hbr-ssh-readonly.py",
+        "trustedusercakeys none",
+        "allowusers hbrctl@192.168.253.1",
+        "authenticationmethods publickey"
+      ]
+    },
+    "2": {
+      "context": "user=root,host=harbor01,addr=192.168.253.1,laddr=192.168.253.2,lport=22",
+      "rc": 0,
+      "values": [
+        "usepam yes",
+        "permitrootlogin no",
+        "passwordauthentication no",
+        "disableforwarding yes",
+        "forcecommand /usr/bin/python3 -I /usr/local/libexec/hbr-ssh-readonly.py",
+        "trustedusercakeys none",
+        "allowusers hbrctl@192.168.253.1",
+        "authenticationmethods publickey"
+      ]
+    },
+    "3": {
+      "context": "user=hbrctl,host=harbor01,addr=192.168.253.3,laddr=192.168.253.2,lport=22",
+      "rc": 0,
+      "values": [
+        "usepam yes",
+        "permitrootlogin no",
+        "passwordauthentication no",
+        "disableforwarding yes",
+        "forcecommand /usr/bin/python3 -I /usr/local/libexec/hbr-ssh-readonly.py",
+        "trustedusercakeys none",
+        "allowusers hbrctl@192.168.253.1",
+        "authenticationmethods publickey"
+      ]
+    }
+  },
+  "finished_epoch": 1791473728.9556153,
+  "nonzero": [],
+  "verdict": "REVIEW_REQUIRED_NOT_INSTALL_GO"
+}

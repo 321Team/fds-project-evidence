@@ -1,0 +1,492 @@
+{
+  "started_epoch": 1791469751.9473112,
+  "private": "/root/hbr-ssh-precheck-mtx_g6am",
+  "collector_sha256": "04a3e7bbd93c4eac6ea07c773e5512be42c4513231051c0be0258791d6988554",
+  "scope": "READ_ONLY_SSH_PLANNING",
+  "mutations": "NONE",
+  "commands": [
+    {
+      "name": "addresses",
+      "argv": [
+        "ip",
+        "-j",
+        "address",
+        "show"
+      ],
+      "started_epoch": 1791469751.9478395,
+      "finished_epoch": 1791469751.9521232,
+      "rc": 0,
+      "stdout_sha256": "120c01fd8542179f3eb6fcc1354414a722d255fd7027844910043b8b11913f15",
+      "stdout_bytes": 2052,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "routes4",
+      "argv": [
+        "ip",
+        "-j",
+        "-4",
+        "route",
+        "show",
+        "table",
+        "all"
+      ],
+      "started_epoch": 1791469751.9521594,
+      "finished_epoch": 1791469751.969087,
+      "rc": 0,
+      "stdout_sha256": "28c3f981b429e857122b21ba63a0b9505bd6944bc0b246763654971d71a18082",
+      "stdout_bytes": 1230,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "routes6",
+      "argv": [
+        "ip",
+        "-j",
+        "-6",
+        "route",
+        "show",
+        "table",
+        "all"
+      ],
+      "started_epoch": 1791469751.9691293,
+      "finished_epoch": 1791469751.9707289,
+      "rc": 0,
+      "stdout_sha256": "7a167eb82e2a70500be4f28adcd16d7e926c2caeb1138f6256de1d8e82f16d99",
+      "stdout_bytes": 886,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "forwarding",
+      "argv": [
+        "sysctl",
+        "net.ipv4.ip_forward",
+        "net.ipv6.conf.all.forwarding"
+      ],
+      "started_epoch": 1791469751.9707556,
+      "finished_epoch": 1791469751.972512,
+      "rc": 0,
+      "stdout_sha256": "a207a58a0993cdbaabbc30fa1c43965fe12832baab6fd392b1f13f407924e74b",
+      "stdout_bytes": 57,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "selinux",
+      "argv": [
+        "getenforce"
+      ],
+      "started_epoch": 1791469751.9725466,
+      "finished_epoch": 1791469751.9744854,
+      "rc": 0,
+      "stdout_sha256": "4fefafd0dcddf54b31a0fef448083e7b77576d86a9ec97c14bfd92479c404290",
+      "stdout_bytes": 10,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "units",
+      "argv": [
+        "systemctl",
+        "show",
+        "sshd.service",
+        "NetworkManager.service",
+        "firewalld.service",
+        "docker.service",
+        "--no-pager",
+        "--property=Id,LoadState,ActiveState,SubState,FragmentPath"
+      ],
+      "started_epoch": 1791469751.9745047,
+      "finished_epoch": 1791469751.9910789,
+      "rc": 0,
+      "stdout_sha256": "db38579ff55aa74e064452404f89feadd3742883ec55b1585c29020277f22550",
+      "stdout_bytes": 513,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "listeners",
+      "argv": [
+        "ss",
+        "-H",
+        "-ltn"
+      ],
+      "started_epoch": 1791469751.9911158,
+      "finished_epoch": 1791469752.0000699,
+      "rc": 0,
+      "stdout_sha256": "ad21f409bbfcfb1ab255d087d183cfb5812a5c587d5b88d373d78f0782ac8b2e",
+      "stdout_bytes": 276,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "sshd-syntax",
+      "argv": [
+        "/usr/sbin/sshd",
+        "-t"
+      ],
+      "started_epoch": 1791469752.0001073,
+      "finished_epoch": 1791469752.00816,
+      "rc": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "sshd-effective",
+      "argv": [
+        "/usr/sbin/sshd",
+        "-T",
+        "-C",
+        "user=server08,host=harbor01,addr=192.168.253.1"
+      ],
+      "started_epoch": 1791469752.0081892,
+      "finished_epoch": 1791469752.0129302,
+      "rc": 0,
+      "stdout_sha256": "8dce238199ac8fefceb0a1971cc36abdf9bafddd742c31453ad522a9d65c3dea",
+      "stdout_bytes": 4774,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "account-server08",
+      "argv": [
+        "id",
+        "server08"
+      ],
+      "started_epoch": 1791469752.0130048,
+      "finished_epoch": 1791469752.01709,
+      "rc": 0,
+      "stdout_sha256": "bba6c9fdf46d5ab00d8da2c472e9a0e908ea5cd4c08a91ec2cce06e60316d6dd",
+      "stdout_bytes": 82,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "account-hbrctl",
+      "argv": [
+        "getent",
+        "passwd",
+        "hbrctl"
+      ],
+      "started_epoch": 1791469752.0171275,
+      "finished_epoch": 1791469752.0337305,
+      "rc": 2,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "fingerprint-ssh_host_ecdsa_key",
+      "argv": [
+        "ssh-keygen",
+        "-lf",
+        "/etc/ssh/ssh_host_ecdsa_key.pub"
+      ],
+      "started_epoch": 1791469752.03424,
+      "finished_epoch": 1791469752.0551088,
+      "rc": 0,
+      "stdout_sha256": "f0c643e9c54e325b6be637a3f3cabcd7c7c1aa2fd83aa85068925d8b755d9182",
+      "stdout_bytes": 77,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "fingerprint-ssh_host_ed25519_key",
+      "argv": [
+        "ssh-keygen",
+        "-lf",
+        "/etc/ssh/ssh_host_ed25519_key.pub"
+      ],
+      "started_epoch": 1791469752.0551705,
+      "finished_epoch": 1791469752.0595415,
+      "rc": 0,
+      "stdout_sha256": "90100eac8fdd64774802a6fe6401dd988fb4c3ac68bdf184d805b413805db7b5",
+      "stdout_bytes": 79,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "fingerprint-ssh_host_rsa_key",
+      "argv": [
+        "ssh-keygen",
+        "-lf",
+        "/etc/ssh/ssh_host_rsa_key.pub"
+      ],
+      "started_epoch": 1791469752.0595815,
+      "finished_epoch": 1791469752.0637023,
+      "rc": 0,
+      "stdout_sha256": "e686e1dc8de6176f3043e34ad67d71216e046318fc891979d710f2035cfe56a7",
+      "stdout_bytes": 76,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "nm-uuids",
+      "argv": [
+        "nmcli",
+        "-g",
+        "UUID",
+        "connection",
+        "show"
+      ],
+      "started_epoch": 1791469752.0637305,
+      "finished_epoch": 1791469752.1121118,
+      "rc": 0,
+      "stdout_sha256": "c2ac02346cfcc621815476a860cbc9e060dc03f01a0f4e530f62c955909858ca",
+      "stdout_bytes": 185,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "nm-profile-0",
+      "argv": [
+        "nmcli",
+        "-f",
+        "connection.id,connection.uuid,connection.type,connection.interface-name,connection.autoconnect,ipv4.method,ipv4.addresses,ipv4.gateway,ipv4.dns,ipv4.routes,ipv4.never-default,ipv6.method",
+        "connection",
+        "show",
+        "869af54a-9b22-4c9e-8b76-108309129c5c"
+      ],
+      "started_epoch": 1791469752.1122508,
+      "finished_epoch": 1791469752.1291544,
+      "rc": 0,
+      "stdout_sha256": "473d6edc1b0f6bb1bd810e68cb35fedff2065f5d6deb9578bf5ee651b6628aa9",
+      "stdout_bytes": 604,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "nm-profile-1",
+      "argv": [
+        "nmcli",
+        "-f",
+        "connection.id,connection.uuid,connection.type,connection.interface-name,connection.autoconnect,ipv4.method,ipv4.addresses,ipv4.gateway,ipv4.dns,ipv4.routes,ipv4.never-default,ipv6.method",
+        "connection",
+        "show",
+        "16905318-57ae-4ad0-a2bf-589a5ffc7cee"
+      ],
+      "started_epoch": 1791469752.1291935,
+      "finished_epoch": 1791469752.1461844,
+      "rc": 0,
+      "stdout_sha256": "fb6255cd7e3c3ad470500e5e37e26d9a8b4763c03f009b7b95ae8364b403cbcb",
+      "stdout_bytes": 574,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "nm-profile-2",
+      "argv": [
+        "nmcli",
+        "-f",
+        "connection.id,connection.uuid,connection.type,connection.interface-name,connection.autoconnect,ipv4.method,ipv4.addresses,ipv4.gateway,ipv4.dns,ipv4.routes,ipv4.never-default,ipv6.method",
+        "connection",
+        "show",
+        "4928428a-796f-44ba-9cea-54ee82673257"
+      ],
+      "started_epoch": 1791469752.1462197,
+      "finished_epoch": 1791469752.1626778,
+      "rc": 0,
+      "stdout_sha256": "bb43d373e99861a6bfd89e89ebb7db2629fe64e2da441c63110d3484991e8c40",
+      "stdout_bytes": 584,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "nm-profile-3",
+      "argv": [
+        "nmcli",
+        "-f",
+        "connection.id,connection.uuid,connection.type,connection.interface-name,connection.autoconnect,ipv4.method,ipv4.addresses,ipv4.gateway,ipv4.dns,ipv4.routes,ipv4.never-default,ipv6.method",
+        "connection",
+        "show",
+        "6b9f0643-4a4e-324d-a969-9e5393d7e0bf"
+      ],
+      "started_epoch": 1791469752.162712,
+      "finished_epoch": 1791469752.180188,
+      "rc": 0,
+      "stdout_sha256": "6dbd58f3a749fc34bfffa3cb4c7658de57294ea41e248fb355d8a0848a769822",
+      "stdout_bytes": 640,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "nm-profile-4",
+      "argv": [
+        "nmcli",
+        "-f",
+        "connection.id,connection.uuid,connection.type,connection.interface-name,connection.autoconnect,ipv4.method,ipv4.addresses,ipv4.gateway,ipv4.dns,ipv4.routes,ipv4.never-default,ipv6.method",
+        "connection",
+        "show",
+        "3094c330-0b11-4463-9409-29c11bca6fcb"
+      ],
+      "started_epoch": 1791469752.1802218,
+      "finished_epoch": 1791469752.1966243,
+      "rc": 0,
+      "stdout_sha256": "30a758b46649061610bab794824e8698136759d354ce71cdb74d064792b94709",
+      "stdout_bytes": 660,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "firewall-zones",
+      "argv": [
+        "firewall-cmd",
+        "--list-all-zones"
+      ],
+      "started_epoch": 1791469752.196657,
+      "finished_epoch": 1791469752.3680673,
+      "rc": 0,
+      "stdout_sha256": "b7fa9077511f03e5458b474922eb6875de5560ab466958db7f7f03b325e76ae1",
+      "stdout_bytes": 3081,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "firewall-policies",
+      "argv": [
+        "firewall-cmd",
+        "--get-policies"
+      ],
+      "started_epoch": 1791469752.368103,
+      "finished_epoch": 1791469752.535167,
+      "rc": 0,
+      "stdout_sha256": "4001686df3161e02d28cff60180b3c34e815963f7604df00e388e4461822f59b",
+      "stdout_bytes": 137,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "nft-rules",
+      "argv": [
+        "nft",
+        "-j",
+        "list",
+        "ruleset"
+      ],
+      "started_epoch": 1791469752.5352,
+      "finished_epoch": 1791469752.5441203,
+      "rc": 0,
+      "stdout_sha256": "340a16d6d043e8b977f25c68e4460ca22760d5081de40e200796c6d13e9cc69c",
+      "stdout_bytes": 73318,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "docker-network-ids",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "network",
+        "ls",
+        "-q",
+        "--no-trunc"
+      ],
+      "started_epoch": 1791469752.5441797,
+      "finished_epoch": 1791469752.5771997,
+      "rc": 0,
+      "stdout_sha256": "532562e4ccc740c9afe5e845793de15bb5554b20c1903cfc85983bc2502c1458",
+      "stdout_bytes": 260,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "docker-network-0",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "network",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"ipam\":{{json .IPAM.Config}}}",
+        "77261e391b8f09de3713fd96896d76b768326490f6899913f357c6cb2bf7643b"
+      ],
+      "started_epoch": 1791469752.57732,
+      "finished_epoch": 1791469752.5942109,
+      "rc": 0,
+      "stdout_sha256": "ba94cd3fadc70283075d1ce25a8facfdaa9ff263648e80aee06d77e05526347b",
+      "stdout_bytes": 184,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "docker-network-1",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "network",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"ipam\":{{json .IPAM.Config}}}",
+        "7f58f0a766941a3fb0819b06efdcc67f28685bde50e44fe78eb491508513f1b8"
+      ],
+      "started_epoch": 1791469752.5942476,
+      "finished_epoch": 1791469752.6275017,
+      "rc": 0,
+      "stdout_sha256": "32616a37df5c704cfb10270752ef5497fc1a742cf81b456bce4bddb8df71ca12",
+      "stdout_bytes": 191,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "docker-network-2",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "network",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"ipam\":{{json .IPAM.Config}}}",
+        "a2b84aaff0040a852cd0eafda6aa03bf2282f3acef3b28a4bbd579422819e0bd"
+      ],
+      "started_epoch": 1791469752.6275392,
+      "finished_epoch": 1791469752.645171,
+      "rc": 0,
+      "stdout_sha256": "4391e37635dc0b70ea39648c73d54fa0d7a6f924dd94c7532c15cbe569047f1d",
+      "stdout_bytes": 133,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "docker-network-3",
+      "argv": [
+        "docker",
+        "--host=unix:///var/run/docker.sock",
+        "network",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"name\":{{json .Name}},\"driver\":{{json .Driver}},\"internal\":{{json .Internal}},\"ipam\":{{json .IPAM.Config}}}",
+        "c4cffe35e1f9b9467ffbd940c12083cba5524aa3b1d3608e5166314f2289cdb4"
+      ],
+      "started_epoch": 1791469752.6452048,
+      "finished_epoch": 1791469752.6621244,
+      "rc": 0,
+      "stdout_sha256": "2dbefd464fc3e6821e92628400c984ecca3b38e58cda2de6d692feb76fef1f0b",
+      "stdout_bytes": 133,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    }
+  ],
+  "tools": {
+    "sshd": "/usr/sbin/sshd",
+    "ssh-keygen": "/usr/bin/ssh-keygen",
+    "nmcli": "/usr/bin/nmcli",
+    "firewall-cmd": "/usr/bin/firewall-cmd",
+    "nft": "/usr/sbin/nft",
+    "ip": "/usr/sbin/ip",
+    "visudo": "/usr/sbin/visudo",
+    "systemctl": "/usr/bin/systemctl"
+  },
+  "finished_epoch": 1791469752.662146,
+  "nonzero_queries": [
+    {
+      "name": "account-hbrctl",
+      "rc": 2
+    }
+  ]
+}

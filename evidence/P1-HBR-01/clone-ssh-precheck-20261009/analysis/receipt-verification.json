@@ -1,0 +1,43 @@
+{
+  "packaged_kst": "2026-10-09T01:27:14.501656+09:00",
+  "scope": "OFFLINE_RECEIPT_BYTE_AND_SOURCE_BINDING",
+  "receipts": {
+    "inventory": {
+      "items": 30,
+      "manifest_sha256": "e588833f9c7dc339c1ef8bb812a4149754887513b5881e60665c13d1291130b6"
+    },
+    "target-syntax": {
+      "items": 1,
+      "manifest_sha256": "a190335aa82ea7f4c2bfbbee18a67ed89479ebede7146c6cdd0bb45ca91f8df8"
+    },
+    "syntax-supplement": {
+      "items": 2,
+      "manifest_sha256": "42550ee78ec95d8c9755f2bde19d20d1c8b58e5e69abe2fe6dc1e0e26f5d5528"
+    }
+  },
+  "source_bindings": {
+    "inventory": {
+      "collector_sha256": "04a3e7bbd93c4eac6ea07c773e5512be42c4513231051c0be0258791d6988554",
+      "handoff_manifest_sha256": "a7531c917567ebdb367747c5f41eeb15d237afc602ddf0061962db3c13abc666",
+      "stage_sha256": "c9b3d578503378abc2fbe625282a69d96c690e1b50e3cb587fe2c8d04dacbb04"
+    },
+    "target-syntax": {
+      "collector_sha256": "9da3ada302c3172800dfc202298a2742612e36751120a9c6d1117e24142bfdcf",
+      "handoff_manifest_sha256": "426e364a9b47fd4ec767c5137c9fc03a109bef0f21379d49b6da9f78a2029ee7",
+      "stage_sha256": "2e28fdf6668e540e33ac91be7487349205092154ddf1ee55cc7a5fbc50cc4b4f"
+    },
+    "syntax-supplement": {
+      "collector_sha256": "6c73f28cfb91f377db3e0b1fdc269d8f0d3588d493981d0a9114105e9f58e851",
+      "handoff_manifest_sha256": "cb25bfdd2e1805e6ee4170888955c5357877a42325b1ac88a1a70882baf3c70b",
+      "stage_sha256": "f49c11afbc1343b4152249e444c8b07506897588a79ccc6b8084afba4ebc98d3"
+    }
+  },
+  "not_proven": [
+    "private unexported raw contents",
+    "SSH authentication",
+    "packet isolation",
+    "installation",
+    "NIC naming",
+    "expiry/rollback"
+  ]
+}

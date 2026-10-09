@@ -1,0 +1,71 @@
+{
+  "scope": "READ_ONLY_PARSER_SUPPLEMENT",
+  "started_epoch": 1791474550.0449932,
+  "private": "/root/hbr-ssh-supplement-o1kjeto8",
+  "previous_private": "/root/hbr-ssh-target-syntax-i7ref62c",
+  "commands": [
+    {
+      "name": "nm-help-all",
+      "argv": [
+        "/usr/sbin/NetworkManager",
+        "--help-all"
+      ],
+      "rc": 0,
+      "stdout_bytes": 2577,
+      "stdout_sha256": "8402b7b7d035d34c69960159e544f2fb80f915bed234bf5726bf6b32875b74de",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "nm-shadow-print",
+      "argv": [
+        "/usr/sbin/NetworkManager",
+        "--print-config",
+        "--config=/etc/NetworkManager/NetworkManager.conf",
+        "--config-dir=/root/hbr-ssh-supplement-o1kjeto8/nm-conf.d"
+      ],
+      "rc": 0,
+      "stdout_bytes": 751,
+      "stdout_sha256": "28d6a3007ddc20f077748202618aa64ac555c18bdc6bbecda9e7b082258730c0",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "firewall-shadow-check",
+      "argv": [
+        "/usr/bin/firewall-offline-cmd",
+        "--system-config=/root/hbr-ssh-supplement-o1kjeto8/firewalld",
+        "--check-config"
+      ],
+      "rc": 0,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "issues": [],
+  "collector_sha256": "6c73f28cfb91f377db3e0b1fdc269d8f0d3588d493981d0a9114105e9f58e851",
+  "mutations": "NONE",
+  "runtime": "NOT_RUN",
+  "original_firewalld_stderr_sha256": "920ef6367f9fade8ab0df630444f2359cfdb936b6ed5d67f072acb11be1ba73b",
+  "original_warning_mentions_private_firewalld_conf": true,
+  "nm_options": {
+    "--config-dir": true,
+    "--print-config": true,
+    "--config": true
+  },
+  "nm_candidate_sha256": "a631d1034354717e215c09c99e9c6c9a6a6ef6232899b7a9776ff7e4d3e73bcc",
+  "nm_selected": [
+    "no-auto-default=*",
+    "[device-hbr-mgmt]",
+    "match-device=type:ethernet",
+    "managed=0",
+    "match-device=interface-name:nbft*"
+  ],
+  "zone_sha256": "bbb03e3847247efd27de6bfb18465e0fb03524e3b1dc0d4791b21e92048d8922",
+  "nonzero": [],
+  "warnings": [],
+  "finished_epoch": 1791474550.2812686,
+  "verdict": "REVIEW_REQUIRED_NOT_INSTALL_GO"
+}

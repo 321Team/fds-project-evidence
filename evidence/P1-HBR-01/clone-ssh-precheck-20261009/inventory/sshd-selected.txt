@@ -1,0 +1,15 @@
+port 22
+addressfamily any
+listenaddress [::]:22
+listenaddress 0.0.0.0:22
+usepam yes
+permitrootlogin no
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+x11forwarding yes
+allowtcpforwarding yes
+allowagentforwarding yes
+disableforwarding no
+authorizedkeysfile .ssh/authorized_keys
+authenticationmethods any
