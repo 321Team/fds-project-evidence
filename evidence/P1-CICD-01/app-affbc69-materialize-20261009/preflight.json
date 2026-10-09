@@ -1,0 +1,85 @@
+{
+  "schema": "fds.materialize-preflight.metadata.v1",
+  "collected_at_kst": "2026-10-09T14:50:46.747149+09:00",
+  "host": "cicd-runner01",
+  "account": "server01_cicd-runner",
+  "uid": 1000,
+  "paths": [
+    {
+      "path": "/",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o555",
+      "symlink": false,
+      "directory": true,
+      "device": 64768,
+      "inode": 128,
+      "writable": false,
+      "searchable": true
+    },
+    {
+      "path": "/home",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "symlink": false,
+      "directory": true,
+      "device": 64770,
+      "inode": 128,
+      "writable": false,
+      "searchable": true
+    },
+    {
+      "path": "/home/server01_cicd-runner",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "symlink": false,
+      "directory": true,
+      "device": 64770,
+      "inode": 131,
+      "writable": true,
+      "searchable": true
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_CICD_Runtime",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "symlink": false,
+      "directory": true,
+      "device": 64770,
+      "inode": 208722211,
+      "writable": true,
+      "searchable": true
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_CICD_Runtime/FDS_CICD_ApkoSupply.affbc69beef9.6ab02000437a",
+      "exists": false
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_CICD_Runtime/FDS_CICD_ApkoSupply.adc90410f99cb.f4d55db6ecbe",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "symlink": false,
+      "directory": true,
+      "device": 64770,
+      "inode": 212749936,
+      "writable": true,
+      "searchable": true
+    }
+  ],
+  "free_bytes": 56439181312,
+  "readonly": false,
+  "server_writes": false,
+  "materialize": "NOT_RUN",
+  "podman": "NOT_RUN",
+  "runtime": "NOT_RUN",
+  "concurrency_exclusion": "USER_WINDOW_PLUS_SEPARATE_GITHUB_SNAPSHOT_NOT_A_HOST_LOCK"
+}

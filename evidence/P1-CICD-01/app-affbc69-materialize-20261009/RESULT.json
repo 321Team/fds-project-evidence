@@ -1,0 +1,32 @@
+{
+  "started_at": "2026-10-09T05:50:54.796584+00:00",
+  "finished_at": "2026-10-09T05:50:55.218021+00:00",
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/server01_cicd-runner/app-affbc69-prepare.0IlSd9td/source/tools/delivery/materialize_app_build_scan_v3.py",
+    "--artifact-zip",
+    "/home/server01_cicd-runner/app-affbc69-prepare.0IlSd9td/supply.zip",
+    "--target-parent",
+    "/home/server01_cicd-runner/FDS_CICD_Runtime",
+    "--handoff",
+    "/home/server01_cicd-runner/app-affbc69-prepare.0IlSd9td/source/handoff/app-config-affbc69-20261009/SUPPLY_SOURCE.approved.json",
+    "--test-scope",
+    "/home/server01_cicd-runner/app-affbc69-prepare.0IlSd9td/source/handoff/app-config-affbc69-20261009/TEST_SCOPE.approved.json",
+    "--output",
+    "/home/server01_cicd-runner/app-affbc69-prepare.0IlSd9td/app-build-scan.generated.json"
+  ],
+  "rc": 0,
+  "source_commit": "c9eff5fb2e50a690818a3e67347ab4a1bfc88f51",
+  "application_runtime": "NOT_RUN",
+  "runner_dispatch": "NOT_RUN",
+  "push_deploy": "NOT_RUN",
+  "sudo": "NOT_USED",
+  "status": "MATERIALIZED_CONFIG_BYTE_IDENTICAL",
+  "config_sha256": "72eb52594048aa713ade12621f4545def0395f3f1603adec7bab3385b24f13e3",
+  "verified_manifest_files": 125,
+  "target": "/home/server01_cicd-runner/FDS_CICD_Runtime/FDS_CICD_ApkoSupply.affbc69beef9.6ab02000437a",
+  "old_supply_directory_metadata_unchanged": true,
+  "target_mode": "0o700",
+  "target_uid": 1000
+}
