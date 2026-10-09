@@ -1,0 +1,135 @@
+{
+  "type": "DERIVED_NOT_FULL_PLAN",
+  "source_member": "fds-i3-manual-evidence-4foq7fa2/fds-u1-lock-62_wce5p/27-show-retry.stdout",
+  "source_sha256": "5d2b88c6d40eb83c02127f7015fb761909edd4a1a76b734f1ffd0d0005f03aa2",
+  "changes": [
+    {
+      "address": "aws_eip.nat",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_internet_gateway.transport",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_nat_gateway.platform",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route.private_egress[\"private_a\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route.private_egress[\"private_b\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route.private_egress[\"private_c\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route.transport_internet",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_a\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_b\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_c\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route_table.subnet[\"public_transport_a\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route_table_association.subnet[\"private_a\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route_table_association.subnet[\"private_b\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route_table_association.subnet[\"private_c\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_route_table_association.subnet[\"public_transport_a\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_subnet.project[\"private_a\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_subnet.project[\"private_b\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_subnet.project[\"private_c\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_subnet.project[\"public_transport_a\"]",
+      "actions": [
+        "create"
+      ]
+    },
+    {
+      "address": "aws_vpc.project",
+      "actions": [
+        "create"
+      ]
+    }
+  ],
+  "check_statuses": [
+    {
+      "status": "unknown"
+    },
+    {
+      "status": "pass"
+    }
+  ]
+}
