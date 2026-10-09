@@ -1,0 +1,75 @@
+{
+  "manifest_sha256": "08efcfb7bd6df4dc5542bacd335d13cba25b3e9232a7dffb185ed4de63463e8d",
+  "items": 2,
+  "public_key_fingerprint": "SHA256:wcqHnqpzbcZfyZ3PhLWYFOuKDURNqQRvU75Nu5ICuvk",
+  "source_binding": "VERIFIED",
+  "started_kst": "2026-10-09T01:41:37.189791+09:00",
+  "issues": [],
+  "file_inventory_count": 134,
+  "link_files": [
+    {
+      "path": "/usr/lib/systemd/network/98-default-mac-none.link",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 779,
+      "sha256": "11efa1aee1d52e74b3ca5d1db903e9e1f3ca5e07498c25ea13e40452e2430e1a",
+      "selected_lines": [
+        "[Match]",
+        "[Link]",
+        "NamePolicy=keep kernel database onboard slot path",
+        "MACAddressPolicy=none"
+      ]
+    },
+    {
+      "path": "/usr/lib/systemd/network/99-default.link",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 498,
+      "sha256": "1421352342bb7086c86ee738274f54133f37eab332680acb709760bf32f7f45f",
+      "selected_lines": [
+        "[Match]",
+        "OriginalName=*",
+        "[Link]",
+        "NamePolicy=keep kernel database onboard slot path",
+        "MACAddressPolicy=none"
+      ]
+    }
+  ],
+  "network_rule_hints": [
+    "/usr/lib/udev/rules.d/60-net.rules",
+    "/usr/lib/udev/rules.d/65-persistent-net-nbft.rules",
+    "/usr/lib/udev/rules.d/71-prefixdevname.rules",
+    "/usr/lib/udev/rules.d/80-net-setup-link.rules"
+  ],
+  "skipped": [],
+  "directories": [
+    {
+      "path": "/etc/systemd/network",
+      "exists": true,
+      "symlink": false,
+      "uid": 0,
+      "mode": "0o755"
+    },
+    {
+      "path": "/run/systemd/network",
+      "exists": true,
+      "symlink": false,
+      "uid": 0,
+      "mode": "0o755"
+    },
+    {
+      "path": "/usr/local/lib/systemd/network",
+      "exists": false,
+      "symlink": false
+    },
+    {
+      "path": "/usr/lib/systemd/network",
+      "exists": true,
+      "symlink": false,
+      "uid": 0,
+      "mode": "0o755"
+    }
+  ]
+}
