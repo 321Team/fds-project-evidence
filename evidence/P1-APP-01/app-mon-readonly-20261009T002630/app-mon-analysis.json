@@ -1,0 +1,473 @@
+{
+  "schema": "fds.app-mon.analysis.v1",
+  "rbac_matching_bindings": [
+    {
+      "binding": {
+        "metadata": {
+          "name": "cluster-admin",
+          "namespace": null,
+          "uid": "e46347c5-8715-4b84-a1be-005f1dcb3260",
+          "resourceVersion": "141",
+          "labels": {
+            "kubernetes.io/bootstrapping": "rbac-defaults"
+          },
+          "creationTimestamp": "2026-09-09T12:35:17Z"
+        },
+        "subjects": [
+          {
+            "kind": "Group",
+            "apiGroup": "rbac.authorization.k8s.io",
+            "name": "system:masters"
+          }
+        ],
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "ClusterRole",
+          "name": "cluster-admin"
+        }
+      },
+      "matchingRules": [
+        {
+          "verbs": [
+            "*"
+          ],
+          "apiGroups": [
+            "*"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "classification": "CREATE_OR_WILDCARD"
+    },
+    {
+      "binding": {
+        "metadata": {
+          "name": "kubeadm:cluster-admins",
+          "namespace": null,
+          "uid": "13a68552-57e7-4840-8c32-a5f815f778e2",
+          "resourceVersion": "25",
+          "labels": null,
+          "creationTimestamp": "2026-09-09T12:35:16Z"
+        },
+        "subjects": [
+          {
+            "kind": "Group",
+            "apiGroup": "rbac.authorization.k8s.io",
+            "name": "kubeadm:cluster-admins"
+          }
+        ],
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "ClusterRole",
+          "name": "cluster-admin"
+        }
+      },
+      "matchingRules": [
+        {
+          "verbs": [
+            "*"
+          ],
+          "apiGroups": [
+            "*"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "classification": "CREATE_OR_WILDCARD"
+    },
+    {
+      "binding": {
+        "metadata": {
+          "name": "system:controller:generic-garbage-collector",
+          "namespace": null,
+          "uid": "b37f7f03-b8dc-4876-8aa5-5241841f42e8",
+          "resourceVersion": "166",
+          "labels": {
+            "kubernetes.io/bootstrapping": "rbac-defaults"
+          },
+          "creationTimestamp": "2026-09-09T12:35:17Z"
+        },
+        "subjects": [
+          {
+            "kind": "ServiceAccount",
+            "name": "generic-garbage-collector",
+            "namespace": "kube-system"
+          }
+        ],
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "ClusterRole",
+          "name": "system:controller:generic-garbage-collector"
+        }
+      },
+      "matchingRules": [
+        {
+          "verbs": [
+            "delete",
+            "get",
+            "list",
+            "patch",
+            "update",
+            "watch"
+          ],
+          "apiGroups": [
+            "*"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "classification": "GET_ONLY_CANDIDATE_NOT_RUNTIME_TESTED"
+    },
+    {
+      "binding": {
+        "metadata": {
+          "name": "system:controller:namespace-controller",
+          "namespace": null,
+          "uid": "4c2329a9-bb7f-46b6-b4ce-e2553d77157f",
+          "resourceVersion": "169",
+          "labels": {
+            "kubernetes.io/bootstrapping": "rbac-defaults"
+          },
+          "creationTimestamp": "2026-09-09T12:35:17Z"
+        },
+        "subjects": [
+          {
+            "kind": "ServiceAccount",
+            "name": "namespace-controller",
+            "namespace": "kube-system"
+          }
+        ],
+        "roleRef": {
+          "apiGroup": "rbac.authorization.k8s.io",
+          "kind": "ClusterRole",
+          "name": "system:controller:namespace-controller"
+        }
+      },
+      "matchingRules": [
+        {
+          "verbs": [
+            "delete",
+            "deletecollection",
+            "get",
+            "list",
+            "watch"
+          ],
+          "apiGroups": [
+            "*"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "classification": "GET_ONLY_CANDIDATE_NOT_RUNTIME_TESTED"
+    }
+  ],
+  "rbac_limit": "Static stored RBAC rules; not SubjectAccessReview, identity/group enumeration, authentication or actual port-forward trial. GET-only candidates are not asserted usable.",
+  "runtime_source_comparison": [
+    {
+      "containerID": "69b05e1235edccea6e5cd8cca64c5bc13541d844698139c25d9d49c52d19671c",
+      "pod_uid": "62536b32-28d4-413e-902f-7df0e4efc9bd",
+      "app": "transaction-api",
+      "path": "/app/run.py",
+      "size": 1264,
+      "sha256": "b8370b635058228c7ec2ef6533a428e920c1791c9d10af3126d8ead1ca27db14",
+      "references": [
+        {
+          "commit": "adc90410f99cb7af5b40bc8ff92c45272e9f8bee",
+          "path": "transaction-api/run.py",
+          "sha256": "b8370b635058228c7ec2ef6533a428e920c1791c9d10af3126d8ead1ca27db14",
+          "matches": true
+        },
+        {
+          "commit": "8eac4c982076e3c219840a13686b15c46879981f",
+          "path": "transaction-api/run.py",
+          "sha256": "ff41034c7d1434ead9405727d0006879fecfb89020c6279be80c606c9d104572",
+          "matches": false
+        }
+      ]
+    },
+    {
+      "containerID": "69b05e1235edccea6e5cd8cca64c5bc13541d844698139c25d9d49c52d19671c",
+      "pod_uid": "62536b32-28d4-413e-902f-7df0e4efc9bd",
+      "app": "transaction-api",
+      "path": "/app/app/main.py",
+      "size": 4375,
+      "sha256": "0a9c175880ec36650e92b1314debbf3f27a035025a5b47c7bc93efdfcc7fd74c",
+      "references": [
+        {
+          "commit": "adc90410f99cb7af5b40bc8ff92c45272e9f8bee",
+          "path": "transaction-api/app/main.py",
+          "sha256": "0a9c175880ec36650e92b1314debbf3f27a035025a5b47c7bc93efdfcc7fd74c",
+          "matches": true
+        },
+        {
+          "commit": "8eac4c982076e3c219840a13686b15c46879981f",
+          "path": "transaction-api/app/main.py",
+          "sha256": "0a9c175880ec36650e92b1314debbf3f27a035025a5b47c7bc93efdfcc7fd74c",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "containerID": "28fcdf7034971897f4da2514defaa49b824475005d08e7ad347f19dea596a952",
+      "pod_uid": "bf576dfc-f6a4-4ee4-90e6-1ab90fb5d370",
+      "app": "fds-engine",
+      "path": "/app/run.py",
+      "size": 1259,
+      "sha256": "9e9784d9050ebcb6c61e9ee8a7eb67bade24ca93a98541472ac78fc4d997cc29",
+      "references": [
+        {
+          "commit": "adc90410f99cb7af5b40bc8ff92c45272e9f8bee",
+          "path": "fds-engine/run.py",
+          "sha256": "9e9784d9050ebcb6c61e9ee8a7eb67bade24ca93a98541472ac78fc4d997cc29",
+          "matches": true
+        },
+        {
+          "commit": "8eac4c982076e3c219840a13686b15c46879981f",
+          "path": "fds-engine/run.py",
+          "sha256": "9e9784d9050ebcb6c61e9ee8a7eb67bade24ca93a98541472ac78fc4d997cc29",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "containerID": "28fcdf7034971897f4da2514defaa49b824475005d08e7ad347f19dea596a952",
+      "pod_uid": "bf576dfc-f6a4-4ee4-90e6-1ab90fb5d370",
+      "app": "fds-engine",
+      "path": "/app/app/main.py",
+      "size": 2241,
+      "sha256": "7b15e74afd7b60a1d1728c195bfafa9a2869c96c07a2d677db82d71495e1e389",
+      "references": [
+        {
+          "commit": "adc90410f99cb7af5b40bc8ff92c45272e9f8bee",
+          "path": "fds-engine/app/main.py",
+          "sha256": "7b15e74afd7b60a1d1728c195bfafa9a2869c96c07a2d677db82d71495e1e389",
+          "matches": true
+        },
+        {
+          "commit": "8eac4c982076e3c219840a13686b15c46879981f",
+          "path": "fds-engine/app/main.py",
+          "sha256": "7b15e74afd7b60a1d1728c195bfafa9a2869c96c07a2d677db82d71495e1e389",
+          "matches": true
+        }
+      ]
+    }
+  ],
+  "http": [
+    {
+      "source_host": "edge01",
+      "source_context": "edge-direct-and-nginx",
+      "receipt": "edge-metrics-20261009T002837",
+      "requests": [
+        {
+          "target": "10.1.93.105",
+          "port": 30080,
+          "path": "/metrics",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:39.204094+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "text/plain; version=0.0.4; charset=utf-8",
+          "body_bytes_read": 3072,
+          "truncated": false,
+          "body_sha256": "5f673a6a3882785e2b42d484e86847c557a0c6f719146e718b1b5ceaae070c67",
+          "help_lines": 18,
+          "type_lines": 18,
+          "elapsed_seconds": 0.004124
+        },
+        {
+          "target": "10.1.93.105",
+          "port": 30080,
+          "path": "/readyz",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:39.208223+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "application/json",
+          "body_bytes_read": 18,
+          "truncated": false,
+          "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+          "help_lines": 0,
+          "type_lines": 0,
+          "elapsed_seconds": 0.008494
+        },
+        {
+          "target": "10.1.93.107",
+          "port": 30080,
+          "path": "/metrics",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:39.216723+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "text/plain; version=0.0.4; charset=utf-8",
+          "body_bytes_read": 3069,
+          "truncated": false,
+          "body_sha256": "879557e7198d04ebe24128ca38bc2d212ce989fb250afe80ef94fd23662bd888",
+          "help_lines": 18,
+          "type_lines": 18,
+          "elapsed_seconds": 0.002521
+        },
+        {
+          "target": "10.1.93.107",
+          "port": 30080,
+          "path": "/readyz",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:39.219245+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "application/json",
+          "body_bytes_read": 18,
+          "truncated": false,
+          "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+          "help_lines": 0,
+          "type_lines": 0,
+          "elapsed_seconds": 0.007273
+        },
+        {
+          "target": "10.1.93.108",
+          "port": 30080,
+          "path": "/metrics",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:39.226521+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "text/plain; version=0.0.4; charset=utf-8",
+          "body_bytes_read": 3072,
+          "truncated": false,
+          "body_sha256": "446509f86c415023b6325e3f5aec95c584c86c152abe4e141125e8eace9b001b",
+          "help_lines": 18,
+          "type_lines": 18,
+          "elapsed_seconds": 0.002729
+        },
+        {
+          "target": "10.1.93.108",
+          "port": 30080,
+          "path": "/readyz",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:39.229253+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "application/json",
+          "body_bytes_read": 18,
+          "truncated": false,
+          "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+          "help_lines": 0,
+          "type_lines": 0,
+          "elapsed_seconds": 0.007885
+        },
+        {
+          "target": "10.1.93.50",
+          "port": 80,
+          "path": "/metrics",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:39.237144+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 404,
+          "content_type": "text/html",
+          "body_bytes_read": 153,
+          "truncated": false,
+          "body_sha256": "8bf1b0813f4fb6b039752427dc2c097d0723304d4e1f92a77270a362fca4e8ee",
+          "help_lines": 0,
+          "type_lines": 0,
+          "elapsed_seconds": 0.000551
+        },
+        {
+          "target": "10.1.93.50",
+          "port": 80,
+          "path": "/readyz",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:39.237695+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "application/json",
+          "body_bytes_read": 18,
+          "truncated": false,
+          "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+          "help_lines": 0,
+          "type_lines": 0,
+          "elapsed_seconds": 0.008569
+        }
+      ]
+    },
+    {
+      "source_host": "k8s-worker01",
+      "source_context": "transaction-api-network-namespace",
+      "receipt": "worker01-metrics-20261009T002813",
+      "requests": [
+        {
+          "target": "10.97.246.223",
+          "port": 8001,
+          "path": "/metrics",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:14.673639+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "text/plain; version=0.0.4; charset=utf-8",
+          "body_bytes_read": 2231,
+          "truncated": false,
+          "body_sha256": "a3c9c55fdd755296e27d503532464bcf0916627b5815e8d9a4d44028bff2f359",
+          "help_lines": 13,
+          "type_lines": 13,
+          "elapsed_seconds": 0.005562
+        }
+      ]
+    },
+    {
+      "source_host": "k8s-worker03",
+      "source_context": "prometheus-network-namespace",
+      "receipt": "worker03-metrics-20261009T002814",
+      "requests": [
+        {
+          "target": "10.97.246.223",
+          "port": 9090,
+          "path": "/metrics",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:16.068069+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "text/plain; version=0.0.4; charset=utf-8",
+          "body_bytes_read": 2231,
+          "truncated": false,
+          "body_sha256": "a3c9c55fdd755296e27d503532464bcf0916627b5815e8d9a4d44028bff2f359",
+          "help_lines": 13,
+          "type_lines": 13,
+          "elapsed_seconds": 0.00392
+        },
+        {
+          "target": "10.106.27.47",
+          "port": 9091,
+          "path": "/metrics",
+          "method": "GET",
+          "started_at_kst": "2026-10-09T00:28:16.071993+09:00",
+          "proxy_used": false,
+          "redirect_followed": false,
+          "status": 200,
+          "content_type": "text/plain; version=0.0.4; charset=utf-8",
+          "body_bytes_read": 3085,
+          "truncated": false,
+          "body_sha256": "5982a286e8a9f3735001ff1306f00a0a81ca33b15316c8e0e8b71294ed86aeb0",
+          "help_lines": 18,
+          "type_lines": 18,
+          "elapsed_seconds": 0.002782
+        }
+      ]
+    }
+  ]
+}
