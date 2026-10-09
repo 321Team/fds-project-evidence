@@ -1,0 +1,74 @@
+# 하영 CloudShell 결과 폴더 readback (사용자 붙여넣기 원문 중 cat 출력부, 2026-10-09)
+# 결과 폴더: /home/cloudshell-user/u1-hayeoung-20261009-090652 (CloudShell 다운로드 권한 없음 -> 출력 복사로 보존)
+===== meta.txt
+start_kst=2026-10-09T18:06:52+0900 host=
+903814d03a39587d1cb4fadd2103e1ecd2f04f11fe338158581a375d82b262e1  u1-hayeoung-iac-selftest.sh
+mfa_serial=arn:aws:iam::774055931866:mfa/321team-hayeoung-MFA
+end_kst=2026-10-09T18:07:43+0900
+===== summary.tsv
+case	expect	actual	result
+N1-wrong-session-name	DENIED	DENIED	PASS
+N2-no-mfa-token	DENIED	OK	INFO_CLOUDSHELL_MFA_CONTEXT
+P1-assume	OK	OK	PASS
+P2-role-identity	OK	OK	PASS
+P3-describe-vpcs-seoul	OK	OK	PASS
+P4-createvpc-dryrun-owned-tags	DRYRUN_ALLOWED	DRYRUN_ALLOWED	PASS
+N3-createvpc-dryrun-no-tags	DENIED	DENIED	PASS
+N4-describe-vpcs-us-east-1	DENIED	DENIED	PASS
+P5-state-key-head	OK|NOT_FOUND	NOT_FOUND	PASS
+N5-other-state-key-head	DENIED	NOT_FOUND	FAIL
+N6-iam-list-users	DENIED	DENIED	PASS
+===== P2-role-identity.stdout
+{
+    "UserId": "AROA3IOKUF7NEM6P7ZKPK:321team-hayeoung",
+    "Account": "774055931866",
+    "Arn": "arn:aws:sts::774055931866:assumed-role/FDS-IaC-Operator/321team-hayeoung"
+}
+===== P5-state-key-head.stderr
+
+aws: [ERROR]: An error occurred (404) when calling the HeadObject operation: Not Found
+===== N5-other-state-key-head.stderr
+
+aws: [ERROR]: An error occurred (404) when calling the HeadObject operation: Not Found
+===== N2-no-mfa-token.cmd
+kst=2026-10-09T18:07:10+0900
+argv: aws sts assume-role --role-arn arn:aws:iam::774055931866:role/FDS-IaC-Operator --role-session-name 321team-hayeoung --region ap-northeast-2 --output json --no-cli-pager
+rc=0
+===== SHA256SUMS (CloudShell 원본 폴더)
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  00-guard.stderr
+fc1d7e89148b358eb7b852dde97f59b36de676025128fb14f7f210c17c62107d  00-guard.stdout
+d954cf5091de63d8b088b6fe868a56f8618a76f4ecc22d3f293c1dbef39a05ea  meta.txt
+84310739522faa4474743280fbea877840131e873dea86322f6645f4a8538e4d  N1-wrong-session-name.cmd
+e6a52f1a24dd20bf4ef9b03bf46a3fbc5a4d33ccbb01afa4337d7581a0ff4c2e  N1-wrong-session-name.stderr
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  N1-wrong-session-name.stdout
+1688708eff538913c5970f00339a2e119ae947a614ec5fe596190e5d632fd219  N2-no-mfa-token.cmd
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  N2-no-mfa-token.stderr
+aa172139bca155a98f16c24b778ab5cc27a3d1ae35122530c0a415758f09702d  N2-no-mfa-token.stdout
+c22617a53b7b48dab188546a297043676cd893366419d4cd587e4471fd12e519  N3-createvpc-dryrun-no-tags.cmd
+3feb7920f9b26bc358fcf615f7eba75b66ad2fe825b88b1c48be96f16307ef28  N3-createvpc-dryrun-no-tags.stderr
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  N3-createvpc-dryrun-no-tags.stdout
+83b952989f5b1bc6e0547f43db3ee708fa1a43bd1e17aaa44bac0d710cb51093  N4-describe-vpcs-us-east-1.cmd
+3805a429e9494be17a1905ae49bf208aaaf113877799607642c9873be433321a  N4-describe-vpcs-us-east-1.stderr
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  N4-describe-vpcs-us-east-1.stdout
+2878d7b335d49c393bba3c0aaf00dbc270dc68dca916ce3109c8862dfcbb4369  N5-other-state-key-head.cmd
+2e1b4221c8395523f5f05c4c704acadeccc3d27aebbb2166cd0262fb5adbb99e  N5-other-state-key-head.stderr
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  N5-other-state-key-head.stdout
+4ae812664528c50d82c33fbd5041d98b6f7827b4cd6a05f5f277d51bd3e445f7  N6-iam-list-users.cmd
+e01b3cc6e7aa82fd1c94ef78b6e0b305c22289ef8207a46f544ee24ef383b2ab  N6-iam-list-users.stderr
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  N6-iam-list-users.stdout
+dd0afe4ec0616f88509b0e0fe556f737c838896f3980ac5f254d8182e2cbcb2c  P1-assume.cmd
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  P1-assume.stderr
+f338849e54cc0dbf4697d71be13646d7568640d7dd3a0726c7a1086a57e18144  P1-assume.stdout
+95dfd5cb351994a1fe17d1555b26a9181fc229a60a9bc3a1542ca653bbaff45f  P2-role-identity.cmd
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  P2-role-identity.stderr
+d284028b9fb08062e5280d00d5341552315f4c75331b68f8830911df788810ca  P2-role-identity.stdout
+74409e83a7cbdc587918c575cf1d0ffbb13707381330e21ea10db5a1626d4cef  P3-describe-vpcs-seoul.cmd
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  P3-describe-vpcs-seoul.stderr
+375ec1c436e5c38ead2c963cd925dfd89d32b08ed784eb97a31aa5d031ab1397  P3-describe-vpcs-seoul.stdout
+10573cfd3c0d3c0b6c5c4a2ff7087dc5d2630e47038214ce1cea77fb76507411  P4-createvpc-dryrun-owned-tags.cmd
+347b03dc9bba05e3108bd6a884979a6ee5d9e27d9cf884b66e958cd724886cf1  P4-createvpc-dryrun-owned-tags.stderr
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  P4-createvpc-dryrun-owned-tags.stdout
+a1766006a9ed82dbc7b2ba47910144908b2f28d7fd96017ff99882744e67cc47  P5-state-key-head.cmd
+2e1b4221c8395523f5f05c4c704acadeccc3d27aebbb2166cd0262fb5adbb99e  P5-state-key-head.stderr
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  P5-state-key-head.stdout
+372ef4f852cae3fe64f4b7b8b8e03f58b306cc9da72f64b3cb620e95f0f40e2b  summary.tsv
