@@ -1,0 +1,61 @@
+{
+  "schema": "fds.private-custody.assignment.v1",
+  "decided_at_kst": "2026-10-09T18:39:48.209957+09:00",
+  "authority": "User GWONUK instructed selecting relevant custodians and aligning retention with resource reclamation period.",
+  "scope": "Six transferred archives only; not project-wide retention policy, no Harbor artifacts",
+  "assignments": [
+    {
+      "custodian_name": "이하영",
+      "github": "hayeounglee",
+      "basis": "baseline#10 P1-K8S-01 Lead/current assignee",
+      "files": [
+        "k8s-tool-backup-20261009T091654.tar.gz"
+      ],
+      "acceptance": "PENDING_RECIPIENT_CONFIRMATION"
+    },
+    {
+      "custodian_name": "이재환",
+      "github": "supreme33-kr",
+      "basis": "baseline#15 P1-APP-01 Lead/current assignee",
+      "files": [
+        "app-supply-37859961937.zip"
+      ],
+      "acceptance": "PENDING_RECIPIENT_CONFIRMATION"
+    },
+    {
+      "custodian_name": "이권욱",
+      "github": "GWONUK",
+      "basis": "baseline#16 P1-CICD-01 and infra-ansible#61 Lead/current assignee",
+      "files": [
+        "app-tbs-37890963668-metadata.tar.gz",
+        "app-raw-37890963668.tar.gz",
+        "ansible-ci76-11602757338.zip",
+        "ansible-ci76-host-evidence.tar.gz"
+      ],
+      "acceptance": "PENDING_HUMAN_CONFIRMATION",
+      "related_consumers": [
+        "이재환: APP source/OCI/scan interpretation",
+        "이하영: independent evidence review"
+      ]
+    }
+  ],
+  "retention": {
+    "status": "ALIGNED_WITH_RESOURCE_RECLAMATION",
+    "planned_period_start_kst": "2026-10-23",
+    "planned_period_end_kst": "2026-10-26",
+    "expires_when": "Approved project resource-reclamation period ends; current final cleanup/Close plan is 2026-10-26. An approved change to reclamation timing changes this boundary as well.",
+    "exact_time_kst": null,
+    "cleanup_target_date_kst": "2026-10-23",
+    "basis_urls": [
+      "https://github.com/321Team/fds-project-baseline/issues/55#issuecomment-6055015820",
+      "https://github.com/321Team/fds-project-baseline/issues/55",
+      "https://github.com/321Team/fds-project-baseline/issues/57#issuecomment-5907904039"
+    ],
+    "automatic_deletion": false,
+    "deletion_executed": false,
+    "note": "Resource teardown and evidence deletion are separate actions. This retention assignment does not execute either or modify Git evidence retention."
+  },
+  "receipt_handling": "Original collection/transfer receipts remain byte-identical historical records. This decision supersedes their then-unconfirmed custodian/retention fields only; it does not assert recipient acceptance.",
+  "access": "Existing approved-person-only SMB restriction by user attestation; no ACL change",
+  "archive_integrity": "Uses prior 5/5 and 69/69 transfer verification; no new runtime or archive repack"
+}
