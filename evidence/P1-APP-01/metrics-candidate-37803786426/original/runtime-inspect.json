@@ -1,0 +1,60 @@
+[
+    {
+        "Id": "sha256:091b5d0ef47fc56e4769531697565bbb2d06cd93725b75469fe0a84bc63d774d",
+        "RepoTags": [
+            "fds-apko-wolfi-runtime:aeb9995d626ffdc24454477038eb82d5d9e4744e-amd64"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "This is an apko single-layer image",
+        "Created": "2026-10-06T19:04:03Z",
+        "DockerVersion": "",
+        "Author": "github.com/chainguard-dev/apko",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "10001",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"
+            ],
+            "Cmd": null,
+            "Image": "",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "org.opencontainers.image.created": "2026-10-06T19:04:03Z"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 65586750,
+        "GraphDriver": {
+            "Data": {
+                "MergedDir": "/var/lib/docker/overlay2/24caf0f7f2d9a64490593e9232905a46a09b03e4d5230e18adb46b2d30ddb24c/merged",
+                "UpperDir": "/var/lib/docker/overlay2/24caf0f7f2d9a64490593e9232905a46a09b03e4d5230e18adb46b2d30ddb24c/diff",
+                "WorkDir": "/var/lib/docker/overlay2/24caf0f7f2d9a64490593e9232905a46a09b03e4d5230e18adb46b2d30ddb24c/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]

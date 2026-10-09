@@ -1,0 +1,38 @@
+{
+  "schema": "fds.candidate-artifact-receipt.v1",
+  "received_at_kst": "2026-10-09T00:51:13.618143+09:00",
+  "run_id": 37803786426,
+  "run_attempt": 1,
+  "source_sha": "aeb9995d626ffdc24454477038eb82d5d9e4744e",
+  "artifact_id": 11561454052,
+  "zip_sha256": "078ad7957e68a3417d13d21909e82afcac96913ab8173671b45a81c0eddc5580",
+  "zip_api_digest_match": true,
+  "zip_size": 118278,
+  "manifest_files_verified": 50,
+  "coverage_all_original_files": true,
+  "applications": {
+    "transaction-api": {
+      "scan_counts": {
+        "CRITICAL": 0,
+        "HIGH": 0
+      },
+      "image_config_digest": "sha256:7ab7a184fa708f29b6c349498803e9ba4e47bebcccd2adedefdf679a6fdc6794",
+      "repo_digests": [],
+      "user": "10001:999",
+      "livez": "{\"status\":\"ok\"}\nAPKO_PROCESS_LIVEZ=PASS"
+    },
+    "fds-engine": {
+      "scan_counts": {
+        "CRITICAL": 0,
+        "HIGH": 0
+      },
+      "image_config_digest": "sha256:a6b616dc788c8b172af8094a06a2988e7cf75f7236c1e71dbeedd76fd74438f0",
+      "repo_digests": [],
+      "user": "10001:999",
+      "livez": "{\"status\":\"ok\"}\nAPKO_PROCESS_LIVEZ=PASS"
+    }
+  },
+  "scope": "GITHUB_HOSTED_CANDIDATE_ONLY",
+  "harbor_push": "NOT_EXECUTED",
+  "cluster_deploy": "NOT_EXECUTED"
+}
