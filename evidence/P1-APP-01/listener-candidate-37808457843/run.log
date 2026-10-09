@@ -1,0 +1,1254 @@
+validate	Set up job	﻿2026-10-08T16:23:58.8092371Z Current runner version: '2.337.0'
+validate	Set up job	2026-10-08T16:23:58.8154758Z ##[group]Runner Image Provisioner
+validate	Set up job	2026-10-08T16:23:58.8156494Z Hosted Compute Agent
+validate	Set up job	2026-10-08T16:23:58.8157639Z Version: 20261002.596
+validate	Set up job	2026-10-08T16:23:58.8158815Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+validate	Set up job	2026-10-08T16:23:58.8160335Z Build Date: 2026-10-02T22:28:27Z
+validate	Set up job	2026-10-08T16:23:58.8162018Z Worker ID: {c27f6c80-aee8-4490-9030-644e60e40093}
+validate	Set up job	2026-10-08T16:23:58.8163417Z Region: westcentralus
+validate	Set up job	2026-10-08T16:23:58.8164602Z Cloud: Azure
+validate	Set up job	2026-10-08T16:23:58.8165591Z ##[endgroup]
+validate	Set up job	2026-10-08T16:23:58.8168068Z ##[group]Operating System
+validate	Set up job	2026-10-08T16:23:58.8169283Z Ubuntu
+validate	Set up job	2026-10-08T16:23:58.8170147Z 24.04.5
+validate	Set up job	2026-10-08T16:23:58.8191538Z LTS
+validate	Set up job	2026-10-08T16:23:58.8192662Z ##[endgroup]
+validate	Set up job	2026-10-08T16:23:58.8193820Z ##[group]Runner Image
+validate	Set up job	2026-10-08T16:23:58.8194991Z Image: ubuntu-24.04
+validate	Set up job	2026-10-08T16:23:58.8196030Z Version: 20261004.327.1
+validate	Set up job	2026-10-08T16:23:58.8198224Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+validate	Set up job	2026-10-08T16:23:58.8202307Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+validate	Set up job	2026-10-08T16:23:58.8204121Z ##[endgroup]
+validate	Set up job	2026-10-08T16:23:58.8206144Z ##[group]GITHUB_TOKEN Permissions
+validate	Set up job	2026-10-08T16:23:58.8209133Z Contents: read
+validate	Set up job	2026-10-08T16:23:58.8210135Z Metadata: read
+validate	Set up job	2026-10-08T16:23:58.8222887Z ##[endgroup]
+validate	Set up job	2026-10-08T16:23:58.8225997Z Secret source: Actions
+validate	Set up job	2026-10-08T16:23:58.8227825Z Cache mode: write
+validate	Set up job	2026-10-08T16:23:58.8229511Z Prepare workflow directory
+validate	Set up job	2026-10-08T16:23:58.9181962Z Prepare all required actions
+validate	Set up job	2026-10-08T16:23:58.9274139Z Getting action download info
+validate	Set up job	2026-10-08T16:23:59.3279986Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+validate	Set up job	2026-10-08T16:23:59.4257755Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+validate	Set up job	2026-10-08T16:23:59.6417705Z Complete job name: validate
+validate	Checkout exact candidate without persisted credentials	﻿2026-10-08T16:23:59.7140397Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7141783Z with:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7142257Z   persist-credentials: false
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7142871Z   ref: affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7143505Z   fetch-depth: 0
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7143980Z   repository: 321Team/fds-msa
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7148195Z   token: ***
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7148657Z   ssh-strict: true
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7149125Z   ssh-user: git
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7149566Z   clean: true
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7150045Z   sparse-checkout-cone-mode: true
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7150616Z   fetch-tags: false
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7151258Z   show-progress: true
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7151739Z   lfs: false
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7152181Z   submodules: false
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7152659Z   set-safe-directory: true
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7153202Z   allow-unsafe-pr-checkout: false
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7153989Z env:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7154517Z   SOURCE_SHA: affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7155253Z   APKO_VERSION: 1.4.4
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7156022Z   APKO_ARCHIVE_SHA: dbd9e8f416903b2d896497c51f3217259d03ecb45c997254cedca5274e8671db
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7157197Z   TRIVY_ARCHIVE_SHA: 2ae6fe3ee734b7fdf11335663e18c75ea12dccc76062f09f164a3b0f8be4371a
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7158361Z   TRIVY_BINARY_SHA: d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.7159228Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8485441Z Syncing repository: 321Team/fds-msa
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8488443Z ##[group]Getting Git version info
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8489687Z Working directory is '/home/runner/work/fds-msa/fds-msa'
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8491940Z [command]/usr/bin/git version
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8552311Z git version 2.55.0
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8559972Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8570572Z Temporarily overriding HOME='/home/runner/work/_temp/3a24d8b5-6cfe-4ca0-aa9e-3d006dd61a48' before making global git config changes
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8575882Z Adding repository directory to the temporary git global config as a safe directory
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8651622Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fds-msa/fds-msa
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8706839Z Deleting the contents of '/home/runner/work/fds-msa/fds-msa'
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8709319Z ##[group]Determining repository object format
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8711818Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8713364Z ##[group]Initializing the repository
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:23:59.8715304Z [command]/usr/bin/git init /home/runner/work/fds-msa/fds-msa
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0238534Z hint: Using 'master' as the name for the initial branch. This default branch name
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0247676Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0250228Z hint: to use in all of your new repositories, which will suppress this warning,
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0252789Z hint: call:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0254263Z hint:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0256593Z hint: 	git config --global init.defaultBranch <name>
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0258872Z hint:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0264554Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0281651Z hint: 'development'. The just-created branch can be renamed via this command:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0283548Z hint:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0284792Z hint: 	git branch -m <name>
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0287038Z hint:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0288673Z hint: Disable this message with "git config set advice.defaultBranchName false"
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0292322Z Initialized empty Git repository in /home/runner/work/fds-msa/fds-msa/.git/
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0297583Z [command]/usr/bin/git remote add origin https://github.com/321Team/fds-msa
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0302556Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0304977Z ##[group]Disabling automatic garbage collection
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0306286Z [command]/usr/bin/git config --local gc.auto 0
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0309674Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0311722Z ##[group]Setting up auth
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0312794Z Removing SSH command configuration
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0314797Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0323304Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0327117Z Removing HTTP extra header
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0328864Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0334039Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0534010Z Removing includeIf entries pointing to credentials config files
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0536159Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0562982Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0832600Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0875642Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path /home/runner/work/_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0917463Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.0963054Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.1004762Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.1049466Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.1051649Z ##[group]Fetching the repository
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.1061496Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8873571Z From https://github.com/321Team/fds-msa
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8875497Z  * [new branch]      app/distroless-py313-20260926 -> origin/app/distroless-py313-20260926
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8877617Z  * [new branch]      app/distroless-py313-builder-tzdata-20260928 -> origin/app/distroless-py313-builder-tzdata-20260928
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8880028Z  * [new branch]      app/distroless-py313-lock-refresh-20261007-0058 -> origin/app/distroless-py313-lock-refresh-20261007-0058
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8882538Z  * [new branch]      chore/cicd-offline-handoff-20260917 -> origin/chore/cicd-offline-handoff-20260917
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8884752Z  * [new branch]      chore/repository-policy-migration-20260917 -> origin/chore/repository-policy-migration-20260917
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8886864Z  * [new branch]      ci/actions-usage-reduction-20260929 -> origin/ci/actions-usage-reduction-20260929
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8888713Z  * [new branch]      ci/apko-offline-supply-20260927 -> origin/ci/apko-offline-supply-20260927
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8890638Z  * [new branch]      ci/apko-offline-supply-export-20260927 -> origin/ci/apko-offline-supply-export-20260927
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8900020Z  * [new branch]      ci/apko-pinned-lock-build-20261007 -> origin/ci/apko-pinned-lock-build-20261007
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8902042Z  * [new branch]      ci/apko-supply-pr-paths-20260929 -> origin/ci/apko-supply-pr-paths-20260929
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8903436Z  * [new branch]      claude/busy-goodall-nop332 -> origin/claude/busy-goodall-nop332
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8904761Z  * [new branch]      claude/practical-bohr-zw8kpd -> origin/claude/practical-bohr-zw8kpd
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8906353Z  * [new branch]      claude/serene-gauss-5a9oes -> origin/claude/serene-gauss-5a9oes
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8907756Z  * [new branch]      deploy/p43-openshift-labdb-20261008 -> origin/deploy/p43-openshift-labdb-20261008
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8909278Z  * [new branch]      deploy/p43-portable-base-20261008 -> origin/deploy/p43-portable-base-20261008
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8910777Z  * [new branch]      docs/review-authority-alignment-20260918 -> origin/docs/review-authority-alignment-20260918
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8913477Z  * [new branch]      feat/p1-db-01-migration-0003-indexes -> origin/feat/p1-db-01-migration-0003-indexes
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8915772Z  * [new branch]      fix/apko-lock-diagnostics-20261007-0042 -> origin/fix/apko-lock-diagnostics-20261007-0042
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8918520Z  * [new branch]      fix/apko-lock-refresh-20261005 -> origin/fix/apko-lock-refresh-20261005
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8921770Z  * [new branch]      fix/apko-lock-refresh-20261006 -> origin/fix/apko-lock-refresh-20261006
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8924761Z  * [new branch]      fix/apko-lock-refresh-20261007-r4r8 -> origin/fix/apko-lock-refresh-20261007-r4r8
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8927394Z  * [new branch]      fix/app-business-port-metrics-20261009 -> origin/fix/app-business-port-metrics-20261009
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8929794Z  * [new branch]      fix/business-port-metrics-20261009 -> origin/fix/business-port-metrics-20261009
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8932897Z  * [new branch]      fix/dual-listener-access-logging -> origin/fix/dual-listener-access-logging
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8935320Z  * [new branch]      fix/trivy-app-remediation-20260924 -> origin/fix/trivy-app-remediation-20260924
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8936873Z  * [new branch]      main       -> origin/main
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8938256Z  * [new branch]      tools/loadtest-p1-app-20260929 -> origin/tools/loadtest-p1-app-20260929
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8940233Z  * [new branch]      tools/p2e2e-rosa-regression-20261008 -> origin/tools/p2e2e-rosa-regression-20261008
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8943809Z  * [new branch]      tools/regression-p1-e2e-20260930 -> origin/tools/regression-p1-e2e-20260930
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8986116Z [command]/usr/bin/git rev-parse --verify --quiet affbc69beef9967f7977d09a6fec14f7fb6c0e94^{object}
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8988232Z affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8992695Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8994303Z ##[group]Determining the checkout info
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.8996154Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9002737Z [command]/usr/bin/git sparse-checkout disable
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9104458Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9402489Z ##[group]Checking out the ref
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9406251Z [command]/usr/bin/git checkout --progress --force affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9446332Z Note: switching to 'affbc69beef9967f7977d09a6fec14f7fb6c0e94'.
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9448125Z 
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9449145Z You are in 'detached HEAD' state. You can look around, make experimental
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9453013Z changes and commit them, and you can discard any commits you make in this
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9462183Z state without impacting any branches by switching back to a branch.
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9487471Z 
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9489032Z If you want to create a new branch to retain commits you create, you may
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9494337Z do so (now or later) by using -c with the switch command. Example:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9495417Z 
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9497157Z   git switch -c <new-branch-name>
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9498806Z 
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9500210Z Or undo this operation with:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9501841Z 
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9502990Z   git switch -
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9504135Z 
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9505818Z Turn off this advice by setting config variable advice.detachedHead to false
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9507671Z 
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9509825Z HEAD is now at affbc69 ci: verify candidate business and metrics listeners over TCP
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9518996Z ##[endgroup]
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9524773Z [command]/usr/bin/git log -1 --format=%H
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9572918Z affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9579927Z ##[group]Removing auth
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9583085Z Removing SSH command configuration
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9586423Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9623558Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9906524Z Removing HTTP extra header
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9910434Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:00.9952322Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0236924Z Removing includeIf entries pointing to credentials config files
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0243477Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0266634Z includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0270386Z includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0279105Z includeif.gitdir:/github/workspace/.git.path
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0289822Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0298693Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0314790Z /home/runner/work/_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0334862Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path /home/runner/work/_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0382179Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0414204Z /home/runner/work/_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0432122Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0493499Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0530675Z /github/runner_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0569706Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0625676Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0650568Z /github/runner_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0671403Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0714555Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.0997095Z Removing credentials config '/home/runner/work/_temp/git-credentials-73bde2a2-8687-447b-adf4-51ec91aba110.config'
+validate	Checkout exact candidate without persisted credentials	2026-10-08T16:24:01.1015329Z ##[endgroup]
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	﻿2026-10-08T16:24:01.1307386Z ##[group]Run set -euo pipefail
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1309570Z ^[[36;1mset -euo pipefail^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1310773Z ^[[36;1mumask 077^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1311935Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1312988Z ^[[36;1mtest "$(git rev-parse HEAD)" = "$SOURCE_SHA"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1314572Z ^[[36;1mtest -z "$(git status --porcelain)"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1315879Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1316866Z ^[[36;1mroot="$RUNNER_TEMP/apko-wolfi-py313"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1318266Z ^[[36;1mevidence="$root/evidence"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1319484Z ^[[36;1mwork="$root/work"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1321322Z ^[[36;1mmkdir -p "$evidence" "$work"             "$evidence/builder-sbom" "$evidence/runtime-sbom"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1323180Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1324021Z ^[[36;1marchive="$work/apko.tar.gz"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1327639Z ^[[36;1mcurl -q --fail --location --proto '=https' --tlsv1.2             --output "$archive"             "https://github.com/chainguard-dev/apko/releases/download/v${APKO_VERSION}/apko_${APKO_VERSION}_linux_amd64.tar.gz"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1331780Z ^[[36;1mecho "$APKO_ARCHIVE_SHA  $archive" | sha256sum --check -^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1333255Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1334454Z ^[[36;1mtar -tzf "$archive" | tee "$evidence/apko-archive-members.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1336097Z ^[[36;1mtar -xzf "$archive" -C "$work"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1337993Z ^[[36;1mmapfile -t apko_bins < <(find "$work" -maxdepth 3 -type f -name apko -perm -u+x -print)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1339990Z ^[[36;1mtest "${#apko_bins[@]}" -eq 1^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1341471Z ^[[36;1mapko="${apko_bins[0]}"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1342766Z ^[[36;1m"$apko" version | tee "$evidence/apko-version.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1344557Z ^[[36;1msha256sum "$archive" "$apko" > "$evidence/apko-tool-SHA256SUMS"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1346117Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1347288Z ^[[36;1mbuilder_cfg="ci/apko/wolfi-python313-builder.apko.yaml"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1349132Z ^[[36;1mruntime_cfg="ci/apko/wolfi-python313-runtime.apko.yaml"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1351592Z ^[[36;1mgenerated_builder_lock="$evidence/wolfi-python313-builder.apko.generated.lock.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1354399Z ^[[36;1mgenerated_runtime_lock="$evidence/wolfi-python313-runtime.apko.generated.lock.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1356631Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1358117Z ^[[36;1m# Freshness observation only: what the rolling Wolfi index resolves to right now.^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1360521Z ^[[36;1m"$apko" lock "$builder_cfg" --output "$generated_builder_lock" --arch=amd64^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1362839Z ^[[36;1m"$apko" lock "$runtime_cfg" --output "$generated_runtime_lock" --arch=amd64^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1364484Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1365753Z ^[[36;1mrepo_builder_lock="ci/apko/wolfi-python313-builder.apko.lock.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1367878Z ^[[36;1mrepo_runtime_lock="ci/apko/wolfi-python313-runtime.apko.lock.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1369460Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1370610Z ^[[36;1mif [ -f "$repo_builder_lock" ] || [ -f "$repo_runtime_lock" ]; then^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1453195Z ^[[36;1m  test -f "$repo_builder_lock"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1455387Z ^[[36;1m  test -f "$repo_runtime_lock"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1458377Z ^[[36;1m  # Reproducibility input is the committed lock. It must still be bound to the committed YAML.^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1465711Z ^[[36;1m  python3 tools/check_apko_lock_binding.py               "$builder_cfg" "$repo_builder_lock" "$runtime_cfg" "$repo_runtime_lock"               | tee "$evidence/repo-lockfile-binding.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1473031Z ^[[36;1m  builder_lock="$evidence/wolfi-python313-builder.apko.lock.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1475855Z ^[[36;1m  runtime_lock="$evidence/wolfi-python313-runtime.apko.lock.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1477628Z ^[[36;1m  cp "$repo_builder_lock" "$builder_lock"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1479014Z ^[[36;1m  cp "$repo_runtime_lock" "$runtime_lock"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1481740Z ^[[36;1m  echo "APKO_LOCKFILES=REPO_LOCK_BUILD_INPUT_GENERATED_LOCK_FRESHNESS_ONLY" > "$evidence/apko-lock-build-input.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1484489Z ^[[36;1m  drift=0^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1485380Z ^[[36;1m  drifted_locks=()^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1486752Z ^[[36;1m  if ! cmp -s "$repo_builder_lock" "$generated_builder_lock"; then^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1488868Z ^[[36;1m    echo "::group::APKO builder lock freshness diff (repo -> current upstream)"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1491319Z ^[[36;1m    diff -u "$repo_builder_lock" "$generated_builder_lock" || true^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1492904Z ^[[36;1m    echo "::endgroup::"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1494178Z ^[[36;1m    drift=1^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1495203Z ^[[36;1m    drifted_locks+=("$repo_builder_lock")^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1496410Z ^[[36;1m  fi^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1497610Z ^[[36;1m  if ! cmp -s "$repo_runtime_lock" "$generated_runtime_lock"; then^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1499708Z ^[[36;1m    echo "::group::APKO runtime lock freshness diff (repo -> current upstream)"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1502216Z ^[[36;1m    diff -u "$repo_runtime_lock" "$generated_runtime_lock" || true^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1503769Z ^[[36;1m    echo "::endgroup::"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1504784Z ^[[36;1m    drift=1^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1505789Z ^[[36;1m    drifted_locks+=("$repo_runtime_lock")^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1506994Z ^[[36;1m  fi^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1507823Z ^[[36;1m  if [ "$drift" -eq 0 ]; then^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1509602Z ^[[36;1m    echo "APKO_REPO_LOCKFILES_MATCH=PASS" | tee "$evidence/repo-lockfile-match.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1511613Z ^[[36;1m  else^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1515058Z ^[[36;1m    echo "::warning title=apko lock freshness::Upstream Wolfi resolves to different packages than the committed locks. Build continues from the committed locks; open a reviewed lock refresh PR to adopt upstream changes."^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1519624Z ^[[36;1m    echo "APKO_REPO_LOCKFILES_MATCH=DRIFT_NOT_BLOCKING" | tee "$evidence/repo-lockfile-match.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1522640Z ^[[36;1m    # DEC-P1-IMG-01: drift may stay unresolved for at most 3 days after the locks were committed.^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1525086Z ^[[36;1m    python3 tools/check_apko_lock_age.py --max-days 3 "${drifted_locks[@]}"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1526682Z ^[[36;1m  fi^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1527671Z ^[[36;1melse^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1528929Z ^[[36;1m  builder_lock="$evidence/wolfi-python313-builder.apko.lock.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1531202Z ^[[36;1m  runtime_lock="$evidence/wolfi-python313-runtime.apko.lock.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1532968Z ^[[36;1m  cp "$generated_builder_lock" "$builder_lock"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1534409Z ^[[36;1m  cp "$generated_runtime_lock" "$runtime_lock"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1536597Z ^[[36;1m  echo "APKO_LOCKFILES=GENERATED_LOCK_BOOTSTRAP_NOT_YET_PINNED" > "$evidence/apko-lock-build-input.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1539388Z ^[[36;1m  echo "APKO_REPO_LOCKFILES_MATCH=NOT_YET_PINNED" | tee "$evidence/repo-lockfile-match.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1541343Z ^[[36;1mfi^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1542120Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1544979Z ^[[36;1msha256sum             "$builder_cfg"             "$runtime_cfg"             "$builder_lock"             "$runtime_lock"             "$generated_builder_lock"             "$generated_runtime_lock"             > "$evidence/apko-input-SHA256SUMS"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1548219Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1548986Z ^[[36;1mbuild_twice() {^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1549911Z ^[[36;1m  name="$1"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1550883Z ^[[36;1m  cfg="$2"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1551738Z ^[[36;1m  lock="$3"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1552593Z ^[[36;1m  tag="$4"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1553443Z ^[[36;1m  sbom="$5"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1554284Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1555083Z ^[[36;1m  first="$work/$name-1.tar"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1556179Z ^[[36;1m  second="$work/$name-2.tar"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1557222Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1559411Z ^[[36;1m  "$apko" build               --arch=amd64               --lockfile="$lock"               --sbom-formats=spdx               --sbom-path="$sbom"               "$cfg" "$tag" "$first"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1562215Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1563958Z ^[[36;1m  "$apko" build               --arch=amd64               --lockfile="$lock"               --sbom=false               "$cfg" "$tag" "$second"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1566012Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1567192Z ^[[36;1m  sha256sum "$first" "$second" > "$evidence/$name-build-SHA256SUMS"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1568743Z ^[[36;1m  cmp -s "$first" "$second"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1570410Z ^[[36;1m  echo "APKO_REPRODUCIBLE_$name=PASS" | tee "$evidence/$name-reproducibility.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1572244Z ^[[36;1m}^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1572997Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1575198Z ^[[36;1mbuild_twice             builder             "$builder_cfg"             "$builder_lock"             "fds-apko-wolfi-builder:$SOURCE_SHA"             "$evidence/builder-sbom"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1577712Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1579892Z ^[[36;1mbuild_twice             runtime             "$runtime_cfg"             "$runtime_lock"             "fds-apko-wolfi-runtime:$SOURCE_SHA"             "$evidence/runtime-sbom"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1582496Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1584056Z ^[[36;1mbuilder_loaded="$(docker load -i "$work/builder-1.tar" | sed -n 's/^Loaded image: //p' | head -1)"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1586772Z ^[[36;1mruntime_loaded="$(docker load -i "$work/runtime-1.tar" | sed -n 's/^Loaded image: //p' | head -1)"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1588707Z ^[[36;1mtest -n "$builder_loaded"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1589772Z ^[[36;1mtest -n "$runtime_loaded"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1591350Z ^[[36;1mprintf '%s\n' "$builder_loaded" > "$evidence/builder-loaded-ref.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1593292Z ^[[36;1mprintf '%s\n' "$runtime_loaded" > "$evidence/runtime-loaded-ref.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1594865Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1596327Z ^[[36;1mdocker image inspect "$builder_loaded" > "$evidence/builder-inspect.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1598501Z ^[[36;1mdocker image inspect "$runtime_loaded" > "$evidence/runtime-inspect.json"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1600184Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1601341Z ^[[36;1mpython3 - "$evidence/runtime-inspect.json" <<'PY'^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1602733Z ^[[36;1mimport json, sys^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1603996Z ^[[36;1mimage = json.load(open(sys.argv[1]))[0]^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1605367Z ^[[36;1massert image["Architecture"] == "amd64"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1606658Z ^[[36;1massert image["Os"] == "linux"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1608171Z ^[[36;1massert image["Config"]["User"] == "10001", image["Config"]["User"]^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1610063Z ^[[36;1mprint("APKO_RUNTIME_USER=PASS", image["Config"]["User"])^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1611643Z ^[[36;1mPY^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1612434Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1614904Z ^[[36;1mpython3 - "$builder_lock" "$runtime_lock" "$evidence/builder-sbom/sbom-x86_64.spdx.json" "$evidence/runtime-sbom/sbom-x86_64.spdx.json" "$evidence" <<'PY'^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1617714Z ^[[36;1mimport json^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1618637Z ^[[36;1mimport pathlib^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1619607Z ^[[36;1mimport sys^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1620518Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1622411Z ^[[36;1mbuilder_lock_path, runtime_lock_path, builder_sbom_path, runtime_sbom_path, evidence_dir = sys.argv[1:]^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1624735Z ^[[36;1mevidence = pathlib.Path(evidence_dir)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1625959Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1626782Z ^[[36;1mdef load_lock(path):^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1627876Z ^[[36;1m    data = json.load(open(path))^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1629501Z ^[[36;1m    return {(p["name"], p["version"]) for p in data["contents"]["packages"]}^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1631265Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1632095Z ^[[36;1mdef load_sbom(path):^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1633198Z ^[[36;1m    data = json.load(open(path))^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1634958Z ^[[36;1m    return {(p.get("name"), p.get("versionInfo")) for p in data.get("packages", [])}^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1636709Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1637689Z ^[[36;1mbuilder_lock = load_lock(builder_lock_path)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1639331Z ^[[36;1mruntime_lock = load_lock(runtime_lock_path)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1640927Z ^[[36;1mbuilder_sbom = load_sbom(builder_sbom_path)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1642389Z ^[[36;1mruntime_sbom = load_sbom(runtime_sbom_path)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1643660Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1644487Z ^[[36;1mrequired_builder = {^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1645661Z ^[[36;1m    ("python-3.13", "3.13.16_git20261002-r2"),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1647014Z ^[[36;1m    ("py3.13-pip", "26.2.1-r2"),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1648186Z ^[[36;1m    ("tzdata", "2026e-r0"),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1649251Z ^[[36;1m}^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1650089Z ^[[36;1mrequired_runtime = {^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1651380Z ^[[36;1m    ("python-3.13", "3.13.16_git20261002-r2"),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1652649Z ^[[36;1m    ("tzdata", "2026e-r0"),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1653672Z ^[[36;1m}^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1654437Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1655842Z ^[[36;1massert required_builder <= builder_lock, sorted(required_builder - builder_lock)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1658220Z ^[[36;1massert required_runtime <= runtime_lock, sorted(required_runtime - runtime_lock)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1660337Z ^[[36;1massert not any(name == "apk-tools" for name, _ in builder_lock)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1662312Z ^[[36;1massert not any(name == "apk-tools" for name, _ in runtime_lock)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1663775Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1664756Z ^[[36;1mmissing_builder = builder_lock - builder_sbom^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1666210Z ^[[36;1mmissing_runtime = runtime_lock - runtime_sbom^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1667736Z ^[[36;1massert not missing_builder, sorted(missing_builder)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1669363Z ^[[36;1massert not missing_runtime, sorted(missing_runtime)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1670699Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1672146Z ^[[36;1mfor label, inventory in (("builder", builder_lock), ("runtime", runtime_lock)):^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1674167Z ^[[36;1m    with open(evidence / f"{label}-packages.txt", "w") as out:^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1675757Z ^[[36;1m        for name, version in sorted(inventory):^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1677104Z ^[[36;1m            out.write(f"{name}={version}\n")^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1678253Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1679184Z ^[[36;1msummary = {^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1680285Z ^[[36;1m    "schema": "fds.apko-lock-sbom-consistency.v1",^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1681900Z ^[[36;1m    "builder_package_count": len(builder_lock),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1683340Z ^[[36;1m    "runtime_package_count": len(runtime_lock),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1685484Z ^[[36;1m    "builder_required": sorted([{"name": n, "version": v} for n, v in required_builder], key=lambda x: x["name"]),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1688351Z ^[[36;1m    "runtime_required": sorted([{"name": n, "version": v} for n, v in required_runtime], key=lambda x: x["name"]),^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1690454Z ^[[36;1m    "apk_tools_present": False,^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1691775Z ^[[36;1m    "builder_lock_subset_of_sbom": True,^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1693075Z ^[[36;1m    "runtime_lock_subset_of_sbom": True,^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1694280Z ^[[36;1m    "decision": "PASS",^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1695275Z ^[[36;1m}^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1696464Z ^[[36;1mwith open(evidence / "lock-sbom-consistency.json", "w") as out:^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1698219Z ^[[36;1m    json.dump(summary, out, indent=2, sort_keys=True)^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1699554Z ^[[36;1m    out.write("\n")^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1700509Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1701548Z ^[[36;1mprint(json.dumps(summary, sort_keys=True))^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1702766Z ^[[36;1mPY^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1703535Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1708191Z ^[[36;1mdocker run --rm --network none --entrypoint python3.13 "$builder_loaded"             -c 'import sys; from zoneinfo import ZoneInfo; assert sys.version_info[:2] == (3,13), sys.version; assert ZoneInfo("Asia/Seoul").key == "Asia/Seoul"; print(sys.version); print("APKO_BUILDER_ZONEINFO_ASIA_SEOUL=PASS")'             | tee "$evidence/builder-python-smoke.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1713411Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1719804Z ^[[36;1mdocker run --rm --network none --entrypoint python3.13 "$runtime_loaded"             -c 'import os,sys,ssl,ctypes,zlib,bz2,lzma,sqlite3; from zoneinfo import ZoneInfo; assert sys.version_info[:2] == (3,13), sys.version; assert ZoneInfo("Asia/Seoul").key == "Asia/Seoul"; assert os.getuid() == 10001, os.getuid(); assert os.getgid() == 999, os.getgid(); print(sys.version); print("APKO_ZONEINFO_ASIA_SEOUL=PASS"); print("APKO_RUNTIME_UID_GID=10001:999")'             | tee "$evidence/runtime-python-smoke.txt"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1726515Z ^[[36;1m^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1727554Z ^[[36;1mprintf '%s\n' "$builder_loaded" > "$work/builder-ref"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.1729128Z ^[[36;1mprintf '%s\n' "$runtime_loaded" > "$work/runtime-ref"^[[0m
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2036361Z shell: /usr/bin/bash -e {0}
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2038021Z env:
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2039521Z   SOURCE_SHA: affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2041930Z   APKO_VERSION: 1.4.4
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2044228Z   APKO_ARCHIVE_SHA: dbd9e8f416903b2d896497c51f3217259d03ecb45c997254cedca5274e8671db
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2047843Z   TRIVY_ARCHIVE_SHA: 2ae6fe3ee734b7fdf11335663e18c75ea12dccc76062f09f164a3b0f8be4371a
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2051764Z   TRIVY_BINARY_SHA: d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2053921Z ##[endgroup]
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2426709Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2430155Z                                  Dload  Upload   Total   Spent    Left  Speed
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.2432270Z 
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.4858566Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.4859745Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.4860758Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.8717500Z 
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.8719869Z 100 21.2M  100 21.2M    0     0  34.2M      0 --:--:-- --:--:-- --:--:-- 34.2M
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.8874597Z /home/runner/work/_temp/apko-wolfi-py313/work/apko.tar.gz: OK
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.8914418Z apko_1.4.4_linux_amd64/LICENSE
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:01.8916241Z apko_1.4.4_linux_amd64/apko
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5233048Z      _      ____    _  __   ___
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5241683Z     / \    |  _ \  | |/ /  / _ \
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5243398Z    / _ \   | |_) | | ' /  | | | |
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5244260Z   / ___ \  |  __/  | . \  | |_| |
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5250768Z  /_/   \_\ |_|     |_|\_\  \___/
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5251792Z apko
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5252242Z 
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5252600Z GitVersion:    v1.4.4
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5253277Z GitCommit:     7e72102a642f1ce74cbca37ef85f8b925d02a11b
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5254023Z GitTreeState:  clean
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5254694Z BuildDate:     '2026-09-20T21:42:11Z'
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5255418Z GoVersion:     go1.27.0
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5256171Z Compiler:      gc
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5256885Z Platform:      linux/amd64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5257393Z 
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.5865593Z 2026/10/08 16:24:02 INFO Determining packages for 1 architectures: [amd64]
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:02.8612087Z 2026/10/08 16:24:02 INFO Discovered 0 auto-discovered keys
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:05.8001230Z 2026/10/08 16:24:05 INFO Determining packages for 1 architectures: [amd64]
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:05.9487016Z 2026/10/08 16:24:05 INFO Discovered 0 auto-discovered keys
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2745522Z APKO_LOCK_CONFIG_BINDING=PASS ci/apko/wolfi-python313-builder.apko.yaml sha256-wsDYHsSiD7BkF7ZsWh0aHASgaPHAx203o18sErqyZLI= packages=35
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2762506Z APKO_LOCK_CONFIG_BINDING=PASS ci/apko/wolfi-python313-runtime.apko.yaml sha256-3DLedT1beFAfxGVPefF6KFoNUjqvbyjmz8rZqyzIwHA= packages=29
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2850473Z ##[group]APKO builder lock freshness diff (repo -> current upstream)
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2872131Z --- ci/apko/wolfi-python313-builder.apko.lock.json	2026-10-08 16:24:00.925917470 +0000
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2892038Z +++ /home/runner/work/_temp/apko-wolfi-py313/evidence/wolfi-python313-builder.apko.generated.lock.json	2026-10-08 16:24:05.777786720 +0000
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2911568Z @@ -404,41 +404,41 @@
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2931566Z        },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2951435Z        {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2971429Z          "name": "openssl-4.0-libcrypto",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.2991859Z -        "url": "https://packages.wolfi.dev/os/x86_64/openssl-4.0-libcrypto-4.0.3-r4.apk",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3001479Z -        "version": "4.0.3-r4",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3002302Z +        "url": "https://packages.wolfi.dev/os/x86_64/openssl-4.0-libcrypto-4.0.3-r5.apk",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3003137Z +        "version": "4.0.3-r5",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3003606Z          "architecture": "x86_64",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3004094Z          "signature": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3004516Z            "range": "",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3004907Z            "checksum": ""
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3005281Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3005691Z          "control": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3021394Z -          "range": "bytes=0-17335",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3022023Z -          "checksum": "sha1-MgbIVyX5+W5RO6i6CQjB3TtnMTI="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3022624Z +          "range": "bytes=0-17316",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3023217Z +          "checksum": "sha1-Ej/clqNrw0PQi9ESw1Nb/GP8xwE="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3023761Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3024095Z          "data": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3024498Z -          "range": "bytes=17336-2413423",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3025192Z -          "checksum": "sha256-OkruRbk9Hm2KgLGIAwuYv3Rt0uBL/Ljyn9cERl0bMks="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3025929Z +          "range": "bytes=17317-2400120",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3026607Z +          "checksum": "sha256-2vee+8eWLDlTv6Bv/fOPIA/9SsKRyn5vma8msQ41TPU="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3027261Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3027682Z -        "checksum": "Q1MgbIVyX5+W5RO6i6CQjB3TtnMTI="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3028314Z +        "checksum": "Q1Ej/clqNrw0PQi9ESw1Nb/GP8xwE="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3028859Z        },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3029211Z        {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3029579Z          "name": "openssl-4.0-libssl",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3030324Z -        "url": "https://packages.wolfi.dev/os/x86_64/openssl-4.0-libssl-4.0.3-r4.apk",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3031826Z -        "version": "4.0.3-r4",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3032533Z +        "url": "https://packages.wolfi.dev/os/x86_64/openssl-4.0-libssl-4.0.3-r5.apk",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3033282Z +        "version": "4.0.3-r5",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3033729Z          "architecture": "x86_64",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3034261Z          "signature": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3034649Z            "range": "",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3035034Z            "checksum": ""
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3035418Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3035751Z          "control": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3036145Z -          "range": "bytes=0-17311",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3036788Z -          "checksum": "sha1-okb7puswUNowEzdYK7MdQAN9cqg="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3037381Z +          "range": "bytes=0-17296",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3037955Z +          "checksum": "sha1-OqUwSzbMfnFUnqVteIyFalxA0qQ="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3038515Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3059542Z          "data": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3081491Z -          "range": "bytes=17312-573386",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3102271Z -          "checksum": "sha256-A/7obXhyAiiRjDiMMxYvnHQmRVRDmVLTBFd+0Cosjn8="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3121411Z +          "range": "bytes=17297-573375",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3141646Z +          "checksum": "sha256-B9lKMx9C7huFfl/33mLuiNuNTLM4F6TpqDjeUlxmZwQ="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3142347Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3142778Z -        "checksum": "Q1okb7puswUNowEzdYK7MdQAN9cqg="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3143404Z +        "checksum": "Q1OqUwSzbMfnFUnqVteIyFalxA0qQ="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3143938Z        },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3144280Z        {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3144624Z          "name": "xz",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3145615Z ##[endgroup]
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3162000Z ##[group]APKO runtime lock freshness diff (repo -> current upstream)
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3201880Z --- ci/apko/wolfi-python313-runtime.apko.lock.json	2026-10-08 16:24:00.925917470 +0000
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3222169Z +++ /home/runner/work/_temp/apko-wolfi-py313/evidence/wolfi-python313-runtime.apko.generated.lock.json	2026-10-08 16:24:07.234804449 +0000
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3223394Z @@ -347,41 +347,41 @@
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3223783Z        },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3224115Z        {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3224472Z          "name": "openssl-4.0-libcrypto",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3225261Z -        "url": "https://packages.wolfi.dev/os/x86_64/openssl-4.0-libcrypto-4.0.3-r4.apk",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3226006Z -        "version": "4.0.3-r4",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3226692Z +        "url": "https://packages.wolfi.dev/os/x86_64/openssl-4.0-libcrypto-4.0.3-r5.apk",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3227452Z +        "version": "4.0.3-r5",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3227885Z          "architecture": "x86_64",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3228320Z          "signature": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3228705Z            "range": "",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3229086Z            "checksum": ""
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3229490Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3229816Z          "control": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3230193Z -          "range": "bytes=0-17335",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3230744Z -          "checksum": "sha1-MgbIVyX5+W5RO6i6CQjB3TtnMTI="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3232647Z +          "range": "bytes=0-17316",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3233209Z +          "checksum": "sha1-Ej/clqNrw0PQi9ESw1Nb/GP8xwE="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3233850Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3234187Z          "data": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3234560Z -          "range": "bytes=17336-2413423",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3235254Z -          "checksum": "sha256-OkruRbk9Hm2KgLGIAwuYv3Rt0uBL/Ljyn9cERl0bMks="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3235971Z +          "range": "bytes=17317-2400120",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3236621Z +          "checksum": "sha256-2vee+8eWLDlTv6Bv/fOPIA/9SsKRyn5vma8msQ41TPU="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3237250Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3237660Z -        "checksum": "Q1MgbIVyX5+W5RO6i6CQjB3TtnMTI="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3238256Z +        "checksum": "Q1Ej/clqNrw0PQi9ESw1Nb/GP8xwE="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3238726Z        },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3238999Z        {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3239303Z          "name": "openssl-4.0-libssl",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3239948Z -        "url": "https://packages.wolfi.dev/os/x86_64/openssl-4.0-libssl-4.0.3-r4.apk",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3251443Z -        "version": "4.0.3-r4",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3252131Z +        "url": "https://packages.wolfi.dev/os/x86_64/openssl-4.0-libssl-4.0.3-r5.apk",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3252960Z +        "version": "4.0.3-r5",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3253419Z          "architecture": "x86_64",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3253872Z          "signature": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3254265Z            "range": "",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3254664Z            "checksum": ""
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3255055Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3255394Z          "control": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3255766Z -          "range": "bytes=0-17311",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3256318Z -          "checksum": "sha1-okb7puswUNowEzdYK7MdQAN9cqg="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3256871Z +          "range": "bytes=0-17296",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3257383Z +          "checksum": "sha1-OqUwSzbMfnFUnqVteIyFalxA0qQ="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3257930Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3258262Z          "data": {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3258654Z -          "range": "bytes=17312-573386",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3259322Z -          "checksum": "sha256-A/7obXhyAiiRjDiMMxYvnHQmRVRDmVLTBFd+0Cosjn8="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3260000Z +          "range": "bytes=17297-573375",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3260640Z +          "checksum": "sha256-B9lKMx9C7huFfl/33mLuiNuNTLM4F6TpqDjeUlxmZwQ="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3261525Z          },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3268185Z -        "checksum": "Q1okb7puswUNowEzdYK7MdQAN9cqg="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3268719Z +        "checksum": "Q1OqUwSzbMfnFUnqVteIyFalxA0qQ="
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3269146Z        },
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3269446Z        {
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3269776Z          "name": "xz",
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3270668Z ##[endgroup]
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3299456Z ##[warning]Upstream Wolfi resolves to different packages than the committed locks. Build continues from the committed locks; open a reviewed lock refresh PR to adopt upstream changes.
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3312201Z APKO_REPO_LOCKFILES_MATCH=DRIFT_NOT_BLOCKING
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.3341910Z APKO_LOCK_DRIFT_AGE=WITHIN_LIMIT lock_committed=2026-10-07T06:13:51Z age_hours=34 limit_days=3
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.4910119Z 2026/10/08 16:24:07 INFO installing wolfi-baselayout (20230201-r30) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5242458Z 2026/10/08 16:24:07 INFO installing ca-certificates-bundle (20260909-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5271445Z 2026/10/08 16:24:07 INFO installing glibc-2.44-locale-posix (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5582871Z 2026/10/08 16:24:07 INFO installing libgcc (16.2.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5883735Z 2026/10/08 16:24:07 INFO installing glibc-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5884930Z 2026/10/08 16:24:07 INFO installing ld-linux-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5885757Z 2026/10/08 16:24:07 INFO installing libxcrypt (4.5.2-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5886597Z 2026/10/08 16:24:07 INFO installing libcrypt1-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5921558Z 2026/10/08 16:24:07 INFO installing busybox (1.38.0-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5945866Z 2026/10/08 16:24:07 INFO installing gdbm (1.26-r6) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5946621Z 2026/10/08 16:24:07 INFO installing libstdc++ (16.2.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5947430Z 2026/10/08 16:24:07 INFO installing mpdecimal (4.0.1-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5952488Z 2026/10/08 16:24:07 INFO installing ncurses-terminfo-base (6.6.20260926-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5953804Z 2026/10/08 16:24:07 INFO installing ncurses (6.6.20260926-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5955143Z 2026/10/08 16:24:07 INFO installing readline (8.3-r3) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5956235Z 2026/10/08 16:24:07 INFO installing libbz2-1 (1.0.8-r24) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5957715Z 2026/10/08 16:24:07 INFO installing openssl-provider-legacy-allowed (4.0.2-r3) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5959033Z 2026/10/08 16:24:07 INFO installing libbrotlicommon1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5960613Z 2026/10/08 16:24:07 INFO installing libbrotlienc1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.5964440Z 2026/10/08 16:24:07 INFO installing libbrotlidec1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.8497974Z 2026/10/08 16:24:07 INFO installing openssl-4.0-libcrypto (4.0.3-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.8502865Z 2026/10/08 16:24:07 INFO installing openssl-4.0-libssl (4.0.3-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.8712717Z 2026/10/08 16:24:07 INFO installing xz (5.8.4-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.8713977Z 2026/10/08 16:24:07 INFO installing sqlite-libs (3.53.4-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.8885915Z 2026/10/08 16:24:07 INFO installing libffi (3.8.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.8891696Z 2026/10/08 16:24:07 INFO installing zlib (1.3.2.1_rc20260917-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.9086984Z 2026/10/08 16:24:07 INFO installing libexpat1 (2.9.0-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.9291907Z 2026/10/08 16:24:07 INFO installing py3-pip-wheel (26.2.1-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:07.9482571Z 2026/10/08 16:24:07 INFO installing libuuid (2.42.4-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.0613131Z 2026/10/08 16:24:08 INFO installing python-3.13-base (3.13.16_git20261002-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.0631853Z 2026/10/08 16:24:08 INFO installing py3.13-setuptools (84.0.0-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.0661670Z 2026/10/08 16:24:08 INFO installing py3.13-pip-base (26.2.1-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.0721558Z 2026/10/08 16:24:08 INFO installing py3.13-pip (26.2.1-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.0742574Z 2026/10/08 16:24:08 INFO installing python-3.13 (3.13.16_git20261002-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.0743593Z 2026/10/08 16:24:08 INFO installing tzdata (2026e-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.9466439Z 2026/10/08 16:24:08 INFO layer digest: sha256:93c2b6c8292d1d2df333737c2a0bbcc1b79d613f7db6ef86c8d000e9d756bcd3 arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.9481786Z 2026/10/08 16:24:08 INFO layer diffID: sha256:02eae2f3f119386c5c0e4b7ff85ea44ae89bd9ce26776364c35c853335e2896b arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:08.9647726Z 2026/10/08 16:24:08 INFO built index file as /tmp/apko-temp-2223127260/index.json
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.1632173Z 2026/10/08 16:24:09 INFO installing wolfi-baselayout (20230201-r30) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.1651544Z 2026/10/08 16:24:09 INFO installing ca-certificates-bundle (20260909-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.1751593Z 2026/10/08 16:24:09 INFO installing glibc-2.44-locale-posix (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.1752833Z 2026/10/08 16:24:09 INFO installing libgcc (16.2.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2391595Z 2026/10/08 16:24:09 INFO installing glibc-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2392929Z 2026/10/08 16:24:09 INFO installing ld-linux-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2421686Z 2026/10/08 16:24:09 INFO installing libxcrypt (4.5.2-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2441423Z 2026/10/08 16:24:09 INFO installing libcrypt1-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2461320Z 2026/10/08 16:24:09 INFO installing busybox (1.38.0-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2462204Z 2026/10/08 16:24:09 INFO installing gdbm (1.26-r6) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2478719Z 2026/10/08 16:24:09 INFO installing libstdc++ (16.2.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2492560Z 2026/10/08 16:24:09 INFO installing mpdecimal (4.0.1-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2511628Z 2026/10/08 16:24:09 INFO installing ncurses-terminfo-base (6.6.20260926-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2531574Z 2026/10/08 16:24:09 INFO installing ncurses (6.6.20260926-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2551339Z 2026/10/08 16:24:09 INFO installing readline (8.3-r3) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2552283Z 2026/10/08 16:24:09 INFO installing libbz2-1 (1.0.8-r24) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2571803Z 2026/10/08 16:24:09 INFO installing openssl-provider-legacy-allowed (4.0.2-r3) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2591337Z 2026/10/08 16:24:09 INFO installing libbrotlicommon1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2611352Z 2026/10/08 16:24:09 INFO installing libbrotlienc1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2612303Z 2026/10/08 16:24:09 INFO installing libbrotlidec1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2892021Z 2026/10/08 16:24:09 INFO installing openssl-4.0-libcrypto (4.0.3-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2931527Z 2026/10/08 16:24:09 INFO installing openssl-4.0-libssl (4.0.3-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2932453Z 2026/10/08 16:24:09 INFO installing xz (5.8.4-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2951336Z 2026/10/08 16:24:09 INFO installing sqlite-libs (3.53.4-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2952051Z 2026/10/08 16:24:09 INFO installing libffi (3.8.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2952767Z 2026/10/08 16:24:09 INFO installing zlib (1.3.2.1_rc20260917-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2953495Z 2026/10/08 16:24:09 INFO installing libexpat1 (2.9.0-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2954207Z 2026/10/08 16:24:09 INFO installing py3-pip-wheel (26.2.1-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.2954951Z 2026/10/08 16:24:09 INFO installing libuuid (2.42.4-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.5373234Z 2026/10/08 16:24:09 INFO installing python-3.13-base (3.13.16_git20261002-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.5381200Z 2026/10/08 16:24:09 INFO installing py3.13-setuptools (84.0.0-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.5411788Z 2026/10/08 16:24:09 INFO installing py3.13-pip-base (26.2.1-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.5461882Z 2026/10/08 16:24:09 INFO installing py3.13-pip (26.2.1-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.5481978Z 2026/10/08 16:24:09 INFO installing python-3.13 (3.13.16_git20261002-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:09.5483080Z 2026/10/08 16:24:09 INFO installing tzdata (2026e-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.4128935Z 2026/10/08 16:24:10 INFO layer digest: sha256:93c2b6c8292d1d2df333737c2a0bbcc1b79d613f7db6ef86c8d000e9d756bcd3 arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.4131137Z 2026/10/08 16:24:10 INFO layer diffID: sha256:02eae2f3f119386c5c0e4b7ff85ea44ae89bd9ce26776364c35c853335e2896b arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.4136613Z 2026/10/08 16:24:10 INFO built index file as /tmp/apko-temp-1610912650/index.json
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.5166289Z APKO_REPRODUCIBLE_builder=PASS
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.6822268Z 2026/10/08 16:24:10 INFO installing wolfi-baselayout (20230201-r30) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.6823664Z 2026/10/08 16:24:10 INFO installing ca-certificates-bundle (20260909-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.6941865Z 2026/10/08 16:24:10 INFO installing glibc-2.44-locale-posix (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.6961415Z 2026/10/08 16:24:10 INFO installing libgcc (16.2.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7541938Z 2026/10/08 16:24:10 INFO installing glibc-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7548221Z 2026/10/08 16:24:10 INFO installing ld-linux-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7548972Z 2026/10/08 16:24:10 INFO installing gdbm (1.26-r6) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7549656Z 2026/10/08 16:24:10 INFO installing libstdc++ (16.2.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7550399Z 2026/10/08 16:24:10 INFO installing mpdecimal (4.0.1-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7551409Z 2026/10/08 16:24:10 INFO installing ncurses-terminfo-base (6.6.20260926-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7571534Z 2026/10/08 16:24:10 INFO installing ncurses (6.6.20260926-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7611399Z 2026/10/08 16:24:10 INFO installing readline (8.3-r3) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7651564Z 2026/10/08 16:24:10 INFO installing libbz2-1 (1.0.8-r24) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7671645Z 2026/10/08 16:24:10 INFO installing openssl-provider-legacy-allowed (4.0.2-r3) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7691518Z 2026/10/08 16:24:10 INFO installing libbrotlicommon1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7692511Z 2026/10/08 16:24:10 INFO installing libbrotlienc1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.7711528Z 2026/10/08 16:24:10 INFO installing libbrotlidec1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8092509Z 2026/10/08 16:24:10 INFO installing openssl-4.0-libcrypto (4.0.3-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8093973Z 2026/10/08 16:24:10 INFO installing openssl-4.0-libssl (4.0.3-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8122294Z 2026/10/08 16:24:10 INFO installing xz (5.8.4-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8131583Z 2026/10/08 16:24:10 INFO installing sqlite-libs (3.53.4-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8151373Z 2026/10/08 16:24:10 INFO installing libffi (3.8.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8171456Z 2026/10/08 16:24:10 INFO installing zlib (1.3.2.1_rc20260917-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8291807Z 2026/10/08 16:24:10 INFO installing libexpat1 (2.9.0-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8301449Z 2026/10/08 16:24:10 INFO installing py3-pip-wheel (26.2.1-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:10.8311641Z 2026/10/08 16:24:10 INFO installing libuuid (2.42.4-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.0112554Z 2026/10/08 16:24:11 INFO installing python-3.13-base (3.13.16_git20261002-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.0129994Z 2026/10/08 16:24:11 INFO installing python-3.13 (3.13.16_git20261002-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.0131529Z 2026/10/08 16:24:11 INFO installing tzdata (2026e-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.6834505Z 2026/10/08 16:24:11 INFO layer digest: sha256:57d28d2559500698a1e053cf82543dfa32853f066b3f6e12ddefc1679bc125eb arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.6836317Z 2026/10/08 16:24:11 INFO layer diffID: sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30 arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.6945872Z 2026/10/08 16:24:11 INFO built index file as /tmp/apko-temp-3057154708/index.json
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.8812215Z 2026/10/08 16:24:11 INFO installing wolfi-baselayout (20230201-r30) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.8823565Z 2026/10/08 16:24:11 INFO installing ca-certificates-bundle (20260909-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.8824487Z 2026/10/08 16:24:11 INFO installing glibc-2.44-locale-posix (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.8825372Z 2026/10/08 16:24:11 INFO installing libgcc (16.2.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9422064Z 2026/10/08 16:24:11 INFO installing glibc-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9461524Z 2026/10/08 16:24:11 INFO installing ld-linux-2.44 (2.44-r8) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9481518Z 2026/10/08 16:24:11 INFO installing gdbm (1.26-r6) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9501710Z 2026/10/08 16:24:11 INFO installing libstdc++ (16.2.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9505834Z 2026/10/08 16:24:11 INFO installing mpdecimal (4.0.1-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9521621Z 2026/10/08 16:24:11 INFO installing ncurses-terminfo-base (6.6.20260926-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9540597Z 2026/10/08 16:24:11 INFO installing ncurses (6.6.20260926-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9541974Z 2026/10/08 16:24:11 INFO installing readline (8.3-r3) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9562725Z 2026/10/08 16:24:11 INFO installing libbz2-1 (1.0.8-r24) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9581624Z 2026/10/08 16:24:11 INFO installing openssl-provider-legacy-allowed (4.0.2-r3) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9591484Z 2026/10/08 16:24:11 INFO installing libbrotlicommon1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9621429Z 2026/10/08 16:24:11 INFO installing libbrotlienc1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:11.9622283Z 2026/10/08 16:24:11 INFO installing libbrotlidec1 (1.2.0-r5) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0327421Z 2026/10/08 16:24:12 INFO installing openssl-4.0-libcrypto (4.0.3-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0382546Z 2026/10/08 16:24:12 INFO installing openssl-4.0-libssl (4.0.3-r4) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0395375Z 2026/10/08 16:24:12 INFO installing xz (5.8.4-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0396243Z 2026/10/08 16:24:12 INFO installing sqlite-libs (3.53.4-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0397020Z 2026/10/08 16:24:12 INFO installing libffi (3.8.0-r1) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0397862Z 2026/10/08 16:24:12 INFO installing zlib (1.3.2.1_rc20260917-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0401471Z 2026/10/08 16:24:12 INFO installing libexpat1 (2.9.0-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0413769Z 2026/10/08 16:24:12 INFO installing py3-pip-wheel (26.2.1-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.0431462Z 2026/10/08 16:24:12 INFO installing libuuid (2.42.4-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.2082426Z 2026/10/08 16:24:12 INFO installing python-3.13-base (3.13.16_git20261002-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.2100313Z 2026/10/08 16:24:12 INFO installing python-3.13 (3.13.16_git20261002-r2) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.2101791Z 2026/10/08 16:24:12 INFO installing tzdata (2026e-r0) arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.8756426Z 2026/10/08 16:24:12 INFO layer digest: sha256:57d28d2559500698a1e053cf82543dfa32853f066b3f6e12ddefc1679bc125eb arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.8781942Z 2026/10/08 16:24:12 INFO layer diffID: sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30 arch=x86_64
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.8792463Z 2026/10/08 16:24:12 INFO built index file as /tmp/apko-temp-2531371978/index.json
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:12.9614033Z APKO_REPRODUCIBLE_runtime=PASS
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:15.8768027Z APKO_RUNTIME_USER=PASS 10001
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:15.9070715Z {"apk_tools_present": false, "builder_lock_subset_of_sbom": true, "builder_package_count": 35, "builder_required": [{"name": "py3.13-pip", "version": "26.2.1-r2"}, {"name": "python-3.13", "version": "3.13.16_git20261002-r2"}, {"name": "tzdata", "version": "2026e-r0"}], "decision": "PASS", "runtime_lock_subset_of_sbom": true, "runtime_package_count": 29, "runtime_required": [{"name": "python-3.13", "version": "3.13.16_git20261002-r2"}, {"name": "tzdata", "version": "2026e-r0"}], "schema": "fds.apko-lock-sbom-consistency.v1"}
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:18.3086573Z 3.13.16 (heads/3.13-dirty:15e701addee, Oct  5 2026, 12:58:02) [GCC 16.2.0]
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:18.3088598Z APKO_BUILDER_ZONEINFO_ASIA_SEOUL=PASS
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:18.5390694Z 3.13.16 (heads/3.13-dirty:15e701addee, Oct  5 2026, 12:58:02) [GCC 16.2.0]
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:18.5392814Z APKO_ZONEINFO_ASIA_SEOUL=PASS
+validate	Build reproducible apko bases with lockfiles and SPDX SBOMs	2026-10-08T16:24:18.5393504Z APKO_RUNTIME_UID_GID=10001:999
+validate	Build and smoke applications on apko bases	﻿2026-10-08T16:24:18.5957988Z ##[group]Run set -euo pipefail
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5958495Z ^[[36;1mset -euo pipefail^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5958827Z ^[[36;1mumask 077^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5959114Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5959415Z ^[[36;1mroot="$RUNNER_TEMP/apko-wolfi-py313"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5959859Z ^[[36;1mevidence="$root/evidence"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5960208Z ^[[36;1mwork="$root/work"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5960566Z ^[[36;1mbuilder_ref="$(cat "$work/builder-ref")"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5961357Z ^[[36;1mruntime_ref="$(cat "$work/runtime-ref")"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5961738Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5962052Z ^[[36;1mfor service in transaction-api fds-engine; do^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5962494Z ^[[36;1m  wheels="$work/$service-wheels"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5962864Z ^[[36;1m  mkdir -p "$wheels"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5963174Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5965126Z ^[[36;1m  docker run --rm --platform linux/amd64               -e PIP_CONFIG_FILE=/dev/null               -v "$PWD:/src:ro"               -v "$wheels:/wheels"               "$builder_ref"               python3.13 -I -m pip --isolated --disable-pip-version-check --no-cache-dir                 download --index-url https://pypi.org/simple                 --only-binary=:all: --require-hashes                 -r "/src/$service/requirements-runtime.lock"                 --dest /wheels^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5967268Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5967504Z ^[[36;1m  (^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5967763Z ^[[36;1m    cd "$wheels"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5968164Z ^[[36;1m    sha256sum ./* > "$evidence/$service-wheel-SHA256SUMS"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5968610Z ^[[36;1m  )^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5968861Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5969201Z ^[[36;1m  tag="fds-apko-wolfi-candidate/$service:$SOURCE_SHA"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5969635Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5971592Z ^[[36;1m  docker buildx build               --platform linux/amd64               --network none               --pull=false               --no-cache               --load               --build-arg "BUILDER_IMAGE=$builder_ref"               --build-arg "RUNTIME_IMAGE=$runtime_ref"               --build-context "python-wheels=$wheels"               --file "$service/Dockerfile"               --tag "$tag"               "$service"               > "$evidence/$service-build.log" 2>&1^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5973547Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5973910Z ^[[36;1m  docker image inspect "$tag" > "$evidence/$service-inspect.json"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5974361Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5974856Z ^[[36;1m  python3 - "$evidence/$service-inspect.json" "$evidence/runtime-inspect.json" "$service" <<'PY'^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5975459Z ^[[36;1mimport json, sys^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5975795Z ^[[36;1mimage = json.load(open(sys.argv[1]))[0]^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5976207Z ^[[36;1mruntime = json.load(open(sys.argv[2]))[0]^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5976581Z ^[[36;1mservice = sys.argv[3]^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5977047Z ^[[36;1massert image["Config"]["User"] == "10001:999", (service, image["Config"]["User"])^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5977727Z ^[[36;1massert image["Config"].get("Entrypoint") == ["/venv/bin/python3"], service^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5978324Z ^[[36;1massert image["Config"].get("Cmd") == ["run.py"], service^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5978816Z ^[[36;1mbase_layers = runtime["RootFS"]["Layers"]^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5979344Z ^[[36;1massert image["RootFS"]["Layers"][:len(base_layers)] == base_layers, service^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5980001Z ^[[36;1mprint(f"OPERATING_DOCKERFILE_IDENTITY=PASS service={service} user=10001:999")^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5980479Z ^[[36;1mPY^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5980690Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5981325Z ^[[36;1m  smoke='import os,sys,ssl,ctypes,zlib,bz2,lzma,sqlite3;'^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5981917Z ^[[36;1m  smoke+='assert os.getuid()==10001,os.getuid();assert os.getgid()==999,os.getgid();'^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5982616Z ^[[36;1m  smoke+='from zoneinfo import ZoneInfo; assert ZoneInfo("Asia/Seoul").key=="Asia/Seoul";'^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5983405Z ^[[36;1m  smoke+='import fastapi,starlette,pydantic_core,yaml,uvloop,httptools,watchfiles,websockets;'^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5984260Z ^[[36;1m  smoke+='assert sys.version_info[:2]==(3,13),sys.version;'^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5984712Z ^[[36;1m  smoke+="assert fastapi.__version__=='0.141.1';"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5985121Z ^[[36;1m  smoke+="assert starlette.__version__=='1.7.0';"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5985516Z ^[[36;1m  if [ "$service" = transaction-api ]; then^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5985867Z ^[[36;1m    smoke+='import asyncpg;'^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5986220Z ^[[36;1m    smoke+="assert asyncpg.__version__=='0.30.0';"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5986581Z ^[[36;1m  fi^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5986834Z ^[[36;1m  smoke+='import importlib.util;'^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5987246Z ^[[36;1m  smoke+="assert importlib.util.find_spec('pip') is None;"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5987759Z ^[[36;1m  smoke+="assert importlib.util.find_spec('setuptools') is None;"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5988241Z ^[[36;1m  smoke+="print('APKO_APP_IMPORT_SMOKE=PASS')"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5988588Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5989227Z ^[[36;1m  docker run --rm --network none               --entrypoint /venv/bin/python3               "$tag" -c "$smoke"               | tee "$evidence/$service-import-smoke.txt"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5989907Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5990140Z ^[[36;1m  if [ "$service" = transaction-api ]; then^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5991846Z ^[[36;1m    cid="$(docker run -d --network none                 -e DATABASE_URL='***127.0.0.1:5432/candidate'                 -e FDS_ENGINE_URL='http://127.0.0.1:8001/evaluate'                 "$tag")"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5992616Z ^[[36;1m    port=8000^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5992848Z ^[[36;1m  else^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5993116Z ^[[36;1m    cid="$(docker run -d --network none "$tag")"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5993456Z ^[[36;1m    port=8001^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5993682Z ^[[36;1m  fi^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5993926Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5994212Z ^[[36;1m  cleanup() { docker rm -f "$cid" >/dev/null 2>&1 || true; }^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5994596Z ^[[36;1m  trap cleanup EXIT^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5994840Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5995038Z ^[[36;1m  passed=0^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.5995295Z ^[[36;1m  for attempt in 1 2 3 4 5 6 7 8 9 10; do^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6016265Z ^[[36;1m    if docker exec "$cid" /venv/bin/python3 -c                 "import urllib.request; r=urllib.request.urlopen('http://127.0.0.1:$port/livez', timeout=1); assert r.status == 200; print(r.read().decode())"                 > "$evidence/$service-livez.txt" 2>"$evidence/$service-livez.err"; then^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6017442Z ^[[36;1m      passed=1^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6017687Z ^[[36;1m      break^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6017915Z ^[[36;1m    fi^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6018130Z ^[[36;1m    sleep 1^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6018350Z ^[[36;1m  done^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6018706Z ^[[36;1m  docker logs "$cid" > "$evidence/$service-container.log" 2>&1 || true^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6019158Z ^[[36;1m  test "$passed" -eq 1^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6019588Z ^[[36;1m  cp tools/check_listener_isolation.py "$evidence/listener-checker.py"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6020182Z ^[[36;1m  docker exec -i "$cid" /venv/bin/python3 - --service "$service" \^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6020651Z ^[[36;1m    < tools/check_listener_isolation.py \^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6021314Z ^[[36;1m    > "$evidence/$service-listener-isolation.json"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6021674Z ^[[36;1m  cleanup^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6021909Z ^[[36;1m  trap - EXIT^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6022271Z ^[[36;1m  echo "APKO_PROCESS_LIVEZ=PASS" >> "$evidence/$service-livez.txt"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6022687Z ^[[36;1m^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6022988Z ^[[36;1m  docker save --output "$work/$service.docker.tar" "$tag"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6023533Z ^[[36;1m  sha256sum "$work/$service.docker.tar" > "$evidence/$service-image-tar.sha256"^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6023996Z ^[[36;1mdone^[[0m
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6090236Z shell: /usr/bin/bash -e {0}
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6090566Z env:
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6091033Z   SOURCE_SHA: affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6091659Z   APKO_VERSION: 1.4.4
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6092136Z   APKO_ARCHIVE_SHA: dbd9e8f416903b2d896497c51f3217259d03ecb45c997254cedca5274e8671db
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6092906Z   TRIVY_ARCHIVE_SHA: 2ae6fe3ee734b7fdf11335663e18c75ea12dccc76062f09f164a3b0f8be4371a
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6093684Z   TRIVY_BINARY_SHA: d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:18.6094285Z ##[endgroup]
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.1962046Z Collecting annotated-doc==0.0.2 (from -r /src/transaction-api/requirements-runtime.lock (line 1))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.2832774Z   Downloading annotated_doc-0.0.2-py3-none-any.whl (4.1 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.3079183Z Collecting annotated-types==0.8.0 (from -r /src/transaction-api/requirements-runtime.lock (line 2))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.3269089Z   Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.3621817Z Collecting anyio==4.15.1 (from -r /src/transaction-api/requirements-runtime.lock (line 3))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.3810302Z   Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.5042430Z Collecting asyncpg==0.30.0 (from -r /src/transaction-api/requirements-runtime.lock (line 4))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.5276775Z   Downloading asyncpg-0.30.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.6 MB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.6592941Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 30.5 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.6931143Z Collecting certifi==2026.7.22 (from -r /src/transaction-api/requirements-runtime.lock (line 5))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.7134564Z   Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.7414457Z Collecting click==8.5.0 (from -r /src/transaction-api/requirements-runtime.lock (line 6))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.7610693Z   Downloading click-8.5.0-py3-none-any.whl (125 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.8091923Z Collecting fastapi==0.141.1 (from -r /src/transaction-api/requirements-runtime.lock (line 7))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:19.8293430Z   Downloading fastapi-0.141.1-py3-none-any.whl (131 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.0107522Z Collecting greenlet==3.5.6 (from -r /src/transaction-api/requirements-runtime.lock (line 8))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.0308878Z   Downloading greenlet-3.5.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (623 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.0338914Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 623.8/623.8 kB 739.1 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.0603026Z Collecting h11==0.16.0 (from -r /src/transaction-api/requirements-runtime.lock (line 9))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.0790630Z   Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.1063634Z Collecting httpcore==1.0.9 (from -r /src/transaction-api/requirements-runtime.lock (line 10))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.1257101Z   Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.1689510Z Collecting httptools==0.8.0 (from -r /src/transaction-api/requirements-runtime.lock (line 11))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.1888779Z   Downloading httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (486 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.2178329Z Collecting httpx==0.27.2 (from -r /src/transaction-api/requirements-runtime.lock (line 12))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.2371552Z   Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.2654163Z Collecting idna==3.19 (from -r /src/transaction-api/requirements-runtime.lock (line 13))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.2882650Z   Downloading idna-3.19-py3-none-any.whl (68 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.3167984Z Collecting prometheus-client==0.20.0 (from -r /src/transaction-api/requirements-runtime.lock (line 14))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.3363042Z   Downloading prometheus_client-0.20.0-py3-none-any.whl (54 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.4532483Z Collecting pydantic==2.9.2 (from -r /src/transaction-api/requirements-runtime.lock (line 15))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:20.4726770Z   Downloading pydantic-2.9.2-py3-none-any.whl (434 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.1015834Z Collecting pydantic-core==2.23.4 (from -r /src/transaction-api/requirements-runtime.lock (line 16))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.1230237Z   Downloading pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.1431800Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 109.3 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.1713694Z Collecting python-dotenv==1.2.3 (from -r /src/transaction-api/requirements-runtime.lock (line 17))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.1913428Z   Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.2382883Z Collecting pyyaml==6.0.3 (from -r /src/transaction-api/requirements-runtime.lock (line 18))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.2586041Z   Downloading pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.2615924Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.6/801.6 kB 760.5 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.2851166Z Collecting sniffio==1.3.1 (from -r /src/transaction-api/requirements-runtime.lock (line 19))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.3046962Z   Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.5763901Z Collecting sqlalchemy==2.0.35 (from sqlalchemy[asyncio]==2.0.35->-r /src/transaction-api/requirements-runtime.lock (line 20))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.5982789Z   Downloading SQLAlchemy-2.0.35-py3-none-any.whl (1.9 MB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.6072468Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 293.5 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.6464905Z Collecting starlette==1.7.0 (from -r /src/transaction-api/requirements-runtime.lock (line 21))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.6653815Z   Downloading starlette-1.7.0-py3-none-any.whl (78 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.6933883Z Collecting typing-extensions==4.16.0 (from -r /src/transaction-api/requirements-runtime.lock (line 22))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.7129402Z   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.7362614Z Collecting typing-inspection==0.4.2 (from -r /src/transaction-api/requirements-runtime.lock (line 23))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.7555365Z   Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.7892067Z Collecting uvicorn==0.30.6 (from uvicorn[standard]==0.30.6->-r /src/transaction-api/requirements-runtime.lock (line 24))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.8085561Z   Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.8825214Z Collecting uvloop==0.22.1 (from -r /src/transaction-api/requirements-runtime.lock (line 25))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.9043234Z   Downloading uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:21.9274458Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 235.6 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.0115002Z Collecting watchfiles==1.2.0 (from -r /src/transaction-api/requirements-runtime.lock (line 26))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.0313366Z   Downloading watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (454 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.1478082Z Collecting websockets==17.1 (from -r /src/transaction-api/requirements-runtime.lock (line 27))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.1678096Z   Downloading websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (224 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.1978774Z Saved ./wheels/annotated_doc-0.0.2-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.1983618Z Saved ./wheels/annotated_types-0.8.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.1986735Z Saved ./wheels/anyio-4.15.1-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2007296Z Saved ./wheels/asyncpg-0.30.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2012763Z Saved ./wheels/certifi-2026.7.22-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2018797Z Saved ./wheels/click-8.5.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2025067Z Saved ./wheels/fastapi-0.141.1-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2033786Z Saved ./wheels/greenlet-3.5.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2038699Z Saved ./wheels/h11-0.16.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2044861Z Saved ./wheels/httpcore-1.0.9-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2053531Z Saved ./wheels/httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2057878Z Saved ./wheels/httpx-0.27.2-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2063989Z Saved ./wheels/idna-3.19-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2069800Z Saved ./wheels/prometheus_client-0.20.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2077742Z Saved ./wheels/pydantic-2.9.2-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2090687Z Saved ./wheels/pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2095166Z Saved ./wheels/python_dotenv-1.2.3-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2105305Z Saved ./wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2109223Z Saved ./wheels/sniffio-1.3.1-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2122761Z Saved ./wheels/SQLAlchemy-2.0.35-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2127789Z Saved ./wheels/starlette-1.7.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2134125Z Saved ./wheels/typing_extensions-4.16.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2139392Z Saved ./wheels/typing_inspection-0.4.2-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2145038Z Saved ./wheels/uvicorn-0.30.6-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2167542Z Saved ./wheels/uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2174422Z Saved ./wheels/watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2180782Z Saved ./wheels/websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:22.2186077Z Successfully downloaded annotated-doc annotated-types anyio asyncpg certifi click fastapi greenlet h11 httpcore httptools httpx idna prometheus-client pydantic pydantic-core python-dotenv pyyaml sniffio sqlalchemy starlette typing-extensions typing-inspection uvicorn uvloop watchfiles websockets
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:35.6194356Z OPERATING_DOCKERFILE_IDENTITY=PASS service=transaction-api user=10001:999
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:36.1765793Z APKO_APP_IMPORT_SMOKE=PASS
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.0839035Z Collecting annotated-doc==0.0.2 (from -r /src/fds-engine/requirements-runtime.lock (line 1))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.1573187Z   Downloading annotated_doc-0.0.2-py3-none-any.whl (4.1 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.1834090Z Collecting annotated-types==0.8.0 (from -r /src/fds-engine/requirements-runtime.lock (line 2))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.2030185Z   Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.2423120Z Collecting anyio==4.15.1 (from -r /src/fds-engine/requirements-runtime.lock (line 3))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.2624581Z   Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.3292177Z Collecting click==8.5.0 (from -r /src/fds-engine/requirements-runtime.lock (line 4))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.3508227Z   Downloading click-8.5.0-py3-none-any.whl (125 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.4234503Z Collecting fastapi==0.141.1 (from -r /src/fds-engine/requirements-runtime.lock (line 5))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.4436931Z   Downloading fastapi-0.141.1-py3-none-any.whl (131 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.4744004Z Collecting h11==0.16.0 (from -r /src/fds-engine/requirements-runtime.lock (line 6))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.4934467Z   Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.5412969Z Collecting httptools==0.8.0 (from -r /src/fds-engine/requirements-runtime.lock (line 7))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.5602129Z   Downloading httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (486 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.6202898Z Collecting idna==3.19 (from -r /src/fds-engine/requirements-runtime.lock (line 8))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.6407580Z   Downloading idna-3.19-py3-none-any.whl (68 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.6675020Z Collecting prometheus-client==0.20.0 (from -r /src/fds-engine/requirements-runtime.lock (line 9))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.6876857Z   Downloading prometheus_client-0.20.0-py3-none-any.whl (54 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.8277228Z Collecting pydantic==2.9.2 (from -r /src/fds-engine/requirements-runtime.lock (line 10))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:40.8480144Z   Downloading pydantic-2.9.2-py3-none-any.whl (434 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.5436042Z Collecting pydantic-core==2.23.4 (from -r /src/fds-engine/requirements-runtime.lock (line 11))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.5661918Z   Downloading pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.6063093Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 50.6 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.6364830Z Collecting python-dotenv==1.2.3 (from -r /src/fds-engine/requirements-runtime.lock (line 12))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.6571537Z   Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.7068690Z Collecting pyyaml==6.0.3 (from -r /src/fds-engine/requirements-runtime.lock (line 13))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.7271274Z   Downloading pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.7308908Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.6/801.6 kB 536.8 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.7652588Z Collecting starlette==1.7.0 (from -r /src/fds-engine/requirements-runtime.lock (line 14))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.7869361Z   Downloading starlette-1.7.0-py3-none-any.whl (78 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.8163920Z Collecting typing-extensions==4.16.0 (from -r /src/fds-engine/requirements-runtime.lock (line 15))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.8380903Z   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.8616598Z Collecting typing-inspection==0.4.2 (from -r /src/fds-engine/requirements-runtime.lock (line 16))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.8812794Z   Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.9143837Z Collecting uvicorn==0.30.6 (from uvicorn[standard]==0.30.6->-r /src/fds-engine/requirements-runtime.lock (line 17))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.9341557Z   Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:41.9851612Z Collecting uvloop==0.22.1 (from -r /src/fds-engine/requirements-runtime.lock (line 18))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.0058919Z   Downloading uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.0450227Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 113.2 MB/s  0:00:00
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.1352386Z Collecting watchfiles==1.2.0 (from -r /src/fds-engine/requirements-runtime.lock (line 19))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.1552842Z   Downloading watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (454 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.2747839Z Collecting websockets==17.1 (from -r /src/fds-engine/requirements-runtime.lock (line 20))
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.2955357Z   Downloading websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (224 kB)
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3182739Z Saved ./wheels/annotated_doc-0.0.2-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3185569Z Saved ./wheels/annotated_types-0.8.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3191795Z Saved ./wheels/anyio-4.15.1-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3197483Z Saved ./wheels/click-8.5.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3203697Z Saved ./wheels/fastapi-0.141.1-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3209223Z Saved ./wheels/h11-0.16.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3216699Z Saved ./wheels/httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3222585Z Saved ./wheels/idna-3.19-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3229669Z Saved ./wheels/prometheus_client-0.20.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3237168Z Saved ./wheels/pydantic-2.9.2-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3250837Z Saved ./wheels/pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3256082Z Saved ./wheels/python_dotenv-1.2.3-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3265296Z Saved ./wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3270865Z Saved ./wheels/starlette-1.7.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3276761Z Saved ./wheels/typing_extensions-4.16.0-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3283055Z Saved ./wheels/typing_inspection-0.4.2-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3288320Z Saved ./wheels/uvicorn-0.30.6-py3-none-any.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3309722Z Saved ./wheels/uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3317014Z Saved ./wheels/watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3325233Z Saved ./wheels/websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:42.3329484Z Successfully downloaded annotated-doc annotated-types anyio click fastapi h11 httptools idna prometheus-client pydantic pydantic-core python-dotenv pyyaml starlette typing-extensions typing-inspection uvicorn uvloop watchfiles websockets
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:49.0718933Z OPERATING_DOCKERFILE_IDENTITY=PASS service=fds-engine user=10001:999
+validate	Build and smoke applications on apko bases	2026-10-08T16:24:49.6633775Z APKO_APP_IMPORT_SMOKE=PASS
+validate	Scan exact apko-based application images	﻿2026-10-08T16:24:52.2743579Z ##[group]Run set -euo pipefail
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2744044Z ^[[36;1mset -euo pipefail^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2744329Z ^[[36;1mumask 077^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2744559Z ^[[36;1m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2744812Z ^[[36;1mroot="$RUNNER_TEMP/apko-wolfi-py313"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2745157Z ^[[36;1mevidence="$root/evidence"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2745467Z ^[[36;1mwork="$root/work"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2745742Z ^[[36;1mtrivy_work="$root/trivy"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2746040Z ^[[36;1mmkdir -p "$trivy_work"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2746311Z ^[[36;1m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2746556Z ^[[36;1mrelease="$trivy_work/trivy.tar.gz"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2747450Z ^[[36;1mcurl -q --fail --location --proto '=https' --tlsv1.2             --output "$release"             https://github.com/aquasecurity/trivy/releases/download/v0.74.0/trivy_0.74.0_Linux-64bit.tar.gz^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2748408Z ^[[36;1mecho "$TRIVY_ARCHIVE_SHA  $release" | sha256sum --check -^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2748842Z ^[[36;1mtar -xzf "$release" -C "$trivy_work" trivy^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2749332Z ^[[36;1mecho "$TRIVY_BINARY_SHA  $trivy_work/trivy" | sha256sum --check -^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2749761Z ^[[36;1mchmod 0755 "$trivy_work/trivy"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2750049Z ^[[36;1m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2750270Z ^[[36;1mcache="$trivy_work/cache"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2750739Z ^[[36;1mmkdir -p "$cache"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2751652Z ^[[36;1mprintf '{}\n' > "$trivy_work/empty.yaml"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2752043Z ^[[36;1m: > "$trivy_work/empty.ignore"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2752340Z ^[[36;1m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2753356Z ^[[36;1m"$trivy_work/trivy" image             --cache-dir "$cache"             --config "$trivy_work/empty.yaml"             --db-repository ghcr.io/aquasecurity/trivy-db:2             --download-db-only             --skip-version-check             --no-progress             --timeout 5m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2754429Z ^[[36;1m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2754688Z ^[[36;1mfor service in transaction-api fds-engine; do^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2755072Z ^[[36;1m  report="$evidence/$service-report.json"^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2755384Z ^[[36;1m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2757326Z ^[[36;1m  "$trivy_work/trivy" image               --input "$work/$service.docker.tar"               --cache-dir "$cache"               --config "$trivy_work/empty.yaml"               --ignorefile "$trivy_work/empty.ignore"               --ignore-unfixed=false               --scanners vuln               --pkg-types os,library               --list-all-pkgs               --skip-db-update               --skip-java-db-update               --offline-scan               --skip-version-check               --severity HIGH,CRITICAL               --exit-code 10               --format json               --output "$report"               --no-progress               --timeout 10m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2759350Z ^[[36;1m^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2759705Z ^[[36;1m  SERVICE="$service" python3 - "$report" "$evidence/$service-summary.json" <<'PY'^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2760174Z ^[[36;1mimport collections, json, os, sys^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2760499Z ^[[36;1mreport = json.load(open(sys.argv[1]))^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2761011Z ^[[36;1mrows = []^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2761312Z ^[[36;1mfor result in report.get("Results", []):^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2761681Z ^[[36;1m    for vuln in result.get("Vulnerabilities") or []:^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2762101Z ^[[36;1m        if vuln.get("Severity") in {"HIGH", "CRITICAL"}:^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2762457Z ^[[36;1m            rows.append({^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2762767Z ^[[36;1m                "id": vuln.get("VulnerabilityID"),^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2763118Z ^[[36;1m                "severity": vuln.get("Severity"),^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2763462Z ^[[36;1m                "package": vuln.get("PkgName"),^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2763830Z ^[[36;1m                "installed": vuln.get("InstalledVersion"),^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2764220Z ^[[36;1m                "fixed": vuln.get("FixedVersion") or "",^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2764576Z ^[[36;1m                "class": result.get("Class") or "",^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2765134Z ^[[36;1m                "type": result.get("Type") or "",^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2765434Z ^[[36;1m            })^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2765739Z ^[[36;1mcounts = collections.Counter(x["severity"] for x in rows)^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2766080Z ^[[36;1msummary = {^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2766333Z ^[[36;1m    "schema": "fds.apko-wolfi-py313.v1",^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2766649Z ^[[36;1m    "service": os.environ["SERVICE"],^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2767038Z ^[[36;1m    "counts": {"HIGH": counts["HIGH"], "CRITICAL": counts["CRITICAL"]},^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2767416Z ^[[36;1m    "findings": rows,^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2767749Z ^[[36;1m    "decision": "PASS_CANDIDATE_ONLY" if not rows else "BLOCK",^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2768257Z ^[[36;1m    "trivy_os_family": report.get("Metadata", {}).get("OS", {}).get("Family") or "none",^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2768713Z ^[[36;1m    "delivery_authorization": False,^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2769015Z ^[[36;1m    "signed_attestation": "NOT_RUN",^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2769287Z ^[[36;1m}^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2769493Z ^[[36;1massert not rows, summary^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2769769Z ^[[36;1mwith open(sys.argv[2], "w") as f:^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2770099Z ^[[36;1m    json.dump(summary, f, indent=2, sort_keys=True)^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2770415Z ^[[36;1m    f.write("\n")^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2771077Z ^[[36;1mprint(json.dumps(summary, sort_keys=True))^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2771413Z ^[[36;1mPY^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2771605Z ^[[36;1mdone^[[0m
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2835465Z shell: /usr/bin/bash -e {0}
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2835745Z env:
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2836021Z   SOURCE_SHA: affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2836362Z   APKO_VERSION: 1.4.4
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2836751Z   APKO_ARCHIVE_SHA: dbd9e8f416903b2d896497c51f3217259d03ecb45c997254cedca5274e8671db
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2837364Z   TRIVY_ARCHIVE_SHA: 2ae6fe3ee734b7fdf11335663e18c75ea12dccc76062f09f164a3b0f8be4371a
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2837970Z   TRIVY_BINARY_SHA: d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.2838413Z ##[endgroup]
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.3000393Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.3002452Z                                  Dload  Upload   Total   Spent    Left  Speed
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.3002914Z 
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.4504870Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.4508180Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.4509830Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.9439902Z 
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.9443302Z 100 48.0M  100 48.0M    0     0  74.9M      0 --:--:-- --:--:-- --:--:-- 74.9M
+validate	Scan exact apko-based application images	2026-10-08T16:24:52.9857294Z /home/runner/work/_temp/apko-wolfi-py313/trivy/trivy.tar.gz: OK
+validate	Scan exact apko-based application images	2026-10-08T16:24:54.2140386Z /home/runner/work/_temp/apko-wolfi-py313/trivy/trivy: OK
+validate	Scan exact apko-based application images	2026-10-08T16:24:54.2824722Z 2026-10-08T16:24:54Z	INFO	Loaded	file_path="/home/runner/work/_temp/apko-wolfi-py313/trivy/empty.yaml"
+validate	Scan exact apko-based application images	2026-10-08T16:24:54.2881787Z 2026-10-08T16:24:54Z	INFO	[vulndb] Need to update DB
+validate	Scan exact apko-based application images	2026-10-08T16:24:54.2901797Z 2026-10-08T16:24:54Z	INFO	[vulndb] Downloading vulnerability DB...
+validate	Scan exact apko-based application images	2026-10-08T16:24:54.2912046Z 2026-10-08T16:24:54Z	INFO	[vulndb] Downloading artifact...	repo="ghcr.io/aquasecurity/trivy-db:2"
+validate	Scan exact apko-based application images	2026-10-08T16:24:59.8196111Z 2026-10-08T16:24:59Z	INFO	[vulndb] Artifact successfully downloaded	repo="ghcr.io/aquasecurity/trivy-db:2"
+validate	Scan exact apko-based application images	2026-10-08T16:25:00.5878358Z 2026-10-08T16:25:00Z	INFO	Loaded	file_path="/home/runner/work/_temp/apko-wolfi-py313/trivy/empty.yaml"
+validate	Scan exact apko-based application images	2026-10-08T16:25:00.5952051Z 2026-10-08T16:25:00Z	INFO	[vuln] Vulnerability scanning is enabled
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.0592179Z 2026-10-08T16:25:03Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional terms. Use `--debug` flag to see all affected packages.
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.0907230Z 2026-10-08T16:25:03Z	INFO	Detected OS	family="wolfi" version="20230201"
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.0908921Z 2026-10-08T16:25:03Z	INFO	[wolfi] Detecting vulnerabilities...	pkg_num=29
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.0931542Z 2026-10-08T16:25:03Z	INFO	Number of language-specific files	num=1
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.0951616Z 2026-10-08T16:25:03Z	INFO	[python-pkg] Detecting vulnerabilities...
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.1237043Z {"counts": {"CRITICAL": 0, "HIGH": 0}, "decision": "PASS_CANDIDATE_ONLY", "delivery_authorization": false, "findings": [], "schema": "fds.apko-wolfi-py313.v1", "service": "transaction-api", "signed_attestation": "NOT_RUN", "trivy_os_family": "wolfi"}
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.1902379Z 2026-10-08T16:25:03Z	INFO	Loaded	file_path="/home/runner/work/_temp/apko-wolfi-py313/trivy/empty.yaml"
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.1962649Z 2026-10-08T16:25:03Z	INFO	[vuln] Vulnerability scanning is enabled
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.3312113Z 2026-10-08T16:25:03Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional terms. Use `--debug` flag to see all affected packages.
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.3402862Z 2026-10-08T16:25:03Z	INFO	Detected OS	family="wolfi" version="20230201"
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.3404073Z 2026-10-08T16:25:03Z	INFO	[wolfi] Detecting vulnerabilities...	pkg_num=29
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.3423179Z 2026-10-08T16:25:03Z	INFO	Number of language-specific files	num=1
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.3424975Z 2026-10-08T16:25:03Z	INFO	[python-pkg] Detecting vulnerabilities...
+validate	Scan exact apko-based application images	2026-10-08T16:25:03.3719203Z {"counts": {"CRITICAL": 0, "HIGH": 0}, "decision": "PASS_CANDIDATE_ONLY", "delivery_authorization": false, "findings": [], "schema": "fds.apko-wolfi-py313.v1", "service": "fds-engine", "signed_attestation": "NOT_RUN", "trivy_os_family": "wolfi"}
+validate	Produce provenance receipt and evidence hashes	﻿2026-10-08T16:25:03.3798860Z ##[group]Run set -euo pipefail
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3799338Z ^[[36;1mset -euo pipefail^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3799641Z ^[[36;1mumask 077^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3799897Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3800171Z ^[[36;1mroot="$RUNNER_TEMP/apko-wolfi-py313"^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3800539Z ^[[36;1mevidence="$root/evidence"^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3801224Z ^[[36;1mwork="$root/work"^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3801569Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3801988Z ^[[36;1mpython3 - "$evidence" "$SOURCE_SHA" "$APKO_VERSION" "$APKO_ARCHIVE_SHA" <<'PY'^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3802527Z ^[[36;1mimport hashlib, json, pathlib, sys^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3802874Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3803146Z ^[[36;1mevidence = pathlib.Path(sys.argv[1])^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3803597Z ^[[36;1msource_sha, apko_version, apko_archive_sha = sys.argv[2:]^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3803982Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3804191Z ^[[36;1mdef sha(path):^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3804452Z ^[[36;1m    h = hashlib.sha256()^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3804754Z ^[[36;1m    with open(path, "rb") as f:^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3805169Z ^[[36;1m        for chunk in iter(lambda: f.read(1024 * 1024), b""):^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3805558Z ^[[36;1m            h.update(chunk)^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3805851Z ^[[36;1m    return h.hexdigest()^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3806120Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3806341Z ^[[36;1mdef tree_hashes(path):^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3806637Z ^[[36;1m    root = pathlib.Path(path)^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3806942Z ^[[36;1m    return {^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3807236Z ^[[36;1m        str(p.relative_to(evidence)): sha(p)^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3807599Z ^[[36;1m        for p in sorted(root.rglob("*"))^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3807932Z ^[[36;1m        if p.is_file()^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3808207Z ^[[36;1m    }^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3808421Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3808626Z ^[[36;1mreceipt = {^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3808932Z ^[[36;1m    "schema": "fds.apko-provenance-receipt.v1",^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3809300Z ^[[36;1m    "source_sha": source_sha,^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3809597Z ^[[36;1m    "tool": {^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3809844Z ^[[36;1m        "name": "apko",^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3810140Z ^[[36;1m        "version": apko_version,^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3810495Z ^[[36;1m        "release_archive_sha256": apko_archive_sha,^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3811139Z ^[[36;1m    },^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3811370Z ^[[36;1m    "inputs": {^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3811787Z ^[[36;1m        "builder_config_sha256": sha("ci/apko/wolfi-python313-builder.apko.yaml"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3812418Z ^[[36;1m        "runtime_config_sha256": sha("ci/apko/wolfi-python313-runtime.apko.yaml"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3813088Z ^[[36;1m        "builder_lock_sha256": sha(evidence / "wolfi-python313-builder.apko.lock.json"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3813784Z ^[[36;1m        "runtime_lock_sha256": sha(evidence / "wolfi-python313-runtime.apko.lock.json"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3814243Z ^[[36;1m    },^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3814454Z ^[[36;1m    "sbom_sha256": {^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3814755Z ^[[36;1m        **tree_hashes(evidence / "builder-sbom"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3815120Z ^[[36;1m        **tree_hashes(evidence / "runtime-sbom"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3815423Z ^[[36;1m    },^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3815647Z ^[[36;1m    "application_outputs": {^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3816121Z ^[[36;1m        "transaction_api_inspect_sha256": sha(evidence / "transaction-api-inspect.json"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3816759Z ^[[36;1m        "fds_engine_inspect_sha256": sha(evidence / "fds-engine-inspect.json"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3817377Z ^[[36;1m        "transaction_api_report_sha256": sha(evidence / "transaction-api-report.json"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3818193Z ^[[36;1m        "fds_engine_report_sha256": sha(evidence / "fds-engine-report.json"),^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3818606Z ^[[36;1m    },^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3818852Z ^[[36;1m    "security_gate": "HIGH=0,CRITICAL=0",^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3819185Z ^[[36;1m    "result_scope": "CANDIDATE_ONLY",^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3819508Z ^[[36;1m    "signed_attestation": "NOT_RUN",^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3819996Z ^[[36;1m    "harbor_push": "NOT_EXECUTED",^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3820318Z ^[[36;1m    "kubernetes_deploy": "NOT_EXECUTED",^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3820704Z ^[[36;1m    "supply_chain_adoption": "APPROVED_DEC_P1_IMG_01",^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3821568Z ^[[36;1m}^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3821781Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3822058Z ^[[36;1mwith open(evidence / "PROVENANCE.json", "w") as f:^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3822467Z ^[[36;1m    json.dump(receipt, f, indent=2, sort_keys=True)^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3822808Z ^[[36;1m    f.write("\n")^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3823055Z ^[[36;1mPY^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3823253Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3823501Z ^[[36;1mcat > "$evidence/COVERAGE_BOUNDARY.txt" <<'EOF'^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3823863Z ^[[36;1mRESULT_SCOPE=CANDIDATE_ONLY^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3824192Z ^[[36;1mAPKO_REPRODUCIBILITY=REQUIRED_2_BUILDS_IDENTICAL^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3824528Z ^[[36;1mSPDX_SBOM=GENERATED^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3824805Z ^[[36;1mPROJECT_PROVENANCE_RECEIPT=GENERATED^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3825128Z ^[[36;1mSIGNED_SLSA_ATTESTATION=NOT_RUN^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3825457Z ^[[36;1mSUPPLY_CHAIN_ADOPTION=APPROVED_DEC_P1_IMG_01^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3825863Z ^[[36;1mOPERATING_DOCKERFILES=VALIDATED_THIS_RUN^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3826175Z ^[[36;1mSEC04_UID_GID=10001:999^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3826484Z ^[[36;1mCONTAINER_LOOPBACK_LISTENER_ISOLATION=REQUIRED^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3826835Z ^[[36;1mCLUSTER_LISTENER_ISOLATION=NOT_RUN^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3827134Z ^[[36;1mHARBOR_PUSH=NOT_EXECUTED^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3827413Z ^[[36;1mKUBERNETES_DEPLOY=NOT_EXECUTED^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3827684Z ^[[36;1mEOF^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3828042Z ^[[36;1mcat "$evidence/apko-lock-build-input.txt" >> "$evidence/COVERAGE_BOUNDARY.txt"^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3828467Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3828675Z ^[[36;1m(^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3828884Z ^[[36;1m  cd "$evidence"^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3829347Z ^[[36;1m  find . -type f ! -name SHA256SUMS -print0               | sort -z               | xargs -0 sha256sum > SHA256SUMS^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3829873Z ^[[36;1m  sha256sum --check SHA256SUMS^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3830141Z ^[[36;1m)^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3830362Z ^[[36;1m^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3830593Z ^[[36;1mrm -f "$work"/*.tar "$work"/*.docker.tar^[[0m
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3897008Z shell: /usr/bin/bash -e {0}
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3897330Z env:
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3897637Z   SOURCE_SHA: affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3898024Z   APKO_VERSION: 1.4.4
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3898464Z   APKO_ARCHIVE_SHA: dbd9e8f416903b2d896497c51f3217259d03ecb45c997254cedca5274e8671db
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3899189Z   TRIVY_ARCHIVE_SHA: 2ae6fe3ee734b7fdf11335663e18c75ea12dccc76062f09f164a3b0f8be4371a
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3899896Z   TRIVY_BINARY_SHA: d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.3900435Z ##[endgroup]
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4428078Z ./COVERAGE_BOUNDARY.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4428919Z ./PROVENANCE.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4429662Z ./apko-archive-members.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4430471Z ./apko-input-SHA256SUMS: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4431585Z ./apko-lock-build-input.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4432275Z ./apko-tool-SHA256SUMS: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4432934Z ./apko-version.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4433604Z ./builder-build-SHA256SUMS: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4434309Z ./builder-inspect.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4434921Z ./builder-loaded-ref.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4435588Z ./builder-packages.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4436279Z ./builder-python-smoke.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4436937Z ./builder-reproducibility.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4437943Z ./builder-sbom/sbom-index.spdx.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4438726Z ./builder-sbom/sbom-x86_64.spdx.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4439521Z ./fds-engine-build.log: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4440330Z ./fds-engine-container.log: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4441337Z ./fds-engine-image-tar.sha256: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4445336Z ./fds-engine-import-smoke.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4446325Z ./fds-engine-inspect.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4447011Z ./fds-engine-listener-isolation.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4447775Z ./fds-engine-livez.err: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4448522Z ./fds-engine-livez.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4449196Z ./fds-engine-report.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4449932Z ./fds-engine-summary.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4450653Z ./fds-engine-wheel-SHA256SUMS: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4451672Z ./listener-checker.py: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4452366Z ./lock-sbom-consistency.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4453077Z ./repo-lockfile-binding.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4453801Z ./repo-lockfile-match.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4454494Z ./runtime-build-SHA256SUMS: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4455145Z ./runtime-inspect.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4455753Z ./runtime-loaded-ref.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4456373Z ./runtime-packages.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4456964Z ./runtime-python-smoke.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4457599Z ./runtime-reproducibility.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4458286Z ./runtime-sbom/sbom-index.spdx.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4458938Z ./runtime-sbom/sbom-x86_64.spdx.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4459612Z ./transaction-api-build.log: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4460255Z ./transaction-api-container.log: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4461246Z ./transaction-api-image-tar.sha256: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4462126Z ./transaction-api-import-smoke.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4462832Z ./transaction-api-inspect.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4463551Z ./transaction-api-listener-isolation.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4464290Z ./transaction-api-livez.err: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4464929Z ./transaction-api-livez.txt: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4465550Z ./transaction-api-report.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4466184Z ./transaction-api-summary.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4466832Z ./transaction-api-wheel-SHA256SUMS: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4467863Z ./wolfi-python313-builder.apko.generated.lock.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4468897Z ./wolfi-python313-builder.apko.lock.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4469814Z ./wolfi-python313-runtime.apko.generated.lock.json: OK
+validate	Produce provenance receipt and evidence hashes	2026-10-08T16:25:03.4471242Z ./wolfi-python313-runtime.apko.lock.json: OK
+validate	Preserve apko supply-chain candidate evidence	﻿2026-10-08T16:25:03.4984784Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4985289Z with:
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4985636Z   name: apko-wolfi-py313-affbc69beef9967f7977d09a6fec14f7fb6c0e94-1
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4986125Z   path: /home/runner/work/_temp/apko-wolfi-py313/evidence/
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4986511Z   if-no-files-found: error
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4986769Z   retention-days: 7
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4987007Z   compression-level: 6
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4987262Z   overwrite: false
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4987503Z   include-hidden-files: false
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4987762Z env:
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4988018Z   SOURCE_SHA: affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4988363Z   APKO_VERSION: 1.4.4
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4988762Z   APKO_ARCHIVE_SHA: dbd9e8f416903b2d896497c51f3217259d03ecb45c997254cedca5274e8671db
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4989407Z   TRIVY_ARCHIVE_SHA: 2ae6fe3ee734b7fdf11335663e18c75ea12dccc76062f09f164a3b0f8be4371a
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4990054Z   TRIVY_BINARY_SHA: d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.4990567Z ##[endgroup]
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.6890621Z (node:3572) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.6892520Z (Use `node --trace-deprecation ...` to show where the warning was created)
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.7394004Z With the provided path, there will be 54 files uploaded
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.7395645Z Artifact name is valid!
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:03.7396139Z Root directory input is valid!
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.0839898Z Beginning upload of artifact content to blob storage
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.1918485Z (node:3572) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.5357889Z Uploaded bytes 121877
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.5962290Z Finished uploading artifact content to blob storage!
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.5963852Z SHA256 digest of uploaded artifact zip is da6243a90c7975702a844f5a1bb79d3e58389f597dd5da5696ba3b7cdfdf7af6
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.5966583Z Finalizing artifact upload
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.8498785Z Artifact apko-wolfi-py313-affbc69beef9967f7977d09a6fec14f7fb6c0e94-1.zip successfully finalized. Artifact ID 11563449559
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.8502616Z Artifact apko-wolfi-py313-affbc69beef9967f7977d09a6fec14f7fb6c0e94-1 has been successfully uploaded! Final size is 121877 bytes. Artifact ID is 11563449559
+validate	Preserve apko supply-chain candidate evidence	2026-10-08T16:25:04.8510067Z Artifact download URL: https://github.com/321Team/fds-msa/actions/runs/37808457843/artifacts/11563449559
+validate	Post Checkout exact candidate without persisted credentials	﻿2026-10-08T16:25:04.8766789Z Post job cleanup.
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:04.9809796Z [command]/usr/bin/git version
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:04.9922113Z git version 2.55.0
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:04.9980526Z Temporarily overriding HOME='/home/runner/work/_temp/4057d0b4-4634-4059-9e18-fd9f40d8f711' before making global git config changes
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:04.9986480Z Adding repository directory to the temporary git global config as a safe directory
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:04.9987918Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fds-msa/fds-msa
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.0063875Z Removing SSH command configuration
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.0065000Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.0157380Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.0559952Z Removing HTTP extra header
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.0582284Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.0631036Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.1041789Z Removing includeIf entries pointing to credentials config files
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.1064910Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+validate	Post Checkout exact candidate without persisted credentials	2026-10-08T16:25:05.1130763Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+validate	Complete job	﻿2026-10-08T16:25:05.1784171Z Cleaning up orphan processes
+validate	Complete job	2026-10-08T16:25:05.2121269Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

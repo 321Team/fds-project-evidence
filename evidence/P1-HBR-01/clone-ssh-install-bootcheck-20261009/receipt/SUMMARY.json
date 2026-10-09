@@ -1,0 +1,1293 @@
+{
+  "scope": "READ_ONLY_BOOT_REVIEW_NOT_SHUTDOWN_OR_REBOOT_GO",
+  "started_epoch": 1791514763.4628959,
+  "private": "/root/hbr-ssh-bootcheck-k_awxzgk",
+  "uuid": "389e4d56-24f0-e2ef-b68f-137a5047788a",
+  "collector_sha256": "da11603dfe06d7424d5c59687138b4fbd05973981133468bca841f0df9828705",
+  "commands": [
+    {
+      "name": "unit-docker.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "docker.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.4650095,
+      "finished_epoch": 1791514763.4711535,
+      "stdout_bytes": 571,
+      "stdout_sha256": "233e00aee51a42b86a33e5670925ca3baeee8ab0dc2ec5d35ec3f8fe5d0c3d95",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-docker.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "docker.service"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.4711826,
+      "finished_epoch": 1791514763.4763527,
+      "stdout_bytes": 1309,
+      "stdout_sha256": "e095dd8c105ddd57e6a35f4b686e633a664a20f60a0c58d7ec6a67cf41ed460b",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-docker.socket",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "docker.socket",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.4763722,
+      "finished_epoch": 1791514763.482181,
+      "stdout_bytes": 341,
+      "stdout_sha256": "5aba9919e784871da5f4037bf86a81e589db60e15646e9fcfed093ee1fc7ea2c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-docker.socket",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "docker.socket"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.4822054,
+      "finished_epoch": 1791514763.4865904,
+      "stdout_bytes": 335,
+      "stdout_sha256": "b71bc091985ec419a1edb41197374b60e588964e32c63d7da08125ccf707a505",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-containerd.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "containerd.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.4866066,
+      "finished_epoch": 1791514763.493088,
+      "stdout_bytes": 378,
+      "stdout_sha256": "1a07507e6c1dc59ce4136a2d5c53699cfd6f39274abd5750cfdc17f32cd0d455",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-containerd.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "containerd.service"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.4931133,
+      "finished_epoch": 1791514763.497311,
+      "stdout_bytes": 1287,
+      "stdout_sha256": "c493bf009256265806235a60627dbd731a9d58ae8e995ab0d5b56e156d7ce3ca",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-firewalld.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "firewalld.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.497326,
+      "finished_epoch": 1791514763.502954,
+      "stdout_bytes": 401,
+      "stdout_sha256": "06dab6f0274ef9b62e05fa3eb6c2e327e54c45996714ebbd971ce7c9d32d5677",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-firewalld.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "firewalld.service"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5029776,
+      "finished_epoch": 1791514763.508609,
+      "stdout_bytes": 1026,
+      "stdout_sha256": "c33c1c1c65c8e41f015b28e41d711157107d7d7c9c3d3591bd9f000e50e1b5c3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-NetworkManager.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "NetworkManager.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.508627,
+      "finished_epoch": 1791514763.5140793,
+      "stdout_bytes": 537,
+      "stdout_sha256": "d506634d8a88ea88d52100d9f1efb13238a37b78a5d729da3ea2e3c59feb1dba",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-NetworkManager.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "NetworkManager.service"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5141037,
+      "finished_epoch": 1791514763.5184164,
+      "stdout_bytes": 1561,
+      "stdout_sha256": "636981048043bbbac10c5ec29d20fdd6a5eeaeefba0e5afe04b627771405bb25",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-sshd.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "sshd.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5184338,
+      "finished_epoch": 1791514763.524567,
+      "stdout_bytes": 449,
+      "stdout_sha256": "df458e9d1350fed7772b2d795c5e6696aa6801bcbc9964218834abbf835e94b6",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-sshd.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "sshd.service"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5245965,
+      "finished_epoch": 1791514763.5296302,
+      "stdout_bytes": 594,
+      "stdout_sha256": "8c6e1687df785a05e90cd170d7b0f017faa57967b473fad94f9eaffd4c17a444",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-nftables.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "nftables.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5296485,
+      "finished_epoch": 1791514763.542165,
+      "stdout_bytes": 360,
+      "stdout_sha256": "aa76694d2aa68029004a187d1c2ddbac5778a1c4d0c1b79bac0a540bd4aa16b3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-nftables.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "nftables.service"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5421913,
+      "finished_epoch": 1791514763.5476239,
+      "stdout_bytes": 436,
+      "stdout_sha256": "b27bb56c372ccaa6b5333dc92c373fd91de47de0d64cffbaa4f9a24e554a73ce",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-hbr-ssh-session.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "hbr-ssh-session.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5476344,
+      "finished_epoch": 1791514763.5550506,
+      "stdout_bytes": 385,
+      "stdout_sha256": "9d1ff9031deb946808e7e17569c28ccfba64559bf988e3ecab58d48cc9047374",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-hbr-ssh-session.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "hbr-ssh-session.service"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5550752,
+      "finished_epoch": 1791514763.5612166,
+      "stdout_bytes": 506,
+      "stdout_sha256": "d33b667002d8ff0f5845b08cc47f58699b734106d50a2a94fb9a858a93f70db4",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-hbr-ssh-expire.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "hbr-ssh-expire.service",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5612295,
+      "finished_epoch": 1791514763.5678127,
+      "stdout_bytes": 370,
+      "stdout_sha256": "033b66dc1714f0c77050ef75ef4d7af369e11f32239faebe89359073cfc9166b",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-hbr-ssh-expire.service",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "hbr-ssh-expire.service"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5678499,
+      "finished_epoch": 1791514763.5721447,
+      "stdout_bytes": 322,
+      "stdout_sha256": "35c5e295c073be449c690cb951556d9c8b92df3089124a924c32f7bf70a63b4a",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-hbr-ssh-expire.timer",
+      "argv": [
+        "/usr/bin/systemctl",
+        "show",
+        "hbr-ssh-expire.timer",
+        "--property=Id,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,DropInPaths,After,Before,Wants,Requires,Triggers,TriggeredBy",
+        "--no-pager"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5721607,
+      "finished_epoch": 1791514763.5778635,
+      "stdout_bytes": 355,
+      "stdout_sha256": "9839313e570a4c66dea57e524fd4dccdeb30066367c2a657332e1ead023d9b1c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-content-hbr-ssh-expire.timer",
+      "argv": [
+        "/usr/bin/systemctl",
+        "cat",
+        "--no-pager",
+        "hbr-ssh-expire.timer"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.577888,
+      "finished_epoch": 1791514763.5819848,
+      "stdout_bytes": 232,
+      "stdout_sha256": "8f81fcc8a1a0f0f90046fb8665cf14991682227380d687528ae12f5db76e283c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-files",
+      "argv": [
+        "/usr/bin/systemctl",
+        "list-unit-files",
+        "--no-pager",
+        "--no-legend"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514763.5819962,
+      "finished_epoch": 1791514764.4471962,
+      "stdout_bytes": 46194,
+      "stdout_sha256": "c1f73d1e29e5705636e7c1b8dfc3fe1864c5bb18fbf17b28afd1af5a92894e81",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "selinux",
+      "argv": [
+        "/usr/sbin/getenforce"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.449857,
+      "finished_epoch": 1791514764.451652,
+      "stdout_bytes": 10,
+      "stdout_sha256": "4fefafd0dcddf54b31a0fef448083e7b77576d86a9ec97c14bfd92479c404290",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "addresses",
+      "argv": [
+        "/usr/sbin/ip",
+        "-j",
+        "address",
+        "show"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.451738,
+      "finished_epoch": 1791514764.4541779,
+      "stdout_bytes": 2052,
+      "stdout_sha256": "120c01fd8542179f3eb6fcc1354414a722d255fd7027844910043b8b11913f15",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "routes4",
+      "argv": [
+        "/usr/sbin/ip",
+        "-j",
+        "-4",
+        "route",
+        "show",
+        "table",
+        "all"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.4542475,
+      "finished_epoch": 1791514764.4563785,
+      "stdout_bytes": 1230,
+      "stdout_sha256": "28c3f981b429e857122b21ba63a0b9505bd6944bc0b246763654971d71a18082",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "routes6",
+      "argv": [
+        "/usr/sbin/ip",
+        "-j",
+        "-6",
+        "route",
+        "show",
+        "table",
+        "all"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.4564338,
+      "finished_epoch": 1791514764.4587483,
+      "stdout_bytes": 886,
+      "stdout_sha256": "7a167eb82e2a70500be4f28adcd16d7e926c2caeb1138f6256de1d8e82f16d99",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "nft-tables",
+      "argv": [
+        "/usr/sbin/nft",
+        "list",
+        "tables"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.4587998,
+      "finished_epoch": 1791514764.4622192,
+      "stdout_bytes": 142,
+      "stdout_sha256": "dfa55af99ed98e378ea34218b74df21cbb022143059e419722919d1d71a2fada",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "ssh-nft",
+      "argv": [
+        "/usr/sbin/nft",
+        "-j",
+        "list",
+        "table",
+        "inet",
+        "hbr_ssh_guard"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.46223,
+      "finished_epoch": 1791514764.4641867,
+      "stdout_bytes": 2837,
+      "stdout_sha256": "89d717b87fdab8ce1c9ead2500171d17202f326eaae7f35c0615073d31cec8b7",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "nm-devices",
+      "argv": [
+        "/usr/bin/nmcli",
+        "-t",
+        "-f",
+        "DEVICE,TYPE,STATE",
+        "device"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.4641962,
+      "finished_epoch": 1791514764.472773,
+      "stdout_bytes": 150,
+      "stdout_sha256": "7f384f86c4d11c2d86193d11404f59ed6da10876faaf90c89f9ba662a3a7b843",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "listeners",
+      "argv": [
+        "/usr/sbin/ss",
+        "-lnt"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.4727848,
+      "finished_epoch": 1791514764.4778962,
+      "stdout_bytes": 388,
+      "stdout_sha256": "36bd1b41ef41507826cab0eb8902abb38041b56d108c74b9a873044cfe5eeaea",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "ssh-journal",
+      "argv": [
+        "/usr/bin/journalctl",
+        "--no-pager",
+        "-b",
+        "0",
+        "-n",
+        "150",
+        "-u",
+        "hbr-ssh-session.service",
+        "-u",
+        "hbr-ssh-expire.service",
+        "-o",
+        "json"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.4779055,
+      "finished_epoch": 1791514764.4803677,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "autoconnect-6b9f0643-4a4e-324d-a969-9e5393d7e0bf",
+      "argv": [
+        "/usr/bin/nmcli",
+        "-g",
+        "connection.autoconnect",
+        "connection",
+        "show",
+        "6b9f0643-4a4e-324d-a969-9e5393d7e0bf"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.4803762,
+      "finished_epoch": 1791514764.4885852,
+      "stdout_bytes": 3,
+      "stdout_sha256": "564739ea8fa5926d4fa5c9734fed462061960a22e6b8d5c06e94969d97891bf2",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "autoconnect-3094c330-0b11-4463-9409-29c11bca6fcb",
+      "argv": [
+        "/usr/bin/nmcli",
+        "-g",
+        "connection.autoconnect",
+        "connection",
+        "show",
+        "3094c330-0b11-4463-9409-29c11bca6fcb"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.4886005,
+      "finished_epoch": 1791514764.4965265,
+      "stdout_bytes": 3,
+      "stdout_sha256": "564739ea8fa5926d4fa5c9734fed462061960a22e6b8d5c06e94969d97891bf2",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fixed-container-state",
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{\"id\":{{json .Id}},\"state\":{{json .State}},\"restart\":{{json .HostConfig.RestartPolicy}}}",
+        "002a011193a2671233c0da5a39fd488d5182d9ba604cde207ddf5a944c7e5477",
+        "2d0ee28d711aec810708c3eca3927bae143e011e82e3f6d4174de218e04f8db0",
+        "390681b088d9d4def6648e9dc9bd2ffc495eaa546c4f02f7a64048482803e859",
+        "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+        "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1",
+        "6435156e64d290a81fd0ece2a9951df6656d94d2c997d2a1094b0c6f11f48dd1",
+        "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+        "c0ccedeb1e92cc9fdbfcdae25623e2398403d443bd6d2c171187375717ead1c8",
+        "c6400b973975ac8e12aa98b4af88b96a924e0eaff1cc723b40883b79d003dbc5",
+        "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa"
+      ],
+      "rc": 0,
+      "started_epoch": 1791514764.496626,
+      "finished_epoch": 1791514764.5175648,
+      "stdout_bytes": 20348,
+      "stdout_sha256": "62f2199bfa0f2928c75a83d28ce96f0ff3d6bdbdb7b1cbb50dd3d4d92a52c5e2",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "files": [
+    {
+      "path": "/root/hbr-a3-joz3x6ya/result.json",
+      "private_copy": "original-a3-result.json",
+      "bytes": 74211,
+      "sha256": "5df896fd9f501cbac82e1091c6368160d79dbca34baf651681f766f331102fa7"
+    },
+    {
+      "path": "/root/hbr-a3-docker-restart.claim",
+      "private_copy": "a3-claim.private",
+      "bytes": 147,
+      "sha256": "fc00ce44c9aaa35b3cb15d150db208a560f0873532736fb4daafe870c3afa175"
+    },
+    {
+      "path": "/var/lib/hbr-ssh-control/state.json",
+      "private_copy": "install-state.private.json",
+      "bytes": 22663,
+      "sha256": "5c8666145f48ac68641a5ddfd19e0d0de48362dc85cc0628b3d3260e7ac50400"
+    },
+    {
+      "path": "/etc/NetworkManager/conf.d/90-hbr-no-auto-default.conf",
+      "private_copy": "installed-00.private",
+      "bytes": 81,
+      "sha256": "a631d1034354717e215c09c99e9c6c9a6a6ef6232899b7a9776ff7e4d3e73bcc"
+    },
+    {
+      "path": "/etc/firewalld/zones/hbr-mgmt.xml",
+      "private_copy": "installed-01.private",
+      "bytes": 311,
+      "sha256": "4d53a23f1ccf8d4a32759d3c5913ac56bd8c79f1609e4da74b1119c51679a819"
+    },
+    {
+      "path": "/etc/ssh/hbr-mgmt-authorized_keys",
+      "private_copy": "installed-02.private",
+      "bytes": 111,
+      "sha256": "6d342f71d0267f0a8b9b88ea67815ede634060624b3ce3b37dc2082ff745d6f4"
+    },
+    {
+      "path": "/etc/ssh/hbr-ssh-policy.json",
+      "private_copy": "installed-03.private",
+      "bytes": 204,
+      "sha256": "21ee83ebc29c0f8548334df730139ec6a0397ee5f4683509b94635c566a371a1"
+    },
+    {
+      "path": "/etc/ssh/sshd_config.d/00-hbr-mgmt-sshd.conf",
+      "private_copy": "installed-04.private",
+      "bytes": 606,
+      "sha256": "d2add758b6ca39e8db5537bef7d638f936298e4b37c820cd0d4b6a3a04b98fd8"
+    },
+    {
+      "path": "/etc/systemd/network/10-hbr-mgmt.link",
+      "private_copy": "installed-05.private",
+      "bytes": 165,
+      "sha256": "fca660cc7d4dda8fe2a4f9eec72575efdb062f5ea6f31cce9f72ec261ebe042d"
+    },
+    {
+      "path": "/etc/systemd/system/hbr-ssh-expire.service",
+      "private_copy": "installed-06.private",
+      "bytes": 277,
+      "sha256": "c08b21d7a857122bcf82c8c335ffbba70aa57a9bb99e05e17e37ef8c79d4a736"
+    },
+    {
+      "path": "/etc/systemd/system/hbr-ssh-expire.timer",
+      "private_copy": "installed-07.private",
+      "bytes": 189,
+      "sha256": "0285ead57b14ca4488a5dd779696d977b51269fd1bb6d5bc3400d649781cdca1"
+    },
+    {
+      "path": "/etc/systemd/system/hbr-ssh-session.service",
+      "private_copy": "installed-08.private",
+      "bytes": 460,
+      "sha256": "02c398727592ef49d1600881874f6434fafc1ebd335ce8195f7166d7b1554491"
+    },
+    {
+      "path": "/usr/local/libexec/hbr-ssh-lifecycle.py",
+      "private_copy": "installed-09.private",
+      "bytes": 23427,
+      "sha256": "bd7ad99cfa09983830bf7bdfdf66bb9486e70fde51a3b35dcd575875d8fdfb2d"
+    },
+    {
+      "path": "/usr/local/libexec/hbr-ssh-readonly.py",
+      "private_copy": "installed-10.private",
+      "bytes": 3155,
+      "sha256": "a6f51711968b01b08c41648c678bea298cabeb764da431c32bdcea9a5a932bde"
+    },
+    {
+      "path": "/var/lib/hbr-ssh-control/hbr-mgmt.nft",
+      "private_copy": "installed-11.private",
+      "bytes": 703,
+      "sha256": "61a2f0202416be187d30a01aae3a5e1eb94d89b24075c1ebb320cf322c44d72a"
+    }
+  ],
+  "issues": [],
+  "system_mutations": "NONE",
+  "boot_id": "ec7a9c3c-3a91-4d4a-8d42-f68ce23ce92b",
+  "a3_original_hash_match": true,
+  "same_boot_as_a3": true,
+  "installation": {
+    "status": "INSTALLED_LINK_DISABLED",
+    "started_epoch": 1791513412.3876789,
+    "source_sha256": {
+      "render-clone-ssh-plan.py": "f1790fb61463d7a1980909f4933a8b2da21ec936bcccde6ab6fa9c0c0ba504d9",
+      "hbr-ssh-lifecycle.py": "bd7ad99cfa09983830bf7bdfdf66bb9486e70fde51a3b35dcd575875d8fdfb2d",
+      "hbr-ssh-readonly.py": "a6f51711968b01b08c41648c678bea298cabeb764da431c32bdcea9a5a932bde"
+    }
+  },
+  "plan": {
+    "interface": "hbrmgmt0",
+    "mac": "00:50:56:35:78:e4",
+    "expires_epoch": 1791525990
+  },
+  "install_command_rcs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "installed_files_match": true,
+  "session_claim_exists": false,
+  "units": {
+    "docker.service": {
+      "Id": "docker.service",
+      "Requires": "docker.socket sysinit.target system.slice fds-harbor-ac04-guard.service",
+      "Wants": "containerd.service network-online.target",
+      "Before": "multi-user.target shutdown.target",
+      "After": "docker.socket firewalld.service containerd.service nss-lookup.target network-online.target fds-harbor-ac04-guard.service system.slice time-set.target sysinit.target systemd-journald.socket basic.target",
+      "Triggers": "",
+      "TriggeredBy": "docker.socket",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/docker.service",
+      "DropInPaths": "",
+      "UnitFileState": "enabled"
+    },
+    "docker.socket": {
+      "Id": "docker.socket",
+      "Requires": "-.mount system.slice sysinit.target",
+      "Wants": "",
+      "Before": "shutdown.target sockets.target docker.service",
+      "After": "-.mount system.slice sysinit.target",
+      "Triggers": "docker.service",
+      "TriggeredBy": "",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/docker.socket",
+      "DropInPaths": "",
+      "UnitFileState": "disabled"
+    },
+    "containerd.service": {
+      "Id": "containerd.service",
+      "Requires": "system.slice sysinit.target",
+      "Wants": "",
+      "Before": "shutdown.target docker.service",
+      "After": "systemd-journald.socket basic.target network.target dbus-broker.service system.slice sysinit.target",
+      "Triggers": "",
+      "TriggeredBy": "",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/containerd.service",
+      "DropInPaths": "",
+      "UnitFileState": "disabled"
+    },
+    "firewalld.service": {
+      "Id": "firewalld.service",
+      "Requires": "system.slice sysinit.target",
+      "Wants": "network-pre.target",
+      "Before": "network-pre.target multi-user.target shutdown.target docker.service fds-harbor-ac04-guard.service",
+      "After": "sysinit.target basic.target system.slice",
+      "Triggers": "",
+      "TriggeredBy": "",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/firewalld.service",
+      "DropInPaths": "",
+      "UnitFileState": "enabled"
+    },
+    "NetworkManager.service": {
+      "Id": "NetworkManager.service",
+      "Requires": "sysinit.target system.slice dbus.socket",
+      "Wants": "-.mount network.target",
+      "Before": "NetworkManager-wait-online.service shutdown.target network.target multi-user.target",
+      "After": "network-pre.target sysinit.target systemd-journald.socket dbus.socket -.mount tmp.mount system.slice dbus-broker.service systemd-tmpfiles-setup.service basic.target",
+      "Triggers": "",
+      "TriggeredBy": "",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/NetworkManager.service",
+      "DropInPaths": "",
+      "UnitFileState": "enabled"
+    },
+    "sshd.service": {
+      "Id": "sshd.service",
+      "Requires": "system.slice sysinit.target",
+      "Wants": "sshd-keygen.target ssh-host-keys-migration.service",
+      "Before": "multi-user.target shutdown.target",
+      "After": "basic.target systemd-journald.socket sysinit.target network.target ssh-host-keys-migration.service system.slice sshd-keygen.target",
+      "Triggers": "",
+      "TriggeredBy": "",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "FragmentPath": "/usr/lib/systemd/system/sshd.service",
+      "DropInPaths": "",
+      "UnitFileState": "enabled"
+    },
+    "nftables.service": {
+      "Id": "nftables.service",
+      "Requires": "system.slice sysinit.target",
+      "Wants": "network-pre.target",
+      "Before": "shutdown.target network-pre.target",
+      "After": "system.slice systemd-journald.socket sysinit.target basic.target",
+      "Triggers": "",
+      "TriggeredBy": "",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "FragmentPath": "/usr/lib/systemd/system/nftables.service",
+      "DropInPaths": "",
+      "UnitFileState": "disabled"
+    },
+    "hbr-ssh-session.service": {
+      "Id": "hbr-ssh-session.service",
+      "Requires": "system.slice sysinit.target",
+      "Wants": "",
+      "Before": "shutdown.target",
+      "After": "NetworkManager.service sshd.service sysinit.target firewalld.service system.slice systemd-journald.socket basic.target",
+      "Triggers": "",
+      "TriggeredBy": "",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "FragmentPath": "/etc/systemd/system/hbr-ssh-session.service",
+      "DropInPaths": "",
+      "UnitFileState": "static"
+    },
+    "hbr-ssh-expire.service": {
+      "Id": "hbr-ssh-expire.service",
+      "Requires": "system.slice sysinit.target",
+      "Wants": "",
+      "Before": "shutdown.target",
+      "After": "system.slice systemd-journald.socket sysinit.target basic.target hbr-ssh-expire.timer",
+      "Triggers": "",
+      "TriggeredBy": "hbr-ssh-expire.timer",
+      "LoadState": "loaded",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "FragmentPath": "/etc/systemd/system/hbr-ssh-expire.service",
+      "DropInPaths": "",
+      "UnitFileState": "static"
+    },
+    "hbr-ssh-expire.timer": {
+      "Id": "hbr-ssh-expire.timer",
+      "Requires": "sysinit.target",
+      "Wants": "",
+      "Before": "shutdown.target hbr-ssh-expire.service timers.target",
+      "After": "time-sync.target sysinit.target time-set.target",
+      "Triggers": "hbr-ssh-expire.service",
+      "TriggeredBy": "",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "waiting",
+      "FragmentPath": "/etc/systemd/system/hbr-ssh-expire.timer",
+      "DropInPaths": "",
+      "UnitFileState": "static"
+    }
+  },
+  "boot_unit_candidates": [
+    "docker-48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1.scope transient       -",
+    "containerd.service                                                            disabled        disabled",
+    "docker.service                                                                enabled         disabled",
+    "fds-harbor-ac04-guard.service                                                 enabled         disabled",
+    "hbr-ssh-expire.service                                                        static          -",
+    "hbr-ssh-session.service                                                       static          -",
+    "docker.socket                                                                 disabled        enabled",
+    "hbr-ssh-expire.timer                                                          static          -"
+  ],
+  "selinux": "Enforcing",
+  "addresses": [
+    {
+      "ifindex": 1,
+      "ifname": "lo",
+      "flags": [
+        "LOOPBACK",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 65536,
+      "qdisc": "noqueue",
+      "operstate": "UNKNOWN",
+      "group": "default",
+      "txqlen": 1000,
+      "link_type": "loopback",
+      "address": "00:00:00:00:00:00",
+      "broadcast": "00:00:00:00:00:00",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "127.0.0.1",
+          "prefixlen": 8,
+          "scope": "host",
+          "label": "lo",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        },
+        {
+          "family": "inet6",
+          "local": "::1",
+          "prefixlen": 128,
+          "scope": "host",
+          "noprefixroute": true,
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 2,
+      "ifname": "docker0",
+      "flags": [
+        "NO-CARRIER",
+        "BROADCAST",
+        "MULTICAST",
+        "UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "DOWN",
+      "group": "default",
+      "link_type": "ether",
+      "address": "92:b2:3f:98:2a:4a",
+      "broadcast": "ff:ff:ff:ff:ff:ff",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "172.17.0.1",
+          "prefixlen": 16,
+          "broadcast": "172.17.255.255",
+          "scope": "global",
+          "label": "docker0",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 3,
+      "ifname": "br-7f58f0a76694",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "operstate": "UP",
+      "group": "default",
+      "link_type": "ether",
+      "address": "16:2d:1b:43:65:c1",
+      "broadcast": "ff:ff:ff:ff:ff:ff",
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "172.18.0.1",
+          "prefixlen": 16,
+          "broadcast": "172.18.255.255",
+          "scope": "global",
+          "label": "br-7f58f0a76694",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        },
+        {
+          "family": "inet6",
+          "local": "fe80::142d:1bff:fe43:65c1",
+          "prefixlen": 64,
+          "scope": "link",
+          "protocol": "kernel_ll",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 70,
+      "link_index": 2,
+      "ifname": "veth67c0f00",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "noqueue",
+      "master": "br-7f58f0a76694",
+      "operstate": "UP",
+      "group": "default",
+      "link_type": "ether",
+      "address": "e6:ee:d6:52:5f:f4",
+      "broadcast": "ff:ff:ff:ff:ff:ff",
+      "link_netnsid": 0,
+      "addr_info": [
+        {
+          "family": "inet6",
+          "local": "fe80::e4ee:d6ff:fe52:5ff4",
+          "prefixlen": 64,
+          "scope": "link",
+          "protocol": "kernel_ll",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    }
+  ],
+  "routes4": [
+    {
+      "dst": "172.17.0.0/16",
+      "dev": "docker0",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "172.17.0.1",
+      "flags": [
+        "linkdown"
+      ]
+    },
+    {
+      "dst": "172.18.0.0/16",
+      "dev": "br-7f58f0a76694",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "172.18.0.1",
+      "flags": []
+    },
+    {
+      "type": "local",
+      "dst": "127.0.0.0/8",
+      "dev": "lo",
+      "table": "local",
+      "protocol": "kernel",
+      "scope": "host",
+      "prefsrc": "127.0.0.1",
+      "flags": []
+    },
+    {
+      "type": "local",
+      "dst": "127.0.0.1",
+      "dev": "lo",
+      "table": "local",
+      "protocol": "kernel",
+      "scope": "host",
+      "prefsrc": "127.0.0.1",
+      "flags": []
+    },
+    {
+      "type": "broadcast",
+      "dst": "127.255.255.255",
+      "dev": "lo",
+      "table": "local",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "127.0.0.1",
+      "flags": []
+    },
+    {
+      "type": "local",
+      "dst": "172.17.0.1",
+      "dev": "docker0",
+      "table": "local",
+      "protocol": "kernel",
+      "scope": "host",
+      "prefsrc": "172.17.0.1",
+      "flags": []
+    },
+    {
+      "type": "broadcast",
+      "dst": "172.17.255.255",
+      "dev": "docker0",
+      "table": "local",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "172.17.0.1",
+      "flags": [
+        "linkdown"
+      ]
+    },
+    {
+      "type": "local",
+      "dst": "172.18.0.1",
+      "dev": "br-7f58f0a76694",
+      "table": "local",
+      "protocol": "kernel",
+      "scope": "host",
+      "prefsrc": "172.18.0.1",
+      "flags": []
+    },
+    {
+      "type": "broadcast",
+      "dst": "172.18.255.255",
+      "dev": "br-7f58f0a76694",
+      "table": "local",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "172.18.0.1",
+      "flags": []
+    }
+  ],
+  "routes6": [
+    {
+      "dst": "fe80::/64",
+      "dev": "br-7f58f0a76694",
+      "protocol": "kernel",
+      "metric": 256,
+      "flags": [],
+      "pref": "medium"
+    },
+    {
+      "dst": "fe80::/64",
+      "dev": "veth67c0f00",
+      "protocol": "kernel",
+      "metric": 256,
+      "flags": [],
+      "pref": "medium"
+    },
+    {
+      "type": "local",
+      "dst": "::1",
+      "dev": "lo",
+      "table": "local",
+      "protocol": "kernel",
+      "metric": 0,
+      "flags": [],
+      "pref": "medium"
+    },
+    {
+      "type": "local",
+      "dst": "fe80::142d:1bff:fe43:65c1",
+      "dev": "br-7f58f0a76694",
+      "table": "local",
+      "protocol": "kernel",
+      "metric": 0,
+      "flags": [],
+      "pref": "medium"
+    },
+    {
+      "type": "local",
+      "dst": "fe80::e4ee:d6ff:fe52:5ff4",
+      "dev": "veth67c0f00",
+      "table": "local",
+      "protocol": "kernel",
+      "metric": 0,
+      "flags": [],
+      "pref": "medium"
+    },
+    {
+      "type": "multicast",
+      "dst": "ff00::/8",
+      "dev": "br-7f58f0a76694",
+      "table": "local",
+      "protocol": "kernel",
+      "metric": 256,
+      "flags": [],
+      "pref": "medium"
+    },
+    {
+      "type": "multicast",
+      "dst": "ff00::/8",
+      "dev": "veth67c0f00",
+      "table": "local",
+      "protocol": "kernel",
+      "metric": 256,
+      "flags": [],
+      "pref": "medium"
+    }
+  ],
+  "autoconnect": {
+    "6b9f0643-4a4e-324d-a969-9e5393d7e0bf": "no",
+    "3094c330-0b11-4463-9409-29c11bca6fcb": "no"
+  },
+  "containers": [
+    {
+      "id": "002a011193a2671233c0da5a39fd488d5182d9ba604cde207ddf5a944c7e5477",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    },
+    {
+      "id": "2d0ee28d711aec810708c3eca3927bae143e011e82e3f6d4174de218e04f8db0",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    },
+    {
+      "id": "390681b088d9d4def6648e9dc9bd2ffc495eaa546c4f02f7a64048482803e859",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    },
+    {
+      "id": "3d069e5fdeccca37d57128269c42aa79e58557687d26a3ad103e144435d54dce",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    },
+    {
+      "id": "48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1",
+      "status": "running",
+      "running": true,
+      "exit_code": 0,
+      "health": "healthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "6435156e64d290a81fd0ece2a9951df6656d94d2c997d2a1094b0c6f11f48dd1",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    },
+    {
+      "id": "ba662466a77c164fd445c351026c32cd80bcdd18e9fbba562d410ca78877bf5a",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    },
+    {
+      "id": "c0ccedeb1e92cc9fdbfcdae25623e2398403d443bd6d2c171187375717ead1c8",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    },
+    {
+      "id": "c6400b973975ac8e12aa98b4af88b96a924e0eaff1cc723b40883b79d003dbc5",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    },
+    {
+      "id": "e17a0363eed93819776ca17f1e15e412b3e59829e093d0af67b0792e5b8647aa",
+      "status": "exited",
+      "running": false,
+      "exit_code": 128,
+      "health": "unhealthy",
+      "restart": {
+        "MaximumRetryCount": 0,
+        "Name": "always"
+      },
+      "error_sha256": "af8467c764dce9ff2e620a0ea090e216b10d67949b0112cbf5c059a63ed9a9d3"
+    }
+  ],
+  "boot_unchanged_during_collection": true,
+  "physical_nics_at_end": [],
+  "finished_epoch": 1791514764.5179052,
+  "verdict": "REVIEW_REQUIRED_NOT_REBOOT_GO"
+}

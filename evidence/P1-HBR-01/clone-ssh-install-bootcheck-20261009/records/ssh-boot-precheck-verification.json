@@ -1,0 +1,132 @@
+{
+  "private": "/root/hbr-ssh-bootcheck-k_awxzgk",
+  "issues": [],
+  "boot_id": "ec7a9c3c-3a91-4d4a-8d42-f68ce23ce92b",
+  "a3_original_hash_match": true,
+  "same_boot_as_a3": true,
+  "installation": {
+    "status": "INSTALLED_LINK_DISABLED",
+    "started_epoch": 1791513412.3876789,
+    "source_sha256": {
+      "render-clone-ssh-plan.py": "f1790fb61463d7a1980909f4933a8b2da21ec936bcccde6ab6fa9c0c0ba504d9",
+      "hbr-ssh-lifecycle.py": "bd7ad99cfa09983830bf7bdfdf66bb9486e70fde51a3b35dcd575875d8fdfb2d",
+      "hbr-ssh-readonly.py": "a6f51711968b01b08c41648c678bea298cabeb764da431c32bdcea9a5a932bde"
+    }
+  },
+  "plan": {
+    "interface": "hbrmgmt0",
+    "mac": "00:50:56:35:78:e4",
+    "expires_epoch": 1791525990
+  },
+  "install_command_rcs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "installed_files_match": true,
+  "session_claim_exists": false,
+  "boot_unit_candidates": [
+    "docker-48ab208afc77ce9f45165dfcee89e33ba6df77e943c614932c5f0a57b4ab5bd1.scope transient       -",
+    "containerd.service                                                            disabled        disabled",
+    "docker.service                                                                enabled         disabled",
+    "fds-harbor-ac04-guard.service                                                 enabled         disabled",
+    "hbr-ssh-expire.service                                                        static          -",
+    "hbr-ssh-session.service                                                       static          -",
+    "docker.socket                                                                 disabled        enabled",
+    "hbr-ssh-expire.timer                                                          static          -"
+  ],
+  "selinux": "Enforcing",
+  "autoconnect": {
+    "6b9f0643-4a4e-324d-a969-9e5393d7e0bf": "no",
+    "3094c330-0b11-4463-9409-29c11bca6fcb": "no"
+  },
+  "physical_nics_at_end": [],
+  "collected_kst": "2026-10-09T11:59:23.462896+09:00",
+  "commands": 33,
+  "preserved_files": 15,
+  "private_manifest_entries": 82,
+  "receipt_manifest_sha256": "4bebc3e789d2f51e88249860f377cb5bf2fe5ec1d47b2c9a26e3d6b0ab565be7",
+  "units": {
+    "docker.service": {
+      "Requires": "docker.socket sysinit.target system.slice fds-harbor-ac04-guard.service",
+      "Wants": "containerd.service network-online.target",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    },
+    "docker.socket": {
+      "Requires": "-.mount system.slice sysinit.target",
+      "Wants": "",
+      "ActiveState": "active",
+      "UnitFileState": "disabled"
+    },
+    "containerd.service": {
+      "Requires": "system.slice sysinit.target",
+      "Wants": "",
+      "ActiveState": "active",
+      "UnitFileState": "disabled"
+    },
+    "firewalld.service": {
+      "Requires": "system.slice sysinit.target",
+      "Wants": "network-pre.target",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    },
+    "NetworkManager.service": {
+      "Requires": "sysinit.target system.slice dbus.socket",
+      "Wants": "-.mount network.target",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    },
+    "sshd.service": {
+      "Requires": "system.slice sysinit.target",
+      "Wants": "sshd-keygen.target ssh-host-keys-migration.service",
+      "ActiveState": "active",
+      "UnitFileState": "enabled"
+    },
+    "nftables.service": {
+      "Requires": "system.slice sysinit.target",
+      "Wants": "network-pre.target",
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled"
+    },
+    "hbr-ssh-session.service": {
+      "Requires": "system.slice sysinit.target",
+      "Wants": "",
+      "ActiveState": "inactive",
+      "UnitFileState": "static"
+    },
+    "hbr-ssh-expire.service": {
+      "Requires": "system.slice sysinit.target",
+      "Wants": "",
+      "ActiveState": "inactive",
+      "UnitFileState": "static"
+    },
+    "hbr-ssh-expire.timer": {
+      "Requires": "sysinit.target",
+      "Wants": "",
+      "ActiveState": "active",
+      "UnitFileState": "static"
+    }
+  },
+  "containers": {
+    "running": 1,
+    "exited": 9,
+    "restart_policies": [
+      "always"
+    ]
+  },
+  "private_raw_retrieved": false
+}

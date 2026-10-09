@@ -1,0 +1,121 @@
+{
+  "schema": "fds.runner-readiness-observation.v1",
+  "host": "cicd-runner01",
+  "uid": 1000,
+  "account": "server01_cicd-runner",
+  "started_at_kst": "2026-10-09T08:51:23.423432+09:00",
+  "paths": [
+    {
+      "path": "/home/server01_cicd-runner",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "size": 20480,
+      "symlink": false,
+      "regular": false,
+      "directory": true,
+      "status": "OBSERVED"
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_CICD_Runtime",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "size": 4096,
+      "symlink": false,
+      "regular": false,
+      "directory": true,
+      "status": "OBSERVED"
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_CICD_Runtime/FDS_CICD_ApkoSupply.adc90410f99cb.f4d55db6ecbe",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "size": 161,
+      "symlink": false,
+      "regular": false,
+      "directory": true,
+      "status": "OBSERVED"
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_CICD_Runtime/FDS_CICD_ApkoSupply.adc90410f99cb.f4d55db6ecbe/SUPPLY_MANIFEST.json",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "size": 4759,
+      "symlink": false,
+      "regular": true,
+      "directory": false,
+      "sha256": "f4d55db6ecbefe2057cdb7ca6539b6818549744eb8bfc127ba12dcfa4eb6143b",
+      "stable": true,
+      "source_commit": "adc90410f99cb7af5b40bc8ff92c45272e9f8bee",
+      "supply_tool_commit": "adc90410f99cb7af5b40bc8ff92c45272e9f8bee",
+      "status": "OBSERVED"
+    },
+    {
+      "path": "/usr/local/bin/trivy",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "size": 168456354,
+      "symlink": false,
+      "regular": true,
+      "directory": false,
+      "status": "INCOMPLETE",
+      "error_type": "AssertionError",
+      "errno": null
+    }
+  ],
+  "versions": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "--version"
+      ],
+      "rc": 0,
+      "stdout": "Python 3.12.14\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/git",
+        "--version"
+      ],
+      "rc": 0,
+      "stdout": "git version 2.52.0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/podman",
+        "--version"
+      ],
+      "rc": 0,
+      "stdout": "podman version 6.1.0\n",
+      "stderr": ""
+    }
+  ],
+  "filesystem": {
+    "path": "/home/server01_cicd-runner",
+    "free_bytes": 56439685120,
+    "readonly": false
+  },
+  "subordinate_ids": {
+    "subuid": [
+      "server01_cicd-runner:524288:65536"
+    ],
+    "subgid": [
+      "server01_cicd-runner:524288:65536"
+    ]
+  },
+  "selinux_enforce": "1",
+  "finished_at_kst": "2026-10-09T08:51:23.499944+09:00",
+  "readiness_gate": "NOT_EVALUATED",
+  "runner_registration": "NOT_QUERIED",
+  "concurrent_execution_exclusion": "NOT_ESTABLISHED",
+  "trivy_db_freshness": "NOT_QUERIED",
+  "candidate_supply_transfer": "NOT_RUN",
+  "rootless_runtime": "NOT_RUN",
+  "runtime_apply": "NOT_RUN"
+}

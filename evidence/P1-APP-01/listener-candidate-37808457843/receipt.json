@@ -1,0 +1,220 @@
+{
+  "schema": "fds.candidate-artifact-receipt.v1",
+  "received_at_kst": "2026-10-09T01:26:03.081815+09:00",
+  "run_id": 37808457843,
+  "run_attempt": 1,
+  "source_sha": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+  "artifact_id": 11563449559,
+  "zip_sha256": "da6243a90c7975702a844f5a1bb79d3e58389f597dd5da5696ba3b7cdfdf7af6",
+  "zip_api_digest_match": true,
+  "zip_size": 121877,
+  "manifest_files_verified": 53,
+  "coverage_all_original_files": true,
+  "applications": {
+    "transaction-api": {
+      "scan_counts": {
+        "CRITICAL": 0,
+        "HIGH": 0
+      },
+      "image_config_digest": "sha256:510de009c1ca9ca69e568b33464a8c3336c46e0ec9d8ebff5e1998b9feb865ba",
+      "repo_digests": [],
+      "user": "10001:999",
+      "livez": "{\"status\":\"ok\"}\nAPKO_PROCESS_LIVEZ=PASS",
+      "listener_isolation": {
+        "finished_at_utc": "2026-10-08T16:24:37.857976+00:00",
+        "reason": "main_livez_200_dedicated_counter_200_business_metrics_404",
+        "requests": [
+          {
+            "body_sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288",
+            "bytes": 15,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "GET",
+            "path": "/livez",
+            "port": 8000,
+            "status": 200
+          },
+          {
+            "body_sha256": "33a87c1746c253f7ae261fdeb2bb4cfeb1a675f27a1e2458d73dc7ae33f66b9c",
+            "bytes": 3078,
+            "content_type": "text/plain; version=0.0.4; charset=utf-8",
+            "location_present": false,
+            "method": "GET",
+            "path": "/metrics",
+            "port": 9091,
+            "status": 200
+          },
+          {
+            "body_sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d",
+            "bytes": 22,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "GET",
+            "path": "/metrics",
+            "port": 8000,
+            "status": 404
+          },
+          {
+            "body_sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d",
+            "bytes": 22,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "GET",
+            "path": "/metrics/",
+            "port": 8000,
+            "status": 404
+          },
+          {
+            "body_sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d",
+            "bytes": 22,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "GET",
+            "path": "/%6detrics",
+            "port": 8000,
+            "status": 404
+          },
+          {
+            "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "HEAD",
+            "path": "/metrics",
+            "port": 8000,
+            "status": 404
+          },
+          {
+            "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "HEAD",
+            "path": "/metrics/",
+            "port": 8000,
+            "status": 404
+          },
+          {
+            "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "HEAD",
+            "path": "/%6detrics",
+            "port": 8000,
+            "status": 404
+          }
+        ],
+        "result": "PASS",
+        "schema": "fds.candidate-listener-isolation.v1",
+        "scope": "container-loopback; no DB, cluster, policy or E2E validation",
+        "service": "transaction-api",
+        "started_at_utc": "2026-10-08T16:24:37.848476+00:00"
+      }
+    },
+    "fds-engine": {
+      "scan_counts": {
+        "CRITICAL": 0,
+        "HIGH": 0
+      },
+      "image_config_digest": "sha256:601e60dacb22e488e259f54d98491b319fc04672e7e80bd614f776f998351d8e",
+      "repo_digests": [],
+      "user": "10001:999",
+      "livez": "{\"status\":\"ok\"}\nAPKO_PROCESS_LIVEZ=PASS",
+      "listener_isolation": {
+        "finished_at_utc": "2026-10-08T16:24:51.349527+00:00",
+        "reason": "main_livez_200_dedicated_counter_200_business_metrics_404",
+        "requests": [
+          {
+            "body_sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288",
+            "bytes": 15,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "GET",
+            "path": "/livez",
+            "port": 8001,
+            "status": 200
+          },
+          {
+            "body_sha256": "94b95e7cc36fc819baa3d71123089dced364d3ba52b8e909cdca1045d6122244",
+            "bytes": 2222,
+            "content_type": "text/plain; version=0.0.4; charset=utf-8",
+            "location_present": false,
+            "method": "GET",
+            "path": "/metrics",
+            "port": 9090,
+            "status": 200
+          },
+          {
+            "body_sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d",
+            "bytes": 22,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "GET",
+            "path": "/metrics",
+            "port": 8001,
+            "status": 404
+          },
+          {
+            "body_sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d",
+            "bytes": 22,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "GET",
+            "path": "/metrics/",
+            "port": 8001,
+            "status": 404
+          },
+          {
+            "body_sha256": "37ec4665a8102d115ffd1ac20dae94c98b4dac64b0c1a68228aa2a531caeb35d",
+            "bytes": 22,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "GET",
+            "path": "/%6detrics",
+            "port": 8001,
+            "status": 404
+          },
+          {
+            "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "HEAD",
+            "path": "/metrics",
+            "port": 8001,
+            "status": 404
+          },
+          {
+            "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "HEAD",
+            "path": "/metrics/",
+            "port": 8001,
+            "status": 404
+          },
+          {
+            "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "content_type": "application/json",
+            "location_present": false,
+            "method": "HEAD",
+            "path": "/%6detrics",
+            "port": 8001,
+            "status": 404
+          }
+        ],
+        "result": "PASS",
+        "schema": "fds.candidate-listener-isolation.v1",
+        "scope": "container-loopback; no DB, cluster, policy or E2E validation",
+        "service": "fds-engine",
+        "started_at_utc": "2026-10-08T16:24:51.341725+00:00"
+      }
+    }
+  },
+  "scope": "GITHUB_HOSTED_CANDIDATE_ONLY",
+  "harbor_push": "NOT_EXECUTED",
+  "cluster_deploy": "NOT_EXECUTED"
+}

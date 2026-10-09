@@ -1,0 +1,701 @@
+{
+  "schema": "fds.six-probe-analysis.v1",
+  "source_sha256": "fdab7aa2145b5a90ef284d331bc7db64fd15f7b2e6db2b6aa94bbb2e7d2c2af9",
+  "started_at_kst": "2026-10-09T01:15:21.843357+09:00",
+  "finished_at_kst": "2026-10-09T01:15:22.385668+09:00",
+  "query_count": 18,
+  "workload_count": 6,
+  "pod_count": 10,
+  "workloads": [
+    {
+      "namespace": "fds-app",
+      "name": "fds-engine",
+      "kind": "deployments",
+      "controller_uid": "bf825dec-465b-4603-8b71-f768d195531c",
+      "generation": 5,
+      "observedGeneration": 5,
+      "hostNetwork": null,
+      "containers": [
+        {
+          "name": "fds-engine",
+          "image": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+          "ports": [
+            {
+              "containerPort": 8001,
+              "protocol": "TCP"
+            },
+            {
+              "containerPort": 9090,
+              "protocol": "TCP"
+            }
+          ],
+          "startupProbe": null,
+          "readinessProbe": {
+            "initialDelaySeconds": 5,
+            "periodSeconds": 10,
+            "timeoutSeconds": 1,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": 8001,
+              "scheme": "HTTP",
+              "path": "/readyz",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "livenessProbe": {
+            "initialDelaySeconds": 10,
+            "periodSeconds": 20,
+            "timeoutSeconds": 1,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": 8001,
+              "scheme": "HTTP",
+              "path": "/livez",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          }
+        }
+      ],
+      "pods": [
+        {
+          "name": "fds-engine-66b8c565c4-dqppp",
+          "uid": "31e0c4e8-7df3-445e-8c87-320effd549b0",
+          "node": "k8s-worker03",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "fds-engine",
+              "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+              "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+              "containerID": "containerd://34ce6b3fa8237d70b722eddb29fb10d5e26ede77ed6e3336556837fed00a9bb4",
+              "ready": true,
+              "started": true,
+              "restartCount": 0
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "fds-engine-metrics-lhsvx",
+              "service": "fds-engine-metrics",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            },
+            {
+              "slice": "fds-engine-xsrfp",
+              "service": "fds-engine",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "fds-engine-66b8c565c4-ml986",
+          "uid": "7234e8f5-c357-4997-8850-a46d70dd6fea",
+          "node": "k8s-worker02",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "fds-engine",
+              "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+              "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+              "containerID": "containerd://d9f249e57e94a5b1616add005f7db163e5e50255669be9e6a8fe6860c9da63db",
+              "ready": true,
+              "started": true,
+              "restartCount": 0
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "fds-engine-metrics-lhsvx",
+              "service": "fds-engine-metrics",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            },
+            {
+              "slice": "fds-engine-xsrfp",
+              "service": "fds-engine",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "fds-engine-66b8c565c4-vzgm6",
+          "uid": "bf576dfc-f6a4-4ee4-90e6-1ab90fb5d370",
+          "node": "k8s-worker01",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "fds-engine",
+              "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+              "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+              "containerID": "containerd://28fcdf7034971897f4da2514defaa49b824475005d08e7ad347f19dea596a952",
+              "ready": true,
+              "started": true,
+              "restartCount": 0
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "fds-engine-metrics-lhsvx",
+              "service": "fds-engine-metrics",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            },
+            {
+              "slice": "fds-engine-xsrfp",
+              "service": "fds-engine",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "monitoring-api",
+      "name": "alertmanager",
+      "kind": "deployments",
+      "controller_uid": "30a325dd-27ac-475d-acd3-35b6eb49fa67",
+      "generation": 11,
+      "observedGeneration": 11,
+      "hostNetwork": null,
+      "containers": [
+        {
+          "name": "alertmanager",
+          "image": "10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67",
+          "ports": [
+            {
+              "containerPort": 9093,
+              "protocol": "TCP"
+            }
+          ],
+          "startupProbe": {
+            "periodSeconds": 5,
+            "timeoutSeconds": 3,
+            "successThreshold": 1,
+            "failureThreshold": 36,
+            "httpGet": {
+              "port": 9093,
+              "scheme": "HTTP",
+              "path": "/-/ready",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "readinessProbe": {
+            "periodSeconds": 10,
+            "timeoutSeconds": 3,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": 9093,
+              "scheme": "HTTP",
+              "path": "/-/ready",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "livenessProbe": {
+            "periodSeconds": 20,
+            "timeoutSeconds": 5,
+            "successThreshold": 1,
+            "failureThreshold": 6,
+            "httpGet": {
+              "port": 9093,
+              "scheme": "HTTP",
+              "path": "/-/healthy",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          }
+        }
+      ],
+      "pods": [
+        {
+          "name": "alertmanager-6bf6dc555-bs8cg",
+          "uid": "3add1a86-f390-4123-bb69-8a1f5bba8e4a",
+          "node": "k8s-worker03",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "alertmanager",
+              "image": "10.1.93.54/fds/alertmanager:latest",
+              "imageID": "10.1.93.54/fds/alertmanager@sha256:babefaac616bdb9fb5037a2b70a3c0ffa988c68e96443621dd7360e60781ab67",
+              "containerID": "containerd://40e6ff313952a1693545e7ba1cd1a60916c0c10bbb6a7c46c8116c541e301a9b",
+              "ready": true,
+              "started": true,
+              "restartCount": 0
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "alertmanager-4mwnz",
+              "service": "alertmanager",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "monitoring-api",
+      "name": "grafana",
+      "kind": "deployments",
+      "controller_uid": "b74852b0-fe0b-468c-984f-760ef66cf820",
+      "generation": 16,
+      "observedGeneration": 16,
+      "hostNetwork": null,
+      "containers": [
+        {
+          "name": "grafana",
+          "image": "10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b",
+          "ports": [
+            {
+              "containerPort": 3000,
+              "protocol": "TCP"
+            }
+          ],
+          "startupProbe": {
+            "periodSeconds": 5,
+            "timeoutSeconds": 3,
+            "successThreshold": 1,
+            "failureThreshold": 60,
+            "httpGet": {
+              "port": 3000,
+              "scheme": "HTTP",
+              "path": "/api/health",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "readinessProbe": {
+            "periodSeconds": 10,
+            "timeoutSeconds": 3,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": 3000,
+              "scheme": "HTTP",
+              "path": "/api/health",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "livenessProbe": {
+            "periodSeconds": 20,
+            "timeoutSeconds": 5,
+            "successThreshold": 1,
+            "failureThreshold": 6,
+            "httpGet": {
+              "port": 3000,
+              "scheme": "HTTP",
+              "path": "/api/health",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          }
+        }
+      ],
+      "pods": [
+        {
+          "name": "grafana-f65457bfd-ckjgj",
+          "uid": "916b8c8a-ff21-42ba-9815-11dce4cde848",
+          "node": "k8s-worker03",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "grafana",
+              "image": "10.1.93.54/fds/grafana:latest",
+              "imageID": "10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b",
+              "containerID": "containerd://cc89e46c67587c23716c2f8e1b59ca5b5f6a37fdfe8d8f85b9c439e336d63733",
+              "ready": true,
+              "started": true,
+              "restartCount": 0
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "grafana-chwzg",
+              "service": "grafana",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "monitoring-api",
+      "name": "kube-state-metrics",
+      "kind": "deployments",
+      "controller_uid": "7b5b817f-be93-4a2f-bfb3-dd81c7b738be",
+      "generation": 11,
+      "observedGeneration": 11,
+      "hostNetwork": null,
+      "containers": [
+        {
+          "name": "kube-state-metrics",
+          "image": "10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1",
+          "ports": [
+            {
+              "name": "http-metrics",
+              "containerPort": 8080,
+              "protocol": "TCP"
+            },
+            {
+              "name": "telemetry",
+              "containerPort": 8081,
+              "protocol": "TCP"
+            }
+          ],
+          "startupProbe": null,
+          "readinessProbe": {
+            "initialDelaySeconds": 5,
+            "periodSeconds": 5,
+            "timeoutSeconds": 5,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": "telemetry",
+              "scheme": "HTTP",
+              "path": "/readyz",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "livenessProbe": {
+            "initialDelaySeconds": 5,
+            "periodSeconds": 10,
+            "timeoutSeconds": 5,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": "http-metrics",
+              "scheme": "HTTP",
+              "path": "/livez",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          }
+        }
+      ],
+      "pods": [
+        {
+          "name": "kube-state-metrics-77796bd485-l8wv6",
+          "uid": "33ee4ee5-723a-400c-831d-9549bafea1a0",
+          "node": "k8s-worker02",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "kube-state-metrics",
+              "image": "10.1.93.54/fds/kube-state-metrics:v2.13.0",
+              "imageID": "10.1.93.54/fds/kube-state-metrics@sha256:8ca59a9893ecaebbea478099d99a9ffc9daa9f285a715adfa945246b111322a1",
+              "containerID": "containerd://0dd5400ae6e566fccb1341a34ac74ed604b3d18fd7f455b97bb2ee0b17977eb3",
+              "ready": true,
+              "started": true,
+              "restartCount": 0
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "kube-state-metrics-df88v",
+              "service": "kube-state-metrics",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "monitoring-api",
+      "name": "prometheus",
+      "kind": "deployments",
+      "controller_uid": "3a63a1d9-27c6-44cd-aa5c-5232ff0686c0",
+      "generation": 14,
+      "observedGeneration": 14,
+      "hostNetwork": null,
+      "containers": [
+        {
+          "name": "prometheus",
+          "image": "10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19",
+          "ports": [
+            {
+              "containerPort": 9090,
+              "protocol": "TCP"
+            }
+          ],
+          "startupProbe": {
+            "periodSeconds": 10,
+            "timeoutSeconds": 3,
+            "successThreshold": 1,
+            "failureThreshold": 60,
+            "httpGet": {
+              "port": 9090,
+              "scheme": "HTTP",
+              "path": "/-/ready",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "readinessProbe": {
+            "periodSeconds": 10,
+            "timeoutSeconds": 3,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": 9090,
+              "scheme": "HTTP",
+              "path": "/-/ready",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "livenessProbe": {
+            "periodSeconds": 20,
+            "timeoutSeconds": 5,
+            "successThreshold": 1,
+            "failureThreshold": 6,
+            "httpGet": {
+              "port": 9090,
+              "scheme": "HTTP",
+              "path": "/-/healthy",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          }
+        }
+      ],
+      "pods": [
+        {
+          "name": "prometheus-d8949bd64-2zc4m",
+          "uid": "265ca811-873c-45e1-8c46-6c1ce034e596",
+          "node": "k8s-worker03",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "prometheus",
+              "image": "sha256:66416213a3b43651d3521acc3987277b4f97ad0ae29acc581f910ef9bd3959bd",
+              "imageID": "10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19",
+              "containerID": "containerd://f50cf36010ddf0410432c2d8b30c17d9e2036c73ac2813c22b8b108f9eea0ce6",
+              "ready": true,
+              "started": true,
+              "restartCount": 0
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "prometheus-2h8zk",
+              "service": "prometheus",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "namespace": "monitoring-node",
+      "name": "node-exporter",
+      "kind": "daemonsets",
+      "controller_uid": "b9e5b455-bdbd-492f-9529-fcea05731ecf",
+      "generation": 9,
+      "observedGeneration": 9,
+      "hostNetwork": true,
+      "containers": [
+        {
+          "name": "node-exporter",
+          "image": "10.1.93.54/fds/node-exporter@sha256:4d5c92fcbea9fd5f2769a13192885366f6d348443ea6b48783590c9d9be43318",
+          "ports": [
+            {
+              "hostPort": 9100,
+              "containerPort": 9100,
+              "protocol": "TCP"
+            }
+          ],
+          "startupProbe": null,
+          "readinessProbe": {
+            "periodSeconds": 10,
+            "timeoutSeconds": 1,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": 9100,
+              "scheme": "HTTP",
+              "path": "/metrics",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          },
+          "livenessProbe": {
+            "initialDelaySeconds": 10,
+            "periodSeconds": 20,
+            "timeoutSeconds": 5,
+            "successThreshold": 1,
+            "failureThreshold": 3,
+            "httpGet": {
+              "port": 9100,
+              "scheme": "HTTP",
+              "path": "/",
+              "query_omitted": false,
+              "header_count_values_omitted": 0
+            }
+          }
+        }
+      ],
+      "pods": [
+        {
+          "name": "node-exporter-4gtms",
+          "uid": "c4dcab33-df59-4812-96ad-3ca14e4b9fce",
+          "node": "k8s-worker01",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "node-exporter",
+              "image": "sha256:0d5993fabf0016a15ef59d26c4fc5a065612ef262bb19ede968b080bbc850203",
+              "imageID": "10.1.93.54/fds/node-exporter@sha256:4d5c92fcbea9fd5f2769a13192885366f6d348443ea6b48783590c9d9be43318",
+              "containerID": "containerd://b3ee823c067d4f1989b79b3f90810f0c10a5d9c59c18f119b1359df77307d3bc",
+              "ready": true,
+              "started": true,
+              "restartCount": 4
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "node-exporter-mhzgx",
+              "service": "node-exporter",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "node-exporter-thcn5",
+          "uid": "55d1af03-5ffe-48c8-8adc-fd5dd4628420",
+          "node": "k8s-worker02",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "node-exporter",
+              "image": "sha256:0d5993fabf0016a15ef59d26c4fc5a065612ef262bb19ede968b080bbc850203",
+              "imageID": "10.1.93.54/fds/node-exporter@sha256:4d5c92fcbea9fd5f2769a13192885366f6d348443ea6b48783590c9d9be43318",
+              "containerID": "containerd://22c32fb1c3ae8e9b9030488cf8182552b308b9a50025081bb6b6ef7d49e0f3a5",
+              "ready": true,
+              "started": true,
+              "restartCount": 1
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "node-exporter-mhzgx",
+              "service": "node-exporter",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        },
+        {
+          "name": "node-exporter-zdhnv",
+          "uid": "78d316e9-75b3-46d9-b012-ed5ce93c322e",
+          "node": "k8s-worker03",
+          "ready": [
+            "True"
+          ],
+          "containers": [
+            {
+              "name": "node-exporter",
+              "image": "sha256:0d5993fabf0016a15ef59d26c4fc5a065612ef262bb19ede968b080bbc850203",
+              "imageID": "10.1.93.54/fds/node-exporter@sha256:4d5c92fcbea9fd5f2769a13192885366f6d348443ea6b48783590c9d9be43318",
+              "containerID": "containerd://0b2d7deaacee6166204c0bc9baa7c3f437de5ef9a2b8ff280ad89871e078e727",
+              "ready": true,
+              "started": true,
+              "restartCount": 1
+            }
+          ],
+          "probes_equal_controller": true,
+          "endpoints": [
+            {
+              "slice": "node-exporter-mhzgx",
+              "service": "node-exporter",
+              "conditions": {
+                "ready": true,
+                "serving": true,
+                "terminating": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "interpretation": "API projection snapshot only. No new fault/recovery, direct health request or AC acceptance."
+}

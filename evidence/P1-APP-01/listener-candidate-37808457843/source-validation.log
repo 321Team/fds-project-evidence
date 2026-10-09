@@ -1,0 +1,671 @@
+validate	Set up job	﻿2026-10-08T16:23:59.7192005Z Current runner version: '2.337.0'
+validate	Set up job	2026-10-08T16:23:59.7232462Z ##[group]Runner Image Provisioner
+validate	Set up job	2026-10-08T16:23:59.7233887Z Hosted Compute Agent
+validate	Set up job	2026-10-08T16:23:59.7235120Z Version: 20261002.596
+validate	Set up job	2026-10-08T16:23:59.7236332Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+validate	Set up job	2026-10-08T16:23:59.7237723Z Build Date: 2026-10-02T22:28:27Z
+validate	Set up job	2026-10-08T16:23:59.7239052Z Worker ID: {5e9ed8c3-25f6-4c6b-840b-e6ad7f01713d}
+validate	Set up job	2026-10-08T16:23:59.7240637Z Region: eastus
+validate	Set up job	2026-10-08T16:23:59.7241784Z Cloud: Azure
+validate	Set up job	2026-10-08T16:23:59.7242779Z ##[endgroup]
+validate	Set up job	2026-10-08T16:23:59.7245722Z ##[group]Operating System
+validate	Set up job	2026-10-08T16:23:59.7246918Z Ubuntu
+validate	Set up job	2026-10-08T16:23:59.7247924Z 24.04.5
+validate	Set up job	2026-10-08T16:23:59.7248988Z LTS
+validate	Set up job	2026-10-08T16:23:59.7249899Z ##[endgroup]
+validate	Set up job	2026-10-08T16:23:59.7251259Z ##[group]Runner Image
+validate	Set up job	2026-10-08T16:23:59.7252440Z Image: ubuntu-24.04
+validate	Set up job	2026-10-08T16:23:59.7253428Z Version: 20261004.327.1
+validate	Set up job	2026-10-08T16:23:59.7255448Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+validate	Set up job	2026-10-08T16:23:59.7258686Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+validate	Set up job	2026-10-08T16:23:59.7260863Z ##[endgroup]
+validate	Set up job	2026-10-08T16:23:59.7262996Z ##[group]GITHUB_TOKEN Permissions
+validate	Set up job	2026-10-08T16:23:59.7266131Z Contents: read
+validate	Set up job	2026-10-08T16:23:59.7267276Z Metadata: read
+validate	Set up job	2026-10-08T16:23:59.7268261Z ##[endgroup]
+validate	Set up job	2026-10-08T16:23:59.7271762Z Secret source: Actions
+validate	Set up job	2026-10-08T16:23:59.7273616Z Cache mode: write
+validate	Set up job	2026-10-08T16:23:59.7275281Z Prepare workflow directory
+validate	Set up job	2026-10-08T16:23:59.7783576Z Prepare all required actions
+validate	Set up job	2026-10-08T16:23:59.7855789Z Getting action download info
+validate	Set up job	2026-10-08T16:23:59.9950387Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+validate	Set up job	2026-10-08T16:24:00.2135841Z Complete job name: validate
+validate	Checkout source without persisting credentials	﻿2026-10-08T16:24:00.3030396Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3031616Z with:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3032153Z   persist-credentials: false
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3032780Z   ref: affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3033429Z   repository: 321Team/fds-msa
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3037412Z   token: ***
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3037998Z   ssh-strict: true
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3038479Z   ssh-user: git
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3038939Z   clean: true
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3039423Z   sparse-checkout-cone-mode: true
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3040226Z   fetch-depth: 1
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3040711Z   fetch-tags: false
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3041191Z   show-progress: true
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3041683Z   lfs: false
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3042129Z   submodules: false
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3042620Z   set-safe-directory: true
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3043161Z   allow-unsafe-pr-checkout: false
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.3044019Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4293485Z Syncing repository: 321Team/fds-msa
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4297616Z ##[group]Getting Git version info
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4299903Z Working directory is '/home/runner/work/fds-msa/fds-msa'
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4303172Z [command]/usr/bin/git version
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4382818Z git version 2.55.0
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4460810Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4474900Z Temporarily overriding HOME='/home/runner/work/_temp/97271cbf-02a9-4773-850f-e36842b706b3' before making global git config changes
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4479764Z Adding repository directory to the temporary git global config as a safe directory
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4484887Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fds-msa/fds-msa
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4488270Z Deleting the contents of '/home/runner/work/fds-msa/fds-msa'
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4490593Z ##[group]Determining repository object format
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4493187Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4495500Z ##[group]Initializing the repository
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4501627Z [command]/usr/bin/git init /home/runner/work/fds-msa/fds-msa
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4666106Z hint: Using 'master' as the name for the initial branch. This default branch name
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4668329Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4669917Z hint: to use in all of your new repositories, which will suppress this warning,
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4671657Z hint: call:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4672424Z hint:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4673406Z hint: 	git config --global init.defaultBranch <name>
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4674540Z hint:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4675917Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4677759Z hint: 'development'. The just-created branch can be renamed via this command:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4679129Z hint:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4679921Z hint: 	git branch -m <name>
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4681478Z hint:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4682740Z hint: Disable this message with "git config set advice.defaultBranchName false"
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4684561Z Initialized empty Git repository in /home/runner/work/fds-msa/fds-msa/.git/
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4687591Z [command]/usr/bin/git remote add origin https://github.com/321Team/fds-msa
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4783199Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4823894Z ##[group]Disabling automatic garbage collection
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4825423Z [command]/usr/bin/git config --local gc.auto 0
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4828587Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4837184Z ##[group]Setting up auth
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4838570Z Removing SSH command configuration
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4850911Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.4889420Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.5562181Z Removing HTTP extra header
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.5565729Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.5570848Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.5927605Z Removing includeIf entries pointing to credentials config files
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.5930372Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.5951153Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.6123436Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.6226551Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path /home/runner/work/_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.6294624Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.6395411Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.6457907Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.6523842Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.6525724Z ##[group]Fetching the repository
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.6528713Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout source without persisting credentials	2026-10-08T16:24:00.9900934Z From https://github.com/321Team/fds-msa
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0096192Z  * branch            affbc69beef9967f7977d09a6fec14f7fb6c0e94 -> FETCH_HEAD
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0102794Z [command]/usr/bin/git rev-parse --verify --quiet affbc69beef9967f7977d09a6fec14f7fb6c0e94^{object}
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0107119Z affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0116050Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0118190Z ##[group]Determining the checkout info
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0126532Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0128573Z [command]/usr/bin/git sparse-checkout disable
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0134220Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0141073Z ##[group]Checking out the ref
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0144368Z [command]/usr/bin/git checkout --progress --force affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0228260Z Note: switching to 'affbc69beef9967f7977d09a6fec14f7fb6c0e94'.
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0229947Z 
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0232710Z You are in 'detached HEAD' state. You can look around, make experimental
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0235231Z changes and commit them, and you can discard any commits you make in this
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0237754Z state without impacting any branches by switching back to a branch.
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0239321Z 
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0240768Z If you want to create a new branch to retain commits you create, you may
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0243231Z do so (now or later) by using -c with the switch command. Example:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0244630Z 
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0245472Z   git switch -c <new-branch-name>
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0246625Z 
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0247488Z Or undo this operation with:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0248888Z 
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0249771Z   git switch -
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0251066Z 
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0252202Z Turn off this advice by setting config variable advice.detachedHead to false
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0253652Z 
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0255754Z HEAD is now at affbc69 ci: verify candidate business and metrics listeners over TCP
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0261203Z ##[endgroup]
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.0302093Z [command]/usr/bin/git log -1 --format=%H
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1309419Z affbc69beef9967f7977d09a6fec14f7fb6c0e94
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1313795Z ##[group]Removing auth
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1314790Z Removing SSH command configuration
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1315950Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1330855Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1335870Z Removing HTTP extra header
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1338123Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1344008Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1349247Z Removing includeIf entries pointing to credentials config files
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1351241Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1356599Z includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1361507Z includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1369783Z includeif.gitdir:/github/workspace/.git.path
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1372497Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1377642Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1405383Z /home/runner/work/_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1419499Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git.path /home/runner/work/_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1481054Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1503250Z /home/runner/work/_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1519721Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/fds-msa/fds-msa/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1590690Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1690942Z /github/runner_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1711897Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1768944Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1798667Z /github/runner_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1808528Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.1871161Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.2181733Z Removing credentials config '/home/runner/work/_temp/git-credentials-99ac94a2-d5d0-42cf-beca-e2fe92c2d85c.config'
+validate	Checkout source without persisting credentials	2026-10-08T16:24:01.2197173Z ##[endgroup]
+validate	Static source checks	﻿2026-10-08T16:24:01.2441127Z ##[group]Run set -euo pipefail
+validate	Static source checks	2026-10-08T16:24:01.2442150Z ^[[36;1mset -euo pipefail^[[0m
+validate	Static source checks	2026-10-08T16:24:01.2443280Z ^[[36;1mpython3 -m pip install --disable-pip-version-check --no-cache-dir PyYAML==6.0.2^[[0m
+validate	Static source checks	2026-10-08T16:24:01.2444458Z ^[[36;1mpython3 tools/check_source.py^[[0m
+validate	Static source checks	2026-10-08T16:24:01.2445393Z ^[[36;1mpython3 tools/check_dependency_locks.py^[[0m
+validate	Static source checks	2026-10-08T16:24:01.2446501Z ^[[36;1mpython3 -m unittest discover -s tools/tests -p 'test_*.py' -v^[[0m
+validate	Static source checks	2026-10-08T16:24:01.2724747Z shell: /usr/bin/bash -e {0}
+validate	Static source checks	2026-10-08T16:24:01.2726204Z ##[endgroup]
+validate	Static source checks	2026-10-08T16:24:01.7573786Z Defaulting to user installation because normal site-packages is not writeable
+validate	Static source checks	2026-10-08T16:24:02.2302023Z Collecting PyYAML==6.0.2
+validate	Static source checks	2026-10-08T16:24:02.2852134Z   Downloading PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+validate	Static source checks	2026-10-08T16:24:02.2915228Z Downloading PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (767 kB)
+validate	Static source checks	2026-10-08T16:24:02.3282492Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 767.5/767.5 kB 24.9 MB/s eta 0:00:00
+validate	Static source checks	2026-10-08T16:24:02.8689357Z Installing collected packages: PyYAML
+validate	Static source checks	2026-10-08T16:24:02.9948567Z Successfully installed PyYAML-6.0.2
+validate	Static source checks	2026-10-08T16:24:03.4612981Z {"files": 142, "errors": [], "result": "PASS"}
+validate	Static source checks	2026-10-08T16:24:03.4975092Z DEPENDENCY_LOCKS=PASS (roots, extras, hashes, runtime/test consistency)
+validate	Static source checks	2026-10-08T16:24:03.6978170Z test_bad_arguments (test_apko_lock_age.LockAgeTests.test_bad_arguments) ... usage: check_apko_lock_age.py [--max-days N] [--now EPOCH] LOCK [LOCK ...]
+validate	Static source checks	2026-10-08T16:24:03.6984888Z usage: check_apko_lock_age.py [--max-days N] [--now EPOCH] LOCK [LOCK ...]
+validate	Static source checks	2026-10-08T16:24:03.6986242Z usage: check_apko_lock_age.py [--max-days N] [--now EPOCH] LOCK [LOCK ...]
+validate	Static source checks	2026-10-08T16:24:03.7006554Z ok
+validate	Static source checks	2026-10-08T16:24:03.7271749Z test_future_commit_is_not_hidden_by_an_older_lock (test_apko_lock_age.LockAgeTests.test_future_commit_is_not_hidden_by_an_older_lock) ... APKO_LOCK_DRIFT_AGE=FAIL ci/apko/builder.lock.json: lock commit author time is later than the check time
+validate	Static source checks	2026-10-08T16:24:03.7300619Z ok
+validate	Static source checks	2026-10-08T16:24:03.7543132Z test_future_lock_commit_fails (test_apko_lock_age.LockAgeTests.test_future_lock_commit_fails) ... APKO_LOCK_DRIFT_AGE=FAIL ci/apko/builder.lock.json: lock commit author time is later than the check time
+validate	Static source checks	2026-10-08T16:24:03.7569969Z ok
+validate	Static source checks	2026-10-08T16:24:03.7774855Z test_known_lock_does_not_hide_an_uncommitted_lock (test_apko_lock_age.LockAgeTests.test_known_lock_does_not_hide_an_uncommitted_lock) ... APKO_LOCK_DRIFT_AGE=FAIL no commit touches ci/apko/missing.lock.json
+validate	Static source checks	2026-10-08T16:24:03.7787879Z ok
+validate	Static source checks	2026-10-08T16:24:03.8008479Z test_later_unrelated_commit_does_not_reset_age (test_apko_lock_age.LockAgeTests.test_later_unrelated_commit_does_not_reset_age) ... APKO_LOCK_DRIFT_AGE=OVER_LIMIT lock_committed=2026-10-03T04:00:00Z age_hours=120 limit_days=3
+validate	Static source checks	2026-10-08T16:24:03.8030352Z ok
+validate	Static source checks	2026-10-08T16:24:03.8277154Z test_lock_refresh_resets_age (test_apko_lock_age.LockAgeTests.test_lock_refresh_resets_age) ... ok
+validate	Static source checks	2026-10-08T16:24:03.8516243Z test_only_drifted_lock_is_checked (test_apko_lock_age.LockAgeTests.test_only_drifted_lock_is_checked) ... ok
+validate	Static source checks	2026-10-08T16:24:03.8662139Z test_over_limit_fails (test_apko_lock_age.LockAgeTests.test_over_limit_fails) ... APKO_LOCK_DRIFT_AGE=OVER_LIMIT lock_committed=2026-10-03T04:00:00Z age_hours=72 limit_days=3
+validate	Static source checks	2026-10-08T16:24:03.8675873Z ok
+validate	Static source checks	2026-10-08T16:24:03.9002856Z test_refreshing_builder_does_not_reset_runtime_age (test_apko_lock_age.LockAgeTests.test_refreshing_builder_does_not_reset_runtime_age) ... APKO_LOCK_DRIFT_AGE=OVER_LIMIT lock_committed=2026-10-03T04:00:00Z age_hours=96 limit_days=3
+validate	Static source checks	2026-10-08T16:24:03.9024047Z ok
+validate	Static source checks	2026-10-08T16:24:03.9152637Z test_shallow_clone_fails (test_apko_lock_age.LockAgeTests.test_shallow_clone_fails) ... APKO_LOCK_DRIFT_AGE=FAIL shallow clone: lock commit time is unknown (use fetch-depth: 0)
+validate	Static source checks	2026-10-08T16:24:03.9182936Z ok
+validate	Static source checks	2026-10-08T16:24:03.9342635Z test_uncommitted_lock_fails (test_apko_lock_age.LockAgeTests.test_uncommitted_lock_fails) ... APKO_LOCK_DRIFT_AGE=FAIL no commit touches ci/apko/missing.lock.json
+validate	Static source checks	2026-10-08T16:24:03.9357317Z ok
+validate	Static source checks	2026-10-08T16:24:03.9530462Z test_within_limit_passes (test_apko_lock_age.LockAgeTests.test_within_limit_passes) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9552027Z test_bad_arguments (test_apko_lock_binding.LockBindingTests.test_bad_arguments) ... usage: check_apko_lock_binding.py CFG LOCK [CFG LOCK ...]
+validate	Static source checks	2026-10-08T16:24:03.9569855Z ok
+validate	Static source checks	2026-10-08T16:24:03.9572187Z test_changed_yaml_fails (test_apko_lock_binding.LockBindingTests.test_changed_yaml_fails) ... APKO_LOCK_CONFIG_BINDING=FAIL builder.lock.json: config.checksum does not match ci/apko/wolfi-python313-builder.apko.yaml
+validate	Static source checks	2026-10-08T16:24:03.9701235Z ok
+validate	Static source checks	2026-10-08T16:24:03.9721473Z test_duplicate_key_fails (test_apko_lock_binding.LockBindingTests.test_duplicate_key_fails) ... APKO_LOCK_CONFIG_BINDING=FAIL duplicate JSON key
+validate	Static source checks	2026-10-08T16:24:03.9740650Z ok
+validate	Static source checks	2026-10-08T16:24:03.9751764Z test_empty_packages_fails (test_apko_lock_binding.LockBindingTests.test_empty_packages_fails) ... APKO_LOCK_CONFIG_BINDING=FAIL builder.lock.json: no locked packages
+validate	Static source checks	2026-10-08T16:24:03.9755784Z ok
+validate	Static source checks	2026-10-08T16:24:03.9757238Z test_known_apko_checksum_format (test_apko_lock_binding.LockBindingTests.test_known_apko_checksum_format) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9759059Z test_matching_binding_passes (test_apko_lock_binding.LockBindingTests.test_matching_binding_passes) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9761531Z test_missing_lock_fails (test_apko_lock_binding.LockBindingTests.test_missing_lock_fails) ... APKO_LOCK_CONFIG_BINDING=FAIL missing.json: not a bounded regular file
+validate	Static source checks	2026-10-08T16:24:03.9763133Z ok
+validate	Static source checks	2026-10-08T16:24:03.9765177Z test_wrong_config_name_fails (test_apko_lock_binding.LockBindingTests.test_wrong_config_name_fails) ... APKO_LOCK_CONFIG_BINDING=FAIL builder.lock.json: config.name '/tmp/abs/ci/apko/wolfi-python313-builder.apko.yaml' != 'ci/apko/wolfi-python313-builder.apko.yaml'
+validate	Static source checks	2026-10-08T16:24:03.9767466Z ok
+validate	Static source checks	2026-10-08T16:24:03.9768829Z test_builder_drift_does_not_mask_runtime_comparison (test_apko_lock_drift.LockEvidenceTests.test_builder_drift_does_not_mask_runtime_comparison) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9771284Z test_duplicate_json_keys_are_not_passed (test_apko_lock_drift.LockEvidenceTests.test_duplicate_json_keys_are_not_passed) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9773350Z test_evidence_write_failure_propagates (test_apko_lock_drift.LockEvidenceTests.test_evidence_write_failure_propagates) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9775387Z test_exact_match_preserves_six_input_files (test_apko_lock_drift.LockEvidenceTests.test_exact_match_preserves_six_input_files) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9791472Z test_existing_evidence_is_not_overwritten (test_apko_lock_drift.LockEvidenceTests.test_existing_evidence_is_not_overwritten) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9817134Z test_failed_build_is_recorded_separately_from_matching_locks (test_apko_lock_drift.LockEvidenceTests.test_failed_build_is_recorded_separately_from_matching_locks) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9848988Z test_formatting_difference_fails_byte_comparison (test_apko_lock_drift.LockEvidenceTests.test_formatting_difference_fails_byte_comparison) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9872987Z test_input_read_failure_is_not_match (test_apko_lock_drift.LockEvidenceTests.test_input_read_failure_is_not_match) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9903586Z test_invalid_json_is_preserved_but_not_passed (test_apko_lock_drift.LockEvidenceTests.test_invalid_json_is_preserved_but_not_passed) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9916507Z test_invalid_source_provenance_is_refused_before_output (test_apko_lock_drift.LockEvidenceTests.test_invalid_source_provenance_is_refused_before_output) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9948472Z test_manifest_verifies_raw_diff_result_and_metadata (test_apko_lock_drift.LockEvidenceTests.test_manifest_verifies_raw_diff_result_and_metadata) ... ok
+validate	Static source checks	2026-10-08T16:24:03.9975570Z test_missing_generated_lock_retains_other_pair_and_original (test_apko_lock_drift.LockEvidenceTests.test_missing_generated_lock_retains_other_pair_and_original) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0016210Z test_no_source_or_generated_input_is_modified (test_apko_lock_drift.LockEvidenceTests.test_no_source_or_generated_input_is_modified) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0045470Z test_nonfinite_json_is_not_passed (test_apko_lock_drift.LockEvidenceTests.test_nonfinite_json_is_not_passed) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0075435Z test_nonobject_json_is_not_passed (test_apko_lock_drift.LockEvidenceTests.test_nonobject_json_is_not_passed) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0088906Z test_output_under_source_is_refused (test_apko_lock_drift.LockEvidenceTests.test_output_under_source_is_refused) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0127326Z test_oversize_input_is_not_passed (test_apko_lock_drift.LockEvidenceTests.test_oversize_input_is_not_passed) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0159481Z test_runtime_drift_fails (test_apko_lock_drift.LockEvidenceTests.test_runtime_drift_fails) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0177339Z test_image_archive_identity_binds_config_and_layer_diff_ids (test_apko_offline_supply.OfflineSupplyTests.test_image_archive_identity_binds_config_and_layer_diff_ids) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0184535Z test_parse_roots_expands_test_profile (test_apko_offline_supply.OfflineSupplyTests.test_parse_roots_expands_test_profile) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0198167Z test_wheel_metadata_normalizes_name_and_reads_version (test_apko_offline_supply.OfflineSupplyTests.test_wheel_metadata_normalizes_name_and_reads_version) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0200702Z test_clean_report (test_candidate_image_validation.CandidateEvidenceTests.test_clean_report) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0202655Z test_different_image_rejected (test_candidate_image_validation.CandidateEvidenceTests.test_different_image_rejected) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0204723Z test_different_layers_rejected (test_candidate_image_validation.CandidateEvidenceTests.test_different_layers_rejected) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0206797Z test_empty_inventory_rejected (test_candidate_image_validation.CandidateEvidenceTests.test_empty_inventory_rejected) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0208692Z test_error_never_passes (test_candidate_image_validation.CandidateEvidenceTests.test_error_never_passes) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0211693Z test_exit_count_mismatch_rejected (test_candidate_image_validation.CandidateEvidenceTests.test_exit_count_mismatch_rejected) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0213897Z test_metadata_boundaries (test_candidate_image_validation.CandidateEvidenceTests.test_metadata_boundaries) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0216021Z test_missing_application_inventory_rejected (test_candidate_image_validation.CandidateEvidenceTests.test_missing_application_inventory_rejected) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0218667Z test_stale_application_inventory_rejected (test_candidate_image_validation.CandidateEvidenceTests.test_stale_application_inventory_rejected) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0221216Z test_unexpected_severity_rejected (test_candidate_image_validation.CandidateEvidenceTests.test_unexpected_severity_rejected) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0223305Z test_vulnerability_blocks (test_candidate_image_validation.CandidateEvidenceTests.test_vulnerability_blocks) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0241727Z test_changed_root_version_requires_new_lock (test_dependency_locks.DependencyLockTests.test_changed_root_version_requires_new_lock) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0266835Z test_current_profiles (test_dependency_locks.DependencyLockTests.test_current_profiles) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0290672Z test_duplicate_package (test_dependency_locks.DependencyLockTests.test_duplicate_package) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0314467Z test_invalid_hash (test_dependency_locks.DependencyLockTests.test_invalid_hash) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0338102Z test_missing_runtime_package (test_dependency_locks.DependencyLockTests.test_missing_runtime_package) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0362424Z test_required_extras_cannot_disappear (test_dependency_locks.DependencyLockTests.test_required_extras_cannot_disappear) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0386487Z test_runtime_test_wheel_drift (test_dependency_locks.DependencyLockTests.test_runtime_test_wheel_drift) ... ok
+validate	Static source checks	2026-10-08T16:24:04.0407503Z test_test_roots_cannot_include_remote_inputs (test_dependency_locks.DependencyLockTests.test_test_roots_cannot_include_remote_inputs) ... ok
+validate	Static source checks	2026-10-08T16:24:06.4440981Z test_openshift_render_check_composes_base_and_components (test_deploy_openshift_labdb.KustomizeRenderTests.test_openshift_render_check_composes_base_and_components) ... ok
+validate	Static source checks	2026-10-08T16:24:06.8351813Z test_p1_onprem_renders_twelve_objects (test_deploy_openshift_labdb.KustomizeRenderTests.test_p1_onprem_renders_twelve_objects) ... ok
+validate	Static source checks	2026-10-08T16:24:06.8459722Z test_db_is_internal_pinned_and_secret_referenced (test_deploy_openshift_labdb.LabDbComponentTests.test_db_is_internal_pinned_and_secret_referenced) ... ok
+validate	Static source checks	2026-10-08T16:24:06.8902509Z test_only_transaction_api_reaches_db_and_engine_is_denied (test_deploy_openshift_labdb.LabDbComponentTests.test_only_transaction_api_reaches_db_and_engine_is_denied) ... ok
+validate	Static source checks	2026-10-08T16:24:06.9029438Z test_schema_sql_is_bound_to_alembic_head (test_deploy_openshift_labdb.LabDbComponentTests.test_schema_sql_is_bound_to_alembic_head) ... ok
+validate	Static source checks	2026-10-08T16:24:08.4321855Z test_start_hook_is_idempotent_and_fails_closed_on_real_postgresql (test_deploy_openshift_labdb.LabDbComponentTests.test_start_hook_is_idempotent_and_fails_closed_on_real_postgresql) ... ok
+validate	Static source checks	2026-10-08T16:24:08.5039162Z test_cleanup_distinguishes_four_cases (test_deploy_openshift_labdb.LabDbRunbookCommandTests.test_cleanup_distinguishes_four_cases) ... ok
+validate	Static source checks	2026-10-08T16:24:08.5050990Z test_every_lab_db_oc_command_in_readme_is_scoped (test_deploy_openshift_labdb.LabDbRunbookCommandTests.test_every_lab_db_oc_command_in_readme_is_scoped) ... ok
+validate	Static source checks	2026-10-08T16:24:08.5673976Z test_rollback_targets_approved_namespace_and_stops_on_restart_failure (test_deploy_openshift_labdb.LabDbRunbookCommandTests.test_rollback_targets_approved_namespace_and_stops_on_restart_failure) ... ok
+validate	Static source checks	2026-10-08T16:24:08.5677027Z test_component_adds_no_fixed_uid_or_pull_secret (test_deploy_openshift_labdb.OpenShiftComponentTests.test_component_adds_no_fixed_uid_or_pull_secret) ... ok
+validate	Static source checks	2026-10-08T16:24:08.5731470Z test_component_kind_and_opt_in_scope (test_deploy_openshift_labdb.OpenShiftComponentTests.test_component_kind_and_opt_in_scope) ... ok
+validate	Static source checks	2026-10-08T16:24:08.5902645Z test_routes_expose_only_api_and_readyz_on_one_host (test_deploy_openshift_labdb.OpenShiftComponentTests.test_routes_expose_only_api_and_readyz_on_one_host) ... ok
+validate	Static source checks	2026-10-08T16:24:08.6052107Z test_base_has_no_environment_bound_values (test_deploy_portable_base.PortableBaseTests.test_base_has_no_environment_bound_values) ... ok
+validate	Static source checks	2026-10-08T16:24:08.6196637Z test_base_keeps_security_and_contract_intent (test_deploy_portable_base.PortableBaseTests.test_base_keeps_security_and_contract_intent) ... ok
+validate	Static source checks	2026-10-08T16:24:08.6369737Z test_p1_overlay_pins_digests_and_is_marked_compare_only (test_deploy_portable_base.PortableBaseTests.test_p1_overlay_pins_digests_and_is_marked_compare_only) ... ok
+validate	Static source checks	2026-10-08T16:24:08.6373196Z test_fresh_restart_broken_and_recovery (test_labdb_image_entrypoint.LabDbImageStartContract.test_fresh_restart_broken_and_recovery) ... skipped 'FDS_LABDB_IMAGE_IT=1 과 docker 필요 — workflow labdb-image-it에서 실행'
+validate	Static source checks	2026-10-08T16:24:08.6376855Z test_image_is_postgresql_16_non_root (test_labdb_image_entrypoint.LabDbImageStartContract.test_image_is_postgresql_16_non_root) ... skipped 'FDS_LABDB_IMAGE_IT=1 과 docker 필요 — workflow labdb-image-it에서 실행'
+validate	Static source checks	2026-10-08T16:24:08.6380719Z test_image_start_order_matches_hook_choice (test_labdb_image_entrypoint.LabDbImageStartContract.test_image_start_order_matches_hook_choice) ... skipped 'FDS_LABDB_IMAGE_IT=1 과 docker 필요 — workflow labdb-image-it에서 실행'
+validate	Static source checks	2026-10-08T16:24:09.6430405Z test_200_without_application_counter_fails (test_listener_isolation.ListenerIsolationTests.test_200_without_application_counter_fails) ... ok
+validate	Static source checks	2026-10-08T16:24:10.1497927Z test_isolated_ports_include_six_negative_requests (test_listener_isolation.ListenerIsolationTests.test_isolated_ports_include_six_negative_requests) ... ok
+validate	Static source checks	2026-10-08T16:24:10.6525053Z test_main_metrics_200_fails (test_listener_isolation.ListenerIsolationTests.test_main_metrics_200_fails) ... ok
+validate	Static source checks	2026-10-08T16:24:11.6554216Z test_oversized_body_fails_closed (test_listener_isolation.ListenerIsolationTests.test_oversized_body_fails_closed) ... ok
+validate	Static source checks	2026-10-08T16:24:12.1585342Z test_redirect_is_not_followed_or_accepted (test_listener_isolation.ListenerIsolationTests.test_redirect_is_not_followed_or_accepted) ... ok
+validate	Static source checks	2026-10-08T16:24:13.1610931Z test_unavailable_metrics_fails_with_bounded_deadline (test_listener_isolation.ListenerIsolationTests.test_unavailable_metrics_fails_with_bounded_deadline) ... ok
+validate	Static source checks	2026-10-08T16:24:15.6139796Z test_error_threshold_after_last_checkpoint_stops (test_loadtest_gen.LoadGeneratorTests.test_error_threshold_after_last_checkpoint_stops) ... ok
+validate	Static source checks	2026-10-08T16:24:17.0662917Z test_error_threshold_in_stage_tail_stops (test_loadtest_gen.LoadGeneratorTests.test_error_threshold_in_stage_tail_stops) ... ok
+validate	Static source checks	2026-10-08T16:24:18.0187214Z test_error_threshold_stops (test_loadtest_gen.LoadGeneratorTests.test_error_threshold_stops) ... ok
+validate	Static source checks	2026-10-08T16:24:19.9965004Z test_normal_run_keeps_requests_inside_stage_windows (test_loadtest_gen.LoadGeneratorTests.test_normal_run_keeps_requests_inside_stage_windows) ... ok
+validate	Static source checks	2026-10-08T16:24:21.6502759Z test_saturation_stops_without_spilling_into_next_stage (test_loadtest_gen.LoadGeneratorTests.test_saturation_stops_without_spilling_into_next_stage) ... ok
+validate	Static source checks	2026-10-08T16:24:23.6540335Z test_stage_not_drained_stops_before_next_stage (test_loadtest_gen.LoadGeneratorTests.test_stage_not_drained_stops_before_next_stage) ... ok
+validate	Static source checks	2026-10-08T16:24:23.6562860Z test_apko_runtime_matches_sec04_identity (test_operating_image_contract.OperatingImageContractTests.test_apko_runtime_matches_sec04_identity) ... ok
+validate	Static source checks	2026-10-08T16:24:23.6568953Z test_operating_dockerfiles_use_injected_apko_bases_and_sec04_user (test_operating_image_contract.OperatingImageContractTests.test_operating_dockerfiles_use_injected_apko_bases_and_sec04_user) ... ok
+validate	Static source checks	2026-10-08T16:24:24.1644479Z test_5xx_stops_remaining_requests (test_regression_p2e2e.P2RegressionToolTests.test_5xx_stops_remaining_requests) ... ok
+validate	Static source checks	2026-10-08T16:24:24.6942746Z test_b1_b2_pass_and_ledger_refuses_resend (test_regression_p2e2e.P2RegressionToolTests.test_b1_b2_pass_and_ledger_refuses_resend) ... ok
+validate	Static source checks	2026-10-08T16:24:25.7008500Z test_b3e_failopen_pass_and_injection_not_effective_stops (test_regression_p2e2e.P2RegressionToolTests.test_b3e_failopen_pass_and_injection_not_effective_stops) ... ok
+validate	Static source checks	2026-10-08T16:24:26.2070707Z test_crosscheck_accepts_failopen_null_detection (test_regression_p2e2e.P2RegressionToolTests.test_crosscheck_accepts_failopen_null_detection) ... ok
+validate	Static source checks	2026-10-08T16:24:26.7205525Z test_crosscheck_matches_and_detects_rule_time_and_extra_row (test_regression_p2e2e.P2RegressionToolTests.test_crosscheck_matches_and_detects_rule_time_and_extra_row) ... ok
+validate	Static source checks	2026-10-08T16:24:27.7379890Z test_crosscheck_rejects_duplicate_ids_missing_records_and_duplicate_db_rows (test_regression_p2e2e.P2RegressionToolTests.test_crosscheck_rejects_duplicate_ids_missing_records_and_duplicate_db_rows) ... ok
+validate	Static source checks	2026-10-08T16:24:29.2525373Z test_generated_db_query_runs_on_real_postgresql_with_json_null (test_regression_p2e2e.P2RegressionToolTests.test_generated_db_query_runs_on_real_postgresql_with_json_null) ... ok
+validate	Static source checks	2026-10-08T16:24:29.2952200Z test_https_call_keeps_certificate_and_hostname_verification (test_regression_p2e2e.P2RegressionToolTests.test_https_call_keeps_certificate_and_hostname_verification) ... ok
+validate	Static source checks	2026-10-08T16:24:29.8147609Z test_metrics_exposed_through_route_is_fail (test_regression_p2e2e.P2RegressionToolTests.test_metrics_exposed_through_route_is_fail) ... ok
+validate	Static source checks	2026-10-08T16:24:30.3154969Z test_mismatched_criteria_tool_or_ca_stops_before_any_request (test_regression_p2e2e.P2RegressionToolTests.test_mismatched_criteria_tool_or_ca_stops_before_any_request) ... ok
+validate	Static source checks	2026-10-08T16:24:30.3199807Z test_plan_is_offline_stable_and_pins_accounts_and_fixture_date (test_regression_p2e2e.P2RegressionToolTests.test_plan_is_offline_stable_and_pins_accounts_and_fixture_date) ... ok
+validate	Static source checks	2026-10-08T16:24:30.3211506Z test_plan_rejects_http_path_bad_run_and_non_empty_dir (test_regression_p2e2e.P2RegressionToolTests.test_plan_rejects_http_path_bad_run_and_non_empty_dir) ... ok
+validate	Static source checks	2026-10-08T16:24:30.8578876Z test_real_https_call_tls_failure_stops_before_post (test_regression_p2e2e.P2RegressionToolTests.test_real_https_call_tls_failure_stops_before_post) ... ok
+validate	Static source checks	2026-10-08T16:24:31.3756333Z test_rejudge_and_crosscheck_refuse_changed_criteria_other_plan_or_tool (test_regression_p2e2e.P2RegressionToolTests.test_rejudge_and_crosscheck_refuse_changed_criteria_other_plan_or_tool) ... ok
+validate	Static source checks	2026-10-08T16:24:31.8913885Z test_rejudge_gives_same_result (test_regression_p2e2e.P2RegressionToolTests.test_rejudge_gives_same_result) ... ok
+validate	Static source checks	2026-10-08T16:24:32.3962823Z test_unexpected_failopen_in_b1_stops (test_regression_p2e2e.P2RegressionToolTests.test_unexpected_failopen_in_b1_stops) ... ok
+validate	Static source checks	2026-10-08T16:24:32.9027296Z test_5xx_stops_remaining_requests (test_regression_rg.RegressionToolTests.test_5xx_stops_remaining_requests) ... ok
+validate	Static source checks	2026-10-08T16:24:33.4282962Z test_crosscheck_matches_and_detects_mismatch (test_regression_rg.RegressionToolTests.test_crosscheck_matches_and_detects_mismatch) ... ok
+validate	Static source checks	2026-10-08T16:24:33.9545098Z test_missed_rule_is_fail (test_regression_rg.RegressionToolTests.test_missed_rule_is_fail) ... ok
+validate	Static source checks	2026-10-08T16:24:34.4565380Z test_non_empty_out_dir_is_refused (test_regression_rg.RegressionToolTests.test_non_empty_out_dir_is_refused) ... ok
+validate	Static source checks	2026-10-08T16:24:34.9825417Z test_normal_run_all_pass_and_criteria_first (test_regression_rg.RegressionToolTests.test_normal_run_all_pass_and_criteria_first) ... ok
+validate	Static source checks	2026-10-08T16:24:35.4849540Z test_not_ready_blocks_all_writes (test_regression_rg.RegressionToolTests.test_not_ready_blocks_all_writes) ... ok
+validate	Static source checks	2026-10-08T16:24:36.0106149Z test_rejudge_gives_same_result (test_regression_rg.RegressionToolTests.test_rejudge_gives_same_result) ... ok
+validate	Static source checks	2026-10-08T16:24:36.0111024Z 
+validate	Static source checks	2026-10-08T16:24:36.0111488Z APKO_LOCK_DRIFT_AGE=WITHIN_LIMIT lock_committed=2026-10-08T04:00:00Z age_hours=0 limit_days=3
+validate	Static source checks	2026-10-08T16:24:36.0112817Z ----------------------------------------------------------------------
+validate	Static source checks	2026-10-08T16:24:36.0114265Z Ran 115 tests in 32.327s
+validate	Static source checks	2026-10-08T16:24:36.0115081Z 
+validate	Static source checks	2026-10-08T16:24:36.0115404Z OK (skipped=3)
+validate	Static source checks	2026-10-08T16:24:36.0141207Z APKO_LOCK_DRIFT_AGE=WITHIN_LIMIT lock_committed=2026-10-07T04:00:00Z age_hours=0 limit_days=3
+validate	Static source checks	2026-10-08T16:24:36.0146363Z APKO_LOCK_DRIFT_AGE=WITHIN_LIMIT lock_committed=2026-10-03T04:00:00Z age_hours=72 limit_days=3
+validate	Static source checks	2026-10-08T16:24:36.0148680Z APKO_LOCK_CONFIG_BINDING=PASS ci/apko/wolfi-python313-builder.apko.yaml sha256-A+EGz8YypPEPwPz1swDTi4+66eHPAYiQfV614k9haJg= packages=1
+validate	Application tests in pinned Python 3.13 builder	﻿2026-10-08T16:24:36.0394946Z ##[group]Run set -euo pipefail
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0395350Z ^[[36;1mset -euo pipefail^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0395697Z ^[[36;1mdocker pull --platform linux/amd64 "$PY313_BUILDER"^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0396110Z ^[[36;1mdocker run --rm --platform linux/amd64 \^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0396479Z ^[[36;1m  -e PYTHONDONTWRITEBYTECODE=1 \^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0396820Z ^[[36;1m  -e PIP_CONFIG_FILE=/dev/null \^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0397136Z ^[[36;1m  -v "$PWD:/src" -w /src \^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0397440Z ^[[36;1m  "$PY313_BUILDER" sh -euxc '^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0397794Z ^[[36;1m    for service in transaction-api fds-engine; do^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0398167Z ^[[36;1m      venv="/tmp/$service-venv"^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0398514Z ^[[36;1m      wheelhouse="/tmp/$service-wheels"^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0398856Z ^[[36;1m      python -m venv "$venv"^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0399170Z ^[[36;1m      mkdir "$wheelhouse"^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0400691Z ^[[36;1m      "$venv/bin/python" -I -m pip --isolated --disable-pip-version-check --no-cache-dir download --index-url https://pypi.org/simple --only-binary=:all: --require-hashes -r "$service/requirements-test.lock" --dest "$wheelhouse"^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0402450Z ^[[36;1m      "$venv/bin/python" -I -m pip --isolated --disable-pip-version-check --no-cache-dir install --no-index --find-links="$wheelhouse" --only-binary=:all: --require-hashes -r "$service/requirements-test.lock"^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0403555Z ^[[36;1m      "$venv/bin/python" -I -m pip --isolated --disable-pip-version-check check^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0404125Z ^[[36;1m      (cd "$service" && "$venv/bin/python" -m pytest -q -p no:cacheprovider)^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0404526Z ^[[36;1m    done^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0404743Z ^[[36;1m  '^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0404961Z ^[[36;1mgit diff --exit-code^[[0m
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0480167Z shell: /usr/bin/bash -e {0}
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0480477Z env:
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0480996Z   PY313_BUILDER: docker.io/library/python@sha256:7c61056e61ac89e852de05f3dc6fa51a6dd2181797bceed46aa725dd7cb2cd3b
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.0481589Z ##[endgroup]
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.3439095Z docker.io/library/python@sha256:7c61056e61ac89e852de05f3dc6fa51a6dd2181797bceed46aa725dd7cb2cd3b: Pulling from library/python
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.4191355Z 6b37362b3da7: Pulling fs layer
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.4192127Z 3d9fb7471420: Pulling fs layer
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.4192642Z 264ba3d8ae19: Pulling fs layer
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.4193051Z 4a43a40b039e: Pulling fs layer
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.4197529Z 4a43a40b039e: Waiting
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.4784505Z 3d9fb7471420: Verifying Checksum
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.4785367Z 3d9fb7471420: Download complete
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.5395005Z 4a43a40b039e: Verifying Checksum
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.5395927Z 4a43a40b039e: Download complete
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.5443603Z 264ba3d8ae19: Verifying Checksum
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.5447141Z 264ba3d8ae19: Download complete
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.6367449Z 6b37362b3da7: Verifying Checksum
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:36.6371335Z 6b37362b3da7: Download complete
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:38.0276879Z 6b37362b3da7: Pull complete
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:38.4683452Z 3d9fb7471420: Pull complete
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:39.3451728Z 264ba3d8ae19: Pull complete
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:39.3695453Z 4a43a40b039e: Pull complete
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:39.3755110Z Digest: sha256:7c61056e61ac89e852de05f3dc6fa51a6dd2181797bceed46aa725dd7cb2cd3b
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:39.3770840Z Status: Downloaded newer image for python@sha256:7c61056e61ac89e852de05f3dc6fa51a6dd2181797bceed46aa725dd7cb2cd3b
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:39.3793000Z docker.io/library/python@sha256:7c61056e61ac89e852de05f3dc6fa51a6dd2181797bceed46aa725dd7cb2cd3b
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:39.6731297Z + venv=/tmp/transaction-api-venv
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:39.6734249Z + wheelhouse=/tmp/transaction-api-wheels
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:39.6736652Z + python -m venv /tmp/transaction-api-venv
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:43.1201903Z + mkdir /tmp/transaction-api-wheels
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:43.1221358Z + /tmp/transaction-api-venv/bin/python -I -m pip --isolated --disable-pip-version-check --no-cache-dir download --index-url https://pypi.org/simple --only-binary=:all: --require-hashes -r transaction-api/requirements-test.lock --dest /tmp/transaction-api-wheels
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.4030522Z Collecting annotated-doc==0.0.2 (from -r transaction-api/requirements-test.lock (line 1))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.4894241Z   Downloading annotated_doc-0.0.2-py3-none-any.whl (4.1 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.5226590Z Collecting annotated-types==0.8.0 (from -r transaction-api/requirements-test.lock (line 2))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.5293670Z   Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.5591102Z Collecting anyio==4.15.1 (from -r transaction-api/requirements-test.lock (line 3))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.5673484Z   Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.6610570Z Collecting asyncpg==0.30.0 (from -r transaction-api/requirements-test.lock (line 4))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.6668950Z   Downloading asyncpg-0.30.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.6 MB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.7017446Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 149.9 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.7380525Z Collecting certifi==2026.7.22 (from -r transaction-api/requirements-test.lock (line 5))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.7435508Z   Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.7674467Z Collecting click==8.5.0 (from -r transaction-api/requirements-test.lock (line 6))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.7726745Z   Downloading click-8.5.0-py3-none-any.whl (125 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.8327201Z Collecting fastapi==0.141.1 (from -r transaction-api/requirements-test.lock (line 7))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:44.8384950Z   Downloading fastapi-0.141.1-py3-none-any.whl (131 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.1508637Z Collecting greenlet==3.5.6 (from -r transaction-api/requirements-test.lock (line 8))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.1568797Z   Downloading greenlet-3.5.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (623 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.1644887Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 623.8/623.8 kB 455.7 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.1772697Z Collecting h11==0.16.0 (from -r transaction-api/requirements-test.lock (line 9))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.1849742Z   Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.2085759Z Collecting httpcore==1.0.9 (from -r transaction-api/requirements-test.lock (line 10))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.2169852Z   Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.2624413Z Collecting httptools==0.8.0 (from -r transaction-api/requirements-test.lock (line 11))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.2681792Z   Downloading httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (486 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.3763377Z Collecting httpx==0.27.2 (from -r transaction-api/requirements-test.lock (line 12))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.3835841Z   Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4028579Z Collecting idna==3.19 (from -r transaction-api/requirements-test.lock (line 13))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4081181Z   Downloading idna-3.19-py3-none-any.whl (68 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4225510Z Collecting iniconfig==2.3.0 (from -r transaction-api/requirements-test.lock (line 14))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4272988Z   Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4454129Z Collecting packaging==26.3 (from -r transaction-api/requirements-test.lock (line 15))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4514978Z   Downloading packaging-26.3-py3-none-any.whl (129 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4638635Z Collecting pluggy==1.6.0 (from -r transaction-api/requirements-test.lock (line 16))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4710917Z   Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4855180Z Collecting prometheus-client==0.20.0 (from -r transaction-api/requirements-test.lock (line 17))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.4899332Z   Downloading prometheus_client-0.20.0-py3-none-any.whl (54 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.6394273Z Collecting pydantic==2.9.2 (from -r transaction-api/requirements-test.lock (line 18))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:45.6448752Z   Downloading pydantic-2.9.2-py3-none-any.whl (434 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.7363502Z Collecting pydantic-core==2.23.4 (from -r transaction-api/requirements-test.lock (line 19))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.7486283Z   Downloading pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.7757052Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 90.3 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.8187363Z Collecting pytest==8.3.3 (from -r transaction-api/requirements-test.lock (line 20))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.8257490Z   Downloading pytest-8.3.3-py3-none-any.whl (342 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.8509480Z Collecting python-dotenv==1.2.3 (from -r transaction-api/requirements-test.lock (line 21))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.8561848Z   Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.9295737Z Collecting pyyaml==6.0.3 (from -r transaction-api/requirements-test.lock (line 22))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.9363917Z   Downloading pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.9407937Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.6/801.6 kB 515.5 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.9570347Z Collecting sniffio==1.3.1 (from -r transaction-api/requirements-test.lock (line 23))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:46.9627460Z   Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.4538063Z Collecting sqlalchemy==2.0.35 (from sqlalchemy[asyncio]==2.0.35->-r transaction-api/requirements-test.lock (line 24))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.4626722Z   Downloading SQLAlchemy-2.0.35-py3-none-any.whl (1.9 MB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.4803834Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 175.9 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.5283694Z Collecting starlette==1.7.0 (from -r transaction-api/requirements-test.lock (line 25))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.5333332Z   Downloading starlette-1.7.0-py3-none-any.whl (78 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.5579362Z Collecting typing-extensions==4.16.0 (from -r transaction-api/requirements-test.lock (line 26))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.5610162Z   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.5736650Z Collecting typing-inspection==0.4.2 (from -r transaction-api/requirements-test.lock (line 27))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.5812183Z   Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.6087306Z Collecting uvicorn==0.30.6 (from uvicorn[standard]==0.30.6->-r transaction-api/requirements-test.lock (line 28))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.6131425Z   Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.7095480Z Collecting uvloop==0.22.1 (from -r transaction-api/requirements-test.lock (line 29))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.7156945Z   Downloading uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.7393555Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 221.9 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.8648046Z Collecting watchfiles==1.2.0 (from -r transaction-api/requirements-test.lock (line 30))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:47.8740485Z   Downloading watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (454 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.0625065Z Collecting websockets==17.1 (from -r transaction-api/requirements-test.lock (line 31))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.0675519Z   Downloading websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (224 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1204988Z Saved /tmp/transaction-api-wheels/annotated_doc-0.0.2-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1211884Z Saved /tmp/transaction-api-wheels/annotated_types-0.8.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1218212Z Saved /tmp/transaction-api-wheels/anyio-4.15.1-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1240595Z Saved /tmp/transaction-api-wheels/asyncpg-0.30.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1249530Z Saved /tmp/transaction-api-wheels/certifi-2026.7.22-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1257156Z Saved /tmp/transaction-api-wheels/click-8.5.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1353531Z Saved /tmp/transaction-api-wheels/fastapi-0.141.1-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1360615Z Saved /tmp/transaction-api-wheels/greenlet-3.5.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1367842Z Saved /tmp/transaction-api-wheels/h11-0.16.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1375234Z Saved /tmp/transaction-api-wheels/httpcore-1.0.9-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1423275Z Saved /tmp/transaction-api-wheels/httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1424865Z Saved /tmp/transaction-api-wheels/httpx-0.27.2-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1426191Z Saved /tmp/transaction-api-wheels/idna-3.19-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1427718Z Saved /tmp/transaction-api-wheels/iniconfig-2.3.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1428915Z Saved /tmp/transaction-api-wheels/packaging-26.3-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1430356Z Saved /tmp/transaction-api-wheels/pluggy-1.6.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1436802Z Saved /tmp/transaction-api-wheels/prometheus_client-0.20.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1445353Z Saved /tmp/transaction-api-wheels/pydantic-2.9.2-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1460102Z Saved /tmp/transaction-api-wheels/pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1502371Z Saved /tmp/transaction-api-wheels/pytest-8.3.3-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1503793Z Saved /tmp/transaction-api-wheels/python_dotenv-1.2.3-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1505457Z Saved /tmp/transaction-api-wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1513996Z Saved /tmp/transaction-api-wheels/sniffio-1.3.1-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1522191Z Saved /tmp/transaction-api-wheels/SQLAlchemy-2.0.35-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1529247Z Saved /tmp/transaction-api-wheels/starlette-1.7.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1547592Z Saved /tmp/transaction-api-wheels/typing_extensions-4.16.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1554272Z Saved /tmp/transaction-api-wheels/typing_inspection-0.4.2-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1560664Z Saved /tmp/transaction-api-wheels/uvicorn-0.30.6-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1594850Z Saved /tmp/transaction-api-wheels/uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1603380Z Saved /tmp/transaction-api-wheels/watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1610921Z Saved /tmp/transaction-api-wheels/websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.1634297Z Successfully downloaded annotated-doc annotated-types anyio asyncpg certifi click fastapi greenlet h11 httpcore httptools httpx idna iniconfig packaging pluggy prometheus-client pydantic pydantic-core pytest python-dotenv pyyaml sniffio sqlalchemy starlette typing-extensions typing-inspection uvicorn uvloop watchfiles websockets
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.3476176Z + /tmp/transaction-api-venv/bin/python -I -m pip --isolated --disable-pip-version-check --no-cache-dir install --no-index --find-links=/tmp/transaction-api-wheels --only-binary=:all: --require-hashes -r transaction-api/requirements-test.lock
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.7728108Z Looking in links: /tmp/transaction-api-wheels
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.7854077Z Processing /tmp/transaction-api-wheels/annotated_doc-0.0.2-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 1))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.7912939Z Processing /tmp/transaction-api-wheels/annotated_types-0.8.0-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 2))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.7954515Z Processing /tmp/transaction-api-wheels/anyio-4.15.1-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 3))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8005235Z Processing /tmp/transaction-api-wheels/asyncpg-0.30.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r transaction-api/requirements-test.lock (line 4))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8164653Z Processing /tmp/transaction-api-wheels/certifi-2026.7.22-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 5))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8206313Z Processing /tmp/transaction-api-wheels/click-8.5.0-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 6))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8242427Z Processing /tmp/transaction-api-wheels/fastapi-0.141.1-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 7))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8347273Z Processing /tmp/transaction-api-wheels/greenlet-3.5.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (from -r transaction-api/requirements-test.lock (line 8))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8412606Z Processing /tmp/transaction-api-wheels/h11-0.16.0-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 9))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8451024Z Processing /tmp/transaction-api-wheels/httpcore-1.0.9-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 10))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8508014Z Processing /tmp/transaction-api-wheels/httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r transaction-api/requirements-test.lock (line 11))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8554953Z Processing /tmp/transaction-api-wheels/httpx-0.27.2-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 12))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8605417Z Processing /tmp/transaction-api-wheels/idna-3.19-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 13))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8651933Z Processing /tmp/transaction-api-wheels/iniconfig-2.3.0-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 14))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8713678Z Processing /tmp/transaction-api-wheels/packaging-26.3-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 15))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8741859Z Processing /tmp/transaction-api-wheels/pluggy-1.6.0-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 16))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8784197Z Processing /tmp/transaction-api-wheels/prometheus_client-0.20.0-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 17))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8822989Z Processing /tmp/transaction-api-wheels/pydantic-2.9.2-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 18))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.8962097Z Processing /tmp/transaction-api-wheels/pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r transaction-api/requirements-test.lock (line 19))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9085397Z Processing /tmp/transaction-api-wheels/pytest-8.3.3-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 20))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9134471Z Processing /tmp/transaction-api-wheels/python_dotenv-1.2.3-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 21))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9193266Z Processing /tmp/transaction-api-wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r transaction-api/requirements-test.lock (line 22))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9246904Z Processing /tmp/transaction-api-wheels/sniffio-1.3.1-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 23))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9283410Z Processing /tmp/transaction-api-wheels/SQLAlchemy-2.0.35-py3-none-any.whl (from sqlalchemy[asyncio]==2.0.35->-r transaction-api/requirements-test.lock (line 24))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9460658Z Processing /tmp/transaction-api-wheels/starlette-1.7.0-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 25))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9511854Z Processing /tmp/transaction-api-wheels/typing_extensions-4.16.0-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 26))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9548857Z Processing /tmp/transaction-api-wheels/typing_inspection-0.4.2-py3-none-any.whl (from -r transaction-api/requirements-test.lock (line 27))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9581663Z Processing /tmp/transaction-api-wheels/uvicorn-0.30.6-py3-none-any.whl (from uvicorn[standard]==0.30.6->-r transaction-api/requirements-test.lock (line 28))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9636269Z Processing /tmp/transaction-api-wheels/uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r transaction-api/requirements-test.lock (line 29))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9803067Z Processing /tmp/transaction-api-wheels/watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r transaction-api/requirements-test.lock (line 30))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:48.9852322Z Processing /tmp/transaction-api-wheels/websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r transaction-api/requirements-test.lock (line 31))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:49.1945880Z Installing collected packages: websockets, uvloop, typing-extensions, sniffio, pyyaml, python-dotenv, prometheus-client, pluggy, packaging, iniconfig, idna, httptools, h11, greenlet, click, certifi, asyncpg, annotated-types, annotated-doc, uvicorn, typing-inspection, sqlalchemy, pytest, pydantic-core, httpcore, anyio, watchfiles, starlette, pydantic, httpx, fastapi
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:53.6249538Z 
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:53.6295314Z Successfully installed annotated-doc-0.0.2 annotated-types-0.8.0 anyio-4.15.1 asyncpg-0.30.0 certifi-2026.7.22 click-8.5.0 fastapi-0.141.1 greenlet-3.5.6 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.27.2 idna-3.19 iniconfig-2.3.0 packaging-26.3 pluggy-1.6.0 prometheus-client-0.20.0 pydantic-2.9.2 pydantic-core-2.23.4 pytest-8.3.3 python-dotenv-1.2.3 pyyaml-6.0.3 sniffio-1.3.1 sqlalchemy-2.0.35 starlette-1.7.0 typing-extensions-4.16.0 typing-inspection-0.4.2 uvicorn-0.30.6 uvloop-0.22.1 watchfiles-1.2.0 websockets-17.1
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:53.7023089Z + /tmp/transaction-api-venv/bin/python -I -m pip --isolated --disable-pip-version-check check
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:53.9463295Z No broken requirements found.
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:53.9816846Z + cd transaction-api
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:53.9817630Z + /tmp/transaction-api-venv/bin/python -m pytest -q -p no:cacheprovider
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.5303171Z ....................                                                     [100%]
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.5303954Z =============================== warnings summary ===============================
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.5304715Z ../../tmp/transaction-api-venv/lib/python3.13/site-packages/fastapi/testclient.py:1
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.5306212Z   /tmp/transaction-api-venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.5307678Z     from starlette.testclient import TestClient as TestClient  # noqa
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.5308107Z 
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.5308461Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.5309072Z 20 passed, 1 warning in 1.06s
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.6863035Z + venv=/tmp/fds-engine-venv
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.6863417Z + wheelhouse=/tmp/fds-engine-wheels
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:55.6863772Z + python -m venv /tmp/fds-engine-venv
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:57.9934419Z + mkdir /tmp/fds-engine-wheels
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:57.9951944Z + /tmp/fds-engine-venv/bin/python -I -m pip --isolated --disable-pip-version-check --no-cache-dir download --index-url https://pypi.org/simple --only-binary=:all: --require-hashes -r fds-engine/requirements-test.lock --dest /tmp/fds-engine-wheels
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.3556112Z Collecting annotated-doc==0.0.2 (from -r fds-engine/requirements-test.lock (line 1))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.3921364Z   Downloading annotated_doc-0.0.2-py3-none-any.whl (4.1 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.4004063Z Collecting annotated-types==0.8.0 (from -r fds-engine/requirements-test.lock (line 2))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.4048146Z   Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.4183339Z Collecting anyio==4.15.1 (from -r fds-engine/requirements-test.lock (line 3))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.4229053Z   Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.4455824Z Collecting certifi==2026.7.22 (from -r fds-engine/requirements-test.lock (line 4))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.4500316Z   Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.4638204Z Collecting click==8.5.0 (from -r fds-engine/requirements-test.lock (line 5))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.4964129Z   Downloading click-8.5.0-py3-none-any.whl (125 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.5307602Z Collecting fastapi==0.141.1 (from -r fds-engine/requirements-test.lock (line 6))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.5362325Z   Downloading fastapi-0.141.1-py3-none-any.whl (131 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.5492937Z Collecting h11==0.16.0 (from -r fds-engine/requirements-test.lock (line 7))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.5545424Z   Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.5667312Z Collecting httpcore==1.0.9 (from -r fds-engine/requirements-test.lock (line 8))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.5711603Z   Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6002727Z Collecting httptools==0.8.0 (from -r fds-engine/requirements-test.lock (line 9))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6061655Z   Downloading httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (486 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6252008Z Collecting httpx==0.27.2 (from -r fds-engine/requirements-test.lock (line 10))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6321362Z   Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6412146Z Collecting idna==3.19 (from -r fds-engine/requirements-test.lock (line 11))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6454930Z   Downloading idna-3.19-py3-none-any.whl (68 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6564351Z Collecting iniconfig==2.3.0 (from -r fds-engine/requirements-test.lock (line 12))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6604815Z   Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6717058Z Collecting packaging==26.3 (from -r fds-engine/requirements-test.lock (line 13))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6781911Z   Downloading packaging-26.3-py3-none-any.whl (129 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6871957Z Collecting pluggy==1.6.0 (from -r fds-engine/requirements-test.lock (line 14))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.6919556Z   Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.7029386Z Collecting prometheus-client==0.20.0 (from -r fds-engine/requirements-test.lock (line 15))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.7095139Z   Downloading prometheus_client-0.20.0-py3-none-any.whl (54 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.8023475Z Collecting pydantic==2.9.2 (from -r fds-engine/requirements-test.lock (line 16))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:58.8106678Z   Downloading pydantic-2.9.2-py3-none-any.whl (434 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.4611733Z Collecting pydantic-core==2.23.4 (from -r fds-engine/requirements-test.lock (line 17))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.5000203Z   Downloading pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.5531865Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 37.4 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.5742520Z Collecting pytest==8.3.3 (from -r fds-engine/requirements-test.lock (line 18))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.5807875Z   Downloading pytest-8.3.3-py3-none-any.whl (342 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.5943156Z Collecting python-dotenv==1.2.3 (from -r fds-engine/requirements-test.lock (line 19))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.5993920Z   Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6319651Z Collecting pyyaml==6.0.3 (from -r fds-engine/requirements-test.lock (line 20))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6361846Z   Downloading pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6442589Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.6/801.6 kB 159.9 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6494986Z Collecting sniffio==1.3.1 (from -r fds-engine/requirements-test.lock (line 21))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6530815Z   Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6695811Z Collecting starlette==1.7.0 (from -r fds-engine/requirements-test.lock (line 22))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6738707Z   Downloading starlette-1.7.0-py3-none-any.whl (78 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6857505Z Collecting typing-extensions==4.16.0 (from -r fds-engine/requirements-test.lock (line 23))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6898075Z   Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.6966025Z Collecting typing-inspection==0.4.2 (from -r fds-engine/requirements-test.lock (line 24))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.7001340Z   Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.7164497Z Collecting uvicorn==0.30.6 (from uvicorn[standard]==0.30.6->-r fds-engine/requirements-test.lock (line 25))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.7202269Z   Downloading uvicorn-0.30.6-py3-none-any.whl (62 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.7552839Z Collecting uvloop==0.22.1 (from -r fds-engine/requirements-test.lock (line 26))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.7596755Z   Downloading uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.7787829Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 257.3 MB/s  0:00:00
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.8524564Z Collecting watchfiles==1.2.0 (from -r fds-engine/requirements-test.lock (line 27))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.8569397Z   Downloading watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (454 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.9608448Z Collecting websockets==17.1 (from -r fds-engine/requirements-test.lock (line 28))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.9648376Z   Downloading websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (224 kB)
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.9993842Z Saved /tmp/fds-engine-wheels/annotated_doc-0.0.2-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:24:59.9998521Z Saved /tmp/fds-engine-wheels/annotated_types-0.8.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0005266Z Saved /tmp/fds-engine-wheels/anyio-4.15.1-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0013477Z Saved /tmp/fds-engine-wheels/certifi-2026.7.22-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0019799Z Saved /tmp/fds-engine-wheels/click-8.5.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0026491Z Saved /tmp/fds-engine-wheels/fastapi-0.141.1-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0033141Z Saved /tmp/fds-engine-wheels/h11-0.16.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0039333Z Saved /tmp/fds-engine-wheels/httpcore-1.0.9-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0048516Z Saved /tmp/fds-engine-wheels/httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0054446Z Saved /tmp/fds-engine-wheels/httpx-0.27.2-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0060150Z Saved /tmp/fds-engine-wheels/idna-3.19-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0066004Z Saved /tmp/fds-engine-wheels/iniconfig-2.3.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0073670Z Saved /tmp/fds-engine-wheels/packaging-26.3-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0080001Z Saved /tmp/fds-engine-wheels/pluggy-1.6.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0086811Z Saved /tmp/fds-engine-wheels/prometheus_client-0.20.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0095498Z Saved /tmp/fds-engine-wheels/pydantic-2.9.2-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0109774Z Saved /tmp/fds-engine-wheels/pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0116584Z Saved /tmp/fds-engine-wheels/pytest-8.3.3-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0123201Z Saved /tmp/fds-engine-wheels/python_dotenv-1.2.3-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0133310Z Saved /tmp/fds-engine-wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0138969Z Saved /tmp/fds-engine-wheels/sniffio-1.3.1-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0145315Z Saved /tmp/fds-engine-wheels/starlette-1.7.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0152250Z Saved /tmp/fds-engine-wheels/typing_extensions-4.16.0-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0157723Z Saved /tmp/fds-engine-wheels/typing_inspection-0.4.2-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0164429Z Saved /tmp/fds-engine-wheels/uvicorn-0.30.6-py3-none-any.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0187080Z Saved /tmp/fds-engine-wheels/uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0195583Z Saved /tmp/fds-engine-wheels/watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0202047Z Saved /tmp/fds-engine-wheels/websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.0206901Z Successfully downloaded annotated-doc annotated-types anyio certifi click fastapi h11 httpcore httptools httpx idna iniconfig packaging pluggy prometheus-client pydantic pydantic-core pytest python-dotenv pyyaml sniffio starlette typing-extensions typing-inspection uvicorn uvloop watchfiles websockets
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.1277293Z + /tmp/fds-engine-venv/bin/python -I -m pip --isolated --disable-pip-version-check --no-cache-dir install --no-index --find-links=/tmp/fds-engine-wheels --only-binary=:all: --require-hashes -r fds-engine/requirements-test.lock
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4338676Z Looking in links: /tmp/fds-engine-wheels
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4452081Z Processing /tmp/fds-engine-wheels/annotated_doc-0.0.2-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 1))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4496503Z Processing /tmp/fds-engine-wheels/annotated_types-0.8.0-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 2))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4528561Z Processing /tmp/fds-engine-wheels/anyio-4.15.1-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 3))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4566913Z Processing /tmp/fds-engine-wheels/certifi-2026.7.22-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 4))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4595278Z Processing /tmp/fds-engine-wheels/click-8.5.0-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 5))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4622644Z Processing /tmp/fds-engine-wheels/fastapi-0.141.1-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 6))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4685623Z Processing /tmp/fds-engine-wheels/h11-0.16.0-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 7))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4716159Z Processing /tmp/fds-engine-wheels/httpcore-1.0.9-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 8))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4757462Z Processing /tmp/fds-engine-wheels/httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r fds-engine/requirements-test.lock (line 9))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4794849Z Processing /tmp/fds-engine-wheels/httpx-0.27.2-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 10))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4831012Z Processing /tmp/fds-engine-wheels/idna-3.19-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 11))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4871016Z Processing /tmp/fds-engine-wheels/iniconfig-2.3.0-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 12))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4896895Z Processing /tmp/fds-engine-wheels/packaging-26.3-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 13))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4928165Z Processing /tmp/fds-engine-wheels/pluggy-1.6.0-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 14))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4958243Z Processing /tmp/fds-engine-wheels/prometheus_client-0.20.0-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 15))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.4986592Z Processing /tmp/fds-engine-wheels/pydantic-2.9.2-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 16))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5078557Z Processing /tmp/fds-engine-wheels/pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r fds-engine/requirements-test.lock (line 17))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5158759Z Processing /tmp/fds-engine-wheels/pytest-8.3.3-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 18))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5203890Z Processing /tmp/fds-engine-wheels/python_dotenv-1.2.3-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 19))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5246827Z Processing /tmp/fds-engine-wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r fds-engine/requirements-test.lock (line 20))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5286901Z Processing /tmp/fds-engine-wheels/sniffio-1.3.1-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 21))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5315162Z Processing /tmp/fds-engine-wheels/starlette-1.7.0-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 22))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5353026Z Processing /tmp/fds-engine-wheels/typing_extensions-4.16.0-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 23))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5378708Z Processing /tmp/fds-engine-wheels/typing_inspection-0.4.2-py3-none-any.whl (from -r fds-engine/requirements-test.lock (line 24))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5404815Z Processing /tmp/fds-engine-wheels/uvicorn-0.30.6-py3-none-any.whl (from uvicorn[standard]==0.30.6->-r fds-engine/requirements-test.lock (line 25))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5442355Z Processing /tmp/fds-engine-wheels/uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r fds-engine/requirements-test.lock (line 26))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5567247Z Processing /tmp/fds-engine-wheels/watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r fds-engine/requirements-test.lock (line 27))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.5603712Z Processing /tmp/fds-engine-wheels/websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r fds-engine/requirements-test.lock (line 28))
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:00.6593128Z Installing collected packages: websockets, uvloop, typing-extensions, sniffio, pyyaml, python-dotenv, prometheus-client, pluggy, packaging, iniconfig, idna, httptools, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic-core, httpcore, anyio, watchfiles, starlette, pydantic, httpx, fastapi
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:02.3107300Z 
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:02.3153650Z Successfully installed annotated-doc-0.0.2 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.7.22 click-8.5.0 fastapi-0.141.1 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.27.2 idna-3.19 iniconfig-2.3.0 packaging-26.3 pluggy-1.6.0 prometheus-client-0.20.0 pydantic-2.9.2 pydantic-core-2.23.4 pytest-8.3.3 python-dotenv-1.2.3 pyyaml-6.0.3 sniffio-1.3.1 starlette-1.7.0 typing-extensions-4.16.0 typing-inspection-0.4.2 uvicorn-0.30.6 uvloop-0.22.1 watchfiles-1.2.0 websockets-17.1
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:02.3721991Z + /tmp/fds-engine-venv/bin/python -I -m pip --isolated --disable-pip-version-check check
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:02.6015381Z No broken requirements found.
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:02.6323269Z + cd fds-engine
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:02.6324225Z + /tmp/fds-engine-venv/bin/python -m pytest -q -p no:cacheprovider
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:03.6578120Z ...............................                                          [100%]
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:03.6579135Z =============================== warnings summary ===============================
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:03.6579960Z ../../tmp/fds-engine-venv/lib/python3.13/site-packages/fastapi/testclient.py:1
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:03.6581681Z   /tmp/fds-engine-venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:03.6583171Z     from starlette.testclient import TestClient as TestClient  # noqa
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:03.6583667Z 
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:03.6584029Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+validate	Application tests in pinned Python 3.13 builder	2026-10-08T16:25:03.6584737Z 31 passed, 1 warning in 0.55s
+validate	Post Checkout source without persisting credentials	﻿2026-10-08T16:25:04.6308022Z Post job cleanup.
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7408450Z [command]/usr/bin/git version
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7491464Z git version 2.55.0
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7601292Z Temporarily overriding HOME='/home/runner/work/_temp/23bc57f4-1f19-4bb7-b925-1025cfdde02d' before making global git config changes
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7616762Z Adding repository directory to the temporary git global config as a safe directory
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7631032Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/fds-msa/fds-msa
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7683911Z Removing SSH command configuration
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7700945Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7763636Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.7998099Z Removing HTTP extra header
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.8007158Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.8072496Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.8593567Z Removing includeIf entries pointing to credentials config files
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.8594834Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+validate	Post Checkout source without persisting credentials	2026-10-08T16:25:04.8630357Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+validate	Complete job	﻿2026-10-08T16:25:04.9197364Z Cleaning up orphan processes

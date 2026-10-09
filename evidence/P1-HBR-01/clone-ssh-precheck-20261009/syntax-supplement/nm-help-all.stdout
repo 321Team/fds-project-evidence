@@ -1,0 +1,33 @@
+Usage:
+  NetworkManager [OPTION?]
+
+NetworkManager monitors all network connections and automatically
+chooses the best connection to use.  It also allows the user to
+specify wireless access points which wireless cards in the computer
+should associate with.
+
+Help Options:
+  -h, --help                                                             Show help options
+  --help-all                                                             Show all help options
+  --help-nm                                                              Show NetworkManager options
+
+NetworkManager options
+  --config=/etc/NetworkManager/NetworkManager.conf                       Config file location
+  --config-dir=/etc/NetworkManager/conf.d                                Config directory location
+  --system-config-dir=/usr/lib/NetworkManager/conf.d                     System config directory location
+  --intern-config=/var/lib/NetworkManager/NetworkManager-intern.conf     Internal config file location
+  --state-file=/var/lib/NetworkManager/NetworkManager.state              State file location
+  --plugins=                                                             List of plugins separated by ','
+  --configure-and-quit                                                   Quit after initial configuration
+  -d, --debug                                                            Don't become a daemon, and log to stderr
+
+Application Options:
+  -V, --version                                                          Print NetworkManager version and exit
+  -n, --no-daemon                                                        Don't become a daemon
+  --log-level=INFO                                                       Log level: one of [TRACE,DEBUG,INFO,WARN,ERR,OFF,KEEP]
+  --log-domains=PLATFORM,RFKILL,WIFI                                     Log domains separated by ',': any combination of [DEFAULT,PLATFORM,RFKILL,ETHER,WIFI,BT,MB,DHCP4,DHCP6,DHCP,PPP,WIFI_SCAN,IP4,IP6,IP,AUTOIP4,DNS,VPN,SHARING,SUPPLICANT,AGENTS,SETTINGS,SUSPEND,CORE,DEVICE,OLPC,INFINIBAND,FIREWALL,ADSL,BOND,VLAN,BRIDGE,DBUS_PROPS,TEAM,CONCHECK,DCB,DISPATCH,AUDIT,SYSTEMD,VPN_PLUGIN,PROXYALL]
+  --g-fatal-warnings                                                     Make all warnings fatal
+  -p, --pid-file=/run/NetworkManager/NetworkManager.pid                  Specify the location of a PID file
+  --run-from-build-dir                                                   Run from build directory
+  --print-config                                                         Print NetworkManager configuration and exit
+

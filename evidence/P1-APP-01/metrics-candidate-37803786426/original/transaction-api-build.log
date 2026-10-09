@@ -1,0 +1,109 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.04kB 0.0s done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${BUILDER_IMAGE} results in empty or invalid base image name (line 5)
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${RUNTIME_IMAGE} results in empty or invalid base image name (line 15)
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/fds-apko-wolfi-runtime:aeb9995d626ffdc24454477038eb82d5d9e4744e-amd64
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/fds-apko-wolfi-builder:aeb9995d626ffdc24454477038eb82d5d9e4744e-amd64
+#3 DONE 0.0s
+
+#4 [context python-wheels] load .dockerignore
+#4 transferring python-wheels: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [stage-1 1/5] FROM docker.io/library/fds-apko-wolfi-runtime:aeb9995d626ffdc24454477038eb82d5d9e4744e-amd64
+#6 DONE 0.0s
+
+#7 [build 1/6] FROM docker.io/library/fds-apko-wolfi-builder:aeb9995d626ffdc24454477038eb82d5d9e4744e-amd64
+#7 DONE 0.0s
+
+#8 [stage-1 2/5] WORKDIR /app
+#8 DONE 0.0s
+
+#9 [internal] load build context
+#9 transferring context: 14.31kB 0.0s done
+#9 DONE 0.1s
+
+#10 [build 2/6] WORKDIR /app
+#10 DONE 0.0s
+
+#11 [context python-wheels] load from client
+#11 transferring python-wheels: 16.04MB 0.1s done
+#11 DONE 0.1s
+
+#12 [build 3/6] RUN python3.13 -m venv --copies /venv
+#12 DONE 2.2s
+
+#13 [build 4/6] COPY --from=python-wheels / /opt/wheels/
+#13 DONE 0.2s
+
+#14 [build 5/6] COPY requirements-runtime.lock .
+#14 DONE 0.0s
+
+#15 [build 6/6] RUN PIP_CONFIG_FILE=/dev/null /venv/bin/python -I -m pip --isolated --disable-pip-version-check --no-cache-dir install --no-index --find-links=/opt/wheels --only-binary=:all: --require-hashes -r requirements-runtime.lock     && PIP_CONFIG_FILE=/dev/null /venv/bin/python -I -m pip --isolated --disable-pip-version-check check     && PIP_CONFIG_FILE=/dev/null /venv/bin/python -I -m pip --isolated --disable-pip-version-check uninstall -y pip setuptools     && rm -rf /opt/wheels
+#15 0.266 Looking in links: /opt/wheels
+#15 0.273 Processing /opt/wheels/annotated_doc-0.0.2-py3-none-any.whl (from -r requirements-runtime.lock (line 1))
+#15 0.276 Processing /opt/wheels/annotated_types-0.8.0-py3-none-any.whl (from -r requirements-runtime.lock (line 2))
+#15 0.279 Processing /opt/wheels/anyio-4.15.1-py3-none-any.whl (from -r requirements-runtime.lock (line 3))
+#15 0.281 Processing /opt/wheels/asyncpg-0.30.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 4))
+#15 0.291 Processing /opt/wheels/certifi-2026.7.22-py3-none-any.whl (from -r requirements-runtime.lock (line 5))
+#15 0.293 Processing /opt/wheels/click-8.5.0-py3-none-any.whl (from -r requirements-runtime.lock (line 6))
+#15 0.295 Processing /opt/wheels/fastapi-0.141.1-py3-none-any.whl (from -r requirements-runtime.lock (line 7))
+#15 0.300 Processing /opt/wheels/greenlet-3.5.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 8))
+#15 0.303 Processing /opt/wheels/h11-0.16.0-py3-none-any.whl (from -r requirements-runtime.lock (line 9))
+#15 0.306 Processing /opt/wheels/httpcore-1.0.9-py3-none-any.whl (from -r requirements-runtime.lock (line 10))
+#15 0.309 Processing /opt/wheels/httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r requirements-runtime.lock (line 11))
+#15 0.312 Processing /opt/wheels/httpx-0.27.2-py3-none-any.whl (from -r requirements-runtime.lock (line 12))
+#15 0.315 Processing /opt/wheels/idna-3.19-py3-none-any.whl (from -r requirements-runtime.lock (line 13))
+#15 0.317 Processing /opt/wheels/prometheus_client-0.20.0-py3-none-any.whl (from -r requirements-runtime.lock (line 14))
+#15 0.320 Processing /opt/wheels/pydantic-2.9.2-py3-none-any.whl (from -r requirements-runtime.lock (line 15))
+#15 0.327 Processing /opt/wheels/pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 16))
+#15 0.333 Processing /opt/wheels/python_dotenv-1.2.3-py3-none-any.whl (from -r requirements-runtime.lock (line 17))
+#15 0.336 Processing /opt/wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 18))
+#15 0.339 Processing /opt/wheels/sniffio-1.3.1-py3-none-any.whl (from -r requirements-runtime.lock (line 19))
+#15 0.341 Processing /opt/wheels/SQLAlchemy-2.0.35-py3-none-any.whl (from sqlalchemy[asyncio]==2.0.35->-r requirements-runtime.lock (line 20))
+#15 0.350 Processing /opt/wheels/starlette-1.7.0-py3-none-any.whl (from -r requirements-runtime.lock (line 21))
+#15 0.352 Processing /opt/wheels/typing_extensions-4.16.0-py3-none-any.whl (from -r requirements-runtime.lock (line 22))
+#15 0.354 Processing /opt/wheels/typing_inspection-0.4.2-py3-none-any.whl (from -r requirements-runtime.lock (line 23))
+#15 0.356 Processing /opt/wheels/uvicorn-0.30.6-py3-none-any.whl (from uvicorn[standard]==0.30.6->-r requirements-runtime.lock (line 24))
+#15 0.359 Processing /opt/wheels/uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 25))
+#15 0.368 Processing /opt/wheels/watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 26))
+#15 0.371 Processing /opt/wheels/websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r requirements-runtime.lock (line 27))
+#15 0.431 Installing collected packages: websockets, uvloop, typing-extensions, sniffio, pyyaml, python-dotenv, prometheus-client, idna, httptools, h11, greenlet, click, certifi, asyncpg, annotated-types, annotated-doc, uvicorn, typing-inspection, sqlalchemy, pydantic-core, httpcore, anyio, watchfiles, starlette, pydantic, httpx, fastapi
+#15 2.382 
+#15 2.385 Successfully installed annotated-doc-0.0.2 annotated-types-0.8.0 anyio-4.15.1 asyncpg-0.30.0 certifi-2026.7.22 click-8.5.0 fastapi-0.141.1 greenlet-3.5.6 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.27.2 idna-3.19 prometheus-client-0.20.0 pydantic-2.9.2 pydantic-core-2.23.4 python-dotenv-1.2.3 pyyaml-6.0.3 sniffio-1.3.1 sqlalchemy-2.0.35 starlette-1.7.0 typing-extensions-4.16.0 typing-inspection-0.4.2 uvicorn-0.30.6 uvloop-0.22.1 watchfiles-1.2.0 websockets-17.1
+#15 2.605 No broken requirements found.
+#15 2.831 Found existing installation: pip 26.2.1
+#15 2.854 Uninstalling pip-26.2.1:
+#15 2.861   Successfully uninstalled pip-26.2.1
+#15 2.916 WARNING: Skipping setuptools as it is not installed.
+#15 DONE 3.9s
+
+#16 [stage-1 3/5] COPY --from=build /venv /venv
+#16 DONE 1.1s
+
+#17 [stage-1 4/5] COPY app ./app
+#17 DONE 0.0s
+
+#18 [stage-1 5/5] COPY run.py .
+#18 DONE 0.0s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.5s done
+#19 writing image sha256:7ab7a184fa708f29b6c349498803e9ba4e47bebcccd2adedefdf679a6fdc6794 done
+#19 naming to docker.io/fds-apko-wolfi-candidate/transaction-api:aeb9995d626ffdc24454477038eb82d5d9e4744e done
+#19 DONE 0.5s
+
+ [33m2 warnings found (use docker --debug to expand):
+[0m - InvalidDefaultArgInFrom: Default value for ARG ${BUILDER_IMAGE} results in empty or invalid base image name (line 5)
+ - InvalidDefaultArgInFrom: Default value for ARG ${RUNTIME_IMAGE} results in empty or invalid base image name (line 15)
