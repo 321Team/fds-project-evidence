@@ -1,0 +1,103 @@
+{
+  "checked_kst": "2026-10-09T01:08:16.6446299+09:00",
+  "adapter_found": true,
+  "adapter": [
+    {
+      "Name": "VMware Network Adapter VMnet2",
+      "Status": "Up",
+      "MacAddress": "00-50-56-C0-00-02"
+    }
+  ],
+  "ipv4": [
+    {
+      "IPAddress": "192.168.253.1",
+      "PrefixLength": 24
+    }
+  ],
+  "interfaces": [
+    {
+      "AddressFamily": 23,
+      "Forwarding": "Disabled",
+      "Dhcp": "Enabled"
+    },
+    {
+      "AddressFamily": 2,
+      "Forwarding": "Disabled",
+      "Dhcp": "Disabled"
+    }
+  ],
+  "routes": [
+    {
+      "AddressFamily": 2,
+      "DestinationPrefix": "255.255.255.255/32",
+      "NextHop": "0.0.0.0"
+    },
+    {
+      "AddressFamily": 2,
+      "DestinationPrefix": "224.0.0.0/4",
+      "NextHop": "0.0.0.0"
+    },
+    {
+      "AddressFamily": 2,
+      "DestinationPrefix": "192.168.253.255/32",
+      "NextHop": "0.0.0.0"
+    },
+    {
+      "AddressFamily": 2,
+      "DestinationPrefix": "192.168.253.1/32",
+      "NextHop": "0.0.0.0"
+    },
+    {
+      "AddressFamily": 2,
+      "DestinationPrefix": "192.168.253.0/24",
+      "NextHop": "0.0.0.0"
+    },
+    {
+      "AddressFamily": 23,
+      "DestinationPrefix": "ff00::/8",
+      "NextHop": "::"
+    },
+    {
+      "AddressFamily": 23,
+      "DestinationPrefix": "fe80::e153:40c9:c499:7a5c/128",
+      "NextHop": "::"
+    },
+    {
+      "AddressFamily": 23,
+      "DestinationPrefix": "fe80::/64",
+      "NextHop": "::"
+    }
+  ],
+  "dns": [
+    {
+      "AddressFamily": 2,
+      "ServerAddresses": []
+    },
+    {
+      "AddressFamily": 23,
+      "ServerAddresses": [
+        "fec0:0:0:ffff::1",
+        "fec0:0:0:ffff::2",
+        "fec0:0:0:ffff::3"
+      ]
+    }
+  ],
+  "nat": [],
+  "services": [
+    {
+      "Name": "RemoteAccess",
+      "Status": "Stopped"
+    },
+    {
+      "Name": "SharedAccess",
+      "Status": "Stopped"
+    }
+  ],
+  "router": 0,
+  "clone": [
+    "ethernet0.present = \"FALSE\"",
+    "ethernet0.startConnected = \"FALSE\"",
+    "isolation.tools.hgfs.disable = \"TRUE\"",
+    "sharedFolder.maxNum = \"0\""
+  ]
+}

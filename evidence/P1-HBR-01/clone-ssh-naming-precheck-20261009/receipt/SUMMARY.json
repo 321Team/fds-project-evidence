@@ -1,0 +1,1321 @@
+{
+  "scope": "READ_ONLY_NAMING_PREREQUISITES_NOT_PARSER_OR_HOTPLUG",
+  "started_epoch": 1791477697.189791,
+  "private": "/root/hbr-ssh-naming-_prye0m5",
+  "uuid": "389e4d56-24f0-e2ef-b68f-137a5047788a",
+  "collector_sha256": "851c181607c00521dc1ba62d942754753151ff35409b2fecc81a185ea239dcef",
+  "source_head_under_review": "918603f7187bff211cd80347a1f030babf26dc10",
+  "system_mutations": "NONE",
+  "commands": [
+    {
+      "name": "udev-version",
+      "argv": [
+        "/usr/bin/udevadm",
+        "--version"
+      ],
+      "rc": 0,
+      "stdout_sha256": "0ef4e1a6f9e2e77d081c8943f03b3df5fc6339e2690024c928a14f3e04ea7954",
+      "stdout_bytes": 4,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "udev-active",
+      "argv": [
+        "/usr/bin/systemctl",
+        "is-active",
+        "systemd-udevd.service"
+      ],
+      "rc": 0,
+      "stdout_sha256": "45df5ad5e0ecfa54d3226343e0e6857337494ba6e32f189d1174070665d8c659",
+      "stdout_bytes": 7,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "selinux",
+      "argv": [
+        "/usr/sbin/getenforce"
+      ],
+      "rc": 0,
+      "stdout_sha256": "4fefafd0dcddf54b31a0fef448083e7b77576d86a9ec97c14bfd92479c404290",
+      "stdout_bytes": 10,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "host-key-fingerprint",
+      "argv": [
+        "/usr/bin/ssh-keygen",
+        "-lf",
+        "/etc/ssh/ssh_host_ed25519_key.pub",
+        "-E",
+        "sha256"
+      ],
+      "rc": 0,
+      "stdout_sha256": "90100eac8fdd64774802a6fe6401dd988fb4c3ac68bdf184d805b413805db7b5",
+      "stdout_bytes": 79,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    }
+  ],
+  "issues": [],
+  "files": [
+    {
+      "path": "/usr/lib/systemd/network/98-default-mac-none.link",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 779,
+      "sha256": "11efa1aee1d52e74b3ca5d1db903e9e1f3ca5e07498c25ea13e40452e2430e1a",
+      "selected_lines": [
+        "[Match]",
+        "[Link]",
+        "NamePolicy=keep kernel database onboard slot path",
+        "MACAddressPolicy=none"
+      ]
+    },
+    {
+      "path": "/usr/lib/systemd/network/99-default.link",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 498,
+      "sha256": "1421352342bb7086c86ee738274f54133f37eab332680acb709760bf32f7f45f",
+      "selected_lines": [
+        "[Match]",
+        "OriginalName=*",
+        "[Link]",
+        "NamePolicy=keep kernel database onboard slot path",
+        "MACAddressPolicy=none"
+      ]
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/00-scsi-sg3_config.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 837,
+      "sha256": "88c00b2f8e3ca04dae59633edcf35daa092a4a0d11bb5af4978c7e44e8db66c6",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/01-md-raid-creating.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 321,
+      "sha256": "79f5ab1e4c7ca00916e1444d8d47e1181ff6e9bd5fc8a511bf84a16a7ca833ee",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/10-dm.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 8519,
+      "sha256": "106ec258d978828312aca9c5730a674811542e74f403d9971c07ff3195d857e5",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/11-dm-lvm.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2182,
+      "sha256": "e951ca7ae7ae8743aacc152e862605295617f02d344026f4bb9cda3eb98301ea",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/11-dm-mpath.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 7176,
+      "sha256": "a000fc91fefba503fc3d526dc6ac5feead41f0ae2493d3f216d2aa2697d322fa",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/11-dm-parts.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1443,
+      "sha256": "29f90c3aade78d0b75ec4ad9829ce67e541713dc8e7c290dac394f7bd521645d",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/13-dm-disk.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2310,
+      "sha256": "a19445a6c7d2b79858510c38b3409a5a419d40f5d3f78b009be08c8551a52fbc",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/40-elevator.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 728,
+      "sha256": "7803b00e7f50bfaaae03369bd81a460cdd35212f99b0e5fe11ad12836f8ca8ba",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/40-libgphoto2.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 6108,
+      "sha256": "aa47d2a0a29ba36dcce69d656df6343495ed4e43cf48c9cbab74cdc5a57dc36a",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/40-redhat-hotplug.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 706,
+      "sha256": "5a2444416549abb91daf6ac2fe9c24353530dec9d5646da1eee00c8d33388fe6",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/40-redhat-s390.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 934,
+      "sha256": "0d5e3bd719827705f5fda7d0a5654bb2a2d95519e67ce04759ea9b86ef8f937d",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/40-redhat.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 490,
+      "sha256": "1251fbce58b6bd0bde80ca4c5e42501fd3ebf54e08e2ca3e9dd30e57d847d92f",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/40-usb-blacklist.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 458,
+      "sha256": "d4fc5922993bb6078ea2c049eaa27b51e545e661ae006f7ea2df1d05703722e6",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/50-udev-default.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 5469,
+      "sha256": "2100999655d6c333a69871ebcccfbaac7308cceb9bb95d3fab015865daa582b1",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-autosuspend.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 704,
+      "sha256": "ef171e3921df1aa26414a383bc62a9ba82995257e0601fd3d58eb75b93f5ab78",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-block.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 721,
+      "sha256": "93ecc4fab045601b0eb16ef1d74eb82cd1d618fffb3de4bd6076b533f72b406a",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-cdrom_id.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1071,
+      "sha256": "16f44dc355a6b5ada3a0706b2f84c95b25ed6c2a09e4e201da94885c93d1a4d2",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-dmi-id.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 637,
+      "sha256": "855fba740f62290b92e9db0b0911dc3aa2704072e3be40b3141b62bd5447eb71",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-drm.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 834,
+      "sha256": "52be111d855eacb6a39947bb4d55a4d60003a13b34fce8d8a6decccf118e6ac6",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-evdev.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1093,
+      "sha256": "3f3378676ce59e4488285c5c6bccbfcae24bb3baf00b64de2a43ae614e970fbd",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-fido-id.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 491,
+      "sha256": "cca02ad85534572cdbd125bdba411417de1158b0709825114882cb8b8b7735e6",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-infiniband.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 379,
+      "sha256": "ca03e7bd22edb998ae25cb16d1c86dc517e1232e879b598d6b47b02231204375",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-input-id.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 870,
+      "sha256": "7ed83002c98b7f7d6a35a5b4b18c6457ceda9de4837cb18b3d43f430da2ed7c4",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-net.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 129,
+      "sha256": "7836ad675fb83347a9edcc60e2737baca2cdaf074996af2eaed59f45e7a1d4f2",
+      "network_name_rule_hint": true
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-persistent-alsa.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 727,
+      "sha256": "09b1687035afc5c5a5f839d637b72ed9ae901000915b8b5e93586ecfc35e0d00",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-persistent-input.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 3721,
+      "sha256": "122d4e02fc66e34bb4fec66f64f19fd1c54feb8a7b57694f13b47659cf3871bd",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-persistent-storage-mtd.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 411,
+      "sha256": "dfcf0368c920cc08825f10aa1b305b810515ac25b79f32aa56a74303ce3b20d6",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-persistent-storage-tape.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2606,
+      "sha256": "ed249cb6b7567b2e7bbfdff3dd9669b5665e6a576974741fc306f0e6f06fc22c",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-persistent-storage.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 10463,
+      "sha256": "6ea07cd61b4a221ea219baee6a0f4ca1524f2920a172485b05cbdbecac0d7b9c",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-persistent-v4l.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1090,
+      "sha256": "d5a6c72c7c3a50e251f74c15672a47f63674aa12eda64086a7daffa49c4c55f8",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-sensor.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1618,
+      "sha256": "0e8bbe52adaa173d3deba22f9c3a1c7447884ab5c625d3c3b4fdce60e52bd6d3",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-serial.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1427,
+      "sha256": "50bb6f79da19b52e82d273b8e142d49905bc69bdf765bf0545f2a20349d7d0aa",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-tpm-udev.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 230,
+      "sha256": "55b2ce1ab2eb5ea6ff0738a62c9b48251ab4da29e24bd7d534a8077bfce80363",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/60-upower-battery.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 239,
+      "sha256": "960966a91b04d13b82e8b27ec98b43c7d9069f984b23ed577e04d17bcb9d6a04",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/61-gnome-settings-daemon-rfkill.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 292,
+      "sha256": "7346db4e303a924f1435d00df7bfbe67a5d6d7fdfb2b28abb8e06b655fe114b0",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/61-mutter.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 14938,
+      "sha256": "83479435d7420649e18655f3d1f31a073333e59c758de6fa62d0e9dd11d6f7fb",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/61-scsi-sg3_id.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 8098,
+      "sha256": "8617e4d1f2a4135e8da9b196a4ac17c2b4409981d4c2ea12635075b02b616963",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/62-multipath.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 4424,
+      "sha256": "9512fd40b3684c8795889dbf86555353a75133dc6db65989f8be09094412c417",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/63-fc-wwpn-id.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 624,
+      "sha256": "fee70dea2d89f281338504181d69b06a7198afb1e03837e776598abfeb7676de",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/63-md-raid-arrays.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2598,
+      "sha256": "46cbe368e00c0880a87fbd5c31aa364c4cc6bb2d26166af156b5796c038f433a",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/63-scsi-sg3_symlink.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 4270,
+      "sha256": "f2de14e4cdfa99c4a7b4f460d8c6598a39350125db658225257228d7360d8d4a",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/64-btrfs.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 616,
+      "sha256": "a4bc67740cd0988415907b0fdb5e9cd955be2626b5095b55c7eed4aa4e99bb53",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/64-ext4.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 654,
+      "sha256": "2523030d07334e94386d85cc8b7f530b2cb2bf8a5972bbe6381a00fc4311cea6",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/64-md-raid-assembly.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2374,
+      "sha256": "394cb80e6a14fb964e0306f356bad42f2320ba7159abdb70f4d2dd41fe716b2f",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/65-integration.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1662,
+      "sha256": "3fb1c7157729b669b6942e0faf6bf3bd1a9d4fb684bc1320345cd9ada8e2487e",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/65-libwacom.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1214,
+      "sha256": "6dafaa34fb0da666a2bd0856602d2ef06287b7a4995c97b9bd82040a4d9b912b",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/65-persistent-net-nbft.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 118,
+      "sha256": "9bc01ab6b4dfaf83b8c5384d434b86c1c573f2f1ea91ad93d300799db61da5e8",
+      "network_name_rule_hint": true
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/65-sane-backends.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 4052,
+      "sha256": "96bf7ad810cfd702a27a235b763d55f21312bbd4a0b3fd7d48497cf05be03e2e",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/65-scsi-cciss_id.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 732,
+      "sha256": "de190bd2fbfecea465484a48ffa7f983745da340f5989f67674702a81e618fa0",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/66-kpartx.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1522,
+      "sha256": "47f5b50b83a9a57eec1fea8ea3ac6c75b67870fc76cb032f9e1948108518a31a",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/66-md-auto-readd.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 895,
+      "sha256": "ae02c2365cef4f7dcc3ce67a4fef5e7f7812c0759afb0734143e5af2052608eb",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/68-del-part-nodes.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1142,
+      "sha256": "1807c40eafdb15f3a36692303c6868e697669029054064ae11c473b3ae45b449",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/69-cd-sensors.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 5074,
+      "sha256": "d744c17e1e95081643152f40ced61ae35385a3be51e3981340c126781743f566",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/69-dm-lvm.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 4007,
+      "sha256": "ae1238f2f64c30ecf2d6b410cdf013ecfd52b903ee7ea98654ce802f00a3be93",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/69-libmtp.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1945,
+      "sha256": "3a4987923b21dcf691e3af478f8f4fd0f839f4e500bd36b9d7e309f808339665",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/69-md-clustered-confirm-device.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 858,
+      "sha256": "b7a0597152d10e09dc4f6b5e9deb85dde04b48ca19bf458cc8e0679aa66c7bfe",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-camera.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 280,
+      "sha256": "3e1f5427d0f051324afeb0285e3a83f266f8a12532a9320c3ef7b24fc285d6fd",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-hypervkvp.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 100,
+      "sha256": "f8cfa8acf73b8cc16b8c35bd53bc0df73e77a594499fbe22ded73d0e5c377f79",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-hypervvss.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 100,
+      "sha256": "94cead44245ef6553ab79c0bbac8419e3ff4b241f01bcec66e6f508098cbedd1",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-joystick.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 701,
+      "sha256": "c4ceb9c0bc786aca0edf48136cc001f4310cca1f7110cef391d0fdbc37acf9ed",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-libcamera.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 50,
+      "sha256": "4fa512367f7602581703e977f4ca1eaed42199faf8ae15f1a7f47986daced955",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-libfprint-2.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 633,
+      "sha256": "04f8ccb7e9ff9b83bed3a16b6a6849de357e256d10ff9801b22af0b9b64b6e8c",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-memory.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 184,
+      "sha256": "46b8696d6ad29b2e80b9dcad60ddb2e4a3deee5a5b1df09f116f1ca9d4dfb150",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-mouse.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 734,
+      "sha256": "d495d2b8523e7f8175a9b06704f168e14ab97a8a333d4a52ec9501bc0c509ecb",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-nvmf-autoconnect.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2046,
+      "sha256": "abb83f9a7117add4f48343a2c6074b504abddef328d1a4a9a571e5070fdf1bb1",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-nvmf-keys.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 267,
+      "sha256": "4ce362787728881673fec51b8ea713f5d2d8ddbe3912924bf77b617b1393f4a3",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-power-switch.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 576,
+      "sha256": "94d8ca323df93e7a40c06eee31aba4c03d0bd7a719c67675a6eb57eaf16d6452",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-printers.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 845,
+      "sha256": "a6826a1c37458913a964a4be14fa3972898831f934a45f952a1dda0db58f4750",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-spice-vdagentd.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 140,
+      "sha256": "110ecdecd5b93b3bcb47f034ea0a9f705a0deff7b5b5978babbcae529ac4c9bc",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-touchpad.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 703,
+      "sha256": "1633d6a072e471e425d81e98d9844d8cb222df6c068b69452d666b65788631e9",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/70-uaccess.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 3855,
+      "sha256": "c6e1ce1b2d842b170bfad9647512ace5cb7183aa846840c48f3cd10dc2516fc8",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/71-ipp-usb.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 629,
+      "sha256": "b1daa7ffd893c19f480a7ad08908238271cc17fa3f6a185215754ef13b277f77",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/71-nvmf-hpe.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 374,
+      "sha256": "5a7b3fd95ed876c3d8f8982533d12561e792a61bb66848da2df2bbf91591c2f0",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/71-nvmf-netapp.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 528,
+      "sha256": "9bd23b7d2a6cca62a2975f0681b91ea0ca532a295d23e2acda2cbcb8880f2a7e",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/71-nvmf-vastdata.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 336,
+      "sha256": "b74e10a52c21805cf5df5d9a0eb8129eb0b5fd5ad60841390deb7b485249a11c",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/71-prefixdevname.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 403,
+      "sha256": "536ed04f8f67feb82d950989af72be7368ce63b76faf62b6671571b5927cd189",
+      "network_name_rule_hint": true
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/71-seat.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 3870,
+      "sha256": "b57a64ab6c973d0b734dea808e6caf9a49b40739c7c7649784d09bd6d90c36d3",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/73-seat-late.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 643,
+      "sha256": "959f9e5e3b149bdf01eeedf9950bbf526bdcb949993afda3a870ec200f6e9cc3",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/75-net-description.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 512,
+      "sha256": "9ba31ab0f5a31c491c1db3b5a8dcfa5b7f83b3a109ca46f9a9d6adb9960cb9f2",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/75-probe_mtd.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 174,
+      "sha256": "54256aa2ca91172cbce3ea805ccf2cd52de8acbbc2db88d209de84655fa997c5",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-broadmobi-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 936,
+      "sha256": "af16fbd4103e8ce3df48673e9340ecf8d2bd586e210c209b4b0d7e6f18f5c515",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-cinterion-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 4401,
+      "sha256": "b4ce8545a9a08f86d8b169176fb605daef2502e1c354e8452131afbd6b6a9a47",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-dell-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1767,
+      "sha256": "289dc694d8e0e95f5df44ab305c27f33cbca11a03e833edce3b07ae7a3a65ca0",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-dlink-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 866,
+      "sha256": "a8fe55997e8e28a26258eb0ad2b062099b31cdf46e6160d5b28b74398b59de83",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-ericsson-mbm.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 8084,
+      "sha256": "4f7a1fd73c81c925f41efb92f20786e146ae7c61805a5be1570884b907d55aa3",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-fibocom-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 6559,
+      "sha256": "72c2fb4961c18f78be5dba2d728bcbcc8cbf4784f833e89ed80a78308f53d4b7",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-foxconn-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1603,
+      "sha256": "3d248fea3586dee4637fffe16334348e9ee604070e994e9b1ed81fca071a3beb",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-gosuncn-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 907,
+      "sha256": "9f0b771661e5f48e01e319a99b7de9d84cc36430b4ded14060f4fe748893c34e",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-haier-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 525,
+      "sha256": "d30f36393fccc1a52d2e1aa2a9affa15c6dd123c594aed0b4c8113e146c4fba5",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-huawei-net-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2596,
+      "sha256": "b0058c8cb49dbcf0d1e8fa453687e3512c94f58db22a8eb64720cfd704a7594b",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-linktop-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 697,
+      "sha256": "dbd91b00395638764d698005e119a0cf9ea54826ba3e413afbe5ae6ee82cf45f",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-longcheer-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 14434,
+      "sha256": "e667d292eec05b801e16603c4c9ad98ddf8c8b90d22df25abfb93019433350bc",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-mtk-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 3282,
+      "sha256": "abc30165c6a62bcda591cb7047f5df0829012784843e997f7213d0fd9fffdbe3",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-nokia-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2176,
+      "sha256": "8792314d0cb6957b66b04941a3848135e0a8f2d0fa7596e419f50d2388e3f375",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-qcom-soc.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1619,
+      "sha256": "41b2d23efa570050b77fdb84f291e97dd7ea3c2177952e7e59fa7ed571a8d317",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-quectel-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 9071,
+      "sha256": "94615940781e34e9ef09230d12a342ab2e493f22abdf90c4749e2031d14c23e0",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-sierra.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 3255,
+      "sha256": "008c272b392914ea14839709c408fcd6a8d350c4e3cf28630d5f5db0b01b2c71",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-simtech-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 3876,
+      "sha256": "2358896bbb176d4e8058224ad9d655e5ec290bb63b8cd361739ba0d755d94a75",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-telit-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 12256,
+      "sha256": "2662885016175298f4e81fba7bffcbe6c270661217030f81568c2c185bf99b92",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-tplink-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 739,
+      "sha256": "dab5fe9246c71b13c37c57060a7cee4c753666ad143a99fab8a7904b22bd1c97",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-ublox-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 5119,
+      "sha256": "c81304db1ec1d8b5e601321c15a4d986efbeb8f643c9d2d9bf61262ff778fea5",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-x22x-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 4602,
+      "sha256": "999e94b8763690f86eb5530ab11b0906a26eea1446f7487162d2e759dfe65963",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/77-mm-zte-port-types.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 17179,
+      "sha256": "a194d370066decda810670c71c9b812ef1eb3fe33b8903b2585f689f8e96dbc0",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/78-sound-card.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 4816,
+      "sha256": "ec291608292fe2de555e8a1e5ce574acf315fe65268c469872614073d5e36cae",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/80-drivers.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 600,
+      "sha256": "0941cea0be8d3564556b5787a87cf55971fd3e46e19c56ad68a4205e8ad3a560",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/80-iio-sensor-proxy.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1557,
+      "sha256": "b5f075ca8e8701aa4743e95ad3e86514119b6a84cdac35741d63ebd9572a79d6",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/80-libinput-device-groups.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 221,
+      "sha256": "1de78426f5e6dec266cfff24adcbc73fb99957d326c0abe8182fd5978f300c1f",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/80-mm-candidate.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1303,
+      "sha256": "8c8c51e0eb3480e17111d98b408234514072e02547cf315193e14d9589afd780",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/80-net-setup-link.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 295,
+      "sha256": "7056ebc8ef611d0f61b2ac01e20fa8cca035f957e58fd60600e3eec9bab927c2",
+      "network_name_rule_hint": true
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/80-udisks2.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 10563,
+      "sha256": "a43a6b6d712f70049a135fd447eaaa0ea30c3e026ff98226b12417688dd19a97",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/81-net-dhcp.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 528,
+      "sha256": "3438299d7e6254472600168b557a467a497d537353511ec07657b494d1b13fec",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/82-net-auto-link-local.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 538,
+      "sha256": "26835bb0c01dd6ae2054cb235afc44dce8f25cbb4acef21ffc03af7921c92bac",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/84-nm-drivers.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 533,
+      "sha256": "123dac1d3cc01d7eae08870b434c1afd9d76c1a15d4579427885e6ed46fcf171",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/85-nm-unmanaged.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 2013,
+      "sha256": "afce2a870bf2cefb2b52214ed959d0e0025ed2efef5c05871895f6edbedec24a",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/85-regulatory.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 166,
+      "sha256": "82f3aec0dcb441ce9057f07d1779b9f4f9947eaad662f1822d017f0fee436b42",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/90-alsa-restore.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1640,
+      "sha256": "ec560c988ce5afe89150c49cea8fa13869d53eeba2d03b692f93de4c9ede72dd",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/90-bolt.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 359,
+      "sha256": "960fb7013d86b6466f6b0243bb3dc4f92d98f726255d63c449ea2bb0011653f7",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/90-iocost.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 769,
+      "sha256": "39b1d6239c29d1a42fd4d8563ce55916958590021b947c534a630c80b7952815",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/90-libinput-fuzz-override.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 1154,
+      "sha256": "34ec4420780f1674484e8efed3a58eaf9439f5bab1d31a87b05516683f2a37c7",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/90-nm-thunderbolt.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 588,
+      "sha256": "a5d7612f4e5de1cfa7459be7c01b09835099ea70097375bdf7572458ccd0c88c",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/90-pipewire-alsa.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 13685,
+      "sha256": "49f97943f586e7a80647a69394d6c1b36c940328f8e938241c938aa7f209b57d",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/90-vconsole.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 518,
+      "sha256": "992d6b8a108229ec311ec7f4b4cdbf77a46aa588d5453e426a545bf5e7961584",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/91-drm-modeset.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 56,
+      "sha256": "f29c28ca7fd5de46ff3382015b994ba3873519170e793925b5bc4e39c45486bb",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/95-cd-devices.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 847,
+      "sha256": "31e2f25dd22641e6d76562d3fe45cc232d6856496e5f5fd2ec2863e36efa48a0",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/95-dm-notify.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 483,
+      "sha256": "d24e725fc78306ff2355eb91e4eebcc7dc9388d54dc27d20d6fe6f695054d536",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/95-upower-hid.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 207,
+      "sha256": "9e08f5b9c999665b943c14d932649e3918bb4a67f1fad766bef4cd72dddb51a1",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/95-upower-wup.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 354,
+      "sha256": "7ab7213b218cb017cc83686da6942d8a5f8ba662853b96f0841b3d278ba71c57",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/98-kexec.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 906,
+      "sha256": "e1a0aaaa7e290b3cbf3d7e7b77cd8a50078711df57fed9edbcf2e9f3e0acce9c",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/99-qemu-guest-agent.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 130,
+      "sha256": "ab34240fa8f3e8ce37ced642493184a610e187b2d9e5e15f1132975b9f076c43",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/99-systemd.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 5451,
+      "sha256": "d63ba2ea309aadf7794a5f84b0f394c2e48fe630640aa37e9963cd9d1b769d89",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/99-vmware-scsi-udev.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 459,
+      "sha256": "220375b69a403799104e22576bf89cc0ecd9d1b57075fa91cc16219248235a75",
+      "network_name_rule_hint": false
+    },
+    {
+      "path": "/usr/lib/udev/rules.d/99-z-dm-mpath-late.rules",
+      "uid": 0,
+      "mode": "0o644",
+      "status": "PRIVATE_PRESERVED",
+      "bytes": 299,
+      "sha256": "1a68de0e0998b288e447ed1d44aca52f1a0db66b26711e43fdfc98eb1997b816",
+      "network_name_rule_hint": false
+    }
+  ],
+  "install": "NOT_RUN",
+  "hotplug": "NOT_RUN",
+  "udev-version": "257",
+  "udev-active": "active",
+  "selinux": "Enforcing",
+  "install_state_exists": false,
+  "interface_name_exists": false,
+  "directories": [
+    {
+      "path": "/etc/systemd/network",
+      "exists": true,
+      "symlink": false,
+      "uid": 0,
+      "mode": "0o755"
+    },
+    {
+      "path": "/run/systemd/network",
+      "exists": true,
+      "symlink": false,
+      "uid": 0,
+      "mode": "0o755"
+    },
+    {
+      "path": "/usr/local/lib/systemd/network",
+      "exists": false,
+      "symlink": false
+    },
+    {
+      "path": "/usr/lib/systemd/network",
+      "exists": true,
+      "symlink": false,
+      "uid": 0,
+      "mode": "0o755"
+    }
+  ],
+  "host_key_matches_previous_receipt": true,
+  "host_key_fingerprint_expected": "SHA256:wcqHnqpzbcZfyZ3PhLWYFOuKDURNqQRvU75Nu5ICuvk",
+  "finished_epoch": 1791477697.2140257,
+  "verdict": "REVIEW_REQUIRED_NOT_INSTALL_GO"
+}

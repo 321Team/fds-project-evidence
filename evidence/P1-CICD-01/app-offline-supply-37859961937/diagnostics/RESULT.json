@@ -1,0 +1,57 @@
+{
+  "collector_sha256": "78ef6ca31af9ffdb304ba0aed5baec5cb66a03b3ce16f1f66ed8a80764a5f54b",
+  "errors": [],
+  "exit_code": 1,
+  "files": {
+    "builder.apko.yaml": {
+      "sha256": "c2c0d81ec4a20fb06417b66c5a1d1a1c04a068f1c0c76d37a35f2c12bab264b2",
+      "size_bytes": 358
+    },
+    "builder.generated.lock.json": {
+      "sha256": "af619e211774863d875b572fdbfd51f6c2e9ceb54feeb124c8739029afadb8c8",
+      "size_bytes": 22653
+    },
+    "builder.repo.lock.json": {
+      "sha256": "58888fd8e05517805bc66661ba2d41055093e006d7d11043e2b4f65efbc0cd55",
+      "size_bytes": 22653
+    },
+    "runtime.apko.yaml": {
+      "sha256": "dc32de753d5b78501fc4654f79f17a285a0d523aaf6f28e6cfcad9ab2cc8c070",
+      "size_bytes": 523
+    },
+    "runtime.generated.lock.json": {
+      "sha256": "6fbfe20ce0e9c60f1dc25da1c683fde7191b26c25c9b7eb39b8cc4d0232c539a",
+      "size_bytes": 19039
+    },
+    "runtime.repo.lock.json": {
+      "sha256": "bfa66e14097be03d6db42b3ebd479aa68d5db802faa2d00cdc72f7b80e3541b3",
+      "size_bytes": 19039
+    }
+  },
+  "pairs": {
+    "builder": {
+      "byte_equal": false
+    },
+    "runtime": {
+      "byte_equal": false
+    }
+  },
+  "policy": {
+    "delivery_authorization": false,
+    "harbor_push": "NOT_EXECUTED",
+    "kubernetes_deploy": "NOT_EXECUTED",
+    "lock_update": false
+  },
+  "provenance": {
+    "apko_archive_sha256": "dbd9e8f416903b2d896497c51f3217259d03ecb45c997254cedca5274e8671db",
+    "apko_version": "1.4.4",
+    "build_outcome": "success",
+    "run_attempt": "1",
+    "run_id": "37859961937",
+    "source_sha": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+    "supply_tool_sha": "8eac4c982076e3c219840a13686b15c46879981f"
+  },
+  "recorded_at_utc": "2026-10-08T23:32:25.542286+00:00",
+  "result": "DRIFT",
+  "schema_version": 1
+}

@@ -1,0 +1,12 @@
+connection.id:                          ens160
+connection.uuid:                        6b9f0643-4a4e-324d-a969-9e5393d7e0bf
+connection.type:                        802-3-ethernet
+connection.interface-name:              ens160
+connection.autoconnect:                 yes
+ipv4.method:                            manual
+ipv4.addresses:                         10.1.93.54/24
+ipv4.gateway:                           10.1.93.254
+ipv4.dns:                               8.8.8.8
+ipv4.routes:                            { ip = 10.250.10.0/24, nh = 10.1.93.58 }
+ipv4.never-default:                     no
+ipv6.method:                            auto
