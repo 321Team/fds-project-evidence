@@ -1,0 +1,21 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "ssh -i /home/server01_ansible/.ssh/p1_ansible_ed25519 -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=8 svc_ansible@10.1.93.102 'sudo -n python3 -I -B -'"
+  ],
+  "started_at_utc": "2026-10-09T10:21:46.815978+00:00",
+  "ended_at_utc": "2026-10-09T10:21:47.442323+00:00",
+  "rc": 0,
+  "collector_sha256": "6c5942e3409eb8737e2fd6d04a74f7cd45ef7a61e17df717d809b8ac866010fe",
+  "result_sha256": "22e1c6fae2d08e5512d76723f4048e7b00107be1ea8421011ce60880908ce6f4",
+  "review": "NOT_PERFORMED; read-only projections, no runtime modification",
+  "raw_api_response_retained": false,
+  "raw_api_notice": "API response was projected in memory; hash is retained, full response bytes are not claimed as received originals."
+}
