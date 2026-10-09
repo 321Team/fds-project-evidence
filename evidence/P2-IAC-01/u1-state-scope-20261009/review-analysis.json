@@ -1,0 +1,93 @@
+{
+  "kind": "DERIVED_STATIC_AND_SIMULATION_REVIEW_NOT_RUNTIME",
+  "source_head": "5fb64bdf186645b64664080bd09f9c5babb78fcd",
+  "source_match": [
+    {
+      "policy": "FDS-IaC-State-PassRole",
+      "version": "v1",
+      "source_match": true
+    },
+    {
+      "policy": "FDS-IaC-Network",
+      "version": "v1",
+      "source_match": true
+    },
+    {
+      "policy": "FDS-IaC-Vpn",
+      "version": "v1",
+      "source_match": true
+    },
+    {
+      "policy": "FDS-IaC-Guardrails",
+      "version": "v1",
+      "source_match": true
+    }
+  ],
+  "trust_source_match": true,
+  "resource_specific_simulation": [
+    {
+      "action": "s3:GetObject",
+      "resource": "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/network/terraform.tfstate",
+      "decision": "allowed",
+      "missing_context_values": []
+    },
+    {
+      "action": "s3:GetObject",
+      "resource": "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/u1-other/terraform.tfstate",
+      "decision": "implicitDeny",
+      "missing_context_values": [
+        "aws:ResourceTag/Project",
+        "aws:ResourceTag/ManagedBy",
+        "ec2:Encrypted",
+        "ec2:VolumeType",
+        "aws:RequestTag/Project",
+        "ec2:InstanceType",
+        "kms:RequestAlias",
+        "ec2:CreateAction",
+        "iam:PassedToService",
+        "ec2:VolumeSize",
+        "ec2:MetadataHttpTokens",
+        "aws:RequestTag/ManagedBy",
+        "s3:prefix",
+        "aws:TagKeys"
+      ]
+    },
+    {
+      "action": "s3:PutObject",
+      "resource": "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/network/terraform.tfstate",
+      "decision": "allowed",
+      "missing_context_values": []
+    },
+    {
+      "action": "s3:PutObject",
+      "resource": "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/u1-other/terraform.tfstate",
+      "decision": "implicitDeny",
+      "missing_context_values": [
+        "aws:ResourceTag/Project",
+        "aws:ResourceTag/ManagedBy",
+        "ec2:Encrypted",
+        "ec2:VolumeType",
+        "aws:RequestTag/Project",
+        "ec2:InstanceType",
+        "kms:RequestAlias",
+        "ec2:CreateAction",
+        "iam:PassedToService",
+        "ec2:VolumeSize",
+        "ec2:MetadataHttpTokens",
+        "aws:RequestTag/ManagedBy",
+        "s3:prefix",
+        "aws:TagKeys"
+      ]
+    }
+  ],
+  "outside_allow_statements_before_conditions": {
+    "s3:GetObject": [],
+    "s3:PutObject": []
+  },
+  "bucket_policy_deny_only": true,
+  "bucket_acl_disabled": true,
+  "resource_policy_simulation": "NOT_SUPPORTED_FOR_IAM_ROLES",
+  "raw_summary_note": "summary.json contains aggregate simulator results; use original ResourceSpecificResults and this derived table for exact resources.",
+  "noMFA": "STATIC_TRUST_CONDITION_ONLY; RUNTIME_NOT_RUN",
+  "root_logout_time": "NOT_RECORDED; first personal caller evidence 2026-10-09 17:33:46 KST does not prove exact root logout or all root sessions ended."
+}
