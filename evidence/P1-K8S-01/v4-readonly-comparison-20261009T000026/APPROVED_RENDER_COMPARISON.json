@@ -1,0 +1,1069 @@
+{
+  "source_commit": "b4303f2df512a8791d2421203cf159567d076b2a",
+  "config_sha256": "b42e7e80590ac6fb03e1934499c3f0ceeeab33557ecdf3033c3e206936c8ec43",
+  "method": "local pure policies(config,node); no validate/render CLI, no live changes",
+  "results": [
+    {
+      "node": "k8s-worker01",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-worker01",
+      "normalization": [
+        "observed spec.tier=default omitted for comparison"
+      ],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-worker01",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-worker01",
+      "normalization": [],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-worker01",
+      "kind": "FelixConfiguration",
+      "name": "node.k8s-worker01",
+      "compared_fields": [
+        "failsafeInboundHostPorts",
+        "failsafeOutboundHostPorts"
+      ],
+      "equal": true,
+      "expected": {
+        "failsafeInboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 22,
+            "net": "10.250.10.10/32"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.104/32"
+          }
+        ]
+      },
+      "observed_projection": {
+        "failsafeInboundHostPorts": [
+          {
+            "net": "10.250.10.10/32",
+            "port": 22,
+            "protocol": "tcp"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 6443,
+            "protocol": "tcp"
+          }
+        ]
+      }
+    },
+    {
+      "node": "k8s-worker02",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-worker02",
+      "normalization": [
+        "observed spec.tier=default omitted for comparison"
+      ],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-worker02",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-worker02",
+      "normalization": [],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-worker02",
+      "kind": "FelixConfiguration",
+      "name": "node.k8s-worker02",
+      "compared_fields": [
+        "failsafeInboundHostPorts",
+        "failsafeOutboundHostPorts"
+      ],
+      "equal": true,
+      "expected": {
+        "failsafeInboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 22,
+            "net": "10.250.10.10/32"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.104/32"
+          }
+        ]
+      },
+      "observed_projection": {
+        "failsafeInboundHostPorts": [
+          {
+            "net": "10.250.10.10/32",
+            "port": 22,
+            "protocol": "tcp"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 6443,
+            "protocol": "tcp"
+          }
+        ]
+      }
+    },
+    {
+      "node": "k8s-worker03",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-worker03",
+      "normalization": [
+        "observed spec.tier=default omitted for comparison"
+      ],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-worker03",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-worker03",
+      "normalization": [],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-worker03",
+      "kind": "FelixConfiguration",
+      "name": "node.k8s-worker03",
+      "compared_fields": [
+        "failsafeInboundHostPorts",
+        "failsafeOutboundHostPorts"
+      ],
+      "equal": true,
+      "expected": {
+        "failsafeInboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 22,
+            "net": "10.250.10.10/32"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.104/32"
+          }
+        ]
+      },
+      "observed_projection": {
+        "failsafeInboundHostPorts": [
+          {
+            "net": "10.250.10.10/32",
+            "port": 22,
+            "protocol": "tcp"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 6443,
+            "protocol": "tcp"
+          }
+        ]
+      }
+    },
+    {
+      "node": "k8s-control01",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-control01",
+      "normalization": [
+        "observed spec.tier=default omitted for comparison"
+      ],
+      "equal": false,
+      "equal_ignoring_nets_member_order": false,
+      "diff": "--- approved-source-reconstruction\n+++ current-live\n@@ -155,12 +155,12 @@\n       \"protocol\": \"TCP\",\n       \"source\": {\n         \"nets\": [\n-          \"10.1.93.105/32\",\n-          \"10.1.93.107/32\",\n-          \"10.1.93.108/32\",\n-          \"10.1.93.102/32\",\n-          \"10.1.93.103/32\",\n-          \"10.1.93.104/32\"\n+          \"10.1.93.102/32\",\n+          \"10.1.93.103/32\",\n+          \"10.1.93.104/32\",\n+          \"10.1.93.105/32\",\n+          \"10.1.93.107/32\",\n+          \"10.1.93.108/32\"\n         ]\n       }\n     },\n@@ -216,6 +216,42 @@\n           \"10.1.93.102/32\",\n           \"10.1.93.103/32\",\n           \"10.1.93.104/32\"\n+        ]\n+      }\n+    },\n+    {\n+      \"action\": \"Allow\",\n+      \"destination\": {\n+        \"ports\": [\n+          123\n+        ]\n+      },\n+      \"protocol\": \"UDP\",\n+      \"source\": {\n+        \"nets\": [\n+          \"10.1.93.103/32\",\n+          \"10.1.93.104/32\",\n+          \"10.1.93.105/32\",\n+          \"10.1.93.107/32\",\n+          \"10.1.93.108/32\"\n+        ]\n+      }\n+    },\n+    {\n+      \"action\": \"Allow\",\n+      \"destination\": {\n+        \"ports\": [\n+          123\n+        ]\n+      },\n+      \"protocol\": \"UDP\",\n+      \"source\": {\n+        \"nets\": [\n+          \"10.1.93.103/32\",\n+          \"10.1.93.104/32\",\n+          \"10.1.93.105/32\",\n+          \"10.1.93.107/32\",\n+          \"10.1.93.108/32\"\n         ]\n       }\n     },\n"
+    },
+    {
+      "node": "k8s-control01",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-control01",
+      "normalization": [],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-control01",
+      "kind": "FelixConfiguration",
+      "name": "node.k8s-control01",
+      "compared_fields": [
+        "failsafeInboundHostPorts",
+        "failsafeOutboundHostPorts"
+      ],
+      "equal": true,
+      "expected": {
+        "failsafeInboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 22,
+            "net": "10.250.10.10/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.105/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.107/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.108/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.104/32"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.104/32"
+          }
+        ]
+      },
+      "observed_projection": {
+        "failsafeInboundHostPorts": [
+          {
+            "net": "10.250.10.10/32",
+            "port": 22,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.105/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.107/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.108/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2380,
+            "protocol": "tcp"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2380,
+            "protocol": "tcp"
+          }
+        ]
+      }
+    },
+    {
+      "node": "k8s-control02",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-control02",
+      "normalization": [
+        "observed spec.tier=default omitted for comparison"
+      ],
+      "equal": false,
+      "equal_ignoring_nets_member_order": true,
+      "diff": "--- approved-source-reconstruction\n+++ current-live\n@@ -154,12 +154,12 @@\n       \"protocol\": \"TCP\",\n       \"source\": {\n         \"nets\": [\n-          \"10.1.93.105/32\",\n-          \"10.1.93.107/32\",\n-          \"10.1.93.108/32\",\n-          \"10.1.93.102/32\",\n-          \"10.1.93.103/32\",\n-          \"10.1.93.104/32\"\n+          \"10.1.93.102/32\",\n+          \"10.1.93.103/32\",\n+          \"10.1.93.104/32\",\n+          \"10.1.93.105/32\",\n+          \"10.1.93.107/32\",\n+          \"10.1.93.108/32\"\n         ]\n       }\n     },\n"
+    },
+    {
+      "node": "k8s-control02",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-control02",
+      "normalization": [],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-control02",
+      "kind": "FelixConfiguration",
+      "name": "node.k8s-control02",
+      "compared_fields": [
+        "failsafeInboundHostPorts",
+        "failsafeOutboundHostPorts"
+      ],
+      "equal": true,
+      "expected": {
+        "failsafeInboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 22,
+            "net": "10.250.10.10/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.105/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.107/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.108/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.104/32"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.104/32"
+          }
+        ]
+      },
+      "observed_projection": {
+        "failsafeInboundHostPorts": [
+          {
+            "net": "10.250.10.10/32",
+            "port": 22,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.105/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.107/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.108/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2380,
+            "protocol": "tcp"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2380,
+            "protocol": "tcp"
+          }
+        ]
+      }
+    },
+    {
+      "node": "k8s-control03",
+      "kind": "GlobalNetworkPolicy",
+      "name": "fds-k8s-host-k8s-control03",
+      "normalization": [
+        "observed spec.tier=default omitted for comparison"
+      ],
+      "equal": false,
+      "equal_ignoring_nets_member_order": true,
+      "diff": "--- approved-source-reconstruction\n+++ current-live\n@@ -154,12 +154,12 @@\n       \"protocol\": \"TCP\",\n       \"source\": {\n         \"nets\": [\n-          \"10.1.93.105/32\",\n-          \"10.1.93.107/32\",\n-          \"10.1.93.108/32\",\n-          \"10.1.93.102/32\",\n-          \"10.1.93.103/32\",\n-          \"10.1.93.104/32\"\n+          \"10.1.93.102/32\",\n+          \"10.1.93.103/32\",\n+          \"10.1.93.104/32\",\n+          \"10.1.93.105/32\",\n+          \"10.1.93.107/32\",\n+          \"10.1.93.108/32\"\n         ]\n       }\n     },\n"
+    },
+    {
+      "node": "k8s-control03",
+      "kind": "HostEndpoint",
+      "name": "fds-k8s-k8s-control03",
+      "normalization": [],
+      "equal": true,
+      "equal_ignoring_nets_member_order": true,
+      "diff": ""
+    },
+    {
+      "node": "k8s-control03",
+      "kind": "FelixConfiguration",
+      "name": "node.k8s-control03",
+      "compared_fields": [
+        "failsafeInboundHostPorts",
+        "failsafeOutboundHostPorts"
+      ],
+      "equal": true,
+      "expected": {
+        "failsafeInboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 22,
+            "net": "10.250.10.10/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.105/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.107/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.108/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.104/32"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.109/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 6443,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.102/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.103/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2379,
+            "net": "10.1.93.104/32"
+          },
+          {
+            "protocol": "tcp",
+            "port": 2380,
+            "net": "10.1.93.104/32"
+          }
+        ]
+      },
+      "observed_projection": {
+        "failsafeInboundHostPorts": [
+          {
+            "net": "10.250.10.10/32",
+            "port": 22,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.105/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.107/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.108/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2380,
+            "protocol": "tcp"
+          }
+        ],
+        "failsafeOutboundHostPorts": [
+          {
+            "net": "10.1.93.109/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 6443,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.102/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.103/32",
+            "port": 2380,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2379,
+            "protocol": "tcp"
+          },
+          {
+            "net": "10.1.93.104/32",
+            "port": 2380,
+            "protocol": "tcp"
+          }
+        ]
+      }
+    }
+  ]
+}
