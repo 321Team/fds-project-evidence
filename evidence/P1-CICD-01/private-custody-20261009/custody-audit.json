@@ -1,0 +1,66 @@
+{
+  "at_kst": "2026-10-09T18:13:24.766019+09:00",
+  "status": "LOCAL_BYTES_VERIFIED",
+  "items": [
+    {
+      "name": "K8S 교체 후보17개 원본/수신기록",
+      "absolute_path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\phase1-work-20261009\\private\\k8s-tool-backup-20261009T091654.tar.gz",
+      "bytes": 162981,
+      "sha256": "a86024b31d9433e1fdb63127f4a30e7360138d69cd682988b97409acd37a2dfa",
+      "related_pr": "https://github.com/321Team/fds-project-evidence/pull/182",
+      "intended_review_owner": "이하영 / K8S Lead",
+      "recipient_receipt": "NOT_CONFIRMED",
+      "actual_bytes": 162981,
+      "actual_sha256": "a86024b31d9433e1fdb63127f4a30e7360138d69cd682988b97409acd37a2dfa",
+      "verified": true
+    },
+    {
+      "name": "APP 후보 실제 offline 공급",
+      "absolute_path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\phase1-work-20261009\\private\\app-supply-37859961937\\supply.zip",
+      "bytes": 109786915,
+      "sha256": "2f13771909415439bc5a4c83036284e665b47d023b6447b37e3e18c24ea2e3fd",
+      "related_pr": "https://github.com/321Team/fds-project-evidence/pull/183",
+      "intended_review_owner": "이재환 APP / 이하영 CICD 검토 범위별",
+      "recipient_receipt": "NOT_CONFIRMED",
+      "actual_bytes": 109786915,
+      "actual_sha256": "2f13771909415439bc5a4c83036284e665b47d023b6447b37e3e18c24ea2e3fd",
+      "verified": true
+    },
+    {
+      "name": "APP TBS metadata archive",
+      "absolute_path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\phase1-work-20261009\\private\\app-affbc69-run-20261009\\app-evidence.tar.gz",
+      "actual_bytes": 8213,
+      "actual_sha256": "9dd174dafbbb0f8f198288e5bb7a747948cec97bff86b251db56eeffa6a56ff2",
+      "verified": true,
+      "recipient_receipt": "NOT_CONFIRMED"
+    },
+    {
+      "name": "CI76 original artifact",
+      "absolute_path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\phase1-work-20261009\\ci76\\ci-artifact-11602757338.zip",
+      "actual_bytes": 512208,
+      "actual_sha256": "314acac61f2a6ab240a0054ebc2c4264fdc43ca37a6af833af041b603984e858",
+      "verified": true,
+      "recipient_receipt": "NOT_CONFIRMED"
+    },
+    {
+      "name": "CI76 host archive",
+      "absolute_path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\phase1-work-20261009\\ci76\\ansible-actions-runner-evidence.tar.gz",
+      "actual_bytes": 6334,
+      "actual_sha256": "3549a307b676921360762b091d97e2a1df6c299ef6c8a3e983bb263319b80a79",
+      "verified": true,
+      "recipient_receipt": "NOT_CONFIRMED"
+    }
+  ],
+  "supply_artifact": {
+    "id": 11585741989,
+    "name": "apko-offline-supply-affbc69beef9967f7977d09a6fec14f7fb6c0e94-1",
+    "expired": false,
+    "expires_at": "2026-10-15T23:32:03Z",
+    "digest": "sha256:2f13771909415439bc5a4c83036284e665b47d023b6447b37e3e18c24ea2e3fd",
+    "url": "https://api.github.com/repos/321Team/fds-msa/actions/artifacts/11585741989"
+  },
+  "retention": "UNCONFIRMED",
+  "recipient_acceptance": "UNCONFIRMED",
+  "server_raw_transfer": "NOT_PERFORMED",
+  "note": "TBS archive contains metadata only. Raw/OCI/DB/report remain server-side; new raw integrity verification not yet performed."
+}
