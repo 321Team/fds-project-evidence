@@ -22,7 +22,7 @@
 - CloudShell 결과 폴더 `/home/cloudshell-user/u1-hayeoung-20261009-090652`(파일 37개)는 다운로드 권한이 없어 **원본 파일을 받지 못했습니다.**
 - `cloudshell-readback.txt`는 사용자가 CloudShell에서 `cat`으로 출력한 내용을 복사한 **콘솔 제출 자료**입니다. 대상은 `meta.txt`, `summary.tsv`, `SHA256SUMS`, `P2-role-identity.stdout`, `P5`/`N5` stderr, `N2` cmd입니다. 원본 바이트가 아니므로, 이 파일로 원격 SHA256SUMS를 재검증했다고 주장하지 않습니다. 탭·줄바꿈은 터미널 복사 과정에서 바뀌었을 수 있습니다.
 - 원격 `SHA256SUMS`(37행)는 원본 폴더의 해시 기록으로 함께 옮겨 적었습니다.
-- MFA 코드와 임시 자격증명은 파일에 저장하지 않았습니다. `.cmd`의 `--token-code` 값은 `REDACTED`, AssumeRole stdout의 `SecretAccessKey`/`SessionToken`은 `REDACTED`로 처리합니다. 이 편입본에는 AssumeRole stdout이 없습니다. MFA 장치 ARN은 식별자이며 비밀값이 아닙니다.
+- MFA 코드 인자는 `.cmd` 명령 기록에서 `REDACTED` 처리합니다. N1/N2 AssumeRole stdout은 `run()`이 먼저 결과 파일에 기록한 뒤 `sed`로 `SecretAccessKey`와 `SessionToken`을 마스킹하는 구현입니다. 따라서 **임시 자격증명 디스크 무저장을 보장한 실행이 아닙니다.** N2는 성공했고, 원격 stdout 원본은 미수신이므로 사후 마스킹 완료 여부를 독립 확인하지 못했습니다. 이 편입본에는 N1/N2 AssumeRole stdout이 없으며, 현재 편입본에서 실제 자격증명 값은 발견하지 않았습니다. MFA 장치 ARN·역할 UserId는 식별자입니다.
 
 ## 결과
 
@@ -42,8 +42,8 @@
 
 `summary.tsv` 원문에서 N5는 스크립트 자동판정상 `FAIL`로 찍혀 있습니다. 위 표의 "판정 보류"는 아래 해석에 따른 사람 판정이고, 원문은 고치지 않았습니다.
 
-- **N2 (INFO):** CloudShell은 MFA로 로그인한 콘솔 세션의 MFA 문맥을 이어받습니다. 그래서 이 환경에서는 MFA 없는 요청이 거부되는지 실측할 수 없습니다. 장기 Access Key가 0개라 MFA 없는 자격증명 경로 자체가 없습니다. 최종 trust의 MFA=true 조건 readback과 simulation으로 판정합니다.
-- **N5 (판정 보류):** 허용 key(P5)와 허용 밖 key(N5)가 같은 404를 반환했습니다(stderr SHA256 동일 `2e1b4221…`). 존재하지 않는 객체의 HeadObject로는 권한 차이를 구분할 수 없을 수 있습니다. 버킷 정책 원문 readback과 GetObject/PutObject simulation을 [#9](https://github.com/321Team/infra-terraform/issues/9#issuecomment-6077985000)에서 이권욱에게 요청했습니다.
+- **N2 (INFO):** 본인 이름으로 OTP 인자를 생략한 AssumeRole 성공이 제출됐습니다. 콘솔 MFA 문맥을 사용했을 가능성이 있지만, 이 편입본에는 해당 요청의 평가 문맥 원본이 없어 그 원인을 독립 실측한 것으로 단정하지 않습니다. OTP 인자 생략을 실제 MFA 문맥 부재와 동일시하지 않으며, **noMFA 실제 거부는 NOT_RUN**입니다. 장기 Access Key 0개는 기존 조회 기록의 설명이며 이번 제출물에서 새로 검증한 항목이 아닙니다. trust의 MFA=true 조건은 별도 STATIC readback으로 소비하고 실제 STS 거부와 구분합니다.
+- **N5 (판정 보류):** 허용 key(P5)와 허용 밖 key(N5)가 같은 404를 반환했습니다(stderr SHA256 동일 `2e1b4221…`). 존재하지 않는 객체의 HeadObject로는 권한 차이를 구분할 수 없을 수 있습니다. 중앙 보완 [PR196](https://github.com/321Team/fds-project-evidence/pull/196)(merge `3ada349cf48e60d8bdc31098c0847644ec24efdc`)이 편입됐습니다. identity 정책상 타 key Get/Put 허용 근거 없음(STATIC+SIMULATION), bucket Allow0·ACL 비활성까지 확인한 별도 자료이며, 이 실행의 N5 RUNTIME 거부는 UNDETERMINED로 유지합니다. 원격37파일의 바이트 미수신 상태도 변경하지 않습니다.
 
 ## 이 편입이 뜻하지 않는 것
 
@@ -61,3 +61,7 @@
 | `SHA256SUMS` | 위 3개 파일의 해시 |
 
 AI 사용: CLAUDE_ASSISTED. 작성·실행자 이하영의 자기 승인이 아니며 독립 리뷰 대상입니다.
+
+## 기록 정정 — 2026-10-09
+
+이권욱(CODEX_ASSISTED)이 기존 리뷰의 보안 처리 이력 정정을 반영했습니다. 실행 당시 스크립트와 콘솔 제출 사본의 바이트는 변경하지 않았습니다. 과거 실행이 메모리 전용 처리였던 것처럼 소급 기록하지 않으며, 이 정정을 위해 AWS 재시험·새 키 발급·권한 변경을 하지 않았습니다. 권욱이 수정에 참여했으므로 기존 권욱 리뷰를 새 수정본의 독립 승인으로 쓰지 않고 재환에게 독립 검토를 요청합니다. 전체 U1·업무 AC·Apply GO 판정은 별도입니다.
