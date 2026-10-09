@@ -1,0 +1,358 @@
+{
+  "classification": "DERIVED_REVIEW_PROJECTION_NOT_FULL_PLAN",
+  "source_file_sha256": "0edf0406eba2282ef4871660149bf714acd49871de34b1e85516d6d82f1ac02b",
+  "binary_plan_sha256": "18b65922fc358fca901e05e5d890b0605851ed58d1c455161e2c8c9e9dabfc40",
+  "resource_actions": {
+    "create": 20,
+    "update": 0,
+    "delete": 0
+  },
+  "resources": [
+    {
+      "address": "aws_eip.nat",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "domain": "vpc",
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-nat",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_internet_gateway.transport",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-transport",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_nat_gateway.platform",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "connectivity_type": "public",
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-nat",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_route.private_egress[\"private_a\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "destination_cidr_block": "0.0.0.0/0",
+        "region": "ap-northeast-2"
+      }
+    },
+    {
+      "address": "aws_route.private_egress[\"private_b\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "destination_cidr_block": "0.0.0.0/0",
+        "region": "ap-northeast-2"
+      }
+    },
+    {
+      "address": "aws_route.private_egress[\"private_c\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "destination_cidr_block": "0.0.0.0/0",
+        "region": "ap-northeast-2"
+      }
+    },
+    {
+      "address": "aws_route.transport_internet",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "destination_cidr_block": "0.0.0.0/0",
+        "region": "ap-northeast-2"
+      }
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_a\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-private_a",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_b\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-private_b",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_c\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-private_c",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_route_table.subnet[\"public_transport_a\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-public_transport_a",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_route_table_association.subnet[\"private_a\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2"
+      }
+    },
+    {
+      "address": "aws_route_table_association.subnet[\"private_b\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2"
+      }
+    },
+    {
+      "address": "aws_route_table_association.subnet[\"private_c\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2"
+      }
+    },
+    {
+      "address": "aws_route_table_association.subnet[\"public_transport_a\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "region": "ap-northeast-2"
+      }
+    },
+    {
+      "address": "aws_subnet.project[\"private_a\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "cidr_block": "10.20.10.0/24",
+        "availability_zone_id": "apne2-az1",
+        "map_public_ip_on_launch": false,
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-private_a",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_subnet.project[\"private_b\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "cidr_block": "10.20.20.0/24",
+        "availability_zone_id": "apne2-az2",
+        "map_public_ip_on_launch": false,
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-private_b",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_subnet.project[\"private_c\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "cidr_block": "10.20.30.0/24",
+        "availability_zone_id": "apne2-az3",
+        "map_public_ip_on_launch": false,
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-private_c",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_subnet.project[\"public_transport_a\"]",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "cidr_block": "10.20.110.0/24",
+        "availability_zone_id": "apne2-az1",
+        "map_public_ip_on_launch": false,
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-public_transport_a",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    },
+    {
+      "address": "aws_vpc.project",
+      "actions": [
+        "create"
+      ],
+      "known_attributes": {
+        "cidr_block": "10.20.0.0/16",
+        "enable_dns_support": true,
+        "enable_dns_hostnames": true,
+        "region": "ap-northeast-2",
+        "tags_all": {
+          "Component": "network",
+          "ManagedBy": "terraform",
+          "Name": "fds-phase2",
+          "Phase": "phase2",
+          "Project": "fds-hybrid"
+        }
+      }
+    }
+  ],
+  "checks": [
+    {
+      "address": {
+        "kind": "resource",
+        "mode": "managed",
+        "name": "project",
+        "to_display": "aws_subnet.project",
+        "type": "aws_subnet"
+      },
+      "status": "unknown",
+      "instances": [
+        {
+          "address": {
+            "instance_key": "private_a",
+            "to_display": "aws_subnet.project[\"private_a\"]"
+          },
+          "status": "unknown"
+        },
+        {
+          "address": {
+            "instance_key": "private_b",
+            "to_display": "aws_subnet.project[\"private_b\"]"
+          },
+          "status": "unknown"
+        },
+        {
+          "address": {
+            "instance_key": "private_c",
+            "to_display": "aws_subnet.project[\"private_c\"]"
+          },
+          "status": "unknown"
+        },
+        {
+          "address": {
+            "instance_key": "public_transport_a",
+            "to_display": "aws_subnet.project[\"public_transport_a\"]"
+          },
+          "status": "unknown"
+        }
+      ]
+    },
+    {
+      "address": {
+        "kind": "resource",
+        "mode": "managed",
+        "name": "project",
+        "to_display": "aws_vpc.project",
+        "type": "aws_vpc"
+      },
+      "status": "pass",
+      "instances": [
+        {
+          "address": {
+            "to_display": "aws_vpc.project"
+          },
+          "status": "pass"
+        }
+      ]
+    }
+  ],
+  "omitted": "Full plan, prior/planned state, provider configuration and unknown values remain private."
+}
