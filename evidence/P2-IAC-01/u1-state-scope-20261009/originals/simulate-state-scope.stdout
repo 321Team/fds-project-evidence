@@ -1,0 +1,162 @@
+{
+    "EvaluationResults": [
+        {
+            "EvalActionName": "s3:GetObject",
+            "EvalResourceName": "arn:aws:s3:::${BucketName}/${KeyName}",
+            "EvalDecision": "implicitDeny",
+            "MatchedStatements": [
+                {
+                    "SourcePolicyId": "FDS-IaC-State-PassRole",
+                    "SourcePolicyType": "IAM Policy",
+                    "StartPosition": {
+                        "Line": 40,
+                        "Column": 6
+                    },
+                    "EndPosition": {
+                        "Line": 65,
+                        "Column": 6
+                    }
+                }
+            ],
+            "MissingContextValues": [
+                "aws:ResourceTag/Project",
+                "aws:ResourceTag/ManagedBy",
+                "ec2:Encrypted",
+                "ec2:VolumeType",
+                "aws:RequestTag/Project",
+                "ec2:InstanceType",
+                "kms:RequestAlias",
+                "ec2:CreateAction",
+                "iam:PassedToService",
+                "ec2:VolumeSize",
+                "ec2:MetadataHttpTokens",
+                "aws:RequestTag/ManagedBy",
+                "s3:prefix",
+                "aws:TagKeys"
+            ],
+            "OrganizationsDecisionDetail": {
+                "AllowedByOrganizations": true
+            },
+            "EvalDecisionDetails": {},
+            "ResourceSpecificResults": [
+                {
+                    "EvalResourceName": "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/network/terraform.tfstate",
+                    "EvalResourceDecision": "allowed",
+                    "MatchedStatements": [
+                        {
+                            "SourcePolicyId": "FDS-IaC-State-PassRole",
+                            "SourcePolicyType": "IAM Policy",
+                            "StartPosition": {
+                                "Line": 40,
+                                "Column": 6
+                            },
+                            "EndPosition": {
+                                "Line": 65,
+                                "Column": 6
+                            }
+                        }
+                    ]
+                },
+                {
+                    "EvalResourceName": "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/u1-other/terraform.tfstate",
+                    "EvalResourceDecision": "implicitDeny",
+                    "MissingContextValues": [
+                        "aws:ResourceTag/Project",
+                        "aws:ResourceTag/ManagedBy",
+                        "ec2:Encrypted",
+                        "ec2:VolumeType",
+                        "aws:RequestTag/Project",
+                        "ec2:InstanceType",
+                        "kms:RequestAlias",
+                        "ec2:CreateAction",
+                        "iam:PassedToService",
+                        "ec2:VolumeSize",
+                        "ec2:MetadataHttpTokens",
+                        "aws:RequestTag/ManagedBy",
+                        "s3:prefix",
+                        "aws:TagKeys"
+                    ]
+                }
+            ]
+        },
+        {
+            "EvalActionName": "s3:PutObject",
+            "EvalResourceName": "arn:aws:s3:::${BucketName}/${KeyName}",
+            "EvalDecision": "implicitDeny",
+            "MatchedStatements": [
+                {
+                    "SourcePolicyId": "FDS-IaC-State-PassRole",
+                    "SourcePolicyType": "IAM Policy",
+                    "StartPosition": {
+                        "Line": 40,
+                        "Column": 6
+                    },
+                    "EndPosition": {
+                        "Line": 65,
+                        "Column": 6
+                    }
+                }
+            ],
+            "MissingContextValues": [
+                "aws:ResourceTag/Project",
+                "aws:ResourceTag/ManagedBy",
+                "ec2:Encrypted",
+                "ec2:VolumeType",
+                "aws:RequestTag/Project",
+                "ec2:InstanceType",
+                "kms:RequestAlias",
+                "ec2:CreateAction",
+                "iam:PassedToService",
+                "ec2:VolumeSize",
+                "ec2:MetadataHttpTokens",
+                "aws:RequestTag/ManagedBy",
+                "s3:prefix",
+                "aws:TagKeys"
+            ],
+            "OrganizationsDecisionDetail": {
+                "AllowedByOrganizations": true
+            },
+            "EvalDecisionDetails": {},
+            "ResourceSpecificResults": [
+                {
+                    "EvalResourceName": "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/network/terraform.tfstate",
+                    "EvalResourceDecision": "allowed",
+                    "MatchedStatements": [
+                        {
+                            "SourcePolicyId": "FDS-IaC-State-PassRole",
+                            "SourcePolicyType": "IAM Policy",
+                            "StartPosition": {
+                                "Line": 40,
+                                "Column": 6
+                            },
+                            "EndPosition": {
+                                "Line": 65,
+                                "Column": 6
+                            }
+                        }
+                    ]
+                },
+                {
+                    "EvalResourceName": "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/u1-other/terraform.tfstate",
+                    "EvalResourceDecision": "implicitDeny",
+                    "MissingContextValues": [
+                        "aws:ResourceTag/Project",
+                        "aws:ResourceTag/ManagedBy",
+                        "ec2:Encrypted",
+                        "ec2:VolumeType",
+                        "aws:RequestTag/Project",
+                        "ec2:InstanceType",
+                        "kms:RequestAlias",
+                        "ec2:CreateAction",
+                        "iam:PassedToService",
+                        "ec2:VolumeSize",
+                        "ec2:MetadataHttpTokens",
+                        "aws:RequestTag/ManagedBy",
+                        "s3:prefix",
+                        "aws:TagKeys"
+                    ]
+                }
+            ]
+        }
+    ]
+}
