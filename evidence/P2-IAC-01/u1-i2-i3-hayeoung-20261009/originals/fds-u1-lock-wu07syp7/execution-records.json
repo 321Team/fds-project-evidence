@@ -1,0 +1,83 @@
+[
+  {
+    "name": "caller",
+    "argv": [
+      "aws",
+      "sts",
+      "get-caller-identity",
+      "--region",
+      "ap-northeast-2",
+      "--output",
+      "json",
+      "--no-cli-pager",
+      "--cli-connect-timeout",
+      "10",
+      "--cli-read-timeout",
+      "20"
+    ],
+    "started_utc": "2026-10-09T14:42:39.943964+00:00",
+    "stdout_sha256": "d284028b9fb08062e5280d00d5341552315f4c75331b68f8830911df788810ca",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rc": 0,
+    "finished_utc": "2026-10-09T14:42:40.693416+00:00"
+  },
+  {
+    "name": "put-object-syntax",
+    "argv": [
+      "aws",
+      "s3api",
+      "put-object",
+      "--generate-cli-skeleton",
+      "input"
+    ],
+    "started_utc": "2026-10-09T14:42:40.693664+00:00",
+    "stdout_sha256": "b338fbc629201136d0c90bd82aaf98dd8e14e2ba014fa564fe3d5cd9814dd5c4",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rc": 0,
+    "finished_utc": "2026-10-09T14:42:41.342673+00:00"
+  },
+  {
+    "name": "delete-object-syntax",
+    "argv": [
+      "aws",
+      "s3api",
+      "delete-object",
+      "--generate-cli-skeleton",
+      "input"
+    ],
+    "started_utc": "2026-10-09T14:42:41.342916+00:00",
+    "stdout_sha256": "757ac08437e88506afa2ac1faa084785a795e9ab4bc59a86d7b08b7213dd8891",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rc": 0,
+    "finished_utc": "2026-10-09T14:42:41.998698+00:00"
+  },
+  {
+    "name": "terraform-version",
+    "argv": [
+      "/home/cloudshell-user/fds-u1-i2-hayeoung-20261009-143709/bin/terraform",
+      "version",
+      "-json"
+    ],
+    "started_utc": "2026-10-09T14:42:41.998919+00:00",
+    "stdout_sha256": "0a7f43000b31192e5e68b0caa961c017764404a9e74547f735c6e24ee612d189",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rc": 0,
+    "finished_utc": "2026-10-09T14:42:42.049952+00:00"
+  },
+  {
+    "name": "init",
+    "argv": [
+      "/home/cloudshell-user/fds-u1-i2-hayeoung-20261009-143709/bin/terraform",
+      "-chdir=/home/cloudshell-user/fds-u1-lock-wu07syp7/network",
+      "init",
+      "-input=false",
+      "-lockfile=readonly",
+      "-backend-config=backend.hcl.example"
+    ],
+    "started_utc": "2026-10-09T14:42:42.050850+00:00",
+    "stdout_sha256": "5e174483f6d4f5ed1ef96904b32c5a224acd4579105ca9e1681a5335573787cb",
+    "stderr_sha256": "d5f3bfbb7c639f592858900954767f2b8b45c2e4c9910246db729f3f7e9aa244",
+    "rc": 1,
+    "finished_utc": "2026-10-09T14:42:56.000613+00:00"
+  }
+]
