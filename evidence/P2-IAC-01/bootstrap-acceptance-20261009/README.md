@@ -23,8 +23,8 @@
 
 | 완료 조건 (#8) | 결과 |
 |---|---|
-| 채택값 ↔ 실제 설정 대조표 (불일치 0 또는 사유) | 23항목 모두 일치, **불일치 0**. bucket policy가 승인 소스와 canonical SHA256 일치(drift 0) |
-| state 원문 접근 음성 시험 결과 | **PASS**: 사용자 3명·Audit role 시뮬레이터 각 40/40 bucket policy explicitDeny. 실요청 1건 "explicit deny in a resource-based policy". Network role은 부재로 SKIP |
+| 채택값 ↔ 실제 설정 대조표 (불일치 0 또는 사유) | 23항목 대조: 일치 21, 부분 일치 2, **불일치 0**. bucket policy가 승인 소스와 canonical SHA256 일치(drift 0). 미대조 범위: S10 실제 배포 템플릿의 Retain, R6 전체 부착 정책의 유효 PassRole 범위 |
+| state 원문 접근 음성 시험 결과 | 사용자 3명 시뮬레이터 각 40/40 bucket policy `explicitDeny`(제출 결과). 사용자 실요청 1건 "explicit deny in a resource-based policy". **Audit role은 참고 계산(역할 유효 권한 NOT VERIFIED), IaC 대조군은 조건식 참고 평가(역할 허용 RUNTIME 아님).** Network role은 부재로 SKIP |
 
 ## 수신 방식과 한계
 
@@ -37,14 +37,21 @@
 
 `issue8-state-negative-test-v1.sh` 원문 결과는 `NEGATIVE_TEST=CHECK_REQUIRED`(시뮬레이터 4건 FAIL, HeadObject 8건 FAIL)다. 아래는 사람 판정이며, 원인은 스크립트 결함이다.
 
-1. **시뮬레이터 FAIL → PASS.** 스크립트가 `SourcePolicyType`을 `"resource"`와 비교했으나 실제 값은 `"Resource Policy"`라 bucket policy 매칭을 0으로 셌다. 같은 result.json을 다시 요약(진단 ①)하니 4주체 모두 40/40 `explicitDeny`, 매칭에 `Resource Policy:ResourcePolicy`가 포함됐다. 재시뮬레이션은 하지 않았다.
+1. **시뮬레이터 집계 정정.** 스크립트가 `SourcePolicyType`을 `"resource"`와 비교했으나 실제 값은 `"Resource Policy"`라 bucket policy 매칭을 0으로 셌다. 같은 result.json을 다시 요약(진단 ①)하니 4주체 모두 40/40 `explicitDeny`, 매칭에 `Resource Policy:ResourcePolicy`가 포함됐다. 재시뮬레이션은 하지 않았다. 이 정정은 집계 오류만 바로잡으며, PASS로 인정하는 범위는 사용자 3명이다(Audit role·IaC 대조군은 아래 "리뷰 반영 정정").
 2. **HeadObject 404 → 판정 불가.** 8개 key 모두 현재 객체가 없다. 없는 객체의 HeadObject는 호출자의 `s3:ListBucket` 보유 여부로 403/404가 정해지므로 Deny 검증에 쓸 수 없다. 대신 실재하는 lock 이전 버전에 GetObject를 수행했다(진단 ②) → resource-based policy explicit deny.
 3. 수정 스크립트(v1.1, 비교값만 변경)는 이 편입에 넣지 않았다. 실행하지 않았기 때문이다.
+
+## 리뷰 반영 정정 (2026-10-10)
+
+[이권욱 리뷰](https://github.com/321Team/fds-project-evidence/pull/200#pullrequestreview-5471572816)의 차단 2건을 반영해 설명·판정표만 정정했다. **원본 스크립트 2개와 `cloudshell-readback.txt`는 바이트를 바꾸지 않았다.** 새 AWS 실행은 없다.
+
+1. **판정 범위.** 최초 제출의 "4주체 × 40건 + 실요청 1건 PASS" 합산을 철회한다. AWS `SimulatePrincipalPolicy`는 IAM role에 대한 resource-based policy 시뮬레이션을 지원하지 않는다고 명시하므로, Audit role 결과는 참고 계산(역할 유효 권한 NOT VERIFIED)이다. IaC 대조군은 사용자 정책을 소스로 한 문맥 치환이므로 조건식 참고 평가이며 역할 허용 RUNTIME이 아니다. PASS로 인정하는 범위는 사용자 3명의 시뮬레이션 결과와 사용자 실요청 1건이다.
+2. **대조 범위.** S10은 termination protection 관측만 일치하며 실제 배포 템플릿의 `Retain`은 대조하지 않았다. R6은 `iam:PassRole` 문자열을 가진 Allow 문장 1개와 inline 0(진단 ③)을 관측했으나, 전체 부착 정책의 유효 PassRole 범위는 대조하지 않았다. 종합은 "23항목 대조, 불일치 0, 미대조 범위 별도 표시"로 바꿨다.
 
 ## 이 편입이 뜻하지 않는 것
 
 - #8·#35 종결, AC-4 전체(Secret 부분 포함) PASS, Plan/Apply GO가 아니다.
-- Network role 음성 시험, Audit role 실요청, `FDS-IaC-Operator` 실제 state 읽기·쓰기(허용 쪽 Runtime)는 이 제출물에 없다. 허용 쪽 시험은 #9 범위다.
+- Network role 음성 시험, Audit role 실요청·유효 권한, `FDS-IaC-Operator` 실제 state 읽기·쓰기(허용 쪽 Runtime), 실제 배포 템플릿 대조, 유효 PassRole 전체 범위는 이 제출물에 없다. 허용 쪽 시험은 #9 범위다.
 - 10-07 bootstrap 원본(root CloudShell `fds-central-bootstrap-create-j1_eozi9`, `fds-central-bootstrap-verify-22_0s1l3`)의 편입이 아니다.
 
 ## 파일

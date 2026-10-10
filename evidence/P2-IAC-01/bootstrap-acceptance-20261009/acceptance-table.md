@@ -12,7 +12,7 @@
 | 이번 재조회 | 2026-10-09 22:56:52–22:58:00 KST, `321team-hayeoung` 본인 CloudShell. 원문은 `cloudshell-readback.txt` |
 | Terraform 코드 | infra-terraform main `81162467bb2f99a099cb7067fbc3f63e1c0dbed8` (backend 파일은 현재 main `cca0388`까지 변경 없음) |
 
-판정: **일치** = 채택값·소스·이번 재조회가 모두 같음.
+판정: **일치** = 채택값·소스·이번 재조회가 모두 같음. **부분 일치** = 관측한 범위는 같지만 실제 조회로 입증하지 않은 범위가 남음(해당 행에 미대조 범위를 적음).
 
 ## 1. State bucket
 
@@ -27,7 +27,7 @@
 | S7 | TLS 강제 | 사용 | `DenyInsecureTransport` | 정책 문장 1개 + http 실요청 AccessDenied (RC 254) | 일치 |
 | S8 | state 원문 접근 제한 | state/lock 원문·버전 읽기·변경은 `FDS-IaC-Operator` + 중앙 bootstrap/복구 주체만 | `DenyStatePayloadAndMutationOutsideApprovedPrincipals`: 객체 8개(state 4 + `.tflock` 4), 허용 `role/FDS-IaC-Operator`, `root` | 동일(객체 8, 허용 주체 2). 음성 시험 §4 PASS | 일치 |
 | S9 | 다른 암호화 방식 차단 | (SSE-S3만) | `DenyExplicitNonAES256`, `DenySSECustomerKeys` | 두 Sid 존재 | 일치 (추가 보호) |
-| S10 | 삭제 보호 | Retain·termination protection | 4자원 `Retain` | `CREATE_COMPLETE`, TerminationProtection=true, 4자원 `CREATE_COMPLETE` | 일치 |
+| S10 | 삭제 보호 | Retain·termination protection | 4자원 `Retain` | `CREATE_COMPLETE`, TerminationProtection=true, 4자원 `CREATE_COMPLETE` | 부분 일치 — termination protection 관측 일치 / `Retain`은 승인 소스에서만 확인, 실제 배포 템플릿(`GetTemplate`)의 DeletionPolicy·UpdateReplacePolicy 미대조 |
 
 **bucket policy drift 0:** 실제 정책의 canonical SHA256(`jq -S -c`) `135c46330475ca85401f23ebbf74bb3ade68641f8399e02b84afed111cce6cdd`이 위 소스 StateBucketPolicy를 같은 방식(키 정렬·압축 JSON + 개행)으로 계산한 값과 같다. 10-07 기록의 semantic SHA `5c907aea…`는 계산 방식이 달라 직접 비교하지 않는다.
 
@@ -52,21 +52,22 @@
 | R3 | 정책 | `AmazonSSMManagedInstanceCore` 출발점 | 그 정책 1개 | 관리형 1개(기본 버전 v2), inline 0 | 일치 |
 | R4 | Instance profile | `FDS-Relay-SSM`, path `/`, role 1개 | 동일 | `instance-profile/FDS-Relay-SSM`, path `/`, Roles `[FDS-Relay-SSM]` | 일치 |
 | R5 | Terraform은 참조만 | data source | `terraform/stage-a/bootstrap-references.tf` `data "aws_iam_instance_profile"` | (코드 대조) | 일치 |
-| R6 | PassRole | `role/FDS-Relay-SSM` 1개 + `iam:PassedToService=ec2.amazonaws.com` | infra-terraform `iam/full-policy-draft-20261009/policies/FDS-IaC-State-PassRole.json` `PassApprovedRelayToEC2` | `FDS-IaC-Operator` 연결 관리형 정책의 Allow PassRole 문장 1개, 대상·조건 일치. inline 정책 0 | 일치 |
+| R6 | PassRole | `role/FDS-Relay-SSM` 1개 + `iam:PassedToService=ec2.amazonaws.com` | infra-terraform `iam/full-policy-draft-20261009/policies/FDS-IaC-State-PassRole.json` `PassApprovedRelayToEC2` | `FDS-IaC-Operator` 연결 관리형 정책에서 `iam:PassRole` 문자열을 가진 Allow 문장 1개 관측, 대상·조건 일치. inline 정책 0(진단 ③ `[F]`) | 부분 일치 — 명시적 PassRole 문장 관측 / readback 스크립트는 `iam:PassRole` 문자열만 찾으므로 `iam:*`·`iam:Pass*`·`*`·NotAction·조회 실패 정책을 포함한 전체 부착 정책의 유효 권한 범위 미대조 |
 
 ## 4. state 원문 접근 음성 시험
 
 | 대상 | 방법 | 결과 | 판정 |
 |---|---|---|---|
-| 사용자 `321team-gwonuk` / `321team-jaehwan` / `321team-hayeoung` | `simulate-principal-policy` + 실제 bucket policy, 5 action × 8 객체 | 각 40/40 `explicitDeny`. 매칭: bucket policy(`Resource Policy`) + 그룹 `FDS-Human-ReadOnly-Guard-v1` (이중 차단) | PASS |
-| role `FDS-ReadOnly-Audit` | 위와 같음 | 40/40 `explicitDeny`, 매칭: bucket policy | PASS |
+| 사용자 `321team-gwonuk` / `321team-jaehwan` / `321team-hayeoung` | `simulate-principal-policy` + 실제 bucket policy, 5 action × 8 객체 | 각 40/40 `explicitDeny`. 매칭: bucket policy(`Resource Policy`) + 그룹 `FDS-Human-ReadOnly-Guard-v1` (이중 차단) | PASS (제출된 시뮬레이션 결과) |
+| role `FDS-ReadOnly-Audit` | 위와 같음 (`PolicySourceArn`=role, `CallerArn`=사용자) | 계산 결과 40/40 `explicitDeny`, 매칭: bucket policy | **참고 계산 — 역할 유효 권한 NOT VERIFIED.** AWS `SimulatePrincipalPolicy`는 IAM role에 대한 resource-based policy 시뮬레이션을 지원하지 않는다고 명시한다. PASS 집계에서 제외 |
 | role `FDS-Network-Operator` | — | role 부재 | SKIP (생성 후 재시험) |
-| 대조군: `FDS-IaC-Operator` 문맥 | 위와 같음 | bucket policy 매칭 0 (거부는 호출자 그룹 Guard에서만 발생) | PASS (bucket policy가 허용 주체를 막지 않음) |
-| 실요청: `321team-hayeoung` | 실재하는 `phase2/network/terraform.tfstate.tflock` 이전 버전(`WzOG96YyncySp7vjR3aoMKCzrro2aHwg`) GetObject, 출력 폐기 | RC 254 AccessDenied `s3:GetObjectVersion` … "with an explicit deny in a resource-based policy" | PASS |
+| 대조군: `FDS-IaC-Operator` 문맥 | 사용자 정책을 소스로 하고 `aws:PrincipalArn`만 role로 바꾼 문맥 치환 | bucket policy 매칭 0 (거부는 호출자 그룹 Guard에서만 발생) | **조건식 참고 평가** — bucket policy 조건식이 허용 주체 ARN을 제외함을 보여 줄 뿐, 실제 IaC 역할의 허용 RUNTIME이 아님. PASS 집계에서 제외 |
+| 실요청: `321team-hayeoung` | 실재하는 `phase2/network/terraform.tfstate.tflock` 이전 버전(`WzOG96YyncySp7vjR3aoMKCzrro2aHwg`) GetObject, 출력 폐기. 진단 ② `[E]`, 음성 시험(22:58:00 KST) 직후, 정확한 시각 미기록 | RC 254 AccessDenied `s3:GetObjectVersion` … "with an explicit deny in a resource-based policy" | PASS (사용자 1명·객체 버전 1건 범위) |
 | 실요청: 현재 8개 key HeadObject | 객체 미존재 | 8건 모두 404 | 판정 불가 (아래) |
 
 - **스크립트 자동판정 정정.** `issue8-state-negative-test-v1.sh` 원문은 `NEGATIVE_TEST=CHECK_REQUIRED`이며 원문은 고치지 않는다. 원인은 두 가지 스크립트 결함이다. (1) 응답의 `SourcePolicyType` 실제 값 `"Resource Policy"`를 `"resource"`와 비교해 bucket policy 매칭을 0으로 셌다. 같은 result.json을 다시 요약한 진단 ①(`cloudshell-readback.txt` [D])로 정정했고, 재시뮬레이션은 하지 않았다. (2) 없는 객체의 HeadObject는 호출자의 `s3:ListBucket` 보유 여부로 403/404가 정해져 Deny 검증에 쓸 수 없다. 대신 실재하는 이전 버전으로 실요청 1건을 수행했다([E]).
 - 시뮬레이터 결과는 정책 평가 설명이며, 실요청은 사용자 1명·객체 1건 범위다. Audit role 실요청과 Network role 시험은 수행하지 않았다.
+- **리뷰 반영 정정(2026-10-10).** 최초 제출의 "4주체 × 40건 PASS" 합산은 철회한다. `SourcePolicyType` 비교값 정정은 집계 오류만 바로잡을 뿐, role에 대한 resource-based policy 시뮬레이션 미지원 한계는 해소하지 않는다. 이 편입을 위해 Audit role Runtime 시험을 새로 수행하지 않았으며, 역할 인수에 필요한 검증은 해당 실행 Gate(#9)로 넘긴다.
 
 ## 5. 참고 관측
 
@@ -79,8 +80,8 @@
 
 | 구분 | 결과 |
 |---|---|
-| 대조 항목 | 23 (S1–S10, B1–B7, R1–R6) 모두 일치, **불일치 0** |
-| 음성 시험 | PASS (시뮬레이터 4주체 × 40건 + 실요청 1건). Network role SKIP |
-| 완료 조건 | ① 채택값 ↔ 실제 설정 대조표(불일치 0) ✔ ② state 원문 접근 음성 시험 결과 ✔ |
+| 대조 항목 | 23 (S1–S10, B1–B7, R1–R6) 대조: 일치 21, **부분 일치 2(S10·R6, 미대조 범위 별도 표시)**, 불일치 0 |
+| 음성 시험 | 사용자 3명 × 40건 시뮬레이션 `explicitDeny`(제출 결과) + 사용자 실요청 1건 resource-based explicit deny. Audit role은 참고 계산(NOT VERIFIED), IaC 대조군은 조건식 참고 평가, Network role SKIP |
+| 완료 조건 | ① 채택값 ↔ 실제 설정 대조표: 작성, 불일치 0, 미대조 범위(S10·R6) 표시 ② state 원문 접근 음성 시험 결과: 위 범위로 한정해 제출. 역할 유효 권한은 미검증 |
 
 AWS 변경 0. 원티켓 #35 AC-4 판정은 이 표로 변경하지 않으며 독립 리뷰 대상이다.
