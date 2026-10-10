@@ -1,0 +1,116 @@
+# infra-terraform#8 — CloudShell 콘솔 제출 자료 (사용자 화면 출력 복사본)
+# 실행자: 321team-hayeoung (본인 콘솔 MFA 로그인), AWS CloudShell ap-northeast-2, 계정 774055931866, 2026-10-09 KST
+# 원본 바이트가 아니다. 터미널 복사 과정에서 공백·줄바꿈이 바뀌었을 수 있다. 빈 프롬프트 줄(`~ $`)은 뺐다.
+
+########## [A] 스크립트 생성 확인 (heredoc 붙여넣기 후) ##########
+~ $ sha256sum issue8-bootstrap-readback-v1.sh issue8-state-negative-test-v1.sh
+sha256sum: issue8-bootstrap-readback-v1.sh: No such file or directory
+a439653fa217d1d458d335a6ae2a29d6f727047e1594904c988aa7388708e1d2  issue8-state-negative-test-v1.sh
+# (readback 스크립트는 1회 붙여넣기 실패 → 3조각 rb.p1/rb.p2/rb.p3 로 나눠 다시 만든 뒤 합침)
+~ $ cat rb.p1 rb.p2 rb.p3 > issue8-bootstrap-readback-v1.sh && sha256sum issue8-bootstrap-readback-v1.sh
+e140bb55d3b6127293a1984a9292a9a75e92be8e51a668e465b191705de4edae  issue8-bootstrap-readback-v1.sh
+
+########## [B] 설정 재조회 실행 ##########
+~ $ bash issue8-bootstrap-readback-v1.sh
+OUT_DIR=/home/cloudshell-user/issue8-readback.E9d7ig
+START_KST=2026-10-09 22:56:52
+aws-cli/2.37.6 Python/3.14.6 Linux/6.1.188-233.385.amzn2023.x86_64 exec-env/CloudShell exe/x86_64.amzn.2023
+CALL=00-identity RC=0
+CALLER=arn:aws:iam::774055931866:user/321team-hayeoung
+CALL=01-stack RC=0
+ROW=S1 RESULT=PASS OBSERVED=StackId=arn:aws:cloudformation:ap-northeast-2:774055931866:stack/FDS-Central-Bootstrap-v1/79b25940-c211-11f1-ab33-0a7d3f30f8ff
+ROW=S10a RESULT=PASS OBSERVED=StackStatus=CREATE_COMPLETE TerminationProtection=true
+CALL=01-stack-resources RC=0
+ROW=S10b RESULT=PASS OBSERVED=count=4 ["RelayProfile=AWS::IAM::InstanceProfile=CREATE_COMPLETE","RelayRole=AWS::IAM::Role=CREATE_COMPLETE","StateBucket=AWS::S3::Bucket=CREATE_COMPLETE","StateBucketPolicy=AWS::S3::BucketPolicy=CREATE_COMPLETE"]
+CALL=02-location RC=0
+ROW=S2 RESULT=PASS OBSERVED=bucket=fds-tfstate-774055931866-ap-northeast-2 region=ap-northeast-2
+CALL=02-encryption RC=0
+ROW=S3 RESULT=PASS OBSERVED=SSEAlgorithm=AES256 KMSKeyCount=0
+CALL=02-versioning RC=0
+ROW=S4 RESULT=PASS OBSERVED=Status=Enabled MFADelete=NotSet
+CALL=02-pab RC=0
+ROW=S5 RESULT=PASS OBSERVED={"BlockPublicAcls":true,"IgnorePublicAcls":true,"BlockPublicPolicy":true,"RestrictPublicBuckets":true}
+CALL=02-ownership RC=0
+ROW=S6 RESULT=PASS OBSERVED=ObjectOwnership=BucketOwnerEnforced
+CALL=02-policy-raw RC=0
+BUCKET_POLICY_CANONICAL_SHA256=135c46330475ca85401f23ebbf74bb3ade68641f8399e02b84afed111cce6cdd
+POLICY_SIDS=["DenyExplicitNonAES256","DenyInsecureTransport","DenySSECustomerKeys","DenyStatePayloadAndMutationOutsideApprovedPrincipals"]
+ROW=S7 RESULT=PASS OBSERVED=DenyInsecureTransport statements=1
+ROW=S8-config RESULT=PASS OBSERVED=[{"objects":8,"allowed":["arn:aws:iam::774055931866:role/FDS-IaC-Operator","arn:aws:iam::774055931866:root"]}]
+ROW=S7-runtime RESULT=PASS OBSERVED=http request RC=254 ( aws: [ERROR]: An error occurred (AccessDenied) when calling the GetBucketVersioning operation: User: arn:aws:iam::77405)
+CALL=03-objects RC=0
+ROW=INFO-objects RESULT=INFO OBSERVED={"versions":1,"deleteMarkers":1,"keys":["phase2/network/terraform.tfstate.tflock"]}
+CALL=04-ddb RC=0
+ROW=B3-aws RESULT=PASS OBSERVED=lock-like DynamoDB tables=[]
+CALL=05-role RC=0
+ROW=R1 RESULT=PASS OBSERVED=Arn=arn:aws:iam::774055931866:role/FDS-Relay-SSM Path=/ MaxSession=3600
+ROW=R2 RESULT=PASS OBSERVED=[{"e":"Allow","p":{"Service":"ec2.amazonaws.com"},"a":"sts:AssumeRole","c":null}]
+CALL=05-role-attached RC=0
+CALL=05-role-inline RC=0
+CALL=05-ssmcore RC=0
+ROW=R3 RESULT=PASS OBSERVED=attached=["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"] inline=[] SSMCoreDefaultVersion=v2
+CALL=05-profile RC=0
+ROW=R4 RESULT=PASS OBSERVED=Arn=arn:aws:iam::774055931866:instance-profile/FDS-Relay-SSM Path=/ Roles=["FDS-Relay-SSM"]
+CALL=06-iac-role RC=0
+CALL=06-iac-attached RC=0
+ROW=R6 RESULT=PASS OBSERVED=Allow PassRole statements=1 matching=1 (inline 정책은 별도 확인)
+END_KST=2026-10-09 22:57:22
+READBACK=PASS
+AWS_MUTATION=NOT_RUN
+SHA256SUMS_RC=0
+PRESERVED_DIR=/home/cloudshell-user/issue8-readback.E9d7ig
+
+########## [C] 음성 시험 실행 (자동판정 원문 그대로 — 판정 정정은 README 참고) ##########
+~ $ bash issue8-state-negative-test-v1.sh
+OUT_DIR=/home/cloudshell-user/issue8-negative.vlcww3
+START_KST=2026-10-09 22:57:37
+IDENTITY_RC=0
+CALLER=arn:aws:iam::774055931866:user/321team-hayeoung
+GET_BUCKET_POLICY_RC=0
+BUCKET_POLICY_CANONICAL_SHA256=135c46330475ca85401f23ebbf74bb3ade68641f8399e02b84afed111cce6cdd
+CASE=user-321team-gwonuk SIM_RC=0 TOTAL=40 DENY_BY_BUCKET_POLICY=0 OTHER=40 MISSING_CONTEXT=[] RESULT=FAIL
+CASE=user-321team-jaehwan SIM_RC=0 TOTAL=40 DENY_BY_BUCKET_POLICY=0 OTHER=40 MISSING_CONTEXT=[] RESULT=FAIL
+CASE=user-321team-hayeoung SIM_RC=0 TOTAL=40 DENY_BY_BUCKET_POLICY=0 OTHER=40 MISSING_CONTEXT=[] RESULT=FAIL
+CASE=role-FDS-ReadOnly-Audit SIM_RC=0 TOTAL=40 DENY_BY_BUCKET_POLICY=0 OTHER=40 MISSING_CONTEXT=[] RESULT=FAIL
+CASE=role-FDS-Network-Operator RESULT=SKIP_ROLE_ABSENT
+CASE=control-iac-operator SIM_RC=0 DENY_BY_BUCKET_POLICY=0 DECISIONS={"explicitDeny":40} RESULT=PASS
+RUNTIME_HEAD key=phase2/network/terraform.tfstate HTTP=404 RESULT=FAIL
+RUNTIME_HEAD key=phase2/network/terraform.tfstate.tflock HTTP=404 RESULT=FAIL
+RUNTIME_HEAD key=phase2/vpn/terraform.tfstate HTTP=404 RESULT=FAIL
+RUNTIME_HEAD key=phase2/vpn/terraform.tfstate.tflock HTTP=404 RESULT=FAIL
+RUNTIME_HEAD key=phase2/rosa-prereq/terraform.tfstate HTTP=404 RESULT=FAIL
+RUNTIME_HEAD key=phase2/rosa-prereq/terraform.tfstate.tflock HTTP=404 RESULT=FAIL
+RUNTIME_HEAD key=phase2/rosa-runtime/terraform.tfstate HTTP=404 RESULT=FAIL
+RUNTIME_HEAD key=phase2/rosa-runtime/terraform.tfstate.tflock HTTP=404 RESULT=FAIL
+END_KST=2026-10-09 22:58:00
+NEGATIVE_TEST=CHECK_REQUIRED
+AWS_MUTATION=NOT_RUN
+SHA256SUMS_RC=0
+PRESERVED_DIR=/home/cloudshell-user/issue8-negative.vlcww3
+
+########## [D] 진단 ① — 같은 시뮬레이터 결과(result.json)를 다시 요약 (재시뮬레이션 없음) ##########
+# 실행 명령(안내문 원문). 사용자 출력 복사본은 명령 앞부분이 잘려 있다.
+# for f in ~/issue8-negative.vlcww3/sim-*.result.json; do echo "== $(basename $f)"; jq -c '[.EvaluationResults[] | (if ((.ResourceSpecificResults // [])|length)>0 then .ResourceSpecificResults[] | {d:.EvalResourceDecision, s:[.MatchedStatements[]?|"\(.SourcePolicyType):\(.SourcePolicyId)"]} else {d:.EvalDecision, s:[.MatchedStatements[]?|"\(.SourcePolicyType):\(.SourcePolicyId)"]} end)] | group_by(.d,.s) | map({d:.[0].d, by:.[0].s, n:length})' "$f"; done
+== sim-control-iac-operator.result.json
+[{"d":"explicitDeny","by":["IAM Policy:FDS-Human-ReadOnly-Guard-v1","IAM Policy:FDS-Human-ReadOnly-Guard-v1","IAM Policy:FDS-Human-ReadOnly-Guard-v1"],"n":40}]
+== sim-role-FDS-ReadOnly-Audit.result.json
+[{"d":"explicitDeny","by":["Resource Policy:ResourcePolicy"],"n":40}]
+== sim-user-321team-gwonuk.result.json
+[{"d":"explicitDeny","by":["IAM Policy:FDS-Human-ReadOnly-Guard-v1","IAM Policy:FDS-Human-ReadOnly-Guard-v1","Resource Policy:ResourcePolicy"],"n":40}]
+== sim-user-321team-hayeoung.result.json
+[{"d":"explicitDeny","by":["IAM Policy:FDS-Human-ReadOnly-Guard-v1","IAM Policy:FDS-Human-ReadOnly-Guard-v1","Resource Policy:ResourcePolicy"],"n":40}]
+== sim-user-321team-jaehwan.result.json
+[{"d":"explicitDeny","by":["IAM Policy:FDS-Human-ReadOnly-Guard-v1","IAM Policy:FDS-Human-ReadOnly-Guard-v1","Resource Policy:ResourcePolicy"],"n":40}]
+
+########## [E] 진단 ② — 실제 존재하는 lock 이전 버전에 GetObject (출력은 /dev/null) ##########
+~ $ VID=$(aws s3api list-object-versions --bucket fds-tfstate-774055931866-ap-northeast-2 --prefix phase2/network/terraform.tfstate.tflock --query 'Versions[0].VersionId' --output text); echo "VID=$VID"; aws s3api get-object --bucket fds-tfstate-774055931866-ap-northeast-2 --key phase2/network/terraform.tfstate.tflock --version-id "$VID" /dev/null; echo "RC=$?"
+VID=WzOG96YyncySp7vjR3aoMKCzrro2aHwg
+
+aws: [ERROR]: An error occurred (AccessDenied) when calling the GetObject operation: User: arn:aws:iam::774055931866:user/321team-hayeoung is not authorized to perform: s3:GetObjectVersion on resource: "arn:aws:s3:::fds-tfstate-774055931866-ap-northeast-2/phase2/network/terraform.tfstate.tflock" with an explicit deny in a resource-based policy
+RC=254
+
+########## [F] 진단 ③ — FDS-IaC-Operator inline 정책 ##########
+~ $ aws iam list-role-policies --role-name FDS-IaC-Operator --output json
+{
+    "PolicyNames": []
+}
