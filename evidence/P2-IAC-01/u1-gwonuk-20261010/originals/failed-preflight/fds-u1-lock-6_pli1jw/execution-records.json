@@ -1,0 +1,86 @@
+[
+  {
+    "name": "caller",
+    "argv": [
+      "aws",
+      "sts",
+      "get-caller-identity",
+      "--region",
+      "ap-northeast-2",
+      "--output",
+      "json",
+      "--no-cli-pager",
+      "--cli-connect-timeout",
+      "10",
+      "--cli-read-timeout",
+      "20"
+    ],
+    "started_utc": "2026-10-09T15:20:52.097281+00:00",
+    "stdout_sha256": "7e104e0dff578b971517fa5d11a3739913e9c499ba13a363719aa0bd943f6957",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rc": 0,
+    "finished_utc": "2026-10-09T15:20:52.849378+00:00"
+  },
+  {
+    "name": "put-object-syntax",
+    "argv": [
+      "aws",
+      "s3api",
+      "put-object",
+      "--generate-cli-skeleton",
+      "input"
+    ],
+    "started_utc": "2026-10-09T15:20:52.849644+00:00",
+    "stdout_sha256": "b338fbc629201136d0c90bd82aaf98dd8e14e2ba014fa564fe3d5cd9814dd5c4",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rc": 0,
+    "finished_utc": "2026-10-09T15:20:53.497011+00:00"
+  },
+  {
+    "name": "delete-object-syntax",
+    "argv": [
+      "aws",
+      "s3api",
+      "delete-object",
+      "--generate-cli-skeleton",
+      "input"
+    ],
+    "started_utc": "2026-10-09T15:20:53.497241+00:00",
+    "stdout_sha256": "757ac08437e88506afa2ac1faa084785a795e9ab4bc59a86d7b08b7213dd8891",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rc": 0,
+    "finished_utc": "2026-10-09T15:20:54.175703+00:00"
+  },
+  {
+    "name": "terraform-version",
+    "argv": [
+      "/home/cloudshell-user/fds-network-plan-6eqg8ux6/bin/terraform",
+      "version",
+      "-json"
+    ],
+    "started_utc": "2026-10-09T15:20:54.176034+00:00",
+    "stdout_sha256": "0a7f43000b31192e5e68b0caa961c017764404a9e74547f735c6e24ee612d189",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rc": 0,
+    "finished_utc": "2026-10-09T15:20:54.207306+00:00"
+  },
+  {
+    "name": "source-files",
+    "argv": [
+      "git",
+      "-C",
+      "/home/cloudshell-user/fds-network-plan-6eqg8ux6/source-network",
+      "ls-tree",
+      "-r",
+      "--name-only",
+      "81162467bb2f99a099cb7067fbc3f63e1c0dbed8",
+      "--",
+      "terraform/network/"
+    ],
+    "started_utc": "2026-10-09T15:20:54.207577+00:00",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "4553ebb0b92a3724b9e71db431d91234f0493e1b96afda9f3d0068fb4617be71",
+    "rc": 128,
+    "finished_utc": "2026-10-09T15:20:54.234909+00:00"
+  }
+]
