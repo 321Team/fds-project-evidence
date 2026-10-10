@@ -1,0 +1,22 @@
+
+Error: Error acquiring the state lock
+
+Error message: operation error S3: PutObject, https response error
+StatusCode: 412, RequestID: HXCKK3RF8WX2GFTV, HostID:
+swqQKzlQK9PUYfUEUzu8+790GUuS1ErUR/TjVoX46x2ZGdzgtMOohgD/SLTfoCtiTBstOmVpXGunmJq8PWYbojgfc1sKb7Ij,
+api error PreconditionFailed: At least one of the pre-conditions you
+specified did not hold
+Lock Info:
+  ID:        1254e486-b63b-4918-a763-0d97664056f3
+  Path:      fds-tfstate-774055931866-ap-northeast-2/phase2/network/terraform.tfstate
+  Operation: OperationTypePlan
+  Who:       arn:aws:sts::774055931866:assumed-role/FDS-IaC-Operator/321team-hayeoung
+  Version:   1.16.4
+  Created:   2026-10-09 14:57:11.357384 +0000 UTC
+  Info:      U1-I3 owned test fixture
+
+
+Terraform acquires a state lock to protect the state from being written
+by multiple users at the same time. Please resolve the issue above and try
+again. For most commands, you can disable locking with the "-lock=false"
+flag, but this is not recommended.
