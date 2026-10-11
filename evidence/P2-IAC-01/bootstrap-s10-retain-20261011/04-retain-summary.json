@@ -1,0 +1,22 @@
+{
+  "RelayProfile": {
+    "Type": "AWS::IAM::InstanceProfile",
+    "DeletionPolicy": "Retain",
+    "UpdateReplacePolicy": "Retain"
+  },
+  "RelayRole": {
+    "Type": "AWS::IAM::Role",
+    "DeletionPolicy": "Retain",
+    "UpdateReplacePolicy": "Retain"
+  },
+  "StateBucket": {
+    "Type": "AWS::S3::Bucket",
+    "DeletionPolicy": "Retain",
+    "UpdateReplacePolicy": "Retain"
+  },
+  "StateBucketPolicy": {
+    "Type": "AWS::S3::BucketPolicy",
+    "DeletionPolicy": "Retain",
+    "UpdateReplacePolicy": "Retain"
+  }
+}
