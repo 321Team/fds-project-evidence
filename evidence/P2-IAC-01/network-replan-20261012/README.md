@@ -68,7 +68,7 @@
 
 - network 한 스택의 재실행 무변경 확인이다. vpn·rosa-prereq 재실행은 각 Apply 뒤 별도다.
 - #13·#35 종결, AC-5 전체 PASS, G4 PASS, Apply GO가 아니다.
-- 사전 작업창 공지는 하지 않았다. 대신 lock 전후 없음·state 버전 불변으로 다른 writer와 겹치지 않았음을 확인했다(Plan lock 약 9초·7초, `-lock-timeout=60s`).
+- 사전 작업창 공지는 하지 않았다. 시작·종료 조회에서 lock 부재, state VersionId/ETag 불변을 확인했다. 이 결과는 사전 writer 부재 조율 또는 시험 구간 전체의 타 실행자 부재를 증명하지 않는다. network 무변경 기술 결과와 작업창 절차 미충족/미확인을 구분해 보존한다. 다음 backend 실행은 최신 작업창·writer 조율을 확인한 뒤 수행하며, 이번 결과를 소급 GO로 사용하지 않는다. 기록된 9초·7초는 Plan 명령 구간이며 정확한 lock 보유시간은 별도 미계측이다(`-lock-timeout=60s`). (2026-10-12 이권욱 리뷰 B1 반영 정정)
 
 ## 파일
 
