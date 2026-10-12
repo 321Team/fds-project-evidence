@@ -1,0 +1,186 @@
+{
+  "at_utc": "2026-10-12T17:42:35.351719+00:00",
+  "host": "k8s-worker02",
+  "uid": 0,
+  "scope": "read-only DNS/service preparation; no backup creation or NM mutation",
+  "commands": [
+    {
+      "argv": [
+        "ip",
+        "-j",
+        "route",
+        "show",
+        "default"
+      ],
+      "rc": 0,
+      "stdout": "[{\"dst\":\"default\",\"gateway\":\"10.1.93.254\",\"dev\":\"ens160\",\"protocol\":\"static\",\"metric\":100,\"flags\":[]}]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nmcli",
+        "--get-values",
+        "GENERAL.CONNECTION",
+        "device",
+        "show",
+        "ens160"
+      ],
+      "rc": 0,
+      "stdout": "fds-k8s-worker02\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nmcli",
+        "--get-values",
+        "ipv4.dns,ipv4.dns-search,ipv4.ignore-auto-dns",
+        "connection",
+        "show",
+        "fds-k8s-worker02"
+      ],
+      "rc": 0,
+      "stdout": "10.1.93.52,10.1.93.53\nfds.internal\nyes\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nmcli",
+        "--get-values",
+        "IP4.DNS",
+        "device",
+        "show",
+        "ens160"
+      ],
+      "rc": 0,
+      "stdout": "10.1.93.52 | 10.1.93.53\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "is-active",
+        "NetworkManager",
+        "kubelet",
+        "containerd"
+      ],
+      "rc": 0,
+      "stdout": "active\nactive\nactive\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "getenforce"
+      ],
+      "rc": 0,
+      "stdout": "Enforcing\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "getent",
+        "ahostsv4",
+        "k8s-api.fds.internal"
+      ],
+      "rc": 0,
+      "stdout": "10.1.93.109     STREAM k8s-api.fds.internal\n10.1.93.109     DGRAM  \n10.1.93.109     RAW    \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "getent",
+        "ahostsv4",
+        "k8s-api"
+      ],
+      "rc": 0,
+      "stdout": "10.1.93.109     STREAM k8s-api.fds.internal\n10.1.93.109     DGRAM  \n10.1.93.109     RAW    \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "getent",
+        "ahostsv4",
+        "github.com"
+      ],
+      "rc": 0,
+      "stdout": "20.200.245.247  STREAM github.com\n20.200.245.247  DGRAM  \n20.200.245.247  RAW    \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "dig",
+        "+time=2",
+        "+tries=1",
+        "+short",
+        "@10.1.93.52",
+        "k8s-api.fds.internal",
+        "A"
+      ],
+      "rc": 0,
+      "stdout": "10.1.93.109\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "dig",
+        "+time=2",
+        "+tries=1",
+        "+short",
+        "@10.1.93.53",
+        "k8s-api.fds.internal",
+        "A"
+      ],
+      "rc": 0,
+      "stdout": "10.1.93.109\n",
+      "stderr": ""
+    }
+  ],
+  "resolv_conf_selected": [
+    "search fds.internal",
+    "nameserver 10.1.93.52",
+    "nameserver 10.1.93.53"
+  ],
+  "boot": "f0015ee5-36c9-4184-a985-723170958f2c",
+  "addresses": {
+    "argv": [
+      "ip",
+      "-j",
+      "-4",
+      "address",
+      "show",
+      "ens160"
+    ],
+    "rc": 0,
+    "stdout": "[{\"ifindex\":2,\"ifname\":\"ens160\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"mq\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"altnames\":[\"enp3s0\",\"enx000c29fdba46\"],\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.1.93.107\",\"prefixlen\":24,\"broadcast\":\"10.1.93.255\",\"scope\":\"global\",\"noprefixroute\":true,\"label\":\"ens160\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n",
+    "stderr": ""
+  },
+  "api_tcp_6443": true,
+  "state_paths": [
+    {
+      "path": "/var/lib/fds-change",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o700",
+      "symlink": false,
+      "xattrs": [
+        "security.selinux"
+      ]
+    },
+    {
+      "path": "/var/lib/fds-change/CR-P1-ANS-01-01",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o700",
+      "symlink": false,
+      "xattrs": [
+        "security.selinux"
+      ]
+    },
+    {
+      "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions",
+      "exists": false
+    }
+  ],
+  "interface": "ens160",
+  "connection": "fds-k8s-worker02",
+  "success": true
+}

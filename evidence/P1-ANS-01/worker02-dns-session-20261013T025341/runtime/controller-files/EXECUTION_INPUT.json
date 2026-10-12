@@ -1,0 +1,43 @@
+{
+  "prepared_at_kst": "2026-10-13T02:45:23.159426+09:00",
+  "session_id": "w02-20261013T024523-85942d67",
+  "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+  "source_root": "/home/server01_ansible/worker02-session-plan-3hetha3t/source",
+  "engine": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin",
+  "engine_version": "2.21.3",
+  "host": "k8s-worker02",
+  "endpoint": "10.1.93.107",
+  "interface": "ens160",
+  "connection": "fds-k8s-worker02",
+  "boot": "f0015ee5-36c9-4184-a985-723170958f2c",
+  "dns": [
+    "10.1.93.52",
+    "10.1.93.53"
+  ],
+  "search": [
+    "fds.internal"
+  ],
+  "ignore_auto_dns": true,
+  "controller_evidence_root": "/home/server01_ansible/p1-worker02-dns-20261013-r1",
+  "remote_backup": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+  "snapshot_sha256": null,
+  "actions": [
+    "prepare",
+    "apply-check",
+    "apply",
+    "reapply",
+    "rollback-check",
+    "rollback",
+    "fresh-read"
+  ],
+  "runtime_started": false,
+  "nm_writer_exclusion_confirmed": false,
+  "console_confirmed_for_dns_round": false,
+  "new_lead_implementation_go_required": false,
+  "per_step_timeout_seconds": 180,
+  "first_apply_max_snapshot_age_seconds": 900,
+  "maximum_session_minutes": 15,
+  "artificial_drift": false,
+  "global_engine_switch": false,
+  "ac_accepted": false
+}

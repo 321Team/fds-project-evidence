@@ -1,0 +1,212 @@
+FDS_ENGINE_EXEC=/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin/ansible-playbook CORE=2.21.3 SSH_USETTY=false
+
+PLAY [Guard worker02 session before managed-host facts] ************************
+
+TASK [Reject missing or widened target and unapproved session inputs] **********
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY [Run the approved DNS session on worker02 only] ***************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-worker02]
+
+TASK [Prepare or apply through existing DNS role with session binding] *********
+included: dns_resolver for k8s-worker02
+
+TASK [dns_resolver : Validate CR DNS execution phase and variables] ************
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Require explicit approval token for resolver changes] *****
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Verify the default IPv4 interface is available] ***********
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read active NetworkManager connection for the default interface] ***
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Validate the active NetworkManager connection] ************
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read current NetworkManager IPv4 DNS servers] *************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current NetworkManager IPv4 search domains] **********
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current NetworkManager automatic DNS setting] ********
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Normalize current resolver state] *************************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Determine resolver drift] *********************************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current resolver file] *******************************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read pre-change kubelet state] ****************************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read pre-change containerd state] *************************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server] *****
+ok: [k8s-worker02] => (item=10.1.93.52)
+ok: [k8s-worker02] => (item=10.1.93.53)
+
+TASK [dns_resolver : Verify external name resolution before change] ************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Verify Kubernetes API listener before change] *************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Bind the worker02 session before any resolver mutation] ***
+included: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/dns_resolver/tasks/session-bind.yml for k8s-worker02
+
+TASK [dns_resolver : Refuse session binding on any other inventory target] *****
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Capture or validate the immutable worker02 session original] ***
+changed: [k8s-worker02]
+
+TASK [dns_resolver : Report the session receipt for independent retention] *****
+ok: [k8s-worker02] => {
+    "msg": {
+        "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+        "session_id": "w02-20261013T024523-85942d67",
+        "sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+        "snapshot_written": true,
+        "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+    }
+}
+
+TASK [dns_resolver : Create protected CR rollback state directory] *************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Preserve original resolver state once] ********************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Configure NetworkManager resolver state] ******************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Reapply NetworkManager connection without down and up] ****
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Report resolver drift during check mode] ******************
+ok: [k8s-worker02] => {
+    "msg": {
+        "connection": "fds-k8s-worker02",
+        "current_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "current_ignore_auto_dns": true,
+        "current_search": [
+            "fds.internal"
+        ],
+        "desired_dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "desired_search": [
+            "fds.internal"
+        ],
+        "drift": false,
+        "host": "k8s-worker02",
+        "phase": "precheck"
+    }
+}
+
+TASK [dns_resolver : Run CR DNS post-run verification tasks] *******************
+included: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/dns_resolver/tasks/verify.yml for k8s-worker02
+
+TASK [dns_resolver : Read post-run NetworkManager IPv4 DNS servers] ************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read post-run NetworkManager IPv4 search domains] *********
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read post-run NetworkManager automatic DNS setting] *******
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read post-run resolver file] ******************************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Verify persistent resolver target state] ******************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Verify internal FQDN resolution through the active resolver] ***
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Verify internal short-name resolution through the search domain] ***
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Verify direct query through each approved DNS server after run] ***
+ok: [k8s-worker02] => (item=10.1.93.52)
+ok: [k8s-worker02] => (item=10.1.93.53)
+
+TASK [dns_resolver : Verify external name resolution after run] ****************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Verify Kubernetes API listener after run] *****************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read post-run kubelet state] ******************************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read post-run containerd state] ***************************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Verify node service state did not regress] ****************
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Print CR DNS node verdict] ********************************
+ok: [k8s-worker02] => {
+    "msg": {
+        "api_listener": "PASS",
+        "change_id": "CR-P1-ANS-01-01",
+        "connection": "fds-k8s-worker02",
+        "direct_queries": "2/2 PASS",
+        "dns": [
+            "10.1.93.52",
+            "10.1.93.53"
+        ],
+        "external_resolution": "PASS",
+        "host": "k8s-worker02",
+        "ignore_auto_dns": "yes",
+        "interface": "ens160",
+        "phase": "precheck",
+        "search": [
+            "fds.internal"
+        ],
+        "service_regression": "NONE"
+    }
+}
+
+TASK [Restore the pinned session original] *************************************
+skipping: [k8s-worker02]
+
+PLAY RECAP *********************************************************************
+k8s-worker02               : ok=34   changed=1    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
