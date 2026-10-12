@@ -1,0 +1,86 @@
+{
+    "GroupName": "FDS-Human-Bootstrap",
+    "PolicyName": "FDS-SelfService-Password-MFA",
+    "PolicyDocument": {
+        "Statement": [
+            {
+                "Action": [
+                    "iam:GetAccountPasswordPolicy",
+                    "iam:ListAccountAliases"
+                ],
+                "Effect": "Allow",
+                "Resource": "*",
+                "Sid": "ViewAccountPasswordPolicy"
+            },
+            {
+                "Action": [
+                    "iam:GetUser",
+                    "iam:ChangePassword"
+                ],
+                "Effect": "Allow",
+                "Resource": "arn:aws:iam::*:user/${aws:username}",
+                "Sid": "ManageOwnPassword"
+            },
+            {
+                "Action": [
+                    "iam:ListMFADevices",
+                    "iam:EnableMFADevice",
+                    "iam:ResyncMFADevice",
+                    "iam:DeactivateMFADevice",
+                    "iam:GetMFADevice"
+                ],
+                "Effect": "Allow",
+                "Resource": "arn:aws:iam::*:user/${aws:username}",
+                "Sid": "ManageOwnMFA"
+            },
+            {
+                "Action": [
+                    "iam:CreateVirtualMFADevice",
+                    "iam:DeleteVirtualMFADevice"
+                ],
+                "Effect": "Allow",
+                "Resource": "arn:aws:iam::774055931866:mfa/${aws:username}*",
+                "Sid": "ManageOwnVirtualMFA"
+            },
+            {
+                "Action": [
+                    "iam:ListVirtualMFADevices"
+                ],
+                "Effect": "Allow",
+                "Resource": "*",
+                "Sid": "ListVirtualMFA"
+            },
+            {
+                "Action": [
+                    "iam:GetAccountSummary"
+                ],
+                "Effect": "Allow",
+                "Resource": "*",
+                "Sid": "ViewAccountSummary"
+            },
+            {
+                "Action": [
+                    "iam:ListAccessKeys"
+                ],
+                "Effect": "Allow",
+                "Resource": "arn:aws:iam::774055931866:user/${aws:username}",
+                "Sid": "ViewOwnAccessKeyMetadata"
+            },
+            {
+                "Action": [
+                    "iam:DeactivateMFADevice",
+                    "iam:DeleteVirtualMFADevice"
+                ],
+                "Condition": {
+                    "BoolIfExists": {
+                        "aws:MultiFactorAuthPresent": "false"
+                    }
+                },
+                "Effect": "Deny",
+                "Resource": "*",
+                "Sid": "DenyMFARemovalWithoutMFA"
+            }
+        ],
+        "Version": "2012-10-17"
+    }
+}

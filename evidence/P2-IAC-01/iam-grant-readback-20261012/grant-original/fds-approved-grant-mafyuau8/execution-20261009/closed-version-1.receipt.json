@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "aws",
+    "iam",
+    "get-policy-version",
+    "--policy-arn",
+    "arn:aws:iam::774055931866:policy/FDS-IaC-Guardrails",
+    "--version-id",
+    "v1",
+    "--region",
+    "ap-northeast-2",
+    "--output",
+    "json",
+    "--no-cli-pager",
+    "--cli-connect-timeout",
+    "10",
+    "--cli-read-timeout",
+    "30"
+  ],
+  "started_utc": "2026-10-09T08:21:14.560956+00:00",
+  "exit_code": 0,
+  "timeout": false,
+  "finished_utc": "2026-10-09T08:21:15.880762+00:00",
+  "stdout_sha256": "d5a9b662e20a18776124472ac6cdccb6675bf7df69320b2d9f6a1c36d6b87258",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

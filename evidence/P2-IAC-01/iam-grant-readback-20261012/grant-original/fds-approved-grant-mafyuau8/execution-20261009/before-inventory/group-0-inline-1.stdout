@@ -1,0 +1,133 @@
+{
+    "GroupName": "FDS-Human-Bootstrap",
+    "PolicyName": "FDS-Human-Direct-ReadOnly-v1",
+    "PolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "SeoulInventoryAndCloudShellWithMFA",
+                "Effect": "Allow",
+                "Action": [
+                    "ec2:DescribeInstances",
+                    "ec2:DescribeInstanceTypes",
+                    "ec2:DescribeInstanceTypeOfferings",
+                    "ec2:DescribeImages",
+                    "ec2:DescribeAvailabilityZones",
+                    "ec2:DescribeVpcs",
+                    "ec2:DescribeSubnets",
+                    "ec2:DescribeRouteTables",
+                    "ec2:DescribeNetworkInterfaces",
+                    "ec2:DescribeSecurityGroups",
+                    "ec2:DescribeSecurityGroupRules",
+                    "ec2:DescribeAddresses",
+                    "ec2:DescribeNatGateways",
+                    "ec2:DescribeInternetGateways",
+                    "ec2:DescribeVolumes",
+                    "ec2:DescribeVpcEndpoints",
+                    "elasticloadbalancing:DescribeLoadBalancers",
+                    "elasticloadbalancing:DescribeTargetGroups",
+                    "cloudshell:CreateEnvironment",
+                    "cloudshell:CreateSession",
+                    "cloudshell:GetEnvironmentStatus",
+                    "cloudshell:StartEnvironment",
+                    "cloudshell:PutCredentials",
+                    "servicequotas:GetServiceQuota",
+                    "servicequotas:ListServiceQuotas",
+                    "servicequotas:ListRequestedServiceQuotaChangeHistory"
+                ],
+                "Resource": "*",
+                "Condition": {
+                    "Bool": {
+                        "aws:MultiFactorAuthPresent": "true"
+                    },
+                    "ArnEquals": {
+                        "aws:PrincipalArn": [
+                            "arn:aws:iam::774055931866:user/321team-gwonuk",
+                            "arn:aws:iam::774055931866:user/321team-hayeoung",
+                            "arn:aws:iam::774055931866:user/321team-jaehwan"
+                        ]
+                    },
+                    "StringEquals": {
+                        "aws:RequestedRegion": "ap-northeast-2"
+                    }
+                }
+            },
+            {
+                "Sid": "InspectExistingAuditRoleWithMFA",
+                "Effect": "Allow",
+                "Action": [
+                    "iam:GetRole",
+                    "iam:ListRolePolicies",
+                    "iam:GetRolePolicy"
+                ],
+                "Resource": "arn:aws:iam::774055931866:role/FDS-ReadOnly-Audit",
+                "Condition": {
+                    "Bool": {
+                        "aws:MultiFactorAuthPresent": "true"
+                    },
+                    "ArnEquals": {
+                        "aws:PrincipalArn": [
+                            "arn:aws:iam::774055931866:user/321team-gwonuk",
+                            "arn:aws:iam::774055931866:user/321team-hayeoung",
+                            "arn:aws:iam::774055931866:user/321team-jaehwan"
+                        ]
+                    }
+                }
+            },
+            {
+                "Sid": "ViewSubscriptionsWithMFA",
+                "Effect": "Allow",
+                "Action": "aws-marketplace:ViewSubscriptions",
+                "Resource": "*",
+                "Condition": {
+                    "Bool": {
+                        "aws:MultiFactorAuthPresent": "true"
+                    },
+                    "ArnEquals": {
+                        "aws:PrincipalArn": [
+                            "arn:aws:iam::774055931866:user/321team-gwonuk",
+                            "arn:aws:iam::774055931866:user/321team-hayeoung",
+                            "arn:aws:iam::774055931866:user/321team-jaehwan"
+                        ]
+                    }
+                }
+            },
+            {
+                "Sid": "ListRoleMetadataWithMFA",
+                "Effect": "Allow",
+                "Action": "iam:ListRoles",
+                "Resource": "*",
+                "Condition": {
+                    "Bool": {
+                        "aws:MultiFactorAuthPresent": "true"
+                    },
+                    "ArnEquals": {
+                        "aws:PrincipalArn": [
+                            "arn:aws:iam::774055931866:user/321team-gwonuk",
+                            "arn:aws:iam::774055931866:user/321team-hayeoung",
+                            "arn:aws:iam::774055931866:user/321team-jaehwan"
+                        ]
+                    }
+                }
+            },
+            {
+                "Sid": "InspectELBRoleWithMFA",
+                "Effect": "Allow",
+                "Action": "iam:GetRole",
+                "Resource": "arn:aws:iam::774055931866:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing",
+                "Condition": {
+                    "Bool": {
+                        "aws:MultiFactorAuthPresent": "true"
+                    },
+                    "ArnEquals": {
+                        "aws:PrincipalArn": [
+                            "arn:aws:iam::774055931866:user/321team-gwonuk",
+                            "arn:aws:iam::774055931866:user/321team-hayeoung",
+                            "arn:aws:iam::774055931866:user/321team-jaehwan"
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

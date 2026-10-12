@@ -1,0 +1,113 @@
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "DenyUnapprovedGroupMember",
+                    "Effect": "Deny",
+                    "Action": "*",
+                    "Resource": "*",
+                    "Condition": {
+                        "ArnNotEquals": {
+                            "aws:PrincipalArn": [
+                                "arn:aws:iam::774055931866:user/321team-gwonuk",
+                                "arn:aws:iam::774055931866:user/321team-hayeoung",
+                                "arn:aws:iam::774055931866:user/321team-jaehwan"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Sid": "DenyWithoutMFAExceptBootstrap",
+                    "Effect": "Deny",
+                    "NotAction": [
+                        "sts:GetCallerIdentity",
+                        "sts:GetSessionToken",
+                        "iam:GetAccountPasswordPolicy",
+                        "iam:ListAccountAliases",
+                        "iam:GetAccountSummary",
+                        "iam:ListVirtualMFADevices",
+                        "iam:GetUser",
+                        "iam:ChangePassword",
+                        "iam:ListMFADevices",
+                        "iam:EnableMFADevice",
+                        "iam:ResyncMFADevice",
+                        "iam:GetMFADevice",
+                        "iam:CreateVirtualMFADevice",
+                        "iam:ListAccessKeys"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "BoolIfExists": {
+                            "aws:MultiFactorAuthPresent": "false"
+                        }
+                    }
+                },
+                {
+                    "Sid": "DenyOtherUsersBootstrapWithoutMFA",
+                    "Effect": "Deny",
+                    "Action": [
+                        "iam:GetUser",
+                        "iam:ChangePassword",
+                        "iam:ListMFADevices",
+                        "iam:EnableMFADevice",
+                        "iam:ResyncMFADevice",
+                        "iam:GetMFADevice",
+                        "iam:CreateVirtualMFADevice",
+                        "iam:ListAccessKeys"
+                    ],
+                    "NotResource": [
+                        "arn:aws:iam::774055931866:user/${aws:username}",
+                        "arn:aws:iam::774055931866:mfa/${aws:username}*"
+                    ],
+                    "Condition": {
+                        "BoolIfExists": {
+                            "aws:MultiFactorAuthPresent": "false"
+                        }
+                    }
+                },
+                {
+                    "Sid": "DenyOutsideSeoulExceptGlobalEndpoints",
+                    "Effect": "Deny",
+                    "NotAction": [
+                        "iam:*",
+                        "sts:*",
+                        "aws-marketplace:*",
+                        "account:*",
+                        "cloudfront:*",
+                        "route53:*",
+                        "support:*",
+                        "budgets:*",
+                        "ce:*",
+                        "cur:*",
+                        "billing:*",
+                        "payments:*",
+                        "invoicing:*",
+                        "tax:*",
+                        "consolidatedbilling:*",
+                        "aws-portal:*",
+                        "organizations:*",
+                        "pricing:*",
+                        "globalaccelerator:*",
+                        "shield:*",
+                        "waf:*",
+                        "networkmanager:*",
+                        "savingsplans:*",
+                        "s3:ListAllMyBuckets",
+                        "s3:GetBucketLocation"
+                    ],
+                    "Resource": "*",
+                    "Condition": {
+                        "StringNotEquals": {
+                            "aws:RequestedRegion": "ap-northeast-2"
+                        }
+                    }
+                }
+            ]
+        },
+        "VersionId": "v1",
+        "IsDefaultVersion": true,
+        "CreateDate": "2026-10-06T03:12:30+00:00"
+    }
+}

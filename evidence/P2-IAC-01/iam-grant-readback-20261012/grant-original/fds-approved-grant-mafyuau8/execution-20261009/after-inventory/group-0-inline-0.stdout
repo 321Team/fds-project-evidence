@@ -1,0 +1,22 @@
+{
+    "GroupName": "FDS-Human-Bootstrap",
+    "PolicyName": "FDS-Assume-ReadOnly-Audit-v1",
+    "PolicyDocument": {
+        "Statement": [
+            {
+                "Action": [
+                    "sts:AssumeRole"
+                ],
+                "Condition": {
+                    "Bool": {
+                        "aws:MultiFactorAuthPresent": "true"
+                    }
+                },
+                "Effect": "Allow",
+                "Resource": "arn:aws:iam::774055931866:role/FDS-ReadOnly-Audit",
+                "Sid": "AssumeApprovedInventoryRole"
+            }
+        ],
+        "Version": "2012-10-17"
+    }
+}

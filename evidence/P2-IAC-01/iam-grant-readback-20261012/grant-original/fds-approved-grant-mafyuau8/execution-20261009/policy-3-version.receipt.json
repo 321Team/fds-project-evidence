@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "aws",
+    "iam",
+    "get-policy-version",
+    "--policy-arn",
+    "arn:aws:iam::774055931866:policy/FDS-IaC-Network",
+    "--version-id",
+    "v1",
+    "--region",
+    "ap-northeast-2",
+    "--output",
+    "json",
+    "--no-cli-pager",
+    "--cli-connect-timeout",
+    "10",
+    "--cli-read-timeout",
+    "30"
+  ],
+  "started_utc": "2026-10-09T08:18:53.183919+00:00",
+  "exit_code": 0,
+  "timeout": false,
+  "finished_utc": "2026-10-09T08:18:54.534582+00:00",
+  "stdout_sha256": "ccee2d7fdcbb763b15b6cde5833ebf684399be759ff1acaf42fdef7954f11a8d",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

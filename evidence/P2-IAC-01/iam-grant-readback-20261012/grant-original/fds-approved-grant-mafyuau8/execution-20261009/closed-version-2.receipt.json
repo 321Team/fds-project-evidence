@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "aws",
+    "iam",
+    "get-policy-version",
+    "--policy-arn",
+    "arn:aws:iam::774055931866:policy/FDS-IaC-State-PassRole",
+    "--version-id",
+    "v1",
+    "--region",
+    "ap-northeast-2",
+    "--output",
+    "json",
+    "--no-cli-pager",
+    "--cli-connect-timeout",
+    "10",
+    "--cli-read-timeout",
+    "30"
+  ],
+  "started_utc": "2026-10-09T08:21:18.694259+00:00",
+  "exit_code": 0,
+  "timeout": false,
+  "finished_utc": "2026-10-09T08:21:20.000669+00:00",
+  "stdout_sha256": "bb9da1904b8738d6f40786e389d3f4b32a07ea8b443dc33992a875244b9578f3",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
