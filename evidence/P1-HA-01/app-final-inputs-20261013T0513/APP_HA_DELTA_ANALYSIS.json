@@ -1,0 +1,151 @@
+{
+  "observed_at_utc": "2026-10-12T20:13:09.295328+00:00",
+  "source_sha256": "8ed85ab1c556ccf61f8d8abc2cb87739816775860a7d83bf59dceac46b0aebad",
+  "queries": 6,
+  "query_rc": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "deployments": [
+    {
+      "name": "fds-engine",
+      "uid": "bf825dec-465b-4603-8b71-f768d195531c",
+      "spec_sha256": "e091caa8a78d8a90211a7db9e2f9a5137e319056b14b1b9106e96c85f676f15c",
+      "same_spec_as_0034": true,
+      "same_spread_as_0034": true,
+      "spread": [
+        {
+          "maxSkew": 1,
+          "topologyKey": "kubernetes.io/hostname",
+          "whenUnsatisfiable": "DoNotSchedule",
+          "labelSelector": {
+            "matchLabels": {
+              "app": "fds-engine"
+            }
+          },
+          "nodeTaintsPolicy": "Honor",
+          "matchLabelKeys": [
+            "pod-template-hash"
+          ]
+        }
+      ],
+      "ready": 3
+    },
+    {
+      "name": "transaction-api",
+      "uid": "8a2af808-ec33-41f2-80b5-addde4e28910",
+      "spec_sha256": "07cdf04742aa5be6ef220071232ad1f863e87f1033210269e2cc0dbc18949a9e",
+      "same_spec_as_0034": true,
+      "same_spread_as_0034": true,
+      "spread": [
+        {
+          "maxSkew": 1,
+          "topologyKey": "kubernetes.io/hostname",
+          "whenUnsatisfiable": "DoNotSchedule",
+          "labelSelector": {
+            "matchLabels": {
+              "app": "transaction-api"
+            }
+          },
+          "nodeTaintsPolicy": "Honor",
+          "matchLabelKeys": [
+            "pod-template-hash"
+          ]
+        }
+      ],
+      "ready": 3
+    }
+  ],
+  "nodeport_service": {
+    "metadata": {
+      "name": "transaction-api-nodeport",
+      "namespace": "fds-app",
+      "uid": "49f24245-ac58-451e-b4f1-7183ac917bb1",
+      "resourceVersion": "2213698",
+      "generation": null
+    },
+    "spec": {
+      "type": "NodePort",
+      "selector": {
+        "app": "transaction-api"
+      },
+      "clusterIP": "10.110.141.93",
+      "ports": [
+        {
+          "name": "http",
+          "protocol": "TCP",
+          "port": 80,
+          "targetPort": 8000,
+          "nodePort": 30080
+        }
+      ],
+      "externalTrafficPolicy": "Local",
+      "internalTrafficPolicy": "Cluster",
+      "sessionAffinity": "None"
+    },
+    "spec_sha256": "7a03eb9e578548258639b1abaa9bac7ea7c6e6dfd07e7180bdd763cf57219296"
+  },
+  "nodeport_endpoints": [
+    {
+      "addresses": [
+        "10.244.69.253"
+      ],
+      "conditions": {
+        "ready": true,
+        "serving": true,
+        "terminating": false
+      },
+      "nodeName": "k8s-worker02",
+      "targetRef": {
+        "kind": "Pod",
+        "namespace": "fds-app",
+        "name": "transaction-api-54984f6ddd-wwkpv",
+        "uid": "3be191e1-c875-48e4-a74e-9786968c227e"
+      }
+    },
+    {
+      "addresses": [
+        "10.244.79.119"
+      ],
+      "conditions": {
+        "ready": true,
+        "serving": true,
+        "terminating": false
+      },
+      "nodeName": "k8s-worker01",
+      "targetRef": {
+        "kind": "Pod",
+        "namespace": "fds-app",
+        "name": "transaction-api-54984f6ddd-77dds",
+        "uid": "e7e7992e-959c-4fb2-a36a-ea2d5a5f1354"
+      }
+    },
+    {
+      "addresses": [
+        "10.244.39.193"
+      ],
+      "conditions": {
+        "ready": true,
+        "serving": true,
+        "terminating": false
+      },
+      "nodeName": "k8s-worker03",
+      "targetRef": {
+        "kind": "Pod",
+        "namespace": "fds-app",
+        "name": "transaction-api-54984f6ddd-p8jxf",
+        "uid": "3f8b99ac-fe41-4032-8179-e206c75e96ec"
+      }
+    }
+  ],
+  "hpa_count": 0,
+  "limitations": [
+    "05:01 projection omitted spread; its absent field was not absence of constraint",
+    "Metadata Ready is not active HTTP success",
+    "Source comparison is not new runtime or independent review"
+  ]
+}
