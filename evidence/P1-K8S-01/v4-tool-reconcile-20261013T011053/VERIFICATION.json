@@ -1,0 +1,545 @@
+{
+  "status": "K8S17_APPLIED_VERIFIED",
+  "source": "b4303f2df512a8791d2421203cf159567d076b2a",
+  "receipt_count": 16,
+  "target_files": 17,
+  "preserved_files": 28,
+  "hosts": [
+    {
+      "host": "k8s-control01",
+      "prepared_at_utc": "2026-10-12T16:10:53.703941+00:00",
+      "applied_at_utc": "2026-10-12T16:11:20.283432+00:00",
+      "independent_read_at_utc": "2026-10-12T16:11:57.778818+00:00",
+      "identity": {
+        "host": "k8s-control01",
+        "uid": 0,
+        "boot": "2a889fe4-51fe-43fe-bcd7-5a0f9b8ff360",
+        "product_uuid": "80724d56-7c17-f8a0-b2ea-ece7a154e24b"
+      },
+      "server_backup": "/root/p1-k8s17-20261013-r1",
+      "prepared_sha256": "70a1244a4a95e55bb49ddb0655bd7f2b2346049d5850d930f74a0b8c2b621176",
+      "server_result_sha256": "a2749ef1f9c6ccf72847893b8ee844cc31e4721b52e205a94a148d6545e6bcfe",
+      "changed_count": 1
+    },
+    {
+      "host": "k8s-control03",
+      "prepared_at_utc": "2026-10-12T16:11:58.446854+00:00",
+      "applied_at_utc": "2026-10-12T16:11:59.833546+00:00",
+      "independent_read_at_utc": "2026-10-12T16:12:31.035437+00:00",
+      "identity": {
+        "host": "k8s-control03",
+        "uid": 0,
+        "boot": "5139113f-b02f-4fff-bf9a-8287f95f6b7c",
+        "product_uuid": "72fb4d56-6002-228b-b0c2-981cdcd0a1dd"
+      },
+      "server_backup": "/root/p1-k8s17-20261013-r1",
+      "prepared_sha256": "75ca4206d808b1a7032ed15d55a03f2242bc484f418e38f9c3f5e668237ef3e1",
+      "server_result_sha256": "7b48ba307d87845dac981f58b10bf3dafa403995fe94b22686b149195e33e634",
+      "changed_count": 4
+    },
+    {
+      "host": "k8s-worker01",
+      "prepared_at_utc": "2026-10-12T16:12:26.564583+00:00",
+      "applied_at_utc": "2026-10-12T16:12:27.164287+00:00",
+      "independent_read_at_utc": "2026-10-12T16:12:30.956277+00:00",
+      "identity": {
+        "host": "k8s-worker01",
+        "uid": 0,
+        "boot": "e70731d9-06dd-416a-93d6-248ae804d551",
+        "product_uuid": "3d974d56-c13a-c416-82c1-0dad7ab4aff6"
+      },
+      "server_backup": "/root/p1-k8s17-20261013-r1",
+      "prepared_sha256": "dd9c92681508750db6fa96978315dbef1f432b149f7510c5f44085bf13080c74",
+      "server_result_sha256": "5534c4a8789ae4bee78ef122f3f6c479879e0efae6b5c2a74bc6556e9dd990ff",
+      "changed_count": 4
+    },
+    {
+      "host": "k8s-worker02",
+      "prepared_at_utc": "2026-10-12T16:12:27.869006+00:00",
+      "applied_at_utc": "2026-10-12T16:12:28.402212+00:00",
+      "independent_read_at_utc": "2026-10-12T16:12:31.928872+00:00",
+      "identity": {
+        "host": "k8s-worker02",
+        "uid": 0,
+        "boot": "f0015ee5-36c9-4184-a985-723170958f2c",
+        "product_uuid": "9aa34d56-6424-7b95-6b22-c42e67fdba46"
+      },
+      "server_backup": "/root/p1-k8s17-20261013-r1",
+      "prepared_sha256": "e4c61757c8624a348c94bf69057f22d0df2f0acc69cbc9143985f1e39d642ef8",
+      "server_result_sha256": "29cbe44afc83fc358feac7a0cd3bd778fa93de9936455a319d6b80651a69e763",
+      "changed_count": 4
+    },
+    {
+      "host": "k8s-worker03",
+      "prepared_at_utc": "2026-10-12T16:12:29.081816+00:00",
+      "applied_at_utc": "2026-10-12T16:12:29.661441+00:00",
+      "independent_read_at_utc": "2026-10-12T16:12:30.945424+00:00",
+      "identity": {
+        "host": "k8s-worker03",
+        "uid": 0,
+        "boot": "f0c48106-f753-4ab7-bacd-660c126fca2f",
+        "product_uuid": "a3394d56-a6ae-2f0f-c17d-c6dc9dff8548"
+      },
+      "server_backup": "/root/p1-k8s17-20261013-r1",
+      "prepared_sha256": "7f04f88df63274933bc7d0d76d2a41c6ef07c1f6fd2481f4c6399879d837d559",
+      "server_result_sha256": "41ae06822bc261be5b5d37b65f0f26028e5a046440ce359397abcd7bbfb7978b",
+      "changed_count": 4
+    }
+  ],
+  "files": [
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+      "action": "PRESERVE",
+      "before_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "after_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+      "action": "REPLACE",
+      "before_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+      "after_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+      "action": "PRESERVE",
+      "before_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+      "after_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+      "action": "PRESERVE",
+      "before_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "after_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+      "action": "PRESERVE",
+      "before_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+      "after_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+      "action": "PRESERVE",
+      "before_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "after_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+      "action": "PRESERVE",
+      "before_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "after_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+      "action": "PRESERVE",
+      "before_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "after_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+      "action": "PRESERVE",
+      "before_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+      "after_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+      "action": "PRESERVE",
+      "before_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "after_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+      "action": "REPLACE",
+      "before_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+      "after_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+      "action": "REPLACE",
+      "before_sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+      "after_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+      "action": "PRESERVE",
+      "before_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "after_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+      "action": "REPLACE",
+      "before_sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+      "after_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+      "action": "PRESERVE",
+      "before_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "after_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+      "action": "PRESERVE",
+      "before_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "after_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+      "action": "PRESERVE",
+      "before_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "after_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-control03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+      "action": "REPLACE",
+      "before_sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+      "after_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+      "action": "PRESERVE",
+      "before_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "after_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "selinux": "unconfined_u:object_r:user_home_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+      "action": "REPLACE",
+      "before_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+      "after_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+      "action": "REPLACE",
+      "before_sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+      "after_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+      "action": "PRESERVE",
+      "before_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "after_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "selinux": "unconfined_u:object_r:user_home_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+      "action": "REPLACE",
+      "before_sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+      "after_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+      "action": "PRESERVE",
+      "before_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "after_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "selinux": "unconfined_u:object_r:user_home_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+      "action": "PRESERVE",
+      "before_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "after_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "selinux": "unconfined_u:object_r:user_home_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+      "action": "PRESERVE",
+      "before_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "after_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "selinux": "unconfined_u:object_r:user_home_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker01",
+      "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+      "action": "REPLACE",
+      "before_sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+      "after_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+      "action": "PRESERVE",
+      "before_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "after_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+      "action": "REPLACE",
+      "before_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+      "after_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+      "action": "REPLACE",
+      "before_sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+      "after_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+      "action": "PRESERVE",
+      "before_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "after_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+      "action": "REPLACE",
+      "before_sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+      "after_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+      "action": "PRESERVE",
+      "before_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "after_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+      "action": "PRESERVE",
+      "before_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "after_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+      "action": "PRESERVE",
+      "before_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "after_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker02",
+      "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+      "action": "REPLACE",
+      "before_sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+      "after_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/RUNBOOK_FINAL.md",
+      "action": "PRESERVE",
+      "before_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "after_sha256": "b5388dc52071952608e6bcd642cda4d5a3d6d4c7d6ee8e820e8d4330b32c25c3",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/audit-window.py",
+      "action": "REPLACE",
+      "before_sha256": "75ea9962b84c064ad04a301a8086ecc7ab21c201ec86749a888715cf45a8a80b",
+      "after_sha256": "38e6490a5f00834bfe6d4eb8308f27f693e504414925a15023a161dccb39fe38",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cluster-change.py",
+      "action": "REPLACE",
+      "before_sha256": "07696cee257fde462f193d95f17c26415b10628e4aa2b58f6f3920a46cc18ff6",
+      "after_sha256": "e955a6f981dbcdc3acac1e97dcecca498f4441e23e6c7ae64bbfb4788f2df162",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/cockpit.sh",
+      "action": "PRESERVE",
+      "before_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "after_sha256": "bb8c951d25ff7176edfe7719e0a844f07816eec9cbf1a9cf1c0ab539995de7b1",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/node-evidence.py",
+      "action": "REPLACE",
+      "before_sha256": "318ac4b28c398de46dad6a7049400d75ac211f06fe5a2cfc88c4e64300039023",
+      "after_sha256": "8ce5854476ea7f4e85dafd38ec979392762a3d92e3ed1ff44e58e50119f79e9f",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/prepare-calico.py",
+      "action": "PRESERVE",
+      "before_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "after_sha256": "205025f1b48c0103db945968e18184be519c56315ce3d3357d45439b7c80ddc9",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/probe.py",
+      "action": "PRESERVE",
+      "before_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "after_sha256": "d06ccc2a20770313475ae5e6f04dfba11ce433807b2c5139544f8cc2bd57c50c",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/regression.py",
+      "action": "PRESERVE",
+      "before_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "after_sha256": "2955eafb6f39b1fd4dc574c784088a082582088ec60d1373b6186f887358810d",
+      "selinux": "unconfined_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": false
+    },
+    {
+      "host": "k8s-worker03",
+      "path": "/opt/fds/P1-K8S-01-v4/code/render.py",
+      "action": "REPLACE",
+      "before_sha256": "fe0a99f364f7eaca6f726a4d280c8ff38c7a06652db809edaf3e8499adb5b71b",
+      "after_sha256": "c640831e3655329934f080e1ec35d7661d036867fc4480674e51e7604d11cfba",
+      "selinux": "system_u:object_r:usr_t:s0",
+      "independent_read_match": true,
+      "backup_restore_trial_verified": true
+    }
+  ],
+  "independent_human_review": false,
+  "operating_tool_invocation": false,
+  "policy_service_dns_app_change": false,
+  "ac_accepted": false
+}
