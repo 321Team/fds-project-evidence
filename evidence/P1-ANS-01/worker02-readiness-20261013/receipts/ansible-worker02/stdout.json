@@ -1,0 +1,87 @@
+{
+  "at_utc": "2026-10-12T15:08:43.201549+00:00",
+  "host": "k8s-worker02",
+  "uid": 0,
+  "scope": "read-only DNS/service preparation; no backup creation or NM mutation",
+  "commands": [
+    {
+      "argv": [
+        "ip",
+        "-j",
+        "route",
+        "show",
+        "default"
+      ],
+      "rc": 0,
+      "stdout": "[{\"dst\":\"default\",\"gateway\":\"10.1.93.254\",\"dev\":\"ens160\",\"protocol\":\"static\",\"metric\":100,\"flags\":[]}]\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nmcli",
+        "--get-values",
+        "GENERAL.CONNECTION",
+        "device",
+        "show",
+        "ens160"
+      ],
+      "rc": 0,
+      "stdout": "fds-k8s-worker02\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nmcli",
+        "--get-values",
+        "ipv4.dns,ipv4.dns-search,ipv4.ignore-auto-dns",
+        "connection",
+        "show",
+        "fds-k8s-worker02"
+      ],
+      "rc": 0,
+      "stdout": "10.1.93.52,10.1.93.53\nfds.internal\nyes\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "nmcli",
+        "--get-values",
+        "IP4.DNS",
+        "device",
+        "show",
+        "ens160"
+      ],
+      "rc": 0,
+      "stdout": "10.1.93.52 | 10.1.93.53\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "systemctl",
+        "is-active",
+        "NetworkManager",
+        "kubelet",
+        "containerd"
+      ],
+      "rc": 0,
+      "stdout": "active\nactive\nactive\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "getenforce"
+      ],
+      "rc": 0,
+      "stdout": "Enforcing\n",
+      "stderr": ""
+    }
+  ],
+  "resolv_conf_selected": [
+    "search fds.internal",
+    "nameserver 10.1.93.52",
+    "nameserver 10.1.93.53"
+  ],
+  "interface": "ens160",
+  "connection": "fds-k8s-worker02",
+  "success": true
+}

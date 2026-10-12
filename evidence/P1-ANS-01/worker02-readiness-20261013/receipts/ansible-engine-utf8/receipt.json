@@ -1,0 +1,24 @@
+{
+  "started_at_kst": "2026-10-13T00:09:50.924844+09:00",
+  "command": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "fds-ansible01",
+    "/usr/bin/python3",
+    "-B",
+    "-I",
+    "-"
+  ],
+  "source_sha256": "3a3f878b793879b3b14d01497e8fcdbe42ad1c783c3ceba4334fb91dd215230b",
+  "reason": "collector LC_ALL=C caused 4 version commands to fail; retry affected reads only with process-local UTF-8",
+  "stdout.json_sha256": "1631a00ca8e50135dc0bbc143fe5b74b299b6758b0b36c052212e079dac0e325",
+  "stderr.txt_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "rc": 0,
+  "finished_at_kst": "2026-10-13T00:09:52.301030+09:00"
+}
