@@ -1,0 +1,65 @@
+{
+  "result": "PROVENANCE_VERIFIED_EXPECTED_APPROVAL_BLOCK",
+  "draft_sha256": "a00999626803967016ec5a6f35b0283b88465d86d223d16e28e5e68f3c7e4141",
+  "runtime_read": {
+    "rc": 0,
+    "started_at_utc": "2026-10-12T18:39:02.320120+00:00",
+    "finished_at_utc": "2026-10-12T18:39:02.848152+00:00",
+    "archive_count": 2,
+    "report_count": 2,
+    "receipt_count": 3,
+    "historical_provenance": "PASS",
+    "installed_scanner_identity": "PASS"
+  },
+  "static_gate": {
+    "decision": "BLOCK",
+    "reasons": [
+      "TEMPLATE_OR_UNCONFIRMED_INPUT",
+      "DELIVERY_INPUT_NOT_APPROVED"
+    ],
+    "plan": null,
+    "basis": "DECLARED_REVIEWED_INPUTS_ONLY",
+    "runtime_enforcement": "NOT_INTEGRATED",
+    "delivery_gate": "NOT_VERIFIED",
+    "token_audience_validation": "PRESENCE_ONLY_NO_PINNED_APPROVED_VALUE"
+  },
+  "current_workflow_commit": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7",
+  "secret_names_present": [
+    "CICD_APP_SOURCE_READ_TOKEN",
+    "HARBOR_CI_ROBOT_TOKEN",
+    "HARBOR_CI_ROBOT_USERNAME"
+  ],
+  "robot": {
+    "name": "robot$push",
+    "basis": "USER_REPORTED_IN_THIS_CHAT",
+    "valid_token_possession": "USER_REPORTED",
+    "secret_content_read": false,
+    "current_permissions": "NOT_OBSERVED",
+    "current_disabled": "NOT_OBSERVED",
+    "current_expiry": null,
+    "historical_expiry_hint_only": "2026-10-18T17:16:00+09:00"
+  },
+  "harbor_basis": {
+    "if09_ac02": {
+      "basis": "HISTORICAL_HARBOR_AC02_PASS_NOT_FRESH_ROBOT_OR_SEC_ACCEPTANCE",
+      "reference": "https://github.com/321Team/fds-project-baseline/issues/13#issuecomment-5947371286",
+      "at_kst": "2026-10-02T16:10:00+09:00"
+    },
+    "runner_tls_trust": {
+      "basis": "REUSED_20261013_0143_PYTHON_HTTPS_NOT_SKOPEO_AUTH",
+      "reference": "https://github.com/321Team/fds-project-baseline/issues/13#issuecomment-6128729026"
+    }
+  },
+  "authority": {
+    "requested": "NEW_PUSH_INPUT_PREPARATION_AND_PRECHECK",
+    "actual_push_authorized": false,
+    "lead_reply_is_required_gate": false
+  },
+  "adapter_execute_false": "NOT_RUN_REQUIRES_APPROVED_EXACT_RECORD",
+  "runner_record_placed": false,
+  "fresh_scan": "NOT_RUN",
+  "push": "NOT_EXECUTED",
+  "deploy": "NOT_EXECUTED",
+  "delivery_gate": "NOT_VERIFIED",
+  "phase2": false
+}
