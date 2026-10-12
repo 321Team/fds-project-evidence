@@ -27,7 +27,7 @@ archive 자체는 Git에 넣지 않았습니다. 하영 로컬 비공개 경로�
 |---|---|
 | 실행자 | 이하영, CloudShell 서울, caller `arn:aws:iam::774055931866:user/321team-hayeoung`(개인 IAM 사용자, root·역할 세션 아님) |
 | 시각 | 2026-10-12 11:22:46 – 11:23:26 KST (`meta.txt`) |
-| 수집기 | `iam-readback-3users.sh` **v3** SHA256 `75ff2479c8738b0f2e9a52ae7c4f98f6e8b4322b4a921b8d3ce26a5a307b4721`(meta 기록). v2(`8ef7bfca…`)에 리뷰 6116249967의 full-ARN 해시 키 수정만 반영. 로컬 MOCK에서 같은 이름의 AWS·고객 관리형 정책 2건 모두 수집, tar 실패 시 RC1 확인 |
+| 수집기 | `iam-readback-3users.sh` **v3** SHA256 `75ff2479c8738b0f2e9a52ae7c4f98f6e8b4322b4a921b8d3ce26a5a307b4721`(meta 기록). v2(`8ef7bfca…`)에 리뷰 6116249967의 full-ARN 해시 키 수정만 반영. 원문: [`collector/iam-readback-3users.sh`](collector/iam-readback-3users.sh)(같은 SHA256). 로컬 MOCK에서 같은 이름의 AWS·고객 관리형 정책 2건 모두 수집, tar 실패 시 RC1 확인 |
 | AWS CLI | `aws-cli/2.37.6` |
 | 수신 | CloudShell `base64 -w 76` 출력 → 클립보드에서 직접 디코드(30,491 bytes, SHA256 `72a2016dd2594933eadc08cd7ab9c8065761c9ba389dee716a1ccffe750abc98`), gzip OK. **CloudShell 쪽 archive 해시 출력과의 대조는 하지 못했습니다**(콘솔 값 미수신). 대신 내부 `SHA256SUMS` **90/90 일치**(파일 91 = 90 + manifest) |
 | 결과 | 30개 항목 모두 rc0 / OK. **DENIED·ERROR 0건** |
@@ -47,7 +47,7 @@ archive 자체는 Git에 넣지 않았습니다. 하영 로컬 비공개 경로�
 | `arn:aws:iam::aws:policy/ReadOnlyAccess` | AWS 관리형 | v190 | `policy-2a3bda39…-meta.stdout` (`af6ee2cddadc7f09`) | `policy-2a3bda39…-v190-document.stdout` (`34eaf8b1472d5aee`) | Allow 3문. `Action: "*"` 없음. AWS 관리형 읽기 전용입니다. 이름에 Get·List·Describe가 없는 항목(예: `apigateway:GET`, `codecommit:GitPull`)도 조회성입니다. 쓰기·관리 권한 아님 |
 | `arn:aws:iam::774055931866:policy/FDS-Human-ReadOnly-Guard-v1` | 고객 관리형 | v1 | `policy-e9f127e3…-meta.stdout` (`8cbd61fecaa8eb18`) | `policy-e9f127e3…-v1-document.stdout` (`33c575b9fbf88676`) | summary는 `WILDCARD_ACTION_PRESENT`이지만 원문 4문 **모두 `Deny`**입니다: 승인 외 그룹원 전면 거부, MFA 없으면 bootstrap 외 거부(`BoolIfExists`), 본인 외 bootstrap 거부, 서울 밖 거부. 권한 부여 없음 |
 | inline `FDS-Assume-ReadOnly-Audit-v1` | 그룹 inline | — | — | `group-…-FDS-Assume-ReadOnly-Audit-v1-document.stdout` (`a617eded8b18f86d`) | `sts:AssumeRole` on `role/FDS-ReadOnly-Audit`, MFA 조건 |
-| inline `FDS-Human-Direct-ReadOnly-v1` | 그룹 inline | — | — | `group-…-FDS-Human-Direct-ReadOnly-v1-document.stdout` (`83afbb2d83f06dc4`) | 서울 EC2 Describe 일부, Audit 역할·ELB 서비스 역할 조회, `iam:ListRoles`, `aws-marketplace:ViewSubscriptions`. 모두 MFA 조건. 쓰기 없음 |
+| inline `FDS-Human-Direct-ReadOnly-v1` | 그룹 inline | — | — | `group-…-FDS-Human-Direct-ReadOnly-v1-document.stdout` (`83afbb2d83f06dc4`) | MFA·본인(3인 `aws:PrincipalArn`)·서울 조건으로 제한한 조회 권한(EC2·ELB Describe, Service Quotas 조회, Audit 역할·ELB 서비스 역할 조회, `iam:ListRoles`, `aws-marketplace:ViewSubscriptions`)과 **CloudShell 환경/세션 생성·시작 및 자격증명 전달 권한**(`cloudshell:CreateEnvironment`·`CreateSession`·`StartEnvironment`·`PutCredentials`)을 포함한다. 일반 인프라/IAM 관리자 권한은 부여하지 않는다 |
 | inline `FDS-SelfService-Password-MFA` | 그룹 inline | — | — | `group-…-FDS-SelfService-Password-MFA-document.stdout` (`09fad154f0cf9c5c`) | 본인 비밀번호·MFA 관리, 본인 Access Key 목록 조회. MFA 없이 MFA 해제 거부 |
 
 **판정 (원문 검토 기준):** 3인 모두 직접 연결 정책이 없고, 유일한 그룹의 정책 5개 원문에 관리자급 Allow(`Action: "*"` Allow, IAM·정책 변경 Allow 등)가 없습니다. 그래서 **"상시 Administrator 직접·그룹 부여 없음"으로 판단합니다.** 판단 근거는 summary 표시나 해시 일치가 아니라 위 원문 검토입니다. 독립 리뷰에서 같은 원문으로 확인해 주세요.
@@ -59,7 +59,7 @@ archive 자체는 Git에 넣지 않았습니다. 하영 로컬 비공개 경로�
 
 ### 2-4. CloudTrail 조회 가능 여부
 - `cloudtrail lookup-events --max-results 1 --no-paginate`: **ALLOWED**(1건 반환, 이벤트 본문 미저장).
-- 하영 사용자는 그룹의 `ReadOnlyAccess`로 CloudTrail 조회가 가능합니다. 같은 그룹인 3인 모두 같은 근거입니다. → [복구 절차 v2](https://github.com/321Team/infra-terraform/issues/9#issuecomment-6109083724) 2번의 "CloudTrail 조회 주체" 조건 입력.
+- **하영 RUNTIME 성공** / **권욱·재환은 같은 그룹 정책(`ReadOnlyAccess`의 `cloudtrail:LookupEvents` Allow, Guard의 MFA·리전 통제) 근거의 STATIC 가용 경로**입니다. 두 사람의 실제 조회는 실행하지 않았습니다. 사고 시 실제 조회 실패는 UNVERIFIED로 두고 권한 확대·root 전환을 자동 승인하지 않습니다. LookupEvents 성공은 state S3 data event 기록 존재·writer 종료·force-unlock GO를 증명하지 않습니다. → [복구 절차 v2](https://github.com/321Team/infra-terraform/issues/9#issuecomment-6109083724) 2번의 "CloudTrail 조회 주체" 조건 입력.
 
 ## 3. NOT_VERIFIED / 정정
 
@@ -79,3 +79,9 @@ archive 자체는 Git에 넣지 않았습니다. 하영 로컬 비공개 경로�
 - `SHA256SUMS` — 이 폴더 전체 해시
 
 AI 사용: CLAUDE_ASSISTED. readback 실행·편입 작성자 이하영, 부여 원본 생산자 이권욱. 둘 다 자기 승인 아님. 독립 리뷰: 이재환.
+
+## 개정 이력
+
+| 일자 | 근거 | 변경 |
+|---|---|---|
+| 2026-10-12 | [이권욱 #9 리뷰 6116772812](https://github.com/321Team/infra-terraform/issues/9#issuecomment-6116772812) | 2-2 `FDS-Human-Direct-ReadOnly-v1` 설명을 원문 기준으로 정정(CloudShell 생성·시작·자격증명 전달 포함, "쓰기 없음" 삭제). 2-4 CloudTrail 조회 근거를 하영 RUNTIME / 권욱·재환 STATIC으로 구분. v3 수집기 원문 `collector/` 추가. 정책·원본 파일 변경 없음 |
