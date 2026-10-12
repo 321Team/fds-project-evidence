@@ -1,0 +1,17 @@
+# 콘솔 복사본 (원본 파일 아님)
+# 출처: CloudShell ~/iac11-network-20261012-002405/show-json.stdout (14:44:25 회차 Plan JSON, state 사본 포함이라 증적 미편입)
+# 명령: python3 로 resource_drift 각 항목의 before/after 중 값이 다른 키만 출력 (2026-10-12, 이하영 실행, 화면 출력 복사)
+# Plan JSON SHA256: 09f1576cd31c13def2a1858c76922ce2adac35a0627c25d72640656b4c1338a7 (runs/evidence-replan-20261012-144425/execution-summary.json 기록값)
+== aws_eip.nat
+   association_id | before: "" | after: "eipassoc-07d099e174c39ec2c"
+   network_interface | before: "" | after: "eni-08977993a2ebd6816"
+   private_dns | before: "" | after: "ip-10-20-110-241.ap-northeast-2.compute.internal"
+   private_ip | before: "" | after: "10.20.110.241"
+== aws_route_table.subnet["private_a"]
+   route | before: [] | after: [{"carrier_gateway_id": "", "cidr_block": "0.0.0.0/0", "core_network_arn": "", "destination_prefix_list_id": "", "egress_only_gateway_id": "", "gateway_id": "", "ipv6_cidr_block": "", "local_gateway_id": "", "nat_gateway_id": "nat-0f0fa5d5de405fa71", "network_interface_id": "", "odb_network_arn": "", "transit_gateway_id": "", "vpc_endpoint_id": "", "vpc_peering_connection_id": ""}]
+== aws_route_table.subnet["private_b"]
+   route | before: [] | after: [{"carrier_gateway_id": "", "cidr_block": "0.0.0.0/0", "core_network_arn": "", "destination_prefix_list_id": "", "egress_only_gateway_id": "", "gateway_id": "", "ipv6_cidr_block": "", "local_gateway_id": "", "nat_gateway_id": "nat-0f0fa5d5de405fa71", "network_interface_id": "", "odb_network_arn": "", "transit_gateway_id": "", "vpc_endpoint_id": "", "vpc_peering_connection_id": ""}]
+== aws_route_table.subnet["private_c"]
+   route | before: [] | after: [{"carrier_gateway_id": "", "cidr_block": "0.0.0.0/0", "core_network_arn": "", "destination_prefix_list_id": "", "egress_only_gateway_id": "", "gateway_id": "", "ipv6_cidr_block": "", "local_gateway_id": "", "nat_gateway_id": "nat-0f0fa5d5de405fa71", "network_interface_id": "", "odb_network_arn": "", "transit_gateway_id": "", "vpc_endpoint_id": "", "vpc_peering_connection_id": ""}]
+== aws_route_table.subnet["public_transport_a"]
+   route | before: [] | after: [{"carrier_gateway_id": "", "cidr_block": "0.0.0.0/0", "core_network_arn": "", "destination_prefix_list_id": "", "egress_only_gateway_id": "", "gateway_id": "igw-003f907eafcc6bfb9", "ipv6_cidr_block": "", "local_gateway_id": "", "nat_gateway_id": "", "network_interface_id": "", "odb_network_arn": "", "transit_gateway_id": "", "vpc_endpoint_id": "", "vpc_peering_connection_id": ""}]
