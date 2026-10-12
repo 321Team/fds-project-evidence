@@ -1,0 +1,92 @@
+{
+  "started_at_utc": "2026-10-12T16:43:22.134103+00:00",
+  "finished_at_utc": "2026-10-12T16:43:24.560339+00:00",
+  "source_sha256": "244c2423d6eb1a57e306fb5d92591f497581509b0e97a2b3a031aefbf7801196",
+  "target": {
+    "host": "cicd-runner01",
+    "ip": "10.250.10.20",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "role": "runner"
+  },
+  "rc": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "observation": {
+    "at_utc": "2026-10-12T16:43:24.891387+00:00",
+    "certificates": [
+      {
+        "approved_root_present": true,
+        "blocks": 1,
+        "file_sha256": "20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f",
+        "other_certificates": 0,
+        "path": "/home/server01_cicd-runner/.config/containers/certs.d/10.1.93.54/ca.crt"
+      }
+    ],
+    "classification": "RUNTIME_READ_PUBLIC_CONSUMER_TRUST",
+    "configuration": {
+      "certificate_directories": [
+        {
+          "exists": true,
+          "path": "/home/server01_cicd-runner/.config/containers/certs.d/10.1.93.54"
+        },
+        {
+          "exists": false,
+          "path": "/etc/containers/certs.d/10.1.93.54"
+        },
+        {
+          "exists": false,
+          "path": "/etc/docker/certs.d/10.1.93.54"
+        }
+      ],
+      "default_trust_approved_root_present": true
+    },
+    "configuration_changed": false,
+    "credential_sent": false,
+    "credentials_read": false,
+    "finished_at_utc": "2026-10-12T16:43:24.913032+00:00",
+    "https": [
+      {
+        "body_bytes": 7,
+        "body_sha256": "1b6f69f3061677f95df0349011d840d601d8bead90e44443e82e2e1e1b65a623",
+        "elapsed_seconds": 0.009552253992296755,
+        "endpoint": "https://10.1.93.54/api/v2.0/ping",
+        "http_status": 200,
+        "peer_der_sha256": "61617af3574f37c70a2d9c7f284a75f82c844ae3eaf599cb3d0ec649126ebeaf",
+        "pong": true,
+        "result": "PASS",
+        "tls": "TLSv1.3",
+        "trust_path": "python_default_system_trust"
+      },
+      {
+        "body_bytes": 7,
+        "body_sha256": "1b6f69f3061677f95df0349011d840d601d8bead90e44443e82e2e1e1b65a623",
+        "elapsed_seconds": 0.005941887997323647,
+        "endpoint": "https://10.1.93.54/api/v2.0/ping",
+        "http_status": 200,
+        "peer_der_sha256": "61617af3574f37c70a2d9c7f284a75f82c844ae3eaf599cb3d0ec649126ebeaf",
+        "pong": true,
+        "result": "PASS",
+        "tls": "TLSv1.3",
+        "trust_path": "configured_public_ca:/home/server01_cicd-runner/.config/containers/certs.d/10.1.93.54/ca.crt"
+      }
+    ],
+    "identity": {
+      "boot": "188c5f37-daf8-4fda-8edd-2634ead61801",
+      "host": "cicd-runner01",
+      "uid": 1000,
+      "user": "server01_cicd-runner"
+    },
+    "image_pull_push": false,
+    "read_files": [
+      {
+        "bytes": 2004,
+        "mode": 420,
+        "path": "/home/server01_cicd-runner/.config/containers/certs.d/10.1.93.54/ca.crt",
+        "resolved": "/home/server01_cicd-runner/.config/containers/certs.d/10.1.93.54/ca.crt",
+        "sha256": "20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f",
+        "uid": 1000
+      }
+    ],
+    "runtime_acceptance": false
+  }
+}

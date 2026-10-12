@@ -1,0 +1,47 @@
+{
+  "started_at_utc": "2026-10-12T16:48:26.350069+00:00",
+  "finished_at_utc": "2026-10-12T16:48:27.010784+00:00",
+  "source_sha256": "8eb7043fbfc5e6712190a1865fceb889e3d98cd0f58ac21caba8219813a4ee88",
+  "target": {
+    "host": "k8s-worker01",
+    "ip": "10.1.93.105",
+    "user": "svc_ansible",
+    "uid": 0,
+    "role": "worker",
+    "uuid": "3d974d56-c13a-c416-82c1-0dad7ab4aff6",
+    "boot": "e70731d9-06dd-416a-93d6-248ae804d551",
+    "config_sha256": "28bd0b54d7dee7de988d9d7560332e077cb1b934193b388a48d7cc689fd3899c"
+  },
+  "rc": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "observation": {
+    "at_utc": "2026-10-12T16:48:27.298883+00:00",
+    "binary_sha256": "114cc0aea9c2145a9f163ff0a31b66ac9726d0638f2908376fe6f9e68b0342e9",
+    "boot": "e70731d9-06dd-416a-93d6-248ae804d551",
+    "classification": "RUNTIME_READ_EFFECTIVE_CONFIGURATION",
+    "config_sha256": "28bd0b54d7dee7de988d9d7560332e077cb1b934193b388a48d7cc689fd3899c",
+    "daemon_loaded_configuration_attested": false,
+    "dump_bytes": 8527,
+    "dump_sha256": "28bd0b54d7dee7de988d9d7560332e077cb1b934193b388a48d7cc689fd3899c",
+    "host": "k8s-worker01",
+    "registry_authenticated": false,
+    "selected_registry": [
+      {
+        "config_path": "",
+        "matching_legacy_tls": {},
+        "matching_mirror_configured": [],
+        "plugin": "io.containerd.cri.v1.images"
+      },
+      {
+        "config_path": "",
+        "matching_legacy_tls": {},
+        "matching_mirror_configured": [],
+        "plugin": "io.containerd.grpc.v1.cri"
+      }
+    ],
+    "service_changed": false,
+    "status": "COLLECTED",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
