@@ -1,0 +1,242 @@
+{
+  "status": "VERIFIED_LOCAL_RECEIPTS_AND_LIMITED_RUNTIME_RESULTS",
+  "receipt_count": 44,
+  "receipts": [
+    {
+      "path": "api-1",
+      "rc": 0
+    },
+    {
+      "path": "api-1-edge-watch",
+      "rc": 0
+    },
+    {
+      "path": "api-1-post1-cluster",
+      "rc": 0
+    },
+    {
+      "path": "api-1-post1-edge",
+      "rc": 0
+    },
+    {
+      "path": "api-1-post1-mon",
+      "rc": 0
+    },
+    {
+      "path": "api-2",
+      "rc": 0
+    },
+    {
+      "path": "api-2-edge-watch",
+      "rc": 0
+    },
+    {
+      "path": "api-2-post1-cluster",
+      "rc": 0
+    },
+    {
+      "path": "api-2-post1-edge",
+      "rc": 0
+    },
+    {
+      "path": "api-2-post1-mon",
+      "rc": 0
+    },
+    {
+      "path": "api-2-post2-cluster",
+      "rc": 0
+    },
+    {
+      "path": "api-2-post2-edge",
+      "rc": 0
+    },
+    {
+      "path": "api-2-post2-mon",
+      "rc": 0
+    },
+    {
+      "path": "before-cluster",
+      "rc": 0
+    },
+    {
+      "path": "before-edge",
+      "rc": 0
+    },
+    {
+      "path": "before-mon",
+      "rc": 0
+    },
+    {
+      "path": "control01-binding",
+      "rc": 0
+    },
+    {
+      "path": "control01-mon-current",
+      "rc": 0
+    },
+    {
+      "path": "control01-mon-target-labels",
+      "rc": 0
+    },
+    {
+      "path": "control01-oid-layer-bytes",
+      "rc": 0
+    },
+    {
+      "path": "edge-current",
+      "rc": 1
+    },
+    {
+      "path": "edge-current-unprivileged",
+      "rc": 0
+    },
+    {
+      "path": "engine-1",
+      "rc": 0
+    },
+    {
+      "path": "engine-1-edge-watch",
+      "rc": 0
+    },
+    {
+      "path": "engine-1-post1-cluster",
+      "rc": 0
+    },
+    {
+      "path": "engine-1-post1-edge",
+      "rc": 0
+    },
+    {
+      "path": "engine-1-post1-mon",
+      "rc": 0
+    },
+    {
+      "path": "engine-2",
+      "rc": 0
+    },
+    {
+      "path": "engine-2-edge-watch",
+      "rc": 0
+    },
+    {
+      "path": "engine-2-post1-cluster",
+      "rc": 0
+    },
+    {
+      "path": "engine-2-post1-edge",
+      "rc": 0
+    },
+    {
+      "path": "engine-2-post1-mon",
+      "rc": 0
+    },
+    {
+      "path": "engine-2-post2-cluster",
+      "rc": 0
+    },
+    {
+      "path": "engine-2-post2-edge",
+      "rc": 0
+    },
+    {
+      "path": "engine-2-post2-mon",
+      "rc": 0
+    },
+    {
+      "path": "eviction-guard-readonly",
+      "rc": 2
+    },
+    {
+      "path": "final-cluster",
+      "rc": 0
+    },
+    {
+      "path": "final-edge",
+      "rc": 0
+    },
+    {
+      "path": "final-edge-watch",
+      "rc": 0
+    },
+    {
+      "path": "final-mon",
+      "rc": 0
+    },
+    {
+      "path": "k8s-worker01-cache",
+      "rc": 0
+    },
+    {
+      "path": "k8s-worker03-cache",
+      "rc": 0
+    },
+    {
+      "path": "replacement-events",
+      "rc": 0
+    },
+    {
+      "path": "worker01-tool-help",
+      "rc": 0
+    }
+  ],
+  "evictions": [
+    {
+      "step": "engine-1",
+      "app": "fds-engine",
+      "old_pod": "fds-engine-66b8c565c4-667wx",
+      "old_uid": "5672cc0c-9e4c-4562-9c25-8e0e530669b8",
+      "dispatch_at_utc": "2026-10-12T15:48:54.726810+00:00",
+      "edge_200": 90
+    },
+    {
+      "step": "engine-2",
+      "app": "fds-engine",
+      "old_pod": "fds-engine-66b8c565c4-dqvxt",
+      "old_uid": "fb40f550-9ff8-4fa8-a80a-8f30c16474e2",
+      "dispatch_at_utc": "2026-10-12T15:50:48.217111+00:00",
+      "edge_200": 90
+    },
+    {
+      "step": "api-1",
+      "app": "transaction-api",
+      "old_pod": "transaction-api-54984f6ddd-kw5hw",
+      "old_uid": "029913b1-20de-44a4-ba81-30e305d940c8",
+      "dispatch_at_utc": "2026-10-12T15:52:26.199141+00:00",
+      "edge_200": 90
+    },
+    {
+      "step": "api-2",
+      "app": "transaction-api",
+      "old_pod": "transaction-api-54984f6ddd-qlrhr",
+      "old_uid": "4945a86d-ce32-4609-a2e9-b4bede1a7a84",
+      "dispatch_at_utc": "2026-10-12T15:54:08.016533+00:00",
+      "edge_200": 90
+    }
+  ],
+  "edge_get_count": 420,
+  "edge_failed_count": 0,
+  "edge_max_elapsed_ms": 19,
+  "final_counts": {
+    "fds-engine": {
+      "k8s-worker01": 1,
+      "k8s-worker02": 1,
+      "k8s-worker03": 1
+    },
+    "transaction-api": {
+      "k8s-worker01": 1,
+      "k8s-worker02": 1,
+      "k8s-worker03": 1
+    }
+  },
+  "final_deployment_specs_unchanged": true,
+  "old_pods_preserved": [
+    "3be191e1-c875-48e4-a74e-9786968c227e",
+    "b7b42efa-6eab-4952-b5a0-1aeb9f27b077"
+  ],
+  "oid_layer_bytes_verified": 84341850,
+  "oid_layer_count": 15,
+  "k8s_supply_files": 4,
+  "k8s_install_executed": false,
+  "ha_ac_or_final_e2e_accepted": false,
+  "independent_review_complete": false
+}
