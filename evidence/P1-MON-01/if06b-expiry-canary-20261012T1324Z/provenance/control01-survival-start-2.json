@@ -1,0 +1,9 @@
+{
+  "started_kst": "2026-10-12T21:23:00.234257+09:00",
+  "finished_kst": "2026-10-12T21:23:00.868314+09:00",
+  "source_sha256": "1fa86df4e918c1594478610835c877e0ce24dbee44c1452a7a1b4db3b4219a80",
+  "route": "fds-ansible01 -> svc_ansible@10.1.93.102 -> sudo",
+  "rc": 0,
+  "stdout": "{\"step\": \"SURVIVAL_ARMED\", \"dedicated_ssh_session_ends_after_this_command\": true, \"launch\": [{\"cluster_uid\": \"NOT_USED\", \"evidence_complete\": true, \"guardian_epoch\": \"1035439-9393613\", \"host_boot_id\": \"2a889fe4-51fe-43fe-bcd7-5a0f9b8ff360\", \"mono\": 93936.133094973, \"seq\": 1, \"session_id\": \"SURVIVAL_CHECK\", \"step\": \"ARMED\", \"utc\": \"2026-10-12T12:23:00.987+00:00\"}], \"session_identity\": {\"rc\": 0, \"out\": \"Id=24\\nName=svc_ansible\\nState=active\\n\", \"err\": \"\"}, \"sessions_before\": \"10 1000 server02    seat0 673390  user    tty2 no -\\n11 1000 server02    -     673410  manager -    no -\\n24 1001 svc_ansible -     1035378 user    -    no -\\n25 1001 svc_ansible -     1035384 manager -    no -\\n\", \"shell_environment_session_id\": null, \"armed_observed_utc\": \"2026-10-12T12:23:00.997541+00:00\", \"command\": [\"env\", \"IF06B_RESULTS=/var/lib/fds-change/if06b-20261012T2110-mon01/results\", \"/bin/sh\", \"/var/lib/fds-change/if06b-20261012T2110-mon01/aux/tools/record.sh\", \"4-1-survival-launch\", \"/usr/bin/python3.12\", \"-B\", \"/var/lib/fds-change/if06b-20261012T2110-mon01/supply/guardian.py\", \"survival-check\", \"--evidence-dir\", \"/var/lib/fds-change/if06b-survival-20261012T2110-mon01\", \"--seconds\", \"300\", \"--interval-seconds\", \"5\"], \"launcher_rc\": 0, \"credential_used\": false, \"api_calls\": 0, \"canary_created\": 0}\n",
+  "stderr": ""
+}

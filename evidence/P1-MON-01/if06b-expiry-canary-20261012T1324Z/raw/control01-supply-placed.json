@@ -1,0 +1,9 @@
+{
+  "started_kst": "2026-10-12T22:21:12.306378+09:00",
+  "finished_kst": "2026-10-12T22:21:12.902566+09:00",
+  "source_sha256": "91d38dcd5ecd15fc6742583bc5b6e16fe5fa8c5df6f3218ab65b9a6c32023f51",
+  "route": "fds-ansible01 -> svc_ansible@10.1.93.102 -> sudo",
+  "rc": 0,
+  "stdout": "{\"step\": \"SUPPLY_PLACED\", \"input_sha256\": \"ac489bef85948b4a8a425e1aeb96cdabe328827152264246cae98135618cbfce\", \"checks\": [{\"dir\": \"/var/lib/fds-change/if06b-20261012T2220-mon02/supply\", \"rc\": 0, \"stdout\": \"coordinator.py: OK\\ndecision.py: OK\\njournal.py: OK\\ntransport.py: OK\\nsupervisor.py: OK\\nguardian.py: OK\\ncanary-manifest.json: OK\\n\", \"stderr\": \"\"}, {\"dir\": \"/var/lib/fds-change/if06b-20261012T2220-mon02/aux/rbac\", \"rc\": 0, \"stdout\": \"01-serviceaccount.yaml: OK\\n02-clusterrole.yaml: OK\\n03-clusterrolebinding.yaml: OK\\n\", \"stderr\": \"\"}, {\"dir\": \"/var/lib/fds-change/if06b-20261012T2220-mon02/aux/tools\", \"rc\": 0, \"stdout\": \"gate.py: OK\\nident.py: OK\\nobjinfo.py: OK\\ntokeninfo.py: OK\\nrecord.sh: OK\\n\", \"stderr\": \"\"}], \"paths\": {\"/var/lib/fds-change/if06b-20261012T2220-mon02\": {\"uid\": 0, \"mode\": \"0o700\"}, \"/home/svc_ansible/if06b-in-20261012T2220-mon02\": {\"uid\": 0, \"mode\": \"0o700\"}, \"/var/lib/fds-change/if06b-20261012T2220-mon02/input.json\": {\"uid\": 0, \"mode\": \"0o600\"}, \"/var/lib/fds-change/if06b-20261012T2220-mon02/journal\": {\"uid\": 0, \"mode\": \"0o700\"}, \"/var/lib/fds-change/if06b-20261012T2220-mon02/evidence\": {\"uid\": 0, \"mode\": \"0o700\"}, \"/var/lib/fds-change/if06b-20261012T2220-mon02/results\": {\"uid\": 0, \"mode\": \"0o700\"}}, \"rbac_created\": 0, \"token_issued\": 0, \"canary_created\": 0}\n",
+  "stderr": ""
+}

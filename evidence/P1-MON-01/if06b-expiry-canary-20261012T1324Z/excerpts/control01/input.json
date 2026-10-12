@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "session_id": "20261012T2220-mon02",
+  "expected_cluster_uid": "e1669cff-1435-423f-a6c4-28bc44f488de",
+  "api": {
+    "connect_ip": "10.1.93.109",
+    "port": 6443,
+    "tls_server_name": "10.1.93.109",
+    "ca_file": "/etc/kubernetes/pki/ca.crt",
+    "ca_sha256": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c"
+  },
+  "credential": {
+    "kind": "bearer_token_file",
+    "token_file": "/run/fds-if06b-20261012T2220-mon02/token"
+  },
+  "manifest_file": "/var/lib/fds-change/if06b-20261012T2220-mon02/supply/canary-manifest.json",
+  "reviewed_manifest_sha256": "0602b0001405a9929f3b8d91dc6a2b9175c5811531a6eab930e50520b2f6d37f",
+  "reviewed_spec_sha256": "4b5599c45f99528dc1e0f02216bd220afd3789af39db38159e718488d53b8146",
+  "journal_dir": "/var/lib/fds-change/if06b-20261012T2220-mon02/journal",
+  "evidence_dir": "/var/lib/fds-change/if06b-20261012T2220-mon02/evidence",
+  "budgets": {
+    "lease_seconds": 90,
+    "cleanup_window_seconds": 60,
+    "observation_max_age_seconds": 10,
+    "request_timeout_seconds": 10,
+    "readback_delay_seconds": 2
+  }
+}

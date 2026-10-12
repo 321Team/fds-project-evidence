@@ -1,0 +1,26 @@
+{
+  "at_kst": "2026-10-12T22:20:58.877654+09:00",
+  "session_id": "20261012T2220-mon02",
+  "previous_session": "20261012T2110-mon01",
+  "prior_canary_calls": 0,
+  "authorized_user_instruction": "작업창을 이쪽에서 먼저 실행하는것으로 했음. 착수",
+  "unchanged_product_source": "92c182fc58de999536e56d90012bb2686d9f07cf",
+  "input_delta": [
+    "/session_id",
+    "/credential/token_file",
+    "/manifest_file",
+    "/journal_dir",
+    "/evidence_dir"
+  ],
+  "input_sha256": "ac489bef85948b4a8a425e1aeb96cdabe328827152264246cae98135618cbfce",
+  "budgets_unchanged": true,
+  "helper_changes": [
+    "new session paths and receipt directory",
+    "auth/readiness precede capture trigger",
+    "renew sudo before post read without changing sudo policy",
+    "gate/state reads get distinct receipts; no repeated requests",
+    "one worker capture required for export"
+  ],
+  "static_syntax": "Python helpers and field shell syntax passed",
+  "runtime": "NOT_STARTED"
+}
