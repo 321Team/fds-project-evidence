@@ -1,0 +1,36 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "FDS-IaC-Operator",
+        "RoleId": "AROA3IOKUF7NEM6P7ZKPK",
+        "Arn": "arn:aws:iam::774055931866:role/FDS-IaC-Operator",
+        "CreateDate": "2026-10-09T08:19:42+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "HoldUntilReviewedActivation",
+                    "Effect": "Deny",
+                    "Principal": {
+                        "AWS": "arn:aws:iam::774055931866:root"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        },
+        "Tags": [
+            {
+                "Key": "Project",
+                "Value": "fds-hybrid"
+            },
+            {
+                "Key": "ManagedBy",
+                "Value": "project-bootstrap"
+            },
+            {
+                "Key": "Purpose",
+                "Value": "phase2-iac-work-role"
+            }
+        ]
+    }
+}

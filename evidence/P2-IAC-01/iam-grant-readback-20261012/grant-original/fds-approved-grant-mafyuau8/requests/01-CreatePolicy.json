@@ -1,0 +1,19 @@
+{
+  "PolicyName": "FDS-IaC-Guardrails",
+  "Path": "/",
+  "PolicyDocument": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"DenyOutsideSeoul\",\n      \"Effect\": \"Deny\",\n      \"NotAction\": [\n        \"iam:GetRole\",\n        \"iam:GetInstanceProfile\",\n        \"iam:PassRole\",\n        \"sts:GetCallerIdentity\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"StringNotEquals\": {\n          \"aws:RequestedRegion\": \"ap-northeast-2\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"DenyRemovingOwnershipTags\",\n      \"Effect\": \"Deny\",\n      \"Action\": \"ec2:DeleteTags\",\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"ForAnyValue:StringEquals\": {\n          \"aws:TagKeys\": [\n            \"Project\",\n            \"ManagedBy\"\n          ]\n        }\n      }\n    },\n    {\n      \"Sid\": \"DenyRetagProjectToOtherValue\",\n      \"Effect\": \"Deny\",\n      \"Action\": \"ec2:CreateTags\",\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"Null\": {\n          \"aws:RequestTag/Project\": \"false\"\n        },\n        \"StringNotEquals\": {\n          \"aws:RequestTag/Project\": \"fds-hybrid\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"DenyRetagManagedByToOtherValue\",\n      \"Effect\": \"Deny\",\n      \"Action\": \"ec2:CreateTags\",\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"Null\": {\n          \"aws:RequestTag/ManagedBy\": \"false\"\n        },\n        \"StringNotEquals\": {\n          \"aws:RequestTag/ManagedBy\": \"terraform\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"DenySessionDocumentChangeOrDelete\",\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"ssm:UpdateDocument\",\n        \"ssm:UpdateDocumentDefaultVersion\",\n        \"ssm:DeleteDocument\",\n        \"ssm:ModifyDocumentPermission\",\n        \"ssm:SendCommand\"\n      ],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Sid\": \"DenyCentralBootstrapStackChange\",\n      \"Effect\": \"Deny\",\n      \"NotAction\": [\n        \"cloudformation:Describe*\",\n        \"cloudformation:Get*\",\n        \"cloudformation:List*\"\n      ],\n      \"Resource\": \"arn:aws:cloudformation:*:774055931866:stack/*\"\n    }\n  ]\n}\n",
+  "Tags": [
+    {
+      "Key": "Project",
+      "Value": "fds-hybrid"
+    },
+    {
+      "Key": "ManagedBy",
+      "Value": "project-bootstrap"
+    },
+    {
+      "Key": "Purpose",
+      "Value": "phase2-iac-work-role"
+    }
+  ]
+}
