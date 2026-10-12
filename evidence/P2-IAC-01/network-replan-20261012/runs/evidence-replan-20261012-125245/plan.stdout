@@ -1,0 +1,31 @@
+data.aws_availability_zone.adopted["apne2-az1"]: Reading...
+data.aws_availability_zone.adopted["apne2-az3"]: Reading...
+data.aws_availability_zone.adopted["apne2-az2"]: Reading...
+data.aws_availability_zone.adopted["apne2-az1"]: Read complete after 0s [id=ap-northeast-2a]
+data.aws_availability_zone.adopted["apne2-az3"]: Read complete after 0s [id=ap-northeast-2c]
+data.aws_availability_zone.adopted["apne2-az2"]: Read complete after 0s [id=ap-northeast-2b]
+aws_vpc.project: Refreshing state... [id=vpc-039718404350154d9]
+aws_route_table.subnet["private_b"]: Refreshing state... [id=rtb-061f0b2ff25634304]
+aws_subnet.project["private_c"]: Refreshing state... [id=subnet-07586708a37f05d71]
+aws_route_table.subnet["private_c"]: Refreshing state... [id=rtb-0be823c978f9da092]
+aws_subnet.project["private_b"]: Refreshing state... [id=subnet-0fc798d49bb79b248]
+aws_internet_gateway.transport: Refreshing state... [id=igw-003f907eafcc6bfb9]
+aws_subnet.project["private_a"]: Refreshing state... [id=subnet-044ced60c3c705ac6]
+aws_subnet.project["public_transport_a"]: Refreshing state... [id=subnet-0fbc846bde668f0f3]
+aws_route_table.subnet["private_a"]: Refreshing state... [id=rtb-01e3140bb2a0b3bb6]
+aws_route_table.subnet["public_transport_a"]: Refreshing state... [id=rtb-0dd7491d1a3944217]
+aws_eip.nat: Refreshing state... [id=eipalloc-0f0387ddcd5c0a535]
+aws_route.transport_internet: Refreshing state... [id=r-rtb-0dd7491d1a39442171080289494]
+aws_route_table_association.subnet["private_b"]: Refreshing state... [id=rtbassoc-03570b91c05b9bf79]
+aws_route_table_association.subnet["private_c"]: Refreshing state... [id=rtbassoc-0046b93d0ebb7778b]
+aws_route_table_association.subnet["private_a"]: Refreshing state... [id=rtbassoc-0a0732425a811a8c1]
+aws_route_table_association.subnet["public_transport_a"]: Refreshing state... [id=rtbassoc-05928f97381e9c367]
+aws_nat_gateway.platform: Refreshing state... [id=nat-0f0fa5d5de405fa71]
+aws_route.private_egress["private_a"]: Refreshing state... [id=r-rtb-01e3140bb2a0b3bb61080289494]
+aws_route.private_egress["private_c"]: Refreshing state... [id=r-rtb-0be823c978f9da0921080289494]
+aws_route.private_egress["private_b"]: Refreshing state... [id=r-rtb-061f0b2ff256343041080289494]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

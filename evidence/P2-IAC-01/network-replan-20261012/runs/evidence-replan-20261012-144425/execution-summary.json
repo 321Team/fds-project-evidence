@@ -1,0 +1,428 @@
+{
+  "executor": "321team-hayeoung",
+  "source_main": "81162467bb2f99a099cb7067fbc3f63e1c0dbed8",
+  "applied_plan_sha256": "e5e775ceb4dcec64b050eaeab0f84d3f6bd0f5765554cdfc61d9f213898383b8",
+  "apply": "NOT_RUN",
+  "status": "NO_CHANGES_PASS",
+  "checks": {
+    "source_6_files_match_81162467": true,
+    "bucket_versioning_enabled": true,
+    "tool_versions": true,
+    "state_managed_count_20": true,
+    "lock_absent_after": true,
+    "state_version_unchanged": true
+  },
+  "warnings": [
+    "Terraform 밖 변경 감지 5건 — 계획 변경과 별개로 기록"
+  ],
+  "started_utc": "2026-10-12T05:44:25.713292+00:00",
+  "started_kst": "2026-10-12T14:44:25.713302+09:00",
+  "applied_plan_file_sha256_recheck": "e5e775ceb4dcec64b050eaeab0f84d3f6bd0f5765554cdfc61d9f213898383b8",
+  "terraform_binary_sha256": "44d3683c2ac9d72b6ca8ad880a2df8dd956dd5e019b1d111cb6a5d914d576b73",
+  "account_guard": true,
+  "role_arn": "arn:aws:sts::774055931866:assumed-role/FDS-IaC-Operator/321team-hayeoung",
+  "before_keys": [
+    "phase2/network/terraform.tfstate"
+  ],
+  "state_before": {
+    "VersionId": "m4zM3let2zBojqhe0Jj_h.qGyCflfMe2",
+    "ETag": "\"60e4aef535b9c5863ed5767ebce78a3f\"",
+    "LastModified": "2026-10-12T01:47:19+00:00",
+    "ContentLength": 40819,
+    "ServerSideEncryption": "AES256"
+  },
+  "terraform_version": "1.16.4",
+  "aws_provider": "6.66.0",
+  "state_list_count": {
+    "managed": 20,
+    "data": 3
+  },
+  "plan_started_kst": "2026-10-12T14:45:20.031311+09:00",
+  "plan_finished_kst": "2026-10-12T14:45:27.547204+09:00",
+  "plan_rc": 0,
+  "plan_line": "No changes. Your infrastructure matches the configuration.",
+  "plan_sha256": "72338954f47767a2be9e6d394a5ce2679d144935c0b08ddcd1fa1e76a5a00e8e",
+  "plan_json_sha256": "09f1576cd31c13def2a1858c76922ce2adac35a0627c25d72640656b4c1338a7",
+  "changed_resources": [],
+  "changed_outputs": [],
+  "resource_drift": [
+    {
+      "address": "aws_eip.nat",
+      "actions": [
+        "update"
+      ]
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_a\"]",
+      "actions": [
+        "update"
+      ]
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_b\"]",
+      "actions": [
+        "update"
+      ]
+    },
+    {
+      "address": "aws_route_table.subnet[\"private_c\"]",
+      "actions": [
+        "update"
+      ]
+    },
+    {
+      "address": "aws_route_table.subnet[\"public_transport_a\"]",
+      "actions": [
+        "update"
+      ]
+    }
+  ],
+  "after_keys": [
+    "phase2/network/terraform.tfstate"
+  ],
+  "state_after": {
+    "VersionId": "m4zM3let2zBojqhe0Jj_h.qGyCflfMe2",
+    "ETag": "\"60e4aef535b9c5863ed5767ebce78a3f\"",
+    "LastModified": "2026-10-12T01:47:19+00:00",
+    "ContentLength": 40819,
+    "ServerSideEncryption": "AES256"
+  },
+  "checks_failed": [],
+  "finished_utc": "2026-10-12T05:45:34.090962+00:00",
+  "finished_kst": "2026-10-12T14:45:34.090976+09:00",
+  "records": [
+    {
+      "name": "pre-caller",
+      "argv": [
+        "aws",
+        "sts",
+        "get-caller-identity",
+        "--region",
+        "ap-northeast-2",
+        "--output",
+        "json",
+        "--no-cli-pager",
+        "--cli-connect-timeout",
+        "10",
+        "--cli-read-timeout",
+        "20"
+      ],
+      "started_utc": "2026-10-12T05:44:25.870710+00:00",
+      "finished_utc": "2026-10-12T05:44:26.665478+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "fc1d7e89148b358eb7b852dde97f59b36de676025128fb14f7f210c17c62107d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pre-versioning",
+      "argv": [
+        "aws",
+        "s3api",
+        "get-bucket-versioning",
+        "--bucket",
+        "fds-tfstate-774055931866-ap-northeast-2",
+        "--region",
+        "ap-northeast-2",
+        "--output",
+        "json",
+        "--no-cli-pager",
+        "--cli-connect-timeout",
+        "10",
+        "--cli-read-timeout",
+        "20"
+      ],
+      "started_utc": "2026-10-12T05:44:26.665574+00:00",
+      "finished_utc": "2026-10-12T05:44:27.547638+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "e0d7fcfe6b2ca7b3376e1af42cfbf309d2ee91d4cd664565f9b73c4816079f22",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "assume-role",
+      "argv": [
+        "aws",
+        "sts",
+        "assume-role",
+        "--role-arn",
+        "arn:aws:iam::774055931866:role/FDS-IaC-Operator",
+        "--role-session-name",
+        "321team-hayeoung",
+        "--serial-number",
+        "arn:aws:iam::774055931866:mfa/321team-hayeoung-MFA",
+        "--token-code",
+        "REDACTED",
+        "--duration-seconds",
+        "1800",
+        "--region",
+        "ap-northeast-2",
+        "--output",
+        "json",
+        "--no-cli-pager",
+        "--cli-connect-timeout",
+        "10",
+        "--cli-read-timeout",
+        "20"
+      ],
+      "started_utc": "2026-10-12T05:44:48.411792+00:00",
+      "finished_utc": "2026-10-12T05:44:49.760717+00:00",
+      "rc": 0,
+      "stdout_sha256": "1a2366ef54c3c0a7799040dfe1c54e49b13f8ae09e63e36d8a904a0d8ac7a222",
+      "note": "Credentials removed in memory before write"
+    },
+    {
+      "name": "role-caller",
+      "argv": [
+        "aws",
+        "sts",
+        "get-caller-identity",
+        "--region",
+        "ap-northeast-2",
+        "--output",
+        "json",
+        "--no-cli-pager",
+        "--cli-connect-timeout",
+        "10",
+        "--cli-read-timeout",
+        "20"
+      ],
+      "started_utc": "2026-10-12T05:44:49.760970+00:00",
+      "finished_utc": "2026-10-12T05:44:50.564080+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "d284028b9fb08062e5280d00d5341552315f4c75331b68f8830911df788810ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "before-keys",
+      "argv": [
+        "aws",
+        "s3api",
+        "list-objects-v2",
+        "--bucket",
+        "fds-tfstate-774055931866-ap-northeast-2",
+        "--prefix",
+        "phase2/network/terraform.tfstate",
+        "--max-keys",
+        "10",
+        "--no-paginate",
+        "--region",
+        "ap-northeast-2",
+        "--output",
+        "json",
+        "--no-cli-pager",
+        "--cli-connect-timeout",
+        "10",
+        "--cli-read-timeout",
+        "20"
+      ],
+      "started_utc": "2026-10-12T05:44:50.564171+00:00",
+      "finished_utc": "2026-10-12T05:44:51.420649+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "25e39dafea65bcc93aaf8063511f83db44ead26396fc25ea7e734fe0d6f6d238",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "state-head-before",
+      "argv": [
+        "aws",
+        "s3api",
+        "head-object",
+        "--bucket",
+        "fds-tfstate-774055931866-ap-northeast-2",
+        "--key",
+        "phase2/network/terraform.tfstate",
+        "--region",
+        "ap-northeast-2",
+        "--output",
+        "json",
+        "--no-cli-pager",
+        "--cli-connect-timeout",
+        "10",
+        "--cli-read-timeout",
+        "20"
+      ],
+      "started_utc": "2026-10-12T05:44:51.420756+00:00",
+      "finished_utc": "2026-10-12T05:44:52.285218+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "e65dff3145d1df23aba1a7fc262819af8c5db011464294eed8c1d08845480364",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "init",
+      "argv": [
+        "/home/cloudshell-user/iac11-network-20261012-002405/bin/terraform",
+        "-chdir=/home/cloudshell-user/iac11-network-20261012-002405/source/terraform/network",
+        "init",
+        "-input=false",
+        "-lockfile=readonly",
+        "-backend-config=backend.hcl.example"
+      ],
+      "started_utc": "2026-10-12T05:44:52.285332+00:00",
+      "finished_utc": "2026-10-12T05:45:13.580208+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "1ee5c3f59d4cb736acfc71ea561480bc27787fae3c65b170293951af4e1fcb39",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "workspace",
+      "argv": [
+        "/home/cloudshell-user/iac11-network-20261012-002405/bin/terraform",
+        "-chdir=/home/cloudshell-user/iac11-network-20261012-002405/source/terraform/network",
+        "workspace",
+        "show"
+      ],
+      "started_utc": "2026-10-12T05:45:13.580279+00:00",
+      "finished_utc": "2026-10-12T05:45:13.622111+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "01666ec060466c14b9fa06c613fbac449163f2a2017558fe16526209ab78c6b0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "terraform-version",
+      "argv": [
+        "/home/cloudshell-user/iac11-network-20261012-002405/bin/terraform",
+        "-chdir=/home/cloudshell-user/iac11-network-20261012-002405/source/terraform/network",
+        "version",
+        "-json"
+      ],
+      "started_utc": "2026-10-12T05:45:13.622178+00:00",
+      "finished_utc": "2026-10-12T05:45:13.671375+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "e9cec8ebfeb7cfdcb0fe47b8740acbd34360ec1cd5a753a3434a2ccbdfa73c7b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "validate",
+      "argv": [
+        "/home/cloudshell-user/iac11-network-20261012-002405/bin/terraform",
+        "-chdir=/home/cloudshell-user/iac11-network-20261012-002405/source/terraform/network",
+        "validate",
+        "-json"
+      ],
+      "started_utc": "2026-10-12T05:45:13.671473+00:00",
+      "finished_utc": "2026-10-12T05:45:18.822102+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "4cd9eddc4d07c5aff74dadb6b3544f98186f6705ac60e0d94d545fc42b45b9b6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "state-list",
+      "argv": [
+        "/home/cloudshell-user/iac11-network-20261012-002405/bin/terraform",
+        "-chdir=/home/cloudshell-user/iac11-network-20261012-002405/source/terraform/network",
+        "state",
+        "list"
+      ],
+      "started_utc": "2026-10-12T05:45:18.822234+00:00",
+      "finished_utc": "2026-10-12T05:45:20.030957+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "b800c9a76d9a5d1fe8d408956d563440c7b637812d7c9246c21e2cddbc077c89",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "plan",
+      "argv": [
+        "/home/cloudshell-user/iac11-network-20261012-002405/bin/terraform",
+        "-chdir=/home/cloudshell-user/iac11-network-20261012-002405/source/terraform/network",
+        "plan",
+        "-input=false",
+        "-lock-timeout=60s",
+        "-detailed-exitcode",
+        "-no-color",
+        "-var=execution_enabled=true",
+        "-out=/home/cloudshell-user/iac11-network-20261012-002405/replan-20261012-144425.tfplan"
+      ],
+      "started_utc": "2026-10-12T05:45:20.031346+00:00",
+      "finished_utc": "2026-10-12T05:45:27.547125+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "a6a1b3b4dbb6db5abec7943fc526d66544136c69b7cc794c88b96348f0c34e43",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "show-json",
+      "argv": [
+        "/home/cloudshell-user/iac11-network-20261012-002405/bin/terraform",
+        "-chdir=/home/cloudshell-user/iac11-network-20261012-002405/source/terraform/network",
+        "show",
+        "-json",
+        "/home/cloudshell-user/iac11-network-20261012-002405/replan-20261012-144425.tfplan"
+      ],
+      "started_utc": "2026-10-12T05:45:27.547252+00:00",
+      "finished_utc": "2026-10-12T05:45:31.687636+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": true,
+      "stdout_sha256": "09f1576cd31c13def2a1858c76922ce2adac35a0627c25d72640656b4c1338a7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "after-keys",
+      "argv": [
+        "aws",
+        "s3api",
+        "list-objects-v2",
+        "--bucket",
+        "fds-tfstate-774055931866-ap-northeast-2",
+        "--prefix",
+        "phase2/network/terraform.tfstate",
+        "--max-keys",
+        "10",
+        "--no-paginate",
+        "--region",
+        "ap-northeast-2",
+        "--output",
+        "json",
+        "--no-cli-pager",
+        "--cli-connect-timeout",
+        "10",
+        "--cli-read-timeout",
+        "20"
+      ],
+      "started_utc": "2026-10-12T05:45:31.695822+00:00",
+      "finished_utc": "2026-10-12T05:45:33.194768+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "25e39dafea65bcc93aaf8063511f83db44ead26396fc25ea7e734fe0d6f6d238",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "state-head-after",
+      "argv": [
+        "aws",
+        "s3api",
+        "head-object",
+        "--bucket",
+        "fds-tfstate-774055931866-ap-northeast-2",
+        "--key",
+        "phase2/network/terraform.tfstate",
+        "--region",
+        "ap-northeast-2",
+        "--output",
+        "json",
+        "--no-cli-pager",
+        "--cli-connect-timeout",
+        "10",
+        "--cli-read-timeout",
+        "20"
+      ],
+      "started_utc": "2026-10-12T05:45:33.194873+00:00",
+      "finished_utc": "2026-10-12T05:45:34.090833+00:00",
+      "rc": 0,
+      "stdout_kept_outside_evidence": false,
+      "stdout_sha256": "e65dff3145d1df23aba1a7fc262819af8c5db011464294eed8c1d08845480364",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "credentials_saved": false,
+  "state_body_saved": false,
+  "plan_file_and_json_in_evidence": false
+}
