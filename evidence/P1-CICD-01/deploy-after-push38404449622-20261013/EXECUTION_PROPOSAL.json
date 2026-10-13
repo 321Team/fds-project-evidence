@@ -1,0 +1,29 @@
+{
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "plan_sha256": "ed7787673f5b8f8f1f97e49e78a9359ec1c09f8835acda19cc93d7e130ee2ad4",
+  "request_id": "37a528cd-184a-4e0f-8f17-62416ca2e4e4",
+  "not_before_kst": "2026-10-13T23:15:00+09:00",
+  "actual_start_deadline_kst": "2026-10-13T23:25:00+09:00",
+  "finish_kst": "2026-10-14T00:15:00+09:00",
+  "broker_authorization_expires_utc": "2026-10-13T15:15:00+00:00",
+  "validation_runs": 1,
+  "deploy_runs": 1,
+  "token_requests": 1,
+  "automatic_reruns": 0,
+  "allow_rollback_proposed": true,
+  "pending": [
+    "USER_WINDOW_AND_SCOPE",
+    "CONSOLE_AND_NONOVERLAP",
+    "INDEPENDENT_EXACT_INPUT_REVIEW"
+  ],
+  "excluded": [
+    "Push",
+    "drain",
+    "reboot",
+    "HA",
+    "Probe fault",
+    "business POST",
+    "DB writes",
+    "final acceptance"
+  ]
+}

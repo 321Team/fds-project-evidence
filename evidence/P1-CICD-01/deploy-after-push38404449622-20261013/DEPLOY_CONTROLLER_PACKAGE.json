@@ -1,0 +1,103 @@
+{
+  "schema": "p1-reviewed-controller-source-1",
+  "source_commit": "147f760298dd4a683ea58f2a887483769352b97d",
+  "files": [
+    {
+      "path": "tools/delivery/delivery_gate.py",
+      "git_blob": "66600a9c0fbf66aee1f099906b0915dd60ddb840",
+      "sha256": "bc9d178d6a6b6faa6a1d65e99b5511f1f0e19b7fb5a53cadcc846d3bd4184fd0",
+      "bytes": 9780
+    },
+    {
+      "path": "tools/delivery/deploy_adapter.py",
+      "git_blob": "8ceb27bdfde60ccddcb4613eb1e1600ae912a58e",
+      "sha256": "24dcdaa3dc21720e4d2100dbfcb5ac77050a2b81f0a8435604f232aff3ce5684",
+      "bytes": 16427
+    },
+    {
+      "path": "tools/delivery/deploy_binding.py",
+      "git_blob": "fcb9549782fd99f9ddfd7cf04f9b832fab36b898",
+      "sha256": "9983b53890b9ac251328529726012168bea6b3fbc14667a719ccb87c1955aafb",
+      "bytes": 7998
+    },
+    {
+      "path": "tools/delivery/deploy_claim.py",
+      "git_blob": "440bfdf29c4bfcf68f2436f79312004eef0d31c6",
+      "sha256": "b41a1272ca4ae4171bd7161f9269585533de93a6eda18990c4d5be74f77da9ca",
+      "bytes": 5829
+    },
+    {
+      "path": "tools/delivery/deploy_cp1_access.py",
+      "git_blob": "105550bd95c2e7c1297737d935887c47a608b776",
+      "sha256": "529490b0421c0b438be341eded8aa40a3374da680315bed3e896eaf1eacce1ca",
+      "bytes": 21582
+    },
+    {
+      "path": "tools/delivery/deploy_credential.py",
+      "git_blob": "4fddeb1f8d2d18456ac9e4bb05702d93883b2213",
+      "sha256": "f098b3525a466e1045eebb739af0560a4a4bfe0a708d5aba5e323e3095dfb967",
+      "bytes": 8459
+    },
+    {
+      "path": "tools/delivery/deploy_handoff.py",
+      "git_blob": "19d560d0b90c935aba5486bac74b911ed6cf65af",
+      "sha256": "93ac6c166c65838fcb19e30256a906ab774c5b65d99d414ecc5d36d164078b39",
+      "bytes": 7120
+    },
+    {
+      "path": "tools/delivery/deploy_native_probe.py",
+      "git_blob": "a271044f2d72ce26b4b6b7c448a36c82e4bdd2d8",
+      "sha256": "dec7e2aeb9b2706f8abdad234c755530f4b5655d95c658a8a9335720640e4091",
+      "bytes": 27244
+    },
+    {
+      "path": "tools/delivery/deploy_transport.py",
+      "git_blob": "ffa296dbb358eaac860827d03ee2d4c7cc6a9238",
+      "sha256": "7417327e92c59aadce5dadb983151db8cc6a7c3509e6ecefa40058776b4e9fa6",
+      "bytes": 10201
+    },
+    {
+      "path": "tools/delivery/transfer_deploy_credential.py",
+      "git_blob": "0719b65042cfaf6f2105f07cdd549b866e991c06",
+      "sha256": "c31525e54b837bacd8dc89a2d3bcc2efce43297f45240b92050a6075ee91730d",
+      "bytes": 8759
+    },
+    {
+      "path": "tools/delivery/transfer_native_probe.py",
+      "git_blob": "1d651906cd89acdad5daea5d50f572de4bc07009",
+      "sha256": "e6da5d2df000e8370b9edfeed37b4c622174b12a6c7e33d77400fd4fadac335b",
+      "bytes": 21790
+    }
+  ],
+  "remote_bundle_sha256": "a92e110c321bed53019ef33806d83c50d3b0d544ff75383d482fe773db5a6e65",
+  "local_module_imports_checked": true,
+  "runtime": "NOT_EXECUTED",
+  "token_issued": false,
+  "credentials_included": false,
+  "git_checkout": false,
+  "archive": "deploy-controller-147f760.tar",
+  "archive_sha256": "92b5a57bf9f0030db1c7b0e74276cc645e6041f6eec18257285ee8d6a4d02f0f",
+  "archive_bytes": 266240,
+  "members": 13,
+  "status": "LOCAL_PACKAGE_VERIFIED",
+  "unchanged_from_previous_deploy": {
+    "tools/delivery/delivery_gate.py": true,
+    "tools/delivery/deploy_adapter.py": true,
+    "tools/delivery/deploy_approval.py": true,
+    "tools/delivery/deploy_binding.py": true,
+    "tools/delivery/deploy_checkpoint.py": true,
+    "tools/delivery/deploy_claim.py": true,
+    "tools/delivery/deploy_cp1_access.py": true,
+    "tools/delivery/deploy_credential.py": true,
+    "tools/delivery/deploy_execution.py": true,
+    "tools/delivery/deploy_handoff.py": true,
+    "tools/delivery/deploy_native_probe.py": true,
+    "tools/delivery/deploy_plan.py": true,
+    "tools/delivery/deploy_session.py": true,
+    "tools/delivery/deploy_transport.py": true,
+    "tools/delivery/deploy_workflow.py": true,
+    "tools/delivery/transfer_deploy_credential.py": true,
+    "tools/delivery/transfer_native_probe.py": true,
+    ".github/workflows/app-deploy.yml": true
+  }
+}

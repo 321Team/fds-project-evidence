@@ -1,0 +1,37 @@
+{
+  "classification": "STATIC_INPUT_BINDING_ONLY",
+  "at_utc": "2026-10-13T13:48:02.119338+00:00",
+  "runtime_authorized": false,
+  "approval_created": false,
+  "dispatch_performed": false,
+  "token_issued": false,
+  "plan_sha256": "ed7787673f5b8f8f1f97e49e78a9359ec1c09f8835acda19cc93d7e130ee2ad4",
+  "request_id": "37a528cd-184a-4e0f-8f17-62416ca2e4e4",
+  "source_commit": "147f760298dd4a683ea58f2a887483769352b97d",
+  "sa_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+  "push_receipt_sha256": "8be5cef6cc47e0afcd5236f031bc7c180cdec40ba34039729741114c46f38276",
+  "targets": [
+    {
+      "service": "transaction-api",
+      "uid": "8a2af808-ec33-41f2-80b5-addde4e28910",
+      "previous_image": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+      "image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0"
+    },
+    {
+      "service": "fds-engine",
+      "uid": "bf825dec-465b-4603-8b71-f768d195531c",
+      "previous_image": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+      "image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d"
+    }
+  ],
+  "checks": {
+    "pure_payload": "PASS",
+    "schema_fields": "PASS",
+    "schema_context": "Run1 is in-memory STATIC sentinel, not actual Deploy Run",
+    "fresh_target_ready_and_cached_rollback": "PASS_METADATA_ONLY",
+    "deploy_code_unchanged": true,
+    "full_detached_approval": "NOT_RUN_PENDING_USER_DECISION",
+    "registry_repull_rollback": "NOT_VERIFIED",
+    "runtime": "NOT_EXECUTED"
+  }
+}
