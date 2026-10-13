@@ -1,0 +1,187 @@
+{
+  "head": "3351c6a14505fdc3947948bd68f677e52ef15e47",
+  "review": {
+    "id": 5504707659,
+    "node_id": "PRR_kwDOUQvpi88AAAABSBssSw",
+    "user": {
+      "login": "supreme33-kr",
+      "id": 116513704,
+      "node_id": "U_kgDOBvHbqA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/116513704?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/supreme33-kr",
+      "html_url": "https://github.com/supreme33-kr",
+      "followers_url": "https://api.github.com/users/supreme33-kr/followers",
+      "following_url": "https://api.github.com/users/supreme33-kr/following{/other_user}",
+      "gists_url": "https://api.github.com/users/supreme33-kr/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/supreme33-kr/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/supreme33-kr/subscriptions",
+      "organizations_url": "https://api.github.com/users/supreme33-kr/orgs",
+      "repos_url": "https://api.github.com/users/supreme33-kr/repos",
+      "events_url": "https://api.github.com/users/supreme33-kr/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/supreme33-kr/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "## 리뷰 — 새 Deploy exact record 독립 입력 검토 (이재환, evidence#219)\n\n**대상 HEAD** `3351c6a14505fdc3947948bd68f677e52ef15e47` (Draft)\n**검토 범위** 새 기준선(57파일)·authorization(7파일), plan·approval·record 결속, Push 연결, 복귀 입력, 창, 실패 경계\n\n### 입력 판정 — 사용 가능\n**record `deploy-37a528cd-184a-4e0f-8f17-62416ca2e4e4.json` SHA256 `fb8b603e6e9ee4449767d74a5d22fb864c1ef7a0a11d75e1eef0c3144d1c58db`(plan `ed778767…2ad4`, approval `fb1458a2…bb4d`)을 23:15~23:25 KST 실제 시작 / 00:15 종료 창의 Deploy 입력으로 사용하는 데 동의합니다.** 범위: false 1회 → true 1회, Token 1회, 지정 이전 digest만 복귀.\n\n### 직접 확인한 것\n- **무결성:** 두 폴더 `SHA256SUMS` 56/56·6/6 일치, 목록 밖 파일 0, REGISTRY 새 2줄 일치. 변경분 비밀 패턴 0건, CI success.\n- **해시:** plan `ed778767…`, approval `fb1458a2…`, record `fb8b603e…`를 직접 다시 계산했습니다. record의 `plan`·`approval`·`push_receipt` 문자열이 원문 파일과 **바이트 일치**하고, `sa_uid`는 `8f1ddfef…`입니다.\n- **approval 원문:** [infra-cicd#11 6147190360](https://github.com/321Team/infra-cicd/issues/11#issuecomment-6147190360)을 API로 다시 받았습니다. 작성자 `GWONUK`(실행기 `LEAD`)이고, 본문이 `approval.json`과 바이트 일치합니다. `not_before` 23:15, `expires_at` 00:15 KST, `allow_rollback` true, workflow `147f7602`입니다.\n- **Push 결속:**\n  - `push_receipt`(`8be5cef6…`)가 제가 승인한 증적218 `execute-originals/result.json`과 같습니다. plan `push_execution`은 Run 38404449622 / Attempt 1 / `147f7602`입니다.\n  - plan `delivery`는 승인 Push 입력(`8b7b4f4e…`)과 내용이 같습니다.\n- **현재 대상·복귀:**\n  - 두 Deployment UID(`8a2af808…`·`bf825dec…`)와 현재(=복귀) image digest(API `a7093136…`, engine `5e2a081c…`)가 이번 `app-state` 수집 출력에 있습니다.\n  - 복귀 digest 두 개가 worker01/02/03 cache 수집 출력 모두에 있습니다. SA UID는 `cluster`·`cp1-auth` 출력에 있습니다.\n- **병합된 검증기 실행:** infra-cicd main `147f7602`(22:59 조회)의 `deploy_plan.validate`를 오프라인으로 실행했습니다(Run 1 sentinel).\n  - 23:16·00:14 → `MATCH`\n  - 23:14·00:16 → `APPROVAL_WINDOW_INVALID`\n  - `deploy_plan`·`deploy_binding`·`deploy_adapter`·`deploy_approval`·`delivery_gate`는 오후 `2d8a14c5`와 바이트가 같습니다.\n- **오후 1차 실패 원인 보완:** `STAGING_AND_DISPATCH.md`에 broker 만료 인자 `2026-10-13T15:15:00+00:00`(= 00:15 KST)을 파서로 미리 대조하는 단계가 있습니다. 오후 Run 38361855044의 UTC 인자 오류를 막는 절차입니다.\n\n### 실행 전 인지 (비차단)\n1. **23:25 시작 한도는 코드가 강제하지 않습니다.** 코드는 23:15~00:15만 검사합니다.\n2. **실행 전까지 infra-cicd main이 바뀌면 막힙니다**(`DEPLOY_WORKFLOW_MISMATCH`).\n3. **복귀 확인 범위:** 복귀 이미지는 CRI metadata까지만 확인됐습니다. 이전 이미지로 돌아가면 업무 포트 `/metrics` 노출이 복원됩니다(오후와 같음).\n4. **기동 검증의 범위:** 새 이미지의 비루트 기동은 TBS 격리 기동(증적217)까지 입증됐습니다. 실제 클러스터 readiness는 이번 Run에서 처음 확인됩니다.\n\n### 미검증\n- Runner 공급·dispatch·Token·Deploy: `NOT RUN`(PR 표기와 같음).\n- Harbor 비중첩·실행 직전 관측: 실행자 확인 몫(`NOT VERIFIED`).\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조\n",
+    "state": "APPROVED",
+    "html_url": "https://github.com/321Team/fds-project-evidence/pull/219#pullrequestreview-5504707659",
+    "pull_request_url": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/219",
+    "author_association": "MEMBER",
+    "_links": {
+      "html": {
+        "href": "https://github.com/321Team/fds-project-evidence/pull/219#pullrequestreview-5504707659"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/219"
+      }
+    },
+    "submitted_at": "2026-10-13T14:00:13Z",
+    "commit_id": "3351c6a14505fdc3947948bd68f677e52ef15e47"
+  },
+  "checks": {
+    "total_count": 1,
+    "check_runs": [
+      {
+        "id": 115336719680,
+        "name": "check",
+        "node_id": "CR_kwDOUQvpi88AAAAa2pqtQA",
+        "head_sha": "3351c6a14505fdc3947948bd68f677e52ef15e47",
+        "external_id": "ab98bc0a-caa3-5b2d-be8e-20279f056488",
+        "url": "https://api.github.com/repos/321Team/fds-project-evidence/check-runs/115336719680",
+        "html_url": "https://github.com/321Team/fds-project-evidence/actions/runs/38409192893/job/115336719680",
+        "details_url": "https://github.com/321Team/fds-project-evidence/actions/runs/38409192893/job/115336719680",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-10-13T13:57:08Z",
+        "completed_at": "2026-10-13T13:57:18Z",
+        "output": {
+          "title": null,
+          "summary": null,
+          "text": null,
+          "annotations_count": 2,
+          "annotations_url": "https://api.github.com/repos/321Team/fds-project-evidence/check-runs/115336719680/annotations"
+        },
+        "check_suite": {
+          "id": 104069401810
+        },
+        "app": {
+          "id": 15368,
+          "client_id": "Iv1.05c79e9ad1f6bdfa",
+          "slug": "github-actions",
+          "node_id": "MDM6QXBwMTUzNjg=",
+          "owner": {
+            "login": "github",
+            "id": 9919,
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjk5MTk=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/github",
+            "html_url": "https://github.com/github",
+            "followers_url": "https://api.github.com/users/github/followers",
+            "following_url": "https://api.github.com/users/github/following{/other_user}",
+            "gists_url": "https://api.github.com/users/github/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/github/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/github/subscriptions",
+            "organizations_url": "https://api.github.com/users/github/orgs",
+            "repos_url": "https://api.github.com/users/github/repos",
+            "events_url": "https://api.github.com/users/github/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/github/received_events",
+            "type": "Organization",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "name": "GitHub Actions",
+          "description": "Automate your workflow from idea to production",
+          "external_url": "https://help.github.com/en/actions",
+          "html_url": "https://github.com/apps/github-actions",
+          "created_at": "2018-07-30T09:30:17Z",
+          "updated_at": "2026-06-18T16:17:48Z",
+          "permissions": {
+            "actions": "write",
+            "administration": "read",
+            "artifact_metadata": "write",
+            "attestations": "write",
+            "checks": "write",
+            "code_quality": "write",
+            "contents": "write",
+            "copilot_requests": "write",
+            "deployments": "write",
+            "discussions": "write",
+            "drives": "write",
+            "issues": "write",
+            "merge_queues": "write",
+            "metadata": "read",
+            "models": "read",
+            "packages": "write",
+            "pages": "write",
+            "pull_requests": "write",
+            "repository_hooks": "write",
+            "repository_projects": "write",
+            "security_events": "write",
+            "statuses": "write",
+            "vulnerability_alerts": "read"
+          },
+          "events": [
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_dispatch",
+            "status",
+            "watch",
+            "workflow_dispatch",
+            "workflow_run"
+          ]
+        },
+        "pull_requests": [
+          {
+            "url": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/219",
+            "id": 4844304512,
+            "number": 219,
+            "head": {
+              "ref": "evidence/p1-deploy-after-push-20261013-2245",
+              "sha": "3351c6a14505fdc3947948bd68f677e52ef15e47",
+              "repo": {
+                "id": 1359735179,
+                "url": "https://api.github.com/repos/321Team/fds-project-evidence",
+                "name": "fds-project-evidence"
+              }
+            },
+            "base": {
+              "ref": "main",
+              "sha": "9c10d945f48b59571ae67771f389af9ac4279bb7",
+              "repo": {
+                "id": 1359735179,
+                "url": "https://api.github.com/repos/321Team/fds-project-evidence",
+                "name": "fds-project-evidence"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
