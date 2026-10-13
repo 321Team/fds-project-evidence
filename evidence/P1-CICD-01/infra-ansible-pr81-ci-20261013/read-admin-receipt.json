@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-10-13T02:05:19.987620+00:00",
+  "ended_at": "2026-10-13T02:05:20.283225+00:00",
+  "rc": 0,
+  "outer": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "fds-ansible01"
+  ],
+  "inner": [
+    "/usr/bin/python3",
+    "-B",
+    "-I",
+    "-S",
+    "-"
+  ],
+  "source_sha256": "4c0cd68f416c809afecf99578db5fc60affe62c05bc4812b1f88db4d4f541b36",
+  "stdout_sha256": "d40e5aea94d29d346a60ae9a28c80fa5ea4f9b244a2702f21307f77c5193bdc9",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "read_only": true
+}

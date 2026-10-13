@@ -1,0 +1,25 @@
+{
+  "started_at": "2026-10-13T02:05:59.191231+00:00",
+  "ended_at": "2026-10-13T02:06:00.001853+00:00",
+  "rc": 0,
+  "argv": [
+    "ssh",
+    "-T",
+    "-i",
+    "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "IdentitiesOnly=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "svc_ansible@10.250.10.20",
+    "sudo -n -u ansible-verify env HOME=/home/ansible-verify XDG_RUNTIME_DIR=/run/user/1001 /usr/bin/python3 -B -I -S -"
+  ],
+  "source_sha256": "3c1a637d1b3337f8e799790d56119f3311601d254d6e3188a073d28aed39c385",
+  "stdout_sha256": "3a05d55e182f1e09544565e1b68146199d1f7c0df8ecb5d1416f588f58782eed",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "read_only": true
+}

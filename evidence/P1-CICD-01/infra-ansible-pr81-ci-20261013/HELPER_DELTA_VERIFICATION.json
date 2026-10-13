@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "mock_cases": [
+    {
+      "operator": false,
+      "recovery": false,
+      "result": "REJECTED_BEFORE_FRESH_OR_TOKEN"
+    },
+    {
+      "operator": false,
+      "recovery": true,
+      "result": "REJECTED_BEFORE_FRESH_OR_TOKEN"
+    },
+    {
+      "operator": true,
+      "recovery": false,
+      "result": "REJECTED_BEFORE_FRESH_OR_TOKEN"
+    },
+    {
+      "operator": true,
+      "recovery": true,
+      "result": "FRESH_REACHED_TOKEN_NOT_REACHED"
+    }
+  ],
+  "base_delta_exact": true,
+  "bash_syntax": "PASS_ON_REMOTE_STAGING",
+  "token_api_or_server_mutations_during_mock": 0
+}
