@@ -1,0 +1,344 @@
+{
+  "github-before-stage.json": {
+    "raw_local_sha256": "60e898605646263e1896c9936c57e8cc8796dd60a048eb46c70b6cb4ef533e0f",
+    "at_utc": "2026-10-13T13:03:13.720027+00:00",
+    "main": "147f760298dd4a683ea58f2a887483769352b97d",
+    "runner": {
+      "total_count": 1,
+      "runners": [
+        {
+          "id": 2,
+          "name": "cicd-runner01",
+          "os": "Linux",
+          "status": "online",
+          "busy": false,
+          "version": "2.337.0",
+          "labels": [
+            {
+              "id": 0,
+              "name": "self-hosted",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "Linux",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "X64",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "p1-cicd",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "onprem",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "podman",
+              "type": "custom"
+            }
+          ]
+        }
+      ]
+    },
+    "secrets": {
+      "total_count": 3,
+      "secrets": [
+        {
+          "name": "CICD_APP_SOURCE_READ_TOKEN",
+          "created_at": "2026-09-18T02:59:15Z",
+          "updated_at": "2026-10-13T11:03:38Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_TOKEN",
+          "created_at": "2026-10-13T12:59:19Z",
+          "updated_at": "2026-10-13T12:59:19Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_USERNAME",
+          "created_at": "2026-10-13T12:58:57Z",
+          "updated_at": "2026-10-13T12:58:57Z"
+        }
+      ]
+    },
+    "pr_head": "e8f130eb44677b390ab5e8e0d46805f31399d4c5",
+    "reviews": [
+      {
+        "id": 5503870170,
+        "node_id": "PRR_kwDOUQvpi88AAAABSA5k2g",
+        "user": {
+          "login": "supreme33-kr",
+          "id": 116513704,
+          "node_id": "U_kgDOBvHbqA",
+          "avatar_url": "https://avatars.githubusercontent.com/u/116513704?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/supreme33-kr",
+          "html_url": "https://github.com/supreme33-kr",
+          "followers_url": "https://api.github.com/users/supreme33-kr/followers",
+          "following_url": "https://api.github.com/users/supreme33-kr/following{/other_user}",
+          "gists_url": "https://api.github.com/users/supreme33-kr/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/supreme33-kr/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/supreme33-kr/subscriptions",
+          "organizations_url": "https://api.github.com/users/supreme33-kr/orgs",
+          "repos_url": "https://api.github.com/users/supreme33-kr/repos",
+          "events_url": "https://api.github.com/users/supreme33-kr/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/supreme33-kr/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "body": "## 리뷰 — 새 Push exact 입력 독립 검토 (이재환, evidence#218)\n\n**대상 HEAD** `e8f130eb44677b390ab5e8e0d46805f31399d4c5` (Draft, 44파일 +2063)\n**검토 범위** 새 Run·이미지·receipt 결속, pending·활성화 exact hash, 시간·자격증명 통제, 실패 경계, 편입 무결성\n\n### 입력 판정 — 사용 가능 (사용자 실행 허용은 별도)\n**`push-tbs38395350748-window0030.json` 목표 SHA256 `8b7b4f4e64c271b54167bc768e4e3afc1b2326c480683aaaf4aa0ff3e18c2b06`을 이 Push의 입력으로 사용하는 데 동의합니다.** 조건은 [실행 제안](https://github.com/321Team/fds-project-evidence/pull/217#issuecomment-6145950204)의 범위와 창 그대로입니다: 실제 Job 시작 22:20~22:30, 정리 00:30까지, false 1회 → true 1회. 사용자 실행 허용, Secret 재등록, Harbor 비중첩은 이 검토에 포함되지 않습니다.\n\n### 직접 확인한 것\n- **pending 바이트:** `push.pending.json` SHA256 `f20a5f5d…b6ef`가 ACTIVATION_PLAN과 같고, 정의된 직렬화와 바이트가 같습니다.\n- **변환 재현:** 별도 스크립트로 `/template_only` false, `/status` `APPROVED_FOR_DELIVERY`만 바꿨더니 **`8b7b4f4e…2b06`(3,209 B)**로 일치했습니다. dispatch 제안 두 파일도 같은 이름·해시이고 `execute`만 false/true로 다릅니다.\n- **이전 Push 입력 대비 차이:** 키 단위로 비교했습니다. 바뀐 것은 아래뿐입니다. source·harbor endpoint·repository·credential reference는 같습니다.\n  - TBS 결속: run_id `38395350748`, workflow `147f7602`, 두 이미지 archive·manifest·config, Scan report·`scan_result`·`app_result`, `source_evidence_directory`\n  - `push_authorization`(reference·expires_at·workflow_sha)\n  - pending 상태 두 필드\n- **원본 결속:** 병합된 증적217 `NEXT_PUSH_HANDOFF.json`과 비교해 13개 항목이 모두 같습니다(app/scan result, input, run, workflow, source, runner 폴더, 두 이미지 × 3 digest). Scan report 2개 해시도 증적217 `scan/result.json`과 같습니다.\n- **병합된 gate 실행:** 현재 infra-cicd main `147f7602`(21:58 조회)의 `delivery_gate.evaluate(..., 'pre_push')`를 오프라인으로 실행했습니다.\n  - pending → `BLOCK`(TEMPLATE·NOT_APPROVED 2건뿐)\n  - 목표 → `CONDITIONS_MATCH`, 계획 API `338b8a28…`, engine `8b257adb…`\n  - `delivery_gate.py`·`push_images.py`는 오전 Push 때(`2d8a14c5`)와 바이트가 같습니다.\n- **무결성·민감정보:** 폴더 `SHA256SUMS` 42/42 일치, 목록 밖 파일 0, REGISTRY 새 줄 일치. 변경분 token·Robot 비밀 패턴 0건, CI success.\n\n### 실행 전 인지 (비차단)\n1. **`push_authorization.reference`가 *제안* 댓글(6145950204)을 가리킵니다.** 오전 입력은 사용자 *결정* 댓글을 가리켰습니다. 코드는 URL 형식만 검사하므로 동작에는 문제가 없습니다. 다만 추적을 위해 사용자 허용 기록 댓글에 이 목표 해시 `8b7b4f4e…`를 명시해 주십시오. reference를 허용 댓글로 바꾸면 해시가 달라지므로, 그때는 차이만 다시 검토하면 됩니다.\n2. **22:30 시작 한도는 코드가 강제하지 않습니다.** 코드는 `expires_at`(00:30)만 검사합니다. 실행 전까지 infra-cicd main이 바뀌면 `PUSH_EXECUTION_BINDING`으로 막힙니다(fail-closed).\n3. **Robot 토큰 인증 성공은 아직 확인되지 않았습니다**(README와 같음). 재등록 Secret 2개의 이름·갱신 시각 확인과, 종료 후 그 둘만 회수하는 조건은 오전 회차와 같습니다.\n\n### 미검증\n- Runner 이미지·Scan 보고서 바이트, 실제 Robot 인증: `NOT VERIFIED`(이 리뷰는 오프라인 대조와 GitHub 조회만 했습니다).\n- dispatch·Push: `NOT RUN`.\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조\n",
+        "state": "APPROVED",
+        "html_url": "https://github.com/321Team/fds-project-evidence/pull/218#pullrequestreview-5503870170",
+        "pull_request_url": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/218",
+        "author_association": "MEMBER",
+        "_links": {
+          "html": {
+            "href": "https://github.com/321Team/fds-project-evidence/pull/218#pullrequestreview-5503870170"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/218"
+          }
+        },
+        "submitted_at": "2026-10-13T12:58:57Z",
+        "commit_id": "e8f130eb44677b390ab5e8e0d46805f31399d4c5"
+      }
+    ],
+    "active_runs": []
+  },
+  "github-before-validate.json": {
+    "raw_local_sha256": "a0a5cf0e75b211f22117bbda52f48320ae7bdd76fce25ec75b0ee579ee6e8a08",
+    "at_utc": "2026-10-13T13:20:42.836842+00:00",
+    "main": "147f760298dd4a683ea58f2a887483769352b97d",
+    "runner": {
+      "total_count": 1,
+      "runners": [
+        {
+          "id": 2,
+          "name": "cicd-runner01",
+          "os": "Linux",
+          "status": "online",
+          "busy": false,
+          "version": "2.337.0",
+          "labels": [
+            {
+              "id": 0,
+              "name": "self-hosted",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "Linux",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "X64",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "p1-cicd",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "onprem",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "podman",
+              "type": "custom"
+            }
+          ]
+        }
+      ]
+    },
+    "secrets": {
+      "total_count": 3,
+      "secrets": [
+        {
+          "name": "CICD_APP_SOURCE_READ_TOKEN",
+          "created_at": "2026-09-18T02:59:15Z",
+          "updated_at": "2026-10-13T11:03:38Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_TOKEN",
+          "created_at": "2026-10-13T12:59:19Z",
+          "updated_at": "2026-10-13T12:59:19Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_USERNAME",
+          "created_at": "2026-10-13T12:58:57Z",
+          "updated_at": "2026-10-13T12:58:57Z"
+        }
+      ]
+    },
+    "pr_head": "e8f130eb44677b390ab5e8e0d46805f31399d4c5",
+    "reviews": [
+      {
+        "id": 5503870170,
+        "node_id": "PRR_kwDOUQvpi88AAAABSA5k2g",
+        "user": {
+          "login": "supreme33-kr",
+          "id": 116513704,
+          "node_id": "U_kgDOBvHbqA",
+          "avatar_url": "https://avatars.githubusercontent.com/u/116513704?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/supreme33-kr",
+          "html_url": "https://github.com/supreme33-kr",
+          "followers_url": "https://api.github.com/users/supreme33-kr/followers",
+          "following_url": "https://api.github.com/users/supreme33-kr/following{/other_user}",
+          "gists_url": "https://api.github.com/users/supreme33-kr/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/supreme33-kr/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/supreme33-kr/subscriptions",
+          "organizations_url": "https://api.github.com/users/supreme33-kr/orgs",
+          "repos_url": "https://api.github.com/users/supreme33-kr/repos",
+          "events_url": "https://api.github.com/users/supreme33-kr/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/supreme33-kr/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "body": "## 리뷰 — 새 Push exact 입력 독립 검토 (이재환, evidence#218)\n\n**대상 HEAD** `e8f130eb44677b390ab5e8e0d46805f31399d4c5` (Draft, 44파일 +2063)\n**검토 범위** 새 Run·이미지·receipt 결속, pending·활성화 exact hash, 시간·자격증명 통제, 실패 경계, 편입 무결성\n\n### 입력 판정 — 사용 가능 (사용자 실행 허용은 별도)\n**`push-tbs38395350748-window0030.json` 목표 SHA256 `8b7b4f4e64c271b54167bc768e4e3afc1b2326c480683aaaf4aa0ff3e18c2b06`을 이 Push의 입력으로 사용하는 데 동의합니다.** 조건은 [실행 제안](https://github.com/321Team/fds-project-evidence/pull/217#issuecomment-6145950204)의 범위와 창 그대로입니다: 실제 Job 시작 22:20~22:30, 정리 00:30까지, false 1회 → true 1회. 사용자 실행 허용, Secret 재등록, Harbor 비중첩은 이 검토에 포함되지 않습니다.\n\n### 직접 확인한 것\n- **pending 바이트:** `push.pending.json` SHA256 `f20a5f5d…b6ef`가 ACTIVATION_PLAN과 같고, 정의된 직렬화와 바이트가 같습니다.\n- **변환 재현:** 별도 스크립트로 `/template_only` false, `/status` `APPROVED_FOR_DELIVERY`만 바꿨더니 **`8b7b4f4e…2b06`(3,209 B)**로 일치했습니다. dispatch 제안 두 파일도 같은 이름·해시이고 `execute`만 false/true로 다릅니다.\n- **이전 Push 입력 대비 차이:** 키 단위로 비교했습니다. 바뀐 것은 아래뿐입니다. source·harbor endpoint·repository·credential reference는 같습니다.\n  - TBS 결속: run_id `38395350748`, workflow `147f7602`, 두 이미지 archive·manifest·config, Scan report·`scan_result`·`app_result`, `source_evidence_directory`\n  - `push_authorization`(reference·expires_at·workflow_sha)\n  - pending 상태 두 필드\n- **원본 결속:** 병합된 증적217 `NEXT_PUSH_HANDOFF.json`과 비교해 13개 항목이 모두 같습니다(app/scan result, input, run, workflow, source, runner 폴더, 두 이미지 × 3 digest). Scan report 2개 해시도 증적217 `scan/result.json`과 같습니다.\n- **병합된 gate 실행:** 현재 infra-cicd main `147f7602`(21:58 조회)의 `delivery_gate.evaluate(..., 'pre_push')`를 오프라인으로 실행했습니다.\n  - pending → `BLOCK`(TEMPLATE·NOT_APPROVED 2건뿐)\n  - 목표 → `CONDITIONS_MATCH`, 계획 API `338b8a28…`, engine `8b257adb…`\n  - `delivery_gate.py`·`push_images.py`는 오전 Push 때(`2d8a14c5`)와 바이트가 같습니다.\n- **무결성·민감정보:** 폴더 `SHA256SUMS` 42/42 일치, 목록 밖 파일 0, REGISTRY 새 줄 일치. 변경분 token·Robot 비밀 패턴 0건, CI success.\n\n### 실행 전 인지 (비차단)\n1. **`push_authorization.reference`가 *제안* 댓글(6145950204)을 가리킵니다.** 오전 입력은 사용자 *결정* 댓글을 가리켰습니다. 코드는 URL 형식만 검사하므로 동작에는 문제가 없습니다. 다만 추적을 위해 사용자 허용 기록 댓글에 이 목표 해시 `8b7b4f4e…`를 명시해 주십시오. reference를 허용 댓글로 바꾸면 해시가 달라지므로, 그때는 차이만 다시 검토하면 됩니다.\n2. **22:30 시작 한도는 코드가 강제하지 않습니다.** 코드는 `expires_at`(00:30)만 검사합니다. 실행 전까지 infra-cicd main이 바뀌면 `PUSH_EXECUTION_BINDING`으로 막힙니다(fail-closed).\n3. **Robot 토큰 인증 성공은 아직 확인되지 않았습니다**(README와 같음). 재등록 Secret 2개의 이름·갱신 시각 확인과, 종료 후 그 둘만 회수하는 조건은 오전 회차와 같습니다.\n\n### 미검증\n- Runner 이미지·Scan 보고서 바이트, 실제 Robot 인증: `NOT VERIFIED`(이 리뷰는 오프라인 대조와 GitHub 조회만 했습니다).\n- dispatch·Push: `NOT RUN`.\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조\n",
+        "state": "APPROVED",
+        "html_url": "https://github.com/321Team/fds-project-evidence/pull/218#pullrequestreview-5503870170",
+        "pull_request_url": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/218",
+        "author_association": "MEMBER",
+        "_links": {
+          "html": {
+            "href": "https://github.com/321Team/fds-project-evidence/pull/218#pullrequestreview-5503870170"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/218"
+          }
+        },
+        "submitted_at": "2026-10-13T12:58:57Z",
+        "commit_id": "e8f130eb44677b390ab5e8e0d46805f31399d4c5"
+      }
+    ],
+    "active_runs": []
+  },
+  "github-before-execute.json": {
+    "raw_local_sha256": "5c447afac54592f8a7959103a57a419b6d7dced0c485b960e0a0adbb0c121145",
+    "at_utc": "2026-10-13T13:22:35.352891+00:00",
+    "main": "147f760298dd4a683ea58f2a887483769352b97d",
+    "runner": {
+      "total_count": 1,
+      "runners": [
+        {
+          "id": 2,
+          "name": "cicd-runner01",
+          "os": "Linux",
+          "status": "online",
+          "busy": false,
+          "version": "2.337.0",
+          "labels": [
+            {
+              "id": 0,
+              "name": "self-hosted",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "Linux",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "X64",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "p1-cicd",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "onprem",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "podman",
+              "type": "custom"
+            }
+          ]
+        }
+      ]
+    },
+    "secrets": {
+      "total_count": 3,
+      "secrets": [
+        {
+          "name": "CICD_APP_SOURCE_READ_TOKEN",
+          "created_at": "2026-09-18T02:59:15Z",
+          "updated_at": "2026-10-13T11:03:38Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_TOKEN",
+          "created_at": "2026-10-13T12:59:19Z",
+          "updated_at": "2026-10-13T12:59:19Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_USERNAME",
+          "created_at": "2026-10-13T12:58:57Z",
+          "updated_at": "2026-10-13T12:58:57Z"
+        }
+      ]
+    },
+    "pr_head": "e8f130eb44677b390ab5e8e0d46805f31399d4c5",
+    "reviews": [
+      {
+        "id": 5503870170,
+        "node_id": "PRR_kwDOUQvpi88AAAABSA5k2g",
+        "user": {
+          "login": "supreme33-kr",
+          "id": 116513704,
+          "node_id": "U_kgDOBvHbqA",
+          "avatar_url": "https://avatars.githubusercontent.com/u/116513704?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/supreme33-kr",
+          "html_url": "https://github.com/supreme33-kr",
+          "followers_url": "https://api.github.com/users/supreme33-kr/followers",
+          "following_url": "https://api.github.com/users/supreme33-kr/following{/other_user}",
+          "gists_url": "https://api.github.com/users/supreme33-kr/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/supreme33-kr/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/supreme33-kr/subscriptions",
+          "organizations_url": "https://api.github.com/users/supreme33-kr/orgs",
+          "repos_url": "https://api.github.com/users/supreme33-kr/repos",
+          "events_url": "https://api.github.com/users/supreme33-kr/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/supreme33-kr/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "body": "## 리뷰 — 새 Push exact 입력 독립 검토 (이재환, evidence#218)\n\n**대상 HEAD** `e8f130eb44677b390ab5e8e0d46805f31399d4c5` (Draft, 44파일 +2063)\n**검토 범위** 새 Run·이미지·receipt 결속, pending·활성화 exact hash, 시간·자격증명 통제, 실패 경계, 편입 무결성\n\n### 입력 판정 — 사용 가능 (사용자 실행 허용은 별도)\n**`push-tbs38395350748-window0030.json` 목표 SHA256 `8b7b4f4e64c271b54167bc768e4e3afc1b2326c480683aaaf4aa0ff3e18c2b06`을 이 Push의 입력으로 사용하는 데 동의합니다.** 조건은 [실행 제안](https://github.com/321Team/fds-project-evidence/pull/217#issuecomment-6145950204)의 범위와 창 그대로입니다: 실제 Job 시작 22:20~22:30, 정리 00:30까지, false 1회 → true 1회. 사용자 실행 허용, Secret 재등록, Harbor 비중첩은 이 검토에 포함되지 않습니다.\n\n### 직접 확인한 것\n- **pending 바이트:** `push.pending.json` SHA256 `f20a5f5d…b6ef`가 ACTIVATION_PLAN과 같고, 정의된 직렬화와 바이트가 같습니다.\n- **변환 재현:** 별도 스크립트로 `/template_only` false, `/status` `APPROVED_FOR_DELIVERY`만 바꿨더니 **`8b7b4f4e…2b06`(3,209 B)**로 일치했습니다. dispatch 제안 두 파일도 같은 이름·해시이고 `execute`만 false/true로 다릅니다.\n- **이전 Push 입력 대비 차이:** 키 단위로 비교했습니다. 바뀐 것은 아래뿐입니다. source·harbor endpoint·repository·credential reference는 같습니다.\n  - TBS 결속: run_id `38395350748`, workflow `147f7602`, 두 이미지 archive·manifest·config, Scan report·`scan_result`·`app_result`, `source_evidence_directory`\n  - `push_authorization`(reference·expires_at·workflow_sha)\n  - pending 상태 두 필드\n- **원본 결속:** 병합된 증적217 `NEXT_PUSH_HANDOFF.json`과 비교해 13개 항목이 모두 같습니다(app/scan result, input, run, workflow, source, runner 폴더, 두 이미지 × 3 digest). Scan report 2개 해시도 증적217 `scan/result.json`과 같습니다.\n- **병합된 gate 실행:** 현재 infra-cicd main `147f7602`(21:58 조회)의 `delivery_gate.evaluate(..., 'pre_push')`를 오프라인으로 실행했습니다.\n  - pending → `BLOCK`(TEMPLATE·NOT_APPROVED 2건뿐)\n  - 목표 → `CONDITIONS_MATCH`, 계획 API `338b8a28…`, engine `8b257adb…`\n  - `delivery_gate.py`·`push_images.py`는 오전 Push 때(`2d8a14c5`)와 바이트가 같습니다.\n- **무결성·민감정보:** 폴더 `SHA256SUMS` 42/42 일치, 목록 밖 파일 0, REGISTRY 새 줄 일치. 변경분 token·Robot 비밀 패턴 0건, CI success.\n\n### 실행 전 인지 (비차단)\n1. **`push_authorization.reference`가 *제안* 댓글(6145950204)을 가리킵니다.** 오전 입력은 사용자 *결정* 댓글을 가리켰습니다. 코드는 URL 형식만 검사하므로 동작에는 문제가 없습니다. 다만 추적을 위해 사용자 허용 기록 댓글에 이 목표 해시 `8b7b4f4e…`를 명시해 주십시오. reference를 허용 댓글로 바꾸면 해시가 달라지므로, 그때는 차이만 다시 검토하면 됩니다.\n2. **22:30 시작 한도는 코드가 강제하지 않습니다.** 코드는 `expires_at`(00:30)만 검사합니다. 실행 전까지 infra-cicd main이 바뀌면 `PUSH_EXECUTION_BINDING`으로 막힙니다(fail-closed).\n3. **Robot 토큰 인증 성공은 아직 확인되지 않았습니다**(README와 같음). 재등록 Secret 2개의 이름·갱신 시각 확인과, 종료 후 그 둘만 회수하는 조건은 오전 회차와 같습니다.\n\n### 미검증\n- Runner 이미지·Scan 보고서 바이트, 실제 Robot 인증: `NOT VERIFIED`(이 리뷰는 오프라인 대조와 GitHub 조회만 했습니다).\n- dispatch·Push: `NOT RUN`.\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조\n",
+        "state": "APPROVED",
+        "html_url": "https://github.com/321Team/fds-project-evidence/pull/218#pullrequestreview-5503870170",
+        "pull_request_url": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/218",
+        "author_association": "MEMBER",
+        "_links": {
+          "html": {
+            "href": "https://github.com/321Team/fds-project-evidence/pull/218#pullrequestreview-5503870170"
+          },
+          "pull_request": {
+            "href": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/218"
+          }
+        },
+        "submitted_at": "2026-10-13T12:58:57Z",
+        "commit_id": "e8f130eb44677b390ab5e8e0d46805f31399d4c5"
+      }
+    ],
+    "active_runs": []
+  }
+}
