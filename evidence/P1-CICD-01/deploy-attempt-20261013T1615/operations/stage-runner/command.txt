@@ -1,0 +1,17 @@
+set -eu
+umask 077
+test "$(hostname -s)" = cicd-runner01
+test "$(id -un)" = server01_cicd-runner
+test "$(id -u)" = 1000
+test ! -L /home/server01_cicd-runner
+test "$(stat -c %a /home/server01_cicd-runner)" = 700
+if test ! -e /home/server01_cicd-runner/FDS_CICD_DeployInputs; then mkdir -m 700 -- /home/server01_cicd-runner/FDS_CICD_DeployInputs; fi
+test ! -L /home/server01_cicd-runner/FDS_CICD_DeployInputs
+test "$(stat -c %u /home/server01_cicd-runner/FDS_CICD_DeployInputs)" = 1000
+test "$(stat -c %a /home/server01_cicd-runner/FDS_CICD_DeployInputs)" = 700
+test ! -e /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-2fb09791-d0ca-443f-9c1b-77747c3f3a73.json
+test ! -L /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-2fb09791-d0ca-443f-9c1b-77747c3f3a73.json
+set -C
+cat > /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-2fb09791-d0ca-443f-9c1b-77747c3f3a73.json
+sha256sum /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-2fb09791-d0ca-443f-9c1b-77747c3f3a73.json
+stat -c "%n|%u|%a|%F|%h" /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-2fb09791-d0ca-443f-9c1b-77747c3f3a73.json

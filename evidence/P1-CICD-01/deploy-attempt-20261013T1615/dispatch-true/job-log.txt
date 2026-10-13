@@ -1,0 +1,186 @@
+deploy	Set up job	﻿2026-10-13T07:18:45.3855705Z Current runner version: '2.337.0'
+deploy	Set up job	2026-10-13T07:18:45.3861172Z Runner name: 'cicd-runner01'
+deploy	Set up job	2026-10-13T07:18:45.3861901Z Runner group name: 'Default'
+deploy	Set up job	2026-10-13T07:18:45.3862549Z Machine name: 'cicd-runner01'
+deploy	Set up job	2026-10-13T07:18:45.3864496Z ##[group]GITHUB_TOKEN Permissions
+deploy	Set up job	2026-10-13T07:18:45.3866304Z Contents: read
+deploy	Set up job	2026-10-13T07:18:45.3866935Z Issues: read
+deploy	Set up job	2026-10-13T07:18:45.3867311Z Metadata: read
+deploy	Set up job	2026-10-13T07:18:45.3867647Z ##[endgroup]
+deploy	Set up job	2026-10-13T07:18:45.3869142Z Secret source: Actions
+deploy	Set up job	2026-10-13T07:18:45.3869775Z Cache mode: write
+deploy	Set up job	2026-10-13T07:18:45.3870196Z Prepare workflow directory
+deploy	Set up job	2026-10-13T07:18:45.5353289Z Prepare all required actions
+deploy	Set up job	2026-10-13T07:18:45.5389064Z Getting action download info
+deploy	Set up job	2026-10-13T07:18:46.3953927Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+deploy	Set up job	2026-10-13T07:18:46.8289877Z Complete job name: deploy
+deploy	Require normal Runner and unused checkout	﻿2026-10-13T07:18:46.9040611Z ##[group]Run set -euo pipefail
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9041854Z ^[[36;1mset -euo pipefail^[[0m
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9042721Z ^[[36;1mtest "$(hostname -s)" = cicd-runner01^[[0m
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9043660Z ^[[36;1mtest "$(id -un)" = server01_cicd-runner^[[0m
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9044525Z ^[[36;1mtest "$(id -u)" = 1000^[[0m
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9045347Z ^[[36;1mtest ! -e "$GITHUB_WORKSPACE/$CICD_CHECKOUT"^[[0m
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9046576Z ^[[36;1mtest ! -L "$GITHUB_WORKSPACE/$CICD_CHECKOUT"^[[0m
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9056796Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9058316Z env:
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9058974Z   CICD_CHECKOUT: cicd-deploy-38361855044-1
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9060063Z   DEPLOY_RECORD_NAME: deploy-2fb09791-d0ca-443f-9c1b-77747c3f3a73.json
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9062144Z   DEPLOY_RECORD_SHA256: 11c94e5c28e1b22bc8df2d8f686fb61ff2f0c04b7bb9dd810496c4b1f63f0e50
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9063397Z   DEPLOY_EXECUTE: true
+deploy	Require normal Runner and unused checkout	2026-10-13T07:18:46.9064634Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	﻿2026-10-13T07:18:47.0018472Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0020107Z with:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0021337Z   ref: 2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0022284Z   path: cicd-deploy-38361855044-1
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0023954Z   persist-credentials: false
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0024641Z   clean: false
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0025231Z   set-safe-directory: false
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0025888Z   fetch-depth: 1
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0026458Z   submodules: false
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0027038Z   lfs: false
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0027821Z   repository: 321Team/infra-cicd
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0033277Z   token: ***
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0033875Z   ssh-strict: true
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0034477Z   ssh-user: git
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0035094Z   sparse-checkout-cone-mode: true
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0035789Z   fetch-tags: false
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0036384Z   show-progress: true
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0037024Z   allow-unsafe-pr-checkout: false
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0037856Z env:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0038669Z   CICD_CHECKOUT: cicd-deploy-38361855044-1
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0039648Z   DEPLOY_RECORD_NAME: deploy-2fb09791-d0ca-443f-9c1b-77747c3f3a73.json
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0040965Z   DEPLOY_RECORD_SHA256: 11c94e5c28e1b22bc8df2d8f686fb61ff2f0c04b7bb9dd810496c4b1f63f0e50
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0042075Z   DEPLOY_EXECUTE: true
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0042838Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0772834Z Syncing repository: 321Team/infra-cicd
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0775015Z ##[group]Getting Git version info
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0776420Z Working directory is '/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1'
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0778509Z [command]/usr/bin/git version
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0779237Z git version 2.52.0
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0795361Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0800268Z ##[group]Determining repository object format
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0801497Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0802673Z ##[group]Initializing the repository
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0804155Z [command]/usr/bin/git init /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0816347Z hint: Using 'master' as the name for the initial branch. This default branch name
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0817907Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0819209Z hint: to use in all of your new repositories, which will suppress this warning,
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0820203Z hint: call:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0820750Z hint:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0821449Z hint: 	git config --global init.defaultBranch <name>
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0822387Z hint:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0823205Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0824456Z hint: 'development'. The just-created branch can be renamed via this command:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0825448Z hint:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0826025Z hint: 	git branch -m <name>
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0826664Z hint:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0827784Z hint: Disable this message with "git config set advice.defaultBranchName false"
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0829713Z /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git/ 안의 빈 깃 저장소를 다시 초기화했습니다
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0833019Z [command]/usr/bin/git remote add origin https://github.com/321Team/infra-cicd
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0886505Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0887865Z ##[group]Disabling automatic garbage collection
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0891505Z [command]/usr/bin/git config --local gc.auto 0
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0915920Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0917969Z ##[group]Setting up auth
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0919326Z Removing SSH command configuration
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0920451Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.0948729Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1152926Z Removing HTTP extra header
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1157644Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1193000Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1406815Z Removing includeIf entries pointing to credentials config files
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1410534Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1438130Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1660032Z [command]/usr/bin/git config --file /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1702343Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1727669Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1756549Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-deploy-38361855044-1/.git.path /github/runner_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1777378Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-deploy-38361855044-1/.git/worktrees/*.path /github/runner_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1797253Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1798478Z ##[group]Fetching the repository
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.1802198Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8200585Z https://github.com/321Team/infra-cicd URL에서
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8201788Z  * branch            2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7 -> FETCH_HEAD
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8223946Z [command]/usr/bin/git rev-parse --verify --quiet 2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7^{object}
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8244320Z 2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8246894Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8248015Z ##[group]Determining the checkout info
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8249138Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8250586Z [command]/usr/bin/git sparse-checkout disable
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8284255Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8305709Z ##[group]Checking out the ref
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.8307393Z [command]/usr/bin/git checkout --progress --force 2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9279798Z Note: switching to '2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7'.
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9281257Z 
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9282208Z You are in 'detached HEAD' state. You can look around, make experimental
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9284168Z changes and commit them, and you can discard any commits you make in this
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9286563Z state without impacting any branches by switching back to a branch.
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9287809Z 
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9288710Z If you want to create a new branch to retain commits you create, you may
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9290687Z do so (now or later) by using -c with the switch command. Example:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9292065Z 
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9292726Z   git switch -c <new-branch-name>
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9293517Z 
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9293982Z Or undo this operation with:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9294606Z 
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9295478Z   git switch -
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9296351Z 
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9297541Z Turn off this advice by setting config variable advice.detachedHead to false
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9298815Z 
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9300112Z HEAD의 현재 위치는 2d8a14c Merge pull request #74 from 321Team/fix/p1-token900-policy-20261010
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9304203Z ##[endgroup]
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9354049Z [command]/usr/bin/git log -1 --format=%H
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9389496Z 2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9403100Z ##[group]Removing auth
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9404290Z Removing SSH command configuration
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9407752Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9460846Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9696996Z Removing HTTP extra header
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9698433Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9722001Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9932099Z Removing includeIf entries pointing to credentials config files
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9933439Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9953901Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git.path
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9956355Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git/worktrees/*.path
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9958025Z includeif.gitdir:/github/workspace/cicd-deploy-38361855044-1/.git.path
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9959203Z includeif.gitdir:/github/workspace/cicd-deploy-38361855044-1/.git/worktrees/*.path
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9962602Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git.path
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9979107Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:47.9984279Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0015766Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git/worktrees/*.path
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0034389Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0040761Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-deploy-38361855044-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0063198Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-deploy-38361855044-1/.git.path
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0078821Z /github/runner_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0084169Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-deploy-38361855044-1/.git.path /github/runner_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0107863Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-deploy-38361855044-1/.git/worktrees/*.path
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0122773Z /github/runner_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0128067Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-deploy-38361855044-1/.git/worktrees/*.path /github/runner_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0158805Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0384648Z Removing credentials config '/home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-f35b4bd0-4569-4d55-8337-d8dce88e2faa.config'
+deploy	Checkout the reviewed workflow commit	2026-10-13T07:18:48.0391535Z ##[endgroup]
+deploy	Receive authenticated credential and execute approved Deploy	﻿2026-10-13T07:18:48.0522999Z ##[group]Run exec /usr/bin/python3 -I -B -c 'import sys; sys.path.insert(0, "tools/delivery"); import deploy_workflow; raise SystemExit(deploy_workflow.main())'
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0525234Z ^[[36;1mexec /usr/bin/python3 -I -B -c 'import sys; sys.path.insert(0, "tools/delivery"); import deploy_workflow; raise SystemExit(deploy_workflow.main())'^[[0m
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0528869Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0529599Z env:
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0530097Z   CICD_CHECKOUT: cicd-deploy-38361855044-1
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0530922Z   DEPLOY_RECORD_NAME: deploy-2fb09791-d0ca-443f-9c1b-77747c3f3a73.json
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0532059Z   DEPLOY_RECORD_SHA256: 11c94e5c28e1b22bc8df2d8f686fb61ff2f0c04b7bb9dd810496c4b1f63f0e50
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0533138Z   DEPLOY_EXECUTE: true
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0538072Z   DEPLOY_GITHUB_TOKEN: ***
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.0538634Z ##[endgroup]
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:18:48.1310469Z EVIDENCE_DIR=/home/server01_cicd-runner/FDS_CICD_Deploy.cf35zu3k
+deploy	Receive authenticated credential and execute approved Deploy	2026-10-13T07:20:48.7260237Z ##[error]Process completed with exit code 1.
+deploy	Post Checkout the reviewed workflow commit	﻿2026-10-13T07:20:48.7368036Z Post job cleanup.
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8006644Z [command]/usr/bin/git version
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8038032Z git version 2.52.0
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8056444Z Removing SSH command configuration
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8062095Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8085075Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8294223Z Removing HTTP extra header
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8299960Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8323848Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8526544Z Removing includeIf entries pointing to credentials config files
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8530589Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Post Checkout the reviewed workflow commit	2026-10-13T07:20:48.8557066Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Complete job	﻿2026-10-13T07:20:48.8847025Z Cleaning up orphan processes

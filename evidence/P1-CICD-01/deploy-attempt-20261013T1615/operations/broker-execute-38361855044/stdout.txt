@@ -1,0 +1,25 @@
+{
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "DEPLOY": "CHECK_WORKFLOW_AND_CLAIM",
+  "ENDPOINT_CLEANUP": "NOT_CONFIRMED",
+  "HANDOFF": "NOT_CONFIRMED",
+  "SOURCE_APPROVAL": "OPERATOR_PINNED_NOT_VERIFIED_IN_TOOL",
+  "TOKEN_ISSUANCE": "NOT_CONFIRMED",
+  "binding": {
+    "execution": {
+      "attempt": 1,
+      "ref": "refs/heads/main",
+      "repository": "321Team/infra-cicd",
+      "run_id": 38361855044,
+      "workflow_sha": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7"
+    },
+    "plan_sha256": "5c2d8367f5b81875693165055234a30e5c69944e345c8ad8c5277ef30ebd8387",
+    "record_sha256": "11c94e5c28e1b22bc8df2d8f686fb61ff2f0c04b7bb9dd810496c4b1f63f0e50",
+    "sa_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176"
+  },
+  "broker_input_reference_cleanup": "LOCAL_REFERENCE_DROPPED",
+  "bundle_sha256": "8cfdcce5e4b5eb95001d27e35606e5121edf77d8c2c1f5f481016c79933baa5c",
+  "error_code": "DEPLOY_HANDOFF_UNCONFIRMED",
+  "server_revocation": "NOT_PERFORMED",
+  "source_sha": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7"
+}
