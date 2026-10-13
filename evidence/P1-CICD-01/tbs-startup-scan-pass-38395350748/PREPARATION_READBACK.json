@@ -1,0 +1,103 @@
+{
+  "as_of_kst": "2026-10-13T20:58:09.787239+09:00",
+  "cicd_main": "147f760298dd4a683ea58f2a887483769352b97d",
+  "reviewed_head": "7ebf101b88814498f7390a2c7afb2a5b9fd9c96e",
+  "files": [
+    {
+      "path": "config/app-build-scan.json",
+      "sha256": "72eb52594048aa713ade12621f4545def0395f3f1603adec7bab3385b24f13e3",
+      "git_blob": "2e5d70151c0c9d652767d7e870ccbd3eb065c252"
+    },
+    {
+      "path": ".github/workflows/app-test-build-scan.yml",
+      "sha256": "40a5dcd56b0bb6feb816bb297eb27bb747524181e914dcf514d614492ace2982",
+      "git_blob": "faa552d5b531bc7a430f1fcef36057eb4dd97795"
+    },
+    {
+      "path": "tools/delivery/build_scan.py",
+      "sha256": "fbd9627adef6d64779b1e0a4f0a435c4765fd6bc706c14f1f0e27ee66c95e53a",
+      "git_blob": "4318e532c12d79814b36fcfb6b910ef731bb9e2e"
+    },
+    {
+      "path": "tools/delivery/image_smoke.py",
+      "sha256": "e87d7cf718721247baf17b7bcb999cad98edb1733e6cfc36c8e4c9cdd58aaf34",
+      "git_blob": "4e8ba9e29c3cce28362b6267d1749702240056aa"
+    },
+    {
+      "path": "tools/delivery/image_smoke_probe.py",
+      "sha256": "9f61eb5173eb99e5e7274264fbeb4d2c2ce4aa9201b2db3288a20dc0a9422f21",
+      "git_blob": "2f8305111ee475e2bfd0c3048160b228ddef278f"
+    },
+    {
+      "path": "tools/delivery/app_workflow.py",
+      "sha256": "7ee852d4beb16e5f1b37071537a6c98dc0293164ebba6c781cf8c2115cd7830b",
+      "git_blob": "4e0d583c024d614022f8da6c5cb5e38dccf11d86"
+    }
+  ],
+  "changed_execution_files_since_prior_run": [
+    "tools/delivery/image_smoke.py"
+  ],
+  "app_source": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+  "runner": {
+    "name": "cicd-runner01",
+    "status": "online",
+    "busy": false
+  },
+  "source_secret_metadata": {
+    "name": "CICD_APP_SOURCE_READ_TOKEN",
+    "created_at": "2026-09-18T02:59:15Z",
+    "updated_at": "2026-10-13T11:03:38Z"
+  },
+  "source_expiration": "2026-11-12 USER_CONFIRMED; exact time unknown",
+  "ci_run": "https://github.com/321Team/infra-cicd/actions/runs/38393360302",
+  "ci": "SUCCESS",
+  "recent_runs": [
+    {
+      "id": 38388390767,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 38382090974,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 37890963668,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37642123031,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 36521959454,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 36396533231,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 35683010080,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 35588577241,
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 35580767476,
+      "status": "completed",
+      "conclusion": "failure"
+    }
+  ],
+  "dispatch": "NOT_EXECUTED",
+  "authorization": "NEW_COUNT_AND_WINDOW_REQUIRED"
+}

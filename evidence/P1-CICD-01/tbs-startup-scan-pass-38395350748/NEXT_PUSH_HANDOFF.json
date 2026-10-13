@@ -1,0 +1,189 @@
+{
+  "classification": "OBSERVED_TBS_OUTPUTS_ONLY_NOT_PUSH_AUTHORIZATION",
+  "run_id": 38395350748,
+  "attempt": 1,
+  "workflow_sha": "147f760298dd4a683ea58f2a887483769352b97d",
+  "app_source": {
+    "approval_reference": "https://github.com/321Team/fds-msa/pull/27#pullrequestreview-5465278143",
+    "approved_by": "supreme33-kr",
+    "commit": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+    "repository": "321Team/fds-msa"
+  },
+  "runner_root": "/home/server01_cicd-runner/FDS_CICD_AppWorkflow.3_geu2kf",
+  "app_result_sha256": "239513de0766f9807f0503fac30fe0ea39d7255b793c2f561b23bb3d9b8bfd9d",
+  "build_result_sha256": "04936ae7438d4cdd6f49fd7a7985b9148b2a564026e7ff71d4cb060800ed54ee",
+  "scan_result_sha256": "17d9e4e08b3848c69eda4f9fb6b346e3c52971391a070a515be1c6770d374df7",
+  "input_sha256": "72eb52594048aa713ade12621f4545def0395f3f1603adec7bab3385b24f13e3",
+  "images": {
+    "transaction-api": {
+      "image_id": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+      "archive_sha256": "ff3d145047f53b67f44b8a91994d7ab2b72998d9b276184b3c70a2148d52e3cf",
+      "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "config_digest": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:8bb1cd766e60684b1a2761ac757b8ec3220b8ef5a2aaed9def41f3054caa8422",
+        "sha256:c26843b31131acd062ac7d78f7a1ab7bb01843a32fbfb95f1807a8e7f8b4ea4d",
+        "sha256:c2035921092f80e40d01df2e22682169946a3de5a4df73fae0ea80ec65bcb832"
+      ],
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "image_id": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+      "archive_sha256": "319ab0af288d32a156feb1867193d3b7be0e663f2a17ee3efaa95aa505cd7031",
+      "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "config_digest": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:3aa5d52cc2f8a081d73185778a8effdac8a28da848f9df8d6dda67b210caa98d",
+        "sha256:b8339463c7dae187b6ea52ebaedefe9b41108cc5120abb53be0d69f853438942",
+        "sha256:0905a1706232de97bdd992370e394da39e0e79cdaf0a66e166f7c4b63253238b"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "image_startup": {
+    "transaction-api": {
+      "status": "PASS",
+      "scope": "ISOLATED_IMAGE_STARTUP_ONLY",
+      "identity": {
+        "archive_sha256": "ff3d145047f53b67f44b8a91994d7ab2b72998d9b276184b3c70a2148d52e3cf",
+        "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+        "config_digest": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+        "diff_ids": [
+          "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+          "sha256:8bb1cd766e60684b1a2761ac757b8ec3220b8ef5a2aaed9def41f3054caa8422",
+          "sha256:c26843b31131acd062ac7d78f7a1ab7bb01843a32fbfb95f1807a8e7f8b4ea4d",
+          "sha256:c2035921092f80e40d01df2e22682169946a3de5a4df73fae0ea80ec65bcb832"
+        ],
+        "platform": "linux/amd64"
+      },
+      "probe_sha256": "9f61eb5173eb99e5e7274264fbeb4d2c2ce4aa9201b2db3288a20dc0a9422f21",
+      "started_at": "2026-10-13T12:11:15.595635+00:00",
+      "cleanup": "REMOVED",
+      "DB_READINESS": "NOT_VERIFIED",
+      "APP_E2E": "NOT_VERIFIED",
+      "KUBERNETES_RUNTIME": "NOT_VERIFIED",
+      "container_id": "0f171b146202c7435e6bfee34a373fab45f273ec7f42b4918fe3cd23a1283a6a",
+      "probe": {
+        "schema": "P1-final-image-probe-1",
+        "service": "transaction-api",
+        "uid": 10001,
+        "gid": 999,
+        "readable_files": 7,
+        "rootfs": "READ_ONLY",
+        "checks": {
+          "livez": 200,
+          "business_metrics": 404,
+          "dedicated_metrics": 200,
+          "metrics_livez": 404
+        }
+      },
+      "finished_at": "2026-10-13T12:11:17.649037+00:00"
+    },
+    "fds-engine": {
+      "status": "PASS",
+      "scope": "ISOLATED_IMAGE_STARTUP_ONLY",
+      "identity": {
+        "archive_sha256": "319ab0af288d32a156feb1867193d3b7be0e663f2a17ee3efaa95aa505cd7031",
+        "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+        "config_digest": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+        "diff_ids": [
+          "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+          "sha256:3aa5d52cc2f8a081d73185778a8effdac8a28da848f9df8d6dda67b210caa98d",
+          "sha256:b8339463c7dae187b6ea52ebaedefe9b41108cc5120abb53be0d69f853438942",
+          "sha256:0905a1706232de97bdd992370e394da39e0e79cdaf0a66e166f7c4b63253238b"
+        ],
+        "platform": "linux/amd64"
+      },
+      "probe_sha256": "9f61eb5173eb99e5e7274264fbeb4d2c2ce4aa9201b2db3288a20dc0a9422f21",
+      "started_at": "2026-10-13T12:11:36.461170+00:00",
+      "cleanup": "REMOVED",
+      "DB_READINESS": "NOT_VERIFIED",
+      "APP_E2E": "NOT_VERIFIED",
+      "KUBERNETES_RUNTIME": "NOT_VERIFIED",
+      "container_id": "99740a587111c74bce2038b9ac3c50f1f4706e092cea236773aebbe18e61905c",
+      "probe": {
+        "schema": "P1-final-image-probe-1",
+        "service": "fds-engine",
+        "uid": 10001,
+        "gid": 999,
+        "readable_files": 5,
+        "rootfs": "READ_ONLY",
+        "checks": {
+          "livez": 200,
+          "business_metrics": 404,
+          "dedicated_metrics": 200,
+          "metrics_livez": 404
+        }
+      },
+      "finished_at": "2026-10-13T12:11:38.109600+00:00"
+    }
+  },
+  "scan": {
+    "transaction-api": {
+      "scan": "PASS",
+      "exit_code": 0,
+      "counts": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "report_sha256": "c44661c3c66efec190a8091019ca3aa043df39f940f9f8e9f1c36a673271a1a2",
+      "archive_sha256": "ff3d145047f53b67f44b8a91994d7ab2b72998d9b276184b3c70a2148d52e3cf",
+      "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "config_digest": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:8bb1cd766e60684b1a2761ac757b8ec3220b8ef5a2aaed9def41f3054caa8422",
+        "sha256:c26843b31131acd062ac7d78f7a1ab7bb01843a32fbfb95f1807a8e7f8b4ea4d",
+        "sha256:c2035921092f80e40d01df2e22682169946a3de5a4df73fae0ea80ec65bcb832"
+      ],
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "scan": "PASS",
+      "exit_code": 0,
+      "counts": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "report_sha256": "446f6f389f26271ea81d9b5b1bc779fa83a6d72cd34615f0684e3c820f5d5f7c",
+      "archive_sha256": "319ab0af288d32a156feb1867193d3b7be0e663f2a17ee3efaa95aa505cd7031",
+      "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "config_digest": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:3aa5d52cc2f8a081d73185778a8effdac8a28da848f9df8d6dda67b210caa98d",
+        "sha256:b8339463c7dae187b6ea52ebaedefe9b41108cc5120abb53be0d69f853438942",
+        "sha256:0905a1706232de97bdd992370e394da39e0e79cdaf0a66e166f7c4b63253238b"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "private_reports_retained_on_runner": {
+    "transaction-api": {
+      "sha256": "c44661c3c66efec190a8091019ca3aa043df39f940f9f8e9f1c36a673271a1a2",
+      "bytes": 219032,
+      "retained_on_runner": true,
+      "raw_copied": false,
+      "recorded_hash_match": true
+    },
+    "fds-engine": {
+      "sha256": "446f6f389f26271ea81d9b5b1bc779fa83a6d72cd34615f0684e3c820f5d5f7c",
+      "bytes": 214625,
+      "retained_on_runner": true,
+      "raw_copied": false,
+      "recorded_hash_match": true
+    }
+  },
+  "next_requirements": [
+    "fresh Push execution record and exact input review",
+    "current Harbor availability and non-overlap with changes/post-observation",
+    "existing Robot scope/expiry and temporary credential delivery/cleanup confirmation",
+    "new Push run/window decision",
+    "fresh vulnerability rescan and remote digest verification by existing Push workflow"
+  ],
+  "push_record": "NOT_CREATED",
+  "push_dispatch": "NOT_EXECUTED",
+  "deploy": "NOT_AUTHORIZED_BY_THIS_TBS"
+}
