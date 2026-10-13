@@ -1,0 +1,426 @@
+{
+  "BUILD_SCAN": "PASS",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "PUSH": "NOT_EXECUTED",
+  "DEPLOY": "NOT_EXECUTED",
+  "context": {
+    "workflow_sha": "147f760298dd4a683ea58f2a887483769352b97d",
+    "run_id": "38395350748",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/38395350748",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "input_sha256": "72eb52594048aa713ade12621f4545def0395f3f1603adec7bab3385b24f13e3",
+    "handoff_sha256": "bf911e53b5a575e05c2287fc470a7b18095bafdfa4c2d3e7f7468612ad2b3965"
+  },
+  "started_at": "2026-10-13T12:10:34.141266+00:00",
+  "steps": [
+    {
+      "name": "source-head",
+      "exit_code": 0,
+      "log_sha256": "67d813dbf8e378492e19a1a88ccef9bf74516d8870e23a09d415f8fc7e829a45"
+    },
+    {
+      "name": "source-origin",
+      "exit_code": 0,
+      "log_sha256": "5fc74ed436b1d0f0f51253de816f45379ff9dd19517fd733d58a429e1293aecc"
+    },
+    {
+      "name": "source-tree",
+      "exit_code": 0,
+      "log_sha256": "bf6c9010d2e569da2126558e6eed73a97dd0468c02f806626f864be1ece7f8fe"
+    },
+    {
+      "name": "source-archive",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "podman-version",
+      "exit_code": 0,
+      "log_sha256": "5d57fcc5763930d5e2152569c0ff545dccef532baf0b320d221a17e66db8f590"
+    },
+    {
+      "name": "podman-rootless",
+      "exit_code": 0,
+      "log_sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"
+    },
+    {
+      "name": "offline-builder-load",
+      "exit_code": 0,
+      "log_sha256": "5ffc247e72cc41947b606bada1f0e045b42e167b77f68fcb5a7e4e24b91110ff"
+    },
+    {
+      "name": "offline-builder-tag",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "offline-builder-resolve",
+      "exit_code": 0,
+      "log_sha256": "9d425623f1ce8601ea8488cddb57fa4d68f151bf4bc277e0182da431a5a5a3fa"
+    },
+    {
+      "name": "offline-runtime-load",
+      "exit_code": 0,
+      "log_sha256": "4bf5bf87ad86e87afda3cded440559e876e70689207e0b5efa7625650a963f70"
+    },
+    {
+      "name": "offline-runtime-tag",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "offline-runtime-resolve",
+      "exit_code": 0,
+      "log_sha256": "05a840a7bc2d8e62fce9b4e25656fdd86b256d79c4caa3d2af187921a309c1f9"
+    },
+    {
+      "name": "transaction-api-offline-venv",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "transaction-api-offline-install",
+      "exit_code": 0,
+      "log_sha256": "3810494a98c31bdcd0a958dab6becd53238ecc9a028af77fc603b1fc9ad85b23"
+    },
+    {
+      "name": "transaction-api-offline-check",
+      "exit_code": 0,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "name": "fds-engine-offline-venv",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fds-engine-offline-install",
+      "exit_code": 0,
+      "log_sha256": "b9d79ffd4f31943dcdda3c1afb5ad4838c5e138238cb070ac18853a3078caed5"
+    },
+    {
+      "name": "fds-engine-offline-check",
+      "exit_code": 0,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "name": "fds-engine-unit-0",
+      "exit_code": 0,
+      "log_sha256": "cd2d29f925dd318e8d6ebbb62e80e5e5f9e1c2f8cbabec6d3b17ef348a550c51"
+    },
+    {
+      "name": "transaction-api-contract-0",
+      "exit_code": 0,
+      "log_sha256": "d5c4b336254bc5c5e025ed28e35aa04e79678b816c55b54c771e50993bb04cc9"
+    },
+    {
+      "name": "fds-engine-contract-0",
+      "exit_code": 0,
+      "log_sha256": "e25e2f778d5b42aa257f3a526979260e406abd4efb7538fd5f43d9794d919271"
+    },
+    {
+      "name": "transaction-api-build",
+      "exit_code": 0,
+      "log_sha256": "38262b3dde28784f7e7b5b38c17d80e0c7cbe3526a7191b67c51b0c90fa4b96a"
+    },
+    {
+      "name": "transaction-api-save",
+      "exit_code": 0,
+      "log_sha256": "3204405806b7cdec779568dded82a0000965e97a9589a3c55c99238279454aab"
+    },
+    {
+      "name": "transaction-api-image-smoke-create",
+      "exit_code": 0,
+      "log_sha256": "b639b79e7c0ad905ac8879d8fa36a013db47b050d4a902ba47c476e07cd819fc"
+    },
+    {
+      "name": "transaction-api-image-smoke-created",
+      "exit_code": 0,
+      "log_sha256": "a347a80ba36d114f54f18e6c5110cd6292ad863896d427a410c1a292b740f243"
+    },
+    {
+      "name": "transaction-api-image-smoke-start",
+      "exit_code": 0,
+      "log_sha256": "b639b79e7c0ad905ac8879d8fa36a013db47b050d4a902ba47c476e07cd819fc"
+    },
+    {
+      "name": "transaction-api-image-smoke-running",
+      "exit_code": 0,
+      "log_sha256": "1191fb56cb9c33ba968192c8832b1628419701eae0fcf7e51ad1aee1af0b90d4"
+    },
+    {
+      "name": "transaction-api-image-smoke-probe",
+      "exit_code": 0,
+      "log_sha256": "a72766dd976590521c306a6f15cac21d6c03e1a580b819cd9e91b11793099ac1"
+    },
+    {
+      "name": "transaction-api-image-smoke-after",
+      "exit_code": 0,
+      "log_sha256": "1191fb56cb9c33ba968192c8832b1628419701eae0fcf7e51ad1aee1af0b90d4"
+    },
+    {
+      "name": "transaction-api-image-smoke-logs",
+      "exit_code": 0,
+      "log_sha256": "ddd6ec4da77b55d6d7a70d32c47a9e3b42733a19026c7a41d6956dd74a2274d0"
+    },
+    {
+      "name": "transaction-api-image-smoke-remove",
+      "exit_code": 0,
+      "log_sha256": "b639b79e7c0ad905ac8879d8fa36a013db47b050d4a902ba47c476e07cd819fc"
+    },
+    {
+      "name": "transaction-api-image-smoke-removed",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fds-engine-build",
+      "exit_code": 0,
+      "log_sha256": "8e26841102e8253466d18706dc1c37e2f6521f7a264685a304fdf9cf910e704f"
+    },
+    {
+      "name": "fds-engine-save",
+      "exit_code": 0,
+      "log_sha256": "aa73735c7199dcfc854485d2d6036dc1f55bcf500fb368c4e490eb7e5b513d5e"
+    },
+    {
+      "name": "fds-engine-image-smoke-create",
+      "exit_code": 0,
+      "log_sha256": "20cf67246ae0cafc7c7f1b4c8ba7ba2319e0ef79ce408b43a6b95f5e706259d7"
+    },
+    {
+      "name": "fds-engine-image-smoke-created",
+      "exit_code": 0,
+      "log_sha256": "6d7b810a5f55393c8198ca5205df4047e6fb4760c42c7553e03758aaf81a5367"
+    },
+    {
+      "name": "fds-engine-image-smoke-start",
+      "exit_code": 0,
+      "log_sha256": "20cf67246ae0cafc7c7f1b4c8ba7ba2319e0ef79ce408b43a6b95f5e706259d7"
+    },
+    {
+      "name": "fds-engine-image-smoke-running",
+      "exit_code": 0,
+      "log_sha256": "e9ab296029ad503f8fd4d0cabd601df3f61ca82ac627a6c880dd2b1355436919"
+    },
+    {
+      "name": "fds-engine-image-smoke-probe",
+      "exit_code": 0,
+      "log_sha256": "b1786d1658fd0f33e86660c06c40a6fb9320b9863ddb625dfb9059944f899ef4"
+    },
+    {
+      "name": "fds-engine-image-smoke-after",
+      "exit_code": 0,
+      "log_sha256": "e9ab296029ad503f8fd4d0cabd601df3f61ca82ac627a6c880dd2b1355436919"
+    },
+    {
+      "name": "fds-engine-image-smoke-logs",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fds-engine-image-smoke-remove",
+      "exit_code": 0,
+      "log_sha256": "20cf67246ae0cafc7c7f1b4c8ba7ba2319e0ef79ce408b43a6b95f5e706259d7"
+    },
+    {
+      "name": "fds-engine-image-smoke-removed",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "images": {
+    "transaction-api": {
+      "image_id": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+      "archive_sha256": "ff3d145047f53b67f44b8a91994d7ab2b72998d9b276184b3c70a2148d52e3cf",
+      "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "config_digest": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:8bb1cd766e60684b1a2761ac757b8ec3220b8ef5a2aaed9def41f3054caa8422",
+        "sha256:c26843b31131acd062ac7d78f7a1ab7bb01843a32fbfb95f1807a8e7f8b4ea4d",
+        "sha256:c2035921092f80e40d01df2e22682169946a3de5a4df73fae0ea80ec65bcb832"
+      ],
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "image_id": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+      "archive_sha256": "319ab0af288d32a156feb1867193d3b7be0e663f2a17ee3efaa95aa505cd7031",
+      "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "config_digest": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:3aa5d52cc2f8a081d73185778a8effdac8a28da848f9df8d6dda67b210caa98d",
+        "sha256:b8339463c7dae187b6ea52ebaedefe9b41108cc5120abb53be0d69f853438942",
+        "sha256:0905a1706232de97bdd992370e394da39e0e79cdaf0a66e166f7c4b63253238b"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "not_applicable_tests": [
+    {
+      "service": "transaction-api",
+      "phase": "unit",
+      "approval_reference": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-6074515472",
+      "approved_by": "supreme33-kr",
+      "reason": "affbc69b\uc758 transaction-api/tests\uc5d0\ub294 Contract 4\ud30c\uc77c\uacfc __init__.py\ub9cc \uc788\uc73c\uba70, DB\u00b7engine \uc5c6\uc774 \uc2e4\ud589\ud558\ub294 \ubcc4\ub3c4 Unit \ud30c\uc77c\uc774 \uc5c6\ub2e4. \ub124 \ud30c\uc77c\uc740 \ubaa8\ub450 Contract\ub85c \uc2e4\ud589\ud558\uace0 \uc800\uc7a5\u00b7FDS \ud638\ucd9c \uc5c5\ubb34 \ub85c\uc9c1\uc740 \ubc30\ud3ec \ud68c\ucc28 #20\uc758 R01/R02/R04/R07\u00b7DB \uc800\uc7a5\uc73c\ub85c \uac80\uc99d\ud55c\ub2e4. APP Lead\uc758 \uc774\ubc88 Source \uae30\uc900 \ud655\uc815\uc774\uba70 \uc774\uc804 Source \uc608\uc678 \uc2b9\uacc4\uac00 \uc544\ub2c8\ub2e4.",
+      "status": "NOT_APPLICABLE"
+    }
+  ],
+  "source": {
+    "approval_reference": "https://github.com/321Team/fds-msa/pull/27#pullrequestreview-5465278143",
+    "approved_by": "supreme33-kr",
+    "commit": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+    "repository": "321Team/fds-msa"
+  },
+  "source_archive_sha256": "4bd051eef69a0ab3fcd6ae01ffc57de707969e39dfd547064c48ade334c8bb6e",
+  "offline_supply": {
+    "SUPPLY_COPY": "PASS",
+    "IMAGE_IMPORT": "PASS",
+    "images": {
+      "builder": {
+        "format": "docker-archive",
+        "archive_sha256": "e30bd4788d4a9b446cd91107dfe8597ee7ded9cbdc05414d6db8dcd42a456266",
+        "manifest_json_sha256": "d70d9216f93c6ae53826de8efe3dae00470fcd589360859eb5f23f118825e79d",
+        "index_json_sha256": "7984ffbf7d9136b9cc495fff7725e5ebe11518ce18b13e6e45216a84ef3cfc7a",
+        "config_digest": "sha256:76cfebb7af7d22c528da8cda75aa8e3f35cb9bbcdcdfc1f70e71be4aaa350b4a",
+        "diff_ids": [
+          "sha256:02eae2f3f119386c5c0e4b7ff85ea44ae89bd9ce26776364c35c853335e2896b"
+        ],
+        "layer_count": 1,
+        "repo_tag": "index.docker.io/library/fds-apko-wolfi-builder:affbc69beef9967f7977d09a6fec14f7fb6c0e94-amd64",
+        "platform": "linux/amd64"
+      },
+      "runtime": {
+        "format": "docker-archive",
+        "archive_sha256": "021cdaae7610376475daec6b7748a32e0e6b361331a961a5e2fd0ec0d92f63aa",
+        "manifest_json_sha256": "7973a59593e826e482edc00ba8e8b7b4cc5b860deb7336b6392c66632a7e962b",
+        "index_json_sha256": "52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556",
+        "config_digest": "sha256:091b5d0ef47fc56e4769531697565bbb2d06cd93725b75469fe0a84bc63d774d",
+        "diff_ids": [
+          "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30"
+        ],
+        "layer_count": 1,
+        "repo_tag": "index.docker.io/library/fds-apko-wolfi-runtime:affbc69beef9967f7977d09a6fec14f7fb6c0e94-amd64",
+        "platform": "linux/amd64"
+      }
+    },
+    "imports": {
+      "builder": {
+        "reference": "localhost/fds-apko-builder:cicd-offline-76cfebb7af7d22c5",
+        "format": "docker-archive",
+        "archive_sha256": "e30bd4788d4a9b446cd91107dfe8597ee7ded9cbdc05414d6db8dcd42a456266",
+        "manifest_json_sha256": "d70d9216f93c6ae53826de8efe3dae00470fcd589360859eb5f23f118825e79d",
+        "index_json_sha256": "7984ffbf7d9136b9cc495fff7725e5ebe11518ce18b13e6e45216a84ef3cfc7a",
+        "config_digest": "sha256:76cfebb7af7d22c528da8cda75aa8e3f35cb9bbcdcdfc1f70e71be4aaa350b4a",
+        "diff_ids": [
+          "sha256:02eae2f3f119386c5c0e4b7ff85ea44ae89bd9ce26776364c35c853335e2896b"
+        ],
+        "layer_count": 1,
+        "repo_tag": "index.docker.io/library/fds-apko-wolfi-builder:affbc69beef9967f7977d09a6fec14f7fb6c0e94-amd64",
+        "platform": "linux/amd64"
+      },
+      "runtime": {
+        "reference": "localhost/fds-apko-runtime:cicd-offline-091b5d0ef47fc56e",
+        "format": "docker-archive",
+        "archive_sha256": "021cdaae7610376475daec6b7748a32e0e6b361331a961a5e2fd0ec0d92f63aa",
+        "manifest_json_sha256": "7973a59593e826e482edc00ba8e8b7b4cc5b860deb7336b6392c66632a7e962b",
+        "index_json_sha256": "52ca8f2a56544da895b950fed82a54999c77c2fe129e91c24acc9f58f2c73556",
+        "config_digest": "sha256:091b5d0ef47fc56e4769531697565bbb2d06cd93725b75469fe0a84bc63d774d",
+        "diff_ids": [
+          "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30"
+        ],
+        "layer_count": 1,
+        "repo_tag": "index.docker.io/library/fds-apko-wolfi-runtime:affbc69beef9967f7977d09a6fec14f7fb6c0e94-amd64",
+        "platform": "linux/amd64"
+      }
+    }
+  },
+  "image_startup": {
+    "transaction-api": {
+      "status": "PASS",
+      "scope": "ISOLATED_IMAGE_STARTUP_ONLY",
+      "identity": {
+        "archive_sha256": "ff3d145047f53b67f44b8a91994d7ab2b72998d9b276184b3c70a2148d52e3cf",
+        "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+        "config_digest": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+        "diff_ids": [
+          "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+          "sha256:8bb1cd766e60684b1a2761ac757b8ec3220b8ef5a2aaed9def41f3054caa8422",
+          "sha256:c26843b31131acd062ac7d78f7a1ab7bb01843a32fbfb95f1807a8e7f8b4ea4d",
+          "sha256:c2035921092f80e40d01df2e22682169946a3de5a4df73fae0ea80ec65bcb832"
+        ],
+        "platform": "linux/amd64"
+      },
+      "probe_sha256": "9f61eb5173eb99e5e7274264fbeb4d2c2ce4aa9201b2db3288a20dc0a9422f21",
+      "started_at": "2026-10-13T12:11:15.595635+00:00",
+      "cleanup": "REMOVED",
+      "DB_READINESS": "NOT_VERIFIED",
+      "APP_E2E": "NOT_VERIFIED",
+      "KUBERNETES_RUNTIME": "NOT_VERIFIED",
+      "container_id": "0f171b146202c7435e6bfee34a373fab45f273ec7f42b4918fe3cd23a1283a6a",
+      "probe": {
+        "schema": "P1-final-image-probe-1",
+        "service": "transaction-api",
+        "uid": 10001,
+        "gid": 999,
+        "readable_files": 7,
+        "rootfs": "READ_ONLY",
+        "checks": {
+          "livez": 200,
+          "business_metrics": 404,
+          "dedicated_metrics": 200,
+          "metrics_livez": 404
+        }
+      },
+      "finished_at": "2026-10-13T12:11:17.649037+00:00"
+    },
+    "fds-engine": {
+      "status": "PASS",
+      "scope": "ISOLATED_IMAGE_STARTUP_ONLY",
+      "identity": {
+        "archive_sha256": "319ab0af288d32a156feb1867193d3b7be0e663f2a17ee3efaa95aa505cd7031",
+        "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+        "config_digest": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+        "diff_ids": [
+          "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+          "sha256:3aa5d52cc2f8a081d73185778a8effdac8a28da848f9df8d6dda67b210caa98d",
+          "sha256:b8339463c7dae187b6ea52ebaedefe9b41108cc5120abb53be0d69f853438942",
+          "sha256:0905a1706232de97bdd992370e394da39e0e79cdaf0a66e166f7c4b63253238b"
+        ],
+        "platform": "linux/amd64"
+      },
+      "probe_sha256": "9f61eb5173eb99e5e7274264fbeb4d2c2ce4aa9201b2db3288a20dc0a9422f21",
+      "started_at": "2026-10-13T12:11:36.461170+00:00",
+      "cleanup": "REMOVED",
+      "DB_READINESS": "NOT_VERIFIED",
+      "APP_E2E": "NOT_VERIFIED",
+      "KUBERNETES_RUNTIME": "NOT_VERIFIED",
+      "container_id": "99740a587111c74bce2038b9ac3c50f1f4706e092cea236773aebbe18e61905c",
+      "probe": {
+        "schema": "P1-final-image-probe-1",
+        "service": "fds-engine",
+        "uid": 10001,
+        "gid": 999,
+        "readable_files": 5,
+        "rootfs": "READ_ONLY",
+        "checks": {
+          "livez": 200,
+          "business_metrics": 404,
+          "dedicated_metrics": 200,
+          "metrics_livez": 404
+        }
+      },
+      "finished_at": "2026-10-13T12:11:38.109600+00:00"
+    }
+  },
+  "scan_result_sha256": "17d9e4e08b3848c69eda4f9fb6b346e3c52971391a070a515be1c6770d374df7",
+  "scan_status": {
+    "transaction-api": "PASS",
+    "fds-engine": "PASS"
+  },
+  "finished_at": "2026-10-13T12:12:02.443689+00:00"
+}

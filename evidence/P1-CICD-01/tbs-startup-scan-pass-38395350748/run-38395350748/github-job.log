@@ -1,0 +1,182 @@
+app	Set up job	﻿2026-10-13T12:10:29.6637654Z Current runner version: '2.337.0'
+app	Set up job	2026-10-13T12:10:29.6643538Z Runner name: 'cicd-runner01'
+app	Set up job	2026-10-13T12:10:29.6644114Z Runner group name: 'Default'
+app	Set up job	2026-10-13T12:10:29.6645396Z Machine name: 'cicd-runner01'
+app	Set up job	2026-10-13T12:10:29.6648081Z ##[group]GITHUB_TOKEN Permissions
+app	Set up job	2026-10-13T12:10:29.6650048Z Contents: read
+app	Set up job	2026-10-13T12:10:29.6650468Z Metadata: read
+app	Set up job	2026-10-13T12:10:29.6650842Z ##[endgroup]
+app	Set up job	2026-10-13T12:10:29.6653395Z Secret source: Actions
+app	Set up job	2026-10-13T12:10:29.6654578Z Cache mode: write
+app	Set up job	2026-10-13T12:10:29.6655542Z Prepare workflow directory
+app	Set up job	2026-10-13T12:10:29.8210549Z Prepare all required actions
+app	Set up job	2026-10-13T12:10:29.8258704Z Getting action download info
+app	Set up job	2026-10-13T12:10:30.6674876Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+app	Set up job	2026-10-13T12:10:32.1029238Z Complete job name: app
+app	Require a new checkout directory	﻿2026-10-13T12:10:32.1746748Z ##[group]Run set -euo pipefail
+app	Require a new checkout directory	2026-10-13T12:10:32.1748140Z ^[[36;1mset -euo pipefail^[[0m
+app	Require a new checkout directory	2026-10-13T12:10:32.1748987Z ^[[36;1mtest "$(hostname -s)" = cicd-runner01^[[0m
+app	Require a new checkout directory	2026-10-13T12:10:32.1749859Z ^[[36;1mtest "$(id -un)" = server01_cicd-runner^[[0m
+app	Require a new checkout directory	2026-10-13T12:10:32.1750661Z ^[[36;1mtest "$(id -u)" = 1000^[[0m
+app	Require a new checkout directory	2026-10-13T12:10:32.1751442Z ^[[36;1mtest ! -e "$GITHUB_WORKSPACE/$CICD_CHECKOUT"^[[0m
+app	Require a new checkout directory	2026-10-13T12:10:32.1752484Z ^[[36;1mtest ! -L "$GITHUB_WORKSPACE/$CICD_CHECKOUT"^[[0m
+app	Require a new checkout directory	2026-10-13T12:10:32.1759890Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+app	Require a new checkout directory	2026-10-13T12:10:32.1760964Z env:
+app	Require a new checkout directory	2026-10-13T12:10:32.1761544Z   CICD_CHECKOUT: cicd-app-38395350748-1
+app	Require a new checkout directory	2026-10-13T12:10:32.1762429Z ##[endgroup]
+app	Checkout the reviewed workflow commit	﻿2026-10-13T12:10:32.2488647Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2489675Z with:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2490262Z   ref: 147f760298dd4a683ea58f2a887483769352b97d
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2491017Z   path: cicd-app-38395350748-1
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2491887Z   persist-credentials: false
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2492554Z   clean: false
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2493094Z   set-safe-directory: false
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2493739Z   fetch-depth: 1
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2494281Z   submodules: false
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2494816Z   lfs: false
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2495358Z   repository: 321Team/infra-cicd
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2501083Z   token: ***
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2501892Z   ssh-strict: true
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2503524Z   ssh-user: git
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2504635Z   sparse-checkout-cone-mode: true
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2505353Z   fetch-tags: false
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2505951Z   show-progress: true
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2506731Z   allow-unsafe-pr-checkout: false
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2507412Z env:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2508029Z   CICD_CHECKOUT: cicd-app-38395350748-1
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.2510851Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3476585Z Syncing repository: 321Team/infra-cicd
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3478909Z ##[group]Getting Git version info
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3480453Z Working directory is '/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1'
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3482363Z [command]/usr/bin/git version
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3483063Z git version 2.52.0
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3485441Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3489835Z ##[group]Determining repository object format
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3491199Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3492154Z ##[group]Initializing the repository
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3493520Z [command]/usr/bin/git init /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3526697Z hint: Using 'master' as the name for the initial branch. This default branch name
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3528454Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3529909Z hint: to use in all of your new repositories, which will suppress this warning,
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3530961Z hint: call:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3531478Z hint:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3532608Z hint: 	git config --global init.defaultBranch <name>
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3533452Z hint:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3534235Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3536477Z hint: 'development'. The just-created branch can be renamed via this command:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3537451Z hint:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3538141Z hint: 	git branch -m <name>
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3538838Z hint:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3539780Z hint: Disable this message with "git config set advice.defaultBranchName false"
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3541648Z /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git/ 안의 빈 깃 저장소를 다시 초기화했습니다
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3544740Z [command]/usr/bin/git remote add origin https://github.com/321Team/infra-cicd
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3568617Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3569927Z ##[group]Disabling automatic garbage collection
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3570923Z [command]/usr/bin/git config --local gc.auto 0
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3594491Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3595587Z ##[group]Setting up auth
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3596337Z Removing SSH command configuration
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3599530Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3626770Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3856788Z Removing HTTP extra header
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3861267Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.3890837Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4131717Z Removing includeIf entries pointing to credentials config files
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4135090Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4166396Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4431774Z [command]/usr/bin/git config --file /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4474529Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4504401Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4538782Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-app-38395350748-1/.git.path /github/runner_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4570759Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-app-38395350748-1/.git/worktrees/*.path /github/runner_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4603681Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4604841Z ##[group]Fetching the repository
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:32.4615948Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 147f760298dd4a683ea58f2a887483769352b97d
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1580365Z https://github.com/321Team/infra-cicd URL에서
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1581004Z  * branch            147f760298dd4a683ea58f2a887483769352b97d -> FETCH_HEAD
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1608798Z [command]/usr/bin/git rev-parse --verify --quiet 147f760298dd4a683ea58f2a887483769352b97d^{object}
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1629860Z 147f760298dd4a683ea58f2a887483769352b97d
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1632237Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1632644Z ##[group]Determining the checkout info
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1633799Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1637953Z [command]/usr/bin/git sparse-checkout disable
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1667041Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1697278Z ##[group]Checking out the ref
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.1699673Z [command]/usr/bin/git checkout --progress --force 147f760298dd4a683ea58f2a887483769352b97d
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2605990Z Note: switching to '147f760298dd4a683ea58f2a887483769352b97d'.
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2606633Z 
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2607125Z You are in 'detached HEAD' state. You can look around, make experimental
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2607898Z changes and commit them, and you can discard any commits you make in this
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2608652Z state without impacting any branches by switching back to a branch.
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2609035Z 
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2609385Z If you want to create a new branch to retain commits you create, you may
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2610801Z do so (now or later) by using -c with the switch command. Example:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2611310Z 
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2611552Z   git switch -c <new-branch-name>
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2611881Z 
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2612096Z Or undo this operation with:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2612360Z 
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2612567Z   git switch -
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2612771Z 
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2613176Z Turn off this advice by setting config variable advice.detachedHead to false
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2613638Z 
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2614379Z HEAD의 현재 위치는 147f760 Merge pull request #78 from 321Team/fix/p1-image-smoke-podman-id-20261013
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2617599Z ##[endgroup]
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2688377Z [command]/usr/bin/git log -1 --format=%H
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2728521Z 147f760298dd4a683ea58f2a887483769352b97d
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2744532Z ##[group]Removing auth
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2745232Z Removing SSH command configuration
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2753226Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.2805379Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3057798Z Removing HTTP extra header
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3058810Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3084079Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3300947Z Removing includeIf entries pointing to credentials config files
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3302027Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3322833Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git.path
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3323719Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git/worktrees/*.path
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3324259Z includeif.gitdir:/github/workspace/cicd-app-38395350748-1/.git.path
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3324754Z includeif.gitdir:/github/workspace/cicd-app-38395350748-1/.git/worktrees/*.path
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3328647Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git.path
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3356097Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3365407Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3396726Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git/worktrees/*.path
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3417158Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3422166Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38395350748-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3447773Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-app-38395350748-1/.git.path
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3469088Z /github/runner_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3471840Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-app-38395350748-1/.git.path /github/runner_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3497286Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-app-38395350748-1/.git/worktrees/*.path
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3520599Z /github/runner_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3528451Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-app-38395350748-1/.git/worktrees/*.path /github/runner_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3558831Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3770144Z Removing credentials config '/home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-094462f9-b187-4a3e-bfef-7171b3914623.config'
+app	Checkout the reviewed workflow commit	2026-10-13T12:10:33.3778047Z ##[endgroup]
+app	Validate handoff and run the approved application	﻿2026-10-13T12:10:33.3877785Z ##[group]Run set -euo pipefail
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.3878113Z ^[[36;1mset -euo pipefail^[[0m
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.3878394Z ^[[36;1mexport PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin^[[0m
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.3878740Z ^[[36;1mexec /usr/bin/python3 tools/delivery/app_workflow.py --execute^[[0m
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.3880823Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.3881073Z env:
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.3881411Z   CICD_CHECKOUT: cicd-app-38395350748-1
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.3882027Z   CICD_APP_SOURCE_TOKEN: ***
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.3882222Z ##[endgroup]
+app	Validate handoff and run the approved application	2026-10-13T12:10:33.4537314Z EVIDENCE_DIR=/home/server01_cicd-runner/FDS_CICD_AppWorkflow.3_geu2kf
+app	Validate handoff and run the approved application	2026-10-13T12:12:02.4448696Z APP_WORKFLOW=PASS
+app	Validate handoff and run the approved application	2026-10-13T12:12:02.4448985Z ERROR_CODE=NONE
+app	Validate handoff and run the approved application	2026-10-13T12:12:02.4449283Z PUSH=NOT_EXECUTED
+app	Validate handoff and run the approved application	2026-10-13T12:12:02.4449447Z DEPLOY=NOT_EXECUTED
+app	Validate handoff and run the approved application	2026-10-13T12:12:02.4449608Z DELIVERY_GATE=NOT_VERIFIED
+app	Post Checkout the reviewed workflow commit	﻿2026-10-13T12:12:02.4593567Z Post job cleanup.
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5210477Z [command]/usr/bin/git version
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5239998Z git version 2.52.0
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5256452Z Removing SSH command configuration
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5260085Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5284265Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5484277Z Removing HTTP extra header
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5488389Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5511630Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5736834Z Removing includeIf entries pointing to credentials config files
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5740666Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+app	Post Checkout the reviewed workflow commit	2026-10-13T12:12:02.5767051Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+app	Complete job	﻿2026-10-13T12:12:02.6053318Z Cleaning up orphan processes

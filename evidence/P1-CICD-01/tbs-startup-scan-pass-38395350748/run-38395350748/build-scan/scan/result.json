@@ -1,0 +1,63 @@
+{
+  "IMAGE_SCAN": "PASS",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "push": "NOT_EXECUTED",
+  "deploy": "NOT_EXECUTED",
+  "context": {
+    "workflow_sha": "147f760298dd4a683ea58f2a887483769352b97d",
+    "run_id": "38395350748",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/38395350748",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "input_sha256": "72eb52594048aa713ade12621f4545def0395f3f1603adec7bab3385b24f13e3",
+    "handoff_sha256": "bf911e53b5a575e05c2287fc470a7b18095bafdfa4c2d3e7f7468612ad2b3965"
+  },
+  "source_sha": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+  "source_approval": "NOT_VERIFIED",
+  "images": {
+    "transaction-api": {
+      "scan": "PASS",
+      "exit_code": 0,
+      "counts": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "report_sha256": "c44661c3c66efec190a8091019ca3aa043df39f940f9f8e9f1c36a673271a1a2",
+      "archive_sha256": "ff3d145047f53b67f44b8a91994d7ab2b72998d9b276184b3c70a2148d52e3cf",
+      "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "config_digest": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:8bb1cd766e60684b1a2761ac757b8ec3220b8ef5a2aaed9def41f3054caa8422",
+        "sha256:c26843b31131acd062ac7d78f7a1ab7bb01843a32fbfb95f1807a8e7f8b4ea4d",
+        "sha256:c2035921092f80e40d01df2e22682169946a3de5a4df73fae0ea80ec65bcb832"
+      ],
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "scan": "PASS",
+      "exit_code": 0,
+      "counts": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "report_sha256": "446f6f389f26271ea81d9b5b1bc779fa83a6d72cd34615f0684e3c820f5d5f7c",
+      "archive_sha256": "319ab0af288d32a156feb1867193d3b7be0e663f2a17ee3efaa95aa505cd7031",
+      "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "config_digest": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:3aa5d52cc2f8a081d73185778a8effdac8a28da848f9df8d6dda67b210caa98d",
+        "sha256:b8339463c7dae187b6ea52ebaedefe9b41108cc5120abb53be0d69f853438942",
+        "sha256:0905a1706232de97bdd992370e394da39e0e79cdaf0a66e166f7c4b63253238b"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "binary_sha256": "d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791",
+  "started_at": "2026-10-13T12:11:38.131293+00:00",
+  "db_result_sha256": "59a99dc2ff890c6be23b2e83cf412d70ddab2764d08df7aa42f14101ffedb745",
+  "finished_at": "2026-10-13T12:12:02.395203+00:00"
+}

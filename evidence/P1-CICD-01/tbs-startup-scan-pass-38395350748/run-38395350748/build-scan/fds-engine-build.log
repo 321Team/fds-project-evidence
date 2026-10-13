@@ -1,0 +1,61 @@
+[1/2] STEP 1/6: FROM localhost/fds-apko-builder:cicd-offline-76cfebb7af7d22c5 AS build
+[1/2] STEP 2/6: WORKDIR /app
+--> 7a5f8a23cb69
+[1/2] STEP 3/6: RUN python3.13 -m venv --copies /venv
+--> e3a3442d8429
+[1/2] STEP 4/6: COPY --from=python-wheels / /opt/wheels/
+--> 95d1f67f3972
+[1/2] STEP 5/6: COPY requirements-runtime.lock .
+--> d46196821093
+[1/2] STEP 6/6: RUN PIP_CONFIG_FILE=/dev/null /venv/bin/python -I -m pip --isolated --disable-pip-version-check --no-cache-dir install --no-index --find-links=/opt/wheels --only-binary=:all: --require-hashes -r requirements-runtime.lock     && PIP_CONFIG_FILE=/dev/null /venv/bin/python -I -m pip --isolated --disable-pip-version-check check     && PIP_CONFIG_FILE=/dev/null /venv/bin/python -I -m pip --isolated --disable-pip-version-check uninstall -y pip setuptools     && rm -rf /opt/wheels
+Looking in links: /opt/wheels
+Processing /opt/wheels/annotated_doc-0.0.2-py3-none-any.whl (from -r requirements-runtime.lock (line 1))
+Processing /opt/wheels/annotated_types-0.8.0-py3-none-any.whl (from -r requirements-runtime.lock (line 2))
+Processing /opt/wheels/anyio-4.15.1-py3-none-any.whl (from -r requirements-runtime.lock (line 3))
+Processing /opt/wheels/click-8.5.0-py3-none-any.whl (from -r requirements-runtime.lock (line 4))
+Processing /opt/wheels/fastapi-0.141.1-py3-none-any.whl (from -r requirements-runtime.lock (line 5))
+Processing /opt/wheels/h11-0.16.0-py3-none-any.whl (from -r requirements-runtime.lock (line 6))
+Processing /opt/wheels/httptools-0.8.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r requirements-runtime.lock (line 7))
+Processing /opt/wheels/idna-3.19-py3-none-any.whl (from -r requirements-runtime.lock (line 8))
+Processing /opt/wheels/prometheus_client-0.20.0-py3-none-any.whl (from -r requirements-runtime.lock (line 9))
+Processing /opt/wheels/pydantic-2.9.2-py3-none-any.whl (from -r requirements-runtime.lock (line 10))
+Processing /opt/wheels/pydantic_core-2.23.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 11))
+Processing /opt/wheels/python_dotenv-1.2.3-py3-none-any.whl (from -r requirements-runtime.lock (line 12))
+Processing /opt/wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 13))
+Processing /opt/wheels/starlette-1.7.0-py3-none-any.whl (from -r requirements-runtime.lock (line 14))
+Processing /opt/wheels/typing_extensions-4.16.0-py3-none-any.whl (from -r requirements-runtime.lock (line 15))
+Processing /opt/wheels/typing_inspection-0.4.2-py3-none-any.whl (from -r requirements-runtime.lock (line 16))
+Processing /opt/wheels/uvicorn-0.30.6-py3-none-any.whl (from uvicorn[standard]==0.30.6->-r requirements-runtime.lock (line 17))
+Processing /opt/wheels/uvloop-0.22.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 18))
+Processing /opt/wheels/watchfiles-1.2.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 19))
+Processing /opt/wheels/websockets-17.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r requirements-runtime.lock (line 20))
+Installing collected packages: websockets, uvloop, typing-extensions, pyyaml, python-dotenv, prometheus-client, idna, httptools, h11, click, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, anyio, watchfiles, starlette, pydantic, fastapi
+
+Successfully installed annotated-doc-0.0.2 annotated-types-0.8.0 anyio-4.15.1 click-8.5.0 fastapi-0.141.1 h11-0.16.0 httptools-0.8.0 idna-3.19 prometheus-client-0.20.0 pydantic-2.9.2 pydantic-core-2.23.4 python-dotenv-1.2.3 pyyaml-6.0.3 starlette-1.7.0 typing-extensions-4.16.0 typing-inspection-0.4.2 uvicorn-0.30.6 uvloop-0.22.1 watchfiles-1.2.0 websockets-17.1
+No broken requirements found.
+Found existing installation: pip 26.2.1
+Uninstalling pip-26.2.1:
+  Successfully uninstalled pip-26.2.1
+WARNING: Skipping setuptools as it is not installed.
+--> 9d1f8f4709ea
+[2/2] STEP 1/10: FROM localhost/fds-apko-runtime:cicd-offline-091b5d0ef47fc56e
+[2/2] STEP 2/10: ENV PYTHONDONTWRITEBYTECODE=1     PYTHONUNBUFFERED=1
+--> afae9823126c
+[2/2] STEP 3/10: WORKDIR /app
+--> 802c64dd5c1b
+[2/2] STEP 4/10: COPY --from=build /venv /venv
+--> c269c87dda4f
+[2/2] STEP 5/10: COPY app ./app
+--> 20cc4119588d
+[2/2] STEP 6/10: COPY run.py .
+--> 515f6497a963
+[2/2] STEP 7/10: USER 10001:999
+--> e3a17028b070
+[2/2] STEP 8/10: EXPOSE 8001 9090
+--> 8a4939bbd235
+[2/2] STEP 9/10: ENTRYPOINT ["/venv/bin/python3"]
+--> 250292fb0e87
+[2/2] STEP 10/10: CMD ["run.py"]
+[2/2] COMMIT
+--> b82d35a60e7a
+b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc
