@@ -31,7 +31,7 @@ ansible01에서 이번 root의 `deploy-controller-2d8a14c`로 이동한 뒤 기�
 
 ```sh
 python3 -I -B -c 'import sys; sys.path.insert(0,"tools/delivery"); import transfer_deploy_credential as t; raise SystemExit(t.main())' \
-  --bundle native-source-2d8a14c.json \
+  --bundle /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73/deploy-controller-2d8a14c/native-source-2d8a14c.json \
   --bundle-sha256 8cfdcce5e4b5eb95001d27e35606e5121edf77d8c2c1f5f481016c79933baa5c \
   --source-sha 2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7 \
   --binding "$BINDING" --binding-sha256 "$BINDING_SHA256" \
@@ -40,7 +40,7 @@ python3 -I -B -c 'import sys; sys.path.insert(0,"tools/delivery"); import transf
   --runner-key /home/server01_ansible/.ssh/p1_ansible_ed25519
 ```
 
-broker 기본모드의 local validator도 source 임시 폴더를 만든다. 기본모드와 execute의 동일 소스검증을 새 필수 진단 회차로 중복 실행하지 않는다. 실제 binding/hash 사전 대조 후 기존 execute가 자체 검증하도록 한다. 검토된 도구의 default validation과 순수 read를 혼동하지 않는다.
+먼저 위 명령에서 `--execute`, `--authorization-expires`, 두 key 인자를 제외한 기존 기본모드로 `HANDOFF=LOCAL_INPUTS_VALIDATED`/tokenfalse/Deploy미실행을 확인한다. 이 기본모드도 source 임시 폴더를 만들므로 순수 read로 표시하지 않는다. 이어 위 execute 명령1회만 실행한다. 별도 native token 진단 회차를 추가하지 않는다. bundle/binding 경로는 기존 loader가 요구하는 절대경로다.
 
 ## 4. 결과 수집·중단
 
