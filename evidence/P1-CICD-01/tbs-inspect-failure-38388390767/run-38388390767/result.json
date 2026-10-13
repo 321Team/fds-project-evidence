@@ -1,0 +1,205 @@
+{
+  "APP_WORKFLOW": "FAIL",
+  "started_at": "2026-10-13T11:10:36.749499+00:00",
+  "context": {
+    "workflow_sha": "fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4",
+    "run_id": "38388390767",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/38388390767",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "input_sha256": "72eb52594048aa713ade12621f4545def0395f3f1603adec7bab3385b24f13e3"
+  },
+  "steps": [
+    {
+      "name": "source-init",
+      "exit_code": 0,
+      "log_sha256": "308e3afdaa4fbf149b044313fb4a980c449af13b193e2545cdfae51144c3619c"
+    },
+    {
+      "name": "source-origin-set",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-fetch",
+      "exit_code": 0,
+      "log_sha256": "70f46536de3f09d61524bc4d189aa28c6abb0007c7325cb9c08d942d9002d81c"
+    },
+    {
+      "name": "source-fetched",
+      "exit_code": 0,
+      "log_sha256": "67d813dbf8e378492e19a1a88ccef9bf74516d8870e23a09d415f8fc7e829a45"
+    },
+    {
+      "name": "source-head-set",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "handoff-head",
+      "exit_code": 0,
+      "log_sha256": "67d813dbf8e378492e19a1a88ccef9bf74516d8870e23a09d415f8fc7e829a45"
+    },
+    {
+      "name": "handoff-origin",
+      "exit_code": 0,
+      "log_sha256": "5fc74ed436b1d0f0f51253de816f45379ff9dd19517fd733d58a429e1293aecc"
+    },
+    {
+      "name": "handoff-tree",
+      "exit_code": 0,
+      "log_sha256": "bf6c9010d2e569da2126558e6eed73a97dd0468c02f806626f864be1ece7f8fe"
+    },
+    {
+      "name": "handoff-ci-apko-wolfi-python313-builder.apko.lock.json-size",
+      "exit_code": 0,
+      "log_sha256": "a76bdb17639c868795d35592dd1cc29b25fd08a1d5203c2fa0ac621547753827"
+    },
+    {
+      "name": "handoff-ci-apko-wolfi-python313-builder.apko.lock.json",
+      "exit_code": 0,
+      "log_sha256": "58888fd8e05517805bc66661ba2d41055093e006d7d11043e2b4f65efbc0cd55"
+    },
+    {
+      "name": "handoff-ci-apko-wolfi-python313-builder.apko.yaml-size",
+      "exit_code": 0,
+      "log_sha256": "1de9f7ae15d7140aa2141c9ce21518d5e86a93c2c52ed8b9576e4a34896ce09b"
+    },
+    {
+      "name": "handoff-ci-apko-wolfi-python313-builder.apko.yaml",
+      "exit_code": 0,
+      "log_sha256": "c2c0d81ec4a20fb06417b66c5a1d1a1c04a068f1c0c76d37a35f2c12bab264b2"
+    },
+    {
+      "name": "handoff-ci-apko-wolfi-python313-runtime.apko.lock.json-size",
+      "exit_code": 0,
+      "log_sha256": "995511b239eaafd0812046261507f865fa49e46747794e73a5ea2d986a08f9f9"
+    },
+    {
+      "name": "handoff-ci-apko-wolfi-python313-runtime.apko.lock.json",
+      "exit_code": 0,
+      "log_sha256": "bfa66e14097be03d6db42b3ebd479aa68d5db802faa2d00cdc72f7b80e3541b3"
+    },
+    {
+      "name": "handoff-ci-apko-wolfi-python313-runtime.apko.yaml-size",
+      "exit_code": 0,
+      "log_sha256": "308674fe33ad5aa848f48d336f6079c2b668de53a3108da4359ee5a0a2a771e5"
+    },
+    {
+      "name": "handoff-ci-apko-wolfi-python313-runtime.apko.yaml",
+      "exit_code": 0,
+      "log_sha256": "dc32de753d5b78501fc4654f79f17a285a0d523aaf6f28e6cfcad9ab2cc8c070"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-test.txt-size",
+      "exit_code": 0,
+      "log_sha256": "654ee9da442fa353f59f11beb688fc7f76c8de62a6c18b2a181fdde2a27cc3ef"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-test.txt",
+      "exit_code": 0,
+      "log_sha256": "2f41764074d9ca19782db366262c28015930c16e2e0b135a8b615f5d15dbae78"
+    },
+    {
+      "name": "handoff-fds-engine-requirements.txt-size",
+      "exit_code": 0,
+      "log_sha256": "496ecdb854d49463f8655b210ddf17d3395d26b20a6f297b07cf99834c6336f0"
+    },
+    {
+      "name": "handoff-fds-engine-requirements.txt",
+      "exit_code": 0,
+      "log_sha256": "3a349859f5027154610e2e4160075dfa00eb0cb28e1c37600a8a2ea9c36b378c"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-test.txt-size",
+      "exit_code": 0,
+      "log_sha256": "ea243e5457028e97f9bc93b37a72f8e80ea61ae081911bb037765590ee6aa435"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-test.txt",
+      "exit_code": 0,
+      "log_sha256": "b0a7d247aa0d498de1e71fd299c79d5022874cf1b36347697f52ba88b194f5f2"
+    },
+    {
+      "name": "handoff-transaction-api-requirements.txt-size",
+      "exit_code": 0,
+      "log_sha256": "1cb3ae0c7cf44aff95d12f73a367a8a51aedeb2a2a4deb4f0c4cb72d5845d2f5"
+    },
+    {
+      "name": "handoff-transaction-api-requirements.txt",
+      "exit_code": 0,
+      "log_sha256": "edcf9db9a6d2278565eb2a12ddd72434336864758de91cbf8e9aa49903b80bdc"
+    },
+    {
+      "name": "handoff-fds-engine-Dockerfile-size",
+      "exit_code": 0,
+      "log_sha256": "6aa04fd93c3dd989e3db6b8b5c1015f8209d62413097e3ad086c7400bef2b88c"
+    },
+    {
+      "name": "handoff-fds-engine-Dockerfile",
+      "exit_code": 0,
+      "log_sha256": "a7528a71c284cea12eeda38e47e5a7c6c7ef3b16aaea97badb0593d54aa2a515"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-runtime.lock-size",
+      "exit_code": 0,
+      "log_sha256": "1e016a064cc8c05d415e2e005f3b629a1561cace5c816944a152ceffde859cd9"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-runtime.lock",
+      "exit_code": 0,
+      "log_sha256": "88e45719485bdeb8c3ea2c70f8f3303127c7136fe465e1330f45775a9e163fc8"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-test.lock-size",
+      "exit_code": 0,
+      "log_sha256": "0fad9df8359fdaa709b729e288299bf29449a57e834743908aa5a6267e07fce7"
+    },
+    {
+      "name": "handoff-fds-engine-requirements-test.lock",
+      "exit_code": 0,
+      "log_sha256": "6568bb9c1cf014c229c66579b89c589eb74fdac4749625861e50f1d56bc3f560"
+    },
+    {
+      "name": "handoff-transaction-api-Dockerfile-size",
+      "exit_code": 0,
+      "log_sha256": "6aa04fd93c3dd989e3db6b8b5c1015f8209d62413097e3ad086c7400bef2b88c"
+    },
+    {
+      "name": "handoff-transaction-api-Dockerfile",
+      "exit_code": 0,
+      "log_sha256": "7a9eaca1212dd29cd2359d58ff5ce12bb0823684a75e529d66f796701f4569ef"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-runtime.lock-size",
+      "exit_code": 0,
+      "log_sha256": "1ce1cb7f51ec45c5c9cf16b718c9baeeae69b964d0e9de2fcaf149eb7113e153"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-runtime.lock",
+      "exit_code": 0,
+      "log_sha256": "1b6c12a68a3bdbe4f2d56f0d9ce31054937d17fb46708566d795041c4a153187"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-test.lock-size",
+      "exit_code": 0,
+      "log_sha256": "98e960712e08ff4642d412bbaa379ec8e3d8baba961294307a5701d0f5862921"
+    },
+    {
+      "name": "handoff-transaction-api-requirements-test.lock",
+      "exit_code": 0,
+      "log_sha256": "9a047257be36385144d698d81889f707a032a11142c63409189cf944e0fbfc88"
+    }
+  ],
+  "APP_TEST_BUILD_SCAN": "FAIL",
+  "PUSH": "NOT_EXECUTED",
+  "DEPLOY": "NOT_EXECUTED",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "handoff_sha256": "bf911e53b5a575e05c2287fc470a7b18095bafdfa4c2d3e7f7468612ad2b3965",
+  "HANDOFF": "PASS",
+  "build_result_sha256": "9c71f24334f1bfe4b2cb78cd7e3243931e577035d0b4ba87835f7910dfc5def2",
+  "error_code": "COMMAND_FAILED:transaction-api-image-smoke-created",
+  "finished_at": "2026-10-13T11:11:15.069250+00:00"
+}
