@@ -1,0 +1,49 @@
+{
+  "sha": "147f760298dd4a683ea58f2a887483769352b97d",
+  "workflow_files": [
+    {
+      "path": ".github/workflows/app-deploy.yml",
+      "sha256": "7aa4fda712021f414640c130cb9b45eb3ba1e036f749f9bafce0f7330c31009c",
+      "robot_secret_references": []
+    },
+    {
+      "path": ".github/workflows/app-push.yml",
+      "sha256": "cffddc6ed5885d428f65b48cbedee35e81d5919042f90d6bdadfd7576670ef11",
+      "robot_secret_references": [
+        "HARBOR_CI_ROBOT_USERNAME",
+        "HARBOR_CI_ROBOT_TOKEN"
+      ]
+    },
+    {
+      "path": ".github/workflows/app-test-build-scan.yml",
+      "sha256": "40a5dcd56b0bb6feb816bb297eb27bb747524181e914dcf514d614492ace2982",
+      "robot_secret_references": []
+    },
+    {
+      "path": ".github/workflows/p2-intake-validation.yml",
+      "sha256": "0c957fe76deb2dd0d0c5096ccea9fb767cfbb9ca2189406e59db4bbe6eff56e1",
+      "robot_secret_references": []
+    },
+    {
+      "path": ".github/workflows/runner-smoke.yml",
+      "sha256": "6eb39a6bf3253304f0e71456e86de8a43f52df1cb67ffcf5bc82dae44922da98",
+      "robot_secret_references": []
+    },
+    {
+      "path": ".github/workflows/source-validation.yml",
+      "sha256": "53462cf006068bdc4ea94121939585e3eeff8c88c44df89614b069a23a1dfacc",
+      "robot_secret_references": []
+    },
+    {
+      "path": ".github/workflows/trivy-db-preflight.yml",
+      "sha256": "cae3e0d3e404396badeccad6afbfbb4417add0bc9c91dd4328c18173456b9fc4",
+      "robot_secret_references": []
+    },
+    {
+      "path": ".github/workflows/trivy-toolcheck.yml",
+      "sha256": "d31cf8aa1a2eaafd515ae438a116050316c4a933053dd2f10c56f979512f6f03",
+      "robot_secret_references": []
+    }
+  ],
+  "scope": "literal references on fixed main only; other branches/dynamic consumers NOT VERIFIED"
+}

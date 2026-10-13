@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-13T12:47:42.667212+00:00",
+  "source_sha256": "f5fc71e3f48bb1d4582b654ff3c0054bacce351921df7d0e7c8848ba5b46a56c",
+  "rc": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "observation": {
+    "diagnostic": true,
+    "error_type": "AssertionError",
+    "frames": [
+      {
+        "file": "<stdin>",
+        "line": 4
+      },
+      {
+        "file": "robot_metadata_read.py",
+        "line": 20
+      }
+    ],
+    "identity": {
+      "hostname": "harbor01",
+      "product_uuid": "1e864d56-61f9-c443-d8f4-0ece2755a850",
+      "boot_id": "9c8575b2-2d8b-456d-8102-1bbaffa9bb1c"
+    },
+    "before": {
+      "id": "3fec129340dda3e33be1239925093fec4ac6666f3b01ce19a4ee4ef754ca40c5",
+      "name": "/harbor-db",
+      "image": "goharbor/harbor-db:v2.13.1",
+      "image_id": "sha256:5501021458c229c7663f3c4445dfbc2dcc32a22a5b3e3fb65e3e591311eed9dc",
+      "status": "running",
+      "health": "healthy",
+      "pid": 642776,
+      "started": "2026-10-13T03:26:07.376166318Z",
+      "restart_count": 0
+    }
+  }
+}
