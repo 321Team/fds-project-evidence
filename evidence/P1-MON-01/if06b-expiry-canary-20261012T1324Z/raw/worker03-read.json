@@ -1,0 +1,9 @@
+{
+  "started_kst": "2026-10-12T22:23:42.628468+09:00",
+  "finished_kst": "2026-10-12T22:23:43.056255+09:00",
+  "source_sha256": "6b41297798cc25ed5e799a0af37c8c88184c6d8c9b1258b5b9e9756595d981e9",
+  "route": "fds-ansible01 -> svc_ansible@10.1.93.108 -> sudo",
+  "rc": 0,
+  "stdout": "{\"cap-start.txt\": \"2026-10-12T13:23:26.463401+00:00\", \"cap.txt\": \"2026-10-12 22:23:37.144593 IP 10.1.93.108.41308 > 10.250.10.30.443: Flags [P.], seq 2836299310:2836299607, ack 4181404978, win 507, options [nop,nop,TS val 245778652 ecr 3246282942], length 297\\n2026-10-12 22:23:37.144686 IP 10.1.93.108.41308 > 10.250.10.30.443: Flags [P.], seq 297:379, ack 1, win 507, options [nop,nop,TS val 245778652 ecr 3246282942], length 82\\n2026-10-12 22:23:37.146018 IP 10.250.10.30.443 > 10.1.93.108.41308: Flags [.], ack 379, win 1923, options [nop,nop,TS val 3246297947 ecr 245778652], length 0\\n2026-10-12 22:23:37.146740 IP 10.250.10.30.443 > 10.1.93.108.41308: Flags [P.], seq 1:126, ack 379, win 1923, options [nop,nop,TS val 3246297948 ecr 245778652], length 125\\n2026-10-12 22:23:37.146784 IP 10.1.93.108.41308 > 10.250.10.30.443: Flags [.], ack 126, win 507, options [nop,nop,TS val 245778655 ecr 3246297948], length 0\\n\", \"cap-stats.txt\": \"dropped privs to tcpdump\\ntcpdump: verbose output suppressed, use -v[v]... for full protocol decode\\nlistening on ens160, link-type EN10MB (Ethernet), snapshot length 262144 bytes\\n\", \"cap-pid.txt\": \"659599\"}\n",
+  "stderr": ""
+}

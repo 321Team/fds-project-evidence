@@ -1,0 +1,232 @@
+{
+  "at_kst": "2026-10-12T22:32:41.727749+09:00",
+  "session_id": "20261012T2220-mon02",
+  "scope": "Phase 1 single MON IF06B canary",
+  "runtime": "PASS_WITHIN_OBSERVED_SCOPE",
+  "canary_create_count": 1,
+  "delete_intent_count": 1,
+  "manual_delete_count": 0,
+  "automatic_trigger": "expiry",
+  "created_kst": "2026-10-12T22:24:11.058000+09:00",
+  "absent_kst": "2026-10-12T22:25:43.094000+09:00",
+  "uid": "1aea5509-d0ff-4c8c-a217-61a534d57601",
+  "resource_version": "5192531",
+  "delete_preconditions": {
+    "resourceVersion": "5192531",
+    "uid": "1aea5509-d0ff-4c8c-a217-61a534d57601"
+  },
+  "cleanup_after_expiry_seconds": 2.0543916370079387,
+  "supervisor_disposition": "ABSENT_BASELINE_UNVERIFIED",
+  "baseline_after_verified_separately": true,
+  "common_capture_window": {
+    "start_kst": "2026-10-12T22:23:26.463401+09:00",
+    "end_kst": "2026-10-12T22:28:25+09:00"
+  },
+  "captures": {
+    "gateway-in": {
+      "start_kst": "2026-10-12T22:23:25+09:00",
+      "end_kst": "2026-10-12T22:28:25+09:00",
+      "rc": 0,
+      "dropped": 0
+    },
+    "gateway-out": {
+      "start_kst": "2026-10-12T22:23:25+09:00",
+      "end_kst": "2026-10-12T22:28:25+09:00",
+      "rc": 0,
+      "dropped": 0
+    },
+    "monitor-in": {
+      "start_kst": "2026-10-12T22:23:25+09:00",
+      "end_kst": "2026-10-12T22:28:25+09:00",
+      "rc": 0,
+      "dropped": 0
+    },
+    "worker-out": {
+      "start_kst": "2026-10-12T22:23:26.463401+09:00",
+      "end_kst": "2026-10-12T22:28:26.539697+09:00",
+      "rc": 0,
+      "dropped": 0
+    }
+  },
+  "requests": {
+    "443": {
+      "count": 1,
+      "start_kst": "2026-10-12T22:24:39.763257+09:00",
+      "rc": 0,
+      "output": "http=404 remote=10.250.10.30:443 local=10.1.93.108:45143 ssl_verify=0",
+      "error": ""
+    },
+    "8443": {
+      "count": 1,
+      "start_kst": "2026-10-12T22:24:59.008301+09:00",
+      "rc": 28,
+      "output": "http=000 remote=:-1 local=:-1 ssl_verify=0",
+      "error": "curl: (28) Connection timed out after 5002 milliseconds"
+    },
+    "post-deny": {
+      "count": 1,
+      "start_kst": "2026-10-12T22:26:01.943462+09:00",
+      "rc": 28,
+      "output": "http=000 remote=:-1 local=:-1 ssl_verify=0",
+      "error": "curl: (28) Connection timed out after 5003 milliseconds"
+    }
+  },
+  "443_positive": {
+    "gateway-in": {
+      "forward_packets": 10,
+      "return_packets": 9
+    },
+    "gateway-out": {
+      "forward_packets": 10,
+      "return_packets": 9
+    },
+    "monitor-in": {
+      "forward_packets": 11,
+      "return_packets": 9
+    },
+    "worker-out": {
+      "forward_packets": 10,
+      "return_packets": 9
+    }
+  },
+  "8443_gateway_drop_evidence": {
+    "gateway-in": {
+      "syn_packets": 5,
+      "lines": [
+        "2026-10-12 22:24:59.007826 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3405996367 ecr 0,nop,wscale 7], length 0",
+        "2026-10-12 22:25:00.056042 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3405997415 ecr 0,nop,wscale 7], length 0",
+        "2026-10-12 22:25:01.079870 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3405998439 ecr 0,nop,wscale 7], length 0",
+        "2026-10-12 22:25:02.104246 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3405999463 ecr 0,nop,wscale 7], length 0",
+        "2026-10-12 22:25:03.128336 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3406000487 ecr 0,nop,wscale 7], length 0"
+      ]
+    },
+    "gateway-out": {
+      "syn_packets": 0,
+      "lines": []
+    },
+    "monitor-in": {
+      "syn_packets": 0,
+      "lines": []
+    },
+    "worker-out": {
+      "syn_packets": 5,
+      "lines": [
+        "2026-10-12 22:24:59.011763 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3405996367 ecr 0,nop,wscale 7], length 0",
+        "2026-10-12 22:25:00.060131 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3405997415 ecr 0,nop,wscale 7], length 0",
+        "2026-10-12 22:25:01.083888 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3405998439 ecr 0,nop,wscale 7], length 0",
+        "2026-10-12 22:25:02.108156 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3405999463 ecr 0,nop,wscale 7], length 0",
+        "2026-10-12 22:25:03.132163 IP 10.1.93.108.45843 > 10.250.10.30.8443: Flags [S], seq 1312753289, win 64240, options [mss 1460,sackOK,TS val 3406000487 ecr 0,nop,wscale 7], length 0"
+      ]
+    }
+  },
+  "post_deny": {
+    "worker_syn_packets": 0,
+    "source_port": null,
+    "exact_drop_hook": "NOT_ESTABLISHED",
+    "new_connection_not_established_rc28": true,
+    "interpretation": "Connection timeout after reclaim with unchanged host policy; no new SYN visible at worker NIC in this request interval. Do not infer an exact drop hook."
+  },
+  "host_post_reads": {
+    "gateway": {
+      "post_collection_rc": 0,
+      "query_count": 22,
+      "configuration_unchanged": {
+        "active-zones.stdout": true,
+        "links.stdout": true,
+        "routes.stdout": true,
+        "routing-rules.stdout": true,
+        "ip-forward.stdout": true,
+        "before-runtime-policy.stdout": true,
+        "before-runtime-zones.stdout": true,
+        "before-runtime-policies.stdout": true,
+        "before-permanent-policy.stdout": true,
+        "before-permanent-zones.stdout": true,
+        "before-permanent-policies.stdout": true,
+        "after-runtime-policy.stdout": true,
+        "after-runtime-zones.stdout": true,
+        "after-runtime-policies.stdout": true,
+        "after-permanent-policy.stdout": true,
+        "after-permanent-zones.stdout": true,
+        "after-permanent-policies.stdout": true,
+        "before-nft": true,
+        "after-nft": true
+      },
+      "archive_sha256": "faaf0598996338c030a47f2f6be506053008181031bba209696a6f979c62858d"
+    },
+    "monitor": {
+      "post_collection_rc": 0,
+      "query_count": 11,
+      "configuration_unchanged": {
+        "addresses.stdout": true,
+        "route-worker03.stdout": true,
+        "listeners.stdout": true,
+        "runtime-zones.stdout": true,
+        "permanent-zones.stdout": true
+      },
+      "archive_sha256": "39dfd226108d499ddb1220845c00ac767218777362f1a63f9c57e8166efd2f13",
+      "post_heartbeat_seconds": 4.564000129699707,
+      "post_alerts": []
+    }
+  },
+  "control_policy_unchanged": {
+    "all_gnp": true,
+    "hep": true,
+    "hostgnp": true
+  },
+  "baseline": {
+    "pre": {
+      "target_count": "23",
+      "target_up": "23",
+      "rw_failed_15m": "0"
+    },
+    "during": {
+      "target_count": "23",
+      "target_up": "23",
+      "rw_failed_15m": "0"
+    },
+    "post": {
+      "target_count": "23",
+      "target_up": "23",
+      "rw_failed_15m": "0"
+    }
+  },
+  "credential_cleanup": {
+    "step": "TEMPORARY_CREDENTIAL_CLEANUP",
+    "objects": [
+      {
+        "object": "crb",
+        "deleted_uid": "6265400c-560a-4783-9094-6673f1007153",
+        "readback": "NotFound"
+      },
+      {
+        "object": "cr",
+        "deleted_uid": "f96300af-9380-4d70-9738-5ee94cc49faa",
+        "readback": "NotFound"
+      },
+      {
+        "object": "sa",
+        "deleted_uid": "3e019d68-afcc-4cd1-8d2c-f6d43782de91",
+        "readback": "NotFound"
+      }
+    ],
+    "token_path_absent": true,
+    "unknown_objects_not_deleted": true
+  },
+  "control_archive_sha256": "3472837608b92afdd0171893707538bd433eb2050fe745a17e8176260bbca1d7",
+  "review": "EVIDENCE_REVIEW_PENDING",
+  "publication": "NOT_PUBLISHED",
+  "AC": "NOT_DECIDED",
+  "limitations": [
+    "One authorized expiry path, not every failure path or reboot recovery",
+    "Heartbeat and MON API values are sampled, not continuous monitoring",
+    "post-deny failed new connection is established by command rc28; precise drop hook is not established by capture",
+    "loopback MON API reads are baseline evidence only; path evidence uses four packet captures"
+  ],
+  "worker_route_post": {
+    "at_utc": "2026-10-12T13:30:56.840961+00:00",
+    "rc": 0,
+    "route": "10.250.10.30 via 10.1.93.58 dev ens160 src 10.1.93.108 uid 0 \n    cache \n",
+    "matches_pre": true,
+    "sha256": "09ca5ff2f95e8a4acab92b93c47c9fac0e915666c0c29896520f6870849e7b5d"
+  }
+}

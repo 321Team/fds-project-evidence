@@ -1,0 +1,20 @@
+{
+  "recorded_at_kst": "2026-10-12T21:25:25.139686+09:00",
+  "user_answer": "일괄 허용 — 검증·비중첩 충족 후 1회 실행",
+  "scope_file": "EXECUTION_SCOPE.md",
+  "scope_sha256": "794b48141886caa6cb1f8b9c725d3443e309aa371b7bf894c63367e3281c8bcb",
+  "includes": [
+    "control01 supply placement",
+    "temporary SA/ClusterRole/Binding (one each)",
+    "token maximum actual lifetime 900 seconds",
+    "validate/survival-check/preflight",
+    "one canary after checks and Harbor nonoverlap",
+    "conditional reclaim and cleanup"
+  ],
+  "limits": [
+    "no Phase 2",
+    "no overlapping Harbor change/post-observation",
+    "no repeated run",
+    "no permanent policy/service changes"
+  ]
+}
