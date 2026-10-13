@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<stdin>", line 27, in <module>
+  File "/usr/lib64/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['podman', 'ps', '-a', '--format', 'json']' returned non-zero exit status 125.
