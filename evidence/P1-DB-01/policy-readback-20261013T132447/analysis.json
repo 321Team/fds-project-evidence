@@ -1,0 +1,231 @@
+{
+  "scope": "Evidence continuity and current API configuration only; no AC or packet-enforcement verdict",
+  "runtime_read": {
+    "hostname": "k8s-control01",
+    "uid": 0,
+    "server_started_utc": "2026-10-13T04:24:47.396403+00:00",
+    "server_finished_utc": "2026-10-13T04:24:47.695982+00:00",
+    "client_started_utc": "2026-10-13T04:24:45.902636+00:00",
+    "client_finished_utc": "2026-10-13T04:24:46.755966+00:00",
+    "clock_note": "Client and server timestamps are preserved without clock adjustment; clock synchronization was not tested",
+    "queries": [
+      {
+        "label": "app_pods_pre",
+        "rc": 0,
+        "items": 6
+      },
+      {
+        "label": "app_np",
+        "rc": 0,
+        "items": 3
+      },
+      {
+        "label": "calico_np",
+        "rc": 0,
+        "items": 0
+      },
+      {
+        "label": "calico_gnp",
+        "rc": 0,
+        "items": 7
+      },
+      {
+        "label": "calico_tiers",
+        "rc": 0,
+        "items": 3
+      },
+      {
+        "label": "namespaces",
+        "rc": 0,
+        "items": 9
+      },
+      {
+        "label": "app_pods_post",
+        "rc": 0,
+        "items": 6
+      }
+    ],
+    "source_sha256_match": true,
+    "received_stdout_sha256_match": true,
+    "pods_pre_post_projected_items_equal": true,
+    "pods": [
+      {
+        "name": "fds-engine-66b8c565c4-5s74s",
+        "uid": "072f5760-ac0c-479c-84da-54211a8a2ea6",
+        "app": "fds-engine",
+        "node": "k8s-worker01",
+        "hostNetwork": false,
+        "phase": "Running"
+      },
+      {
+        "name": "fds-engine-66b8c565c4-pjlkw",
+        "uid": "8e92a558-d243-4f92-8f58-34d10e32b663",
+        "app": "fds-engine",
+        "node": "k8s-worker03",
+        "hostNetwork": false,
+        "phase": "Running"
+      },
+      {
+        "name": "fds-engine-66b8c565c4-zgdxk",
+        "uid": "b7b42efa-6eab-4952-b5a0-1aeb9f27b077",
+        "app": "fds-engine",
+        "node": "k8s-worker02",
+        "hostNetwork": false,
+        "phase": "Running"
+      },
+      {
+        "name": "transaction-api-54984f6ddd-77dds",
+        "uid": "e7e7992e-959c-4fb2-a36a-ea2d5a5f1354",
+        "app": "transaction-api",
+        "node": "k8s-worker01",
+        "hostNetwork": false,
+        "phase": "Running"
+      },
+      {
+        "name": "transaction-api-54984f6ddd-p8jxf",
+        "uid": "3f8b99ac-fe41-4032-8179-e206c75e96ec",
+        "app": "transaction-api",
+        "node": "k8s-worker03",
+        "hostNetwork": false,
+        "phase": "Running"
+      },
+      {
+        "name": "transaction-api-54984f6ddd-wwkpv",
+        "uid": "3be191e1-c875-48e4-a74e-9786968c227e",
+        "app": "transaction-api",
+        "node": "k8s-worker02",
+        "hostNetwork": false,
+        "phase": "Running"
+      }
+    ]
+  },
+  "previous_policy": {
+    "repository": "321Team/fds-project-evidence",
+    "commit": "6014e9a961af497e78be9c383d270291013db5cf",
+    "path": "evidence/P1-SEC-01/network-gaps-20261008/policy-post.json",
+    "sha256": "f477557bd855caee12702f945849048484ec85d97f58620d792453fb028f1f9f"
+  },
+  "app_np_comparison": [
+    {
+      "namespace": "fds-app",
+      "name": "default-deny-all",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    },
+    {
+      "namespace": "fds-app",
+      "name": "fds-engine-allow",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    },
+    {
+      "namespace": "fds-app",
+      "name": "transaction-api-allow",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    }
+  ],
+  "calico_gnp_comparison": [
+    {
+      "namespace": "",
+      "name": "fds-k8s-host-k8s-control01",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    },
+    {
+      "namespace": "",
+      "name": "fds-k8s-host-k8s-control02",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    },
+    {
+      "namespace": "",
+      "name": "fds-k8s-host-k8s-control03",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    },
+    {
+      "namespace": "",
+      "name": "fds-k8s-host-k8s-worker01",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    },
+    {
+      "namespace": "",
+      "name": "fds-k8s-host-k8s-worker02",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    },
+    {
+      "namespace": "",
+      "name": "fds-k8s-host-k8s-worker03",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    },
+    {
+      "namespace": "",
+      "name": "nodeport-30080-allow",
+      "present_current": true,
+      "present_previous": true,
+      "uid_equal": true,
+      "resourceVersion_equal": true,
+      "generation_equal": true,
+      "spec_equal": true
+    }
+  ],
+  "calico_np_comparison": [],
+  "historical_engine_db_observation": {
+    "repository": "321Team/fds-project-evidence",
+    "commit": "7c33d459e009da208b06f9341a7801051a241392",
+    "path": "evidence/P1-SEC-01/received-20261004T1307Z/p1-sec01-ac02-residual-20261004T130105Z.tar.gz",
+    "sha256": "1087547663c339df8167d55056e7cc172bc3b678cffe2e52c172f51eea29ae55",
+    "member": "p1-sec01-ac02-residual-20261004T130105Z/results.tsv",
+    "original_tsv_row": "PASS\tIF-13A\tnon-DNS egress denied: fds-engine -> db01:5432\tTIMEOUT\tTIMEOUT\tfds-engine-5699669f6f-bp6t6\t10.1.93.55:5432\tpython",
+    "scope": "2026-10-04 historical TCP TIMEOUT; not a new 2026-10-13 probe or sole proof of enforcement"
+  },
+  "unperformed": [
+    "new TCP/DB transaction probe",
+    "DB host configuration readback",
+    "Calico endpoint/profile/dataplane inspection",
+    "Kubernetes NetworkPolicy inventory outside fds-app",
+    "independent review",
+    "AC acceptance",
+    "ticket closure"
+  ]
+}
