@@ -1,0 +1,20 @@
+{
+  "approval_source": "user reply in current chat",
+  "user_reply": "제안 채택 — 회차 실행자 담당·500분 유보",
+  "day_operator": "supreme33-kr",
+  "absence_and_out_of_hours": "Actual Ansible session executor observes queue/monitor failure and relays via existing team Kakao route. No standing on-call when there is no work.",
+  "recipients": ["supreme33-kr", "GWONUK"],
+  "fallback_channel": "existing team Kakao / GWONUK",
+  "threshold_minutes": 10,
+  "other_ci_reserve_minutes": 500,
+  "billing_observation_kst": "2026-10-13T11:50:08+09:00",
+  "reported_linux_minutes_used": 803,
+  "included_minutes": 2000,
+  "derived_remaining_minutes": 1197,
+  "remaining_after_reserve_before_other_usage": 697,
+  "enforcement": "Operational manual stop, not a GitHub minute quota. Existing zero-dollar stop-spend budget is unchanged. Runtime and billing delay must be accounted for; next bulk CI and daily operations check remaining capacity and stop queue alert first if 500-minute reserve plus planned consumption cannot be protected. Billing unavailable or uncertainty about headroom: disable and use manual queue-watch.",
+  "end_of_current_resource_period_kst": "2026-10-26",
+  "automatic_expiry_implemented": false,
+  "actual_notification_receipt": "PENDING_NEXT_BUSINESS_NEEDED_QUEUE",
+  "o02_full_acceptance": false
+}
