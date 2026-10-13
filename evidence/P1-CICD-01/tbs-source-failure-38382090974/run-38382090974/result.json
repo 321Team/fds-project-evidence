@@ -1,0 +1,37 @@
+{
+  "APP_WORKFLOW": "FAIL",
+  "started_at": "2026-10-13T10:15:27.791103+00:00",
+  "context": {
+    "workflow_sha": "fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4",
+    "run_id": "38382090974",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/38382090974",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "input_sha256": "72eb52594048aa713ade12621f4545def0395f3f1603adec7bab3385b24f13e3"
+  },
+  "steps": [
+    {
+      "name": "source-init",
+      "exit_code": 0,
+      "log_sha256": "6ecd6a199d948cc08cfc834a96f5e03a49f832225b95178b50ddb9e01f3bbb01"
+    },
+    {
+      "name": "source-origin-set",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "source-fetch",
+      "exit_code": 128,
+      "log_sha256": "5a94e21228506eff5425f6452e39913a83c9cc4a777bf7c3e54a6ed1eb0551cc"
+    }
+  ],
+  "APP_TEST_BUILD_SCAN": "NOT_EXECUTED",
+  "PUSH": "NOT_EXECUTED",
+  "DEPLOY": "NOT_EXECUTED",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "error_code": "SOURCE_PRIVATE_FETCH_FAILED",
+  "finished_at": "2026-10-13T10:15:28.114098+00:00"
+}

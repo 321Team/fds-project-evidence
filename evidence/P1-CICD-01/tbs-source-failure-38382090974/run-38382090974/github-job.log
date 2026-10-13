@@ -1,0 +1,183 @@
+﻿2026-10-13T10:15:24.9530189Z Current runner version: '2.337.0'
+2026-10-13T10:15:24.9537372Z Runner name: 'cicd-runner01'
+2026-10-13T10:15:24.9538470Z Runner group name: 'Default'
+2026-10-13T10:15:24.9539699Z Machine name: 'cicd-runner01'
+2026-10-13T10:15:24.9542325Z ##[group]GITHUB_TOKEN Permissions
+2026-10-13T10:15:24.9544914Z Contents: read
+2026-10-13T10:15:24.9545782Z Metadata: read
+2026-10-13T10:15:24.9546383Z ##[endgroup]
+2026-10-13T10:15:24.9549335Z Secret source: Actions
+2026-10-13T10:15:24.9550624Z Cache mode: write
+2026-10-13T10:15:24.9551563Z Prepare workflow directory
+2026-10-13T10:15:25.1058025Z Prepare all required actions
+2026-10-13T10:15:25.1106906Z Getting action download info
+2026-10-13T10:15:26.0317769Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+2026-10-13T10:15:26.4642863Z Complete job name: app
+2026-10-13T10:15:26.5295023Z ##[group]Run set -euo pipefail
+2026-10-13T10:15:26.5296027Z [36;1mset -euo pipefail[0m
+2026-10-13T10:15:26.5296862Z [36;1mtest "$(hostname -s)" = cicd-runner01[0m
+2026-10-13T10:15:26.5297776Z [36;1mtest "$(id -un)" = server01_cicd-runner[0m
+2026-10-13T10:15:26.5298618Z [36;1mtest "$(id -u)" = 1000[0m
+2026-10-13T10:15:26.5368034Z [36;1mtest ! -e "$GITHUB_WORKSPACE/$CICD_CHECKOUT"[0m
+2026-10-13T10:15:26.5369348Z [36;1mtest ! -L "$GITHUB_WORKSPACE/$CICD_CHECKOUT"[0m
+2026-10-13T10:15:26.5387309Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-13T10:15:26.5389476Z env:
+2026-10-13T10:15:26.5390162Z   CICD_CHECKOUT: cicd-app-38382090974-1
+2026-10-13T10:15:26.5390928Z ##[endgroup]
+2026-10-13T10:15:26.5709582Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+2026-10-13T10:15:26.5711619Z with:
+2026-10-13T10:15:26.5712822Z   ref: fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4
+2026-10-13T10:15:26.5714255Z   path: cicd-app-38382090974-1
+2026-10-13T10:15:26.5715482Z   persist-credentials: false
+2026-10-13T10:15:26.5717067Z   clean: false
+2026-10-13T10:15:26.5718493Z   set-safe-directory: false
+2026-10-13T10:15:26.5719299Z   fetch-depth: 1
+2026-10-13T10:15:26.5719870Z   submodules: false
+2026-10-13T10:15:26.5720435Z   lfs: false
+2026-10-13T10:15:26.5721007Z   repository: 321Team/infra-cicd
+2026-10-13T10:15:26.5727022Z   token: ***
+2026-10-13T10:15:26.5727576Z   ssh-strict: true
+2026-10-13T10:15:26.5728128Z   ssh-user: git
+2026-10-13T10:15:26.5728711Z   sparse-checkout-cone-mode: true
+2026-10-13T10:15:26.5729385Z   fetch-tags: false
+2026-10-13T10:15:26.5729957Z   show-progress: true
+2026-10-13T10:15:26.5730580Z   allow-unsafe-pr-checkout: false
+2026-10-13T10:15:26.5731400Z env:
+2026-10-13T10:15:26.5731969Z   CICD_CHECKOUT: cicd-app-38382090974-1
+2026-10-13T10:15:26.5732654Z ##[endgroup]
+2026-10-13T10:15:26.6726803Z Syncing repository: 321Team/infra-cicd
+2026-10-13T10:15:26.6728888Z ##[group]Getting Git version info
+2026-10-13T10:15:26.6730433Z Working directory is '/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1'
+2026-10-13T10:15:26.6732218Z [command]/usr/bin/git version
+2026-10-13T10:15:26.6736786Z git version 2.52.0
+2026-10-13T10:15:26.6754871Z ##[endgroup]
+2026-10-13T10:15:26.6760654Z ##[group]Determining repository object format
+2026-10-13T10:15:26.6762052Z ##[endgroup]
+2026-10-13T10:15:26.6763110Z ##[group]Initializing the repository
+2026-10-13T10:15:26.6764887Z [command]/usr/bin/git init /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1
+2026-10-13T10:15:26.6794375Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-13T10:15:26.6796008Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-13T10:15:26.6797366Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-13T10:15:26.6798479Z hint: call:
+2026-10-13T10:15:26.6799228Z hint:
+2026-10-13T10:15:26.6800132Z hint: 	git config --global init.defaultBranch <name>
+2026-10-13T10:15:26.6801028Z hint:
+2026-10-13T10:15:26.6801910Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-13T10:15:26.6804136Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-13T10:15:26.6805322Z hint:
+2026-10-13T10:15:26.6806027Z hint: 	git branch -m <name>
+2026-10-13T10:15:26.6806750Z hint:
+2026-10-13T10:15:26.6807718Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-13T10:15:26.6809737Z /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git/ 안의 빈 깃 저장소를 다시 초기화했습니다
+2026-10-13T10:15:26.6812781Z [command]/usr/bin/git remote add origin https://github.com/321Team/infra-cicd
+2026-10-13T10:15:26.6829429Z ##[endgroup]
+2026-10-13T10:15:26.6830696Z ##[group]Disabling automatic garbage collection
+2026-10-13T10:15:26.6831759Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-13T10:15:26.6894429Z ##[endgroup]
+2026-10-13T10:15:26.6895545Z ##[group]Setting up auth
+2026-10-13T10:15:26.6896362Z Removing SSH command configuration
+2026-10-13T10:15:26.6901571Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T10:15:26.6930414Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T10:15:26.7159173Z Removing HTTP extra header
+2026-10-13T10:15:26.7162608Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T10:15:26.7188102Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T10:15:26.7411481Z Removing includeIf entries pointing to credentials config files
+2026-10-13T10:15:26.7415233Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T10:15:26.7440690Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T10:15:26.7663975Z [command]/usr/bin/git config --file /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-13T10:15:26.7700568Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:26.7733015Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:26.7756607Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-app-38382090974-1/.git.path /github/runner_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:26.7779179Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-app-38382090974-1/.git/worktrees/*.path /github/runner_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:26.7799174Z ##[endgroup]
+2026-10-13T10:15:26.7800120Z ##[group]Fetching the repository
+2026-10-13T10:15:26.7805322Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4
+2026-10-13T10:15:27.5063065Z https://github.com/321Team/infra-cicd URL에서
+2026-10-13T10:15:27.5064708Z  * branch            fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4 -> FETCH_HEAD
+2026-10-13T10:15:27.5088074Z [command]/usr/bin/git rev-parse --verify --quiet fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4^{object}
+2026-10-13T10:15:27.5109858Z fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4
+2026-10-13T10:15:27.5111872Z ##[endgroup]
+2026-10-13T10:15:27.5112636Z ##[group]Determining the checkout info
+2026-10-13T10:15:27.5113421Z ##[endgroup]
+2026-10-13T10:15:27.5115509Z [command]/usr/bin/git sparse-checkout disable
+2026-10-13T10:15:27.5143516Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-13T10:15:27.5165088Z ##[group]Checking out the ref
+2026-10-13T10:15:27.5166456Z [command]/usr/bin/git checkout --progress --force fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4
+2026-10-13T10:15:27.6073680Z Note: switching to 'fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4'.
+2026-10-13T10:15:27.6074866Z 
+2026-10-13T10:15:27.6118323Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-13T10:15:27.6120497Z changes and commit them, and you can discard any commits you make in this
+2026-10-13T10:15:27.6122675Z state without impacting any branches by switching back to a branch.
+2026-10-13T10:15:27.6123494Z 
+2026-10-13T10:15:27.6126490Z If you want to create a new branch to retain commits you create, you may
+2026-10-13T10:15:27.6128784Z do so (now or later) by using -c with the switch command. Example:
+2026-10-13T10:15:27.6130026Z 
+2026-10-13T10:15:27.6133374Z   git switch -c <new-branch-name>
+2026-10-13T10:15:27.6133769Z 
+2026-10-13T10:15:27.6134003Z Or undo this operation with:
+2026-10-13T10:15:27.6134273Z 
+2026-10-13T10:15:27.6134472Z   git switch -
+2026-10-13T10:15:27.6134702Z 
+2026-10-13T10:15:27.6135057Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-13T10:15:27.6135450Z 
+2026-10-13T10:15:27.6136540Z HEAD의 현재 위치는 fadc07f Merge pull request #77 from 321Team/feat/p1-final-image-smoke-20261013
+2026-10-13T10:15:27.6138272Z ##[endgroup]
+2026-10-13T10:15:27.6161880Z [command]/usr/bin/git log -1 --format=%H
+2026-10-13T10:15:27.6183454Z fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4
+2026-10-13T10:15:27.6188293Z ##[group]Removing auth
+2026-10-13T10:15:27.6188850Z Removing SSH command configuration
+2026-10-13T10:15:27.6189865Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T10:15:27.6217484Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T10:15:27.6429353Z Removing HTTP extra header
+2026-10-13T10:15:27.6430414Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T10:15:27.6453514Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T10:15:27.6661851Z Removing includeIf entries pointing to credentials config files
+2026-10-13T10:15:27.6662768Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T10:15:27.6680294Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git.path
+2026-10-13T10:15:27.6681462Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git/worktrees/*.path
+2026-10-13T10:15:27.6682415Z includeif.gitdir:/github/workspace/cicd-app-38382090974-1/.git.path
+2026-10-13T10:15:27.6683168Z includeif.gitdir:/github/workspace/cicd-app-38382090974-1/.git/worktrees/*.path
+2026-10-13T10:15:27.6685152Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git.path
+2026-10-13T10:15:27.6701408Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:27.6709421Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:27.6733523Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git/worktrees/*.path
+2026-10-13T10:15:27.6749765Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:27.6754910Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-app-38382090974-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:27.6775297Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-app-38382090974-1/.git.path
+2026-10-13T10:15:27.6793578Z /github/runner_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:27.6801133Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-app-38382090974-1/.git.path /github/runner_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:27.6827924Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-app-38382090974-1/.git/worktrees/*.path
+2026-10-13T10:15:27.6844716Z /github/runner_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:27.6853554Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-app-38382090974-1/.git/worktrees/*.path /github/runner_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config
+2026-10-13T10:15:27.6874338Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T10:15:27.7084241Z Removing credentials config '/home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-bb21e032-c1a1-4311-b318-8d34ff307e32.config'
+2026-10-13T10:15:27.7089116Z ##[endgroup]
+2026-10-13T10:15:27.7200323Z ##[group]Run set -euo pipefail
+2026-10-13T10:15:27.7200902Z [36;1mset -euo pipefail[0m
+2026-10-13T10:15:27.7201455Z [36;1mexport PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin[0m
+2026-10-13T10:15:27.7202106Z [36;1mexec /usr/bin/python3 tools/delivery/app_workflow.py --execute[0m
+2026-10-13T10:15:27.7207356Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-13T10:15:27.7208028Z env:
+2026-10-13T10:15:27.7208467Z   CICD_CHECKOUT: cicd-app-38382090974-1
+2026-10-13T10:15:27.7209871Z   CICD_APP_SOURCE_TOKEN: ***
+2026-10-13T10:15:27.7210348Z ##[endgroup]
+2026-10-13T10:15:27.7919576Z EVIDENCE_DIR=/home/server01_cicd-runner/FDS_CICD_AppWorkflow.4_alowtt
+2026-10-13T10:15:28.1146931Z APP_WORKFLOW=FAIL
+2026-10-13T10:15:28.1147665Z ERROR_CODE=SOURCE_PRIVATE_FETCH_FAILED
+2026-10-13T10:15:28.1148235Z PUSH=NOT_EXECUTED
+2026-10-13T10:15:28.1148690Z DEPLOY=NOT_EXECUTED
+2026-10-13T10:15:28.1149135Z DELIVERY_GATE=NOT_VERIFIED
+2026-10-13T10:15:28.1229649Z ##[error]Process completed with exit code 1.
+2026-10-13T10:15:28.1347505Z Post job cleanup.
+2026-10-13T10:15:28.2011424Z [command]/usr/bin/git version
+2026-10-13T10:15:28.2045811Z git version 2.52.0
+2026-10-13T10:15:28.2071300Z Removing SSH command configuration
+2026-10-13T10:15:28.2076330Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T10:15:28.2106319Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T10:15:28.2321154Z Removing HTTP extra header
+2026-10-13T10:15:28.2325242Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T10:15:28.2350124Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T10:15:28.2575395Z Removing includeIf entries pointing to credentials config files
+2026-10-13T10:15:28.2579743Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T10:15:28.2607442Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T10:15:28.2902397Z Cleaning up orphan processes
