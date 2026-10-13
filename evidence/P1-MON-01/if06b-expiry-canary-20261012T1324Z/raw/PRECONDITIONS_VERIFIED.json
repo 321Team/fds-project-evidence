@@ -1,0 +1,33 @@
+{
+  "gateway": {
+    "active-zones.stdout": true,
+    "links.stdout": true,
+    "routes.stdout": true,
+    "routing-rules.stdout": true,
+    "ip-forward.stdout": true,
+    "before-runtime-policy.stdout": true,
+    "before-permanent-policy.stdout": true,
+    "before-runtime-zones.stdout": true,
+    "before-permanent-zones.stdout": true,
+    "before-runtime-policies.stdout": true,
+    "before-permanent-policies.stdout": true,
+    "nft": true
+  },
+  "monitor": {
+    "addresses.stdout": true,
+    "route-worker03.stdout": true,
+    "listeners.stdout": true,
+    "runtime-zones.stdout": true,
+    "permanent-zones.stdout": true
+  },
+  "monitor_baseline": {
+    "heartbeat": 15.880000114440918,
+    "alerts": []
+  },
+  "control_baseline": {
+    "target_count": "23",
+    "target_up": "23",
+    "rw_failed_15m": "0"
+  },
+  "control_policy_matches_previous": true
+}

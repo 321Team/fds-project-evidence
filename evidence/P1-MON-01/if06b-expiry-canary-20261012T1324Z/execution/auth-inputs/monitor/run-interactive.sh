@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# Run as server01_ansible on ansible01. Passwords are read by SSH/sudo on TTY only.
+set -euo pipefail
+set +x
+umask 077
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
+test "$(hostname -s)" = ansible01
+sha256sum -c SHA256SUMS
+RESULT=$(mktemp -d "$HOME/if06b-receipt.XXXXXXXX")
+printf "%s\n" "$RESULT" > "../monitor-receipt-path.txt"
+SOCKET="$RESULT/ssh-control"
+TARGET=server01_monitor@10.250.10.30
+SSH=(-o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ControlPath="$SOCKET")
+finish() { ssh "${SSH[@]}" -O exit "$TARGET" >/dev/null 2>&1 || true; }
+trap finish EXIT
+printf 'SSH 비밀번호를 터미널에 직접 입력하십시오. 결과 경로: %s\n' "$RESULT"
+# Do not combine ControlMaster=yes with -M: OpenSSH switches it to ask mode.
+ssh "${SSH[@]}" -o ControlMaster=yes -o ControlPersist=300 -Nf "$TARGET"
+# Subsequent operations must reuse this session; never prompt repeatedly on fallback.
+SSH+=(-o BatchMode=yes)
+ssh "${SSH[@]}" "$TARGET" true
+REMOTE=$(ssh "${SSH[@]}" "$TARGET" 'umask 077; mktemp -d /tmp/if06b-code.XXXXXXXX')
+[[ "$REMOTE" =~ ^/tmp/if06b-code\.[A-Za-z0-9]+$ ]] || exit 2
+scp "${SSH[@]}" collect.py SOURCE_SHA256SUMS "$TARGET:$REMOTE/"
+cat > "$RESULT/remote-command.sh" <<'REMOTE_SCRIPT'
+set -uo pipefail
+set +x
+umask 077
+cd "$1" || exit 2
+test "$(hostname -s)" = monitor01 || exit 2
+sha256sum -c SOURCE_SHA256SUMS || exit 2
+sudo -v || exit 2
+date -u +%FT%TZ > started-utc.txt
+sudo python3 "$PWD/collect.py" > collector.stdout 2> collector.stderr
+rc=$?
+printf '%s\n' "$rc" > collector.rc
+cat collector.stdout
+cat collector.stderr >&2
+OUT=$(sed -n 's/^OUT=//p' collector.stdout | head -1)
+[[ "$OUT" =~ ^/root/if06b-mon-inputs-[A-Za-z0-9_]+$ ]] || exit 2
+# Redirect is performed by the original user into this private staging folder.
+# No ownership/mode change to root evidence or system configuration.
+sudo -n tar -C /root -czf - "${OUT##*/}" > capture.tar.gz || exit 12
+sha256sum capture.tar.gz > capture.tar.gz.sha256 || exit 12
+date -u +%FT%TZ > finished-utc.txt
+printf 'COLLECTOR_RC=%s (raw results retained even on STOP)\n' "$rc"
+REMOTE_SCRIPT
+scp "${SSH[@]}" "$RESULT/remote-command.sh" "$TARGET:$REMOTE/"
+set +e
+ssh -t "${SSH[@]}" "$TARGET" "bash '$REMOTE/remote-command.sh' '$REMOTE'"
+remote_rc=$?
+set -e
+printf '%s\n' "$remote_rc" > "$RESULT/remote-command.rc"
+printf '%s\n' "$REMOTE" > "$RESULT/remote-stage.txt"
+for name in collector.stdout collector.stderr collector.rc capture.tar.gz capture.tar.gz.sha256 started-utc.txt finished-utc.txt; do
+  scp "${SSH[@]}" "$TARGET:$REMOTE/$name" "$RESULT/"
+done
+(cd "$RESULT" && sha256sum -c capture.tar.gz.sha256)
+printf '회수 완료: %s\n' "$RESULT"
+COLLECTOR_RC=$(cat "$RESULT/collector.rc")
+case "$COLLECTOR_RC" in 0|2|12) ;; *) echo 'STOP: invalid collector exit record' >&2; exit 12;; esac
+printf 'TRANSFER_COMPLETE collector_rc=%s remote_command_rc=%s\n' "$COLLECTOR_RC" "$remote_rc"
+printf 'collector.rc가 0이어도 기준선 정상/실제 canary 성공을 의미하지 않습니다.\n'
+# Preserve the failed capture first; transfer success must not erase its status.
+[ "$remote_rc" -eq 0 ] || exit "$remote_rc"
+exit "$COLLECTOR_RC"

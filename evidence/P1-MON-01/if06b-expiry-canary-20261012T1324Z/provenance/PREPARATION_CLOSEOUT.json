@@ -1,0 +1,583 @@
+{
+  "at_kst": "2026-10-12T21:56:33.316837+09:00",
+  "disposition": "PREPARATION_VERIFIED_TRIAL_NOT_STARTED",
+  "canary_create_calls": 0,
+  "trial_requests": 0,
+  "survival_check": "PASS (300 seconds, 60 BEAT, FINAL, original session absent)",
+  "validate": "PASS",
+  "preflight": "PASS",
+  "temporary_rbac_cleanup": {
+    "step": "TEMPORARY_CREDENTIAL_CLEANUP",
+    "objects": [
+      {
+        "object": "crb",
+        "deleted_uid": "fc09ab92-6ddf-41c1-add5-3e6dacebfb37",
+        "readback": "NotFound"
+      },
+      {
+        "object": "cr",
+        "deleted_uid": "c405a06c-1fb5-4e75-af15-f5d58e91f551",
+        "readback": "NotFound"
+      },
+      {
+        "object": "sa",
+        "deleted_uid": "d6131f9b-0421-4134-a7f7-58f3074db69c",
+        "readback": "NotFound"
+      }
+    ],
+    "token_path_absent": true,
+    "unknown_objects_not_deleted": true
+  },
+  "remaining_temporary_rbac": 0,
+  "token_file_present": false,
+  "field": {
+    "gateway": {
+      "archive_sha256": "1b2fa415ebac66370d35c30d5e0e09ba0690e5b907f08821704bc64e457001eb",
+      "capture": {
+        "gateway-in": {
+          "start": "2026-10-12T21:35:30+09:00",
+          "end": "2026-10-12T21:40:30+09:00",
+          "rc": 0,
+          "drops": 0
+        },
+        "gateway-out": {
+          "start": "2026-10-12T21:35:30+09:00",
+          "end": "2026-10-12T21:40:30+09:00",
+          "rc": 0,
+          "drops": 0
+        }
+      },
+      "pre_post_checks": {
+        "active-zones.stdout": true,
+        "links.stdout": true,
+        "routes.stdout": true,
+        "routing-rules.stdout": true,
+        "ip-forward.stdout": true,
+        "before-runtime-policy.stdout": true,
+        "before-runtime-zones.stdout": true,
+        "before-runtime-policies.stdout": true,
+        "before-permanent-policy.stdout": true,
+        "before-permanent-zones.stdout": true,
+        "before-permanent-policies.stdout": true,
+        "after-runtime-policy.stdout": true,
+        "after-runtime-zones.stdout": true,
+        "after-runtime-policies.stdout": true,
+        "after-permanent-policy.stdout": true,
+        "after-permanent-zones.stdout": true,
+        "after-permanent-policies.stdout": true,
+        "before-nft-counters-normalized": true,
+        "after-nft-counters-normalized": true
+      },
+      "post_queries_rc0": 22,
+      "post_read_retry": {
+        "initial_rc": "1\n",
+        "initial_stderr": "sudo: 암호가 필요합니다\n",
+        "source": "gateway-post2-receipt/capture.tar.gz",
+        "first_retry_rc": 255,
+        "first_retry_reason": "User confirmed password input error",
+        "reason": "sudo authentication expired; second separate interactive read completed after password retry",
+        "archive_sha256": "d2c60ca541ceec46cc6ef5d745b73a3126dba2acc2679cf8650434d956f1745a"
+      },
+      "post_read_receipt": {
+        "schema": "if06b-policy-readonly/v1",
+        "finished_kst": "2026-10-12T21:50:48.078259+09:00",
+        "hostname": "mgmt-gw01",
+        "uid": 0,
+        "code_sha256": "d8c6fdeffbf2bf9585306b7f20118277bc99f757d31e139e7e8b9e9bb7440f4b",
+        "collection_rc": 0,
+        "configuration_bytes_stable": true,
+        "policy_verdict": "PENDING_REVIEW",
+        "packet_test": "NOT_RUN",
+        "historical_8443_enforcer": "NOT_ESTABLISHED",
+        "queries": [
+          {
+            "id": "firewalld-version",
+            "argv": [
+              "firewall-cmd",
+              "--version"
+            ],
+            "started_kst": "2026-10-12T21:50:45.669523+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:45.794621+09:00"
+          },
+          {
+            "id": "firewalld-state",
+            "argv": [
+              "firewall-cmd",
+              "--state"
+            ],
+            "started_kst": "2026-10-12T21:50:45.794641+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:45.929513+09:00"
+          },
+          {
+            "id": "active-zones",
+            "argv": [
+              "firewall-cmd",
+              "--get-active-zones"
+            ],
+            "started_kst": "2026-10-12T21:50:45.929534+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.060569+09:00"
+          },
+          {
+            "id": "active-policies",
+            "argv": [
+              "firewall-cmd",
+              "--get-active-policies"
+            ],
+            "started_kst": "2026-10-12T21:50:46.060589+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.187812+09:00"
+          },
+          {
+            "id": "links",
+            "argv": [
+              "ip",
+              "-j",
+              "address",
+              "show"
+            ],
+            "started_kst": "2026-10-12T21:50:46.187833+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.190090+09:00"
+          },
+          {
+            "id": "routes",
+            "argv": [
+              "ip",
+              "-j",
+              "route",
+              "show",
+              "table",
+              "all"
+            ],
+            "started_kst": "2026-10-12T21:50:46.190117+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.191992+09:00"
+          },
+          {
+            "id": "routing-rules",
+            "argv": [
+              "ip",
+              "-j",
+              "rule",
+              "show"
+            ],
+            "started_kst": "2026-10-12T21:50:46.192004+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.193228+09:00"
+          },
+          {
+            "id": "ip-forward",
+            "argv": [
+              "sysctl",
+              "net.ipv4.ip_forward"
+            ],
+            "started_kst": "2026-10-12T21:50:46.193238+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.194090+09:00"
+          },
+          {
+            "id": "before-runtime-policy",
+            "argv": [
+              "firewall-cmd",
+              "--info-policy=if06b-p2m"
+            ],
+            "started_kst": "2026-10-12T21:50:46.194101+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.327347+09:00"
+          },
+          {
+            "id": "before-runtime-zones",
+            "argv": [
+              "firewall-cmd",
+              "--list-all-zones"
+            ],
+            "started_kst": "2026-10-12T21:50:46.327366+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.481274+09:00"
+          },
+          {
+            "id": "before-runtime-policies",
+            "argv": [
+              "firewall-cmd",
+              "--list-all-policies"
+            ],
+            "started_kst": "2026-10-12T21:50:46.481294+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.628581+09:00"
+          },
+          {
+            "id": "before-permanent-policy",
+            "argv": [
+              "firewall-cmd",
+              "--permanent",
+              "--info-policy=if06b-p2m"
+            ],
+            "started_kst": "2026-10-12T21:50:46.628601+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.767935+09:00"
+          },
+          {
+            "id": "before-permanent-zones",
+            "argv": [
+              "firewall-cmd",
+              "--permanent",
+              "--list-all-zones"
+            ],
+            "started_kst": "2026-10-12T21:50:46.767956+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:46.972871+09:00"
+          },
+          {
+            "id": "before-permanent-policies",
+            "argv": [
+              "firewall-cmd",
+              "--permanent",
+              "--list-all-policies"
+            ],
+            "started_kst": "2026-10-12T21:50:46.972906+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:47.137514+09:00"
+          },
+          {
+            "id": "before-nft",
+            "argv": [
+              "nft",
+              "-a",
+              "-nn",
+              "list",
+              "ruleset"
+            ],
+            "started_kst": "2026-10-12T21:50:47.137532+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:47.143915+09:00"
+          },
+          {
+            "id": "after-runtime-policy",
+            "argv": [
+              "firewall-cmd",
+              "--info-policy=if06b-p2m"
+            ],
+            "started_kst": "2026-10-12T21:50:47.143942+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:47.280591+09:00"
+          },
+          {
+            "id": "after-runtime-zones",
+            "argv": [
+              "firewall-cmd",
+              "--list-all-zones"
+            ],
+            "started_kst": "2026-10-12T21:50:47.280612+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:47.431570+09:00"
+          },
+          {
+            "id": "after-runtime-policies",
+            "argv": [
+              "firewall-cmd",
+              "--list-all-policies"
+            ],
+            "started_kst": "2026-10-12T21:50:47.431591+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:47.580729+09:00"
+          },
+          {
+            "id": "after-permanent-policy",
+            "argv": [
+              "firewall-cmd",
+              "--permanent",
+              "--info-policy=if06b-p2m"
+            ],
+            "started_kst": "2026-10-12T21:50:47.580750+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:47.715671+09:00"
+          },
+          {
+            "id": "after-permanent-zones",
+            "argv": [
+              "firewall-cmd",
+              "--permanent",
+              "--list-all-zones"
+            ],
+            "started_kst": "2026-10-12T21:50:47.715701+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:47.913384+09:00"
+          },
+          {
+            "id": "after-permanent-policies",
+            "argv": [
+              "firewall-cmd",
+              "--permanent",
+              "--list-all-policies"
+            ],
+            "started_kst": "2026-10-12T21:50:47.913404+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:48.073140+09:00"
+          },
+          {
+            "id": "after-nft",
+            "argv": [
+              "nft",
+              "-a",
+              "-nn",
+              "list",
+              "ruleset"
+            ],
+            "started_kst": "2026-10-12T21:50:48.073162+09:00",
+            "rc": 0,
+            "finished_kst": "2026-10-12T21:50:48.078080+09:00"
+          }
+        ]
+      }
+    },
+    "monitor": {
+      "archive_sha256": "efbf5f43f1e5a40bd6fddae7a49803885b9d46a131c5328636886973147bb900",
+      "capture": {
+        "monitor-in": {
+          "start": "2026-10-12T21:35:36+09:00",
+          "end": "2026-10-12T21:40:36+09:00",
+          "rc": 0,
+          "drops": 0
+        }
+      },
+      "pre_post_checks": {
+        "addresses.stdout": true,
+        "route-worker03.stdout": true,
+        "listeners.stdout": true,
+        "runtime-zones.stdout": true,
+        "permanent-zones.stdout": true
+      },
+      "post_queries_rc0": 11,
+      "post_read_retry": {
+        "initial_rc": "1\n",
+        "initial_stderr": "sudo: 암호가 필요합니다\n",
+        "source": "monitor-post2-receipt/capture.tar.gz",
+        "first_retry_rc": 255,
+        "first_retry_reason": "User confirmed password input error",
+        "reason": "sudo authentication expired; second separate interactive read completed after password retry",
+        "archive_sha256": "4a35022f56f292643e13f9f05c5a662f01de47f524e6ce4ab895bad834c24061"
+      },
+      "post_read_receipt": {
+        "schema": "if06b-monitor-input-read/v1",
+        "hostname": "monitor01",
+        "boot_id": "21fccc48-d2c8-491d-9ef3-3d1f99082182",
+        "boot_unchanged": true,
+        "uid": 0,
+        "source_sha256": "07480066fdcce15effef08a39b986a016a15147e142159c874c6dc97c57f5254",
+        "collection_rc": 0,
+        "queries": [
+          {
+            "name": "addresses",
+            "argv": [
+              "ip",
+              "-j",
+              "address",
+              "show"
+            ],
+            "started_utc": "2026-10-12T12:50:53.447978+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:53.449605+00:00"
+          },
+          {
+            "name": "route-worker03",
+            "argv": [
+              "ip",
+              "-4",
+              "route",
+              "get",
+              "10.1.93.108"
+            ],
+            "started_utc": "2026-10-12T12:50:53.449612+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:53.450815+00:00"
+          },
+          {
+            "name": "listeners",
+            "argv": [
+              "ss",
+              "-H",
+              "-lntp"
+            ],
+            "started_utc": "2026-10-12T12:50:53.450821+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:53.476784+00:00"
+          },
+          {
+            "name": "firewalld-state",
+            "argv": [
+              "firewall-cmd",
+              "--state"
+            ],
+            "started_utc": "2026-10-12T12:50:53.476796+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:53.618563+00:00"
+          },
+          {
+            "name": "active-zones",
+            "argv": [
+              "firewall-cmd",
+              "--get-active-zones"
+            ],
+            "started_utc": "2026-10-12T12:50:53.618577+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:53.753174+00:00"
+          },
+          {
+            "name": "runtime-zones",
+            "argv": [
+              "firewall-cmd",
+              "--list-all-zones"
+            ],
+            "started_utc": "2026-10-12T12:50:53.753187+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:53.904608+00:00"
+          },
+          {
+            "name": "permanent-zones",
+            "argv": [
+              "firewall-cmd",
+              "--permanent",
+              "--list-all-zones"
+            ],
+            "started_utc": "2026-10-12T12:50:53.904621+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:54.096723+00:00"
+          },
+          {
+            "name": "capture-version",
+            "argv": [
+              "tcpdump",
+              "--version"
+            ],
+            "started_utc": "2026-10-12T12:50:54.096736+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:54.099019+00:00"
+          },
+          {
+            "name": "heartbeat-age",
+            "argv": [
+              "curl",
+              "--disable",
+              "--noproxy",
+              "*",
+              "--silent",
+              "--show-error",
+              "--fail",
+              "--connect-timeout",
+              "2",
+              "--max-time",
+              "5",
+              "--retry",
+              "0",
+              "http://127.0.0.1:19090/api/v1/query?query=time%28%29-timestamp%28fds_monitoring_heartbeat%29"
+            ],
+            "started_utc": "2026-10-12T12:50:54.099027+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:54.104059+00:00"
+          },
+          {
+            "name": "watchdog-alerts",
+            "argv": [
+              "curl",
+              "--disable",
+              "--noproxy",
+              "*",
+              "--silent",
+              "--show-error",
+              "--fail",
+              "--connect-timeout",
+              "2",
+              "--max-time",
+              "5",
+              "--retry",
+              "0",
+              "http://127.0.0.1:19090/api/v1/alerts"
+            ],
+            "started_utc": "2026-10-12T12:50:54.104068+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:54.108835+00:00"
+          },
+          {
+            "name": "lb-probe",
+            "argv": [
+              "curl",
+              "--disable",
+              "--noproxy",
+              "*",
+              "--silent",
+              "--show-error",
+              "--fail",
+              "--connect-timeout",
+              "2",
+              "--max-time",
+              "5",
+              "--retry",
+              "0",
+              "http://127.0.0.1:19090/api/v1/query?query=probe_success%7Binstance%3D%2210.1.93.109%3A6443%22%7D"
+            ],
+            "started_utc": "2026-10-12T12:50:54.108845+00:00",
+            "rc": 0,
+            "finished_utc": "2026-10-12T12:50:54.114135+00:00"
+          }
+        ],
+        "baseline_verdict": "PENDING_REVIEW",
+        "canary_trial_requests": 0,
+        "policy_or_service_changes": 0
+      },
+      "heartbeat_post": {
+        "status": "success",
+        "data": {
+          "resultType": "vector",
+          "result": [
+            {
+              "metric": {},
+              "value": [
+                1791809454.103,
+                "6.894999980926514"
+              ]
+            }
+          ]
+        }
+      },
+      "alerts_post": {
+        "status": "success",
+        "data": {
+          "alerts": []
+        }
+      }
+    }
+  },
+  "worker_capture": {
+    "worker-out": {
+      "start": "2026-10-12T12:34:06.968563+00:00",
+      "end": "2026-10-12T12:39:07.012748+00:00",
+      "rc": 0,
+      "drops": 0
+    },
+    "worker-out-2": {
+      "start": "2026-10-12T12:37:03.887157+00:00",
+      "end": "2026-10-12T12:42:03.927184+00:00",
+      "rc": 0,
+      "drops": 0
+    }
+  },
+  "control_policy_unchanged": {
+    "hep": true,
+    "hostgnp": true,
+    "gnp_list_and_specs": true
+  },
+  "mon_post": {
+    "target_count": "23",
+    "target_up": "23",
+    "rw_failed_15m": "0"
+  },
+  "reason": "Capture starts and remaining preparation consumed the common observation budget; did not lower the start criterion.",
+  "post_host_read": "PASS: collected configuration comparisons unchanged; delayed snapshot, no trial executed",
+  "no_window_extension": true,
+  "worker_second_passive_capture_preserved": true,
+  "AC": "NOT_DECIDED",
+  "one_canary_authorization_used": false
+}

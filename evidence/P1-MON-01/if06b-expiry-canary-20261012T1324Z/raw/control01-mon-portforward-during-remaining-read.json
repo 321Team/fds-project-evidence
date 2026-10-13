@@ -1,0 +1,48 @@
+{
+  "at_kst": "2026-10-12T22:25:20.665986+09:00",
+  "source_sha256": "7a37130baf0215958b31da0b50a20b919df06bb927e1dd3f76c4c6a0cd5060ac",
+  "route": "fds-ansible01 -> svc_ansible@10.1.93.102",
+  "strict_host_key": true,
+  "batch_mode": true,
+  "rc": 0,
+  "stderr": "",
+  "stdout_sha256": "448999c854bd17ad1fed26017cecfae90d7a6a2dc9e7ed2c409778eb1a26a391",
+  "observation": {
+    "scope": "MON_RUNTIME_READ_ONLY_INPUTS",
+    "identity_before": {
+      "host": "k8s-control01",
+      "uid": 0,
+      "boot": "2a889fe4-51fe-43fe-bcd7-5a0f9b8ff360",
+      "product_uuid": "80724d56-7c17-f8a0-b2ea-ece7a154e24b"
+    },
+    "identity_after": {
+      "host": "k8s-control01",
+      "uid": 0,
+      "boot": "2a889fe4-51fe-43fe-bcd7-5a0f9b8ff360",
+      "product_uuid": "80724d56-7c17-f8a0-b2ea-ece7a154e24b"
+    },
+    "identity_unchanged": true,
+    "commands": [
+      {
+        "name": "baseline_read",
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "-I",
+          "-c",
+          "import subprocess,socket,time,json,urllib.request,urllib.parse,select\nkc=['/usr/bin/kubectl','--kubeconfig=/etc/kubernetes/admin.conf','--request-timeout=10s']\n# Fail if occupied; the bind in kubectl still arbitrates any intervening race.\ns=socket.socket();s.bind(('127.0.0.1',19095));s.close()\np=subprocess.Popen(kc+['-n','monitoring-api','port-forward','--address=127.0.0.1','svc/prometheus','19095:9090'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)\nrows=[];ready=False;first=b''\ntry:\n deadline=time.monotonic()+10\n while time.monotonic()<deadline and p.poll() is None:\n  if select.select([p.stdout],[],[],.2)[0]:\n   first=p.stdout.readline()\n   ready=first.startswith(b'Forwarding from 127.0.0.1:19095 -> 9090')\n   break\n if not ready:raise RuntimeError('PORT_FORWARD_NOT_READY')\n opener=urllib.request.build_opener(urllib.request.ProxyHandler({}))\n for name,query in [('target_count','count(up)'),('target_up','count(up==1)'),('rw_failed_15m','sum(increase(prometheus_remote_storage_samples_failed_total[15m]))')]:\n  url='http://127.0.0.1:19095/api/v1/query?query='+urllib.parse.quote(query,safe='')\n  try:\n   with opener.open(url,timeout=5) as res: data=res.read(65537)\n   if len(data)>65536:raise RuntimeError('OUTPUT_LIMIT')\n   rows.append({'name':name,'query':query,'raw':data.decode()})\n  except Exception as e:rows.append({'name':name,'error':type(e).__name__+':'+str(e)})\nfinally:\n if p.poll() is None:p.terminate()\n try:stdout,stderr=p.communicate(timeout=3)\n except subprocess.TimeoutExpired:p.kill();stdout,stderr=p.communicate(timeout=2)\n print(json.dumps({'queries':rows,'forwarder_pid':p.pid,'forwarder_stopped':p.poll() is not None,'forward_stdout':(first+stdout).decode(),'forward_stderr':stderr.decode(),'scope':'baseline API read only; not IF06B network-path evidence'}))\n"
+        ],
+        "at": "2026-10-12T13:25:22.237676+00:00",
+        "rc": 0,
+        "stdout_sha256": "b0a6452a896dff46ec1a605c8a5e20b1f67312f3fe548f75f5fa7c28108e6592",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout": "{\"queries\": [{\"name\": \"target_count\", \"query\": \"count(up)\", \"raw\": \"{\\\"status\\\":\\\"success\\\",\\\"data\\\":{\\\"resultType\\\":\\\"vector\\\",\\\"result\\\":[{\\\"metric\\\":{},\\\"value\\\":[1791811522.367,\\\"23\\\"]}]}}\"}, {\"name\": \"target_up\", \"query\": \"count(up==1)\", \"raw\": \"{\\\"status\\\":\\\"success\\\",\\\"data\\\":{\\\"resultType\\\":\\\"vector\\\",\\\"result\\\":[{\\\"metric\\\":{},\\\"value\\\":[1791811522.376,\\\"23\\\"]}]}}\"}, {\"name\": \"rw_failed_15m\", \"query\": \"sum(increase(prometheus_remote_storage_samples_failed_total[15m]))\", \"raw\": \"{\\\"status\\\":\\\"success\\\",\\\"data\\\":{\\\"resultType\\\":\\\"vector\\\",\\\"result\\\":[{\\\"metric\\\":{},\\\"value\\\":[1791811522.385,\\\"0\\\"]}]}}\"}], \"forwarder_pid\": 1078161, \"forwarder_stopped\": true, \"forward_stdout\": \"Forwarding from 127.0.0.1:19095 -> 9090\\nHandling connection for 19095\\nHandling connection for 19095\\nHandling connection for 19095\\n\", \"forward_stderr\": \"\", \"scope\": \"baseline API read only; not IF06B network-path evidence\"}\n",
+        "stderr": ""
+      }
+    ],
+    "deliberate_guest_writes": 0,
+    "credential_exports": 0,
+    "api_mutations": 0,
+    "canary_trial_requests": 0
+  }
+}
