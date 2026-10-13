@@ -1,0 +1,41 @@
+{
+  "type": "MOCK",
+  "server_files_deleted": 0,
+  "cases": [
+    {
+      "case": "dry_no_delete",
+      "result": "PASS",
+      "deleted_synthetic": 0
+    },
+    {
+      "case": "exact_targets_only",
+      "result": "PASS",
+      "deleted_synthetic": 28
+    },
+    {
+      "case": "changed_late_target_prevents_all",
+      "result": "PASS",
+      "deleted_synthetic": 0
+    },
+    {
+      "case": "symlink_rejected",
+      "result": "PASS",
+      "deleted_synthetic": 0
+    },
+    {
+      "case": "hardlink_rejected",
+      "result": "PASS",
+      "deleted_synthetic": 0
+    },
+    {
+      "case": "changed_before_unlink_stops",
+      "result": "PASS",
+      "deleted_synthetic": 0
+    },
+    {
+      "case": "partial_delete_error_recorded",
+      "result": "PASS",
+      "deleted_synthetic": 1
+    }
+  ]
+}

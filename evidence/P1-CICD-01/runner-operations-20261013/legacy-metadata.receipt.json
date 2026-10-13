@@ -1,0 +1,17 @@
+{
+  "started_at_utc": "2026-10-13T03:00:06.421609+00:00",
+  "rc": 0,
+  "command": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "fds-ansible01",
+    "python3 -I -B -"
+  ],
+  "scope": "read-only metadata"
+}
