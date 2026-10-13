@@ -1,0 +1,92 @@
+{
+  "as_of_kst": "2026-10-13T18:57:16.120313+09:00",
+  "cicd_main": "fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4",
+  "files": [
+    {
+      "path": "config/app-build-scan.json",
+      "git_blob": "2e5d70151c0c9d652767d7e870ccbd3eb065c252",
+      "sha256": "72eb52594048aa713ade12621f4545def0395f3f1603adec7bab3385b24f13e3",
+      "bytes": 6081
+    },
+    {
+      "path": ".github/workflows/app-test-build-scan.yml",
+      "git_blob": "faa552d5b531bc7a430f1fcef36057eb4dd97795",
+      "sha256": "40a5dcd56b0bb6feb816bb297eb27bb747524181e914dcf514d614492ace2982",
+      "bytes": 1634
+    },
+    {
+      "path": "tools/delivery/build_scan.py",
+      "git_blob": "4318e532c12d79814b36fcfb6b910ef731bb9e2e",
+      "sha256": "fbd9627adef6d64779b1e0a4f0a435c4765fd6bc706c14f1f0e27ee66c95e53a",
+      "bytes": 26021
+    },
+    {
+      "path": "tools/delivery/image_smoke.py",
+      "git_blob": "5766b0cefdee40e1751d4c7966a9c94ac06e04ab",
+      "sha256": "b9e6221bd785119dff29ac88816e1bef2a07b6c79570481394386e53652a43f6",
+      "bytes": 7161
+    },
+    {
+      "path": "tools/delivery/image_smoke_probe.py",
+      "git_blob": "2f8305111ee475e2bfd0c3048160b228ddef278f",
+      "sha256": "9f61eb5173eb99e5e7274264fbeb4d2c2ce4aa9201b2db3288a20dc0a9422f21",
+      "bytes": 4239
+    },
+    {
+      "path": "tools/delivery/app_workflow.py",
+      "git_blob": "4e0d583c024d614022f8da6c5cb5e38dccf11d86",
+      "sha256": "7ee852d4beb16e5f1b37071537a6c98dc0293164ebba6c781cf8c2115cd7830b",
+      "bytes": 13840
+    }
+  ],
+  "runner_metadata": [
+    {
+      "name": "cicd-runner01",
+      "status": "online",
+      "busy": false,
+      "labels": [
+        "self-hosted",
+        "Linux",
+        "X64",
+        "p1-cicd",
+        "onprem",
+        "podman"
+      ]
+    }
+  ],
+  "source_token_secret_present": true,
+  "recent_tbs_runs": [
+    {
+      "id": 37890963668,
+      "created_at": "2026-10-09T05:56:18Z",
+      "head_sha": "c9eff5fb2e50a690818a3e67347ab4a1bfc88f51",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/321Team/infra-cicd/actions/runs/37890963668"
+    },
+    {
+      "id": 37642123031,
+      "created_at": "2026-10-07T15:05:22Z",
+      "head_sha": "4e9324cd8acf0ba67b35f950b4c952db8064540e",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/321Team/infra-cicd/actions/runs/37642123031"
+    },
+    {
+      "id": 36521959454,
+      "created_at": "2026-09-29T04:30:49Z",
+      "head_sha": "52cf494bec02ab4b814bed07e4cf66f37a3547b6",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/321Team/infra-cicd/actions/runs/36521959454"
+    }
+  ],
+  "merged_source_ci": {
+    "headSha": "fadc07f18b5bf7febc8cf601fa138d8f35e9ccb4",
+    "conclusion": "success",
+    "status": "completed",
+    "url": "https://github.com/321Team/infra-cicd/actions/runs/38376834597"
+  },
+  "runtime_authorized": false,
+  "new_tbs_dispatch": "NOT_RUN"
+}
