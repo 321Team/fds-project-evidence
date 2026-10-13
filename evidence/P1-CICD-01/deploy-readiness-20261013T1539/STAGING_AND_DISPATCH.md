@@ -35,7 +35,7 @@ python3 -I -B -c 'import sys; sys.path.insert(0,"tools/delivery"); import transf
   --bundle-sha256 8cfdcce5e4b5eb95001d27e35606e5121edf77d8c2c1f5f481016c79933baa5c \
   --source-sha 2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7 \
   --binding "$BINDING" --binding-sha256 "$BINDING_SHA256" \
-  --execute --authorization-expires 2026-10-13T17:00:00+09:00 \
+  --execute --authorization-expires 2026-10-13T08:00:00+00:00 \
   --cp1-key /home/server01_ansible/.ssh/id_ed25519 \
   --runner-key /home/server01_ansible/.ssh/p1_ansible_ed25519
 ```
