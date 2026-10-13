@@ -1,0 +1,103 @@
+{
+  "at": "2026-10-13T12:48:43.301427+00:00",
+  "source_sha256": "dea85208c29048a7b7cc94a4aa0dec5b80d1c7002b72159797cef52a68810f31",
+  "rc": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "observation": {
+    "identity": {
+      "hostname": "harbor01",
+      "product_uuid": "1e864d56-61f9-c443-d8f4-0ece2755a850",
+      "boot_id": "9c8575b2-2d8b-456d-8102-1bbaffa9bb1c"
+    },
+    "before": {
+      "id": "3fec129340dda3e33be1239925093fec4ac6666f3b01ce19a4ee4ef754ca40c5",
+      "name": "/harbor-db",
+      "image": "goharbor/harbor-db:v2.13.1",
+      "image_id": "sha256:5501021458c229c7663f3c4445dfbc2dcc32a22a5b3e3fb65e3e591311eed9dc",
+      "status": "running",
+      "health": "healthy",
+      "pid": 642776,
+      "started": "2026-10-13T03:26:07.376166318Z",
+      "restart_count": 0
+    },
+    "started_at_utc": "2026-10-13T12:48:43.242325+00:00",
+    "rc": 0,
+    "argv": [
+      "/usr/bin/docker",
+      "--host",
+      "unix:///run/docker.sock",
+      "exec",
+      "-i",
+      "--user",
+      "999:999",
+      "3fec129340dda3e33be1239925093fec4ac6666f3b01ce19a4ee4ef754ca40c5",
+      "/usr/bin/psql",
+      "-X",
+      "-w",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "--dbname=registry",
+      "--pset=pager=off",
+      "-A",
+      "-t",
+      "--file=-"
+    ],
+    "sql": "BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY;\nSET LOCAL statement_timeout='5s';\nSET LOCAL lock_timeout='1s';\nSELECT json_build_object(\n 'observed_at',clock_timestamp(),\n 'transaction_read_only',current_setting('transaction_read_only'),\n 'robots',COALESCE((SELECT json_agg(json_build_object(\n   'id',r.id,'stored_name',r.name,'project_id',r.project_id,'disabled',r.disabled,'visible',r.visible,\n   'duration_days',r.duration,'expires_at_epoch',r.expiresat,\n   'expires_at_kst',CASE WHEN r.expiresat=-1 THEN 'NEVER' ELSE to_char(to_timestamp(r.expiresat) AT TIME ZONE 'Asia/Seoul','YYYY-MM-DD HH24:MI:SS')||' KST' END,\n   'expired',CASE WHEN r.expiresat=-1 THEN false ELSE r.expiresat <= extract(epoch FROM clock_timestamp()) END,\n   'created_at',r.creation_time,'updated_at',r.update_time,\n   'permissions',COALESCE((SELECT json_agg(json_build_object('scope',pp.scope,'project_name',pr.name,\n       'resource',pp.resource,'action',pp.action,'effect',pp.effect) ORDER BY pp.scope,pp.resource,pp.action)\n     FROM role_permission rp JOIN permission_policy pp ON pp.id=rp.permission_policy_id\n     LEFT JOIN project pr ON pp.scope='/project/'||pr.project_id::text\n     WHERE rp.role_type='robotaccount' AND rp.role_id=r.id),'[]'::json)\n ) ORDER BY r.id) FROM robot r WHERE r.name IN ('push','robot$push')),'[]'::json));\nROLLBACK;\n",
+    "sql_sha256": "014be3b4b47bfb5998a1e994cb87f6406373f5c4435a951cb983cd597a6b0a4b",
+    "stdout_sha256": "1eff3f28c4291901d3c5ce088ac77276cf242e83a43979c62e45a66259cbdcc9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "read_only": true,
+    "credential_fields_selected": false,
+    "credential_authentication_test": false,
+    "services_restarted": false,
+    "files_placed": false,
+    "observation": {
+      "observed_at": "2026-10-13T12:48:43.2878+00:00",
+      "transaction_read_only": "on",
+      "robots": [
+        {
+          "id": 3,
+          "stored_name": "push",
+          "project_id": 0,
+          "disabled": false,
+          "visible": true,
+          "duration_days": 30,
+          "expires_at_epoch": 1792311415,
+          "expires_at_kst": "2026-10-18 17:16:55 KST",
+          "expired": false,
+          "created_at": "2026-09-18T08:16:55.624339",
+          "updated_at": "2026-09-18T08:16:55.62435",
+          "permissions": [
+            {
+              "scope": "/project/2",
+              "project_name": "fds",
+              "resource": "repository",
+              "action": "pull",
+              "effect": ""
+            },
+            {
+              "scope": "/project/2",
+              "project_name": "fds",
+              "resource": "repository",
+              "action": "push",
+              "effect": ""
+            }
+          ]
+        }
+      ]
+    },
+    "after": {
+      "id": "3fec129340dda3e33be1239925093fec4ac6666f3b01ce19a4ee4ef754ca40c5",
+      "name": "/harbor-db",
+      "image": "goharbor/harbor-db:v2.13.1",
+      "image_id": "sha256:5501021458c229c7663f3c4445dfbc2dcc32a22a5b3e3fb65e3e591311eed9dc",
+      "status": "running",
+      "health": "healthy",
+      "pid": 642776,
+      "started": "2026-10-13T03:26:07.376166318Z",
+      "restart_count": 0
+    },
+    "container_unchanged": true,
+    "finished_at_utc": "2026-10-13T12:48:43.304770+00:00"
+  }
+}

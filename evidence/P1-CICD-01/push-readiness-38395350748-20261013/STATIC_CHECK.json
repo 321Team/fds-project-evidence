@@ -1,0 +1,46 @@
+{
+  "classification": "LOCAL_STATIC_PREVIEW_NOT_RUNTIME_OR_APPROVAL",
+  "pending_gate": {
+    "decision": "BLOCK",
+    "reasons": [
+      "TEMPLATE_OR_UNCONFIRMED_INPUT",
+      "DELIVERY_INPUT_NOT_APPROVED"
+    ],
+    "plan": null,
+    "basis": "DECLARED_REVIEWED_INPUTS_ONLY",
+    "runtime_enforcement": "NOT_INTEGRATED",
+    "delivery_gate": "NOT_VERIFIED",
+    "token_audience_validation": "PRESENCE_ONLY_NO_PINNED_APPROVED_VALUE"
+  },
+  "in_memory_activation_preview": {
+    "decision": "CONDITIONS_MATCH",
+    "reasons": [],
+    "plan": {
+      "phase": "pre_push",
+      "items": [
+        {
+          "service": "transaction-api",
+          "archive_sha256": "ff3d145047f53b67f44b8a91994d7ab2b72998d9b276184b3c70a2148d52e3cf",
+          "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+          "registry_repository": "10.1.93.54/fds/transaction-api"
+        },
+        {
+          "service": "fds-engine",
+          "archive_sha256": "319ab0af288d32a156feb1867193d3b7be0e663f2a17ee3efaa95aa505cd7031",
+          "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+          "registry_repository": "10.1.93.54/fds/fds-engine"
+        }
+      ]
+    },
+    "basis": "DECLARED_REVIEWED_INPUTS_ONLY",
+    "runtime_enforcement": "NOT_INTEGRATED",
+    "delivery_gate": "NOT_VERIFIED",
+    "token_audience_validation": "PRESENCE_ONLY_NO_PINNED_APPROVED_VALUE"
+  },
+  "workflow_sha": "147f760298dd4a683ea58f2a887483769352b97d",
+  "code_review": "Existing merged code; no code change",
+  "gate_source_sha256": "8e4afa3e5a72463c8a1f679cc31f8b36ee1d14c8d6d50a0db328217651a5088f",
+  "dispatches": 0,
+  "server_writes": 0,
+  "secret_values_read": false
+}

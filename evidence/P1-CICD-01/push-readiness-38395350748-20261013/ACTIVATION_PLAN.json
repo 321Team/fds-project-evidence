@@ -1,0 +1,38 @@
+{
+  "schema": "P1-PUSH-EXACT-INPUT-REVIEW-1",
+  "status": "PENDING_USER_AUTHORIZATION_AND_INDEPENDENT_REVIEW",
+  "pending_file": "push.pending.json",
+  "pending_sha256": "f20a5f5d7ad031271ccc6ac03456b88b5bb398a3222b426ef13409b99cb5b6ef",
+  "changes_after_user_authorization_and_independent_review_only": [
+    {
+      "pointer": "/template_only",
+      "before": true,
+      "after": false
+    },
+    {
+      "pointer": "/status",
+      "before": "PENDING_EXACT_INPUT_REVIEW_AND_NEW_PUSH_AUTHORIZATION",
+      "after": "APPROVED_FOR_DELIVERY"
+    }
+  ],
+  "serialization": "UTF-8 without BOM; json.dumps(ensure_ascii=False, indent=2) + LF",
+  "target_filename": "push-tbs38395350748-window0030.json",
+  "target_sha256": "8b7b4f4e64c271b54167bc768e4e3afc1b2326c480683aaaf4aa0ff3e18c2b06",
+  "target_file_materialized": false,
+  "runner_record_placed": false,
+  "execution_authorization": "NOT_RECEIVED",
+  "proposal_reference": "https://github.com/321Team/fds-project-evidence/pull/217#issuecomment-6145950204",
+  "workflow_sha": "147f760298dd4a683ea58f2a887483769352b97d",
+  "proposed_actual_job_start_kst": "2026-10-13T22:20:00+09:00",
+  "latest_execution_job_start": "2026-10-13T22:30:00+09:00",
+  "expires_at": "2026-10-14T00:30:00+09:00",
+  "required_before_activation": [
+    "explicit user acceptance of this scope/window and temporary Secret registration/cleanup",
+    "independent exact-input/hash/two-field review",
+    "current main unchanged",
+    "fresh Runner original binding",
+    "Secret metadata handoff and exclusive use/change control",
+    "current Harbor healthy and change/H6/post-observation non-overlap"
+  ],
+  "clarification": "Proposed URL/time are not authorization. In-memory transformation is a static preview only. Actual file is not created or placed. A changed bound field requires a new hash and delta review."
+}

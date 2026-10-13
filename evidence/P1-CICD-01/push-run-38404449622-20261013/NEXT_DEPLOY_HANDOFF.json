@@ -1,0 +1,43 @@
+{
+  "classification": "OBSERVED_PUSH_OUTPUTS_ONLY_NOT_DEPLOY_AUTHORIZATION",
+  "workflow_sha": "147f760298dd4a683ea58f2a887483769352b97d",
+  "source": {
+    "approval_reference": "https://github.com/321Team/fds-msa/pull/27#pullrequestreview-5465278143",
+    "approved_by": "supreme33-kr",
+    "commit": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+    "repository": "321Team/fds-msa"
+  },
+  "tbs_run_id": 38395350748,
+  "tbs_attempt": 1,
+  "build_source_evidence_directory": "/home/server01_cicd-runner/FDS_CICD_AppWorkflow.3_geu2kf",
+  "push_run_id": 38404449622,
+  "push_attempt": 1,
+  "push_receipt_sha256": "8be5cef6cc47e0afcd5236f031bc7c180cdec40ba34039729741114c46f38276",
+  "dispatch_result_sha256": "e1022d107ec40cd621a60fe5197ee801ae48af79a61f94f947d46c35a2578f06",
+  "input_sha256": "8b7b4f4e64c271b54167bc768e4e3afc1b2326c480683aaaf4aa0ff3e18c2b06",
+  "runner_push_folder": "/home/server01_cicd-runner/FDS_CICD_Push.9kxlkyaz",
+  "images": {
+    "transaction-api": {
+      "result": "PASS",
+      "registry_repository": "10.1.93.54/fds/transaction-api",
+      "tag": "delivery-c979336ca9ac4be7b98e055402e34945",
+      "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0"
+    },
+    "fds-engine": {
+      "result": "PASS",
+      "registry_repository": "10.1.93.54/fds/fds-engine",
+      "tag": "delivery-c979336ca9ac4be7b98e055402e34945",
+      "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d"
+    }
+  },
+  "fresh_scan_result_sha256": "2326e501992c1176f971554306caadf7def27f9f965bfcc6a980b0261940b9b0",
+  "deploy_plan": "NOT_CREATED",
+  "deployment_current_baseline": "NOT_REFRESHED_IN_THIS_RUN",
+  "deploy_authorization": "NOT_RECEIVED",
+  "next_steps": [
+    "fresh two Deployment UID/current images/Ready/HPA/SA/CA read-only baseline",
+    "new plan/approval and hashes bound to this Push",
+    "exact input review and explicit new Deploy window/rollback scope",
+    "Deploy -> minimal HA/rollback -> final APP regression -> DB acceptance decision"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "PUSH": "PASS",
+  "DEPLOY": "NOT_EXECUTED",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "run_id": 38404449622,
+  "job_id": 115320270242,
+  "job_started_at": "2026-10-13T13:22:41Z",
+  "job_completed_at": "2026-10-13T13:23:10Z",
+  "input_sha256": "8b7b4f4e64c271b54167bc768e4e3afc1b2326c480683aaaf4aa0ff3e18c2b06",
+  "workflow_sha": "147f760298dd4a683ea58f2a887483769352b97d",
+  "source_sha": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+  "folder": "/home/server01_cicd-runner/FDS_CICD_Push.9kxlkyaz",
+  "images": {
+    "transaction-api": {
+      "result": "PASS",
+      "registry_repository": "10.1.93.54/fds/transaction-api",
+      "tag": "delivery-c979336ca9ac4be7b98e055402e34945",
+      "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0"
+    },
+    "fds-engine": {
+      "result": "PASS",
+      "registry_repository": "10.1.93.54/fds/fds-engine",
+      "tag": "delivery-c979336ca9ac4be7b98e055402e34945",
+      "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d"
+    }
+  },
+  "fresh_scan": "PASS",
+  "counts": {
+    "transaction-api": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "fds-engine": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  },
+  "temporary_credential_cleanup": "PASS",
+  "actions_secret_cleanup": "PASS",
+  "manifest_entries": 11,
+  "verified_at_utc": "2026-10-13T13:24:03.925516+00:00",
+  "cleanup_at_utc": "2026-10-13T13:24:30.862867+00:00"
+}
