@@ -1,0 +1,51 @@
+{
+  "schema": "P1-deploy-readiness-receipts-1",
+  "checks": [
+    {
+      "name": "cluster",
+      "receipt_hashes": "MATCH",
+      "remote_source_review": "NOT PERFORMED (Pre-check)"
+    },
+    {
+      "name": "cp1-auth",
+      "receipt_hashes": "MATCH",
+      "remote_source_review": "NOT PERFORMED (Pre-check)"
+    },
+    {
+      "name": "runner-auth",
+      "receipt_hashes": "MATCH",
+      "remote_source_review": "NOT PERFORMED (Pre-check)"
+    },
+    {
+      "name": "cache-worker01",
+      "receipt_hashes": "MATCH",
+      "remote_source_review": "NOT PERFORMED (Pre-check)",
+      "previous_digest_metadata_count": 2,
+      "inner_stderr_bytes": 135,
+      "registry_repull": "NOT_VERIFIED",
+      "layer_bytes": "NOT_VERIFIED"
+    },
+    {
+      "name": "cache-worker02",
+      "receipt_hashes": "MATCH",
+      "remote_source_review": "NOT PERFORMED (Pre-check)",
+      "previous_digest_metadata_count": 2,
+      "inner_stderr_bytes": 135,
+      "registry_repull": "NOT_VERIFIED",
+      "layer_bytes": "NOT_VERIFIED"
+    },
+    {
+      "name": "cache-worker03",
+      "receipt_hashes": "MATCH",
+      "remote_source_review": "NOT PERFORMED (Pre-check)",
+      "previous_digest_metadata_count": 2,
+      "inner_stderr_bytes": 135,
+      "registry_repull": "NOT_VERIFIED",
+      "layer_bytes": "NOT_VERIFIED"
+    }
+  ],
+  "approved": false,
+  "runtime_deploy": "NOT_EXECUTED",
+  "previous_digests_in_worker_cri_metadata": "6/6",
+  "limit": "Metadata and SHA256 checks are not rollout, registry re-pull, independent review or acceptance."
+}

@@ -1,0 +1,146 @@
+{
+  "checked_at_utc": "2026-10-13T07:39:58.384818+00:00",
+  "checks": [
+    {
+      "receipt": "operations/binding-38361855044/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "operations/broker-corrected-38361855044/receipt.json",
+      "rc": 1,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "operations/broker-execute-38361855044/receipt.json",
+      "rc": 1,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "operations/broker-local-38361855044/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "operations/metadata-ansible/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "operations/metadata-runner/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "operations/pre-issuance-reconcile/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "operations/stage-controller/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "operations/stage-runner/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "runtime-reads/071718421863/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "runtime-reads/071854228264/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "runtime-reads/071918774794/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "runtime-reads/072149980833/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "fresh-071215/cluster/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "fresh-071215/cp1-auth/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "fresh-071215/runner-auth/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "fresh-072150/cluster/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "fresh-072150/cp1-auth/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "fresh-072150/runner-auth/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "health-071215/harbor-health/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "preissue-diagnosis/cp1/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    },
+    {
+      "receipt": "app-post-attempt/cp1/receipt.json",
+      "rc": 0,
+      "hashes": "MATCH"
+    }
+  ],
+  "selected_originals": [
+    {
+      "path": "selected-original-receipts/false/dispatch.json",
+      "source": "runtime-reads/071718421863/stdout.json",
+      "sha256": "5712eed2174c73c5a24d6eb24788c90cae15cefcaefca58fceefb539acb94c83",
+      "bytes": 536
+    },
+    {
+      "path": "selected-original-receipts/false/result.json",
+      "source": "runtime-reads/071718421863/stdout.json",
+      "sha256": "2c9c415cbf0bf90e163d136effcc7d071ccefe833b6bd042eba36f11d3162e35",
+      "bytes": 170
+    },
+    {
+      "path": "selected-original-receipts/true/dispatch.json",
+      "source": "runtime-reads/072149980833/stdout.json",
+      "sha256": "43c9d7c967b10a63217a0fd6acec1f8399c24888e20bc4458edfa84e5b7d67f0",
+      "bytes": 535
+    },
+    {
+      "path": "selected-original-receipts/true/result.json",
+      "source": "runtime-reads/072149980833/stdout.json",
+      "sha256": "7494b3ffd54085ee0230d371660dd4c9937829740bcc92dc994d60c9c4a33653",
+      "bytes": 290
+    }
+  ],
+  "job_log_hashes": "2/2 MATCH",
+  "pre_post_cluster_items_and_ca": "MATCH",
+  "pods_current_running_ready": 6,
+  "credential_pattern_matches": 0,
+  "scope_limit": "Selected credential patterns only; hash equality is integrity, not acceptance. Raw broker TOKEN_ISSUANCE remains NOT_CONFIRMED."
+}

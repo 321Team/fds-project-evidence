@@ -1,0 +1,1 @@
+hostname; id -un; id -u; stat -c "%n|%u|%a|%F" /home/server01_ansible; test ! -e /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73; test ! -L /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73
