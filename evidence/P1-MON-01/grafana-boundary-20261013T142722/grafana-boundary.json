@@ -1,0 +1,141 @@
+{
+  "classification": "PURE_READ_PRECHECK",
+  "source_sha256": "e23ac1450661e042983151c947a3c6d391a7cb440390b2d9c3bc252feb652140",
+  "hostname": "k8s-control01",
+  "started_kst": "2026-10-13T14:27:22.936233+09:00",
+  "reads": [
+    {
+      "label": "apiserver_audit_flags",
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "-n",
+        "kube-system",
+        "get",
+        "pods",
+        "-l",
+        "component=kube-apiserver",
+        "-o",
+        "json"
+      ],
+      "rc": 0,
+      "stdout_sha256": "ab02d4e79309056c643d2712881cbd1b4342b57dcba29f911563e87a5b2a55b4",
+      "stderr_bytes": 0,
+      "projection": [
+        {
+          "name": "kube-apiserver-k8s-control01",
+          "uid": "71afc92b-bbc1-450d-9af2-0af1d9102674",
+          "node": "k8s-control01",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "kube-apiserver",
+              "audit_flags": []
+            }
+          ]
+        },
+        {
+          "name": "kube-apiserver-k8s-control02",
+          "uid": "c3077856-3c42-416f-93d1-aabbaa9d8adf",
+          "node": "k8s-control02",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "kube-apiserver",
+              "audit_flags": []
+            }
+          ]
+        },
+        {
+          "name": "kube-apiserver-k8s-control03",
+          "uid": "d9636ffb-334b-41b1-85f5-01f51867dc90",
+          "node": "k8s-control03",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "kube-apiserver",
+              "audit_flags": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "grafana_deployment",
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "-n",
+        "monitoring-api",
+        "get",
+        "deployment",
+        "grafana",
+        "-o",
+        "json"
+      ],
+      "rc": 0,
+      "stdout_sha256": "4ef2fb2dcb6e9767edef3645d9dbfa4fcdca1be08dc4b79d107fabc7fd3ba73c",
+      "stderr_bytes": 0,
+      "projection": {
+        "name": "grafana",
+        "uid": "b74852b0-fe0b-468c-984f-760ef66cf820",
+        "resourceVersion": "5104254",
+        "serviceAccountName": "grafana-sa",
+        "hostNetwork": false,
+        "replicas": 1,
+        "readyReplicas": 1,
+        "containers": [
+          {
+            "name": "grafana",
+            "image": "10.1.93.54/fds/grafana@sha256:7a1ff54408c90357ff1c76189e5bbc24f898531cb771fbbfe6a477f00de37d5b",
+            "secret_refs": [
+              {
+                "env_name": "GF_SECURITY_ADMIN_USER",
+                "name": "grafana-admin-credentials",
+                "key": "admin-user"
+              },
+              {
+                "env_name": "GF_SECURITY_ADMIN_PASSWORD",
+                "name": "grafana-admin-credentials",
+                "key": "admin-password"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "grafana_service_types",
+      "command": [
+        "kubectl",
+        "--kubeconfig=/etc/kubernetes/admin.conf",
+        "-n",
+        "monitoring-api",
+        "get",
+        "services",
+        "-o",
+        "json"
+      ],
+      "rc": 0,
+      "stdout_sha256": "64d1e2d3ceda53fc9648ce92522bb74ed32f64f78773b5df9d8316f918933210",
+      "stderr_bytes": 0,
+      "projection": [
+        {
+          "name": "grafana",
+          "type": "ClusterIP",
+          "selector": {
+            "app": "grafana"
+          },
+          "ports": [
+            {
+              "port": 3000,
+              "protocol": "TCP",
+              "targetPort": 3000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "finished_kst": "2026-10-13T14:27:23.049345+09:00"
+}
