@@ -1,0 +1,108 @@
+{
+  "worker": {
+    "at_utc": "2026-10-12T15:08:43.201549+00:00",
+    "host": "k8s-worker02",
+    "uid": 0,
+    "scope": "read-only DNS/service preparation; no backup creation or NM mutation",
+    "commands": [
+      {
+        "argv": [
+          "ip",
+          "-j",
+          "route",
+          "show",
+          "default"
+        ],
+        "rc": 0,
+        "stdout": "[{\"dst\":\"default\",\"gateway\":\"10.1.93.254\",\"dev\":\"ens160\",\"protocol\":\"static\",\"metric\":100,\"flags\":[]}]\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "nmcli",
+          "--get-values",
+          "GENERAL.CONNECTION",
+          "device",
+          "show",
+          "ens160"
+        ],
+        "rc": 0,
+        "stdout": "fds-k8s-worker02\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "nmcli",
+          "--get-values",
+          "ipv4.dns,ipv4.dns-search,ipv4.ignore-auto-dns",
+          "connection",
+          "show",
+          "fds-k8s-worker02"
+        ],
+        "rc": 0,
+        "stdout": "10.1.93.52,10.1.93.53\nfds.internal\nyes\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "nmcli",
+          "--get-values",
+          "IP4.DNS",
+          "device",
+          "show",
+          "ens160"
+        ],
+        "rc": 0,
+        "stdout": "10.1.93.52 | 10.1.93.53\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "systemctl",
+          "is-active",
+          "NetworkManager",
+          "kubelet",
+          "containerd"
+        ],
+        "rc": 0,
+        "stdout": "active\nactive\nactive\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "getenforce"
+        ],
+        "rc": 0,
+        "stdout": "Enforcing\n",
+        "stderr": ""
+      }
+    ],
+    "resolv_conf_selected": [
+      "search fds.internal",
+      "nameserver 10.1.93.52",
+      "nameserver 10.1.93.53"
+    ],
+    "interface": "ens160",
+    "connection": "fds-k8s-worker02",
+    "success": true
+  },
+  "controller_source": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+  "tracked_checkout_clean": true,
+  "five_file_hashes_unchanged": true,
+  "initial_version_read": "FAILED: collector forced LC_ALL=C; all 4 CLI calls failed; failed receipt preserved",
+  "targeted_utf8_version_read": "COLLECTED_REVIEW_REQUIRED",
+  "versions": [
+    "ansible [core 2.21.3]",
+    "ansible-playbook [core 2.21.3]",
+    "ansible-inventory [core 2.21.3]",
+    "ansible-config [core 2.21.3]"
+  ],
+  "runtime_dns_change": "NOT_RUN",
+  "dns_values_already_target": true,
+  "remaining": [
+    "worker02 console and NM writer exclusion",
+    "concentration issue: all current application replicas on worker02",
+    "fresh prepare/apply/reapply/rollback session and its runtime authorization; source review is not runtime execution"
+  ],
+  "global_engine_or_locale_changed": false
+}

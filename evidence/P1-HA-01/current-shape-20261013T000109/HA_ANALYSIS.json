@@ -1,0 +1,217 @@
+{
+  "observed_at_utc": "2026-10-12T15:01:09.204656+00:00",
+  "query_rcs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "cluster_uid": "e1669cff-1435-423f-a6c4-28bc44f488de",
+  "apps": [
+    {
+      "name": "transaction-api",
+      "uid": "8a2af808-ec33-41f2-80b5-addde4e28910",
+      "generation": 9,
+      "status": {
+        "observedGeneration": 9,
+        "replicas": 3,
+        "updatedReplicas": 3,
+        "readyReplicas": 3,
+        "availableReplicas": 3,
+        "unavailableReplicas": null
+      },
+      "placement": {
+        "k8s-worker02": 3
+      },
+      "ready_pods": 3,
+      "image": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+      "spread": [
+        {
+          "labelSelector": {
+            "matchLabels": {
+              "app": "transaction-api"
+            }
+          },
+          "matchLabelKeys": [
+            "pod-template-hash"
+          ],
+          "maxSkew": 1,
+          "nodeTaintsPolicy": "Honor",
+          "topologyKey": "kubernetes.io/hostname",
+          "whenUnsatisfiable": "DoNotSchedule"
+        }
+      ],
+      "replicas": 3
+    },
+    {
+      "name": "fds-engine",
+      "uid": "bf825dec-465b-4603-8b71-f768d195531c",
+      "generation": 5,
+      "status": {
+        "observedGeneration": 5,
+        "replicas": 3,
+        "updatedReplicas": 3,
+        "readyReplicas": 3,
+        "availableReplicas": 3,
+        "unavailableReplicas": null
+      },
+      "placement": {
+        "k8s-worker02": 3
+      },
+      "ready_pods": 3,
+      "image": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+      "spread": [
+        {
+          "labelSelector": {
+            "matchLabels": {
+              "app": "fds-engine"
+            }
+          },
+          "matchLabelKeys": [
+            "pod-template-hash"
+          ],
+          "maxSkew": 1,
+          "nodeTaintsPolicy": "Honor",
+          "topologyKey": "kubernetes.io/hostname",
+          "whenUnsatisfiable": "DoNotSchedule"
+        }
+      ],
+      "replicas": 3
+    }
+  ],
+  "nodes": [
+    {
+      "name": "k8s-control01",
+      "ready": "True",
+      "taints": [
+        {
+          "effect": "NoSchedule",
+          "key": "node-role.kubernetes.io/control-plane"
+        }
+      ],
+      "unschedulable": null
+    },
+    {
+      "name": "k8s-control02",
+      "ready": "True",
+      "taints": [
+        {
+          "effect": "NoSchedule",
+          "key": "node-role.kubernetes.io/control-plane"
+        }
+      ],
+      "unschedulable": null
+    },
+    {
+      "name": "k8s-control03",
+      "ready": "True",
+      "taints": [
+        {
+          "effect": "NoSchedule",
+          "key": "node-role.kubernetes.io/control-plane"
+        }
+      ],
+      "unschedulable": null
+    },
+    {
+      "name": "k8s-worker01",
+      "ready": "True",
+      "taints": null,
+      "unschedulable": null
+    },
+    {
+      "name": "k8s-worker02",
+      "ready": "True",
+      "taints": null,
+      "unschedulable": null
+    },
+    {
+      "name": "k8s-worker03",
+      "ready": "True",
+      "taints": null,
+      "unschedulable": null
+    }
+  ],
+  "endpoints": [
+    {
+      "service": "fds-engine-metrics",
+      "ready_by_node": {
+        "k8s-worker02": 3
+      }
+    },
+    {
+      "service": "fds-engine",
+      "ready_by_node": {
+        "k8s-worker02": 3
+      }
+    },
+    {
+      "service": "transaction-api-metrics",
+      "ready_by_node": {
+        "k8s-worker02": 3
+      }
+    },
+    {
+      "service": "transaction-api-nodeport",
+      "ready_by_node": {
+        "k8s-worker02": 3
+      }
+    },
+    {
+      "service": "transaction-api",
+      "ready_by_node": {
+        "k8s-worker02": 3
+      }
+    }
+  ],
+  "services": [
+    {
+      "name": "fds-engine",
+      "type": "ClusterIP",
+      "externalTrafficPolicy": null
+    },
+    {
+      "name": "fds-engine-metrics",
+      "type": "ClusterIP",
+      "externalTrafficPolicy": null
+    },
+    {
+      "name": "transaction-api",
+      "type": "ClusterIP",
+      "externalTrafficPolicy": null
+    },
+    {
+      "name": "transaction-api-metrics",
+      "type": "ClusterIP",
+      "externalTrafficPolicy": null
+    },
+    {
+      "name": "transaction-api-nodeport",
+      "type": "NodePort",
+      "externalTrafficPolicy": "Local"
+    }
+  ],
+  "pdb_count": 0,
+  "fds_app_pvc_count": 0,
+  "historical_post_deploy_sha256": "24c3bd4d1d41af4261d3db8fad18afac8727f7f1be54dbf1309fcccce73be5e9",
+  "projected_spec_diff_from_20261007": [],
+  "facts": [
+    "Both applications have all 3 ready Pods on worker02; workers01/03 have no ready endpoint for these services.",
+    "Spread constraints remain; 10/7 spread result does not describe current placement."
+  ],
+  "inference": [
+    "A worker02 disruption risks all current application replicas; avoid DNS mutation/drain until distribution is restored or a concrete safe sequence is agreed.",
+    "Spread is a scheduling constraint, not automatic rebalancing of running Pods."
+  ],
+  "not_established": [
+    "Historical cause/time of concentration; node shutdown/order cannot be inferred from current snapshots.",
+    "Actual edge HTTP response/routing and traffic failures were not measured.",
+    "Current worker drain availability has not been tested."
+  ],
+  "disposition": "Existing 10/2 limited AC evidence retained; current full HA/Exit acceptance blocked by concentration. Final deployment and distribution before one scoped HA recheck; no Phase2 descheduler/PDB project added."
+}

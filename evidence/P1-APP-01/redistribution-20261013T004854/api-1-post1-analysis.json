@@ -1,0 +1,56 @@
+{
+  "label": "api-1-post1",
+  "at_utc": "2026-10-12T15:53:23.820394+00:00",
+  "counts": {
+    "fds-engine": {
+      "k8s-worker01": 1,
+      "k8s-worker02": 1,
+      "k8s-worker03": 1
+    },
+    "transaction-api": {
+      "k8s-worker01": 1,
+      "k8s-worker02": 2,
+      "k8s-worker03": 0
+    }
+  },
+  "pods": [
+    {
+      "name": "fds-engine-66b8c565c4-5s74s",
+      "uid": "072f5760-ac0c-479c-84da-54211a8a2ea6",
+      "node": "k8s-worker01",
+      "ready": true
+    },
+    {
+      "name": "fds-engine-66b8c565c4-pjlkw",
+      "uid": "8e92a558-d243-4f92-8f58-34d10e32b663",
+      "node": "k8s-worker03",
+      "ready": true
+    },
+    {
+      "name": "fds-engine-66b8c565c4-zgdxk",
+      "uid": "b7b42efa-6eab-4952-b5a0-1aeb9f27b077",
+      "node": "k8s-worker02",
+      "ready": true
+    },
+    {
+      "name": "transaction-api-54984f6ddd-77dds",
+      "uid": "e7e7992e-959c-4fb2-a36a-ea2d5a5f1354",
+      "node": "k8s-worker01",
+      "ready": true
+    },
+    {
+      "name": "transaction-api-54984f6ddd-qlrhr",
+      "uid": "4945a86d-ce32-4609-a2e9-b4bede1a7a84",
+      "node": "k8s-worker02",
+      "ready": true
+    },
+    {
+      "name": "transaction-api-54984f6ddd-wwkpv",
+      "uid": "3be191e1-c875-48e4-a74e-9786968c227e",
+      "node": "k8s-worker02",
+      "ready": true
+    }
+  ],
+  "errors": [],
+  "status": "OBSERVATION_STABLE"
+}

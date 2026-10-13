@@ -1,0 +1,61 @@
+{
+  "status": "READ_ONLY_PREPARATION_VERIFIED_WITH_PENDING_INPUTS",
+  "receipts": [
+    {
+      "name": "runner",
+      "rc": 0,
+      "source_sha256": "f848bee5b9be56f972e93c07bdcb0bec8900732932e85cc8562a55811912a1b2"
+    },
+    {
+      "name": "cluster",
+      "rc": 0,
+      "source_sha256": "628618cd1c64a309053bdf0281c86d5200d41d6d432da91e455d1b73e40e24d2"
+    },
+    {
+      "name": "runner-auth",
+      "rc": 0,
+      "source_sha256": "2d0a275e51396b2846fe0c468e592aa69561a61c8f5028db0526160d57b30e4f"
+    },
+    {
+      "name": "cp1-auth",
+      "rc": 255,
+      "source_sha256": "2d0a275e51396b2846fe0c468e592aa69561a61c8f5028db0526160d57b30e4f"
+    }
+  ],
+  "source_files_verified": 29,
+  "image_archive_hashes_matched": 2,
+  "historical_consumer_files_verified": [
+    {
+      "path": "deliverables\\p1-preapply-resume-20261012\\PR55_CONSUMER_FOLLOWUP_20261013\\runner-trust.json",
+      "sha256": "4d8213bc6b42a37673d3f057e82797b891669a0577f944333f46472651290fe3"
+    },
+    {
+      "path": "deliverables\\p1-preapply-resume-20261012\\PR55_CONSUMER_FOLLOWUP_20261013\\worker01-trust.json",
+      "sha256": "2386b2b26d620f69c27cfe1ffdd9fae842475cccf4a9a66f442d7cf76a86e034"
+    },
+    {
+      "path": "deliverables\\p1-preapply-resume-20261012\\PR55_CONSUMER_FOLLOWUP_20261013\\worker01-registry-effective.json",
+      "sha256": "e23a35537c97226353a1cad019569d0f738bdd180742de5eb5d8c39301387179"
+    },
+    {
+      "path": "deliverables\\p1-preapply-resume-20261012\\PR55_CONSUMER_FOLLOWUP_20261013\\worker02-trust.json",
+      "sha256": "ba6330da479157cb88151e90123953a2a01d382af0a9200952f7f91e7e07408d"
+    },
+    {
+      "path": "deliverables\\p1-preapply-resume-20261012\\PR55_CONSUMER_FOLLOWUP_20261013\\worker02-registry-effective.json",
+      "sha256": "37510cd648e00f18ea025610a157b81bb5449a407639571c0e213adb934678a6"
+    },
+    {
+      "path": "deliverables\\p1-preapply-resume-20261012\\PR55_CONSUMER_FOLLOWUP_20261013\\worker03-trust.json",
+      "sha256": "f0b1c257625725809b61843d6d5612265b209d62ff2eb5ce2b2208af5cbbe5bf"
+    },
+    {
+      "path": "deliverables\\p1-preapply-resume-20261012\\PR55_CONSUMER_FOLLOWUP_20261013\\worker03-registry-effective.json",
+      "sha256": "3871bc06edd06803a931c84de6b2bbe2eea5e37e035701f6ff0dab207c4a730e"
+    }
+  ],
+  "new_source_review": "NOT_PERFORMED_PRECHECK",
+  "new_mutating_runtime": false,
+  "cp1_failure_preserved": true,
+  "source_changed": false
+}

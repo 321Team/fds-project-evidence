@@ -1,0 +1,40 @@
+{
+  "id": 5496659933,
+  "node_id": "PRR_kwDOUQvpi88AAAABR6Bf3Q",
+  "user": {
+    "login": "supreme33-kr",
+    "id": 116513704,
+    "node_id": "U_kgDOBvHbqA",
+    "avatar_url": "https://avatars.githubusercontent.com/u/116513704?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/supreme33-kr",
+    "html_url": "https://github.com/supreme33-kr",
+    "followers_url": "https://api.github.com/users/supreme33-kr/followers",
+    "following_url": "https://api.github.com/users/supreme33-kr/following{/other_user}",
+    "gists_url": "https://api.github.com/users/supreme33-kr/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/supreme33-kr/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/supreme33-kr/subscriptions",
+    "organizations_url": "https://api.github.com/users/supreme33-kr/orgs",
+    "repos_url": "https://api.github.com/users/supreme33-kr/repos",
+    "events_url": "https://api.github.com/users/supreme33-kr/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/supreme33-kr/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "body": "## 리뷰 — Push exact 입력 검토 + 편입 무결성 (이재환, evidence#208)\n\n**대상 HEAD** `539d02fbbaf425d12e09827e46038f8fbce30640` (1087파일 +48239/−0)\n**Push 입력 기준 HEAD** `a7083cf8e86980b4bce9c48c9b24bfb3ff0bf2c3`. 현재 HEAD까지 Push 관련 3개 폴더는 바뀌지 않았습니다(`git diff` 0).\n**검토 범위** ① [6130771220](https://github.com/321Team/fds-project-evidence/pull/208#issuecomment-6130771220)의 exact Push 입력 ② PR 전체 편입 무결성·비밀정보 ③ worker02 DNS 회차 표본 대조\n**제외 범위** APP 분산·K8S17·OID02·parallel/final-test/HA 입력 폴더의 내용 판단(무결성만 확인), 병합된 infra-cicd 코드 재리뷰\n\n### Push 입력 판정 — 사용 가능\n**`push-20261013-window1200.json` 목표 SHA256 `13b50485c6d3fe7bbb155561f88a22c6f06aab6dc73e9f14fb0e8f02696c2d89`를 이 입력으로 사용하는 데 동의합니다.** 실제 Job 시작 한도는 10:00 KST, 만료는 12:00 KST이며, 범위는 `EXECUTION_SCOPE.md`·`RUN_CARD.md` 그대로입니다.\n\n아래는 직접 실행해 확인했습니다.\n- **pending 바이트:** `push.pending.json` SHA256 `0153023b…`가 ACTIVATION_PLAN 기록과 같습니다. 파일 자체도 정의된 직렬화(`ensure_ascii=False, indent=2` + LF) 결과와 바이트가 같습니다.\n- **변환 재현:** 별도로 작성한 스크립트로 `/template_only` false, `/status` `APPROVED_FOR_DELIVERY` 두 값만 바꿔 직렬화했습니다. 결과는 **`13b50485…2c89`(3,209 B)**로 일치합니다.\n- **이전 입력과의 차이:** 04:00 pending과 비교하면 `push_authorization.reference`(→6130830892)와 `expires_at`(→12:00) **두 줄만** 다릅니다. 03:39 draft와 비교해도 같은 두 줄(null → 값)뿐입니다.\n- **병합된 gate 실행:** infra-cicd main `2d8a14c5`의 `delivery_gate.evaluate(..., 'pre_push')`를 오프라인으로 실행했습니다.\n  - pending은 `BLOCK`(TEMPLATE·NOT_APPROVED 2건뿐)입니다.\n  - 목표 레코드는 `CONDITIONS_MATCH`, 계획 2건(transaction-api `ef0afe42…`, fds-engine `de34afb7…`)입니다.\n- **원본 연결:**\n  - source `affbc69b`: [fds-msa#27 리뷰 5465278143](https://github.com/321Team/fds-msa/pull/27#pullrequestreview-5465278143)이 같은 커밋에 APPROVED입니다.\n  - TBS Run `37890963668`: head `c9eff5fb`, attempt 1, success, `app-test-build-scan.yml`(GitHub 조회).\n  - `push_authorization.workflow_sha` `2d8a14c5`가 현재 infra-cicd main과 같습니다(07:30 KST 조회).\n  - archive 2개·manifest·config digest·Scan report 2개·`input_sha256`은 병합된 `app-affbc69-run37890963668-20261009` 증적에 같은 값으로 있습니다.\n  - `app_result_sha256`·`scan_result_sha256`은 10/9 병합 증적에는 없고, 10/13 Runner 읽기(03:10·03:39)에서 나온 값입니다. 실행 시 `push_images.bind_evidence`가 Runner의 실제 파일 해시와 대조해 다르면 막으므로(fail-closed) 수용합니다. 입력의 64자리 해시 11개 모두 03:39 Runner 읽기 출력에 있습니다.\n- **통제:** 만료는 `push_images.authorize`가 전송 전에 `expires_at > now`로 검사합니다. Secret은 실행(execute) 단계에서만 주입되고, 회차 뒤에는 두 Secret 이름만 삭제합니다. 다른 Secret·Robot은 유지합니다. 범위·실패 처리에 이견이 없습니다.\n\n### 비차단 (실행 전 인지)\n1. **10:00 시작 한도는 코드가 강제하지 않습니다.** 코드는 `expires_at`(12:00)만 전송 전에 검사합니다. 10:00 이후 시작 취소는 실행자가 지켜야 합니다. 문서에 이미 적혀 있는 대로입니다.\n2. **infra-cicd main이 dispatch 전에 바뀌면** `PUSH_EXECUTION_BINDING`으로 실패합니다(fail-closed). 회차가 끝날 때까지 infra-cicd main 병합을 피하고, 바뀌었으면 새 입력으로 다시 검토해야 합니다.\n3. `harbor.handoff_reference`(#13 5947371286)는 AC-02 PASS를 기록한 하영님 댓글이지만 본문 주제는 AC-03 질의입니다. 다음 입력부터는 AC-02 증적 PR 링크로 두면 추적이 더 쉽습니다.\n\n### PR 전체 편입 무결성\n- 새 evidence 폴더 19개 모두 `SHA256SUMS` 일치, 목록 밖 파일 0입니다.\n- `REGISTRY_SHA256SUMS` 추가 31줄이 실제 파일 해시와 모두 같고, 모든 폴더 `SHA256SUMS`와 records 13개가 대장에 있습니다.\n- 추가분 전체를 패턴 검사(JWT·개인키·kubeconfig 인증서 데이터·Bearer·GitHub token·password/token/secret 값 대입)했고 걸린 것은 0건입니다. tar·dump·키 파일 편입도 0건입니다(README의 \"tar는 Git 밖 보존\"과 일치).\n- CI `check` success(GitHub 조회).\n\n### worker02 DNS 회차 표본 대조\n- `VERIFICATION.json` receipt 20개가 모두 rc0입니다.\n- Ansible recap 72줄 전부 `unreachable=0 failed=0 rescued=0 ignored=0`입니다. changed는 0·1·2만 나타나 \"apply·reapply 변경0, 원본 modify/reapply 변경2\" 서술과 맞습니다.\n- `original-resolver.json`의 원본값(`.52,.53` / `fds.internal` / ignore-auto `yes`)이 목표값과 같습니다. 따라서 README의 \"동일 값 복구 경로이며 장애 상태 복원 시험이 아님\" 한계 표기가 맞습니다.\n- source `0d58598d`는 [infra-ansible#76](https://github.com/321Team/infra-ansible/pull/76)의 head입니다(병합 `caaf2314`).\n\n### 미검증\n- Runner 실제 파일·Harbor TLS/health·Secret 실제 값·Robot 인증: `NOT VERIFIED`(이번 리뷰는 오프라인 대조와 GitHub 조회만 했습니다).\n- `execute=false`/`execute=true` 실행: `NOT RUN`.\n- 제외 범위 폴더의 내용 판단: `NOT VERIFIED`(무결성만 확인).\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조\n",
+  "state": "APPROVED",
+  "html_url": "https://github.com/321Team/fds-project-evidence/pull/208#pullrequestreview-5496659933",
+  "pull_request_url": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/208",
+  "author_association": "MEMBER",
+  "_links": {
+    "html": {
+      "href": "https://github.com/321Team/fds-project-evidence/pull/208#pullrequestreview-5496659933"
+    },
+    "pull_request": {
+      "href": "https://api.github.com/repos/321Team/fds-project-evidence/pulls/208"
+    }
+  },
+  "submitted_at": "2026-10-12T22:31:47Z",
+  "commit_id": "539d02fbbaf425d12e09827e46038f8fbce30640"
+}

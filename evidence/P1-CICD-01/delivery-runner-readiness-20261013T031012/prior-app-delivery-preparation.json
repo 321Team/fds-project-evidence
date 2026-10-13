@@ -1,0 +1,88 @@
+{
+  "source_sha": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+  "workflow_sha": "c9eff5fb2e50a690818a3e67347ab4a1bfc88f51",
+  "run_id": 37890963668,
+  "attempt": 1,
+  "build_images": {
+    "transaction-api": {
+      "image_id": "sha256:64a98e1fce2934498b0a34328931370667133a938863f90f2b04d385be150445",
+      "archive_sha256": "70da457069443c8b7af55d93d4e942ab4788bcfb9fe11506ee0482cd17bfaec3",
+      "manifest_digest": "sha256:ef0afe42feb0f9e50f54b5aaab99a34bbeb01f10bc9fb8a0580519101645dc39",
+      "config_digest": "sha256:64a98e1fce2934498b0a34328931370667133a938863f90f2b04d385be150445",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:4d285646b5b6ed5da7fe653932f5d39864b90eb14281fbdfb9fb21f67c3de242",
+        "sha256:58d2b94114b0a06b74f1d22337f60471685acac3986866c9116eca5d48f64341",
+        "sha256:c23830be1577305371558a929966a0f2526b89550e6abd89d7e36e4305a9bcb8"
+      ],
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "image_id": "sha256:1662d1a6f2c8b06708f0e336936054f2db8f9c4ea37f6a8f3fb59e34777adc06",
+      "archive_sha256": "bb5951c6bb2cf113f0d7815fddc41c2b1e2c9cd69ccbd8794f13f2bc277d405f",
+      "manifest_digest": "sha256:de34afb7a557d6ccc844fb74613ebc971eb493260236acc35ef3051935122813",
+      "config_digest": "sha256:1662d1a6f2c8b06708f0e336936054f2db8f9c4ea37f6a8f3fb59e34777adc06",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:75f285445b604ba03b84de0093ae804237c0d41762fd2555bf49165a143599f7",
+        "sha256:f1e56e490991370ce8f4eb497ac65c228f8cbefb8842c13b8da570f52f2be739",
+        "sha256:cb823f74382d6a15246398c4236fe3ebc6b2f1f6245723e9224c6319ad44f2ef"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "scan_images": {
+    "transaction-api": {
+      "scan": "PASS",
+      "exit_code": 0,
+      "counts": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "report_sha256": "a71cd8327c370a53a69976062eb45e68457786804de32d28432eb3c7cdbac39a",
+      "archive_sha256": "70da457069443c8b7af55d93d4e942ab4788bcfb9fe11506ee0482cd17bfaec3",
+      "manifest_digest": "sha256:ef0afe42feb0f9e50f54b5aaab99a34bbeb01f10bc9fb8a0580519101645dc39",
+      "config_digest": "sha256:64a98e1fce2934498b0a34328931370667133a938863f90f2b04d385be150445",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:4d285646b5b6ed5da7fe653932f5d39864b90eb14281fbdfb9fb21f67c3de242",
+        "sha256:58d2b94114b0a06b74f1d22337f60471685acac3986866c9116eca5d48f64341",
+        "sha256:c23830be1577305371558a929966a0f2526b89550e6abd89d7e36e4305a9bcb8"
+      ],
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "scan": "PASS",
+      "exit_code": 0,
+      "counts": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "report_sha256": "726cad9ff555e6f0100b85e0f519398a54e7861a874b24321e290e38f2102c87",
+      "archive_sha256": "bb5951c6bb2cf113f0d7815fddc41c2b1e2c9cd69ccbd8794f13f2bc277d405f",
+      "manifest_digest": "sha256:de34afb7a557d6ccc844fb74613ebc971eb493260236acc35ef3051935122813",
+      "config_digest": "sha256:1662d1a6f2c8b06708f0e336936054f2db8f9c4ea37f6a8f3fb59e34777adc06",
+      "diff_ids": [
+        "sha256:9ca35cc8280600086da4e2f423b8f51fb6f6cba568410d968299b236ebfc1a30",
+        "sha256:75f285445b604ba03b84de0093ae804237c0d41762fd2555bf49165a143599f7",
+        "sha256:f1e56e490991370ce8f4eb497ac65c228f8cbefb8842c13b8da570f52f2be739",
+        "sha256:cb823f74382d6a15246398c4236fe3ebc6b2f1f6245723e9224c6319ad44f2ef"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "status": "TBS_INPUTS_REUSED_DELIVERY_NOT_EXECUTED",
+  "push_receipt": null,
+  "deploy_plan_approved": false,
+  "runtime_go": false,
+  "harbor_runtime": "OTHER_SESSION_EXCLUDED",
+  "required_before_execution": [
+    "fresh DB/scan policy at use time",
+    "current Robot scope/expiry and secret handling acceptance",
+    "new Push receipt for these digests",
+    "latest SA UID and token/CA/RBAC binding",
+    "current deployment identities/images and rollback plan",
+    "source-bound independent input approval",
+    "Harbor non-overlap and separate Runtime GO"
+  ]
+}

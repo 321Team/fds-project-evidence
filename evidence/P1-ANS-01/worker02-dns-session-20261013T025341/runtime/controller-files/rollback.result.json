@@ -1,0 +1,53 @@
+{
+  "host": "ansible01",
+  "started_at_utc": "2026-10-12T17:56:12.765400+00:00",
+  "step": "rollback",
+  "source": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "rc": 0,
+      "stdout": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "argv": [
+    "/usr/bin/bash",
+    "scripts/cr-p1-ans-01-01-run.sh",
+    "worker02-session",
+    "rollback",
+    "w02-20261013T024523-85942d67",
+    "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2"
+  ],
+  "selected_env": {
+    "LC_ALL": "C.UTF-8",
+    "LANG": "C.UTF-8",
+    "FDS_ANSIBLE_ENGINE_DIR": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin",
+    "FDS_ANSIBLE_ENGINE_VERSION": "2.21.3",
+    "CR_CHANGE_APPROVED": "CR-P1-ANS-01-01",
+    "CR_DNS_SOURCE_SHA": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+    "CR_EVIDENCE_DIR": "/home/server01_ansible/p1-worker02-dns-20261013-r1/logs",
+    "CR_DNS_SESSION_APPROVED": "w02-20261013T024523-85942d67:rollback",
+    "CR_DNS_CHECK_ONLY": "0"
+  },
+  "pid": 22973,
+  "rc": 0,
+  "stdout_sha256": "ed94e0e9f0b6bb31e985f3d8031f652dc293ea7f5530cac46c4a9a358e9604ed",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "finished_at_utc": "2026-10-12T17:56:20.084600+00:00"
+}

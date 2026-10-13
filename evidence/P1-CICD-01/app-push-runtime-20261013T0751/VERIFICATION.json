@@ -1,0 +1,72 @@
+{
+  "verified_at_utc": "2026-10-12T22:53:57.216510+00:00",
+  "input_review": "APPROVED",
+  "input_review_url": "https://github.com/321Team/fds-project-evidence/pull/208#pullrequestreview-5496659933",
+  "validation_run_id": 38318762530,
+  "execution_run_id": 38318968352,
+  "attempt": 1,
+  "manifest_entries_checked": 11,
+  "receipt_chain": "PASS",
+  "fresh_scan": "PASS",
+  "images": {
+    "transaction-api": {
+      "result": "PASS",
+      "registry_repository": "10.1.93.54/fds/transaction-api",
+      "tag": "delivery-931b66469d0e4946853f44a3ba404bea",
+      "manifest_digest": "sha256:ef0afe42feb0f9e50f54b5aaab99a34bbeb01f10bc9fb8a0580519101645dc39"
+    },
+    "fds-engine": {
+      "result": "PASS",
+      "registry_repository": "10.1.93.54/fds/fds-engine",
+      "tag": "delivery-931b66469d0e4946853f44a3ba404bea",
+      "manifest_digest": "sha256:de34afb7a557d6ccc844fb74613ebc971eb493260236acc35ef3051935122813"
+    }
+  },
+  "counts": {
+    "transaction-api": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "fds-engine": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  },
+  "credential_cleanup": "PASS",
+  "actions_secret_cleanup": "PASS",
+  "claim": "PRESERVED",
+  "deploy": "NOT_EXECUTED",
+  "whole_delivery_gate": "NOT_VERIFIED",
+  "runtime_evidence_review": "PENDING",
+  "raw_reports_exported": false,
+  "db_result": {
+    "DB_PREFLIGHT": "PASS",
+    "DELIVERY_GATE": "NOT_VERIFIED",
+    "started_at": "2026-10-12T22:51:07.546320+00:00",
+    "context": {
+      "workflow_sha": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7",
+      "run_id": "38318968352",
+      "attempt": 1,
+      "run_url": "https://github.com/321Team/infra-cicd/actions/runs/38318968352",
+      "host": "cicd-runner01",
+      "user": "server01_cicd-runner",
+      "uid": 1000
+    },
+    "binary_sha256": "d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791",
+    "db_repository": "ghcr.io/aquasecurity/trivy-db:2",
+    "download_exit_code": 0,
+    "metadata": {
+      "Version": 2,
+      "UpdatedAt": "2026-10-12T19:08:28.997716246Z",
+      "DownloadedAt": "2026-10-12T22:51:17.202452523Z",
+      "NextUpdate": "2026-10-13T19:08:28.997715976Z"
+    },
+    "db_sha256": "392b8eb3bca8ce380a070755689fd71952752fc8a4f3b69fc1d2c63748899c1c",
+    "metadata_sha256": "1d46ed37b034837fdf510d2bfc7796ebc300cab63c8b34c81851b369c3181490",
+    "validated_at": "2026-10-12T22:51:18.235326+00:00",
+    "cache_dir": "/home/server01_cicd-runner/FDS_CICD_Push.cb_o91gw/fresh-scan/db/cache",
+    "phase": "hash",
+    "finished_at": "2026-10-12T22:51:18.235358+00:00"
+  },
+  "postcheck": "TLS_AND_HEALTH_PASS"
+}

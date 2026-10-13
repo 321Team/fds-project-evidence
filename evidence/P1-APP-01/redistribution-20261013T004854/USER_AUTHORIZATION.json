@@ -1,0 +1,10 @@
+{
+  "user": "이권욱",
+  "date_kst": "2026-10-13",
+  "source": "current chat explicit user response",
+  "answer": "허용 — Harbor 종료 후 콘솔 대기 가능",
+  "scope_document": "EXECUTION_SCOPE.md r1",
+  "scope": "Harbor 변경 및 사후 관측 종료 후 engine -> API, Pod1개씩 앱당 최대2개 합계최대4개 정상 종료/재생성; 기존 spec/image 유지",
+  "console_handoff": "control01 existing console/sudo/admin auth available during this round",
+  "not_authorized_by_this_answer": ["all-node drain or reboot", "policy/security relaxation", "new image rollout", "K8S17 file installation", "OID import", "new credential"]
+}

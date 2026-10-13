@@ -1,0 +1,90 @@
+---
+bootstrap_host_records:
+  - ip: 10.1.93.102
+    fqdn: k8s-control01.fds.internal
+    hostname: k8s-control01
+
+  - ip: 10.1.93.103
+    fqdn: k8s-control02.fds.internal
+    hostname: k8s-control02
+
+  - ip: 10.1.93.104
+    fqdn: k8s-control03.fds.internal
+    hostname: k8s-control03
+
+  - ip: 10.1.93.105
+    fqdn: k8s-worker01.fds.internal
+    hostname: k8s-worker01
+
+  - ip: 10.1.93.107
+    fqdn: k8s-worker02.fds.internal
+    hostname: k8s-worker02
+
+  - ip: 10.1.93.108
+    fqdn: k8s-worker03.fds.internal
+    hostname: k8s-worker03
+
+cr_dns_change_id: CR-P1-ANS-01-01
+cr_dns_servers:
+  - 10.1.93.52
+  - 10.1.93.53
+cr_dns_search_domains:
+  - fds.internal
+cr_dns_internal_name: k8s-api.fds.internal
+cr_dns_short_name: k8s-api
+cr_dns_expected_address: 10.1.93.109
+cr_dns_external_name: github.com
+cr_dns_state_dir: /var/lib/fds-change/CR-P1-ANS-01-01
+
+cr_mon_change_id: CR-P1-MON-01-01
+cr_mon_state_dir: /var/lib/fds-change/CR-P1-MON-01-01
+cr_mon_allowed_domains:
+  - discord.com
+# Sources permitted to use the proxy. Measured against the real
+# Alertmanager Pod (monitoring-api namespace) egress source on
+# 2026-09-22: nodeSelector/affinity are unset, so the Pod schedules onto
+# any of the 3 Worker nodes; the 3 Control Plane nodes carry the default
+# NoSchedule taint and are not schedule targets. List narrowed to the
+# Worker node INTERNAL-IPs accordingly
+# (fds-project-baseline#74 comments 5774414526 / 5774473105).
+cr_mon_proxy_allowed_clients:
+  - 10.1.93.105
+  - 10.1.93.107
+  - 10.1.93.108
+
+# CR-P1-NTP-01-01: internal single-source NTP, chrony `allow`/`server` drop-in.
+# An explicitly selected field migration also manages the observed main
+# config together with that drop-in; it is disabled by default.
+# Values confirmed by Lead Decision (fds-project-baseline#10,
+# 2026-09-16): NTP_SINGLE_SOURCE_CONFIRMED(control01) /
+# RELAY_REJECTED_OUT_OF_SCOPE. The later public-upstream proposal retains
+# this internal topology but changes the external-egress policy. Addresses
+# are not selected by this code and require the recorded execution decision.
+cr_ntp_change_id: CR-P1-NTP-01-01
+cr_ntp_source_host: k8s-control01
+cr_ntp_source_ip: 10.1.93.102
+cr_ntp_client_ips:
+  - 10.1.93.103  # k8s-control02
+  - 10.1.93.104  # k8s-control03
+  - 10.1.93.105  # k8s-worker01
+  - 10.1.93.107  # k8s-worker02
+  - 10.1.93.108  # k8s-worker03
+cr_ntp_dropin_path: /etc/chrony.d/50-cr-p1-ntp-01-01.conf
+cr_ntp_state_dir: /var/lib/fds-change/CR-P1-NTP-01-01
+cr_ntp_migrate_main: false
+# Two or three distinct public IPv4 addresses for the opt-in source migration.
+# Empty deliberately fails source migration until the endpoints, consistent
+# leap-second policy and narrowly scoped egress are selected and reviewed.
+# Default drop-in-only mode continues to leave control01's upstream untouched.
+cr_ntp_source_upstreams: []
+# Lead Decision numeric AC (fds-project-baseline#10, 2026-09-16): offset
+# <=100ms. Measurement cadence/count (60s x 6) and the 5-minute
+# sync-lost/reboot-resync conditions are operational test procedure, not
+# something chronyc tracking can assert as a single point-in-time fact —
+# see docs/change/CR-P1-NTP-01-01 for how apply/verify cover them.
+cr_ntp_offset_max_ms: 100
+
+ansible_ssh_common_args: >-
+  -o StrictHostKeyChecking=yes
+  -o UserKnownHostsFile=%d/.ssh/known_hosts
+  -o IdentitiesOnly=yes

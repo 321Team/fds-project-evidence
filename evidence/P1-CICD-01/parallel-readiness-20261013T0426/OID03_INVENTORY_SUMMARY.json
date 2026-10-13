@@ -1,0 +1,382 @@
+{
+  "schema": "P1-OID03-current-inventory-summary-1",
+  "hosts": [
+    {
+      "host": "k8s-control01",
+      "observed_at_utc": "2026-10-12T19:28:42.351070+00:00",
+      "boot_id": "2a889fe4-51fe-43fe-bcd7-5a0f9b8ff360",
+      "packages": {
+        "kubeadm": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubeadm-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubelet": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubelet-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubectl": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubectl-1.36.4-150500.1.1.src.rpm"
+        },
+        "containerd.io": {
+          "version_release": "2.3.5-1.el10",
+          "arch": "x86_64",
+          "sourcerpm": "containerd.io-2.3.5-1.el10.src.rpm"
+        }
+      },
+      "crictl": {
+        "name": "crictl",
+        "path": null
+      },
+      "matching_cache_packages": 0,
+      "cache_files_visited": 28,
+      "units": [
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "UnitFileState": "disabled",
+          "ActiveState": "inactive",
+          "SubState": "dead"
+        }
+      ],
+      "receipt": "oid03-inventory-control01/receipt.json",
+      "raw": "oid03-inventory-control01/stdout.json"
+    },
+    {
+      "host": "k8s-control02",
+      "observed_at_utc": "2026-10-12T19:28:43.265937+00:00",
+      "boot_id": "fcc69e6a-368f-4a94-aa09-d60b86e6e889",
+      "packages": {
+        "kubeadm": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubeadm-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubelet": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubelet-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubectl": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubectl-1.36.4-150500.1.1.src.rpm"
+        },
+        "containerd.io": {
+          "version_release": "2.3.5-1.el10",
+          "arch": "x86_64",
+          "sourcerpm": "containerd.io-2.3.5-1.el10.src.rpm"
+        }
+      },
+      "crictl": {
+        "name": "crictl",
+        "path": null
+      },
+      "matching_cache_packages": 0,
+      "cache_files_visited": 28,
+      "units": [
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "UnitFileState": "disabled",
+          "ActiveState": "inactive",
+          "SubState": "dead"
+        }
+      ],
+      "receipt": "oid03-inventory-control02/receipt.json",
+      "raw": "oid03-inventory-control02/stdout.json"
+    },
+    {
+      "host": "k8s-control03",
+      "observed_at_utc": "2026-10-12T19:28:44.154078+00:00",
+      "boot_id": "5139113f-b02f-4fff-bf9a-8287f95f6b7c",
+      "packages": {
+        "kubeadm": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubeadm-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubelet": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubelet-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubectl": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubectl-1.36.4-150500.1.1.src.rpm"
+        },
+        "containerd.io": {
+          "version_release": "2.3.5-1.el10",
+          "arch": "x86_64",
+          "sourcerpm": "containerd.io-2.3.5-1.el10.src.rpm"
+        }
+      },
+      "crictl": {
+        "name": "crictl",
+        "path": null
+      },
+      "matching_cache_packages": 0,
+      "cache_files_visited": 28,
+      "units": [
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "UnitFileState": "disabled",
+          "ActiveState": "inactive",
+          "SubState": "dead"
+        }
+      ],
+      "receipt": "oid03-inventory-control03/receipt.json",
+      "raw": "oid03-inventory-control03/stdout.json"
+    },
+    {
+      "host": "k8s-worker01",
+      "observed_at_utc": "2026-10-12T19:28:45.054571+00:00",
+      "boot_id": "e70731d9-06dd-416a-93d6-248ae804d551",
+      "packages": {
+        "kubeadm": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubeadm-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubelet": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubelet-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubectl": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubectl-1.36.4-150500.1.1.src.rpm"
+        },
+        "containerd.io": {
+          "version_release": "2.3.5-1.el10",
+          "arch": "x86_64",
+          "sourcerpm": "containerd.io-2.3.5-1.el10.src.rpm"
+        }
+      },
+      "crictl": {
+        "gid": 1001,
+        "mode": "0o711",
+        "name": "crictl",
+        "path": "/bin/crictl",
+        "resolved_path": "/usr/bin/crictl",
+        "rpm_owner_rc": 1,
+        "size": 40319387,
+        "uid": 1001
+      },
+      "matching_cache_packages": 0,
+      "cache_files_visited": 28,
+      "units": [
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "UnitFileState": "disabled",
+          "ActiveState": "inactive",
+          "SubState": "dead"
+        }
+      ],
+      "receipt": "oid03-inventory-worker01/receipt.json",
+      "raw": "oid03-inventory-worker01/stdout.json"
+    },
+    {
+      "host": "k8s-worker02",
+      "observed_at_utc": "2026-10-12T19:28:45.943543+00:00",
+      "boot_id": "f0015ee5-36c9-4184-a985-723170958f2c",
+      "packages": {
+        "kubeadm": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubeadm-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubelet": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubelet-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubectl": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubectl-1.36.4-150500.1.1.src.rpm"
+        },
+        "containerd.io": {
+          "version_release": "2.3.5-1.el10",
+          "arch": "x86_64",
+          "sourcerpm": "containerd.io-2.3.5-1.el10.src.rpm"
+        }
+      },
+      "crictl": {
+        "gid": 1001,
+        "mode": "0o711",
+        "name": "crictl",
+        "path": "/bin/crictl",
+        "resolved_path": "/usr/bin/crictl",
+        "rpm_owner_rc": 1,
+        "size": 40319387,
+        "uid": 1001
+      },
+      "matching_cache_packages": 0,
+      "cache_files_visited": 28,
+      "units": [
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "UnitFileState": "disabled",
+          "ActiveState": "inactive",
+          "SubState": "dead"
+        }
+      ],
+      "receipt": "oid03-inventory-worker02/receipt.json",
+      "raw": "oid03-inventory-worker02/stdout.json"
+    },
+    {
+      "host": "k8s-worker03",
+      "observed_at_utc": "2026-10-12T19:28:46.842108+00:00",
+      "boot_id": "f0c48106-f753-4ab7-bacd-660c126fca2f",
+      "packages": {
+        "kubeadm": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubeadm-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubelet": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubelet-1.36.4-150500.1.1.src.rpm"
+        },
+        "kubectl": {
+          "version_release": "1.36.4-150500.1.1",
+          "arch": "x86_64",
+          "sourcerpm": "kubectl-1.36.4-150500.1.1.src.rpm"
+        },
+        "containerd.io": {
+          "version_release": "2.3.5-1.el10",
+          "arch": "x86_64",
+          "sourcerpm": "containerd.io-2.3.5-1.el10.src.rpm"
+        }
+      },
+      "crictl": {
+        "gid": 1001,
+        "mode": "0o711",
+        "name": "crictl",
+        "path": "/bin/crictl",
+        "resolved_path": "/usr/bin/crictl",
+        "rpm_owner_rc": 1,
+        "size": 40319387,
+        "uid": 1001
+      },
+      "matching_cache_packages": 0,
+      "cache_files_visited": 28,
+      "units": [
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "UnitFileState": "enabled",
+          "ActiveState": "active",
+          "SubState": "running"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "UnitFileState": "disabled",
+          "ActiveState": "inactive",
+          "SubState": "dead"
+        }
+      ],
+      "receipt": "oid03-inventory-worker03/receipt.json",
+      "raw": "oid03-inventory-worker03/stdout.json"
+    }
+  ],
+  "current_installation_observed": true,
+  "package_supply_archive_verified": false,
+  "original_provenance_verified": false,
+  "oid03_path_approved": false,
+  "reboot_executed": false,
+  "continuous_boot_protection_verified": false,
+  "limits": [
+    "The named cache and filename prefixes are not every possible supply store.",
+    "RPM database ownership/version is not verification of original package or binary bytes.",
+    "Unit state/dependencies are not a continuous boot-time protection observation."
+  ]
+}

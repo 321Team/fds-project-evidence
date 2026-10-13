@@ -1,0 +1,311 @@
+{
+  "status": "WORKER02_DNS_SINGLE_SESSION_VERIFIED",
+  "session_id": "w02-20261013T024523-85942d67",
+  "source": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+  "receipt_count": 20,
+  "receipts": [
+    {
+      "path": "apply",
+      "rc": 0
+    },
+    {
+      "path": "apply-check",
+      "rc": 0
+    },
+    {
+      "path": "backup-final",
+      "rc": 0
+    },
+    {
+      "path": "backup-read",
+      "rc": 0
+    },
+    {
+      "path": "cluster-before",
+      "rc": 0
+    },
+    {
+      "path": "cluster-final",
+      "rc": 0
+    },
+    {
+      "path": "controller-before",
+      "rc": 0
+    },
+    {
+      "path": "controller-final",
+      "rc": 0
+    },
+    {
+      "path": "controller-logs",
+      "rc": 0
+    },
+    {
+      "path": "network-before",
+      "rc": 0
+    },
+    {
+      "path": "network-final",
+      "rc": 0
+    },
+    {
+      "path": "pin-controller",
+      "rc": 0
+    },
+    {
+      "path": "prepare",
+      "rc": 0
+    },
+    {
+      "path": "reapply",
+      "rc": 0
+    },
+    {
+      "path": "rollback",
+      "rc": 0
+    },
+    {
+      "path": "rollback-check",
+      "rc": 0
+    },
+    {
+      "path": "worker-after-apply",
+      "rc": 0
+    },
+    {
+      "path": "worker-after-reapply",
+      "rc": 0
+    },
+    {
+      "path": "worker-after-rollback",
+      "rc": 0
+    },
+    {
+      "path": "worker-before",
+      "rc": 0
+    }
+  ],
+  "controller_files_received": 33,
+  "steps": [
+    {
+      "step": "prepare",
+      "started_at_utc": "2026-10-12T17:53:41.419902+00:00",
+      "finished_at_utc": "2026-10-12T17:53:53.045663+00:00",
+      "recap": {
+        "k8s-worker02": {
+          "ok": 34,
+          "changed": 1,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 9,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "localhost": {
+          "ok": 1,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "session_receipt": {
+        "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+        "session_id": "w02-20261013T024523-85942d67",
+        "sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+        "snapshot_written": true,
+        "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+      }
+    },
+    {
+      "step": "apply-check",
+      "started_at_utc": "2026-10-12T17:54:29.403953+00:00",
+      "finished_at_utc": "2026-10-12T17:54:40.649499+00:00",
+      "recap": {
+        "k8s-worker02": {
+          "ok": 35,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 8,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "localhost": {
+          "ok": 1,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "session_receipt": {
+        "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+        "session_id": "w02-20261013T024523-85942d67",
+        "sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+        "snapshot_written": false,
+        "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+      }
+    },
+    {
+      "step": "apply",
+      "started_at_utc": "2026-10-12T17:54:56.779912+00:00",
+      "finished_at_utc": "2026-10-12T17:55:08.838572+00:00",
+      "recap": {
+        "k8s-worker02": {
+          "ok": 38,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "localhost": {
+          "ok": 1,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "session_receipt": {
+        "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+        "session_id": "w02-20261013T024523-85942d67",
+        "sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+        "snapshot_written": false,
+        "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+      }
+    },
+    {
+      "step": "reapply",
+      "started_at_utc": "2026-10-12T17:55:22.423280+00:00",
+      "finished_at_utc": "2026-10-12T17:55:34.392194+00:00",
+      "recap": {
+        "k8s-worker02": {
+          "ok": 38,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 5,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "localhost": {
+          "ok": 1,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "session_receipt": {
+        "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+        "session_id": "w02-20261013T024523-85942d67",
+        "sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+        "snapshot_written": false,
+        "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+      }
+    },
+    {
+      "step": "rollback-check",
+      "started_at_utc": "2026-10-12T17:56:00.010125+00:00",
+      "finished_at_utc": "2026-10-12T17:56:05.716185+00:00",
+      "recap": {
+        "k8s-worker02": {
+          "ok": 13,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 10,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "localhost": {
+          "ok": 1,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "session_receipt": {
+        "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+        "session_id": "w02-20261013T024523-85942d67",
+        "sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+        "snapshot_written": false,
+        "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+      }
+    },
+    {
+      "step": "rollback",
+      "started_at_utc": "2026-10-12T17:56:12.765400+00:00",
+      "finished_at_utc": "2026-10-12T17:56:20.084961+00:00",
+      "recap": {
+        "k8s-worker02": {
+          "ok": 22,
+          "changed": 2,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 1,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "localhost": {
+          "ok": 1,
+          "changed": 0,
+          "unreachable": 0,
+          "failed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "session_receipt": {
+        "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+        "session_id": "w02-20261013T024523-85942d67",
+        "sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+        "snapshot_written": false,
+        "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+      }
+    }
+  ],
+  "backup_sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+  "backup_path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+  "backup_metadata": {
+    "uid": 0,
+    "gid": 0,
+    "mode": "0600",
+    "parent_mode": "0700",
+    "selinux_context": "unconfined_u:object_r:var_lib_t:s0"
+  },
+  "first_apply_snapshot_age_seconds": 67.764852,
+  "started_at_utc": "2026-10-12T17:53:41.419902+00:00",
+  "final_cluster_at_utc": "2026-10-12T17:56:29.179582+00:00",
+  "closure_at_utc": "2026-10-12T17:57:01.081226+00:00",
+  "elapsed_seconds": 199.661324,
+  "apply_changed": 0,
+  "reapply_changed": 0,
+  "rollback_same_value_tasks_changed": 2,
+  "fresh_worker_ssh_checks": 3,
+  "network_routes_service_pids_preserved": true,
+  "node_ready": 6,
+  "system_pod_ready": 3,
+  "app_pod_ready": 6,
+  "pod_uid_node_restarts_preserved": true,
+  "deployment_uid_spec_preserved": true,
+  "source_11_files_and_engine_unchanged": true,
+  "actual_failure_recovery_test": false,
+  "global_engine_switch": false,
+  "ac_accepted": false
+}

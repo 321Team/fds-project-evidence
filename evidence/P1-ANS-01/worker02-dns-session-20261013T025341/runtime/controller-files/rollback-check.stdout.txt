@@ -1,0 +1,102 @@
+FDS_ENGINE_EXEC=/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin/ansible-playbook CORE=2.21.3 SSH_USETTY=false
+
+PLAY [Guard worker02 session before managed-host facts] ************************
+
+TASK [Reject missing or widened target and unapproved session inputs] **********
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY [Run the approved DNS session on worker02 only] ***************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-worker02]
+
+TASK [Prepare or apply through existing DNS role with session binding] *********
+skipping: [k8s-worker02]
+
+TASK [Restore the pinned session original] *************************************
+included: dns_resolver for k8s-worker02
+
+TASK [dns_resolver : Verify the default IPv4 interface is available] ***********
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read active NetworkManager connection for the default interface] ***
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Validate the active NetworkManager connection] ************
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Read current NetworkManager IPv4 DNS servers] *************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current NetworkManager IPv4 search domains] **********
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Read current NetworkManager automatic DNS setting] ********
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Validate the pinned backup before rollback] ***************
+included: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/dns_resolver/tasks/session-bind.yml for k8s-worker02
+
+TASK [dns_resolver : Refuse session binding on any other inventory target] *****
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [dns_resolver : Capture or validate the immutable worker02 session original] ***
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Report the session receipt for independent retention] *****
+ok: [k8s-worker02] => {
+    "msg": {
+        "path": "/var/lib/fds-change/CR-P1-ANS-01-01/worker02-sessions/w02-20261013T024523-85942d67/original-resolver.json",
+        "session_id": "w02-20261013T024523-85942d67",
+        "sha256": "ce6295bcc88b8129003f50cb4cbd4be36d18c32413bbcf46e9926a552a1ea5b2",
+        "snapshot_written": false,
+        "source_sha": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+    }
+}
+
+TASK [dns_resolver : Select only the verified session original] ****************
+ok: [k8s-worker02]
+
+TASK [dns_resolver : Restore original NetworkManager resolver values] **********
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Reapply restored NetworkManager connection] ***************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Read restored NetworkManager IPv4 DNS servers] ************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Read restored NetworkManager IPv4 search domains] *********
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Read restored automatic DNS setting] **********************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Verify restored NetworkManager resolver state] ************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Verify external name resolution after rollback] ***********
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Verify Kubernetes API listener after rollback] ************
+skipping: [k8s-worker02]
+
+TASK [dns_resolver : Print rollback verdict] ***********************************
+skipping: [k8s-worker02]
+
+PLAY RECAP *********************************************************************
+k8s-worker02               : ok=13   changed=0    unreachable=0    failed=0    skipped=10   rescued=0    ignored=0   
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

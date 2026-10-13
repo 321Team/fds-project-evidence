@@ -1,0 +1,46 @@
+{
+  "observed_at_utc": "2026-10-12T15:07:21.870324+00:00",
+  "collector_sha256": "ccdaaee72b0ce76027a9f2fd16ac37a9fe3dc5b76bd611d6cf0f74cae27abf37",
+  "status": "MANIFEST_METADATA_VERIFIED_REVIEW_REQUIRED",
+  "commands_rc": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "images": [
+    {
+      "name": "kube-controllers",
+      "top": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "manifest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "config": "sha256:0251ba57dd671ba6be565f50721bdf229a9f1f5de40b310f42a94d72f34d9c29",
+      "layers": 2,
+      "referenced_bytes": 61097614,
+      "archive_size_bytes": null,
+      "layer_bytes_verified": false,
+      "historical_provenance_verified": false
+    },
+    {
+      "name": "coredns",
+      "top": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "manifest": "sha256:fd5079792b93909db3adefa91e41c3995455013394f0197c7346786ae19079fc",
+      "config": "sha256:38667dd9be96c17227adde456e33ad701bdbdc5c6db0272a1d33a929bd8e62d6",
+      "layers": 13,
+      "referenced_bytes": 23257541,
+      "archive_size_bytes": null,
+      "layer_bytes_verified": false,
+      "historical_provenance_verified": false
+    }
+  ],
+  "resolved": "Metadata of both missing fixed images, config platform and descriptor closure from control01 current content store",
+  "remaining": [
+    "Historical supply source or explicit current-cache recovery provenance",
+    "Actual layer-byte closure, export/import, archive size and transfer verification",
+    "Per-target offline cache readiness and bounded reboot verification under existing OID plan"
+  ],
+  "plan_ready": false,
+  "ac_complete": false
+}

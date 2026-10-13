@@ -1,0 +1,79 @@
+{
+  "result": "PREPARED_PENDING_INDEPENDENT_INPUT_REVIEW",
+  "robot_metadata": "OBSERVED",
+  "robot_authentication": "NOT_RUN",
+  "main": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7",
+  "same_main_secret_references": [
+    {
+      "path": ".github/workflows/app-push.yml",
+      "git_blob": "b775c6d45917b68af179c10ad214e289a465be21",
+      "secret_names": [
+        "HARBOR_CI_ROBOT_USERNAME",
+        "HARBOR_CI_ROBOT_TOKEN"
+      ]
+    }
+  ],
+  "other_branch_secret_use": "NOT_PROVEN_ABSENT",
+  "current_repo_roles": [
+    {
+      "login": "hayeounglee",
+      "role_name": "admin"
+    },
+    {
+      "login": "supreme33-kr",
+      "role_name": "admin"
+    },
+    {
+      "login": "GWONUK",
+      "role_name": "admin"
+    }
+  ],
+  "active_runs": 0,
+  "queued_runs": 0,
+  "pending_gate": {
+    "decision": "BLOCK",
+    "reasons": [
+      "TEMPLATE_OR_UNCONFIRMED_INPUT",
+      "DELIVERY_INPUT_NOT_APPROVED"
+    ],
+    "plan": null,
+    "basis": "DECLARED_REVIEWED_INPUTS_ONLY",
+    "runtime_enforcement": "NOT_INTEGRATED",
+    "delivery_gate": "NOT_VERIFIED",
+    "token_audience_validation": "PRESENCE_ONLY_NO_PINNED_APPROVED_VALUE"
+  },
+  "post_review_candidate_static_gate": {
+    "decision": "CONDITIONS_MATCH",
+    "reasons": [],
+    "plan": {
+      "phase": "pre_push",
+      "items": [
+        {
+          "service": "transaction-api",
+          "archive_sha256": "70da457069443c8b7af55d93d4e942ab4788bcfb9fe11506ee0482cd17bfaec3",
+          "manifest_digest": "sha256:ef0afe42feb0f9e50f54b5aaab99a34bbeb01f10bc9fb8a0580519101645dc39",
+          "registry_repository": "10.1.93.54/fds/transaction-api"
+        },
+        {
+          "service": "fds-engine",
+          "archive_sha256": "bb5951c6bb2cf113f0d7815fddc41c2b1e2c9cd69ccbd8794f13f2bc277d405f",
+          "manifest_digest": "sha256:de34afb7a557d6ccc844fb74613ebc971eb493260236acc35ef3051935122813",
+          "registry_repository": "10.1.93.54/fds/fds-engine"
+        }
+      ]
+    },
+    "basis": "DECLARED_REVIEWED_INPUTS_ONLY",
+    "runtime_enforcement": "NOT_INTEGRATED",
+    "delivery_gate": "NOT_VERIFIED",
+    "token_audience_validation": "PRESENCE_ONLY_NO_PINNED_APPROVED_VALUE"
+  },
+  "post_review_candidate_sha256": "28ae13b5dee1f16c1fb866eeaaf7984cc4e8286739d7f8da255ab8f02aef665d",
+  "candidate_runtime_approval_proven_by_gate": false,
+  "adapter_validation": "NOT_RUN",
+  "fresh_scan": "NOT_RUN",
+  "push": "NOT_EXECUTED",
+  "independent_input_review": "PENDING",
+  "user_execution_authorized": true,
+  "phase2_work": false,
+  "secret_values_read": false
+}

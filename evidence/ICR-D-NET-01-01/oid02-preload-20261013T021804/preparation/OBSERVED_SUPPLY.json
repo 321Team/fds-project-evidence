@@ -1,0 +1,145 @@
+{
+  "schema": "P1_OID02_METADATA_SUPPLEMENT_1",
+  "source": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\p1-independent-work-20261012\\oid-control01\\stdout.json",
+  "source_sha256": "d40fb79c3ddb5a851f48f8cfc5fec7b96d9b37c3fec433f395d77654a9cd457f",
+  "observed_at_utc": "2026-10-12T15:07:21.870324+00:00",
+  "observed_host": "k8s-control01",
+  "images": [
+    {
+      "name": "kube-controllers",
+      "reference": "quay.io/calico/kube-controllers",
+      "approved_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "top_media_type": "application/vnd.docker.distribution.manifest.v2+json",
+      "index_digest": null,
+      "linux_amd64_manifest_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "platform_from_verified_config": {
+        "os": "linux",
+        "architecture": "amd64"
+      },
+      "config": {
+        "digest": "sha256:0251ba57dd671ba6be565f50721bdf229a9f1f5de40b310f42a94d72f34d9c29",
+        "size": 4463,
+        "mediaType": "application/vnd.docker.container.image.v1+json"
+      },
+      "layers": [
+        {
+          "digest": "sha256:02eb3ae99b2b94ea214a8fe31e4935315f99484c5c167ba40c374dfc398201a9",
+          "size": 2952457,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:8ec9c2e1b1d69f40b703012b83971982e1d567a7c63a9e8a6ca0bb242dc9e937",
+          "size": 58139954,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        }
+      ],
+      "linux_amd64_referenced_content_bytes_unique": 61097614,
+      "size_basis": "DESCRIPTORS_PLUS_READ_DOCUMENT_BYTES_NOT_ARCHIVE_SIZE",
+      "archive_size_bytes": null,
+      "layer_bytes_verified": true,
+      "original_supply_provenance_verified": false,
+      "export_import_executed": false
+    },
+    {
+      "name": "coredns",
+      "reference": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "approved_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "top_media_type": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "index_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "linux_amd64_manifest_digest": "sha256:fd5079792b93909db3adefa91e41c3995455013394f0197c7346786ae19079fc",
+      "platform_from_verified_config": {
+        "os": "linux",
+        "architecture": "amd64"
+      },
+      "config": {
+        "digest": "sha256:38667dd9be96c17227adde456e33ad701bdbdc5c6db0272a1d33a929bd8e62d6",
+        "size": 3070,
+        "mediaType": "application/vnd.docker.container.image.v1+json"
+      },
+      "layers": [
+        {
+          "digest": "sha256:03c9b64681eef07f903b45cfbe5c064db1f1c7f682863b895104ac2680a271a7",
+          "size": 84728,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:2e4cf50eeb92ac3a7afe75e15d96a26dee99449f86b46c75b5d95f4418a5bca0",
+          "size": 12579,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:56ce5a7a0a8cc3aded9e8cab00fd85f0a1c50376aa9f2318c4e66beb03eadf8f",
+          "size": 458603,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:e1089d61b200106053b1717881bf0c1c47551478f01569d9224d33cccf3e4692",
+          "size": 28389,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:0f8b424aa0b96c1c388a5fd4d90735604459256336853082afb61733438872b5",
+          "size": 75,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:d557676654e572af3e3173c90e7874644207fda32cd87e9d3d66b5d7b98a7b21",
+          "size": 193,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:d82bc7a76a838c9a4a6025192429c2fed58f73742ef1fb9c8bb7b995fc3b7213",
+          "size": 130,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:68e4cd60e60fed4486d5b4b40b079e57781e828d93d80a7411e8760dcccfbbf7",
+          "size": 168,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:0783a66ae7492bb16937c7723c534e431404aa3ebbdcaaed65d264a95a266b9e",
+          "size": 84,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:efae86a3fb38e05e6e2584bc2f48534a0d82f8d9e9a4163d04885d5c65423105",
+          "size": 358,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:6b72b81ed96620b324f40ade069bbd3fcee69d62182bb03681c3976b6909eec4",
+          "size": 320,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:6cdd517ba90571b01009637268b5fddb4e3eea409bb6dae0bf40ed8ad9e33ef4",
+          "size": 130874,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        },
+        {
+          "digest": "sha256:7bae8e7097d7983932f15870289838ba42ce97e13c38fda26cbdd9ba09d17e87",
+          "size": 22532938,
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip"
+        }
+      ],
+      "linux_amd64_referenced_content_bytes_unique": 23257541,
+      "size_basis": "DESCRIPTORS_PLUS_READ_DOCUMENT_BYTES_NOT_ARCHIVE_SIZE",
+      "archive_size_bytes": null,
+      "layer_bytes_verified": true,
+      "original_supply_provenance_verified": false,
+      "export_import_executed": false
+    }
+  ],
+  "historical_supply_provenance_verified": false,
+  "current_cache_as_recovery_source_adopted": false,
+  "archive_created": false,
+  "import_executed": false,
+  "target_cache_verified": false,
+  "reboot_executed": false,
+  "plan_ready": false,
+  "ac_accepted": false,
+  "layer_byte_read_receipt": "control01-oid-layer-bytes/receipt.json",
+  "layer_bytes_verified_at_utc": "2026-10-12T15:44:02.584994+00:00",
+  "layer_bytes_verified_current_control01": true
+}

@@ -1,0 +1,89 @@
+{
+  "id": 115042237182,
+  "run_id": 38318968352,
+  "workflow_name": "P1 Verified App Push",
+  "head_branch": "main",
+  "run_url": "https://api.github.com/repos/321Team/infra-cicd/actions/runs/38318968352",
+  "run_attempt": 1,
+  "node_id": "CR_kwDOUTHX4M8AAAAayQ06_g",
+  "head_sha": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7",
+  "url": "https://api.github.com/repos/321Team/infra-cicd/actions/jobs/115042237182",
+  "html_url": "https://github.com/321Team/infra-cicd/actions/runs/38318968352/job/115042237182",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-10-12T22:50:58Z",
+  "started_at": "2026-10-12T22:51:02Z",
+  "completed_at": "2026-10-12T22:51:32Z",
+  "name": "push",
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-12T22:51:03Z",
+      "completed_at": "2026-10-12T22:51:05Z"
+    },
+    {
+      "name": "Require a new checkout directory",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-12T22:51:05Z",
+      "completed_at": "2026-10-12T22:51:05Z"
+    },
+    {
+      "name": "Checkout the reviewed workflow commit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-12T22:51:05Z",
+      "completed_at": "2026-10-12T22:51:06Z"
+    },
+    {
+      "name": "Validate archived evidence without registry credentials",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 4,
+      "started_at": "2026-10-12T22:51:06Z",
+      "completed_at": "2026-10-12T22:51:06Z"
+    },
+    {
+      "name": "Execute approved Push",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-12T22:51:06Z",
+      "completed_at": "2026-10-12T22:51:27Z"
+    },
+    {
+      "name": "Post Checkout the reviewed workflow commit",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10,
+      "started_at": "2026-10-12T22:51:27Z",
+      "completed_at": "2026-10-12T22:51:27Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11,
+      "started_at": "2026-10-12T22:51:27Z",
+      "completed_at": "2026-10-12T22:51:27Z"
+    }
+  ],
+  "check_run_url": "https://api.github.com/repos/321Team/infra-cicd/check-runs/115042237182",
+  "labels": [
+    "self-hosted",
+    "Linux",
+    "X64",
+    "p1-cicd",
+    "onprem",
+    "podman"
+  ],
+  "runner_id": 2,
+  "runner_name": "cicd-runner01",
+  "runner_group_id": 1,
+  "runner_group_name": "Default"
+}

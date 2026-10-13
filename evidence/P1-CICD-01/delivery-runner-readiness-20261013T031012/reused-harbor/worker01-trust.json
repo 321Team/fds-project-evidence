@@ -1,0 +1,101 @@
+{
+  "started_at_utc": "2026-10-12T16:43:22.136089+00:00",
+  "finished_at_utc": "2026-10-12T16:43:22.746796+00:00",
+  "source_sha256": "244c2423d6eb1a57e306fb5d92591f497581509b0e97a2b3a031aefbf7801196",
+  "target": {
+    "host": "k8s-worker01",
+    "ip": "10.1.93.105",
+    "user": "svc_ansible",
+    "uid": 0,
+    "role": "worker",
+    "uuid": "3d974d56-c13a-c416-82c1-0dad7ab4aff6"
+  },
+  "rc": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "observation": {
+    "at_utc": "2026-10-12T16:43:23.084187+00:00",
+    "certificates": [
+      {
+        "approved_root_present": true,
+        "blocks": 1,
+        "file_sha256": "20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f",
+        "other_certificates": 0,
+        "path": "/etc/containerd/certs.d/10.1.93.54/ca.crt"
+      }
+    ],
+    "classification": "RUNTIME_READ_PUBLIC_CONSUMER_TRUST",
+    "configuration": {
+      "containerd_registry_paths": [
+        {
+          "config_file": "/etc/containerd/config.toml",
+          "config_path": "",
+          "plugin": "io.containerd.cri.v1.images"
+        }
+      ],
+      "default_trust_approved_root_present": true,
+      "registry_hosts": [
+        {
+          "exists": false,
+          "path": "/etc/containerd/certs.d/10.1.93.54/hosts.toml"
+        }
+      ]
+    },
+    "configuration_changed": false,
+    "credential_sent": false,
+    "credentials_read": false,
+    "finished_at_utc": "2026-10-12T16:43:23.106643+00:00",
+    "https": [
+      {
+        "body_bytes": 7,
+        "body_sha256": "1b6f69f3061677f95df0349011d840d601d8bead90e44443e82e2e1e1b65a623",
+        "elapsed_seconds": 0.009769434996997006,
+        "endpoint": "https://10.1.93.54/api/v2.0/ping",
+        "http_status": 200,
+        "peer_der_sha256": "61617af3574f37c70a2d9c7f284a75f82c844ae3eaf599cb3d0ec649126ebeaf",
+        "pong": true,
+        "result": "PASS",
+        "tls": "TLSv1.3",
+        "trust_path": "python_default_system_trust"
+      },
+      {
+        "body_bytes": 7,
+        "body_sha256": "1b6f69f3061677f95df0349011d840d601d8bead90e44443e82e2e1e1b65a623",
+        "elapsed_seconds": 0.004949594993377104,
+        "endpoint": "https://10.1.93.54/api/v2.0/ping",
+        "http_status": 200,
+        "peer_der_sha256": "61617af3574f37c70a2d9c7f284a75f82c844ae3eaf599cb3d0ec649126ebeaf",
+        "pong": true,
+        "result": "PASS",
+        "tls": "TLSv1.3",
+        "trust_path": "configured_public_ca:/etc/containerd/certs.d/10.1.93.54/ca.crt"
+      }
+    ],
+    "identity": {
+      "boot": "e70731d9-06dd-416a-93d6-248ae804d551",
+      "host": "k8s-worker01",
+      "product_uuid": "3d974d56-c13a-c416-82c1-0dad7ab4aff6",
+      "uid": 0,
+      "user": "root"
+    },
+    "image_pull_push": false,
+    "read_files": [
+      {
+        "bytes": 8527,
+        "mode": 420,
+        "path": "/etc/containerd/config.toml",
+        "resolved": "/etc/containerd/config.toml",
+        "sha256": "28bd0b54d7dee7de988d9d7560332e077cb1b934193b388a48d7cc689fd3899c",
+        "uid": 0
+      },
+      {
+        "bytes": 2004,
+        "mode": 420,
+        "path": "/etc/containerd/certs.d/10.1.93.54/ca.crt",
+        "resolved": "/etc/containerd/certs.d/10.1.93.54/ca.crt",
+        "sha256": "20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f",
+        "uid": 0
+      }
+    ],
+    "runtime_acceptance": false
+  }
+}

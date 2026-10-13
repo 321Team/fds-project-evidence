@@ -1,0 +1,278 @@
+{
+  "github-precheck.json": {
+    "observed_at_utc": "2026-10-12T22:47:46.077573+00:00",
+    "source_sha256": "b07f5037b9d103ba548f5fada5a620ba0779daabf2afc7df0e58e8dd6a858a07",
+    "main": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7",
+    "runners": {
+      "total_count": 1,
+      "runners": [
+        {
+          "id": 2,
+          "name": "cicd-runner01",
+          "os": "Linux",
+          "status": "online",
+          "busy": false,
+          "version": "2.337.0",
+          "labels": [
+            {
+              "id": 0,
+              "name": "self-hosted",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "Linux",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "X64",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "p1-cicd",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "onprem",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "podman",
+              "type": "custom"
+            }
+          ]
+        }
+      ]
+    },
+    "secrets": {
+      "total_count": 3,
+      "secrets": [
+        {
+          "name": "CICD_APP_SOURCE_READ_TOKEN",
+          "created_at": "2026-09-18T02:59:15Z",
+          "updated_at": "2026-09-18T02:59:15Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_TOKEN",
+          "created_at": "2026-10-12T18:34:27Z",
+          "updated_at": "2026-10-12T18:34:27Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_USERNAME",
+          "created_at": "2026-10-12T18:34:05Z",
+          "updated_at": "2026-10-12T18:34:05Z"
+        }
+      ]
+    },
+    "active_runs": {
+      "queued": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "in_progress": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "requested": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "waiting": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "pending": {
+        "total_count": 0,
+        "workflow_runs": []
+      }
+    }
+  },
+  "github-preexecute.json": {
+    "observed_at_utc": "2026-10-12T22:50:40.331573+00:00",
+    "source_sha256": "74d2b19f90a30b945abfbc19819b8eb15710e8c4d0203896a1d81909d5515a55",
+    "main": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7",
+    "runners": {
+      "total_count": 1,
+      "runners": [
+        {
+          "id": 2,
+          "name": "cicd-runner01",
+          "os": "Linux",
+          "status": "online",
+          "busy": false,
+          "version": "2.337.0",
+          "labels": [
+            {
+              "id": 0,
+              "name": "self-hosted",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "Linux",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "X64",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "p1-cicd",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "onprem",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "podman",
+              "type": "custom"
+            }
+          ]
+        }
+      ]
+    },
+    "secrets": {
+      "total_count": 3,
+      "secrets": [
+        {
+          "name": "CICD_APP_SOURCE_READ_TOKEN",
+          "created_at": "2026-09-18T02:59:15Z",
+          "updated_at": "2026-09-18T02:59:15Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_TOKEN",
+          "created_at": "2026-10-12T18:34:27Z",
+          "updated_at": "2026-10-12T18:34:27Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_USERNAME",
+          "created_at": "2026-10-12T18:34:05Z",
+          "updated_at": "2026-10-12T18:34:05Z"
+        }
+      ]
+    },
+    "active_runs": {
+      "queued": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "in_progress": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "requested": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "waiting": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "pending": {
+        "total_count": 0,
+        "workflow_runs": []
+      }
+    }
+  },
+  "github-precleanup.json": {
+    "observed_at_utc": "2026-10-12T22:52:52.612320+00:00",
+    "source_sha256": "43230d0d1c3a1f5d3834fc1d79c699f1a7c77b3f6afc1f587e36490bf7aab868",
+    "main": "2d8a14c55ea4b61f53b7ac6d682cd5e97575dda7",
+    "runners": {
+      "total_count": 1,
+      "runners": [
+        {
+          "id": 2,
+          "name": "cicd-runner01",
+          "os": "Linux",
+          "status": "online",
+          "busy": false,
+          "version": "2.337.0",
+          "labels": [
+            {
+              "id": 0,
+              "name": "self-hosted",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "Linux",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "X64",
+              "type": "read-only"
+            },
+            {
+              "id": 0,
+              "name": "p1-cicd",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "onprem",
+              "type": "custom"
+            },
+            {
+              "id": 0,
+              "name": "podman",
+              "type": "custom"
+            }
+          ]
+        }
+      ]
+    },
+    "secrets": {
+      "total_count": 3,
+      "secrets": [
+        {
+          "name": "CICD_APP_SOURCE_READ_TOKEN",
+          "created_at": "2026-09-18T02:59:15Z",
+          "updated_at": "2026-09-18T02:59:15Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_TOKEN",
+          "created_at": "2026-10-12T18:34:27Z",
+          "updated_at": "2026-10-12T18:34:27Z"
+        },
+        {
+          "name": "HARBOR_CI_ROBOT_USERNAME",
+          "created_at": "2026-10-12T18:34:05Z",
+          "updated_at": "2026-10-12T18:34:05Z"
+        }
+      ]
+    },
+    "active_runs": {
+      "queued": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "in_progress": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "requested": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "waiting": {
+        "total_count": 0,
+        "workflow_runs": []
+      },
+      "pending": {
+        "total_count": 0,
+        "workflow_runs": []
+      }
+    }
+  }
+}

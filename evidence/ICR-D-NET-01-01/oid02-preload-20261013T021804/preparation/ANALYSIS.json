@@ -1,0 +1,673 @@
+{
+  "status": "OID02_SCOPE_READY_RUNTIME_NOT_EXECUTED",
+  "at_kst": "2026-10-13T01:40:24.261295+09:00",
+  "source_observation_at_utc": "2026-10-12T16:27:31.548174+00:00",
+  "receipts": [
+    {
+      "path": "control01-cri-path-read",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control01-cache",
+      "rc": 2,
+      "status": "INCOMPLETE"
+    },
+    {
+      "path": "k8s-control01-cachecli",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control01-effective-config",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control01-scheduling",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control01-snapshotter",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control02-cache",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control02-effective-config",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control02-snapshotter",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control03-cache",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control03-effective-config",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-control03-snapshotter",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker01-cache",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker01-effective-config",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker01-snapshotter",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker02-cache",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker02-effective-config",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker02-snapshotter",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker03-cache",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker03-effective-config",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    },
+    {
+      "path": "k8s-worker03-snapshotter",
+      "rc": 0,
+      "status": "COLLECTED_REVIEW_REQUIRED"
+    }
+  ],
+  "receipt_count": 21,
+  "node_count": 6,
+  "system_pods_ready": 3,
+  "system_pod_locations": [
+    {
+      "name": "calico-kube-controllers-74f76ddbd-jbpm9",
+      "uid": "e6828576-98e3-4c2f-a0f7-f204460f6d48",
+      "node": "k8s-control01"
+    },
+    {
+      "name": "coredns-589f44dc88-f8l54",
+      "uid": "b177ca1d-d26a-4e55-acc6-2cc384e6d281",
+      "node": "k8s-control01"
+    },
+    {
+      "name": "coredns-589f44dc88-qkcws",
+      "uid": "11b524dc-b4de-4ce1-9cb0-8d3856f45b75",
+      "node": "k8s-control01"
+    }
+  ],
+  "deployments": [
+    {
+      "metadata": {
+        "name": "calico-kube-controllers",
+        "namespace": "kube-system",
+        "uid": "cd1095ef-053f-47a6-b4c6-4ff9aa353ab8",
+        "resourceVersion": "4943493",
+        "generation": 1,
+        "deletionTimestamp": null,
+        "ownerReferences": null,
+        "labels": {
+          "k8s-app": "calico-kube-controllers"
+        }
+      },
+      "spec_sha256": "efbc909b652d366a99240a87e9309100f128c88c9bd9c21e83cc88ba5ac9a847",
+      "replicas": 1,
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-09-09T12:36:30Z",
+            "lastUpdateTime": "2026-09-09T12:37:01Z",
+            "message": "ReplicaSet \"calico-kube-controllers-74f76ddbd\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          },
+          {
+            "lastTransitionTime": "2026-10-11T10:20:31Z",
+            "lastUpdateTime": "2026-10-11T10:20:31Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "calico-kube-controllers"
+        }
+      },
+      "scheduling": {
+        "nodeSelector": {
+          "kubernetes.io/os": "linux"
+        },
+        "affinity": null,
+        "tolerations": [
+          {
+            "key": "CriticalAddonsOnly",
+            "operator": "Exists"
+          },
+          {
+            "effect": "NoSchedule",
+            "key": "node-role.kubernetes.io/master"
+          },
+          {
+            "effect": "NoSchedule",
+            "key": "node-role.kubernetes.io/control-plane"
+          }
+        ],
+        "topologySpreadConstraints": null,
+        "schedulerName": "default-scheduler",
+        "priorityClassName": "system-cluster-critical",
+        "runtimeClassName": null
+      },
+      "containers": [
+        {
+          "name": "calico-kube-controllers",
+          "image": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+          "imagePullPolicy": "IfNotPresent",
+          "resources": {}
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "name": "coredns",
+        "namespace": "kube-system",
+        "uid": "529b998a-0ff9-46cc-ad5d-991fe0fb9a63",
+        "resourceVersion": "4943014",
+        "generation": 1,
+        "deletionTimestamp": null,
+        "ownerReferences": null,
+        "labels": {
+          "k8s-app": "kube-dns"
+        }
+      },
+      "spec_sha256": "65de094015f21aca231bc47d879ea044362b2d55e189fc6edc55284cfcf429a9",
+      "replicas": 2,
+      "status": {
+        "availableReplicas": 2,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-09-09T12:35:24Z",
+            "lastUpdateTime": "2026-09-09T12:36:56Z",
+            "message": "ReplicaSet \"coredns-589f44dc88\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          },
+          {
+            "lastTransitionTime": "2026-10-11T10:19:38Z",
+            "lastUpdateTime": "2026-10-11T10:19:38Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 2,
+        "replicas": 2,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 2
+      },
+      "selector": {
+        "matchLabels": {
+          "k8s-app": "kube-dns"
+        }
+      },
+      "scheduling": {
+        "nodeSelector": {
+          "kubernetes.io/os": "linux"
+        },
+        "affinity": {
+          "podAntiAffinity": {
+            "preferredDuringSchedulingIgnoredDuringExecution": [
+              {
+                "podAffinityTerm": {
+                  "labelSelector": {
+                    "matchExpressions": [
+                      {
+                        "key": "k8s-app",
+                        "operator": "In",
+                        "values": [
+                          "kube-dns"
+                        ]
+                      }
+                    ]
+                  },
+                  "topologyKey": "kubernetes.io/hostname"
+                },
+                "weight": 100
+              }
+            ]
+          }
+        },
+        "tolerations": [
+          {
+            "key": "CriticalAddonsOnly",
+            "operator": "Exists"
+          },
+          {
+            "effect": "NoSchedule",
+            "key": "node-role.kubernetes.io/control-plane"
+          }
+        ],
+        "topologySpreadConstraints": null,
+        "schedulerName": "default-scheduler",
+        "priorityClassName": "system-cluster-critical",
+        "runtimeClassName": null
+      },
+      "containers": [
+        {
+          "name": "coredns",
+          "image": "registry.k8s.io/coredns/coredns:v1.14.2",
+          "imagePullPolicy": "IfNotPresent",
+          "resources": {
+            "limits": {
+              "memory": "170Mi"
+            },
+            "requests": {
+              "cpu": "100m",
+              "memory": "70Mi"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "matrix": [
+    {
+      "host": "k8s-control01",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": true,
+      "complete_and_unpacked": true,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-control02",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-control03",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker01",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker02",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker03",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-control01",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": true,
+      "complete_and_unpacked": true,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-control02",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": true,
+      "complete_and_unpacked": true,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-control03",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": true,
+      "complete_and_unpacked": true,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker01",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker02",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker03",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    }
+  ],
+  "targets": [
+    {
+      "host": "k8s-control02",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-control03",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker01",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker02",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker03",
+      "image": "kube-controllers",
+      "workload_ref": "quay.io/calico/kube-controllers@sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "expected_top_digest": "sha256:df00967cbd6d88e1ff3123e1598895845622e2987928b4ebd9d8ac49aefe00c3",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker01",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker02",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    },
+    {
+      "host": "k8s-worker03",
+      "image": "coredns",
+      "workload_ref": "registry.k8s.io/coredns/coredns:v1.14.2",
+      "expected_top_digest": "sha256:e7e6440cfd1e919280958f5b5a6ab2b184d385bba774c12ad2a9e1e4183f90d9",
+      "eligible_by_observed_hard_constraints": true,
+      "scheduling_capacity_guaranteed": false,
+      "ref_present": false,
+      "complete_and_unpacked": null,
+      "all_content_absent_claimed": false
+    }
+  ],
+  "snapshotters": [
+    {
+      "host": "k8s-control01",
+      "observed_container_snapshotter": "overlayfs",
+      "config": {
+        "path": "/etc/containerd/config.toml",
+        "sha256": "4220b27d8c9302397969a0afad7caaa4ea35bef69dcd6a54a293563835c037b5",
+        "size": 8515,
+        "version": 4,
+        "imports": [
+          "/etc/containerd/conf.d/*.toml"
+        ],
+        "image_snapshotter": "overlayfs",
+        "default_runtime_name": "runc",
+        "runtime_snapshotters": {
+          "runc": ""
+        }
+      },
+      "imports_fully_resolved": true,
+      "effective_snapshotter": "overlayfs"
+    },
+    {
+      "host": "k8s-control02",
+      "observed_container_snapshotter": "overlayfs",
+      "config": {
+        "path": "/etc/containerd/config.toml",
+        "sha256": "4220b27d8c9302397969a0afad7caaa4ea35bef69dcd6a54a293563835c037b5",
+        "size": 8515,
+        "version": 4,
+        "imports": [
+          "/etc/containerd/conf.d/*.toml"
+        ],
+        "image_snapshotter": "overlayfs",
+        "default_runtime_name": "runc",
+        "runtime_snapshotters": {
+          "runc": ""
+        }
+      },
+      "imports_fully_resolved": true,
+      "effective_snapshotter": "overlayfs"
+    },
+    {
+      "host": "k8s-control03",
+      "observed_container_snapshotter": "overlayfs",
+      "config": {
+        "path": "/etc/containerd/config.toml",
+        "sha256": "4220b27d8c9302397969a0afad7caaa4ea35bef69dcd6a54a293563835c037b5",
+        "size": 8515,
+        "version": 4,
+        "imports": [
+          "/etc/containerd/conf.d/*.toml"
+        ],
+        "image_snapshotter": "overlayfs",
+        "default_runtime_name": "runc",
+        "runtime_snapshotters": {
+          "runc": ""
+        }
+      },
+      "imports_fully_resolved": true,
+      "effective_snapshotter": "overlayfs"
+    },
+    {
+      "host": "k8s-worker01",
+      "observed_container_snapshotter": "overlayfs",
+      "config": {
+        "path": "/etc/containerd/config.toml",
+        "sha256": "28bd0b54d7dee7de988d9d7560332e077cb1b934193b388a48d7cc689fd3899c",
+        "size": 8527,
+        "version": 4,
+        "imports": [
+          "/etc/containerd/conf.d/*.toml"
+        ],
+        "image_snapshotter": "overlayfs",
+        "default_runtime_name": "runc",
+        "runtime_snapshotters": {
+          "runc": ""
+        }
+      },
+      "imports_fully_resolved": true,
+      "effective_snapshotter": "overlayfs"
+    },
+    {
+      "host": "k8s-worker02",
+      "observed_container_snapshotter": "overlayfs",
+      "config": {
+        "path": "/etc/containerd/config.toml",
+        "sha256": "4220b27d8c9302397969a0afad7caaa4ea35bef69dcd6a54a293563835c037b5",
+        "size": 8515,
+        "version": 4,
+        "imports": [
+          "/etc/containerd/conf.d/*.toml"
+        ],
+        "image_snapshotter": "overlayfs",
+        "default_runtime_name": "runc",
+        "runtime_snapshotters": {
+          "runc": ""
+        }
+      },
+      "imports_fully_resolved": true,
+      "effective_snapshotter": "overlayfs"
+    },
+    {
+      "host": "k8s-worker03",
+      "observed_container_snapshotter": "overlayfs",
+      "config": {
+        "path": "/etc/containerd/config.toml",
+        "sha256": "4220b27d8c9302397969a0afad7caaa4ea35bef69dcd6a54a293563835c037b5",
+        "size": 8515,
+        "version": 4,
+        "imports": [
+          "/etc/containerd/conf.d/*.toml"
+        ],
+        "image_snapshotter": "overlayfs",
+        "default_runtime_name": "runc",
+        "runtime_snapshotters": {
+          "runc": ""
+        }
+      },
+      "imports_fully_resolved": true,
+      "effective_snapshotter": "overlayfs"
+    }
+  ],
+  "image_node_gaps": 8,
+  "export_executed": false,
+  "import_executed": false,
+  "archive_created": false,
+  "current_cache_as_recovery_source_adopted": false,
+  "original_provenance_verified": false,
+  "ac_accepted": false,
+  "cri_binary_discovery": "Absent from root PATH and seven conventional paths on control01; absence everywhere not proved; no new installation",
+  "initial_read_failure": "crictl hardcoded path missing after ctr reads succeeded; retained; only missing CLI/space/service reads supplemented"
+}

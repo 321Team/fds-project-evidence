@@ -1,0 +1,454 @@
+{
+  "observed_at_utc": "2026-10-12T20:01:06.367600+00:00",
+  "source_stdout_sha256": "169234b1c2da84dc7d3b3c86d57395d0d244217ffa182c6c7795e9ba838e745f",
+  "queries": 11,
+  "cluster_namespace_uid": "e1669cff-1435-423f-a6c4-28bc44f488de",
+  "counts": {
+    "namespace": 1,
+    "gnp": 7,
+    "hep": 6,
+    "felix": 7,
+    "nodes": 6,
+    "pods": 44,
+    "deployments": 8,
+    "statefulsets": 0,
+    "pdb": 1,
+    "pv": 3,
+    "pvc": 3
+  },
+  "worker_policy_delta_from_20260927": [
+    {
+      "name": "fds-k8s-host-k8s-worker01",
+      "historical_file_sha256": "e9860a33b5dd44f74eac396321de2cc0881cd8e66779ca9463fcb9dfea7d6958",
+      "current_generation": 4,
+      "identical_spec": false,
+      "differences": [
+        {
+          "path": "/tier",
+          "old": "<MISSING>",
+          "current": "default"
+        }
+      ]
+    },
+    {
+      "name": "fds-k8s-host-k8s-worker02",
+      "historical_file_sha256": "4894c7c4140039d79d06b4f4091582c211a6dca4e52e5aeef30eb22fda1f8e6d",
+      "current_generation": 4,
+      "identical_spec": false,
+      "differences": [
+        {
+          "path": "/tier",
+          "old": "<MISSING>",
+          "current": "default"
+        }
+      ]
+    },
+    {
+      "name": "fds-k8s-host-k8s-worker03",
+      "historical_file_sha256": "05d7e7e2bb6e70dd7ac8c7add4472b080d3e00e13e67a0d70d073d4d2a0bc605",
+      "current_generation": 4,
+      "identical_spec": false,
+      "differences": [
+        {
+          "path": "/tier",
+          "old": "<MISSING>",
+          "current": "default"
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "k8s-control01",
+      "ready": [
+        "True"
+      ],
+      "pod_count": 10,
+      "pvc_pods": [],
+      "app_pods": [],
+      "system_deployment_pods": [
+        "calico-kube-controllers-74f76ddbd-jbpm9",
+        "coredns-589f44dc88-f8l54",
+        "coredns-589f44dc88-qkcws"
+      ]
+    },
+    {
+      "name": "k8s-control02",
+      "ready": [
+        "True"
+      ],
+      "pod_count": 6,
+      "pvc_pods": [],
+      "app_pods": [],
+      "system_deployment_pods": []
+    },
+    {
+      "name": "k8s-control03",
+      "ready": [
+        "True"
+      ],
+      "pod_count": 6,
+      "pvc_pods": [],
+      "app_pods": [],
+      "system_deployment_pods": []
+    },
+    {
+      "name": "k8s-worker01",
+      "ready": [
+        "True"
+      ],
+      "pod_count": 6,
+      "pvc_pods": [],
+      "app_pods": [
+        "fds-engine-66b8c565c4-5s74s",
+        "transaction-api-54984f6ddd-77dds"
+      ],
+      "system_deployment_pods": []
+    },
+    {
+      "name": "k8s-worker02",
+      "ready": [
+        "True"
+      ],
+      "pod_count": 7,
+      "pvc_pods": [],
+      "app_pods": [
+        "fds-engine-66b8c565c4-zgdxk",
+        "transaction-api-54984f6ddd-wwkpv"
+      ],
+      "system_deployment_pods": []
+    },
+    {
+      "name": "k8s-worker03",
+      "ready": [
+        "True"
+      ],
+      "pod_count": 9,
+      "pvc_pods": [
+        {
+          "name": "alertmanager-6bf6dc555-z22v5",
+          "namespace": "monitoring-api",
+          "uid": "5eb2f9e3-0e6b-4161-94ad-744a492a7c78",
+          "resourceVersion": "5103825",
+          "generation": 1
+        },
+        {
+          "name": "grafana-f65457bfd-8css7",
+          "namespace": "monitoring-api",
+          "uid": "70ec48a6-5373-4fad-b406-5ad0f7b97cfb",
+          "resourceVersion": "5104250",
+          "generation": 1
+        },
+        {
+          "name": "prometheus-d8949bd64-vsjq8",
+          "namespace": "monitoring-api",
+          "uid": "d60d738e-8522-4b74-81ff-8a6410647dcb",
+          "resourceVersion": "5104085",
+          "generation": 1
+        }
+      ],
+      "app_pods": [
+        "fds-engine-66b8c565c4-pjlkw",
+        "transaction-api-54984f6ddd-p8jxf"
+      ],
+      "system_deployment_pods": []
+    }
+  ],
+  "pv": [
+    {
+      "metadata": {
+        "name": "alertmanager-data-pv",
+        "namespace": null,
+        "uid": "087305a1-20ec-4f62-9365-15788b4dba2f",
+        "resourceVersion": "1115771",
+        "generation": null
+      },
+      "spec": {
+        "storageClassName": "fds-local-storage",
+        "capacity": {
+          "storage": "2Gi"
+        },
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "persistentVolumeReclaimPolicy": "Retain",
+        "claimRef": {
+          "kind": "PersistentVolumeClaim",
+          "namespace": "monitoring-api",
+          "name": "alertmanager-data",
+          "uid": "09073d34-659f-4ab9-ab18-83eb54cc8093",
+          "apiVersion": "v1",
+          "resourceVersion": "1115769"
+        },
+        "local": {
+          "path": "/home/fds-local-pv/alertmanager"
+        },
+        "hostPath": null,
+        "nodeAffinity": {
+          "required": {
+            "nodeSelectorTerms": [
+              {
+                "matchExpressions": [
+                  {
+                    "key": "kubernetes.io/hostname",
+                    "operator": "In",
+                    "values": [
+                      "k8s-worker03"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "phase": "Bound"
+    },
+    {
+      "metadata": {
+        "name": "grafana-data-pv",
+        "namespace": null,
+        "uid": "e8258eb5-871d-411d-a175-603179cda032",
+        "resourceVersion": "1115875",
+        "generation": null
+      },
+      "spec": {
+        "storageClassName": "fds-local-storage",
+        "capacity": {
+          "storage": "5Gi"
+        },
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "persistentVolumeReclaimPolicy": "Retain",
+        "claimRef": {
+          "kind": "PersistentVolumeClaim",
+          "namespace": "monitoring-api",
+          "name": "grafana-data",
+          "uid": "ae075568-7153-4d47-b30e-01e188c62f88",
+          "apiVersion": "v1",
+          "resourceVersion": "1115870"
+        },
+        "local": {
+          "path": "/home/fds-local-pv/grafana"
+        },
+        "hostPath": null,
+        "nodeAffinity": {
+          "required": {
+            "nodeSelectorTerms": [
+              {
+                "matchExpressions": [
+                  {
+                    "key": "kubernetes.io/hostname",
+                    "operator": "In",
+                    "values": [
+                      "k8s-worker03"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "phase": "Bound"
+    },
+    {
+      "metadata": {
+        "name": "prometheus-data-pv",
+        "namespace": null,
+        "uid": "8bb53b69-c636-48b8-a634-dd0a3cd5c71c",
+        "resourceVersion": "1115766",
+        "generation": null
+      },
+      "spec": {
+        "storageClassName": "fds-local-storage",
+        "capacity": {
+          "storage": "20Gi"
+        },
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "persistentVolumeReclaimPolicy": "Retain",
+        "claimRef": {
+          "kind": "PersistentVolumeClaim",
+          "namespace": "monitoring-api",
+          "name": "prometheus-data",
+          "uid": "e1123355-4b6c-4bad-a554-53fa443b1a9f",
+          "apiVersion": "v1",
+          "resourceVersion": "1115764"
+        },
+        "local": {
+          "path": "/home/fds-local-pv/prometheus"
+        },
+        "hostPath": null,
+        "nodeAffinity": {
+          "required": {
+            "nodeSelectorTerms": [
+              {
+                "matchExpressions": [
+                  {
+                    "key": "kubernetes.io/hostname",
+                    "operator": "In",
+                    "values": [
+                      "k8s-worker03"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "phase": "Bound"
+    }
+  ],
+  "pdb": [
+    {
+      "metadata": {
+        "name": "calico-kube-controllers",
+        "namespace": "kube-system",
+        "uid": "084d826c-0523-4c61-b492-24d12866e885",
+        "resourceVersion": "4943494",
+        "generation": 1
+      },
+      "spec": {
+        "selector": {
+          "matchLabels": {
+            "k8s-app": "calico-kube-controllers"
+          }
+        },
+        "maxUnavailable": 1
+      },
+      "labels": {
+        "k8s-app": "calico-kube-controllers"
+      },
+      "status": {
+        "disruptionsAllowed": 1,
+        "currentHealthy": 1,
+        "desiredHealthy": 0,
+        "expectedPods": 1,
+        "observedGeneration": 1
+      }
+    }
+  ],
+  "app_deployments": [
+    {
+      "metadata": {
+        "name": "fds-engine",
+        "namespace": "fds-app",
+        "uid": "bf825dec-465b-4603-8b71-f768d195531c",
+        "resourceVersion": "5214670",
+        "generation": 5
+      },
+      "pod_spec": {
+        "nodeName": null,
+        "nodeSelector": null,
+        "affinity": null,
+        "tolerations": null,
+        "hostNetwork": null,
+        "terminationGracePeriodSeconds": 30
+      },
+      "containers": [
+        {
+          "name": "fds-engine",
+          "image": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+          "imagePullPolicy": "IfNotPresent",
+          "readinessProbe": {
+            "initialDelaySeconds": 5,
+            "periodSeconds": 10,
+            "timeoutSeconds": 1,
+            "failureThreshold": 3,
+            "successThreshold": 1,
+            "httpGet": {
+              "path": "/readyz",
+              "port": 8001,
+              "scheme": "HTTP"
+            }
+          },
+          "livenessProbe": {
+            "initialDelaySeconds": 10,
+            "periodSeconds": 20,
+            "timeoutSeconds": 1,
+            "failureThreshold": 3,
+            "successThreshold": 1,
+            "httpGet": {
+              "path": "/livez",
+              "port": 8001,
+              "scheme": "HTTP"
+            }
+          }
+        }
+      ],
+      "volumes": [],
+      "owners": [],
+      "replicas": 3,
+      "status": {
+        "observedGeneration": 5,
+        "readyReplicas": 3,
+        "availableReplicas": 3,
+        "updatedReplicas": 3
+      }
+    },
+    {
+      "metadata": {
+        "name": "transaction-api",
+        "namespace": "fds-app",
+        "uid": "8a2af808-ec33-41f2-80b5-addde4e28910",
+        "resourceVersion": "5215276",
+        "generation": 9
+      },
+      "pod_spec": {
+        "nodeName": null,
+        "nodeSelector": null,
+        "affinity": null,
+        "tolerations": null,
+        "hostNetwork": null,
+        "terminationGracePeriodSeconds": 30
+      },
+      "containers": [
+        {
+          "name": "transaction-api",
+          "image": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+          "imagePullPolicy": "IfNotPresent",
+          "readinessProbe": {
+            "initialDelaySeconds": 5,
+            "periodSeconds": 10,
+            "timeoutSeconds": 1,
+            "failureThreshold": 3,
+            "successThreshold": 1,
+            "httpGet": {
+              "path": "/readyz",
+              "port": 8000,
+              "scheme": "HTTP"
+            }
+          },
+          "livenessProbe": {
+            "initialDelaySeconds": 10,
+            "periodSeconds": 20,
+            "timeoutSeconds": 1,
+            "failureThreshold": 3,
+            "successThreshold": 1,
+            "httpGet": {
+              "path": "/livez",
+              "port": 8000,
+              "scheme": "HTTP"
+            }
+          }
+        }
+      ],
+      "volumes": [],
+      "owners": [],
+      "replicas": 3,
+      "status": {
+        "observedGeneration": 9,
+        "readyReplicas": 3,
+        "availableReplicas": 3,
+        "updatedReplicas": 3
+      }
+    }
+  ],
+  "reboot_executed": false,
+  "drain_executed": false,
+  "ac_decision": "NOT_PERFORMED"
+}

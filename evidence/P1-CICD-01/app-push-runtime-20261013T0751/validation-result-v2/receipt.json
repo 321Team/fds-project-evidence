@@ -1,0 +1,42 @@
+{
+  "started_at_utc": "2026-10-12T22:50:16.054991+00:00",
+  "argv": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "fds-ansible01",
+    "/usr/bin/python3",
+    "-B",
+    "-I",
+    "-S",
+    "-"
+  ],
+  "inner_argv": [
+    "/usr/bin/ssh",
+    "-T",
+    "-i",
+    "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "UserKnownHostsFile=/home/server01_ansible/.ssh/known_hosts",
+    "-o",
+    "IdentitiesOnly=yes",
+    "server01_cicd-runner@10.250.10.20",
+    "/usr/bin/python3 -B -I -S -"
+  ],
+  "card_sha256": "903ccb7a546b37abf1368ffb60d1873c5698138c19ff28cf1b0c8325f717cda3",
+  "rc": 0,
+  "finished_at_utc": "2026-10-12T22:50:16.454973+00:00",
+  "stdout_sha256": "b42d0980eee63c562d0a74f6e280ac2cc922dba4feddbce3dce26e6d7e312c95",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
