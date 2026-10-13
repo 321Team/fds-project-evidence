@@ -1,0 +1,13 @@
+data.aws_ami.relay
+data.aws_iam_instance_profile.relay
+data.aws_kms_key.ebs
+data.aws_subnet.transport
+data.aws_vpc.network
+aws_eip.relay
+aws_eip_association.relay
+aws_instance.relay
+aws_security_group.relay
+aws_ssm_document.session_preferences[0]
+aws_vpc_security_group_egress_rule.reviewed["https"]
+aws_vpc_security_group_ingress_rule.ike["4500"]
+aws_vpc_security_group_ingress_rule.ike["500"]

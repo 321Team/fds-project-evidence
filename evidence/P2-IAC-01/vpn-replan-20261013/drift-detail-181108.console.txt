@@ -1,0 +1,22 @@
+# 콘솔 복사본 (원본 파일 아님)
+# 출처: CloudShell ~/iac11-vpn-20261012-020352/show-json.stdout (18:11:08 회차 Plan JSON, state 사본 포함이라 증적 미편입)
+# 명령: python3 로 resource_drift 각 항목의 before/after 중 값이 다른 키만 출력, 값은 300자에서 잘림 (2026-10-12, 이하영 실행, 화면 출력 복사)
+# Plan JSON SHA256: 2dfb838484b0e0426ec3bd74a5d2bd71386c5e72bd3421c542052d56938dd12a (runs/evidence-vpn-pr30-20261012-181108/execution-summary.json 기록값)
+# 16:49:48(병합본) 회차의 resource_drift 주소 4개는 이 회차와 같다(execution-summary.json). 속성 차이는 이 회차만 출력했다.
+== aws_eip.relay
+   association_id | before: "" | after: "eipassoc-042c30d80698f0dc8"
+   instance | before: "" | after: "i-05e4b63d31d8d5ac5"
+   network_interface | before: "" | after: "eni-0017c49242017af9b"
+   private_dns | before: "" | after: "ip-10-20-110-10.ap-northeast-2.compute.internal"
+   private_ip | before: "" | after: "10.20.110.10"
+== aws_instance.relay
+   associate_public_ip_address | before: false | after: true
+   public_dns | before: "" | after: "ec2-3-36-239-132.ap-northeast-2.compute.amazonaws.com"
+   public_ip | before: "" | after: "3.36.239.132"
+   root_block_device | before: [{"delete_on_termination": true, "device_name": "/dev/sda1", "encrypted": true, "iops": 3000, "kms_key_id": "arn:aws:kms:ap-northeast-2:774055931866:key/d5f49efe-b6f2-4204-b75f-6d686a86ffbc", "tags": null, "tags_all": {"Component": "vpn", "ManagedBy": "terraform", "Phase": "phase2", "Project": "fds- | after: [{"delete_on_termination": true, "device_name": "/dev/sda1", "encrypted": true, "iops": 3000, "kms_key_id": "arn:aws:kms:ap-northeast-2:774055931866:key/d5f49efe-b6f2-4204-b75f-6d686a86ffbc", "tags": {}, "tags_all": {"Component": "vpn", "ManagedBy": "terraform", "Phase": "phase2", "Project": "fds-hy
+== aws_security_group.relay
+   egress | before: [] | after: [{"cidr_blocks": ["0.0.0.0/0"], "description": "#37 6041369929 TCP443 world", "from_port": 443, "ipv6_cidr_blocks": [], "prefix_list_ids": [], "protocol": "tcp", "security_groups": [], "self": false, "to_port": 443}]
+   ingress | before: [] | after: [{"cidr_blocks": ["0.0.0.0/0"], "description": "D21 outer IKE/NAT-T only", "from_port": 4500, "ipv6_cidr_blocks": [], "prefix_list_ids": [], "protocol": "udp", "security_groups": [], "self": false, "to_port": 4500}, {"cidr_blocks": ["0.0.0.0/0"], "description": "D21 outer IKE/NAT-T only", "from_port
+== aws_ssm_document.session_preferences[0]
+   permissions | before: null | after: {}
+   tags | before: null | after: {}

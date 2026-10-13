@@ -1,0 +1,151 @@
+data.aws_vpc.network: Reading...
+data.aws_subnet.transport: Reading...
+data.aws_iam_instance_profile.relay: Reading...
+data.aws_ami.relay: Reading...
+aws_ssm_document.session_preferences[0]: Refreshing state... [id=SSM-SessionManagerRunShell]
+data.aws_kms_key.ebs: Reading...
+data.aws_kms_key.ebs: Read complete after 0s [id=d5f49efe-b6f2-4204-b75f-6d686a86ffbc]
+data.aws_subnet.transport: Read complete after 0s [id=subnet-0fbc846bde668f0f3]
+data.aws_ami.relay: Read complete after 0s [id=ami-08d855918a18d0cf9]
+data.aws_vpc.network: Read complete after 0s [id=vpc-039718404350154d9]
+aws_security_group.relay: Refreshing state... [id=sg-0f1e8a5dbecabccee]
+aws_vpc_security_group_ingress_rule.ike["4500"]: Refreshing state... [id=sgr-0168ae3fc680f71f0]
+aws_vpc_security_group_ingress_rule.ike["500"]: Refreshing state... [id=sgr-0285d809ced572046]
+aws_vpc_security_group_egress_rule.reviewed["https"]: Refreshing state... [id=sgr-075138fb7b511a7be]
+data.aws_iam_instance_profile.relay: Read complete after 1s [id=AIPA3IOKUF7NK6O4NTEM7]
+aws_instance.relay: Refreshing state... [id=i-05e4b63d31d8d5ac5]
+aws_eip.relay: Refreshing state... [id=eipalloc-0850415d83b0132a6]
+aws_eip_association.relay: Refreshing state... [id=eipassoc-042c30d80698f0dc8]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # aws_eip_association.relay must be replaced
+-/+ resource "aws_eip_association" "relay" {
+      ~ id                   = "eipassoc-042c30d80698f0dc8" -> (known after apply)
+      ~ instance_id          = "i-05e4b63d31d8d5ac5" -> (known after apply)
+      ~ network_interface_id = "eni-0017c49242017af9b" -> (known after apply) # forces replacement
+      ~ public_ip            = "3.36.239.132" -> (known after apply)
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_instance.relay must be replaced
+-/+ resource "aws_instance" "relay" {
+      ~ arn                                  = "arn:aws:ec2:ap-northeast-2:774055931866:instance/i-05e4b63d31d8d5ac5" -> (known after apply)
+      ~ associate_public_ip_address          = true -> false # forces replacement
+      ~ availability_zone                    = "ap-northeast-2a" -> (known after apply)
+      ~ disable_api_stop                     = false -> (known after apply)
+      ~ disable_api_termination              = false -> (known after apply)
+      ~ ebs_optimized                        = false -> (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      - hibernation                          = false -> null
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      ~ id                                   = "i-05e4b63d31d8d5ac5" -> (known after apply)
+      ~ instance_initiated_shutdown_behavior = "stop" -> (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      ~ instance_state                       = "running" -> (known after apply)
+      ~ ipv6_address_count                   = 0 -> (known after apply)
+      ~ ipv6_addresses                       = [] -> (known after apply)
+      + key_name                             = (known after apply)
+      ~ monitoring                           = false -> (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      ~ placement_partition_number           = 0 -> (known after apply)
+      ~ primary_network_interface_id         = "eni-0017c49242017af9b" -> (known after apply)
+      ~ private_dns                          = "ip-10-20-110-10.ap-northeast-2.compute.internal" -> (known after apply)
+      ~ public_dns                           = "ec2-3-36-239-132.ap-northeast-2.compute.amazonaws.com" -> (known after apply)
+      ~ public_ip                            = "3.36.239.132" -> (known after apply)
+      ~ secondary_private_ips                = [] -> (known after apply)
+      ~ security_groups                      = [] -> (known after apply)
+      + spot_instance_request_id             = (known after apply)
+        tags                                 = {
+            "Name" = "fds-relay"
+        }
+      ~ tenancy                              = "default" -> (known after apply)
+      + user_data_base64                     = (known after apply)
+        # (13 unchanged attributes hidden)
+
+      ~ capacity_reservation_specification (known after apply)
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      ~ cpu_options (known after apply)
+      - cpu_options {
+          - core_count            = 1 -> null
+          - threads_per_core      = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      ~ ebs_block_device (known after apply)
+
+      ~ enclave_options (known after apply)
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      ~ ephemeral_block_device (known after apply)
+
+      ~ instance_market_options (known after apply)
+
+      ~ maintenance_options (known after apply)
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      ~ metadata_options {
+          ~ http_put_response_hop_limit = 1 -> (known after apply)
+          ~ instance_metadata_tags      = "disabled" -> (known after apply)
+            # (3 unchanged attributes hidden)
+        }
+
+      ~ network_interface (known after apply)
+
+      ~ primary_network_interface (known after apply)
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-0017c49242017af9b" -> null
+        }
+
+      ~ private_dns_name_options (known after apply)
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      ~ root_block_device {
+          ~ device_name           = "/dev/sda1" -> (known after apply)
+          ~ iops                  = 3000 -> (known after apply)
+          - tags                  = {} -> null
+          ~ tags_all              = {
+              - "Component" = "vpn"
+              - "ManagedBy" = "terraform"
+              - "Phase"     = "phase2"
+              - "Project"   = "fds-hybrid"
+            } -> (known after apply)
+          ~ throughput            = 125 -> (known after apply)
+          ~ volume_id             = "vol-09d072c0e65a6e80d" -> (known after apply)
+            # (5 unchanged attributes hidden)
+        }
+
+      ~ secondary_network_interface (known after apply)
+
+        # (1 unchanged block hidden)
+    }
+
+Plan: 2 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  ~ relay_handoff           = {
+      ~ instance_id           = "i-05e4b63d31d8d5ac5" -> (known after apply)
+      ~ primary_eni_id        = "eni-0017c49242017af9b" -> (known after apply)
+      ~ root_volume_id        = "vol-09d072c0e65a6e80d" -> (known after apply)
+        # (13 unchanged attributes hidden)
+    }

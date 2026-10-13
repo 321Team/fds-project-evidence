@@ -1,0 +1,23 @@
+data.aws_iam_instance_profile.relay: Reading...
+data.aws_vpc.network: Reading...
+data.aws_ami.relay: Reading...
+data.aws_kms_key.ebs: Reading...
+data.aws_subnet.transport: Reading...
+aws_ssm_document.session_preferences[0]: Refreshing state... [id=SSM-SessionManagerRunShell]
+data.aws_kms_key.ebs: Read complete after 0s [id=d5f49efe-b6f2-4204-b75f-6d686a86ffbc]
+data.aws_ami.relay: Read complete after 0s [id=ami-08d855918a18d0cf9]
+data.aws_subnet.transport: Read complete after 0s [id=subnet-0fbc846bde668f0f3]
+data.aws_vpc.network: Read complete after 1s [id=vpc-039718404350154d9]
+aws_security_group.relay: Refreshing state... [id=sg-0f1e8a5dbecabccee]
+aws_vpc_security_group_ingress_rule.ike["4500"]: Refreshing state... [id=sgr-0168ae3fc680f71f0]
+aws_vpc_security_group_ingress_rule.ike["500"]: Refreshing state... [id=sgr-0285d809ced572046]
+aws_vpc_security_group_egress_rule.reviewed["https"]: Refreshing state... [id=sgr-075138fb7b511a7be]
+data.aws_iam_instance_profile.relay: Read complete after 1s [id=AIPA3IOKUF7NK6O4NTEM7]
+aws_instance.relay: Refreshing state... [id=i-05e4b63d31d8d5ac5]
+aws_eip.relay: Refreshing state... [id=eipalloc-0850415d83b0132a6]
+aws_eip_association.relay: Refreshing state... [id=eipassoc-042c30d80698f0dc8]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
