@@ -1,0 +1,23 @@
+{
+  "verified_at_utc": "2026-10-13T11:15:28.796241+00:00",
+  "upstream_url": "https://raw.githubusercontent.com/containers/podman/v6.1.0/libpod/define/container_inspect.go",
+  "source_sha256": "e033da0e9189576e5e2e015b7e4d7fae996d2bb161ef29291a75950ff295447c",
+  "template_fields": [
+    "Args",
+    "Config.Labels",
+    "Config.User",
+    "Config.WorkingDir",
+    "HostConfig.NetworkMode",
+    "HostConfig.ReadonlyRootfs",
+    "ID",
+    "Image",
+    "Mounts",
+    "Name",
+    "Path",
+    "State.Running"
+  ],
+  "static_field_contract": "PASS",
+  "runtime_template_execution": "NOT_RUN",
+  "local_mock_lifecycle_tests": 9,
+  "limitation": "Go template engine and Podman were not executed locally; runner result remains failure before start"
+}

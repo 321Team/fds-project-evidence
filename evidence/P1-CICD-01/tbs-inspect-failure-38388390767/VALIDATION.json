@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-10-13T11:23:01.709071+00:00",
+  "scope": "LOCAL_RECEIVED_BYTES_AND_RECORDED_RUN_CORRELATION",
+  "run_id": 38388390767,
+  "attempt": 1,
+  "original_server_files_byte_hash_matched": 69,
+  "step_log_hashes_matched": 64,
+  "root_handoff_build_and_original_manifests": "PASS",
+  "workflow_config_app_and_time_window": "PASS",
+  "observed_tests_passed": 51,
+  "tests": {
+    "fds-engine-unit-0": 16,
+    "transaction-api-contract-0": 20,
+    "fds-engine-contract-0": 15
+  },
+  "api_build_save": "PASS",
+  "api_start_probe": "NOT_RUN",
+  "engine_build": "NOT_RUN",
+  "scan_push_deploy": "NOT_RUN",
+  "own_cid_cleanup": "REMOVED",
+  "post_collection_worker_count": 0,
+  "api_archive_hash_read_on_runner": "MATCH",
+  "archive_copied_to_workstation": false,
+  "missing_originals": [
+    "build-scan/transaction-api-image-smoke/container.cid",
+    "build-scan/scan/result.json",
+    "build-scan/scan/db/result.json"
+  ],
+  "code_fix_pr": 78,
+  "code_fix_head": "7ebf101b88814498f7390a2c7afb2a5b9fd9c96e",
+  "code_fix_runtime": "NOT_RUN",
+  "evidence_independent_review": "PENDING",
+  "evidence_merge": "NOT_PERFORMED",
+  "acceptance": "NOT_PERFORMED"
+}
