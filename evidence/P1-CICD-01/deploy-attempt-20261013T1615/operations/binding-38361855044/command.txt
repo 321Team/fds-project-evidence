@@ -1,0 +1,10 @@
+set -eu
+umask 077
+test "$(hostname -s)" = ansible01
+test "$(id -un)" = server01_ansible
+test ! -e /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73/binding-38361855044.json
+test ! -L /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73/binding-38361855044.json
+set -C
+cat > /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73/binding-38361855044.json
+sha256sum /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73/binding-38361855044.json
+stat -c "%n|%u|%a|%F|%h" /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73/binding-38361855044.json

@@ -1,0 +1,17 @@
+set -eu
+umask 077
+test "$(hostname -s)" = ansible01
+test "$(id -un)" = server01_ansible
+test ! -L /home/server01_ansible
+test "$(stat -c %a /home/server01_ansible)" = 700
+test "$(stat -c %u /home/server01_ansible)" = "$(id -u)"
+test ! -e /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73
+test ! -L /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73
+mkdir -m 700 -- /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73
+cd /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73
+set -C
+cat > deploy-controller-2d8a14c.tar
+test "$(sha256sum deploy-controller-2d8a14c.tar | cut -d " " -f 1)" = 67df6be5d7f935f2618e55365b7c3f0250bea99b771a579873e7961f9061f261
+tar --no-same-owner --no-same-permissions --keep-old-files -xf deploy-controller-2d8a14c.tar -C /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73
+find /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73 -type f -exec sha256sum {} +
+find /home/server01_ansible/FDS_CICD_DeployController.2fb09791-d0ca-443f-9c1b-77747c3f3a73 -exec stat -c "%n|%u|%a|%F" {} +
