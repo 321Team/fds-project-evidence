@@ -15,7 +15,7 @@
 
 [회차 카드](https://github.com/321Team/infra-ansible/issues/61#issuecomment-6136756617)에 따라 사용자가 이재환의 직접 수행 가능 및 이권욱의 회수 인수 가용성을 확인했다. 확정 창은 11:15 준비, 11:45 이전 새 공급, 13:15 정리 목표였다. 실제 인증·공급·Job·정리 시각은 auth-ready/release-result/Job/operator-ended 원본이다.
 
-Codex는 기존 공급물·PREPARED 읽기, helper 배치, 카드 전달, 실행 상태 관측, 종료 증적 수집·대조를 수행했다. 이 관측은 본인 로그인 식별을 별도로 인증하는 자료가 아니다. **이재환의 본인 수행 구간·판단·지원받은 구간 및 원본 수신 회신은 대기**다. 사용자 지정이나 정상 Job 결과만으로 O02 직접 수행·2인 운영 인수를 완료 처리하지 않는다. 실제 발생하지 않은 실패·복구 수행을 만들어 기록하지 않는다.
+Codex는 기존 공급물·PREPARED 읽기, helper 배치, 카드 전달, 실행 상태 관측, 종료 증적 수집·대조를 수행했다. 이 관측은 본인 로그인 식별을 별도로 인증하는 자료가 아니다. **이재환의 [본인 수행·원본 수신 회신](https://github.com/321Team/infra-ansible/issues/61#issuecomment-6136928532)에서 11:33 KST 작성된 본인 회신을 수신했다.** A의 직접 sudo/serve 관측, B의 직접 release, 정상 회수 및 재환 PC의 원본 수신·외부 SHA/내부16항목 확인을 당사자가 보고했다. 준비·helper 지원은 이권욱으로 분리했다. Source/Run/Job/Runner·시각·원본 SHA는 이번 수집 결과와 일치한다. 따라서 O02 실제 수행 근거를 확보했으며, 독립 증적 편입 검토와 운영 인수 판정은 구분한다. 이번 회차에서는 장애가 발생하지 않았으므로 실패·장애 인수 실적을 만들지 않는다.
 
 신규 prepare/image rebuild·Job rerun은 하지 않았다. Helper는 기존 CI77 성공 회차의 대상·경로·창 교체와 참여/회수 확인 검사만 보완했다. 구문 및 확인값 조합4개 MOCK을 검증했고 제품 코드 전체 시험을 반복하지 않았다. STAGING_RESULT의 초기 session SHA는 확인 전 false 입력 시점이며, SESSION_CONFIRMATION 및 현 session이 확인 후 입력을 나타낸다.
 
@@ -23,7 +23,7 @@ Codex는 기존 공급물·PREPARED 읽기, helper 배치, 카드 전달, 실행
 
 - CI SUCCESS / RUNNER_CLEANUP VERIFIED / 증적 독립 REVIEW·MERGE PENDING. 코드 PR81 최신 두 독립 승인과 이번 증적 편입 검토는 구분한다.
 - 알림은 미활성. Billing·exact 수신 login·근무 외 대응/실패 전달·실제 수신 인수가 남는다. 기존 수동 관측으로 수행한 CI에 새 알림 활성화를 선행조건으로 붙이지 않았다.
-- O02 본인 수행 회신, 원본 보관 담당/인수자·수신 시각·보존 종료 기준 연결은 남는다. 원격 원본 위치와 수신 시각은 CLEANUP_OBSERVATION에 기록했다. Git 편입이나 SHA 일치로 공유 ACL·장기보존 인수 완료를 주장하지 않는다.
+- O02 본인 수행·호스트 archive의 재환 PC 수신 근거는 OPERATOR_REPORT로 연결됐다. 보고자는 packet 폐기를 helper 출력으로 확인했다고 명시했고, Codex는 수신 packet/incoming 부재를 별도 읽기로 보완했다. 원본 보관 책임·보존 종료 기준 및 C01 실효 공유 권한의 전체 인수는 별도이며, 이번 수신이나 SHA 일치로 완료 처리하지 않는다.
 - 관리자 HOME에는 과거 packet 28개가 남아 있다(mode0600, mtime 2026-09-16~2026-10-05 UTC, 이번 준비 시작 이후 mtime/ctime 변경0). ADMIN_PACKET_METADATA는 경로·소유·권한·시각만 수집했다. 값·token 해시·유효성은 읽거나 검증하지 않았고 삭제하지 않았다. 이번 packet의 삭제는 release-result의 기록이며 삭제된 exact 관리자 경로가 별도 기록되지 않아 사후 독립 경로 대조는 할 수 없다. 과거 파일의 보존/정리 범위는 #61 운영 담당 이재환·회수 지원 이권욱의 별도 후속이며 CI 코드나 이번 Job을 다시 실행할 사유는 아니다.
 - 과거 PREPARED는 새 시험 결과가 아니다. 변경 없는 원본 공급을 사용했고 실제 run/cleanup 결과를 별도로 대조했다. queue-watch-before-handoff JSON은 11:13 관측이며 CI 결과가 아니다. 해당 호출의 shell 비영 종료와 도구의 rc2 계약을 구분하고, Python 종료코드를 새로 측정했다고 주장하지 않는다.
 - production_apply=false / operational_engine_transition=false. Harbor·APP Deploy·reboot·Phase2·#61 AC 종결은 수행하지 않았다.
