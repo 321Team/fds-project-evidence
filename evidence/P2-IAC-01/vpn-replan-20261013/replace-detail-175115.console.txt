@@ -1,0 +1,21 @@
+# 콘솔 복사본 발췌 (원본 파일 아님)
+# 출처: CloudShell ~/iac11-vpn-20261012-020352 — 17:51:15 회차
+#   1) grep "forces replacement|must be replaced|replaced" evidence-vpn-replan-20261012-175115/plan.stdout  (원본 plan.stdout은 runs/ 폴더에 있음)
+#   2) python3 로 show-json.stdout(Plan JSON, state 사본 포함이라 증적 미편입)의 no-op 아닌 변경과 replace_paths 출력
+# Plan JSON SHA256: 7a7a2e1110571d6f8ee78d73409718f06b0da5de8f0ff885bd0fe73685dbbf76 (runs/evidence-vpn-replan-20261012-175115/execution-summary.json 기록값)
+# 2026-10-12 이하영 실행, 화면 출력 복사. 아래 2)는 교체 원인 줄만 발췌(나머지는 "새로 만들면 정해질 값"으로 after가 null인 항목)
+
+-- 1) plan.stdout
+26:  # aws_eip_association.relay must be replaced
+30:      ~ network_interface_id = "eni-0017c49242017af9b" -> (known after apply) # forces replacement
+35:  # aws_instance.relay must be replaced
+38:      ~ associate_public_ip_address          = true -> false # forces replacement
+
+-- 2) Plan JSON (발췌)
+== aws_eip_association.relay ['delete', 'create'] replace_paths: [['network_interface_id']]
+   network_interface_id | before: "eni-0017c49242017af9b" | after: null
+   public_ip | before: "3.36.239.132" | after: null
+== aws_instance.relay ['delete', 'create'] replace_paths: [['associate_public_ip_address']]
+   associate_public_ip_address | before: true | after: false
+   id | before: "i-05e4b63d31d8d5ac5" | after: null
+   public_ip | before: "3.36.239.132" | after: null
