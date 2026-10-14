@@ -1,0 +1,59 @@
+{
+  "operation": "STAGE_AND_FIXTURE_HELPER_ONLY",
+  "started_at_utc": "2026-10-14T11:54:22.166461+00:00",
+  "images_loaded_or_pulled": false,
+  "runtime_containers_created": false,
+  "actual_run_claim_created": false,
+  "before": {
+    "hostname": "cicd-runner01",
+    "uid": 1000,
+    "arch": "x86_64",
+    "worker_count": 0,
+    "container_count": 0,
+    "port18081_empty": true,
+    "at_utc": "2026-10-14T11:54:22.250449+00:00"
+  },
+  "bundle": {
+    "directory": "/home/server01_cicd-runner/FDS_D03_Preparation_192c5ab04a5e",
+    "archive": "/home/server01_cicd-runner/FDS_D03_Preparation_192c5ab04a5e.tar.gz",
+    "sha256": "29b378e5b1ddfaefcd15bfa6f2d9dd65fdf54d6474418a59210ff043530197e5",
+    "files": 19,
+    "manifest_verified": 18
+  },
+  "source_files_verified": 10,
+  "helper_entry": {
+    "hostname": "cicd-runner01",
+    "uid": 1000,
+    "arch": "x86_64",
+    "worker_count": 0,
+    "container_count": 0,
+    "port18081_empty": true,
+    "at_utc": "2026-10-14T11:54:22.327467+00:00"
+  },
+  "precheck_directory": "/home/server01_cicd-runner/FDS_D03_Precheck.ezn5ka16",
+  "helper": {
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "tools.tests.test_d03_lab.StagedInvocation.test_staged_probe_reaches_loopback_fixture",
+      "tools.tests.test_d03_lab.FixtureWireBehavior.test_lab_helper_get_and_post_reach_actual_fixture"
+    ],
+    "rc": 0,
+    "stdout": "",
+    "stderr": "test_staged_probe_reaches_loopback_fixture (tools.tests.test_d03_lab.StagedInvocation.test_staged_probe_reaches_loopback_fixture) ... ok\ntest_lab_helper_get_and_post_reach_actual_fixture (tools.tests.test_d03_lab.FixtureWireBehavior.test_lab_helper_get_and_post_reach_actual_fixture) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 1.064s\n\nOK\n"
+  },
+  "after": {
+    "hostname": "cicd-runner01",
+    "uid": 1000,
+    "arch": "x86_64",
+    "worker_count": 0,
+    "container_count": 0,
+    "port18081_empty": true,
+    "at_utc": "2026-10-14T11:54:23.567610+00:00"
+  },
+  "status": "HELPER_PASS_RUNTIME_NOT_RUN",
+  "finished_at_utc": "2026-10-14T11:54:23.567626+00:00"
+}

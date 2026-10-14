@@ -1,0 +1,53 @@
+{
+  "status": "SUPPLY_STOP",
+  "started_at_utc": "2026-10-14T12:00:17.118565+00:00",
+  "plan_sha256": "3f2038b9d90fecf727e24f901703df88d7b5b4f8d9bb2005a2b68aa5f660addf",
+  "runtime_started": false,
+  "operations": [
+    {
+      "label": "api-load",
+      "argv": [
+        "podman",
+        "load",
+        "--input",
+        "/home/server01_cicd-runner/FDS_CICD_AppWorkflow.3_geu2kf/build-scan/transaction-api.oci.tar"
+      ],
+      "started_at_utc": "2026-10-14T12:00:17.321773+00:00",
+      "rc": 0,
+      "finished_at_utc": "2026-10-14T12:00:18.742275+00:00",
+      "stdout_sha256": "1325fefdb41ff5b9544f1325d77e5be8c42635d5edfe8331786fe812b370f748",
+      "stderr_sha256": "818a204547bf6a45fb58612a4e683b1c69c10df75b6ba6464cf94d65a151cc05"
+    },
+    {
+      "label": "engine-load",
+      "argv": [
+        "podman",
+        "load",
+        "--input",
+        "/home/server01_cicd-runner/FDS_CICD_AppWorkflow.3_geu2kf/build-scan/fds-engine.oci.tar"
+      ],
+      "started_at_utc": "2026-10-14T12:00:18.924743+00:00",
+      "rc": 0,
+      "finished_at_utc": "2026-10-14T12:00:19.492335+00:00",
+      "stdout_sha256": "8f42ff21520f04c4596fef005fe50bdd51bd72ffb70bf37f0100b0eec1fb03a2",
+      "stderr_sha256": "d6d8bd32eddf411d877c501474db4290943f1e470e185e9364120a41952fcf20"
+    },
+    {
+      "label": "db-pull",
+      "argv": [
+        "podman",
+        "pull",
+        "--tls-verify=true",
+        "quay.io/sclorg/postgresql-16-c9s@sha256:d33717fd33c1a4b11afef94568d0c20812a19d62fb8c633fadee1e491e2edd4a"
+      ],
+      "started_at_utc": "2026-10-14T12:00:19.683152+00:00",
+      "rc": 0,
+      "finished_at_utc": "2026-10-14T12:00:31.577987+00:00",
+      "stdout_sha256": "a00173aafb20f402f13c28e3fc36a7daf10beca8d4ddc158095af47744877a79",
+      "stderr_sha256": "4f56907e4d9acc8cbac47efc20a634e507b65b02f1619e9434e5c7e637e03b09"
+    }
+  ],
+  "error_type": "AssertionError",
+  "error": "",
+  "finished_at_utc": "2026-10-14T12:00:31.652293+00:00"
+}
