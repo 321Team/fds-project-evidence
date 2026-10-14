@@ -1,0 +1,6 @@
+# db01/server08. READ ONLY for actual APP RUN 202610141025; preserve all 8 pipe-separated columns.
+hostname
+date --iso-8601=seconds
+sudo -u postgres psql -X -P pager=off -A -t -F '|' -v ON_ERROR_STOP=1 -d fdsdb -c "BEGIN READ ONLY; SET LOCAL statement_timeout='5s'; SELECT current_database(), current_user, current_timestamp; SELECT account_id, transaction_id, transaction_type, amount, fds_detected, fds_evaluation_skipped, coalesce((SELECT string_agg(r->>'rule_id', ',') FROM jsonb_array_elements(fds_rules) r WHERE (r->>'triggered')::bool), '-'), occurred_at FROM public.transactions WHERE left(account_id,length('SIM_rg_202610141025_'))='SIM_rg_202610141025_' ORDER BY received_at; COMMIT;"
+printf 'DB_AFTER_RC=%s\n' "$?"
+date --iso-8601=seconds

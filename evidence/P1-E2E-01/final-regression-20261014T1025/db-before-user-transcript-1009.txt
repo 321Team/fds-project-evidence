@@ -1,0 +1,58 @@
+server08@db01:~$ # db01 / server08 콘솔. Probe 회복 후 APP 전송 직전에만 실행.
+# 지금은 준비 자료이며, 요청 전에는 이 결과를 fresh RUN0행으로 사용하지 않음.
+hostname
+date --iso-8601=seconds
+sudo -u postgres psql -X -v ON_ERROR_STOP=1 -d fdsdb -v run_first=202610141025 -v run_last=202610141035 -f - <<'P1_SQL'
+SELECT :'run_first' ~ '^[0-9]{8}(0[5-9]|1[0-9]|2[0-3])[0-5][0-9]$'
+   AND :'run_last' ~ '^[0-9]{8}(0[5-9]|1[0-9]|2[0-3])[0-5][0-9]$'
+   AND left(:'run_first', 8) = left(:'run_last', 8)
+   AND left(:'run_first', 8) = to_char(current_timestamp AT TIME ZONE 'Asia/Seoul', 'YYYYMMDD')
+   AND substring(:'run_first', 9, 4) >= '0500'
+   AND substring(:'run_last', 9, 4) <= '2359'
+   AND :'run_first' <= :'run_last' AS valid_window \gset
+\if :valid_window
+\else
+  \echo INVALID_RUN_WINDOW_NO_REQUESTS
+  SELECT 1 / 0 AS invalid_run_window; -- ON_ERROR_STOP=1 exits nonzero.
+\endif
+BEGIN READ ONLY;
+SET LOCAL statement_timeout = '5s';
+SELECT current_database(), current_user, inet_server_addr(), version(),
+       current_setting('TimeZone'), current_timestamp;
+SELECT column_name, data_type FROM information_schema.columns
+ WHERE table_schema = 'public' AND table_name = 'transactions'
+ ORDER BY ordinal_position;
+date --iso-8601=seconds\n' "$?" 20 for 1) = '_';N :'run_first' AND :'run_last'
+db01
+2026-10-14T10:09:24+09:00
+[sudo] server08 암호: 
+BEGIN
+SET
+ current_database | current_user | inet_server_addr |                                                    version                                                    | current_setting |       current_timestamp       
+------------------+--------------+------------------+---------------------------------------------------------------------------------------------------------------+-----------------+-------------------------------
+ fdsdb            | postgres     |                  | PostgreSQL 16.14 on x86_64-redhat-linux-gnu, compiled by gcc (GCC) 14.3.1 20251022 (Red Hat 14.3.1-4), 64-bit | Asia/Seoul      | 2026-10-14 10:09:26.215417+09
+(1개 행)
+
+      column_name       |        data_type         
+------------------------+--------------------------
+ transaction_id         | text
+ account_id             | text
+ amount                 | numeric
+ currency               | text
+ transaction_type       | text
+ source_ip              | text
+ occurred_at            | timestamp with time zone
+ received_at            | timestamp with time zone
+ fds_detected           | boolean
+ fds_rules              | jsonb
+ fds_evaluation_skipped | boolean
+(11개 행)
+
+ existing_rows_in_planned_run_window 
+-------------------------------------
+                                   0
+(1개 행)
+
+COMMIT
+DB_BEFORE_RC=0
+2026-10-14T10:09:26+09:00
