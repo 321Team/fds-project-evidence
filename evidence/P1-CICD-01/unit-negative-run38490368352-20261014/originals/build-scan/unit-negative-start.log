@@ -1,0 +1,15 @@
+test_expected_failure (__main__.DeliveryNegativeUnit.test_expected_failure) ... FAIL
+
+======================================================================
+FAIL: test_expected_failure (__main__.DeliveryNegativeUnit.test_expected_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<string>", line 1, in <lambda>
+    import sys,unittest; case=type("DeliveryNegativeUnit",(unittest.TestCase,),{"test_expected_failure":lambda self:self.fail("P1_CICD_INTENTIONAL_UNIT_FAILURE")}); result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(case)); sys.exit(0 if result.wasSuccessful() else 1)
+                                                                                                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: P1_CICD_INTENTIONAL_UNIT_FAILURE
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)
