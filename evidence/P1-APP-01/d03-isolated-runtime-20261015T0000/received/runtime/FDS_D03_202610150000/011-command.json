@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "exec",
+    "-i",
+    "02f615957c5ee2ce5077e7b490754fe62bfebf7a8a15050b9d73c2f8739607c8",
+    "psql",
+    "-X",
+    "-q",
+    "-At",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-d",
+    "fds_lab"
+  ],
+  "rc": 3,
+  "started_at_utc": "2026-10-14T15:01:34.114939+00:00",
+  "finished_at_utc": "2026-10-14T15:01:34.228200+00:00",
+  "timed_out": false,
+  "stdin": "SET statement_timeout='5s';\nSELECT current_database()||'|'||current_user||'|'||version_num FROM alembic_version;",
+  "stdout": "",
+  "stderr": "ERROR:  relation \"alembic_version\" does not exist\nLINE 1: ...abase()||'|'||current_user||'|'||version_num FROM alembic_ve...\n                                                             ^\n"
+}

@@ -1,0 +1,105 @@
+{
+  "at_utc": "2026-10-14T15:03:09.748519+00:00",
+  "read_only": true,
+  "modes": [
+    {
+      "path": "/home/server01_cicd-runner/FDS_D03_202610150000",
+      "mode": "0o700",
+      "uid": 1000,
+      "gid": 1000,
+      "directory": true
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_D03_202610150000/stage",
+      "mode": "0o700",
+      "uid": 1000,
+      "gid": 1000,
+      "directory": true
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_D03_202610150000/stage/code",
+      "mode": "0o700",
+      "uid": 1000,
+      "gid": 1000,
+      "directory": true
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_D03_202610150000/stage/hooks",
+      "mode": "0o700",
+      "uid": 1000,
+      "gid": 1000,
+      "directory": true
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_D03_202610150000/stage/code/d03_lab.py",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "directory": false
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_D03_202610150000/stage/hooks/10-fds-schema.sh",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "directory": false
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_D03_202610150000/stage/hooks/fds-schema.sql",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "directory": false
+    },
+    {
+      "path": "/home/server01_cicd-runner/FDS_D03_202610150000/stage/hooks/20-d03-logging.sh",
+      "mode": "0o644",
+      "uid": 1000,
+      "gid": 1000,
+      "directory": false
+    }
+  ],
+  "exact_names": [
+    {
+      "name": "fds-d03-202610150000-db",
+      "rc": 1,
+      "absent": true
+    },
+    {
+      "name": "fds-d03-202610150000-api",
+      "rc": 1,
+      "absent": true
+    },
+    {
+      "name": "fds-d03-202610150000-engine",
+      "rc": 1,
+      "absent": true
+    },
+    {
+      "name": "fds-d03-202610150000-fixture",
+      "rc": 1,
+      "absent": true
+    }
+  ],
+  "ls_context": {
+    "rc": 0,
+    "stdout": " unconfined_u:object_r:user_home_t:s0 /home/server01_cicd-runner/FDS_D03_202610150000/stage/code\nsystem_u:object_r:container_file_t:s0 /home/server01_cicd-runner/FDS_D03_202610150000/stage/hooks\n",
+    "stderr": ""
+  },
+  "containers": [],
+  "credential_files_absent": true,
+  "post_intent_count": 0,
+  "claim_sha256": "5d9a7bb1642309bcdba993a6e5940a325e957cdba40ec30af9d21797850359ca",
+  "runtime_original_result": {
+    "result": "FAILED",
+    "failure": {
+      "type": "RuntimeError",
+      "message": "COMMAND_FAILED 11"
+    },
+    "cleanup_confirmed": true,
+    "finished_at_utc": "2026-10-14T15:01:34.588905+00:00",
+    "production_runtime_claim": false
+  },
+  "helper_files_received": 10,
+  "helper_hashes_match": true
+}
