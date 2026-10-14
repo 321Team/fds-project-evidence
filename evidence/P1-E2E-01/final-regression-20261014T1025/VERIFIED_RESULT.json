@@ -1,0 +1,118 @@
+{
+  "status": "APP_REGRESSION_RUNTIME_PASS",
+  "run": "202610141025",
+  "tool_sha256": "f5dee1069ab96838355cf6269dd6cdff2a08107e880594c5dad98d20424594ed",
+  "criteria_sha256": "5fce797a0e10b8c68feda908cbc4573b9dda9bc2b8e621b4ebd6e04ed1ca8e7d",
+  "first_request_kst": "2026-10-14T10:25:10.907000+09:00",
+  "last_request_kst": "2026-10-14T10:25:11.403000+09:00",
+  "requests": 25,
+  "HTTP201": 23,
+  "HTTP422": 2,
+  "api_counts": {
+    "PASS": 24,
+    "INFO": 1
+  },
+  "run_rc": 0,
+  "metric_delta": {
+    "save_success": 23.0,
+    "save_failure": 0.0,
+    "missing_client_ip": 0.0,
+    "evaluated": 23.0
+  },
+  "detected_delta": {
+    "R01": 1.0,
+    "R02": 1.0,
+    "R04": 1.0,
+    "R07": 1.0
+  },
+  "I01": {
+    "http": 201,
+    "body": {
+      "transaction_id": "4107efa8-5443-4ad7-b3e3-3b0d408087b2",
+      "fds_detected": false,
+      "fds_rules": [
+        {
+          "rule_id": "R01",
+          "triggered": false,
+          "detail": null
+        },
+        {
+          "rule_id": "R02",
+          "triggered": false,
+          "detail": null
+        },
+        {
+          "rule_id": "R04",
+          "triggered": false,
+          "detail": null
+        },
+        {
+          "rule_id": "R07",
+          "triggered": false,
+          "detail": null
+        }
+      ],
+      "fds_evaluation_skipped": false
+    },
+    "verdict": "INFO"
+  },
+  "images_specs_pod_uids_restarts_unchanged": true,
+  "MON_up": 23,
+  "app_up": 6,
+  "N08": "3_WORKER_CODE000_FROM_CONTROL01_NO_RULE_ATTRIBUTION",
+  "db_before": "0_ROWS_USER_CONSOLE_102030",
+  "db_after": "23_ROWS_23_RESPONSES_MISMATCH0_USER_CONSOLE",
+  "db_crosscheck_lines": [
+    "OK P01 83a978b7-5730-4d95-be4a-d0bf0e7b13e0 occurred_at=2026-10-14 10:25:10.915635+09",
+    "OK P02 5d9e24fa-46f1-4544-ba68-e4335cec663f occurred_at=2026-10-14 10:25:10.958939+09",
+    "OK P03-1 98d24060-7046-4909-bd3a-522b0fb2b7be occurred_at=2026-10-14 10:25:10.989122+09",
+    "OK P03-2 1f1ec328-6045-4030-b29d-b897e70115d4 occurred_at=2026-10-14 10:25:11.026947+09",
+    "OK P03-3 4e71c462-32e5-4891-a9f0-79b2459b620c occurred_at=2026-10-14 10:25:11.054121+09",
+    "OK P03-4 22528110-afb2-4368-be21-262646932b26 occurred_at=2026-10-14 10:25:11.078733+09",
+    "OK P04-1 b2c5771c-bb21-4802-8571-8629ab0d58f5 occurred_at=2026-10-14 10:25:11.097237+09",
+    "OK P04-2 59a205b4-6d83-4b40-983f-f1cc555a3401 occurred_at=2026-10-14 10:25:11.126236+09",
+    "OK P04-3 69dab4a5-fd33-4d5b-844b-b8fe59cb3764 occurred_at=2026-10-14 10:25:11.148174+09",
+    "OK P04-4 314c3ea4-28bc-41b9-b9cb-bcc260e48e35 occurred_at=2026-10-14 10:25:11.168613+09",
+    "OK P05 f9f5352e-e2ba-4c2e-a23f-61c1046d7f33 occurred_at=2026-10-14 02:30:00+09",
+    "OK N01 9e796812-2602-4d74-aa00-ca52c695411b occurred_at=2026-10-14 10:25:11.20704+09",
+    "OK N02 289704b0-5ff5-4b4f-9509-4debf76a950b occurred_at=2026-10-14 05:00:00+09",
+    "OK N03 0916f32b-0c4e-4b40-8bc8-f9df3a5ddf6f occurred_at=2026-10-14 02:30:00+09",
+    "OK N04-1 0023a48b-8e8f-4f7f-b0c0-c565bcde3aed occurred_at=2026-10-14 10:25:11.259791+09",
+    "OK N04-2 7b7b158f-ff60-4400-8719-fbdf8ab16123 occurred_at=2026-10-14 10:25:11.279421+09",
+    "OK N04-3 07f2abbb-a206-4889-832c-233427a20ee6 occurred_at=2026-10-14 10:25:11.299066+09",
+    "OK N04-4 aa20338f-a8bc-4209-86ce-f7bc9234f9c7 occurred_at=2026-10-14 10:25:11.318386+09",
+    "OK N05-1 cefd4a50-06fa-4180-93d1-d78f2368e9c5 occurred_at=2026-10-14 10:25:11.338463+09",
+    "OK N05-2 16136579-9eda-4a0b-af62-cd1e53f9738f occurred_at=2026-10-14 10:25:11.354914+09",
+    "OK N05-3 cbe8f2a0-e73c-4ef2-b03b-f050d5065f9b occurred_at=2026-10-14 10:25:11.370318+09",
+    "OK N05-4 af9a2a5d-6793-4610-b0bc-2592a9e942ea occurred_at=2026-10-14 10:25:11.387442+09",
+    "-- N06 http=422 (201이 아니므로 DB 행 없음 기대)",
+    "-- N07 http=422 (201이 아니므로 DB 행 없음 기대)",
+    "OK I01 4107efa8-5443-4ad7-b3e3-3b0d408087b2 occurred_at=2026-10-14 11:30:00+09",
+    "== DB 23행 / 응답 201 23건 / 불일치 0"
+  ],
+  "review": "NEW_EVIDENCE_INDEPENDENT_REVIEW_PENDING",
+  "DB11_acceptance": "AWAITING_USER_DECISION_AFTER_FINAL_REGRESSION",
+  "W4": "NOT_MEASURED",
+  "explicit_timestamp_observations": {
+    "P05": {
+      "input": "2026-10-14T02:30:00+09:00",
+      "db_display": "2026-10-14 02:30:00+09",
+      "classification": "EXPLICIT_OFFSET_MATCH"
+    },
+    "N02": {
+      "input": "2026-10-14T05:00:00+09:00",
+      "db_display": "2026-10-14 05:00:00+09",
+      "classification": "EXPLICIT_OFFSET_MATCH"
+    },
+    "N03": {
+      "input": "2026-10-14T02:30:00+09:00",
+      "db_display": "2026-10-14 02:30:00+09",
+      "classification": "EXPLICIT_OFFSET_MATCH"
+    },
+    "I01": {
+      "input": "2026-10-14T02:30:00",
+      "db_display": "2026-10-14 11:30:00+09",
+      "classification": "INFO"
+    }
+  }
+}

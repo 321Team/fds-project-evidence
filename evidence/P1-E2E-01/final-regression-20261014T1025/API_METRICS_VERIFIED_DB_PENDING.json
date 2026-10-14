@@ -1,0 +1,69 @@
+{
+  "status": "APP_API_METRICS_PASS_DB_PENDING",
+  "run": "202610141025",
+  "tool_sha256": "f5dee1069ab96838355cf6269dd6cdff2a08107e880594c5dad98d20424594ed",
+  "criteria_sha256": "5fce797a0e10b8c68feda908cbc4573b9dda9bc2b8e621b4ebd6e04ed1ca8e7d",
+  "first_request_kst": "2026-10-14T10:25:10.907000+09:00",
+  "last_request_kst": "2026-10-14T10:25:11.403000+09:00",
+  "requests": 25,
+  "HTTP201": 23,
+  "HTTP422": 2,
+  "api_counts": {
+    "PASS": 24,
+    "INFO": 1
+  },
+  "run_rc": 0,
+  "metric_delta": {
+    "save_success": 23.0,
+    "save_failure": 0.0,
+    "missing_client_ip": 0.0,
+    "evaluated": 23.0
+  },
+  "detected_delta": {
+    "R01": 1.0,
+    "R02": 1.0,
+    "R04": 1.0,
+    "R07": 1.0
+  },
+  "I01": {
+    "http": 201,
+    "body": {
+      "transaction_id": "4107efa8-5443-4ad7-b3e3-3b0d408087b2",
+      "fds_detected": false,
+      "fds_rules": [
+        {
+          "rule_id": "R01",
+          "triggered": false,
+          "detail": null
+        },
+        {
+          "rule_id": "R02",
+          "triggered": false,
+          "detail": null
+        },
+        {
+          "rule_id": "R04",
+          "triggered": false,
+          "detail": null
+        },
+        {
+          "rule_id": "R07",
+          "triggered": false,
+          "detail": null
+        }
+      ],
+      "fds_evaluation_skipped": false
+    },
+    "verdict": "INFO"
+  },
+  "images_specs_pod_uids_restarts_unchanged": true,
+  "MON_up": 23,
+  "app_up": 6,
+  "N08": "3_WORKER_CODE000_FROM_CONTROL01_NO_RULE_ATTRIBUTION",
+  "db_before": "0_ROWS_USER_CONSOLE_102030",
+  "db_after": "PENDING_USER_CONSOLE_OUTPUT",
+  "db_crosscheck_lines": [],
+  "review": "NEW_EVIDENCE_INDEPENDENT_REVIEW_PENDING",
+  "DB11_acceptance": "AWAITING_USER_DECISION_AFTER_FINAL_REGRESSION",
+  "W4": "NOT_MEASURED"
+}
