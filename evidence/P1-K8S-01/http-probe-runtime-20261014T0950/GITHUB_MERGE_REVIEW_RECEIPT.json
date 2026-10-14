@@ -1,0 +1,57 @@
+{
+  "read_utc": "2026-10-14T00:57:59.987734+00:00",
+  "records": {
+    "fds-project-evidence#221": {
+      "head": "fb931f5a59032607bd051206c192a77168c5752c",
+      "merged": true,
+      "merged_at": "2026-10-14T00:46:35Z",
+      "merge_commit_sha": "851c3827f69160a6299c859f2cca3a32dab41054",
+      "reviews": [
+        {
+          "id": 5511737187,
+          "state": "APPROVED",
+          "commit_id": "fb931f5a59032607bd051206c192a77168c5752c",
+          "submitted_at": "2026-10-14T00:41:02Z",
+          "body": "## 리뷰 — 새 Deploy 후 worker02 HA PASS·1/1/1 복원 증적 (이재환, evidence#221)\n\n**대상 HEAD** `fb931f5a59032607bd051206c192a77168c5752c`\n**검토 범위** 수집회차 `evidence/P1-HA-01/post-deploy-runtime-20261014T0022/`(200파일) + REGISTRY 1줄. HA 판정 재현, drain·uncordon·Eviction 원본, 사후 상태, engine 관측 정정\n\n사실 오류가 없어 편입 승인합니다(#22 원 HA Lead 관점).\n\n### 직접 확인한 것\n- **무결성:** 폴더 `SHA256SUMS` 199/199 일치, 목록 밖 파일 0, REGISTRY 새 줄 일치. 변경분 비밀 패턴 0건. CI [38424239856](https://github.com/321Team/fds-project-evidence/actions/runs/38424239856)은 `fb931f5a`에서 success입니다.\n- **도구:** `edge-originals/ha-probe.py` `e2603769…`·`ha-judge.py` `79f54c95…`가 PR220에서 승인한 바이트와 같습니다.\n- **판정 재현:** 편입된 `probe.log`(5,403줄)와 `timeline.txt`로 같은 `ha-judge.py`를 제 PC에서 다시 돌렸습니다(`python -I -B`). 결과가 PR 서술과 같습니다.\n  - W 287.7초, tick 575, 요청 1,725\n  - 구간별: 기준선 81.6초, 재배치 Ready 뒤 78.3초, uncordon 뒤 90.2초, drain→Ready 37.7초\n  - 누락 tick 0, 발사 지연 최대 0.017초, 기준선 비200 0\n  - **A** 정상 Worker(.105·.108) 실패 0, **B** 성공 응답 최대 간격 0.516초(≤1초)\n  - 대상 worker02 비200 412건은 Local 경계로 별도\n  - **판정 PASS**\n- **변경 원본:**\n  - `drain-intent`: 명령이 카드와 같습니다(`--pod-selector='app in (transaction-api,fds-engine)' --ignore-daemonsets --timeout=180s`, 강제 옵션 없음). 대상은 PR220에서 확인한 두 Pod(`fds-engine-…-4jc8j`, `transaction-api-…-9fk6b`)입니다.\n  - `uncordon-result`: rc 0, `unschedulable=false` readback, node UID 일치.\n  - 재분산 Eviction 2건(engine `…-d6kkm`, API `…-lq66r`): 둘 다 `policy/v1`, UID·resourceVersion 선조건, `gracePeriodSeconds 30`. 카드 한도 앱당 1개·총 2개 안입니다.\n- **사후 상태 (`final-app-state`):** Deployment generation 6/12로 변화 없음(spec 유지), 각 ready 3. Pod 6개 모두 ready, restart 0, imageID가 새 digest와 같고, 배치는 worker01/02/03 각 1개입니다.\n\n### 수용한 정정\n- engine 재분산 뒤 관측 보조 코드가 없는 Pod 라벨을 기대해 `MON_TIMEOUT`(rc2)으로 끝난 원본을 숨기지 않고 보존했습니다. 실제 job·instance와 현재 Pod IP·전용 port를 대조한 보충(29/29)과 30초 안정 관측 뒤 API를 진행한 순서가 원본에 남아 있습니다. 판정 범위(W)와 재분산 구간을 분리한 서술에 동의합니다.\n\n### 미검증\n- 업무 POST/DB 무손실, HTTP Probe 실패 주입, 최종 APP 회귀: `NOT RUN`(README와 같음).\n- 재분산 구간의 HTTP 영향은 judge 범위 밖입니다. MON·Ready 원본으로만 남아 있습니다.\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조\n",
+          "html_url": "https://github.com/321Team/fds-project-evidence/pull/221#pullrequestreview-5511737187",
+          "user": "supreme33-kr"
+        }
+      ],
+      "checks": [
+        {
+          "name": "check",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "fb931f5a59032607bd051206c192a77168c5752c",
+          "html_url": "https://github.com/321Team/fds-project-evidence/actions/runs/38424239856/job/115389291295"
+        }
+      ]
+    },
+    "infra-kubernetes#86": {
+      "head": "d53ce00f318785b97577d41c07d8309ff581c2a8",
+      "merged": true,
+      "merged_at": "2026-10-14T00:46:39Z",
+      "merge_commit_sha": "e60e022333a51a9a1690649ef170c0bda92ad9b9",
+      "reviews": [
+        {
+          "id": 5511744639,
+          "state": "APPROVED",
+          "commit_id": "d53ce00f318785b97577d41c07d8309ff581c2a8",
+          "submitted_at": "2026-10-14T00:42:18Z",
+          "body": "## 리뷰 — engine HTTP Probe 1회 실행기·APP 회귀 SQL (이재환, infra-kubernetes#86)\n\n**대상 HEAD** `d53ce00f318785b97577d41c07d8309ff581c2a8` (base `92c182fc`, 33파일 +1090)\n**검토 범위** `ops/p1-http-probe/engine_stop.py` 전문, `observed-binding.json`, `app-db-before.sql`·`app-db-after.sql`, 시험, CI workflow, precheck 중 probe 설정\n\n차단 사항이 없어 승인합니다.\n\n### 코드 검토 — 확인한 것\n- **소스 해시:** `engine_stop.py` SHA256 `8b9fe37d…cc32`가 README 실행 인자 `--source-sha256`과 같습니다. 실행 시 자기 파일을 재해시해 비교합니다.\n- **대상 고정:**\n  - 실행 전에 host, root, boot_id, CRI inspect(전체 container ID, RUNNING, PID, imageRef digest), Pod 라벨(namespace·name·uid·container), `/proc/<pid>/stat` starttime, cgroup, pid ns, cmdline, Uid 10001×4, NSpid를 모두 대조합니다.\n  - starttime은 `stat`의 `)` 뒤 필드 기준 `fields[19]`로, 22번째 필드가 맞습니다.\n  - `pidfd_open` 뒤 같은 대조를 **한 번 더** 해서 PID 재사용 경쟁을 막고, 이후 신호는 모두 그 pidfd로만 보냅니다.\n- **binding 대상:** Pod `fds-engine-65479b5bf-4gfgq`(worker02, image `8b257adb…`)가 증적221 HA 뒤 최종 배치(worker02의 engine Pod)와 같습니다.\n- **신호 경계:**\n  - STOP은 1회입니다. 원 프로세스 종료·ABORT·150초 deadline·예외·INT/TERM/HUP 어느 경우든 `finally`에서 같은 fd로만 CONT하고, 이미 종료됐으면 보내지 않습니다.\n  - 이미 `T` 상태면 주입을 거부합니다. 새 PID·두 번째 STOP은 없습니다.\n- **ns-init 대상:** 대상은 컨테이너 PID 1입니다(`NSpid [pid,1]`). 상위 ns에서 보낸 SIGSTOP은 init에도 강제 전달되고, SIGCONT의 재개는 수신 측 핸들러와 무관하게 처리되므로 설계가 성립합니다. 다만 CI 시험은 일반 child 프로세스라 이 조건은 시험되지 않았습니다(아래 비차단 1).\n- **시간 예산:**\n  - `window()`는 `end − latest ≥ 150+240초`를 요구합니다. 09:55 → 10:20은 25분이라 충족합니다.\n  - engine liveness는 `/livez` 8001, period 20초, timeout 1초, failure 3입니다(precheck). kubelet 재시작이 대략 60~80초 안에 나야 하므로 150초 hold 안에 들어갑니다. 재시작이 없으면 150초 뒤 CONT로 원복됩니다.\n- **원본 경로:** `/var/tmp/p1-http-probe-YYYYMMDD-HHMM`만 허용하고 `exist_ok=False`라 재사용할 수 없습니다. `input.json`·`events.jsonl`은 `x` 모드에 fsync합니다.\n- **SQL:**\n  - 사전: 같은 날 KST 05:00 이후 RUN 범위만 허용합니다. `READ ONLY`, `statement_timeout 5s`, 계정 prefix·위치가 `rg.py` 계정 형식과 맞습니다.\n  - 사후: 8열 출력이 `crosscheck`의 `parse_db_log`와 맞습니다.\n- **CI:** `offline-and-linux-process` success(GitHub 조회). 시험 9개 이름이 deadline·abort·interrupt·교체 PID·이미 정지·원 종료 경로를 다룹니다.\n\n### 비차단\n1. **CI는 컨테이너 PID 1(ns init)을 대상으로 시험하지 않았습니다.** 실제 첫 실행 원본의 `STOP_SENT` 이후 HTTP 실패 관측과 `CONT_ORIGINAL_ONLY` 또는 `ORIGINAL_EXIT` 이벤트로 동작을 확인해 주십시오.\n2. **주입 중 MON:** engine `9090` scrape가 끊기고 `up` 23/23이 일시적으로 깨질 수 있습니다. 판정 때 이 구간을 MON 장애가 아닌 주입 영향으로 분리해 주십시오.\n3. **`app-db-after.sql`의 Rule 문자열:** PR165 때 남긴 것과 같이 `string_agg`에 `ORDER BY`가 없습니다. 현재 기준상 한 행 Rule 1개라 영향은 없을 것으로 봅니다.\n4. **예시 범위:** `app-db-before.sql` 주석의 RUN 예시(0825~0835)는 이전 창 값입니다. 실제 인자는 README의 새 범위(1025~1035)를 쓰면 됩니다.\n\n### 미검증\n- 운영 STOP·kubelet 재시작·APP 회귀: `NOT RUN`.\n- db01 사전·사후 SQL 실제 실행: `NOT RUN`.\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조\n",
+          "html_url": "https://github.com/321Team/infra-kubernetes/pull/86#pullrequestreview-5511744639",
+          "user": "supreme33-kr"
+        }
+      ],
+      "checks": [
+        {
+          "name": "offline-and-linux-process",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "d53ce00f318785b97577d41c07d8309ff581c2a8",
+          "html_url": "https://github.com/321Team/infra-kubernetes/actions/runs/38479290514/job/115577637027"
+        }
+      ]
+    }
+  }
+}
