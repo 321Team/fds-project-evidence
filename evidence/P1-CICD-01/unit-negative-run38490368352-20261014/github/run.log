@@ -1,0 +1,184 @@
+unit-negative	Set up job	﻿2026-10-14T00:28:30.2238708Z Current runner version: '2.337.0'
+unit-negative	Set up job	2026-10-14T00:28:30.2246673Z Runner name: 'cicd-runner01'
+unit-negative	Set up job	2026-10-14T00:28:30.2247766Z Runner group name: 'Default'
+unit-negative	Set up job	2026-10-14T00:28:30.2248778Z Machine name: 'cicd-runner01'
+unit-negative	Set up job	2026-10-14T00:28:30.2251998Z ##[group]GITHUB_TOKEN Permissions
+unit-negative	Set up job	2026-10-14T00:28:30.2254470Z Contents: read
+unit-negative	Set up job	2026-10-14T00:28:30.2255160Z Metadata: read
+unit-negative	Set up job	2026-10-14T00:28:30.2256013Z ##[endgroup]
+unit-negative	Set up job	2026-10-14T00:28:30.2257801Z Secret source: Actions
+unit-negative	Set up job	2026-10-14T00:28:30.2259178Z Cache mode: write
+unit-negative	Set up job	2026-10-14T00:28:30.2260148Z Prepare workflow directory
+unit-negative	Set up job	2026-10-14T00:28:30.3877394Z Prepare all required actions
+unit-negative	Set up job	2026-10-14T00:28:30.3925621Z Getting action download info
+unit-negative	Set up job	2026-10-14T00:28:31.2049306Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+unit-negative	Set up job	2026-10-14T00:28:31.6917142Z Complete job name: unit-negative
+unit-negative	Require a new checkout directory	﻿2026-10-14T00:28:31.7551456Z ##[group]Run set -euo pipefail
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7552229Z ^[[36;1mset -euo pipefail^[[0m
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7552747Z ^[[36;1mtest "$(hostname -s)" = cicd-runner01^[[0m
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7553379Z ^[[36;1mtest "$(id -un)" = server01_cicd-runner^[[0m
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7635016Z ^[[36;1mtest "$(id -u)" = 1000^[[0m
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7636012Z ^[[36;1mtest ! -e "$GITHUB_WORKSPACE/$CICD_CHECKOUT"^[[0m
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7636905Z ^[[36;1mtest ! -L "$GITHUB_WORKSPACE/$CICD_CHECKOUT"^[[0m
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7647079Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7649125Z env:
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7649586Z   CICD_CHECKOUT: cicd-unit-negative-38490368352-1
+unit-negative	Require a new checkout directory	2026-10-14T00:28:31.7650058Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	﻿2026-10-14T00:28:31.7937404Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7938042Z with:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7938427Z   ref: 7171b0a3d636c3a15c78131b89bec4739cb6f49b
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7938959Z   path: cicd-unit-negative-38490368352-1
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7939464Z   persist-credentials: false
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7939871Z   clean: false
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7940236Z   set-safe-directory: false
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7940610Z   fetch-depth: 1
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7941129Z   submodules: false
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7941465Z   lfs: false
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7941822Z   repository: 321Team/infra-cicd
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7944565Z   token: ***
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7944891Z   ssh-strict: true
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7945266Z   ssh-user: git
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7945845Z   sparse-checkout-cone-mode: true
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7946341Z   fetch-tags: false
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7946720Z   show-progress: true
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7947118Z   allow-unsafe-pr-checkout: false
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7947513Z env:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7947926Z   CICD_CHECKOUT: cicd-unit-negative-38490368352-1
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.7948413Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9234904Z Syncing repository: 321Team/infra-cicd
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9236439Z ##[group]Getting Git version info
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9242582Z Working directory is '/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1'
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9243937Z [command]/usr/bin/git version
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9267114Z git version 2.52.0
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9283801Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9288433Z ##[group]Determining repository object format
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9289228Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9289807Z ##[group]Initializing the repository
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9293901Z [command]/usr/bin/git init /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9347966Z hint: Using 'master' as the name for the initial branch. This default branch name
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9349162Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9349976Z hint: to use in all of your new repositories, which will suppress this warning,
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9350595Z hint: call:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9350917Z hint:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9351472Z hint: 	git config --global init.defaultBranch <name>
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9352072Z hint:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9352796Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9353568Z hint: 'development'. The just-created branch can be renamed via this command:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9354145Z hint:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9354484Z hint: 	git branch -m <name>
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9354843Z hint:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9355371Z hint: Disable this message with "git config set advice.defaultBranchName false"
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9356842Z /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git/ 안의 빈 깃 저장소를 다시 초기화했습니다
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9358777Z [command]/usr/bin/git remote add origin https://github.com/321Team/infra-cicd
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9383255Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9384608Z ##[group]Disabling automatic garbage collection
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9385519Z [command]/usr/bin/git config --local gc.auto 0
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9408273Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9408937Z ##[group]Setting up auth
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9409420Z Removing SSH command configuration
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9412477Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9436190Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9729710Z Removing HTTP extra header
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9733192Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9764284Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9985170Z Removing includeIf entries pointing to credentials config files
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:31.9988204Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0022592Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0256040Z [command]/usr/bin/git config --file /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0297899Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0325078Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0356487Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-unit-negative-38490368352-1/.git.path /github/runner_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0382690Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-unit-negative-38490368352-1/.git/worktrees/*.path /github/runner_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0400626Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0401253Z ##[group]Fetching the repository
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:32.0405750Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 7171b0a3d636c3a15c78131b89bec4739cb6f49b
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0872170Z https://github.com/321Team/infra-cicd URL에서
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0876577Z  * branch            7171b0a3d636c3a15c78131b89bec4739cb6f49b -> FETCH_HEAD
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0899522Z [command]/usr/bin/git rev-parse --verify --quiet 7171b0a3d636c3a15c78131b89bec4739cb6f49b^{object}
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0919853Z 7171b0a3d636c3a15c78131b89bec4739cb6f49b
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0928240Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0930315Z ##[group]Determining the checkout info
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0932717Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0933995Z [command]/usr/bin/git sparse-checkout disable
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0962334Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0989662Z ##[group]Checking out the ref
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.0991697Z [command]/usr/bin/git checkout --progress --force 7171b0a3d636c3a15c78131b89bec4739cb6f49b
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2003544Z Note: switching to '7171b0a3d636c3a15c78131b89bec4739cb6f49b'.
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2005636Z 
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2006836Z You are in 'detached HEAD' state. You can look around, make experimental
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2010009Z changes and commit them, and you can discard any commits you make in this
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2012936Z state without impacting any branches by switching back to a branch.
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2015066Z 
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2016322Z If you want to create a new branch to retain commits you create, you may
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2019334Z do so (now or later) by using -c with the switch command. Example:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2021023Z 
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2021754Z   git switch -c <new-branch-name>
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2022804Z 
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2023804Z Or undo this operation with:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2024881Z 
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2025518Z   git switch -
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2026253Z 
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2027481Z Turn off this advice by setting config variable advice.detachedHead to false
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2029636Z 
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2032066Z HEAD의 현재 위치는 7171b0a Merge pull request #79 from 321Team/feat/p1-unit-negative-gate-20261014
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2037884Z ##[endgroup]
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2075072Z [command]/usr/bin/git log -1 --format=%H
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2110547Z 7171b0a3d636c3a15c78131b89bec4739cb6f49b
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2130597Z ##[group]Removing auth
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2132217Z Removing SSH command configuration
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2143926Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2174464Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2406432Z Removing HTTP extra header
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2408137Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2433183Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2635708Z Removing includeIf entries pointing to credentials config files
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2637449Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2659611Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git.path
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2662843Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git/worktrees/*.path
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2665815Z includeif.gitdir:/github/workspace/cicd-unit-negative-38490368352-1/.git.path
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2667956Z includeif.gitdir:/github/workspace/cicd-unit-negative-38490368352-1/.git/worktrees/*.path
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2672393Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git.path
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2693192Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2699517Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2728436Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git/worktrees/*.path
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2749374Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2755540Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-unit-negative-38490368352-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2778297Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-unit-negative-38490368352-1/.git.path
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2798434Z /github/runner_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2805527Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-unit-negative-38490368352-1/.git.path /github/runner_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2833551Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-unit-negative-38490368352-1/.git/worktrees/*.path
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2858523Z /github/runner_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2869886Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-unit-negative-38490368352-1/.git/worktrees/*.path /github/runner_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.2898646Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.3116674Z Removing credentials config '/home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-3eb2e89c-8726-452d-9d81-9f36ac350f7d.config'
+unit-negative	Checkout the reviewed workflow commit	2026-10-14T00:28:33.3123898Z ##[endgroup]
+unit-negative	Run approved app Unit then fixed intentional failing Unit	﻿2026-10-14T00:28:33.3259221Z ##[group]Run set -euo pipefail
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3260079Z ^[[36;1mset -euo pipefail^[[0m
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3261107Z ^[[36;1mexport PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin^[[0m
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3262183Z ^[[36;1mexport PYTHONDONTWRITEBYTECODE=1^[[0m
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3263410Z ^[[36;1mexec /usr/bin/python3 tools/delivery/app_workflow.py --execute --unit-failure-probe^[[0m
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3267266Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3268175Z env:
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3268798Z   CICD_CHECKOUT: cicd-unit-negative-38490368352-1
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3270684Z   CICD_APP_SOURCE_TOKEN: ***
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3271375Z ##[endgroup]
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:33.3899843Z EVIDENCE_DIR=/home/server01_cicd-runner/FDS_CICD_UnitNegative.eb8ljt_m
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:50.4346492Z APP_WORKFLOW=FAIL
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:50.4349735Z ERROR_CODE=COMMAND_FAILED:unit-negative-start
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:50.4350476Z PUSH=NOT_EXECUTED
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:50.4350939Z DEPLOY=NOT_EXECUTED
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:50.4351193Z DELIVERY_GATE=NOT_VERIFIED
+unit-negative	Run approved app Unit then fixed intentional failing Unit	2026-10-14T00:28:50.4428501Z ##[error]Process completed with exit code 1.
+unit-negative	Post Checkout the reviewed workflow commit	﻿2026-10-14T00:28:50.4519755Z Post job cleanup.
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5097076Z [command]/usr/bin/git version
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5125508Z git version 2.52.0
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5142445Z Removing SSH command configuration
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5145448Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5175697Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5385415Z Removing HTTP extra header
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5390782Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5413285Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5614104Z Removing includeIf entries pointing to credentials config files
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5616923Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+unit-negative	Post Checkout the reviewed workflow commit	2026-10-14T00:28:50.5644606Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+unit-negative	Complete job	﻿2026-10-14T00:28:50.5970044Z Cleaning up orphan processes

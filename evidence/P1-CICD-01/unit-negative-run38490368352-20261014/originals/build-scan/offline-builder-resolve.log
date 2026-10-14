@@ -1,0 +1,60 @@
+[
+     {
+          "Id": "76cfebb7af7d22c528da8cda75aa8e3f35cb9bbcdcdfc1f70e71be4aaa350b4a",
+          "Digest": "sha256:54d30f8aaed5ec0a2cbd956ac6d879f17b876acc8b7971f5dfbc0c43751c463f",
+          "RepoTags": [
+               "localhost/fds-apko-builder:cicd-offline-76cfebb7af7d22c5",
+               "docker.io/library/fds-apko-wolfi-builder:affbc69beef9967f7977d09a6fec14f7fb6c0e94-amd64"
+          ],
+          "RepoDigests": [
+               "docker.io/library/fds-apko-wolfi-builder@sha256:54d30f8aaed5ec0a2cbd956ac6d879f17b876acc8b7971f5dfbc0c43751c463f",
+               "localhost/fds-apko-builder@sha256:54d30f8aaed5ec0a2cbd956ac6d879f17b876acc8b7971f5dfbc0c43751c463f"
+          ],
+          "Parent": "",
+          "Comment": "",
+          "Created": "2026-10-06T19:04:03Z",
+          "Config": {
+               "Env": [
+                    "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin",
+                    "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"
+               ],
+               "Labels": {
+                    "org.opencontainers.image.created": "2026-10-06T19:04:03Z"
+               }
+          },
+          "Version": "",
+          "Author": "github.com/chainguard-dev/apko",
+          "Architecture": "amd64",
+          "Os": "linux",
+          "Size": 86690699,
+          "VirtualSize": 86690699,
+          "GraphDriver": {
+               "Name": "vfs",
+               "Data": null
+          },
+          "RootFS": {
+               "Type": "layers",
+               "Layers": [
+                    "sha256:02eae2f3f119386c5c0e4b7ff85ea44ae89bd9ce26776364c35c853335e2896b"
+               ]
+          },
+          "Labels": {
+               "org.opencontainers.image.created": "2026-10-06T19:04:03Z"
+          },
+          "Annotations": {},
+          "ManifestType": "application/vnd.docker.distribution.manifest.v2+json",
+          "User": "",
+          "History": [
+               {
+                    "created": "2026-10-06T19:04:03Z",
+                    "created_by": "apko",
+                    "author": "apko",
+                    "comment": "This is an apko single-layer image"
+               }
+          ],
+          "NamesHistory": [
+               "docker.io/library/fds-apko-wolfi-builder:affbc69beef9967f7977d09a6fec14f7fb6c0e94-amd64",
+               "localhost/fds-apko-builder:cicd-offline-76cfebb7af7d22c5"
+          ]
+     }
+]
