@@ -1,0 +1,22 @@
+{
+  "status": "HISTORICAL_REFERENCE_FRESH_READ_REQUIRED",
+  "observed_at_utc": "2026-10-14T12:01:58.563650+00:00",
+  "source_record_sha256": "ca6d5404f978d4946773bcd6a16241b49468c026bb516cc68befab9080ef9e94",
+  "db_index_digest": "sha256:d33717fd33c1a4b11afef94568d0c20812a19d62fb8c633fadee1e491e2edd4a",
+  "db_platform_manifest_digest": "sha256:862cf9364c60a1c47f1721b4700302a959969a09091a8434b3c64949730ed1f1",
+  "db_config_descriptor_digest": "sha256:5f7659016ef769811a0fdc349c9cad11f520dc7e147633bb1025e499002d9cd2",
+  "apps": [
+    {
+      "role": "api",
+      "config_id": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee"
+    },
+    {
+      "role": "engine",
+      "config_id": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc"
+    }
+  ],
+  "planned_load_or_pull": 0,
+  "if_missing_or_mismatch": "STOP; do not resupply automatically",
+  "db_version": "16.8; production 16.14 difference retained",
+  "db_new_vulnerability_scan": "NOT_PERFORMED"
+}

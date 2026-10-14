@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "logs",
+    "02f615957c5ee2ce5077e7b490754fe62bfebf7a8a15050b9d73c2f8739607c8"
+  ],
+  "rc": 0,
+  "started_at_utc": "2026-10-14T15:01:34.360423+00:00",
+  "finished_at_utc": "2026-10-14T15:01:34.424858+00:00",
+  "timed_out": false,
+  "stdout": "The files belonging to this database system will be owned by user \"postgres\".\nThis user must also own the server process.\n\nThe database cluster will be initialized with locale \"en_US.utf8\".\nThe default database encoding has accordingly been set to \"UTF8\".\nThe default text search configuration will be set to \"english\".\n\nData page checksums are disabled.\n\nfixing permissions on existing directory /var/lib/pgsql/data/userdata ... ok\ncreating subdirectories ... ok\nselecting dynamic shared memory implementation ... posix\nselecting default max_connections ... 100\nselecting default shared_buffers ... 128MB\nselecting default time zone ... Etc/UTC\ncreating configuration files ... ok\nrunning bootstrap script ... ok\nperforming post-bootstrap initialization ... ok\nsyncing data to disk ... ok\n\n\nSuccess. You can now start the database server using:\n\n    pg_ctl -D /var/lib/pgsql/data/userdata -l logfile start\n\nwaiting for server to start....2026-10-14 15:01:32.379 UTC [32] LOG:  redirecting log output to logging collector process\n2026-10-14 15:01:32.379 UTC [32] HINT:  Future log output will appear in directory \"log\".\n done\nserver started\n/var/run/postgresql:5432 - accepting connections\n=> sourcing /usr/share/container-scripts/postgresql/start/set_passwords.sh ...\nALTER ROLE\nwaiting for server to shut down.... done\nserver stopped\nStarting server...\n",
+  "stderr": "Warning: Can't detect cpuset size from cgroups, will use nproc\ninitdb: warning: enabling \"trust\" authentication for local connections\ninitdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.\nfind: '/opt/app-root/src/postgresql-start': Permission denied\n2026-10-14 15:01:32.638 UTC [1] LOG:  redirecting log output to logging collector process\n2026-10-14 15:01:32.638 UTC [1] HINT:  Future log output will appear in directory \"log\".\n"
+}
