@@ -1,0 +1,43 @@
+{
+  "action_required": true,
+  "classification": "EPHEMERAL_RUNNER_NOT_SUPPLIED",
+  "job": {
+    "completed_at": null,
+    "conclusion": null,
+    "created_at": "2026-10-14T01:05:28Z",
+    "id": 115624845990,
+    "labels": [
+      "Linux",
+      "X64",
+      "ansible-isolated",
+      "fds-ci",
+      "self-hosted"
+    ],
+    "name": "regression",
+    "queued_age_minutes": 10.43,
+    "started_at": "2026-10-14T01:05:28Z",
+    "status": "queued"
+  },
+  "queried_at_utc": "2026-10-14T01:15:53.531462Z",
+  "repository": "321Team/infra-ansible",
+  "run": {
+    "attempt": 1,
+    "created_at": "2026-10-14T01:05:26Z",
+    "event": "workflow_dispatch",
+    "expected_source_sha": "ec15dcbd022942add199a8f4718c0f88105e880e",
+    "html_url": "https://github.com/321Team/infra-ansible/actions/runs/38493795328",
+    "id": 38493795328,
+    "run_head_sha": "ec15dcbd022942add199a8f4718c0f88105e880e"
+  },
+  "runner_observation": {
+    "matching": [],
+    "matching_busy_online_count": 0,
+    "matching_count": 0,
+    "matching_idle_online_count": 0,
+    "matching_online_count": 0,
+    "matching_unknown_busy_online_count": 0
+  },
+  "schema": "infra-ansible.ephemeral-runner-queue-observation.v1",
+  "scope": "read-only classification only; no token issuance, registration, deregistration, rerun, cancellation, repository mutation, or CI PASS assertion",
+  "threshold_minutes": 10
+}

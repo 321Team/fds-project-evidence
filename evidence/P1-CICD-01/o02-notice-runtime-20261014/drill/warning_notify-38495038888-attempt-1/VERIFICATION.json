@@ -1,0 +1,53 @@
+{
+  "at_utc": "2026-10-14T01:19:20.793668+00:00",
+  "kind": "warning_notify",
+  "run_id": 38495038888,
+  "artifact_id": 11863278456,
+  "zip_sha256": "3eae9c057ceba8ab6c3688559f7ec8d879a40c5011aa13abaf7ddb58e19ae2b0",
+  "json_sha256": "51ca70a4e1e5dd54f2527235037273d5e363c3e0f54bf0a65e6442f10353b028",
+  "checks": {
+    "head": true,
+    "attempt": true,
+    "event": true,
+    "path": true,
+    "run_success": true,
+    "jobs_complete": true,
+    "jobs_expected": true,
+    "repository": true,
+    "threshold": true,
+    "api_digest": true,
+    "json_sidecar": true,
+    "expected_warning": true,
+    "bot_identity": true,
+    "state_marker": true,
+    "recipients": true
+  },
+  "all_checks_pass": true,
+  "observation": {
+    "active_runs_read": 1,
+    "alerts": [
+      {
+        "attempt": 1,
+        "job_id": 115624845990,
+        "observed_run_head_sha": "ec15dcbd022942add199a8f4718c0f88105e880e",
+        "reason": "QUEUED_THRESHOLD_EXCEEDED",
+        "run_id": 38493795328
+      }
+    ],
+    "jobs_read": 1,
+    "notification": {
+      "comment_url": "https://github.com/321Team/infra-ansible/issues/61#issuecomment-6158722178",
+      "human_receipt": "NOT_CONFIRMED",
+      "state_sha256": "760bfa848d80782a487fd0ea26f96cac253dceee18d334d06964396198996ec2",
+      "status": "COMMENT_POSTED"
+    },
+    "observed_at_utc": "2026-10-14T01:19:00.939296+00:00",
+    "repository": "321Team/infra-ansible",
+    "runner_presence": "NOT_QUERIED",
+    "schema": "infra-ansible.queue-notice.v1",
+    "state": "ATTENTION",
+    "supply_authorized": false,
+    "threshold_minutes": 10
+  },
+  "human_receipt": "NOT_INFERRED"
+}

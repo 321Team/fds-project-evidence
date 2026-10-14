@@ -1,0 +1,96 @@
+{
+  "at_utc": "2026-10-14T01:24:36.669499+00:00",
+  "prefix": "observe-20261014T012434843338Z",
+  "main_unchanged": true,
+  "identity": {
+    "regression": true,
+    "warning_notify": true
+  },
+  "runs": {
+    "regression": {
+      "id": 38493795328,
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-10-14T01:05:26Z",
+      "head_sha": "ec15dcbd022942add199a8f4718c0f88105e880e",
+      "html_url": "https://github.com/321Team/infra-ansible/actions/runs/38493795328",
+      "jobs": [
+        {
+          "id": 115624845990,
+          "name": "regression",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-10-14T01:05:28Z",
+          "started_at": "2026-10-14T01:05:28Z",
+          "completed_at": "2026-10-14T01:24:30Z",
+          "runner_id": 0,
+          "runner_name": "",
+          "labels": [
+            "self-hosted",
+            "Linux",
+            "X64",
+            "fds-ci",
+            "ansible-isolated"
+          ]
+        }
+      ]
+    },
+    "warning_notify": {
+      "id": 38495038888,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-14T01:18:54Z",
+      "head_sha": "ec15dcbd022942add199a8f4718c0f88105e880e",
+      "html_url": "https://github.com/321Team/infra-ansible/actions/runs/38495038888",
+      "jobs": [
+        {
+          "id": 115628774938,
+          "name": "notify",
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-10-14T01:18:55Z",
+          "started_at": "2026-10-14T01:18:57Z",
+          "completed_at": "2026-10-14T01:19:07Z",
+          "runner_id": 1000002227,
+          "runner_name": "GitHub Actions 1000002227",
+          "labels": [
+            "ubuntu-latest"
+          ]
+        },
+        {
+          "id": 115628776530,
+          "name": "dry-read",
+          "status": "completed",
+          "conclusion": "skipped",
+          "created_at": "2026-10-14T01:18:56Z",
+          "started_at": "2026-10-14T01:18:56Z",
+          "completed_at": "2026-10-14T01:18:55Z",
+          "runner_id": null,
+          "runner_name": null,
+          "labels": [
+            "ubuntu-latest"
+          ]
+        }
+      ]
+    }
+  },
+  "matching_runner_ids": [],
+  "other_active_regression_ids": [],
+  "unexpected_regression_execution": false,
+  "new_operator_or_bot_comments": [
+    {
+      "id": 6158722178,
+      "created_at": "2026-10-14T01:19:04Z",
+      "html_url": "https://github.com/321Team/infra-ansible/issues/61#issuecomment-6158722178",
+      "body": "<!-- p1-ansible-queue-alert:v1:760bfa848d80782a487fd0ea26f96cac253dceee18d334d06964396198996ec2 -->\n### Ansible 격리 Job 대기 관측\n\n@GWONUK @supreme33-kr\n\n관측: `2026-10-14T01:19:00.939296+00:00` · 상태 `ATTENTION`.\n- [Run 38493795328 / Job 115624845990](https://github.com/321Team/infra-ansible/actions/runs/38493795328/job/115624845990) · Attempt 1 · `QUEUED_THRESHOLD_EXCEEDED` · 관측 SHA `ec15dcbd022942add199a8f4718c0f88105e880e`\n\nRunner 등록/online/busy는 이 감시가 조회하지 않았습니다. 미공급 확정이나 공급 GO가 아닙니다.\n기존 운영자 카드의 exact HEAD/Job/labels/중복·창 확인과 1회 queue-watch 분류 뒤 판단하세요.\n\n[감시 Run](https://github.com/321Team/infra-ansible/actions/runs/38495038888) · [운영자 카드](https://github.com/321Team/infra-ansible/blob/main/docs/runbooks/Ansible-CI-Operator-Card.md)\n이 감시는 token 발급·Runner 공급/삭제·Job 재실행/취소·설정 변경을 하지 않습니다.\n",
+      "user": "github-actions[bot]"
+    },
+    {
+      "id": 6158776022,
+      "created_at": "2026-10-14T01:23:40Z",
+      "html_url": "https://github.com/321Team/infra-ansible/issues/61#issuecomment-6158776022",
+      "body": "## O02 통제 시험 — 경고 수신·판단 (운영 담당 이재환, 2026-10-14 KST)\n\n@GWONUK [시험 시작 6158524995](https://github.com/321Team/infra-ansible/issues/61#issuecomment-6158524995)의 수신 회신입니다.\n\n| 항목 | 값 |\n|---|---|\n| 봇 댓글 | [6158722178](https://github.com/321Team/infra-ansible/issues/61#issuecomment-6158722178), 10:19:04 KST, `github-actions[bot]`, `ATTENTION`, `@GWONUK @supreme33-kr` 멘션 |\n| 내 GitHub Notifications | 10:19:26 KST 알림 생성(reason `mention`). **10:22:00 KST 제 알림 화면에서 열어 읽음**(API `last_read_at` 2026-10-14T01:22:00Z와 일치) |\n| 대상 | [Run 38493795328](https://github.com/321Team/infra-ansible/actions/runs/38493795328) / Attempt 1 / Job 115624845990, `workflow_dispatch`, HEAD `ec15dcbd022942add199a8f4718c0f88105e880e`, 5 labels |\n| queue-watch | 10:22:45 KST 제 PC에서 `ec15dcbd` 원본 그대로 1회 실행(`--strict`): **`EPHEMERAL_RUNNER_NOT_SUPPLIED`**, `action_required=true`, rc 2, queued 17.32분, matching Runner 0(online/idle/busy 0). 출력 JSON SHA256 `01fd70f7ce102bda35c94cfddce93bc0d91bca1fc25146140b853c2abd7913c0`(로컬 보관) |\n| 판단 | 통제 시험이므로 **Runner를 공급하지 않고**, 계획대로 이 Run의 취소로 해소합니다. 취소와 해소 관측은 권욱님 몫입니다 |\n\n조회만 했습니다. dispatch·취소·Runner·token·변수 변경은 없습니다. 이메일·모바일 푸시 도착은 따로 확인하지 않았습니다.\n\nAI 사용: CLAUDE_ASSISTED\n",
+      "user": "supreme33-kr"
+    }
+  ]
+}
