@@ -1,0 +1,50 @@
+{
+  "phase": "during7",
+  "at_kst": "2026-10-14T14:20:56.506480+09:00",
+  "checks": {
+    "mon_query_success": true,
+    "mon_complete": true,
+    "pf_stopped": true,
+    "q_range_check": true,
+    "no_collector_error": true,
+    "deployment_identity_spec": true,
+    "replicas3_ready": true,
+    "resources_fixed": true,
+    "six_pods_ready": true,
+    "pod_uids_unchanged": true,
+    "pod_images": true,
+    "restarts_unchanged": true,
+    "no_oom": true,
+    "worker_distribution": true,
+    "services_unchanged": true,
+    "endpoints_transaction-api-nodeport": true,
+    "endpoints_fds-engine": true,
+    "all_up23": true,
+    "app_targets_bound": true,
+    "nodes_ready": true,
+    "Q1_six_pods": true,
+    "Q1_finite": true,
+    "Q2_six_pods": true,
+    "Q2_finite": true,
+    "Q3_six_pods": true,
+    "Q3_finite": true,
+    "Q3_DENOM_six_pods": true,
+    "Q3_DENOM_finite": true,
+    "instant_no_throttle_limit": true,
+    "instant_within_resource_limits": true,
+    "save_failure_zero": true
+  },
+  "passed": true,
+  "counters": {
+    "save_success": 8423.0,
+    "save_failure": 0.0,
+    "evaluated": 8423.0
+  },
+  "max_instant": {
+    "Q1": 0.07305791800344447,
+    "Q2": 86233088.0,
+    "Q3": 0.0,
+    "Q3_DENOM": 5.713494919141197
+  },
+  "runtime_load_status": "not inferred from reads"
+}

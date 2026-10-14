@@ -1,0 +1,6 @@
+# PREPARED ONLY. db01/server08. Execute after the actual one-time load ends; do not infer 8400 from the plan.
+hostname
+date --iso-8601=seconds
+sudo -u postgres psql -X -P pager=off -A -t -F '|' -v ON_ERROR_STOP=1 -d fdsdb -c "BEGIN READ ONLY; SET LOCAL statement_timeout='5s'; SELECT current_database(), current_user, current_timestamp; SELECT count(*) AS stored_rows, count(DISTINCT account_id) AS accounts, count(DISTINCT transaction_id) AS transactions, min(received_at), max(received_at), count(*) FILTER (WHERE fds_evaluation_skipped), count(*) FILTER (WHERE fds_detected) FROM public.transactions WHERE left(account_id,length('SIM_load_202610141415_'))='SIM_load_202610141415_'; SELECT transaction_type,count(*) FROM public.transactions WHERE left(account_id,length('SIM_load_202610141415_'))='SIM_load_202610141415_' GROUP BY transaction_type ORDER BY transaction_type; COMMIT;"
+printf 'DB_AFTER_RC=%s\n' "$?"
+date --iso-8601=seconds
