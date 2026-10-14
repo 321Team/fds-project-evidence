@@ -1,0 +1,56 @@
+[
+  {
+    "mode": "edge",
+    "host": "edge01",
+    "label": "edge-read-02",
+    "rc": 0
+  },
+  {
+    "mode": "control",
+    "host": "k8s-control01",
+    "label": "d04-control-01",
+    "rc": 0
+  },
+  {
+    "mode": "grafana",
+    "host": "k8s-control01",
+    "label": "grafana-read-01",
+    "rc": 0
+  },
+  {
+    "mode": "boot",
+    "host": "k8s-control01",
+    "label": "boot-k8s-control01-01",
+    "rc": 0
+  },
+  {
+    "mode": "boot",
+    "host": "k8s-control02",
+    "label": "boot-k8s-control02-01",
+    "rc": 0
+  },
+  {
+    "mode": "boot",
+    "host": "k8s-control03",
+    "label": "boot-k8s-control03-01",
+    "rc": 0
+  },
+  {
+    "mode": "boot",
+    "host": "k8s-worker01",
+    "label": "boot-k8s-worker01-01",
+    "rc": 0
+  },
+  {
+    "mode": "boot",
+    "host": "k8s-worker02",
+    "label": "boot-k8s-worker02-01",
+    "rc": 0
+  },
+  {
+    "mode": "boot",
+    "host": "k8s-worker03",
+    "label": "boot-k8s-worker03-01",
+    "rc": 0
+  }
+]
