@@ -1,0 +1,86 @@
+{
+  "evidence_verification": "PASS",
+  "packaged_inputs": 177,
+  "direct_server_file_copies": 147,
+  "server_manifest_entries": 141,
+  "actual_runtime_result": "LAB_RUNTIME_PASS",
+  "cleanup_confirmed": true,
+  "cases": [
+    {
+      "case": "PRE",
+      "http": 201,
+      "stored": 1,
+      "metrics_delta": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "case": "READ",
+      "http": 201,
+      "stored": 1,
+      "metrics_delta": [
+        1.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "case": "READ_POST",
+      "http": 201,
+      "stored": 1,
+      "metrics_delta": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "case": "HTTP",
+      "http": 201,
+      "stored": 1,
+      "metrics_delta": [
+        1.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "case": "HTTP_POST",
+      "http": 201,
+      "stored": 1,
+      "metrics_delta": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "case": "DB",
+      "http": 500,
+      "stored": 0,
+      "metrics_delta": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "case": "DB_POST",
+      "http": 201,
+      "stored": 1,
+      "metrics_delta": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "posts": 7,
+  "stored": 6,
+  "rollback_pid": 84,
+  "automatic_retry": false,
+  "postrun_names_absent": 4,
+  "production_runtime_claim": false
+}

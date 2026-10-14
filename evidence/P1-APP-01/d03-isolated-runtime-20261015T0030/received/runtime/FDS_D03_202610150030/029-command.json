@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "exec",
+    "a82f8cb14c4a0890193b62a04ad809c07f2e6abee30f63cd73b3a014f46e010c",
+    "/venv/bin/python3",
+    "-B",
+    "/d03/d03_lab.py",
+    "_probe",
+    "9090",
+    "/metrics"
+  ],
+  "rc": 0,
+  "started_at_utc": "2026-10-14T15:30:17.201045+00:00",
+  "finished_at_utc": "2026-10-14T15:30:17.368689+00:00",
+  "timed_out": false,
+  "stdout": "{\"status\": 200, \"body\": \"# HELP python_gc_objects_collected_total Objects collected during gc\\n# TYPE python_gc_objects_collected_total counter\\npython_gc_objects_collected_total{generation=\\\"0\\\"} 4286.0\\npython_gc_objects_collected_total{generation=\\\"1\\\"} 1766.0\\npython_gc_objects_collected_total{generation=\\\"2\\\"} 0.0\\n# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC\\n# TYPE python_gc_objects_uncollectable_total counter\\npython_gc_objects_uncollectable_total{generation=\\\"0\\\"} 0.0\\npython_gc_objects_uncollectable_total{generation=\\\"1\\\"} 0.0\\npython_gc_objects_uncollectable_total{generation=\\\"2\\\"} 0.0\\n# HELP python_gc_collections_total Number of times this generation was collected\\n# TYPE python_gc_collections_total counter\\npython_gc_collections_total{generation=\\\"0\\\"} 51.0\\npython_gc_collections_total{generation=\\\"1\\\"} 4.0\\npython_gc_collections_total{generation=\\\"2\\\"} 0.0\\n# HELP python_info Python platform information\\n# TYPE python_info gauge\\npython_info{implementation=\\\"CPython\\\",major=\\\"3\\\",minor=\\\"13\\\",patchlevel=\\\"16\\\",version=\\\"3.13.16\\\"} 1.0\\n# HELP process_virtual_memory_bytes Virtual memory size in bytes.\\n# TYPE process_virtual_memory_bytes gauge\\nprocess_virtual_memory_bytes 6.8599808e+07\\n# HELP process_resident_memory_bytes Resident memory size in bytes.\\n# TYPE process_resident_memory_bytes gauge\\nprocess_resident_memory_bytes 5.773312e+07\\n# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.\\n# TYPE process_start_time_seconds gauge\\nprocess_start_time_seconds 1.79199181384e+09\\n# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.\\n# TYPE process_cpu_seconds_total counter\\nprocess_cpu_seconds_total 0.4\\n# HELP process_open_fds Number of open file descriptors.\\n# TYPE process_open_fds gauge\\nprocess_open_fds 10.0\\n# HELP process_max_fds Maximum number of open file descriptors.\\n# TYPE process_max_fds gauge\\nprocess_max_fds 524288.0\\n# HELP fds_detected_total Rule\\ubcc4 \\ud0d0\\uc9c0 \\uac74\\uc218\\n# TYPE fds_detected_total counter\\n# HELP fds_evaluated_total \\uc804\\uccb4 \\ud3c9\\uac00 \\uc694\\uccad \\uac74\\uc218\\n# TYPE fds_evaluated_total counter\\nfds_evaluated_total 0.0\\n# HELP fds_evaluated_created \\uc804\\uccb4 \\ud3c9\\uac00 \\uc694\\uccad \\uac74\\uc218\\n# TYPE fds_evaluated_created gauge\\nfds_evaluated_created 1.7919918150976455e+09\\n\", \"elapsed\": 0.0021566629875451326}\n",
+  "stderr": ""
+}

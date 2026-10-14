@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "exec",
+    "-i",
+    "6592f8deeeb1588cc6d41fdf360bc1cb17938af196fa6a657d0aedaa435d18aa",
+    "psql",
+    "-X",
+    "-q",
+    "-At",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-d",
+    "fds_lab"
+  ],
+  "rc": 0,
+  "started_at_utc": "2026-10-14T15:30:14.077938+00:00",
+  "finished_at_utc": "2026-10-14T15:30:14.166691+00:00",
+  "timed_out": false,
+  "stdin": "SET statement_timeout='5s';\nSELECT version();",
+  "stdout": "PostgreSQL 16.8 on x86_64-redhat-linux-gnu, compiled by gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-11), 64-bit\n",
+  "stderr": ""
+}

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "exec",
+    "-i",
+    "6592f8deeeb1588cc6d41fdf360bc1cb17938af196fa6a657d0aedaa435d18aa",
+    "psql",
+    "-X",
+    "-q",
+    "-At",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-d",
+    "fds_lab"
+  ],
+  "rc": 0,
+  "started_at_utc": "2026-10-14T15:30:23.480561+00:00",
+  "finished_at_utc": "2026-10-14T15:30:23.608018+00:00",
+  "timed_out": false,
+  "stdin": "SET statement_timeout='5s';\nSELECT count(*) FROM pg_trigger WHERE tgname='d03_insert_fail';",
+  "stdout": "0\n",
+  "stderr": ""
+}
