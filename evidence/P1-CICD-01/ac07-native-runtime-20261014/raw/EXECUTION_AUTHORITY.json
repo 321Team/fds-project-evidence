@@ -1,0 +1,41 @@
+{
+  "checked_at_utc": "2026-10-14T12:55:51.191052+00:00",
+  "runtime": "GO",
+  "fresh_prechecks": "PASS",
+  "maximum_token_request_commands": 1,
+  "source_sha": "9fb2e2dcac8682a89c4b7c267c833ae8d9aaeb18",
+  "reviewed_head": "db8230d7580820c55ab388680a1e87fc3e45db0a",
+  "review_url": "https://github.com/321Team/infra-cicd/pull/82#pullrequestreview-5518054443",
+  "ci": "https://github.com/321Team/infra-cicd/actions/runs/38564435253",
+  "merge_ci": "https://github.com/321Team/infra-cicd/actions/runs/38566564766",
+  "authority": "User/Lead 이권욱: 리뷰 체크 후 차단 사항 없으면 병합 후 착수",
+  "policy_sha256": "3f08642d16ecc9fc3a3b548dc5f5a1c5f4a922d7028ca997c3907cb88c818e81",
+  "independent_review_scope": "code only; Runtime decision recorded separately by Lead authorization",
+  "window_kst": "2026-10-14 21:50–22:10; start before 22:00",
+  "coordination": {
+    "harbor": "Acknowledged idle; hold until release",
+    "ansible": "Acknowledged idle; hold until release",
+    "d03": "Acknowledged 21:50–22:10 reserved; D03 runtime deferred, PR35/230 local/review work only"
+  },
+  "targets": [
+    "ansible01",
+    "k8s-control01",
+    "cicd-runner01"
+  ],
+  "scope": "One <=900s SA token command, fresh TokenReview, Runner 25 SSAR (6 allow/19 deny) and 2 fixed deployment GETs. No deploy/PATCH/exec/RBAC mutation/Secret GET. No AC08 old/new-token experiment.",
+  "stop_recovery": "Any binding/CA/identity/response mismatch stops. Preserve result and issuance attempt; no automatic retry. No service/config mutation. Private subprocess/reference cleanup; token natural expiry, no SA deletion/revocation.",
+  "precheck_results": [
+    {
+      "label": "app-fresh",
+      "rc": 0,
+      "bytes": 17877,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "runner-fresh",
+      "rc": 0,
+      "bytes": 1394,
+      "stderr_bytes": 0
+    }
+  ]
+}

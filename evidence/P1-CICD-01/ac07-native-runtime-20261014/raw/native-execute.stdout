@@ -1,0 +1,377 @@
+{
+  "ANSIBLE_INPUT_REFERENCE_CLEANUP": "LOCAL_REFERENCE_DROPPED",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "DEPLOY": "NOT_EXECUTED",
+  "NATIVE_AUTH_PROBE": "PASS",
+  "PREFLIGHT": "PASS",
+  "SOURCE_APPROVAL": "OPERATOR_PINNED_NOT_VERIFIED_IN_TOOL",
+  "TOKEN_ISSUED": true,
+  "bundle_sha256": "1d549ffabc0c4aeb7e2dc77b1e944f19b54a75bcc5e0e910dc35f570ce896bd9",
+  "checked_at": "2026-10-14T12:55:58.892697+00:00",
+  "cp1": {
+    "ca_sha256": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c",
+    "role": "cp1",
+    "sa_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+    "source_sha": "9fb2e2dcac8682a89c4b7c267c833ae8d9aaeb18",
+    "stage": "ready",
+    "workdir": "/home/server02/FDS_NativeProbeSource.p6ae6ayt"
+  },
+  "cp1_credential": {
+    "DELIVERY_GATE": "NOT_VERIFIED",
+    "audience": "https://kubernetes.default.svc.cluster.local",
+    "authentication_basis": "CALLER_AUTHENTICATED_FRESH_TOKEN_REVIEW",
+    "checked_at": "2026-10-14T12:55:58.563160+00:00",
+    "expires_at": "2026-10-14T13:10:58+00:00",
+    "input_reference_cleanup": "LOCAL_REFERENCE_DROPPED",
+    "issued_at": "2026-10-14T12:55:58+00:00",
+    "issuer": "https://kubernetes.default.svc.cluster.local",
+    "jwt_signature_check": "NOT_PERFORMED_LOCALLY",
+    "local_credential_cleanup": "LOCAL_REFERENCE_DROPPED",
+    "runner_token_authentication": "NOT_VERIFIED",
+    "schema": "P1-CICD-credential-observation-1",
+    "server_revocation": "NOT_PERFORMED",
+    "service_account_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+    "subject": "system:serviceaccount:ci-cd:cicd-runner-sa",
+    "token_request_expires_at": "2026-10-14T13:10:58+00:00"
+  },
+  "local_source_workdir": "/home/server01_ansible/FDS_NativeProbeSource.t0o2lppi",
+  "runner": {
+    "ca_sha256": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c",
+    "role": "runner",
+    "sa_uid": null,
+    "source_sha": "9fb2e2dcac8682a89c4b7c267c833ae8d9aaeb18",
+    "stage": "ready",
+    "workdir": "/home/server01_cicd-runner/FDS_NativeProbeSource.cz7umoax"
+  },
+  "runner_observation": {
+    "DELIVERY_GATE": "NOT_VERIFIED",
+    "DEPLOY": "NOT_EXECUTED",
+    "EFFECTIVE_RBAC_CHECK": "PASS",
+    "RUNNER_TOKEN_AUTH": "PASS",
+    "basis": "LIVE_PINNED_TLS_SA_GET_AND_SELF_SUBJECT_ACCESS_REVIEW",
+    "checked_at": "2026-10-14T12:55:58.880152+00:00",
+    "credential": {
+      "DELIVERY_GATE": "NOT_VERIFIED",
+      "audience": "https://kubernetes.default.svc.cluster.local",
+      "authentication_basis": "CALLER_AUTHENTICATED_FRESH_TOKEN_REVIEW",
+      "checked_at": "2026-10-14T12:55:58.642050+00:00",
+      "expires_at": "2026-10-14T13:10:58+00:00",
+      "issued_at": "2026-10-14T12:55:58+00:00",
+      "issuer": "https://kubernetes.default.svc.cluster.local",
+      "jwt_signature_check": "NOT_PERFORMED_LOCALLY",
+      "local_credential_cleanup": "LOCAL_REFERENCE_DROPPED",
+      "runner_token_authentication": "NOT_VERIFIED",
+      "schema": "P1-CICD-credential-observation-1",
+      "server_revocation": "NOT_PERFORMED",
+      "service_account_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+      "subject": "system:serviceaccount:ci-cd:cicd-runner-sa",
+      "token_request_expires_at": "2026-10-14T13:10:58+00:00"
+    },
+    "deployments": [
+      {
+        "name": "transaction-api",
+        "namespace": "fds-app",
+        "resource_version": "5428893",
+        "uid": "8a2af808-ec33-41f2-80b5-addde4e28910"
+      },
+      {
+        "name": "fds-engine",
+        "namespace": "fds-app",
+        "resource_version": "5512907",
+        "uid": "bf825dec-465b-4603-8b71-f768d195531c"
+      }
+    ],
+    "input_reference_cleanup": "LOCAL_REFERENCE_DROPPED",
+    "permissions": [
+      {
+        "allowed": true,
+        "attributes": {
+          "group": "apps",
+          "name": "transaction-api",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "get",
+          "version": "v1"
+        },
+        "expected": true
+      },
+      {
+        "allowed": true,
+        "attributes": {
+          "group": "apps",
+          "name": "transaction-api",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "update",
+          "version": "v1"
+        },
+        "expected": true
+      },
+      {
+        "allowed": true,
+        "attributes": {
+          "group": "apps",
+          "name": "transaction-api",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "patch",
+          "version": "v1"
+        },
+        "expected": true
+      },
+      {
+        "allowed": true,
+        "attributes": {
+          "group": "apps",
+          "name": "fds-engine",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "get",
+          "version": "v1"
+        },
+        "expected": true
+      },
+      {
+        "allowed": true,
+        "attributes": {
+          "group": "apps",
+          "name": "fds-engine",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "update",
+          "version": "v1"
+        },
+        "expected": true
+      },
+      {
+        "allowed": true,
+        "attributes": {
+          "group": "apps",
+          "name": "fds-engine",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "patch",
+          "version": "v1"
+        },
+        "expected": true
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "apps",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "create",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "apps",
+          "name": "transaction-api",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "delete",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "apps",
+          "name": "unapproved-probe",
+          "namespace": "fds-app",
+          "resource": "deployments",
+          "verb": "patch",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "apps",
+          "name": "transaction-api",
+          "namespace": "default",
+          "resource": "deployments",
+          "verb": "patch",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "",
+          "namespace": "fds-app",
+          "resource": "secrets",
+          "verb": "get",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "",
+          "namespace": "fds-app",
+          "resource": "pods",
+          "verb": "list",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "authentication.k8s.io",
+          "resource": "tokenreviews",
+          "verb": "create",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "namespace": "fds-app",
+          "resource": "roles",
+          "verb": "create",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "name": "cicd-deploy-updater",
+          "namespace": "fds-app",
+          "resource": "roles",
+          "verb": "patch",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "name": "cicd-deploy-updater",
+          "namespace": "fds-app",
+          "resource": "roles",
+          "verb": "bind",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "name": "cicd-deploy-updater",
+          "namespace": "fds-app",
+          "resource": "roles",
+          "verb": "escalate",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "namespace": "fds-app",
+          "resource": "rolebindings",
+          "verb": "create",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "name": "cicd-deploy-updater-binding",
+          "namespace": "fds-app",
+          "resource": "rolebindings",
+          "verb": "patch",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "resource": "clusterroles",
+          "verb": "create",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "name": "cluster-admin",
+          "resource": "clusterroles",
+          "verb": "bind",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "name": "cluster-admin",
+          "resource": "clusterroles",
+          "verb": "escalate",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "rbac.authorization.k8s.io",
+          "resource": "clusterrolebindings",
+          "verb": "create",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "",
+          "namespace": "fds-app",
+          "resource": "pods",
+          "subresource": "exec",
+          "verb": "get",
+          "version": "v1"
+        },
+        "expected": false
+      },
+      {
+        "allowed": false,
+        "attributes": {
+          "group": "",
+          "namespace": "fds-app",
+          "resource": "pods",
+          "subresource": "exec",
+          "verb": "create",
+          "version": "v1"
+        },
+        "expected": false
+      }
+    ]
+  },
+  "server_revocation": "NOT_PERFORMED",
+  "source_sha": "9fb2e2dcac8682a89c4b7c267c833ae8d9aaeb18"
+}
