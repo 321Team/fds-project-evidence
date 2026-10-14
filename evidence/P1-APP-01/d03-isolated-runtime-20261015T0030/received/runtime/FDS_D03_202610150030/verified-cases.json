@@ -1,0 +1,180 @@
+{
+  "cases": [
+    "PRE",
+    "READ",
+    "READ_POST",
+    "HTTP",
+    "HTTP_POST",
+    "DB",
+    "DB_POST"
+  ],
+  "posts": 7,
+  "stored": 6,
+  "response_db_transactions": [
+    {
+      "transaction_id": "761ca902-85c3-4ec6-b0e0-32f14fad6532",
+      "account_id": "SIM_d03_202610150030_DB_POST",
+      "amount": 10000,
+      "currency": "KRW",
+      "transaction_type": "deposit",
+      "source_ip": "198.51.100.10",
+      "occurred_at": "2026-10-15T03:00:00+00:00",
+      "received_at": "2026-10-14T15:30:23.997247+00:00",
+      "fds_detected": false,
+      "fds_rules": [
+        {
+          "detail": null,
+          "rule_id": "R01",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R02",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R04",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R07",
+          "triggered": false
+        }
+      ],
+      "fds_evaluation_skipped": false
+    },
+    {
+      "transaction_id": "3e566406-d483-4d5f-b7e4-7000b7efdfc6",
+      "account_id": "SIM_d03_202610150030_HTTP",
+      "amount": 10000,
+      "currency": "KRW",
+      "transaction_type": "deposit",
+      "source_ip": "198.51.100.10",
+      "occurred_at": "2026-10-15T03:00:00+00:00",
+      "received_at": "2026-10-14T15:30:21.907069+00:00",
+      "fds_detected": null,
+      "fds_rules": null,
+      "fds_evaluation_skipped": true
+    },
+    {
+      "transaction_id": "9c95abe9-b856-4c46-b9cc-807c32cb4abc",
+      "account_id": "SIM_d03_202610150030_HTTP_POST",
+      "amount": 10000,
+      "currency": "KRW",
+      "transaction_type": "deposit",
+      "source_ip": "198.51.100.10",
+      "occurred_at": "2026-10-15T03:00:00+00:00",
+      "received_at": "2026-10-14T15:30:22.47241+00:00",
+      "fds_detected": false,
+      "fds_rules": [
+        {
+          "detail": null,
+          "rule_id": "R01",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R02",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R04",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R07",
+          "triggered": false
+        }
+      ],
+      "fds_evaluation_skipped": false
+    },
+    {
+      "transaction_id": "ace436de-ae66-4e02-aed0-c30a6b1a2f75",
+      "account_id": "SIM_d03_202610150030_PRE",
+      "amount": 10000,
+      "currency": "KRW",
+      "transaction_type": "deposit",
+      "source_ip": "198.51.100.10",
+      "occurred_at": "2026-10-15T03:00:00+00:00",
+      "received_at": "2026-10-14T15:30:18.108444+00:00",
+      "fds_detected": false,
+      "fds_rules": [
+        {
+          "detail": null,
+          "rule_id": "R01",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R02",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R04",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R07",
+          "triggered": false
+        }
+      ],
+      "fds_evaluation_skipped": false
+    },
+    {
+      "transaction_id": "87c2f8e5-80b5-414b-ba88-3f0bc410f025",
+      "account_id": "SIM_d03_202610150030_READ",
+      "amount": 10000,
+      "currency": "KRW",
+      "transaction_type": "deposit",
+      "source_ip": "198.51.100.10",
+      "occurred_at": "2026-10-15T03:00:00+00:00",
+      "received_at": "2026-10-14T15:30:18.696386+00:00",
+      "fds_detected": null,
+      "fds_rules": null,
+      "fds_evaluation_skipped": true
+    },
+    {
+      "transaction_id": "2ea5b5a8-ec62-4237-96cb-e4ad894ef776",
+      "account_id": "SIM_d03_202610150030_READ_POST",
+      "amount": 10000,
+      "currency": "KRW",
+      "transaction_type": "deposit",
+      "source_ip": "198.51.100.10",
+      "occurred_at": "2026-10-15T03:00:00+00:00",
+      "received_at": "2026-10-14T15:30:21.279245+00:00",
+      "fds_detected": false,
+      "fds_rules": [
+        {
+          "detail": null,
+          "rule_id": "R01",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R02",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R04",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R07",
+          "triggered": false
+        }
+      ],
+      "fds_evaluation_skipped": false
+    }
+  ],
+  "rollback_pid": 84,
+  "result": "LAB_RUNTIME_PASS",
+  "production_runtime_claim": false
+}

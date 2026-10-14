@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "exec",
+    "a82f8cb14c4a0890193b62a04ad809c07f2e6abee30f63cd73b3a014f46e010c",
+    "/venv/bin/python3",
+    "-B",
+    "/d03/d03_lab.py",
+    "_probe",
+    "8000",
+    "/readyz"
+  ],
+  "rc": 1,
+  "started_at_utc": "2026-10-14T15:30:14.957287+00:00",
+  "finished_at_utc": "2026-10-14T15:30:15.180294+00:00",
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/d03/d03_lab.py\", line 570, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/d03/d03_lab.py\", line 555, in main\n    print(json.dumps(http(args.port,args.path)))\n                     ~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"/d03/d03_lab.py\", line 113, in http\n    conn.request('POST' if body is not None else 'GET', path,\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                 json.dumps(body) if body is not None else None,\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                 {'Content-Type': 'application/json'})\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/http/client.py\", line 1386, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/http/client.py\", line 1432, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/http/client.py\", line 1381, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/http/client.py\", line 1141, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File \"/usr/lib/python3.13/http/client.py\", line 1085, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File \"/usr/lib/python3.13/http/client.py\", line 1051, in connect\n    self.sock = self._create_connection(\n                ~~~~~~~~~~~~~~~~~~~~~~~^\n        (self.host,self.port), self.timeout, self.source_address)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.13/socket.py\", line 868, in create_connection\n    raise exceptions[0]\n  File \"/usr/lib/python3.13/socket.py\", line 853, in create_connection\n    sock.connect(sa)\n    ~~~~~~~~~~~~^^^^\nConnectionRefusedError: [Errno 111] Connection refused\n"
+}
