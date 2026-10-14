@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<stdin>", line 29, in <module>
+  File "<stdin>", line 10, in read
+  File "/usr/lib64/python3.12/pathlib.py", line 847, in lstat
+    return self.stat(follow_symlinks=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/pathlib.py", line 840, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/server01_cicd-runner/FDS_CICD_UnitNegative.eb8ljt_m/build-scan/unit-negative/container.cid'
