@@ -1,0 +1,21 @@
+server08@db01:~$ hostname
+date --iso-8601=seconds
+sudo -u postgres psql -X -v ON_ERROR_STOP=1 -d fdsdb -c "BEGIN READ ONLY; SET LOCAL statement_timeout='5s'; SELECT current_database(), current_user, current_timestamp; SELECT count(*) AS existing_rows_in_planned_run_window FROM public.transactions WHERE left(account_id,7)='SIM_rg_' AND substring(account_id from 8 for 12) BETWEEN '202610141025' AND '202610141035' AND substring(account_id from 20 for 1)='_'; COMMIT;"
+printf 'DB_BEFORE_RC=%s\n' "$?"
+db01
+2026-10-14T10:20:27+09:00
+[sudo] server08 암호: 
+BEGIN
+SET
+ current_database | current_user |       current_timestamp       
+------------------+--------------+-------------------------------
+ fdsdb            | postgres     | 2026-10-14 10:20:30.353457+09
+(1개 행)
+
+ existing_rows_in_planned_run_window 
+-------------------------------------
+                                   0
+(1개 행)
+
+COMMIT
+DB_BEFORE_RC=0

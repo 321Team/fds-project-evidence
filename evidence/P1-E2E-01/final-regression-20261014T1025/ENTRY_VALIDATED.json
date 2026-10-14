@@ -1,0 +1,29 @@
+{
+  "at_kst": "2026-10-14T10:24:05.735273+09:00",
+  "status": "ENTRY_CHECKS_PASS",
+  "writer_exclusion": "user confirmed through11:15",
+  "APP_requests": 0,
+  "DB_before": {
+    "provenance": "USER_CONSOLE_TRANSCRIPT; not direct agent SQL execution or server-file checksum verification",
+    "host": "db01",
+    "console_account": "server08",
+    "database": "fdsdb",
+    "database_user": "postgres",
+    "at_kst": "2026-10-14T10:20:30.353457+09:00",
+    "run_first": "202610141025",
+    "run_last": "202610141035",
+    "existing_rows_in_planned_run_window": 0,
+    "DB_BEFORE_RC": 0,
+    "full_exact_range_query_visible": true,
+    "transaction": "BEGIN READ ONLY; statement_timeout5s; COMMIT",
+    "writer_exclusion": "User confirmed through11:15KST",
+    "source_transcript": "db-before-user-transcript-1020.txt",
+    "scope": "APP one run in the approved window; no acceptance or extra run authorization",
+    "received_text_sha256": "040a868404df09db8ae3c664f77ebaa6602bd53de96f5507026a2b807bbe4e22"
+  },
+  "tool_sha256": "f5dee1069ab96838355cf6269dd6cdff2a08107e880594c5dad98d20424594ed",
+  "source_review_sha": "61fbf0bf1ace1fa3a5eb983c002de2a0ddac856a",
+  "window_start": "2026-10-14T10:25:00+09:00",
+  "latest_start": "2026-10-14T10:35:00+09:00",
+  "finish_by": "2026-10-14T11:15:00+09:00"
+}
