@@ -1,0 +1,60 @@
+{
+  "at_kst": "2026-10-14T13:53:21.132219+09:00",
+  "scope": "preliminary instantaneous read only; not load gate or execution entry",
+  "route": "Kubernetes API GET service proxy; approved q_range/PF path not executed",
+  "receipt_rc": 2,
+  "checks": {
+    "six_ready_app_pods": true
+  },
+  "query_errors": [
+    {
+      "name": "Q1",
+      "error": "kubectl rc 1",
+      "stderr": "Unable to connect to the server: net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n"
+    },
+    {
+      "name": "Q2",
+      "error": "kubectl rc 1",
+      "stderr": "Unable to connect to the server: net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n"
+    },
+    {
+      "name": "Q3",
+      "error": "kubectl rc 1",
+      "stderr": "Unable to connect to the server: context deadline exceeded\n"
+    },
+    {
+      "name": "up",
+      "error": "kubectl rc 1",
+      "stderr": "Unable to connect to the server: net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n"
+    },
+    {
+      "name": "save_success",
+      "error": "kubectl rc 1",
+      "stderr": "Unable to connect to the server: context deadline exceeded\n"
+    },
+    {
+      "name": "save_failure",
+      "error": "kubectl rc 1",
+      "stderr": "Unable to connect to the server: net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n"
+    },
+    {
+      "name": "evaluated",
+      "error": "kubectl rc 1",
+      "stderr": "Unable to connect to the server: context deadline exceeded (Client.Timeout exceeded while awaiting headers)\n"
+    },
+    {
+      "name": "Q3_DENOM",
+      "error": "kubectl rc 1",
+      "stderr": "Unable to connect to the server: net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n"
+    }
+  ],
+  "series": {},
+  "load_runs": 0,
+  "port_forward": 0,
+  "server_staging": 0,
+  "run_id": null,
+  "window": null,
+  "observed_at_utc": "2026-10-14T04:52:47.050402+00:00",
+  "counters": {},
+  "status": "MON_READ_NOT_VERIFIED"
+}

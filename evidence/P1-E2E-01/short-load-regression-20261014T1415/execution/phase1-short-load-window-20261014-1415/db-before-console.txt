@@ -1,0 +1,6 @@
+# PREPARED ONLY. db01/server08. Execute only when the confirmed window requests the fresh DB-before result.
+hostname
+date --iso-8601=seconds
+sudo -u postgres psql -X -P pager=off -v ON_ERROR_STOP=1 -d fdsdb -c "BEGIN READ ONLY; SET LOCAL statement_timeout='5s'; SELECT current_database(), current_user, current_setting('TimeZone'), current_timestamp; SELECT count(*) AS existing_rows_for_run FROM public.transactions WHERE left(account_id,length('SIM_load_202610141415_'))='SIM_load_202610141415_'; COMMIT;"
+printf 'DB_BEFORE_RC=%s\n' "$?"
+date --iso-8601=seconds

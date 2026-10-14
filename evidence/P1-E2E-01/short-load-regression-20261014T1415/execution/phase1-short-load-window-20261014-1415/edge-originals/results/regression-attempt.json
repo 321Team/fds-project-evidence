@@ -1,0 +1,27 @@
+{
+  "profile": "regression",
+  "run_id": "202610141415",
+  "stages": [
+    [
+      "B",
+      20,
+      120
+    ],
+    [
+      "P",
+      50,
+      120
+    ]
+  ],
+  "planned_requests": 8400,
+  "idle_seconds": 120,
+  "max_inflight": 64,
+  "timeout_seconds": 10,
+  "targets": [
+    "10.1.93.105",
+    "10.1.93.107",
+    "10.1.93.108"
+  ],
+  "port": 30080,
+  "purpose": "regression-only; no resource resizing"
+}
