@@ -1,0 +1,17 @@
+{
+  "updated_at_kst": "2026-10-14T16:44:00+09:00",
+  "user_latest": "그런데 H4 이미 진행 중이라 후순위로 조정이 필요할 수 있음.",
+  "order": ["H4 execution and post-observation/collection", "Ansible PR83 CI and host cleanup", "CICD AC05 vulnerability then scanner-error and collection"],
+  "supersedes": "Earlier PR83 -> AC05 -> H4 coordination",
+  "observed_h4": "H4 scope approved; latest Harbor session reports pre-reboot journal collector error under investigation and reboot NOT_DISPATCHED",
+  "h4_read_at_kst": "2026-10-14T16:43:50+09:00",
+  "decision": "Keep H4 first to finish its current work; do not initiate PR83 or AC05 until H4 releases the window",
+  "pr83_stage": "WAIT_H4_RELEASE_OLD_WINDOW_SUSPENDED",
+  "pr83_run": 38522846177,
+  "pr83_job": 115716289329,
+  "ac05_stage": "PREPARED_WAIT_H4_THEN_PR83_RELEASE",
+  "ac05_runtime": "NOT_RUN",
+  "runtime_started_in_this_session": false,
+  "scope_expanded": false,
+  "note": "Order only. Preserve each session's valid authorization, exact inputs, limits and stop/cleanup conditions. Never stop an already-running H4 solely to change order."
+}

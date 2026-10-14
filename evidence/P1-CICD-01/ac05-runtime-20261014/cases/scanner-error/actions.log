@@ -1,0 +1,185 @@
+scan-negative	Set up job	﻿2026-10-14T10:59:25.9237797Z Current runner version: '2.337.0'
+scan-negative	Set up job	2026-10-14T10:59:25.9244246Z Runner name: 'cicd-runner01'
+scan-negative	Set up job	2026-10-14T10:59:25.9244891Z Runner group name: 'Default'
+scan-negative	Set up job	2026-10-14T10:59:25.9245479Z Machine name: 'cicd-runner01'
+scan-negative	Set up job	2026-10-14T10:59:25.9247551Z ##[group]GITHUB_TOKEN Permissions
+scan-negative	Set up job	2026-10-14T10:59:25.9249676Z Contents: read
+scan-negative	Set up job	2026-10-14T10:59:25.9250070Z Metadata: read
+scan-negative	Set up job	2026-10-14T10:59:25.9250399Z ##[endgroup]
+scan-negative	Set up job	2026-10-14T10:59:25.9252136Z Secret source: Actions
+scan-negative	Set up job	2026-10-14T10:59:25.9252772Z Cache mode: write
+scan-negative	Set up job	2026-10-14T10:59:25.9253821Z Prepare workflow directory
+scan-negative	Set up job	2026-10-14T10:59:26.0744328Z Prepare all required actions
+scan-negative	Set up job	2026-10-14T10:59:26.0795016Z Getting action download info
+scan-negative	Set up job	2026-10-14T10:59:26.8921295Z Download action repository 'actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803' (SHA:d23441a48e516b6c34aea4fa41551a30e30af803)
+scan-negative	Set up job	2026-10-14T10:59:28.3285083Z Complete job name: scan-negative
+scan-negative	Require a new checkout directory	﻿2026-10-14T10:59:28.4075257Z ##[group]Run set -euo pipefail
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4076559Z ^[[36;1mset -euo pipefail^[[0m
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4159471Z ^[[36;1mtest "$(hostname -s)" = cicd-runner01^[[0m
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4161210Z ^[[36;1mtest "$(id -un)" = server01_cicd-runner^[[0m
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4162393Z ^[[36;1mtest "$(id -u)" = 1000^[[0m
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4163401Z ^[[36;1mtest ! -e "$GITHUB_WORKSPACE/$CICD_CHECKOUT"^[[0m
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4164351Z ^[[36;1mtest ! -L "$GITHUB_WORKSPACE/$CICD_CHECKOUT"^[[0m
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4174033Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4175559Z env:
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4176297Z   CICD_CHECKOUT: cicd-scan-negative-38553393207-1
+scan-negative	Require a new checkout directory	2026-10-14T10:59:28.4177100Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	﻿2026-10-14T10:59:28.4549564Z ##[group]Run actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4550630Z with:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4551284Z   ref: 65ae4fd3b274efc04c3cb686b41cc99fb07383b8
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4552109Z   path: cicd-scan-negative-38553393207-1
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4554272Z   persist-credentials: false
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4555581Z   clean: false
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4556310Z   set-safe-directory: false
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4557013Z   fetch-depth: 1
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4557723Z   submodules: false
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4558326Z   lfs: false
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4558926Z   repository: 321Team/infra-cicd
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4564337Z   token: ***
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4564950Z   ssh-strict: true
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4565538Z   ssh-user: git
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4566158Z   sparse-checkout-cone-mode: true
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4566863Z   fetch-tags: false
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4568452Z   show-progress: true
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4569183Z   allow-unsafe-pr-checkout: false
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4569928Z env:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4570616Z   CICD_CHECKOUT: cicd-scan-negative-38553393207-1
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.4571402Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5382588Z Syncing repository: 321Team/infra-cicd
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5384716Z ##[group]Getting Git version info
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5386095Z Working directory is '/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1'
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5388220Z [command]/usr/bin/git version
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5388869Z git version 2.52.0
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5390895Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5395332Z ##[group]Determining repository object format
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5396430Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5397631Z ##[group]Initializing the repository
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5398921Z [command]/usr/bin/git init /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5413446Z hint: Using 'master' as the name for the initial branch. This default branch name
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5414691Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5415824Z hint: to use in all of your new repositories, which will suppress this warning,
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5416921Z hint: call:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5417447Z hint:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5418099Z hint: 	git config --global init.defaultBranch <name>
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5418811Z hint:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5419758Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5420867Z hint: 'development'. The just-created branch can be renamed via this command:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5421867Z hint:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5422430Z hint: 	git branch -m <name>
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5423015Z hint:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5423786Z hint: Disable this message with "git config set advice.defaultBranchName false"
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5425377Z /home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git/ 안의 빈 깃 저장소를 다시 초기화했습니다
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5428747Z [command]/usr/bin/git remote add origin https://github.com/321Team/infra-cicd
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5478088Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5479195Z ##[group]Disabling automatic garbage collection
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5480689Z [command]/usr/bin/git config --local gc.auto 0
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5510410Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5511673Z ##[group]Setting up auth
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5512510Z Removing SSH command configuration
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5514821Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5544348Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5768742Z Removing HTTP extra header
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5781211Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.5816529Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6044552Z Removing includeIf entries pointing to credentials config files
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6048358Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6072423Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6319187Z [command]/usr/bin/git config --file /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6358133Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6383537Z [command]/usr/bin/git config --local includeIf.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6407874Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-scan-negative-38553393207-1/.git.path /github/runner_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6432717Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/cicd-scan-negative-38553393207-1/.git/worktrees/*.path /github/runner_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6468959Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6470240Z ##[group]Fetching the repository
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:28.6474061Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 65ae4fd3b274efc04c3cb686b41cc99fb07383b8
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3713165Z https://github.com/321Team/infra-cicd URL에서
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3713956Z  * branch            65ae4fd3b274efc04c3cb686b41cc99fb07383b8 -> FETCH_HEAD
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3736206Z [command]/usr/bin/git rev-parse --verify --quiet 65ae4fd3b274efc04c3cb686b41cc99fb07383b8^{object}
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3758787Z 65ae4fd3b274efc04c3cb686b41cc99fb07383b8
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3760782Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3761955Z ##[group]Determining the checkout info
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3762712Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3767947Z [command]/usr/bin/git sparse-checkout disable
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3795835Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3817262Z ##[group]Checking out the ref
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.3817810Z [command]/usr/bin/git checkout --progress --force 65ae4fd3b274efc04c3cb686b41cc99fb07383b8
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4670223Z Note: switching to '65ae4fd3b274efc04c3cb686b41cc99fb07383b8'.
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4670936Z 
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4671319Z You are in 'detached HEAD' state. You can look around, make experimental
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4672441Z changes and commit them, and you can discard any commits you make in this
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4673207Z state without impacting any branches by switching back to a branch.
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4673641Z 
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4674013Z If you want to create a new branch to retain commits you create, you may
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4674725Z do so (now or later) by using -c with the switch command. Example:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4675155Z 
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4675398Z   git switch -c <new-branch-name>
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4675710Z 
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4675948Z Or undo this operation with:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4676211Z 
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4676397Z   git switch -
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4677229Z 
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4677735Z Turn off this advice by setting config variable advice.detachedHead to false
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4678240Z 
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4679541Z HEAD의 현재 위치는 65ae4fd Merge pull request #81 from 321Team/feat/p1-scan-negative-20261014
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4682723Z ##[endgroup]
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4739860Z [command]/usr/bin/git log -1 --format=%H
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4766033Z 65ae4fd3b274efc04c3cb686b41cc99fb07383b8
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4775831Z ##[group]Removing auth
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4776522Z Removing SSH command configuration
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4779678Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.4806798Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5031379Z Removing HTTP extra header
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5032068Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5056674Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5260692Z Removing includeIf entries pointing to credentials config files
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5267545Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5293035Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git.path
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5293977Z includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git/worktrees/*.path
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5294523Z includeif.gitdir:/github/workspace/cicd-scan-negative-38553393207-1/.git.path
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5294955Z includeif.gitdir:/github/workspace/cicd-scan-negative-38553393207-1/.git/worktrees/*.path
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5301350Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git.path
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5319140Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5327770Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5352378Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git/worktrees/*.path
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5368694Z /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5373518Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/server01_cicd-runner/actions-runner/_work/infra-cicd/infra-cicd/cicd-scan-negative-38553393207-1/.git/worktrees/*.path /home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5398194Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-scan-negative-38553393207-1/.git.path
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5415038Z /github/runner_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5420597Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-scan-negative-38553393207-1/.git.path /github/runner_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5451939Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/cicd-scan-negative-38553393207-1/.git/worktrees/*.path
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5470899Z /github/runner_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5478654Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/cicd-scan-negative-38553393207-1/.git/worktrees/*.path /github/runner_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5505077Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5713528Z Removing credentials config '/home/server01_cicd-runner/actions-runner/_work/_temp/git-credentials-7281bfec-f8a7-4c53-afd6-b8d1f0d707ff.config'
+scan-negative	Checkout the reviewed workflow commit	2026-10-14T10:59:29.5720456Z ##[endgroup]
+scan-negative	Exercise the selected real scanner failure	﻿2026-10-14T10:59:29.5817584Z ##[group]Run set -euo pipefail
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5817887Z ^[[36;1mset -euo pipefail^[[0m
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5818158Z ^[[36;1mexport PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin^[[0m
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5818574Z ^[[36;1mexport PYTHONDONTWRITEBYTECODE=1^[[0m
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5818913Z ^[[36;1mexec /usr/bin/python3 tools/trivy/scan_negative.py --case "$SCAN_NEGATIVE_CASE"^[[0m
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5820904Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5821145Z env:
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5821338Z   CICD_CHECKOUT: cicd-scan-negative-38553393207-1
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5821568Z   SCAN_NEGATIVE_CASE: scanner-error
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.5821759Z ##[endgroup]
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:29.6215947Z EVIDENCE_DIR=/home/server01_cicd-runner/FDS_CICD_ScanNegative.5yuif6qp
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:30.9180515Z SCAN_NEGATIVE_WORKFLOW=FAIL
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:30.9181524Z NEGATIVE_CASE=EXPECTED_FAILURE_OBSERVED
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:30.9182248Z ERROR_CODE=SCANNER_EXECUTION_ERROR
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:30.9182730Z PUSH=NOT_EXECUTED
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:30.9183159Z DEPLOY=NOT_EXECUTED
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:30.9183790Z DELIVERY_GATE=NOT_VERIFIED
+scan-negative	Exercise the selected real scanner failure	2026-10-14T10:59:30.9244608Z ##[error]Process completed with exit code 1.
+scan-negative	Post Checkout the reviewed workflow commit	﻿2026-10-14T10:59:30.9349160Z Post job cleanup.
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:30.9957302Z [command]/usr/bin/git version
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:30.9984563Z git version 2.52.0
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0001192Z Removing SSH command configuration
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0005862Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0034726Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0245276Z Removing HTTP extra header
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0248348Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0285962Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0511572Z Removing includeIf entries pointing to credentials config files
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0515818Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+scan-negative	Post Checkout the reviewed workflow commit	2026-10-14T10:59:31.0543227Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+scan-negative	Complete job	﻿2026-10-14T10:59:31.0852909Z Cleaning up orphan processes
