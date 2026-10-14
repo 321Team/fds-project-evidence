@@ -1,0 +1,205 @@
+{
+  "BUILD_SCAN": "FAIL",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "PUSH": "NOT_EXECUTED",
+  "DEPLOY": "NOT_EXECUTED",
+  "context": {
+    "workflow_sha": "b5effa840f6b8166cd6f6f52edafe98c7d7a94f4",
+    "run_id": "35588577241",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/35588577241",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "input_sha256": "ea375a00811923cfb415e6c851ceed55227b5978835953eb2227b03552ab5728",
+    "handoff_sha256": "f79d0c073448d29b9705ba9e6454fa010b85af97eeace97dab0c6a499411fefd"
+  },
+  "started_at": "2026-09-21T10:24:41.048206+00:00",
+  "steps": [
+    {
+      "name": "source-head",
+      "exit_code": 0,
+      "log_sha256": "30c9c1ba2cf3f259c9d1307de69cb9953a07de3d77059556f8131489cde2ccda"
+    },
+    {
+      "name": "source-origin",
+      "exit_code": 0,
+      "log_sha256": "5fc74ed436b1d0f0f51253de816f45379ff9dd19517fd733d58a429e1293aecc"
+    },
+    {
+      "name": "source-tree",
+      "exit_code": 0,
+      "log_sha256": "5b94fbc848d43cd5521a0c643a87af449eaa4d754c4522be7c8f6d05d9175887"
+    },
+    {
+      "name": "source-archive",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "podman-version",
+      "exit_code": 0,
+      "log_sha256": "5d57fcc5763930d5e2152569c0ff545dccef532baf0b320d221a17e66db8f590"
+    },
+    {
+      "name": "podman-rootless",
+      "exit_code": 0,
+      "log_sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"
+    },
+    {
+      "name": "offline-base-load",
+      "exit_code": 0,
+      "log_sha256": "f19d9afc242b1c12fc97004a0cbfbff933ca98ffac6e63071a33330e1dcc2d28"
+    },
+    {
+      "name": "offline-base-tag",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "offline-base-resolve",
+      "exit_code": 0,
+      "log_sha256": "159d5ba6c4991c1685e17f4f951ac00195d131edbefb1dd1fb66bf3b6e7bb436"
+    },
+    {
+      "name": "transaction-api-offline-venv",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "transaction-api-offline-install",
+      "exit_code": 0,
+      "log_sha256": "2c94ac6affcbda8bfa56ff3eb44fdd0e6d81a388051f7e8f2611ee83b532fbf6"
+    },
+    {
+      "name": "transaction-api-offline-check",
+      "exit_code": 0,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "name": "fds-engine-offline-venv",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fds-engine-offline-install",
+      "exit_code": 0,
+      "log_sha256": "e96b465c42333db14961b2e126122e850425ed433743d6f06628a555289bae12"
+    },
+    {
+      "name": "fds-engine-offline-check",
+      "exit_code": 0,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "name": "fds-engine-unit-0",
+      "exit_code": 0,
+      "log_sha256": "cd2d29f925dd318e8d6ebbb62e80e5e5f9e1c2f8cbabec6d3b17ef348a550c51"
+    },
+    {
+      "name": "transaction-api-contract-0",
+      "exit_code": 0,
+      "log_sha256": "6fbfb7b5df82097f059c6b201340eb706b68865225abb85ae12f8157efe2a967"
+    },
+    {
+      "name": "fds-engine-contract-0",
+      "exit_code": 0,
+      "log_sha256": "f09c6bd700236fa8f1fe389bd9a6d8e743a8432c956c037d948cea6b0c51b377"
+    },
+    {
+      "name": "transaction-api-build",
+      "exit_code": 0,
+      "log_sha256": "4c44d3e567aeb07d838f43441688ac86a2ba103af1c7c58aca965b08144aeec2"
+    },
+    {
+      "name": "transaction-api-save",
+      "exit_code": 0,
+      "log_sha256": "965239e7c6caf7d6f4b16d99cb13086403dd58513e35107ade747a4da295cee8"
+    },
+    {
+      "name": "fds-engine-build",
+      "exit_code": 0,
+      "log_sha256": "807535aae366ee13fb863b691bcc486f97e5a7827eb42d0d168bba7e78140b15"
+    },
+    {
+      "name": "fds-engine-save",
+      "exit_code": 0,
+      "log_sha256": "71f3d0fba548762b50c1acd4a36ab349790d9f37e596f8c262aeaa72bcfb3dc1"
+    }
+  ],
+  "images": {
+    "transaction-api": {
+      "image_id": "sha256:397bf2a30049eaa7a45c8254f97cb1a68a67ca4536d8080b1fe5f7702205db1c",
+      "archive_sha256": "0f91e10992491ade5d702928ab2b8f6541d2fb207a82f6ffc6d7c5e559f1b0f8",
+      "manifest_digest": "sha256:5ce12a3f7697b2157fbe1f8a08e459c70bb3983f474d458a1db5506f53142a92",
+      "config_digest": "sha256:397bf2a30049eaa7a45c8254f97cb1a68a67ca4536d8080b1fe5f7702205db1c",
+      "diff_ids": [
+        "sha256:411a86676185cb54d695a805b238194a64e9b77e0c723f3802fbb87d333ea0b3",
+        "sha256:3070bb8623db07ca38569112f9b296043371a00bfb3ee4d9f8f63ddfd2f2efca",
+        "sha256:3d664d274420a79749a26f9e5115b2120d46037264011773ca4c52e22780b2ca",
+        "sha256:24257af4ce5bde01d3c7ebd6d366ec4a298ed27c794bbd6832ef5ce934a66170",
+        "sha256:abd9c522fa6d750df2628258a7f85600e0ba704666c93ffe5e87e3a26ec686ec",
+        "sha256:397d2f0694a91c27b000ee762f6adbc33540402189f746a8d85fd53d36e08053",
+        "sha256:80cc72c93e5a5f6e25f9d78a897947e7460e402e57e48a78e3e92809c0207fb2",
+        "sha256:50ce12d4f1045d1ff250232602af6da87c12d689b4ef74fa92f0e5b20ba51aa3",
+        "sha256:11d158c648bebf69065a8f91c744f859573e3187c7e7e0a46cf097084240e43b",
+        "sha256:a1edc1bf44b3530aee4734bc1986b74c90594c8f41f4bec664be68a2d93ee33b"
+      ],
+      "platform": "linux/amd64"
+    },
+    "fds-engine": {
+      "image_id": "sha256:cbb88dfb2e317e2adf4681b69fefe4f1eca75ce935744b43a89d9b081116f1ed",
+      "archive_sha256": "1a85276dc0981a1664853413d1959145bbb4626b309bb908fc95035e9880b89c",
+      "manifest_digest": "sha256:31112f6313129b3e2ebb722929fedf636d1576012fb05e0f36b83dc10b1544ec",
+      "config_digest": "sha256:cbb88dfb2e317e2adf4681b69fefe4f1eca75ce935744b43a89d9b081116f1ed",
+      "diff_ids": [
+        "sha256:411a86676185cb54d695a805b238194a64e9b77e0c723f3802fbb87d333ea0b3",
+        "sha256:3070bb8623db07ca38569112f9b296043371a00bfb3ee4d9f8f63ddfd2f2efca",
+        "sha256:3d664d274420a79749a26f9e5115b2120d46037264011773ca4c52e22780b2ca",
+        "sha256:24257af4ce5bde01d3c7ebd6d366ec4a298ed27c794bbd6832ef5ce934a66170",
+        "sha256:639ab06bb182972c57f5033e0ec1a1e19b29c9124bced99febd108cbe5585c5f",
+        "sha256:173ee224a4c39cad27c42cc28dfb3261003a2aff0b314b9563c17331864ab7a9",
+        "sha256:4829cabe079aa9359db8b1772ccdb21d82aff46a9157b5c33dd9a9f4ca3d7e5f",
+        "sha256:a354f7c7a92423e736ebbb6cb054317e9d96e61f92d529a6c7fae653d9ae9a8a",
+        "sha256:3b5b9c4b3b931b6524b5b304b83162acc5148ff66fb8919d1a32b24a72fd7521",
+        "sha256:9a5a08ad07dfb4066a726491d446c84b72533b0674eaae0e622496ec77b0cf6d"
+      ],
+      "platform": "linux/amd64"
+    }
+  },
+  "not_applicable_tests": [
+    {
+      "service": "transaction-api",
+      "phase": "unit",
+      "status": "NOT_APPLICABLE",
+      "reason": "transaction-api\ub294 \uc790\uccb4 \ud310\uc815 \ub85c\uc9c1\uc774 \uc5c6\ub294 \ub77c\uc6b0\ud305/\uc601\uc18d\uc131 \uacc4\uce35\uc774\ub2e4 \u2014 \uc694\uccad \uc218\uc2e0, R01/R07\uc6a9 context \uc0ac\uc804 \uacc4\uc0b0 \ud6c4 fds-engine \ud638\ucd9c, DB \uc800\uc7a5\ub9cc \uc218\ud589\ud55c\ub2e4. \uc2e4\uc81c \ud310\uc815 \ub85c\uc9c1(R01/R02/R04/R07)\uc740 fds-engine\uc5d0 \uc788\uc73c\uba70 fds-engine\uc758 Unit test_rules.py(16\uac1c \ud568\uc218)\uac00 \uc804\ub2f4 \ucee4\ubc84\ud55c\ub2e4. transaction-api \uc790\uccb4 \ub3d9\uc791(\uae30\ub3d9/DB \uc5f0\uacb0/metrics)\uc740 \uc704 Contract \ud14c\uc2a4\ud2b8\uac00 \ucee4\ubc84\ud55c\ub2e4.",
+      "approved_by": "\uc774\uc7ac\ud658 (supreme33-kr)",
+      "approval_reference": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-5757298518"
+    }
+  ],
+  "source": {
+    "repository": "321Team/fds-msa",
+    "commit": "ec69b67067decf35abbfed0a6a99f3073132787b",
+    "approved_by": "\uc774\uc7ac\ud658 (supreme33-kr)",
+    "approval_reference": "https://github.com/321Team/infra-cicd/issues/11#issuecomment-5757298518"
+  },
+  "source_archive_sha256": "da9d217beb8e822fdc3eecd10f02dc4f22b4f86672d1b90676e143a50f91ebc8",
+  "offline_supply": {
+    "SUPPLY_COPY": "PASS",
+    "REPOSITORY_DIGEST_RESOLUTION": "PASS",
+    "archive_sha256": "c8fa45563815bd6a3de3a8b115103cbb3c838229bcda68ca255b70a9f2202d8c",
+    "manifest_digest": "sha256:2fe5997d249a808b8eeea52c58a1dbffbba28754dc11699ef5c029f2d818ce79",
+    "config_digest": "sha256:ec7d6c95cd3692a2e2d228a8b1ca74e4025b54121fcc4c5da6f09cfa473315ad",
+    "diff_ids": [
+      "sha256:411a86676185cb54d695a805b238194a64e9b77e0c723f3802fbb87d333ea0b3",
+      "sha256:3070bb8623db07ca38569112f9b296043371a00bfb3ee4d9f8f63ddfd2f2efca",
+      "sha256:3d664d274420a79749a26f9e5115b2120d46037264011773ca4c52e22780b2ca",
+      "sha256:24257af4ce5bde01d3c7ebd6d366ec4a298ed27c794bbd6832ef5ce934a66170"
+    ],
+    "platform": "linux/amd64",
+    "reference": "docker.io/library/python@sha256:2fe5997d249a808b8eeea52c58a1dbffbba28754dc11699ef5c029f2d818ce79"
+  },
+  "scan_result_sha256": "4245560eea1e2e877e7b2ba04e90c80f51770f697552b6f61e71456085c7e327",
+  "error_code": "IMAGE_SCAN_FAILED",
+  "finished_at": "2026-09-21T10:25:37.674472+00:00"
+}

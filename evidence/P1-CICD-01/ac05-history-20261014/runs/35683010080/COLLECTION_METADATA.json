@@ -1,0 +1,376 @@
+{
+  "started_at_utc": "2026-10-14T04:55:11.857496+00:00",
+  "host": "cicd-runner01",
+  "uid": 1000,
+  "read_only": true,
+  "new_runtime": false,
+  "run_id": "35683010080",
+  "root": "/home/server01_cicd-runner/FDS_CICD_AppWorkflow.log3xwta",
+  "expected_workflow_sha": "7e939d7f77c38c13fd331b38f6649580bf0d05bd",
+  "hash_only": {
+    "build-scan/scan/transaction-api/report.json": {
+      "present": true,
+      "bytes": 565430,
+      "sha256": "a9a0c6eff7961d95af7fb3a5f51093568e0ce50ab03c86859733341b0260769c",
+      "expected_sha256": "a9a0c6eff7961d95af7fb3a5f51093568e0ce50ab03c86859733341b0260769c",
+      "expected_match": true,
+      "raw_copied": false
+    },
+    "build-scan/transaction-api.oci.tar": {
+      "present": true,
+      "bytes": 93404160,
+      "sha256": "218c57b0613dc37e9628745d3ae580886543902714bbb9ab6249b5ac90d1266f",
+      "expected_sha256": "218c57b0613dc37e9628745d3ae580886543902714bbb9ab6249b5ac90d1266f",
+      "expected_match": true,
+      "raw_copied": false
+    },
+    "build-scan/fds-engine.oci.tar": {
+      "present": true,
+      "bytes": 74496512,
+      "sha256": "a8895e245ea2a2f30aa106524bf858020fccc65a12fc543d26f3c09a87f04d1c",
+      "expected_sha256": "a8895e245ea2a2f30aa106524bf858020fccc65a12fc543d26f3c09a87f04d1c",
+      "expected_match": true,
+      "raw_copied": false
+    },
+    "build-scan/source.tar": {
+      "present": true,
+      "bytes": 245760,
+      "sha256": "da9d217beb8e822fdc3eecd10f02dc4f22b4f86672d1b90676e143a50f91ebc8",
+      "expected_sha256": "da9d217beb8e822fdc3eecd10f02dc4f22b4f86672d1b90676e143a50f91ebc8",
+      "expected_match": true,
+      "raw_copied": false
+    },
+    "build-scan/scan/db/cache/db/trivy.db": {
+      "present": true,
+      "bytes": 1427136512,
+      "sha256": "50bf693237d830c945ea4a19e69698e4eb757e9688571b2e81f19791138ee120",
+      "expected_sha256": "50bf693237d830c945ea4a19e69698e4eb757e9688571b2e81f19791138ee120",
+      "expected_match": true,
+      "raw_copied": false
+    }
+  },
+  "missing": [
+    "build-scan/scan/fds-engine/exit-code.txt",
+    "build-scan/scan/fds-engine/empty.yaml",
+    "build-scan/scan/fds-engine/empty.ignore"
+  ],
+  "finished_at_utc": "2026-10-14T04:55:13.550519+00:00",
+  "files": {
+    "result.json": {
+      "sha256": "3dda5fc2b46f89049b5e36e0cce5c17e8887fb7b140486d3cb4e3d05926ce337",
+      "bytes": 5765,
+      "mode": "0o600"
+    },
+    "SHA256SUMS": {
+      "sha256": "7c09f3140a46d588c1bb4ac2e12ef84c3636c6ae02222ecb9da378607ecbf5d3",
+      "bytes": 78,
+      "mode": "0o600"
+    },
+    "handoff.json": {
+      "sha256": "f79d0c073448d29b9705ba9e6454fa010b85af97eeace97dab0c6a499411fefd",
+      "bytes": 3471,
+      "mode": "0o600"
+    },
+    "build-scan/result.json": {
+      "sha256": "b512188efbd713cd5e05b7a2e8b3f3c8a860d92120fd8362a75f6eed230bad89",
+      "bytes": 9240,
+      "mode": "0o600"
+    },
+    "build-scan/SHA256SUMS": {
+      "sha256": "49f353eb1d9c1ffa660d89a5c68638dc7f2551d1b20d893a430d827624fc0889",
+      "bytes": 78,
+      "mode": "0o600"
+    },
+    "build-scan/scan/result.json": {
+      "sha256": "a11350083c44f6b9488ce7b2e27376c50a41519bb3a7430f2ee6930b8eefb953",
+      "bytes": 2445,
+      "mode": "0o600"
+    },
+    "build-scan/scan/SHA256SUMS": {
+      "sha256": "b564c9aa9bde8b653c46e672d83bb5d6341201bd8b56ef6413d854ee5858acc4",
+      "bytes": 172,
+      "mode": "0o600"
+    },
+    "build-scan/scan/db/result.json": {
+      "sha256": "b40f423e8f1cda33c4cc0da34faf499d5f7d80f4898891ae22ae1b503a7844ab",
+      "bytes": 1348,
+      "mode": "0o600"
+    },
+    "build-scan/scan/db/SHA256SUMS": {
+      "sha256": "b44fb8c45da48510b0076d45d5b0f930b946cdcfefefd16094bc8151d3d7f85a",
+      "bytes": 251,
+      "mode": "0o600"
+    },
+    "source-init.log": {
+      "sha256": "e0560793ae752bc45aeab2c1db8f1ce628e09966b880d12161b551a9f1188272",
+      "bytes": 688,
+      "mode": "0o600"
+    },
+    "source-origin-set.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o600"
+    },
+    "source-fetch.log": {
+      "sha256": "70f46536de3f09d61524bc4d189aa28c6abb0007c7325cb9c08d942d9002d81c",
+      "bytes": 49,
+      "mode": "0o600"
+    },
+    "source-fetched.log": {
+      "sha256": "30c9c1ba2cf3f259c9d1307de69cb9953a07de3d77059556f8131489cde2ccda",
+      "bytes": 41,
+      "mode": "0o600"
+    },
+    "source-head-set.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o600"
+    },
+    "handoff-head.log": {
+      "sha256": "30c9c1ba2cf3f259c9d1307de69cb9953a07de3d77059556f8131489cde2ccda",
+      "bytes": 41,
+      "mode": "0o600"
+    },
+    "handoff-origin.log": {
+      "sha256": "5fc74ed436b1d0f0f51253de816f45379ff9dd19517fd733d58a429e1293aecc",
+      "bytes": 39,
+      "mode": "0o600"
+    },
+    "handoff-tree.log": {
+      "sha256": "5b94fbc848d43cd5521a0c643a87af449eaa4d754c4522be7c8f6d05d9175887",
+      "bytes": 6341,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-requirements.txt-size.log": {
+      "sha256": "9d9b18720961e9b4689fd763b85e7b6f36160ccd3a8a1c9ddc5103bb0f66c396",
+      "bytes": 4,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-requirements.txt.log": {
+      "sha256": "0b8f3430a64f4b81429277bf651b2e1b62a68084f8d79b36a63d09d065b76947",
+      "bytes": 143,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-requirements-test.txt-size.log": {
+      "sha256": "ea243e5457028e97f9bc93b37a72f8e80ea61ae081911bb037765590ee6aa435",
+      "bytes": 3,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-requirements-test.txt.log": {
+      "sha256": "b0a7d247aa0d498de1e71fd299c79d5022874cf1b36347697f52ba88b194f5f2",
+      "bytes": 34,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-requirements.txt-size.log": {
+      "sha256": "ff393127b5a059b172af9b9eed820368071cf24d46df1b8326623c8e79178379",
+      "bytes": 3,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-requirements.txt.log": {
+      "sha256": "11b1f940e83bded8fa8e901005f0467c4652bfac332657b11c118ee8f9b80ca3",
+      "bytes": 85,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-requirements-test.txt-size.log": {
+      "sha256": "654ee9da442fa353f59f11beb688fc7f76c8de62a6c18b2a181fdde2a27cc3ef",
+      "bytes": 3,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-requirements-test.txt.log": {
+      "sha256": "2f41764074d9ca19782db366262c28015930c16e2e0b135a8b615f5d15dbae78",
+      "bytes": 48,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-Dockerfile-size.log": {
+      "sha256": "8cf2c564a259ec0c36ecb9b94125e825938d21ada0c1016959bde8e0cd055cc4",
+      "bytes": 4,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-Dockerfile.log": {
+      "sha256": "01ab8a025e976b3563fca51b88fc299315b4c5edb85f965d200844f971b77e99",
+      "bytes": 565,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-requirements-runtime.lock-size.log": {
+      "sha256": "d1f5ebf98bdcd6aaa55349ef6b3f321e4f26d6ab905cd9aab6c3f777b910ea53",
+      "bytes": 5,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-requirements-runtime.lock.log": {
+      "sha256": "3a71d0d227415f3f818642b5370920f02a23a9bcb28f4dd31aac1d59d96c756e",
+      "bytes": 2425,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-requirements-test.lock-size.log": {
+      "sha256": "e8f73157af54133665886b950107c231013684d74bfe92968cc74bb3687b0ef3",
+      "bytes": 5,
+      "mode": "0o600"
+    },
+    "handoff-transaction-api-requirements-test.lock.log": {
+      "sha256": "72137816616e16e2b88f86630c507800414c3b37c14c7f624b9042fd66a8ef85",
+      "bytes": 2802,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-Dockerfile-size.log": {
+      "sha256": "8cf2c564a259ec0c36ecb9b94125e825938d21ada0c1016959bde8e0cd055cc4",
+      "bytes": 4,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-Dockerfile.log": {
+      "sha256": "5849c5f9c225a54be8d6b4d0d602f443cb4e797688f867d6b7962f8c4b671607",
+      "bytes": 565,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-requirements-runtime.lock-size.log": {
+      "sha256": "81a0a00423a6188370dc494cb5f7f1c3050d2fa435498ed3979bc83f4a142deb",
+      "bytes": 5,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-requirements-runtime.lock.log": {
+      "sha256": "c9d6138da341b431f0b7fdaf4aee78d59f9207e9d3f2bf4636b0505681c1f80b",
+      "bytes": 1748,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-requirements-test.lock-size.log": {
+      "sha256": "75c6c7818ff82704297acbf6dcff0903f27cf0be085b05827a063bd45748231f",
+      "bytes": 5,
+      "mode": "0o600"
+    },
+    "handoff-fds-engine-requirements-test.lock.log": {
+      "sha256": "3a51dbbb6dd56d09658f0d2343e4b4847394f006f1f2aa082886bc468e797b65",
+      "bytes": 2505,
+      "mode": "0o600"
+    },
+    "build-scan/source-head.log": {
+      "sha256": "30c9c1ba2cf3f259c9d1307de69cb9953a07de3d77059556f8131489cde2ccda",
+      "bytes": 41,
+      "mode": "0o600"
+    },
+    "build-scan/source-origin.log": {
+      "sha256": "5fc74ed436b1d0f0f51253de816f45379ff9dd19517fd733d58a429e1293aecc",
+      "bytes": 39,
+      "mode": "0o600"
+    },
+    "build-scan/source-tree.log": {
+      "sha256": "5b94fbc848d43cd5521a0c643a87af449eaa4d754c4522be7c8f6d05d9175887",
+      "bytes": 6341,
+      "mode": "0o600"
+    },
+    "build-scan/source-archive.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o600"
+    },
+    "build-scan/podman-version.log": {
+      "sha256": "5d57fcc5763930d5e2152569c0ff545dccef532baf0b320d221a17e66db8f590",
+      "bytes": 21,
+      "mode": "0o600"
+    },
+    "build-scan/podman-rootless.log": {
+      "sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74",
+      "bytes": 5,
+      "mode": "0o600"
+    },
+    "build-scan/offline-base-load.log": {
+      "sha256": "f19d9afc242b1c12fc97004a0cbfbff933ca98ffac6e63071a33330e1dcc2d28",
+      "bytes": 583,
+      "mode": "0o600"
+    },
+    "build-scan/offline-base-tag.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o600"
+    },
+    "build-scan/offline-base-resolve.log": {
+      "sha256": "159d5ba6c4991c1685e17f4f951ac00195d131edbefb1dd1fb66bf3b6e7bb436",
+      "bytes": 8950,
+      "mode": "0o600"
+    },
+    "build-scan/transaction-api-offline-venv.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o600"
+    },
+    "build-scan/transaction-api-offline-install.log": {
+      "sha256": "470101f83ca0229caa2fd86d3691180db23884f59a28d30c5c664dc8e2b30c3d",
+      "bytes": 10009,
+      "mode": "0o600"
+    },
+    "build-scan/transaction-api-offline-check.log": {
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30,
+      "mode": "0o600"
+    },
+    "build-scan/fds-engine-offline-venv.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o600"
+    },
+    "build-scan/fds-engine-offline-install.log": {
+      "sha256": "cc6fb3afb1ff285caef18ee170412240b99927c5e1296041e69827b95e3db94e",
+      "bytes": 8624,
+      "mode": "0o600"
+    },
+    "build-scan/fds-engine-offline-check.log": {
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30,
+      "mode": "0o600"
+    },
+    "build-scan/fds-engine-unit-0.log": {
+      "sha256": "cd2d29f925dd318e8d6ebbb62e80e5e5f9e1c2f8cbabec6d3b17ef348a550c51",
+      "bytes": 99,
+      "mode": "0o600"
+    },
+    "build-scan/transaction-api-contract-0.log": {
+      "sha256": "6dbc61e66c3ad6f209cbee0aa0030aa95a61c6d8099b1873970753c6f58ae0ef",
+      "bytes": 701,
+      "mode": "0o600"
+    },
+    "build-scan/fds-engine-contract-0.log": {
+      "sha256": "bcd1159df5321313c41a23b6ebbf5b8440d0614833294d3b53a756e1525dbd14",
+      "bytes": 696,
+      "mode": "0o600"
+    },
+    "build-scan/transaction-api-build.log": {
+      "sha256": "e9d4e91af89b76f9e84c2e18cd7d5e982faf3e458df43ba94953a97a217cdee2",
+      "bytes": 5208,
+      "mode": "0o600"
+    },
+    "build-scan/transaction-api-save.log": {
+      "sha256": "4840ba5fb5008a36da90924d764a345ad55ce29678fafe5135dd2076c63e0cbd",
+      "bytes": 975,
+      "mode": "0o600"
+    },
+    "build-scan/fds-engine-build.log": {
+      "sha256": "1415fcf5f881d1e071ae15fc72574bfd191d73392f3965a1734a6e097e491618",
+      "bytes": 4168,
+      "mode": "0o600"
+    },
+    "build-scan/fds-engine-save.log": {
+      "sha256": "e0e9ab312e2979bec95683597d887f0b185c213aa441bf017ec30bb77aa31029",
+      "bytes": 975,
+      "mode": "0o600"
+    },
+    "build-scan/scan/transaction-api/exit-code.txt": {
+      "sha256": "917df3320d778ddbaa5c5c7742bc4046bf803c36ed2b050f30844ed206783469",
+      "bytes": 3,
+      "mode": "0o600"
+    },
+    "build-scan/scan/transaction-api/empty.yaml": {
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3,
+      "mode": "0o600"
+    },
+    "build-scan/scan/transaction-api/empty.ignore": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": "0o600"
+    },
+    "build-scan/scan/db/cache/db/metadata.json": {
+      "sha256": "8331fd1934762717cbea2baa6515a55241cbb11e7124520fe9f5ad6bb467b378",
+      "bytes": 153,
+      "mode": "0o644"
+    }
+  },
+  "transport_stdout_sha256": "548b386f437cd70f19b124167c13e1a1319385091b4f387d9087a5a51c98731c"
+}

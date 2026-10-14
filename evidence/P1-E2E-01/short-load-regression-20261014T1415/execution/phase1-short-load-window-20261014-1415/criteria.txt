@@ -1,0 +1,21 @@
+P1 APP image-transition short regression; RUN 202610141415
+CODEX_ASSISTED. User confirmed 2026-10-14 start14:15-14:25 KST, finish15:00 KST; console/DB before+after and Harbor/APP/DB/MON/nodes/other writer exclusion.
+Definition: https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5885861552 (section8)
+Approval: https://github.com/321Team/fds-project-baseline/issues/15#issuecomment-5886568007
+Code review: https://github.com/321Team/fds-msa/pull/33#pullrequestreview-5512546052
+Merge: 654d7762c3e6f4cc195c4628b42d0b47c3f8e17e
+Window: https://github.com/321Team/fds-project-baseline/issues/20#issuecomment-6161260119
+gen3.py SHA256 e5942646ba2544275b7664bbbc296d841920a0d1dac23421f96f1cc20e766b29
+q_range.py SHA256 5b59d0d5d8205154b350377599645734f801154f1532681453a8cf27b65cfd85
+promql.txt SHA256 deccc54929862a137de59ae8f4d32b62b23a4461a2de77249381eb19863d91a1
+Profile: --profile regression; B20rps120s/P50rps120s/idle120s;8400planned;single run;no automatic retry.
+Limits: max inflight64,request timeout10s,drain2s,errors10 per30s auto stop incl tail;even1 non201 fails acceptance.
+Gate: non201/timeout/connect errors0;Q3<25%;restart delta0/OOM0;section6 formulas must not exceed current resources.
+Resources remain requests250m/256Mi and limits500m/512Mi;replicas3 each;no resizing.
+CPU request alarm=max(B Q1)*1.5 rounded up50m minimum100m;CPU limit alarm=max(P Q1)*2 rounded up100m.
+Memory request alarm=max(all Q2)*1.2 rounded up64Mi;memory limit alarm=request alarm*2.
+CPU/Q3 points only [stage start+60,stage end];memory[B start,idle end];query_range[B start-60,idle end],step15s;workload max of3Pods.
+Missing series/valid points are NOT_VERIFIED;NaN Q3 zero only when exact same-point denominator0;record excluded samples.
+Achieved B19.6/P49rps reference comparisons;no new gate;p95 reference only;2min memory does not prove10min trend.
+Preserve SIM_load_202610141415_ DB rows;compare actual201/DB count/save+eval delta;no response transaction-ID mapping in generator.
+No Harbor changes/deploy/security changes/DB deletion/full run/automatic repeat;own processes only. Runtime evidence and independent review precede APP/E2E acceptance.
