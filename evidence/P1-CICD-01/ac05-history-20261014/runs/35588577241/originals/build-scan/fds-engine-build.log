@@ -1,0 +1,47 @@
+STEP 1/11: FROM docker.io/library/python@sha256:2fe5997d249a808b8eeea52c58a1dbffbba28754dc11699ef5c029f2d818ce79
+STEP 2/11: WORKDIR /app
+--> 57068483c3d7
+STEP 3/11: COPY --from=python-wheels / /opt/wheels/
+--> 85f8dd49199b
+STEP 4/11: COPY requirements-runtime.lock .
+--> 9f448a50cf84
+STEP 5/11: RUN PIP_CONFIG_FILE=/dev/null python -I -m pip --isolated --disable-pip-version-check --no-cache-dir install --no-index --find-links=/opt/wheels --only-binary=:all: --require-hashes -r requirements-runtime.lock && python -I -m pip check && rm -r /opt/wheels
+Looking in links: /opt/wheels
+Processing /opt/wheels/annotated_types-0.8.0-py3-none-any.whl (from -r requirements-runtime.lock (line 1))
+Processing /opt/wheels/anyio-4.15.1-py3-none-any.whl (from -r requirements-runtime.lock (line 2))
+Processing /opt/wheels/click-8.5.0-py3-none-any.whl (from -r requirements-runtime.lock (line 3))
+Processing /opt/wheels/fastapi-0.115.5-py3-none-any.whl (from -r requirements-runtime.lock (line 4))
+Processing /opt/wheels/h11-0.16.0-py3-none-any.whl (from -r requirements-runtime.lock (line 5))
+Processing /opt/wheels/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r requirements-runtime.lock (line 6))
+Processing /opt/wheels/idna-3.19-py3-none-any.whl (from -r requirements-runtime.lock (line 7))
+Processing /opt/wheels/prometheus_client-0.20.0-py3-none-any.whl (from -r requirements-runtime.lock (line 8))
+Processing /opt/wheels/pydantic-2.9.2-py3-none-any.whl (from -r requirements-runtime.lock (line 9))
+Processing /opt/wheels/pydantic_core-2.23.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 10))
+Processing /opt/wheels/python_dotenv-1.2.3-py3-none-any.whl (from -r requirements-runtime.lock (line 11))
+Processing /opt/wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 12))
+Processing /opt/wheels/starlette-0.41.3-py3-none-any.whl (from -r requirements-runtime.lock (line 13))
+Processing /opt/wheels/typing_extensions-4.16.0-py3-none-any.whl (from -r requirements-runtime.lock (line 14))
+Processing /opt/wheels/uvicorn-0.30.6-py3-none-any.whl (from uvicorn[standard]==0.30.6->-r requirements-runtime.lock (line 15))
+Processing /opt/wheels/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 16))
+Processing /opt/wheels/watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 17))
+Processing /opt/wheels/websockets-17.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r requirements-runtime.lock (line 18))
+Installing collected packages: websockets, uvloop, typing-extensions, pyyaml, python-dotenv, prometheus-client, idna, httptools, h11, click, annotated-types, uvicorn, pydantic-core, anyio, watchfiles, starlette, pydantic, fastapi
+Successfully installed annotated-types-0.8.0 anyio-4.15.1 click-8.5.0 fastapi-0.115.5 h11-0.16.0 httptools-0.8.0 idna-3.19 prometheus-client-0.20.0 pydantic-2.9.2 pydantic-core-2.23.4 python-dotenv-1.2.3 pyyaml-6.0.3 starlette-0.41.3 typing-extensions-4.16.0 uvicorn-0.30.6 uvloop-0.22.1 watchfiles-1.2.0 websockets-17.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+No broken requirements found.
+--> cefd77af63b1
+STEP 6/11: COPY app ./app
+--> c026a94945e7
+STEP 7/11: COPY run.py .
+--> 58c29dbeb3db
+STEP 8/11: RUN useradd -r -u 10001 fdsuser
+useradd warning: fdsuser's uid 10001 is greater than SYS_UID_MAX 999
+--> d72d266109f1
+STEP 9/11: USER fdsuser
+--> a9481d6894e6
+STEP 10/11: EXPOSE 8001 9090
+--> d5ef40e86519
+STEP 11/11: CMD ["python", "run.py"]
+COMMIT
+--> cbb88dfb2e31
+cbb88dfb2e317e2adf4681b69fefe4f1eca75ce935744b43a89d9b081116f1ed

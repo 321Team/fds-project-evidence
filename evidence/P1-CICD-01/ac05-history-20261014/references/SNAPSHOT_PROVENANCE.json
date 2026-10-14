@@ -1,0 +1,44 @@
+{
+  "cicd_compared_from": "7171b0a3d636c3a15c78131b89bec4739cb6f49b",
+  "cicd_compared_to": "b183fddb9c65e7119bf008214c34bef3ca4066d2",
+  "changed_paths": [
+    "docs/phase2/delivery-adapter.md",
+    "docs/phase2/delivery-intake.md",
+    "docs/phase2/producer-intake-20261014.md",
+    "docs/phase2/recovery-review.md",
+    "tools/phase2/delivery_adapter.py",
+    "tools/phase2/delivery_authorization.py",
+    "tools/phase2/delivery_intake.py",
+    "tools/phase2/delivery_recovery.py",
+    "tools/phase2/delivery_store.py",
+    "tools/phase2/delivery_transport.py",
+    "tools/phase2/producer_bridge.py",
+    "tools/phase2/test_delivery_adapter.py",
+    "tools/phase2/test_delivery_authorization.py",
+    "tools/phase2/test_delivery_intake.py",
+    "tools/phase2/test_delivery_integration.py",
+    "tools/phase2/test_delivery_recovery.py",
+    "tools/phase2/test_delivery_store.py",
+    "tools/phase2/test_delivery_transport.py",
+    "tools/phase2/test_producer_bridge.py",
+    "tools/phase2/verify_producer_compatibility.py"
+  ],
+  "scanner_snapshots": [
+    {
+      "commit": "b5effa840f6b8166cd6f6f52edafe98c7d7a94f4",
+      "path": "tools/trivy/scan_images.py",
+      "snapshot": "scanner-at-error-run.py",
+      "sha256": "27802f23ee54dc6b75641c6b72b4f567beb9d219b92cccd92b0ddc7cf68b826d"
+    },
+    {
+      "commit": "b183fddb9c65e7119bf008214c34bef3ca4066d2",
+      "path": "tools/trivy/scan_images.py",
+      "snapshot": "scanner-at-current-main.py",
+      "sha256": "3c8701df879f1fc02494d1400515fef58f79adb1dbab32b4196f961c0fad3168"
+    }
+  ],
+  "reviewed_pr222_head": "b7b09a5c41961f85ce527ad00c33635d8fdd19a8",
+  "pr222_reviewer": "hayeounglee",
+  "pr222_reviewed_at": "2026-10-14T01:30:29Z",
+  "pr222_ci_run": 38495924488
+}

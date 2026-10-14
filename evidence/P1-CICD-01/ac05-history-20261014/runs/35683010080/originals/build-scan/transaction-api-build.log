@@ -1,0 +1,54 @@
+STEP 1/11: FROM docker.io/library/python@sha256:2fe5997d249a808b8eeea52c58a1dbffbba28754dc11699ef5c029f2d818ce79
+STEP 2/11: WORKDIR /app
+--> 591d8c7e5b28
+STEP 3/11: COPY --from=python-wheels / /opt/wheels/
+--> 907277cab64c
+STEP 4/11: COPY requirements-runtime.lock .
+--> 8cd41b711cbe
+STEP 5/11: RUN PIP_CONFIG_FILE=/dev/null python -I -m pip --isolated --disable-pip-version-check --no-cache-dir install --no-index --find-links=/opt/wheels --only-binary=:all: --require-hashes -r requirements-runtime.lock && python -I -m pip check && rm -r /opt/wheels
+Looking in links: /opt/wheels
+Processing /opt/wheels/annotated_types-0.8.0-py3-none-any.whl (from -r requirements-runtime.lock (line 1))
+Processing /opt/wheels/anyio-4.15.1-py3-none-any.whl (from -r requirements-runtime.lock (line 2))
+Processing /opt/wheels/asyncpg-0.29.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 3))
+Processing /opt/wheels/certifi-2026.7.22-py3-none-any.whl (from -r requirements-runtime.lock (line 4))
+Processing /opt/wheels/click-8.5.0-py3-none-any.whl (from -r requirements-runtime.lock (line 5))
+Processing /opt/wheels/fastapi-0.115.5-py3-none-any.whl (from -r requirements-runtime.lock (line 6))
+Processing /opt/wheels/greenlet-3.5.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 7))
+Processing /opt/wheels/h11-0.16.0-py3-none-any.whl (from -r requirements-runtime.lock (line 8))
+Processing /opt/wheels/httpcore-1.0.9-py3-none-any.whl (from -r requirements-runtime.lock (line 9))
+Processing /opt/wheels/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r requirements-runtime.lock (line 10))
+Processing /opt/wheels/httpx-0.27.2-py3-none-any.whl (from -r requirements-runtime.lock (line 11))
+Processing /opt/wheels/idna-3.19-py3-none-any.whl (from -r requirements-runtime.lock (line 12))
+Processing /opt/wheels/prometheus_client-0.20.0-py3-none-any.whl (from -r requirements-runtime.lock (line 13))
+Processing /opt/wheels/pydantic-2.9.2-py3-none-any.whl (from -r requirements-runtime.lock (line 14))
+Processing /opt/wheels/pydantic_core-2.23.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 15))
+Processing /opt/wheels/python_dotenv-1.2.3-py3-none-any.whl (from -r requirements-runtime.lock (line 16))
+Processing /opt/wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 17))
+Processing /opt/wheels/sniffio-1.3.1-py3-none-any.whl (from -r requirements-runtime.lock (line 18))
+Processing /opt/wheels/SQLAlchemy-2.0.35-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from sqlalchemy[asyncio]==2.0.35->-r requirements-runtime.lock (line 19))
+Processing /opt/wheels/starlette-0.41.3-py3-none-any.whl (from -r requirements-runtime.lock (line 20))
+Processing /opt/wheels/typing_extensions-4.16.0-py3-none-any.whl (from -r requirements-runtime.lock (line 21))
+Processing /opt/wheels/uvicorn-0.30.6-py3-none-any.whl (from uvicorn[standard]==0.30.6->-r requirements-runtime.lock (line 22))
+Processing /opt/wheels/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (from -r requirements-runtime.lock (line 23))
+Processing /opt/wheels/watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r requirements-runtime.lock (line 24))
+Processing /opt/wheels/websockets-17.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (from -r requirements-runtime.lock (line 25))
+Installing collected packages: websockets, uvloop, typing-extensions, sniffio, pyyaml, python-dotenv, prometheus-client, idna, httptools, h11, greenlet, click, certifi, asyncpg, annotated-types, uvicorn, sqlalchemy, pydantic-core, httpcore, anyio, watchfiles, starlette, pydantic, httpx, fastapi
+Successfully installed annotated-types-0.8.0 anyio-4.15.1 asyncpg-0.29.0 certifi-2026.7.22 click-8.5.0 fastapi-0.115.5 greenlet-3.5.6 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.27.2 idna-3.19 prometheus-client-0.20.0 pydantic-2.9.2 pydantic-core-2.23.4 python-dotenv-1.2.3 pyyaml-6.0.3 sniffio-1.3.1 sqlalchemy-2.0.35 starlette-0.41.3 typing-extensions-4.16.0 uvicorn-0.30.6 uvloop-0.22.1 watchfiles-1.2.0 websockets-17.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+No broken requirements found.
+--> 4c50764d108a
+STEP 6/11: COPY app ./app
+--> b9ced3e64560
+STEP 7/11: COPY run.py .
+--> 46adf4ec8ad2
+STEP 8/11: RUN useradd -r -u 10001 fdsuser
+useradd warning: fdsuser's uid 10001 is greater than SYS_UID_MAX 999
+--> 47426e1a6aeb
+STEP 9/11: USER fdsuser
+--> c9e5d048b080
+STEP 10/11: EXPOSE 8000 9091
+--> f096be294bec
+STEP 11/11: CMD ["python", "run.py"]
+COMMIT
+--> f3e21e7198ff
+f3e21e7198ffebf4888b2df56349c34f0fa63be430474820e24c4b227657b590
