@@ -1,0 +1,68 @@
+{
+  "at_utc": "2026-10-14T01:01:26.064625+00:00",
+  "prefix": "preflight-20261014T010123Z",
+  "checks": {
+    "actor": true,
+    "main": true,
+    "issue_open": true,
+    "comments_complete": true,
+    "vars_complete": true,
+    "runners_complete": true,
+    "vars_expected": true,
+    "runner_zero": true,
+    "active_queued_zero": true,
+    "active_in_progress_zero": true,
+    "active_requested_zero": true,
+    "active_waiting_zero": true,
+    "active_pending_zero": true,
+    "workflow-regression_unchanged": true,
+    "workflow-alert_unchanged": true,
+    "manual_alert_list_complete": true,
+    "no_prior_manual_alert_active": true,
+    "regression_history_complete": true,
+    "billing_units": true,
+    "reserve_500_plus_10": true
+  },
+  "all_pass": true,
+  "used_linux_minutes": 898.0,
+  "remaining_after_500_reserve": 602.0,
+  "runner_count": 0,
+  "pr169": {
+    "state": "open",
+    "merged": false,
+    "head": "58a839d86754717e98845d2e67a07ae48a15ec7d"
+  },
+  "reviews169": [
+    {
+      "user": "supreme33-kr",
+      "state": "APPROVED",
+      "commit_id": "58a839d86754717e98845d2e67a07ae48a15ec7d",
+      "body": "## 리뷰 — O02 알림 수신 통제 시험안 (이재환, baseline PR169)\n\n**대상 HEAD** `58a839d8` (문서 1개 +135)\n**검토 범위** 시험 방식·자원 상한·작업창·판정 기준, O02 운영 담당으로서 수신 방식과 참여 가능 여부\n\n차단 사항이 없어 승인합니다.\n\n### 운영 담당 확인\n- **이 한정 시험을 수용합니다.** 이번 회차에 한해 기존 \"다음 실제 업무 대기에서 확인\" 방침을 대신합니다. 사용자 \"1회 실행 허용\" 결정은 별도로 기록해 주십시오.\n- **참여:** 10:15~10:30 KST에 제 GitHub Notifications에서 멘션을 직접 확인하고, #61에 본문 §4-C의 최소 필드로 회신하겠습니다(수신 시각 KST, 봇 댓글 URL, 대상 Run·Job, queue-watch 분류, 공급 안 함·취소로 해소).\n- **수신 경로 구분:** 화면 확인과 `gh api /notifications` 조회를 구분해 적겠습니다. 링크를 전달받아 댓글만 읽은 경우는 `COMMENT_READ_ONLY`로 남기겠습니다.\n- **Runner 공급 배제:** 10:45까지 제 쪽 Ansible Runner 공급·regression dispatch는 하지 않겠습니다.\n\n### 직접 대조한 것 (09:4x KST, GitHub 조회)\n- infra-ansible main `ec15dcbd…` = 문서 고정값. 등록 Runner 0개.\n- 운영 변수: `ANSIBLE_QUEUE_ALERT_ENABLED=true`, `RECIPIENTS=supreme33-kr,GWONUK`, `THRESHOLD_MINUTES=10`, `ANSIBLE_CI_ENABLED=true`, labels 5개 — 문서와 같습니다.\n- `ansible-regression.yml`(ec15dcbd)에 `workflow_dispatch`가 있고, `runs-on`은 5 labels, timeout 30분입니다.\n- concurrency group은 `ansible-regression-${PR번호 || ref}`입니다. dispatch Run은 `…-refs/heads/main` group이라 PR Run과 서로 취소되지 않습니다. 현재 열린 infra-ansible PR은 0개입니다.\n- 알림 workflow schedule Run은 지금까지 2건입니다(10/13 19:25, 10/14 02:46 KST, 모두 success). cron이 띄엄띄엄 돌기 때문에 수동 notify 1회로 경고 시점을 확정하는 설계가 맞습니다.\n\n### 비차단\n1. 창 안에 누가 infra-ansible에 PR을 열면 그 PR regression도 queued가 돼 같은 경고에 섞입니다. 문서 §2의 \"다른 업무 경고가 섞이면 확대 안 함\"을 그대로 적용하면 됩니다. 10:45까지 infra-ansible PR 생성을 피하는 공지도 권합니다.\n2. 수동 notify 두 번은 hosted runner 약 2분을 씁니다. 10월 잔여 기준으로 영향은 무시할 수 있습니다.\n\nAI 사용: CLAUDE_ASSISTED\nAI 활용: 독립 리뷰 보조\n",
+      "url": "https://github.com/321Team/fds-project-baseline/pull/169#pullrequestreview-5511729427"
+    }
+  ],
+  "latest_comments169": [
+    {
+      "body": "## 10:00~10:45 단일 회차 허용·참여 확인 반영\n\nCODEX_ASSISTED · 2026-10-14 KST. 사용자 이권욱이 이 채팅에서 **“1회 실행 허용 — 이재환 수신 대기 가능”**으로 답했습니다. 대상은 PR169 HEAD `58a839d86754717e98845d2e67a07ae48a15ec7d`의 범위 그대로이며, 문서 STATIC와 canonical-integrity CI도 통과했습니다.\n\n- 오늘10:00 준비, 새 regression1회(10:10 마감), 경고/해소 notify 합계최대2회,10:30 시험 Run취소·10:45 정리 종료. Harbor11:20 이전35분 여유.\n- 이재환10:15~10:30 실제 GitHub 알림 수신·판단 회신 가능을 사용자로부터 확인했습니다. 수신 경로는 기존 GitHub #61 멘션이며, 실제 수신 완료는 그때 별도 기록합니다.\n- 이 회차에 한해 통제된 대기 시험을 채택합니다. 기존 완료 CI rerun·Runner/token 공급·서버·설정 변경은 없고, 동일 코드 추가 승인 대기를 만들지 않습니다. fresh main/활성 Run/Runner/비용/동시 공급 배제 조건이 어긋나면 시작하지 않습니다.\n- 현재 RUNTIME NOT_RUN. 계획 문서의 미허용·가용성 미확인 문구는 작성 시점 상태이며 이 결정 기록으로 해소했습니다. 실측 증적·최종 O02 인수는 완료로 표시하지 않습니다.\n\n@supreme33-kr 시작 예고·실제 봇 알림·수신 답변은 기존 infra-ansible#61에서 연결하겠습니다. 예정시각 지연 시 창을 자동 연장하지 않습니다.\n",
+      "url": "https://github.com/321Team/fds-project-baseline/pull/169#issuecomment-6158154174"
+    }
+  ],
+  "latest_comments61": [
+    {
+      "user": "GWONUK",
+      "body": "## 첫 정기 실행 확인 종료·운영 인계 — 2026-10-13 14:15 KST\n\n@supreme33-kr 기존 [병합 후속 기록](https://github.com/321Team/infra-ansible/issues/61#issuecomment-6137546423)에 연결하는 이번 확인의 최종 결과입니다. **14:15:34 KST까지 schedule 이벤트 Run 0건, 업무 regression의 5개 활성 상태(queued/in_progress/requested/waiting/pending) 모두 0건**입니다. API 읽기는 성공했고 목록 잘림은 없었습니다. 정기 실행 성공·장기 대기 경고 발송·사람의 수신은 아직 입증되지 않았습니다.\n\n14:16:16 KST까지 설정을 다시 확인했습니다. main `ec15dcbd022942add199a8f4718c0f88105e880e`, workflow active, 저장소 Actions enabled, 기본 브랜치 main, archived/disabled false입니다. workflow 원문 SHA256 `fc4cf4ba2d53191f2ad69ed996383067f739650469387c1791cab09d64158a75`는 앞서 검토한 원문과 같습니다. 알림 enabled=true, threshold=10분, 수신자 `supreme33-kr,GWONUK`도 유지됐습니다.\n\n조회한 설정에서 차이를 찾지 못했지만 **정기 실행이 나타나지 않은 원인은 미확인**입니다. 예정시각 경과를 GitHub 장애 확정이나 AC 실패로 단정하지 않습니다. 이 채팅의 한시적 후속 확인 예약 `runner`는 정한 종료시각에 따라 **PAUSED**로 종료했습니다. GitHub 알림 workflow와 운영 변수는 중지·변경하지 않았습니다.\n\n남은 절차는 기존 운영 담당의 Actions 결과 확인 → 첫 schedule Run/Attempt/HEAD·notify Job·원본 JSON/해시 연결 → 다음 실제 업무상 장기 대기에서 알림 게시와 담당 수신 시각·대상 Job·조치 기록입니다. 실제 Ansible 작업 때는 기존 [운영자 카드](https://github.com/321Team/infra-ansible/blob/ec15dcbd022942add199a8f4718c0f88105e880e/docs/runbooks/Ansible-CI-Operator-Card.md)의 수동 queue-watch를 유지합니다. 알림 증적을 만들 목적으로 완료 CI 재실행·가짜 Job·Runner/token 생성은 하지 않습니다.\n\n[14:02 현황 갱신](https://github.com/321Team/infra-ansible/issues/61#issuecomment-6138628740)의 실습 완료와 전체 O02/#61 인수 잔여 구분을 유지합니다. 이번 점검은 C01 판단이나 본문·Status·AC를 다시 바꾸지 않습니다. 카카오톡·새 담당자·추가 승인 단계·새 PR는 없습니다. 다른 CI500분 유보는 기존 운영 조건이며 이번 확인이 예산을 자동 보장한 것은 아닙니다.\n\nCODEX_ASSISTED. 새 원본은 로컬 `p1-runner-operations-20261013/FIRST_SCHEDULE_FINAL_CHECK.json` 및 시각별 API 영수증에 보존했습니다. 병합된209/210 증적은 변경하지 않았습니다.\n<!-- runner-first-schedule-followup-final-20261013 -->\n",
+      "url": "https://github.com/321Team/infra-ansible/issues/61#issuecomment-6138798768"
+    },
+    {
+      "user": "supreme33-kr",
+      "body": "## 첫 정기 실행 확인 인계 수신 — 16:32 KST에도 schedule Run 0건 (운영 담당 이재환, 2026-10-13 KST)\n\n@GWONUK [인계 6138798768](https://github.com/321Team/infra-ansible/issues/61#issuecomment-6138798768)을 받았습니다. 이후 확인은 운영 담당인 제가 이어 갑니다.\n\n- **16:32 KST 읽기 결과:** schedule 이벤트 Run **0건**(예정 12:37~16:07 8회 모두 미실행), 업무 Run 활성 상태(queued·in_progress·waiting·requested·pending) **0건**. 원인은 여전히 미확인이며, 미실행을 정상 조회로 판정하지 않습니다. 조직 Actions 정책은 제 권한으로 조회되지 않습니다(403, NOT_VERIFIED).\n- **그동안:** 운영자 카드의 수동 queue-watch를 유지합니다. 다음 실제 Ansible 작업 때 제가 직접 대기 시간을 봅니다.\n- **다음:** 오늘 23:37 회차까지 첫 schedule Run이 생기면 Run/Attempt/HEAD·notify Job·관측 JSON/해시를 이 이슈에 잇겠습니다. **내일 09:07 회차까지도 0건이면** 원인 확인 단계로 넘어갑니다(조직 Actions 정책 조회는 관리자 권한 필요, workflow 재등록 같은 저장소 변경은 PR 리뷰 후). 수동 notify dispatch·완료 CI 재실행으로 대체하지 않습니다.\n\n조회만 했습니다. 변수·workflow·Runner·token 변경과 dispatch는 없습니다.\n\nAI 사용: CLAUDE_ASSISTED\n",
+      "url": "https://github.com/321Team/infra-ansible/issues/61#issuecomment-6140626975"
+    },
+    {
+      "user": "supreme33-kr",
+      "body": "## 첫 정기 실행 확인 — 19:25 KST schedule Run 1건 SUCCESS / NO_ALERT (운영 담당 이재환, 2026-10-13 KST)\n\n@GWONUK [인계 수신 6140626975](https://github.com/321Team/infra-ansible/issues/61#issuecomment-6140626975)에 이어, 첫 schedule Run을 연결합니다. GitHub 조회만 했고, 변수·workflow·dispatch는 바꾸지 않았습니다.\n\n| 항목 | 값 |\n|---|---|\n| Run / Attempt / event | [38383293926](https://github.com/321Team/infra-ansible/actions/runs/38383293926) / 1 / `schedule` |\n| HEAD | `ec15dcbd022942add199a8f4718c0f88105e880e` (현재 main과 같음) |\n| 생성·시작 | 2026-10-13 10:25:50Z = **19:25:50 KST** (예정 19:07 슬롯 기준 약 19분 지연) |\n| notify Job | 115248769878 **success** (10:25:52~10:26:01Z) / dry-read Job skipped(정상) |\n| 관측 (Job 로그 원문) | `state=NO_ALERT`, `alerts=[]`, `active_runs_read=0`, `jobs_read=0`, `threshold_minutes=10`, `runner_presence=NOT_QUERIED`, `notification.status=NO_ALERT_NO_COMMENT`, `state_sha256=65f61dbdfd965157605a0c6d6b1665577c705c10dc6e1b411fffcf7eb68417aa`, `observed_at_utc=2026-10-13T10:25:55.765582Z` |\n| artifact | `queue-observation-38383293926-1`, id 11804352723, 707 B, digest `sha256:83820ea39f2682df98271d578a66bed1ec6a50cd185555b4080f535258add2a9` (GitHub API 메타데이터. 내려받지는 않았음) |\n\n**판정:** 정기 실행 경로(schedule → notify Job → 관측 → 무발송)가 1회 정상 동작한 근거입니다. 대기 Job이 없어 #61 댓글은 생기지 않았고, 이는 설계대로입니다. **사람의 알림 수신 확인은 아닙니다.**\n\n**남은 관찰:**\n- 21:56 KST 조회 기준, 이 workflow의 schedule Run은 이 1건뿐입니다. 12:37~21:37 예정 슬롯 19회 중 1회만 생성됐습니다. GitHub schedule의 지연·누락 가능성 안에 있다고 보지만, 내일 근무 시간 슬롯에서도 계속 대부분 빠지면 원인 확인 단계로 넘어가겠습니다.\n- 실제 장기 대기 경고의 게시·수신 시각·조치는 다음 업무상 Ansible Job에서 연결합니다. 알림을 만들려고 Job을 재실행하지는 않습니다.\n\nAI 사용: CLAUDE_ASSISTED\n",
+      "url": "https://github.com/321Team/infra-ansible/issues/61#issuecomment-6146107447"
+    }
+  ],
+  "before_regression_ids": []
+}

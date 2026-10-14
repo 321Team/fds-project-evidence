@@ -1,0 +1,61 @@
+{
+  "at_utc": "2026-10-14T00:13:35.213030+00:00",
+  "main_sha": "ec15dcbd022942add199a8f4718c0f88105e880e",
+  "workflow_state": "active",
+  "schedule_count": 2,
+  "active_business_runs": [],
+  "remote_mutations": false,
+  "actual_human_receipt": "NOT_CONFIRMED",
+  "state": "FIRST_SCHEDULE_SUCCESS_NO_ALERT",
+  "first_run": {
+    "id": 38383293926,
+    "run_attempt": 1,
+    "event": "schedule",
+    "head_sha": "ec15dcbd022942add199a8f4718c0f88105e880e",
+    "created_at": "2026-10-13T10:25:50Z",
+    "run_started_at": "2026-10-13T10:25:50Z",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/321Team/infra-ansible/actions/runs/38383293926"
+  },
+  "jobs": [
+    {
+      "id": 115248769878,
+      "name": "notify",
+      "conclusion": "success",
+      "started_at": "2026-10-13T10:25:52Z",
+      "completed_at": "2026-10-13T10:26:01Z",
+      "html_url": "https://github.com/321Team/infra-ansible/actions/runs/38383293926/job/115248769878"
+    },
+    {
+      "id": 115248771610,
+      "name": "dry-read",
+      "conclusion": "skipped",
+      "started_at": "2026-10-13T10:25:51Z",
+      "completed_at": "2026-10-13T10:25:50Z",
+      "html_url": "https://github.com/321Team/infra-ansible/actions/runs/38383293926/job/115248771610"
+    }
+  ],
+  "artifact": {
+    "id": 11804352723,
+    "archive_sha256": "83820ea39f2682df98271d578a66bed1ec6a50cd185555b4080f535258add2a9",
+    "json_sha256": "d2a9eb0d08bbc8adce917b63fd61860f5c3f2727dc564b0a20162ff39e8abb53",
+    "directory": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\p1-runner-operations-20261013\\schedule-run-38383293926-attempt-1"
+  },
+  "observation": {
+    "active_runs_read": 0,
+    "alerts": [],
+    "jobs_read": 0,
+    "notification": {
+      "state_sha256": "65f61dbdfd965157605a0c6d6b1665577c705c10dc6e1b411fffcf7eb68417aa",
+      "status": "NO_ALERT_NO_COMMENT"
+    },
+    "observed_at_utc": "2026-10-13T10:25:55.765582+00:00",
+    "repository": "321Team/infra-ansible",
+    "runner_presence": "NOT_QUERIED",
+    "schema": "infra-ansible.queue-notice.v1",
+    "state": "NO_ALERT",
+    "supply_authorized": false,
+    "threshold_minutes": 10
+  }
+}
