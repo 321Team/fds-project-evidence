@@ -1,0 +1,38 @@
+{
+  "id": "p1-ha-20261014-0015",
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "not_before": "2026-10-13T15:15:00+00:00",
+  "start_deadline": "2026-10-13T15:25:00+00:00",
+  "finish_deadline": "2026-10-13T16:05:00+00:00",
+  "target_node": "k8s-worker02",
+  "namespace": "fds-app",
+  "selector": "app in (transaction-api,fds-engine)",
+  "probe_seconds": 900,
+  "probe_requests_per_second": 6,
+  "probe_max_requests": 5403,
+  "drain_runs": 1,
+  "drain_timeout_seconds": 180,
+  "post_drain_ready_timeout_seconds": 120,
+  "observation_phase_seconds": 61,
+  "conditional_rebalance_evictions_per_app": 1,
+  "rebalance_order": [
+    "fds-engine",
+    "transaction-api"
+  ],
+  "rebalance_per_app_ready_seconds": 120,
+  "rebalance_per_app_mon_seconds": 90,
+  "rebalance_per_app_stability_seconds": 30,
+  "automatic_retries": 0,
+  "db_writes": false,
+  "image_change": false,
+  "reboot": false,
+  "probe_failure_injection": false,
+  "app_regression": false,
+  "edge_directory": "/home/svc_ansible/p1-ha-20261014-0015",
+  "control_directory": "/var/tmp/p1-ha-20261014-0015",
+  "requires": [
+    "independent input delta review",
+    "explicit window console and nonoverlap decision",
+    "fresh identity/health/matching selector/clock/capacity guards"
+  ]
+}
