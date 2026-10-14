@@ -1,0 +1,173 @@
+{
+  "verified_at_utc": "2026-10-14T00:32:32.509745+00:00",
+  "run_id": "38490368352",
+  "attempt": 1,
+  "job_id": 115613871822,
+  "workflow_sha": "7171b0a3d636c3a15c78131b89bec4739cb6f49b",
+  "runtime": "EXPECTED_FAILURE_OBSERVED",
+  "github_conclusion": "failure",
+  "program_result": "FAIL",
+  "intentional_unit_exit": 1,
+  "approved_app_unit_tests": 16,
+  "fixture_tests": 1,
+  "original_files": 66,
+  "all_original_hashes_match": true,
+  "contract_build_scan": "NOT_EXECUTED",
+  "new_app_images": 0,
+  "push": "NOT_EXECUTED",
+  "deploy": "NOT_EXECUTED",
+  "downstream_skipped_jobs": "NOT_APPLICABLE_NO_DOWNSTREAM_JOBS",
+  "deployments": {
+    "fds-engine": {
+      "uid": "bf825dec-465b-4603-8b71-f768d195531c",
+      "generation": 6,
+      "spec_sha256": "0a1d36ae1fda7513b69fa3d1df7ca91983c05770f44df0ebc940c516f8d1faf3",
+      "containers": [
+        {
+          "image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "fds-engine"
+        }
+      ],
+      "ready_replicas_before": 3,
+      "ready_replicas_after": 3,
+      "unchanged": true
+    },
+    "transaction-api": {
+      "uid": "8a2af808-ec33-41f2-80b5-addde4e28910",
+      "generation": 12,
+      "spec_sha256": "b6b4048d5288a42ee0be5fa3fdd3f2ef82c7659687c0adb9ed61a19d7b8a563a",
+      "containers": [
+        {
+          "image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "transaction-api"
+        }
+      ],
+      "ready_replicas_before": 3,
+      "ready_replicas_after": 3,
+      "unchanged": true
+    }
+  },
+  "pods": [
+    {
+      "name": "fds-engine-65479b5bf-4gfgq",
+      "uid": "e349b045-870f-4061-a677-3007efe479e9",
+      "node": "k8s-worker02",
+      "statuses": [
+        {
+          "containerID": "containerd://7b24cf1f8132da141a186eb00d7cbd02e30b9d1e28a2dfdb1147376caf544a45",
+          "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+          "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+          "name": "fds-engine",
+          "ready": true,
+          "restartCount": 0,
+          "started": true
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "name": "fds-engine-65479b5bf-6qh6s",
+      "uid": "1b2f1c14-a04f-438c-b051-4d65a0a8a8e7",
+      "node": "k8s-worker03",
+      "statuses": [
+        {
+          "containerID": "containerd://7a1fc7fb45906286f5000e577d8055b537773632ac4abf6738f5ae86c023c925",
+          "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+          "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+          "name": "fds-engine",
+          "ready": true,
+          "restartCount": 0,
+          "started": true
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "name": "fds-engine-65479b5bf-kmp2t",
+      "uid": "4ab7c0a7-c7aa-4f0c-9a63-642a752dbe51",
+      "node": "k8s-worker01",
+      "statuses": [
+        {
+          "containerID": "containerd://8421856fc8dd435755e205029e3d44e77eb3fccda97b63ba11dff23c5fe91795",
+          "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+          "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+          "name": "fds-engine",
+          "ready": true,
+          "restartCount": 0,
+          "started": true
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "name": "transaction-api-666c98b5f5-2v27l",
+      "uid": "4d0b362b-5081-4745-b68a-85636e08dc10",
+      "node": "k8s-worker03",
+      "statuses": [
+        {
+          "containerID": "containerd://9db89bb9069eb0aeef0b5b058ff850f073ebcaaff52c366bea591ea768ac87a9",
+          "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+          "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+          "name": "transaction-api",
+          "ready": true,
+          "restartCount": 0,
+          "started": true
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "name": "transaction-api-666c98b5f5-bbx9q",
+      "uid": "9d34d371-5839-429b-b255-a9a4a6ebdd31",
+      "node": "k8s-worker01",
+      "statuses": [
+        {
+          "containerID": "containerd://ac0ed39893c0c8a05a2a28bbb487f0e9394a47f22068149cb05f01bba3507104",
+          "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+          "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+          "name": "transaction-api",
+          "ready": true,
+          "restartCount": 0,
+          "started": true
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "name": "transaction-api-666c98b5f5-vkqdr",
+      "uid": "90b69206-2998-4da2-b6eb-44fcebefd6d3",
+      "node": "k8s-worker02",
+      "statuses": [
+        {
+          "containerID": "containerd://0d10c3312edae8df77bcc3c3deb49776bedc3634d2b4956ae439fe9a2622e3ab",
+          "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+          "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+          "name": "transaction-api",
+          "ready": true,
+          "restartCount": 0,
+          "started": true
+        }
+      ],
+      "unchanged": true
+    }
+  ],
+  "services_endpoints_unchanged": true,
+  "own_container_cleanup": "REMOVED",
+  "container_id": "e07e6af5749fac5c1075b17852a3a44fe9fa54369160dd79e524fc365e90e73d",
+  "cidfile_absent_at_collection": true,
+  "worker_count_after": 0,
+  "old_push_claims_unchanged": 4,
+  "other_cicd_runs_created_during_or_after_test": [],
+  "source_ci": {
+    "run_id": 38489765233,
+    "attempt1": "FAIL_existing_process_timeout_Z_vs_R",
+    "attempt2": "PASS_same_code",
+    "cause": "Scheduling timing race suspected; not independently confirmed"
+  },
+  "review": "PENDING_INDEPENDENT_EVIDENCE_REVIEW",
+  "ac04": "RUNTIME_CASE_COLLECTED_SCOPE_ACCEPTANCE_PENDING",
+  "delivery_gate": "NOT_VERIFIED",
+  "claim_limit": "Fixed additional stdlib Unit after approved app Unit; not a mutation of app Unit. Pre/post observation does not prove an absence of all unobserved transient changes."
+}
