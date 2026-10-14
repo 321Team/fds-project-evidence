@@ -1,0 +1,103 @@
+{
+  "as_of_utc": "2026-10-14T04:58:50.013771+00:00",
+  "cases": {
+    "35047422631": {
+      "root": "/home/server01_cicd-runner/trivy-ci-35047422631-1-xhbwyzog",
+      "workflow_sha": "434a6ddf0d475ffb9857a01dfa2b229eaf637526",
+      "github_conclusion": "success",
+      "original_files_copied": 11,
+      "manifest_entries_matched": 11,
+      "hash_only_files": 1,
+      "new_runtime": false,
+      "toolcheck": "PASS",
+      "fixture_scan_exit": 10,
+      "missing_db_exit": 1,
+      "finding_counts": {
+        "HIGH": 15,
+        "CRITICAL": 6
+      },
+      "original_started_at": "2026-09-16T02:17:47.393817+00:00",
+      "original_finished_at": "2026-09-16T02:17:55.992907+00:00",
+      "scope": "Filesystem requirements fixture; not application image pipeline",
+      "deployment_images_at_case": "NOT_COLLECTED"
+    },
+    "35050018964": {
+      "root": "/home/server01_cicd-runner/trivy-ci-35050018964-1-yvbjy09i",
+      "workflow_sha": "80d6968b8cf5d145bb37b685d92b3cccf4ecffa7",
+      "github_conclusion": "success",
+      "original_files_copied": 11,
+      "manifest_entries_matched": 11,
+      "hash_only_files": 1,
+      "new_runtime": false,
+      "toolcheck": "PASS",
+      "fixture_scan_exit": 10,
+      "missing_db_exit": 1,
+      "finding_counts": {
+        "HIGH": 15,
+        "CRITICAL": 6
+      },
+      "original_started_at": "2026-09-16T02:58:40.671341+00:00",
+      "original_finished_at": "2026-09-16T02:58:44.024879+00:00",
+      "scope": "Filesystem requirements fixture; not application image pipeline",
+      "deployment_images_at_case": "NOT_COLLECTED"
+    },
+    "35588577241": {
+      "root": "/home/server01_cicd-runner/FDS_CICD_AppWorkflow.vej0q8at",
+      "workflow_sha": "b5effa840f6b8166cd6f6f52edafe98c7d7a94f4",
+      "github_conclusion": "failure",
+      "original_files_copied": 63,
+      "manifest_entries_matched": 6,
+      "hash_only_files": 4,
+      "new_runtime": false,
+      "workflow_result": "FAIL",
+      "scanner_result": "FAIL",
+      "scanner_reason": "SCANNER_EXECUTION_ERROR",
+      "scanner_exit": 1,
+      "push": "NOT_EXECUTED",
+      "deploy": "NOT_EXECUTED",
+      "original_started_at": "2026-09-21T10:24:40.332833+00:00",
+      "original_finished_at": "2026-09-21T10:25:37.674904+00:00",
+      "scanner_stderr": "NOT_RETAINED_BY_ADAPTER",
+      "deployment_images_at_case": "NOT_COLLECTED",
+      "counts": null,
+      "not_scanned": [
+        "fds-engine"
+      ]
+    },
+    "35683010080": {
+      "root": "/home/server01_cicd-runner/FDS_CICD_AppWorkflow.log3xwta",
+      "workflow_sha": "7e939d7f77c38c13fd331b38f6649580bf0d05bd",
+      "github_conclusion": "failure",
+      "original_files_copied": 63,
+      "manifest_entries_matched": 7,
+      "hash_only_files": 5,
+      "new_runtime": false,
+      "workflow_result": "BLOCK",
+      "scanner_result": "BLOCK",
+      "scanner_reason": "HIGH_CRITICAL_FINDINGS",
+      "scanner_exit": 10,
+      "push": "NOT_EXECUTED",
+      "deploy": "NOT_EXECUTED",
+      "original_started_at": "2026-09-22T03:24:08.425869+00:00",
+      "original_finished_at": "2026-09-22T03:25:29.460129+00:00",
+      "scanner_stderr": "NOT_RETAINED_BY_ADAPTER",
+      "deployment_images_at_case": "NOT_COLLECTED",
+      "counts": {
+        "HIGH": 57,
+        "CRITICAL": 3
+      },
+      "not_scanned": [
+        "fds-engine"
+      ]
+    }
+  },
+  "total_original_files_copied": 148,
+  "runtime_execution": "NOT_RUN_THIS_COLLECTION",
+  "rescan": "NOT_RUN",
+  "old_block_manifest_payloads_rehashed": 56,
+  "ac05": "PARTIAL_IMAGE_PRESERVATION_MISSING",
+  "ac04_evidence_pr222": "MERGED; AC04 acceptance not implied",
+  "github_old_logs": "HTTP410_FOR_ALL_FOUR; metadata/jobs still available",
+  "independent_evidence_review": "PENDING",
+  "recommendation": "Prepare a dedicated main/manual two-case negative scanner harness using approved scanner/image identities, isolated per-run storage/cache, no Push/Deploy credentials, failure receipts and immediate per-case pre/post application observations; review code/inputs before any new runtime."
+}
