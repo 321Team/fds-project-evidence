@@ -1,0 +1,831 @@
+<!-- fds-canonical-live:v3.1.21 record-id:P1-CICD-01:start -->
+## 현행 정본 적용 — v3.1.21
+
+- 정본: [docs-v3.1.21](https://github.com/321Team/fds-project-baseline/releases/tag/docs-v3.1.21), 2026-10-04 14:49:12 KST 발행. 기준 커밋: `979facb98de8ca1f1e2ce22f38b27ac3366f3fc3`.
+- [이 티켓의 발행 Description](https://github.com/321Team/fds-project-baseline/blob/979facb98de8ca1f1e2ce22f38b27ac3366f3fc3/tickets/v3.1.21/descriptions/P1-CICD-01.md) · [Baseline](https://github.com/321Team/fds-project-baseline/blob/979facb98de8ca1f1e2ce22f38b27ac3366f3fc3/baseline/FDS_Project_Implementation_Baseline_v3.1.21.md) · [WBS](https://github.com/321Team/fds-project-baseline/blob/979facb98de8ca1f1e2ce22f38b27ac3366f3fc3/wbs/FDS_v3.1.21_WBS_and_Gantt_v1.0.xlsx).
+- [테스트 전략](https://github.com/321Team/fds-project-baseline/blob/979facb98de8ca1f1e2ce22f38b27ac3366f3fc3/tests/FDS_Test_Strategy_v3.1.21.md): 관련 추적 항목 **TS08, TS09, TS10**. 원본 AC와 각 항목의 환경·선행조건·중단/복구·증적 기준을 함께 적용한다.
+- 정본 Description은 2026-10-03 수집 시점 기록이다. 발행 후 실제 수행·검토·잔여·승인 변경은 아래 최신 운영 기록과 원본 증적을 따른다. 아래 과거 버전의 '현행/후보/미발행' 문구는 작성 당시 이력이다.
+- 발행·동기화로 Status, AC 체크, 실제 완료일, 담당자, 일정, Runtime 승인 또는 종결을 상향하지 않는다. 신규 계획·사양 충돌은 별도 변경결정으로 정합화한다.
+- 반영 근거: 사용자 '디스크립션 파일 반영과 이슈 본문 수정' 지시. AI 사용: CODEX_ASSISTED.
+<!-- fds-canonical-live:v3.1.21 record-id:P1-CICD-01:end -->
+
+<!-- cicd-pending-config:20260924:start -->
+## 다음 실행 입력 준비 — 2026-09-24
+
+[Draft PR37](https://github.com/321Team/infra-cicd/pull/37), HEAD `daafd0116aecc5aa20486aa9fe7ac2794cd8f5a7`에 인계6파일을 준비했다. 새 Contract2개·후보 roots/lock/requirements hash를 반영했으며 최종 Source 승인·API Unit 범위·실제 공급 경로/OCI archive·inventory hash는 null/PENDING으로 유지했다.
+
+- 기존 검증 함수6항목 PASS, 미확정 초안은 APP_HANDOFF_PENDING으로 차단. 참조28blob·후보 Dockerfile2개·시험 파일7개 대조. 신규6blob/mode 일치·기존103파일 보존, 현행 운영 config·Workflow 변경 없음.
+- [CI35923894462/1](https://github.com/321Team/infra-cicd/actions/runs/35923894462) 해당 HEAD success. Source CI이며 실서버/앱 Runtime이 아니다. 신규 실행 설정 초안은 독립 코드 리뷰 대상, Draft·미병합.
+- 앱 후보 Run35921580081/1은 두 Build PASS / API HIGH44·CRITICAL0·8CVE BLOCK / engine NOT_SCANNED라는 **Job 기록**이다. [PR26](https://github.com/321Team/fds-project-evidence/pull/26)의 기존 로그·metadata 보존을 재사용했다.
+- 원본 ZIP 전송은 HTTP403·수신0bytes. 원본 수신 해시·패키지별 CVE/수정 버전 분류는 PENDING. [원본 artifact](https://github.com/321Team/fds-msa/actions/runs/35921580081/artifacts/10777267517)는 **10-01 06:18:11 KST 만료**다. [다운로드·새 작업 폴더·해시 확인·전달 안내](https://github.com/321Team/infra-cicd/blob/daafd0116aecc5aa20486aa9fe7ac2794cd8f5a7/handoff/app-remediation-20260924/README.md)를 준비했다.
+- 다음: 원본 수신·분류 → 수정 후보/최종 Source·시험 범위·공급 인계 → 실행 config 독립 리뷰 → on-prem 공급/Podman·Test→Build→Scan. 이전 DB 오류·base-only report를 새 앱 report로 대체하지 않는다.
+
+**APP BLOCK / Runtime AC1/10 / Delivery NOT_VERIFIED / In Progress 유지.** 증적 PR22의 Ready 상태·독립 심사와 별도이며 동일 입력 재실행·Push/Deploy·AC 체크·담당·일정 변경은 없다.
+<!-- cicd-pending-config:20260924:end -->
+
+---
+
+<!-- p1-cicd-evidence-intake:20260924:start -->
+## 최신 실행·증적 상태 — 2026-09-24 collect 보완·증적 검토 개시
+
+**In Progress / Runtime AC1/10 / 앱 취약점 BLOCK / Delivery NOT_VERIFIED 유지.**
+
+- Run35683010080/Attempt1의 기존 app-evidence 수신 verify PASS. 두 이미지 Build rc0 기록, transaction-api HIGH57/CRITICAL3 BLOCK·fds-engine NOT_SCANNED·Push/Deploy NOT_EXECUTED 유지.
+- **collect-record 보완 수신 대조 PASS(09-24 04:59 KST).** archive1,204bytes, 외부 sidecar·내부4/4·원본3파일 size/hash 일치. 기존 app-evidence hash 및 회차 연결 일치.
+- **collect stdout·정확한 수집 시각·로그의 archive hash 미수신 해소:** 원 collect **09-23 23:59:24~23:59:30 KST**. 보완 생성 **09-24 04:55:11.104906 KST**. 과거 명시적 rc·종료 화면은 미수신 유지.
+- 서버 로그의 EVIDENCE_CHECK=PASS / RAW_PAYLOAD_CHECK=LOCAL_BYTES / BINDING=COMPLETE / SOURCE_BINDING=MATCH / 원 BLOCK 확인. 원 앱 payload 바이트를 이번 수신 측에서 재검사한 것은 아니며 NOT_INCLUDED_SERVER_RECORD_ONLY 범위 유지.
+- [증적 PR22 · Ready for review](https://github.com/321Team/fds-project-evidence/pull/22), HEAD `f4c576ea39f082bdfef1641ffd68092a403d856e`, 새9파일 보완·기존18파일 보존(총27파일). check-runs0건(CI NOT RUN), 독립 리뷰0건·미병합. 원 archive 검토자 접근 인계는 미확인.
+- **09-24 05:47 KST Draft 해제 완료.** 검토 HEAD `f4c576ea39f082bdfef1641ffd68092a403d856e`·27파일·기존 `hayeounglee` 리뷰 요청 유지. 원본2종+sidecar2종의 전달 묶음 준비·바이트4/4 및 checksum6/6 PASS. 검토자 실제 다운로드/접근은 아직 미확인이며 [PR 검토 안내](https://github.com/321Team/fds-project-evidence/pull/22)에 원본 hash·검토 순서·누락 제한을 명시했다. 독립 증적 승인과 병합은 PENDING; 누락된 과거 rc/화면을 사후 작성하거나 원 collect를 재실행하지 않는다.
+- AC03 Test/Build 부분 증거, AC05 취약점 BLOCK 부분 증거, AC06 Source→Run→로컬 OCI→Scan 연결 범위 유지. 스캐너 오류·기존 Deployment 이미지 유지·Harbor/Pod/E2E/복구 검증 잔여. AC 체크·담당·일정·상태 변경 없음.
+- 기존 CICD PR33·34·35 준비/문서 정정 결과를 재사용했으며 이번에는 운영 입력·서버·앱을 변경하지 않았다. 다음은 수정 앱·lock·base·새 공급물/최종 SHA 인계 → config 독립 리뷰 → 새 Run 두 이미지 재검증.
+
+[보완 수신 상세](https://github.com/321Team/fds-project-evidence/blob/f4c576ea39f082bdfef1641ffd68092a403d856e/evidence/P1-CICD-01/run-35683010080-attempt-1/collect-record-received-20260924/README.md) · [CICD #11](https://github.com/321Team/infra-cicd/issues/11)
+
+아래 날짜별 본문은 당시 이력이다. collect 로그/시각 미수신은 이번 기록으로 해소됐지만 독립 증적 인수·전체 Delivery 완료로 확대하지 않는다.
+<!-- p1-cicd-evidence-intake:20260924:end -->
+
+---
+
+<!-- fds-evidence-path:20260923:v1:start -->
+## 증적 경로 일괄 변경 — 2026-09-23
+
+사용자 지시(“티켓에 대한 내용은 fds-project-evidence로 일괄 변경”)에 따라 현행 본문의 Evidence Path를 증적 저장소 [`321Team/fds-project-evidence`](https://github.com/321Team/fds-project-evidence)로 변경했다. 경로 구조는 기존 편입 관례(`evidence/<Record ID>/`)를 따른다.
+
+- 변경 전: `docs/evidence/P1-CICD-01/` → 변경 후: `321Team/fds-project-evidence` `evidence/P1-CICD-01/`
+- 이 변경은 증적 보관 위치의 지정이다. 해당 경로에 증적이 편입됐거나 AC가 충족됐다는 뜻이 아니다. 편입은 증적 저장소 PR의 독립 리뷰([EVIDENCE_POLICY](https://github.com/321Team/fds-project-evidence/blob/main/governance/EVIDENCE_POLICY.md))로 별도 판단한다.
+- Status·AC 체크·Lead/Support·일정·승인/종결은 변경하지 않았다. 아래 `<details>` 보관 원문과 서버 수집 경로 표기는 당시 기록으로 그대로 둔다.
+- 정본(Ticket Pack) 반영은 차기 정본 후보에서 처리한다. 발행 docs-v3.1.20의 기존 경로 문구는 이력이다.
+<!-- fds-evidence-path:20260923:v1:end -->
+
+---
+
+<!-- p1-cicd-progress:2026-09-15:start -->
+## 현재 구현·검증 현황 — 2026-09-18 증적 재대조
+
+**준비·구현 단계 5/10, Runtime AC 증적 충족 1/10(CICD-AC-01), 전체 인수 미완료, Status: In Progress.** 기존 50%는 동일 가중치 단계 5/10의 관리용 비율이며 실제 구축률·공수 진척률·전체 인수율로 사용하지 않는다. Harbor 구축은 #13 이하영 Lead / 이권욱 Support이며 CICD 단독 실적과 구분한다.
+
+- **실제 실행 확인:** 9/15 Runner 재시작 후 Job 수신·rootless 및 IF-08, 9/16 Trivy DB preflight PASS는 기존 원본 로그를 재조회해 보존했다. 9/17 공급 생산·base probe·Git 사전점검 제출 결과는 당시 실행 범위다. 앱 Test→Build→Scan→Push→Deploy 전체 Runtime PASS로 확대하지 않는다.
+- **소스·리뷰 진전:** PR #5·#13~#17은 병합됨. #18은 9/18 추가 검토 완료, #19는 offline 공급·Workflow/Build 관련 추가 검토 완료이나 app_evidence 세부 결합은 미확인으로 명시됨. #21은 현 HEAD9418fa705d365a5c1f4cfb527e391a826899a31f의 독립 APPROVED를 확인했다. #18/#19/#21은 아직 Open이며 병합·운영 실행 완료가 아니다.
+- **앱 인계 수신:** 조직 fds-msa#2는 9/18 14:25:53 KST 병합(merge ec69b67067decf35abbfed0a6a99f3073132787b). 14:32 앱 Lead가 Source SHA·Unit/Contract·transaction-api Unit 해당 없음의 사유·Test/Build/Scan 실행 승인 회신을 등록했다. 단, 회신의 저장소는 supreme33-kr/fds-msa이고 해당 저장소/동 SHA 조회는 404여서 지정 저장소와 SHA의 조합을 확인하지 못했다. 조직 저장소의 동일 SHA는 확인했다. 저장소 선택·근거 URL의 실제 값 정합화와 config 반영이 남는다. main config는 PENDING_APP_HANDOFF/null이다.
+- **Secret:** CICD_APP_SOURCE_READ_TOKEN 등록은 확인 기록이 있다. 실제 권한·만료·Private fetch는 미검증이다.
+
+근거: [Runner 원본 Run](https://github.com/321Team/infra-cicd/actions/runs/34960063214/attempts/2) · [DB Run](https://github.com/321Team/infra-cicd/actions/runs/35061666680) · [#18 추가 검토](https://github.com/321Team/infra-cicd/pull/18#issuecomment-5725118194) · [#19 추가 검토](https://github.com/321Team/infra-cicd/pull/19#issuecomment-5725125871) · [#21 승인](https://github.com/321Team/infra-cicd/pull/21#pullrequestreview-5244240513) · [앱 병합](https://github.com/321Team/fds-msa/pull/2) · [앱 인계](https://github.com/321Team/infra-cicd/issues/11#issuecomment-5725640696) · [Secret 등록](https://github.com/321Team/infra-cicd/issues/11#issuecomment-5724270967) · [현 main config](https://github.com/321Team/infra-cicd/blob/ee039707db0a7ae980305f65ffb741d46b149015/config/app-build-scan.json).
+
+아래 날짜별 경과는 당시 기록이다. 오래된 미병합·Runner Job 미실행·AC0/10·인계 미수신 표현은 현재 판정으로 사용하지 않는다. 요구·AC 완료 판정은 아래 항목별 근거와 잔여를 따른다. 독립 리뷰는 코드 PR에 적용하며 동일 코드의 Runtime·AC 인수를 반복 독립 승인 조건으로 확대하지 않는다([현행 정책](https://github.com/321Team/infra-cicd/blob/ee039707db0a7ae980305f65ffb741d46b149015/docs/governance.md)).
+
+### Runner 재시작 후 Job 재수신 PASS — 2026-09-15 20:06 KST
+
+- 사용자 터미널 화면: `actions.runner.321Team-infra-cicd.cicd-runner01.service` 재시작 후 `User=server01_cicd-runner`, `active/running`, `ActiveEnterTimestamp=2026-09-15 20:03:34 KST`.
+- [Run #1 / Attempt 2](https://github.com/321Team/infra-cicd/actions/runs/34960063214/attempts/2)는 **20:06:30 KST 시작, 20:06:43 성공**. [Job 104355893988](https://github.com/321Team/infra-cicd/actions/runs/34960063214/job/104355893988)의 실제 출력: `RUN_ATTEMPT=2`, 호스트 `cicd-runner01`, 계정 `server01_cicd-runner`, UID 1000, Git 2.52.0, Podman 6.1.0, `JOB_RECEPTION=VERIFIED`, `BUILDER_ROOTLESS=VERIFIED`. 재시작보다 176초 뒤 시작했으며 Run URL·로그의 main Commit `ffaa764623c5941b14fe12384e9ba5629bd60a6f`가 일치한다.
+- [Attempt 1](https://github.com/321Team/infra-cicd/actions/runs/34960063214/attempts/1)도 성공했고 계정·rootless·동일 Commit을 확인했다. 현재 **Run 1건 / Attempt 2회**이며 서로 다른 Run 2건으로 세지 않는다.
+- [정본 v3.1.18의 IF-08](https://github.com/321Team/fds-project-baseline/blob/docs-v3.1.18/baseline/FDS_Project_Implementation_Baseline_v3.1.18.md) 판정 기준은 **Clone/Workflow Poll 또는 승인 API**다. 이번 실제 Workflow 수신·로그 반환으로 해당 통신과 재시작 후 수신을 확인하여 **단계 4 및 CICD-AC-01 Runtime 증적 충족**으로 갱신한다. 앞서 모든 egress 기능을 같은 완료 조건에 묶은 설명은 정정한다. Action 다운로드·Artifact 전송·이미지/DB 공급은 해당 기능의 후속 검증으로 둔다.
+- **소스 CI PASS — 20:12:31~20:12:42 KST:** [Run #1/Attempt 1](https://github.com/321Team/infra-cicd/actions/runs/34962038714), 위와 동일한 main Commit. Job 104357653976/ubuntu-24.04에서 수집기 17건·CSR 11건 **총 28건 OK**, smoke 파일 동일성·`SOURCE_VALIDATION=PASS` 확인. 앱 업무 시험과 구분한다.
+- 후속: PR12 병합. PR13(CI105)·14(CI97)·15(CI101)·[#16](https://github.com/321Team/infra-cicd/pull/16)(CI112) 이재환 검토. [#11](https://github.com/321Team/infra-cicd/issues/11) 공급/base·Source 대기(앱32 PASS=edge01). [#8](https://github.com/321Team/infra-cicd/issues/8) 자동화 UNKNOWN. [v19 #73](https://github.com/321Team/fds-project-baseline/pull/73).
+- **50%(5/10)·Runtime AC 1/10 유지**, 앱 Build/Scan/Push/Deploy·추가 AC·전체 인수 미완료, `DELIVERY_GATE=NOT_VERIFIED`. 이전 소스 CI 미검증·40%·AC 0/10은 당시 기록이다.
+
+### PR #2 병합 및 후속 PR #5 착수 — 2026-09-15
+
+- 사용자 명시적 병합 지시 후 [PR #2](https://github.com/321Team/infra-cicd/pull/2)를 **19:05:42 KST / 10:05:42 UTC**에 병합했다. 하영 승인 HEAD를 지정했고 merge `ffaa764623c5941b14fe12384e9ba5629bd60a6f`와 main·부모 Commit을 확인했다.
+- 후속 [Draft PR #5](https://github.com/321Team/infra-cicd/pull/5), HEAD `0c3f01b46d2bc73ddae3b49ba47fa5d2313ea905`: 9개 문서·설정 파일에 CA/백업·Runner 증거, 계획 OS 20GB/실제 40GiB, 실제 Harbor 입력 경로, 09-14 Critical/High 차단·Robot 30일·Scanner 정책을 동기화했다. JSON·공개 CA 지문/압축본 해시·Bash 10개 구문·원격 tree 검사 PASS. 후속 PR은 미승인·미병합이며 실행 Workflow/도구는 그대로다.
+- 병합과 후속 PR 생성 후 Actions Run **0건**을 확인했다. 원인은 미확인이다. main의 P1 Runner smoke 수동 실행은 아직 하지 않았다. 현재 연결 도구에 신규 실행 기능이 없어 GitHub 화면 Run workflow → main 경로를 인계한다.
+- **MERGE=PR2_COMPLETE, FOLLOWUP=PR5_DRAFT, RUNNER_JOB=NOT_EXECUTED, DELIVERY_GATE=NOT_VERIFIED**. 아래 이전 시점의 PR #2 미병합·미승인/소스 정리 예정은 이 최신 기록으로 대체해 읽는다. 40%(4/10), Runtime AC 0/10, In Progress와 담당 경계를 유지한다.
+
+### PR #2 본문 현행화 및 독립 기술 승인 — 2026-09-15
+
+- [하영님의 APPROVED 리뷰](https://github.com/321Team/infra-cicd/pull/2#pullrequestreview-5208370669)가 **2026-09-15 18:54:29 KST / 09:54:29 UTC**에 제출됐다. 대상은 최신 HEAD `5f575fc8bfbd68d29fc3995fe68bceb87f1b194b`로 일치한다. 아래 이전 조회의 제출 리뷰 0건/재검토 대기는 해당 당시 기록이며, 현재는 이 승인 기록을 기준으로 읽는다.
+- 사용자 요청에 따라 [PR #2 본문](https://github.com/321Team/infra-cicd/pull/2) 상단에 검토 의견 9개 반영, CA 발급·공개 바이트 검증·암호화 백업/파일 복구·Harbor 인계·Runner 로컬/Idle·라벨 증적, 실제 40GiB/수신 경로 및 미완료 작업을 갱신했다. 기존 본문 전체는 접힌 원문 보관 영역에 그대로 남겼다.
+- PR 본문만 갱신했으며 소스·HEAD·base·리뷰어·상태는 변경하지 않았다. Runbook/설정 파일 자체의 오래된 상태·입력 경로·계획/실제 차이 정리는 후속 소스 작업으로 명시했다.
+- **PR #2 APPROVED / 미병합, Actions Run 0건, 실제 smoke/서비스 재시작 후 Job 수신 미검증.** 이 소스 승인을 현장 결과 전체의 독립 인수 승인으로 확대하지 않는다. 기존 40%(4/10), Runtime AC 0/10, In Progress를 유지한다.
+
+### 구축 단계 체크리스트 — 진행률 산정 대상 10개
+
+- [x] **1. 저장소 및 검토용 구현 준비.** `321Team/infra-cicd` 초기 구성 PR #1 병합 완료. PR #2에 병행 수집기·CSR 도구/프로파일·Runner 설치/복구/첫 Job 문서·smoke Workflow 소스를 준비했다. PR #3에 CA 준비 검사·배포 차단 조건 모의 검증 코드를 준비했다. 이 단계 완료는 소스 준비 범위이며 PR #2/#3의 승인·병합 및 실제 Pipeline 가동을 포함하지 않는다.
+- [x] **2. Runner 설치·등록·로컬 실행 환경 준비.** `cicd-runner01 / server01_cicd-runner`에 Runner 2.337.0을 infra-cicd 전용으로 등록. SELinux Enforcing을 유지하면서 `runsvc.sh` 영구 라벨을 교정했고, 09-09 서비스 active/running·GitHub 연결·Listening for Jobs를 확인했다. 09-15 18:43:37+09:00 후속 화면에서 동일 호스트·계정/UID 1000, SELinux Enforcing, 서비스 User 일치 및 active/running, Git 2.52.0·Podman 6.1.0·로그인 세션 rootless=true를 재확인했다. 추가 GitHub Runners 화면에서 cicd-runner01의 Idle 상태와 self-hosted·Linux·X64·p1-cicd·onprem·podman 라벨 6개를 확인했다. 실제 Job 실행 성공과 서비스 재시작 후 Job 재수신은 9/15 Run34960063214 Attempt2의 원본 로그와 당시 재시작 화면으로 확인했다. 이 단계는 전체 Delivery 인수가 아니다.
+- [x] **3. CA 발급 환경 및 공개 요청 입력 준비.** server01의 별도 ca01 VM에 2 vCPU/4GiB, OS 40GiB·CA 2GiB를 구성. OS·swap 및 별도 CA 볼륨 LUKS2, CA 마운트 `nodev,nosuid,noexec`·root:root 0700, NIC 제거를 확인했다. Harbor RSA3072 CSR 요청 `harbor01-sn0wepv7`을 보존하고 입력 ISO 외부/내부 체크섬과 CSR 자체 서명을 검증했다. Root 및 Harbor Leaf 생성·오프라인 검증 결과는 아래 09-15 제출 화면 기록에 반영했다.
+- [x] **4. 실제 Runner Job 및 IF-08 검증.** Run #1의 Attempt 1·2 성공, Job 내부 계정·rootless, 서비스 재시작 후 Job 재수신을 확인했다. 정본 IF-08의 Workflow Poll/실제 Run 증적 범위를 충족했다. 후속 Action·Artifact·Build/Scan 통신 검증과 전체 Delivery는 별도다.
+- [x] **5. 신규 CA·Harbor Leaf 발급 및 백업/복구.** 새 Root 키·인증서 생성, Harbor Leaf 발급·대장 갱신을 현장 화면에서 확인했다. 공개 반환물 USB 반출·원본 수신 후 압축본/내부 체크섬과 Root/Leaf 지문·서명·SAN·용도·CSR 공개키 재검증을 완료했다. 사용자 승인으로 별도 29.3GiB 백업 USB를 LUKS2/XFS로 초기화하고 CA 자산 전체 압축본·원본 CA 볼륨 LUKS 헤더 백업을 생성했다. 원본 대조 PASS·체크섬 2/2 OK에 이어 USB 매핑을 닫고 읽기 전용으로 재개방한 뒤 체크섬 2/2 OK, 새 디렉터리로 실제 파일 복원 및 `CA_RESTORE_COMPARE=PASS`를 확인했다. 후속 화면에서 복원 개인키의 암호 해제·유효성, Root 인증서 공개키 일치 및 기존 인증서 해시 일치, 발급 대장·파일 권한 검증까지 통과했다. 임시 복원본 삭제 PASS 및 백업/CA 볼륨 마운트 해제·LUKS 매핑 닫기까지 확인했다. 추가 화면에서 백업 USB의 게스트 연결 해제를 확인했고 사용자가 “전원 종료 후 USB 분리보관 완료”를 보고했다. 이 범위의 CA 발급·암호화 백업/파일 복구 검증과 마무리는 완료했다. 다음은 Harbor 적용 준비·신뢰 배포이며 실제 전환은 미실행이다.
+- [ ] **6. Harbor 선행 구축 및 CI/CD 연계 검증 — HBR Lead/Support 구분.** **P1-HBR-01(#13), 이하영 Lead / 이권욱 Support:** Harbor 정식 설치·기존 데이터/구성 보호·서비스 전환, Harbor 측 인증서 설정·Scanner·Robot 권한/30일 정책과 Registry 실행 증적을 담당한다. **P1-CICD-01, 이권욱:** CA 발급물 인계, Runner 측 신뢰/자격증명 소비·CI Trivy 실행·Push 제어·Digest/Run 추적 및 CI/CD 연계 검증을 담당한다. Worker 측 신뢰·Pull/Pod Start는 HBR/K8S 연계 범위로 확인한다. 권욱이 수행한 Harbor 현황 조회·공개 반환물 반입·키 일치 확인은 지원/인계 검증이며 Harbor Lead를 변경한 근거가 아니다. 구 CA 신뢰·키 사본 폐기도 신규 전환 검증과 연결한다. 임시 컨테이너 복구는 이 단계의 완료로 산입하지 않는다. 09-15 후속 화면에서 `server08@harbor01`과 기존 요청 개인키의 존재·root:root 0600을 확인했다. 후속 화면에서 Harbor 수신 압축본 해시·내부 6개 체크섬과 기존 개인키/Leaf의 SPKI 해시 일치까지 확인했다. 후속 화면에서 Harbor 현재 시각 기준 체인·서버 용도/FQDN 검증과 개인키 유효성 검사를 통과했다. 기존 v2.13.1 컨테이너 9개 중 harbor-log만 실행 중이고 8개는 Exited(128)이며, 정식 구성용 /opt/harbor·pki/current·/data/harbor-formal은 없다. 보호 경로 설치·정식 전환/신뢰 배포는 미완료다.
+- [ ] **7. 앱 CI 및 Image/Digest 생성.** 승인된 두 앱 Source의 Test→Build→Trivy→Push와 Workflow/Source SHA·Run/Attempt·Scan/manifest Digest 수집을 실제 실행으로 증명한다. 미해결 Critical/High 및 스캐너/DB 오류의 Push·Deploy 차단을 반영한다.
+- [ ] **8. 최소권한 Kubernetes 배포·Token 검증.** 기존 두 Deployment의 승인 Digest patch, 다른 리소스/동작 권한 거부, 단기 Token 주입·만료·갱신과 자격증명 정리를 실제 Runner 자격증명으로 증명한다.
+- [ ] **9. 통합 성공·실패 차단·복구 증명.** Health/E2E, 고의 Test/Scan 실패·스캐너 오류 시 이미지 유지, Source→Run→Digest→Pod 역추적, 승인·재실행·동시 실행 통제 및 이전 승인 Digest 복구를 확인한다.
+- [ ] **10. 독립 리뷰·최종 인수·정본 인계.** 전체 Delivery 증적에 대한 이하영의 독립 기술 리뷰, 이권욱의 최종 판정, 미해결 항목·정본 인계 기록을 완료한다. PR #1의 초기 구성 승인을 전체 Pipeline 승인으로 확대하지 않는다.
+
+### 이미 구현된 소스와 실제 적용 범위
+
+| 구현·증적 | 확인 상태 | 다음 확인 |
+| --- | --- | --- |
+| 초기 저장소 | [PR #1](https://github.com/321Team/infra-cicd/pull/1) 09-09 병합, main `be92fd00b269ff7d7abc124bb17f6d3e4c007851` | 후속 PR 검토·병합 |
+| 준비 수집·CSR·Runner smoke/복구 소스 | [PR #2](https://github.com/321Team/infra-cicd/pull/2), HEAD `5f575fc8bfbd68d29fc3995fe68bceb87f1b194b`, Open·미병합 | 독립 검토·병합 및 실제 smoke Run |
+| CA 준비·배포 조건 모의 검증 | [PR #3](https://github.com/321Team/infra-cicd/pull/3), HEAD `9775f3ff61a04be73e179cb0808e5bd844fe0193`, Draft·미병합. [검증 기록](https://github.com/321Team/infra-cicd/blob/9775f3ff61a04be73e179cb0808e5bd844fe0193/tools/preparation/VALIDATION.md)의 로컬 32건 PASS 이력 | 실제 수집/Build/Push/Patch 어댑터 통합·실행. 32건은 당시 대상 코드의 로컬 시험이며 이번 재실행·실제 배포 차단 증적이 아님 |
+| Runner·Harbor·CA 현장 증적 | 아래 09-12 기록의 제출 로그·공개 CSR·ISO 및 스크린샷 | 공개 원본 수신·검토 환경 재검증 완료. 백업/복구, 신뢰 전환/Push/Pull/Delivery 잔여 |
+
+### 신규 Root 생성 결과 — 2026-09-15 제출 증적
+
+- **화면 증적상 생성·로컬 검증 성공.** ca01의 마운트된 `/mnt/fds-ca/fds-project-root-ca-2026-replacement`에서 RSA4096 키 생성 명령과 AES-256-CBC 암호화 옵션, PEM 암호 입력, Root 인증서 생성 명령이 완료됐다. 생성 화면 확인 당시 공개 Root PEM은 미수신이었으며, 같은 날 후속 반출본 수신 후 아래 기록과 같이 원본 바이트를 재검증했다. Root 개인키의 암호화 생성·권한은 현장 화면 증적이며 개인키 바이트를 수신한 것은 아니다. 지정 리뷰어의 독립 승인과 구분한다.
+- `openssl verify -CAfile ... -check_ss_sig ...` 결과 `certs/fds-root-ca.crt: OK`. Subject=Issuer=`C=KR, O=FDS, OU=Project PKI, CN=FDS Project Root CA 2026`.
+- 인증서 표시 유효기간(UTC): `2026-09-15 02:45:04` ~ `2031-09-14 02:45:04` (1825일). 발급 시각의 외부 기준 대조까지 독립 검증한 것으로 기록하지 않는다.
+- **원본 기준 Root serial 정정:** `3F4570F7333F7601C592B1FF385204AB831559A5`. 기존 화면 전사값 `3F4570F7333F7601C592A1FF385204AB831559A5`의 `…C592A1…`는 `…C592B1…`로 정정한다. 수신 PEM의 OpenSSL 출력과 `root-info.txt`가 일치하고 기존 인증서 지문·파일 해시도 일치하므로 인증서 교체나 재발급 사유가 아니다.
+- 화면 전사 SHA-256 인증서 지문: `6A:75:BA:F4:DB:E0:3E:F2:4C:CE:94:4E:61:63:84:D3:18:F7:CA:91:9C:D7:BD:91:46:24:B4:CE:BA:C0:6B:10`. 후속 수신 PEM에서 재계산한 지문과 일치했다. 이 기록 자체가 소비자 신뢰 배포 승인은 아니다.
+- `basicConstraints` critical `CA:TRUE, pathlen:0`; `keyUsage` critical `Certificate Sign, CRL Sign`. 개인키 `private/fds-root-ca.key` 및 Root 인증서 `certs/fds-root-ca.crt` 모두 `600 root:root`.
+- Root 최초 생성 당시 신규 발급 대장·serial 초기화를 확인했다. 같은 날 후속 Harbor Leaf 발급 및 대장 갱신은 아래 별도 기록을 따른다. 기존 디렉터리·개인키·Root 인증서·발급 대장을 다시 생성하거나 초기화하지 않는다.
+- 증적 파일 SHA-256: `cb13d6bc-9a62-4dcf-b94c-b2a2c3ecb01e.png` → `7f610dfd0a624361aab3bda4006e6a5d536dd3e2c099c4ada30714ed557e3ed4`; `6f1968dc-f1d7-4f55-920d-995b6fc26136.png` → `67f8eebafd0539bc2e8c91cf95bebb67c17062897ad49ad217bbe56ed9adcf63`. 첨부 화면을 읽고 해당 파일 해시를 계산했다. GitHub에 원본 파일 업로드·별도 증적 PR 병합은 하지 않았다.
+- 동일 Root를 사용한 보존 CSR `harbor01-sn0wepv7` 서명 및 오프라인 Leaf 검증을 후속 화면에서 확인했다. 공개 인증서 반출·수신 재검증에 이어 아래 후속 기록의 별도 암호화 백업/파일 복구 시험·정리·잠금·분리 보관까지 완료했다. 5단계를 완료로 반영해 잠정 주요 단계 진행률은 **40%(4/10)**이며 Runtime AC는 **0/10**을 유지한다. 다음은 Harbor 적용 준비·신뢰 배포다.
+
+### Harbor Leaf 발급·오프라인 검증 결과 — 2026-09-15 후속 제출 증적
+
+- **발급 및 CA 대장 갱신 확인.** 동일 자산 디렉터리에서 `openssl ca -config root-ca.cnf -notext -days 365 -extfile harbor-leaf.ext -extensions harbor_leaf`로 기존 요청을 서명했다. 사용자 화면에서 `Signature ok`, 서명/commit 확인, `Database updated`를 확인했다. Leaf 경로는 `issued/harbor01.crt`, CSR은 `requests/harbor01.csr.pem`이다.
+- Subject: `C=KR, O=FDS, OU=Harbor, CN=harbor.fds.internal`; Issuer: `C=KR, O=FDS, OU=Project PKI, CN=FDS Project Root CA 2026`.
+- 화면의 Leaf serial은 `1000`(16진수), 표시 유효기간은 UTC `2026-09-15 04:00:08` ~ `2027-09-15 04:00:08`(365일)이다.
+- 지정 Root를 `-CAfile`로 사용하고 `-purpose sslserver`와 DNS `harbor.fds.internal`, DNS `harbor01`, IP `10.1.93.54`를 각각 검증한 **세 명령 모두 `issued/harbor01.crt: OK`**다.
+- 확장: `basicConstraints` critical `CA:FALSE`; `keyUsage` critical `Digital Signature, Key Encipherment`; EKU `TLS Web Server Authentication`. SAN은 `DNS:harbor.fds.internal, DNS:harbor01, IP:10.1.93.54`로 일치한다. 최초 다중 확장 출력에서 빠졌던 Key Usage는 단독 재조회 화면으로 확인했다.
+- **CSR/Leaf 공개키 일치.** 화면에서 CSR과 Leaf의 SPKI DER SHA-256이 모두 `636f85ce3ae0d5e3ea49e50fca2b8ec1e5c132f990d7867e2ad59d0a2e333638`로 일치했다. 검토 환경의 보관 CSR 원본도 자체 서명 검증 및 SPKI 해시 재계산에 성공했고 같은 값이다. CSR 파일 SHA-256은 `97473d44f37140dfe04c83a29f6fec17560bb6f7b29a543fd1fa06cce91ca890`이다. Harbor 개인키 파일을 검토 환경으로 수신하거나 직접 검증한 기록은 아니다.
+- 발급 대장 `index.txt`에서 상태 `V`, 만료 `270915040008Z`, serial `1000`, 대상 Subject를 확인했고, `serial` 파일은 다음 값 `1001`로 갱신됐다.
+- **판정 범위:** ca01 화면에 근거한 발급·대장 갱신 및 후속 수신 공개 원본의 검토 환경 암호학적 재검증 성공. Root/Leaf 지문과 파일 해시는 기존 화면 기록과 일치했다. 지정 리뷰어의 독립 승인, 별도 백업/복구, Harbor의 실제 개인키 매칭·TLS 적용·Runner/Worker 신뢰 배포 및 전체 Delivery는 별도 잔여다.
+- 후속 순서: 공개 반환물의 매체 반출·수신 검증 완료 → 별도 물리 매체의 암호화 백업·복구 확인 → Harbor 전환·신뢰 배포. 이후 백업 USB `/dev/sda` 29.3GiB와 `/dev/sda1` VFAT를 식별했고 읽기 전용 조회·마운트 해제를 확인했다. 사용자가 해당 USB의 백업 전용 초기화를 승인했고 후속 화면에서 LUKS2/XFS 초기화 성공을 확인했다. CA 자산 백업 생성·원본 대조에 이어 USB 읽기 전용 재개방·체크섬 재검증·파일 복원/대조까지 후속 화면에서 확인했다. 복원 키/인증서·발급 대장 검증과 임시 복원본 삭제·백업/CA 볼륨 잠금까지 후속 화면에서 확인했다. 추가 화면과 사용자 보고로 백업 USB 게스트 연결 해제·물리 분리 보관 및 ca01 전원 종료까지 확인했다. 다음은 Harbor 공개 인증서 반입·기존 개인키 일치 확인과 전환 준비다. 키·암호는 공개 반환물에 포함하지 않는다.
+
+| 제출 화면 | SHA-256 |
+| --- | --- |
+| `d70e58cd-3ec1-4739-bb46-9027dc7533d4.png` — 서명/commit | `d38e679ab2c01e0f5e8c394d5a9e220aacfc1830deff53be4133ba22529e0118` |
+| `ba287abf-e71d-4cdf-8af4-4b6d9d5fc6eb.png` — DNS/IP 세 검증 | `4290edd5cd1434d0261280322bf3dfb26b5524cf078ddfd2907b8bbe02e5fdee` |
+| `c828230f-16cd-4aa1-a872-8762e3958b1b.png` — 인증서/대장 | `1ab146e69c2aa87c0b5b857f9709247359a80d6592daee16d6bb1c132a4655a0` |
+| `8ea86557-36ab-4dcd-9c9d-0a5ade63bd3e.png` — Key Usage/공개키 | `6e73e20d5977ed6e1e8e154921d495eca37889a7d2cddd1994d20a8597cd69b2` |
+
+위 값은 첨부 이미지 파일을 실제 읽어 계산한 해시다. 이미지 해시·공개키 지문·인증서 지문은 서로 다른 값이며, GitHub 원본 증적 업로드/증적 PR 병합은 이번 본문 갱신에 포함하지 않았다.
+
+
+#### 공개 인증서 지문·파일 해시 — 같은 날 후속 확인
+
+`6bb78bc8-717c-41a3-945f-d8e92384469d.png`의 명령 및 출력에서 아래 값을 전사했다. Root 인증서 지문은 최초 생성 기록과 같고, CA 자산 내 CSR 파일 SHA-256은 반입·보관 CSR 원본과 일치한다. 화면 전사 당시에는 Root/Leaf PEM 바이트가 미수신이었으며, 같은 날 후속 수신본에서 아래 파일 해시 및 인증서 지문을 실제 재계산하여 모두 일치함을 확인했다.
+
+| 구분 | SHA-256 |
+| --- | --- |
+| Root 인증서 DER 지문 | `6A:75:BA:F4:DB:E0:3E:F2:4C:CE:94:4E:61:63:84:D3:18:F7:CA:91:9C:D7:BD:91:46:24:B4:CE:BA:C0:6B:10` |
+| Harbor Leaf 인증서 DER 지문 | `61:61:7A:F3:57:4F:37:C7:0A:2D:9C:7F:28:4A:75:F8:2C:84:4A:E3:EA:F5:99:CB:3D:0E:C6:49:12:6E:BE:AF` |
+| `certs/fds-root-ca.crt` 파일 | `20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f` |
+| `issued/harbor01.crt` 파일 | `82c00201e7e0c14190bb7836741016540bba494dbb9a4b8baa6111e8f9a97ea9` |
+| `requests/harbor01.csr.pem` 파일 | `97473d44f37140dfe04c83a29f6fec17560bb6f7b29a543fd1fa06cce91ca890` |
+
+- 첨부 화면 파일 SHA-256(검토 환경에서 실제 계산): `78b9caff31504b9bbbb27e5816df17588be69d2629b9c535721649f718272ee0`.
+- 인증서 DER 지문과 PEM 파일 해시는 대상 바이트가 다르므로 값이 서로 다른 것이 정상이다. 공개키 SPKI 지문과도 구분한다.
+- 지문 확인 당시 공개 반환물 생성은 아직 미확인이었으며, 같은 날 아래 후속 화면에서 생성·로컬 검증을 확인했다. 같은 날 후속 기록에서 매체 반출·공개 원본 수신 검증을 완료했다. 이후 별도 백업 생성·파일 복원/대조 및 복원 키/대장 검증까지 진행했으며, 매체 보관과 Harbor 적용은 남아 있다. 공개 반환물에는 CA 개인키·암호를 포함하지 않는다.
+
+#### 공개 반환물 준비 완료 — 같은 날 후속 제출 화면
+
+- CA 자산 루트 `/mnt/fds-ca/fds-project-root-ca-2026-replacement` 아래 `public-handoff`를 mode 0700으로 생성하고, umask 077에서 공개 파일을 복사·기록했다.
+- 파일: `fds-root-ca.crt`, `harbor01.crt`, `harbor01.csr.pem`, `root-info.txt`, `harbor-info.txt`, `request-id.txt`. 각 인증서 정보에는 Subject/Issuer/serial/유효기간/SHA-256 인증서 지문을 기록하는 명령이 실행됐고, 요청 ID는 `harbor01-sn0wepv7`이다.
+- `SHA256SUMS` 생성 후 6개 파일 모두 `OK`를 확인했다.
+- 현재 공개 반출 대상 경로:
+  - `/mnt/fds-ca/fds-project-root-ca-2026-replacement/ca01-public-handoff-v1.0.tar.gz`
+  - `/mnt/fds-ca/fds-project-root-ca-2026-replacement/ca01-public-handoff-v1.0.tar.gz.sha256`
+- 압축 생성 명령은 위 공개 파일 6개와 `SHA256SUMS`만 명시했고, `tar -tzf` 목록도 지정한 **7개 파일**이다. CA 개인키를 압축 대상에 포함한 명령은 없다.
+- 외부 sidecar 생성 후 `sha256sum -c ca01-public-handoff-v1.0.tar.gz.sha256` 결과 `ca01-public-handoff-v1.0.tar.gz: OK`를 확인했다.
+- **당시 검증 범위:** 현장 로컬 체크섬 일치 및 파일 목록의 화면 증적이었다. 이후 같은 날 아래 반출 화면에서 실제 압축본 해시를 확인했고, 압축본/sidecar/공개 인증서 바이트를 수신하여 재계산했다. 이 공개 반환물은 CA 개인키·발급 대장 등을 포함하는 별도 암호화 백업을 대체하지 않는다.
+- 같은 날 아래 후속 화면에서 exFAT 반출 USB `/dev/sda1`의 인식·마운트·두 파일 복사·체크섬 검증·마운트 해제와 분리를 확인했고, 외부 수신 검증도 완료했다. 장치 경로는 당시 부팅 세션의 관측값이며 재연결 시 다시 확인한다. 별도 백업/복구 및 Harbor 실제 적용 선행조건은 유지한다.
+- 증적 파일 SHA-256(검토 환경에서 실제 계산):
+  - `d8e2f5f9-dc7f-49d7-aadc-6e70749f620b.png` → `230e97bcdd625e0f7f2b94cfd60fc482cef7c9907f940616ffc9cb3e7116d045`
+  - `cd91a275-9852-40f7-adff-ec78a5b7a736.png` → `7ffb5c0ff1f82a8aaa4af9a9b94651bbfb46c980f586a5f49b7c59d0075c51a9`
+
+#### 반출 USB 인식 확인 — 같은 날 후속 제출 화면
+
+- USB 2.0/EHCI 연결 당시 `Invalid ep0 maxpacket: 9`와 `unable to enumerate USB device`가 발생했으나, 최신 화면에서는 `xhci_hcd`를 통한 SuperSpeed 연결, USB Mass Storage 및 `sda: sda1` 인식을 확인했다. VMware 설정의 정확한 선택값 자체를 제출받은 것은 아니다.
+- 관측 장치: `/dev/sda` 117.2GiB, `TRAN=usb`; 파티션 `/dev/sda1`, `FSTYPE=exfat`, `LABEL=MOVESPEED`. 마운트 위치는 비어 있다. 반출용 exFAT USB의 재포맷 없이 후속 마운트·복사를 진행한다.
+- USB 최초 인식 화면의 CA 디스크 `/dev/nvme0n2`는 `crypto_LUKS` 상태였고 `fds-ca` 하위 매핑이 표시되지 않았다. 후속 화면에서 기존 CA 저장소를 다시 열어 마운트하고 기존 공개 압축본과 sidecar를 반출한 것을 확인했다. 키·인증서·발급 대장 재생성은 하지 않는다.
+- **당시 확인 범위:** USB 장치/파티션 인식까지 확인했으며, 같은 날 아래 후속 기록에서 마운트·공개 파일 복사·체크섬 검증·외부 수신을 확인했다. 후속 백업 USB 장치 확인 및 초기화 승인은 아래 기록을 따른다. 당시에는 암호화 백업·복구 시험 전이었으며, 이후 백업 생성·파일 복원/대조 결과는 아래 후속 기록을 따른다.
+- 증적 파일 `8e4d0017-e5fb-4483-ac61-66a15c6a0a13.png`의 SHA-256(검토 환경에서 실제 계산): `0df9689e47e858ec99fe2cbb270a65594c90ac1bdf6b30e37e59bee4e6de39ca`. 이미지 해시이며 USB 내용이나 공개 압축본 해시가 아니다. 원본 화면의 GitHub 업로드는 하지 않았다.
+
+#### 공개 반환물 반출·원본 수신 재검증 완료 — 2026-09-15
+
+- **현장 화면:** `714279e5-a216-4bfe-aeb9-643fb9aea864.png`에서 CA와 exFAT USB의 rw·nodev·nosuid·noexec 마운트 및 USB 여유 공간 112G 표시를 확인했다. `05440778-bcf2-4806-91bc-01706fe8de76.png`에서 원본 압축본 체크섬 OK, 별도 USB 폴더 생성과 공개 압축본/sidecar 두 파일 복사, USB 사본 체크섬 OK, 해시 출력, `umount /mnt/ca-export/` 후 USB disconnect를 확인했다.
+- **수신 원본:** `ca01-public-handoff-v1.0.tar.gz` **4,725 bytes**와 `ca01-public-handoff-v1.0.tar.gz.sha256`를 실제 수신하여 검사했다. 압축본 SHA-256 **`bf03bd09fde0c8a19e9da7b782ec782e5a5eda99facd84964b3213eb5826a4a0`**은 sidecar 및 반출 화면의 값과 일치한다. Sidecar 파일 SHA-256은 `d5cdf78964b066a6518a550e08ac6da20a7084dafb4cf5afb16991c21d0e8d8a`다.
+- **내부 무결성:** 앞서 지정한 공개 파일 6개와 `SHA256SUMS`만 포함한 일반 파일 7개다. 링크·추가 경로가 없으며 내부 체크섬 **6/6 일치**를 재계산했다. 공개 인증서·CSR·정보 파일 구성과 개인키 PEM 표식 부재를 확인했다. CA 개인키/발급 대장 백업이 아니다.
+- **검증 환경:** UTC `2026-09-15T06:36:54Z`, OpenSSL **3.0.13**, Python cryptography **46.0.0**. 발급 VM의 OpenSSL 3.5.8 환경과 별개의 검토 환경에서 실제 공개 바이트를 재검증했다.
+- **Root:** 기존 SHA-256 인증서 지문 및 PEM 파일 해시와 일치. RSA4096·SHA-256, Subject=Issuer, critical CA:TRUE/pathlen:0 및 keyCertSign/cRLSign, SKI/AKI, 1825일 유효기간을 확인했다. `openssl verify -x509_strict -CAfile fds-root-ca.crt -check_ss_sig fds-root-ca.crt`가 OK다. Root serial은 위에 기록한 `…C592B1…`로 원본 기준 정정했다.
+- **Leaf:** 기존 SHA-256 인증서 지문 및 PEM 파일 해시와 일치. RSA3072·SHA-256, 올바른 Issuer/Subject, serial `1000`, UTC `2026-09-15 04:00:08` ~ `2027-09-15 04:00:08`, critical CA:FALSE·Digital Signature/Key Encipherment, EKU serverAuth, SAN 3개 및 Root SKI와 Leaf AKI 연결을 확인했다.
+- **체인·이름·용도:** `-x509_strict -CAfile fds-root-ca.crt -purpose sslserver`에 DNS `harbor.fds.internal`, DNS `harbor01`, IP `10.1.93.54`를 각각 지정한 세 번의 OpenSSL 검증 모두 OK다.
+- **CSR·요청 연결:** 수신 CSR은 기존 보관 CSR과 바이트 단위로 동일하고 자체 서명 검증 OK다. CSR과 Leaf의 SPKI SHA-256은 모두 `636f85ce3ae0d5e3ea49e50fca2b8ec1e5c132f990d7867e2ad59d0a2e333638`이다. 요청 ID `harbor01-sn0wepv7`, 인증서 정보 파일의 serial·지문·유효기간도 원본과 일치한다.
+- **판정:** 공개 반출·수신 무결성 및 공개 인증서/CSR의 오프라인 재검증 **PASS**. 이 결과는 Harbor 개인키 직접 매칭·실서비스 TLS/Runner·Worker trust 배포, 암호화 백업/복구 또는 지정 리뷰어의 독립 인수 승인을 의미하지 않는다. CA 발급 대장의 V/1001 판정은 앞선 현장 화면 범위이며 이번 공개 압축본에는 대장이 없다.
+- **다음 작업:** 별도 암호화 백업·실제 파일 복원/키·대장 검증·정리·잠금·분리 보관 완료 → Harbor에서 공개 반환물 반입·기존 개인키 일치와 현행 설치/구성 확인 → Harbor 실제 전환·신뢰 배포. 주요 단계 진행률은 **40%(4/10)**, Runtime AC는 **0/10**이다.
+- 이미지 SHA-256(검토 환경에서 실제 계산): 마운트 화면 `714279e5-a216-4bfe-aeb9-643fb9aea864.png` → `f326e53985f1b31e16174a949c2b92a2f4ca38e6c30293114f7f6e44750e52a0`; 반출 화면 `05440778-bcf2-4806-91bc-01706fe8de76.png` → `f98311ab94da4ba2a7ed0de8a8c500f3475012149630d0ce7eb62b0a2495ed64`. 이미지/압축본 원본의 GitHub 첨부 업로드·증적 PR 병합은 수행하지 않았다.
+
+#### 백업 USB 식별·초기화 승인 — 2026-09-15 후속
+
+- 장치 화면 `15ab32c0-458e-4405-bf56-2bef993b054b.png`: `/dev/sda` 29.3GiB, 모델 `USB DISK 2.0`, serial `9000539222804347`, transport `usb`. 파티션 `/dev/sda1`에는 기존 VFAT 파일시스템이 있으며 당시 미마운트다. 앞선 117.2GiB exFAT 공개 반출 USB와 별개의 매체로 식별했다. 장치 경로는 해당 연결 세션 기준이다.
+- 확인 화면 `534358fd-4ba6-4704-998c-6c8f3c5343cf.png`: `/mnt/ca-backup-check`에 VFAT를 `ro,nodev,nosuid,noexec,umask=077`으로 마운트했고 `findmnt`에서 ro를 확인했다. 사용자가 실행한 `ls -ls`는 `total 0`, `df -h`는 사용 16K로 표시됐다. 숨김 파일까지 검사한 증적으로 확대하지 않는다. 이어 `umount /mnt/ca-backup-check/`가 오류 없이 반환됐다.
+- **사용자 승인:** “백업 전용으로 초기화 승인”. 확인된 29.3GiB 백업 USB 파티션 `/dev/sda1`의 기존 데이터를 덮어써 백업 전용 LUKS2 저장소로 초기화하는 범위다. OS/CA 원본 NVMe 디스크 및 반출 USB의 초기화 승인이 아니다.
+- 승인 당시 예정 구성(후속 화면에서 확인): `/dev/sda1` → LUKS2, mapper `ca-backup` → XFS(label `CA_BACKUP`) → `/mnt/ca-backup`, root:root 0700 및 nodev/nosuid/noexec. 백업용 암호는 현장 대화형으로 입력하며 티켓에 기록하지 않는다.
+- **승인 당시 확인 범위:** 대상 식별·읽기 전용 조회·초기화 승인까지였다. 같은 날 아래 후속 화면에서 LUKS2/XFS 초기화 성공을 확인했으며, 후속 화면에서 CA 백업 파일 생성·원본 대조를 확인했다. 초기화 승인 시점의 진행률은 30%(3/10), Runtime AC 0/10이었다. 이후 USB 재개방·복구 검증과 분리 보관을 마친 최종 상태는 아래 후속 기록을 따른다.
+- 이미지 SHA-256: `15ab32c0-458e-4405-bf56-2bef993b054b.png` → `3e65db4ef4583882eab6e2234d17a845ddb2cc58c70688dd37242be9e272b026`; `534358fd-4ba6-4704-998c-6c8f3c5343cf.png` → `1313ceeabcc7ad9dd60dc99f3a473eb054a8b6b0849928acd80e544209ace043`. 검토 환경에서 실제 계산했으며 USB 내용 해시와 구분한다.
+
+#### 암호화 백업 USB 초기화·마운트 확인 — 2026-09-15 후속
+
+- 사용자 화면 `fadbd9d6-f9ba-44b8-820d-cea64817194e.png`에서 확인 입력·암호 설정 후 `cryptsetup open /dev/sda1 ca-backup`, `mkfs.xfs -L CA_BACKUP /dev/mapper/ca-backup`, 마운트 및 권한 설정이 완료됐다.
+- `cryptsetup status ca-backup`: active and in use, **LUKS2**, `aes-xts-plain64`, keysize 512 bits, 원본 장치 `/dev/sda1`, read/write.
+- `findmnt /mnt/ca-backup`: `/dev/mapper/ca-backup`, XFS, rw/nosuid/nodev/noexec. `ls -ld`: `drwx------. root root`, 즉 root:root 0700.
+- `lsblk -f /dev/sda`: LUKS와 XFS label 모두 `CA_BACKUP`. 화면 전사 LUKS UUID `50d3ddc7-dea5-4bc7-80e6-a32a27d91ffa`, XFS UUID `d79937dc-c342-48e1-a581-6cb8f78aef09`; XFS 가용 공간 표시 28.6G.
+- **초기화 당시 판정:** 별도 물리 USB의 암호화 백업 저장소 준비 완료(현장 화면 증적). 아래 후속 화면에서 CA 자산 전체 백업 파일 생성·원본 대조를 확인했다. USB 재개방 및 복구 검증은 아직 미확인이다. 재포맷을 반복하지 않는다.
+- 계획한 CA 자산 전체 압축본, 원본 CA 디스크 `/dev/nvme0n2`의 LUKS 헤더 백업 및 체크섬 목록을 같은 날 후속 화면에서 암호화 USB의 별도 백업 디렉터리에 생성한 것으로 확인했다. 헤더 백업은 헤더/키슬롯 복구용이며 CA 데이터 백업을 대체하지 않는다. 이 비공개 백업은 대화·GitHub·일반 증적 압축본으로 반출하지 않는다.
+- 이미지 SHA-256(실제 계산): `9d19a99cff604d2cd7db8a6ab2f2db57c2adf777ee6b774a1261e7abf63222c9`. USB 내용 또는 생성 전 백업 파일의 해시가 아니다.
+
+#### 비공개 CA 백업 생성·원본 대조 확인 — 2026-09-15 후속
+
+- 화면 `d5b2a8ca-0513-4208-aaa7-002d8cdba856.png`에서 CA/백업 마운트의 mapper 확인, `mount -o remount,ro /mnt/fds-ca`, umask 077 및 백업 디렉터리 생성을 확인했다.
+- 백업 위치: `/mnt/ca-backup/ca01-backup-20260915`. 백업 대상은 `/mnt/fds-ca/fds-project-root-ca-2026-replacement` 전체이며, tar 생성 옵션에 ACL·확장 속성·SELinux·numeric owner 보존을 지정했다.
+- 최초 tar 시도는 자산 디렉터리 경로 오타로 `Cannot stat`/실패가 발생했다. 사용자가 경로를 수정하여 같은 백업 출력 파일을 다시 생성한 뒤 원본 대조에 성공했다. CA 키/인증서/발급 대장 재생성 또는 CA 볼륨 재포맷을 수행한 기록이 아니다.
+- `cryptsetup luksHeaderBackup --header-backup-file ca-volume-header.img /dev/nvme0n2` 완료. 이 파일은 원본 CA 볼륨의 LUKS 헤더/키슬롯 백업이며 데이터 본문 백업을 대체하지 않는다.
+- `tar -dzf ca-assets.tar.gz -C /mnt/fds-ca/ && echo CA_ARCHIVE_COMPARE=PASS`에서 **`CA_ARCHIVE_COMPARE=PASS`**를 확인했다. 이어 `sync`, `sha256sum -c SHA256SUMS`에서 압축본 및 헤더 파일 **2/2 OK**를 확인했다.
+- 화면의 파일 표시: `ca-assets.tar.gz` **16K / root:root 600**, `ca-volume-header.img` **16M / root:root 400**, `SHA256SUMS` **170 bytes / root:root 600**. 16K/16M은 `ls -lh`의 반올림 표시이며 정확한 바이트 수로 기록하지 않는다.
+- **판정:** 별도 암호화 USB에 백업 생성·원본 대조·현장 체크섬 검증 성공(화면 증적). 백업 생성 화면 당시 실제 SHA-256 문자열은 미수신이었으나 아래 후속 복원 화면에서 확인했다. 비공개 백업 원본은 검토 환경에 수신하지 않았으며 대화/GitHub 업로드 대상이 아니다. tar 비교 PASS를 실제 복원 또는 복원된 개인키 사용 가능 판정으로 확대하지 않는다.
+- 당시 다음 절차로 안내한 USB 읽기 전용 재개방·체크섬 재검증 및 새 `/mnt/fds-ca/restore-check-20260915` 아래 파일 복원·대조는 아래 후속 화면에서 성공을 확인했다. 복원된 Root 개인키/인증서 일치와 발급 대장 검증도 아래 후속 화면에서 통과했다. 원본 CA 자산 디렉터리와 LUKS 헤더에 복원 데이터를 덮어쓰지 않았다.
+- 이 백업 생성 화면 당시에는 복구 시험·Harbor 실제 전환 전으로 주요 단계 **30%(3/10)**, Runtime AC **0/10**이었다. 이후 파일 복구 시험·분리 보관 완료와 현재 진행률은 아래 최종 기록을 따른다.
+- 이미지 SHA-256(실제 계산): `a6c859c626ff5f3603a3af3fa72286a4fe5d8edcebed3d4422eb172bb43cd46a`.
+
+#### 백업 USB 재개방·실제 파일 복원 대조 — 2026-09-15 후속
+
+- 제출 화면 `4ca15293-09d6-4050-8096-43b136ddbda6.png`에서 `umount /mnt/ca-backup` 및 `cryptsetup close ca-backup` 완료 후, `cryptsetup open --readonly /dev/sda1 ca-backup`와 암호 입력·재개방 성공을 확인했다. USB의 물리 분리/재연결 시험은 아니다.
+- 백업 XFS를 `ro,nodev,nosuid,noexec`로 마운트했고 `findmnt` 출력도 해당 옵션과 `/dev/mapper/ca-backup`을 확인했다. 백업 디렉터리 `/mnt/ca-backup/ca01-backup-20260915`에서 `sha256sum -c SHA256SUMS` 결과 압축본·헤더 **2/2 OK**.
+- CA 원본 mapper를 확인하고 CA 볼륨을 rw로 다시 마운트한 뒤, 별도 새 디렉터리 `/mnt/fds-ca/restore-check-20260915`를 mode 0700으로 생성했다. `tar --acls --xattrs --selinux --numeric-owner -xzpf`로 복원했고 `tar -dzf ca-assets.tar.gz -C /mnt/fds-ca/restore-check-20260915` 결과 **`CA_RESTORE_COMPARE=PASS`**를 확인했다.
+- **검증 범위:** 별도 암호화 USB의 잠금 해제·읽기 전용 재개방, 체크섬 재검증, 같은 ca01의 암호화 CA 볼륨 내 새 디렉터리로 실제 파일 복원·tar 대조 성공(현장 화면 증적). 원본 자산 디렉터리 덮어쓰기, 전체 VM/디스크 재구축, LUKS 헤더 실제 복구 또는 복원된 개인키의 사용 가능 검증까지 완료한 판정은 아니다.
+- 이 파일 복원 화면 당시 복원 키/인증서·대장·권한 검증은 남아 있었으며, 아래 후속 화면에서 통과했다. 임시 복원본 삭제와 백업/CA 볼륨 잠금도 후속 화면에서 확인했다. 당시 남아 있던 백업 USB 물리 분리 보관은 아래 최종 사용자 보고로 완료됐으며 현재 5단계 체크·진행률 **40%(4/10)**·Runtime AC **0/10**이다.
+- 아래 백업 해시는 화면에서 전사한 값이다. 비공개 압축본/헤더의 원본 바이트는 수신하지 않았으며 검토 환경에서 이 두 해시를 재계산한 것은 아니다. 개인키·비공개 백업·암호는 대화/GitHub에 업로드하지 않는다.
+
+| 백업 파일 | 화면에 표시된 SHA-256 |
+| --- | --- |
+| `ca-assets.tar.gz` | `b018f9fa5a5f43bf712e686e5d6fecc90175edc81b4ea4ed25b09d18cb35a3ed` |
+| `ca-volume-header.img` | `5e1c7455fffc509bcadcbef69aa58c5876531dccfd1baebbb3a0ff230e473ea5` |
+
+- 제출 이미지 SHA-256(검토 환경에서 실제 계산): `6dd8424d9df83beb541727e09c5e3e784c5de730ceae017d0aec4c2d906eaf94`. 이미지 원본의 GitHub 업로드·별도 증적 PR 병합은 수행하지 않았다.
+
+#### 복원 Root 개인키·인증서·발급 대장 검증 — 2026-09-15 후속
+
+- 제출 화면 `d6927f38-8a80-411e-ae37-965e3be94294.png`의 작업 위치는 `/mnt/fds-ca/restore-check-20260915/fds-project-root-ca-2026-replacement`다. 기존 원본 자산 경로에서 실행한 검증으로 혼동하지 않는다.
+- 복원된 `private/fds-root-ca.key`를 `openssl pkey -check -noout`로 열고 PEM 암호 입력 후 **`Key is valid`**를 확인했다. 복원 개인키의 암호 해제와 키 구성 일관성을 확인했으며 개인키를 검토 환경에 수신한 것은 아니다.
+- 복원 개인키와 Root 인증서에서 각각 공개키만 추출하여 상위 임시 복원 디렉터리의 `restore-key-public.pem`·`restore-cert-public.pem`에 저장하고 cmp로 대조했다. 결과 **`ROOT_KEY_CERT_MATCH=PASS`**.
+- 복원 Root 인증서 파일 SHA-256은 **`20ddfa5e92c346aaf46fc30179fbc0b069e256effd2615a9f4308a8fe719053f`**로 앞서 수신·재계산한 공개 Root PEM 해시와 일치한다. 이번 값은 화면 확인이며 복원 파일 바이트를 별도로 수신하지 않았다.
+- `index.txt`는 기존 Harbor 발급의 단일 `V` 기록, 만료 `270915040008Z`, serial `1000`, Subject `/C=KR/O=FDS/OU=Harbor/CN=harbor.fds.internal`을 유지했다. `serial`은 다음 발급 값 **`1001`**이다.
+- `private/fds-root-ca.key`, `certs/fds-root-ca.crt`, `index.txt`, `serial`의 stat 결과 모두 **`600 root:root`**.
+- **판정:** 앞선 USB 읽기 전용 재개방·체크섬 재검증·실제 파일 복원 대조와 이번 복원 개인키/인증서·대장/권한 검증을 합쳐 **파일 복구 시험 PASS(현장 화면 증적)**. 전체 VM/디스크 재구축, LUKS 헤더 실제 복구, 신규 인증서 재발급 또는 Harbor 실제 적용을 수행한 판정은 아니다.
+- **후속 상태:** 아래 화면에서 임시 복원 디렉터리 삭제와 백업/CA 마운트 해제·LUKS 매핑 닫기, 게스트 USB 연결 해제를 확인했다. 전원 종료·USB 물리 분리 보관은 아래 사용자 보고로 확인했다. 주요 5단계 완료·잠정 진행률 **40%(4/10)**·Runtime AC **0/10**.
+- 제출 이미지 SHA-256(검토 환경에서 실제 계산): **`1440df5f29a819181f2d79644d294db60c6ee03e3ec42386ac5f77d56a2fbc3b`**. 개인키·암호·비공개 백업의 외부 수신/업로드는 수행하지 않았다.
+
+#### 임시 복원본 정리·CA/백업 볼륨 잠금 — 2026-09-15 후속
+
+- 제출 화면 `a8772b72-acb1-4b4f-a710-0bbea1d00cf7.png`에서 root 재진입 후 CA 볼륨 rw와 백업 볼륨 ro 마운트를 확인했다. `pwd`는 `/mnt/fds-ca`이며 원본 `fds-project-root-ca-2026-replacement/private/fds-root-ca.key` 존재·root:root 600을 조회했다.
+- `command rm -r -- restore-check-20260915` 실행 후 경로 부재 검사에서 **`RESTORE_TEMP_REMOVED=PASS`**. 시험용 복원 디렉터리와 내부 키 사본·검증용 공개키 파일을 정리한 범위이며 원본 CA 자산 삭제 기록이 아니다. 저장장치의 물리적 완전 소거를 검증한 판정도 아니다.
+- `cd /`, `sync` 후 백업 마운트 해제·`cryptsetup close ca-backup`, CA 마운트 해제·`cryptsetup close fds-ca`가 완료됐다.
+- 최종 `lsblk`에서 `/dev/sda1`은 `crypto_LUKS / CA_BACKUP`, `/dev/nvme0n2`는 `crypto_LUKS`이며 두 장치의 마운트 지점과 `ca-backup`·`fds-ca` 하위 매핑이 없다. OS의 암호화 LVM/root/swap 매핑은 정상적으로 유지됐다.
+- **해당 캡처 시점:** 백업 USB `sda`가 게스트에 연결되어 있어 분리 보관 확인 전이었다. 아래 추가 캡처에서 게스트 연결 해제, 사용자 보고에서 전원 종료·USB 물리 분리 보관 완료를 확인했다. 이 후속 결과를 반영해 5단계 완료·잠정 진행률 **40%(4/10)**로 갱신했다. Runtime AC **0/10**, Harbor 실제 적용·신뢰 배포 미실행은 유지한다.
+- 제출 이미지 SHA-256(검토 환경에서 실제 계산): **`506237fac838055ba44e06dff68552560ea54d8f2d3b8940334caf069a6c392d`**. 원본 증적 GitHub 업로드·별도 증적 PR 병합은 수행하지 않았다.
+
+#### CA 단계 마무리 — USB 연결 해제·분리 보관·전원 종료 확인, 2026-09-15
+
+- 추가 제출 화면 `5194f129-683a-4845-a72e-48e5ead99743.png`의 `lsblk`에서 이전에 보였던 `sda/sda1`이 사라졌다. 백업 USB의 게스트 연결 해제는 화면 증적으로 확인했다. CA 디스크 `nvme0n2`는 `crypto_LUKS`이며 `fds-ca` 하위 매핑·마운트 지점이 없다.
+- 이어 사용자가 **“전원 종료 후 USB 분리보관 완료”**라고 보고했다. ca01 전원 종료와 백업 USB의 물리 분리 보관은 사용자 완료 보고에 근거한다. 해당 보관 장소나 전원 상태를 원격으로 직접 조회한 기록은 아니다.
+- **5단계 완료 범위:** 새 Root/Harbor Leaf 발급, 공개 반환물 반출·원본 수신 검증, 별도 물리 USB의 LUKS2/XFS 암호화 백업, 백업 재개방·해시 확인·새 디렉터리 실제 파일 복원, 복원 키/인증서·발급 대장·권한 검증, 임시 복원본 삭제, CA/백업 마운트 해제·매핑 잠금, USB 분리 보관·ca01 종료.
+- **진행률 변경:** 기존 잠정 단순 단계 산식에서 5단계를 추가 완료로 체크하여 **30%(3/10) → 40%(4/10)**. 완료 단계는 **1·2·3·5**다. 전체 Issue는 In Progress, 최종 인수는 **0/10 AC**로 유지한다. 이 판정은 전체 VM/디스크 재구축 또는 LUKS 헤더 실제 복원 시험을 포함하지 않는다.
+- **후속 진행:** Harbor 공개 반환물 무결성·기존 개인키/Leaf 일치·로컬 인증서/키 검증까지 아래 화면에서 확인했다. 다음은 기존 컨테이너 종료 오류·데이터 마운트·Compose 원본 위치와 Engine/용량을 확인하고 정식 설치판·보호 백업·전환 절차를 구체화한다. 실제 TLS 전환, Runner/Worker 신뢰 배포, Robot/Push/Pull·음성 시험 및 전체 Delivery는 별도 잔여다.
+- 추가 이미지 SHA-256(검토 환경에서 실제 계산): **`0e9b529ca8876605e6ede8525bae57daf76ea649707681515d049b1548b36849`**. 원본 이미지의 GitHub 업로드·별도 증적 PR 병합은 수행하지 않았다.
+
+#### Harbor 전환 준비 — 기존 요청 개인키 보존 확인, 2026-09-15
+
+- 제출 화면 `520fb4b3-0677-4a7c-8108-9e12ba986a44.png`에서 로그인 계정 `server08`, `hostname -s` 결과 **`harbor01`**을 확인했다.
+- `sudo ls -l /etc/harbor/pki/requests/harbor01-sn0wepv7/harbor01.key` 결과 일반 파일, **root:root 0600**, **2,484 bytes**를 확인했다. 기존 요청 경로의 개인키가 보존되어 있다는 화면 증적이며 키 본문을 출력하거나 외부로 반출하지 않았다.
+- 이 파일 메타데이터 화면만으로 키 유효성이나 Leaf 일치를 판정하지 않았으며, 아래 후속 화면에서 실제 공개 반환물 반입 검증과 Harbor 로컬 개인키/Leaf 공개키 일치를 확인했다. 개인키 구성 유효성은 아래 후속 화면에서 통과했으며 실제 서비스 적용은 별도 확인한다.
+- 요청 ID `harbor01-sn0wepv7`와 기존 개인키를 계속 사용한다. 새 키/CSR 생성·기존 요청 삭제는 수행하지 않았다.
+- 5단계 완료와 잠정 진행률 **40%(4/10)**·Runtime AC **0/10**을 유지한다. 6단계의 실제 TLS 전환·신뢰 배포·Push/Pull 검증은 미완료다.
+- 제출 이미지 SHA-256(검토 환경에서 실제 계산): **`542b88bf179ff21f5907a0a2f0c3432b4ce7e4d5fc3f51e06b48bf07fc4fe1d4`**.
+
+#### Harbor 공개 반환물 반입·기존 개인키와 Leaf 일치 — 2026-09-15 후속
+
+- 제출 화면 `492f1282-07dd-400a-8ca6-29fe3a6585a9.png`에서 `server08@harbor01`이 umask 077, mode 0700으로 `/home/server08/ca01-public-handoff-v1.0`을 생성하고 공개 반환물을 수신한 후 검증했다.
+- `sha256sum -c ca01-public-handoff-v1.0.tar.gz.sha256` 결과 **성공**. 별도로 출력한 압축본 SHA-256 **`bf03bd09fde0c8a19e9da7b782ec782e5a5eda99facd84964b3213eb5826a4a0`**은 CA 반출 및 검토 환경 수신 원본의 검증값과 일치했다.
+- 새 `verified` 하위 디렉터리에 압축을 해제한 뒤 `sha256sum -c SHA256SUMS` 결과 Root·Leaf·CSR·Root 정보·Harbor 정보·요청 ID의 **6/6 성공**을 확인했다. 현재 공개 파일 위치는 `/home/server08/ca01-public-handoff-v1.0/verified`다.
+- `set -o pipefail` 후 Harbor의 기존 `/etc/harbor/pki/requests/harbor01-sn0wepv7/harbor01.key`에서 공개키 DER를 추출한 해시와 수신 `harbor01.crt`의 SPKI DER 해시가 모두 **`636f85ce3ae0d5e3ea49e50fca2b8ec1e5c132f990d7867e2ad59d0a2e333638`**로 일치했다. 보관 CSR에서 재계산한 기존 공개키 해시와도 같다.
+- **판정:** 공개 반환물의 Harbor 반입 무결성과 **기존 Harbor 개인키–신규 Leaf–보관 CSR 공개키 일치 PASS(현장 화면 증적)**. 개인키 원본은 Harbor에 남아 있으며 검토 환경에 수신하지 않았다. 공개키 추출/일치만으로 개인키 전체 구성 유효성 검사나 라이브 TLS 적용까지 완료했다고 판정하지 않는다.
+- **후속:** Harbor 현재 시각 기준 인증서 체인·서버 용도/FQDN과 로컬 개인키 유효성 검증을 아래 화면에서 통과했다. 기존 컨테이너 이미지·상태, Compose 버전 및 정식 구성용 경로 부재도 확인했다. 종료 오류·실제 데이터 마운트/원본 구성 위치·보호 백업/전환 순서를 확인한 후 적용한다. 임시 v2.13.1 관측 이력만으로 정식 설치 버전을 승인하지 않는다.
+- 구축 진행률 **40%(4/10)**, Runtime AC **0/10**, 전체 Issue In Progress 유지. 정식 TLS·Consumer Trust·Robot/Push/Pull·음성 시험·Delivery는 미완료다.
+- 제출 이미지 SHA-256(검토 환경에서 실제 계산): **`63f1164359fac0414740a84a13328e81a813c2062b0271203fd1707207af436a`**. 원본 증적 GitHub 업로드·별도 증적 PR 병합은 수행하지 않았다.
+
+#### Harbor 로컬 인증서/키 검증·현재 컨테이너 상태 — 2026-09-15 후속
+
+- 제출 화면 `da361fb2-2751-4266-b24b-af9bc7fc323f.png`의 `date -Is` 출력은 **`2026-09-15T18:07:01+09:00`**이다. 이 값은 서버 표시 시각이며 외부 시각 동기화 검증은 아니다.
+- `openssl verify -CAfile fds-root-ca.crt -purpose sslserver -verify_hostname harbor.fds.internal harbor01.crt` 결과 **`harbor01.crt: OK`**. Harbor 로컬에서 지정한 Root를 사용한 체인·유효기간·TLS 서버 용도·FQDN 검증을 통과했다. 실제 네트워크 endpoint의 제공 인증서를 검사한 결과는 아니다.
+- 기존 요청 개인키에 대한 `sudo openssl pkey -in /etc/harbor/pki/requests/harbor01-sn0wepv7/harbor01.key -check -noout` 결과 **`Key is valid`**. 앞선 개인키/Leaf/CSR 공개키 일치와 합쳐 기존 Harbor 키·새 Leaf 사용 준비를 확인했다.
+- `docker ps -a`에서 다음 **9개 컨테이너의 이미지 태그가 모두 v2.13.1**인 것을 확인했다. `nginx`, `harbor-jobservice`, `harbor-core`, `registryctl`, `registry`, `harbor-portal`, `redis`, `harbor-db`의 **8개는 `Exited (128) 4 days ago`**, `harbor-log`만 **`Up 32 hours (healthy)`**다. 이는 캡처 시점의 상대 시간 표시이며 정확한 종료 시각/원인은 아직 미수신이다.
+- `harbor-log` 포트 표시는 `127.0.0.1:1514->10514/tcp`. 로그 컨테이너 한 개의 healthy를 Harbor 전체 정상 가동으로 확대하지 않는다.
+- `docker compose version` 출력은 **`Docker Compose version v5.5.1`**. Docker Engine 버전은 이번 화면에 없다.
+- `ls -ld`에서 **`/opt/harbor`**, **`/etc/harbor/pki/current`**, **`/data/harbor-formal`** 모두 `No such file or directory`. 정식 구성용 세 경로가 아직 없다는 관측이며 기존 Harbor 데이터 전체 부재나 이번 인증서 검사 실패를 뜻하지 않는다.
+- **판정/다음:** 인증서·개인키 로컬 검증 PASS, 기존 Harbor 구성은 일부 컨테이너만 실행 중이고 정식 설치 경로는 미구성. 종료 코드 128만으로 원인을 확정하지 않는다. 선택한 State.Error·Mounts·Compose 위치 메타데이터, Engine 버전 및 데이터 크기/여유 공간을 조회하여 기존 자산 보존 범위와 새 설치/전환 순서를 확정한다. 기존 컨테이너의 무조건 재기동·삭제나 정식 버전 승인은 수행하지 않았다.
+- 잠정 구축 진행률 **40%(4/10)**, Runtime AC **0/10**, In Progress 유지. 보호된 인증서 설치·정식 Harbor 전환·Consumer Trust·Push/Pull·Delivery는 미완료다.
+- 제출 이미지 SHA-256(검토 환경에서 실제 계산): **`4fc8905058759d8476667b060dcebba2105113b51417e584979a199a0d5cd6a2`**.
+
+### GitHub Runner 상태 및 PR #2 검토 의견 반영 재대조 — 2026-09-15
+
+- 제출 GitHub Runners 화면: **cicd-runner01 / Idle**, 라벨 **self-hosted, Linux, X64, p1-cicd, onprem, podman** 6개를 확인했다. 화면의 저장소 URL·촬영 시각은 표시되지 않으므로 이번 infra-cicd Runner 확인 흐름에 연결한 화면 증적으로 기록한다. Job 성공·재시작 후 재수신 증거는 아니다.
+- 증적: `0a27d275-c0f8-4f37-84a0-746f2a45c5c1.png`, 수신 파일 SHA-256 `b1ba889799c6a9cf02850f40760111ded98f9f2cf00665713163e9ca66b9bad0`.
+- [이하영의 09-10 검토 댓글](https://github.com/321Team/infra-cicd/pull/2#issuecomment-5614536834)을 최신 PR #2 HEAD `5f575fc8bfbd68d29fc3995fe68bceb87f1b194b`와 대조했다. 관련 12개 로컬 파일의 Git blob이 원격 해당 HEAD와 모두 일치함을 확인하고 소스를 읽었다. 이번 대조에서 단위시험을 새로 실행한 것은 아니다.
+- **필수 1건:** 인증서 설치 누락 → §5.1에 공개 인증서 검증·기존 서버 키 복사·소유권/권한·release/current 생성 및 취소 절차가 있다. CA에서 Harbor 개인키를 반환한다는 원댓글의 표현은 채택하지 않고 서버의 기존 키를 사용한다.
+- **권고 5건:** 실패 요청 보존/선별 정리, PR 범위 요약, GitHub 제공 Runner의 소스 CI, 자동 소스 CI와 수동 내부 smoke의 실행 영향 구분, 템플릿/실행본 `cmp` 검사 모두 문서·소스에 반영돼 있다. **기타 3건:** stderr는 고정 오류 분류로 수정 수용, .gitattributes는 PR #1 선행 병합으로 충족, Runner IP는 HOSTS 변수 재사용을 확인했다.
+- **잔여 보완:** PR 상단·Runbook의 발급 전 상태, 계획 OS 20GB와 실제 40GiB 차이, 공개 파일 입력 경로 `~/P1_CICD_Harbor_Issued`와 실제 `~/ca01-public-handoff-v1.0/verified` 차이를 최신 증적에 맞춰 정리해야 한다. CA 발급/백업·공개 인계는 완료, Harbor 서비스 적용은 미실행이라는 상태를 구분한다.
+- **잔여 검증/리뷰:** Actions Run 0건으로 소스 CI의 실제 성공은 미검증이며 실행되지 않은 원인은 확인되지 않았다. PR #2는 Open/미병합, 요청 리뷰어 hayeounglee, 제출 리뷰·inline 댓글은 각각 0건이다. 기존 일반 검토 댓글을 APPROVED로 간주하지 않는다.
+- 판정: 기존 검토 의견의 소스 반영과 별개로 현재 문서 동기화·실제 CI·최신 HEAD 독립 재검토/병합·smoke 실행이 남는다. **40%(4/10), AC 0/10, In Progress**와 담당 경계를 유지한다.
+
+### Runner 로컬 사전점검 재확인 — 2026-09-15
+
+사용자 제출 화면의 `date -Is`: **2026-09-15T18:43:37+09:00**. 서버 표시 시각이며 독립 NTP 검증은 아니다.
+
+| 항목 | 화면 확인 결과 |
+|---|---|
+| 호스트 / 로그인 사용자 / UID | `cicd-runner01` / `server01_cicd-runner` / `1000` |
+| SELinux | `Enforcing` |
+| 서비스 | `actions.runner.321Team-infra-cicd.cicd-runner01.service` |
+| 서비스 사용자 / 상태 | `User=server01_cicd-runner`, `ActiveState=active`, `SubState=running` |
+| Git / Podman | `git version 2.52.0` / `podman version 6.1.0` |
+| 로그인 세션 Podman rootless | `true` |
+
+- 판정: **LOGIN_PRECHECK=PASS_SCREEN_EVIDENCE**. 이번 명령은 서비스 재시작, GitHub 실제 Job, Build/Scan/Push/Deploy를 실행한 것이 아니다. GitHub 측 Online/Idle·라벨은 이 화면만으로 확정하지 않는다.
+- 증적: `0fa9c1bc-bf21-4cfb-8ed0-817744609571.png`; 수신 파일 SHA-256 `8818ca32d3c38c8e999f506bda1ddd47683d2ef2c42fb0250c36dbf8df1e6b75`. 첨부 화면을 검토한 결과이며 VM 원격 직접 실행 기록은 아니다.
+- 같은 후속 확인에서 [infra-cicd PR #2](https://github.com/321Team/infra-cicd/pull/2)는 Open/미병합, HEAD `5f575fc8bfbd68d29fc3995fe68bceb87f1b194b`, 요청 리뷰어 `hayeounglee`, 제출 리뷰 0건이다. [Actions](https://github.com/321Team/infra-cicd/actions) Run도 0건이다.
+- 다음: GitHub 측 Runner 상태/라벨 확인 → 최신 HEAD 독립 기술 리뷰 및 병합 판단 → main의 P1 Runner smoke 실행 → 유휴 상태에서 서비스 재시작 후 Job 재수신 확인. Harbor 서비스 구축 완료는 이 smoke 실행의 선행조건이 아니다.
+- 기존 **40%(4/10), CICD-AC 0/10, In Progress**를 유지한다. 단계 4·CICD-AC-01 및 전체 Delivery를 완료 처리하지 않는다.
+
+### 작업 책임 구분 재확인 — 2026-09-15
+
+- 사용자 “위 범위가 내가 구축하는 부분이 맞는거지?” 질의에 따라 #16과 #13의 현행 담당/Scope를 다시 대조했다. GitHub Assignee는 #16 **GWONUK**, #13 **hayeounglee**이며 #13 속성은 **Lead 이하영 / Support 이권욱**이다.
+- 이번 대화에서 수행한 ca01 구성·Root/Leaf 발급·암호화 백업/복구·공개 발급물 인계는 이권욱의 실행 기록으로 유지한다. Harbor에서의 파일 무결성·키 일치·로컬 인증서 검증과 서비스 상태 조회는 HBR 지원 및 CA 인계 확인이다.
+- 이후 Harbor의 기존 데이터/구성 보호 백업, 정식 설치판 적용·초기 구성, 서비스 측 TLS/Scanner/Robot 설정과 전환은 **이하영 주관 P1-HBR-01**이다. 이권욱이 Support로 실행을 지원할 수 있으나 자동으로 단독 담당에 이관된 것은 아니다. 앞선 후속 가이드에서 이 경계를 명시하지 않은 부분을 정정한다.
+- **이권욱의 P1-CICD-01 책임:** Runner·Workflow, CI Test/Build/Trivy/Push, Workflow/Source SHA·Run ID/Attempt·Scan/Manifest Digest, 실패 시 Push/Deploy 차단, 승인 Digest 배포·복구 및 연계 증적. Harbor Scanner 서비스 구축과 CI Trivy 실행을 구분한다.
+- 위 10단계의 잠정 40%(4/10)는 연관 선행조건을 포함한 CI/CD 준비/구축 진척이며 개인 공수 완료율이 아니다. 이미 확인한 CA 5단계 완료·Runtime AC 0/10은 유지한다. 담당·Assignee·Lead/Support·승인권한·정본 Scope의 변경은 수행하지 않았다.
+- 근거: [P1-HBR-01 #13](https://github.com/321Team/fds-project-baseline/issues/13)의 Lead/Support·책임 분리와 [P1-CICD-01 #16](https://github.com/321Team/fds-project-baseline/issues/16)의 구현/인수 범위. #13은 이번 확인에서 읽기만 수행했으며 타인에게 별도 메시지나 작업 요청을 전송하지 않았다.
+
+### Acceptance 판정과 병행 작업
+
+이 문단의 최초 작성 시점에는 AC-01 실제 Run이 없었으나, 9/15 재시작 후 Job·IF-08 Run으로 CICD-AC-01의 Runtime 증적 충족을 확인했다. CA 발급·암호화 백업/파일 복구·공개 인계 확인은 보존한다. CICD-AC-02의 Harbor TLS 적용·consumer trust·Push/Pull/음성시험 및 AC-03~10의 실제 통합·전체 인수는 잔여다. 현행 AC 체크는 1/10이며 전체 인수와 구분한다.
+
+[Ansible #8](https://github.com/321Team/infra-ansible/issues/8)은 **Closed/Done**, [코드 PR #16](https://github.com/321Team/infra-ansible/pull/16)·[증적 PR #12](https://github.com/321Team/fds-project-evidence/pull/12)는 승인 후 병합되어 이 선행조건은 해소됐다. [#5](https://github.com/321Team/infra-ansible/issues/5)는 In Progress, [Draft PR #17](https://github.com/321Team/infra-ansible/pull/17) HEAD `cccb4af1e7e1d271ed0cd99aa8630582c14060db`에서 CI 구현을 준비했다. Ansible 코드 회귀는 Harbor/CA/앱 Delivery 완료를 기다리지 않지만, 실제 Actions에는 infra-ansible Runner 접근·권한 격리와 Workflow 활성화, 정상/고의 결함 Run이 필요하다. Ansible 연관 작업은 별도 완료 추적하며 위 앱 Delivery 진척에 중복 가산하지 않는다.
+
+`ROOT_CA=CREATED_SCREEN_EVIDENCE` · `ROOT_PUBLIC_CERT_VERIFY=PASS_RECEIVED_BYTES` · `HARBOR_LEAF_ISSUANCE=ISSUED_SCREEN_EVIDENCE` · `HARBOR_LEAF_OFFLINE_VERIFY=PASS_RECEIVED_BYTES` · `PUBLIC_HANDOFF=RECEIVED_HASH_VERIFIED` · `EXPORT_USB=UNMOUNTED_DISCONNECTED_SCREEN_EVIDENCE` · `PUBLIC_EXPORT=PASS_SCREEN_AND_RECEIVED_BYTES` · `PUBLIC_CERT_BYTES=RECEIVED_VERIFIED` · `BACKUP_MEDIA=LUKS2_LOCKED_GUEST_DISCONNECTED_SCREEN_EVIDENCE` · `BACKUP_INITIALIZATION=PASS_SCREEN_EVIDENCE` · `BACKUP=CREATED_COMPARE_HASH_PASS_SCREEN_EVIDENCE` · `RESTORE_TEST=FILE_KEY_CERT_LEDGER_PASS_SCREEN_EVIDENCE` · `BACKUP_CLOSURE=COMPLETE_SCREEN_AND_USER_REPORT` · `CA_POWER=OFF_USER_REPORTED` · `BACKUP_STORAGE=DETACHED_USER_REPORTED` · `HARBOR_PUBLIC_RECEIPT=PASS_SCREEN_EVIDENCE` · `HARBOR_KEY_LEAF_MATCH=PASS_SCREEN_EVIDENCE` · `HARBOR_CERT_KEY_LOCAL_VERIFY=PASS_SCREEN_EVIDENCE` · `HARBOR_EXISTING_RUNTIME=LOG_ONLY_RUNNING_8_EXITED` · `HARBOR_FORMAL_SETUP=NOT_CREATED` · `DELIVERY_GATE=NOT_VERIFIED`
+
+이번 갱신은 사용자 요청에 따른 디스크립션의 구현 체크·진척 표시다. 기존 Scope·AC·담당·계획 일정·Status를 유지한다. 발급·대장 갱신은 현장 화면, 공개 인증서/CSR의 오프라인 검증은 후속 수신 원본의 실제 재검증 범위로 기록한다. 지정 리뷰어의 독립 승인·병합·Harbor 적용·전체 Delivery 완료로 확대하지 않는다. 다른 저장소/Ansible 상태는 앞선 09-15 조회 기록을 유지했으며 이번 CA 후속 갱신에서 재조회하지 않았다.
+<!-- p1-cicd-progress:2026-09-15:end -->
+
+---
+
+<!-- fds-spec-audit:20260914:v1:start -->
+## 사양·기록 전수 점검 후속 — 2026-09-14 점검 반영
+
+사용자 “각 티켓에 내용 갱신” 지시에 따른 기록 보완. 재대조: `2026-09-14T15:11:45+00:00`. 발행 [docs-v3.1.18](https://github.com/321Team/fds-project-baseline/releases/tag/docs-v3.1.18)과 후속 결정·현재 Issue/PR를 기준으로 한다.
+
+**이 티켓의 점검 결과:** CA As-built·발급/백업 단계·현재 Scan 정책·Delivery 증거 연결 ; R01/R03. Ansible #5/#8/#9 의존.
+
+- 코드/증적 승인과 실제 CI·Push·Deploy·Rollback 결과를 분리한다. 09-15 후속 확인: Ansible #6/#7/#8은 Closed이며 #8 코드·증적 승인/병합이 완료됐다. 현재 #5 CI → #9 운영 엔진 전환 순서이며, 실제 CI·운영 전환은 별도 미완료다.
+
+**Harbor/CA/CICD 결정 동기화 (R01)** — Robot Never 미채택·유한30일, Scanner 유지, 미해결 Critical/High의 Push/Deploy 차단과 오류 실패/미검증 처리는 9/14 사용자 결정이다. 예외는 CVE/Digest/사유/만료/승인자로 기록한다. ca01의 server01·2vCPU/4GiB·OS40GiB+CA2GiB LUKS2와 PR준비안 OS20GiB의 차이를 As-built에 남긴다. 새 Root 선택과 실제 발급을 구분하며 별도 암호화 백업/복구는 Harbor 적용·trust 배포 전에 확인한다.
+근거: [Harbor 정책](https://github.com/321Team/fds-project-baseline/issues/13#issuecomment-5659049448) · [CICD 정책](https://github.com/321Team/fds-project-baseline/issues/16#issuecomment-5659051242) · [CA 진행 #16](https://github.com/321Team/fds-project-baseline/issues/16)
+
+**리뷰·증적 보관 (R03), 09-15 후속 확인** — Ansible #6/#7/#8은 Closed. #8 코드 PR #16의 승인 HEAD `d2d46bd95ece3935373303187ef47cfc5e3e2eb7`와 증적 PR #12의 승인 HEAD `1ffdd67a2cd1fc5f67ac5829b049ca01a90bcb13`는 각각 병합 완료다. 코드 merge `651c2558bc55ca8367bed32ad318c497e2f3bf35`, 증적 merge `90093f88167055f81e8789d2a848f44ead0ee9ce`. 당시 COMMENTED/미병합 상태는 해소됐다. 원문81+검토6=87개 원격 편입과 전체711개 압축의 로컬 보존을 구분하며 공용 원본 URI는 별도 잔여다. SEC PR #7의 부분수용·HOLD는 09-14 당시 기록이며 이번 CI/CD 진척 갱신에서 재판정하지 않았다.
+근거: [Ansible #8](https://github.com/321Team/infra-ansible/issues/8) · [코드 리뷰](https://github.com/321Team/infra-ansible/pull/16#pullrequestreview-5198204062) · [증적 PR #12](https://github.com/321Team/fds-project-evidence/pull/12) · [SEC PR #7](https://github.com/321Team/infra-kubernetes/pull/7)
+
+**인계·관련 티켓:** [#13](https://github.com/321Team/fds-project-baseline/issues/13) · [#19](https://github.com/321Team/fds-project-baseline/issues/19) · [#24](https://github.com/321Team/fds-project-baseline/issues/24).
+
+점검 항목 A01~A07/R01~R06의 전체 대응은 [P1-DOC-01 #24](https://github.com/321Team/fds-project-baseline/issues/24)에서 추적한다. 미완료 티켓의 기록/시험값은 해당 실행·인수 전에 확정할 후속이며, 유예·조건부 P1/P2 항목을 현재 P0 차단으로 추가하지 않는다.
+
+이번 내용 갱신은 기존 AC 체크·Status·Lead/Support·계획 일정·사람의 승인/종결을 변경하지 않는다. 아래 작성 당시의 미병합·검토대기 표현은 위 최신 확인 및 연결된 근거와 구분한다. 기존 본문·보관 원문·댓글은 보존한다.
+<!-- fds-spec-audit:20260914:v1:end -->
+
+---
+
+<!-- fds-notion-migration:2026-09-09 record-id:P1-CICD-01 -->
+<!-- fds-canonical-description:v3.1.18 record-id:P1-CICD-01 -->
+# P1-CICD-01 — GitHub Actions / Self-hosted Runner Delivery
+
+> 적용 기준: [발행 정본 v3.1.18](https://github.com/321Team/fds-project-baseline/releases/tag/docs-v3.1.18) · 2026-09-11 11:23:47 KST 게시.
+> 승인 소스: `72599ae49342b0fb8dbd3d8ee60314afb9f907bb`. 문서의 작성 당시 후보·미발행·이전 상태 표현은 이력이며, 현재 적용 기준은 이 머리말과 최신 운영 기록을 따른다. 계획 갱신으로 실제 AC·승인·종결을 상향하지 않는다.
+
+## 티켓 속성
+
+| Property | 입력값 |
+| --- | --- |
+| Record ID | P1-CICD-01 |
+| Phase | Phase 1 |
+| Category | CI/CD / Supply Chain |
+| Type | Task |
+| Status | In Progress |
+| Priority | P0 |
+| Start | 2026-09-01 |
+| End | 2026-09-18 |
+| Calendar Days | 18 |
+| Working Days | 14 |
+| Lead | 이권욱 |
+| Support | 이하영 |
+| Exit Criteria | GitHub→Runner→Test→Build→Trivy→Harbor→Kubernetes Deploy→Health/E2E 흐름과 실패 시 Deploy 차단 Evidence 확보; 승인 Digest와 이전 Digest 복구 추적 |
+| Related Decision IDs | D03; D04; D19; D34; D35 |
+| Related Risk IDs | RISK-06; RISK-08 |
+| Source | Baseline v3.1.18; Ticket Pack v3.1.18; GitHub #16 snapshot 2026-09-10T02:09:24Z; Fast Tracking 일정 권장안 2026-09-10 / 사용자 재편성 요청; 현행 발행 정본: docs-v3.1.21 (979facb98de8ca1f1e2ce22f38b27ac3366f3fc3); 수집 후 실행 기록은 본문 최신 증적 기준 |
+| Schedule Note | Runner/Workflow·Negative Gate 준비를 플랫폼 구축과 병행하고 승인된 플랫폼·Harbor가 준비된 뒤 배포한다. 실제 상태·완료 판정은 유지한다. 세부 배정: Fast Track Plan 시트. |
+
+
+<!-- p1-cicd-progress:2026-09-12:start -->
+## 진행상황 이력 — 2026-09-12 갱신
+
+> 실행 증적 기준일: **2026-09-11(KST)**. 이 대화에 제출된 실행 로그·스크린샷·CSR 및 2026-09-12 GitHub 재조회를 구분하여 반영한다. **In Progress 유지 / 전체 Delivery Gate 미검증**. 현장 작업은 교육장 마감으로 중단했으며 차주 재개 예정이다. 실제 재개일·완료일을 확정하거나 기존 계획 Start/End를 변경하지 않는다.
+
+### 1. 확인된 실행·준비 결과
+
+| 구분 | 확인 결과 | 판정 범위·남은 항목 |
+| --- | --- | --- |
+| Runner 서비스 | 09-09 `cicd-runner01` / `server01_cicd-runner`에서 Runner 2.337.0 등록. `runsvc.sh`의 SELinux 라벨을 `user_home_t → bin_t`로 교정 후 서비스 `active/running`, `Connected to GitHub`, `Listening for Jobs` 확인. SELinux Enforcing 유지 | 해당 시점 로컬 서비스 복구 증적이다. 실제 Job 수신·IF-08 Run 및 재시작 후 검증 전체를 충족한 것으로 보지 않는다. 등록 URL은 `321Team/infra-cicd`이며 Ansible 저장소 공유 등록까지 확인한 것은 아니다 |
+| Runner 패키지·빌더 | 09-09 로그인 세션에서 Git 2.52.0, Podman 6.1.0 및 rootless `true`; `LOGIN_PRECHECK=PASS` | `RUNNER_JOB=NOT_EXECUTED`. systemd Runner Job 내부 rootless 동작은 미검증 |
+| Harbor 임시 환경 | 기존 컨테이너 상태 수집·기동 후 `RECOVERY=LOCAL_CONTAINERS_AND_TCP_READY`. Runner TLS 재검사에서 서버 인증서 1개 수집 | 임시 환경 복구이며 정식 Harbor 구축 완료가 아니다. TLS 검증 실패 이력이 남아 있고, 신규 인증서 적용·신뢰 배포·Robot Push/Pull은 미완료 |
+| Harbor 공개 CSR | 요청 ID `harbor01-sn0wepv7`, RSA3072. SAN: `harbor.fds.internal`, `harbor01`, `10.1.93.54`. 09-11 오프라인 ca01에서 CSR 자체 서명 검증 OK | CSR과 Harbor에 보관된 기존 서버 개인키는 보존. 신규 Root 서명 대기이며 서버 개인키를 CA로 반출하지 않는다 |
+| ca01 OS·리소스 | 물리 server01의 별도 `ca01` VM, 사용자 `server01_ca01`, CentOS Stream 10 Minimal. VMware 화면상 2 vCPU / RAM 4GB / OS NVMe 40GB / CA NVMe 2GB. 업데이트·재부팅 후 커널 `6.12.0-266.el10.x86_64`, OpenSSL 3.5.8, SELinux Enforcing | OS·swap의 LUKS2 확인. `/boot`, `/boot/efi`는 별도 비암호화 부팅 영역이다. 실제 OS 40GB는 종전 20GB 구축 계획과의 차이로 후속 정본 수집 대상이며, 이번 티켓 갱신이 정본 사양 변경·발행은 아니다 |
+| CA 전용 볼륨 | `/dev/nvme0n2` 2GB에 LUKS2 → `/dev/mapper/fds-ca` → XFS `/mnt/fds-ca`. `nodev,nosuid,noexec`, `root:root`, `0700` 확인. LUKS UUID: `ef015461-83d1-41f9-a1c7-cd6c471644f1` | 보호 저장소 준비 완료 범위. 신규 Root 개인키·인증서는 아직 생성하지 않았다. 디스크 재초기화 금지 |
+| 오프라인·입력 매체 | VMware 가상 NIC 제거 및 게스트 `ip -br link`에 `lo`만 존재. 공유 폴더·드래그·복사/붙여넣기 비활성화, VMware Tools 시간 동기화 설정 off. 입력 ISO를 `ro,nodev,nosuid,noexec`로 마운트, 외부 ISO SHA-256 및 내부 파일 5개 체크섬 OK | 오프라인 전 NTP 동기화 확인. 오프라인 전환 후 실시간 NTP 동기화 또는 독립 기준과의 시각 일치를 주장하지 않는다. 발급 직전에 시간 재대조 필요 |
+| 작업 종료 처리 | CA 볼륨 umount, `cryptsetup close fds-ca`, 입력 ISO umount 명령이 오류 없이 종료된 화면 확인 | 마지막 화면은 `sudo poweroff` 입력까지다. 실제 게스트 종료·VMware 전원 꺼짐 완료는 미확인 |
+
+VMware의 `Encryption: Not encrypted` 표시는 VMware 자체 암호화 설정이다. 게스트 내 OS·CA 디스크의 LUKS2 확인 결과와 구분하며, VM 전체가 VMware 수준에서 암호화됐다고 기록하지 않는다.
+
+### 2. 신규 CA 및 백업 후속 처리
+
+- 사용자 결정: 기존 CA를 재사용하지 않고 **신규 Root 발급** 방향으로 진행한다. 구 CA 폐기 요구와 실제 구 키·신뢰 배포본의 폐기 완료는 별개이며, 실제 폐기는 미검증이다.
+- 신규 자산 예정 경로: `/mnt/fds-ca/fds-project-root-ca-2026-replacement`. 구현안은 Root RSA4096 / 1825일, Harbor Leaf RSA3072 / 365일, Root→Leaf 직접 서명이다. 경로·키·발급 대장 생성 완료로 기록하지 않는다.
+- 사용자 확인: **백업용 USB·외장 디스크가 현재 준비되지 않음**. 후속 처리 문의에 대한 운영 권장안은 **Root·Harbor 인증서 생성 및 오프라인 검증을 먼저 진행하고, 별도 암호화 백업·복구 검증을 Harbor 실제 적용과 Runner/Worker 신뢰 배포 전에 완료**하는 것이다.
+- 이는 기존 “백업 매체 준비 후 Root 생성” 순서에 대한 조정 기록이다. **백업 요구사항 삭제·완료 처리 또는 별도 독립 승인/정본 반영 완료를 의미하지 않는다.**
+- 백업 전 원본 VM·저장장치 손실 시 같은 CA 개인키를 복구할 수 없으며 신규 Root와 인증서 재생성이 필요하다. 같은 물리 저장장치의 VM 복사본·스냅샷은 별도 매체 백업 완료로 인정하지 않는다.
+- 후속 백업 대상: 암호화된 Root 개인키, Root/발급 인증서, `index.txt` 및 관련 대장, `serial`, 설정 파일과 발급 추적 기록. 복원본의 키/인증서 일치·대장 무결성을 확인하고 결과를 별도 증적으로 남긴다. 키·암호·민감 백업 파일을 GitHub/대화/일반 증적 Archive에 올리지 않는다.
+
+현재 상태: `CA_ISSUANCE=NOT_EXECUTED`, `BACKUP=DEFERRED_NOT_PROVISIONED`, `RESTORE_TEST=NOT_EXECUTED`, `DELIVERY_GATE=NOT_VERIFIED`.
+
+### 3. 차주 재개·미완료 체크리스트
+
+- [ ] 교육장 재개 시 VMware 전원 상태와 가상 NIC 제거·통합 기능 비활성화를 확인하고, ca01 부팅 후 호스트명·계정·SELinux·현재 시각을 확인한다. 자동으로 NIC를 다시 연결하지 않는다.
+- [ ] 장치와 LUKS UUID를 대조하여 기존 CA 볼륨을 개방하고, 입력 ISO를 읽기 전용으로 마운트하여 체크섬을 재검증한다. `luksFormat`·`mkfs`·OS 재설치는 반복하지 않는다.
+- [ ] 신규 자산 경로에 기존 파일이 없는지 확인한 뒤 암호화된 Root 개인키·Root 인증서를 생성하고 공개 지문을 기록한다. 부분 실패 시 키·발급 대장을 초기화하거나 무조건 재실행하지 않는다.
+- [ ] 보존된 Harbor CSR을 신규 Root로 서명하고 SAN·공개키 일치·체인·용도·유효기간을 오프라인 검증한다. 구 Root 재사용 및 TLS 검증 우회는 하지 않는다.
+- [ ] 별도 백업 매체 준비 → 암호화 백업 → 복구 검증을 완료한 뒤 Harbor 인증서 실제 적용·소비자 신뢰 배포로 넘어간다.
+- [ ] 이하영의 Harbor 정식 구성·Robot/Worker 인계와 연계하여 Runner 엄격 TLS·Push/Pull, Job 내부 rootless 및 실제 Delivery/Negative Gate 증적을 확보한다.
+- [ ] 구 CA 지문·키 사본·신뢰 배포 대상을 식별하고 신규 신뢰 전환 검증 후 구 CA 폐기를 별도로 추적한다.
+
+### 4. 저장소·리뷰·검증 단계 구분 — 2026-09-12 조회
+
+| 구분 | 확인 상태 |
+| --- | --- |
+| [infra-cicd PR #1](https://github.com/321Team/infra-cicd/pull/1) | 2026-09-09 병합 완료. 초기 저장소 구성 범위에 한정한다 |
+| [infra-cicd PR #2](https://github.com/321Team/infra-cicd/pull/2) | Open / 미병합. HEAD `5f575fc8bfbd68d29fc3995fe68bceb87f1b194b`. [이하영의 리뷰 요청](https://github.com/321Team/infra-cicd/pull/2#issuecomment-5614536834) 이력 확인. 이번 조회에서 최신 HEAD에 대한 APPROVED 리뷰는 확인되지 않음 |
+| [infra-cicd PR #3](https://github.com/321Team/infra-cicd/pull/3) | Draft / Open / 미병합. HEAD `9775f3ff61a04be73e179cb0808e5bd844fe0193`. CA 준비 기록·배포 차단 조건 모의 검증 작업이며 실제 Delivery 완료 증적이 아님 |
+| infra-cicd main 조회 | `be92fd00b269ff7d7abc124bb17f6d3e4c007851` |
+| CI / Runtime | GitHub Actions Runs API 조회 결과 `total_count=0`. 이번 조회에서 실제 Actions Run 증적을 확인하지 못함. 로컬 검사·모의 검증·스크린샷을 CI 성공으로 대체하지 않음 |
+| REVIEW / MERGE / PUBLICATION | 이번 갱신은 Issue 운영 기록에 한정. PR #2/#3 승인·병합 및 정본 재발행을 수행하지 않음. 현재 발행 정본은 v3.1.18 |
+
+**작성 당시 기록 정정:** CICD-AC-01은 9/15 재시작 후 실제 Job·IF-08 증적으로 충족했다. CICD-AC-02~10은 아래 현행 체크리스트와 같이 미완료다. TLS/CA 발급 준비 완료와 Harbor 정식 전환·Push/Pull 인수는 구분한다.
+
+### 5. 이번 기록의 증적 식별
+
+아래 파일은 이 대화에 제출·배포된 원본 식별용이다. GitHub 증적 저장소에 파일 자체를 업로드하거나 독립 인수를 완료한 것으로 기록하지 않는다.
+
+| 증적 | SHA-256 / 확인 범위 |
+| --- | --- |
+| `ca01-input-v1.0.iso` | `9539e183fdf0eebb45f8c7978c218c9f3120854ff9aeb29130506ba40c8f424a`; Windows 외부 해시 PASS 및 ca01 내부 5개 파일 OK 화면 |
+| `harbor01.csr.pem` | `97473d44f37140dfe04c83a29f6fec17560bb6f7b29a543fd1fa06cce91ca890`; 요청 `harbor01-sn0wepv7`, CSR 자체 서명 OK |
+| `ed8611cd-6d58-41c2-add2-643efcd9609b.png` | `b4930e96860350b7bd9c0d5f4b736808d912a288419106605b4f78b3429a499f`; LUKS2·마운트 옵션·권한 |
+| `5c41c00b-9b9f-4f5a-9696-99865cad386e.png` | `6302dbf044ebda11c7e967aa0907c61deb34ad5100035fb45ff9719cab697392`; 볼륨·ISO 분리 및 종료 명령 입력 화면 |
+
+입력 ISO의 CA 프로파일 출처는 PR #2 HEAD `5f575fc8bfbd68d29fc3995fe68bceb87f1b194b`이며, 검토용 소스와 정본 발행/독립 승인은 구분한다. 개인키·암호는 입력 ISO에 포함하지 않았다.
+
+<!-- p1-cicd-progress:2026-09-12:end -->
+
+## 최신 운영 기록의 보존
+
+- 이관 직전 Issue 상태: **In Progress / open**. 원본 갱신 시각: `2026-09-10T02:09:24Z`.
+- 담당·라벨·실제 Type·Milestone·댓글·AC 판정은 이 Description 단계에서 변경하지 않는다.
+- 현행 설계·Scope·계획은 상단 v3.1.18을 따른다. 아래 원문 보관의 과거 사양·상태를 현재 값으로 다시 적용하지 않는다.
+
+## 정본에 반영된 실행·검토 상태 — 작성 시점 기록
+
+2026-09-08 사전 점검·구현 준비 착수에 따른 In Progress를 반영한다. 정본 클러스터 Delivery Runtime은 미검증이다. P1-HBR AC-05에 제공할 Workflow/Source SHA·Run ID/Attempt·CI Trivy Scan Digest·Negative Gate·Push 제어·Manifest Digest patch와 이전 승인 Digest 복구 증적은 P1-CICD 책임이다. 임시 k3s의 일부 CI 성공 보고를 이 티켓 전체 CI/Gate PASS로 옮기지 않는다. 현재 후보 Plan: 2026-09-01 ~ 2026-09-18 (권장안; 실제 완료일·Gate 승인은 미확정).
+
+근거: [Issue #16](https://github.com/321Team/fds-project-baseline/issues/16), Issue 갱신 시각 `2026-09-10T02:09:24Z`. 댓글·승인 기록과 본문 보관본은 [정본 수집 원문](https://github.com/321Team/fds-project-baseline/blob/72599ae49342b0fb8dbd3d8ee60314afb9f907bb/tickets/v3.1.18/source-snapshot.json)에 보존하고 실제 Gate는 해당 증적·승인 범위로 판정한다.
+
+## 일정 권장안
+
+Start/End는 이번 Fast Tracking 후보의 계획값이다. 기존 승인 일정은 `audit/v3.1.18/fast-track-plan.json`에 전후 값으로 보존한다. 실제 착수·완료·Status·AC·승인을 변경한 것이 아니다. 교육장 주말 작업은 없으며 세부 AM/PM 배정과 선행 조건을 따른다.
+
+## 적용 기준
+
+- Baseline v3.1.18의 현행 설계·Interface·Gate와 아래 Scope/Acceptance를 함께 적용한다.
+- 이력의 당시 PASS·Done은 원래 범위에 한정한다. 후속 Runtime 또는 승인자를 새로 생성하지 않는다.
+
+---
+
+# User Story
+
+자동화 담당자로서 Commit부터 Kubernetes 배포까지 추적 가능한 Delivery Pipeline을 구축한다. 이를 통해 테스트 또는 보안 Gate 실패 시 잘못된 이미지를 배포하지 않는다.
+
+---
+
+# Scope
+
+## In Scope
+
+- GitHub Private Repo와 외부 VM `cicd-runner01(10.250.10.20)`의 GitHub Actions Runner 설치·등록·Service 운영
+- 승인 Source의 Unit/Contract Test, Image Build, Trivy, Harbor Push
+- 사전 생성된 `fds-app/transaction-api`, `fds-app/fds-engine`의 승인 Digest 갱신
+- P1-SEC-01에서 제공하는 단기 Token의 안전한 주입·만료·갱신
+- Health/E2E, 실패 차단, 재실행, 이전 승인 Digest 복구 및 증적
+- [infra-ansible #5](https://github.com/321Team/infra-ansible/issues/5)의 CI 기반 연계; 별도 완료 추적
+
+## Out of Scope
+
+- 미승인 거래 보류/해제, 독립 frontend/BFF 및 신규 Workload 자동 편입
+- Runner의 Deployment 최초 생성·삭제, Secret 읽기, Cluster Admin 사용
+- P1-SEC의 SA/Role/RoleBinding 정책 또는 P1-HBR의 Robot/CA 설계를 대신 변경하는 일
+- Jenkins/Argo CD/Runner의 Kubernetes 내부 이관, P2 ROSA Delivery
+- 운영 Ansible apply·자동 병합, 임시 k3s를 정본 Kubernetes 완료 증적으로 대체
+- IF-13M Management DNS 및 미정의 경로를 착수만으로 허용
+
+기존 포괄 범위의 `kubectl/Helm Deploy`는 D34 이후 확정된 최소권한에 맞게 해석한다. 초기 구현은 **기존 두 Deployment에 kubectl로 Digest patch**한다. Helm 설치·일반적인 upgrade에 필요한 추가 리소스/Secret 권한은 현재 Runner에 없다.
+
+---
+
+# 핵심 요구사항
+
+- [ ] Workflow/대상 Source Commit SHA, Run ID/Attempt, Image Tag, Harbor manifest Digest와 배포 전후 Digest를 연결한다.
+  - 부분 확인: 기존 Runner/DB Run의 SHA·Run/Attempt는 있다. 두 앱의 Scan→Harbor→배포 전후 Digest·Pod 전체 연결은 미실행이다.
+- [ ] Test/Build/Scan 실패·검사 오류·미승인 예외 시 Deploy가 실행되지 않는다. 재실행도 동일 검토 대상을 확인한다.
+  - 소스의 실패 차단 구현·CI는 있으나 실제 앱 실패 Run 후 Push/Deploy 미실행·기존 이미지 유지 증적은 잔여다.
+- [ ] 외부 Action은 검토한 전체 Commit SHA로 고정하고 최소 GITHUB_TOKEN 권한과 credential 정리 절차를 적용한다.
+  - 정책·코드 준비와 전체 앱 Job의 실제 GITHUB_TOKEN/credential 정리 검증을 구분한다. 최종 실행 경로의 원본 증적이 필요하다.
+- [ ] PR 코드를 실행하는 Job에 운영 SSH 키·Harbor Push·Kubernetes 배포 자격증명을 전달하지 않는다. 같은 영속 Runner를 재사용하는 경우 작업 간 침해 지속 위험까지 평가한다.
+  - 소스 CI/Runner smoke의 범위만 확인했다. 앱 운영 자격증명 분리·영속 Runner 작업 간 격리의 실제 적용 결과는 잔여다.
+- [ ] IF-08 GitHub outbound, IF-09 Harbor Push, IF-10 Worker Pull, IF-11 API 접근을 각각 검증한다. 사내 경로는 도착지 관측으로 Source `.20` 보존을 확인한다.
+  - [IF-08 Run](https://github.com/321Team/infra-cicd/actions/runs/34960063214/attempts/2)은 충족. 복합 항목의 IF-09/10/11 및 도착지 Source .20 대조는 미완료라 체크를 유지한다.
+- [ ] Harbor CA와 Kubernetes CA를 구분하고 TLS 검증 우회 없이 동작한다. Pull/Push Robot을 분리한다.
+  - 신규 CA·Harbor Leaf 발급/공개 인계/파일 복구는 기록됨. Harbor 서비스 적용·Runner/Worker Trust와 Robot 분리의 실제 인수는 잔여다.
+- [ ] P1-SEC의 승인 TokenRequest 정책으로 발급 주체·audience·실제 만료·주입·회수/갱신을 기록한다. Runner에 admin.conf나 무제한 재발급 권한을 상주시켜 단기 Token을 무력화하지 않는다.
+  - TokenRequest 실제 발급·주입·만료·회수/갱신 Runtime 미확인. 정책 설계를 실행 완료로 표시하지 않는다.
+- [ ] `ci-cd/cicd-runner-sa`를 `fds-app`의 두 Deployment에만 연결한다. 최초 Deployment/Service/Secret 생성은 P1-APP/P1-SEC 인계 범위다.
+  - 최소권한 설계는 유지. 해당 SA로 두 Deployment 허용 및 그 외 동작 거부 Runtime은 잔여다.
+- [x] GitHub Free + Private 환경의 수동 승인 통제를 구현 전에 정한다. `workflow_dispatch`만으로 독립 승인이 강제된다고 표현하지 않는다.
+  - 확정된 운영 수칙: 코드/실행 설정 PR 독립 리뷰 후 Lead 병합 판단, Runtime·AC는 Lead 판단. Free/Private에서 승인 강제를 전제하지 않으며 workflow_dispatch가 독립 승인을 보장하지 않음을 명시했다. [현행 정책](https://github.com/321Team/infra-cicd/blob/ee039707db0a7ae980305f65ffb741d46b149015/docs/governance.md). 정책 정의 완료 범위이며 실제 배포 승인/인수 완료는 아니다.
+- [ ] Health/E2E 실행 주체·경로를 지정한다. Runner→Worker NodePort 직접 접근이나 pods/exec 권한을 추가하지 않는다.
+  - 최종 앱·K8S·SEC 인계와 연결해 실행 주체/허용 경로를 확정해야 한다. 새 NodePort/exec 권한을 추가하지 않는다.
+- [ ] 실패 시 승인된 이전 Digest로 복구하고, 두 서비스의 호환성과 DB Schema 영향도 확인 후 재검증한다.
+  - 실제 두 서비스 승인 Digest 배포가 아직 없으므로 이전 Digest 복구·호환성/Schema 재검증 증적도 잔여다.
+
+---
+
+# Acceptance Criteria
+
+- [x] CICD-AC-01: Runner 등록·Service 재시작 후 Online/Job 수신과 IF-08 실제 Run 증적이 있다.
+  - [Run34960063214 Attempt2](https://github.com/321Team/infra-cicd/actions/runs/34960063214/attempts/2) / [Job104355893988 원본 로그](https://github.com/321Team/infra-cicd/actions/runs/34960063214/job/104355893988): RUN_ATTEMPT=2, JOB_RECEPTION=VERIFIED, BUILDER_ROOTLESS=VERIFIED. 원 실행은 9/15이며 새 실행하지 않았다.
+- [ ] CICD-AC-02: Harbor 정상 Push와 Worker Pull/Pod Start, TLS·인증 음성시험이 대응된다.
+  - CA 준비·공개 인계 실적은 보존하되 Harbor 적용/consumer trust·Worker3대·TLS/인증 음성시험 전체 증적은 미인수다.
+- [ ] CICD-AC-03: 정상 Commit의 두 이미지 Test→Build→Scan→Push→Digest 갱신과 Health/E2E가 성공한다.
+  - 앱#2 병합·앱 Lead 입력 회신은 수신했으나 repo/SHA 정합화·config 반영과 내부 Runner의 실제 Test→Build→Scan·Push·Health/E2E는 잔여다. [회신](https://github.com/321Team/infra-cicd/issues/11#issuecomment-5725640696).
+- [ ] CICD-AC-04: 고의 Unit Test 실패 Run에서 Deploy가 skip/차단되고 대상 Deployment의 이미지가 유지된다.
+  - 소스/Mock 통과와 실제 Unit 실패→Deploy 차단·대상 이미지 유지 시험은 구분한다. 후자 미실행.
+- [ ] CICD-AC-05: 취약점 Gate 실패와 스캐너 실행 오류를 각각 실패 처리하며 배포 이미지가 유지된다.
+  - [실제 DB preflight](https://github.com/321Team/infra-cicd/actions/runs/35061666680) PASS는 선행 준비. 취약점 실패/스캐너 오류 각각의 실제 배포 이미지 유지 시험은 잔여다.
+- [ ] CICD-AC-06: Commit→Run/Attempt→Image→Digest→Deployment/실제 Pod 증적을 역추적할 수 있다. 로컬 Image ID를 registry manifest Digest로 오인하지 않는다.
+  - Runner/DB/공급 준비 Run 추적은 일부 존재. 실제 앱 Scan→Harbor→Deployment/Pod 전 구간 trace는 미확보다.
+- [ ] CICD-AC-07: 실제 Runner 자격증명으로 두 Deployment 권한은 허용되고, 임의 Deployment·create/delete·Secret·RBAC·exec 권한은 거부된다.
+  - 실제 Runner 배포 자격증명의 허용/거부 Runtime 증적 미확보.
+- [ ] CICD-AC-08: 만료 Token의 인증 실패 및 새 단기 Token으로 복구를 확인한다. 로그/Artifact/작업 디렉터리에 자격증명이 남지 않는다.
+  - 실제 만료 Token 실패·새 단기 Token 복구 및 종료 후 잔류 검사 증적 미확보.
+- [ ] CICD-AC-09: 승인 Digest와 승인자가 고정된 배포 기록, 재실행·동시 실행 통제, 이전 Digest 복구 결과가 있다.
+  - 수동 승인 운영정책은 정의됨. 실제 승인 Digest 배포·재실행/동시 실행 통제·복구 결과는 미확보다.
+- [ ] CICD-AC-10: 이하영의 독립 기술 리뷰와 이권욱의 최종 판정, 미해결 항목 및 정본 인계 기록이 있다.
+  - 개별 코드 PR의 독립 리뷰·병합은 부분 실적. 전체 Delivery 인수·잔여 정리·정본 인계는 미완료. 적용 절차는 [9/18 현행 정책](https://github.com/321Team/infra-cicd/blob/ee039707db0a7ae980305f65ffb741d46b149015/docs/governance.md)에 따르며 동일 코드 Runtime에 반복 독립 승인을 새로 요구하지 않는다.
+
+2026-09-15 후속 실행 대조로 CICD-AC-01의 Runtime 증적 충족을 확인했다. CICD-AC-02~10은 미완료이며 전체 인수 승인은 별도다. AC-01 판정은 로컬 상태만이 아니라 재시작 이후 실제 GitHub Job/로그를 근거로 한다.
+
+---
+
+# 검증 및 증적
+
+- Workflow YAML, Source/Workflow SHA, 버전 고정표, Runner Service/Network 결과
+- 성공 Run 및 Test/Scan/Token 실패 Run, 실패 전후 이미지 비교
+- Harbor Digest·Worker Pull·Kubernetes 배포 및 Health/E2E 결과
+- Role 정책과 실제 SA can-i 결과, 단기 Token 수명/갱신 기록 — Token 값 제외
+- 승인·복구·동시 배포 통제 및 Known Issue
+- 논리 Evidence Path: `321Team/fds-project-evidence:evidence/P1-CICD-01/`
+- 실행 원본 인계 저장소: `321Team/fds-project-evidence`; 실제 수신 경로/Commit은 인수 때 기록
+- 파일 SHA-256, 생성 시각, 실행 Host, Run/Attempt, 판정자·근거를 함께 보존
+
+---
+
+# Dependency
+
+- **Blocked By:** 준비 작업은 착수 가능. 실배포는 P1-K8S-01 Platform Ready, P1-LB-01 Stage B/인증 API, P1-HBR-01 CA·Robot·Push/Pull, P1-SEC-01 SA·RBAC·Token, P1-APP-01 Source/Test/기존 Deployment 인계에 의존
+- **Blocks / Next:** P1-E2E-01, G2의 CI/CD 완료 판정
+- **Related Ticket:** DEC-P1-TLS-01(Done), ICR-D-NET-01-01, infra-ansible #5; 조건부 DEC-P1-FDS/TXN/ADMIN-01
+- **Milestone:** G1 Runner/Registry 중간검증, G2 전체 Delivery
+
+---
+
+# Decision / Risk Control
+
+- **Related Decision IDs:** D03; D04; D19; D34; D35
+- **Related Risk IDs:** RISK-06; RISK-08
+- **Decision Control:** 이미 정한 Actions/외부 Runner/Harbor/TLS/두 Deployment 최소권한은 재결정하지 않는다.
+- **착수 확인 항목:** 앱 저장소, Runner 현황/빌더, 외부 DNS·dependency egress, Token 발급/주입 상세, 수동 배포 승인 절차, 승인 Trivy 기준.
+- **변경 발생 시:** 기존 OID/ICR 및 P1-SEC/P1-HBR 결정과 연결한다. 새로운 DNS 경로·권한·Workload·일정 변경은 해당 변경관리 기록에 구체적 Delta를 남긴다. 중복 Decision ID는 생성하지 않는다.
+- **Residual Risk:** Deployment patch의 Secret 우회 가능성은 D34의 기존 잔여위험이다. RBAC가 image 필드만 강제 제한한다고 주장하지 않는다.
+- **일정 위험:** 09-08 착수와 기존 09-09 종료 간 가용 작업시간이 제한적이다. 미확인 선행조건을 PASS로 바꾸거나 G2를 자동 연장하지 않는다.
+
+---
+
+# Completion Record
+
+- **Result:** IN PROGRESS — Runner 로컬 서비스 복구·CA 오프라인 보호 환경, 신규 Root/Harbor Leaf 발급 화면 및 공개 반환물 USB 반출·원본 수신·무결성/인증서 재검증 PASS / 별도 암호화 USB 백업 생성·원본 대조 및 읽기 전용 재개방·파일 복원 대조 및 복원 키/인증서·대장 검증 PASS, 임시 복원본 삭제·백업/CA 볼륨 잠금 PASS, 백업 USB 분리 보관·ca01 종료 사용자 완료 보고 / CA 준비 단계 완료·Harbor 공개 반입 무결성·기존 개인키/Leaf 일치·로컬 인증서/키 검증 PASS·기존 8개 컨테이너 종료/정식 구성 경로 부재 확인·실제 적용 대기 / 전체 Delivery Runtime Not Verified
+- **Status:** In Progress
+- **Actual Start:** 2026-09-08
+- **Exit Criteria:** 전체 Delivery·실패 차단·권한/Token·추적성·복구 증적과 독립 리뷰 확보
+- **Completed Date:** 미입력
+- **Reviewer / Approver:** 이하영(기술 리뷰 예정) / 이권욱(최종 판정 예정); 완료 서명 아님
+- **Baseline Integration:** 발행 정본 v3.1.18 유지. 이번 09-11 실행 증적·백업 후속 처리·실측 사양은 발행 후 운영 기록이며 차기 정본 수집 대상이다. 정본 소스·릴리스는 이번 작업에서 변경하지 않았다
+- **Remote Ticket Update:** 2026-09-15 GitHub Issue #16 디스크립션에 구축 단계 체크·최초 잠정 진행률 30%(3/10)와 후속 CA/Harbor Leaf 발급·공개 반환물 반출/수신 검증·별도 암호화 백업/파일 복구 시험을 반영했다. 임시 복원본 정리·볼륨 잠금·USB 연결 해제 화면과 전원 종료·USB 분리 보관 완료 보고까지 확인하여 5단계를 체크하고 현재 잠정 진행률을 40%(4/10)로 갱신했다. 인수 완료율 0%(0/10 AC), In Progress 및 기존 09-12 실행 기록은 유지한다. Notion 원문·다른 티켓 동기화 및 증적 파일 별도 업로드는 이번 작업에 포함하지 않음
+
+## 근거
+
+- [정본 v3.1.17 §10·§15·§16](https://github.com/321Team/fds-project-baseline/blob/2d93395a0e19ea67e5be199d7183a7edbaa6cf4c/baseline/FDS_Project_Implementation_Baseline_v3.1.17.md)
+- [v3.1.17 Ticket Update Pack](https://github.com/321Team/fds-project-baseline/blob/2d93395a0e19ea67e5be199d7183a7edbaa6cf4c/tickets/FDS_v3.1.17_Canonical_Ticket_Update_Pack_v1.0.md)
+- FDS_Notion_Remaining_Backlog_Manual_v1.9.md §12 — 원문 대조
+- D-SEC-01_Kubernetes_Security_Design_Baseline_v1.0.md §4~5, Handoff — 원문 대조
+- [GitHub Environment의 플랜 제약](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments)
+- [GitHub Self-hosted Runner 보안](https://docs.github.com/en/actions/reference/security/secure-use)
+
+## 갱신 전 원문 보관
+
+<details>
+<summary>이전 본문·승인·검토·AC 이력 원문 — 당시 기록</summary>
+
+원문 SHA-256: `c92c109a2c44fc3fb9041c6a43eb3033d5f2f655cc30c697462ac767ff17a641`. 원문은 아래 문자 그대로 보존하며 현재 속성표로 사용하지 않는다.
+
+````text
+<!-- fds-notion-migration:2026-09-09 record-id:P1-CICD-01 -->
+# P1-CICD-01 — GitHub Actions / Self-hosted Runner Delivery
+
+> 이관일: 2026-09-09 · 정본 및 보관 Notion 입력본 기준. Notion 실시간 원문·댓글·첨부의 완전 복제를 확인한 결과는 아니다.
+
+## Notion 데이터 속성
+
+| Property | 입력값 |
+|---|---|
+| Record ID | P1-CICD-01 |
+| Phase | Phase 1 |
+| Category | CI/CD / Supply Chain |
+| Type | Task |
+| Status | In Progress |
+| Priority | P0 |
+| Start | 2026-09-01 |
+| End | 2026-09-09 |
+| Calendar Days | 9 |
+| Working Days | 7 |
+| Lead | 이권욱 |
+| Support | 이하영 |
+| Exit Criteria | GitHub→Runner→Test→Build→Trivy→Harbor→Kubernetes Deploy→Health/E2E 흐름과 실패 시 Deploy 차단 Evidence 확보; 승인 Digest와 이전 Digest 복구 추적 |
+| Related Decision IDs | D03; D04; D19; D34; D35 |
+| Related Risk IDs | RISK-06; RISK-08 |
+| Source | Baseline v3.1.17 §10/§15/§16; D-SEC-01 v1.0/D34; FDS_Notion_Remaining_Backlog_Manual_v1.9 §12; 사용자 2026-09-08 착수 지시; 이관 대조: Baseline/WBS v3.1.17 (commit 2d93395a0e19ea67e5be199d7183a7edbaa6cf4c) |
+| Schedule Note | 2026-09-08 사전 점검·구현 준비 착수. 기존 계획 09-01~09-09 보존. G1 09-07 목표일은 경과했으나 Runner/Harbor 실제 완료 증적은 미확인. G2 09-11 유지. 일정 재산정은 선행 증적·앱 저장소 확인 후 변경관리로 처리. Ansible 연관 이슈 #5는 앱 Delivery AC를 대체하지 않음. |
+
+## 이관 기준 및 확인 사항
+
+- 속성의 일정·담당·상태는 RELEASED v3.1.17 WBS(기준일 2026-09-04)를 우선 반영했다. 이후 별도 근거가 있는 변경만 아래에 명시한다.
+- 2026-09-08 착수 입력본을 적용하여 In Progress로 이관한다. Runtime 완료는 미검증이다.
+- [현행 정본 v3.1.17](https://github.com/321Team/fds-project-baseline/blob/2d93395a0e19ea67e5be199d7183a7edbaa6cf4c/baseline/FDS_Project_Implementation_Baseline_v3.1.17.md) · [정본 WBS](https://github.com/321Team/fds-project-baseline/blob/2d93395a0e19ea67e5be199d7183a7edbaa6cf4c/wbs/FDS_v3.1.17_WBS_and_Gantt_v1.0.xlsx).
+- 본문은 아래에 적힌 원본 버전의 기록이다. 위 속성·후속 승인과 다른 과거 상태는 현재 판정으로 사용하지 않는다. 이관 자체로 미실행 AC를 체크하거나 새 승인을 부여하지 않는다.
+- Lead/Support의 풀네임은 본문 속성으로 보존한다. GitHub 계정 대응이 확인되지 않은 사람에게 자동 배정하지 않았다.
+
+## 원본 및 변경 출처
+
+- `FDS_Notion_Remaining_Backlog_Manual_v1.9.md`
+- `FDS_v3.1.15_Canonical_Ticket_Update_Pack_v1.0.md`
+- `FDS_v3.1.17_WBS_and_Gantt_v1.0.xlsx`
+- `P1-CICD-01_Notion_UserStory_v1.0.md`
+
+---
+
+## Description — 보관 입력본
+
+> 원본: `P1-CICD-01_Notion_UserStory_v1.0.md`. 원본의 완료/미완료 체크와 당시 이력을 보존했다.
+
+# 🎯 User Story
+
+자동화 담당자로서 Commit부터 Kubernetes 배포까지 추적 가능한 Delivery Pipeline을 구축한다. 이를 통해 테스트 또는 보안 Gate 실패 시 잘못된 이미지를 배포하지 않는다.
+
+---
+
+# 📌 Scope
+
+## In Scope
+
+- GitHub Private Repo와 외부 VM `cicd-runner01(10.250.10.20)`의 GitHub Actions Runner 설치·등록·Service 운영
+- 승인 Source의 Unit/Contract Test, Image Build, Trivy, Harbor Push
+- 사전 생성된 `fds-app/transaction-api`, `fds-app/fds-engine`의 승인 Digest 갱신
+- P1-SEC-01에서 제공하는 단기 Token의 안전한 주입·만료·갱신
+- Health/E2E, 실패 차단, 재실행, 이전 승인 Digest 복구 및 증적
+- [infra-ansible #5](https://github.com/321Team/infra-ansible/issues/5)의 CI 기반 연계; 별도 완료 추적
+
+## Out of Scope
+
+- 미승인 거래 보류/해제, 독립 frontend/BFF 및 신규 Workload 자동 편입
+- Runner의 Deployment 최초 생성·삭제, Secret 읽기, Cluster Admin 사용
+- P1-SEC의 SA/Role/RoleBinding 정책 또는 P1-HBR의 Robot/CA 설계를 대신 변경하는 일
+- Jenkins/Argo CD/Runner의 Kubernetes 내부 이관, P2 ROSA Delivery
+- 운영 Ansible apply·자동 병합, 임시 k3s를 정본 Kubernetes 완료 증적으로 대체
+- IF-13M Management DNS 및 미정의 경로를 착수만으로 허용
+
+기존 포괄 범위의 `kubectl/Helm Deploy`는 D34 이후 확정된 최소권한에 맞게 해석한다. 초기 구현은 **기존 두 Deployment에 kubectl로 Digest patch**한다. Helm 설치·일반적인 upgrade에 필요한 추가 리소스/Secret 권한은 현재 Runner에 없다.
+
+---
+
+# 📋 핵심 요구사항
+
+- [ ] Workflow/대상 Source Commit SHA, Run ID/Attempt, Image Tag, Harbor manifest Digest와 배포 전후 Digest를 연결한다.
+- [ ] Test/Build/Scan 실패·검사 오류·미승인 예외 시 Deploy가 실행되지 않는다. 재실행도 동일 검토 대상을 확인한다.
+- [ ] 외부 Action은 검토한 전체 Commit SHA로 고정하고 최소 GITHUB_TOKEN 권한과 credential 정리 절차를 적용한다.
+- [ ] PR 코드를 실행하는 Job에 운영 SSH 키·Harbor Push·Kubernetes 배포 자격증명을 전달하지 않는다. 같은 영속 Runner를 재사용하는 경우 작업 간 침해 지속 위험까지 평가한다.
+- [ ] IF-08 GitHub outbound, IF-09 Harbor Push, IF-10 Worker Pull, IF-11 API 접근을 각각 검증한다. 사내 경로는 도착지 관측으로 Source `.20` 보존을 확인한다.
+- [ ] Harbor CA와 Kubernetes CA를 구분하고 TLS 검증 우회 없이 동작한다. Pull/Push Robot을 분리한다.
+- [ ] P1-SEC의 승인 TokenRequest 정책으로 발급 주체·audience·실제 만료·주입·회수/갱신을 기록한다. Runner에 admin.conf나 무제한 재발급 권한을 상주시켜 단기 Token을 무력화하지 않는다.
+- [ ] `ci-cd/cicd-runner-sa`를 `fds-app`의 두 Deployment에만 연결한다. 최초 Deployment/Service/Secret 생성은 P1-APP/P1-SEC 인계 범위다.
+- [ ] GitHub Free + Private 환경의 수동 승인 통제를 구현 전에 정한다. `workflow_dispatch`만으로 독립 승인이 강제된다고 표현하지 않는다.
+- [ ] Health/E2E 실행 주체·경로를 지정한다. Runner→Worker NodePort 직접 접근이나 pods/exec 권한을 추가하지 않는다.
+- [ ] 실패 시 승인된 이전 Digest로 복구하고, 두 서비스의 호환성과 DB Schema 영향도 확인 후 재검증한다.
+
+---
+
+# ✅ Acceptance Criteria
+
+- [ ] CICD-AC-01: Runner 등록·Service 재시작 후 Online/Job 수신과 IF-08 실제 Run 증적이 있다.
+- [ ] CICD-AC-02: Harbor 정상 Push와 Worker Pull/Pod Start, TLS·인증 음성시험이 대응된다.
+- [ ] CICD-AC-03: 정상 Commit의 두 이미지 Test→Build→Scan→Push→Digest 갱신과 Health/E2E가 성공한다.
+- [ ] CICD-AC-04: 고의 Unit Test 실패 Run에서 Deploy가 skip/차단되고 대상 Deployment의 이미지가 유지된다.
+- [ ] CICD-AC-05: 취약점 Gate 실패와 스캐너 실행 오류를 각각 실패 처리하며 배포 이미지가 유지된다.
+- [ ] CICD-AC-06: Commit→Run/Attempt→Image→Digest→Deployment/실제 Pod 증적을 역추적할 수 있다. 로컬 Image ID를 registry manifest Digest로 오인하지 않는다.
+- [ ] CICD-AC-07: 실제 Runner 자격증명으로 두 Deployment 권한은 허용되고, 임의 Deployment·create/delete·Secret·RBAC·exec 권한은 거부된다.
+- [ ] CICD-AC-08: 만료 Token의 인증 실패 및 새 단기 Token으로 복구를 확인한다. 로그/Artifact/작업 디렉터리에 자격증명이 남지 않는다.
+- [ ] CICD-AC-09: 승인 Digest와 승인자가 고정된 배포 기록, 재실행·동시 실행 통제, 이전 Digest 복구 결과가 있다.
+- [ ] CICD-AC-10: 이하영의 독립 기술 리뷰와 이권욱의 최종 판정, 미해결 항목 및 정본 인계 기록이 있다.
+
+체크박스는 모두 미검증 상태다. 설계·문서 작성, TCP 또는 TLS 성공을 위 Runtime AC의 PASS로 대체하지 않는다.
+
+---
+
+# 🧪 검증 및 증적
+
+- Workflow YAML, Source/Workflow SHA, 버전 고정표, Runner Service/Network 결과
+- 성공 Run 및 Test/Scan/Token 실패 Run, 실패 전후 이미지 비교
+- Harbor Digest·Worker Pull·Kubernetes 배포 및 Health/E2E 결과
+- Role 정책과 실제 SA can-i 결과, 단기 Token 수명/갱신 기록 — Token 값 제외
+- 승인·복구·동시 배포 통제 및 Known Issue
+- 논리 Evidence Path: `docs/evidence/P1-CICD-01/`
+- 실행 원본 인계 저장소: `321Team/fds-project-evidence`; 실제 수신 경로/Commit은 인수 때 기록
+- 파일 SHA-256, 생성 시각, 실행 Host, Run/Attempt, 판정자·근거를 함께 보존
+
+---
+
+# 🔗 Dependency
+
+- **Blocked By:** 준비 작업은 착수 가능. 실배포는 P1-K8S-01 Platform Ready, P1-LB-01 Stage B/인증 API, P1-HBR-01 CA·Robot·Push/Pull, P1-SEC-01 SA·RBAC·Token, P1-APP-01 Source/Test/기존 Deployment 인계에 의존
+- **Blocks / Next:** P1-E2E-01, G2의 CI/CD 완료 판정
+- **Related Ticket:** DEC-P1-TLS-01(Done), ICR-D-NET-01-01, infra-ansible #5; 조건부 DEC-P1-FDS/TXN/ADMIN-01
+- **Milestone:** G1 Runner/Registry 중간검증, G2 전체 Delivery
+
+---
+
+# ⚖️ Decision / Risk Control
+
+- **Related Decision IDs:** D03; D04; D19; D34; D35
+- **Related Risk IDs:** RISK-06; RISK-08
+- **Decision Control:** 이미 정한 Actions/외부 Runner/Harbor/TLS/두 Deployment 최소권한은 재결정하지 않는다.
+- **착수 확인 항목:** 앱 저장소, Runner 현황/빌더, 외부 DNS·dependency egress, Token 발급/주입 상세, 수동 배포 승인 절차, 승인 Trivy 기준.
+- **변경 발생 시:** 기존 OID/ICR 및 P1-SEC/P1-HBR 결정과 연결한다. 새로운 DNS 경로·권한·Workload·일정 변경은 해당 변경관리 기록에 구체적 Delta를 남긴다. 중복 Decision ID는 생성하지 않는다.
+- **Residual Risk:** Deployment patch의 Secret 우회 가능성은 D34의 기존 잔여위험이다. RBAC가 image 필드만 강제 제한한다고 주장하지 않는다.
+- **일정 위험:** 09-08 착수와 기존 09-09 종료 간 가용 작업시간이 제한적이다. 미확인 선행조건을 PASS로 바꾸거나 G2를 자동 연장하지 않는다.
+
+---
+
+# 📝 Completion Record
+
+- **Result:** STARTED — 사전 점검·구현 준비 / Runtime Not Verified
+- **Status:** In Progress
+- **Actual Start:** 2026-09-08
+- **Exit Criteria:** 전체 Delivery·실패 차단·권한/Token·추적성·복구 증적과 독립 리뷰 확보
+- **Completed Date:** 미입력
+- **Reviewer / Approver:** 이하영(기술 리뷰 예정) / 이권욱(최종 판정 예정); 완료 서명 아님
+- **Baseline Integration:** 미반영 — 다음 정본 후보에서 상태·Actual Start·근거만 우선 동기화
+- **Remote Ticket Update:** 미실행 — 기존 Notion Record ID 수동 Upsert용
+
+## 근거
+
+- [정본 v3.1.17 §10·§15·§16](https://github.com/321Team/fds-project-baseline/blob/2d93395a0e19ea67e5be199d7183a7edbaa6cf4c/baseline/FDS_Project_Implementation_Baseline_v3.1.17.md)
+- [v3.1.17 Ticket Update Pack](https://github.com/321Team/fds-project-baseline/blob/2d93395a0e19ea67e5be199d7183a7edbaa6cf4c/tickets/FDS_v3.1.17_Canonical_Ticket_Update_Pack_v1.0.md)
+- FDS_Notion_Remaining_Backlog_Manual_v1.9.md §12 — 원문 대조
+- D-SEC-01_Kubernetes_Security_Design_Baseline_v1.0.md §4~5, Handoff — 원문 대조
+- [GitHub Environment의 플랜 제약](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/manage-environments)
+- [GitHub Self-hosted Runner 보안](https://docs.github.com/en/actions/reference/security/secure-use)
+````
+
+</details>

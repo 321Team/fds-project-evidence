@@ -1,0 +1,39 @@
+{
+  "SCAN_NEGATIVE_WORKFLOW": "FAIL",
+  "NEGATIVE_CASE": "EXPECTED_FAILURE_OBSERVED",
+  "case": "scanner-error",
+  "context": {
+    "workflow_sha": "65ae4fd3b274efc04c3cb686b41cc99fb07383b8",
+    "run_id": "38553393207",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/38553393207",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000,
+    "purpose": "SCAN_NEGATIVE_NOT_DELIVERABLE",
+    "negative_case": "scanner-error",
+    "workflow_ref": "321Team/infra-cicd/.github/workflows/app-scan-negative.yml@refs/heads/main"
+  },
+  "started_at": "2026-10-14T10:59:29.621376+00:00",
+  "PUSH": "NOT_EXECUTED",
+  "DEPLOY": "NOT_EXECUTED",
+  "TEST_BUILD": "NOT_EXECUTED_FIXED_HISTORICAL_IMAGES",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "DEPLOYMENT_IMAGES": "REQUIRES_EXTERNAL_BEFORE_AFTER_OBSERVATIONS",
+  "fixture_source_sha": "ec69b67067decf35abbfed0a6a99f3073132787b",
+  "fixture_hashes": {
+    "transaction-api": {
+      "bytes": 93404160,
+      "sha256": "218c57b0613dc37e9628745d3ae580886543902714bbb9ab6249b5ac90d1266f"
+    },
+    "fds-engine": {
+      "bytes": 74496512,
+      "sha256": "a8895e245ea2a2f30aa106524bf858020fccc65a12fc543d26f3c09a87f04d1c"
+    }
+  },
+  "scanner_binary_sha256": "d89bcc6510a267f11b773398cbf1be5520ce39f9e8b6633178c4487f05b7d791",
+  "scanner_adapter_rc": 1,
+  "scan_result_sha256": "8b909383ffb4627c9829b84897af7937dbd59efc09a62a17724f62b288585c88",
+  "error_code": "SCANNER_EXECUTION_ERROR",
+  "finished_at": "2026-10-14T10:59:30.670872+00:00"
+}
