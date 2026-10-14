@@ -1,0 +1,176 @@
+{
+  "status": "HA_RUNTIME_PASS_AND_RECOVERY_VERIFIED",
+  "judge": "timeline: 기준선 81.6s, 재배치 Ready 뒤 78.3s, uncordon 뒤 90.2s / drain→Ready 37.7s\n판정 구간 1791904980.483 ~ 1791905268.136 (287.7s), tick 575개, 요청 1725건\n[무결성] 구간 전체 측정 예, 누락 tick 0개, 발사 지연>0.2s 0건(최대 0.017s), 기준선 비200 0건\n[A] 정상 Worker 10.1.93.105,10.1.93.108 실패 요청 0건 (기준 0)\n[B] 성공 응답 최대 간격 0.516s at 1791905063.955 (기준 ≤1.0s)\n[참고] drain 대상 10.1.93.107 비200 412건(허용·판정 제외)\n판정: PASS\n",
+  "probe_seconds": 900,
+  "probe_requests": 5403,
+  "drain_runs": 1,
+  "additional_evictions": 2,
+  "final_counts": {
+    "transaction-api": {
+      "k8s-worker01": 1,
+      "k8s-worker02": 1,
+      "k8s-worker03": 1
+    },
+    "fds-engine": {
+      "k8s-worker01": 1,
+      "k8s-worker02": 1,
+      "k8s-worker03": 1
+    }
+  },
+  "final_mon_up": 23,
+  "images_specs_unchanged": true,
+  "node_uncordoned": true,
+  "observer_correction_preserved": true,
+  "receipts": [
+    {
+      "step": "api-eviction",
+      "rc": 0
+    },
+    {
+      "step": "api-recovery",
+      "rc": 0
+    },
+    {
+      "step": "app-state",
+      "rc": 0
+    },
+    {
+      "step": "baseline-mark",
+      "rc": 0
+    },
+    {
+      "step": "before-api-redistribution",
+      "rc": 0
+    },
+    {
+      "step": "before-engine-redistribution",
+      "rc": 0
+    },
+    {
+      "step": "cache-worker01",
+      "rc": 0
+    },
+    {
+      "step": "cache-worker02",
+      "rc": 0
+    },
+    {
+      "step": "cache-worker03",
+      "rc": 0
+    },
+    {
+      "step": "current-capacity",
+      "rc": 0
+    },
+    {
+      "step": "current-cluster",
+      "rc": 0
+    },
+    {
+      "step": "current-edge",
+      "rc": 0
+    },
+    {
+      "step": "current-mon",
+      "rc": 0
+    },
+    {
+      "step": "drain-once",
+      "rc": 0
+    },
+    {
+      "step": "edge-identity",
+      "rc": 0
+    },
+    {
+      "step": "end-mark",
+      "rc": 0
+    },
+    {
+      "step": "engine-eviction",
+      "rc": 0
+    },
+    {
+      "step": "engine-observer-supplement",
+      "rc": 0
+    },
+    {
+      "step": "engine-recovery",
+      "rc": 2
+    },
+    {
+      "step": "final-app-state",
+      "rc": 0
+    },
+    {
+      "step": "final-cluster",
+      "rc": 0
+    },
+    {
+      "step": "final-edge",
+      "rc": 0
+    },
+    {
+      "step": "final-mon",
+      "rc": 0
+    },
+    {
+      "step": "judge-run",
+      "rc": 0
+    },
+    {
+      "step": "mon-before-uncordon",
+      "rc": 0
+    },
+    {
+      "step": "probe-after-uncordon",
+      "rc": 0
+    },
+    {
+      "step": "probe-before-drain",
+      "rc": 0
+    },
+    {
+      "step": "probe-initial",
+      "rc": 0
+    },
+    {
+      "step": "probe-rescheduled",
+      "rc": 0
+    },
+    {
+      "step": "probe-run",
+      "rc": 0
+    },
+    {
+      "step": "ready-after-drain",
+      "rc": 0
+    },
+    {
+      "step": "receive-control",
+      "rc": 0
+    },
+    {
+      "step": "receive-edge",
+      "rc": 0
+    },
+    {
+      "step": "stage-control",
+      "rc": 0
+    },
+    {
+      "step": "stage-edge",
+      "rc": 0
+    },
+    {
+      "step": "uncordon-once",
+      "rc": 0
+    }
+  ],
+  "runtime_completed_at_kst": "2026-10-14T00:37:02.969978+09:00",
+  "independent_evidence_review": "PENDING",
+  "app_regression": "NOT_RUN",
+  "http_probe_fault": "NOT_RUN",
+  "db_acceptance": "PENDING_FINAL_APP_REGRESSION",
+  "W4": "NOT_MEASURED"
+}
