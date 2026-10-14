@@ -1,0 +1,232 @@
+{
+  "classification": "CODEX_ASSISTED_OFFLINE_VERIFICATION_OF_RUNTIME_ORIGINALS",
+  "verified_at": "2026-10-14T09:56:45.592229+00:00",
+  "h4_functional_result": "PASS",
+  "h4_budget_result": "PASS",
+  "dispatch_at": "2026-10-14T09:45:51.728518+00:00",
+  "first_healthy_at": "2026-10-14T09:51:35.288506+00:00",
+  "last_observation_at": "2026-10-14T09:56:19.823882+00:00",
+  "old_boot": "45cfde48-a700-4f05-96e7-4fbc020bf13c",
+  "new_boot": "7de1ad2b-b730-488e-a47b-02be9fac5646",
+  "old_daemon": "1918c805e7144e61af8781438ce2e6b5",
+  "new_daemon": "449ec6eeaff94423a546de67294bb72a",
+  "manager": {
+    "MainPID": "2738",
+    "ControlPID": "0",
+    "Result": "success",
+    "NRestarts": "0",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "UnitFileState": "enabled",
+    "Job": "",
+    "InvocationID": "a4bda305f92045638f6ce29d4e8f899e"
+  },
+  "source": "d7f79f88bc73d7800d07e24aed86cc9ee586ba4d",
+  "bundle_sha256": "8b02d1ac1b6d62b9b084c88353cc7e14b5ec7c6d53b97407518ca6ec1fc253b3",
+  "container_ids_and_fingerprints_preserved": 10,
+  "app_start_intents": 9,
+  "unique_app_start_events": 9,
+  "sequence": [
+    {
+      "service": "log",
+      "start_utc": "2026-10-14T09:46:11.579868+00:00",
+      "healthy_utc": "2026-10-14T09:46:41.609178+00:00",
+      "health_seconds": 30.029310112,
+      "start_events": 1
+    },
+    {
+      "service": "postgresql",
+      "start_utc": "2026-10-14T09:46:43.847753+00:00",
+      "healthy_utc": "2026-10-14T09:47:13.897113+00:00",
+      "health_seconds": 30.049360188,
+      "start_events": 1
+    },
+    {
+      "service": "redis",
+      "start_utc": "2026-10-14T09:47:15.279426+00:00",
+      "healthy_utc": "2026-10-14T09:47:45.314417+00:00",
+      "health_seconds": 30.034991626,
+      "start_events": 1
+    },
+    {
+      "service": "registry",
+      "start_utc": "2026-10-14T09:47:46.761367+00:00",
+      "healthy_utc": "2026-10-14T09:48:16.800013+00:00",
+      "health_seconds": 30.038645431,
+      "start_events": 1
+    },
+    {
+      "service": "registryctl",
+      "start_utc": "2026-10-14T09:48:18.753597+00:00",
+      "healthy_utc": "2026-10-14T09:48:48.781200+00:00",
+      "health_seconds": 30.027602927,
+      "start_events": 1
+    },
+    {
+      "service": "core",
+      "start_utc": "2026-10-14T09:48:51.114455+00:00",
+      "healthy_utc": "2026-10-14T09:49:21.151706+00:00",
+      "health_seconds": 30.037250295,
+      "start_events": 1
+    },
+    {
+      "service": "portal",
+      "start_utc": "2026-10-14T09:49:23.256289+00:00",
+      "healthy_utc": "2026-10-14T09:49:53.286487+00:00",
+      "health_seconds": 30.030197421,
+      "start_events": 1
+    },
+    {
+      "service": "jobservice",
+      "start_utc": "2026-10-14T09:49:55.613074+00:00",
+      "healthy_utc": "2026-10-14T09:50:25.643718+00:00",
+      "health_seconds": 30.03064398,
+      "start_events": 1
+    },
+    {
+      "service": "trivy-adapter",
+      "start_utc": "2026-10-14T09:50:28.105996+00:00",
+      "healthy_utc": "2026-10-14T09:50:58.144500+00:00",
+      "health_seconds": 30.038504428,
+      "start_events": 1
+    },
+    {
+      "service": "proxy",
+      "start_utc": "2026-10-14T09:51:00.061985+00:00",
+      "healthy_utc": "2026-10-14T09:51:30.098081+00:00",
+      "health_seconds": 30.036096495,
+      "start_events": 1
+    }
+  ],
+  "manager_state_transitions": [
+    {
+      "monotonic_microseconds": 7060717,
+      "desired": "RUN",
+      "reason": "WAIT_LOGGER",
+      "stage": "MANAGER_STATE"
+    },
+    {
+      "monotonic_microseconds": 38273691,
+      "desired": "RUN",
+      "reason": "WAIT_HEALTH",
+      "stage": "MANAGER_STATE"
+    },
+    {
+      "monotonic_microseconds": 325153801,
+      "desired": "RUN",
+      "reason": "HEALTHY",
+      "stage": "MANAGER_STATE"
+    }
+  ],
+  "reboot_to_all_healthy_seconds": 338.36956310272217,
+  "whole_observation_seconds": 635.4689999999828,
+  "evidence_overrun_seconds": 0,
+  "owned_child_returncodes": [
+    -15,
+    -15
+  ],
+  "store_before": 14,
+  "store_after": 23,
+  "old_current_records_preserved_except_state": 13,
+  "prior_originals_preserved": 105,
+  "export_files": 108,
+  "old_stores_preserved": 66,
+  "stream_counts": {
+    "CAPTURE_STARTED": 1,
+    "PROBE_STARTED": 108,
+    "EVENTS_OPEN": 1,
+    "CAPTURE_READY": 1,
+    "DOCKER_EVENT": 476,
+    "JOURNAL": 36,
+    "OBSERVATION_RAW": 107,
+    "EVIDENCE_DEADLINE_ARMED": 1,
+    "JOURNAL_ENDED": 1,
+    "CAPTURE_FINISHED": 1
+  },
+  "observations": 107,
+  "duplicate_event_rows": 0,
+  "default_bridge_before": "e470bf4c8fa792ccf64419219c64411dbeff0ec3d650c6559578b6975c984223",
+  "default_bridge_after": "d0dd81db6437cc938820605ebae89008b4ee85f32b96223221e00b5995125175",
+  "bridge_macs_before": {
+    "br-24b80a084f5c": "ae:f6:18:d2:2b:7b",
+    "docker0": "5e:48:ae:a9:7b:49"
+  },
+  "bridge_macs_after": {
+    "docker0": "b6:e4:e7:e4:f6:0a",
+    "br-24b80a084f5c": "02:67:27:71:31:54"
+  },
+  "bridge_ipv6_contract": {
+    "br-24b80a084f5c": "eui64",
+    "docker0": "absent"
+  },
+  "https_api": [
+    {
+      "body_bytes": 7,
+      "body_sha256": "1b6f69f3061677f95df0349011d840d601d8bead90e44443e82e2e1e1b65a623",
+      "elapsed_seconds": 0.006062321999991127,
+      "path": "/api/v2.0/ping",
+      "peer_der_sha256": "61617af3574f37c70a2d9c7f284a75f82c844ae3eaf599cb3d0ec649126ebeaf",
+      "pong": true,
+      "status": 200,
+      "tls": "TLSv1.3"
+    },
+    {
+      "body_bytes": 341,
+      "body_sha256": "a2771d9f2345b6c1cb1d35dad9cb05a5c28f5be0676484ea673db513acaee47f",
+      "components": [
+        {
+          "name": "core",
+          "status": "healthy"
+        },
+        {
+          "name": "database",
+          "status": "healthy"
+        },
+        {
+          "name": "jobservice",
+          "status": "healthy"
+        },
+        {
+          "name": "portal",
+          "status": "healthy"
+        },
+        {
+          "name": "redis",
+          "status": "healthy"
+        },
+        {
+          "name": "registry",
+          "status": "healthy"
+        },
+        {
+          "name": "registryctl",
+          "status": "healthy"
+        },
+        {
+          "name": "trivy",
+          "status": "healthy"
+        }
+      ],
+      "elapsed_seconds": 0.003664805000028082,
+      "path": "/api/v2.0/health",
+      "peer_der_sha256": "61617af3574f37c70a2d9c7f284a75f82c844ae3eaf599cb3d0ec649126ebeaf",
+      "status": 200,
+      "status_summary": "healthy",
+      "tls": "TLSv1.3"
+    }
+  ],
+  "previous_boot_shutdown_notes": [],
+  "previous_boot_journal": {
+    "status": "UNAVAILABLE",
+    "rc": 1,
+    "rows": 0,
+    "error": "No journal boot entry found for the specified boot (45cfde48a7004f0596e74fbc020bf13c+0).\n"
+  },
+  "limits": [
+    "Prior failed H4 remains FAILED; this is a separately authorized new attempt.",
+    "Previous-boot SSH capture ended at reboot and previous boot journal is unavailable; shutdown event completeness/exit codes are not established.",
+    "H4 confirms automatic recovery, not graceful shutdown of log, snapshot restore or DB consistency.",
+    "H8 evidence review and final AC remain separate; no issue closure."
+  ]
+}
