@@ -1,0 +1,44 @@
+{
+  "status": "HTTP_PROBE_RUNTIME_PASS_WITH_RECORDED_OBSERVATION_LIMITS",
+  "source_head": "d53ce00f318785b97577d41c07d8309ff581c2a8",
+  "start_kst": "2026-10-14T09:50:42.482212+09:00",
+  "original_exit_kst": "2026-10-14T09:52:04.267843+09:00",
+  "hold_seconds": 81.785631,
+  "stop_count": 1,
+  "cont_count": 0,
+  "kubelet_killing_kst": "2026-10-14T09:51:34+09:00",
+  "first_ready_false_observed_kst": "2026-10-14T09:51:07.391952+09:00",
+  "first_endpoint_false_observed_kst": "2026-10-14T09:51:07.391952+09:00",
+  "first_ready_endpoint_recovered_observed_kst": "2026-10-14T09:52:15.407269+09:00",
+  "new_container_id": "containerd://737b90c6597c5ed6ae4a74b2d68e066cb928efcca8f5ed564b1b11fa51dc8e31",
+  "target_restart": 1,
+  "same_pod_uid": "e349b045-870f-4061-a677-3007efe479e9",
+  "other_restarts": 0,
+  "images_specs_unchanged": true,
+  "placement": {
+    "fds-engine": {
+      "k8s-worker02": 1,
+      "k8s-worker03": 1,
+      "k8s-worker01": 1
+    },
+    "transaction-api": {
+      "k8s-worker03": 1,
+      "k8s-worker01": 1,
+      "k8s-worker02": 1
+    }
+  },
+  "http_recovery_60s": true,
+  "mon_recovery_60s": true,
+  "observations": 300,
+  "observer_errors": 0,
+  "limits": [
+    "Control01 direct Pod HTTP failed before injection; use worker02 HTTP and CP1 API observations.",
+    "Worker HTTP/process observer ended on original PID exit (ProcessLookupError); first exact HTTP recovery instant is not captured. Separate 60-second HTTP recovery collected.",
+    "Kubelet journal returned no entries; UID-bound Kubernetes kubelet liveness/Killing events prove cause.",
+    "Pure observers/recovery supplements were not independently code-reviewed; no additional injection."
+  ],
+  "independent_evidence_review": "PENDING",
+  "final_APP_regression": "NOT_RUN",
+  "DB_acceptance": "PENDING_FINAL_APP_REGRESSION",
+  "W4": "NOT_MEASURED"
+}
