@@ -1,0 +1,54 @@
+{
+    "Volumes": [
+        {
+            "AvailabilityZoneId": "apne2-az1",
+            "Iops": 3000,
+            "Tags": [
+                {
+                    "Key": "Component",
+                    "Value": "vpn"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                }
+            ],
+            "VolumeType": "gp3",
+            "MultiAttachEnabled": false,
+            "Throughput": 125,
+            "Operator": {
+                "Managed": false,
+                "HiddenByDefault": false
+            },
+            "VolumeArn": "arn:aws:ec2:ap-northeast-2:774055931866:volume/vol-09d072c0e65a6e80d",
+            "OwnerId": "774055931866",
+            "VolumeId": "vol-09d072c0e65a6e80d",
+            "Size": 40,
+            "SnapshotId": "snap-070b621226ea9ab2c",
+            "AvailabilityZone": "ap-northeast-2a",
+            "State": "in-use",
+            "CreateTime": "2026-10-12T08:18:01.861000+00:00",
+            "Attachments": [
+                {
+                    "DeleteOnTermination": true,
+                    "EbsCardIndex": 0,
+                    "VolumeId": "vol-09d072c0e65a6e80d",
+                    "InstanceId": "i-05e4b63d31d8d5ac5",
+                    "Device": "/dev/sda1",
+                    "State": "attached",
+                    "AttachTime": "2026-10-12T08:18:01+00:00"
+                }
+            ],
+            "Encrypted": true,
+            "KmsKeyId": "arn:aws:kms:ap-northeast-2:774055931866:key/d5f49efe-b6f2-4204-b75f-6d686a86ffbc"
+        }
+    ]
+}

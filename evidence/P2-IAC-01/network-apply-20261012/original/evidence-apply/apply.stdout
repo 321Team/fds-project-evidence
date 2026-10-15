@@ -1,0 +1,89 @@
+aws_vpc.project: Creating...
+aws_vpc.project: Creation complete after 1s [id=vpc-039718404350154d9]
+aws_subnet.project["private_c"]: Creating...
+aws_route_table.subnet["public_transport_a"]: Creating...
+aws_route_table.subnet["private_c"]: Creating...
+aws_route_table.subnet["private_b"]: Creating...
+aws_internet_gateway.transport: Creating...
+aws_subnet.project["public_transport_a"]: Creating...
+aws_subnet.project["private_b"]: Creating...
+aws_route_table.subnet["private_a"]: Creating...
+aws_subnet.project["private_a"]: Creating...
+aws_internet_gateway.transport: Creation complete after 1s [id=igw-003f907eafcc6bfb9]
+aws_eip.nat: Creating...
+aws_route_table.subnet["public_transport_a"]: Creation complete after 1s [id=rtb-0dd7491d1a3944217]
+aws_route.transport_internet: Creating...
+aws_route_table.subnet["private_b"]: Creation complete after 1s [id=rtb-061f0b2ff25634304]
+aws_route_table.subnet["private_a"]: Creation complete after 1s [id=rtb-01e3140bb2a0b3bb6]
+aws_route_table.subnet["private_c"]: Creation complete after 1s [id=rtb-0be823c978f9da092]
+aws_subnet.project["private_c"]: Creation complete after 1s [id=subnet-07586708a37f05d71]
+aws_subnet.project["public_transport_a"]: Creation complete after 1s [id=subnet-0fbc846bde668f0f3]
+aws_route.transport_internet: Creation complete after 0s [id=r-rtb-0dd7491d1a39442171080289494]
+aws_eip.nat: Creation complete after 0s [id=eipalloc-0f0387ddcd5c0a535]
+aws_nat_gateway.platform: Creating...
+aws_subnet.project["private_b"]: Creation complete after 3s [id=subnet-0fc798d49bb79b248]
+aws_subnet.project["private_a"]: Creation complete after 4s [id=subnet-044ced60c3c705ac6]
+aws_route_table_association.subnet["private_b"]: Creating...
+aws_route_table_association.subnet["private_c"]: Creating...
+aws_route_table_association.subnet["public_transport_a"]: Creating...
+aws_route_table_association.subnet["private_a"]: Creating...
+aws_route_table_association.subnet["private_a"]: Creation complete after 0s [id=rtbassoc-0a0732425a811a8c1]
+aws_route_table_association.subnet["private_c"]: Creation complete after 0s [id=rtbassoc-0046b93d0ebb7778b]
+aws_route_table_association.subnet["public_transport_a"]: Creation complete after 0s [id=rtbassoc-05928f97381e9c367]
+aws_route_table_association.subnet["private_b"]: Creation complete after 0s [id=rtbassoc-03570b91c05b9bf79]
+aws_nat_gateway.platform: Still creating... [00m10s elapsed]
+aws_nat_gateway.platform: Still creating... [00m20s elapsed]
+aws_nat_gateway.platform: Still creating... [00m30s elapsed]
+aws_nat_gateway.platform: Still creating... [00m40s elapsed]
+aws_nat_gateway.platform: Still creating... [00m50s elapsed]
+aws_nat_gateway.platform: Still creating... [01m00s elapsed]
+aws_nat_gateway.platform: Still creating... [01m10s elapsed]
+aws_nat_gateway.platform: Still creating... [01m20s elapsed]
+aws_nat_gateway.platform: Still creating... [01m30s elapsed]
+aws_nat_gateway.platform: Creation complete after 1m34s [id=nat-0f0fa5d5de405fa71]
+aws_route.private_egress["private_b"]: Creating...
+aws_route.private_egress["private_c"]: Creating...
+aws_route.private_egress["private_a"]: Creating...
+aws_route.private_egress["private_a"]: Creation complete after 1s [id=r-rtb-01e3140bb2a0b3bb61080289494]
+aws_route.private_egress["private_b"]: Creation complete after 1s [id=r-rtb-061f0b2ff256343041080289494]
+aws_route.private_egress["private_c"]: Creation complete after 1s [id=r-rtb-0be823c978f9da0921080289494]
+
+Apply complete! Resources: 20 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+network_handoff = {
+  "hybrid_routes_owner" = "vpn (not implemented in this candidate)"
+  "igw_id" = "igw-003f907eafcc6bfb9"
+  "nat_id" = "nat-0f0fa5d5de405fa71"
+  "region" = "ap-northeast-2"
+  "stage_a_ready" = false
+  "subnets" = {
+    "private_a" = {
+      "cidr" = "10.20.10.0/24"
+      "id" = "subnet-044ced60c3c705ac6"
+      "route_table_id" = "rtb-01e3140bb2a0b3bb6"
+      "zone_id" = "apne2-az1"
+    }
+    "private_b" = {
+      "cidr" = "10.20.20.0/24"
+      "id" = "subnet-0fc798d49bb79b248"
+      "route_table_id" = "rtb-061f0b2ff25634304"
+      "zone_id" = "apne2-az2"
+    }
+    "private_c" = {
+      "cidr" = "10.20.30.0/24"
+      "id" = "subnet-07586708a37f05d71"
+      "route_table_id" = "rtb-0be823c978f9da092"
+      "zone_id" = "apne2-az3"
+    }
+    "public_transport_a" = {
+      "cidr" = "10.20.110.0/24"
+      "id" = "subnet-0fbc846bde668f0f3"
+      "route_table_id" = "rtb-0dd7491d1a3944217"
+      "zone_id" = "apne2-az1"
+    }
+  }
+  "vpc_cidr" = "10.20.0.0/16"
+  "vpc_id" = "vpc-039718404350154d9"
+}

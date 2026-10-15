@@ -1,0 +1,47 @@
+{
+    "NatGateways": [
+        {
+            "CreateTime": "2026-10-12T01:45:44+00:00",
+            "NatGatewayAddresses": [
+                {
+                    "AllocationId": "eipalloc-0f0387ddcd5c0a535",
+                    "NetworkInterfaceId": "eni-08977993a2ebd6816",
+                    "PrivateIp": "10.20.110.241",
+                    "PublicIp": "43.201.118.124",
+                    "AssociationId": "eipassoc-07d099e174c39ec2c",
+                    "IsPrimary": true,
+                    "Status": "succeeded"
+                }
+            ],
+            "NatGatewayId": "nat-0f0fa5d5de405fa71",
+            "State": "available",
+            "SubnetId": "subnet-0fbc846bde668f0f3",
+            "VpcId": "vpc-039718404350154d9",
+            "Tags": [
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "fds-nat"
+                }
+            ],
+            "ConnectivityType": "public",
+            "AvailabilityMode": "zonal",
+            "AttachedAppliances": []
+        }
+    ]
+}
