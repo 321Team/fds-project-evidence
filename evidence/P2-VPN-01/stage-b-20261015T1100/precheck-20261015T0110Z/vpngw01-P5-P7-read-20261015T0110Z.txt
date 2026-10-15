@@ -1,0 +1,134 @@
+# vpn-gw01 단계 B 직전 확인 P5·P7 (읽기 전용) — 사용자 터미널 출력 사본, 2026-10-15
+# 실행: server08@vpn-gw01, sudo -v 후. 명령 묶음 2개를 그대로 붙여 넣은 결과.
+# 생략: ipsec status 중 "Kernel algorithms supported" ~ "stats db_ops" 사이 알고리즘 목록(판정 무관). 그 밖의 줄은 원문 그대로.
+
+[server08@vpn-gw01 p2vpn-precheck-20261012]$ date -u +%FT%TZ; hostname; id -un
+for p in /etc/ipsec.d/fds-p2-vpn.conf /etc/ipsec.d/fds-p2-vpn.secrets /root/fds-p2-vpn /etc/fds-p2-vpn /etc/systemd/system/fds-p2-vpn-forward.service; do sudo -n test -e "$p"; echo "exists_rc=$? $p"; done
+systemctl is-active fds-p2-vpn-forward.service; echo unit_active_rc=$?
+systemctl is-enabled fds-p2-vpn-forward.service; echo unit_enabled_rc=$?
+sudo -n nft list tables; echo nft_rc=$?
+systemctl is-active ipsec; echo ipsec_active_rc=$?
+sudo -n ipsec status; echo ipsec_status_rc=$?
+2026-10-15T01:10:50Z
+vpn-gw01
+server08
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.conf
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.secrets
+exists_rc=1 /root/fds-p2-vpn
+exists_rc=1 /etc/fds-p2-vpn
+exists_rc=1 /etc/systemd/system/fds-p2-vpn-forward.service
+inactive
+unit_active_rc=4
+not-found
+unit_enabled_rc=4
+table inet firewalld
+nft_rc=0
+active
+ipsec_active_rc=0
+using kernel interface: xfrm
+
+interface lo [::1]:UDP/4500 (NAT)
+interface lo [::1]:UDP/500
+interface lo 127.0.0.1:UDP/4500 (NAT)
+interface lo 127.0.0.1:UDP/500
+interface ens160 10.1.93.51:UDP/4500 (NAT)
+interface ens160 10.1.93.51:UDP/500
+
+fips mode=disabled;
+SElinux=enabled
+seccomp=disabled
+
+config setup options:
+
+configdir=/etc, configfile=/etc/ipsec.conf, secrets=/etc/ipsec.secrets, ipsecdir=/etc/ipsec.d
+nssdir=/var/lib/ipsec/nss, dumpdir=/run/pluto, statsbin=unset
+dnssec-enable=yes, dnssec-rootkey-file=/var/lib/unbound/root.key, dnssec-anchors=<unset>
+sbindir=/usr/sbin, libexecdir=/usr/libexec/ipsec
+pluto_version=5.4, pluto_vendorid=OE-Libreswan-5.4
+nhelpers=-1, uniqueids=yes, shuntlifetime=900s, expire-lifetime=30s
+logfile='<syslog>', logappend=yes, logip=yes, audit-log=yes
+ddos-cookies-threshold=25000, ddos-max-halfopen=50000, ddos-mode=auto, ikev1-policy=drop
+ikebuf=0, msg_errqueue=yes, crl-strict=no, crlcheckinterval=0, listen=<any>, nflog-all=0, dns-resolver=file,
+ocsp-enable=no, ocsp-strict=no, ocsp-timeout=2
+ocsp-uri=<unset>, ocsp-trust-name=<unset>
+ocsp-cache-size=1000, ocsp-cache-min-age=3600, ocsp-cache-max-age=86400, ocsp-method=get
+global-redirect=no, global-redirect-to=<unset>
+debug:
+
+nat-traversal: keep-alive=20, nat-ikeport=4500
+
+[... 알고리즘 목록 생략 ...]
+
+stats db_ops: {curr_cnt, total_cnt, maxsz} :context={0,0,0} trans={0,0,0} attrs={0,0,0}
+
+Connection list:
+
+Total IPsec connections: loaded 0, routed 0, active 0
+
+State Information: DDoS cookies not required, Accepting new IKE connections
+IKE SAs: total(0), half-open(0), open(0), authenticated(0), anonymous(0)
+IPsec SAs: total(0), authenticated(0), anonymous(0)
+
+Bare Shunt list:
+
+ipsec_status_rc=0
+[server08@vpn-gw01 p2vpn-precheck-20261012]$ sudo -n firewall-cmd --get-default-zone; echo dz_rc=$?
+sudo -n firewall-cmd --get-active-zones; echo az_rc=$?
+sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?
+sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?
+sysctl net.ipv4.ip_forward net.ipv4.conf.all.rp_filter; echo sysctl_rc=$?
+cat /etc/sysctl.d/99-fds-p2-vpn-gw.conf; echo gwconf_rc=$?
+public
+dz_rc=0
+public (default)
+  interfaces: ens160
+az_rc=0
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+rt_rc=0
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+perm_rc=0
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+sysctl_rc=0
+# FDS P2 vpn-gw01 gateway role
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.ens160.rp_filter = 0
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.ens160.accept_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.ens160.send_redirects = 0
+gwconf_rc=0

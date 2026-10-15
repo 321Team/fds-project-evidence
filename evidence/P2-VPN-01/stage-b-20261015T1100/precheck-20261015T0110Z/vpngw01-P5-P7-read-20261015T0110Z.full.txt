@@ -1,0 +1,183 @@
+[server08@vpn-gw01 p2vpn-precheck-20261012]$ date -u +%FT%TZ; hostname; id -un
+for p in /etc/ipsec.d/fds-p2-vpn.conf /etc/ipsec.d/fds-p2-vpn.secrets /root/fds-p2-vpn /etc/fds-p2-vpn /etc/systemd/system/fds-p2-vpn-forward.service; do sudo -n test -e "$p"; echo "exists_rc=$? $p"; done
+systemctl is-active fds-p2-vpn-forward.service; echo unit_active_rc=$?
+systemctl is-enabled fds-p2-vpn-forward.service; echo unit_enabled_rc=$?
+sudo -n nft list tables; echo nft_rc=$?
+systemctl is-active ipsec; echo ipsec_active_rc=$?
+sudo -n ipsec status; echo ipsec_status_rc=$?
+2026-10-15T01:10:50Z
+vpn-gw01
+server08
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.conf
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.secrets
+exists_rc=1 /root/fds-p2-vpn
+exists_rc=1 /etc/fds-p2-vpn
+exists_rc=1 /etc/systemd/system/fds-p2-vpn-forward.service
+inactive
+unit_active_rc=4
+not-found
+unit_enabled_rc=4
+table inet firewalld
+nft_rc=0
+active
+ipsec_active_rc=0
+using kernel interface: xfrm
+
+interface lo [::1]:UDP/4500 (NAT)
+interface lo [::1]:UDP/500
+interface lo 127.0.0.1:UDP/4500 (NAT)
+interface lo 127.0.0.1:UDP/500
+interface ens160 10.1.93.51:UDP/4500 (NAT)
+interface ens160 10.1.93.51:UDP/500
+
+fips mode=disabled;
+SElinux=enabled
+seccomp=disabled
+
+config setup options:
+
+configdir=/etc, configfile=/etc/ipsec.conf, secrets=/etc/ipsec.secrets, ipsecdir=/etc/ipsec.d
+nssdir=/var/lib/ipsec/nss, dumpdir=/run/pluto, statsbin=unset
+dnssec-enable=yes, dnssec-rootkey-file=/var/lib/unbound/root.key, dnssec-anchors=<unset>
+sbindir=/usr/sbin, libexecdir=/usr/libexec/ipsec
+pluto_version=5.4, pluto_vendorid=OE-Libreswan-5.4
+nhelpers=-1, uniqueids=yes, shuntlifetime=900s, expire-lifetime=30s
+logfile='<syslog>', logappend=yes, logip=yes, audit-log=yes
+ddos-cookies-threshold=25000, ddos-max-halfopen=50000, ddos-mode=auto, ikev1-policy=drop
+ikebuf=0, msg_errqueue=yes, crl-strict=no, crlcheckinterval=0, listen=<any>, nflog-all=0, dns-resolver=file,
+ocsp-enable=no, ocsp-strict=no, ocsp-timeout=2
+ocsp-uri=<unset>, ocsp-trust-name=<unset>
+ocsp-cache-size=1000, ocsp-cache-min-age=3600, ocsp-cache-max-age=86400, ocsp-method=get
+global-redirect=no, global-redirect-to=<unset>
+debug:
+
+nat-traversal: keep-alive=20, nat-ikeport=4500
+
+Kernel algorithms supported:
+
+algorithm ESP encrypt: name=3DES_CBC, keysizemin=192, keysizemax=192
+algorithm ESP encrypt: name=AES_CBC, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=AES_CCM_12, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=AES_CCM_16, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=AES_CCM_8, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=AES_CTR, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=AES_GCM_12, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=AES_GCM_16, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=AES_GCM_8, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=CAMELLIA_CBC, keysizemin=128, keysizemax=256
+algorithm ESP encrypt: name=CHACHA20_POLY1305, keysizemin=256, keysizemax=256
+algorithm ESP encrypt: name=NULL, keysizemin=0, keysizemax=0
+algorithm ESP encrypt: name=NULL_AUTH_AES_GMAC, keysizemin=128, keysizemax=256
+algorithm AH/ESP auth: name=AES_CMAC_96, key-length=128
+algorithm AH/ESP auth: name=AES_XCBC_96, key-length=128
+algorithm AH/ESP auth: name=HMAC_MD5_96, key-length=128
+algorithm AH/ESP auth: name=HMAC_SHA1_96, key-length=160
+algorithm AH/ESP auth: name=HMAC_SHA2_256_128, key-length=256
+algorithm AH/ESP auth: name=HMAC_SHA2_256_TRUNCBUG, key-length=256
+algorithm AH/ESP auth: name=HMAC_SHA2_384_192, key-length=384
+algorithm AH/ESP auth: name=HMAC_SHA2_512_256, key-length=512
+algorithm AH/ESP auth: name=NONE, key-length=0
+
+IKE algorithms supported:
+
+algorithm IKE encrypt: v1id=5, v1name=OAKLEY_3DES_CBC, v2id=3, v2name=3DES, blocksize=8, keydeflen=192
+algorithm IKE encrypt: v1id=8, v1name=OAKLEY_CAMELLIA_CBC, v2id=23, v2name=CAMELLIA_CBC, blocksize=16, keydeflen=128
+algorithm IKE encrypt: v1id=-1, v1name=n/a, v2id=20, v2name=AES_GCM_16, blocksize=16, keydeflen=128
+algorithm IKE encrypt: v1id=-1, v1name=n/a, v2id=19, v2name=AES_GCM_12, blocksize=16, keydeflen=128
+algorithm IKE encrypt: v1id=-1, v1name=n/a, v2id=18, v2name=AES_GCM_8, blocksize=16, keydeflen=128
+algorithm IKE encrypt: v1id=13, v1name=OAKLEY_AES_CTR, v2id=13, v2name=AES_CTR, blocksize=16, keydeflen=128
+algorithm IKE encrypt: v1id=7, v1name=OAKLEY_AES_CBC, v2id=12, v2name=AES_CBC, blocksize=16, keydeflen=128
+algorithm IKE encrypt: v1id=-1, v1name=n/a, v2id=28, v2name=CHACHA20_POLY1305, blocksize=16, keydeflen=256
+algorithm IKE PRF: name=HMAC_MD5, hashlen=16
+algorithm IKE PRF: name=HMAC_SHA1, hashlen=20
+algorithm IKE PRF: name=HMAC_SHA2_256, hashlen=32
+algorithm IKE PRF: name=HMAC_SHA2_384, hashlen=48
+algorithm IKE PRF: name=HMAC_SHA2_512, hashlen=64
+algorithm IKE PRF: name=AES_XCBC, hashlen=16
+algorithm IKE Key Exchange Method (DH): name=MODP1536, bits=1536
+algorithm IKE Key Exchange Method (DH): name=MODP2048, bits=2048
+algorithm IKE Key Exchange Method (DH): name=MODP3072, bits=3072
+algorithm IKE Key Exchange Method (DH): name=MODP4096, bits=4096
+algorithm IKE Key Exchange Method (DH): name=MODP6144, bits=6144
+algorithm IKE Key Exchange Method (DH): name=MODP8192, bits=8192
+algorithm IKE Key Exchange Method (DH): name=DH19, bits=512
+algorithm IKE Key Exchange Method (DH): name=DH20, bits=768
+algorithm IKE Key Exchange Method (DH): name=DH21, bits=1056
+algorithm IKE Key Exchange Method (DH): name=DH31, bits=256
+algorithm IKE Key Exchange Method (DH): name=ML_KEM_768, initiator-bytes=1184, responder-bytes=1088
+algorithm IKE Key Exchange Method (DH): name=ML_KEM_1024, initiator-bytes=1568, responder-bytes=1568
+
+stats db_ops: {curr_cnt, total_cnt, maxsz} :context={0,0,0} trans={0,0,0} attrs={0,0,0}
+
+Connection list:
+
+Total IPsec connections: loaded 0, routed 0, active 0
+
+State Information: DDoS cookies not required, Accepting new IKE connections
+IKE SAs: total(0), half-open(0), open(0), authenticated(0), anonymous(0)
+IPsec SAs: total(0), authenticated(0), anonymous(0)
+
+Bare Shunt list:
+
+ipsec_status_rc=0
+[server08@vpn-gw01 p2vpn-precheck-20261012]$ sudo -n firewall-cmd --get-default-zone; echo dz_rc=$?
+sudo -n firewall-cmd --get-active-zones; echo az_rc=$?
+sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?
+sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?
+sysctl net.ipv4.ip_forward net.ipv4.conf.all.rp_filter; echo sysctl_rc=$?
+cat /etc/sysctl.d/99-fds-p2-vpn-gw.conf; echo gwconf_rc=$?
+public
+dz_rc=0
+public (default)
+  interfaces: ens160
+az_rc=0
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+rt_rc=0
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+perm_rc=0
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+sysctl_rc=0
+# FDS P2 vpn-gw01 gateway role
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.ens160.rp_filter = 0
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.ens160.accept_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.ens160.send_redirects = 0
+gwconf_rc=0
+[server08@vpn-gw01 p2vpn-precheck-20261012]$
