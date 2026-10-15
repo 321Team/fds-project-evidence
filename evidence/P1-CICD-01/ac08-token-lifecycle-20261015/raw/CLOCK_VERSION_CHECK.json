@@ -1,0 +1,43 @@
+{
+  "ansible": {
+    "host": "ansible01",
+    "user": "server01_ansible",
+    "at_utc": "2026-10-15T00:31:22.854661+00:00",
+    "monotonic": 310348.191926529,
+    "mutation": false,
+    "ntp_synchronized": {
+      "rc": 0,
+      "value": "yes"
+    },
+    "within_local_receipt_bounds_plus_3s": true
+  },
+  "cp1": {
+    "host": "k8s-control01",
+    "user": "server02",
+    "at_utc": "2026-10-15T00:31:21.632833+00:00",
+    "monotonic": 310436.778601419,
+    "mutation": false,
+    "ntp_synchronized": {
+      "rc": 0,
+      "value": "yes"
+    },
+    "api_version": {
+      "rc": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitVersion": "v1.36.4"
+    },
+    "within_local_receipt_bounds_plus_3s": true
+  },
+  "runner": {
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "at_utc": "2026-10-15T00:31:22.581672+00:00",
+    "monotonic": 310344.037327939,
+    "mutation": false,
+    "ntp_synchronized": {
+      "rc": 0,
+      "value": "yes"
+    },
+    "within_local_receipt_bounds_plus_3s": true
+  }
+}
