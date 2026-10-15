@@ -1,0 +1,19 @@
+{
+  "started_at_utc": "2026-10-15T00:29:40.611421+00:00",
+  "finished_at_utc": "2026-10-15T00:29:40.801755+00:00",
+  "argv": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "fds-ansible01",
+    "chmod 600 /home/server01_ansible/FDS_AC08_20261015.qMpx0DjY/transfer_native_probe.py /home/server01_ansible/FDS_AC08_20261015.qMpx0DjY/lifecycle-source.json && sha256sum /home/server01_ansible/FDS_AC08_20261015.qMpx0DjY/transfer_native_probe.py /home/server01_ansible/FDS_AC08_20261015.qMpx0DjY/lifecycle-source.json"
+  ],
+  "rc": 0,
+  "stdout_sha256": "50b3bd9055fbf43759af59475905e160f20f7b2d2aba0a678cff4d11c779e742",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
