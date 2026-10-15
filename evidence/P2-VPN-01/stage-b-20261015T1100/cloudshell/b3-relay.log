@@ -1,0 +1,638 @@
+Script started on 2026-10-15 02:14:52+00:00 [TERM="screen-256color" TTY="/dev/pts/2" COLUMNS="279" LINES="19"]
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws ssm start-session --profile netop --region ap-northeast-2 --target i-05e4b63d31d8d5ac5
+[?2004l
+Starting session with SessionId: 321team-jaehwan-qgxh9k9e6t7y52utz5cux3slv8
+[?2004hsh-5.1$ [Ksh-5.1$ bash
+[?2004l]0;@ip-10-20-110-10:/usr/bin[?2004h[ssm-user@ip-10-20-110-10 bin]$ cd /home/ssm-user/p2vpn-stageb-20261015T1100 && date -u +%FT%TZ
+[?2004l2026-10-15T02:15:08Z
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n firewall-cmd --get-zone-of-interface=eth0; echo zone_rc=$?; sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?; sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?
+[?2004lpublic
+zone_rc=0
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+rt_rc=0
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+perm_rc=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n nft list table inet fds_p2_vpn; echo nft_rc=$?; sysctl net.ipv4.ip_forward; systemctl is-active fds-p2-vpn-forward.service ipsec; sudo -n ipsec status | grep -E '"fds-p2-vpn"|Total IPsec'; echo ipsec_rc=${PIPESTATUS[0]}
+[?2004lError: No such file or directory
+list table inet fds_p2_vpn
+                ^^^^^^^^^^
+nft_rc=1
+net.ipv4.ip_forward = 0
+inactive
+inactive
+whack: Pluto is not running (no "/run/pluto/pluto.ctl")
+ipsec_rc=33
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh relay apply 20261015T1100; echo APPLY_RC=$?
+[?2004lrendered role=relay libreswan=4 harbor=off eip=n/a -> /root/fds-p2-vpn/20261015T1100/staged
+== backup (실패하면 호스트를 바꾸기 전에 멈춘다)
+backup /etc/sysctl.d/90-fds-relay-bootstrap.conf
+zone=public
+ip_forward_runtime=0
+zone_forward=yes
+port_500=no
+port_4500=no
+ipsec_active=inactive
+ipsec_enabled=disabled
+== persistent ip_forward=0 (fail-closed; 유닛이 허용표 적재 뒤에만 켠다)
+== firewalld (permanent만 바꾸고, 바꾼 것이 있을 때만 reload)
+firewalld_changed=yes
+== install
+== ipsec
+002 forgetting secrets
+002 loading secrets from "/etc/ipsec.secrets"
+002 loading secrets from "/etc/ipsec.d/fds-p2-vpn.secrets"
+002 "fds-p2-vpn": added IKEv2 connection
+946cba4c6cd40d0fbd36e393d187c69c0eef2919bbd2c70bd2145a232c386529  /etc/ipsec.d/fds-p2-vpn.conf
+d8c1f567216337d27f27fbd5309132ca3b6cd4647594e257c0036096bc8e5785  /etc/fds-p2-vpn/forward.nft
+f402613878a04d66078ab8636323f28217cd238621aa1440a2d707f3cf325815  /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: present owner=root:root mode=600 size>0=yes
+APPLY_OK role=relay run=20261015T1100 state=/root/fds-p2-vpn/20261015T1100
+APPLY_RC=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n firewall-cmd --get-zone-of-interface=eth0; echo zone_rc=$?; sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?; sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?
+[?2004lpublic
+zone_rc=0
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 500/udp 4500/udp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+rt_rc=0
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 500/udp 4500/udp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+perm_rc=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n nft list table inet fds_p2_vpn; echo nft_rc=$?; sysctl net.ipv4.ip_forward; systemctl is-active fds-p2-vpn-forward.service ipsec; sudo -n ipsec status | grep -E '"fds-p2-vpn"|Total IPsec'; echo ipsec_rc=${PIPESTATUS[0]}
+[?2004ltable inet fds_p2_vpn {
+	chain forward {
+		type filter hook forward priority filter + 10; policy drop;
+		ip saddr 10.20.0.0/16 ip daddr 10.1.93.0/24 jump to_onprem
+		ip saddr 10.1.93.0/24 ip daddr 10.20.0.0/16 jump from_onprem
+		counter packets 0 bytes 0 comment "그 밖의 포워딩은 policy drop"
+	}
+
+	chain to_onprem {
+		rt ipsec missing counter packets 0 bytes 0 drop comment "SA 없음 - 평문 우회 차단"
+		ct state established,related accept
+		ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+		counter packets 0 bytes 0 drop comment "승인 밖 목적지·포트"
+	}
+
+	chain from_onprem {
+		meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷"
+		ct state established,related accept
+		counter packets 0 bytes 0 drop comment "On-Prem 개시 새 연결"
+	}
+}
+nft_rc=0
+net.ipv4.ip_forward = 1
+active
+active
+000 [01;31m[K"fds-p2-vpn"[m[K: 10.20.0.0/16===10.20.110.10[@fds-aws-relay01]---10.20.110.1...%any[@fds-vpn-gw01]===10.1.93.0/24; unrouted; eroute owner: #0
+000 [01;31m[K"fds-p2-vpn"[m[K:     oriented; my_ip=unset; their_ip=unset; my_updown=ipsec _updown;
+000 [01;31m[K"fds-p2-vpn"[m[K:   xauth us:none, xauth them:none,  my_username=[any]; their_username=[any]
+000 [01;31m[K"fds-p2-vpn"[m[K:   our auth:secret, their auth:secret, our autheap:none, their autheap:none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   modecfg info: us:none, them:none, modecfg policy:push, dns:unset, domains:unset, cat:unset;
+000 [01;31m[K"fds-p2-vpn"[m[K:   sec_label:unset;
+000 [01;31m[K"fds-p2-vpn"[m[K:   ike_life: 28800s; ipsec_life: 3600s; ipsec_max_bytes: 2^63B; ipsec_max_packets: 2^63; replay_window: 128; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0;
+000 [01;31m[K"fds-p2-vpn"[m[K:   retransmit-interval: 500ms; retransmit-timeout: 120s; iketcp:no; iketcp-port:4500;
+000 [01;31m[K"fds-p2-vpn"[m[K:   initial-contact:no; cisco-unity:no; fake-strongswan:no; send-vendorid:no; send-no-esp-tfc:no;
+000 [01;31m[K"fds-p2-vpn"[m[K:   policy: IKEv2+PSK+ENCRYPT+TUNNEL+PFS+IKE_FRAG_ALLOW+ESN_NO+ESN_YES;
+000 [01;31m[K"fds-p2-vpn"[m[K:   v2-auth-hash-policy: none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   conn_prio: 16,24; interface: eth0; metric: 0; mtu: unset; sa_prio:auto; sa_tfc:none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   nflog-group: unset; mark: unset; vti-iface:unset; vti-routing:no; vti-shared:no; nic-offload:auto;
+000 [01;31m[K"fds-p2-vpn"[m[K:   our idtype: ID_FQDN; our id=@fds-aws-relay01; their idtype: ID_FQDN; their id=@fds-vpn-gw01
+000 [01;31m[K"fds-p2-vpn"[m[K:   liveness: active; dpdaction:hold; dpddelay:30s; retransmit-timeout:120s
+000 [01;31m[K"fds-p2-vpn"[m[K:   nat-traversal: encaps:auto; keepalive:20s
+000 [01;31m[K"fds-p2-vpn"[m[K:   newest IKE SA: #0; newest IPsec SA: #0; conn serial: $2;
+000 [01;31m[K"fds-p2-vpn"[m[K:   IKE algorithms: AES_CBC_256-HMAC_SHA2_256-MODP2048
+000 [01;31m[K"fds-p2-vpn"[m[K:   ESP algorithms: AES_CBC_256-HMAC_SHA2_256_128-MODP2048
+000 [01;31m[KTotal IPsec[m[K connections: loaded 1, active 0
+ipsec_rc=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR RELAY_EIP=3.36.239.132 bash /home/server08/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh vpn-gw01 apply 20261015T1100; echo APPLY_RC=$?
+[?2004lbash: /home/server08/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh: No such file or directory
+APPLY_RC=127
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n firewall-cmd --get-zone-of-interface=ens160; sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?; sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?; sudo -n grep firewalld_changed /root/fds-p2-vpn/20261015T1100/state.env
+[?2004l[91mno zone[00m
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 500/udp 4500/udp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+rt_rc=0
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 500/udp 4500/udp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+perm_rc=0
+firewalld_changed=yes
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n nft list table inet fds_p2_vpn; echo nft_rc=$?; sysctl net.ipv4.ip_forward; cat /etc/sysctl.d/99-fds-p2-vpn-gw.conf | head -3; systemctl is-active fds-p2-vpn-forward.service ipsec; sudo -n ipsec status | grep -E '"fds-p2-vpn"|Total IPsec'; echo ipsec_rc=${PIPESTATUS[0]}
+[?2004ltable inet fds_p2_vpn {
+	chain forward {
+		type filter hook forward priority filter + 10; policy drop;
+		ip saddr 10.20.0.0/16 ip daddr 10.1.93.0/24 jump to_onprem
+		ip saddr 10.1.93.0/24 ip daddr 10.20.0.0/16 jump from_onprem
+		counter packets 0 bytes 0 comment "그 밖의 포워딩은 policy drop"
+	}
+
+	chain to_onprem {
+		rt ipsec missing counter packets 0 bytes 0 drop comment "SA 없음 - 평문 우회 차단"
+		ct state established,related accept
+		ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+		counter packets 0 bytes 0 drop comment "승인 밖 목적지·포트"
+	}
+
+	chain from_onprem {
+		meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷"
+		ct state established,related accept
+		counter packets 0 bytes 0 drop comment "On-Prem 개시 새 연결"
+	}
+}
+nft_rc=0
+net.ipv4.ip_forward = 1
+cat: /etc/sysctl.d/99-fds-p2-vpn-gw.conf: No such file or directory
+active
+active
+000 [01;31m[K"fds-p2-vpn"[m[K: 10.20.0.0/16===10.20.110.10[@fds-aws-relay01]---10.20.110.1...%any[@fds-vpn-gw01]===10.1.93.0/24; unrouted; eroute owner: #0
+000 [01;31m[K"fds-p2-vpn"[m[K:     oriented; my_ip=unset; their_ip=unset; my_updown=ipsec _updown;
+000 [01;31m[K"fds-p2-vpn"[m[K:   xauth us:none, xauth them:none,  my_username=[any]; their_username=[any]
+000 [01;31m[K"fds-p2-vpn"[m[K:   our auth:secret, their auth:secret, our autheap:none, their autheap:none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   modecfg info: us:none, them:none, modecfg policy:push, dns:unset, domains:unset, cat:unset;
+000 [01;31m[K"fds-p2-vpn"[m[K:   sec_label:unset;
+000 [01;31m[K"fds-p2-vpn"[m[K:   ike_life: 28800s; ipsec_life: 3600s; ipsec_max_bytes: 2^63B; ipsec_max_packets: 2^63; replay_window: 128; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0;
+000 [01;31m[K"fds-p2-vpn"[m[K:   retransmit-interval: 500ms; retransmit-timeout: 120s; iketcp:no; iketcp-port:4500;
+000 [01;31m[K"fds-p2-vpn"[m[K:   initial-contact:no; cisco-unity:no; fake-strongswan:no; send-vendorid:no; send-no-esp-tfc:no;
+000 [01;31m[K"fds-p2-vpn"[m[K:   policy: IKEv2+PSK+ENCRYPT+TUNNEL+PFS+IKE_FRAG_ALLOW+ESN_NO+ESN_YES;
+000 [01;31m[K"fds-p2-vpn"[m[K:   v2-auth-hash-policy: none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   conn_prio: 16,24; interface: eth0; metric: 0; mtu: unset; sa_prio:auto; sa_tfc:none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   nflog-group: unset; mark: unset; vti-iface:unset; vti-routing:no; vti-shared:no; nic-offload:auto;
+000 [01;31m[K"fds-p2-vpn"[m[K:   our idtype: ID_FQDN; our id=@fds-aws-relay01; their idtype: ID_FQDN; their id=@fds-vpn-gw01
+000 [01;31m[K"fds-p2-vpn"[m[K:   liveness: active; dpdaction:hold; dpddelay:30s; retransmit-timeout:120s
+000 [01;31m[K"fds-p2-vpn"[m[K:   nat-traversal: encaps:auto; keepalive:20s
+000 [01;31m[K"fds-p2-vpn"[m[K:   newest IKE SA: #0; newest IPsec SA: #0; conn serial: $2;
+000 [01;31m[K"fds-p2-vpn"[m[K:   IKE algorithms: AES_CBC_256-HMAC_SHA2_256-MODP2048
+000 [01;31m[K"fds-p2-vpn"[m[K:   ESP algorithms: AES_CBC_256-HMAC_SHA2_256_128-MODP2048
+000 [01;31m[KTotal IPsec[m[K connections: loaded 1, active 0
+ipsec_rc=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ [ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n nft list table inet fds_p2_vpn; echo nft_rc=$?; sysctl net.ipv4.ip_forward; cat /etc/sysctl.d/99-fds-p2-vpn-gw.conf | head -3; systemctl is-active fds-p2-vpn-forward.service ipsec; sudo -n ipsec status | grep -E '"fds-p2-vpn"|Total IPsec'; echo ipsec_rc=${PIPESTATUS[0]}
+[?2004lbash: [ssm-user@ip-10-20-110-10: command not found
+nset, cat:unset;
+000 "fds-p2-vpn":   sec_label:unset;
+000 "fds-p2-vpn":   ike_life: 28800s; ipsec_life: 3600s; ipsec_max_bytes: 2^63B; ipsec_max_packets: 2^63; replay_window: 128; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0;
+000 "fds-p2-vpn":   retransmit-interval: 500ms; retransmit-timeout: 120s; iketcp:no; iketcp-port:4500;
+000 "fds-p2-vpn":   initial-contact:no; cisco-unity:no; fake-strongswan:no; send-vendorid:no; send-no-esp-tfc:no;
+000 "fds-p2-vpn":   policy: IKEv2+PSK+ENCRYPT+TUNNEL+PFS+IKE_FRAG_ALLOW+ESN_NO+ESN_YES;
+000 "fds-p2-vpn":   v2-auth-hash-policy: none;
+000 "fds-p2-vpn":   conn_prio: 16,24; interface: eth0; metric: 0; mtu: unset; sa_prio:auto; sa_tfc:none;
+000 "fds-p2-vpn":   nflog-group: unset; mark: unset; vti-iface:unset; vti-routing:no; vti-shared:no; nic-offload:auto;
+000 "fds-p2-vpn":   our idtype: ID_FQDN; our id=@fds-aws-relay01; their idtype: ID_FQDN; their id=@fds-vpn-gw01
+000 "fds-p2-vpn":   liveness: active; dpdaction:hold; dpddelay:30s; retransmit-timeout:120s
+000 "fds-pnft_rc=127
+2-vpn":   nat-traversal: encaps:auto; keepalive:20s
+000 "fds-p2-vpn":   newest IKE SA: #0; newest IPsec SA: #0; conn serial: $2;
+000 "fds-p2-vpn":   IKE algorithms: AES_CBC_256-HMAC_SHA2_256-MODP2048
+000 "fds-p2-vpn":   ESP algorithms: AES_CBC_256-HMAC_SHA2_256_128-MODP2048
+000 Total IPsec connections: loaded 1, active 0
+ipsec_rc=0
+[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ net.ipv4.ip_forward = 1
+cat: /etc/sysctl.d/99-fds-p2-vpn-gw.conf: No such file or directory
+active
+active
+000 [01;31m[K"fds-p2-vpn"[m[K: 10.20.0.0/16===10.20.110.10[@fds-aws-relay01]---10.20.110.1...%any[@fds-vpn-gw01]===10.1.93.0/24; unrouted; eroute owner: #0
+000 [01;31m[K"fds-p2-vpn"[m[K:     oriented; my_ip=unset; their_ip=unset; my_updown=ipsec _updown;
+000 [01;31m[K"fds-p2-vpn"[m[K:   xauth us:none, xauth them:none,  my_username=[any]; their_username=[any]
+000 [01;31m[K"fds-p2-vpn"[m[K:   our auth:secret, their auth:secret, our autheap:none, their autheap:none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   modecfg info: us:none, them:none, modecfg policy:push, dns:unset, domains:unset, cat:unset;
+000 [01;31m[K"fds-p2-vpn"[m[K:   sec_label:unset;
+000 [01;31m[K"fds-p2-vpn"[m[K:   ike_life: 28800s; ipsec_life: 3600s; ipsec_max_bytes: 2^63B; ipsec_max_packets: 2^63; replay_window: 128; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0;
+000 [01;31m[K"fds-p2-vpn"[m[K:   retransmit-interval: 500ms; retransmit-timeout: 120s; iketcp:no; iketcp-port:4500;
+000 [01;31m[K"fds-p2-vpn"[m[K:   initial-contact:no; cisco-unity:no; fake-strongswan:no; send-vendorid:no; send-no-esp-tfc:no;
+000 [01;31m[K"fds-p2-vpn"[m[K:   policy: IKEv2+PSK+ENCRYPT+TUNNEL+PFS+IKE_FRAG_ALLOW+ESN_NO+ESN_YES;
+000 [01;31m[K"fds-p2-vpn"[m[K:   v2-auth-hash-policy: none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   conn_prio: 16,24; interface: eth0; metric: 0; mtu: unset; sa_prio:auto; sa_tfc:none;
+000 [01;31m[K"fds-p2-vpn"[m[K:   nflog-group: unset; mark: unset; vti-iface:unset; vti-routing:no; vti-shared:no; nic-offload:auto;
+000 [01;31m[K"fds-p2-vpn"[m[K:   our idtype: ID_FQDN; our id=@fds-aws-relay01; their idtype: ID_FQDN; their id=@fds-vpn-gw01
+000 [01;31m[K"fds-p2-vpn"[m[K:   liveness: active; dpdaction:hold; dpddelay:30s; retransmit-timeout:120s
+000 [01;31m[K"fds-p2-vpn"[m[K:   nat-traversal: encaps:auto; keepalive:20s
+000 [01;31m[K"fds-p2-vpn"[m[K:   newest IKE SA: #0; newest IPsec SA: #0; conn serial: $2;
+000 [01;31m[K"fds-p2-vpn"[m[K:   IKE algorithms: AES_CBC_256-HMAC_SHA2_256-MODP2048
+000 [01;31m[K"fds-p2-vpn"[m[K:   ESP algorithms: AES_CBC_256-HMAC_SHA2_256_128-MODP2048
+000 [01;31m[KTotal IPsec[m[K connections: loaded 1, active 0
+ipsec_rc=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ table inet fds_p2_vpn {
+[?2004lbash: table: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$         chain forward {
+[?2004lbash: chain: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 type filter hook forward priority filter + 10; policy drop;
+[?2004lbash: type: filter: not found
+bash: type: hook: not found
+bash: type: forward: not found
+bash: type: priority: not found
+bash: type: filter: not found
+bash: type: +: not found
+bash: type: 10: not found
+bash: policy: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 ip saddr 10.20.0.0/16 ip daddr 10.1.93.0/24 jump to_onprem
+[?2004lObject "saddr" is unknown, try "ip help".
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 ip saddr 10.1.93.0/24 ip daddr 10.20.0.0/16 jump from_onprem
+[?2004lObject "saddr" is unknown, try "ip help".
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 counter packets 0 bytes 0 comment "그 밖의 포워딩은 policy drop"
+[?2004lbash: counter: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$         }
+[?2004lbash: syntax error near unexpected token `}'
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 
+[?2004l]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$         chain to_onprem {
+[?2004lbash: chain: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 rt ipsec missing counter packets 0 bytes 0 drop comment "SA 없음 - 평문 우회 차단"
+[?2004lbash: rt: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 ct state established,related accept
+[?2004lbash: ct: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+[?2004lObject "saddr" is unknown, try "ip help".
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 counter packets 0 bytes 0 drop comment "승인 밖 목적지·포트"
+[?2004lbash: counter: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$         }
+[?2004lbash: syntax error near unexpected token `}'
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 
+[?2004l]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$         chain from_onprem {
+[?2004lbash: chain: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷"
+[?2004lbash: meta: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 ct state established,related accept
+[?2004lbash: ct: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$                 counter packets 0 bytes 0 drop comment "On-Prem 개시 새 연결"
+[?2004lbash: counter: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$         }
+[?2004lbash: syntax error near unexpected token `}'
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ }
+[?2004lbash: syntax error near unexpected token `}'
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ nft_rc=0
+[?2004l]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ net.ipv4.ip_forward = 1
+[?2004lbash: net.ipv4.ip_forward: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ cat: /etc/sysctl.d/99-fds-p2-vpn-gw.conf: No such file or directory
+[?2004lbash: cat:: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ active
+[?2004lbash: active: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ active
+[?2004lbash: active: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn": 10.20.0.0/16===10.20.110.10[@fds-aws-relay01]---10.20.110.1...%any[@fds-vpn-gw01]===10.1.93.0/24; unrouted; eroute owner: #0
+[?2004lbash: 000: command not found
+bash: unrouted: command not found
+bash: eroute: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":     oriented; my_ip=unset; their_ip=unset; my_updown=ipsec _updown;
+[?2004lbash: 000: command not found
+bash: _updown: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   xauth us:none, xauth them:none,  my_username=[any]; their_username=[any]
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   our auth:secret, their auth:secret, our autheap:none, their autheap:none;
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   modecfg info: us:none, them:none, modecfg policy:push, dns:unset, domains:unset, cat:unset;
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   sec_label:unset;
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   ike_life: 28800s; ipsec_life: 3600s; ipsec_max_bytes: 2^63B; ipsec_max_packets: 2^63; replay_window: 128; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0;
+[?2004lbash: 000: command not found
+bash: ipsec_life:: command not found
+bash: ipsec_max_bytes:: command not found
+bash: ipsec_max_packets:: command not found
+bash: replay_window:: command not found
+bash: rekey_margin:: command not found
+bash: rekey_fuzz:: command not found
+bash: keyingtries:: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   retransmit-interval: 500ms; retransmit-timeout: 120s; iketcp:no; iketcp-port:4500;
+[?2004lbash: 000: command not found
+bash: retransmit-timeout:: command not found
+bash: iketcp:no: command not found
+bash: iketcp-port:4500: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   initial-contact:no; cisco-unity:no; fake-strongswan:no; send-vendorid:no; send-no-esp-tfc:no;
+[?2004lbash: 000: command not found
+bash: cisco-unity:no: command not found
+bash: fake-strongswan:no: command not found
+bash: send-vendorid:no: command not found
+bash: send-no-esp-tfc:no: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   policy: IKEv2+PSK+ENCRYPT+TUNNEL+PFS+IKE_FRAG_ALLOW+ESN_NO+ESN_YES;
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   v2-auth-hash-policy: none;
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   conn_prio: 16,24; interface: eth0; metric: 0; mtu: unset; sa_prio:auto; sa_tfc:none;
+[?2004lbash: 000: command not found
+bash: interface:: command not found
+bash: metric:: command not found
+bash: mtu:: command not found
+bash: sa_prio:auto: command not found
+bash: sa_tfc:none: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   nflog-group: unset; mark: unset; vti-iface:unset; vti-routing:no; vti-shared:no; nic-offload:auto;
+[?2004lbash: 000: command not found
+bash: mark:: command not found
+bash: vti-iface:unset: command not found
+bash: vti-routing:no: command not found
+bash: vti-shared:no: command not found
+bash: nic-offload:auto: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   our idtype: ID_FQDN; our id=@fds-aws-relay01; their idtype: ID_FQDN; their id=@fds-vpn-gw01
+[?2004lbash: 000: command not found
+bash: our: command not found
+bash: their: command not found
+bash: their: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   liveness: active; dpdaction:hold; dpddelay:30s; retransmit-timeout:120s
+[?2004lbash: 000: command not found
+bash: dpdaction:hold: command not found
+bash: dpddelay:30s: command not found
+bash: retransmit-timeout:120s: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   nat-traversal: encaps:auto; keepalive:20s
+[?2004lbash: 000: command not found
+bash: keepalive:20s: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   newest IKE SA: #0; newest IPsec SA: #0; conn serial: $2;
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   IKE algorithms: AES_CBC_256-HMAC_SHA2_256-MODP2048
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 "fds-p2-vpn":   ESP algorithms: AES_CBC_256-HMAC_SHA2_256_128-MODP2048
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 000 Total IPsec connections: loaded 1, active 0
+[?2004lbash: 000: command not found
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ ipsec_rc=0
+[?2004l]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ [ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ ^C[?2004l[?2004h[?2004l
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ [K[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 
+[?2004l]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ 
+[?2004l]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh relay status; echo STATUS_RC=$?
+[?2004l006 #2: "fds-p2-vpn"[1] 121.160.42.93, type=ESP, add_time=1792030877, inBytes=0, outBytes=0, maxBytes=2^63B, id='@fds-vpn-gw01'
+000 #1: "fds-p2-vpn"[1] 121.160.42.93:64916 STATE_V2_ESTABLISHED_IKE_SA (established IKE SA); REKEY in 28510s; REPLACE in 28780s; newest; idle;
+000 #2: "fds-p2-vpn"[1] 121.160.42.93:64916 STATE_V2_ESTABLISHED_CHILD_SA (established Child SA); LIVENESS in 10s; REKEY in 3310s; REPLACE in 3580s; newest; eroute owner; IKE SA #1; idle;
+000 #2: "fds-p2-vpn"[1] 121.160.42.93 esp.4efdbd9a@121.160.42.93 esp.a7fb0491@10.20.110.10 tun.0@121.160.42.93 tun.0@10.20.110.10 Traffic: ESPin=0B ESPout=0B ESPmax=2^63B 
+== xfrm policy
+src 10.20.0.0/16 dst 10.1.93.0/24 
+	dir out priority 1761488 ptype main 
+	tmpl src 10.20.110.10 dst 121.160.42.93
+src 10.1.93.0/24 dst 10.20.0.0/16 
+	dir fwd priority 1761488 ptype main 
+	tmpl src 121.160.42.93 dst 10.20.110.10
+src 10.1.93.0/24 dst 10.20.0.0/16 
+	dir in priority 1761488 ptype main 
+	tmpl src 121.160.42.93 dst 10.20.110.10
+src ::/0 dst ::/0 
+src ::/0 dst ::/0 
+src ::/0 dst ::/0 
+src ::/0 dst ::/0 
+src 0.0.0.0/0 dst 0.0.0.0/0 
+src 0.0.0.0/0 dst 0.0.0.0/0 
+src 0.0.0.0/0 dst 0.0.0.0/0 
+src 0.0.0.0/0 dst 0.0.0.0/0 
+src 0.0.0.0/0 dst 0.0.0.0/0 
+src 0.0.0.0/0 dst 0.0.0.0/0 
+src 0.0.0.0/0 dst 0.0.0.0/0 
+src 0.0.0.0/0 dst 0.0.0.0/0 
+src ::/0 dst ::/0 proto ipv6-icmp type 135 
+	dir out priority 1 ptype main 
+src ::/0 dst ::/0 proto ipv6-icmp type 135 
+	dir fwd priority 1 ptype main 
+src ::/0 dst ::/0 proto ipv6-icmp type 135 
+	dir in priority 1 ptype main 
+src ::/0 dst ::/0 proto ipv6-icmp type 136 
+	dir out priority 1 ptype main 
+src ::/0 dst ::/0 proto ipv6-icmp type 136 
+	dir fwd priority 1 ptype main 
+src ::/0 dst ::/0 proto ipv6-icmp type 136 
+	dir in priority 1 ptype main 
+== xfrm state (키 가림)
+src 121.160.42.93 dst 10.20.110.10
+	proto esp spi <redacted> reqid 16397 mode tunnel
+	replay-window 0 flag af-unspec esn
+	encap type espinudp sport 64916 dport 4500 addr 0.0.0.0
+	anti-replay esn context:
+	 replay_window 128, bitmap-length 4
+src 10.20.110.10 dst 121.160.42.93
+	proto esp spi <redacted> reqid 16397 mode tunnel
+	replay-window 0 flag af-unspec esn
+	encap type espinudp sport 4500 dport 64916 addr 0.0.0.0
+	anti-replay esn context:
+	 replay_window 128, bitmap-length 4
+== forward table
+table inet fds_p2_vpn {
+	chain forward {
+		type filter hook forward priority filter + 10; policy drop;
+		ip saddr 10.20.0.0/16 ip daddr 10.1.93.0/24 jump to_onprem
+		ip saddr 10.1.93.0/24 ip daddr 10.20.0.0/16 jump from_onprem
+		counter packets 0 bytes 0 comment "그 밖의 포워딩은 policy drop"
+	}
+
+	chain to_onprem {
+		rt ipsec missing counter packets 0 bytes 0 drop comment "SA 없음 - 평문 우회 차단"
+		ct state established,related accept
+		ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+		counter packets 0 bytes 0 drop comment "승인 밖 목적지·포트"
+	}
+
+	chain from_onprem {
+		meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷"
+		ct state established,related accept
+		counter packets 0 bytes 0 drop comment "On-Prem 개시 새 연결"
+	}
+}
+ip_forward=1 unit=active
+STATUS_RC=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ bash /home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh relay probe 10.1.93.51 22 5
+[?2004lprobe 10.1.93.51:22 t=5s rc=0 verdict=CONNECTED
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ bash /home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh relay probe 10.1.93.55 5432 5
+[?2004lprobe 10.1.93.55:5432 t=5s rc=124 verdict=TIMEOUT
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ bash /home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh relay probe 10.1.93.55 22 5
+[?2004lprobe 10.1.93.55:22 t=5s rc=124 verdict=TIMEOUT
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n systemctl stop fds-p2-vpn-forward.service; echo stop_rc=$?; sysctl net.ipv4.ip_forward; sudo -n nft list tables; echo nft_rc=$?; systemctl is-active fds-p2-vpn-forward.service
+[?2004lstop_rc=0
+net.ipv4.ip_forward = 0
+table inet firewalld
+nft_rc=0
+inactive
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n systemctl start fds-p2-vpn-forward.service; echo start_rc=$?; sysctl net.ipv4.ip_forward; sudo -n nft list tables; echo nft_rc=$?; systemctl is-active fds-p2-vpn-forward.service
+[?2004lstart_rc=0
+net.ipv4.ip_forward = 1
+table inet firewalld
+table inet fds_p2_vpn
+nft_rc=0
+active
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh relay rollback 20261015T1100; echo ROLLBACK_RC=$?
+[?2004l== ip_forward=0 확인
+conn: 삭제·부재 확인
+유닛: inactive/disabled 확인
+허용표: 부재 확인
+ROLLBACK_DONE role=relay run=20261015T1100
+== identity / versions
+ip-10-20-110-10
+lo 127.0.0.1/8
+eth0 10.20.110.10/24
+libreswan-4.15-10.el9.x86_64
+nftables-1.0.9-9.el9.x86_64
+firewalld-1.3.4-21.el9.noarch
+5.14.0-687.el9.x86_64
+libreswan_major=4
+== sysctl
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.rp_filter = 0
+/etc/sysctl.d/90-fds-relay-bootstrap.conf:net.ipv4.ip_forward = 0
+== firewalld
+default_zone=public forward=yes
+ports: 
+== installed files (sha256)
+absent /etc/ipsec.d/fds-p2-vpn.conf
+absent /etc/fds-p2-vpn/forward.nft
+absent /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: absent
+== unit / table
+unit=inactive enabled=
+nft table: absent
+== ipsec
+ipsec.service=inactive enabled=disabled
+trafficstatus: fds-p2-vpn 없음
+ROLLBACK_RC=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ for p in /etc/ipsec.d/fds-p2-vpn.conf /etc/ipsec.d/fds-p2-vpn.secrets /etc/fds-p2-vpn /etc/systemd/system/fds-p2-vpn-forward.service /root/fds-p2-vpn/psk-receipts/OWNER /root/fds-p2-vpn/ACTIVE_RUN; do sudo -n test -e "$p"; echo "exists_rc=$? $p"; done; sudo -n cat /root/fds-p2-vpn/psk-receipts/20261015T1100; sudo -n cat /root/fds-p2-vpn/20261015T1100/state.env
+[?2004lexists_rc=1 /etc/ipsec.d/fds-p2-vpn.conf
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.secrets
+exists_rc=1 /etc/fds-p2-vpn
+exists_rc=1 /etc/systemd/system/fds-p2-vpn-forward.service
+exists_rc=1 /root/fds-p2-vpn/psk-receipts/OWNER
+exists_rc=1 /root/fds-p2-vpn/ACTIVE_RUN
+run=20261015T1100
+role=relay
+path=/etc/ipsec.d/fds-p2-vpn.secrets
+started_at=2026-10-15T02:13:13Z
+written_at=2026-10-15T02:13:13Z
+cleaned_at=2026-10-15T02:26:40Z by=rollback
+zone=public
+ip_forward_runtime=0
+zone_forward=yes
+port_500=no
+port_4500=no
+ipsec_active=inactive
+ipsec_enabled=disabled
+firewalld_changed=yes
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ systemctl is-active fds-p2-vpn-forward.service; echo unit_active_rc=$?; systemctl is-enabled fds-p2-vpn-forward.service; echo unit_enabled_rc=$?; sudo -n nft list tables; echo nft_rc=$?; sudo -n ip xfrm state count; sudo -n ip xfrm policy | grep -c 10.20.0.0/16
+[?2004linactive
+unit_active_rc=3
+[0;1;31mFailed to get unit file state for fds-p2-vpn-forward.service: No such file or directory[0m
+unit_enabled_rc=1
+table inet firewalld
+nft_rc=0
+	 SAD count 0
+0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ systemctl is-active ipsec; echo ipsec_active_rc=$?; systemctl is-enabled ipsec; echo ipsec_enabled_rc=$?; sudo -n ipsec status; echo ipsec_status_rc=$?
+[?2004linactive
+ipsec_active_rc=3
+disabled
+ipsec_enabled_rc=1
+whack: Pluto is not running (no "/run/pluto/pluto.ctl")
+ipsec_status_rc=33
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n firewall-cmd --get-zone-of-interface=eth0; sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?; sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?
+[?2004lpublic
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+rt_rc=0
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+perm_rc=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sysctl net.ipv4.ip_forward net.ipv4.conf.all.rp_filter; sudo -n cat /etc/sysctl.d/90-fds-relay-bootstrap.conf; echo bconf_rc=$?; ls -l /etc/sysctl.d/
+[?2004lnet.ipv4.ip_forward = 0
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.ip_forward = 0
+bconf_rc=0
+total 8
+-rw-r--r--. 1 root root 525 Jul 23 09:34 50-libreswan.conf
+-rw-------. 1 root root  24 Oct 12 08:18 90-fds-relay-bootstrap.conf
+lrwxrwxrwx. 1 root root  14 Feb 23  2026 [0m[01;36m99-sysctl.conf[0m -> ../sysctl.conf
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ exit
+[?2004lexit
+[?2004hsh-5.1$ exit
+[?2004lexit
+
+
+Exiting session with sessionId: 321team-jaehwan-qgxh9k9e6t7y52utz5cux3slv8.
+
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ exit
+[?2004lexit
+
+Script done on 2026-10-15 02:28:14+00:00 [COMMAND_EXIT_CODE="0"]

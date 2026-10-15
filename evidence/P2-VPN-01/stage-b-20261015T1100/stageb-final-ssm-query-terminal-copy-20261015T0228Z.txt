@@ -1,0 +1,29 @@
+[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ exit
+exit
+sh-5.1$ exit
+exit
+
+
+Exiting session with sessionId: 321team-jaehwan-qgxh9k9e6t7y52utz5cux3slv8.
+
+p37-stageb-20261015T1100 $ exit
+exit
+p37-stageb-20261015T1100 $ cd ~/p37-stageb-20261015T1100 && date -u +%FT%TZ && aws ssm describe-sessions --profile netop --region ap-northeast-2 --state Active --filters key=Target,value=i-05e4b63d31d8d5ac5 --query 'Sessions[].[SessionId,Status]' --output text; echo active_rc=$?
+2026-10-15T02:28:19Z
+active_rc=0
+p37-stageb-20261015T1100 $ aws ssm describe-sessions --profile netop --region ap-northeast-2 --state History --filters key=Target,value=i-05e4b63d31d8d5ac5 --query 'Sessions[?StartDate>=`2026-10-15`].[SessionId,Status,StartDate,EndDate]' --output text; echo history_rc=$?; date -u +%FT%TZ
+321team-jaehwan-qgxh9k9e6t7y52utz5cux3slv8      Terminated      2026-10-15T02:14:58.724000+00:00        2026-10-15T02:27:59.013000+00:00
+321team-jaehwan-df72gcfla8x4zky7ne4nibukzi      Terminated      2026-10-15T02:12:57.386000+00:00        2026-10-15T02:14:48.176000+00:00
+321team-jaehwan-l5dv2nyaxzkqiecv5nvaan6cku      Terminated      2026-10-15T02:00:20.689000+00:00        2026-10-15T02:12:36.995000+00:00
+history_rc=0
+2026-10-15T02:28:25Z
+p37-stageb-20261015T1100 $ sha256sum *.log > SHA256SUMS && cat SHA256SUMS && ls -l && cd ~ && tar -czf p37-stageb-20261015T1100.tgz p37-stageb-20261015T1100 && sha256sum p37-stageb-20261015T1100.tgz && ls -l p37-stageb-20261015T1100.tgz
+7325a20b728c07967b771e121b71c55521d65f5a3c22ad2b410b73d395bdbcfb  b3-relay.log
+b55a08d2e8e0009c697a8eedcbc753bc58219042290fa376b3c83e85110ed936  gate-aws.log
+total 84
+-rw-r--r--. 1 cloudshell-user cloudshell-user 40603 Oct 15 02:28 b3-relay.log
+-rw-r--r--. 1 cloudshell-user cloudshell-user 34565 Oct 15 02:12 gate-aws.log
+-rw-r--r--. 1 cloudshell-user cloudshell-user   158 Oct 15 02:28 SHA256SUMS
+7ece6715edd395038176577bbe5b2fb9bf6c88fa280c484fe280f7a76f0041ce  p37-stageb-20261015T1100.tgz
+-rw-r--r--. 1 cloudshell-user cloudshell-user 24140 Oct 15 02:28 p37-stageb-20261015T1100.tgz
+~ $

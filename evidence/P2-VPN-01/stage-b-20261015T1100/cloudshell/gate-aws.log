@@ -1,0 +1,427 @@
+Script started on 2026-10-15 01:59:29+00:00 [TERM="screen-256color" TTY="/dev/pts/2" COLUMNS="279" LINES="19"]
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ date -u +%FT%TZ
+[?2004l2026-10-15T01:59:38Z
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws sts get-caller-identity --profile netop --query Arn --output text; echo caller_rc=$?
+[?2004lEnter MFA code for arn:aws:iam::774055931866:mfa/jaehwan-phone: 
+[?1h=arn:aws:sts::774055931866:assumed-role/FDS-Network-Operator/321team-jaehwan[m
+[K[?1l>caller_rc=0
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ 
+[?2004lkcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ date -u +%FT%TZ
+[?2004l2026-10-15T01:59:58Z
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws sts get-caller-identity --profile netop --query Arn --output text; echo caller_rc=$?
+[?2004l[?1h=arn:aws:sts::774055931866:assumed-role/FDS-Network-Operator/321team-jaehwan[m
+[K[?1l>caller_rc=0
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws ec2 describe-instances --profile netop --region ap-northeast-2 --instance-ids i-05e4b63d31d8d5ac5 --query 'Reservations[].Instances[].[InstanceId,State.Name,PrivateIpAddress,PublicIpAddress,NetworkInterfaces[].NetworkInterfaceId]' --output text; echo inst_rc=$?
+[?2004l[?1h=i-05e4b63d31d8d5ac5     running 10.20.110.10    3.36.239.132[m
+eni-0017c49242017af9b[m
+[K[?1l>inst_rc=0
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws ec2 describe-addresses --profile netop --region ap-northeast-2 --filters Name=instance-id,Values=i-05e4b63d31d8d5ac5 --query 'Addresses[].[PublicIp,AllocationId,AssociationId,NetworkInterfaceId,PrivateIpAddress]' --output text; echo eip_rc=$?
+[?2004l[?1h=3.36.239.132    eipalloc-0850415d83b0132a6      eipassoc-042c30d80698f0dc8      eni-0017c49242017af9b   10.20.110.10[m
+[K[?1l>eip_rc=0
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws ec2 describe-route-tables --profile netop --region ap-northeast-2 --filters Name=route.destination-cidr-block,Values=10.1.93.0/24 --query 'RouteTables[].RouteTableId' --output text; echo rt_rc=$?
+[?2004lrt_rc=0
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws ssm describe-sessions --profile netop --region ap-northeast-2 --state Active --filters key=Target,value=i-05e4b63d31d8d5ac5 --query 'Sessions[].[SessionId,Owner,Status,StartDate]' --output text; echo active_rc=$?
+[?2004lactive_rc=0
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws ssm describe-sessions --profile netop --region ap-northeast-2 --state History --filters key=SessionId,value=321team-jaehwan-5rfcx2p4jhrdrbkscq9jb2lz9e --query 'Sessions[].[SessionId,Target,Owner,Status,StartDate,EndDate]' --output text; echo old_rc=$?
+[?2004l[?1h=321team-jaehwan-5rfcx2p4jhrdrbkscq9jb2lz9e      i-05e4b63d31d8d5ac5     arn:aws:sts::774055931866:assumed-role/FDS-Network-Operator/321team-jaehwan     Terminating     2026-10-14T01:50:07.648000+00:00        2026-10-14T01:51:55.220000+00:00[m
+[K[?1l>old_rc=0
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ aws ssm start-session --profile netop --region ap-northeast-2 --target i-05e4b63d31d8d5ac5
+[?2004l
+Starting session with SessionId: 321team-jaehwan-l5dv2nyaxzkqiecv5nvaan6cku
+[?2004hsh-5.1$ [Ksh-5.1$ sudo -n true; echo sudo_rc=$?; date -u +%FT%TZ; hostname; id -un
+[?2004lsudo_rc=0
+2026-10-15T02:00:26Z
+ip-10-20-110-10.ap-northeast-2.compute.internal
+ssm-user
+[?2004hsh-5.1$ for p in /etc/ipsec.d/fds-p2-vpn.conf /etc/ipsec.d/fds-p2-vpn.secrets /root/fds-p2-vpn /etc/fds-p2-vpn /etc/systemd/system/fds-p2-vpn-forward.service; do sudo -n test -e "$p"; echo "exists_rc=$? $p"; done
+[?2004lexists_rc=1 /etc/ipsec.d/fds-p2-vpn.conf
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.secrets
+exists_rc=1 /root/fds-p2-vpn
+exists_rc=1 /etc/fds-p2-vpn
+exists_rc=1 /etc/systemd/system/fds-p2-vpn-forward.service
+[?2004hsh-5.1$ systemctl is-active fds-p2-vpn-forward.service; echo unit_active_rc=$?; systemctl is-enabled fds-p2-vpn-forward.service; echo unit_enabled_rc=$?; sudo -n nft list tables; echo nft_rc=$?
+[?2004linactive
+unit_active_rc=3
+[0;1;31mFailed to get unit file state for fds-p2-vpn-forward.service: No such file or directory[0m
+unit_enabled_rc=1
+table inet firewalld
+nft_rc=0
+[?2004hsh-5.1$ systemctl is-active ipsec; echo ipsec_active_rc=$?; systemctl is-enabled ipsec; echo ipsec_enabled_rc=$?; sudo -n ipsec status; echo ipsec_status_rc=$?
+[?2004linactive
+ipsec_active_rc=3
+disabled
+ipsec_enabled_rc=1
+whack: Pluto is not running (no "/run/pluto/pluto.ctl")
+ipsec_status_rc=33
+[?2004hsh-5.1$ sudo -n firewall-cmd --state; echo fw_state_rc=$?; sudo -n firewall-cmd --get-default-zone; echo dz_rc=$?; sudo -n firewall-cmd --get-active-zones; echo az_rc=$?
+[?2004lrunning
+fw_state_rc=0
+public
+dz_rc=0
+public
+  interfaces: eth0
+az_rc=0
+[?2004hsh-5.1$ sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?; sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?
+[?2004lpublic (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+rt_rc=0
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces: 
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+perm_rc=0
+[?2004hsh-5.1$ for i in $(ls /sys/class/net); do c=$(nmcli -g GENERAL.CONNECTION device show $i 2>/dev/null); echo "dev=$i conn=$c nmzone=$(nmcli -g connection.zone connection show "$c" 2>/dev/null) fwzone=$(sudo -n firewall-cmd --get-zone-of-interface=$i 2>&1)"; done
+[?2004ldev=eth0 conn=System eth0 nmzone= fwzone=public
+dev=lo conn=lo nmzone= fwzone=no zone
+[?2004hsh-5.1$ sysctl net.ipv4.ip_forward net.ipv4.conf.all.rp_filter; echo sysctl_rc=$?; cat /etc/sysctl.d/90-fds-relay-bootstrap.conf; echo bconf_rc=$?
+[?2004lnet.ipv4.ip_forward = 0
+net.ipv4.conf.all.rp_filter = 0
+sysctl_rc=0
+cat: /etc/sysctl.d/90-fds-relay-bootstrap.conf: Permission denied
+bconf_rc=1
+[?2004hsh-5.1$ sudo -n cat /etc/sysctl.d/90-fds-relay-bootstrap.conf; echo bconf_rc=$?; ls -l /etc/sysctl.d/; echo ls_rc=$?
+[?2004lnet.ipv4.ip_forward = 0
+bconf_rc=0
+total 8
+-rw-r--r--. 1 root root 525 Jul 23 09:34 50-libreswan.conf
+-rw-------. 1 root root  24 Oct 12 08:18 90-fds-relay-bootstrap.conf
+lrwxrwxrwx. 1 root root  14 Feb 23  2026 99-sysctl.conf -> ../sysctl.conf
+ls_rc=0
+[?2004hsh-5.1$ bash
+[?2004l]0;@ip-10-20-110-10:/usr/bin[?2004h[ssm-user@ip-10-20-110-10 bin]$ cd /home/ssm-user && mkdir p2vpn-stageb-20261015T1100 && cd p2vpn-stageb-20261015T1100 && pwd && date -u +%FT%TZ
+[?2004l/home/ssm-user/p2vpn-stageb-20261015T1100
+2026-10-15T02:06:20Z
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ cat > p2-vpn-01-stageb.tgz.b64 <<'EOF'
+[?2004l[?2004h> H4sIAAAAAAACA+xbbXMTV5bOV+tXnBUmlhhL6m692kSsHTDBmwS7bEh2ChNXq7uFNZYlTXfbxgGn
+[?2004l[?2004h> HOJQDrgKk+AgwKZMxQkkw9Y42AlmytkP7D/JR3frP+w593a3WpJNYHdDMhs0E9S6fV/O+3nOvdcV
+[?2004l[?2004h> KTJVKUUEMfbar/YR8JNOJtk3fpq/2bOYlFLxZCLO29NxQXoNkq+9hM+kYco6wGt/0E/F0//wiV4p
+[?2004l[?2004h> mRo+/e7wr6H/VCKxn/5FUZQa9S8KKfwC4ZX+f/VPJqOp+XRKUfJdgiIn1HxcTsZzyZSSiYtaJh9P
+[?2004l[?2004h> 59VkLqnKcjyfyXQp+CR1CYkuURU1LZHqigPULagi4UPUGAskUItxLZXLC5oqJ8R0MpFICKqgJLty
+[?2004l[?2004h> yVxKjnfFVSWDU6TlVEZOakIynpBlTU4k0yk5j9bgn1Qpl/IxXSvKM1F6jJoTlWIgI2QyuUwioaS6
+[?2004l[?2004h> unKyJCeVtCSIaUHOiLmMmJBSaQwhaS2u5FUpnsD/q8muZArZExL5JPZpWYCez00Lom+NeB5tNpfM
+[?2004l[?2004h> 5PA/SVHSXaKmCJl8SpBRQoKoJtP5rrSUF9JiQknkE8mUpBGDWj6Zy+Tzcc2/RilvOjzgE58+nUkK
+[?2004l[?2004h> KVWTkJxMQhYkLSdmBDElKijnnByXlLQsK3lNUWQ1JabjXam0LEqSoqbjUiKdkxLN03sceCvkE4KU
+[?2004l[?2004h> EuOZdEYWEmoqJeBDLpOKp+JSPC9lJDGtoHQyKUmUZREVJEsqii2PQosTVUn/CsaMYWoTaiyvGhGn
+[?2004l[?2004h> NV/Wp2VdjRqaPlVQtMBrrz7/1PGf+cHvI/+LgiSlX+X/30D/TYH2peR/KRGPN+k/LqbSr/L/y/gc
+[?2004l[?2004h> gEEp8t7gSbQACB2Ip8Pw89wN6H1/GIbIFCAkClFJiIr4JQqd0Nc/CGK3CCd7T4XB/u4nQFMpRcFe
+[?2004l[?2004h> vW5d/cG+uxTSNaNSLqmaHrbuL0JtecW6uh4NHAB7ft1+UgV7ZR6/uiGmmUqsUDE0JepPKtzyYHD4
+[?2004l[?2004h> bevKjX07YYOumUaIUGLYvrkEw8Pv4gLb9qdV/GXPr9DS9t1PrbWv6wT0v903JYF9f85eWwZ7fT5k
+[?2004l[?2004h> L89bd5Giu0vWNw9r11fsqyv4HLZX5+CdQg75mJZLYD2at9fmrc15sB5uW4+W7ZUd694KWBs3rLkl
+[?2004l[?2004h> nDmUjJ7vhnFtRjuvjMmlc1q2MK5NSZ2QoHb2nC2UjIJhhqMBkhXU+Qi09fQgVe9JPT2BNnnSHMvN
+[?2004l[?2004h> ZDlrgbailjezB1UtL08WTb08aWq8raBme2gGedqIMF8VRP7CmMyVNDPLtYX/i4mpQNsB2P1hyV65
+[?2004l[?2004h> Z9/9GnY3f7BXt6F/kCRrXV+C3Y0V6+sdsKvruxtzu5tr1Ld2CwWyfh2laF2br3OJCv5qx768iB2B
+[?2004l[?2004h> xHZ1wVrdIYlC/7EQo8dFH2GUDknf2riD6zDRt+mFc2PIjFyacZ5dJtxBTnOdBTHaFUcWpESgDUWY
+[?2004l[?2004h> lTUDK5OIMSZLo/hweKKsViQhkQm0obE94+0BcFcIpcdiSWEibG1uIU2wu729+2iRpGB/uQW6hvoj
+[?2004l[?2004h> Ubi97dUtsB7s2GtzaMBV6umaEZFTLOQ1szChZTNjgTZD9n6K+JNNlZ3RDFqc/UD5LpDFZUne3MTA
+[?2004l[?2004h> Xqha330KEd5jQtbPFUr/dTMkfiSFQ/nJDz8EURAOhjvrXrXniJgUqtspa6exUSUc9RgB5Bl+vvw5
+[?2004l[?2004h> xKWPEqL143yn49XiGGtOJrEtLthbC92ARNqffAz2zf+oLa/Zq2gHV1d2N+ZRVhvWRtVhg5yjVUqh
+[?2004l[?2004h> k32n3h8Yejs6ocLT+/GoGI46ouCUZrsmnN9EYZa4C7SpFVUlWrJxwaC3pi6XjImCGSFhosFnRYle
+[?2004l[?2004h> aCVFrhiTRdkslEtZ9JIyiZZLxhdhOF/c+8kwmWWTtK+jBtHp0WyvkO9+uwHDbznmffrYIGjnUIAG
+[?2004l[?2004h> s+ubl7mKaY2srKqBP2L+b62Dfv38HxfiYnP+T0jJV/n/t8v/A6XIoK5N1ANJyI3KSdGf972YFiqU
+[?2004l[?2004h> CmZBNst6+FfP9r//TI/xqWr9fZu4CjJqkMzgC+X/PTM3ham9k/Si9fc5otb+ccVClWC8472bkzXr
+[?2004l[?2004h> g1K7x1J/7RYG9G0vtzHMUddzI+Co5+pGtOFL1TzP9/QM9b3T++dRRIrEV0PCb0AtTTm/AbbYX14n
+[?2004l[?2004h> I7PXVuzlBXsVs9DmGmqTkxriqmKZaXN7d+NzsDceYDYi5mrV65jFKDXtbiygtp3QjzkctdI3PEiJ
+[?2004l[?2004h> 7dgJUszg8WHYfbxtffWEhrrJ/X+BNTiMwJnrTuGhItJFHVGg2qx7q05SJ+5Y8nKwiX3/PscmN1oR
+[?2004l[?2004h> R7oRcWB2fwU5XgByuKGhWJjSSpj2u4ERYt1fIMFzb+gExB3Y6EiCYAHDDVsw3Es+Y13aQrMiuMxw
+[?2004l[?2004h> AiUPk8WJq+tIPYtNtx1zek6E41m79d0DwuVYWoH1+XqoHgCwpZOVZP7qi5waEUwskRQEsP9xz76C
+[?2004l[?2004h> geEGGRr3AWuJA6NxTavIxLHjL8DYi+6NrOo8vdrO+6Pt/9Am8u/k/A/dNS2+2v97+fpvPKN4Sed/
+[?2004lDgrmzC[?2004h> UjKdbNK/lKbz31f4/7fC/zxlj5UNE44PDL3fO3QMajcX7NvfInqOcqRex7Ex9yQI7Qbhd76ga9Ny
+[?2004l[?2004h> sagCQe1bCHw25wmIIIRF1IZzUDtLTbVrD+07i9aNb62lKgGn2uKD2qXHlPApFX6xBs7EULvDYFLt
+[?2004l[?2004h> 8g+7mzu15S17eYfhKAf03nyIqY0Kf1UvV6gds7V1/7Pa3UV38xFxAy7KEHH1IWZOu/qAcixBaCwg
+[?2004l[?2004h> 9j/UohGFyqjTmhWJCntnjUBoXi4UI0qxbGgqYg9TzhU1KCCWpdlGK9IoAXxM/5qpwd4v92yFC4E2
+[?2004l[?2004h> LC8KJY93bGgzZyoayrVoajoqpTzuvazohbJeMGfcl39CHHcYKuViQZlh0jiMowsVMGRV1cGPspEt
+[?2004l[?2004h> UN1WD8TDXyYnKmCWR8ulCtZ/TYPr3fyD61OywXm9PFEfrpQnS0SYUp6Y0EomBBFyY8nyJaE9T/2k
+[?2004l[?2004h> cR/NwUDbbIBw0XuDRxlmdKrRbhxYtb4gSAu1+Q1rfinUP4gFU5jhr0tVVBY3DG5dw73Oto6D32rX
+[?2004l[?2004h> PsPKzinr7E8W6qUB1X7WNxsctXHpeyJg8tdNYIUpTBQMo1A6By5bRG6dt+FettzqIqJmvhrYtzdq
+[?2004l[?2004h> txepQLGuPgiSQEzAgINGoRlkAAVjTFM7KeyamgqyomgVs1VlotAqdl6lJcFUsLFSRhIxekrgzV/S
+[?2004l[?2004h> pj0y+bx1QqfL+jg2R46AmiPIjgODgZ6eE71Dbw4MUdXWtjeD9pUn5MaoP/TQb+21j1GGTx+jHmtX
+[?2004l[?2004h> tj2tuXsHpDnUYLejK2dvztr8oVbdRqSK+NS3jVffL3bHO/1RUSjUjd1HG8z3bm45avN2lx1vqVsd
+[?2004l[?2004h> 09iEZsrPpTMfPd4+IZojD0XPr7C9J3dFweswHy9MWLOB313+b7lE8HLO/xJSy/lfPPUq//92+d+r
+[?2004l[?2004h> 5v9nEMCfFUIYA8JsQ2Zrzlp7QG5fz/u0gb+4xHZ2qlhTd8J+6YES/D3M6tdu2XevhzyIwfYDrfv3
+[?2004l[?2004h> dre3/tCpnseh/ZN9PTNPVRTea7/8jZmP9dknBe8fzHnIRCF3As8T1NiSJtg2jxcHsXdjCMel/w/j
+[?2004l[?2004h> ty8Pr8zTTsr/vzzs7fg+ffwCKdlLvJ0tmArRUSt28m1GP1pEFyNF3vH2XDmwor05DsJ+AVi5On7p
+[?2004l[?2004h> qOqfNkm/lPzv3t58yfs/opAUhZb7v2nh1fnfy8n//xKbNPRYrlCKaaUpyMnGWOAXMMHPl/0XhFgJ
+[?2004l[?2004h> FmIb6510lBfGYPHQnv/+6WN7bWn3EQYj+84SRmlMzjgxgDGpltky4BocvMG2nS66CxwBZUxTxqH5
+[?2004l[?2004h> Y6/+hDDA3USwP/m49skKm5LNxj77T6lrdCkJ3ihPmmpBP+LNOb9ORyW1RYxqO6wQub9ofcGyPp2T
+[?2004l[?2004h> PZrHHDe3++gnJwR1wtF+DLTfPLQebyAR4efmqGKMwxtDp08eaeCITj7ZOdwNVqBe5wGIVtryTjW3
+[?2004l[?2004h> wDkAdYj0nYOuzWFEfhESEMRocqmBELlSKc4wmRKS+nbB/rEK+JpFcyYKd3l20np/zr4zF7IvL9or
+[?2004l[?2004h> a+w8gY6x1pZRIEjvQ6SeTiR3H22/kGw4CS3SodPSp49bsOfTxz44hnkddXXHOW/uZGPA+uJ7pGu/
+[?2004l[?2004h> 5T0zrn8mK9D64dnQyQoh7yQNxfD8nFFOmjSaZx7uJd9Ytr//FBO1yxbYT7bs21u4aqh2aZ0fI85Z
+[?2004l[?2004h> 3+yEn9vCK3o5p8EbhNiPwBuERI7AGXtr4SzAqaODTk4DR0e68txM6OViMScrzfbrGY7jiWwTZqlq
+[?2004l[?2004h> XVtEqpmv125VyXPQgeyFajd4x8LesajjlDE+VW15HvuFO+H4seFRDoGy5VLomCRB7c68tbkFJ2Q9
+[?2004l[?2004h> V9YhkYhjnbBiP7nV6Z5plfP5cCfjyPu80//mUN/w+70nR9/t/beBoZATAKzlRY46mI95ACcBVnWJ
+[?2004l[?2004h> pJ5kN4fY3QF2kwFdFLXENUJYa+1r/MkcEWgj8iraI3KOZQvzn0sPqFBp2KFocl8Cp1jJoLegETA/
+[?2004l[?2004h> QqN6+nj3x0Xat6IAtLmFlZB7KG9gyRCZLEOlUNHI7lnDn84HJidkjCiCJAUCJ/qG+rLtIUWFYHsI
+[?2004l[?2004h> Y1tJntDw8cKbvcMnRocHTg8d7TsjnJ0NhoPw+utQmVbDgaGBd3DIBbE7Mhs4+u4xfJTY48DJk1nf
+[?2004l[?2004h> /YQDZC21m1U35KI22d7Z2nW6OXfpYRSB2JZd/di5ikESYuG0fuWKyyBkPVkAOqfP4oTYYQVizlwo
+[?2004l[?2004h> 4kFcfVDCbDM6ONR3vP/fiZD+weG+o6NI16D/UgjRdzzb7ryMtRO57ApJABuG+k4NN79zJB84efzU
+[?2004l[?2004h> 6LH+IXc6H4f05ng/CcPp01DInj7Zfyr7jL94oPfOcD6z+1cS/DvWTh0Cw6d6T/WNDg0MnKJuerls
+[?2004l[?2004h> +ikY/vPw0VPv1HnFoYpZRGbfen+Uv8u2u31iXV0RHznnpjn33LFaOwusM3PnSA6XNUxdrvAhAbWg
+[?2004l[?2004h> hcJwATRlrIwQ+9TAYDe0HwrCkdelw6CdL5ggHobZgCHP+Lpls9SH2gOKbJCRkSEFsbANADSGjTAc
+[?2004l[?2004h> PoyNh8KAK2HB4hzxz/FurrPVrxdZG3dYmb/xeTd0tF+geWc70GJxFs2QlUCg6N47GJ2Q/1LWiSqc
+[?2004l[?2004h> v5CHMxApkbk3+TuaURDOHgZzTCs55Lc3dUFO0Dwm9dJhrKkDwCoCuaRCZMqpS45ATNWmYqXJYhGk
+[?2004l[?2004h> I6+LcPEiZ4e/tr7DDP3ELU4IIjUtkE1cTLr3kCi63b4RJJrZ4EhkStONQrmEM9dXuQiU1JChDiMW
+[?2004l[?2004h> PVS/azESOj0SHrkgdIojsyOhM0Kk6yz75xC2RqOHYiNSrNKBo8c0GYeLWLUE2I2k0WKhpDmyclTG
+[?2004l[?2004h> vN7RGUAi7AjHf4EpyJUHkHTftlx78rp4GiZosNTg+b7LVfZXO84FK1Kv2AGhesANO3MxPSPhB3zj
+[?2004l[?2004h> EtHz1IeLjC4noNyw8O6EZMMLVQ3RS3aGdG2JgUR+BQajDAZTjDKs46gyoTrCKJYVuYiVIbv70I62
+[?2004l[?2004h> bowV0OMdi8JA2mRvSGQWk4RjUIxzR558Dk+gQNSEWyjGjj3EJ2KNppcIPtx3fA+p6b2zseT0cdbQ
+[?2004l[?2004h> NR017cS3pgEN79whTLj4VTS05yZ+T6r3Jff56XwWgeiIaAJjLNGP6pNFze/oaLx1bNAdwaQ/S2pB
+[?2004l[?2004h> H/LrpaIXSmYeOkbMEfO5928Svv0bwhcvuH3DCcZARmN9kCUcHCl1+OXuJ+6AH9A4EIfjGtj9x459
+[?2004l[?2004h> fynUgIQIciB6YZs2uMLTx1iZwVtEo/X5epivw8XHoU6DpdN1o3YRmC3D+DRohUo2SNFoYhwhA0RI
+[?2004l[?2004h> q9iHWg5AeygajYaBXb2rknvz1L5ibS/an24zkPLxKl2E4uevCCt3NxE0/XTD+oLdK3TuQvmvF9JK
+[?2004l[?2004h> tHa21bMoqvKMg53Gp7FHPXQhVaxTsLGXYw08+2TracRvBsQhJhIXdBKsoOYzNBDf4biP4AMeSi+I
+[?2004l[?2004h> nfHZkWj4Qny2/rsdzp71Ar43jRPHQ/2DU4kwS1U412xH0O9UbPZCiYzr0EUxLUXFMymc1fkhsSWc
+[?2004l[?2004h> H/Ezgsieu7BXKhN1o6m3HtuGu4T19LrzJxiYptn86H91lwGeNnCgcdG7U3qxfXz6YtBr9d3KvEhT
+[?2004l[?2004h> 4KsRRnWwnRAkv/7NRFq/+414gNuFD2wRq+d0rQKRv0JHT09HaweCmYwLVo013boljIzpkma54HkD
+[?2004l[?2004h> DSucQybMycpICU35MMrSbJ0ZoYdHEYslEbZT4NHlixtevyhv5JZtP/qbW0Y7vscdLky7/dZ3D+zl
+[?2004l[?2004h> KhorE3oT2fb6PBm5tXFj9z93GK7nCJbsXZ4eR9DACqD5anMBEELsY195aN2tMp/AmmF+FRMSsFEd
+[?2004l[?2004h> J4cAUdVx/LoAY2jKY9AuAAYNZLWknTeR39gH9Q3h9lhdaMGDRrATxrx+zguY7fD06mffVTOd8nEt
+[?2004l[?2004h> u0d8dSX7sC+JS5+ASL5Vinso3z/Q0z7+eIbylYpLkQuaGVoOukpnPyhyMvzBIxraOBajWpbRD14c
+[?2004l[?2004h> yfIY4Wg/25oknFiA/3ZHSjF5liI2j3YYLEuapo4SKmdAl+X+AvrSJMv4AtRjAOtDBTO7b4CFTO3L
+[?2004l[?2004h> zzgYLqiYDgrmzCizxka45UPIAHV0jBkokoBIGVgaMsbK04jePMli6BiJiiOYmUaiSTHW4dHATreq
+[?2004l[?2004h> 2/aVddqBx4qzfl3bj0P992XZFfCql5MZ/n6u9SWigREi/AIF3t8H+mlgu4PeHfRqE8hzsv8orogp
+[?2004l[?2004h> twHNk9Scgi7YENEpIUNEQWzMB3ejxWsGZeLydEnTswdPdx98CybKqpY9KINR+FA7ImQPGh3++RyA
+[?2004l[?2004h> 3UcA2+lxRvTQtNs0oxkxhITuT8F9ODkQa8jm3Dg9cuQcURP08rBabrAILKYQZzu2giWwUwAYLHKV
+[?2004l[?2004h> DZMV7hHj8N7KYeHiAvfxdqkT2hOzRItemSCVec4A6HZ02mj47mH5KgyEcnwZ3fOtpnzcmqEbK5SL
+[?2004l[?2004h> fFjHv2J55jLFi1b2kz1hTDKjhcpUIlo/Ua23sfSChEV1fMkPM30reBHmhO84llTo1LXB2CE2QzNV
+[?2004l[?2004h> pj6pufR4rAc9APRhuaQdZv8ig+77CBYEiJjPaWbE+VPLCPXYl2FPZk7vUT4fG+MeHLfMzt4GWSfM
+[?2004l[?2004h> xpG/Tmr6jLuV8EzRPnueIhZqEXIeY48KEq37gxh72Q3MZLntldCFikV8j2JHCwnR3zEkU3wx1HOe
+[?2004l[?2004h> UEuQ8u1xisPu5gg9/3d7197c1HXt+7c/xYmsjCSKH/IDWhE1lxgzZcprDGluLxCPHzJogiVfSyah
+[?2004l[?2004h> 2DMhVTJOQ6akl1CnwVx3SlKSobcGDIaZ5B8+jmW+w93rtffa5yHLhPTezujMJMjS2e+1116P31rb
+[?2004l[?2004h> mjoMx5uuyjY1Z/054PdUT21hlr6TgaRoQwTpGSxVwfXxNr70bKFiJLs+8p47rg/fmvmkAwLIqlzr
+[?2004l[?2004h> AY3lUol7lNJDN7pqBcpPh4vw17FloDE4qGA24533USuAGTD1DwpiGcuJ1NjVj44v0DKA5OJGSdYt
+[?2004l[?2004h> tiklDJcUp90MNlrC2R7q8xMzM+Uptk771EN77zCRwXE1Hq+QkULhZ+b3KVLb52rvYJyL5zZAf7/2
+[?2004l[?2004h> F2SbTxtNdi6vGnF27M3jzzbJPvRsk2Qq8zcEglwFW3svGZqhGvNm0Lxxo7n2Mdjmv74H2NKtB0+3
+[?2004l[?2004h> n2qbw9bDh2iJ5fCZ7gAjWKbM2V+v9aEFG5uEOC9wX6991RugU8QIARN19Ho8/gIsUegDeZ8UHSO2
+[?2004l[?2004h> /fkaOJtXrW6z/V8hKe/k2L6A/ELBSD7HDZ946/joWMGcl43t2/esIwUMzDgjRjXCQQFk9YOVXplA
+[?2004l[?2004h> MRQ3oBXxeJkx0fwJUoaN0M3H75u6szAXpJpApb7aTXZx0sYUFAYsNhSqQlP8bNN6iJ5titHfLMmj
+[?2004l[?2004h> 69sPNlADxKiqP4IYzB6irfUvUHBGrVSPz9Ta/Os9XIGTp341PjY6YhQPMNA6Y2gftCYrg2/hbBXT
+[?2004l[?2004h> ukAfftfVZd4dx0MehTTSDWyRlH/ALXVxrePAcliqQ0E2z+zKyjlvu6UvZvAFlOe6hWJBWl+7VbAu
+[?2004l[?2004h> ri8azb9eg/HJUtyC+aRlFr8BTym98WyTqkBx8dpdmEX7MjoLjHx2vxFUqpXfluarjF9q/uNJiCa3
+[?2004l[?2004h> by+TnyK7/fnt7YZ0DIgFqzMq4t8hVo5ROeDFu5PjLuAChYkW4peoIx4hmJkz7dZKbq7t+Tm/AHay
+[?2004l[?2004h> YPJyMT0gGyq0Vuk8moHd3JsZ5T8VH1FTns5Og/miZyH46auHT796+j9yWP/kZaOS/CJUmCy1qP2L
+[?2004l[?2004h> XqIIwH/hTPAKnU/qjXPEozxmK54rWDkORUNcDFoz/kIQk5U7za9WGGDcXF7Gte0vElveG+SL5Qp9
+[?2004l[?2004h> 7gPvTGk661WU2xsMFGXjPV426yWWyNol8x8YmLxJNt8G81PFfjgpLk21fxbA8M3rrzu1wxQvpOen
+[?2004l[?2004h> rOZBZQv9OZmnflEIZACFwUUaQmHQvpRXVl5yrZz69UgRa8cGTQNiQw8GfAHfyL5m0/LorI5lZFtP
+[?2004l[?2004h> V/LJC03TB8hEY74gEw1ZZH62dJo+DIUMM8A+Vz7f/mQ1+I15jh07dOj0L3957Jiyt3MD8SRrmuG5
+[?2004l[?2004h> KaZSpEe0IGJRbaFVLIrePNqxxCOa1++i9gMoIngLbDd//ibrHSOtNqY5EvGgJo0mnbWML4d0jVR9
+[?2004l[?2004h> cOT0kV+PMi/jzqezxBTlN00enp+E3vcVK4nXJmPThlHYHMdBRCay+5WAjwIAbZLbmp2UaFdTdRdl
+[?2004l[?2004h> /dw6Pf/i1nbjvpyq/CbOFBwVX2ETWSiUY4C+PkzA5vLETVDKNogzE9ueWJeZkUPtGXo9g2BU1x9q
+[?2004l[?2004h> FW07pidfN2j5lleaf/iCz0wU1S66KeRW42YwQA8HNMAnpDvoFYzCrvoGOkcfv9983OATAs8TB6UA
+[?2004l[?2004h> HN/nd3O9bYzYFzLUwHHCsRwOLeNwIDwh1CYRLM2+HnGiOo6tMi6XWyXD2TKcLjwHvKYI+lyFGRfa
+[?2004l[?2004h> 39C2guan/7N9c8PbBQIyYe5J25nVIue/CSaD+uwc7lhwfM0b9Rlt2WaTM4AmK6iaz5cDszlzhSAV
+[?2004l[?2004h> TBzAsyi+mCwOloa3J+3b3Sgc/ules/FXGDemIriNcU13GiApBiNjyBCUFODgzHA+39yA5ALbt6/z
+[?2004l[?2004h> RMkWu79uiMDtpgnDCideTWfOzmcMO5w0f03yX1280YgCJnn9rxilHnABE9BXXBaII6YRoEiLhI2y
+[?2004l[?2004h> TcCvTnaxKXwCueyZM4WpSn3+YsGw1nPIV2ydXKOZGsIcqVGYxYQoGq4Y/TPdE0tGOT1fCgYHQn1z
+[?2004l[?2004h> 9YAUNDiARtXVDXNYcnlxSaHtfE8mldmzuCcTZMzRE9uT5o317ZUNBARtPXzUXL/PvclOmnr2DQVb
+[?2004l[?2004h> j69t3/4qpy3l3YmiNRGbJ9lR2qPVjedfmpdvGgHYNPnJ3a2HDS1lrcMmle3OkUV4DmTtLssZxQb4
+[?2004l[?2004h> Caw3ry9urFdIiLFnC86W2uKvuD2uNt0V7bDRRxkeTlMXZqvTwf7+ftizVtJOhV8FM/riIrvowgsk
+[?2004l[?2004h> DITRXVrhkj3MrAp2rrztoeR4QZMGqoYTWGwBCgAw3APyhbX02q/mJuoXipYZybcYrp4kUFqXgZIl
+[?2004l[?2004h> uwQilDR0j1W1P1pkTKLV09L9whdCzRKhgdmd6iFWvsOaCE8Elra6y/5h7xg2tH+/+WwYp5mw2XeM
+[?2004l[?2004h> gAnEJNCZXg870/vv+JD/Ldyt7dsN9GmQJholDu4uSUq31szm3OsdP+b7jLdrEPP2+6+4x928SQUd
+[?2004l[?2004h> JbooJD9hndlo5LgDsU2O/PR6hVsd+PE6ZjjzTis0F2w+aV5DL6ZYDJBqX7GuKS/5SRDOYhIUACCG
+[?2004l[?2004h> vpizlQxxL1hzM7cpReZ22kR1od/9tfUnk9mTm0y/73Y+o3Nsz0huVUZk9OYLhugCkMML8D/uh2Mc
+[?2004l[?2004h> +5BxyHezl1xflQxg1kaNrNWAEJ76QkPItkMlThgww1PYnflSrV41270aNd0xHEi9oV0DIdHx1OjR
+[?2004l[?2004h> cmXhvQBo7MFdiHXZ/vI6DyfFkCHa6+/Ol+v1UiWBA0V1WSr11sGx4wW3a8Dg5W/pbHRicojQijOj
+[?2004l[?2004h> Moc0jMVqOvxBdAlgMjRZcVolGKbLJY7I4HmyoJkQZMMaQP2vQXOliUFVOwFZzItYCN4YAD5IaSJv
+[?2004l[?2004h> LoMM9MEKFRKnN+T4efA+fNJHLgEzekuVS882Sd2RWBUyRYEVJVEYziInRnEfjVdo6AtZw1iUf756
+[?2004l[?2004h> Y3vt6rNNzxKA9jmP9VgpjoYoYWgtIdKFwNnXLKX7nrUv3ne9J80SNCFQI5+QvK4tVFlnVHm2SSOk
+[?2004l[?2004h> KTM9gW5tNkAE/GZjrxo0yKRe2/wTGRRZ7sbUS/fXtx9e55YIIr+8/RQTMSmxHzy7nt6IVaI51zkB
+[?2004l[?2004h> jSJDdoFxbPVfwjpAmpM1jFUuXkb7TJwuHtJ0cTKMJtNKN6fQioyQQwbPK7QZpKiRqIxo3bCeepUg
+[?2004l[?2004h> uzgdi05BrWCxjnvtupFrk40Ohl+0sOmJgujMutCjPrtFfXGPcTstJdyXYX2JGtxJIlK5IJ2GiUSC
+[?2004l[?2004h> 1J5LcQ/0FEMjxMrYf2HHlhPTLM+wXUU+s7yltOLhDlr1bofPJ6LTqo2W8fsbzU/XQzq5VbXjJkJb
+[?2004l[?2004h> O/4pk+Btp7yc4z/AwJFJX8GShR4i+aUMgRDsXLEAEdoEu/Z8siHG837SRPGhwVLnht38M7TFnUBj
+[?2004l[?2004h> 5E20ECNH3KvG4SItnN2JvaaVmfo4OhPJaCzacvp1se/2M3BM+S3Jm6mW5kW6IAbgfM6IuiHIL3g4
+[?2004l[?2004h> m99+g3yGz0gn69ExgnO+eXfryceO4tA6dOczw3SyTl/ZMIKhBwQG8bVcp+E6EpCQcBv3gwb8mOYT
+[?2004l[?2004h> GnDVVufmStOJFVMwqz3RYB2RDgwLJ2jS+OjxlutKcDMy1VMnC76PIctug5D/IEeySOP5zY+tDULL
+[?2004l5QQd1jv9[?2004h> H882m0+Xt9b/CBFEDUkEaVggHLiatmO8kgNoRrSOhvH5KQyXMv+KY9h5JQ7wG2GfwrhyKfTnulyg
+[?2004l[?2004h> 1vjF6sR0afqAVEkFFSiSv1dQY5+oNBEjbpAdzLCT1q4CKf3hu5dFzJqICaPYLv24GoBIW20OvfSB
+[?2004l[?2004h> 5wLKpq0rJbdzW7wZdoJGXQBwnNE61O8haIloaon6DvkQW+vvKceqQ52xjDBeJhQhJLbGRBhVtwvV
+[?2004l[?2004h> at5cU8Ll3MWFehVPttXv0R75mTn0P7iD+VDZfrv6/fMV04WnDSvWe0YCa/CjbkCcpZKN+bQQed2Z
+[?2004l[?2004h> ZlmCka2ACEEt4CRoTOG5VrFgOOtGcNkbKrKDHSW5syllhYpR0GQFPVevnLZuV1lBUwsYErIWeF7t
+[?2004l[?2004h> rLKn2OEwaX95naz3G6Yg6i1hzd7vN8r2SjaAGc4TcdGA4vQqygFsl8r2x/RWa3K+ZpNzhAcy/8jR
+[?2004l[?2004h> 0YPHxw+dOD6qIabWKEkabfO/15//ztTR0LlJwPLfgDMNZhq4Da9HP2Ys8zLsMuhrvDozI5BAgsv1
+[?2004l[?2004h> vBuHmCv2ewaMsI87he5hLF6JKy4AVtN3UcbN/IDtjJatEBoFpaelwWR5kpRSGyhRkDSZcUd8vNOF
+[?2004l[?2004h> 4XrmGhk9dmEcjjkH91QzwjYHJLr0HqQebyqoR71awDx48uTR30AvfPtQiiGayXVRmGIfVekMiGaM
+[?2004l[?2004h> X3+MzMNz/7FJgwbtQVjcPHR5ie/mSvOzRh+v1PlkKQT9ReKCABmQUPKBone0Z+l7mdGHfqarXC8a
+[?2004l[?2004h> Bx7fAl+iIXLTRVD7EA5I/gxCcMy8O35hosYzHEIQum6F0IQYtBM2lnlCZuAjB+DIUxgBOPUUDEBA
+[?2004l[?2004h> AKYvl0u1SlV6g13DxiJ14040L3Pd+GelylXjX6NjY6pqsPHEC4PI03FekSJWv2dRSAyrGHuLaUtQ
+[?2004l[?2004h> 8Q3HqiJ0iyJaCoHIfCysLYqwtgjxMXsDFgSzjLlbnC7X6EOlWu+ZqS5UpvFFK8LR+Q/Hz/zUQG+X
+[?2004l[?2004h> E3B5gqS5XWAepdTo8d2gHq1A8VtRcEaP8xlusTNO77FhlNKSHZ4ETpKIJ91HBx5PFP4zUS9Xzi9O
+[?2004l[?2004h> l9QfhskbgRE+2TklAXhxofJOxZxJuSSy8puDfpvWZAX43x7DsyHJslsRmOby1CK4P8xfF8sV9499
+[?2004l[?2004h> uVyZNvtlqr54vmSOREgd4xayRXdkWxiq1LqFHwbgzU17Q86/0JBji6suwsb57Javt6Eg1bi/9fAR
+[?2004l[?2004h> I9oEIYgsC9CZyJjgPONkXbdIuQi68/lgX37f4ED+5z8bzAdjhHz0mB2zOKxeqtot7+sK6b8eaIrg
+[?2004l[?2004h> 7uDQwg9mH/iA3lpOHZ0DRPqMAHwvyMRifjPBa6+9Bl4NLJ+ybgOaxQMiQPFhTGgnPN7+/1g0DSkX
+[?2004l[?2004h> w2a5AyK2mx+1yA5/W0OaEtY9DBPbI2u+1B9RIhSogwQKI+9x7NWjW5hXHWUym03kunK1g8Ffco+E
+[?2004l[?2004h> zclhiAhzdYtOaiiTupW6UOIkhQCV35dqtOWmlZYJSAEtzb4cyxJ7zQRghOeXVguw05hiR0bu96QA
+[?2004l[?2004h> +PsXMCVxu1GLUmwPPJzOj2Y24jlAhdlXkLu16c0Q4c0NhmZYolpRth2HcmO/E+Bvrn0YNP929fnV
+[?2004l[?2004h> e7H+jHgC7P0Bhqpsxh4Lmb6MMPcMa07eUF++3apN4qGtqxU8h20zOxu5NeH9tx78Dmb75obLweuD
+[?2004l[?2004h> 4gscM4fJbwC+z5B+SO360ae8P1uBI1og+1QhwveRvpME7wMl1HMsx6Q6skxPAW7Mhz7Y6gvoEYe/
+[?2004l[?2004h> zLKfL00rYwqSQTJoBiXfRJQO8uUWVREOQpJWuRo5t018l/hH97YN70fbVw/F0HIIrvmLPui6orG2
+[?2004l[?2004h> tnJKuIQX5rCvVjUEO71nisxOqjYvWlQqQq4QW4+EzdDEB1nPjmMdpg4oqmBdVnvdXYiT+cNmX4E/
+[?2004l[?2004h> dIIVx6udSW4m7MKZMsLFBP2giabPDbe5fn/7Tx96Rh694YVnY2Wzc3TshmtLI9SN0/3MQH6fUO0w
+[?2004lhiazFwZ[?2004h> kV+vttUIWUJ4iuVrFHP42HBRdEaP4/CicY1IH2dB1LzbXpRdznbXKc4ef8Q1e5cjnFrYOVRaFhsv
+[?2004l[?2004h> GKkIhSxTmwhZ+XOeXKWK4oVCCEyE+H5TJGM3zbhFW7cHzD/gT037sVrIddW0GA4NF1iJI8GLTTCE
+[?2004l[?2004h> n2KkF3MzGyiEqqbYZODY43puLzc/XTFM+u+QMtQipCLp9BWiwRLATDAHF87MwbUzsNQzsNCs54ej
+[?2004l[?2004h> G8344eW4NyhRan9/38L0HLw21Oq9IXnRaUKmH2nsSBqLEmZ0dGxMhIyEuQsdwDZm01SHHcAqqS9Y
+[?2004l[?2004h> b9xZrPSqK8rU6kJBtQHW0dU4K2hFpMJQwXHVE/0bDH/c9izyi+qp36im1Sv6z0IPK5tL0QKWSq94
+[?2004l[?2004h> f/tFCE3J3Fx8/N6RBV/FYBMjAo1EYaXeTpiks+lUO02x2NKqKRLl/ZpIJ0FaB+GvsR5zlnznOQ42
+[?2004l[?2004h> NNjXxhDEW0DZK4Xy2HVxHoSRoaJbRIMkkiGekbFZIyhaqu1pOQfB5YbXVOq+6VMnsz6gpEaViBDd
+[?2004l[?2004h> bdoMgFmwc6k2E6/woahOUGSzzvyrf7QRpOjFAh9WmaPz3z5zplCbm5gqFc6d22PY/lnk+2cV49cv
+[?2004l[?2004h> FHv39MUFnRcDSF7g9aZFX5ZXfLlKJbt4O6H2dNu1e8vQXF/ZXrmqmrI5BajFUW4yOupgTzHYQ816
+[?2004l[?2004h> ckmkZf0rkq1vAnepIcgjFImdD7LWXkw3NKBwBaGntDdY4idFwwaBkmEv5wwRlDVsulipRumHksFp
+[?2004l[?2004h> 4gEZbQ6YObN8y/ut2GXtyN4RkUrPpbTD2amzrNIq169RSts1jGPuLtdC2B+j5xtfSs8F24/xEjZN
+[?2004l[?2004h> RJLQlGeCzNzaEx1bjyfB+I5nir8hwQyFtNCU8DLH6vZOM9/dJAj5tZgCnQeBGUp4HmLmIDR+r5K4
+[?2004l[?2004h> SZBUZshMLbWOS81p/sC42+jxoRtTB5YRmT9Z01oSkaqtrYjuCTGFh+aOqL7V3Lhtxe/GAYlbjKYr
+[?2004lb/Nl[?2004h> lMQBu0gfgx7ThdkAUmyzSnPoyFiUH/APUX3UVmPq2Dc01EJZ0wpTXPXwiz2h2qtf540SvSxcNXy7
+[?2004l[?2004h> 22olmZDS6sLV2p9i6t4dopwxbQpVrhVLUTaTu9ISam5TfFnVYXqiNFutCNGF6vJ/dHW44iTXWcdQ
+[?2004l[?2004h> XJZLXSFbsLhUXIUw8glkkVRjfAV0HbeWZfwbPiDlXQPC4V00xi6zc4TaVSKNFTLadJvnozKLewPZ
+[?2004l[?2004h> +3dw54IGEkaye0QmvKfHSNEtUov6rXlx6nrqnDYaizPRtcQhSvzilOTRpvrQhVUubb3qKtXLDlYU
+[?2004l[?2004h> Yb827UwvFY4SCMM0MJ+yL/P60nukpuRICBKLT/wqDs5BEQRFNLex94bSmoTdNz9ixhSpGbI7YXd2
+[?2004lxk[?2004h> rFZlrup/D5xDEz0zB3sOn7uS37d3qe+1+dK0UfFK07/oOw+ZYOsws4bCB/qFMN+bmZ/l+2JSmGNK
+[?2004l[?2004h> fWHbM9W/na3NTy2erf3UTA/8AznicplwiiUsTCZKSFgu2cpVzWwRT+z2z2J67ToBfZibr9ari5DQ
+[?2004l[?2004h> axEvq100vxqBMdIXkRYofdCBnVhGXM6llAOdhRX3ne1PO+cpygmdYZJ2z30Jmb/QFfg6fFoKgIox
+[?2004l[?2004h> Iffr8GkpgD8GCz3DEBHHFweDZzJFadt7poJU6T1DR4Ov0ajqU3N9aaipLw3lU6HUWux99IGdHqgT
+[?2004l[?2004h> 0pJNl6fqRSC70ZHTo4cQkzEw5H45feTY6Ik3TzNWQ74dGz385qnRQ+MnxsbfPD42enDklwffMJuO
+[?2004l[?2004h> fNry0ujY2ImxGDmOktdjxwvYcRx3fanGeSZsBWn+kIq4tT1+xZay/iJ9gfi6NpzRZBZyTqioJ1qB
+[?2004l[?2004h> XcMJViGCAtKsZnlnR5hF2BHNyqXZ42dpl59NpdjzLNkJDcmISeGFfMvJzmByh1acgwXBH9pWbyM4
+[?2004l[?2004h> rIHC/0XzsplY3yqetp4fNZcU9hGXJSJUtFW6CPJheWENVnDitJ9i3bHRseHQbw3WQ9eVIYKtB+8/
+[?2004l[?2004h> /2gtGB7ODw/sH97/8/3BSN58f2P7T/dyvZIdanvlS+u3/uQO+L/Z4egCUKgbFIhKHkcoRHZ6HgLH
+[?2004l[?2004h> N/hWKL5QQd1jv9fPRuQnVLB5fSB+LDZJk4ctd9SLkT+G+pIDoVqmRXFL2HZwjj/O5PAcGh9aIMDE
+[?2004l[?2004h> tsLu2DCONOeToc78wyqbRDeFs0flWrgWYzzUbXZfFLsXSFMSjmTJien+4aNEj2a7vUI69KImgWSE
+[?2004l[?2004h> TsG+aa/EsJbOFbV3qBtqbXEL3EPnvIYGy3rBiwTL81MfxLCKV3bKNaJIK75Lkb5EYMKUfzaSB8Xz
+[?2004l[?2004h> BC83721ABocow8D1yCm+UrtQuniRLitipFnx1Ei+/+eAneyNszjTbiPYV9EwdEjDIYhY/vqnxWwq
+[?2004l[?2004h> vSeVk/QGhw8eOaruZljqwpbNufv8o0cw0ZCz4v6mcnq62xXJrN28ylmryGaNkFd3Vx7fjetu1xGT
+[?2004l[?2004h> MAR+bkBCb8d8zMR6LiGF3o1xpIVxtt4mkvaw+yoG/7qKDlI3CrmAb3sTRQw4ONUWvGVx16AU3dSz
+[?2004l[?2004h> TZp3iT3mcI2WgHwl7+DiDeRQWCmwtCKCiAs1pmRxMDWP7jUfNyxECsH1zzY9ILuUckZHdvzpXhtu
+[?2004l[?2004h> gS1DHsDYpdZpEDAlnV3obBTDHxkqx1yIpOIHGqkoo90mNWMh38UfhfKZ/eAIJBvD5Adv2LsMrEan
+[?2004l[?2004h> YoUiYTJx5NEOWXT5d10lD0CSP9kRWAOFwmBomhBBFirhQrmX1VXO4of0G0uQqZCtXRcQ8RzpPcvk
+[?2004l[?2004h> LgEZuwjPetFxxMdvhfC4ubjErIYFAy1D49Qn8pKxCBwb/RVKMwjwbxiq2VIZqCuTewlDiYSHkU1G
+[?2004l[?2004h> ZB4J+rJ2Vc+iqilZ5JXkQLMXDTJjS3tclJkTkmKiybxykXCyFLHSwRz7MAuBB/C3OQeWm6sumaO9
+[?2004l[?2004h> qEyw/8xX73xGt6aS6GKEc8B2SgaEjVDkGDanb26jhhWLpZMh9mhzbDWcnwYTgdnldguNI8EOcv4p
+[?2004l[?2004h> OvE3mo3l5pfreMkqOphzCVDEFwUgarrcmzjq3RyDkohGIxl1DKOzb5MsxQbTFnZqL1Kdx+mtZRLP
+[?2004l[?2004h> eGkDamfKzfstGdjL74wPElWw188b23+7GkQxoT9en5R3SzZqTPNOfut2AkohHPrs8Y7QqSNCU+sd
+[?2004l[?2004h> qrYmdZ+yKattGbcFcWu1g5sGKbLVReA6+RhbPJyPoj25YveL8MJY7JfaPh9U0Vk8A1PoCzRuUuKW
+[?2004l[?2004h> +GX2zdKmIjpfmPGOxJiYKDnxfOde1MPY+qx1HpRwvZ7DNeJqTThMp7UfmNM5zs8CjFl9H3N/AuVd
+[?2004l[?2004h> a+FobOVixM07lJOYVlkMFzQLwEpybWYlVjbXJqZospgIfHXYm1wIljuZBMudDCF8IQGagGzDv7lZ
+[?2004l[?2004h> d0ieiH9WwXeCmNcZ6+tCYyR3O9VDYYEKcsvWBTdzjtoBgt/89i6A1cmqIbB9ND6SOdKoaFmQfW6v
+[?2004l[?2004h> 5BjB5e5qNWsgOhubFtdtolLz+9bTayBo9HOYeS8t6nDOGoMoERdhXACK7mANhCZFE+Para376yIM
+[?2004l[?2004h> +UFkoXRaWseltPZUmAJ3yAwff6FYr9QAMQnE+gmFt/Xgbog7OJ4vsf6haP724EgIRVIwpNIlo9+m
+[?2004l[?2004h> Jotn01cQjJmG24WqS6IrnSFiKkIYK7I2ozbUy5WFUmsUE2CdWiOZIGy6beTOvNmpl0p+7VqS8vZH
+[?2004l[?2004h> 0HbPrFKqebeHX0LwVmQxfU7u1aZ2UKA3Ukx9MaVnyiGtsxDSJmMq2w3ASu4f1GDdQs/lUm1JllhT
+[?2004l[?2004h> TRIaK2ZJX3BBY9BY0aVs0Y8WC+gDsNpewfD6JVcWKaoXz186u3A7osIC7zo8Wa4IoIq26IuAudqA
+[?2004l[?2004h> cSHL25fzLxnAC+Kid2VndZLw7yB86ntQAvFuxWX0NLpR+ABu+ncJHWlsPaNLeNrL6hjStUBZYOub
+[?2004l[?2004h> HWTIekHKZwiN5PfNQsX5A/VO4hucL7Ddq2oCVbilipiMpokbipQKjUXlqmSbeTjtDIZLWN8KXjPT
+[?2004l[?2004h> 2P7oU52VBoMn9nIeSZ16DnPV8BXZkJ9GMtLEJGcKZWGK1THMxCegf7zLjmNTc2JWjGRoECVW4u5C
+[?2004l[?2004h> Ytuw1aUhiazFwZWgW6i5by8FEjYKGXzEudn8xxPPmuiM5/tz/A52zohCkOqcgtdvaiCy23NxclRE
+[?2004l[?2004h> EBWYv5+Z3QlCjuK7yUp45t/OQarz0n+GUwDNqKwuqbi0LrBpwgEPhZ7+peSDuU3UWiq55nN6S7go
+[?2004l[?2004h> KXIqyiTA6oBN6ulKglDbxiCkTs3knVAbP4fn66E5DDmWnGPM9y7dvucfRjkV0mJkuqNvHBz51fiR
+[?2004l[?2004h> 4yMnjp08Ono6NrOP+OK8LgW7Af/EpznayUUieXzdjcBwX9SrNcoifUVPj7xob7+l7AOsH+4cQ+Ir
+[?2004l[?2004h> iQREaHVBBd9j9OWa5WoaI4FmNSuCx4ZiWhJAgAIgEWKz4Zotbi9Uwl6JIrAh9yFlB/GqTcp6iw2i
+[?2004l[?2004h> x15zJU5RIFePgRnnRvOb9ZaJbn1BBlaLDb+gaUhuW5sIPDZPliyjvm/YJ7ukVFIEQxjnWouOOnU8
+[?2004l[?2004h> Fg5zfGz06OjBU6MeBUst5POP8crjjO7dYcYLbSTmcoQn11g6Khz0DXs7DprSD3AtS11d7JEbOXaI
+[?2004l[?2004h> vXH4S86+QzyfApdzLrr5ymDh9epCfbo8v8THAiSQDiilMP3eo37h+xcCnXI49BYeEvgGHRf+r3Dr
+[?2004l[?2004h> ebxpwm63hTnELq/zBbdZe8OrOYLwDl8H1rKHNl6hTp5FbIaAYtgLxozRCAASR71HcJztm/kwJB+G
+[?2004l[?2004h> ARnI9Vj3a6BQY6EhieGv+e2HzbWnBZr4RZrhRTNLi3beFnFGFhfmFqlTi9iLRcfATH14Kv+k8/wL
+[?2004l[?2004h> P3MDeLtBf97ew/zy2+g3z/7hYfzXPOF/8XN+eGDf4PDQIH6f79+/f+AnwfA/YwIWIHYhCDrrL+sP
+[?2004l[?2004h> V1zwtxL8w/rTD1n/fUNDSes/ODA0GFr/4f35oZ8E/Z31/9Gf7uDkQM+vTx43FBBkuwf3k0CrgoQd
+[?2004l[?2004h> nqw3OHxi7K2DY4d8+BbnedpeuQdKGdpwY9QxJVLnUZHEoGK8KmHlqpH8WGmC01QL+SI90+UsFLXq
+[?2004l[?2004h> 3JkifkoSHxb/NlpGFn1wV1L3dBuRW0Jr1hrZ0fdKU6cgkOnkfCmH6UNiFMdif6/cY+J5NqA/eUqA
+[?2004l[?2004h> gxe3+bFHXo8oRY+fRQi7wgmydLAPGPB/fyOgrlXnsPAfrinwHpsd5IWT1VodJWFaFG8qVT5SsLXj
+[?2004l[?2004h> tbAeKFDnfvOW2F6Oke33k88EaJaPo4ZoMuocjZLZDIwqzShVSLcJoAwjjDYwbQVrHR8+wRSXWUii
+[?2004l[?2004h> iO/zx7/csukuz7xZKdfPdR0q1abmy3P1crVSPHzolKJpUXUnLl6svktBIWAkOXLy0pD8Vq6c7zo4
+[?2004l[?2004h> Uy/NF611z1qMjMr3bnX+nZ5q5WK5Uuo11HG+VO96a6JSrxXjf3ujZKotFT3DU1fXmVP06VzX6ctz
+[?2004l[?2004h> pWK1UqpdqNa7xkqzE+UKNj5qBGsIi+3SZFjsW6jN99Umy5W+HVLFumKqDCbgmQn6SvUpxdZ1TGdi
+[?2004l[?2004h> seT4GdVBCF1pt4f5LqHRXQ+KyLrYhyUw5iXTdhVBKNgHlWijtpVq4NRIZ6MVtUqmq2vgbIO6irjE
+[?2004l[?2004h> g/K+USZZ1U+9Cno+iO+SYDBYDLASqMOmJkzFzr4kI/Qb3QF0YDsxU/4/77jrSsZsiyMU0XcOt1Rp
+[?2004l[?2004h> +o3LxdmFi/Vyz4LZObKjOkJ65+k8nafzdJ7O03k6T+fpPJ2n83SeztN5Ok/n6Tydp/N0ns7TeTpP
+[?2004l[?2004h> 5+k8nafzdJ7O03k6T+fpPJ2n83SeztN5Oo96/hf9K9zzAPAAAA==
+[?2004l[?2004h> EOF
+[?2004l]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ wc -lc p2-vpn-01-stageb.tgz.b64; sha256sum p2-vpn-01-stageb.tgz.b64
+[?2004l  244 18764 p2-vpn-01-stageb.tgz.b64
+dd1602efa6d4c1b31708a95aa3ac07a2e890654467cf4185f08bbb553f6ae406  p2-vpn-01-stageb.tgz.b64
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ base64 -d p2-vpn-01-stageb.tgz.b64 > p2-vpn-01-stageb.tgz; echo B64_RC=$?; stat -c %s p2-vpn-01-stageb.tgz; echo "358624f5a380e341b7095ccd13357d03f9bf6d346a8d4c331f0552a212b0bbaf  p2-vpn-01-stageb.tgz" > p2-vpn-01-stageb.tgz.sha256; sha256sum -c p2-vpn-01-stageb.tgz.sha256; echo OUTER_RC=$?
+[?2004lB64_RC=0
+13888
+p2-vpn-01-stageb.tgz: OK
+OUTER_RC=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ tar -xzf p2-vpn-01-stageb.tgz; echo TAR_RC=$?; sha256sum -c p2-vpn-01/SHA256SUMS; echo INNER_RC=$?; find p2-vpn-01 -type f | sort; ls -l p2-vpn-01/p2vpn.sh
+[?2004lTAR_RC=0
+p2-vpn-01/p2vpn.sh: OK
+p2-vpn-01/conf/relay.conf.tmpl: OK
+p2-vpn-01/conf/vpn-gw01.conf.tmpl: OK
+p2-vpn-01/nft/relay.nft.tmpl: OK
+p2-vpn-01/nft/vpn-gw01.nft.tmpl: OK
+p2-vpn-01/systemd/fds-p2-vpn-forward.service: OK
+INNER_RC=0
+p2-vpn-01/conf/relay.conf.tmpl
+p2-vpn-01/conf/vpn-gw01.conf.tmpl
+p2-vpn-01/nft/relay.nft.tmpl
+p2-vpn-01/nft/vpn-gw01.nft.tmpl
+p2-vpn-01/p2vpn.sh
+p2-vpn-01/SHA256SUMS
+p2-vpn-01/systemd/fds-p2-vpn-forward.service
+-rwxr-xr-x. 1 ssm-user ssm-user 35394 Oct 14 00:00 [0m[01;32mp2-vpn-01/p2vpn.sh[0m
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh relay check; echo CHECK_RC=$?
+[?2004l== identity / versions
+ip-10-20-110-10
+lo 127.0.0.1/8
+eth0 10.20.110.10/24
+libreswan-4.15-10.el9.x86_64
+nftables-1.0.9-9.el9.x86_64
+firewalld-1.3.4-21.el9.noarch
+5.14.0-687.el9.x86_64
+libreswan_major=4
+== sysctl
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.rp_filter = 0
+/etc/sysctl.d/90-fds-relay-bootstrap.conf:net.ipv4.ip_forward = 0
+== firewalld
+default_zone=public forward=yes
+ports: 
+== installed files (sha256)
+absent /etc/ipsec.d/fds-p2-vpn.conf
+absent /etc/fds-p2-vpn/forward.nft
+absent /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: absent
+== unit / table
+unit=inactive enabled=
+nft table: absent
+== ipsec
+ipsec.service=inactive enabled=disabled
+trafficstatus: fds-p2-vpn 없음
+CHECK_RC=0
+]0;@ip-10-20-110-10:~/p2vpn-stageb-20261015T1100[?2004h[ssm-user@ip-10-20-110-10 p2vpn-stageb-20261015T1100]$ exit
+[?2004lexit
+[?2004hsh-5.1$ exit
+[?2004lexit
+
+
+Exiting session with sessionId: 321team-jaehwan-l5dv2nyaxzkqiecv5nvaan6cku.
+
+kcloudshell-user@:~/p37-stageb-20261015T1100\[?2004hp37-stageb-20261015T1100 $ exit
+[?2004lexit
+
+Script done on 2026-10-15 02:12:42+00:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,558 @@
+# vpn-gw01 Stage B RUN 20261015T1100 — server08 터미널 출력을 사용자가 채팅으로 옮긴 사본 (2026-10-15 KST)
+# 생략: (1) B0 heredoc에 붙여 넣은 base64 본문(결과 해시로 대조), (2) 직전 확인 P5/P7 재실행의 ipsec status 알고리즘 목록.
+# 그 밖의 줄은 붙여 넣은 순서·내용 그대로. 시험 순서상 Relay 쪽 probe 출력은 b3-relay.log에 있다.
+
+######## 직전 확인 P5/P7 재실행 (02:01:42Z) — 10:10 원문(vpngw01-P5-P7-read-20261015T0110Z.full.txt)과 같은 명령, 결과 같음
+[server08@vpn-gw01 p2vpn-precheck-20261012]$ sudo -v
+[sudo] server08 암호:
+2026-10-15T02:01:42Z
+vpn-gw01
+server08
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.conf
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.secrets
+exists_rc=1 /root/fds-p2-vpn
+exists_rc=1 /etc/fds-p2-vpn
+exists_rc=1 /etc/systemd/system/fds-p2-vpn-forward.service
+inactive
+unit_active_rc=4
+not-found
+unit_enabled_rc=4
+table inet firewalld
+nft_rc=0
+active
+ipsec_active_rc=0
+[... ipsec status: 인터페이스 lo/ens160 10.1.93.51 UDP/500·4500, pluto_version=5.4, logfile='<syslog>' — 알고리즘 목록 생략 ...]
+Connection list:
+
+Total IPsec connections: loaded 0, routed 0, active 0
+
+State Information: DDoS cookies not required, Accepting new IKE connections
+IKE SAs: total(0), half-open(0), open(0), authenticated(0), anonymous(0)
+IPsec SAs: total(0), authenticated(0), anonymous(0)
+
+Bare Shunt list:
+
+ipsec_status_rc=0
+public
+dz_rc=0
+public (default)
+  interfaces: ens160
+az_rc=0
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+rt_rc=0
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+perm_rc=0
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+sysctl_rc=0
+# FDS P2 vpn-gw01 gateway role
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.ens160.rp_filter = 0
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.ens160.accept_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.ens160.send_redirects = 0
+gwconf_rc=0
+
+######## B0 (02:07:33Z)
+[server08@vpn-gw01 p2vpn-precheck-20261012]$ cd ~ && mkdir p2vpn-stageb-20261015T1100 && cd p2vpn-stageb-20261015T1100 && pwd && date -u +%FT%TZ
+/home/server08/p2vpn-stageb-20261015T1100
+2026-10-15T02:07:33Z
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ cat > p2-vpn-01-stageb.tgz.b64 <<'EOF'
+[... base64 본문 붙여 넣기 생략 ...]
+> EOF
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ wc -lc p2-vpn-01-stageb.tgz.b64; sha256sum p2-vpn-01-stageb.tgz.b64
+  245 18765 p2-vpn-01-stageb.tgz.b64
+6579fca63c7faf965513e32f9b6888a056a1540515e346839cb03542ead4a9c3  p2-vpn-01-stageb.tgz.b64
+# 주: 기준 b64(244줄 18,764 B dd1602ef…)에 줄바꿈 1개를 더한 해시와 같음(재환 PC에서 계산). 복원 결과는 아래와 같이 기준과 같다.
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ base64 -d p2-vpn-01-stageb.tgz.b64 > p2-vpn-01-stageb.tgz; echo B64_RC=$?; stat -c %s p2-vpn-01-stageb.tgz; echo "358624f5a380e341b7095ccd13357d03f9bf6d346a8d4c331f0552a212b0bbaf  p2-vpn-01-stageb.tgz" > p2-vpn-01-stageb.tgz.sha256; sha256sum -c p2-vpn-01-stageb.tgz.sha256; echo OUTER_RC=$?
+B64_RC=0
+13888
+p2-vpn-01-stageb.tgz: 성공
+OUTER_RC=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ tar -xzf p2-vpn-01-stageb.tgz; echo TAR_RC=$?; sha256sum -c p2-vpn-01/SHA256SUMS; echo INNER_RC=$?; find p2-vpn-01 -type f | sort; ls -l p2-vpn-01/p2vpn.sh
+TAR_RC=0
+p2-vpn-01/p2vpn.sh: 성공
+p2-vpn-01/conf/relay.conf.tmpl: 성공
+p2-vpn-01/conf/vpn-gw01.conf.tmpl: 성공
+p2-vpn-01/nft/relay.nft.tmpl: 성공
+p2-vpn-01/nft/vpn-gw01.nft.tmpl: 성공
+p2-vpn-01/systemd/fds-p2-vpn-forward.service: 성공
+INNER_RC=0
+p2-vpn-01/SHA256SUMS
+p2-vpn-01/conf/relay.conf.tmpl
+p2-vpn-01/conf/vpn-gw01.conf.tmpl
+p2-vpn-01/nft/relay.nft.tmpl
+p2-vpn-01/nft/vpn-gw01.nft.tmpl
+p2-vpn-01/p2vpn.sh
+p2-vpn-01/systemd/fds-p2-vpn-forward.service
+-rwxr-xr-x. 1 server08 server08 35394 10월 14일  09:00 p2-vpn-01/p2vpn.sh
+
+######## B1
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -v
+[sudo] server08 암호:
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/server08/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh vpn-gw01 check; echo CHECK_RC=$?
+== identity / versions
+vpn-gw01
+lo 127.0.0.1/8
+ens160 10.1.93.51/24
+libreswan-5.4-1.el10.x86_64
+nftables-1.1.5-6.el10.x86_64
+firewalld-2.4.3-4.el10.noarch
+6.12.0-260.el10.x86_64
+libreswan_major=5
+== sysctl
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+/etc/sysctl.d/99-fds-p2-vpn-gw.conf:net.ipv4.ip_forward = 1
+== firewalld
+default_zone=public forward=yes
+ports:
+== installed files (sha256)
+absent /etc/ipsec.d/fds-p2-vpn.conf
+absent /etc/fds-p2-vpn/forward.nft
+absent /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: absent
+== unit / table
+unit=inactive enabled=not-found
+nft table: absent
+== ipsec
+ipsec.service=active enabled=enabled
+trafficstatus: fds-p2-vpn 없음
+CHECK_RC=0
+
+######## B2 (결과 줄만; PSK 입력 화면 제외)
+# 명령: sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/server08/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh vpn-gw01 psk 20261015T1100; echo PSK_RC=$?
+secrets: present owner=root:root mode=600 size>0=yes
+psk_receipt=/root/fds-p2-vpn/psk-receipts/20261015T1100 owner=20261015T1100
+loading secrets from "/etc/ipsec.secrets"
+loading secrets from "/etc/ipsec.d/fds-p2-vpn.secrets"
+rereadsecrets rc=0
+PSK_RC=0
+
+######## B4
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR RELAY_EIP=3.36.239.132 bash /home/server08/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh vpn-gw01 apply 20261015T1100; echo APPLY_RC=$?
+rendered role=vpn-gw01 libreswan=5 harbor=off eip=3.36.239.132 -> /root/fds-p2-vpn/20261015T1100/staged
+== backup (실패하면 호스트를 바꾸기 전에 멈춘다)
+backup /etc/sysctl.d/99-fds-p2-vpn-gw.conf
+zone=public
+ip_forward_runtime=1
+zone_forward=yes
+port_500=no
+port_4500=no
+ipsec_active=active
+ipsec_enabled=enabled
+== persistent ip_forward=0 (fail-closed; 유닛이 허용표 적재 뒤에만 켠다)
+== firewalld (permanent만 바꾸고, 바꾼 것이 있을 때만 reload)
+firewalld_changed=no
+== install
+== ipsec
+forgetting secrets
+loading secrets from "/etc/ipsec.secrets"
+loading secrets from "/etc/ipsec.d/fds-p2-vpn.secrets"
+"fds-p2-vpn": added oriented IKEv2 connection
+e77ce67ceb79fd2097cd7aec2cc0829d6af578bca8d9a08c9f800fbb799c86e0  /etc/ipsec.d/fds-p2-vpn.conf
+8f3b35d13e8aa30eab163f95fd4e469f61dc7b7c2981c59a4e442b8d3c55c908  /etc/fds-p2-vpn/forward.nft
+f402613878a04d66078ab8636323f28217cd238621aa1440a2d707f3cf325815  /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: present owner=root:root mode=600 size>0=yes
+APPLY_OK role=vpn-gw01 run=20261015T1100 state=/root/fds-p2-vpn/20261015T1100
+APPLY_RC=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n firewall-cmd --get-zone-of-interface=ens160; sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?; sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?; sudo -n grep firewalld_changed /root/fds-p2-vpn/20261015T1100/state.env
+public
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+rt_rc=0
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+perm_rc=0
+firewalld_changed=no
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n nft list table inet fds_p2_vpn; echo nft_rc=$?; sysctl net.ipv4.ip_forward; cat /etc/sysctl.d/99-fds-p2-vpn-gw.conf | head -3; systemctl is-active fds-p2-vpn-forward.service ipsec; sudo -n ipsec status | grep -E '"fds-p2-vpn"|Total IPsec'; echo ipsec_rc=${PIPESTATUS[0]}
+table inet fds_p2_vpn {
+        chain forward {
+                type filter hook forward priority filter + 10; policy accept;
+                ip saddr 10.20.0.0/16 jump from_vpc
+                ip daddr 10.20.0.0/16 jump to_vpc
+        }
+
+        chain from_vpc {
+                meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷 - 평문 위장 차단"
+                ct state established,related accept
+                ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+                counter packets 0 bytes 0 drop comment "승인 밖 출발지·목적지·포트"
+        }
+
+        chain to_vpc {
+                rt ipsec missing counter packets 0 bytes 0 drop comment "SA 없음 - 평문 우회 차단"
+                ct state established,related accept
+                counter packets 0 bytes 0 drop comment "On-Prem 개시 새 연결"
+        }
+}
+nft_rc=0
+net.ipv4.ip_forward = 1
+# FDS P2 vpn-gw01 gateway role
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.rp_filter = 0
+active
+active
+"fds-p2-vpn": 10.1.93.0/24===10.1.93.51[@fds-vpn-gw01]...3.36.239.132[@fds-aws-relay01]===10.20.0.0/16; unrouted; my_ip=unset; their_ip=unset;
+"fds-p2-vpn":   host: oriented; local: 10.1.93.51; remote: 3.36.239.132;
+"fds-p2-vpn":   my_updown=ipsec _updown; my_updown-config=noasync,noexec;
+"fds-p2-vpn":   xauth us:none, xauth them:none, my_username=[any]; their_username=[any]
+"fds-p2-vpn":   our auth:secret, their auth:secret, our autheap:none, their autheap:none, send-supported-auth-methods:no;
+"fds-p2-vpn":   modecfg info: us:none, them:none, modecfg policy:push, dns:unset, domains:unset, cat:unset;
+"fds-p2-vpn":   cisco-split: no; cisco-unity: no; cisco-peer: no; nm-configured: no;
+"fds-p2-vpn":   sec_label:unset;
+"fds-p2-vpn":   ike_life: 25200s; ipsec_life: 3000s; ipsec_max_bytes: 2^63B; ipsec_max_packets: 2^63; replay_window: 128; rekey_margin: 540s; rekey_fuzz: 100%; clones: no (unset);
+"fds-p2-vpn":   iptfs: no; fragmentation: yes; packet-size: 0; max-queue-size: 0; drop-time: 0; init-delay: 0; reorder-window: 0;
+"fds-p2-vpn":   retransmit-interval: 500ms; retransmit-timeout: 120s; iketcp:no; iketcp-port:4500;
+"fds-p2-vpn":   initial-contact:no; fake-strongswan:no; send-vendorid:no; send-no-esp-tfc:no;
+"fds-p2-vpn":   policy: IKEv2+PSK+ENCRYPT+TUNNEL+PFS+IKE_FRAG_ALLOW+ESN_NO+ESN_YES;
+"fds-p2-vpn":   v2-auth-hash-policy: none;
+"fds-p2-vpn":   conn_prio: 24,16,0; interface: ens160; metric: 0; mtu: unset; sa_prio:auto; sa_tfc:none;
+"fds-p2-vpn":   nflog-group: unset; mark: unset; vti-iface:unset; vti-routing:no; vti-shared:no; nic-offload:no;
+"fds-p2-vpn":   our idtype: FQDN; our id=@fds-vpn-gw01; their idtype: FQDN; their id=@fds-aws-relay01
+"fds-p2-vpn":   sendca: all; our sendcert: always; their sendcert: always;
+"fds-p2-vpn":   liveness: active; dpddelay:30s; retransmit-timeout:120s
+"fds-p2-vpn":   nat-traversal: encapsulation:auto; keepalive:20s
+"fds-p2-vpn":   routing: unrouted;
+"fds-p2-vpn":   reqid: 16388;
+"fds-p2-vpn":   conn serial: $1;
+"fds-p2-vpn":   IKE algorithms: AES_CBC_256-HMAC_SHA2_256-MODP2048
+"fds-p2-vpn":   ESP algorithms: AES_CBC_256-HMAC_SHA2_256_128-MODP2048
+Total IPsec connections: loaded 1, routed 0, active 0
+ipsec_rc=0
+
+######## B5 · T1 status
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/server08/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh vpn-gw01 up; echo UP_RC=$?
+"fds-p2-vpn" #1: initiating IKEv2 connection to 3.36.239.132 using UDP
+"fds-p2-vpn" #1: sent IKE_SA_INIT request to 3.36.239.132:UDP/500
+"fds-p2-vpn" #1: processed IKE_SA_INIT response from 3.36.239.132:UDP/500 {cipher=AES_CBC_256 integ=HMAC_SHA2_256_128 prf=HMAC_SHA2_256 ke=MODP2048}, initiating IKE_AUTH
+"fds-p2-vpn" #1: sent IKE_AUTH request to 3.36.239.132:UDP/4500 with shared-key-mac and FQDN '@fds-vpn-gw01'; Child SA #2 {ESPinUDP <0x4efdbd9a} [10.1.93.0/24===10.20.0.0/16]
+"fds-p2-vpn" #1: processing IKE_AUTH response from 3.36.239.132:UDP/4500 containing SK{IDr,AUTH,SA,TSi,TSr}
+"fds-p2-vpn" #1: initiator established IKE SA; authenticated peer using authby=secret and FQDN '@fds-aws-relay01'
+"fds-p2-vpn" #2: initiator established Child SA using #1; IPsec tunnel [10.1.93.0/24===10.20.0.0/16] {ESPinUDP/ESN=>0xa7fb0491 <0x4efdbd9a xfrm=AES_CBC_256-HMAC_SHA2_256_128 NATD=3.36.239.132:4500 DPD=active}
+UP_RC=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/server08/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh vpn-gw01 status; echo STATUS_RC=$?
+#2: "fds-p2-vpn", type=ESP, add_time=1792030877, inBytes=0, outBytes=0, maxBytes=2^63B, id='@fds-aws-relay01'
+#1: "fds-p2-vpn":4500 established IKE SA; NAT_KEEPALIVE in 10s; REKEY in 24613s; REPLACE in 25190s; newest; idle;
+#2: "fds-p2-vpn":4500 established Child SA; LIVENESS in 20s; REKEY in 2445s; REPLACE in 2990s; newest; eroute owner; IKE SA #1; idle;
+#2: "fds-p2-vpn" esp.a7fb0491@3.36.239.132 esp.4efdbd9a@10.1.93.51 tun.0@3.36.239.132 tun.0@10.1.93.51 Traffic: ESPin=0B ESPout=0B ESPmax=2^63B
+== xfrm policy
+src 10.1.93.0/24 dst 10.20.0.0/16
+        dir out priority 1757409 ptype main
+        tmpl src 10.1.93.51 dst 3.36.239.132
+src 10.20.0.0/16 dst 10.1.93.0/24
+        dir fwd priority 1757409 ptype main
+        tmpl src 3.36.239.132 dst 10.1.93.51
+src 10.20.0.0/16 dst 10.1.93.0/24
+        dir in priority 1757409 ptype main
+        tmpl src 3.36.239.132 dst 10.1.93.51
+src ::/0 dst ::/0
+src ::/0 dst ::/0
+src ::/0 dst ::/0
+src ::/0 dst ::/0
+src 0.0.0.0/0 dst 0.0.0.0/0
+src 0.0.0.0/0 dst 0.0.0.0/0
+src 0.0.0.0/0 dst 0.0.0.0/0
+src 0.0.0.0/0 dst 0.0.0.0/0
+src 0.0.0.0/0 dst 0.0.0.0/0
+src 0.0.0.0/0 dst 0.0.0.0/0
+src 0.0.0.0/0 dst 0.0.0.0/0
+src 0.0.0.0/0 dst 0.0.0.0/0
+src ::/0 dst ::/0 proto ipv6-icmp type 135
+        dir out priority 1 ptype main
+src ::/0 dst ::/0 proto ipv6-icmp type 135
+        dir fwd priority 1 ptype main
+src ::/0 dst ::/0 proto ipv6-icmp type 135
+        dir in priority 1 ptype main
+src ::/0 dst ::/0 proto ipv6-icmp type 136
+        dir out priority 1 ptype main
+src ::/0 dst ::/0 proto ipv6-icmp type 136
+        dir fwd priority 1 ptype main
+src ::/0 dst ::/0 proto ipv6-icmp type 136
+        dir in priority 1 ptype main
+== xfrm state (키 가림)
+src 10.1.93.51 dst 3.36.239.132
+        proto esp spi <redacted> reqid 16389 mode tunnel
+        replay-window 0 flag af-unspec esn
+        encap type espinudp sport 4500 dport 4500 addr 0.0.0.0
+        anti-replay esn context:
+         replay_window 0, bitmap-length 0
+src 3.36.239.132 dst 10.1.93.51
+        proto esp spi <redacted> reqid 16389 mode tunnel
+        replay-window 0 flag af-unspec esn
+        encap type espinudp sport 4500 dport 4500 addr 0.0.0.0
+        anti-replay esn context:
+         replay_window 128, bitmap-length 4
+== forward table
+table inet fds_p2_vpn {
+        chain forward {
+                type filter hook forward priority filter + 10; policy accept;
+                ip saddr 10.20.0.0/16 jump from_vpc
+                ip daddr 10.20.0.0/16 jump to_vpc
+        }
+
+        chain from_vpc {
+                meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷 - 평문 위장 차단"
+                ct state established,related accept
+                ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+                counter packets 0 bytes 0 drop comment "승인 밖 출발지·목적지·포트"
+        }
+
+        chain to_vpc {
+                rt ipsec missing counter packets 0 bytes 0 drop comment "SA 없음 - 평문 우회 차단"
+                ct state established,related accept
+                counter packets 0 bytes 0 drop comment "On-Prem 개시 새 연결"
+        }
+}
+ip_forward=1 unit=active
+STATUS_RC=0
+
+######## T4/T5 카운터 (T2·T4·T5 probe는 Relay b3-relay.log: T2 rc=0 CONNECTED, T4 5432 rc=124 TIMEOUT, T5 22 rc=124 TIMEOUT)
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ date -u +%FT%TZ; sudo -n nft list chain inet fds_p2_vpn from_vpc; echo nft_rc=$?
+2026-10-15T02:22:27Z
+table inet fds_p2_vpn {
+        chain from_vpc {
+                meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷 - 평문 위장 차단"
+                ct state established,related accept
+                ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+                counter packets 0 bytes 0 drop comment "승인 밖 출발지·목적지·포트"
+        }
+}
+nft_rc=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ date -u +%FT%TZ; sudo -n nft list chain inet fds_p2_vpn from_vpc; echo nft_rc=$?
+2026-10-15T02:22:55Z
+table inet fds_p2_vpn {
+        chain from_vpc {
+                meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷 - 평문 위장 차단"
+                ct state established,related accept
+                ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+                counter packets 3 bytes 180 drop comment "승인 밖 출발지·목적지·포트"
+        }
+}
+nft_rc=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ date -u +%FT%TZ; sudo -n nft list chain inet fds_p2_vpn from_vpc; echo nft_rc=$?
+2026-10-15T02:23:14Z
+table inet fds_p2_vpn {
+        chain from_vpc {
+                meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷 - 평문 위장 차단"
+                ct state established,related accept
+                ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+                counter packets 6 bytes 360 drop comment "승인 밖 출발지·목적지·포트"
+        }
+}
+nft_rc=0
+
+######## T10
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n systemctl stop fds-p2-vpn-forward.service; echo stop_rc=$?; sysctl net.ipv4.ip_forward; sudo -n nft list tables; echo nft_rc=$?; systemctl is-active fds-p2-vpn-forward.service
+stop_rc=0
+net.ipv4.ip_forward = 0
+table inet firewalld
+nft_rc=0
+inactive
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n systemctl start fds-p2-vpn-forward.service; echo start_rc=$?; sysctl net.ipv4.ip_forward; sudo -n nft list tables; echo nft_rc=$?; systemctl is-active fds-p2-vpn-forward.service
+start_rc=0
+net.ipv4.ip_forward = 1
+table inet firewalld
+table inet fds_p2_vpn
+nft_rc=0
+active
+
+######## 원복 · 항목별 대조
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/server08/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh vpn-gw01 rollback 20261015T1100; echo ROLLBACK_RC=$?
+== ip_forward=0 확인
+"fds-p2-vpn": terminating SAs using this connection
+"fds-p2-vpn" #1: deleting IKE SA (ESTABLISHED_IKE_SA) aged 238.205611s and sending notification
+"fds-p2-vpn" #2: ESP traffic information: in=604B out=237B
+conn: 삭제·부재 확인
+유닛: inactive/disabled 확인
+허용표: 부재 확인
+forgetting secrets
+loading secrets from "/etc/ipsec.secrets"
+rereadsecrets rc=0
+ROLLBACK_DONE role=vpn-gw01 run=20261015T1100
+== identity / versions
+vpn-gw01
+lo 127.0.0.1/8
+ens160 10.1.93.51/24
+libreswan-5.4-1.el10.x86_64
+nftables-1.1.5-6.el10.x86_64
+firewalld-2.4.3-4.el10.noarch
+6.12.0-260.el10.x86_64
+libreswan_major=5
+== sysctl
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+/etc/sysctl.d/99-fds-p2-vpn-gw.conf:net.ipv4.ip_forward = 1
+== firewalld
+default_zone=public forward=yes
+ports:
+== installed files (sha256)
+absent /etc/ipsec.d/fds-p2-vpn.conf
+absent /etc/fds-p2-vpn/forward.nft
+absent /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: absent
+== unit / table
+unit=inactive enabled=not-found
+nft table: absent
+== ipsec
+ipsec.service=active enabled=enabled
+trafficstatus: fds-p2-vpn 없음
+ROLLBACK_RC=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ for p in /etc/ipsec.d/fds-p2-vpn.conf /etc/ipsec.d/fds-p2-vpn.secrets /etc/fds-p2-vpn /etc/systemd/system/fds-p2-vpn-forward.service /root/fds-p2-vpn/psk-receipts/OWNER /root/fds-p2-vpn/ACTIVE_RUN; do sudo -n test -e "$p"; echo "exists_rc=$? $p"; done; sudo -n cat /root/fds-p2-vpn/psk-receipts/20261015T1100; sudo -n cat /root/fds-p2-vpn/20261015T1100/state.env
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.conf
+exists_rc=1 /etc/ipsec.d/fds-p2-vpn.secrets
+exists_rc=1 /etc/fds-p2-vpn
+exists_rc=1 /etc/systemd/system/fds-p2-vpn-forward.service
+exists_rc=1 /root/fds-p2-vpn/psk-receipts/OWNER
+exists_rc=1 /root/fds-p2-vpn/ACTIVE_RUN
+run=20261015T1100
+role=vpn-gw01
+path=/etc/ipsec.d/fds-p2-vpn.secrets
+started_at=2026-10-15T02:13:31Z
+written_at=2026-10-15T02:13:31Z
+cleaned_at=2026-10-15T02:25:15Z by=rollback
+zone=public
+ip_forward_runtime=1
+zone_forward=yes
+port_500=no
+port_4500=no
+ipsec_active=active
+ipsec_enabled=enabled
+firewalld_changed=no
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ systemctl is-active fds-p2-vpn-forward.service; echo unit_active_rc=$?; systemctl is-enabled fds-p2-vpn-forward.service; echo unit_enabled_rc=$?; sudo -n nft list tables; echo nft_rc=$?; sudo -n ip xfrm state count; sudo -n ip xfrm policy | grep -c 10.20.0.0/16
+inactive
+unit_active_rc=4
+not-found
+unit_enabled_rc=4
+table inet firewalld
+nft_rc=0
+         SAD count 0
+0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ systemctl is-active ipsec; echo ipsec_active_rc=$?; systemctl is-enabled ipsec; sudo -n ipsec status | tail -8; echo ipsec_status_rc=${PIPESTATUS[0]}
+active
+ipsec_active_rc=0
+enabled
+Total IPsec connections: loaded 0, routed 0, active 0
+
+State Information: DDoS cookies not required, Accepting new IKE connections
+IKE SAs: total(0), half-open(0), open(0), authenticated(0), anonymous(0)
+IPsec SAs: total(0), authenticated(0), anonymous(0)
+
+Bare Shunt list:
+
+ipsec_status_rc=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sudo -n firewall-cmd --get-zone-of-interface=ens160; sudo -n firewall-cmd --zone public --list-all; echo rt_rc=$?; sudo -n firewall-cmd --permanent --zone public --list-all; echo perm_rc=$?
+public
+public (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: ens160
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+rt_rc=0
+public (default)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: cockpit dhcpv6-client ssh
+  ports:
+  protocols:
+  forward: yes
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+perm_rc=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$ sysctl net.ipv4.ip_forward net.ipv4.conf.all.rp_filter; cat /etc/sysctl.d/99-fds-p2-vpn-gw.conf; echo gwconf_rc=$?
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+# FDS P2 vpn-gw01 gateway role
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.ens160.rp_filter = 0
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.ens160.accept_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.ens160.send_redirects = 0
+gwconf_rc=0
+[server08@vpn-gw01 p2vpn-stageb-20261015T1100]$
