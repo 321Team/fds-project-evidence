@@ -1,0 +1,43 @@
+{
+  "reviewed_at_kst": "2026-10-15T10:45:55.613766+09:00",
+  "source_sha": "43e26384ae422f2017f1e96e6c1bb5fe46d087d4",
+  "received_files": 13,
+  "form_sha256_verified": true,
+  "raw_copy_hashes_verified": 13,
+  "manifest_entries_verified": 108,
+  "frozen_files_unchanged": 109,
+  "received_verify_matches_prior_author_precheck": true,
+  "helper_replay_rc": 0,
+  "helper_text_matches_after_encoding_newline_normalization": true,
+  "participant": {
+    "name": "이재환",
+    "type": "PRIOR_PARTICIPANT_RECONFIRMATION",
+    "ai": "CLAUDE_ASSISTED",
+    "ac07_start_kst_reported": "2026-10-15T10:34:45+09:00",
+    "ac07_D1_D5": "CONFIRMED_NO_REMAINING_ISSUES_PER_PERFORMER_FORM",
+    "probe_start_kst": "2026-10-15 10:37:44",
+    "probe_end_kst": "2026-10-15 10:39:05",
+    "verify_meta": "start=2026-10-15 10:39:05 end=2026-10-15 10:39:05 rc=0"
+  },
+  "timestamp": {
+    "receipt_finished_kst": "2026-10-14T09:52:03.669644+09:00",
+    "worker_original_exit_utc": "2026-10-14T00:52:04.267843+00:00",
+    "worker_event_minus_receipt_end_seconds": 0.598199,
+    "same_worker_wall_hold_seconds": 81.785631,
+    "same_worker_monotonic_hold_seconds": 81.78563868498895,
+    "receipt_origin": "Windows coordination-side receipt; ansible01 is the SSH relay",
+    "origin_basis": "Frozen receipt command plus existing local read_transport.py timing code",
+    "local_transport_sha256": "f40a69629e801178a6536d4bd8dba4dd4113dfc997f8ca24ba8e15d2a9f0c0d8",
+    "local_transport_limit": "This local helper snapshot is not bound by the frozen Probe223 Manifest",
+    "root_cause": "CLOCK_OFFSET_OR_OTHER_TIMEBASE_DIFFERENCE_NOT_PROVEN",
+    "offset_or_sync_bound": "UNCONFIRMED",
+    "verifier_impact": "No check compares receipt.finished_at_kst with the worker event; existing bounded verdict unchanged",
+    "limitation": "Do not derive an exact cross-host total order, latency, or clock offset from these timestamps"
+  },
+  "limits": [
+    "Browser reading and no server execution are performer declarations, not independently observed session telemetry",
+    "Git/version raw files reviewed in report context; not remote inspection of participant PC",
+    "APP224/DB11 subsequent status claims in performer report are outside this review; not adopted as freshly verified facts",
+    "New Runtime, whole O01 acceptance and DOC Freeze were not performed"
+  ]
+}
