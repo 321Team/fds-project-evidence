@@ -1,0 +1,64 @@
+{
+  "label": "R2-false",
+  "run": 38693851363,
+  "url": "https://github.com/321Team/infra-cicd/actions/runs/38693851363",
+  "head": "fddc76e1c261cd938f06211b7ed035fdcb32e606",
+  "attempt": 1,
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 116285747181,
+      "name": "deploy",
+      "started_at": "2026-10-15T06:40:48Z",
+      "completed_at": "2026-10-15T06:40:58Z",
+      "runner_id": 2,
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Require normal Runner and unused checkout",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout the reviewed workflow commit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate inputs without issuing or receiving a token",
+          "conclusion": "success"
+        },
+        {
+          "name": "Receive authenticated credential and execute approved Deploy",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Checkout the reviewed workflow commit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "originals": {
+    "run.json": {
+      "rc": 0,
+      "bytes": 12788,
+      "sha256": "bae952a502ad317ed48a2de8eb96cdee2061ebf7822927a44b4ca33ecc0e51ad"
+    },
+    "jobs.json": {
+      "rc": 0,
+      "bytes": 2171,
+      "sha256": "4e2c418c9c13378d2a5f8fa0555bb2fcbedc67a1722e6645c28579f4cc86d332"
+    },
+    "logs.zip": {
+      "rc": 0,
+      "bytes": 10329,
+      "sha256": "4e70bfa913f16b9cabd63a4ab218891fb52bbf413a072ef4f31c9a83377b72f6"
+    }
+  }
+}

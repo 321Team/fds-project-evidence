@@ -1,0 +1,13 @@
+/usr/bin/ssh -F /dev/null -T -i /home/server01_ansible/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/home/server01_ansible/.ssh/known_hosts -o IdentitiesOnly=yes -o ForwardAgent=no -o ClearAllForwardings=yes -o ControlMaster=no -o ControlPath=none -o UpdateHostKeys=no server02@10.1.93.102 '/bin/sh -c '"'"'set -eu
+umask 077
+test "$(hostname -s)" = k8s-control01
+test "$(id -un)" = server02
+test ! -e /home/server02/FDS_AC09_ConsoleRestore_20261015
+test ! -L /home/server02/FDS_AC09_ConsoleRestore_20261015
+mkdir -m 700 /home/server02/FDS_AC09_ConsoleRestore_20261015
+cd /home/server02/FDS_AC09_ConsoleRestore_20261015
+set -C
+cat > recovery.tar
+test "$(sha256sum recovery.tar | cut -d " " -f 1)" = 6fbd08b4c7e8001b1aac34732d2ca84eaf8fa221a5b40b41d5c0522cf8851cb6
+tar --no-same-owner --no-same-permissions --keep-old-files -xf recovery.tar
+sha256sum console_restore_current.py recovery-contract.json'"'"''

@@ -1,0 +1,152 @@
+{
+  "TIMING_METHOD": "ACCEPTED_6185621755",
+  "ORIGINAL_COMPLETENESS": "R1_R2_CLAIM_AND_8_CHECKPOINTS_EACH_PLUS_6_HOST_BEFORE_AFTER_CLOCKS",
+  "TIMING_PROOF": "시한 미입증 / SEC 사후 검토",
+  "P_exact": "NOT_MEASURED",
+  "R2_first_PATCH_exact": "NOT_MEASURED",
+  "last_old_terminated_exact": "NOT_MEASURED",
+  "p_lower_original_kst": "2026-10-15T15:43:16.828114+09:00",
+  "r2_first_applied_upper_original_kst": "2026-10-15T15:49:27.941749+09:00",
+  "recovery_observed_upper_kst": "2026-10-15T15:51:37.318038+09:00",
+  "last_old_present_interval_start_utc": "2026-10-15T06:50:26.865217+00:00",
+  "last_old_absent_interval_end_utc": "2026-10-15T06:51:34.973257+00:00",
+  "raw_unadjusted_seconds": {
+    "r2_first_applied_minus_p": 371.113635,
+    "recovery_observed_minus_p": 500.489924
+  },
+  "raw_interval_is_strict_proof": false,
+  "actual_wall_clock_overrun": "NOT_OBSERVED",
+  "residual_old_exposure": "NONE_OBSERVED_BY_155137",
+  "hosts": {
+    "runner": {
+      "before_E_snapshot_seconds": 0.0027482795,
+      "after_E_snapshot_seconds": 0.0028689315,
+      "same_boot_id": true,
+      "same_chrony_service_metadata": true,
+      "references": [
+        "7986D768 (121.134.215.104)",
+        "7986D768 (121.134.215.104)"
+      ],
+      "leap_status": [
+        "Normal",
+        "Normal"
+      ],
+      "wall_elapsed_seconds": 1063.298759593,
+      "monotonic_raw_elapsed_seconds": 1063.284179239,
+      "elapsed_difference_seconds": 0.014580354000145235,
+      "E_interval_seconds": "UNPROVEN",
+      "reason": "Two snapshots and elapsed agreement do not establish a strict continuous error bound; no clock history covering the whole interval was collected."
+    },
+    "control01": {
+      "before_E_snapshot_seconds": 0.0713689665,
+      "after_E_snapshot_seconds": 0.07143508650000001,
+      "same_boot_id": true,
+      "same_chrony_service_metadata": true,
+      "references": [
+        "A29FC801 (162.159.200.1)",
+        "A29FC801 (162.159.200.1)"
+      ],
+      "leap_status": [
+        "Normal",
+        "Normal"
+      ],
+      "wall_elapsed_seconds": 1063.318885901,
+      "monotonic_raw_elapsed_seconds": 1063.343001156,
+      "elapsed_difference_seconds": -0.024115254999969693,
+      "E_interval_seconds": "UNPROVEN",
+      "reason": "Two snapshots and elapsed agreement do not establish a strict continuous error bound; no clock history covering the whole interval was collected."
+    },
+    "worker01": {
+      "before_E_snapshot_seconds": 0.07161508800000001,
+      "after_E_snapshot_seconds": 0.07183826,
+      "same_boot_id": true,
+      "same_chrony_service_metadata": true,
+      "references": [
+        "0A015D66 (10.1.93.102)",
+        "0A015D66 (10.1.93.102)"
+      ],
+      "leap_status": [
+        "Normal",
+        "Normal"
+      ],
+      "wall_elapsed_seconds": 1064.310673733,
+      "monotonic_raw_elapsed_seconds": 1064.323525146,
+      "elapsed_difference_seconds": -0.012851413000134926,
+      "E_interval_seconds": "UNPROVEN",
+      "reason": "Two snapshots and elapsed agreement do not establish a strict continuous error bound; no clock history covering the whole interval was collected."
+    },
+    "worker02": {
+      "before_E_snapshot_seconds": 0.07128172199999999,
+      "after_E_snapshot_seconds": 0.0715245095,
+      "same_boot_id": true,
+      "same_chrony_service_metadata": true,
+      "references": [
+        "0A015D66 (10.1.93.102)",
+        "0A015D66 (10.1.93.102)"
+      ],
+      "leap_status": [
+        "Normal",
+        "Normal"
+      ],
+      "wall_elapsed_seconds": 1064.144439714,
+      "monotonic_raw_elapsed_seconds": 1064.152673151,
+      "elapsed_difference_seconds": -0.008233436999944388,
+      "E_interval_seconds": "UNPROVEN",
+      "reason": "Two snapshots and elapsed agreement do not establish a strict continuous error bound; no clock history covering the whole interval was collected."
+    },
+    "worker03": {
+      "before_E_snapshot_seconds": 0.0714220755,
+      "after_E_snapshot_seconds": 0.0720835805,
+      "same_boot_id": true,
+      "same_chrony_service_metadata": true,
+      "references": [
+        "0A015D66 (10.1.93.102)",
+        "0A015D66 (10.1.93.102)"
+      ],
+      "leap_status": [
+        "Normal",
+        "Normal"
+      ],
+      "wall_elapsed_seconds": 1063.709880622,
+      "monotonic_raw_elapsed_seconds": 1063.724445364,
+      "elapsed_difference_seconds": -0.014564742000175102,
+      "E_interval_seconds": "UNPROVEN",
+      "reason": "Two snapshots and elapsed agreement do not establish a strict continuous error bound; no clock history covering the whole interval was collected."
+    },
+    "edge01": {
+      "before_E_snapshot_seconds": 0.0046149885,
+      "after_E_snapshot_seconds": 0.0038675875,
+      "same_boot_id": true,
+      "same_chrony_service_metadata": true,
+      "references": [
+        "7986D768 (121.134.215.104)",
+        "7986D768 (121.134.215.104)"
+      ],
+      "leap_status": [
+        "Normal",
+        "Normal"
+      ],
+      "wall_elapsed_seconds": 1063.803000882,
+      "monotonic_raw_elapsed_seconds": 1063.826187423,
+      "elapsed_difference_seconds": -0.023186540999859062,
+      "E_interval_seconds": "UNPROVEN",
+      "reason": "Two snapshots and elapsed agreement do not establish a strict continuous error bound; no clock history covering the whole interval was collected."
+    }
+  },
+  "r1_journal": {
+    "run": 38693979785,
+    "final_sequence": 8,
+    "ROLLOUT": "READY",
+    "error": "NONE",
+    "automatic_rollback": "NOT_EXECUTED",
+    "writer_stop_basis": "Exact GitHub job completed; final-runner Worker0; own sockets absent; collector alone does not establish stop"
+  },
+  "r2_journal": {
+    "run": 38694721511,
+    "final_sequence": 8,
+    "ROLLOUT": "READY",
+    "error": "NONE",
+    "automatic_rollback": "NOT_EXECUTED",
+    "writer_stop_basis": "Exact GitHub job completed; final-runner Worker0; own sockets absent; collector alone does not establish stop"
+  }
+}

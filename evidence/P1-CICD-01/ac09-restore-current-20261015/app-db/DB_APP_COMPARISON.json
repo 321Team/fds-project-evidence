@@ -1,0 +1,134 @@
+{
+  "at_kst": "2026-10-15T16:28:26+09:00",
+  "provenance": "USER_DB_CONSOLE_TEXT_AND_EXISTING_ACTUAL_POST_SNAPSHOTS",
+  "original_transcript_sha256": "272dc9b5eb08fc581822369eebd95932bd70bd195432d8109d964a716b0bdd83",
+  "literal_slices_rejoin_exactly": true,
+  "whitespace_changed": false,
+  "integrity": [
+    {
+      "name": "DB_POST_READONLY.sql",
+      "bytes": 1417,
+      "reported_sha256": "8bb9b1c3d32fea5c821064547341b369aebae6a0b8b3de6606a743dd8ff3694c",
+      "actual_sha256": "8bb9b1c3d32fea5c821064547341b369aebae6a0b8b3de6606a743dd8ff3694c",
+      "match": true
+    },
+    {
+      "name": "host.txt",
+      "bytes": 14,
+      "reported_sha256": "27cfc2b85847e4eeb64497888a6571894dd6289cbe60faf0e597cc542c1e9ad2",
+      "actual_sha256": "27cfc2b85847e4eeb64497888a6571894dd6289cbe60faf0e597cc542c1e9ad2",
+      "match": true
+    },
+    {
+      "name": "start.txt",
+      "bytes": 26,
+      "reported_sha256": "1f0e863cee341452cbb30c17a6d213d3183133fc95efc12d8d12e6a54a816a51",
+      "actual_sha256": "1f0e863cee341452cbb30c17a6d213d3183133fc95efc12d8d12e6a54a816a51",
+      "match": true
+    },
+    {
+      "name": "db-after.jsonl",
+      "bytes": 1853,
+      "reported_sha256": "993b2e9588945e1e31551e61c94788756b7356670a475cca7cb88acf22d83a4f",
+      "actual_sha256": "993b2e9588945e1e31551e61c94788756b7356670a475cca7cb88acf22d83a4f",
+      "match": true
+    },
+    {
+      "name": "db-after.stderr",
+      "bytes": 0,
+      "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    {
+      "name": "db-after.rc",
+      "bytes": 2,
+      "reported_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "actual_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "match": true
+    },
+    {
+      "name": "end.txt",
+      "bytes": 26,
+      "reported_sha256": "1f0e863cee341452cbb30c17a6d213d3183133fc95efc12d8d12e6a54a816a51",
+      "actual_sha256": "1f0e863cee341452cbb30c17a6d213d3183133fc95efc12d8d12e6a54a816a51",
+      "match": true
+    }
+  ],
+  "identity": {
+    "kind": "identity",
+    "database": "fdsdb",
+    "user": "postgres",
+    "at": "2026-10-15T16:22:17.634935+09:00",
+    "timezone": "Asia/Seoul",
+    "transaction_read_only": "on"
+  },
+  "rc": 0,
+  "stderr_empty": true,
+  "phase_comparisons": [
+    {
+      "phase": "R1",
+      "transaction_id": "22b7c46c-cd07-4539-a7fc-8890b67b12ee",
+      "account_id": "SIM_ac09_cd01e613d57641eb83548e9283d0f60d_P01",
+      "matched_rows": 1,
+      "compared_fields": {
+        "account_id": true,
+        "amount": true,
+        "currency": true,
+        "transaction_type": true,
+        "source_ip": true,
+        "transaction_id": true,
+        "fds_detected": true,
+        "fds_rules": true,
+        "fds_evaluation_skipped": true,
+        "occurred_at_same_instant": true
+      },
+      "received_at": "2026-10-15T15:48:19.508568+09:00",
+      "received_at_role": "DB_ONLY_OBSERVATION_NOT_API_EQUALITY_FIELD",
+      "received_at_within_http_interval": true,
+      "interval_is_acceptance_or_latency_test": false,
+      "api_body_sha256": "1a324c28ed3ec55bbc9761e692799c78e0fca8be8d8850143bcf08116aad1e4b",
+      "result": "SAME_ID_DB_ROW_CONTENT_MATCH"
+    },
+    {
+      "phase": "R2",
+      "transaction_id": "1827bd8a-a921-49f9-83f7-22529e903451",
+      "account_id": "SIM_ac09_3451e56c57bc490e8d156cede958229f_P01",
+      "matched_rows": 1,
+      "compared_fields": {
+        "account_id": true,
+        "amount": true,
+        "currency": true,
+        "transaction_type": true,
+        "source_ip": true,
+        "transaction_id": true,
+        "fds_detected": true,
+        "fds_rules": true,
+        "fds_evaluation_skipped": true,
+        "occurred_at_same_instant": true
+      },
+      "received_at": "2026-10-15T15:56:29.942495+09:00",
+      "received_at_role": "DB_ONLY_OBSERVATION_NOT_API_EQUALITY_FIELD",
+      "received_at_within_http_interval": true,
+      "interval_is_acceptance_or_latency_test": false,
+      "api_body_sha256": "4edd368d5ef9a29bcdbefc04cf5817463665763c471dc85ed287fc3714417504",
+      "result": "SAME_ID_DB_ROW_CONTENT_MATCH"
+    }
+  ],
+  "approved_card_sha256": "7bdad3c96100c578ac80ba7ab450dcfa971b37ca719003fbea4bd5cc43222a34",
+  "approved_detail_card_sha256": "cda3353af5f5894f6c9a01b1094f79d534f4f71cf2d48ee2773492c4a2986786",
+  "db_pre_zero_history": {
+    "r1": "NOT_COLLECTED_NORMAL_DB_CONSOLE_ONLY",
+    "r2": "NOT_COLLECTED_NORMAL_DB_CONSOLE_ONLY"
+  },
+  "pre_zero_assessment": "HISTORY_LIMIT_NOT_AN_ADOPTED_MANDATORY_ENTRY_CONDITION_IN_PINNED_FINAL_CARDS",
+  "business_post_rows": "VERIFIED_TWO_MINIMUM_SAMPLES",
+  "all_rules_or_history_queries": "NOT_TESTED_BY_THIS_SAMPLE",
+  "prior_metrics_checks": "REUSED_NOT_RERUN",
+  "catalog": "REUSED_NOT_REQUERIED",
+  "new_sql": 0,
+  "new_post": 0,
+  "new_remote_connections": 0,
+  "sealed_evidence_modified": false,
+  "ac09_acceptance": "NOT_DECLARED_SEC_AND_FINAL_REVIEW_SEPARATE"
+}

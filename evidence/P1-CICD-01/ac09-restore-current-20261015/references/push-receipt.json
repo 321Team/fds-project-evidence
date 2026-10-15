@@ -1,0 +1,39 @@
+{
+  "PUSH": "PASS",
+  "DEPLOY": "NOT_EXECUTED",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "started_at": "2026-10-13T13:22:45.914332+00:00",
+  "images": {
+    "transaction-api": {
+      "result": "PASS",
+      "registry_repository": "10.1.93.54/fds/transaction-api",
+      "tag": "delivery-c979336ca9ac4be7b98e055402e34945",
+      "manifest_digest": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0"
+    },
+    "fds-engine": {
+      "result": "PASS",
+      "registry_repository": "10.1.93.54/fds/fds-engine",
+      "tag": "delivery-c979336ca9ac4be7b98e055402e34945",
+      "manifest_digest": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d"
+    }
+  },
+  "build_workflow": {
+    "repository": "321Team/infra-cicd",
+    "ref": "refs/heads/main",
+    "commit": "147f760298dd4a683ea58f2a887483769352b97d",
+    "run_id": 38395350748,
+    "run_attempt": 1
+  },
+  "execution_context": {
+    "workflow_sha": "147f760298dd4a683ea58f2a887483769352b97d",
+    "run_id": "38404449622",
+    "attempt": 1,
+    "run_url": "https://github.com/321Team/infra-cicd/actions/runs/38404449622",
+    "host": "cicd-runner01",
+    "user": "server01_cicd-runner",
+    "uid": 1000
+  },
+  "error_code": "NONE",
+  "fresh_scan_result_sha256": "2326e501992c1176f971554306caadf7def27f9f965bfcc6a980b0261940b9b0",
+  "finished_at": "2026-10-13T13:23:05.662585+00:00"
+}

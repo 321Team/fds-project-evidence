@@ -1,0 +1,107 @@
+{
+  "verified_at_kst": "2026-10-15T16:24:35.923801+09:00",
+  "provenance": "USER_SUPPLIED_DB01_CONSOLE_TRANSCRIPT; LF file reconstruction matches all 7 reported SHA256 values; no new DB connection or SQL execution",
+  "console_identity": [
+    "db01",
+    "server08"
+  ],
+  "database_identity": {
+    "kind": "identity",
+    "database": "fdsdb",
+    "user": "postgres",
+    "at": "2026-10-15T16:22:17.634935+09:00",
+    "timezone": "Asia/Seoul",
+    "transaction_read_only": "on"
+  },
+  "command_rc": 0,
+  "stderr_empty_sha_verified": true,
+  "integrity": {
+    "DB_POST_READONLY.sql": {
+      "expected": "8bb9b1c3d32fea5c821064547341b369aebae6a0b8b3de6606a743dd8ff3694c",
+      "actual": "8bb9b1c3d32fea5c821064547341b369aebae6a0b8b3de6606a743dd8ff3694c",
+      "match": true
+    },
+    "host.txt": {
+      "expected": "27cfc2b85847e4eeb64497888a6571894dd6289cbe60faf0e597cc542c1e9ad2",
+      "actual": "27cfc2b85847e4eeb64497888a6571894dd6289cbe60faf0e597cc542c1e9ad2",
+      "match": true
+    },
+    "start.txt": {
+      "expected": "1f0e863cee341452cbb30c17a6d213d3183133fc95efc12d8d12e6a54a816a51",
+      "actual": "1f0e863cee341452cbb30c17a6d213d3183133fc95efc12d8d12e6a54a816a51",
+      "match": true
+    },
+    "db-after.jsonl": {
+      "expected": "993b2e9588945e1e31551e61c94788756b7356670a475cca7cb88acf22d83a4f",
+      "actual": "993b2e9588945e1e31551e61c94788756b7356670a475cca7cb88acf22d83a4f",
+      "match": true
+    },
+    "db-after.stderr": {
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "match": true
+    },
+    "db-after.rc": {
+      "expected": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "actual": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "match": true
+    },
+    "end.txt": {
+      "expected": "1f0e863cee341452cbb30c17a6d213d3183133fc95efc12d8d12e6a54a816a51",
+      "actual": "1f0e863cee341452cbb30c17a6d213d3183133fc95efc12d8d12e6a54a816a51",
+      "match": true
+    }
+  },
+  "rows": [
+    {
+      "phase": "R1",
+      "matched_rows": 1,
+      "transaction_id": "22b7c46c-cd07-4539-a7fc-8890b67b12ee",
+      "input_and_response_fields": {
+        "account_id": true,
+        "amount": true,
+        "currency": true,
+        "transaction_type": true,
+        "source_ip": true,
+        "occurred_at": true,
+        "transaction_id": true,
+        "fds_detected": true,
+        "fds_evaluation_skipped": true,
+        "fds_rules": true
+      },
+      "received_at": "2026-10-15T15:48:19.508568+09:00",
+      "received_at_within_observed_http_interval": true,
+      "received_at_basis": "DB_ONLY_FIELD; interval observation is descriptive, not a new clock or latency criterion",
+      "result": "SAME_ID_DB_ROW_CONTENT_MATCH"
+    },
+    {
+      "phase": "R2",
+      "matched_rows": 1,
+      "transaction_id": "1827bd8a-a921-49f9-83f7-22529e903451",
+      "input_and_response_fields": {
+        "account_id": true,
+        "amount": true,
+        "currency": true,
+        "transaction_type": true,
+        "source_ip": true,
+        "occurred_at": true,
+        "transaction_id": true,
+        "fds_detected": true,
+        "fds_evaluation_skipped": true,
+        "fds_rules": true
+      },
+      "received_at": "2026-10-15T15:56:29.942495+09:00",
+      "received_at_within_observed_http_interval": true,
+      "received_at_basis": "DB_ONLY_FIELD; interval observation is descriptive, not a new clock or latency criterion",
+      "result": "SAME_ID_DB_ROW_CONTENT_MATCH"
+    }
+  ],
+  "api_sources_sha256": {
+    "deliverables/p1-cicd-ac09-preparation-20261015/runtime-1535/r1-post-one/stdout.json": "6f8744257bcd80d1755131b9ab027e682f0c21d95daf8f6d6d96cdd2ffb1cfcf",
+    "deliverables/p1-cicd-ac09-preparation-20261015/runtime-1535/r2-post-one/stdout.json": "0c61b7ad461ad8b36c6cdfd4144aa90007515ab6b9bbe537ef40a242f672bd95"
+  },
+  "result": "DB_POST_ROWS_VERIFIED",
+  "db_pre_zero_rows": "NOT_COLLECTED_NOT_RETROACTIVELY_PROVEN",
+  "security_timing": "UNCHANGED_UNPROVEN_SEC_POST_REVIEW",
+  "ac09_acceptance": "NOT_COMPLETE"
+}

@@ -1,0 +1,14 @@
+set -eu
+umask 077
+test "$(hostname -s)" = ansible01
+test "$(id -un)" = server01_ansible
+test ! -e /home/server01_ansible/FDS_CICD_AC09_20261015_1535
+test ! -L /home/server01_ansible/FDS_CICD_AC09_20261015_1535
+mkdir -m 700 /home/server01_ansible/FDS_CICD_AC09_20261015_1535
+cd /home/server01_ansible/FDS_CICD_AC09_20261015_1535
+set -C
+cat > controller.tar
+test "$(sha256sum controller.tar | cut -d " " -f 1)" = 7964732e22c76b37e46237152170c855cd473d56031309f6fa87dbd111481496
+tar --no-same-owner --no-same-permissions --keep-old-files -xf controller.tar
+find . -type d -exec chmod 700 {} +
+find . -type f -exec sha256sum {} +

@@ -1,0 +1,79 @@
+{
+  "runner": {
+    "at_utc": "2026-10-15T07:00:52.517020+00:00",
+    "host": "cicd-runner01",
+    "removed": [
+      "/home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-cd01e613-d576-41eb-8354-8e9283d0f60d.json",
+      "/home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-3451e56c-57bc-490e-8d15-6cede958229f.json"
+    ],
+    "roots_absent": true,
+    "claim_journals_and_public_source_dirs": "RETAINED",
+    "broad_delete": false
+  },
+  "control01": {
+    "at_utc": "2026-10-15T07:00:52.911167+00:00",
+    "host": "k8s-control01",
+    "removed": [
+      "/home/server02/FDS_AC09_ConsoleRestore_20261015/console_restore_current.py",
+      "/home/server02/FDS_AC09_ConsoleRestore_20261015/recovery-contract.json",
+      "/home/server02/FDS_AC09_ConsoleRestore_20261015/recovery.tar",
+      "/home/server02/FDS_AC09_ConsoleRestore_20261015"
+    ],
+    "roots_absent": true,
+    "claim_journals_and_public_source_dirs": "RETAINED",
+    "broad_delete": false
+  },
+  "ansible": {
+    "at_utc": "2026-10-15T07:00:53.138047+00:00",
+    "host": "ansible01",
+    "removed": [
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/binding-38693979785.json",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/binding-38694721511.json",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/controller.tar",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/native-source.bundle.json",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/app_evidence.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/app_workflow.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/build_offline_probe_bundle.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/build_scan.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/capture_deploy_access.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/collect_base_metadata.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/collect_supply_context.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/delivery_gate.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_adapter.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_approval.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_binding.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_checkpoint.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_claim.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_cp1_access.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_credential.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_execution.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_handoff.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_native_probe.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_plan.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_session.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_token_lifecycle.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_transport.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/deploy_workflow.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/image_smoke.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/image_smoke_probe.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/materialize_app_build_scan_v3.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/offline_supply.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/offline_supply_v3.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/probe_offline_supply.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/push_images.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/push_workflow.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/runner_git_preflight.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/source_auth.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/transfer_deploy_credential.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/transfer_native_probe.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/unit_negative.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery/verify_base_manifest.py",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools/delivery",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535/tools",
+      "/home/server01_ansible/FDS_CICD_AC09_20261015_1535"
+    ],
+    "roots_absent": true,
+    "claim_journals_and_public_source_dirs": "RETAINED",
+    "broad_delete": false
+  }
+}
