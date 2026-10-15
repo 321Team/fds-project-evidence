@@ -1,0 +1,146 @@
+{
+  "ANSIBLE_INPUT_REFERENCE_CLEANUP": "LOCAL_REFERENCE_DROPPED",
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "DEPLOY": "NOT_EXECUTED",
+  "ENDPOINT_CLEANUP": "ACK_AND_PROCESS_EXIT",
+  "GLOBAL_LOG_ARTIFACT_RESIDUE": "REQUIRES_POSTCOLLECTION",
+  "PREFLIGHT": "PASS",
+  "SOURCE_APPROVAL": "OPERATOR_PINNED_NOT_VERIFIED_IN_TOOL",
+  "SOURCE_DIRECTORY": "RUNNER_UNCHANGED_PUBLIC_SOURCE_ONLY",
+  "TOKEN_LIFECYCLE": "PASS",
+  "TOKEN_REQUEST_COMMANDS": 2,
+  "bundle_sha256": "f213fcc9addbf802b45308d5a1dc4b73666aac9606d03256e19d02057d6bf12e",
+  "checked_at": "2026-10-15T00:51:28.751244+00:00",
+  "cp1_credentials": [
+    {
+      "DELIVERY_GATE": "NOT_VERIFIED",
+      "audience": "https://kubernetes.default.svc.cluster.local",
+      "authentication_basis": "CALLER_AUTHENTICATED_FRESH_TOKEN_REVIEW",
+      "checked_at": "2026-10-15T00:35:14.012297+00:00",
+      "expires_at": "2026-10-15T00:50:13+00:00",
+      "input_reference_cleanup": "LOCAL_REFERENCE_DROPPED",
+      "issued_at": "2026-10-15T00:35:13+00:00",
+      "issuer": "https://kubernetes.default.svc.cluster.local",
+      "jwt_signature_check": "NOT_PERFORMED_LOCALLY",
+      "local_credential_cleanup": "LOCAL_REFERENCE_DROPPED",
+      "runner_token_authentication": "NOT_VERIFIED",
+      "schema": "P1-CICD-credential-observation-1",
+      "server_revocation": "NOT_PERFORMED",
+      "service_account_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+      "subject": "system:serviceaccount:ci-cd:cicd-runner-sa",
+      "token_request_expires_at": "2026-10-15T00:50:13+00:00"
+    },
+    {
+      "DELIVERY_GATE": "NOT_VERIFIED",
+      "audience": "https://kubernetes.default.svc.cluster.local",
+      "authentication_basis": "CALLER_AUTHENTICATED_FRESH_TOKEN_REVIEW",
+      "checked_at": "2026-10-15T00:51:28.634220+00:00",
+      "expires_at": "2026-10-15T01:06:28+00:00",
+      "input_reference_cleanup": "LOCAL_REFERENCE_DROPPED",
+      "issued_at": "2026-10-15T00:51:28+00:00",
+      "issuer": "https://kubernetes.default.svc.cluster.local",
+      "jwt_signature_check": "NOT_PERFORMED_LOCALLY",
+      "local_credential_cleanup": "LOCAL_REFERENCE_DROPPED",
+      "runner_token_authentication": "NOT_VERIFIED",
+      "schema": "P1-CICD-credential-observation-1",
+      "server_revocation": "NOT_PERFORMED",
+      "service_account_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+      "subject": "system:serviceaccount:ci-cd:cicd-runner-sa",
+      "token_request_expires_at": "2026-10-15T01:06:28+00:00"
+    }
+  ],
+  "credentials": [
+    {
+      "DELIVERY_GATE": "NOT_VERIFIED",
+      "audience": "https://kubernetes.default.svc.cluster.local",
+      "authentication_basis": "CALLER_AUTHENTICATED_FRESH_TOKEN_REVIEW",
+      "checked_at": "2026-10-15T00:35:14.104634+00:00",
+      "expires_at": "2026-10-15T00:50:13+00:00",
+      "issued_at": "2026-10-15T00:35:13+00:00",
+      "issuer": "https://kubernetes.default.svc.cluster.local",
+      "jwt_signature_check": "NOT_PERFORMED_LOCALLY",
+      "local_credential_cleanup": "LOCAL_REFERENCE_DROPPED",
+      "runner_token_authentication": "NOT_VERIFIED",
+      "schema": "P1-CICD-credential-observation-1",
+      "server_revocation": "NOT_PERFORMED",
+      "service_account_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+      "subject": "system:serviceaccount:ci-cd:cicd-runner-sa",
+      "token_request_expires_at": "2026-10-15T00:50:13+00:00"
+    },
+    {
+      "DELIVERY_GATE": "NOT_VERIFIED",
+      "audience": "https://kubernetes.default.svc.cluster.local",
+      "authentication_basis": "CALLER_AUTHENTICATED_FRESH_TOKEN_REVIEW",
+      "checked_at": "2026-10-15T00:51:28.724421+00:00",
+      "expires_at": "2026-10-15T01:06:28+00:00",
+      "issued_at": "2026-10-15T00:51:28+00:00",
+      "issuer": "https://kubernetes.default.svc.cluster.local",
+      "jwt_signature_check": "NOT_PERFORMED_LOCALLY",
+      "local_credential_cleanup": "LOCAL_REFERENCE_DROPPED",
+      "runner_token_authentication": "NOT_VERIFIED",
+      "schema": "P1-CICD-credential-observation-1",
+      "server_revocation": "NOT_PERFORMED",
+      "service_account_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+      "subject": "system:serviceaccount:ci-cd:cicd-runner-sa",
+      "token_request_expires_at": "2026-10-15T01:06:28+00:00"
+    }
+  ],
+  "local_source_workdir": "/home/server01_ansible/FDS_NativeProbeSource.la4s4ks2",
+  "observations": [
+    {
+      "deployment_uid": "8a2af808-ec33-41f2-80b5-addde4e28910",
+      "http_status": 200,
+      "method": "GET",
+      "observed_at": "2026-10-15T00:35:14.115801+00:00",
+      "path": "/apis/apps/v1/namespaces/fds-app/deployments/transaction-api",
+      "phase": "valid",
+      "server_date": "2026-10-15T00:35:14+00:00"
+    },
+    {
+      "deployment_uid": null,
+      "http_status": 401,
+      "method": "GET",
+      "observed_at": "2026-10-15T00:51:28.013946+00:00",
+      "path": "/apis/apps/v1/namespaces/fds-app/deployments/transaction-api",
+      "phase": "expired",
+      "server_date": "2026-10-15T00:51:28+00:00"
+    },
+    {
+      "deployment_uid": "8a2af808-ec33-41f2-80b5-addde4e28910",
+      "http_status": 200,
+      "method": "GET",
+      "observed_at": "2026-10-15T00:51:28.738374+00:00",
+      "path": "/apis/apps/v1/namespaces/fds-app/deployments/transaction-api",
+      "phase": "recovery",
+      "server_date": "2026-10-15T00:51:28+00:00"
+    }
+  ],
+  "server_revocation": "NOT_PERFORMED",
+  "source_sha": "c373f1d7a8e6e84548180839098c34e9a1262eef",
+  "sources": [
+    {
+      "ca_sha256": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c",
+      "role": "cp1",
+      "sa_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+      "source_sha": "c373f1d7a8e6e84548180839098c34e9a1262eef",
+      "stage": "ready",
+      "workdir": "/home/server02/FDS_NativeProbeSource.5cwf9w49"
+    },
+    {
+      "ca_sha256": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c",
+      "role": "runner",
+      "sa_uid": null,
+      "source_sha": "c373f1d7a8e6e84548180839098c34e9a1262eef",
+      "stage": "ready",
+      "workdir": "/home/server01_cicd-runner/FDS_NativeProbeSource.r0k_jhl_"
+    },
+    {
+      "ca_sha256": "5e4462b48b67aa3c452119f02578feb5b2ace358782c9b050ba0ad2ea951a49c",
+      "role": "cp1",
+      "sa_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+      "source_sha": "c373f1d7a8e6e84548180839098c34e9a1262eef",
+      "stage": "ready",
+      "workdir": "/home/server02/FDS_NativeProbeSource.0ymg_gr4"
+    }
+  ]
+}
