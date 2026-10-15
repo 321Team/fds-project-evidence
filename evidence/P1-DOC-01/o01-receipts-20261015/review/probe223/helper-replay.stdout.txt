@@ -1,0 +1,58 @@
+== 1. 실행 계정·명령·시각·rc  [apply-once/receipt.json, remote-originals/input.json]
+  started_at_kst : 2026-10-14T09:50:41.416358+09:00 | finished_at_kst: 2026-10-14T09:52:03.669644+09:00 | rc: 0
+  route          : fds-ansible01 -> svc_ansible@10.1.93.107
+  target binding : {'host': 'k8s-worker02', 'namespace': 'fds-app', 'pod_name': 'fds-engine-65479b5bf-4gfgq', 'pod_uid': 'e349b045-870f-4061-a677-3007efe479e9', 'container_name': 'fds-engine', 'pid': 1290996, 'boot_id': 'f0015ee5-36c9-4184-a985-723170958f2c'}
+  container_id   : 7b24cf1f8132da141a186eb00d7cbd02e30b9d1e28a2dfdb1147376caf544a45
+  arguments      : {"mode": "apply", "binding": "/var/tmp/p1-http-probe-source-20261014-0945/observed-binding.json", "source_sha256": "8b9fe37dd0bcdbd09e0c7d5e7fb41eaa9e25d47fb56223bbab6273081251cc32", "start": "2026-10-14T09:45:00+09:00", "latest_start": "2026-10-14T09:55:00+09:00", "end": "2026-10-14T10:20:00+09:00"
+
+== 2. STOP·CONT와 원 프로세스 종료  [remote-originals/events.jsonl]
+   09:50:42 KST STOP_INTENT
+   09:50:42 KST STOP_SENT
+   09:52:04 KST ORIGINAL_EXIT_OBSERVED_NOT_PROBE_PASS
+   09:52:04 KST ORIGINAL_EXITED_NO_CONT
+   09:52:04 KST FINAL_ORIGINAL_EXIT
+
+== 3. Ready·Endpoint·liveness·동일 Pod 재시작  [observer.jsonl 300 tick]
+  tick 0 09:48:51 KST | Ready= True | engine Endpoint ready= True | restartCount= 0 | containerID .. 376caf544a45 | same UID= True
+     event Unhealthy | count 1 | last 2026-10-14T00:50:46Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": context deadline exceeded (Client.Timeout exce
+     event Unhealthy | count 1 | last 2026-10-14T00:50:54Z | Liveness probe failed: Get "http://10.244.69.193:8001/livez": context deadline exceeded (Client.Timeout exceed
+     event Unhealthy | count 2 | last 2026-10-14T00:50:56Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": context deadline exceeded (Client.Timeout exce
+  tick 68 09:51:07 KST | Ready= False | engine Endpoint ready= False | restartCount= 0 | containerID .. 376caf544a45 | same UID= True
+     event Unhealthy | count 4 | last 2026-10-14T00:51:07Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": context deadline exceeded (Client.Timeout exce
+     event Unhealthy | count 2 | last 2026-10-14T00:51:14Z | Liveness probe failed: Get "http://10.244.69.193:8001/livez": context deadline exceeded (Client.Timeout exceed
+     event Unhealthy | count 5 | last 2026-10-14T00:51:17Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": context deadline exceeded (Client.Timeout exce
+     event Unhealthy | count 6 | last 2026-10-14T00:51:27Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": context deadline exceeded (Client.Timeout exce
+     event Unhealthy | count 7 | last 2026-10-14T00:51:35Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": context deadline exceeded (Client.Timeout exce
+     event Unhealthy | count 3 | last 2026-10-14T00:51:34Z | Liveness probe failed: Get "http://10.244.69.193:8001/livez": context deadline exceeded (Client.Timeout exceed
+     event Killing | count 1 | last 2026-10-14T00:51:34Z | Container fds-engine failed liveness probe, will be restarted
+     event Unhealthy | count 8 | last 2026-10-14T00:51:45Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": context deadline exceeded (Client.Timeout exce
+     event Unhealthy | count 9 | last 2026-10-14T00:51:55Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": context deadline exceeded (Client.Timeout exce
+  tick 97 09:52:05 KST | Ready= False | engine Endpoint ready= False | restartCount= 1 | containerID .. 11fa51dc8e31 | same UID= True
+     event Pulled | count 2 | last 2026-10-14T00:52:04Z | Container image "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3b
+     event Created | count 2 | last 2026-10-14T00:52:04Z | Container created
+     event Started | count 2 | last 2026-10-14T00:52:04Z | Container started
+     event Unhealthy | count 1 | last 2026-10-14T00:52:04Z | Readiness probe failed: Get "http://10.244.69.193:8001/readyz": read tcp 10.1.93.107:38470->10.244.69.193:8001
+  tick 102 09:52:15 KST | Ready= True | engine Endpoint ready= True | restartCount= 1 | containerID .. 11fa51dc8e31 | same UID= True
+  observer receipt: {'start_utc': '2026-10-14T00:48:50.180247+00:00', 'end_utc': '2026-10-14T00:58:50.926691+00:00', 'rc': 0, 'review': 'NOT PERFORMED (pure read-only observer)'}
+  ticks: 300 | other_workloads_healthy 모두 True: True | nodes_healthy 모두 True: True
+
+== 4. 실패 관측과 회복 보충  [worker-http.*, http-recovery/stdout.json]
+  worker-http receipt: {'start_utc': '2026-10-14T00:49:48.544389+00:00', 'end_utc': '2026-10-14T00:52:03.585288+00:00', 'rc': 1, 'review': 'NOT PERFORMED (pure read-only observer)'}
+  worker-http.jsonl 줄 수: 67
+  worker-http.stderr 마지막: ProcessLookupError: [Errno 3] No such process
+  http-recovery: scope READ_ONLY_RECOVERY_SUPPLEMENT | stable60_pass True | rows 31 | signals 0
+  첫 행 / 마지막 행: {"utc": "2026-10-14T00:53:21.948428+00:00", "elapsed": 0.0005927419988438487, "http": [{"path": "readyz", "code": 200, "utc": "2026-10-14T00:53:21.949638+00:00"}, {"path": "livez", "code": 200, "utc": / {"utc": "2026-10-14T00:54:21.958866+00:00", "elapsed": 60.01272762398003, "http": [{"path": "readyz", "code": 200, "utc": "2026-10-14T00:54:21.960862+00:00"}, {"path": "livez", "code": 200, "utc": "20
+
+== 5. MON·영향 범위·회복  [mon-during, mon-stable, recovery-edge]
+  mon-during: scope baseline API read only; not IF06B network-path evidence | forwarder_stopped True | queries 7
+  mon-stable: 2026-10-14T00:52:29.260296+00:00 ~ 2026-10-14T00:53:49.363431+00:00 | stable60_pass True | rows 41 | review NOT PERFORMED (pure validator)
+  recovery-edge: edge01 2026-10-14T00:52:30.368588+00:00 | api_mutations 0 | db_writes 0 | http [{"url": "http://10.1.93.105:30080/readyz", "at_utc": "2026-10-14T00:52:30.405300+00:00", "status": 200, "body_bytes": 18, "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd"}, {"url": "http://10.1.93.105:30080/metrics",
+
+== 6. 실행기 공급·수신 바이트와 리뷰  [remote-originals-receipt, GITHUB_MERGE_REVIEW_RECEIPT.json]
+  remote-originals-receipt: 2026-10-14T00:54:30.881486+00:00 | files [{"path": "/var/tmp/p1-http-probe-20261014-0945/input.json", "size": 1181, "sha256": "3db98f8c246d0f15bc7fac2dfcc678bbccd547524a107a134ee1cc6d4264095d", "base64": "ewogICJiaW5kaW5nIjogewogICAgImhvc3QiOiAiazhzLXdvcmtlcjAyIiwKICAgICJib290X2lkIjogImYwMDE1ZWU1LTM2YzktNDE4NC1hOTg1LTcyMzE3MDk1OGYyYyIsCiAg | new_container {'status': {'id': '737b90c6597c5ed6ae4a74b2d68e066cb928efcca8f5ed564b1b11fa51dc8e31', 'state': 'CONTAINER_RUNNING', 'labels': {'io.kubernetes.container.name': 'fds-engine', 'io.kubernetes.pod.name': 'fds-engine-65479b5bf-4gfgq', 'io.kubernetes.pod.namespace': 'fds-app', 'io.kubernetes.pod.uid': 'e349b045-870f-4061-a677-3007efe479e9'}, 'imageRef': '10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d', 'createdAt': '2026-10-14T09:52:04.171016653+09:00', 'startedAt': '2026-10-14T09:52:04.213621622+09:00'}, 'pid': 1514052}
+  GitHub receipt read_utc: 2026-10-14T00:57:59.987734+00:00
+    {"head": "fb931f5a59032607bd051206c192a77168c5752c", "merged": true, "merged_at": "2026-10-14T00:46:35Z", "merge_commit_sha": "851c3827f69160a6299c859f2cca3a32dab41054", "reviews": [{"id": 5511737187, "state": "APPROVED"
+    {"head": "d53ce00f318785b97577d41c07d8309ff581c2a8", "merged": true, "merged_at": "2026-10-14T00:46:39Z", "merge_commit_sha": "e60e022333a51a9a1690649ef170c0bda92ad9b9", "reviews": [{"id": 5511744639, "state": "APPROVED"
+
+== 7. kubelet journal  [kubelet-journal-utc/stdout.json]
+  rc 1 | stdout: -- No entries -- | stderr: 

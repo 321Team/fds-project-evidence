@@ -1,0 +1,52 @@
+== 1. 명령·실행 호스트·시각·rc  [raw/native-execute.receipt.json]
+  started_at_utc : 2026-10-14T12:55:57.394033+00:00
+  finished_at_utc: 2026-10-14T12:55:58.839922+00:00
+  rc             : 0
+  ssh target     : fds-ansible01
+  remote command : /usr/bin/python3 -I -B /home/server01_ansible/FDS_AC07_20261014.Cp1D4lh2/transfer_native_probe.py --bundle /home/server01_ansible/FDS_AC07_20261014.Cp1D4lh2/native-source.json --bundle-sha256 1d549ffabc0c4aeb7e2dc77b1e944f19b54a75bcc5e0e910 ...
+
+== 2. SSAR 25건과 실제 GET 2건  [raw/native-execute.stdout]
+  basis: LIVE_PINNED_TLS_SA_GET_AND_SELF_SUBJECT_ACCESS_REVIEW | RUNNER_TOKEN_AUTH: PASS | EFFECTIVE_RBAC_CHECK: PASS | DEPLOY: NOT_EXECUTED
+  subject: system:serviceaccount:ci-cd:cicd-runner-sa | issued 2026-10-14T12:55:58+00:00 | expires 2026-10-14T13:10:58+00:00 | server_revocation NOT_PERFORMED
+  permissions total: 25 | allowed: 6 | denied: 19 | allowed==expected 전부: True
+    ALLOW get apps/deployments fds-app transaction-api
+    ALLOW update apps/deployments fds-app transaction-api
+    ALLOW patch apps/deployments fds-app transaction-api
+    ALLOW get apps/deployments fds-app fds-engine
+    ALLOW update apps/deployments fds-app fds-engine
+    ALLOW patch apps/deployments fds-app fds-engine
+    deny  create apps/deployments fds-app 
+    deny  delete apps/deployments fds-app transaction-api
+    deny  patch apps/deployments fds-app unapproved-probe
+    deny  patch apps/deployments default transaction-api
+    deny  get core/secrets fds-app 
+    deny  list core/pods fds-app 
+    deny  create authentication.k8s.io/tokenreviews - 
+    deny  create rbac.authorization.k8s.io/roles fds-app 
+    deny  patch rbac.authorization.k8s.io/roles fds-app cicd-deploy-updater
+    deny  bind rbac.authorization.k8s.io/roles fds-app cicd-deploy-updater
+    deny  escalate rbac.authorization.k8s.io/roles fds-app cicd-deploy-updater
+    deny  create rbac.authorization.k8s.io/rolebindings fds-app 
+    deny  patch rbac.authorization.k8s.io/rolebindings fds-app cicd-deploy-updater-binding
+    deny  create rbac.authorization.k8s.io/clusterroles - 
+    deny  bind rbac.authorization.k8s.io/clusterroles - cluster-admin
+    deny  escalate rbac.authorization.k8s.io/clusterroles - cluster-admin
+    deny  create rbac.authorization.k8s.io/clusterrolebindings - 
+    deny  get core/pods/exec fds-app 
+    deny  create core/pods/exec fds-app 
+  deployments GET: [('fds-app', 'transaction-api', '8a2af808-ec33-41f2-80b5-addde4e28910'), ('fds-app', 'fds-engine', 'bf825dec-465b-4603-8b71-f768d195531c')]
+
+== 3. 실패 수집과 성공 재조회  [raw/rbac-before/, raw/rbac-before-r2/]
+  raw/rbac-before/receipt.json | rc 1 | 2026-10-14T12:49:52.156147+00:00 | classification PURE_READ_PRECHECK | token_issued False | server_files_written False
+  raw/rbac-before-r2/receipt.json | rc 0 | 2026-10-14T12:50:29.693517+00:00 | classification PURE_READ_PRECHECK | token_issued False | server_files_written False
+  rbac-before stderr 앞부분: Traceback (most recent call last): /   File "<stdin>", line 46, in <module> / KeyError: 'kind' / 
+
+== 4. 코드·리뷰·병합 결속  [raw/SOURCE_BINDING.json, references/pr82-reviews.json]
+  reviewed_head: db8230d7580820c55ab388680a1e87fc3e45db0a | merge: 9fb2e2dcac8682a89c4b7c267c833ae8d9aaeb18 | files: 8 | 모두 reviewed_head_bytes_equal: True
+  review: hayeounglee APPROVED db8230d75808 2026-10-14T12:43:34Z
+
+== 5. 전후 불변·회수·점유 해제  [raw/POSTCHECK_SUMMARY.json, raw/WINDOW_RELEASE.json, raw/cleanup-*]
+  {"at_utc": "2026-10-14T12:57:27.688767+00:00", "NATIVE_AUTH_PROBE": "PASS", "permission_total": 25, "allow": 6, "deny": 19, "deployment_gets": 2, "token_ttl_seconds": 900.0, "expires_at_utc": "2026-10-14T13:10:58+00:00", "app_identity_spec_imageID_ready_restart_unchanged": true, "deployments": 2, "pods_ready": 6, "rbac_relevant_bindings_unchanged": 5, "rbac_roles_unchanged": 5, "all_rolebindings_examined": 13, "all_clusterrolebindings_examined": 64, "probe_processes_remaining": 0, "public_source_dirs": 6, "public_source_files_sha256_match": 42, "cleanup_scope": "Process termination and public-source directory allowlist only; credential local references dropped by broker; no physical memory erasure claim", "revocation": "NOT_PERFORMED; natural expiry, no token-retaining expiry test", "rbac_limit": "Fixed 25 SSAR plus enumerated RBAC grants, not exhaustive authorization-system proof", "AC07": "RUNTIME_OBSERVED_EVIDENCE_REVIEW_PENDING", "AC08": "NOT_EXECUTED", "DEPLOY": "NOT_EXECUTED", "DELIVERY_GATE": "NOT_VERIFIED"}
+  {"at_utc": "2026-10-14T12:57:27.688767+00:00", "runtime_complete": true, "postcheck": "PASS", "remaining_active_probe_processes": 0, "window": "21:50-22:10 KST", "natural_token_expiry_kst": "2026-10-14 22:10:58", "token_reference_retained": false, "server_revocation": "NOT_PERFORMED"}
+  cleanup: raw/cleanup-cp1 | rc 0 | 2026-10-14T12:56:44.615962+00:00
+  cleanup: raw/cleanup-runner | rc 0 | 2026-10-14T12:56:44.702564+00:00

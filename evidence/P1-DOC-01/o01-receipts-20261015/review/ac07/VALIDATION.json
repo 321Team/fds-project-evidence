@@ -1,0 +1,54 @@
+{
+  "reviewed_at_kst": "2026-10-15T09:59:33.831478+09:00",
+  "input_sha": "43e26384ae422f2017f1e96e6c1bb5fe46d087d4",
+  "infra_cicd_base_sha": "c373f1d7a8e6e84548180839098c34e9a1262eef",
+  "received_files": 6,
+  "attachments_breakdown": "4 output/meta files + 1 helper; plus result form",
+  "raw_bytes_preserved": true,
+  "manifest_hashes_verified": 116,
+  "frozen_files_unchanged": 117,
+  "performer_record": {
+    "name": "이재환",
+    "ai": "CLAUDE_ASSISTED",
+    "session_start_kst": "2026-10-15T09:44:13+09:00",
+    "session_end_kst": "2026-10-15T09:50:52+09:00",
+    "verify_meta": "start=2026-10-15 09:49:24 end=2026-10-15 09:49:25 rc=0",
+    "verify_stdout": {
+      "OFFLINE_CONSISTENCY": "PASS",
+      "manifest_files": 116,
+      "receipts": 20,
+      "source_files": 8,
+      "SSAR": 25,
+      "allow": 6,
+      "deny": 19,
+      "GET": 2,
+      "ReadyPods": 6,
+      "token_ttl_seconds": 900,
+      "AC07": "RUNTIME_OBSERVED_EVIDENCE_REVIEW_PENDING",
+      "AC08": "NOT_EXECUTED"
+    },
+    "stderr_bytes": 0
+  },
+  "helper_replay": {
+    "rc": 0,
+    "normalized_stdout_matches": true,
+    "comparison": "BOM/encoding and CRLF normalized for text comparison only"
+  },
+  "findings": {
+    "D1": "confirmed: SSAR count",
+    "D2": "confirmed: historical/current source ambiguity",
+    "D3": "confirmed: copied-relative-link only",
+    "D4": "historical frozen state; session card already clarifies",
+    "D5": "two paths contain identical bytes"
+  },
+  "docs_static": {
+    "command_examples_unchanged": true,
+    "all_five_dispositions_present": true,
+    "frozen_governance_link_present": true
+  },
+  "limits": [
+    "OS/Python/Git versions and performer-machine HEAD/status are performer report fields; no separate raw environment/status logs supplied",
+    "Helper replay here is reviewer cross-check, not additional third-party execution",
+    "No new Runtime or token operation; O01 overall acceptance and DOC Freeze not assessed"
+  ]
+}
