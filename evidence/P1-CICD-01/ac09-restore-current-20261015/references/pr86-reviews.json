@@ -1,0 +1,42 @@
+[
+  {
+    "id": 5527574497,
+    "node_id": "PRR_kwDOUTHX4M8AAAABSXgX4Q",
+    "user": {
+      "login": "hayeounglee",
+      "id": 95111439,
+      "node_id": "U_kgDOBatJDw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/95111439?u=d531f1f1f2702ca476594fcc6fc88b9406d97d4b&v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hayeounglee",
+      "html_url": "https://github.com/hayeounglee",
+      "followers_url": "https://api.github.com/users/hayeounglee/followers",
+      "following_url": "https://api.github.com/users/hayeounglee/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hayeounglee/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hayeounglee/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hayeounglee/subscriptions",
+      "organizations_url": "https://api.github.com/users/hayeounglee/orgs",
+      "repos_url": "https://api.github.com/users/hayeounglee/repos",
+      "events_url": "https://api.github.com/users/hayeounglee/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hayeounglee/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "body": "## 독립 코드 리뷰 — 승인 (HEAD `b88e24d`)\n\n**판정: APPROVE** — AC09 복구 계약 코드에 막을 만한 문제 없음. 이 승인은 코드 병합 리뷰이며 Runtime 실행 승인이 아닙니다.\n\n### 직접 확인한 것\n- **방향 전환이 원래 계획에 묶여 있음:** recovery는 `Target(service, uid, previous_image=현재 Push digest, image=원 plan의 previous_image)`로 뒤집기만 합니다. 대상 이미지는 원 forward plan의 `targets`와 `plan['targets'] == prior['targets']`로 고정돼 임의 이미지를 넣을 수 없음. `delivery`·`push_execution`·`push_receipt_sha256`·`kubernetes`도 원 plan과 일치해야 함\n- **원 plan 조건:** 해시 일치, schema가 `deploy-plan-2`만 허용(recovery 재귀 거부), 원 승인 `allow_rollback=true` 필수, request_id·Run ID 재사용 거부, 원 승인 시작 시각이 현재보다 미래면 거부\n- **현재 권한 우회 없음:** 바깥쪽의 새 approval window·attempt=1·workflow 일치·Push 결속 검사는 그대로 먼저 수행되고, recovery 근거는 그 위에 추가될 뿐임. 옛 승인은 `SUPPLIED_BYTES_ONLY`/`historical_runtime=NOT_VERIFIED`로만 기록됨\n- **checkpoint:** 새 필드는 `operation`·`recovery_basis` 두 개만 허용하고, RESTORE일 때 6개 필드·SHA 형식·reference·Run ID 차이를 검사함. 기존 receipt(새 필드 없음)도 그대로 읽힘\n- 로컬 실행: `test_recovery_plan` + `test_deploy_plan` **34건 OK**(Windows). Linux CI 754건 SUCCESS 확인\n\n### 실행 전 SEC 확인 필요 (코드 차단 아님)\n- 문서 81행대로 **이전 두 이미지는 업무 포트 `/metrics`를 다시 노출**합니다. 과거 한시 허용을 재사용하지 않는다는 서술에 동의하며, 실제 복구 Runtime 전에 노출 범위·시간·복원 시점을 정한 **새 처분**을 SEC(이하영)에서 판단하겠습니다. 처분 전에는 Runtime을 시작하지 않는 조건을 유지해 주세요.\n\n### 참고 (비차단)\n- 원 승인은 \"선언된 시작 시각 기준\"으로만 검증되고 이후 철회 여부는 보지 않습니다(코드 주석에 명시). 현재 승인이 필수라 우회는 아니지만, 복구 회차 승인 댓글에 원 승인이 철회되지 않았음을 한 줄 확인해 두면 추적이 쉬워집니다.\n- 복구 회차에서 `allow_rollback=true`면 자동 보상은 **현재 Push digest로 되돌리는 방향**이 됩니다. 문서의 \"실패 보상\"과 일치하나, 복구 승인 시 이 방향을 명시해 주세요.\n",
+    "state": "APPROVED",
+    "html_url": "https://github.com/321Team/infra-cicd/pull/86#pullrequestreview-5527574497",
+    "pull_request_url": "https://api.github.com/repos/321Team/infra-cicd/pulls/86",
+    "author_association": "MEMBER",
+    "_links": {
+      "html": {
+        "href": "https://github.com/321Team/infra-cicd/pull/86#pullrequestreview-5527574497"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/321Team/infra-cicd/pulls/86"
+      }
+    },
+    "submitted_at": "2026-10-15T03:08:09Z",
+    "commit_id": "b88e24d9bf43a85d33192850d9aab45d1ad39c5d"
+  }
+]

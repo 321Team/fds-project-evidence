@@ -1,0 +1,40 @@
+{
+  "DELIVERY_GATE": "NOT_VERIFIED",
+  "DEPLOY": "CHECK_WORKFLOW_RESULT",
+  "HANDOFF": "REVIEW_RESPONSE_RECEIVED",
+  "SOURCE_APPROVAL": "OPERATOR_PINNED_NOT_VERIFIED_IN_TOOL",
+  "binding": {
+    "execution": {
+      "attempt": 1,
+      "ref": "refs/heads/main",
+      "repository": "321Team/infra-cicd",
+      "run_id": 38693979785,
+      "workflow_sha": "fddc76e1c261cd938f06211b7ed035fdcb32e606"
+    },
+    "plan_sha256": "6e622c0bf539830c77cc841beb6852b0db65a9652822754d30141e587ca71d2d",
+    "record_sha256": "5ecb2b3300b2e7409341130eef6f4c17d474ff292b3337f43dd7a31989ddc425",
+    "sa_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176"
+  },
+  "broker_input_reference_cleanup": "LOCAL_REFERENCE_DROPPED",
+  "bundle_sha256": "16366261081cf95639480cfb9256255541bc1099fde717225e4ad8f6e322ae8b",
+  "cp1_credential": {
+    "DELIVERY_GATE": "NOT_VERIFIED",
+    "audience": "https://kubernetes.default.svc.cluster.local",
+    "authentication_basis": "CALLER_AUTHENTICATED_FRESH_TOKEN_REVIEW",
+    "checked_at": "2026-10-15T06:43:14.735096+00:00",
+    "expires_at": "2026-10-15T06:58:14+00:00",
+    "input_reference_cleanup": "LOCAL_REFERENCE_DROPPED",
+    "issued_at": "2026-10-15T06:43:14+00:00",
+    "issuer": "https://kubernetes.default.svc.cluster.local",
+    "jwt_signature_check": "NOT_PERFORMED_LOCALLY",
+    "local_credential_cleanup": "LOCAL_REFERENCE_DROPPED",
+    "runner_token_authentication": "NOT_VERIFIED",
+    "schema": "P1-CICD-credential-observation-1",
+    "server_revocation": "NOT_PERFORMED",
+    "service_account_uid": "8f1ddfef-7bec-4b15-8cb7-c4b1a068a176",
+    "subject": "system:serviceaccount:ci-cd:cicd-runner-sa",
+    "token_request_expires_at": "2026-10-15T06:58:14+00:00"
+  },
+  "server_revocation": "NOT_PERFORMED",
+  "source_sha": "fddc76e1c261cd938f06211b7ed035fdcb32e606"
+}

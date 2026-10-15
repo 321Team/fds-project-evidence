@@ -1,0 +1,19 @@
+## CICD-AC-09 결과 수용 — 승인 이전 Digest 복구·현행 복원 충족
+
+이권욱 · CODEX_ASSISTED · 2026-10-15 KST. 기존 Lead 위임과 “리뷰 체크 후 후속 작업 착수” 지시에 따라 **이번 단회 회차의 CICD-AC-09 충족**을 반영합니다. 전체 Delivery·AC10·#11 종결은 별도 잔여로 유지합니다.
+
+적용 기준은 현행 정본의 “승인 Digest와 승인자가 고정된 배포 기록, 재실행·동시 실행 통제, 이전 Digest 복구 결과가 있다”입니다. [Lead 위임 정책 §4](https://github.com/321Team/fds-project-baseline/blob/a47ac7543b18b557707453fe708e8e225d916db6/governance/REVIEW_AUTHORITY_POLICY.md)에 따른 업무 결과 수용이며, 같은 정책 §3.1의 증적 저장소 독립 검토를 대체하지 않습니다.
+
+| AC09 요구 | 확인한 근거·결과 |
+|---|---|
+| 승인 대상·승인자 고정 | 사용자 최종 승인 카드 SHA256 `7bdad3c96100c578ac80ba7ab450dcfa971b37ca719003fbea4bd5cc43222a34`, [실행 GO](https://github.com/321Team/infra-cicd/issues/11#issuecomment-6186064463), 고정 source `fddc76e1c261cd938f06211b7ed035fdcb32e606`·두 Deployment UID·이전/현행 Digest와 회차별 plan/approval/Run 결속 |
+| 재실행·동시 실행 통제 | 기존 Runner #2에서 false2/true2 총4 Job, 모두 Attempt1. 회차별 claim·8 checkpoint와 Run/승인 연결 확인, 재dispatch·재POST·새 Runner·수동 복구0. 직전 비중첩 확인과 순차 실행, 종료 Worker0/해당 socket0 확인. 이를 모든 경쟁 상황의 실제 장애 주입 시험으로 확대하지 않음 |
+| 이전 Digest 복구 | [R1 Run38693979785](https://github.com/321Team/infra-cicd/actions/runs/38693979785)에서 두 승인된 이전 이미지로 명시적 복구, 각 Ready3·정상 입금1건/HTTP201·동일ID DB1행 및 입력/FDS 결과 일치 |
+| 현행 복원·업무·회수 | [R2 Run38694721511](https://github.com/321Team/infra-cicd/actions/runs/38694721511)에서 현행 두 이미지 복원·각 Ready3, 이전 Pod0·재시작0. 정상 입금1건/HTTP201·동일ID DB1행 일치. 계측·임시 공급물 회수·16:06:17 작업창 반환 확인 |
+| 보안 조건 | 이하영의 [16:58:21 SEC 사후 판정](https://github.com/321Team/infra-cicd/issues/11#issuecomment-6187360015): 15/30분 및 해당 단회 조건 충족, 사고 처리 대상 아님, 검토된 종료 상태 잔여 노출 없음. 위험수용16:20종료·다른 회차 재사용 불가 |
+
+실행 원본은 [16:10:33 결과](https://github.com/321Team/infra-cicd/issues/11#issuecomment-6186586952), DB 보완은 [16:26:40 결과](https://github.com/321Team/infra-cicd/issues/11#issuecomment-6186849803)에 연결합니다. 봉인446파일/외부61참조와 후속 DB·SEC 자료는 구분해 보존합니다. DB는 중앙·APP가 별도 원문 대조했고 SQL 포함7/7해시 및 공통10필드 일치를 확인했습니다.
+
+**한계는 유지합니다.** 정확 PATCH 시각 `NOT_MEASURED`와 엄격한 구간 오차 상한 `UNPROVEN`을 소급 PASS로 바꾸지 않습니다. 시각 조건 충족은 SEC 본인의 사후 판단입니다. 사전 DB0행은 미수집 이력으로 남기며, 정상 deposit 각1건을 모든 Rule/이력 쿼리 검증으로 확대하지 않습니다. 자동 실패 보상·별도 수동 복구는 실행하지 않았고, 이번 수용 대상은 실제 수행한 명시적 이전 Digest 복구입니다. POST 영수증 분류 오표기는 실제 method로 쓰기2건을 계상했으며 다음 회차용 비차단 개선으로 분리합니다.
+
+**후속:** 공개 증적 편입 후보를 준비하고 정확 HEAD의 독립 리뷰·CI·병합을 별도로 진행합니다. AC10 및 전체 Delivery 잔여를 근거별로 정리한 뒤 최종 티켓 종결을 판단합니다. 이 기록은 새 Run·Token·POST·배포·회전·작업창의 승인이 아닙니다. #11은 **In Progress·OPEN**을 유지합니다.

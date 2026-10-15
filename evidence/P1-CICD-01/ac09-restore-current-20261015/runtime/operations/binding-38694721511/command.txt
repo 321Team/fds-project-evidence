@@ -1,0 +1,7 @@
+set -eu
+umask 077
+test ! -e /home/server01_ansible/FDS_CICD_AC09_20261015_1535/binding-38694721511.json
+test ! -L /home/server01_ansible/FDS_CICD_AC09_20261015_1535/binding-38694721511.json
+set -C
+cat > /home/server01_ansible/FDS_CICD_AC09_20261015_1535/binding-38694721511.json
+sha256sum /home/server01_ansible/FDS_CICD_AC09_20261015_1535/binding-38694721511.json

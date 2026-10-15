@@ -1,0 +1,2123 @@
+{
+  "at_kst": "2026-10-15T16:01:49+09:00",
+  "stage": "LOCAL_COMPARISON_OF_EXECUTOR_EVIDENCE",
+  "phases": {
+    "r1": {
+      "run": {
+        "id": 38693979785,
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "fddc76e1c261cd938f06211b7ed035fdcb32e606",
+        "run_attempt": 1,
+        "html_url": "https://github.com/321Team/infra-cicd/actions/runs/38693979785",
+        "updated_at": "2026-10-15T06:44:39Z"
+      },
+      "post": {
+        "payload": {
+          "account_id": "SIM_ac09_cd01e613d57641eb83548e9283d0f60d_P01",
+          "amount": 10000,
+          "currency": "KRW",
+          "transaction_type": "deposit",
+          "source_ip": "198.51.100.10",
+          "occurred_at": "2026-10-15T06:48:17.993816+00:00"
+        },
+        "response": {
+          "transaction_id": "22b7c46c-cd07-4539-a7fc-8890b67b12ee",
+          "fds_detected": false,
+          "fds_rules": [
+            {
+              "rule_id": "R01",
+              "triggered": false,
+              "detail": null
+            },
+            {
+              "rule_id": "R02",
+              "triggered": false,
+              "detail": null
+            },
+            {
+              "rule_id": "R04",
+              "triggered": false,
+              "detail": null
+            },
+            {
+              "rule_id": "R07",
+              "triggered": false,
+              "detail": null
+            }
+          ],
+          "fds_evaluation_skipped": false
+        },
+        "http": 201,
+        "source": "r1-post-one",
+        "started_utc": "2026-10-15T06:48:19.494287+00:00",
+        "finished_utc": "2026-10-15T06:48:19.538545+00:00",
+        "host": "edge01",
+        "url": "http://10.1.93.50/api/v1/transactions",
+        "body_sha256": "1a324c28ed3ec55bbc9761e692799c78e0fca8be8d8850143bcf08116aad1e4b",
+        "transport_receipt_classification": "PURE_READ_PRECHECK",
+        "actual_operation": "POST_ONE_WRITES_TRANSACTION_NOT_PURE_READ"
+      },
+      "metrics_before": {
+        "pods": {
+          "b91e9146-b561-4169-994e-9d84b0324324": {
+            "pod": "fds-engine-66b8c565c4-flzbg",
+            "uid": "b91e9146-b561-4169-994e-9d84b0324324",
+            "ip": "10.244.79.126",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:47:27.198609+00:00",
+            "finished_utc": "2026-10-15T06:47:27.203013+00:00",
+            "process_start": 1792046634.2,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792046635.7373528
+            }
+          },
+          "5a273334-9e87-40e7-ac2a-25d82b50d067": {
+            "pod": "fds-engine-66b8c565c4-nfssw",
+            "uid": "5a273334-9e87-40e7-ac2a-25d82b50d067",
+            "ip": "10.244.69.194",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:47:27.203022+00:00",
+            "finished_utc": "2026-10-15T06:47:27.205955+00:00",
+            "process_start": 1792046646.73,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792046647.8015313
+            }
+          },
+          "195a4721-e44b-44d2-b252-842e838725e2": {
+            "pod": "fds-engine-66b8c565c4-pr6rv",
+            "uid": "195a4721-e44b-44d2-b252-842e838725e2",
+            "ip": "10.244.39.216",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:47:27.205961+00:00",
+            "finished_utc": "2026-10-15T06:47:27.207461+00:00",
+            "process_start": 1792046657.91,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792046658.782756
+            }
+          },
+          "aaa0d40d-e350-412b-8955-d9ae3005706e": {
+            "pod": "transaction-api-54984f6ddd-6nxts",
+            "uid": "aaa0d40d-e350-412b-8955-d9ae3005706e",
+            "ip": "10.244.39.219",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:47:27.207469+00:00",
+            "finished_utc": "2026-10-15T06:47:27.208455+00:00",
+            "process_start": 1792046619.91,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046621.1555338,
+              "transaction_save_failure_total": 1792046621.155548,
+              "missing_client_ip_total": 1792046621.1555548,
+              "fds_evaluation_error_total": 1792046621.1553373
+            }
+          },
+          "cb94335c-9d7c-41b4-a190-766d15d933c8": {
+            "pod": "transaction-api-54984f6ddd-ml225",
+            "uid": "cb94335c-9d7c-41b4-a190-766d15d933c8",
+            "ip": "10.244.79.125",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:47:27.208461+00:00",
+            "finished_utc": "2026-10-15T06:47:27.210817+00:00",
+            "process_start": 1792046597.02,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046598.8986003,
+              "transaction_save_failure_total": 1792046598.898613,
+              "missing_client_ip_total": 1792046598.8986194,
+              "fds_evaluation_error_total": 1792046598.8984122
+            }
+          },
+          "aa9a8926-af6b-49f6-b356-bb653f319906": {
+            "pod": "transaction-api-54984f6ddd-vrdgh",
+            "uid": "aa9a8926-af6b-49f6-b356-bb653f319906",
+            "ip": "10.244.69.196",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:47:27.210823+00:00",
+            "finished_utc": "2026-10-15T06:47:27.212999+00:00",
+            "process_start": 1792046608.69,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046610.125762,
+              "transaction_save_failure_total": 1792046610.1257734,
+              "missing_client_ip_total": 1792046610.12578,
+              "fds_evaluation_error_total": 1792046610.1255863
+            }
+          }
+        },
+        "up_all_6": true,
+        "source": "r1-before-mon"
+      },
+      "metrics_after": {
+        "pods": {
+          "b91e9146-b561-4169-994e-9d84b0324324": {
+            "pod": "fds-engine-66b8c565c4-flzbg",
+            "uid": "b91e9146-b561-4169-994e-9d84b0324324",
+            "ip": "10.244.79.126",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:48:20.721783+00:00",
+            "finished_utc": "2026-10-15T06:48:20.725952+00:00",
+            "process_start": 1792046634.2,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792046635.7373528
+            }
+          },
+          "5a273334-9e87-40e7-ac2a-25d82b50d067": {
+            "pod": "fds-engine-66b8c565c4-nfssw",
+            "uid": "5a273334-9e87-40e7-ac2a-25d82b50d067",
+            "ip": "10.244.69.194",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:48:20.725960+00:00",
+            "finished_utc": "2026-10-15T06:48:20.729096+00:00",
+            "process_start": 1792046646.73,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792046647.8015313
+            }
+          },
+          "195a4721-e44b-44d2-b252-842e838725e2": {
+            "pod": "fds-engine-66b8c565c4-pr6rv",
+            "uid": "195a4721-e44b-44d2-b252-842e838725e2",
+            "ip": "10.244.39.216",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:48:20.729103+00:00",
+            "finished_utc": "2026-10-15T06:48:20.730119+00:00",
+            "process_start": 1792046657.91,
+            "counters": {
+              "fds_evaluated_total": 1.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792046658.782756
+            }
+          },
+          "aaa0d40d-e350-412b-8955-d9ae3005706e": {
+            "pod": "transaction-api-54984f6ddd-6nxts",
+            "uid": "aaa0d40d-e350-412b-8955-d9ae3005706e",
+            "ip": "10.244.39.219",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:48:20.730124+00:00",
+            "finished_utc": "2026-10-15T06:48:20.730893+00:00",
+            "process_start": 1792046619.91,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046621.1555338,
+              "transaction_save_failure_total": 1792046621.155548,
+              "missing_client_ip_total": 1792046621.1555548,
+              "fds_evaluation_error_total": 1792046621.1553373
+            }
+          },
+          "cb94335c-9d7c-41b4-a190-766d15d933c8": {
+            "pod": "transaction-api-54984f6ddd-ml225",
+            "uid": "cb94335c-9d7c-41b4-a190-766d15d933c8",
+            "ip": "10.244.79.125",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:48:20.730898+00:00",
+            "finished_utc": "2026-10-15T06:48:20.733480+00:00",
+            "process_start": 1792046597.02,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046598.8986003,
+              "transaction_save_failure_total": 1792046598.898613,
+              "missing_client_ip_total": 1792046598.8986194,
+              "fds_evaluation_error_total": 1792046598.8984122
+            }
+          },
+          "aa9a8926-af6b-49f6-b356-bb653f319906": {
+            "pod": "transaction-api-54984f6ddd-vrdgh",
+            "uid": "aa9a8926-af6b-49f6-b356-bb653f319906",
+            "ip": "10.244.69.196",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:48:20.733487+00:00",
+            "finished_utc": "2026-10-15T06:48:20.736421+00:00",
+            "process_start": 1792046608.69,
+            "counters": {
+              "transaction_save_success_total": 1.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046610.125762,
+              "transaction_save_failure_total": 1792046610.1257734,
+              "missing_client_ip_total": 1792046610.12578,
+              "fds_evaluation_error_total": 1792046610.1255863
+            }
+          }
+        },
+        "up_all_6": true,
+        "source": "r1-after-mon"
+      },
+      "database_same_transaction_id": "NOT_COLLECTED",
+      "database_before_zero_rows": "NOT_COLLECTED_NORMAL_DB_CONSOLE_ONLY",
+      "same_six_pods": true,
+      "same_process_starts": true,
+      "per_pod_delta": [
+        {
+          "pod": "fds-engine-66b8c565c4-flzbg",
+          "uid": "b91e9146-b561-4169-994e-9d84b0324324",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "fds_evaluated_total": 0.0
+          }
+        },
+        {
+          "pod": "fds-engine-66b8c565c4-nfssw",
+          "uid": "5a273334-9e87-40e7-ac2a-25d82b50d067",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "fds_evaluated_total": 0.0
+          }
+        },
+        {
+          "pod": "fds-engine-66b8c565c4-pr6rv",
+          "uid": "195a4721-e44b-44d2-b252-842e838725e2",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "fds_evaluated_total": 1.0
+          }
+        },
+        {
+          "pod": "transaction-api-54984f6ddd-6nxts",
+          "uid": "aaa0d40d-e350-412b-8955-d9ae3005706e",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "transaction_save_success_total": 0.0,
+            "transaction_save_failure_total": 0.0,
+            "missing_client_ip_total": 0.0,
+            "fds_evaluation_error_total": 0.0
+          }
+        },
+        {
+          "pod": "transaction-api-54984f6ddd-ml225",
+          "uid": "cb94335c-9d7c-41b4-a190-766d15d933c8",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "transaction_save_success_total": 0.0,
+            "transaction_save_failure_total": 0.0,
+            "missing_client_ip_total": 0.0,
+            "fds_evaluation_error_total": 0.0
+          }
+        },
+        {
+          "pod": "transaction-api-54984f6ddd-vrdgh",
+          "uid": "aa9a8926-af6b-49f6-b356-bb653f319906",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "transaction_save_success_total": 1.0,
+            "transaction_save_failure_total": 0.0,
+            "missing_client_ip_total": 0.0,
+            "fds_evaluation_error_total": 0.0
+          }
+        }
+      ],
+      "aggregate_delta": {
+        "transaction_save_success_total": 1.0,
+        "transaction_save_failure_total": 0.0,
+        "missing_client_ip_total": 0.0,
+        "fds_evaluation_error_total": 0.0,
+        "fds_evaluated_total": 1.0
+      },
+      "counter_expected_match": true,
+      "health_and_route_observations": [
+        {
+          "host": "10.244.79.126",
+          "port": 8001,
+          "path": "/livez",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-flzbg",
+          "pod_uid": "b91e9146-b561-4169-994e-9d84b0324324",
+          "started_utc": "2026-10-15T06:47:28.136846+00:00",
+          "finished_utc": "2026-10-15T06:47:28.140433+00:00"
+        },
+        {
+          "host": "10.244.79.126",
+          "port": 8001,
+          "path": "/readyz",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-flzbg",
+          "pod_uid": "b91e9146-b561-4169-994e-9d84b0324324",
+          "started_utc": "2026-10-15T06:47:28.140448+00:00",
+          "finished_utc": "2026-10-15T06:47:28.141432+00:00"
+        },
+        {
+          "host": "10.244.79.126",
+          "port": 8001,
+          "path": "/metrics",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-flzbg",
+          "pod_uid": "b91e9146-b561-4169-994e-9d84b0324324",
+          "started_utc": "2026-10-15T06:47:28.141443+00:00",
+          "finished_utc": "2026-10-15T06:47:28.142970+00:00"
+        },
+        {
+          "host": "10.244.69.194",
+          "port": 8001,
+          "path": "/livez",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-nfssw",
+          "pod_uid": "5a273334-9e87-40e7-ac2a-25d82b50d067",
+          "started_utc": "2026-10-15T06:47:28.142978+00:00",
+          "finished_utc": "2026-10-15T06:47:28.145362+00:00"
+        },
+        {
+          "host": "10.244.69.194",
+          "port": 8001,
+          "path": "/readyz",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-nfssw",
+          "pod_uid": "5a273334-9e87-40e7-ac2a-25d82b50d067",
+          "started_utc": "2026-10-15T06:47:28.145369+00:00",
+          "finished_utc": "2026-10-15T06:47:28.147230+00:00"
+        },
+        {
+          "host": "10.244.69.194",
+          "port": 8001,
+          "path": "/metrics",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-nfssw",
+          "pod_uid": "5a273334-9e87-40e7-ac2a-25d82b50d067",
+          "started_utc": "2026-10-15T06:47:28.147237+00:00",
+          "finished_utc": "2026-10-15T06:47:28.149365+00:00"
+        },
+        {
+          "host": "10.244.39.216",
+          "port": 8001,
+          "path": "/livez",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-pr6rv",
+          "pod_uid": "195a4721-e44b-44d2-b252-842e838725e2",
+          "started_utc": "2026-10-15T06:47:28.149386+00:00",
+          "finished_utc": "2026-10-15T06:47:28.151969+00:00"
+        },
+        {
+          "host": "10.244.39.216",
+          "port": 8001,
+          "path": "/readyz",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-pr6rv",
+          "pod_uid": "195a4721-e44b-44d2-b252-842e838725e2",
+          "started_utc": "2026-10-15T06:47:28.151996+00:00",
+          "finished_utc": "2026-10-15T06:47:28.154384+00:00"
+        },
+        {
+          "host": "10.244.39.216",
+          "port": 8001,
+          "path": "/metrics",
+          "status": 200,
+          "pod_name": "fds-engine-66b8c565c4-pr6rv",
+          "pod_uid": "195a4721-e44b-44d2-b252-842e838725e2",
+          "started_utc": "2026-10-15T06:47:28.154397+00:00",
+          "finished_utc": "2026-10-15T06:47:28.156678+00:00"
+        },
+        {
+          "host": "10.1.93.108",
+          "port": 30080,
+          "path": "/livez",
+          "status": 200,
+          "pod_uid": "aaa0d40d-e350-412b-8955-d9ae3005706e",
+          "started_utc": "2026-10-15T06:47:29.069274+00:00",
+          "finished_utc": "2026-10-15T06:47:29.072745+00:00"
+        },
+        {
+          "host": "10.1.93.108",
+          "port": 30080,
+          "path": "/readyz",
+          "status": 200,
+          "pod_uid": "aaa0d40d-e350-412b-8955-d9ae3005706e",
+          "started_utc": "2026-10-15T06:47:29.072753+00:00",
+          "finished_utc": "2026-10-15T06:47:29.081268+00:00"
+        },
+        {
+          "host": "10.1.93.108",
+          "port": 30080,
+          "path": "/metrics",
+          "status": 200,
+          "pod_uid": "aaa0d40d-e350-412b-8955-d9ae3005706e",
+          "started_utc": "2026-10-15T06:47:29.081275+00:00",
+          "finished_utc": "2026-10-15T06:47:29.083471+00:00"
+        },
+        {
+          "host": "10.1.93.105",
+          "port": 30080,
+          "path": "/livez",
+          "status": 200,
+          "pod_uid": "cb94335c-9d7c-41b4-a190-766d15d933c8",
+          "started_utc": "2026-10-15T06:47:29.083476+00:00",
+          "finished_utc": "2026-10-15T06:47:29.085061+00:00"
+        },
+        {
+          "host": "10.1.93.105",
+          "port": 30080,
+          "path": "/readyz",
+          "status": 200,
+          "pod_uid": "cb94335c-9d7c-41b4-a190-766d15d933c8",
+          "started_utc": "2026-10-15T06:47:29.085066+00:00",
+          "finished_utc": "2026-10-15T06:47:29.091545+00:00"
+        },
+        {
+          "host": "10.1.93.105",
+          "port": 30080,
+          "path": "/metrics",
+          "status": 200,
+          "pod_uid": "cb94335c-9d7c-41b4-a190-766d15d933c8",
+          "started_utc": "2026-10-15T06:47:29.091554+00:00",
+          "finished_utc": "2026-10-15T06:47:29.093095+00:00"
+        },
+        {
+          "host": "10.1.93.107",
+          "port": 30080,
+          "path": "/livez",
+          "status": 200,
+          "pod_uid": "aa9a8926-af6b-49f6-b356-bb653f319906",
+          "started_utc": "2026-10-15T06:47:29.093102+00:00",
+          "finished_utc": "2026-10-15T06:47:29.095644+00:00"
+        },
+        {
+          "host": "10.1.93.107",
+          "port": 30080,
+          "path": "/readyz",
+          "status": 200,
+          "pod_uid": "aa9a8926-af6b-49f6-b356-bb653f319906",
+          "started_utc": "2026-10-15T06:47:29.095662+00:00",
+          "finished_utc": "2026-10-15T06:47:29.104107+00:00"
+        },
+        {
+          "host": "10.1.93.107",
+          "port": 30080,
+          "path": "/metrics",
+          "status": 200,
+          "pod_uid": "aa9a8926-af6b-49f6-b356-bb653f319906",
+          "started_utc": "2026-10-15T06:47:29.104118+00:00",
+          "finished_utc": "2026-10-15T06:47:29.106170+00:00"
+        }
+      ],
+      "pod_state_before": {
+        "source": "r1-state-1544",
+        "started_utc": "2026-10-15T06:44:35.050813+00:00",
+        "finished_utc": "2026-10-15T06:44:35.155733+00:00",
+        "pods": [
+          {
+            "containers": [
+              {
+                "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.79.126",
+            "name": "fds-engine-66b8c565c4-flzbg",
+            "node": "k8s-worker01",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-66b8c565c4",
+                "uid": "9bead840-df71-424d-a337-4253fc859632"
+              }
+            ],
+            "uid": "b91e9146-b561-4169-994e-9d84b0324324"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.69.194",
+            "name": "fds-engine-66b8c565c4-nfssw",
+            "node": "k8s-worker02",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-66b8c565c4",
+                "uid": "9bead840-df71-424d-a337-4253fc859632"
+              }
+            ],
+            "uid": "5a273334-9e87-40e7-ac2a-25d82b50d067"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.216",
+            "name": "fds-engine-66b8c565c4-pr6rv",
+            "node": "k8s-worker03",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-66b8c565c4",
+                "uid": "9bead840-df71-424d-a337-4253fc859632"
+              }
+            ],
+            "uid": "195a4721-e44b-44d2-b252-842e838725e2"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.219",
+            "name": "transaction-api-54984f6ddd-6nxts",
+            "node": "k8s-worker03",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-54984f6ddd",
+                "uid": "906014d9-091e-4d40-836c-111edcc22adc"
+              }
+            ],
+            "uid": "aaa0d40d-e350-412b-8955-d9ae3005706e"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.79.125",
+            "name": "transaction-api-54984f6ddd-ml225",
+            "node": "k8s-worker01",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-54984f6ddd",
+                "uid": "906014d9-091e-4d40-836c-111edcc22adc"
+              }
+            ],
+            "uid": "cb94335c-9d7c-41b4-a190-766d15d933c8"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.69.196",
+            "name": "transaction-api-54984f6ddd-vrdgh",
+            "node": "k8s-worker02",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-54984f6ddd",
+                "uid": "906014d9-091e-4d40-836c-111edcc22adc"
+              }
+            ],
+            "uid": "aa9a8926-af6b-49f6-b356-bb653f319906"
+          }
+        ],
+        "deployments": [
+          {
+            "generation": 13,
+            "image": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+            "name": "transaction-api",
+            "normalized_spec_sha256": "1836153cf3e655d874602dd7deea41ddad1e8bfefe3efbbdf7b4540a9c95f7d5",
+            "replicas": 3,
+            "resourceVersion": "5782018",
+            "spec_sha256": "07cdf04742aa5be6ef220071232ad1f863e87f1033210269e2cc0dbc18949a9e",
+            "status": {
+              "availableReplicas": 3,
+              "observedGeneration": 13,
+              "readyReplicas": 3,
+              "replicas": 3,
+              "unavailableReplicas": null,
+              "updatedReplicas": 3
+            },
+            "uid": "8a2af808-ec33-41f2-80b5-addde4e28910"
+          },
+          {
+            "generation": 7,
+            "image": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+            "name": "fds-engine",
+            "normalized_spec_sha256": "50d28f2e3abc15d4376cc3046b72bcebc44c567fa9cdf677e829f90c73fe5005",
+            "replicas": 3,
+            "resourceVersion": "5782274",
+            "spec_sha256": "e091caa8a78d8a90211a7db9e2f9a5137e319056b14b1b9106e96c85f676f15c",
+            "status": {
+              "availableReplicas": 3,
+              "observedGeneration": 7,
+              "readyReplicas": 3,
+              "replicas": 3,
+              "unavailableReplicas": null,
+              "updatedReplicas": 3
+            },
+            "uid": "bf825dec-465b-4603-8b71-f768d195531c"
+          }
+        ]
+      },
+      "pod_state_after": {
+        "source": "r1-stable-before-r2",
+        "started_utc": "2026-10-15T06:49:07.469537+00:00",
+        "finished_utc": "2026-10-15T06:49:07.574060+00:00",
+        "pods": [
+          {
+            "containers": [
+              {
+                "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.79.126",
+            "name": "fds-engine-66b8c565c4-flzbg",
+            "node": "k8s-worker01",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-66b8c565c4",
+                "uid": "9bead840-df71-424d-a337-4253fc859632"
+              }
+            ],
+            "uid": "b91e9146-b561-4169-994e-9d84b0324324"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.69.194",
+            "name": "fds-engine-66b8c565c4-nfssw",
+            "node": "k8s-worker02",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-66b8c565c4",
+                "uid": "9bead840-df71-424d-a337-4253fc859632"
+              }
+            ],
+            "uid": "5a273334-9e87-40e7-ac2a-25d82b50d067"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:84f41009f8cd38d41025fb21907d9e240c3aac70377beb918132653049e80d7b",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.216",
+            "name": "fds-engine-66b8c565c4-pr6rv",
+            "node": "k8s-worker03",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-66b8c565c4",
+                "uid": "9bead840-df71-424d-a337-4253fc859632"
+              }
+            ],
+            "uid": "195a4721-e44b-44d2-b252-842e838725e2"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.219",
+            "name": "transaction-api-54984f6ddd-6nxts",
+            "node": "k8s-worker03",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-54984f6ddd",
+                "uid": "906014d9-091e-4d40-836c-111edcc22adc"
+              }
+            ],
+            "uid": "aaa0d40d-e350-412b-8955-d9ae3005706e"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.79.125",
+            "name": "transaction-api-54984f6ddd-ml225",
+            "node": "k8s-worker01",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-54984f6ddd",
+                "uid": "906014d9-091e-4d40-836c-111edcc22adc"
+              }
+            ],
+            "uid": "cb94335c-9d7c-41b4-a190-766d15d933c8"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:1972a9affed16df602f6301e66b7140f2b9b73592bfae01948566981229bdde8",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.69.196",
+            "name": "transaction-api-54984f6ddd-vrdgh",
+            "node": "k8s-worker02",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-54984f6ddd",
+                "uid": "906014d9-091e-4d40-836c-111edcc22adc"
+              }
+            ],
+            "uid": "aa9a8926-af6b-49f6-b356-bb653f319906"
+          }
+        ],
+        "deployments": [
+          {
+            "generation": 13,
+            "image": "10.1.93.54/fds/transaction-api@sha256:a7093136d12640da00570c18ed278eacbb8e9ba3637c7d509571346eac45cc33",
+            "name": "transaction-api",
+            "normalized_spec_sha256": "1836153cf3e655d874602dd7deea41ddad1e8bfefe3efbbdf7b4540a9c95f7d5",
+            "replicas": 3,
+            "resourceVersion": "5782018",
+            "spec_sha256": "07cdf04742aa5be6ef220071232ad1f863e87f1033210269e2cc0dbc18949a9e",
+            "status": {
+              "availableReplicas": 3,
+              "observedGeneration": 13,
+              "readyReplicas": 3,
+              "replicas": 3,
+              "unavailableReplicas": null,
+              "updatedReplicas": 3
+            },
+            "uid": "8a2af808-ec33-41f2-80b5-addde4e28910"
+          },
+          {
+            "generation": 7,
+            "image": "10.1.93.54/fds/fds-engine@sha256:5e2a081cd51a957c3fad038b3eab07884c446ea3c2a814a905e3f41c24f67369",
+            "name": "fds-engine",
+            "normalized_spec_sha256": "50d28f2e3abc15d4376cc3046b72bcebc44c567fa9cdf677e829f90c73fe5005",
+            "replicas": 3,
+            "resourceVersion": "5782274",
+            "spec_sha256": "e091caa8a78d8a90211a7db9e2f9a5137e319056b14b1b9106e96c85f676f15c",
+            "status": {
+              "availableReplicas": 3,
+              "observedGeneration": 7,
+              "readyReplicas": 3,
+              "replicas": 3,
+              "unavailableReplicas": null,
+              "updatedReplicas": 3
+            },
+            "uid": "bf825dec-465b-4603-8b71-f768d195531c"
+          }
+        ]
+      },
+      "observed_restarts_0_to_0": true
+    },
+    "r2": {
+      "run": {
+        "id": 38694721511,
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "fddc76e1c261cd938f06211b7ed035fdcb32e606",
+        "run_attempt": 1,
+        "html_url": "https://github.com/321Team/infra-cicd/actions/runs/38694721511",
+        "updated_at": "2026-10-15T06:50:47Z"
+      },
+      "post": {
+        "payload": {
+          "account_id": "SIM_ac09_3451e56c57bc490e8d156cede958229f_P01",
+          "amount": 10000,
+          "currency": "KRW",
+          "transaction_type": "deposit",
+          "source_ip": "198.51.100.10",
+          "occurred_at": "2026-10-15T06:56:28.439537+00:00"
+        },
+        "response": {
+          "transaction_id": "1827bd8a-a921-49f9-83f7-22529e903451",
+          "fds_detected": false,
+          "fds_rules": [
+            {
+              "rule_id": "R01",
+              "triggered": false,
+              "detail": null
+            },
+            {
+              "rule_id": "R02",
+              "triggered": false,
+              "detail": null
+            },
+            {
+              "rule_id": "R04",
+              "triggered": false,
+              "detail": null
+            },
+            {
+              "rule_id": "R07",
+              "triggered": false,
+              "detail": null
+            }
+          ],
+          "fds_evaluation_skipped": false
+        },
+        "http": 201,
+        "source": "r2-post-one",
+        "started_utc": "2026-10-15T06:56:29.930115+00:00",
+        "finished_utc": "2026-10-15T06:56:29.971339+00:00",
+        "host": "edge01",
+        "url": "http://10.1.93.50/api/v1/transactions",
+        "body_sha256": "4edd368d5ef9a29bcdbefc04cf5817463665763c471dc85ed287fc3714417504",
+        "transport_receipt_classification": "PURE_READ_PRECHECK",
+        "actual_operation": "POST_ONE_WRITES_TRANSACTION_NOT_PURE_READ"
+      },
+      "metrics_before": {
+        "pods": {
+          "965136fd-8f58-4d58-9ef1-388a411ff830": {
+            "pod": "fds-engine-65479b5bf-5x6rz",
+            "uid": "965136fd-8f58-4d58-9ef1-388a411ff830",
+            "ip": "10.244.79.65",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:51:37.301912+00:00",
+            "finished_utc": "2026-10-15T06:51:37.306283+00:00",
+            "process_start": 1792047004.07,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792047005.310346
+            }
+          },
+          "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e": {
+            "pod": "fds-engine-65479b5bf-c4h5z",
+            "uid": "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e",
+            "ip": "10.244.39.225",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:51:37.306292+00:00",
+            "finished_utc": "2026-10-15T06:51:37.307445+00:00",
+            "process_start": 1792047027.83,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792047028.4798934
+            }
+          },
+          "d338c785-a352-4086-a8b0-2e9c0d128acf": {
+            "pod": "fds-engine-65479b5bf-qjqms",
+            "uid": "d338c785-a352-4086-a8b0-2e9c0d128acf",
+            "ip": "10.244.69.200",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:51:37.307452+00:00",
+            "finished_utc": "2026-10-15T06:51:37.310543+00:00",
+            "process_start": 1792047016.57,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792047017.4389596
+            }
+          },
+          "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4": {
+            "pod": "transaction-api-666c98b5f5-fh8tr",
+            "uid": "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4",
+            "ip": "10.244.79.127",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:51:37.310549+00:00",
+            "finished_utc": "2026-10-15T06:51:37.313813+00:00",
+            "process_start": 1792046967.65,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046969.2629485,
+              "transaction_save_failure_total": 1792046969.2629611,
+              "missing_client_ip_total": 1792046969.2629673,
+              "fds_evaluation_error_total": 1792046969.2626948
+            }
+          },
+          "4296ab4b-ad5d-4c69-a372-c910092edf84": {
+            "pod": "transaction-api-666c98b5f5-rmlnc",
+            "uid": "4296ab4b-ad5d-4c69-a372-c910092edf84",
+            "ip": "10.244.69.197",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:51:37.313820+00:00",
+            "finished_utc": "2026-10-15T06:51:37.316374+00:00",
+            "process_start": 1792046979.54,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046980.7715113,
+              "transaction_save_failure_total": 1792046980.771523,
+              "missing_client_ip_total": 1792046980.7715292,
+              "fds_evaluation_error_total": 1792046980.7712731
+            }
+          },
+          "d448512c-6e60-49c4-b78f-f1b7ddb17088": {
+            "pod": "transaction-api-666c98b5f5-xvqp2",
+            "uid": "d448512c-6e60-49c4-b78f-f1b7ddb17088",
+            "ip": "10.244.39.223",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:51:37.316381+00:00",
+            "finished_utc": "2026-10-15T06:51:37.317483+00:00",
+            "process_start": 1792046991.82,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046992.7789338,
+              "transaction_save_failure_total": 1792046992.7789464,
+              "missing_client_ip_total": 1792046992.7789521,
+              "fds_evaluation_error_total": 1792046992.7786725
+            }
+          }
+        },
+        "up_all_6": true,
+        "source": "r2-before-mon"
+      },
+      "metrics_after": {
+        "pods": {
+          "965136fd-8f58-4d58-9ef1-388a411ff830": {
+            "pod": "fds-engine-65479b5bf-5x6rz",
+            "uid": "965136fd-8f58-4d58-9ef1-388a411ff830",
+            "ip": "10.244.79.65",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:56:43.799368+00:00",
+            "finished_utc": "2026-10-15T06:56:43.803237+00:00",
+            "process_start": 1792047004.07,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792047005.310346
+            }
+          },
+          "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e": {
+            "pod": "fds-engine-65479b5bf-c4h5z",
+            "uid": "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e",
+            "ip": "10.244.39.225",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:56:43.803246+00:00",
+            "finished_utc": "2026-10-15T06:56:43.804572+00:00",
+            "process_start": 1792047027.83,
+            "counters": {
+              "fds_evaluated_total": 0.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792047028.4798934
+            }
+          },
+          "d338c785-a352-4086-a8b0-2e9c0d128acf": {
+            "pod": "fds-engine-65479b5bf-qjqms",
+            "uid": "d338c785-a352-4086-a8b0-2e9c0d128acf",
+            "ip": "10.244.69.200",
+            "port": 9090,
+            "service": "fds-engine",
+            "started_utc": "2026-10-15T06:56:43.804580+00:00",
+            "finished_utc": "2026-10-15T06:56:43.807989+00:00",
+            "process_start": 1792047016.57,
+            "counters": {
+              "fds_evaluated_total": 1.0
+            },
+            "created": {
+              "fds_evaluated_total": 1792047017.4389596
+            }
+          },
+          "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4": {
+            "pod": "transaction-api-666c98b5f5-fh8tr",
+            "uid": "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4",
+            "ip": "10.244.79.127",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:56:43.807996+00:00",
+            "finished_utc": "2026-10-15T06:56:43.810126+00:00",
+            "process_start": 1792046967.65,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046969.2629485,
+              "transaction_save_failure_total": 1792046969.2629611,
+              "missing_client_ip_total": 1792046969.2629673,
+              "fds_evaluation_error_total": 1792046969.2626948
+            }
+          },
+          "4296ab4b-ad5d-4c69-a372-c910092edf84": {
+            "pod": "transaction-api-666c98b5f5-rmlnc",
+            "uid": "4296ab4b-ad5d-4c69-a372-c910092edf84",
+            "ip": "10.244.69.197",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:56:43.810132+00:00",
+            "finished_utc": "2026-10-15T06:56:43.813029+00:00",
+            "process_start": 1792046979.54,
+            "counters": {
+              "transaction_save_success_total": 0.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046980.7715113,
+              "transaction_save_failure_total": 1792046980.771523,
+              "missing_client_ip_total": 1792046980.7715292,
+              "fds_evaluation_error_total": 1792046980.7712731
+            }
+          },
+          "d448512c-6e60-49c4-b78f-f1b7ddb17088": {
+            "pod": "transaction-api-666c98b5f5-xvqp2",
+            "uid": "d448512c-6e60-49c4-b78f-f1b7ddb17088",
+            "ip": "10.244.39.223",
+            "port": 9091,
+            "service": "transaction-api",
+            "started_utc": "2026-10-15T06:56:43.813042+00:00",
+            "finished_utc": "2026-10-15T06:56:43.814528+00:00",
+            "process_start": 1792046991.82,
+            "counters": {
+              "transaction_save_success_total": 1.0,
+              "transaction_save_failure_total": 0.0,
+              "missing_client_ip_total": 0.0,
+              "fds_evaluation_error_total": 0.0
+            },
+            "created": {
+              "transaction_save_success_total": 1792046992.7789338,
+              "transaction_save_failure_total": 1792046992.7789464,
+              "missing_client_ip_total": 1792046992.7789521,
+              "fds_evaluation_error_total": 1792046992.7786725
+            }
+          }
+        },
+        "up_all_6": true,
+        "source": "r2-after-mon"
+      },
+      "database_same_transaction_id": "NOT_COLLECTED",
+      "database_before_zero_rows": "NOT_COLLECTED_NORMAL_DB_CONSOLE_ONLY",
+      "same_six_pods": true,
+      "same_process_starts": true,
+      "per_pod_delta": [
+        {
+          "pod": "fds-engine-65479b5bf-5x6rz",
+          "uid": "965136fd-8f58-4d58-9ef1-388a411ff830",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "fds_evaluated_total": 0.0
+          }
+        },
+        {
+          "pod": "fds-engine-65479b5bf-c4h5z",
+          "uid": "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "fds_evaluated_total": 0.0
+          }
+        },
+        {
+          "pod": "fds-engine-65479b5bf-qjqms",
+          "uid": "d338c785-a352-4086-a8b0-2e9c0d128acf",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "fds_evaluated_total": 1.0
+          }
+        },
+        {
+          "pod": "transaction-api-666c98b5f5-fh8tr",
+          "uid": "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "transaction_save_success_total": 0.0,
+            "transaction_save_failure_total": 0.0,
+            "missing_client_ip_total": 0.0,
+            "fds_evaluation_error_total": 0.0
+          }
+        },
+        {
+          "pod": "transaction-api-666c98b5f5-rmlnc",
+          "uid": "4296ab4b-ad5d-4c69-a372-c910092edf84",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "transaction_save_success_total": 0.0,
+            "transaction_save_failure_total": 0.0,
+            "missing_client_ip_total": 0.0,
+            "fds_evaluation_error_total": 0.0
+          }
+        },
+        {
+          "pod": "transaction-api-666c98b5f5-xvqp2",
+          "uid": "d448512c-6e60-49c4-b78f-f1b7ddb17088",
+          "process_start_same": true,
+          "created_same": true,
+          "delta": {
+            "transaction_save_success_total": 1.0,
+            "transaction_save_failure_total": 0.0,
+            "missing_client_ip_total": 0.0,
+            "fds_evaluation_error_total": 0.0
+          }
+        }
+      ],
+      "aggregate_delta": {
+        "transaction_save_success_total": 1.0,
+        "transaction_save_failure_total": 0.0,
+        "missing_client_ip_total": 0.0,
+        "fds_evaluation_error_total": 0.0,
+        "fds_evaluated_total": 1.0
+      },
+      "counter_expected_match": true,
+      "health_and_route_observations": [
+        {
+          "host": "10.244.79.65",
+          "port": 8001,
+          "path": "/livez",
+          "status": 200,
+          "pod_name": "fds-engine-65479b5bf-5x6rz",
+          "pod_uid": "965136fd-8f58-4d58-9ef1-388a411ff830",
+          "started_utc": "2026-10-15T06:51:36.320763+00:00",
+          "finished_utc": "2026-10-15T06:51:36.322542+00:00"
+        },
+        {
+          "host": "10.244.79.65",
+          "port": 8001,
+          "path": "/readyz",
+          "status": 200,
+          "pod_name": "fds-engine-65479b5bf-5x6rz",
+          "pod_uid": "965136fd-8f58-4d58-9ef1-388a411ff830",
+          "started_utc": "2026-10-15T06:51:36.322549+00:00",
+          "finished_utc": "2026-10-15T06:51:36.323067+00:00"
+        },
+        {
+          "host": "10.244.79.65",
+          "port": 8001,
+          "path": "/metrics",
+          "status": 404,
+          "pod_name": "fds-engine-65479b5bf-5x6rz",
+          "pod_uid": "965136fd-8f58-4d58-9ef1-388a411ff830",
+          "started_utc": "2026-10-15T06:51:36.323072+00:00",
+          "finished_utc": "2026-10-15T06:51:36.323460+00:00"
+        },
+        {
+          "host": "10.244.39.225",
+          "port": 8001,
+          "path": "/livez",
+          "status": 200,
+          "pod_name": "fds-engine-65479b5bf-c4h5z",
+          "pod_uid": "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e",
+          "started_utc": "2026-10-15T06:51:36.323464+00:00",
+          "finished_utc": "2026-10-15T06:51:36.326074+00:00"
+        },
+        {
+          "host": "10.244.39.225",
+          "port": 8001,
+          "path": "/readyz",
+          "status": 200,
+          "pod_name": "fds-engine-65479b5bf-c4h5z",
+          "pod_uid": "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e",
+          "started_utc": "2026-10-15T06:51:36.326093+00:00",
+          "finished_utc": "2026-10-15T06:51:36.328402+00:00"
+        },
+        {
+          "host": "10.244.39.225",
+          "port": 8001,
+          "path": "/metrics",
+          "status": 404,
+          "pod_name": "fds-engine-65479b5bf-c4h5z",
+          "pod_uid": "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e",
+          "started_utc": "2026-10-15T06:51:36.328416+00:00",
+          "finished_utc": "2026-10-15T06:51:36.330199+00:00"
+        },
+        {
+          "host": "10.244.69.200",
+          "port": 8001,
+          "path": "/livez",
+          "status": 200,
+          "pod_name": "fds-engine-65479b5bf-qjqms",
+          "pod_uid": "d338c785-a352-4086-a8b0-2e9c0d128acf",
+          "started_utc": "2026-10-15T06:51:36.330208+00:00",
+          "finished_utc": "2026-10-15T06:51:36.332688+00:00"
+        },
+        {
+          "host": "10.244.69.200",
+          "port": 8001,
+          "path": "/readyz",
+          "status": 200,
+          "pod_name": "fds-engine-65479b5bf-qjqms",
+          "pod_uid": "d338c785-a352-4086-a8b0-2e9c0d128acf",
+          "started_utc": "2026-10-15T06:51:36.332694+00:00",
+          "finished_utc": "2026-10-15T06:51:36.334421+00:00"
+        },
+        {
+          "host": "10.244.69.200",
+          "port": 8001,
+          "path": "/metrics",
+          "status": 404,
+          "pod_name": "fds-engine-65479b5bf-qjqms",
+          "pod_uid": "d338c785-a352-4086-a8b0-2e9c0d128acf",
+          "started_utc": "2026-10-15T06:51:36.334427+00:00",
+          "finished_utc": "2026-10-15T06:51:36.336397+00:00"
+        },
+        {
+          "host": "10.1.93.105",
+          "port": 30080,
+          "path": "/livez",
+          "status": 200,
+          "pod_uid": "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4",
+          "started_utc": "2026-10-15T06:51:36.247354+00:00",
+          "finished_utc": "2026-10-15T06:51:36.250804+00:00"
+        },
+        {
+          "host": "10.1.93.105",
+          "port": 30080,
+          "path": "/readyz",
+          "status": 200,
+          "pod_uid": "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4",
+          "started_utc": "2026-10-15T06:51:36.250812+00:00",
+          "finished_utc": "2026-10-15T06:51:36.258410+00:00"
+        },
+        {
+          "host": "10.1.93.105",
+          "port": 30080,
+          "path": "/metrics",
+          "status": 404,
+          "pod_uid": "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4",
+          "started_utc": "2026-10-15T06:51:36.258417+00:00",
+          "finished_utc": "2026-10-15T06:51:36.260140+00:00"
+        },
+        {
+          "host": "10.1.93.107",
+          "port": 30080,
+          "path": "/livez",
+          "status": 200,
+          "pod_uid": "4296ab4b-ad5d-4c69-a372-c910092edf84",
+          "started_utc": "2026-10-15T06:51:36.260147+00:00",
+          "finished_utc": "2026-10-15T06:51:36.262927+00:00"
+        },
+        {
+          "host": "10.1.93.107",
+          "port": 30080,
+          "path": "/readyz",
+          "status": 200,
+          "pod_uid": "4296ab4b-ad5d-4c69-a372-c910092edf84",
+          "started_utc": "2026-10-15T06:51:36.262934+00:00",
+          "finished_utc": "2026-10-15T06:51:36.271557+00:00"
+        },
+        {
+          "host": "10.1.93.107",
+          "port": 30080,
+          "path": "/metrics",
+          "status": 404,
+          "pod_uid": "4296ab4b-ad5d-4c69-a372-c910092edf84",
+          "started_utc": "2026-10-15T06:51:36.271568+00:00",
+          "finished_utc": "2026-10-15T06:51:36.273351+00:00"
+        },
+        {
+          "host": "10.1.93.108",
+          "port": 30080,
+          "path": "/livez",
+          "status": 200,
+          "pod_uid": "d448512c-6e60-49c4-b78f-f1b7ddb17088",
+          "started_utc": "2026-10-15T06:51:36.273359+00:00",
+          "finished_utc": "2026-10-15T06:51:36.276216+00:00"
+        },
+        {
+          "host": "10.1.93.108",
+          "port": 30080,
+          "path": "/readyz",
+          "status": 200,
+          "pod_uid": "d448512c-6e60-49c4-b78f-f1b7ddb17088",
+          "started_utc": "2026-10-15T06:51:36.276223+00:00",
+          "finished_utc": "2026-10-15T06:51:36.284509+00:00"
+        },
+        {
+          "host": "10.1.93.108",
+          "port": 30080,
+          "path": "/metrics",
+          "status": 404,
+          "pod_uid": "d448512c-6e60-49c4-b78f-f1b7ddb17088",
+          "started_utc": "2026-10-15T06:51:36.284517+00:00",
+          "finished_utc": "2026-10-15T06:51:36.286405+00:00"
+        }
+      ],
+      "pod_state_before": {
+        "source": "r2-observer-inventory",
+        "started_utc": null,
+        "finished_utc": null,
+        "pods": [
+          {
+            "containers": [
+              {
+                "allocatedResources": {
+                  "cpu": "250m",
+                  "memory": "256Mi"
+                },
+                "containerID": "containerd://43bec547e704312563ccb22fc470b934d23aab0e221186915ce1f0c2f5b2a477",
+                "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+                "lastState": {},
+                "name": "fds-engine",
+                "ready": true,
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "250m",
+                    "memory": "256Mi"
+                  }
+                },
+                "restartCount": 0,
+                "started": true,
+                "state": {
+                  "running": {
+                    "startedAt": "2026-10-15T06:50:04Z"
+                  }
+                },
+                "user": {
+                  "linux": {
+                    "gid": 999,
+                    "supplementalGroups": [
+                      999
+                    ],
+                    "uid": 10001
+                  }
+                }
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.79.65",
+            "labels": {
+              "app": "fds-engine",
+              "pod-template-hash": "65479b5bf"
+            },
+            "name": "fds-engine-65479b5bf-5x6rz",
+            "namespace": "fds-app",
+            "node": "k8s-worker01",
+            "uid": "965136fd-8f58-4d58-9ef1-388a411ff830"
+          },
+          {
+            "containers": [
+              {
+                "allocatedResources": {
+                  "cpu": "250m",
+                  "memory": "256Mi"
+                },
+                "containerID": "containerd://f415ceea7950e9aa6892af437a743265fce3980d98bb70fd7fd0186e399b6b19",
+                "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+                "lastState": {},
+                "name": "fds-engine",
+                "ready": true,
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "250m",
+                    "memory": "256Mi"
+                  }
+                },
+                "restartCount": 0,
+                "started": true,
+                "state": {
+                  "running": {
+                    "startedAt": "2026-10-15T06:50:27Z"
+                  }
+                },
+                "user": {
+                  "linux": {
+                    "gid": 999,
+                    "supplementalGroups": [
+                      999
+                    ],
+                    "uid": 10001
+                  }
+                }
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.225",
+            "labels": {
+              "app": "fds-engine",
+              "pod-template-hash": "65479b5bf"
+            },
+            "name": "fds-engine-65479b5bf-c4h5z",
+            "namespace": "fds-app",
+            "node": "k8s-worker03",
+            "uid": "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e"
+          },
+          {
+            "containers": [
+              {
+                "allocatedResources": {
+                  "cpu": "250m",
+                  "memory": "256Mi"
+                },
+                "containerID": "containerd://08cdb979f1fec12b384e5d8c25320992a41e3977de6ed153833ce422d87c964b",
+                "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+                "lastState": {},
+                "name": "fds-engine",
+                "ready": true,
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "250m",
+                    "memory": "256Mi"
+                  }
+                },
+                "restartCount": 0,
+                "started": true,
+                "state": {
+                  "running": {
+                    "startedAt": "2026-10-15T06:50:16Z"
+                  }
+                },
+                "user": {
+                  "linux": {
+                    "gid": 999,
+                    "supplementalGroups": [
+                      999
+                    ],
+                    "uid": 10001
+                  }
+                }
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.69.200",
+            "labels": {
+              "app": "fds-engine",
+              "pod-template-hash": "65479b5bf"
+            },
+            "name": "fds-engine-65479b5bf-qjqms",
+            "namespace": "fds-app",
+            "node": "k8s-worker02",
+            "uid": "d338c785-a352-4086-a8b0-2e9c0d128acf"
+          },
+          {
+            "containers": [
+              {
+                "allocatedResources": {
+                  "cpu": "250m",
+                  "memory": "256Mi"
+                },
+                "containerID": "containerd://dff4b4ab4ee6ff57943358b797d0af5d435b9dcdd6faa5cf4dd677e64a53784a",
+                "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+                "lastState": {},
+                "name": "transaction-api",
+                "ready": true,
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "250m",
+                    "memory": "256Mi"
+                  }
+                },
+                "restartCount": 0,
+                "started": true,
+                "state": {
+                  "running": {
+                    "startedAt": "2026-10-15T06:49:28Z"
+                  }
+                },
+                "user": {
+                  "linux": {
+                    "gid": 999,
+                    "supplementalGroups": [
+                      999
+                    ],
+                    "uid": 10001
+                  }
+                }
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.79.127",
+            "labels": {
+              "app": "transaction-api",
+              "pod-template-hash": "666c98b5f5"
+            },
+            "name": "transaction-api-666c98b5f5-fh8tr",
+            "namespace": "fds-app",
+            "node": "k8s-worker01",
+            "uid": "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4"
+          },
+          {
+            "containers": [
+              {
+                "allocatedResources": {
+                  "cpu": "250m",
+                  "memory": "256Mi"
+                },
+                "containerID": "containerd://9df85dbadfa4f43c585fc3a161ddd19794844e8f7ec480a2e00f75558738614d",
+                "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+                "lastState": {},
+                "name": "transaction-api",
+                "ready": true,
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "250m",
+                    "memory": "256Mi"
+                  }
+                },
+                "restartCount": 0,
+                "started": true,
+                "state": {
+                  "running": {
+                    "startedAt": "2026-10-15T06:49:39Z"
+                  }
+                },
+                "user": {
+                  "linux": {
+                    "gid": 999,
+                    "supplementalGroups": [
+                      999
+                    ],
+                    "uid": 10001
+                  }
+                }
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.69.197",
+            "labels": {
+              "app": "transaction-api",
+              "pod-template-hash": "666c98b5f5"
+            },
+            "name": "transaction-api-666c98b5f5-rmlnc",
+            "namespace": "fds-app",
+            "node": "k8s-worker02",
+            "uid": "4296ab4b-ad5d-4c69-a372-c910092edf84"
+          },
+          {
+            "containers": [
+              {
+                "allocatedResources": {
+                  "cpu": "250m",
+                  "memory": "256Mi"
+                },
+                "containerID": "containerd://4970b85de87bd3e753e4ae0907f5d11710ef9bed5675e5749697670f18ddd103",
+                "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+                "lastState": {},
+                "name": "transaction-api",
+                "ready": true,
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "250m",
+                    "memory": "256Mi"
+                  }
+                },
+                "restartCount": 0,
+                "started": true,
+                "state": {
+                  "running": {
+                    "startedAt": "2026-10-15T06:49:51Z"
+                  }
+                },
+                "user": {
+                  "linux": {
+                    "gid": 999,
+                    "supplementalGroups": [
+                      999
+                    ],
+                    "uid": 10001
+                  }
+                }
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.223",
+            "labels": {
+              "app": "transaction-api",
+              "pod-template-hash": "666c98b5f5"
+            },
+            "name": "transaction-api-666c98b5f5-xvqp2",
+            "namespace": "fds-app",
+            "node": "k8s-worker03",
+            "uid": "d448512c-6e60-49c4-b78f-f1b7ddb17088"
+          },
+          {
+            "containers": [
+              {
+                "allocatedResources": {
+                  "cpu": "200m",
+                  "memory": "448Mi"
+                },
+                "containerID": "containerd://9898eab81bad83736a1a43e4de912b68c7d76cf2821a5722e0f2c3de733dba92",
+                "image": "sha256:66416213a3b43651d3521acc3987277b4f97ad0ae29acc581f910ef9bd3959bd",
+                "imageID": "10.1.93.54/fds/prometheus@sha256:2c28708bb561e4ceadac83bd2b60054a1a5381426a13f7b12bbd1bf2a8dd2d19",
+                "lastState": {},
+                "name": "prometheus",
+                "ready": true,
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "896Mi"
+                  },
+                  "requests": {
+                    "cpu": "200m",
+                    "memory": "448Mi"
+                  }
+                },
+                "restartCount": 0,
+                "started": true,
+                "state": {
+                  "running": {
+                    "startedAt": "2026-10-12T03:34:59Z"
+                  }
+                },
+                "user": {
+                  "linux": {
+                    "gid": 65534,
+                    "supplementalGroups": [
+                      65534
+                    ],
+                    "uid": 65534
+                  }
+                },
+                "volumeMounts": [
+                  {
+                    "mountPath": "/etc/prometheus",
+                    "name": "config"
+                  },
+                  {
+                    "mountPath": "/prometheus",
+                    "name": "data"
+                  },
+                  {
+                    "mountPath": "/etc/prometheus/rules/",
+                    "name": "alert-rules"
+                  },
+                  {
+                    "mountPath": "/etc/prometheus/rules-p0/",
+                    "name": "p0-test-alert"
+                  },
+                  {
+                    "mountPath": "/etc/prometheus/rules-opt/",
+                    "name": "alert-rules-optional"
+                  },
+                  {
+                    "mountPath": "/etc/prometheus/monitor01-ca",
+                    "name": "monitor01-root-ca",
+                    "readOnly": true,
+                    "recursiveReadOnly": "Disabled"
+                  },
+                  {
+                    "mountPath": "/etc/prometheus/monitor01-auth",
+                    "name": "monitor01-remote-write-auth",
+                    "readOnly": true,
+                    "recursiveReadOnly": "Disabled"
+                  },
+                  {
+                    "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                    "name": "kube-api-access-hz5ct",
+                    "readOnly": true,
+                    "recursiveReadOnly": "Disabled"
+                  }
+                ]
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.210",
+            "labels": {
+              "app": "prometheus",
+              "pod-template-hash": "d8949bd64"
+            },
+            "name": "prometheus-d8949bd64-vsjq8",
+            "namespace": "monitoring-api",
+            "node": "k8s-worker03",
+            "uid": "d60d738e-8522-4b74-81ff-8a6410647dcb"
+          }
+        ],
+        "deployments": null
+      },
+      "pod_state_after": {
+        "source": "r2-final-state",
+        "started_utc": "2026-10-15T06:58:07.137181+00:00",
+        "finished_utc": "2026-10-15T06:58:07.260850+00:00",
+        "pods": [
+          {
+            "containers": [
+              {
+                "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.79.65",
+            "name": "fds-engine-65479b5bf-5x6rz",
+            "node": "k8s-worker01",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-65479b5bf",
+                "uid": "ad644957-7157-4b4a-a342-244bc0ab8483"
+              }
+            ],
+            "uid": "965136fd-8f58-4d58-9ef1-388a411ff830"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.225",
+            "name": "fds-engine-65479b5bf-c4h5z",
+            "node": "k8s-worker03",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-65479b5bf",
+                "uid": "ad644957-7157-4b4a-a342-244bc0ab8483"
+              }
+            ],
+            "uid": "98d2bcf2-8d46-45c8-9c33-88d2b0c3d01e"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+                "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+                "name": "fds-engine",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.69.200",
+            "name": "fds-engine-65479b5bf-qjqms",
+            "node": "k8s-worker02",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "fds-engine-65479b5bf",
+                "uid": "ad644957-7157-4b4a-a342-244bc0ab8483"
+              }
+            ],
+            "uid": "d338c785-a352-4086-a8b0-2e9c0d128acf"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.79.127",
+            "name": "transaction-api-666c98b5f5-fh8tr",
+            "node": "k8s-worker01",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-666c98b5f5",
+                "uid": "7ff3c110-8cca-4b26-abad-fb67baa57baf"
+              }
+            ],
+            "uid": "ad73fee3-5e0c-4cc9-bed4-7ada5d4a6cd4"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.69.197",
+            "name": "transaction-api-666c98b5f5-rmlnc",
+            "node": "k8s-worker02",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-666c98b5f5",
+                "uid": "7ff3c110-8cca-4b26-abad-fb67baa57baf"
+              }
+            ],
+            "uid": "4296ab4b-ad5d-4c69-a372-c910092edf84"
+          },
+          {
+            "containers": [
+              {
+                "image": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+                "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+                "name": "transaction-api",
+                "ready": true,
+                "restartCount": 0
+              }
+            ],
+            "deletionTimestamp": null,
+            "ip": "10.244.39.223",
+            "name": "transaction-api-666c98b5f5-xvqp2",
+            "node": "k8s-worker03",
+            "owners": [
+              {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "transaction-api-666c98b5f5",
+                "uid": "7ff3c110-8cca-4b26-abad-fb67baa57baf"
+              }
+            ],
+            "uid": "d448512c-6e60-49c4-b78f-f1b7ddb17088"
+          }
+        ],
+        "deployments": [
+          {
+            "generation": 14,
+            "image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+            "name": "transaction-api",
+            "normalized_spec_sha256": "1836153cf3e655d874602dd7deea41ddad1e8bfefe3efbbdf7b4540a9c95f7d5",
+            "replicas": 3,
+            "resourceVersion": "5783298",
+            "spec_sha256": "b6b4048d5288a42ee0be5fa3fdd3f2ef82c7659687c0adb9ed61a19d7b8a563a",
+            "status": {
+              "availableReplicas": 3,
+              "observedGeneration": 14,
+              "readyReplicas": 3,
+              "replicas": 3,
+              "unavailableReplicas": null,
+              "updatedReplicas": 3
+            },
+            "uid": "8a2af808-ec33-41f2-80b5-addde4e28910"
+          },
+          {
+            "generation": 8,
+            "image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+            "name": "fds-engine",
+            "normalized_spec_sha256": "50d28f2e3abc15d4376cc3046b72bcebc44c567fa9cdf677e829f90c73fe5005",
+            "replicas": 3,
+            "resourceVersion": "5783553",
+            "spec_sha256": "0a1d36ae1fda7513b69fa3d1df7ca91983c05770f44df0ebc940c516f8d1faf3",
+            "status": {
+              "availableReplicas": 3,
+              "observedGeneration": 8,
+              "readyReplicas": 3,
+              "replicas": 3,
+              "unavailableReplicas": null,
+              "updatedReplicas": 3
+            },
+            "uid": "bf825dec-465b-4603-8b71-f768d195531c"
+          }
+        ]
+      },
+      "observed_restarts_0_to_0": true
+    }
+  },
+  "phase_metrics_subtracted_across_rollout": false,
+  "source_files_verified": 60,
+  "new_remote_operations": 0,
+  "new_post": 0,
+  "new_database_query": 0,
+  "ac09_final_acceptance": "NOT_DECLARED"
+}

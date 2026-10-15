@@ -1,0 +1,13 @@
+set -eu
+umask 077
+test "$(hostname -s)" = cicd-runner01
+test "$(id -un)" = server01_cicd-runner
+test "$(id -u)" = 1000
+test ! -L /home/server01_cicd-runner/FDS_CICD_DeployInputs
+test "$(stat -c %a /home/server01_cicd-runner/FDS_CICD_DeployInputs)" = 700
+test ! -e /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-cd01e613-d576-41eb-8354-8e9283d0f60d.json
+test ! -L /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-cd01e613-d576-41eb-8354-8e9283d0f60d.json
+set -C
+cat > /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-cd01e613-d576-41eb-8354-8e9283d0f60d.json
+sha256sum /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-cd01e613-d576-41eb-8354-8e9283d0f60d.json
+stat -c "%u|%a|%h" /home/server01_cicd-runner/FDS_CICD_DeployInputs/deploy-cd01e613-d576-41eb-8354-8e9283d0f60d.json

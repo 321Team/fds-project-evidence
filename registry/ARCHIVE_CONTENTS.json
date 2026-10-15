@@ -73247,6 +73247,402 @@
           "sha256": "f402613878a04d66078ab8636323f28217cd238621aa1440a2d707f3cf325815"
         }
       ]
+    },
+    "evidence/P1-CICD-01/ac09-restore-current-20261015/runtime/controller.tar": {
+      "sha256": "7964732e22c76b37e46237152170c855cd473d56031309f6fa87dbd111481496",
+      "size": 583680,
+      "entries": [
+        {
+          "name": "native-source.bundle.json",
+          "size": 106311,
+          "sha256": "16366261081cf95639480cfb9256255541bc1099fde717225e4ad8f6e322ae8b"
+        },
+        {
+          "name": "tools/delivery/app_evidence.py",
+          "size": 25183,
+          "sha256": "46cb2136e444870256a25fbb7c4161aa4ffa7bbe85093186a85032a8150d2148"
+        },
+        {
+          "name": "tools/delivery/app_workflow.py",
+          "size": 15185,
+          "sha256": "19a1ef69e58e99a8d11395078db17f8c919305ee5d1878fa0b29d7894f26897c"
+        },
+        {
+          "name": "tools/delivery/build_offline_probe_bundle.py",
+          "size": 1539,
+          "sha256": "c87869f42d1f046155b5161f9571903aab47dc53588827c6fb375e748bec209d"
+        },
+        {
+          "name": "tools/delivery/build_scan.py",
+          "size": 27010,
+          "sha256": "e914ebfa47cfaed3214243a6931bb35723734c90262311a4aba60ca781c7c691"
+        },
+        {
+          "name": "tools/delivery/capture_deploy_access.py",
+          "size": 4346,
+          "sha256": "78a02eb3bb1812c05ff41d45d2da72a16db2905398be715363424471622fbaa8"
+        },
+        {
+          "name": "tools/delivery/collect_base_metadata.py",
+          "size": 19646,
+          "sha256": "b78e2cffdfdff3379563adcf419d60f373e680348f6957f48a77405681a5f4b4"
+        },
+        {
+          "name": "tools/delivery/collect_supply_context.py",
+          "size": 5660,
+          "sha256": "d7d2803d3394b6a9195b7ae9dbb2b0da1c4a89d17acdb2a85127081164ece430"
+        },
+        {
+          "name": "tools/delivery/delivery_gate.py",
+          "size": 9780,
+          "sha256": "bc9d178d6a6b6faa6a1d65e99b5511f1f0e19b7fb5a53cadcc846d3bd4184fd0"
+        },
+        {
+          "name": "tools/delivery/deploy_adapter.py",
+          "size": 16427,
+          "sha256": "24dcdaa3dc21720e4d2100dbfcb5ac77050a2b81f0a8435604f232aff3ce5684"
+        },
+        {
+          "name": "tools/delivery/deploy_approval.py",
+          "size": 5353,
+          "sha256": "468e82841d55ad2110f99d465939d5f2de728854d6f29ff0278679dfc10a9b42"
+        },
+        {
+          "name": "tools/delivery/deploy_binding.py",
+          "size": 7998,
+          "sha256": "9983b53890b9ac251328529726012168bea6b3fbc14667a719ccb87c1955aafb"
+        },
+        {
+          "name": "tools/delivery/deploy_checkpoint.py",
+          "size": 11728,
+          "sha256": "491c4b73190f1a24a9cbffed7cf34b99e3ac7a08ed4dbd87318c59bb776075f6"
+        },
+        {
+          "name": "tools/delivery/deploy_claim.py",
+          "size": 5829,
+          "sha256": "b41a1272ca4ae4171bd7161f9269585533de93a6eda18990c4d5be74f77da9ca"
+        },
+        {
+          "name": "tools/delivery/deploy_cp1_access.py",
+          "size": 21582,
+          "sha256": "529490b0421c0b438be341eded8aa40a3374da680315bed3e896eaf1eacce1ca"
+        },
+        {
+          "name": "tools/delivery/deploy_credential.py",
+          "size": 8459,
+          "sha256": "f098b3525a466e1045eebb739af0560a4a4bfe0a708d5aba5e323e3095dfb967"
+        },
+        {
+          "name": "tools/delivery/deploy_execution.py",
+          "size": 10339,
+          "sha256": "8455a36a2948b9fdf1d677a9596082485c03feaaf9e528aa0a4e1ecc822ea3e6"
+        },
+        {
+          "name": "tools/delivery/deploy_handoff.py",
+          "size": 7120,
+          "sha256": "93ac6c166c65838fcb19e30256a906ab774c5b65d99d414ecc5d36d164078b39"
+        },
+        {
+          "name": "tools/delivery/deploy_native_probe.py",
+          "size": 28715,
+          "sha256": "100632f48d08f207fb700eee19ab12469d1711b6b500c008de8337c0706085ba"
+        },
+        {
+          "name": "tools/delivery/deploy_plan.py",
+          "size": 8811,
+          "sha256": "b006adcbde20436f5e68c37b5a9a9d26d19382ae974d406ad98674040ed248f4"
+        },
+        {
+          "name": "tools/delivery/deploy_session.py",
+          "size": 6657,
+          "sha256": "1f7b0e5c63f37ad327e44f889ed82346a980d91b5fb93025d101668a493c15f7"
+        },
+        {
+          "name": "tools/delivery/deploy_token_lifecycle.py",
+          "size": 24911,
+          "sha256": "11c1cae792016e2374d699a6e6f2f833d532e94213ebbc5f3904791bff3ca0f5"
+        },
+        {
+          "name": "tools/delivery/deploy_transport.py",
+          "size": 10201,
+          "sha256": "7417327e92c59aadce5dadb983151db8cc6a7c3509e6ecefa40058776b4e9fa6"
+        },
+        {
+          "name": "tools/delivery/deploy_workflow.py",
+          "size": 8066,
+          "sha256": "9dfbb21dc5051881602195e0210acce9885e1ddae25adb6bde1d1f23fc40817e"
+        },
+        {
+          "name": "tools/delivery/image_smoke.py",
+          "size": 7244,
+          "sha256": "e87d7cf718721247baf17b7bcb999cad98edb1733e6cfc36c8e4c9cdd58aaf34"
+        },
+        {
+          "name": "tools/delivery/image_smoke_probe.py",
+          "size": 4239,
+          "sha256": "9f61eb5173eb99e5e7274264fbeb4d2c2ce4aa9201b2db3288a20dc0a9422f21"
+        },
+        {
+          "name": "tools/delivery/materialize_app_build_scan_v3.py",
+          "size": 13697,
+          "sha256": "5d224fa4d8975dcb40a72403df61619f7e9334ae20740d08700b1206a810fd5e"
+        },
+        {
+          "name": "tools/delivery/offline_supply.py",
+          "size": 14359,
+          "sha256": "433fca01ede1b1903d4b8302e7423b9db3649a9c4a0cf7d6faf197b25bf2e3ea"
+        },
+        {
+          "name": "tools/delivery/offline_supply_v3.py",
+          "size": 19141,
+          "sha256": "555f7c6a0f535dc882028513ffaea6f2ea72e43ed214d97c1fe6bf062b628613"
+        },
+        {
+          "name": "tools/delivery/probe_offline_supply.py",
+          "size": 9958,
+          "sha256": "5bcbe1fb519c20bbe9704af66c432f26756ae29aa37b4585729e7819034b40b1"
+        },
+        {
+          "name": "tools/delivery/push_images.py",
+          "size": 13921,
+          "sha256": "222041840cc1e41172504d09a62e7e3a3f3090c03d5ca7ef26cd7c6b5879bafd"
+        },
+        {
+          "name": "tools/delivery/push_workflow.py",
+          "size": 6471,
+          "sha256": "a21d02374e4029aa61315341c184951667a219a82dec2c42833f4d63e6b1ea58"
+        },
+        {
+          "name": "tools/delivery/runner_git_preflight.py",
+          "size": 13419,
+          "sha256": "ffb7bfde5f122a664fe45d21bae362f32a0499724a5f1e6798aaa2f12c0f3c61"
+        },
+        {
+          "name": "tools/delivery/source_auth.py",
+          "size": 2743,
+          "sha256": "ec5f3e14d8f485704fb03e7c3c8b76dff84011bb8d8a69309881375a2071dcf1"
+        },
+        {
+          "name": "tools/delivery/transfer_deploy_credential.py",
+          "size": 8759,
+          "sha256": "c31525e54b837bacd8dc89a2d3bcc2efce43297f45240b92050a6075ee91730d"
+        },
+        {
+          "name": "tools/delivery/transfer_native_probe.py",
+          "size": 23432,
+          "sha256": "e6433fa299745828fe67aa718ac5d1287f3c7b364a68df60c5216763af72f030"
+        },
+        {
+          "name": "tools/delivery/unit_negative.py",
+          "size": 5003,
+          "sha256": "14696c8df03d219fd4a557c1e7a35b2cbc27eb8d41d468cae08a6bc71266be0f"
+        },
+        {
+          "name": "tools/delivery/verify_base_manifest.py",
+          "size": 8715,
+          "sha256": "5375b2dead68122b707096adaca9331c4b0ce9d67425841f58af4b377c4f560f"
+        }
+      ]
+    },
+    "evidence/P1-CICD-01/ac09-restore-current-20261015/runtime/recovery.tar": {
+      "sha256": "6fbd08b4c7e8001b1aac34732d2ca84eaf8fa221a5b40b41d5c0522cf8851cb6",
+      "size": 20480,
+      "entries": [
+        {
+          "name": "console_restore_current.py",
+          "size": 9336,
+          "sha256": "b01fd209dc089db3ed8da9eca590294d8b36523b119e76af962396d62e11d7f4"
+        },
+        {
+          "name": "recovery-contract.json",
+          "size": 619,
+          "sha256": "61e4fc0c8530fcca8e167e6e73591bb08566009306a1941db90e20fc6ad79109"
+        }
+      ]
+    },
+    "evidence/P1-CICD-01/ac09-restore-current-20261015/runtime/github-final/R1-false/logs.zip": {
+      "sha256": "96c65146f73e3c24ba6e01e12c1ab9902dfbaf5edf4095d4c781070e33598cd6",
+      "size": 10324,
+      "entries": [
+        {
+          "name": "0_deploy.txt",
+          "size": 17448,
+          "sha256": "f0bd3ab2a450394965cb06d09c26b7fc1408c42ee4c64e24287e9ce5fb66abd4"
+        },
+        {
+          "name": "deploy/10_Post Checkout the reviewed workflow commit.txt",
+          "size": 1347,
+          "sha256": "20bfe526cde61fd94ee156e1888595f614b86c488f6ae8a5c99c3f3d96e2e32c"
+        },
+        {
+          "name": "deploy/11_Complete job.txt",
+          "size": 61,
+          "sha256": "9a484d81290b4775b7a50e479227a4f41b253de469bd33066f389321933c1a02"
+        },
+        {
+          "name": "deploy/1_Set up job.txt",
+          "size": 965,
+          "sha256": "7617296b14c2179a1a812bb0daeeccc0fc49c24a454e9bc51bc75ac7bc444398"
+        },
+        {
+          "name": "deploy/2_Require normal Runner and unused checkout.txt",
+          "size": 1019,
+          "sha256": "56c0082cea2c9118f1a28bd0bef91d3ad20b6fb6e8700f4534f192fcf7e8a9f8"
+        },
+        {
+          "name": "deploy/3_Checkout the reviewed workflow commit.txt",
+          "size": 13089,
+          "sha256": "1f53616d07fa84a5620cf75c3640dc18a0df7437c54ca05be6825e8d56347f5a"
+        },
+        {
+          "name": "deploy/4_Validate inputs without issuing or receiving a token.txt",
+          "size": 982,
+          "sha256": "e1251deecb17d284dbded23926f928ab03f42799da8efb7e2b924632564dd22a"
+        },
+        {
+          "name": "deploy/system.txt",
+          "size": 881,
+          "sha256": "6e5d744789c84ae4f885d59e2bf3371983489d90fc552ee691055ed2389dcdd3"
+        }
+      ]
+    },
+    "evidence/P1-CICD-01/ac09-restore-current-20261015/runtime/github-final/R1-true/logs.zip": {
+      "sha256": "a9cbc52714e419efed4138c1f12d6d3285b14a7b907542afbc65a30c51f1964f",
+      "size": 10396,
+      "entries": [
+        {
+          "name": "0_deploy.txt",
+          "size": 17501,
+          "sha256": "1cb693a1690d4928ba127f3176ff2074f55cad95821f0ba35b73ae3190665c51"
+        },
+        {
+          "name": "deploy/10_Post Checkout the reviewed workflow commit.txt",
+          "size": 1347,
+          "sha256": "ae4eb862939f7929c9f4e9903102c6f2d3d68bce06e29bd25955a9e8c3779d0c"
+        },
+        {
+          "name": "deploy/11_Complete job.txt",
+          "size": 61,
+          "sha256": "02408e092cb12feb4a438df1c738c69aee4483d499530432f6c742eba0f488c7"
+        },
+        {
+          "name": "deploy/1_Set up job.txt",
+          "size": 965,
+          "sha256": "580ecd1f6cf249ffa7c405994a39008c6cff880c415183d9dcd8a043951a5e54"
+        },
+        {
+          "name": "deploy/2_Require normal Runner and unused checkout.txt",
+          "size": 1018,
+          "sha256": "614a357ad4e309e7f1292efc6152b2716b6f21bbb4ff580c65ad7a902e49160d"
+        },
+        {
+          "name": "deploy/3_Checkout the reviewed workflow commit.txt",
+          "size": 13088,
+          "sha256": "7e8c445ffd69d294e33904d7241fea68ddcdc95f978baae31332b5dbbb193d6d"
+        },
+        {
+          "name": "deploy/5_Receive authenticated credential and execute approved Deploy.txt",
+          "size": 1037,
+          "sha256": "3527a41a577c2377895da2cb0bc8376a36f466b81ba1965cefbac98885bd77ca"
+        },
+        {
+          "name": "deploy/system.txt",
+          "size": 881,
+          "sha256": "35fa52471452c343a50dfbfbd0bc84654842874db87e735c23afae678a387216"
+        }
+      ]
+    },
+    "evidence/P1-CICD-01/ac09-restore-current-20261015/runtime/github-final/R2-false/logs.zip": {
+      "sha256": "4e70bfa913f16b9cabd63a4ab218891fb52bbf413a072ef4f31c9a83377b72f6",
+      "size": 10329,
+      "entries": [
+        {
+          "name": "0_deploy.txt",
+          "size": 17448,
+          "sha256": "b6586160810d55c4fc8edeceb4e93287d8cc846c529b3329ef7d4c8eb88a1fd8"
+        },
+        {
+          "name": "deploy/10_Post Checkout the reviewed workflow commit.txt",
+          "size": 1347,
+          "sha256": "8cc74e5975779b12270e8169cf8256cefb176f59daa3083454a802b1f08c608d"
+        },
+        {
+          "name": "deploy/11_Complete job.txt",
+          "size": 61,
+          "sha256": "2ebb02bc187407e510628bfbf5aa3588cce4593846e9212b9d2bfce43c40eec5"
+        },
+        {
+          "name": "deploy/1_Set up job.txt",
+          "size": 965,
+          "sha256": "8c9b4493251451bc487b4b56c42cd98fd446539fb91609f9eb913b8caf6df51f"
+        },
+        {
+          "name": "deploy/2_Require normal Runner and unused checkout.txt",
+          "size": 1019,
+          "sha256": "b335d98b4e088f226081a9f7080d44310f870a148e682ff47c2c52b388b3668d"
+        },
+        {
+          "name": "deploy/3_Checkout the reviewed workflow commit.txt",
+          "size": 13089,
+          "sha256": "c8beec958875fc16d31e2aff74f549a7a45d7ed0d5fdcf8011971125f6297080"
+        },
+        {
+          "name": "deploy/4_Validate inputs without issuing or receiving a token.txt",
+          "size": 982,
+          "sha256": "5b1c0a9a0ea411ccdb901626a54dceb10a63c7e94393b39a6b29e55c166f74c8"
+        },
+        {
+          "name": "deploy/system.txt",
+          "size": 881,
+          "sha256": "1d90e132bef3e3ce491496d33e87361de1977efc7b4ce10d394baa68e2a084ef"
+        }
+      ]
+    },
+    "evidence/P1-CICD-01/ac09-restore-current-20261015/runtime/github-final/R2-true/logs.zip": {
+      "sha256": "55220c45b6e6d4c4c348018f8184069879dd7f412f180a1d88b82947ccb509f1",
+      "size": 10368,
+      "entries": [
+        {
+          "name": "0_deploy.txt",
+          "size": 17501,
+          "sha256": "a0679c70ff9287263f6b41270db50077109a9b18c1f3e9f1ebc68579a1106e9a"
+        },
+        {
+          "name": "deploy/10_Post Checkout the reviewed workflow commit.txt",
+          "size": 1347,
+          "sha256": "4bb5f809c3fca159a61c36e3ce97774ea983d16ca65879dba38fdc4ecb672cbd"
+        },
+        {
+          "name": "deploy/11_Complete job.txt",
+          "size": 61,
+          "sha256": "a2e64c881cbf31750af78b11fbcceadaf1389441667ec56d50852c5f292f7ce3"
+        },
+        {
+          "name": "deploy/1_Set up job.txt",
+          "size": 965,
+          "sha256": "83e35f369c56efb545dd52aa99da4ae27b2b0944ab5f9f5a7ff16d76fcacdc9f"
+        },
+        {
+          "name": "deploy/2_Require normal Runner and unused checkout.txt",
+          "size": 1018,
+          "sha256": "590c377a8e60e753238852cbe10c3ddda1d8615ded7ea90ceb9f9f69bdb7dfb0"
+        },
+        {
+          "name": "deploy/3_Checkout the reviewed workflow commit.txt",
+          "size": 13088,
+          "sha256": "feeb62b786e406e8949f62bb8de513c3aac654a8f043e35a47c3478e0749e490"
+        },
+        {
+          "name": "deploy/5_Receive authenticated credential and execute approved Deploy.txt",
+          "size": 1037,
+          "sha256": "82fda6432f783f534a2a46def4f043ddfe89d58c228eccdf15eda0aa92aa97b8"
+        },
+        {
+          "name": "deploy/system.txt",
+          "size": 881,
+          "sha256": "ecb4e2a0d7feea23ff6d6f364e2f85d96961f1e7ae64bc0e2a773cd61b1350c5"
+        }
+      ]
     }
   },
   "max_bytes": 1048576,

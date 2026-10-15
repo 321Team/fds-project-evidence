@@ -1,0 +1,1 @@
+/usr/bin/ssh -F /dev/null -T -i /home/server01_ansible/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=8 -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/home/server01_ansible/.ssh/known_hosts -o IdentitiesOnly=yes -o ForwardAgent=no -o ClearAllForwardings=yes -o ControlMaster=no -o ControlPath=none -o UpdateHostKeys=no server02@10.1.93.102 '/usr/bin/python3 -B -I -S -'
