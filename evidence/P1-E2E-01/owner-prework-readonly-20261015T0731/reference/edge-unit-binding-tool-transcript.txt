@@ -1,0 +1,7 @@
+TOOL_RESULT_TRANSCRIPT (additional read; not the first failed local pipeline output)
+2026-10-15 KST. exec_command chunk 15879b, exit_code=0.
+Command: existing SSH through ansible01 to svc_ansible@10.1.93.50, systemctl show nginx.service --no-pager -p ExecStart -p ExecReload -p MainPID
+MainPID=1593
+ExecStart={ path=/usr/sbin/nginx ; argv[]=/usr/sbin/nginx ; ignore_errors=no ; start_time=[Sun 2026-10-11 18:32:58 KST] ; stop_time=[Sun 2026-10-11 18:32:58 KST] ; pid=1568 ; code=exited ; status=0 }
+ExecReload={ path=/usr/sbin/nginx ; argv[]=/usr/sbin/nginx -s reload ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+The command reads the configured ExecReload property; it does not invoke reload.

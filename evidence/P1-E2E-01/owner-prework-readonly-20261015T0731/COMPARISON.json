@@ -1,0 +1,277 @@
+{
+  "checks": {
+    "fds_conf_bytes_match_169": true,
+    "nodeport_local_80_8000_30080": true,
+    "selector_matches_169": true,
+    "nodeport_gnp_ingress_matches_169": true,
+    "nodeport_gnp_parameters_match_169": true,
+    "ready_endpoint_per_worker": true,
+    "six_pods_ready_expected_digests": true
+  },
+  "fds_conf_sha256": "a10a5a684c9f8756bb91d78c94befd103ea97baa1af955c373acaebb35a91799",
+  "nodeport_gnp": {
+    "metadata": {
+      "name": "nodeport-30080-allow",
+      "namespace": null,
+      "uid": "f9de0f2e-aa29-4545-8d46-ea2e31c4a3f0",
+      "resourceVersion": "1083332",
+      "generation": 1,
+      "labels": null
+    },
+    "spec": {
+      "applyOnForward": true,
+      "ingress": [
+        {
+          "action": "Allow",
+          "destination": {
+            "ports": [
+              30080
+            ]
+          },
+          "protocol": "TCP",
+          "source": {
+            "nets": [
+              "10.1.93.50/32"
+            ]
+          }
+        },
+        {
+          "action": "Deny",
+          "destination": {
+            "ports": [
+              30080
+            ]
+          },
+          "protocol": "TCP"
+        }
+      ],
+      "order": 50,
+      "preDNAT": true,
+      "selector": "fds.example/role == 'worker'",
+      "tier": "default",
+      "types": [
+        "Ingress"
+      ]
+    }
+  },
+  "pod_uids_are_new_since_169": true,
+  "boots": [
+    {
+      "host": "k8s-control01",
+      "boot_id": "2a889fe4-51fe-43fe-bcd7-5a0f9b8ff360",
+      "started_at_utc": "2026-10-14T22:31:31.129233+00:00",
+      "units": [
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "8095935"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        },
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "7716946"
+        },
+        {
+          "Id": "nftables.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        }
+      ]
+    },
+    {
+      "host": "k8s-control02",
+      "boot_id": "fcc69e6a-368f-4a94-aa09-d60b86e6e889",
+      "started_at_utc": "2026-10-14T22:31:32.004275+00:00",
+      "units": [
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "8160360"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        },
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "7766883"
+        },
+        {
+          "Id": "nftables.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        }
+      ]
+    },
+    {
+      "host": "k8s-control03",
+      "boot_id": "5139113f-b02f-4fff-bf9a-8287f95f6b7c",
+      "started_at_utc": "2026-10-14T22:31:32.843421+00:00",
+      "units": [
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "8419466"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        },
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "18419885"
+        },
+        {
+          "Id": "nftables.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker01",
+      "boot_id": "e70731d9-06dd-416a-93d6-248ae804d551",
+      "started_at_utc": "2026-10-14T22:31:33.670510+00:00",
+      "units": [
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "9133756"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        },
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "8852760"
+        },
+        {
+          "Id": "nftables.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker02",
+      "boot_id": "f0015ee5-36c9-4184-a985-723170958f2c",
+      "started_at_utc": "2026-10-14T22:31:34.526859+00:00",
+      "units": [
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "7826369"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        },
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "7450264"
+        },
+        {
+          "Id": "nftables.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker03",
+      "boot_id": "f0c48106-f753-4ab7-bacd-660c126fca2f",
+      "started_at_utc": "2026-10-14T22:31:35.335332+00:00",
+      "units": [
+        {
+          "Id": "containerd.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "7759897"
+        },
+        {
+          "Id": "firewalld.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        },
+        {
+          "Id": "kubelet.service",
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "UnitFileState": "enabled",
+          "ActiveEnterTimestampMonotonic": "7372600"
+        },
+        {
+          "Id": "nftables.service",
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "UnitFileState": "disabled",
+          "ActiveEnterTimestampMonotonic": "0"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "DISK_READ_NOT_NGINX_LOADED_CONFIG_PROOF",
+    "SELECTED_POLICY_COMPARISON_NOT_ALL_PATH_ENFORCEMENT",
+    "NO_NEW_HTTP_TRANSACTION",
+    "BOOT_METADATA_NOT_CONTINUOUS_PROTECTION_PROOF",
+    "NO_NEW_AC_ACCEPTANCE"
+  ]
+}
