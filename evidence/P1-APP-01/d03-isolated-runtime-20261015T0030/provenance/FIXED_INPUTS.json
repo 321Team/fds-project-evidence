@@ -1,0 +1,40 @@
+{
+  "status": "NO_ACTUAL_RUN_PLAN_OR_WINDOW",
+  "run": null,
+  "fixed_plan_fields": {
+    "schema": "P1-D03-ISOLATED-1",
+    "host": "cicd-runner01",
+    "uid": 1000,
+    "source": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+    "images": {
+      "api": "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee",
+      "engine": "sha256:b82d35a60e7a7f4a30366a926699fa4b673e69610f64fa0e7f294673ed12f4fc",
+      "db": "quay.io/sclorg/postgresql-16-c9s@sha256:d33717fd33c1a4b11afef94568d0c20812a19d62fb8c633fadee1e491e2edd4a"
+    },
+    "deployed_manifests": {
+      "api": "sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "engine": "sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d"
+    },
+    "files": {
+      "tools/regression/d03_lab.py": "cc4fbb07fbb1b7351ebb3468351714ebefa057cfa879f9715a7f5b72fac662e9",
+      "tools/regression/d03_fixture.py": "8a979889453a3971e22e68a9fd0d4c91f89339a33ebc272e9d5687d966087cf5",
+      "deploy/components/lab-db/10-fds-schema.sh": "58f17e0018a7c52898baf9435fecbcec2a37fc4ef06603087f6da2a441bd99d0",
+      "deploy/components/lab-db/fds-schema.sql": "f750fe2bfa8e389ab1525ba295feba60ed2fccc9e1454fe72fa2a8c7fb743c7e",
+      "alembic/versions/0001_initial_schema.py": "c847a31355a9ebc4cafb0e8f87c43fd85720e52553d00ed363382a721d82f1b9",
+      "alembic/versions/0002_add_fds_evaluation_columns.py": "29040110fa10a7df7fa50d9d21a4c0c5f4d09204705fe37688ea2481472b94e0",
+      "alembic/versions/0003_add_transactions_indexes.py": "471547aef06d2417c69463625302a7d11bd8e7b7d8d1253df5828fd9ca3057c9"
+    },
+    "cases": [
+      "PRE",
+      "READ",
+      "READ_POST",
+      "HTTP",
+      "HTTP_POST",
+      "DB",
+      "DB_POST"
+    ],
+    "max_posts": 7,
+    "max_lifetime_seconds": 900,
+    "production_runtime_claim": false
+  }
+}

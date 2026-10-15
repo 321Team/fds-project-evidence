@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "exec",
+    "-i",
+    "6592f8deeeb1588cc6d41fdf360bc1cb17938af196fa6a657d0aedaa435d18aa",
+    "psql",
+    "-X",
+    "-q",
+    "-At",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-d",
+    "fds_lab"
+  ],
+  "rc": 0,
+  "started_at_utc": "2026-10-14T15:30:23.376845+00:00",
+  "finished_at_utc": "2026-10-14T15:30:23.480286+00:00",
+  "timed_out": false,
+  "stdin": "SET statement_timeout='5s';\nDO $$ BEGIN IF current_database() <> 'fds_lab' THEN RAISE EXCEPTION 'NOT_LAB_DB'; END IF; END $$;\nDROP TRIGGER d03_insert_fail ON public.transactions; DROP FUNCTION public.d03_insert_fail();\n",
+  "stdout": "",
+  "stderr": ""
+}

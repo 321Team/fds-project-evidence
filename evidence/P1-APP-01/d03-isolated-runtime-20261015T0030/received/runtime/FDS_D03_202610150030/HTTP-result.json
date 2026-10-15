@@ -1,0 +1,33 @@
+{
+  "case": "HTTP",
+  "response": {
+    "status": 201,
+    "body": "{\"transaction_id\":\"3e566406-d483-4d5f-b7e4-7000b7efdfc6\",\"fds_detected\":null,\"fds_rules\":null,\"fds_evaluation_skipped\":true}",
+    "elapsed": 0.012858790985774249
+  },
+  "before": {
+    "transaction_save_success_total": 3.0,
+    "transaction_save_failure_total": 0.0,
+    "fds_evaluation_error_total": 1.0
+  },
+  "after": {
+    "transaction_save_success_total": 4.0,
+    "transaction_save_failure_total": 0.0,
+    "fds_evaluation_error_total": 2.0
+  },
+  "rows": [
+    {
+      "transaction_id": "3e566406-d483-4d5f-b7e4-7000b7efdfc6",
+      "account_id": "SIM_d03_202610150030_HTTP",
+      "amount": 10000,
+      "currency": "KRW",
+      "transaction_type": "deposit",
+      "source_ip": "198.51.100.10",
+      "occurred_at": "2026-10-15T03:00:00+00:00",
+      "received_at": "2026-10-14T15:30:21.907069+00:00",
+      "fds_detected": null,
+      "fds_rules": null,
+      "fds_evaluation_skipped": true
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "create",
+    "--pull=never",
+    "--name",
+    "fds-d03-202610150030-api",
+    "--label",
+    "fds.d03.run=202610150030",
+    "--network",
+    "container:6592f8deeeb1588cc6d41fdf360bc1cb17938af196fa6a657d0aedaa435d18aa",
+    "--read-only",
+    "--cap-drop=ALL",
+    "--security-opt=no-new-privileges",
+    "--pids-limit=128",
+    "--timeout=900",
+    "--stop-timeout=5",
+    "--log-driver=k8s-file",
+    "--memory=256m",
+    "--cpus=1",
+    "-v",
+    "/home/server01_cicd-runner/FDS_D03_202610150030/stage/code:/d03:ro,z",
+    "--tmpfs=/tmp:rw,size=32m,mode=1777",
+    "--env-file",
+    "/home/server01_cicd-runner/FDS_D03_202610150030/api.env",
+    "sha256:ab34196baf2b878222857be47b200baed0151679a5b19fe15635ba50f77bffee"
+  ],
+  "rc": 0,
+  "started_at_utc": "2026-10-14T15:30:14.718536+00:00",
+  "finished_at_utc": "2026-10-14T15:30:14.788817+00:00",
+  "timed_out": false,
+  "stdout": "a82f8cb14c4a0890193b62a04ad809c07f2e6abee30f63cd73b3a014f46e010c\n",
+  "stderr": ""
+}

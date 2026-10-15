@@ -1,0 +1,54 @@
+{
+  "case": "PRE",
+  "response": {
+    "status": 201,
+    "body": "{\"transaction_id\":\"ace436de-ae66-4e02-aed0-c30a6b1a2f75\",\"fds_detected\":false,\"fds_rules\":[{\"rule_id\":\"R01\",\"triggered\":false,\"detail\":null},{\"rule_id\":\"R02\",\"triggered\":false,\"detail\":null},{\"rule_id\":\"R04\",\"triggered\":false,\"detail\":null},{\"rule_id\":\"R07\",\"triggered\":false,\"detail\":null}],\"fds_evaluation_skipped\":false}",
+    "elapsed": 0.029187942971475422
+  },
+  "before": {
+    "transaction_save_success_total": 0.0,
+    "transaction_save_failure_total": 0.0,
+    "fds_evaluation_error_total": 0.0
+  },
+  "after": {
+    "transaction_save_success_total": 1.0,
+    "transaction_save_failure_total": 0.0,
+    "fds_evaluation_error_total": 0.0
+  },
+  "rows": [
+    {
+      "transaction_id": "ace436de-ae66-4e02-aed0-c30a6b1a2f75",
+      "account_id": "SIM_d03_202610150030_PRE",
+      "amount": 10000,
+      "currency": "KRW",
+      "transaction_type": "deposit",
+      "source_ip": "198.51.100.10",
+      "occurred_at": "2026-10-15T03:00:00+00:00",
+      "received_at": "2026-10-14T15:30:18.108444+00:00",
+      "fds_detected": false,
+      "fds_rules": [
+        {
+          "detail": null,
+          "rule_id": "R01",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R02",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R04",
+          "triggered": false
+        },
+        {
+          "detail": null,
+          "rule_id": "R07",
+          "triggered": false
+        }
+      ],
+      "fds_evaluation_skipped": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "exec",
+    "-i",
+    "6592f8deeeb1588cc6d41fdf360bc1cb17938af196fa6a657d0aedaa435d18aa",
+    "psql",
+    "-X",
+    "-q",
+    "-At",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-d",
+    "fds_lab"
+  ],
+  "rc": 0,
+  "started_at_utc": "2026-10-14T15:30:22.076000+00:00",
+  "finished_at_utc": "2026-10-14T15:30:22.180086+00:00",
+  "timed_out": false,
+  "stdin": "SET statement_timeout='5s';\nSELECT coalesce(json_agg(t),'[]'::json) FROM (SELECT * FROM public.transactions WHERE account_id='SIM_d03_202610150030_HTTP') t;",
+  "stdout": "[{\"transaction_id\":\"3e566406-d483-4d5f-b7e4-7000b7efdfc6\",\"account_id\":\"SIM_d03_202610150030_HTTP\",\"amount\":10000,\"currency\":\"KRW\",\"transaction_type\":\"deposit\",\"source_ip\":\"198.51.100.10\",\"occurred_at\":\"2026-10-15T03:00:00+00:00\",\"received_at\":\"2026-10-14T15:30:21.907069+00:00\",\"fds_detected\":null,\"fds_rules\":null,\"fds_evaluation_skipped\":true}]\n",
+  "stderr": ""
+}
