@@ -1,0 +1,183 @@
+{
+    "Reservations": [
+        {
+            "ReservationId": "r-09f148e701b864dff",
+            "OwnerId": "774055931866",
+            "Groups": [],
+            "Instances": [
+                {
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda1",
+                            "Ebs": {
+                                "AttachTime": "2026-10-12T08:18:01+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-09d072c0e65a6e80d",
+                                "EbsCardIndex": 0
+                            }
+                        }
+                    ],
+                    "ClientToken": "terraform-ZZFu1W7O50tnxj53Eiz34punkK",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::774055931866:instance-profile/FDS-Relay-SSM",
+                        "Id": "AIPA3IOKUF7NK6O4NTEM7"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "774055931866",
+                                "PublicDnsName": "ec2-3-36-239-132.ap-northeast-2.compute.amazonaws.com",
+                                "PublicIp": "3.36.239.132"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2026-10-12T08:18:01+00:00",
+                                "AttachmentId": "eni-attach-037e8b410b02e59e0",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-0f1e8a5dbecabccee",
+                                    "GroupName": "fds-relay-dd0d9e573c5c3182c5878bc589"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "02:ff:d8:53:ad:89",
+                            "NetworkInterfaceId": "eni-0017c49242017af9b",
+                            "OwnerId": "774055931866",
+                            "PrivateDnsName": "ip-10-20-110-10.ap-northeast-2.compute.internal",
+                            "PrivateIpAddress": "10.20.110.10",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "774055931866",
+                                        "PublicDnsName": "ec2-3-36-239-132.ap-northeast-2.compute.amazonaws.com",
+                                        "PublicIp": "3.36.239.132"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-20-110-10.ap-northeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.20.110.10"
+                                }
+                            ],
+                            "SourceDestCheck": false,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-0fbc846bde668f0f3",
+                            "VpcId": "vpc-039718404350154d9",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        }
+                    ],
+                    "RootDeviceName": "/dev/sda1",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupId": "sg-0f1e8a5dbecabccee",
+                            "GroupName": "fds-relay-dd0d9e573c5c3182c5878bc589"
+                        }
+                    ],
+                    "SourceDestCheck": false,
+                    "Tags": [
+                        {
+                            "Key": "Component",
+                            "Value": "vpn"
+                        },
+                        {
+                            "Key": "Name",
+                            "Value": "fds-relay"
+                        },
+                        {
+                            "Key": "Project",
+                            "Value": "fds-hybrid"
+                        },
+                        {
+                            "Key": "ManagedBy",
+                            "Value": "terraform"
+                        },
+                        {
+                            "Key": "Phase",
+                            "Value": "phase2"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "required",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2026-10-12T08:18:01+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": false,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default",
+                        "RebootMigration": "default"
+                    },
+                    "CurrentInstanceBootMode": "legacy-bios",
+                    "NetworkPerformanceOptions": {
+                        "BandwidthWeighting": "default"
+                    },
+                    "Operator": {
+                        "Managed": false,
+                        "HiddenByDefault": false
+                    },
+                    "InstanceId": "i-05e4b63d31d8d5ac5",
+                    "ImageId": "ami-08d855918a18d0cf9",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "PrivateDnsName": "ip-10-20-110-10.ap-northeast-2.compute.internal",
+                    "PublicDnsName": "ec2-3-36-239-132.ap-northeast-2.compute.amazonaws.com",
+                    "StateTransitionReason": "",
+                    "AmiLaunchIndex": 0,
+                    "ProductCodes": [],
+                    "InstanceType": "t3.medium",
+                    "LaunchTime": "2026-10-12T08:18:01+00:00",
+                    "Placement": {
+                        "AvailabilityZoneId": "apne2-az1",
+                        "GroupName": "",
+                        "Tenancy": "default",
+                        "AvailabilityZone": "ap-northeast-2a"
+                    },
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "SubnetId": "subnet-0fbc846bde668f0f3",
+                    "VpcId": "vpc-039718404350154d9",
+                    "PrivateIpAddress": "10.20.110.10",
+                    "PublicIpAddress": "3.36.239.132"
+                }
+            ]
+        }
+    ]
+}

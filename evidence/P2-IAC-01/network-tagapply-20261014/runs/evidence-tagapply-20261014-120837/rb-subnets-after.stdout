@@ -1,0 +1,204 @@
+{
+    "Subnets": [
+        {
+            "AvailabilityZoneId": "apne2-az1",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "774055931866",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "fds-public_transport_a"
+                },
+                {
+                    "Key": "kubernetes.io/role/elb",
+                    "Value": "1"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                }
+            ],
+            "SubnetArn": "arn:aws:ec2:ap-northeast-2:774055931866:subnet/subnet-0fbc846bde668f0f3",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+                "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-0fbc846bde668f0f3",
+            "State": "available",
+            "VpcId": "vpc-039718404350154d9",
+            "CidrBlock": "10.20.110.0/24",
+            "AvailableIpAddressCount": 249,
+            "AvailabilityZone": "ap-northeast-2a",
+            "DefaultForAz": false,
+            "MapPublicIpOnLaunch": false
+        },
+        {
+            "AvailabilityZoneId": "apne2-az1",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "774055931866",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "fds-private_a"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "kubernetes.io/role/internal-elb",
+                    "Value": "1"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                }
+            ],
+            "SubnetArn": "arn:aws:ec2:ap-northeast-2:774055931866:subnet/subnet-044ced60c3c705ac6",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+                "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-044ced60c3c705ac6",
+            "State": "available",
+            "VpcId": "vpc-039718404350154d9",
+            "CidrBlock": "10.20.10.0/24",
+            "AvailableIpAddressCount": 251,
+            "AvailabilityZone": "ap-northeast-2a",
+            "DefaultForAz": false,
+            "MapPublicIpOnLaunch": false
+        },
+        {
+            "AvailabilityZoneId": "apne2-az2",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "774055931866",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "fds-private_b"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                }
+            ],
+            "SubnetArn": "arn:aws:ec2:ap-northeast-2:774055931866:subnet/subnet-0fc798d49bb79b248",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+                "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-0fc798d49bb79b248",
+            "State": "available",
+            "VpcId": "vpc-039718404350154d9",
+            "CidrBlock": "10.20.20.0/24",
+            "AvailableIpAddressCount": 251,
+            "AvailabilityZone": "ap-northeast-2b",
+            "DefaultForAz": false,
+            "MapPublicIpOnLaunch": false
+        },
+        {
+            "AvailabilityZoneId": "apne2-az3",
+            "MapCustomerOwnedIpOnLaunch": false,
+            "OwnerId": "774055931866",
+            "AssignIpv6AddressOnCreation": false,
+            "Ipv6CidrBlockAssociationSet": [],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "fds-private_c"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                }
+            ],
+            "SubnetArn": "arn:aws:ec2:ap-northeast-2:774055931866:subnet/subnet-07586708a37f05d71",
+            "EnableDns64": false,
+            "Ipv6Native": false,
+            "PrivateDnsNameOptionsOnLaunch": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "BlockPublicAccessStates": {
+                "InternetGatewayBlockMode": "off"
+            },
+            "SubnetId": "subnet-07586708a37f05d71",
+            "State": "available",
+            "VpcId": "vpc-039718404350154d9",
+            "CidrBlock": "10.20.30.0/24",
+            "AvailableIpAddressCount": 251,
+            "AvailabilityZone": "ap-northeast-2c",
+            "DefaultForAz": false,
+            "MapPublicIpOnLaunch": false
+        }
+    ]
+}
