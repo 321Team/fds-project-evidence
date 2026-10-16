@@ -2,7 +2,7 @@
 
 책임 티켓: [infra-ansible #9](https://github.com/321Team/infra-ansible/issues/9), Record ID P1-ANS-01.
 
-**로컬 증적 편입 후보다. 아직 GitHub 게시·독립 리뷰·병합·최종 인수를 하지 않았다. 원본 archive의 팀 접근 URI도 미확정이다.** 기존 회차 원본은 바꾸지 않았다.
+**로컬 증적 편입 후보다. 아직 GitHub 게시·독립 리뷰·병합·최종 인수를 하지 않았다. 원본 archive의 공유 보관 URI와 중앙 복사 결과를 연결했으며, 개별 reviewer의 실제 읽기는 PENDING이다.** 기존 회차 원본은 바꾸지 않았다.
 
 ## 현재 판정
 
@@ -21,7 +21,8 @@ MON2.16.19/2.21.3 각45, NTP legacy48/flow25/serial1/transport2/wrapper19다. �
 - `executed-source-external/stage_supply.py`: 공급물 밖의 당시 staging 코드 사본. 운영 설치·새 실행 허용 대상이 아니다.
 - `prior-failure/`: 08:50 회차의 실패·정확 회수 원본/기존 판정. 당시 source32f8d21, tarf019e7ea에서 첫 MON 실패로185 미충족이었으며 이력을 PASS로 고치지 않는다.
 - [선택 사본 목록](PUBLICATION_COPY_MAP.json): source 경로·바이트·SHA·자료 종류와 제외 사유. 모든 원본3446개+수집 파생1개를 Git에 모두 넣었다고 주장하지 않는다. Git 객체DB·binary/wheel/cache 및 비UTF8 바이트는 원래 archive에 보존했다.
-- [대용량 원본 위치](ARCHIVE_LOCATIONS.json): 완료 회차48,148,480B·공급29,132,800B·이전 실패 원본의 SHA와 로컬 위치를 연결했다. **storage_uri=null은 미확정**이다. 공유 경로 제안은 실제 배치·권한 검증 또는 새 예외 승인이 아니다. 원본 재압축·Git 직접 추가·Release 업로드를 하지 않았다.
+- [대용량 원본 위치](ARCHIVE_LOCATIONS.json): 21:07:08~21:07:12 KST 중앙 단회 복사의 정확 UNC와 원본3개·hash4개 길이/SHA를 연결했다. 7파일 총107,950,706B, 오류/삭제/덮어쓰기/재시도0이며 source_changed=false다. 기존 원본을 재압축·편집·삭제하지 않았고 Git archive 추가·Release 업로드도 없다. 접근은 사용자 승인인원 한정 확답(USER_ATTESTED), 기술 실효 ACL은 NOT_VERIFIED, reviewer 실제 읽기는 PENDING_AFTER_COPY다. 보존은 프로젝트 종료일까지이며 10/26·10/28 중 날짜는 미확정, 자동 삭제·연장은 허용하지 않는다.
+- [공유 보관 실행 결과](storage-transfer/stdout.json), [실행 영수증](storage-transfer/RECEIPT.json), [중앙 대조](storage-transfer/CENTRAL_VERIFICATION.json), [사용자 결정 기록](storage-transfer/STORAGE_USER_DECISION.json)은 완료된 복사에서 나온 원본 사본이다. 이 연결 작업에서 공유 읽기·복사·해시 대조를 재실행하지 않았다. 기존 PUBLICATION_COPY_MAP은 당시3337개 선택 사본 목록으로 보존하고, 이번 추가4개 원본은 ARCHIVE_LOCATIONS의 출처/해시와 갱신 SHA256SUMS로 결속한다.
 
 이번 `SHA256SUMS`는 이 새 수집회차에 실제 편입되는 파일만 포괄한다. 내부의 과거 manifest는 원래 수집 범위를 그대로 가리키므로 전체 archive 또는 PUBLICATION_COPY_MAP과 함께 해석한다. 복사 시 기존 receipt의 기대 hash와 바이트를 대조했으며 시험을 다시 실행하지 않았다.
 
@@ -31,4 +32,4 @@ MON2.16.19/2.21.3 각45, NTP legacy48/flow25/serial1/transport2/wrapper19다. �
 
 ## 편입 완료조건
 
-원본 archive의 허용 보관 URI·팀 접근/보존 조건과 실제 배치 후 hash 대조를 연결하고, 민감정보·원본 출처·해시·실행 판정·AC 대응에 대한 기존 증적 저장소 독립 리뷰를 받는다. 1MB 초과 archive는 Git에 넣지 않는다. 현장·정책·Phase2 변경은 없다. PR 병합은 #9 종결 또는 운영 전환을 자동 의미하지 않는다.
+원본 archive의 허용 보관 URI·사용자 접근/보존 조건·중앙 배치 후 hash 대조는 연결됐다. 개별 reviewer의 실제 파일 읽기와 민감정보·원본 출처·해시·실행 판정·AC 대응에 대한 기존 증적 저장소 독립 리뷰는 아직 미완료다. 사용자 접근 확답·중앙 기술 대조를 독립 사람 승인으로 표시하지 않는다. 1MB 초과 archive는 Git에 넣지 않는다. 현장·정책·Phase2 변경은 없다. PR 병합은 #9 종결 또는 운영 전환을 자동 의미하지 않는다.
