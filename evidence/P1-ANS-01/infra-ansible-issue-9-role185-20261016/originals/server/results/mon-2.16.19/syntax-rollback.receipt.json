@@ -1,0 +1,22 @@
+{
+  "case": "syntax-rollback",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "--syntax-check",
+    "-i",
+    "localhost,",
+    "/supply/source/playbooks/cr-p1-mon-01-01-rollback.yml"
+  ],
+  "expected_rc": 0,
+  "started_at_utc": "2026-10-16T08:09:40.569229+00:00",
+  "actual_rc": 0,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 138,
+  "sha256": "db360e1ee6780f44fb833a42e16ff636e68a5d2346c4bd4f39f2a82769f2b092",
+  "ended_at_utc": "2026-10-16T08:09:41.121064+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

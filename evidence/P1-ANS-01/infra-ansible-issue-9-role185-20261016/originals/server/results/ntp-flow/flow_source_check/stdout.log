@@ -1,0 +1,116 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [ntp_source : Select the unchanged drop-in-only workflow] *****************
+skipping: [localhost]
+
+TASK [ntp_source : Select the explicit main and drop-in migration workflow] ****
+included: /results/ntp-flow/flow_source_check/roles/ntp_source/tasks/_migration.yml for localhost
+
+TASK [ntp_source : Validate paired migration phase and bounds] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Require the existing CR approval token for a migration apply] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Determine this host's NTP role] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Verify chronyd is installed] ********************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyd service state] **********************
+ok: [localhost]
+
+TASK [ntp_source : Require an active service before migration] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Validate the exact observed or migrated pair without operational writes] ***
+ok: [localhost]
+
+TASK [ntp_source : Report the resolved candidate for the egress evidence comparison] ***
+ok: [localhost] => {
+    "msg": {
+        "client_source_ip": "10.1.93.102",
+        "dropin_sha256": "143ba13a4ca1c7e2e8ae771e948baf4887cfdfebcd9640537c5055d9c4056922",
+        "layout": "native",
+        "main_sha256": "764a7054c18657362edd078b2b617c78ebe3cc4105d86b3d1a7b08fdf1ede6a3",
+        "role": "source",
+        "source_upstreams": [
+            "162.159.200.1",
+            "162.159.200.123",
+            "194.58.200.20"
+        ],
+        "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+        "would_change": true
+    }
+}
+
+TASK [ntp_source : Require a migrated pair for explicit post-change verification] ***
+skipping: [localhost]
+
+TASK [ntp_source : Commit the validated pair with an immutable baseline] *******
+--- before: /results/ntp-flow/flow_source_check/chrony.conf
++++ after: /results/ntp-flow/flow_source_check/chrony.conf
+@@ -1,9 +1,7 @@
+ # Use public servers from the pool.ntp.org project.
+ # Please consider joining the pool (https://www.pool.ntp.org/join.html).
+-pool 2.centos.pool.ntp.org iburst
+ 
+ # Use NTP servers from DHCP.
+-sourcedir /run/chrony-dhcp
+ 
+ # Record the rate at which the system clock gains/losses time.
+ driftfile /var/lib/chrony/drift
+@@ -48,3 +46,6 @@
+ 
+ # Select which information is logged.
+ #log measurements statistics tracking
++
++# CR-P1-NTP-01-01 exact managed include
++include /results/ntp-flow/flow_source_check/chrony.d/50-cr-p1-ntp-01-01.conf
+
+--- before: /results/ntp-flow/flow_source_check/chrony.d/50-cr-p1-ntp-01-01.conf
++++ after: /results/ntp-flow/flow_source_check/chrony.d/50-cr-p1-ntp-01-01.conf
+@@ -1,2 +1,9 @@
+-# pre-existing managed fragment
+-server 192.0.2.123 iburst
++# CR-P1-NTP-01-01 managed NTP configuration
++server 162.159.200.1 iburst
++server 162.159.200.123 iburst
++server 194.58.200.20 iburst
++allow 10.1.93.103/32
++allow 10.1.93.104/32
++allow 10.1.93.105/32
++allow 10.1.93.107/32
++allow 10.1.93.108/32
+
+changed: [localhost]
+
+TASK [ntp_source : Require zero predicted changes during the paired idempotency check] ***
+skipping: [localhost]
+
+TASK [ntp_source : Restart chronyd] ********************************************
+skipping: [localhost]
+
+TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation] *******
+skipping: [localhost]
+
+TASK [ntp_source : Verify applied runtime state only after a real migration] ***
+skipping: [localhost]
+
+TASK [ntp_source : Verify current runtime for precheck and explicit verify] ****
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=10   changed=1    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
+

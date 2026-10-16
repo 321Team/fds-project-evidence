@@ -1,0 +1,316 @@
+{
+  "status": "STOP_REVIEW_REQUIRED",
+  "traceback": "Traceback (most recent call last):\n  File \"/supply/container_main.py\", line 150, in main\n    command(row['name'],row['argv'],row['timeout_seconds'],env)\n  File \"/supply/container_main.py\", line 69, in command\n    require(row['rc']==0,'COMMAND_FAILED:'+label+':'+str(row['rc']))\n  File \"/supply/contract.py\", line 27, in require\n    if not value:raise ValueError(reason)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: COMMAND_FAILED:mon-2.16.19:1\n",
+  "receipts": [
+    {
+      "label": "venv-2.16.19",
+      "argv": [
+        "/usr/local/bin/python3",
+        "-I",
+        "-B",
+        "-m",
+        "venv",
+        "/scratch/engines/2.16.19"
+      ],
+      "started_at_utc": "2026-10-15T23:50:36.713583+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 120,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 2.4800328399869613
+    },
+    {
+      "label": "pip-2.16.19",
+      "argv": [
+        "/scratch/engines/2.16.19/bin/python",
+        "-I",
+        "-B",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-cache-dir",
+        "--require-hashes",
+        "--find-links=/supply/wheels",
+        "-r",
+        "/supply/requirements-pip.txt"
+      ],
+      "started_at_utc": "2026-10-15T23:50:39.194739+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 60,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 1.2234594370238483
+    },
+    {
+      "label": "engine-2.16.19",
+      "argv": [
+        "/scratch/engines/2.16.19/bin/python",
+        "-I",
+        "-B",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-cache-dir",
+        "--require-hashes",
+        "--find-links=/supply/wheels",
+        "-r",
+        "/supply/requirements-2.16.19.txt"
+      ],
+      "started_at_utc": "2026-10-15T23:50:40.419503+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 120,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 2.180227212025784
+    },
+    {
+      "label": "engine-version-2.16.19",
+      "argv": [
+        "/scratch/engines/2.16.19/bin/ansible-playbook",
+        "--version"
+      ],
+      "started_at_utc": "2026-10-15T23:50:42.601657+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 15,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 0.5697356149903499
+    },
+    {
+      "label": "venv-2.21.3",
+      "argv": [
+        "/usr/local/bin/python3",
+        "-I",
+        "-B",
+        "-m",
+        "venv",
+        "/scratch/engines/2.21.3"
+      ],
+      "started_at_utc": "2026-10-15T23:50:43.172587+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 120,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 2.2772340240189806
+    },
+    {
+      "label": "pip-2.21.3",
+      "argv": [
+        "/scratch/engines/2.21.3/bin/python",
+        "-I",
+        "-B",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-cache-dir",
+        "--require-hashes",
+        "--find-links=/supply/wheels",
+        "-r",
+        "/supply/requirements-pip.txt"
+      ],
+      "started_at_utc": "2026-10-15T23:50:45.451270+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 60,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 1.3779724619816989
+    },
+    {
+      "label": "engine-2.21.3",
+      "argv": [
+        "/scratch/engines/2.21.3/bin/python",
+        "-I",
+        "-B",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-cache-dir",
+        "--require-hashes",
+        "--find-links=/supply/wheels",
+        "-r",
+        "/supply/requirements-2.21.3.txt"
+      ],
+      "started_at_utc": "2026-10-15T23:50:46.830418+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 120,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 2.025602302979678
+    },
+    {
+      "label": "engine-version-2.21.3",
+      "argv": [
+        "/scratch/engines/2.21.3/bin/ansible-playbook",
+        "--version"
+      ],
+      "started_at_utc": "2026-10-15T23:50:48.857295+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 15,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 0.7224883239832707
+    },
+    {
+      "label": "parser-version",
+      "argv": [
+        "/supply/chronyd-parser",
+        "-v"
+      ],
+      "started_at_utc": "2026-10-15T23:50:49.581125+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 15,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 0.11832072894321755
+    },
+    {
+      "label": "parser-smoke",
+      "argv": [
+        "/supply/chronyd-parser",
+        "-p",
+        "-f",
+        "/results/parser-smoke.conf"
+      ],
+      "started_at_utc": "2026-10-15T23:50:49.700819+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 15,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 0.11770147504284978
+    },
+    {
+      "label": "parser-stage-smoke",
+      "argv": [
+        "/supply/chronyd-parser",
+        "-p",
+        "-f",
+        "/scratch/tmp/fds-ntp-stage-8jkwgen4/chrony.conf"
+      ],
+      "started_at_utc": "2026-10-15T23:50:49.819520+00:00",
+      "status": "RETURNED",
+      "rc": 0,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 15,
+          "rc": 0
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 0,
+      "initial_error": null,
+      "elapsed_seconds": 0.11817028600489721
+    },
+    {
+      "label": "mon-2.16.19",
+      "argv": [
+        "/scratch/engines/2.16.19/bin/python",
+        "-B",
+        "/supply/source/tests/run-egress-recovery.py",
+        "--ansible-bin",
+        "/scratch/engines/2.16.19/bin",
+        "--output",
+        "/results/mon-2.16.19"
+      ],
+      "started_at_utc": "2026-10-15T23:50:49.939716+00:00",
+      "status": "RETURNED",
+      "rc": 1,
+      "waits": [
+        {
+          "phase": "initial",
+          "timeout_seconds": 600,
+          "rc": 1
+        }
+      ],
+      "signals": [],
+      "child_exit_observed": 1,
+      "initial_error": null,
+      "elapsed_seconds": 6.7524089709622785
+    }
+  ],
+  "evidence_errors": []
+}

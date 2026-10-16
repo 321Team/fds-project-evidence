@@ -1,0 +1,28 @@
+
+PLAY [baseline-invalid-squid_conf_mode] ****************************************
+
+TASK [Validate preserved baseline identity and restoration fields] *************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate metadata needed to restore an existing configuration] ***********
+[ERROR]: Task failed: Action failed: Missing or invalid original configuration metadata; preserve state and stop.
+Origin: /results/mon-2.21.3/baseline-invalid-squid_conf_mode.yml:63:5
+
+61         original-squid.conf and evidence, and reconcile their provenance before any
+62         apply or rollback. Re-running apply does not repair a partial baseline.
+63   - name: Validate metadata needed to restore an existing configuration
+       ^ column 5
+
+fatal: [localhost]: FAILED! => {
+    "assertion": "cr_mon_baseline.squid_conf_mode is match('^0[0-7]{3}$')",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Missing or invalid original configuration metadata; preserve state and stop."
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

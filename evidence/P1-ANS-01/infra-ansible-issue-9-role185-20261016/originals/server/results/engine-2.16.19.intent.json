@@ -1,0 +1,24 @@
+{
+  "label": "engine-2.16.19",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/python",
+    "-I",
+    "-B",
+    "-m",
+    "pip",
+    "install",
+    "--no-index",
+    "--no-cache-dir",
+    "--require-hashes",
+    "--find-links=/supply/wheels",
+    "-r",
+    "/supply/requirements-2.16.19.txt"
+  ],
+  "started_at_utc": "2026-10-16T08:09:30.085781+00:00",
+  "status": "INTENT_ONLY",
+  "rc": null,
+  "waits": [],
+  "signals": [],
+  "child_exit_observed": null,
+  "initial_error": null
+}

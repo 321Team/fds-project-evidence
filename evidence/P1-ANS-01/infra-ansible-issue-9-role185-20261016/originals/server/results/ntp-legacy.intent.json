@@ -1,0 +1,21 @@
+{
+  "label": "ntp-legacy",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/python",
+    "-B",
+    "/supply/source/tests/ntp_source/test_ntp_source.py",
+    "--ansible-playbook",
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "--output",
+    "/results/ntp-legacy",
+    "--jobs",
+    "2"
+  ],
+  "started_at_utc": "2026-10-16T08:10:51.811589+00:00",
+  "status": "INTENT_ONLY",
+  "rc": null,
+  "waits": [],
+  "signals": [],
+  "child_exit_observed": null,
+  "initial_error": null
+}

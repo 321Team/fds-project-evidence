@@ -1,0 +1,26 @@
+{
+  "label": "ntp-transport",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/python",
+    "-B",
+    "/supply/source/tests/ntp_source/test_module_transport.py",
+    "--ansible-playbook",
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "--output",
+    "/results/ntp-transport"
+  ],
+  "started_at_utc": "2026-10-16T08:13:29.537554+00:00",
+  "status": "RETURNED",
+  "rc": 0,
+  "waits": [
+    {
+      "phase": "initial",
+      "timeout_seconds": 120,
+      "rc": 0
+    }
+  ],
+  "signals": [],
+  "child_exit_observed": 0,
+  "initial_error": null,
+  "elapsed_seconds": 1.8766232230000242
+}

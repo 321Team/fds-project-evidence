@@ -1,0 +1,18 @@
+{
+  "case": "localhost-only",
+  "argv": [
+    "bash",
+    "-c",
+    "set -Eeuo pipefail\nrepo_root=\"$1\"\nsource \"$repo_root/scripts/lib/ansible-engine.sh\"\nfds_engine_init\nassert_idempotent() {\n  local logfile=\"$1\"\n  local recap_lines expected_hosts actual_hosts\n  recap_lines=\"$(grep -E '^[^[:space:]]+[[:space:]]*: ok=[0-9]+[[:space:]]+changed=[0-9]+[[:space:]]+unreachable=[0-9]+[[:space:]]+failed=[0-9]+' \"${logfile}\" \\\n    | grep -v '^localhost[[:space:]]')\"\n  if [[ -z \"${recap_lines}\" ]]; then\n    echo \"IDEMPOTENCY CHECK FAILED: no non-localhost PLAY RECAP line found in ${logfile}\" >&2\n    exit 1\n  fi\n  if printf '%s\\n' \"${recap_lines}\" | grep -qvE 'changed=0[[:space:]]+unreachable=0[[:space:]]+failed=0'; then\n    echo \"IDEMPOTENCY CHECK FAILED: one or more target hosts were not a no-op:\" >&2\n    printf '%s\\n' \"${recap_lines}\" >&2\n    exit 1\n  fi\n  expected_hosts=\"$(fds_engine_exec ansible-inventory -i \"${repo_root}/inventory/hosts.yml\" --graph egress_proxy \\\n    | sed -n 's/^.*--//p' | grep -vE '^@|:$' | sort)\"\n  actual_hosts=\"$(printf '%s\\n' \"${recap_lines}\" | awk '{print $1}' | sort)\"\n  if [[ \"${expected_hosts}\" != \"${actual_hosts}\" ]]; then\n    echo \"IDEMPOTENCY CHECK FAILED: recap host set does not match the egress_proxy inventory:\" >&2\n    echo \"  expected: $(printf '%s' \"${expected_hosts}\" | tr '\\n' ' ')\" >&2\n    echo \"  actual:   $(printf '%s' \"${actual_hosts}\" | tr '\\n' ' ')\" >&2\n    exit 1\n  fi\n}\n\nassert_idempotent \"$2\"",
+    "fixture",
+    "/supply/source",
+    "/results/mon-2.21.3/localhost-only.recap"
+  ],
+  "expected_rc": 1,
+  "started_at_utc": "2026-10-16T08:10:13.918936+00:00",
+  "actual_rc": null,
+  "status": "INTENT_ONLY",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "UNAVAILABLE"
+}

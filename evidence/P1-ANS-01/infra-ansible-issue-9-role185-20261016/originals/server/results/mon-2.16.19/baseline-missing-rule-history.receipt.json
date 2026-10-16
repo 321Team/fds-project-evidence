@@ -1,0 +1,21 @@
+{
+  "case": "baseline-missing-rule-history",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.16.19/baseline-missing-rule-history.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:09:48.308540+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 774,
+  "sha256": "4e05689d2db9d52a97ee0877280e80f426231e30be93d13d558761a65d614a3e",
+  "ended_at_utc": "2026-10-16T08:09:48.947147+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

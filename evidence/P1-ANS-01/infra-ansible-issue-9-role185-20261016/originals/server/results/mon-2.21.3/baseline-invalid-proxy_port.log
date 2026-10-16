@@ -1,0 +1,22 @@
+
+PLAY [baseline-invalid-proxy_port] *********************************************
+
+TASK [Validate preserved baseline identity and restoration fields] *************
+[ERROR]: Task failed: Action failed: Incomplete or invalid preserved baseline. Preserve original-state.json, original-squid.conf and evidence, and reconcile their provenance before any apply or rollback. Re-running apply does not repair a partial baseline.
+Origin: /results/mon-2.21.3/baseline-invalid-proxy_port.yml:36:5
+
+34     ansible_python_interpreter: /scratch/engines/2.21.3/bin/python
+35   tasks:
+36   - name: Validate preserved baseline identity and restoration fields
+       ^ column 5
+
+fatal: [localhost]: FAILED! => {
+    "assertion": "cr_mon_baseline.proxy_port is integer",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Incomplete or invalid preserved baseline. Preserve original-state.json, original-squid.conf and evidence, and reconcile their provenance before any apply or rollback. Re-running apply does not repair a partial baseline."
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

@@ -1,0 +1,29 @@
+{
+  "events": [
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "rpm",
+          "-q",
+          "chrony"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "systemctl",
+          "show",
+          "--property=LoadState",
+          "--property=ActiveState",
+          "--value",
+          "chronyd.service"
+        ]
+      }
+    }
+  ],
+  "restarts": 0,
+  "synced": false
+}

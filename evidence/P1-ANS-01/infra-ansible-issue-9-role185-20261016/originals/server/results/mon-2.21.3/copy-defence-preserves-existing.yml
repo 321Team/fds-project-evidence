@@ -1,0 +1,28 @@
+- name: copy-defence-preserves-existing
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    cr_mon_phase: apply
+    cr_mon_state_dir: /results/mon-2.21.3/state
+    cr_mon_change_id: CR-P1-MON-01-01
+    cr_mon_baseline_file:
+      stat:
+        exists: false
+    cr_mon_squid_conf_before:
+      stat:
+        exists: true
+    ansible_python_interpreter: /scratch/engines/2.21.3/bin/python
+  tasks:
+  - name: Preserve original squid configuration once
+    ansible.builtin.copy:
+      remote_src: true
+      src: /results/mon-2.21.3/current.conf
+      dest: '{{ cr_mon_state_dir }}/original-squid.conf'
+      force: false
+      mode: '0600'
+    when:
+    - cr_mon_phase == 'apply'
+    - not ansible_check_mode
+    - cr_mon_squid_conf_before.stat.exists
+    - not cr_mon_baseline_file.stat.exists

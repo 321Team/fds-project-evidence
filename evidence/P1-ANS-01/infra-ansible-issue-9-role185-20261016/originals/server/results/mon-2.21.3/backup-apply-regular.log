@@ -1,0 +1,30 @@
+
+PLAY [backup-apply-regular] ****************************************************
+
+TASK [Inspect the original configuration backup before any state writes] *******
+ok: [localhost]
+
+TASK [Validate the complete existing baseline before re-apply] *****************
+included: /supply/source/roles/egress_proxy/tasks/validate-baseline.yml for localhost
+
+TASK [Validate preserved baseline identity and restoration fields] *************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate metadata needed to restore an existing configuration] ***********
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Verify the original backup matches baseline presence] ********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

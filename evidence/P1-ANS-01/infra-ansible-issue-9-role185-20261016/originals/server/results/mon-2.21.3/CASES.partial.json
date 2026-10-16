@@ -1,0 +1,345 @@
+{
+  "status": "INCOMPLETE",
+  "cases": [
+    {
+      "case": "syntax-precheck",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "syntax-apply",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "syntax-verify",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "syntax-rollback",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "bash-syntax",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "one-proxy",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "changed-proxy",
+      "expected_rc": 1,
+      "actual_rc": 1,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "localhost-only",
+      "expected_rc": 1,
+      "actual_rc": 1,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "wrong-target",
+      "expected_rc": 1,
+      "actual_rc": 1,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "extra-target",
+      "expected_rc": 1,
+      "actual_rc": 1,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "localhost-cli-preflight",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "orphan-refused-before-copy",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "orphan-bytes-preserved",
+      "passed": true
+    },
+    {
+      "case": "copy-defence-preserves-existing",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "copy-defence-bytes-preserved",
+      "passed": true
+    },
+    {
+      "case": "fresh-baseline-can-backup",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "fresh-backup-bytes-match",
+      "passed": true
+    },
+    {
+      "case": "baseline-complete",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "baseline-missing-rule-history",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "baseline-invalid-firewalld_permanent_rules_before",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "baseline-invalid-firewalld_runtime_rules_before",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "baseline-invalid-squid_preinstalled",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "baseline-invalid-proxy_port",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "baseline-invalid-proxy_allowed_clients",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "baseline-invalid-squid_conf_mode",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "baseline-invalid-inventory_hostname",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-apply-regular",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-apply-missing",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-apply-symlink",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-apply-directory",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-apply-originally-absent",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-apply-unexpected",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-rollback-regular",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-rollback-missing",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-rollback-symlink",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-rollback-directory",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-rollback-originally-absent",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "backup-rollback-unexpected",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "original-kept",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "original-lost",
+      "expected_rc": 2,
+      "actual_rc": 2,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "unrelated-added",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "invalidation-before-first-rollback-change",
+      "passed": true
+    },
+    {
+      "case": "invalidate-before-interruption",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    },
+    {
+      "case": "interrupted-rollback-has-no-stale-marker",
+      "passed": true
+    },
+    {
+      "case": "reapply-selects-reload-after-interruption",
+      "expected_rc": 0,
+      "actual_rc": 0,
+      "passed": true,
+      "command_status": "RETURNED",
+      "evidence_errors": []
+    }
+  ]
+}

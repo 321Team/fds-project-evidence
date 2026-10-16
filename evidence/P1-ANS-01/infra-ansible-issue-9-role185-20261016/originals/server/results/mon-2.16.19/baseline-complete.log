@@ -1,0 +1,24 @@
+
+PLAY [baseline-complete] *******************************************************
+
+TASK [Validate preserved baseline identity and restoration fields] *************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate metadata needed to restore an existing configuration] ***********
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Verify the original backup matches baseline presence] ********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

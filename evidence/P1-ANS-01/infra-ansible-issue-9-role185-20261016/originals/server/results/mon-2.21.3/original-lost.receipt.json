@@ -1,0 +1,21 @@
+{
+  "case": "original-lost",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.21.3/original-lost.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:10:47.990190+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 1009,
+  "sha256": "8e287b36954c6f9e9f8c5b1e6772c32edd806ee0d856dee9fc781d733e8d31f5",
+  "ended_at_utc": "2026-10-16T08:10:48.770626+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

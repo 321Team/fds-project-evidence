@@ -1,0 +1,159 @@
+{
+  "scope": "LOCAL: real file transactions and chronyd -p parsing; service/chronyc observations mocked; ownership lstat mocked when uid namespace forbids chown; no host runtime acceptance",
+  "parser": "/supply/chronyd-parser",
+  "observed_sha256": "147346c1b876b87dfad3bd436c62bc137c36723137ed5b647cf376a9f54e66aa",
+  "results": [
+    {
+      "name": "flow_client_apply",
+      "passed": true,
+      "rc": 0,
+      "restarts": 1
+    },
+    {
+      "name": "flow_source_apply",
+      "passed": true,
+      "rc": 0,
+      "restarts": 1
+    },
+    {
+      "name": "flow_two_source_apply",
+      "passed": true,
+      "rc": 0,
+      "restarts": 1
+    },
+    {
+      "name": "flow_two_source_wrong_selected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_two_source_extra_source",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_two_source_missing",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_two_source_none_selected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_two_source_two_selected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_source_wrong_selected_rejected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_source_extra_source_rejected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_source_missing_upstream_rejected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_source_no_selected_rejected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_source_multiple_selected_rejected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_source_offset_rejected",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_client_check",
+      "passed": true,
+      "rc": 0,
+      "restarts": 0
+    },
+    {
+      "name": "flow_source_check",
+      "passed": true,
+      "rc": 0,
+      "restarts": 0
+    },
+    {
+      "name": "flow_restart_failure",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_wait_failure",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_verify_failure",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_noop_failure_preserves_installed_pair",
+      "passed": true,
+      "rc": 2,
+      "restarts": 0
+    },
+    {
+      "name": "flow_new_invocation_failure_preserves_new_snapshot",
+      "passed": true,
+      "rc": 2,
+      "restarts": 2
+    },
+    {
+      "name": "flow_client_targeted_manual_rollback",
+      "passed": true,
+      "rc": 0,
+      "restarts": 1
+    },
+    {
+      "name": "flow_source_targeted_manual_rollback",
+      "passed": true,
+      "rc": 0,
+      "restarts": 1
+    },
+    {
+      "name": "flow_same_pair_idempotent",
+      "passed": true,
+      "rc": 0,
+      "restarts": 0
+    },
+    {
+      "name": "flow_check_rollback_preserves_pair",
+      "passed": true,
+      "rc": 0,
+      "restarts": 1
+    }
+  ],
+  "passed": 25,
+  "total": 25
+}

@@ -1,0 +1,21 @@
+{
+  "case": "orphan-refused-before-copy",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.16.19/orphan-refused-before-copy.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:09:44.242019+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 856,
+  "sha256": "8aea984f1bbcb9c54d0f3a645dc59f2bdb88a499d981b100c0e9b5bc39c93472",
+  "ended_at_utc": "2026-10-16T08:09:45.210115+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

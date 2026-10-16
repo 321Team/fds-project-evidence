@@ -1,0 +1,78 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Read baseline] ***********************************************************
+included: /results/ntp-legacy/manual_rollback_absent_baseline/roles/ntp_source/tasks/_read_original.yml for localhost
+
+TASK [Require a protected state directory before reading the baseline] *********
+included: /results/ntp-legacy/manual_rollback_absent_baseline/roles/ntp_source/tasks/_check_state_dir.yml for localhost
+
+TASK [Inspect the rollback state directory without following a symlink] ********
+ok: [localhost]
+
+TASK [Refuse an unsafe rollback state directory before mutation or read] *******
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Inspect the preserved baseline] ******************************************
+ok: [localhost]
+
+TASK [Require a protected regular baseline file] *******************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Read preserved original drop-in state] ***********************************
+ok: [localhost]
+
+TASK [Decode preserved original drop-in state] *********************************
+ok: [localhost]
+
+TASK [Validate preserved state] ************************************************
+included: /results/ntp-legacy/manual_rollback_absent_baseline/roles/ntp_source/tasks/_validate_state.yml for localhost
+
+TASK [Validate restore state identity and schema before any mutation] **********
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Restore baseline] ********************************************************
+included: /results/ntp-legacy/manual_rollback_absent_baseline/roles/ntp_source/tasks/_restore_dropin.yml for localhost
+
+TASK [Validate state before restoring] *****************************************
+included: /results/ntp-legacy/manual_rollback_absent_baseline/roles/ntp_source/tasks/_validate_state.yml for localhost
+
+TASK [Validate restore state identity and schema before any mutation] **********
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Inspect restore target] **************************************************
+ok: [localhost]
+
+TASK [Refuse an unsafe restore target] *****************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Remove drop-in that did not exist before this change] ********************
+changed: [localhost]
+
+TASK [Restore drop-in that existed before this change] *************************
+skipping: [localhost]
+
+TASK [Restart chronyd after restoring the original drop-in] ********************
+changed: [localhost]
+
+TASK [Wait for chronyd to report active after restore] *************************
+ok: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=18   changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

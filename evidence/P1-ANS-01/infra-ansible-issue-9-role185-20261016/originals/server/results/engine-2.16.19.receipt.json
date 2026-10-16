@@ -1,0 +1,31 @@
+{
+  "label": "engine-2.16.19",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/python",
+    "-I",
+    "-B",
+    "-m",
+    "pip",
+    "install",
+    "--no-index",
+    "--no-cache-dir",
+    "--require-hashes",
+    "--find-links=/supply/wheels",
+    "-r",
+    "/supply/requirements-2.16.19.txt"
+  ],
+  "started_at_utc": "2026-10-16T08:09:30.085781+00:00",
+  "status": "RETURNED",
+  "rc": 0,
+  "waits": [
+    {
+      "phase": "initial",
+      "timeout_seconds": 120,
+      "rc": 0
+    }
+  ],
+  "signals": [],
+  "child_exit_observed": 0,
+  "initial_error": null,
+  "elapsed_seconds": 1.7235245830001986
+}

@@ -1,0 +1,21 @@
+{
+  "case": "baseline-invalid-squid_preinstalled",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.21.3/baseline-invalid-squid_preinstalled.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:10:26.964072+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 1253,
+  "sha256": "7ea9a7a696ff5c5b737931b3855a15ab8a372243dd90c0b678847cec135bfc1e",
+  "ended_at_utc": "2026-10-16T08:10:27.722235+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

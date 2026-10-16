@@ -1,0 +1,40 @@
+
+PLAY [backup-rollback-symlink] *************************************************
+
+TASK [Inspect the original configuration backup before rollback] ***************
+ok: [localhost]
+
+TASK [Validate the complete baseline before rollback changes] ******************
+included: /supply/source/roles/egress_proxy/tasks/validate-baseline.yml for localhost
+
+TASK [Validate preserved baseline identity and restoration fields] *************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate metadata needed to restore an existing configuration] ***********
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Verify the original backup matches baseline presence] ********************
+[ERROR]: Task failed: Action failed: Original configuration backup is missing, non-regular or inconsistent; preserve state and stop.
+Origin: /supply/source/roles/egress_proxy/tasks/validate-baseline.yml:42:3
+
+40   when: cr_mon_baseline.squid_conf_preexisted
+41
+42 - name: Verify the original backup matches baseline presence
+     ^ column 3
+
+fatal: [localhost]: FAILED! => {
+    "assertion": "(cr_mon_baseline.squid_conf_preexisted and\n (cr_mon_backup_stat.isreg | default(false))) or\n(not cr_mon_baseline.squid_conf_preexisted and\n not cr_mon_backup_stat.exists)",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Original configuration backup is missing, non-regular or inconsistent; preserve state and stop."
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

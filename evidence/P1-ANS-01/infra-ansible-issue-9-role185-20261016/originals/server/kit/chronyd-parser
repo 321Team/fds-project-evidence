@@ -1,0 +1,23 @@
+#!/usr/local/bin/python3
+"""Only the real chronyd parser/version modes; no daemon or -Q invocation."""
+import os
+from pathlib import Path
+import sys
+
+args=sys.argv[1:]
+if args==['-v']:
+    pass
+elif len(args)==3 and args[:2]==['-p','-f']:
+    original=Path(args[2])
+    path=original.resolve(strict=True)
+    allowed_roots=('/results','/scratch/tmp')
+    if (not original.is_absolute() or not path.is_file()
+            or not any(path.is_relative_to(root) for root in allowed_roots)
+            or any(p.is_symlink() for p in (original,*original.parents))):
+        raise SystemExit('PARSER_INPUT_OUTSIDE_FIXTURE')
+    args[-1]=str(path)
+else:
+    raise SystemExit('PARSER_MODE_NOT_ALLOWED')
+os.execve('/supply/parser/ld-linux-x86-64.so.2',
+          ['ld-linux-x86-64.so.2','--inhibit-cache','--library-path','/supply/parser',
+           '/supply/parser/chronyd',*args],{'LC_ALL':'C','LANG':'C','PATH':'/usr/bin:/bin'})

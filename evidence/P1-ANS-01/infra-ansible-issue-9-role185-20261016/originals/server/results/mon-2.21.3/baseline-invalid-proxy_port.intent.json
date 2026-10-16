@@ -1,0 +1,16 @@
+{
+  "case": "baseline-invalid-proxy_port",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.21.3/baseline-invalid-proxy_port.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:10:27.725340+00:00",
+  "actual_rc": null,
+  "status": "INTENT_ONLY",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "UNAVAILABLE"
+}

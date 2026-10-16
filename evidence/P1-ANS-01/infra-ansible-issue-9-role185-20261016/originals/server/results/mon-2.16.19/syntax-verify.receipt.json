@@ -1,0 +1,22 @@
+{
+  "case": "syntax-verify",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "--syntax-check",
+    "-i",
+    "localhost,",
+    "/supply/source/playbooks/cr-p1-mon-01-01-verify.yml"
+  ],
+  "expected_rc": 0,
+  "started_at_utc": "2026-10-16T08:09:39.952004+00:00",
+  "actual_rc": 0,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 136,
+  "sha256": "4ba1296f6d28410602ef89cd85733836883d7e130b7fe0e4dc02027aea0acdc3",
+  "ended_at_utc": "2026-10-16T08:09:40.568014+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

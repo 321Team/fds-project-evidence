@@ -1,0 +1,21 @@
+{
+  "case": "backup-apply-missing",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.16.19/backup-apply-missing.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:09:54.773703+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 1342,
+  "sha256": "b17632fe44c29c36e1eaf9c29fe94796b5f234302d93b604919c765bca54a1e6",
+  "ended_at_utc": "2026-10-16T08:09:55.841456+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

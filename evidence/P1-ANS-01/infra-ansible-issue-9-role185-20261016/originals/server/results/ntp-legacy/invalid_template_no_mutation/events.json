@@ -1,0 +1,71 @@
+{
+  "events": [
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "rpm",
+          "-q",
+          "chrony"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "systemctl",
+          "show",
+          "--property=LoadState",
+          "--property=ActiveState",
+          "--value",
+          "chronyd.service"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "chronyc",
+          "tracking"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "chronyc",
+          "-n",
+          "sources",
+          "-a"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "chronyd",
+          "-p",
+          "-f",
+          "/etc/chrony.conf"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "chronyd",
+          "-p",
+          "-f",
+          "/results/ntp-legacy/invalid_template_no_mutation/chrony.d/50-cr-p1-ntp-01-01.conf"
+        ]
+      }
+    }
+  ],
+  "restarts": 0,
+  "synced": false
+}

@@ -1,0 +1,233 @@
+{
+  "classification": "POST_EXECUTION_ORIGINAL_EVIDENCE_AUDIT_NOT_TEST_RERUN",
+  "at_kst": "2026-10-16T17:22:58.387584+09:00",
+  "status": "PASS_LOCAL_ROLE_FIXTURES_185_OWN_CLEANUP_CONFIRMED",
+  "session": "p1-role-cc7e9fc7dd9049a4",
+  "source_head": "affaad6b1a31d680164d9e3d5ef5d2a9d3fce95a",
+  "source_tree": "2563bcea5ceee3543451e96ac76011ef05e486bf",
+  "candidate_archive_sha256": "90f6cd63f41ecaf2088ca658693e073ddabe652f08b6c91d5dddf605367450b8",
+  "manifest_sha256": "21fb6757bc0661df8d21dae21b10b0fa656e6469c7939f5cd42dc4b272090636",
+  "cid": "b0d9da1071bd48759f1866549d37f682888b01f9c8dca6017823725cd65aec79",
+  "started_at_kst": "2026-10-16T17:09:25.953288654+09:00",
+  "finished_at_kst": "2026-10-16T17:13:51.387027915+09:00",
+  "container_duration_seconds": 265.433739,
+  "source_original_files_checked": 3446,
+  "manifest_entries_checked": 487,
+  "operator_originals_checked": 12,
+  "pre_execution_frozen_files_unchanged": 181,
+  "collection": "EVIDENCE_COLLECTED-20261016T081814170331.json",
+  "archive": "runtime-originals-20261016T081814170331.tar",
+  "archive_sha256": "a9e448e2ac046d734eb066b06b43fc487a4cb8509b84bb8c244b64330184b12b",
+  "host_command_receipts_checked": 69,
+  "host_mutations": [
+    {
+      "record": "host-1bc8e91e77ce48e2953b6b876c6675c7-0004-create.completion.json",
+      "argv": [
+        "/usr/bin/podman",
+        "--remote=false",
+        "--cgroup-manager=systemd",
+        "create",
+        "--name=p1-role-cc7e9fc7dd9049a4",
+        "--cidfile=/home/ansible-verify/p1-role-cc7e9fc7dd9049a4/container.cid",
+        "--label=fds.fixture.session=p1-role-cc7e9fc7dd9049a4",
+        "--label=fds.fixture.manifest=21fb6757bc0661df8d21dae21b10b0fa656e6469c7939f5cd42dc4b272090636",
+        "--pull=never",
+        "--network=none",
+        "--ipc=private",
+        "--pid=private",
+        "--uts=private",
+        "--cgroupns=private",
+        "--userns=keep-id:uid=0,gid=0",
+        "--user=0:0",
+        "--cap-drop=ALL",
+        "--security-opt=no-new-privileges",
+        "--read-only",
+        "--read-only-tmpfs=false",
+        "--cpus=2",
+        "--memory=4g",
+        "--memory-swap=4g",
+        "--pids-limit=512",
+        "--shm-size=64m",
+        "--timeout=3900",
+        "--restart=no",
+        "--stop-timeout=30",
+        "--log-driver=none",
+        "--http-proxy=false",
+        "--unsetenv-all",
+        "--no-hosts",
+        "--env=HOME=/scratch/home",
+        "--env=PATH=/usr/local/bin:/usr/bin:/bin",
+        "--env=LANG=C.UTF-8",
+        "--env=LC_ALL=C.UTF-8",
+        "--env=TMPDIR=/scratch/tmp",
+        "--env=PYTHONDONTWRITEBYTECODE=1",
+        "--env=PIP_NO_INDEX=1",
+        "--env=PIP_DISABLE_PIP_VERSION_CHECK=1",
+        "--env=GIT_OPTIONAL_LOCKS=0",
+        "--env=GIT_CONFIG_NOSYSTEM=1",
+        "--env=GIT_CONFIG_GLOBAL=/dev/null",
+        "--umask=0077",
+        "--workdir=/supply/source",
+        "--tmpfs=/scratch:rw,exec,nosuid,nodev,size=1536m,mode=0700,U",
+        "--tmpfs=/tmp:rw,noexec,nosuid,nodev,size=128m,mode=1777",
+        "--tmpfs=/dev/shm:rw,noexec,nosuid,nodev,size=64m,mode=1777",
+        "--volume=/home/ansible-verify/p1-role-cc7e9fc7dd9049a4/kit:/supply:ro,Z,nodev,nosuid",
+        "--volume=/home/ansible-verify/p1-role-cc7e9fc7dd9049a4/control:/control:ro,Z,nodev,nosuid,noexec",
+        "--volume=/home/ansible-verify/p1-role-cc7e9fc7dd9049a4/results:/results:rw,Z,nodev,nosuid",
+        "--entrypoint=/usr/local/bin/python3",
+        "sha256:e8565fa265f973c06f0515fac7aa9d102edae01b5677d69216900b84029c6ad0",
+        "-I",
+        "-B",
+        "/supply/container_main.py"
+      ],
+      "rc": 0,
+      "started_at_utc": "2026-10-16T08:09:25.699219+00:00",
+      "ended_at_utc": "2026-10-16T08:09:25.767185+00:00"
+    },
+    {
+      "record": "host-1bc8e91e77ce48e2953b6b876c6675c7-0006-start.completion.json",
+      "argv": [
+        "/usr/bin/podman",
+        "--remote=false",
+        "--cgroup-manager=systemd",
+        "start",
+        "b0d9da1071bd48759f1866549d37f682888b01f9c8dca6017823725cd65aec79"
+      ],
+      "rc": 0,
+      "started_at_utc": "2026-10-16T08:09:25.828641+00:00",
+      "ended_at_utc": "2026-10-16T08:09:25.955488+00:00"
+    },
+    {
+      "record": "host-1bc8e91e77ce48e2953b6b876c6675c7-0065-rm.completion.json",
+      "argv": [
+        "/usr/bin/podman",
+        "--remote=false",
+        "--cgroup-manager=systemd",
+        "rm",
+        "b0d9da1071bd48759f1866549d37f682888b01f9c8dca6017823725cd65aec79"
+      ],
+      "rc": 0,
+      "started_at_utc": "2026-10-16T08:13:55.544839+00:00",
+      "ended_at_utc": "2026-10-16T08:13:55.626166+00:00"
+    }
+  ],
+  "setup_receipts_rc0": 11,
+  "suite_receipts_rc0": 7,
+  "role_cases_verified": 185,
+  "role_cases_failed": 0,
+  "role_cases_skipped": 0,
+  "mon_command_receipts_checked": 80,
+  "mon_noncommand_assertion_cases": 10,
+  "fixture_configs_checked": 77,
+  "linux_tmp_directories_mode0700_checked": 154,
+  "mon_sha256sums": [
+    {
+      "suite": "mon-2.16.19",
+      "files": 160
+    },
+    {
+      "suite": "mon-2.21.3",
+      "files": 160
+    }
+  ],
+  "suites": [
+    {
+      "suite": "mon-2.16.19",
+      "engine": "2.16.19",
+      "result_file": "results/mon-2.16.19/RESULTS.json",
+      "result_sha256": "62576ca3e2fa65259ebfeeb183f150c3e914085b12ce20a5edd48157634b33cf",
+      "expected_cases": 45,
+      "passed_cases": 45,
+      "suite_rc": 0,
+      "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime"
+    },
+    {
+      "suite": "mon-2.21.3",
+      "engine": "2.21.3",
+      "result_file": "results/mon-2.21.3/RESULTS.json",
+      "result_sha256": "62576ca3e2fa65259ebfeeb183f150c3e914085b12ce20a5edd48157634b33cf",
+      "expected_cases": 45,
+      "passed_cases": 45,
+      "suite_rc": 0,
+      "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime"
+    },
+    {
+      "suite": "ntp-legacy",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-legacy/RESULTS.json",
+      "result_sha256": "e439212ba76474a9ce6a225f5532eef9168ba1b83779f75baa1d7ede0ba59d61",
+      "expected_cases": 48,
+      "passed_cases": 48,
+      "suite_rc": 0,
+      "scope": "LOCAL/MOCK; host commands and chronyd parser replaced; no runtime acceptance"
+    },
+    {
+      "suite": "ntp-flow",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-flow/RESULTS.json",
+      "result_sha256": "ed90196a7990beb319dcb9b3ab5dad8a2ea4a3761a6b1aa0f39068b90a76803d",
+      "expected_cases": 25,
+      "passed_cases": 25,
+      "suite_rc": 0,
+      "scope": "LOCAL: real file transactions and chronyd -p parsing; service/chronyc observations mocked; ownership lstat mocked when uid namespace forbids chown; no host runtime acceptance"
+    },
+    {
+      "suite": "ntp-serial",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-serial/RESULT.json",
+      "result_sha256": "2b9bc74c4278de3618046e67c8de666b2645c20e243038515708e6f082e36ebe",
+      "expected_cases": 1,
+      "passed_cases": 1,
+      "suite_rc": 0,
+      "scope": "LOCAL Ansible/files/parser; service and chronyc mocked; no host/network acceptance"
+    },
+    {
+      "suite": "ntp-transport",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-transport/RESULTS.json",
+      "result_sha256": "dd79ba06f4b5759453bed8b19546f776ced63bc2d988f370d4e7d11275a4b155",
+      "expected_cases": 2,
+      "passed_cases": 2,
+      "suite_rc": 0,
+      "scope": "Actual Ansible module_utils transport and unsupported-provider early guards.\n\nRun locally only. Invalid provider inputs must fail before any managed-host\nobservation or transaction; no SSH, NTP packet, daemon or clock change occurs.\n"
+    },
+    {
+      "suite": "ntp-wrapper",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-wrapper/RESULTS.json",
+      "result_sha256": "d05dca9077d8fece957a369c52edde08b27db3c5e25c3b5f0bccd74daf5c26b7",
+      "expected_cases": 19,
+      "passed_cases": 19,
+      "suite_rc": 0,
+      "scope": "LOCAL/MOCK wrapper only; no managed host execution"
+    }
+  ],
+  "cleanup": {
+    "absence_query_rc": 1,
+    "cid": "b0d9da1071bd48759f1866549d37f682888b01f9c8dca6017823725cd65aec79",
+    "error": null,
+    "identity_preserved_for_reentry": true,
+    "status": "OWN_CONTAINER_REMOVED"
+  },
+  "post_observation": "observe-20261016T081754586553-SUMMARY.json",
+  "post_observation_at_kst": "2026-10-16T17:17:55.927957+09:00",
+  "controller_count": 0,
+  "exact_exists_rc": 1,
+  "host_execute_rc": 0,
+  "production_runtime": false,
+  "phase1_acceptance": false,
+  "ci_run_created": false,
+  "new_remote_mutations_during_audit": 0,
+  "limits": [
+    "Isolated container localhost/files/parser fixtures; mocked service/chronyc/host observations remain mocked.",
+    "No production MON/NTP deployment, network/time daemon validation, GitHub CI, merge, or final AC acceptance.",
+    "NTP legacy/wrapper retain their existing summary/log evidence formats; no per-command receipt completeness is inferred for them.",
+    "MON CASES.partial.json remains INCOMPLETE by design; final RESULTS.json supplies the completed verdict.",
+    "Collection receipt and audits are derived records; 3446 captured files and 12 operator outputs are the original bytes."
+  ],
+  "retained_server_paths": [
+    "/home/ansible-verify/p1-role-cc7e9fc7dd9049a4",
+    "/home/server01_cicd-runner/role185-p1-role-cc7e9fc7dd9049a4"
+  ],
+  "retained_paths_reason": "Original evidence and fixed supply retained; not an active container or pending recovery."
+}

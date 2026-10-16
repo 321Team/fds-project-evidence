@@ -1,0 +1,36 @@
+- name: reapply-selects-reload-after-interruption
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    cr_mon_phase: apply
+    cr_mon_state_dir: /results/mon-2.16.19/state
+    cr_mon_change_id: CR-P1-MON-01-01
+    cr_mon_baseline_file:
+      stat:
+        exists: false
+    cr_mon_squid_conf_before:
+      stat:
+        exists: true
+    cr_mon_squid_service_before:
+      stdout_lines:
+      - loaded
+      - active
+    cr_mon_squid_active_marker:
+      stat:
+        exists: false
+    cr_mon_squid_active_marker_file:
+      content: bWFuYWdlZC1jb25maWctaGFzaA==
+    cr_mon_squid_conf_deployed:
+      stat:
+        checksum: managed-config-hash
+    ansible_python_interpreter: /scratch/engines/2.16.19/bin/python
+  tasks:
+  - name: Require reload in the interrupted rollback model
+    ansible.builtin.assert:
+      that:
+      - cr_mon_phase == 'apply'
+      - not ansible_check_mode
+      - cr_mon_squid_service_before.stdout_lines[1] == 'active'
+      - not cr_mon_squid_active_marker.stat.exists or (cr_mon_squid_active_marker_file.content
+        | b64decode | trim) != cr_mon_squid_conf_deployed.stat.checksum

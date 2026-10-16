@@ -1,0 +1,32 @@
+{
+  "label": "ntp-flow",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/python",
+    "-B",
+    "/supply/source/tests/ntp_source/test_migration.py",
+    "--ansible-playbook",
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "--output",
+    "/results/ntp-flow",
+    "--suite",
+    "flow",
+    "--chronyd",
+    "/supply/chronyd-parser",
+    "--jobs",
+    "2"
+  ],
+  "started_at_utc": "2026-10-16T08:12:39.243743+00:00",
+  "status": "RETURNED",
+  "rc": 0,
+  "waits": [
+    {
+      "phase": "initial",
+      "timeout_seconds": 900,
+      "rc": 0
+    }
+  ],
+  "signals": [],
+  "child_exit_observed": 0,
+  "initial_error": null,
+  "elapsed_seconds": 43.9460554289999
+}

@@ -1,0 +1,117 @@
+{
+  "scope": "LOCAL/MOCK wrapper only; no managed host execution",
+  "results": [
+    {
+      "name": "bash_syntax",
+      "passed": true
+    },
+    {
+      "name": "executable_bit",
+      "passed": true
+    },
+    {
+      "name": "source_sequence",
+      "passed": true,
+      "errors": [],
+      "rc": 0
+    },
+    {
+      "name": "clients_sequence",
+      "passed": true,
+      "errors": [],
+      "rc": 0
+    },
+    {
+      "name": "check_stops_apply",
+      "passed": true,
+      "errors": [],
+      "rc": 2
+    },
+    {
+      "name": "apply_stops_idempotency",
+      "passed": true,
+      "errors": [],
+      "rc": 2
+    },
+    {
+      "name": "idempotency_failure_propagated",
+      "passed": true,
+      "errors": [],
+      "rc": 2
+    },
+    {
+      "name": "approval_still_required",
+      "passed": true,
+      "errors": [],
+      "rc": 1
+    },
+    {
+      "name": "migration_source_sequence",
+      "passed": true,
+      "errors": [],
+      "rc": 0
+    },
+    {
+      "name": "source_check_failure_stops_apply",
+      "passed": true,
+      "errors": [],
+      "rc": 2
+    },
+    {
+      "name": "source_apply_failure_stops_idempotency",
+      "passed": true,
+      "errors": [],
+      "rc": 2
+    },
+    {
+      "name": "source_idempotency_failure_propagated",
+      "passed": true,
+      "errors": [],
+      "rc": 2
+    },
+    {
+      "name": "migration_clients_sequence",
+      "passed": true,
+      "errors": [],
+      "rc": 0
+    },
+    {
+      "name": "migration_precheck",
+      "passed": true,
+      "errors": [],
+      "rc": 0
+    },
+    {
+      "name": "migration_verify",
+      "passed": true,
+      "errors": [],
+      "rc": 0
+    },
+    {
+      "name": "migration_rollback",
+      "passed": true,
+      "errors": [],
+      "rc": 0
+    },
+    {
+      "name": "migration_not_approval",
+      "passed": true,
+      "errors": [],
+      "rc": 1
+    },
+    {
+      "name": "invalid_migration_mode",
+      "passed": true,
+      "errors": [],
+      "rc": 64
+    },
+    {
+      "name": "explicit_legacy_mode",
+      "passed": true,
+      "errors": [],
+      "rc": 0
+    }
+  ],
+  "passed": 19,
+  "total": 19
+}

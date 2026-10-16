@@ -1,0 +1,267 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [ntp_source : Select the unchanged drop-in-only workflow] *****************
+included: /results/ntp-legacy/source_apply/roles/ntp_source/tasks/_legacy.yml for localhost
+
+TASK [ntp_source : Validate CR NTP execution phase and variables] **************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Require explicit approval token for NTP changes] ************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Determine this host's NTP role] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Verify chronyd is installed] ********************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyd service state] **********************
+ok: [localhost]
+
+TASK [ntp_source : Assert chronyd is active before any change] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read existing chrony main config] ***************************
+ok: [localhost]
+
+TASK [ntp_source : Determine whether /etc/chrony.d is included] ****************
+ok: [localhost]
+
+TASK [ntp_source : Stop on unexpected chrony.conf layout] **********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Extract active server/pool directives from the main config] ***
+ok: [localhost]
+
+TASK [ntp_source : Detect whether the main config includes a DHCP-fed sourcedir] ***
+ok: [localhost]
+
+TASK [ntp_source : Stop on unhandled competing sources for client nodes] *******
+skipping: [localhost]
+
+TASK [ntp_source : Read pre-change chronyc tracking] ***************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyc sources] ****************************
+ok: [localhost]
+
+TASK [ntp_source : Check for the managed drop-in file] *************************
+ok: [localhost]
+
+TASK [ntp_source : Refuse non-regular or multiply linked managed drop-ins] *****
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read existing drop-in content when present] *****************
+skipping: [localhost]
+
+TASK [ntp_source : Parse the effective chrony configuration before mutation] ***
+ok: [localhost]
+
+TASK [ntp_source : Parse the existing managed fragment for client source ownership] ***
+skipping: [localhost]
+
+TASK [ntp_source : Collect effective and managed client time-source directives] ***
+skipping: [localhost]
+
+TASK [ntp_source : Refuse unmanaged or dynamic effective sources on clients] ***
+skipping: [localhost]
+
+TASK [ntp_source : Capture this invocation's drop-in state before mutation] ****
+ok: [localhost]
+
+TASK [ntp_source : Validate the rollback state directory before creating or changing it] ***
+included: /results/ntp-legacy/source_apply/roles/ntp_source/tasks/_check_state_dir.yml for localhost
+
+TASK [ntp_source : Inspect the rollback state directory without following a symlink] ***
+ok: [localhost]
+
+TASK [ntp_source : Refuse an unsafe rollback state directory before mutation or read] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Create protected CR rollback state directory] ***************
+changed: [localhost]
+
+TASK [ntp_source : Check preserved state path before writing it] ***************
+ok: [localhost]
+
+TASK [ntp_source : Refuse unsafe preserved state files] ************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Preserve original drop-in state once] ***********************
+changed: [localhost]
+
+TASK [ntp_source : Validate the preserved baseline before changing the drop-in] ***
+included: /results/ntp-legacy/source_apply/roles/ntp_source/tasks/_read_original.yml for localhost
+
+TASK [ntp_source : Require a protected state directory before reading the baseline] ***
+included: /results/ntp-legacy/source_apply/roles/ntp_source/tasks/_check_state_dir.yml for localhost
+
+TASK [ntp_source : Inspect the rollback state directory without following a symlink] ***
+ok: [localhost]
+
+TASK [ntp_source : Refuse an unsafe rollback state directory before mutation or read] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Inspect the preserved baseline] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Require a protected regular baseline file] ******************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read preserved original drop-in state] **********************
+ok: [localhost]
+
+TASK [ntp_source : Decode preserved original drop-in state] ********************
+ok: [localhost]
+
+TASK [ntp_source : Validate preserved state] ***********************************
+included: /results/ntp-legacy/source_apply/roles/ntp_source/tasks/_validate_state.yml for localhost
+
+TASK [ntp_source : Validate restore state identity and schema before any mutation] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Render the managed NTP drop-in including check-mode diff] ***
+changed: [localhost]
+
+TASK [ntp_source : Require zero predicted changes during the idempotency check] ***
+skipping: [localhost]
+
+TASK [ntp_source : Restart chronyd] ********************************************
+changed: [localhost]
+
+TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation] *******
+ok: [localhost]
+
+TASK [ntp_source : Verify applied runtime state only after a real apply] *******
+included: /results/ntp-legacy/source_apply/roles/ntp_source/tasks/verify.yml for localhost
+
+TASK [ntp_source : Read post-run chronyc tracking] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Parse tracking fields without substituting missing values with zero] ***
+ok: [localhost]
+
+TASK [ntp_source : Assert tracking fields were found] **************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Reject non-finite tracking numbers] *************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Set parsed tracking values] *********************************
+ok: [localhost]
+
+TASK [ntp_source : Assert leap status is Normal] *******************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Assert current system correction and last offset meet the threshold] ***
+skipping: [localhost]
+
+TASK [ntp_source : Read post-run chronyc sources] ******************************
+ok: [localhost]
+
+TASK [ntp_source : Extract actual source rows from chronyc sources] ************
+ok: [localhost]
+
+TASK [ntp_source : Assert the approved source is selected on client nodes] *****
+skipping: [localhost]
+
+TASK [ntp_source : Assert no other source is configured on client nodes] *******
+skipping: [localhost]
+
+TASK [ntp_source : Read chronyc clients on the source node] ********************
+ok: [localhost]
+
+TASK [ntp_source : Require exactly the approved upstream set on a migrated source] ***
+skipping: [localhost]
+
+TASK [ntp_source : Read post-run chronyd service state] ************************
+ok: [localhost]
+
+TASK [ntp_source : Assert chronyd is active after the run] *********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read post-run kubelet state] ********************************
+ok: [localhost]
+
+TASK [ntp_source : Print CR NTP node verdict] **********************************
+ok: [localhost] => {
+    "msg": {
+        "change_id": "CR-P1-NTP-01-01",
+        "chronyd": [
+            "loaded",
+            "active"
+        ],
+        "host": "localhost",
+        "kubelet": [
+            "loaded",
+            "active"
+        ],
+        "last_offset_s": "0.000001",
+        "leap_status": "Normal",
+        "phase": "apply",
+        "role": "source",
+        "sources_after": [
+            "^* 10.1.93.102 3 6 377 23 -1234ns[ -1234ns] +/- 1ms"
+        ],
+        "sources_before": [
+            "MS Name/IP address Stratum Poll Reach LastRx Last sample",
+            "================================================================",
+            "^* 10.1.93.102 3 6 377 23 -1234ns[ -1234ns] +/- 1ms"
+        ],
+        "stratum": "3",
+        "system_time_s": "0.000001"
+    }
+}
+
+TASK [ntp_source : Verify current state for precheck and explicit verify] ******
+skipping: [localhost]
+
+TASK [ntp_source : Select the explicit main and drop-in migration workflow] ****
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=52   changed=4    unreachable=0    failed=0    skipped=12   rescued=0    ignored=0   
+

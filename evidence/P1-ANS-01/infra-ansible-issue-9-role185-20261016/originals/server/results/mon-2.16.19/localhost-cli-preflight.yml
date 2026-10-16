@@ -1,0 +1,22 @@
+- name: localhost-cli-preflight
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /scratch/engines/2.16.19/bin/python
+  tasks:
+  - name: Exercise actual module transfer and copy
+    ansible.builtin.copy:
+      content: 'fixture-module-ready
+
+        '
+      dest: /results/mon-2.16.19/module-ready.txt
+      mode: '0600'
+  - name: Read the transferred module result
+    ansible.builtin.slurp:
+      src: /results/mon-2.16.19/module-ready.txt
+    register: module_ready
+  - name: Require exact module result
+    ansible.builtin.assert:
+      that:
+      - module_ready.content | b64decode == 'fixture-module-ready\n'

@@ -1,0 +1,164 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [ntp_source : Select the unchanged drop-in-only workflow] *****************
+skipping: [localhost]
+
+TASK [ntp_source : Select the explicit main and drop-in migration workflow] ****
+included: /results/ntp-flow/flow_two_source_two_selected/roles/ntp_source/tasks/_migration.yml for localhost
+
+TASK [ntp_source : Validate paired migration phase and bounds] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Require the existing CR approval token for a migration apply] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Determine this host's NTP role] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Verify chronyd is installed] ********************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyd service state] **********************
+ok: [localhost]
+
+TASK [ntp_source : Require an active service before migration] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Validate the exact observed or migrated pair without operational writes] ***
+ok: [localhost]
+
+TASK [ntp_source : Report the resolved candidate for the egress evidence comparison] ***
+ok: [localhost] => {
+    "msg": {
+        "client_source_ip": "10.1.93.102",
+        "dropin_sha256": "52f79c76c3ec14f3dd33b8a4e8e8998c631d5393261575b0e60e5ab42129c2c6",
+        "layout": "native",
+        "main_sha256": "ee14c65a0ab7f05ac33002daac2a68854307f2b25ffb28742de995e2741ee164",
+        "role": "source",
+        "source_upstreams": [
+            "162.159.200.1",
+            "194.58.200.20"
+        ],
+        "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+        "would_change": true
+    }
+}
+
+TASK [ntp_source : Require a migrated pair for explicit post-change verification] ***
+skipping: [localhost]
+
+TASK [ntp_source : Commit the validated pair with an immutable baseline] *******
+changed: [localhost]
+
+TASK [ntp_source : Require zero predicted changes during the paired idempotency check] ***
+skipping: [localhost]
+
+TASK [ntp_source : Restart chronyd] ********************************************
+changed: [localhost]
+
+TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation] *******
+ok: [localhost]
+
+TASK [ntp_source : Verify applied runtime state only after a real migration] ***
+included: /results/ntp-flow/flow_two_source_two_selected/roles/ntp_source/tasks/verify.yml for localhost
+
+TASK [ntp_source : Read post-run chronyc tracking] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Parse tracking fields without substituting missing values with zero] ***
+ok: [localhost]
+
+TASK [ntp_source : Assert tracking fields were found] **************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Reject non-finite tracking numbers] *************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Set parsed tracking values] *********************************
+ok: [localhost]
+
+TASK [ntp_source : Assert leap status is Normal] *******************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Assert current system correction and last offset meet the threshold] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read post-run chronyc sources] ******************************
+ok: [localhost]
+
+TASK [ntp_source : Extract actual source rows from chronyc sources] ************
+ok: [localhost]
+
+TASK [ntp_source : Assert the approved source is selected on client nodes] *****
+skipping: [localhost]
+
+TASK [ntp_source : Assert no other source is configured on client nodes] *******
+skipping: [localhost]
+
+TASK [ntp_source : Read chronyc clients on the source node] ********************
+ok: [localhost]
+
+TASK [ntp_source : Require exactly the approved upstream set on a migrated source] ***
+[ERROR]: Task failed: Action failed: The migrated source must expose exactly the approved two or three upstream addresses with one selected server; current rows=['^* 162.159.200.1 2 6 377 23 -1234ns[ -1234ns] +/- 1ms', '^* 194.58.200.20 2 6 377 23 -1234ns[ -1234ns] +/- 1ms'].
+Origin: /results/ntp-flow/flow_two_source_two_selected/roles/ntp_source/tasks/verify.yml:114:3
+
+112       - chronyc
+113       - clients
+114 - name: Require exactly the approved upstream set on a migrated source
+      ^ column 3
+
+fatal: [localhost]: FAILED! => {
+    "assertion": "cr_ntp_source_rows | select('match', '^\\^\\*\\s+') | list | length == 1",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "The migrated source must expose exactly the approved two or three upstream addresses with one selected server; current rows=['^* 162.159.200.1 2 6 377 23 -1234ns[ -1234ns] +/- 1ms', '^* 194.58.200.20 2 6 377 23 -1234ns[ -1234ns] +/- 1ms']."
+}
+
+TASK [ntp_source : Restore the invocation pair after service or verification failure] ***
+included: /results/ntp-flow/flow_two_source_two_selected/roles/ntp_source/tasks/_restore_pair.yml for localhost
+
+TASK [ntp_source : Restore the selected paired recovery point] *****************
+changed: [localhost]
+
+TASK [ntp_source : Restart chronyd after real paired restoration] **************
+changed: [localhost]
+
+TASK [ntp_source : Require chronyd active after paired restoration] ************
+ok: [localhost]
+
+TASK [ntp_source : Stop the serial batch after a migration failure] ************
+[ERROR]: Task failed: Action failed: Paired NTP migration failed on localhost. A completed changed commit restores its invocation snapshot after service or verification failure. Module write failures attempt their own pair restoration. A reported restoration failure requires recovery from the immutable baseline; this result is not NTP acceptance.
+Origin: /results/ntp-flow/flow_two_source_two_selected/roles/ntp_source/tasks/_migration.yml:136:5
+
+134     - cr_ntp_pair_apply.changed | default(false)
+135     - cr_ntp_pair_apply.snapshot is defined
+136   - name: Stop the serial batch after a migration failure
+        ^ column 5
+
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "Paired NTP migration failed on localhost. A completed changed commit restores its invocation snapshot after service or verification failure. Module write failures attempt their own pair restoration. A reported restoration failure requires recovery from the immutable baseline; this result is not NTP acceptance."}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=27   changed=4    unreachable=0    failed=1    skipped=5    rescued=1    ignored=0   
+

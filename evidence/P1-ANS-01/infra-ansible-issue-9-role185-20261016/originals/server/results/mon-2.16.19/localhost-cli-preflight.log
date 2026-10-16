@@ -1,0 +1,18 @@
+
+PLAY [localhost-cli-preflight] *************************************************
+
+TASK [Exercise actual module transfer and copy] ********************************
+changed: [localhost]
+
+TASK [Read the transferred module result] **************************************
+ok: [localhost]
+
+TASK [Require exact module result] *********************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

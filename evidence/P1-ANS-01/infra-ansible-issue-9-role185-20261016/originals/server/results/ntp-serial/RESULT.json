@@ -1,0 +1,40 @@
+{
+  "name": "five_clients_third_failure_restores_and_stops",
+  "passed": true,
+  "scope": "LOCAL Ansible/files/parser; service and chronyc mocked; no host/network acceptance",
+  "rc": 2,
+  "hosts": {
+    "k8s-control02": {
+      "restarts": 1,
+      "observed_commands": 8,
+      "pair_matches_before": false,
+      "baseline": true
+    },
+    "k8s-control03": {
+      "restarts": 1,
+      "observed_commands": 8,
+      "pair_matches_before": false,
+      "baseline": true
+    },
+    "k8s-worker01": {
+      "restarts": 2,
+      "observed_commands": 5,
+      "pair_matches_before": true,
+      "baseline": true
+    },
+    "k8s-worker02": {
+      "restarts": 0,
+      "observed_commands": 0,
+      "pair_matches_before": true,
+      "baseline": false
+    },
+    "k8s-worker03": {
+      "restarts": 0,
+      "observed_commands": 0,
+      "pair_matches_before": true,
+      "baseline": false
+    }
+  },
+  "playbook_source_sha256": "352cf440c54c67e8335c2b4fad11427a1f8ad49002748ecb65727cd3103f5876",
+  "migration_module_sha256": "2e1ea06aebf856f42b950242e1cc913b4eda30173ebf19f0dd157f0181d24983"
+}

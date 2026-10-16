@@ -1,0 +1,21 @@
+{
+  "case": "baseline-invalid-inventory_hostname",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.21.3/baseline-invalid-inventory_hostname.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:10:30.055567+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 1278,
+  "sha256": "f12b9f8625546965920b3dd8f23284407dda0fb137670ce7883ec08e20917b6c",
+  "ended_at_utc": "2026-10-16T08:10:30.784853+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}
