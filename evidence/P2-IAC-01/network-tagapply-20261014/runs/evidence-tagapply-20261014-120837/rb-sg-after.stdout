@@ -1,0 +1,94 @@
+{
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-0285d809ced572046",
+            "GroupId": "sg-0f1e8a5dbecabccee",
+            "GroupOwnerId": "774055931866",
+            "IsEgress": false,
+            "IpProtocol": "udp",
+            "FromPort": 500,
+            "ToPort": 500,
+            "CidrIpv4": "0.0.0.0/0",
+            "Description": "D21 outer IKE/NAT-T only",
+            "Tags": [
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "vpn"
+                }
+            ],
+            "SecurityGroupRuleArn": "arn:aws:ec2:ap-northeast-2:774055931866:security-group-rule/sgr-0285d809ced572046"
+        },
+        {
+            "SecurityGroupRuleId": "sgr-0168ae3fc680f71f0",
+            "GroupId": "sg-0f1e8a5dbecabccee",
+            "GroupOwnerId": "774055931866",
+            "IsEgress": false,
+            "IpProtocol": "udp",
+            "FromPort": 4500,
+            "ToPort": 4500,
+            "CidrIpv4": "0.0.0.0/0",
+            "Description": "D21 outer IKE/NAT-T only",
+            "Tags": [
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "vpn"
+                }
+            ],
+            "SecurityGroupRuleArn": "arn:aws:ec2:ap-northeast-2:774055931866:security-group-rule/sgr-0168ae3fc680f71f0"
+        },
+        {
+            "SecurityGroupRuleId": "sgr-075138fb7b511a7be",
+            "GroupId": "sg-0f1e8a5dbecabccee",
+            "GroupOwnerId": "774055931866",
+            "IsEgress": true,
+            "IpProtocol": "tcp",
+            "FromPort": 443,
+            "ToPort": 443,
+            "CidrIpv4": "0.0.0.0/0",
+            "Description": "#37 6041369929 TCP443 world",
+            "Tags": [
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "vpn"
+                }
+            ],
+            "SecurityGroupRuleArn": "arn:aws:ec2:ap-northeast-2:774055931866:security-group-rule/sgr-075138fb7b511a7be"
+        }
+    ]
+}

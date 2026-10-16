@@ -1,0 +1,241 @@
+{
+    "RouteTables": [
+        {
+            "Associations": [
+                {
+                    "Main": false,
+                    "RouteTableAssociationId": "rtbassoc-05928f97381e9c367",
+                    "RouteTableId": "rtb-0dd7491d1a3944217",
+                    "SubnetId": "subnet-0fbc846bde668f0f3",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-0dd7491d1a3944217",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.20.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "GatewayId": "igw-003f907eafcc6bfb9",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "fds-public_transport_a"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                }
+            ],
+            "VpcId": "vpc-039718404350154d9",
+            "OwnerId": "774055931866"
+        },
+        {
+            "Associations": [
+                {
+                    "Main": false,
+                    "RouteTableAssociationId": "rtbassoc-03570b91c05b9bf79",
+                    "RouteTableId": "rtb-061f0b2ff25634304",
+                    "SubnetId": "subnet-0fc798d49bb79b248",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-061f0b2ff25634304",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.20.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "NatGatewayId": "nat-0f0fa5d5de405fa71",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "fds-private_b"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                }
+            ],
+            "VpcId": "vpc-039718404350154d9",
+            "OwnerId": "774055931866"
+        },
+        {
+            "Associations": [
+                {
+                    "Main": false,
+                    "RouteTableAssociationId": "rtbassoc-0a0732425a811a8c1",
+                    "RouteTableId": "rtb-01e3140bb2a0b3bb6",
+                    "SubnetId": "subnet-044ced60c3c705ac6",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-01e3140bb2a0b3bb6",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.20.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "NatGatewayId": "nat-0f0fa5d5de405fa71",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "fds-private_a"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                },
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                }
+            ],
+            "VpcId": "vpc-039718404350154d9",
+            "OwnerId": "774055931866"
+        },
+        {
+            "Associations": [
+                {
+                    "Main": true,
+                    "RouteTableAssociationId": "rtbassoc-0d45079998ee7b05b",
+                    "RouteTableId": "rtb-036534ddebc51f077",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-036534ddebc51f077",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.20.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                }
+            ],
+            "Tags": [],
+            "VpcId": "vpc-039718404350154d9",
+            "OwnerId": "774055931866"
+        },
+        {
+            "Associations": [
+                {
+                    "Main": false,
+                    "RouteTableAssociationId": "rtbassoc-0046b93d0ebb7778b",
+                    "RouteTableId": "rtb-0be823c978f9da092",
+                    "SubnetId": "subnet-07586708a37f05d71",
+                    "AssociationState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "PropagatingVgws": [],
+            "RouteTableId": "rtb-0be823c978f9da092",
+            "Routes": [
+                {
+                    "DestinationCidrBlock": "10.20.0.0/16",
+                    "GatewayId": "local",
+                    "Origin": "CreateRouteTable",
+                    "State": "active"
+                },
+                {
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "NatGatewayId": "nat-0f0fa5d5de405fa71",
+                    "Origin": "CreateRoute",
+                    "State": "active"
+                }
+            ],
+            "Tags": [
+                {
+                    "Key": "Project",
+                    "Value": "fds-hybrid"
+                },
+                {
+                    "Key": "ManagedBy",
+                    "Value": "terraform"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "fds-private_c"
+                },
+                {
+                    "Key": "Component",
+                    "Value": "network"
+                },
+                {
+                    "Key": "Phase",
+                    "Value": "phase2"
+                }
+            ],
+            "VpcId": "vpc-039718404350154d9",
+            "OwnerId": "774055931866"
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+  "tag_changes": [
+    {
+      "address": "aws_subnet.project[\"private_a\"]",
+      "changed_attrs": [
+        "tags",
+        "tags_all"
+      ],
+      "added_tag": {
+        "kubernetes.io/role/internal-elb": "1"
+      },
+      "ok": true
+    },
+    {
+      "address": "aws_subnet.project[\"public_transport_a\"]",
+      "changed_attrs": [
+        "tags",
+        "tags_all"
+      ],
+      "added_tag": {
+        "kubernetes.io/role/elb": "1"
+      },
+      "ok": true
+    }
+  ],
+  "unexpected": []
+}
