@@ -22,7 +22,7 @@
 |---|---|
 | v7 precheck (`10-h-precheck.sh`) | IAM 사용자 `arn:aws:iam::774055931866:user/321team-hayeoung`, Red Hat 하영 본인 로그인 (조직은 해시로만 결속) |
 | saved Plan 수집 (`20-create-plan.sh`) | 본인 MFA 역할 `arn:aws:sts::774055931866:assumed-role/FDS-IaC-Operator/321team-hayeoung` (하위 셸 안에서만 자격증명 export — 실행자 보고) |
-| 사후 state/lock 조회 | 같은 MFA 역할 새 세션, `s3api head-object` 2회만 |
+| 사후 state/lock 조회 | 같은 역할 ARN의 caller 기록. 새 MFA 세션·`s3api head-object` 2회만 수행했다는 범위는 실행자 보고(아래 출처 한계 참고) |
 
 root는 쓰지 않았다.
 
@@ -31,7 +31,8 @@ root는 쓰지 않았다.
 | 입력 | SHA-256 / 값 |
 |---|---|
 | 키트 v7 `SHA256SUMS` | `a7a3d9868bab0666614787f24838b3c53cc12e7f2399ce76b9faeb0f682c4c18` (전달 `kit.tgz` `e1e1045e454a0414ad68ded0d142f412e93ef176855f7b496157c148bf7caa01`) |
-| source | infra-terraform main `038c490e79f80237b43f6bb04cef34edd26bc820`, `terraform/rosa-runtime` tree `14e7ad41c1680e5ee8f008cf5a343d1223bb360d`, 작업 트리 변경 0 |
+| 실행 checkout | `14-src-commit.out`의 `f1f8adf`(GitHub 해석 `f1f8adf66d3b3c9348ebb919fe0dbb4f8fa54fe2`), `15-src-tree.out`의 `terraform/rosa-runtime` tree `14e7ad41c1680e5ee8f008cf5a343d1223bb360d`; `16-src-clean.out` 출력 없음·rc 0 |
+| 당시 검토 기준 main | `038c490e79f80237b43f6bb04cef34edd26bc820`. 실행 checkout과 저장소 커밋은 다르지만 실행 component tree 및 saved configuration 5개 Git blob은 승인본과 일치한다는 기존 검토를 재사용 |
 | provider lock | `45e2257b205604e0fd7af33e4685c433952ff545c68727417817f8d2b302cb3d` |
 | Terraform 1.16.4 linux_amd64 (`tf-zip-sum`·`tf-bin-match` rc 0) | `44d3683c2ac9d72b6ca8ad880a2df8dd956dd5e019b1d111cb6a5d914d576b73` |
 | 최종 tfvars | `195f0ea7a16b1cb6fc21a1bbf4520666fc49e1d258ca27ce70777dbeae7fa72a` |
@@ -77,15 +78,19 @@ caller·`rosa whoami` 계정·조직 해시 rc 0, `4.22.17` hosted-cp 제공, `f
 | v7 `create_plan_check.py` (현장 실행) | `result=STOP checks=52 stop=1` | 유일한 STOP: `data sources: address set == approved 3 ... -- got []`. 검사기가 data를 `resource_changes`의 no-op으로 기대한 **설계 결함**이다(위 표처럼 실제 data는 `prior_state`에 있음). 실행 rc 1 → 사후 state/lock 단계는 실행되지 않음 |
 | v8 `create_plan_check.py` (`SHA256SUMS` `922e955e5c92f61ab8d6c41644865dd05b6617822e3732ef1b7de727eba22be7`) | data 검사 2건을 `resource_changes`에 data 0 + `prior_state` data = 승인 3으로 수정, 검사 수 52 유지 | 작성 PC에서 같은 JSON에 v7/v8을 같은 인자로 실행: CA 원본이 작성 PC에 없어 빈 CA로 대체 → **v7 = data + CA 2 STOP, v8 = CA 1 STOP**(data 검사만 바뀜). 실제 CA 포함 52/52 판정은 이권욱 검토의 "c/v8 검토 수용"([6188332430](https://github.com/321Team/infra-rosa/issues/4#issuecomment-6188332430))에 근거하며, **CloudShell에서 v8 재검사를 따로 실행하지는 않았다** |
 
+v8의 52/52는 이 고정 JSON과 승인 CA에 대한 로컬 검사 결과다. `complete=false`·`checks=unknown`을 자동 차단하지 않는 기존 검사 범위 한계가 있으며, 실제 c JSON의 `complete=true`·조건 검사 6개 aggregate/instance pass는 기존 원본 리뷰에서 별도로 확인했다. 다른 Plan의 자동 수용 근거로 일반화하지 않는다.
+
 ## 사후 state/lock (15:27:15 KST, 읽기만)
 
-v7 실행기가 검사 STOP으로 사후 단계에 가지 않아, GO의 "backend 도달 후 실패 시 기존 허용 읽기 범위로 잔존 state/lock 기록"에 따라 새 MFA 세션에서 따로 조회했다.
+v7 실행기가 검사 STOP으로 사후 단계에 가지 않아, 실행자는 GO의 "backend 도달 후 실패 시 기존 허용 읽기 범위로 잔존 state/lock 기록"에 따라 새 MFA 세션에서 따로 조회했다고 보고했다. 아래 대상 key는 그 실행 보고에 따른 연결이며, 원본 오류문 자체에는 bucket/key가 없다.
 
 | 대상 | 결과 |
 |---|---|
 | `phase2/rosa-runtime/terraform.tfstate` | rc 254, **404 Not Found** |
 | `phase2/rosa-runtime/terraform.tfstate.tflock` | rc 254, **404 Not Found** |
 | 기록 | `rosa-create-plan-postcheck-20261015T062715Z`, manifest `c202fa1d6dcaf62f76271e41b805c3742f99c9698a93e0651793786b076d38e0` |
+
+기존 원본 검토는 사후 묶음 9파일과 두 404/rc254를 확인했다. 다만 `.cmd`, caller RC, END ledger가 없어 정확한 bucket/key·인자와 응답의 독립 결속은 미확인이다. assumed-role ARN은 caller 근거이며 새 MFA 입력·하위 셸 인증 정리·서버 측 만료를 모두 증명하지 않는다. 실행 ledger의 고유 host 식별도 비어 있다. 이 한계를 보존하며 새로운 조회 결과로 과거 실행을 소급 입증하지 않는다.
 
 ## 비공개 원본 (팀 공유 경로, Git에 넣지 않음)
 
@@ -106,5 +111,6 @@ v7 실행기가 검사 STOP으로 사후 단계에 가지 않아, GO의 "backend
 
 ## 판정 범위
 
-- 이 폴더는 **생성 Plan 수집 증적 편입**이다. Plan 내용 자체는 위와 같이 3 create만이며, Create GO의 근거 자료로 쓴다.
+- 이 폴더는 **생성 Plan 수집 증적 편입**이다. 고정 c Plan의 3 create 내용 및 v8 로컬 수용은 유지한다. 원 v7 실행 결과는 STOP/rc1로 보존하며 회차 전체 PASS로 바꾸지 않는다.
+- 시작 전 실제 writer·VPN/복구 작업 비중첩과 v7 창의 명시적 최종 반납은 이번에 연결한 자료로 완료를 확정하지 않는다. 사후 404의 대상 결속 한계와 함께 회차 전체 인수의 확인 필요 항목이다. 기존 c/v8 수용은 이 잔여를 해소하거나 현재 backend/자원 상태를 보증하지 않는다.
 - 클러스터 생성(Apply)·Create GO·Basic Ready·#4 종결 판정은 별도다. Apply 키트 검토(v3/v3.1)와 D1(역할 세션 시간) 판단도 이 폴더 범위 밖이다.
