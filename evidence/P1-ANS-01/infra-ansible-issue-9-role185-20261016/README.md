@@ -2,7 +2,7 @@
 
 책임 티켓: [infra-ansible #9](https://github.com/321Team/infra-ansible/issues/9), Record ID P1-ANS-01.
 
-**로컬 증적 편입 후보다. 아직 GitHub 게시·독립 리뷰·병합·최종 인수를 하지 않았다. 원본 archive의 공유 보관 URI와 중앙 복사 결과를 연결했으며, 개별 reviewer의 실제 읽기는 PENDING이다.** 기존 회차 원본은 바꾸지 않았다.
+**증적 편입용 Draft 후보이며, 이 문서 작성 시점에는 증적 GitHub 게시·독립 리뷰·병합·최종 인수를 하지 않았다. 원본 archive의 공유 보관 URI와 중앙 복사 결과를 연결했으며, 개별 reviewer의 실제 읽기는 PENDING이다.** 기존 회차 원본은 바꾸지 않았다.
 
 ## 현재 판정
 
@@ -33,3 +33,15 @@ MON2.16.19/2.21.3 각45, NTP legacy48/flow25/serial1/transport2/wrapper19다. �
 ## 편입 완료조건
 
 원본 archive의 허용 보관 URI·사용자 접근/보존 조건·중앙 배치 후 hash 대조는 연결됐다. 개별 reviewer의 실제 파일 읽기와 민감정보·원본 출처·해시·실행 판정·AC 대응에 대한 기존 증적 저장소 독립 리뷰는 아직 미완료다. 사용자 접근 확답·중앙 기술 대조를 독립 사람 승인으로 표시하지 않는다. 1MB 초과 archive는 Git에 넣지 않는다. 현장·정책·Phase2 변경은 없다. PR 병합은 #9 종결 또는 운영 전환을 자동 의미하지 않는다.
+
+## PR87 실제 병합·CI·회수 후속 연결 — 2026-10-17
+
+[infra-ansible PR87](https://github.com/321Team/infra-ansible/pull/87)은 10/16 23:33:30 KST에 merge `b3557dfb7691b9904bd84701da70f14b4ee0d485`로 병합됐다. 코드 HEAD `625731f3d45c21b4e0b0f1e328cc9800dd953fff`의 tree `2563bcea5ceee3543451e96ac76011ef05e486bf`는 위 역할185 실행 source와 동일하다. 과거 준비 문서의 OPEN/CI 대기는 당시 이력으로 보존한다. 10/17 06:19 KST GitHub 읽기에서 실제 병합을 재확인했다.
+
+[CI38887094714](https://github.com/321Team/infra-ansible/actions/runs/38887094714) attempt1/job116927361826은 실제 job 23:23:22~23:31:58 KST에 unit295 PASS·skip0, core2.16.19/2.21.3 syntax 각39, fixture7단계 rc0을 기록했다. workflow의 앞선 run_started_at은 큐 대기 시각이며 실제 job 시작과 구분한다. 역할185 전체 재실행이나 운영 적용 결과가 아니다. [CI 원본 결과](pr87/ci-original-entries/CI_RESULT.json), [unit 원본 출력](pr87/ci-original-entries/unit-tests.stderr.log), [job 원본](pr87/job-final.json)을 연결했다.
+
+23:32:54.596227 KST 회수 관측에서 해당 등록 Runner·컨테이너·Runner 프로세스·양쪽 packet 파일 잔여0을 확인했다. 서버 측 token 철회는 주장하지 않는다. [완료 기록](pr87/COMPLETION.json), [회수 관측](pr87/CLEANUP_OBSERVATION.json), [실제 병합 대조](pr87/merge-verification/MERGED_RESULT.json), [선택 사본 출처/해시](pr87/SOURCE_MAP.json)를 참조한다. 이번 연결에서 시험·CI·서버 조회·archive 재검증은 수행하지 않았다.
+
+새 CI ZIP(515,688B, SHA `f8e3498a280120ad9faa3ef83d7602a1409dc710899a603c9e8533ef18496781`)과 host tar.gz(6,353B, SHA `af591a28d94966dd425ba2f3fb6d0e6d84312c7360f13dad86b98c3b03e35203`)는 기존 로컬 원본을 보존 중이다. **이 두 파일의 공유 보관 인계는 미완료**이며 위 기존7파일 receipt에 포함되지 않는다. GitHub artifact12052452535의 만료는 10/23 19:25:07 KST로 프로젝트 종료 보존을 대신하지 않는다. [PR87 연결·보관 구분](pr87/PR87_LINKAGE.json)을 참조한다. 원본 ZIP/tar를 이 PR에 추가하거나 재압축하지 않았다.
+
+PR87 코드 리뷰를 이 증적 PR의 독립 리뷰로 재사용하지 않는다. 증적 reviewer 원본 읽기·독립 심사는 PENDING이다. 운영 엔진 전환·역할별 실제 apply/rollback·6대 비교·#9 전체 인수는 미완료로 유지한다. 기존7파일 공유와 새 CI 원본 보관의 상태를 구분한 Draft 게시 준비이며, Harbor 진행 여부를 게시 선행조건으로 추가하지 않는다.
