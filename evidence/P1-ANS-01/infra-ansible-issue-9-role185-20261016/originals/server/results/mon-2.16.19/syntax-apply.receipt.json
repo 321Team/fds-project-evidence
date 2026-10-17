@@ -1,0 +1,22 @@
+{
+  "case": "syntax-apply",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "--syntax-check",
+    "-i",
+    "localhost,",
+    "/supply/source/playbooks/cr-p1-mon-01-01-apply.yml"
+  ],
+  "expected_rc": 0,
+  "started_at_utc": "2026-10-16T08:09:39.372711+00:00",
+  "actual_rc": 0,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 135,
+  "sha256": "a99c7bbd9549a321376ec201fa99542d85698535e5506c38e5f1c876c716a434",
+  "ended_at_utc": "2026-10-16T08:09:39.949157+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

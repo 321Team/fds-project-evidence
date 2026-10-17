@@ -1,0 +1,82 @@
+---
+- name: P1-K8S-01 kubelet serving TLS read-only precheck
+  hosts: k8s_nodes
+  gather_facts: false
+  become: true
+  serial: 1
+  any_errors_fatal: true
+
+  vars:
+    p1_kubelet_tls_config_path: /var/lib/kubelet/config.yaml
+    p1_kubelet_tls_expected_client_ca: /etc/kubernetes/pki/ca.crt
+
+  tasks:
+    - name: Read host identity
+      ansible.builtin.command:
+        argv: [hostname, -s]
+      register: p1_kubelet_tls_hostname
+      changed_when: false
+
+    - name: Verify inventory identity
+      ansible.builtin.assert:
+        that:
+          - p1_kubelet_tls_hostname.stdout | trim == inventory_hostname
+        fail_msg: Inventory hostname does not match the managed host.
+
+    - name: Validate effective kubelet CLI contract
+      ansible.builtin.import_tasks: tasks/p1-k8s-01-kubelet-serving-tls-cli-contract.yml
+
+    - name: Inspect kubelet config
+      ansible.builtin.stat:
+        path: "{{ p1_kubelet_tls_config_path }}"
+        checksum_algorithm: sha256
+      register: p1_kubelet_tls_config
+
+    - name: Require existing kubelet config
+      ansible.builtin.assert:
+        that:
+          - p1_kubelet_tls_config.stat.exists
+          - p1_kubelet_tls_config.stat.isreg
+        fail_msg: Expected kubelet config is missing or is not a regular file.
+
+    - name: Validate kubelet authentication and authorization contract
+      ansible.builtin.import_tasks: tasks/p1-k8s-01-kubelet-serving-tls-auth-contract.yml
+
+    - name: Count top-level serverTLSBootstrap keys
+      ansible.builtin.shell:
+        cmd: "grep -Ec '^serverTLSBootstrap:' {{ p1_kubelet_tls_config_path | quote }}"
+      register: p1_kubelet_tls_key_count
+      changed_when: false
+      failed_when: >-
+        p1_kubelet_tls_key_count.rc not in [0, 1] or
+        (p1_kubelet_tls_key_count.stdout | int) > 1
+
+    - name: Read top-level serverTLSBootstrap line
+      ansible.builtin.shell:
+        cmd: "grep -E '^serverTLSBootstrap:' {{ p1_kubelet_tls_config_path | quote }} || true"
+      register: p1_kubelet_tls_line
+      changed_when: false
+
+    - name: Read kubelet service state
+      ansible.builtin.command:
+        argv: [systemctl, is-active, kubelet]
+      register: p1_kubelet_tls_service
+      changed_when: false
+      failed_when: false
+
+    - name: Require active kubelet service
+      ansible.builtin.assert:
+        that:
+          - p1_kubelet_tls_service.rc == 0
+          - p1_kubelet_tls_service.stdout | trim == 'active'
+        fail_msg: Kubelet service is not active.
+
+    - name: Report precheck without changing the node
+      ansible.builtin.debug:
+        msg:
+          host: "{{ inventory_hostname }}"
+          config_sha256: "{{ p1_kubelet_tls_config.stat.checksum }}"
+          key_count: "{{ p1_kubelet_tls_key_count.stdout | int }}"
+          current_value: "{{ p1_kubelet_tls_line.stdout | default('NOT_PRESENT', true) }}"
+          kubelet: "{{ p1_kubelet_tls_service.stdout | trim }}"
+          authn_authz: PASS

@@ -1,0 +1,175 @@
+{
+  "at_kst": "2026-10-16T17:25:02.114548+09:00",
+  "status": "PASS_LOCAL_ROLE_FIXTURES_185_OWN_CLEANUP_CONFIRMED",
+  "session": "p1-role-cc7e9fc7dd9049a4",
+  "source_head": "affaad6b1a31d680164d9e3d5ef5d2a9d3fce95a",
+  "source_tree": "2563bcea5ceee3543451e96ac76011ef05e486bf",
+  "candidate_archive_sha256": "90f6cd63f41ecaf2088ca658693e073ddabe652f08b6c91d5dddf605367450b8",
+  "manifest_sha256": "21fb6757bc0661df8d21dae21b10b0fa656e6469c7939f5cd42dc4b272090636",
+  "image": "sha256:e8565fa265f973c06f0515fac7aa9d102edae01b5677d69216900b84029c6ad0",
+  "boot": "40b367d4-ac29-490e-84bb-2a308a6bdabc",
+  "cid": "b0d9da1071bd48759f1866549d37f682888b01f9c8dca6017823725cd65aec79",
+  "authorization": "AUTHORIZATION_SNAPSHOT.json",
+  "authorization_sha256": "289d3b33f469db2efa25a7a8a2ee5c08d7e2b4bc99ddc0fc64ebf4db3b8e7bee",
+  "window": {
+    "S": "2026-10-16T17:07:09.520798+09:00",
+    "new_start_cutoff_exclusive": "2026-10-16T17:22:09.520798+09:00",
+    "E": "2026-10-16T18:37:09.520798+09:00",
+    "extended": false
+  },
+  "execution": {
+    "transfer_calls": 1,
+    "stage_calls": 1,
+    "plan_calls": 1,
+    "execute_calls": 1,
+    "container_create_calls": 1,
+    "container_start_calls": 1,
+    "container_rm_calls": 1,
+    "container_stop_calls": 0,
+    "force_calls": 0,
+    "operator_rc": {
+      "stage": 0,
+      "plan": 0,
+      "plan-binding": 0,
+      "execute": 0
+    },
+    "started_at_kst": "2026-10-16T17:09:25.953288654+09:00",
+    "finished_at_kst": "2026-10-16T17:13:51.387027915+09:00",
+    "elapsed_seconds": 265.433739,
+    "role_pass": 185,
+    "role_fail": 0,
+    "role_skip": 0,
+    "setup_commands_excluded_from_role_count": 11
+  },
+  "suites": [
+    {
+      "suite": "mon-2.16.19",
+      "engine": "2.16.19",
+      "result_file": "results/mon-2.16.19/RESULTS.json",
+      "result_sha256": "62576ca3e2fa65259ebfeeb183f150c3e914085b12ce20a5edd48157634b33cf",
+      "expected_cases": 45,
+      "passed_cases": 45,
+      "suite_rc": 0,
+      "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime"
+    },
+    {
+      "suite": "mon-2.21.3",
+      "engine": "2.21.3",
+      "result_file": "results/mon-2.21.3/RESULTS.json",
+      "result_sha256": "62576ca3e2fa65259ebfeeb183f150c3e914085b12ce20a5edd48157634b33cf",
+      "expected_cases": 45,
+      "passed_cases": 45,
+      "suite_rc": 0,
+      "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime"
+    },
+    {
+      "suite": "ntp-legacy",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-legacy/RESULTS.json",
+      "result_sha256": "e439212ba76474a9ce6a225f5532eef9168ba1b83779f75baa1d7ede0ba59d61",
+      "expected_cases": 48,
+      "passed_cases": 48,
+      "suite_rc": 0,
+      "scope": "LOCAL/MOCK; host commands and chronyd parser replaced; no runtime acceptance"
+    },
+    {
+      "suite": "ntp-flow",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-flow/RESULTS.json",
+      "result_sha256": "ed90196a7990beb319dcb9b3ab5dad8a2ea4a3761a6b1aa0f39068b90a76803d",
+      "expected_cases": 25,
+      "passed_cases": 25,
+      "suite_rc": 0,
+      "scope": "LOCAL: real file transactions and chronyd -p parsing; service/chronyc observations mocked; ownership lstat mocked when uid namespace forbids chown; no host runtime acceptance"
+    },
+    {
+      "suite": "ntp-serial",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-serial/RESULT.json",
+      "result_sha256": "2b9bc74c4278de3618046e67c8de666b2645c20e243038515708e6f082e36ebe",
+      "expected_cases": 1,
+      "passed_cases": 1,
+      "suite_rc": 0,
+      "scope": "LOCAL Ansible/files/parser; service and chronyc mocked; no host/network acceptance"
+    },
+    {
+      "suite": "ntp-transport",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-transport/RESULTS.json",
+      "result_sha256": "dd79ba06f4b5759453bed8b19546f776ced63bc2d988f370d4e7d11275a4b155",
+      "expected_cases": 2,
+      "passed_cases": 2,
+      "suite_rc": 0,
+      "scope": "Actual Ansible module_utils transport and unsupported-provider early guards.\n\nRun locally only. Invalid provider inputs must fail before any managed-host\nobservation or transaction; no SSH, NTP packet, daemon or clock change occurs.\n"
+    },
+    {
+      "suite": "ntp-wrapper",
+      "engine": "2.21.3",
+      "result_file": "results/ntp-wrapper/RESULTS.json",
+      "result_sha256": "d05dca9077d8fece957a369c52edde08b27db3c5e25c3b5f0bccd74daf5c26b7",
+      "expected_cases": 19,
+      "passed_cases": 19,
+      "suite_rc": 0,
+      "scope": "LOCAL/MOCK wrapper only; no managed host execution"
+    }
+  ],
+  "cleanup": {
+    "absence_query_rc": 1,
+    "cid": "b0d9da1071bd48759f1866549d37f682888b01f9c8dca6017823725cd65aec79",
+    "error": null,
+    "identity_preserved_for_reentry": true,
+    "status": "OWN_CONTAINER_REMOVED"
+  },
+  "post_observation": {
+    "record": "observe-20261016T081754586553-SUMMARY.json",
+    "at_kst": "2026-10-16T17:17:55.927957+09:00",
+    "same_store_exact_cid_exists_rc": 1,
+    "controllers": 0,
+    "errors": []
+  },
+  "evidence": {
+    "audit": "EVIDENCE_AUDIT.json",
+    "collection": "EVIDENCE_COLLECTED-20261016T081814170331.json",
+    "archive": "runtime-originals-20261016T081814170331.tar",
+    "archive_sha256": "a9e448e2ac046d734eb066b06b43fc487a4cb8509b84bb8c244b64330184b12b",
+    "originals": "originals-20261016T081814170331",
+    "server_original_files": 3446,
+    "collection_derived_files": 1,
+    "operator_originals": "operator-originals-20261016T081814168345",
+    "operator_original_files": 12,
+    "host_command_receipts": 69,
+    "suite_and_setup_receipts": 18,
+    "mon_per_command_receipts": 80,
+    "fixture_configs": 77,
+    "linux_tmp_directories_0700": 154,
+    "pre_execution_frozen_files_unchanged": 181
+  },
+  "audit_correction": {
+    "record": "audit-local-corrections/CORRECTION.json",
+    "note": "First local audit compared NTP observed_sha256 to parser binary by mistake; source identifies observed-chrony.conf. Corrected only auditor; original evidence and runtime unchanged."
+  },
+  "limits": [
+    "Isolated container localhost/files/parser fixtures; mocked service/chronyc/host observations remain mocked.",
+    "No production MON/NTP deployment, network/time daemon validation, GitHub CI, merge, or final AC acceptance.",
+    "NTP legacy/wrapper retain their existing summary/log evidence formats; no per-command receipt completeness is inferred for them.",
+    "MON CASES.partial.json remains INCOMPLETE by design; final RESULTS.json supplies the completed verdict.",
+    "Collection receipt and audits are derived records; 3446 captured files and 12 operator outputs are the original bytes."
+  ],
+  "production_runtime": false,
+  "phase1_acceptance": false,
+  "github_ci_run_created": false,
+  "github_published": false,
+  "merged": false,
+  "active_owned_container_remaining": false,
+  "manual_recovery_required": false,
+  "retained_server_paths": [
+    "/home/ansible-verify/p1-role-cc7e9fc7dd9049a4",
+    "/home/server01_cicd-runner/role185-p1-role-cc7e9fc7dd9049a4"
+  ],
+  "retained_reason": "Original evidence and fixed supply retained; not an active container or pending recovery.",
+  "remaining": [
+    "Central session consumes this exact runtime result and original evidence for publication/integration decision.",
+    "Production MON/NTP runtime and Phase 1 acceptance remain outside this isolated fixture result."
+  ],
+  "next_remote_action": "NONE; no rerun, cleanup retry, token, Runner, CI, production role, or additional server query required by this completed round."
+}

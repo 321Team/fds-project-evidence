@@ -1,0 +1,239 @@
+{
+  "status": "PASS",
+  "classification": "TARGETED_IMPLEMENTED_STATIC_MOCK_NOT_ROLE185",
+  "at_kst": "2026-10-16T09:23:34.463486+09:00",
+  "mock_directory": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\p1-ansible-role-evidence-20261015\\role185-fixture-remediation-20261016\\mock\\20261016T002333635856Z",
+  "mock_cases": [
+    {
+      "case": "expected-success-raw",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "expected-negative-raw",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "unexpected-rc4",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "negative-expects2-received4",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "timeout-raw",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "timeout-no-output",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "launch-error",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "interrupt",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "intent-failure-no-child",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "storage-success-case_log",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "storage-primary-rc4-case_log",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "storage-success-case_receipt_json",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "storage-primary-rc4-case_receipt_json",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "storage-success-_CASES_partial_json_pending",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "storage-primary-rc4-_CASES_partial_json_pending",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "storage-primary-timeout",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "pure-case-failure",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "later-python-exception",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "complete-45-modeled",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "incomplete-44-cannot-pass",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "final-result-storage-failure",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "checksum-storage-failure",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "source-identity-read-failure",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    },
+    {
+      "case": "unexpected-command-stops-next",
+      "passed": true,
+      "classification": "MOCK",
+      "actual_child_processes": 0
+    }
+  ],
+  "passed": 24,
+  "failed": 0,
+  "configuration_checks": [
+    {
+      "file": "tests/run-egress-recovery.py",
+      "passed": true,
+      "paths": "per-fixture absolute",
+      "mode_requested": "0700",
+      "posix_mode_verified": false
+    },
+    {
+      "file": "tests/ntp_source/test_ntp_source.py",
+      "passed": true,
+      "paths": "per-fixture absolute",
+      "mode_requested": "0700",
+      "posix_mode_verified": false
+    },
+    {
+      "file": "tests/ntp_source/test_migration.py",
+      "passed": true,
+      "paths": "per-fixture absolute",
+      "mode_requested": "0700",
+      "posix_mode_verified": false
+    },
+    {
+      "file": "tests/ntp_source/test_rollout_serial.py",
+      "passed": true,
+      "paths": "per-fixture absolute",
+      "mode_requested": "0700",
+      "posix_mode_verified": false
+    },
+    {
+      "file": "tests/ntp_source/test_module_transport.py",
+      "passed": true,
+      "paths": "per-fixture absolute",
+      "mode_requested": "0700",
+      "posix_mode_verified": false
+    }
+  ],
+  "ast_parse_files": 5,
+  "business_case_ast_unchanged_except_preflight": true,
+  "mon_case_count_arithmetic": [
+    4,
+    1,
+    5,
+    1,
+    6,
+    9,
+    12,
+    3,
+    4
+  ],
+  "mon_expected_cases": 45,
+  "expected_suite_cases": [
+    45,
+    45,
+    48,
+    25,
+    1,
+    2,
+    19
+  ],
+  "total_expected_role_cases": 185,
+  "code_hashes_before": {
+    "tests/run-egress-recovery.py": "c46bd8142bec1ebddf3b3fef4210d96e998ffb5ebe660036cc61e93b83e221b6",
+    "tests/ntp_source/test_ntp_source.py": "889688544000a38f30018ce3bbffe56a6ce7aaf1133b5f580fcd727bba4d9835",
+    "tests/ntp_source/test_migration.py": "9d819cff1cce17b300208d0dabb4ef1add4bc3a2937337616806cb68c60f4b04",
+    "tests/ntp_source/test_rollout_serial.py": "62a961aec65a01a7753dd5f27421663fe24e309b21a67b5899c2b9c67dafd8d1",
+    "tests/ntp_source/test_module_transport.py": "e181ca4ce6e0d5f5b0441a0e885fa1823ef9e44910df244316c4527ce83d2502"
+  },
+  "code_hashes_after": {
+    "tests/run-egress-recovery.py": "c46bd8142bec1ebddf3b3fef4210d96e998ffb5ebe660036cc61e93b83e221b6",
+    "tests/ntp_source/test_ntp_source.py": "889688544000a38f30018ce3bbffe56a6ce7aaf1133b5f580fcd727bba4d9835",
+    "tests/ntp_source/test_migration.py": "9d819cff1cce17b300208d0dabb4ef1add4bc3a2937337616806cb68c60f4b04",
+    "tests/ntp_source/test_rollout_serial.py": "62a961aec65a01a7753dd5f27421663fe24e309b21a67b5899c2b9c67dafd8d1",
+    "tests/ntp_source/test_module_transport.py": "e181ca4ce6e0d5f5b0441a0e885fa1823ef9e44910df244316c4527ce83d2502"
+  },
+  "real_child_processes": 0,
+  "server_connections": 0,
+  "ansible_engine_executions": 0,
+  "limitations": [
+    "MOCK invokes actual implemented helpers with fake subprocess outcomes only",
+    "copy/slurp/Jinja and actual module temp path interpretation not executed",
+    "Windows config file creation does not verify POSIX 0700 enforcement",
+    "45 modeled ledger rows are synthetic, not role185 PASS",
+    "Read/write/exception coverage is targeted; power loss and all storage faults not proven"
+  ]
+}

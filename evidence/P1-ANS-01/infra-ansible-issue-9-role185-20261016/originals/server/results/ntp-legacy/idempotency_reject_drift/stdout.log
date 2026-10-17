@@ -1,0 +1,169 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [ntp_source : Select the unchanged drop-in-only workflow] *****************
+included: /results/ntp-legacy/idempotency_reject_drift/roles/ntp_source/tasks/_legacy.yml for localhost
+
+TASK [ntp_source : Validate CR NTP execution phase and variables] **************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Require explicit approval token for NTP changes] ************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Determine this host's NTP role] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Verify chronyd is installed] ********************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyd service state] **********************
+ok: [localhost]
+
+TASK [ntp_source : Assert chronyd is active before any change] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read existing chrony main config] ***************************
+ok: [localhost]
+
+TASK [ntp_source : Determine whether /etc/chrony.d is included] ****************
+ok: [localhost]
+
+TASK [ntp_source : Stop on unexpected chrony.conf layout] **********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Extract active server/pool directives from the main config] ***
+ok: [localhost]
+
+TASK [ntp_source : Detect whether the main config includes a DHCP-fed sourcedir] ***
+ok: [localhost]
+
+TASK [ntp_source : Stop on unhandled competing sources for client nodes] *******
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read pre-change chronyc tracking] ***************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyc sources] ****************************
+ok: [localhost]
+
+TASK [ntp_source : Check for the managed drop-in file] *************************
+ok: [localhost]
+
+TASK [ntp_source : Refuse non-regular or multiply linked managed drop-ins] *****
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read existing drop-in content when present] *****************
+ok: [localhost]
+
+TASK [ntp_source : Parse the effective chrony configuration before mutation] ***
+ok: [localhost]
+
+TASK [ntp_source : Parse the existing managed fragment for client source ownership] ***
+ok: [localhost]
+
+TASK [ntp_source : Collect effective and managed client time-source directives] ***
+ok: [localhost]
+
+TASK [ntp_source : Refuse unmanaged or dynamic effective sources on clients] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Capture this invocation's drop-in state before mutation] ****
+ok: [localhost]
+
+TASK [ntp_source : Validate the rollback state directory before creating or changing it] ***
+included: /results/ntp-legacy/idempotency_reject_drift/roles/ntp_source/tasks/_check_state_dir.yml for localhost
+
+TASK [ntp_source : Inspect the rollback state directory without following a symlink] ***
+ok: [localhost]
+
+TASK [ntp_source : Refuse an unsafe rollback state directory before mutation or read] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Create protected CR rollback state directory] ***************
+skipping: [localhost]
+
+TASK [ntp_source : Check preserved state path before writing it] ***************
+skipping: [localhost]
+
+TASK [ntp_source : Refuse unsafe preserved state files] ************************
+skipping: [localhost]
+
+TASK [ntp_source : Preserve original drop-in state once] ***********************
+skipping: [localhost]
+
+TASK [ntp_source : Validate the preserved baseline before changing the drop-in] ***
+skipping: [localhost]
+
+TASK [ntp_source : Render the managed NTP drop-in including check-mode diff] ***
+--- before: /results/ntp-legacy/idempotency_reject_drift/chrony.d/50-cr-p1-ntp-01-01.conf
++++ after: /results/ntp-legacy/idempotency_reject_drift/.ansible-local/ansible-local-4393rg9yncj0/tmplpqc2qce/chrony-client-source.conf.j2
+@@ -1 +1,8 @@
+-server 192.0.2.123 iburst
++# CR-P1-NTP-01-01 — managed by ansible, do not edit by hand.
++#
++# Single internal NTP source per Lead Decision
++# (fds-project-baseline#10, 2026-09-16: NTP_SINGLE_SOURCE_CONFIRMED(control01),
++# RELAY_REJECTED_OUT_OF_SCOPE). This node syncs exclusively to
++# k8s-control01 (10.1.93.102); no pool/public source is
++# used.
++server 10.1.93.102 iburst
+
+changed: [localhost]
+
+TASK [ntp_source : Require zero predicted changes during the idempotency check] ***
+[ERROR]: Task failed: Action failed: The applied NTP drop-in still differs; idempotency failed.
+Origin: /results/ntp-legacy/idempotency_reject_drift/roles/ntp_source/tasks/_legacy.yml:259:5
+
+257       validate: /results/ntp-legacy/idempotency_reject_drift/validate-fixture %s
+258     register: cr_ntp_render
+259   - name: Require zero predicted changes during the idempotency check
+        ^ column 5
+
+fatal: [localhost]: FAILED! => {
+    "assertion": "not cr_ntp_render.changed",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "The applied NTP drop-in still differs; idempotency failed."
+}
+
+TASK [ntp_source : Restore this invocation's state after a changed apply failed] ***
+skipping: [localhost]
+
+TASK [ntp_source : Stop the serial batch after failed apply or check] **********
+[ERROR]: Task failed: Action failed: NTP apply/check failed on localhost. Changed real applies restore the invocation snapshot before reaching this message; unchanged/check runs do not restore. A restore task failure stops earlier and requires operator recovery. This is not an NTP acceptance PASS.
+Origin: /results/ntp-legacy/idempotency_reject_drift/roles/ntp_source/tasks/_legacy.yml:302:5
+
+300     - not ansible_check_mode
+301     - cr_ntp_render.changed | default(false)
+302   - name: Stop the serial batch after failed apply or check
+        ^ column 5
+
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "NTP apply/check failed on localhost. Changed real applies restore the invocation snapshot before reaching this message; unchanged/check runs do not restore. A restore task failure stops earlier and requires operator recovery. This is not an NTP acceptance PASS."}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=27   changed=1    unreachable=0    failed=1    skipped=6    rescued=1    ignored=0   
+

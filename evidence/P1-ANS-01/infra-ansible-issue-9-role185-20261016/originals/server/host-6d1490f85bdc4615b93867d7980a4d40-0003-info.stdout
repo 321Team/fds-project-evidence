@@ -1,0 +1,179 @@
+{
+  "host": {
+    "arch": "amd64",
+    "buildahVersion": "1.45.0",
+    "cgroupManager": "systemd",
+    "cgroupVersion": "v2",
+    "cgroupControllers": [
+      "cpuset",
+      "cpu",
+      "io",
+      "memory",
+      "pids"
+    ],
+    "cdiSpecDirs": [
+      "/etc/cdi",
+      "/var/run/cdi"
+    ],
+    "conmon": {
+      "package": "conmon-2.2.1-4.el10.x86_64",
+      "path": "/usr/bin/conmon",
+      "version": "conmon version 2.2.1, commit: "
+    },
+    "cpus": 4,
+    "cpuUtilization": {
+      "userPercent": 0.27,
+      "systemPercent": 0.25,
+      "idlePercent": 99.47
+    },
+    "databaseBackend": "sqlite",
+    "distribution": {
+      "distribution": "centos",
+      "version": "10"
+    },
+    "eventLogger": "file",
+    "freeLocks": 2048,
+    "hostname": "cicd-runner01",
+    "idMappings": {
+      "gidmap": [
+        {
+          "container_id": 0,
+          "host_id": 1002,
+          "size": 1
+        },
+        {
+          "container_id": 1,
+          "host_id": 589824,
+          "size": 65536
+        }
+      ],
+      "uidmap": [
+        {
+          "container_id": 0,
+          "host_id": 1001,
+          "size": 1
+        },
+        {
+          "container_id": 1,
+          "host_id": 589824,
+          "size": 65536
+        }
+      ]
+    },
+    "kernel": "6.12.0-275.el10.x86_64",
+    "logDriver": "journald",
+    "memFree": 9422450688,
+    "memAvailable": 10342154240,
+    "memTotal": 12235014144,
+    "networkBackend": "netavark",
+    "networkBackendInfo": {
+      "backend": "netavark",
+      "version": "netavark 2.1.0",
+      "package": "netavark-2.1.0-1.el10.x86_64",
+      "path": "/usr/libexec/podman/netavark",
+      "dns": {
+        "version": "aardvark-dns 2.1.0",
+        "package": "aardvark-dns-2.1.0-1.el10.x86_64",
+        "path": "/usr/libexec/podman/aardvark-dns"
+      },
+      "defaultNetwork": "podman"
+    },
+    "ociRuntime": {
+      "name": "crun",
+      "package": "crun-1.30.1-1.el10.x86_64",
+      "path": "/usr/bin/crun",
+      "version": "crun version 1.30.1\ncommit: 079ff6a7a16d029460af882f9ea44674e6a510b6\nrundir: /run/user/1001/crun\nspec: 1.0.0\n+SYSTEMD +SELINUX +APPARMOR +CAP +SECCOMP +EBPF +CRIU +JSON_C"
+    },
+    "os": "linux",
+    "remoteSocket": {
+      "path": "/run/user/1001/podman/podman.sock",
+      "exists": true
+    },
+    "rootlessNetworkCmd": "pasta",
+    "rootlessPortForwarder": "rootlessport",
+    "serviceIsRemote": false,
+    "security": {
+      "apparmorEnabled": false,
+      "capabilities": "CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_FOWNER,CAP_FSETID,CAP_KILL,CAP_NET_BIND_SERVICE,CAP_SETFCAP,CAP_SETGID,CAP_SETPCAP,CAP_SETUID,CAP_SYS_CHROOT",
+      "rootless": true,
+      "seccompEnabled": true,
+      "seccompProfilePath": "/usr/share/containers/seccomp.json",
+      "selinuxEnabled": true
+    },
+    "pasta": {
+      "executable": "/usr/bin/pasta",
+      "package": "passt-0^20260728.gf8df3f1-1.el10.x86_64",
+      "version": "pasta 0^20260728.gf8df3f1-1.el10.x86_64\nCopyright Red Hat\nGNU General Public License, version 2 or later\n  \u003chttps://www.gnu.org/licenses/old-licenses/gpl-2.0.html\u003e\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+    },
+    "swapFree": 0,
+    "swapTotal": 0,
+    "uptime": "0h 49m 22.00s",
+    "variant": "",
+    "linkmode": "dynamic"
+  },
+  "store": {
+    "containerStore": {
+      "number": 0,
+      "paused": 0,
+      "running": 0,
+      "stopped": 0
+    },
+    "graphDriverName": "overlay",
+    "graphOptions": {
+      "overlay.mountopt": "nodev"
+    },
+    "graphRoot": "/home/ansible-verify/.local/share/containers/storage",
+    "graphRootAllocated": 88097161216,
+    "graphRootUsed": 45611012096,
+    "graphStatus": {
+      "Backing Filesystem": "xfs",
+      "Native Overlay Diff": "true",
+      "Supports d_type": "true",
+      "Supports shifting": "false",
+      "Supports volatile": "true",
+      "Using metacopy": "false"
+    },
+    "imageCopyTmpDir": "/var/tmp",
+    "imageStore": {
+      "number": 36
+    },
+    "runRoot": "/run/user/1001/containers",
+    "volumePath": "/home/ansible-verify/.local/share/containers/storage/volumes",
+    "transientStore": false
+  },
+  "registries": {
+    "search": [
+  "registry.access.redhat.com",
+  "registry.redhat.io",
+  "docker.io"
+]
+  },
+  "plugins": {
+    "volume": [
+      "local"
+    ],
+    "network": [
+      "bridge",
+      "macvlan",
+      "ipvlan"
+    ],
+    "log": [
+      "k8s-file",
+      "none",
+      "passthrough",
+      "journald"
+    ],
+    "authorization": null
+  },
+  "version": {
+    "APIVersion": "6.1.0",
+    "Version": "6.1.0",
+    "GoVersion": "go1.26.5 (Red Hat 1.26.5-1.el10)",
+    "GitCommit": "cade97a52ebdf9dbf9e81de8009015776837a074",
+    "BuiltTime": "Thu Aug 20 09:00:00 2026",
+    "Built": 1787184000,
+    "BuildOrigin": "builder@centos.org",
+    "OsArch": "linux/amd64",
+    "Os": "linux"
+  }
+}

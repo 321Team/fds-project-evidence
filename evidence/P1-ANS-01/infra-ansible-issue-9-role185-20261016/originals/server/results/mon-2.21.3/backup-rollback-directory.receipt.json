@@ -1,0 +1,21 @@
+{
+  "case": "backup-rollback-directory",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.21.3/backup-rollback-directory.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:10:43.263191+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 1684,
+  "sha256": "b13863eca2e78dcd5e828ef0d7ca222566d15833fbbb7c8f83de55754c3f92b9",
+  "ended_at_utc": "2026-10-16T08:10:44.551611+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

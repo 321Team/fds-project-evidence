@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "uid": 0,
+  "gid": 0,
+  "uid_map": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      65536
+    ]
+  ],
+  "gid_map": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      65536
+    ]
+  ],
+  "rootless_id_maps": {
+    "gidmap": [
+      [
+        0,
+        1002,
+        1
+      ],
+      [
+        1,
+        589824,
+        65536
+      ]
+    ],
+    "uidmap": [
+      [
+        0,
+        1001,
+        1
+      ],
+      [
+        1,
+        589824,
+        65536
+      ]
+    ]
+  },
+  "uid_binding": {
+    "mode": "COMPOSED_PARENT_MAP",
+    "host_map": [
+      [
+        0,
+        1001,
+        1
+      ],
+      [
+        1,
+        589824,
+        65536
+      ]
+    ]
+  },
+  "gid_binding": {
+    "mode": "COMPOSED_PARENT_MAP",
+    "host_map": [
+      [
+        0,
+        1002,
+        1
+      ],
+      [
+        1,
+        589824,
+        65536
+      ]
+    ]
+  },
+  "host_bind_witnesses": {
+    "/control": {
+      "device": 64770,
+      "gid": 1002,
+      "inode": 9118639,
+      "mode": 448,
+      "source": "/home/ansible-verify/p1-role-cc7e9fc7dd9049a4/control",
+      "uid": 1001
+    },
+    "/results": {
+      "device": 64770,
+      "gid": 1002,
+      "inode": 88350595,
+      "mode": 448,
+      "source": "/home/ansible-verify/p1-role-cc7e9fc7dd9049a4/results",
+      "uid": 1001
+    },
+    "/supply": {
+      "device": 64770,
+      "gid": 1002,
+      "inode": 150961862,
+      "mode": 448,
+      "source": "/home/ansible-verify/p1-role-cc7e9fc7dd9049a4/kit",
+      "uid": 1001
+    }
+  },
+  "container_bind_witnesses": {
+    "/supply": {
+      "device": 64770,
+      "inode": 150961862,
+      "uid": 0,
+      "gid": 0,
+      "mode": 448
+    },
+    "/control": {
+      "device": 64770,
+      "inode": 9118639,
+      "uid": 0,
+      "gid": 0,
+      "mode": 448
+    },
+    "/results": {
+      "device": 64770,
+      "inode": 88350595,
+      "uid": 0,
+      "gid": 0,
+      "mode": 448
+    }
+  },
+  "limits": {
+    "cpu.max": "200000 100000",
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "512"
+  },
+  "selinux": "system_u:system_r:container_t:s0:c77,c284\u0000",
+  "namespaces": {
+    "pid": "pid:[4026532927]",
+    "net": "net:[4026532928]",
+    "ipc": "ipc:[4026532926]",
+    "mnt": "mnt:[4026533050]",
+    "uts": "uts:[4026532925]",
+    "user": "user:[4026532923]",
+    "cgroup": "cgroup:[4026533049]"
+  },
+  "source_head": "affaad6b1a31d680164d9e3d5ef5d2a9d3fce95a",
+  "manifest_sha256": "21fb6757bc0661df8d21dae21b10b0fa656e6469c7939f5cd42dc4b272090636"
+}

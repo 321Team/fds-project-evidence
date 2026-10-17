@@ -1,0 +1,26 @@
+PASS flow_client_apply 
+PASS flow_source_apply 
+PASS flow_two_source_apply 
+PASS flow_two_source_wrong_selected 
+PASS flow_two_source_extra_source 
+PASS flow_two_source_missing 
+PASS flow_two_source_none_selected 
+PASS flow_two_source_two_selected 
+PASS flow_source_wrong_selected_rejected 
+PASS flow_source_extra_source_rejected 
+PASS flow_source_missing_upstream_rejected 
+PASS flow_source_no_selected_rejected 
+PASS flow_source_multiple_selected_rejected 
+PASS flow_source_offset_rejected 
+PASS flow_client_check 
+PASS flow_source_check 
+PASS flow_restart_failure 
+PASS flow_wait_failure 
+PASS flow_verify_failure 
+PASS flow_noop_failure_preserves_installed_pair 
+PASS flow_new_invocation_failure_preserves_new_snapshot 
+PASS flow_client_targeted_manual_rollback 
+PASS flow_source_targeted_manual_rollback 
+PASS flow_same_pair_idempotent 
+PASS flow_check_rollback_preserves_pair 
+25/25 passed; /results/ntp-flow/RESULTS.json

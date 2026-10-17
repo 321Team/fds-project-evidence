@@ -1,0 +1,134 @@
+# 321Team infra-ansible
+
+`infra-ansible`은 321Team 온프레미스 인프라의 반복 가능한 구성과 사전 검증을 관리하는 Ansible 소스 저장소입니다. 호스트별 자격증명, 로컬 실행 증적, 편집기 설정 및 생성 결과는 저장소에서 제외합니다.
+
+## 현재 범위
+
+- Kubernetes 노드 공통 사전 구성 및 검증
+- 공통 OS 설정과 Kubernetes prerequisite 역할
+- Inventory와 그룹 변수 관리
+- SSH known-hosts 및 서비스 계정 authorized_keys 경로 관리
+- Kubernetes API Load Balancer Stage A 연결 검증
+- `CR-P1-ANS-01-01` Kubernetes 전체 Node DNS Resolver 전환
+- `CR-P1-NTP-01-01` control01 기반 내부 NTP 전환 — [진단·조건부 적용 통합 실행 및 지속 지침](docs/change/CR-P1-NTP-01-01-rollout.md)
+- `CR-P1-MON-01-01` Alertmanager egress용 Squid 프록시 서버 구성 (대상: `egress-proxy01` / DEC-P1-EGRESS-01, `inventory/hosts.yml`의 `egress_proxy` 그룹에 반영됨; Squid apply 자체는 client 허용목록 실측 확인 전까지 HOLD)
+
+## 저장소 구조
+
+| 경로 | 용도 |
+|---|---|
+| `ansible.cfg` | 저장소 공통 Ansible 설정 |
+| `inventory/hosts.yml` | 공통 관리 대상 호스트와 그룹 |
+| `inventory/lb-stageb.yml` | P1-LB-01 Stage B 전용 LB 보조 inventory; 공통 6노드 범위와 분리 |
+| `inventory/group_vars/all.yml` | 공통 변수, SSH 옵션 및 승인된 Resolver 목표값 |
+| `playbooks/precheck.yml` | 구축 전 사전 점검 |
+| `playbooks/site.yml` | 공통 구성 진입점 |
+| `playbooks/harden_svc_ansible_key.yml` | 서비스 계정 authorized_keys 관리 |
+| `playbooks/p1-lb-01-stage-a-nodes.yml` | API LB Stage A 노드 연결 검증 |
+| `playbooks/cr-p1-ans-01-01-*.yml` | DNS Resolver 사전점검·Batch 적용·검증·Rollback |
+| `playbooks/cr-p1-mon-01-01-*.yml` | Egress 프록시 사전점검·적용·검증·Rollback |
+| `roles/common/` | 공통 운영체제 설정 |
+| `roles/k8s_prereq/` | Kubernetes 사전 요구사항 설정 |
+| `roles/dns_resolver/` | NetworkManager 기반 Resolver 상태·검증·자동 실패복구 |
+| `roles/egress_proxy/` | Squid 기반 discord.com allowlist 프록시 구성·검증·Rollback |
+| `scripts/cr-p1-ans-01-01-run.sh` | 승인 Gate와 Evidence 수집 실행기 |
+| `scripts/cr-p1-mon-01-01-run.sh` | CR-P1-MON-01-01 승인 Gate와 Evidence 수집 실행기 |
+| `tools/ntp-rollout.py` | NTP 진단 → 조건부 적용 → 검증 → 증적 수집 단일 진입점 |
+| `docs/runbooks/CR-P1-ANS-01-01.md` | CR 실행 및 증적 Runbook |
+| `docs/runbooks/CR-P1-MON-01-01.md` | CR-P1-MON-01-01 실행 및 증적 Runbook |
+
+## 검증 기준 환경
+
+- Ansible Core 2.16 계열
+- 검증 기준 버전: `ansible-core 2.16.19`
+- 제어 노드: `ansible01`
+- 실행 계정: `server01_ansible`
+
+## 로컬 인증 설정
+
+Private Key 파일과 절대 경로는 저장소에 커밋하지 않습니다. 제어 노드에서 다음 로컬 환경 파일을 먼저 적용합니다.
+
+```bash
+source ~/.config/ansible/p1-ans-01.env
+```
+
+로컬 환경 파일은 저장소 외부에 보관하고 권한을 `600`으로 유지합니다. `ANSIBLE_PRIVATE_KEY_FILE`을 통해 키 경로를 제공합니다.
+
+### P1-LB-01 Stage B 보조 inventory
+
+`inventory/lb-stageb.yml`은 P1-LB-01 Stage B Runtime에서 필요한 `k8s-api-lb01` 단일 호스트 연결 정보만 제공합니다. 기존 `inventory/hosts.yml`의 Kubernetes 6노드/egress proxy 그룹에는 LB를 편입하지 않으며, 기존 playbook 대상 범위를 확대하지 않습니다.
+
+이 파일에는 Private Key/Token/Password를 저장하지 않습니다. 제어 노드 `ansible01`에서 기존 로컬 환경 파일을 적용해 `ANSIBLE_PRIVATE_KEY_FILE`을 제공하고, inventory에는 `server01_k8s-api-lb`, `10.1.93.109`, strict host-key 확인, `IdentitiesOnly=yes`, `RequestTTY=no`, `ansible_ssh_use_tty=false` 같은 비밀정보가 아닌 연결 제약만 둡니다. LB 일반계정은 PTY를 요구하지 않는 자동화 경로를 사용하며 서버의 SSH/PTY 정책은 변경하지 않습니다.
+
+독립 리뷰·병합 후 Runtime 접근 점검 시 예시는 다음과 같습니다.
+
+```bash
+source ~/.config/ansible/p1-ans-01.env
+test -n "${ANSIBLE_PRIVATE_KEY_FILE:-}"
+test -r "$ANSIBLE_PRIVATE_KEY_FILE"
+export ANSIBLE_PRIVATE_KEY_FILE
+ansible-inventory -i inventory/lb-stageb.yml --host k8s-api-lb01
+# infra-lb의 승인된 Stage B source에서:
+# python3 run_stageb.py --check-access \
+#   --lb-inventory "$HOME/p1-ans-01/inventory/lb-stageb.yml" \
+#   --lb-user server01_k8s-api-lb
+```
+
+`ANSIBLE_PRIVATE_KEY_FILE`은 저장소가 아니라 로컬 환경 파일에서 읽으며, `run_stageb.py`가 생성하는 `ansible-playbook` subprocess까지 전달되도록 위 절차에서 명시적으로 export합니다. 값이 없거나 읽을 수 없으면 접근 점검을 시작하지 않습니다.
+
+이 inventory의 승인·병합은 Runtime 실행 승인을 뜻하지 않습니다.
+
+## 변경 전 검증
+
+```bash
+source ~/.config/ansible/p1-ans-01.env
+ansible-config dump --only-changed
+ansible-inventory -i inventory/hosts.yml --graph
+ansible-playbook -i inventory/hosts.yml --syntax-check playbooks/precheck.yml
+ansible-playbook -i inventory/hosts.yml --syntax-check playbooks/site.yml
+ansible-playbook -i inventory/hosts.yml --check --diff playbooks/site.yml
+```
+
+`CR-P1-ANS-01-01`은 다음 Runbook을 먼저 검토합니다.
+
+```bash
+less docs/runbooks/CR-P1-ANS-01-01.md
+```
+
+Check Mode를 지원하지 않는 모듈은 별도 검토하며, 실제 적용은 승인된 변경 범위와 대상 호스트를 다시 확인한 뒤 수행합니다.
+
+## 보안 및 제외 정책
+
+다음 항목은 Git 추적 대상에서 제외합니다.
+
+- `.vscode/`: 개인 편집기 설정
+- `stage-a-output/`: 로컬 생성 결과
+- `docs/evidence/`: 원본 실행 증적과 환경별 기록
+- `*.retry`: Ansible 재시도 파일
+- Private Key, Token, Password 및 로컬 환경 파일
+
+`inventory/group_vars/all.yml`의 known-hosts 경로는 `%d/.ssh/known_hosts` 형식을 사용합니다. `/home/svc_ansible/.ssh/authorized_keys`는 관리 대상 서비스 계정의 authorized_keys 경로이며 Private Key 경로가 아닙니다.
+
+## 변경 관리 절차
+
+1. 티켓 번호를 포함한 작업 브랜치를 생성합니다.
+2. 변경 영향에 맞는 검증을 수행합니다. 자동화·Inventory 변경은 관련 Syntax Check 및 지원되는 Check Mode를 확인하고, 문서 변경은 내용·링크·근거를 확인합니다.
+3. 민감정보와 환경 종속 절대경로 포함 여부를 검사합니다.
+4. 코드·실행 설정·혼합 PR은 작성자 외 적격 검토자의 현재 HEAD 독립 리뷰 후 `infra-maintainers`가 책임 Lead 판단에 따라 병합합니다. 문서·증적만 변경하면 책임 Lead 검토로 판단합니다.
+5. 직접 `main` push·force push·자동 병합을 금지하고 작업 브랜치와 Pull Request 이력을 남깁니다. 실행·인수·종결은 책임 Lead가 AC와 실제 증적을 확인해 판단합니다.
+
+상세 기준은 [리뷰·Lead 정책](docs/REVIEW_POLICY.md)을 따릅니다. `fds-project-evidence`의 모든 PR은 독립 리뷰를 유지합니다. CR 승인 식별자, 대상·복구·보안 및 실제 검증 조건은 그대로 유지합니다.
+
+## 팀 접근 모델
+
+| 팀 | 저장소 역할 | 책임 |
+|---|---|---|
+| `infra-maintainers` | Maintain | 저장소 운영, 변경관리, 릴리스 및 접근권한 검토 |
+| `infra-reviewers` | Triage | Issue, Pull Request, 보안 및 변경 영향 검토 |
+| `infra-contributors` | Write | 승인된 자동화 구현과 Pull Request 제출 |
+
+증적 원본은 저장소 외부의 통제된 경로에 보관하며, 저장소에는 검토 완료된 소스와 운영 문서만 반영합니다.
+
+## Phase 1 전체 자원 안전 종료
+
+[17대 VM의 팀 종료·교육장 보관 절차](docs/PHASE1_SAFE_SHUTDOWN.md)는 별도 측정 입력과 고정 순서로 동작합니다. `tools/phase1-shutdown.py plan`은 서버에 접속하지 않고, `preflight`는 읽기 점검만 수행합니다. 실제 `execute`는 회차·digest를 명시해야 하며, Windows에서 정상 Powered Off를 확인한 뒤에만 다음 대상에 진행합니다. 관리 VM 두 대는 중앙 증적 회수 후 `tools/phase1-workstation.py finalize`에서 마지막으로 종료합니다. 예제 입력의 빈 신원값은 실행이 거부됩니다. 코드 작성/모의시험과 실제 종료·보관·복원 검증을 구분합니다.

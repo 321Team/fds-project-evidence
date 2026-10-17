@@ -1,0 +1,22 @@
+{
+  "case": "syntax-precheck",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "--syntax-check",
+    "-i",
+    "localhost,",
+    "/supply/source/playbooks/cr-p1-mon-01-01-precheck.yml"
+  ],
+  "expected_rc": 0,
+  "started_at_utc": "2026-10-16T08:09:38.806921+00:00",
+  "actual_rc": 0,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 138,
+  "sha256": "fef43dfeee37fa8d7797e3ba877173205440bf252c5644c89cff7550defbdbd4",
+  "ended_at_utc": "2026-10-16T08:09:39.371897+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

@@ -1,0 +1,1580 @@
+[
+  {
+    "suite": "mon-2.16.19",
+    "engine": "2.16.19",
+    "result_file": "results/mon-2.16.19/RESULTS.json",
+    "result_sha256": "62576ca3e2fa65259ebfeeb183f150c3e914085b12ce20a5edd48157634b33cf",
+    "expected_cases": 45,
+    "passed_cases": 45,
+    "suite_rc": 0,
+    "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime",
+    "cases": [
+      {
+        "case": "syntax-precheck",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "syntax-apply",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "syntax-verify",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "syntax-rollback",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "bash-syntax",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "one-proxy",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "changed-proxy",
+        "expected_rc": 1,
+        "actual_rc": 1,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "localhost-only",
+        "expected_rc": 1,
+        "actual_rc": 1,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "wrong-target",
+        "expected_rc": 1,
+        "actual_rc": 1,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "extra-target",
+        "expected_rc": 1,
+        "actual_rc": 1,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "localhost-cli-preflight",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "orphan-refused-before-copy",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "orphan-bytes-preserved",
+        "passed": true
+      },
+      {
+        "case": "copy-defence-preserves-existing",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "copy-defence-bytes-preserved",
+        "passed": true
+      },
+      {
+        "case": "fresh-baseline-can-backup",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "fresh-backup-bytes-match",
+        "passed": true
+      },
+      {
+        "case": "baseline-complete",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-missing-rule-history",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-firewalld_permanent_rules_before",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-firewalld_runtime_rules_before",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-squid_preinstalled",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-proxy_port",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-proxy_allowed_clients",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-squid_conf_mode",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-inventory_hostname",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-regular",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-missing",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-symlink",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-directory",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-originally-absent",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-unexpected",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-regular",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-missing",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-symlink",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-directory",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-originally-absent",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-unexpected",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "original-kept",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "original-lost",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "unrelated-added",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "invalidation-before-first-rollback-change",
+        "passed": true
+      },
+      {
+        "case": "invalidate-before-interruption",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "interrupted-rollback-has-no-stale-marker",
+        "passed": true
+      },
+      {
+        "case": "reapply-selects-reload-after-interruption",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      }
+    ]
+  },
+  {
+    "suite": "mon-2.21.3",
+    "engine": "2.21.3",
+    "result_file": "results/mon-2.21.3/RESULTS.json",
+    "result_sha256": "62576ca3e2fa65259ebfeeb183f150c3e914085b12ce20a5edd48157634b33cf",
+    "expected_cases": 45,
+    "passed_cases": 45,
+    "suite_rc": 0,
+    "scope": "localhost CLI/task tests and interruption model; no Squid/firewalld/SSH runtime",
+    "cases": [
+      {
+        "case": "syntax-precheck",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "syntax-apply",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "syntax-verify",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "syntax-rollback",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "bash-syntax",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "one-proxy",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "changed-proxy",
+        "expected_rc": 1,
+        "actual_rc": 1,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "localhost-only",
+        "expected_rc": 1,
+        "actual_rc": 1,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "wrong-target",
+        "expected_rc": 1,
+        "actual_rc": 1,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "extra-target",
+        "expected_rc": 1,
+        "actual_rc": 1,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "localhost-cli-preflight",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "orphan-refused-before-copy",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "orphan-bytes-preserved",
+        "passed": true
+      },
+      {
+        "case": "copy-defence-preserves-existing",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "copy-defence-bytes-preserved",
+        "passed": true
+      },
+      {
+        "case": "fresh-baseline-can-backup",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "fresh-backup-bytes-match",
+        "passed": true
+      },
+      {
+        "case": "baseline-complete",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-missing-rule-history",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-firewalld_permanent_rules_before",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-firewalld_runtime_rules_before",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-squid_preinstalled",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-proxy_port",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-proxy_allowed_clients",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-squid_conf_mode",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "baseline-invalid-inventory_hostname",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-regular",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-missing",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-symlink",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-directory",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-originally-absent",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-apply-unexpected",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-regular",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-missing",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-symlink",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-directory",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-originally-absent",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "backup-rollback-unexpected",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "original-kept",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "original-lost",
+        "expected_rc": 2,
+        "actual_rc": 2,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "unrelated-added",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "invalidation-before-first-rollback-change",
+        "passed": true
+      },
+      {
+        "case": "invalidate-before-interruption",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      },
+      {
+        "case": "interrupted-rollback-has-no-stale-marker",
+        "passed": true
+      },
+      {
+        "case": "reapply-selects-reload-after-interruption",
+        "expected_rc": 0,
+        "actual_rc": 0,
+        "passed": true,
+        "command_status": "RETURNED",
+        "evidence_errors": []
+      }
+    ]
+  },
+  {
+    "suite": "ntp-legacy",
+    "engine": "2.21.3",
+    "result_file": "results/ntp-legacy/RESULTS.json",
+    "result_sha256": "e439212ba76474a9ce6a225f5532eef9168ba1b83779f75baa1d7ede0ba59d61",
+    "expected_cases": 48,
+    "passed_cases": 48,
+    "suite_rc": 0,
+    "scope": "LOCAL/MOCK; host commands and chronyd parser replaced; no runtime acceptance",
+    "cases": [
+      {
+        "name": "dry_run_drift",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "apply_new_delayed_sync",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 1,
+        "polls": 3,
+        "failure_tasks": []
+      },
+      {
+        "name": "apply_existing_delayed_sync",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 1,
+        "polls": 3,
+        "failure_tasks": []
+      },
+      {
+        "name": "source_apply",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 1,
+        "polls": 3,
+        "failure_tasks": []
+      },
+      {
+        "name": "second_real_apply_idempotent",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 1,
+        "polls": 3,
+        "failure_tasks": []
+      },
+      {
+        "name": "manual_rollback_absent_baseline",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 2,
+        "polls": 3,
+        "failure_tasks": []
+      },
+      {
+        "name": "manual_rollback_existing_baseline",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 2,
+        "polls": 3,
+        "failure_tasks": []
+      },
+      {
+        "name": "no_op_apply",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "idempotency_pass",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "idempotency_reject_drift",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Require zero predicted changes during the idempotency check",
+          "TASK [ntp_source : Stop the serial batch after failed apply or check"
+        ]
+      },
+      {
+        "name": "wait_failure_remove_new",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 2,
+        "polls": 30,
+        "failure_tasks": [
+          "TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation",
+          "TASK [ntp_source : Stop the serial batch after failed apply or check"
+        ]
+      },
+      {
+        "name": "wait_failure_restore_existing",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 2,
+        "polls": 30,
+        "failure_tasks": [
+          "TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation",
+          "TASK [ntp_source : Stop the serial batch after failed apply or check"
+        ]
+      },
+      {
+        "name": "restart_failure_restore",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 2,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Restart chronyd",
+          "TASK [ntp_source : Stop the serial batch after failed apply or check"
+        ]
+      },
+      {
+        "name": "rollback_service_failure",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 2,
+        "polls": 30,
+        "failure_tasks": [
+          "TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation",
+          "TASK [ntp_source : Restart chronyd after restoring the original drop-in"
+        ]
+      },
+      {
+        "name": "postverify_failure_restore",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 2,
+        "polls": 3,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert current system correction and last offset meet the threshold",
+          "TASK [ntp_source : Stop the serial batch after failed apply or check"
+        ]
+      },
+      {
+        "name": "no_op_failure_no_restore",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert current system correction and last offset meet the threshold",
+          "TASK [ntp_source : Stop the serial batch after failed apply or check"
+        ]
+      },
+      {
+        "name": "stale_baseline_no_mutation",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Validate restore state identity and schema before any mutation"
+        ]
+      },
+      {
+        "name": "invalid_template_no_mutation",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Render the managed NTP drop-in including check-mode diff",
+          "TASK [ntp_source : Stop the serial batch after failed apply or check"
+        ]
+      },
+      {
+        "name": "layout_confdir",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "layout_include",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "layout_case_and_space",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "layout_hash_comment",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+        ]
+      },
+      {
+        "name": "layout_bang_comment",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+        ]
+      },
+      {
+        "name": "layout_semicolon_comment",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+        ]
+      },
+      {
+        "name": "layout_percent_comment",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+        ]
+      },
+      {
+        "name": "layout_unhandled_layout",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+        ]
+      },
+      {
+        "name": "layout_active_pool",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Stop on unhandled competing sources for client nodes"
+        ]
+      },
+      {
+        "name": "layout_active_peer",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Stop on unhandled competing sources for client nodes"
+        ]
+      },
+      {
+        "name": "layout_active_sourcedir",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Stop on unhandled competing sources for client nodes"
+        ]
+      },
+      {
+        "name": "layout_commented_competitors",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "verify_valid_with_header_separator",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "verify_boundary",
+        "passed": true,
+        "errors": [],
+        "rc": 0,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": []
+      },
+      {
+        "name": "verify_over_boundary",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert current system correction and last offset meet the threshold"
+        ]
+      },
+      {
+        "name": "verify_500ms",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert current system correction and last offset meet the threshold"
+        ]
+      },
+      {
+        "name": "verify_negative_500ms",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert current system correction and last offset meet the threshold"
+        ]
+      },
+      {
+        "name": "verify_missing",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert tracking fields were found"
+        ]
+      },
+      {
+        "name": "verify_duplicate",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert tracking fields were found"
+        ]
+      },
+      {
+        "name": "verify_nan",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert tracking fields were found"
+        ]
+      },
+      {
+        "name": "verify_inf",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert tracking fields were found"
+        ]
+      },
+      {
+        "name": "verify_overflow",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Reject non-finite tracking numbers"
+        ]
+      },
+      {
+        "name": "verify_malformed",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert tracking fields were found"
+        ]
+      },
+      {
+        "name": "verify_bad_last",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert tracking fields were found"
+        ]
+      },
+      {
+        "name": "verify_last_over_threshold",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert current system correction and last offset meet the threshold"
+        ]
+      },
+      {
+        "name": "verify_unsynced",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert leap status is Normal"
+        ]
+      },
+      {
+        "name": "verify_wrong_source",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert the approved source is selected on client nodes"
+        ]
+      },
+      {
+        "name": "verify_regex_impostor",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert the approved source is selected on client nodes"
+        ]
+      },
+      {
+        "name": "verify_two_sources",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert no other source is configured on client nodes"
+        ]
+      },
+      {
+        "name": "verify_unresolved_extra_source",
+        "passed": true,
+        "errors": [],
+        "rc": 2,
+        "restarts": 0,
+        "polls": null,
+        "failure_tasks": [
+          "TASK [ntp_source : Assert no other source is configured on client nodes"
+        ]
+      }
+    ]
+  },
+  {
+    "suite": "ntp-flow",
+    "engine": "2.21.3",
+    "result_file": "results/ntp-flow/RESULTS.json",
+    "result_sha256": "ed90196a7990beb319dcb9b3ab5dad8a2ea4a3761a6b1aa0f39068b90a76803d",
+    "expected_cases": 25,
+    "passed_cases": 25,
+    "suite_rc": 0,
+    "scope": "LOCAL: real file transactions and chronyd -p parsing; service/chronyc observations mocked; ownership lstat mocked when uid namespace forbids chown; no host runtime acceptance",
+    "cases": [
+      {
+        "name": "flow_client_apply",
+        "passed": true,
+        "rc": 0,
+        "restarts": 1
+      },
+      {
+        "name": "flow_source_apply",
+        "passed": true,
+        "rc": 0,
+        "restarts": 1
+      },
+      {
+        "name": "flow_two_source_apply",
+        "passed": true,
+        "rc": 0,
+        "restarts": 1
+      },
+      {
+        "name": "flow_two_source_wrong_selected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_two_source_extra_source",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_two_source_missing",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_two_source_none_selected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_two_source_two_selected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_source_wrong_selected_rejected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_source_extra_source_rejected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_source_missing_upstream_rejected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_source_no_selected_rejected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_source_multiple_selected_rejected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_source_offset_rejected",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_client_check",
+        "passed": true,
+        "rc": 0,
+        "restarts": 0
+      },
+      {
+        "name": "flow_source_check",
+        "passed": true,
+        "rc": 0,
+        "restarts": 0
+      },
+      {
+        "name": "flow_restart_failure",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_wait_failure",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_verify_failure",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_noop_failure_preserves_installed_pair",
+        "passed": true,
+        "rc": 2,
+        "restarts": 0
+      },
+      {
+        "name": "flow_new_invocation_failure_preserves_new_snapshot",
+        "passed": true,
+        "rc": 2,
+        "restarts": 2
+      },
+      {
+        "name": "flow_client_targeted_manual_rollback",
+        "passed": true,
+        "rc": 0,
+        "restarts": 1
+      },
+      {
+        "name": "flow_source_targeted_manual_rollback",
+        "passed": true,
+        "rc": 0,
+        "restarts": 1
+      },
+      {
+        "name": "flow_same_pair_idempotent",
+        "passed": true,
+        "rc": 0,
+        "restarts": 0
+      },
+      {
+        "name": "flow_check_rollback_preserves_pair",
+        "passed": true,
+        "rc": 0,
+        "restarts": 1
+      }
+    ]
+  },
+  {
+    "suite": "ntp-serial",
+    "engine": "2.21.3",
+    "result_file": "results/ntp-serial/RESULT.json",
+    "result_sha256": "2b9bc74c4278de3618046e67c8de666b2645c20e243038515708e6f082e36ebe",
+    "expected_cases": 1,
+    "passed_cases": 1,
+    "suite_rc": 0,
+    "scope": "LOCAL Ansible/files/parser; service and chronyc mocked; no host/network acceptance",
+    "cases": [
+      {
+        "name": "five_clients_third_failure_restores_and_stops",
+        "passed": true,
+        "scope": "LOCAL Ansible/files/parser; service and chronyc mocked; no host/network acceptance",
+        "rc": 2,
+        "hosts": {
+          "k8s-control02": {
+            "restarts": 1,
+            "observed_commands": 8,
+            "pair_matches_before": false,
+            "baseline": true
+          },
+          "k8s-control03": {
+            "restarts": 1,
+            "observed_commands": 8,
+            "pair_matches_before": false,
+            "baseline": true
+          },
+          "k8s-worker01": {
+            "restarts": 2,
+            "observed_commands": 5,
+            "pair_matches_before": true,
+            "baseline": true
+          },
+          "k8s-worker02": {
+            "restarts": 0,
+            "observed_commands": 0,
+            "pair_matches_before": true,
+            "baseline": false
+          },
+          "k8s-worker03": {
+            "restarts": 0,
+            "observed_commands": 0,
+            "pair_matches_before": true,
+            "baseline": false
+          }
+        },
+        "playbook_source_sha256": "352cf440c54c67e8335c2b4fad11427a1f8ad49002748ecb65727cd3103f5876",
+        "migration_module_sha256": "2e1ea06aebf856f42b950242e1cc913b4eda30173ebf19f0dd157f0181d24983"
+      }
+    ]
+  },
+  {
+    "suite": "ntp-transport",
+    "engine": "2.21.3",
+    "result_file": "results/ntp-transport/RESULTS.json",
+    "result_sha256": "dd79ba06f4b5759453bed8b19546f776ced63bc2d988f370d4e7d11275a4b155",
+    "expected_cases": 2,
+    "passed_cases": 2,
+    "suite_rc": 0,
+    "scope": "Actual Ansible module_utils transport and unsupported-provider early guards.\n\nRun locally only. Invalid provider inputs must fail before any managed-host\nobservation or transaction; no SSH, NTP packet, daemon or clock change occurs.\n",
+    "cases": [
+      {
+        "module": "fds_ntp_probe",
+        "passed": true
+      },
+      {
+        "module": "fds_ntp_migration",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "suite": "ntp-wrapper",
+    "engine": "2.21.3",
+    "result_file": "results/ntp-wrapper/RESULTS.json",
+    "result_sha256": "d05dca9077d8fece957a369c52edde08b27db3c5e25c3b5f0bccd74daf5c26b7",
+    "expected_cases": 19,
+    "passed_cases": 19,
+    "suite_rc": 0,
+    "scope": "LOCAL/MOCK wrapper only; no managed host execution",
+    "cases": [
+      {
+        "name": "bash_syntax",
+        "passed": true
+      },
+      {
+        "name": "executable_bit",
+        "passed": true
+      },
+      {
+        "name": "source_sequence",
+        "passed": true,
+        "errors": [],
+        "rc": 0
+      },
+      {
+        "name": "clients_sequence",
+        "passed": true,
+        "errors": [],
+        "rc": 0
+      },
+      {
+        "name": "check_stops_apply",
+        "passed": true,
+        "errors": [],
+        "rc": 2
+      },
+      {
+        "name": "apply_stops_idempotency",
+        "passed": true,
+        "errors": [],
+        "rc": 2
+      },
+      {
+        "name": "idempotency_failure_propagated",
+        "passed": true,
+        "errors": [],
+        "rc": 2
+      },
+      {
+        "name": "approval_still_required",
+        "passed": true,
+        "errors": [],
+        "rc": 1
+      },
+      {
+        "name": "migration_source_sequence",
+        "passed": true,
+        "errors": [],
+        "rc": 0
+      },
+      {
+        "name": "source_check_failure_stops_apply",
+        "passed": true,
+        "errors": [],
+        "rc": 2
+      },
+      {
+        "name": "source_apply_failure_stops_idempotency",
+        "passed": true,
+        "errors": [],
+        "rc": 2
+      },
+      {
+        "name": "source_idempotency_failure_propagated",
+        "passed": true,
+        "errors": [],
+        "rc": 2
+      },
+      {
+        "name": "migration_clients_sequence",
+        "passed": true,
+        "errors": [],
+        "rc": 0
+      },
+      {
+        "name": "migration_precheck",
+        "passed": true,
+        "errors": [],
+        "rc": 0
+      },
+      {
+        "name": "migration_verify",
+        "passed": true,
+        "errors": [],
+        "rc": 0
+      },
+      {
+        "name": "migration_rollback",
+        "passed": true,
+        "errors": [],
+        "rc": 0
+      },
+      {
+        "name": "migration_not_approval",
+        "passed": true,
+        "errors": [],
+        "rc": 1
+      },
+      {
+        "name": "invalid_migration_mode",
+        "passed": true,
+        "errors": [],
+        "rc": 64
+      },
+      {
+        "name": "explicit_legacy_mode",
+        "passed": true,
+        "errors": [],
+        "rc": 0
+      }
+    ]
+  }
+]

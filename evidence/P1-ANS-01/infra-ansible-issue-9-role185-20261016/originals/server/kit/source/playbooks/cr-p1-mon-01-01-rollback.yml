@@ -1,0 +1,309 @@
+---
+- name: CR-P1-MON-01-01 guard against an empty egress_proxy target group
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Fail loudly instead of a silent no-op when no target host is selected
+      ansible.builtin.assert:
+        that:
+          - groups['egress_proxy'] | default([]) | length > 0
+        fail_msg: >-
+          NOT RUN: the egress_proxy inventory group is empty. Select the
+          target host(s) in inventory/hosts.yml before running rollback; an
+          empty-group exit code 0 must not be treated as rollback evidence.
+
+- name: CR-P1-MON-01-01 rollback egress proxy configuration
+  hosts: egress_proxy
+  gather_facts: true
+  become: true
+  serial: 1
+  any_errors_fatal: true
+
+  pre_tasks:
+    - name: Verify this host matches its declared inventory identity
+      ansible.builtin.assert:
+        that:
+          - ansible_facts['hostname'] == expected_hostname
+        fail_msg: >-
+          Baseline mismatch on {{ inventory_hostname }}: expected hostname
+          {{ expected_hostname }}, actual {{ ansible_facts['hostname'] }}. Refusing
+          to roll back {{ cr_mon_change_id }} against a host that does not
+          match its declared inventory identity.
+
+    - name: Validate rollback approval token
+      ansible.builtin.assert:
+        that:
+          - cr_mon_rollback_approved | default('') == cr_mon_change_id
+        fail_msg: >-
+          Set cr_mon_rollback_approved={{ cr_mon_change_id }} for an approved
+          rollback run.
+
+    - name: Read preserved original squid presence state
+      ansible.builtin.slurp:
+        src: "{{ cr_mon_state_dir }}/original-state.json"
+      register: cr_mon_original_state_file
+
+    - name: Decode preserved original squid presence state
+      ansible.builtin.set_fact:
+        cr_mon_original_state: >-
+          {{ cr_mon_original_state_file.content | b64decode | from_json }}
+
+    - name: Inspect the original configuration backup before rollback
+      ansible.builtin.stat:
+        path: "{{ cr_mon_state_dir }}/original-squid.conf"
+        follow: false
+      register: cr_mon_original_backup
+
+    - name: Validate the complete baseline before rollback changes
+      ansible.builtin.include_tasks: ../roles/egress_proxy/tasks/validate-baseline.yml
+      vars:
+        cr_mon_baseline: "{{ cr_mon_original_state }}"
+        cr_mon_backup_stat: "{{ cr_mon_original_backup.stat }}"
+
+  tasks:
+    # Invalidate before the first rollback mutation. Any failure/interruption
+    # must leave no success marker from the managed configuration.
+    - name: Invalidate managed configuration marker before rollback changes
+      ansible.builtin.file:
+        path: "{{ cr_mon_state_dir }}/active-config.sha1"
+        state: absent
+      when: not ansible_check_mode
+
+    - name: Check whether a squid unit currently exists on this host
+      ansible.builtin.command:
+        argv:
+          - systemctl
+          - show
+          - --property=LoadState
+          - --value
+          - squid.service
+      register: cr_mon_squid_unit_state
+      changed_when: false
+      check_mode: false
+      failed_when: false
+
+    - name: Stop and disable squid when it was not present before this change
+      ansible.builtin.service:
+        name: squid
+        state: stopped
+        enabled: false
+      when:
+        - not cr_mon_original_state.squid_preinstalled
+        - not (cr_mon_squid_unit_state.rc == 0 and (cr_mon_squid_unit_state.stdout | trim) == 'not-found')
+
+    - name: Restore original squid configuration when it existed before this change
+      ansible.builtin.copy:
+        remote_src: true
+        src: "{{ cr_mon_state_dir }}/original-squid.conf"
+        dest: /etc/squid/squid.conf
+        owner: "{{ cr_mon_original_state.squid_conf_owner }}"
+        group: "{{ cr_mon_original_state.squid_conf_group }}"
+        mode: "{{ cr_mon_original_state.squid_conf_mode }}"
+      when: cr_mon_original_state.squid_conf_preexisted
+
+    - name: Remove the configuration this change created when none existed before
+      ansible.builtin.file:
+        path: /etc/squid/squid.conf
+        state: absent
+      when: not cr_mon_original_state.squid_conf_preexisted
+
+    - name: Restore squid to its exact pre-change active/enabled state
+      ansible.builtin.service:
+        name: squid
+        state: >-
+          {{ 'started' if cr_mon_original_state.squid_service_active_state == 'active'
+             else 'stopped' }}
+        enabled: >-
+          {{ cr_mon_original_state.squid_service_enabled_state
+             in ['enabled', 'enabled-runtime', 'static'] }}
+      register: cr_mon_squid_restore_service
+      when: cr_mon_original_state.squid_preinstalled
+
+    - name: Reload the restored configuration into an already-running squid
+      ansible.builtin.service:
+        name: squid
+        state: reloaded
+      when:
+        - cr_mon_original_state.squid_preinstalled
+        - cr_mon_original_state.squid_conf_preexisted
+        - cr_mon_original_state.squid_service_active_state == 'active'
+
+    - name: Read post-rollback squid service state for verification
+      ansible.builtin.command:
+        argv:
+          - systemctl
+          - show
+          - --property=LoadState
+          - --property=ActiveState
+          - --value
+          - squid.service
+      register: cr_mon_squid_service_after
+      changed_when: false
+      check_mode: false
+      when: cr_mon_original_state.squid_preinstalled
+
+    - name: Read post-rollback squid enabled state for verification
+      ansible.builtin.command:
+        argv:
+          - systemctl
+          - is-enabled
+          - squid.service
+      register: cr_mon_squid_enabled_after
+      changed_when: false
+      check_mode: false
+      failed_when: false
+      when: cr_mon_original_state.squid_preinstalled
+
+    - name: Verify squid's service state was actually restored, not just requested
+      ansible.builtin.assert:
+        that:
+          - cr_mon_squid_service_after.stdout_lines[1] == cr_mon_original_state.squid_service_active_state
+          - (cr_mon_squid_enabled_after.stdout | trim) == cr_mon_original_state.squid_service_enabled_state
+        fail_msg: >-
+          Rollback verification failed on {{ inventory_hostname }}: squid's
+          post-rollback ActiveState/enabled state
+          ({{ cr_mon_squid_service_after.stdout_lines[1] | default('n/a') }} /
+          {{ cr_mon_squid_enabled_after.stdout | default('n/a') | trim }}) does
+          not match the recorded pre-change baseline
+          ({{ cr_mon_original_state.squid_service_active_state }} /
+          {{ cr_mon_original_state.squid_service_enabled_state }}).
+      when: cr_mon_original_state.squid_preinstalled
+
+    - name: Read post-rollback squid.conf presence for verification
+      ansible.builtin.stat:
+        path: /etc/squid/squid.conf
+      register: cr_mon_squid_conf_after
+
+    - name: Verify squid.conf ended up in the expected post-rollback state
+      ansible.builtin.assert:
+        that:
+          - >-
+            (cr_mon_original_state.squid_conf_preexisted and cr_mon_squid_conf_after.stat.exists)
+            or (not cr_mon_original_state.squid_conf_preexisted and not cr_mon_squid_conf_after.stat.exists)
+        fail_msg: >-
+          Rollback verification failed on {{ inventory_hostname }}: squid.conf
+          {{ 'is missing but should have been restored' if cr_mon_original_state.squid_conf_preexisted
+             else 'still exists but should have been removed' }}
+          (squid_conf_preexisted={{ cr_mon_original_state.squid_conf_preexisted }}).
+
+    - name: Remove only the firewalld rich rules this change introduced (permanent)
+      ansible.builtin.command:
+        argv:
+          - firewall-cmd
+          - --permanent
+          - --zone={{ cr_mon_original_state.firewalld_default_zone }}
+          - --remove-rich-rule=rule family="ipv4" source
+            address="{{ item }}" port port="{{ cr_mon_original_state.proxy_port }}"
+            protocol="tcp" accept
+      loop: "{{ cr_mon_original_state.proxy_allowed_clients }}"
+      vars:
+        cr_mon_rollback_rule_string: >-
+          rule family="ipv4" source address="{{ item }}" port port="{{ cr_mon_original_state.proxy_port }}" protocol="tcp" accept
+      register: cr_mon_firewalld_remove_permanent
+      when: >-
+        cr_mon_rollback_rule_string
+        not in (cr_mon_original_state.firewalld_permanent_rules_before)
+      failed_when: >-
+        cr_mon_firewalld_remove_permanent.rc != 0
+        and 'NOT_ENABLED' not in (cr_mon_firewalld_remove_permanent.stderr | default(''))
+        and 'NOT_ENABLED' not in (cr_mon_firewalld_remove_permanent.stdout | default(''))
+      changed_when: true
+
+    - name: Remove only the firewalld rich rules this change introduced (runtime, no reload)
+      ansible.builtin.command:
+        argv:
+          - firewall-cmd
+          - --zone={{ cr_mon_original_state.firewalld_default_zone }}
+          - --remove-rich-rule=rule family="ipv4" source
+            address="{{ item }}" port port="{{ cr_mon_original_state.proxy_port }}"
+            protocol="tcp" accept
+      loop: "{{ cr_mon_original_state.proxy_allowed_clients }}"
+      vars:
+        cr_mon_rollback_rule_string: >-
+          rule family="ipv4" source address="{{ item }}" port port="{{ cr_mon_original_state.proxy_port }}" protocol="tcp" accept
+      register: cr_mon_firewalld_remove_runtime
+      when: >-
+        cr_mon_rollback_rule_string
+        not in (cr_mon_original_state.firewalld_runtime_rules_before)
+      failed_when: >-
+        cr_mon_firewalld_remove_runtime.rc != 0
+        and 'NOT_ENABLED' not in (cr_mon_firewalld_remove_runtime.stderr | default(''))
+        and 'NOT_ENABLED' not in (cr_mon_firewalld_remove_runtime.stdout | default(''))
+      changed_when: true
+
+    - name: Read post-rollback permanent firewalld rich rules for verification
+      ansible.builtin.command:
+        argv:
+          - firewall-cmd
+          - --permanent
+          - --zone={{ cr_mon_original_state.firewalld_default_zone }}
+          - --list-rich-rules
+      register: cr_mon_firewalld_permanent_rules_after
+      changed_when: false
+      check_mode: false
+
+    - name: Read post-rollback runtime firewalld rich rules for verification
+      ansible.builtin.command:
+        argv:
+          - firewall-cmd
+          - --zone={{ cr_mon_original_state.firewalld_default_zone }}
+          - --list-rich-rules
+      register: cr_mon_firewalld_runtime_rules_after
+      changed_when: false
+      check_mode: false
+
+    - name: Verify no permanent rich rule this change added is still present
+      vars:
+        cr_mon_rollback_rule_string: >-
+          rule family="ipv4" source address="{{ item }}" port port="{{ cr_mon_original_state.proxy_port }}" protocol="tcp" accept
+      ansible.builtin.assert:
+        that:
+          - >-
+            cr_mon_rollback_rule_string in (cr_mon_original_state.firewalld_permanent_rules_before)
+            or cr_mon_rollback_rule_string not in (cr_mon_firewalld_permanent_rules_after.stdout_lines | default([]))
+        fail_msg: >-
+          Rollback verification failed on {{ inventory_hostname }}: the
+          permanent rich rule for {{ item }}:{{ cr_mon_original_state.proxy_port }}
+          that {{ cr_mon_change_id }} added is still present in zone
+          {{ cr_mon_original_state.firewalld_default_zone }} after rollback.
+      loop: "{{ cr_mon_original_state.proxy_allowed_clients }}"
+
+    - name: Verify no runtime rich rule this change added is still present
+      vars:
+        cr_mon_rollback_rule_string: >-
+          rule family="ipv4" source address="{{ item }}" port port="{{ cr_mon_original_state.proxy_port }}" protocol="tcp" accept
+      ansible.builtin.assert:
+        that:
+          - >-
+            cr_mon_rollback_rule_string in (cr_mon_original_state.firewalld_runtime_rules_before)
+            or cr_mon_rollback_rule_string not in (cr_mon_firewalld_runtime_rules_after.stdout_lines | default([]))
+        fail_msg: >-
+          Rollback verification failed on {{ inventory_hostname }}: the
+          runtime rich rule for {{ item }}:{{ cr_mon_original_state.proxy_port }}
+          that {{ cr_mon_change_id }} added is still present in zone
+          {{ cr_mon_original_state.firewalld_default_zone }} after rollback.
+      loop: "{{ cr_mon_original_state.proxy_allowed_clients }}"
+
+    - name: Verify every original firewall rule is still present
+      ansible.builtin.assert:
+        that:
+          - cr_mon_original_state.firewalld_permanent_rules_before | difference(cr_mon_firewalld_permanent_rules_after.stdout_lines) | length == 0
+          - cr_mon_original_state.firewalld_runtime_rules_before | difference(cr_mon_firewalld_runtime_rules_after.stdout_lines) | length == 0
+        fail_msg: Rollback lost an original firewall rule; do not report ROLLED_BACK.
+
+    - name: Print rollback verdict
+      ansible.builtin.debug:
+        msg:
+          change_id: "{{ cr_mon_change_id }}"
+          host: "{{ inventory_hostname }}"
+          squid_preinstalled: "{{ cr_mon_original_state.squid_preinstalled }}"
+          verified_active_state: >-
+            {{ cr_mon_squid_service_after.stdout_lines[1] if cr_mon_original_state.squid_preinstalled else 'n/a (stopped/disabled)' }}
+          verified_enabled_state: >-
+            {{ (cr_mon_squid_enabled_after.stdout | trim) if cr_mon_original_state.squid_preinstalled else 'n/a (stopped/disabled)' }}
+          squid_conf_verified: true
+          firewalld_zone: "{{ cr_mon_original_state.firewalld_default_zone }}"
+          firewalld_rules_verified: true
+          proxy_state: ROLLED_BACK

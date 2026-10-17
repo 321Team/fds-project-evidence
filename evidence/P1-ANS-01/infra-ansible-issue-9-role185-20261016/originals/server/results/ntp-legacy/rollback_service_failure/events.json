@@ -1,0 +1,88 @@
+{
+  "events": [
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "rpm",
+          "-q",
+          "chrony"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "systemctl",
+          "show",
+          "--property=LoadState",
+          "--property=ActiveState",
+          "--value",
+          "chronyd.service"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "chronyc",
+          "tracking"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "chronyc",
+          "-n",
+          "sources",
+          "-a"
+        ]
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "chronyd",
+          "-p",
+          "-f",
+          "/etc/chrony.conf"
+        ]
+      }
+    },
+    {
+      "kind": "systemd",
+      "options": {
+        "name": "chronyd",
+        "state": "restarted"
+      }
+    },
+    {
+      "kind": "command",
+      "options": {
+        "argv": [
+          "chronyc",
+          "waitsync",
+          "30",
+          "0.1",
+          "0",
+          "10"
+        ]
+      }
+    },
+    {
+      "kind": "systemd",
+      "options": {
+        "name": "chronyd",
+        "state": "restarted"
+      }
+    }
+  ],
+  "restarts": 2,
+  "synced": false,
+  "polls": 30
+}

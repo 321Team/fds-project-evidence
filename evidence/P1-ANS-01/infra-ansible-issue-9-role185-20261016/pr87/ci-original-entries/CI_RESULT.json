@@ -1,0 +1,510 @@
+{
+  "archive_sha256": "57141abf46eb440ba696b930df8259a54fa125b4b6976dd6fda09998e9347ba4",
+  "finished_at": "2026-10-16T14:31:47.555405+00:00",
+  "fixtures": {
+    "archive_sha256": "57141abf46eb440ba696b930df8259a54fa125b4b6976dd6fda09998e9347ba4",
+    "created_at": "2026-10-16T14:23:46.180877+00:00",
+    "finished_at": "2026-10-16T14:31:47.489957+00:00",
+    "original_readonly_result": "NOT_RUN; no operational inventory or SSH execution in this kit run",
+    "platform": "Linux-6.12.0-275.el10.x86_64-x86_64-with-glibc2.36",
+    "python": "3.12.14 (main, Aug 25 2026, 03:41:50) [GCC 12.2.0]",
+    "schema_version": 1,
+    "scope": "fixture_local_only",
+    "source_commit": "625731f3d45c21b4e0b0f1e328cc9800dd953fff",
+    "started_at": "2026-10-16T14:24:38.020903+00:00",
+    "status": "PASS_FRESH_OFFLINE_FIXTURES",
+    "steps": [
+      {
+        "name": "unit-tests",
+        "rc": 0
+      },
+      {
+        "name": "guards",
+        "rc": 0
+      },
+      {
+        "name": "contract",
+        "rc": 0
+      },
+      {
+        "name": "b2-conditions-2.16.19",
+        "rc": 0
+      },
+      {
+        "name": "dns-2.16.19",
+        "rc": 0
+      },
+      {
+        "name": "b2-conditions-2.21.3",
+        "rc": 0
+      },
+      {
+        "name": "dns-2.21.3",
+        "rc": 0
+      }
+    ]
+  },
+  "github": {
+    "GITHUB_EVENT_NAME": "pull_request",
+    "GITHUB_REPOSITORY": "321Team/infra-ansible",
+    "GITHUB_RUN_ATTEMPT": "1",
+    "GITHUB_RUN_ID": "38887094714",
+    "GITHUB_SHA": "419778d16dc797579b1a512f15818fde2940d386",
+    "GITHUB_WORKFLOW_SHA": "419778d16dc797579b1a512f15818fde2940d386",
+    "RUNNER_ARCH": "X64",
+    "RUNNER_NAME": "ansible-ci-315ffa6b177e4e4890ad564bc078a018",
+    "RUNNER_OS": "Linux"
+  },
+  "operational_engine_transition": false,
+  "plan": {
+    "engines": [
+      "2.16.19",
+      "2.21.3"
+    ],
+    "operational_engine_transition": false,
+    "production_apply": false,
+    "runner_registration": "external approved input; never inferred from host address",
+    "schema_version": 1,
+    "scope": "syntax + localhost fixtures only",
+    "source_commit": "625731f3d45c21b4e0b0f1e328cc9800dd953fff",
+    "syntax_playbooks": [
+      "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+      "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+      "playbooks/cr-p1-ans-01-01-precheck.yml",
+      "playbooks/cr-p1-ans-01-01-rollback.yml",
+      "playbooks/cr-p1-ans-01-01-verify-worker02.yml",
+      "playbooks/cr-p1-ans-01-01-verify.yml",
+      "playbooks/cr-p1-ans-01-01-worker02-session.yml",
+      "playbooks/cr-p1-mon-01-01-apply.yml",
+      "playbooks/cr-p1-mon-01-01-precheck.yml",
+      "playbooks/cr-p1-mon-01-01-rollback.yml",
+      "playbooks/cr-p1-mon-01-01-verify.yml",
+      "playbooks/cr-p1-ntp-01-01-apply-clients.yml",
+      "playbooks/cr-p1-ntp-01-01-apply-source.yml",
+      "playbooks/cr-p1-ntp-01-01-diagnose.yml",
+      "playbooks/cr-p1-ntp-01-01-followup-gnp.yml",
+      "playbooks/cr-p1-ntp-01-01-pathcheck.yml",
+      "playbooks/cr-p1-ntp-01-01-precheck.yml",
+      "playbooks/cr-p1-ntp-01-01-rollback.yml",
+      "playbooks/cr-p1-ntp-01-01-verify.yml",
+      "playbooks/harden_svc_ansible_key.yml",
+      "playbooks/p1-hbr-01-ac04-apply.yml",
+      "playbooks/p1-hbr-01-ac04-forward-discover.yml",
+      "playbooks/p1-hbr-01-ac04-precheck.yml",
+      "playbooks/p1-hbr-01-ac04-rollback.yml",
+      "playbooks/p1-hbr-01-ac04-verify.yml",
+      "playbooks/p1-hbr-01-discover.yml",
+      "playbooks/p1-k8s-01-gate0-precheck.yml",
+      "playbooks/p1-k8s-01-kubelet-serving-tls-apply-one.yml",
+      "playbooks/p1-k8s-01-kubelet-serving-tls-precheck.yml",
+      "playbooks/p1-k8s-01-kubelet-serving-tls-restart-one.yml",
+      "playbooks/p1-k8s-01-kubelet-serving-tls-rollback-one.yml",
+      "playbooks/p1-k8s-01-kubelet-serving-tls-verify.yml",
+      "playbooks/p1-lb-01-stage-a-nodes.yml",
+      "playbooks/p1-sec-01-b2-collect-58.yml",
+      "playbooks/phase1-safe-shutdown.yml",
+      "playbooks/precheck.yml",
+      "playbooks/site.yml",
+      "tests/ssh-server-readonly.yml",
+      "tests/test-dns-resolver-normalization.yml"
+    ]
+  },
+  "production_apply": false,
+  "schema_version": 1,
+  "scope": "syntax and localhost fixtures; no deployment",
+  "source_commit": "625731f3d45c21b4e0b0f1e328cc9800dd953fff",
+  "started_at": "2026-10-16T14:23:28.656283+00:00",
+  "status": "PASS",
+  "syntax": [
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-verify-worker02.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ans-01-01-worker02-session.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-mon-01-01-apply.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-mon-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-mon-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-mon-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ntp-01-01-apply-clients.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ntp-01-01-apply-source.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ntp-01-01-diagnose.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ntp-01-01-followup-gnp.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ntp-01-01-pathcheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ntp-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ntp-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/cr-p1-ntp-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/harden_svc_ansible_key.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-hbr-01-ac04-apply.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-hbr-01-ac04-forward-discover.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-hbr-01-ac04-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-hbr-01-ac04-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-hbr-01-ac04-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-hbr-01-discover.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-k8s-01-gate0-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-apply-one.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-restart-one.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-rollback-one.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-lb-01-stage-a-nodes.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/p1-sec-01-b2-collect-58.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/phase1-safe-shutdown.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "playbooks/site.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "tests/ssh-server-readonly.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.16.19",
+      "playbook": "tests/test-dns-resolver-normalization.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-apply-control-plane.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-apply-workers.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-verify-worker02.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ans-01-01-worker02-session.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-mon-01-01-apply.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-mon-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-mon-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-mon-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ntp-01-01-apply-clients.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ntp-01-01-apply-source.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ntp-01-01-diagnose.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ntp-01-01-followup-gnp.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ntp-01-01-pathcheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ntp-01-01-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ntp-01-01-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/cr-p1-ntp-01-01-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/harden_svc_ansible_key.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-hbr-01-ac04-apply.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-hbr-01-ac04-forward-discover.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-hbr-01-ac04-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-hbr-01-ac04-rollback.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-hbr-01-ac04-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-hbr-01-discover.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-k8s-01-gate0-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-apply-one.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-restart-one.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-rollback-one.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-k8s-01-kubelet-serving-tls-verify.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-lb-01-stage-a-nodes.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/p1-sec-01-b2-collect-58.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/phase1-safe-shutdown.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/precheck.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "playbooks/site.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "tests/ssh-server-readonly.yml",
+      "rc": 0
+    },
+    {
+      "engine": "2.21.3",
+      "playbook": "tests/test-dns-resolver-normalization.yml",
+      "rc": 0
+    }
+  ]
+}

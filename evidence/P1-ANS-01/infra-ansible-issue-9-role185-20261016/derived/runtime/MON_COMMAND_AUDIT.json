@@ -1,0 +1,562 @@
+[
+  {
+    "suite": "mon-2.16.19",
+    "case": "syntax-precheck",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/syntax-precheck.receipt.json",
+    "log_sha256": "fef43dfeee37fa8d7797e3ba877173205440bf252c5644c89cff7550defbdbd4"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "syntax-apply",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/syntax-apply.receipt.json",
+    "log_sha256": "a99c7bbd9549a321376ec201fa99542d85698535e5506c38e5f1c876c716a434"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "syntax-verify",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/syntax-verify.receipt.json",
+    "log_sha256": "4ba1296f6d28410602ef89cd85733836883d7e130b7fe0e4dc02027aea0acdc3"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "syntax-rollback",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/syntax-rollback.receipt.json",
+    "log_sha256": "db360e1ee6780f44fb833a42e16ff636e68a5d2346c4bd4f39f2a82769f2b092"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "bash-syntax",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/bash-syntax.receipt.json",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "one-proxy",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/one-proxy.receipt.json",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "changed-proxy",
+    "rc": 1,
+    "receipt": "results/mon-2.16.19/changed-proxy.receipt.json",
+    "log_sha256": "d8604bd7930f087073fde06fe26fbca70aa9b8078cfec6cb27beb23659f8691a"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "localhost-only",
+    "rc": 1,
+    "receipt": "results/mon-2.16.19/localhost-only.receipt.json",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "wrong-target",
+    "rc": 1,
+    "receipt": "results/mon-2.16.19/wrong-target.receipt.json",
+    "log_sha256": "acbdb395de60d5c0be10c8136827eca47290517ea0598d56f31f2dccf9335f08"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "extra-target",
+    "rc": 1,
+    "receipt": "results/mon-2.16.19/extra-target.receipt.json",
+    "log_sha256": "f050247d1b5c7c217f5a7853ff8afa3f3583c7ce3d6303472408758343ca5ac7"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "localhost-cli-preflight",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/localhost-cli-preflight.receipt.json",
+    "log_sha256": "74452e84256d6a3c57f01500e5f26fec02aa7fe012eedff7ea1d4cf13910e6e5"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "orphan-refused-before-copy",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/orphan-refused-before-copy.receipt.json",
+    "log_sha256": "8aea984f1bbcb9c54d0f3a645dc59f2bdb88a499d981b100c0e9b5bc39c93472"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "copy-defence-preserves-existing",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/copy-defence-preserves-existing.receipt.json",
+    "log_sha256": "613dcad7f207c7ff06d1de05e794b17147ee7d28ba5048c6b7c9f343f876a691"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "fresh-baseline-can-backup",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/fresh-baseline-can-backup.receipt.json",
+    "log_sha256": "1d33bd8046c8c8019fbda02f95401d91ad4337a393c5d8342a310d09b0a10884"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-complete",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/baseline-complete.receipt.json",
+    "log_sha256": "cd6c6b6d17490292e3eaf009be99c92725a1a66e0a525067477c7e909008c983"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-missing-rule-history",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/baseline-missing-rule-history.receipt.json",
+    "log_sha256": "4e05689d2db9d52a97ee0877280e80f426231e30be93d13d558761a65d614a3e"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-invalid-firewalld_permanent_rules_before",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/baseline-invalid-firewalld_permanent_rules_before.receipt.json",
+    "log_sha256": "08659109dccabe6a6902f92b9d8d3889314551571e08ecf94d17427391407e83"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-invalid-firewalld_runtime_rules_before",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/baseline-invalid-firewalld_runtime_rules_before.receipt.json",
+    "log_sha256": "2f933256d686eeabeea1bc9f9e02fa7cadf9fb6e6ced0c6a219691e3eb072d32"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-invalid-squid_preinstalled",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/baseline-invalid-squid_preinstalled.receipt.json",
+    "log_sha256": "e4a406bd8c972d1319dca98b2e14b3a1074e71e062f47d8d0d6f50a7f1483978"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-invalid-proxy_port",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/baseline-invalid-proxy_port.receipt.json",
+    "log_sha256": "0a2dd064f1b7863123cde6d1f232b3d1a207cb5fec6220c27b9d9c5a2fcd8c52"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-invalid-proxy_allowed_clients",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/baseline-invalid-proxy_allowed_clients.receipt.json",
+    "log_sha256": "40925530ed71410a390f795a313e510eee276c52bbe7d9bc9f869cab7c9d75cd"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-invalid-squid_conf_mode",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/baseline-invalid-squid_conf_mode.receipt.json",
+    "log_sha256": "64b0f83990fa55e91ad409d0214cb7b0385475ab7ee79c00f607474cd1a2a515"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "baseline-invalid-inventory_hostname",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/baseline-invalid-inventory_hostname.receipt.json",
+    "log_sha256": "58265398225d90ee083c891f40d11328237c82979ca2ddd5ac51515ae469274d"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-apply-regular",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/backup-apply-regular.receipt.json",
+    "log_sha256": "595ed2e28b7f07f12e00ec467e0fffda6b37879cac0fc7db86e0dff1f469b5fd"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-apply-missing",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/backup-apply-missing.receipt.json",
+    "log_sha256": "b17632fe44c29c36e1eaf9c29fe94796b5f234302d93b604919c765bca54a1e6"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-apply-symlink",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/backup-apply-symlink.receipt.json",
+    "log_sha256": "dbc40de7843e214cfc96777905dfd4f11e78b3f643c63195c5e1fc97d6f95fd2"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-apply-directory",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/backup-apply-directory.receipt.json",
+    "log_sha256": "3df68b8d4c3bb04ed1831bab91b4ff529d56921a779f23bd49b13efe3a8181af"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-apply-originally-absent",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/backup-apply-originally-absent.receipt.json",
+    "log_sha256": "8155d71b5e4288156ad7844b0624b5b131fc1046102aa852ad715b85caede94c"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-apply-unexpected",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/backup-apply-unexpected.receipt.json",
+    "log_sha256": "f61d7d76558852e1f82c21cc22d90d46c4f07a87e911a93347df927f52470178"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-rollback-regular",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/backup-rollback-regular.receipt.json",
+    "log_sha256": "ab08e0a3112cceeedf8ac19f39f65f504135c983c2465fbb1df2aa138ae581d3"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-rollback-missing",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/backup-rollback-missing.receipt.json",
+    "log_sha256": "de5c9a5bf93f876695b1364e98c7f10e07ababd91a2bfbf5c685bf7e193f60fd"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-rollback-symlink",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/backup-rollback-symlink.receipt.json",
+    "log_sha256": "098eca52387621b61690a8b8774c9f19208b600a0da5ece858b69aaae0ac1369"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-rollback-directory",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/backup-rollback-directory.receipt.json",
+    "log_sha256": "f0a6428a28c80341015b7271e0446bb81562125e18fcf93e11d95869a4eec862"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-rollback-originally-absent",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/backup-rollback-originally-absent.receipt.json",
+    "log_sha256": "5627a284c7d653163020d9d13570803c9a4b668236ba6c0825cd7ee8d555ca40"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "backup-rollback-unexpected",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/backup-rollback-unexpected.receipt.json",
+    "log_sha256": "28f652f4b6aa29e68d2ee3705d48ca9ac2b08c0286a553a1505e31f922aabdf4"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "original-kept",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/original-kept.receipt.json",
+    "log_sha256": "85358c202b7055540f769a54a81191619bbd94ec43ea2a4445217b24147c0f04"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "original-lost",
+    "rc": 2,
+    "receipt": "results/mon-2.16.19/original-lost.receipt.json",
+    "log_sha256": "57f7c3c62efbc17de59a415415ef9fca2294d1814b34f099651bee3f0804d663"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "unrelated-added",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/unrelated-added.receipt.json",
+    "log_sha256": "e66e88c0cb98be25145c88656cc48ded3c4329123ffbe2653c8c6344c67272b0"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "invalidate-before-interruption",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/invalidate-before-interruption.receipt.json",
+    "log_sha256": "21d611fd08468fc2b0ac6d9e500ad64dd0f34658e0a69db319f470c7f8ee324b"
+  },
+  {
+    "suite": "mon-2.16.19",
+    "case": "reapply-selects-reload-after-interruption",
+    "rc": 0,
+    "receipt": "results/mon-2.16.19/reapply-selects-reload-after-interruption.receipt.json",
+    "log_sha256": "ca65c01b27bdd0f5b01fbed808af5bf316808be9f63dddd6fa5b10a52e105d91"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "syntax-precheck",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/syntax-precheck.receipt.json",
+    "log_sha256": "fef43dfeee37fa8d7797e3ba877173205440bf252c5644c89cff7550defbdbd4"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "syntax-apply",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/syntax-apply.receipt.json",
+    "log_sha256": "a99c7bbd9549a321376ec201fa99542d85698535e5506c38e5f1c876c716a434"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "syntax-verify",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/syntax-verify.receipt.json",
+    "log_sha256": "4ba1296f6d28410602ef89cd85733836883d7e130b7fe0e4dc02027aea0acdc3"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "syntax-rollback",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/syntax-rollback.receipt.json",
+    "log_sha256": "db360e1ee6780f44fb833a42e16ff636e68a5d2346c4bd4f39f2a82769f2b092"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "bash-syntax",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/bash-syntax.receipt.json",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "one-proxy",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/one-proxy.receipt.json",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "changed-proxy",
+    "rc": 1,
+    "receipt": "results/mon-2.21.3/changed-proxy.receipt.json",
+    "log_sha256": "d8604bd7930f087073fde06fe26fbca70aa9b8078cfec6cb27beb23659f8691a"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "localhost-only",
+    "rc": 1,
+    "receipt": "results/mon-2.21.3/localhost-only.receipt.json",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "wrong-target",
+    "rc": 1,
+    "receipt": "results/mon-2.21.3/wrong-target.receipt.json",
+    "log_sha256": "acbdb395de60d5c0be10c8136827eca47290517ea0598d56f31f2dccf9335f08"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "extra-target",
+    "rc": 1,
+    "receipt": "results/mon-2.21.3/extra-target.receipt.json",
+    "log_sha256": "f050247d1b5c7c217f5a7853ff8afa3f3583c7ce3d6303472408758343ca5ac7"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "localhost-cli-preflight",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/localhost-cli-preflight.receipt.json",
+    "log_sha256": "74452e84256d6a3c57f01500e5f26fec02aa7fe012eedff7ea1d4cf13910e6e5"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "orphan-refused-before-copy",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/orphan-refused-before-copy.receipt.json",
+    "log_sha256": "c9e5ee14877eb04339bc4549bf75e514e38266275d3041c45e158cb85e369547"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "copy-defence-preserves-existing",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/copy-defence-preserves-existing.receipt.json",
+    "log_sha256": "613dcad7f207c7ff06d1de05e794b17147ee7d28ba5048c6b7c9f343f876a691"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "fresh-baseline-can-backup",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/fresh-baseline-can-backup.receipt.json",
+    "log_sha256": "1d33bd8046c8c8019fbda02f95401d91ad4337a393c5d8342a310d09b0a10884"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-complete",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/baseline-complete.receipt.json",
+    "log_sha256": "cd6c6b6d17490292e3eaf009be99c92725a1a66e0a525067477c7e909008c983"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-missing-rule-history",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/baseline-missing-rule-history.receipt.json",
+    "log_sha256": "51d9562c11932f3629b6ddd7caf22fafc589ba64e66bff90829bc8f55df01132"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-invalid-firewalld_permanent_rules_before",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/baseline-invalid-firewalld_permanent_rules_before.receipt.json",
+    "log_sha256": "0ad8ce0b508f706badb1458a9384af4c7a1b5c7cd34792cabb451cee07a39ad6"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-invalid-firewalld_runtime_rules_before",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/baseline-invalid-firewalld_runtime_rules_before.receipt.json",
+    "log_sha256": "7b21565c35aba43adce1b48659490e6fd71f9da4499cb88d973aec86d235ab65"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-invalid-squid_preinstalled",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/baseline-invalid-squid_preinstalled.receipt.json",
+    "log_sha256": "7ea9a7a696ff5c5b737931b3855a15ab8a372243dd90c0b678847cec135bfc1e"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-invalid-proxy_port",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/baseline-invalid-proxy_port.receipt.json",
+    "log_sha256": "9e10cc7b18aff84b2ff96a2a75c5e6cad81c8436aa424be8dfcb81e1bd5eb662"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-invalid-proxy_allowed_clients",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/baseline-invalid-proxy_allowed_clients.receipt.json",
+    "log_sha256": "468de86c89b4572698fbad2c3b2e20af53ee3757b5139b75a47ec0d1e353f222"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-invalid-squid_conf_mode",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/baseline-invalid-squid_conf_mode.receipt.json",
+    "log_sha256": "fadb40b124f79cd8e2a7eb5fab91369012298b9fb0154b8546dfbdbb98328198"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "baseline-invalid-inventory_hostname",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/baseline-invalid-inventory_hostname.receipt.json",
+    "log_sha256": "f12b9f8625546965920b3dd8f23284407dda0fb137670ce7883ec08e20917b6c"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-apply-regular",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/backup-apply-regular.receipt.json",
+    "log_sha256": "595ed2e28b7f07f12e00ec467e0fffda6b37879cac0fc7db86e0dff1f469b5fd"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-apply-missing",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/backup-apply-missing.receipt.json",
+    "log_sha256": "b2159ef4059b1f080e6f55c1852f91a3027d91f5d475a70c3be20dc6bfc758fa"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-apply-symlink",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/backup-apply-symlink.receipt.json",
+    "log_sha256": "cf67e14fdb653bc87cf12d9ca1a1d76b2a6f85854220566993eed5b96d7a23a3"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-apply-directory",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/backup-apply-directory.receipt.json",
+    "log_sha256": "4fe36b7681dcb66a5f9d0248076d38b5f704d65b6e7a30bd53f9ab7fbb606a38"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-apply-originally-absent",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/backup-apply-originally-absent.receipt.json",
+    "log_sha256": "8155d71b5e4288156ad7844b0624b5b131fc1046102aa852ad715b85caede94c"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-apply-unexpected",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/backup-apply-unexpected.receipt.json",
+    "log_sha256": "2cfebc07bf734d7793702c10a6b828ffcab7f74d2cf53fb388eb5c0450ad09e0"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-rollback-regular",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/backup-rollback-regular.receipt.json",
+    "log_sha256": "ab08e0a3112cceeedf8ac19f39f65f504135c983c2465fbb1df2aa138ae581d3"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-rollback-missing",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/backup-rollback-missing.receipt.json",
+    "log_sha256": "9a22597670f74239b511c4dc5ecd025e2a839e7b9e1f896d2ca4831a2d82df7a"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-rollback-symlink",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/backup-rollback-symlink.receipt.json",
+    "log_sha256": "5dd08045dee2d944ace85aecc14fe17d248e7ffb8687627b1943a0c212419866"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-rollback-directory",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/backup-rollback-directory.receipt.json",
+    "log_sha256": "b13863eca2e78dcd5e828ef0d7ca222566d15833fbbb7c8f83de55754c3f92b9"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-rollback-originally-absent",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/backup-rollback-originally-absent.receipt.json",
+    "log_sha256": "5627a284c7d653163020d9d13570803c9a4b668236ba6c0825cd7ee8d555ca40"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "backup-rollback-unexpected",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/backup-rollback-unexpected.receipt.json",
+    "log_sha256": "753235c6cb3c933a90b39f997aaf81564abade8302c386a828ccdb5950f4c2f6"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "original-kept",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/original-kept.receipt.json",
+    "log_sha256": "85358c202b7055540f769a54a81191619bbd94ec43ea2a4445217b24147c0f04"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "original-lost",
+    "rc": 2,
+    "receipt": "results/mon-2.21.3/original-lost.receipt.json",
+    "log_sha256": "8e287b36954c6f9e9f8c5b1e6772c32edd806ee0d856dee9fc781d733e8d31f5"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "unrelated-added",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/unrelated-added.receipt.json",
+    "log_sha256": "e66e88c0cb98be25145c88656cc48ded3c4329123ffbe2653c8c6344c67272b0"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "invalidate-before-interruption",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/invalidate-before-interruption.receipt.json",
+    "log_sha256": "21d611fd08468fc2b0ac6d9e500ad64dd0f34658e0a69db319f470c7f8ee324b"
+  },
+  {
+    "suite": "mon-2.21.3",
+    "case": "reapply-selects-reload-after-interruption",
+    "rc": 0,
+    "receipt": "results/mon-2.21.3/reapply-selects-reload-after-interruption.receipt.json",
+    "log_sha256": "ca65c01b27bdd0f5b01fbed808af5bf316808be9f63dddd6fa5b10a52e105d91"
+  }
+]

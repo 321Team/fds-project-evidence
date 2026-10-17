@@ -1,0 +1,17 @@
+{
+  "case": "syntax-apply",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "--syntax-check",
+    "-i",
+    "localhost,",
+    "/supply/source/playbooks/cr-p1-mon-01-01-apply.yml"
+  ],
+  "expected_rc": 0,
+  "started_at_utc": "2026-10-16T08:10:11.088192+00:00",
+  "actual_rc": null,
+  "status": "INTENT_ONLY",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "UNAVAILABLE"
+}

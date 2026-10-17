@@ -1,0 +1,227 @@
+{
+  "classification": "POST_EXECUTION_EVIDENCE_AUDIT_NOT_TEST_RERUN",
+  "at_kst": "2026-10-16T08:57:13.565893+09:00",
+  "status": "ROLE185_FAILED_OWN_CLEANUP_CONFIRMED",
+  "session": "p1-role-b5653943c28b4ae8",
+  "source_head": "32f8d21e6951178e51a8e82aadf4fe70368ca389",
+  "manifest_sha256": "cc361f09c33efea6965f126c8ea284342eac8ce6dba3520ea285b0571dc5d7c7",
+  "candidate_archive_sha256": "f019e7ea053cce1097521786c01a06b00123e16ef1c7ac8549d936cdfa1ea966",
+  "cid": "d507a95d7392fb9567a58079d108c7cec316db6064b67642f1ca5cd0589684c9",
+  "started_at": "2026-10-16T08:50:36.420883453+09:00",
+  "finished_at": "2026-10-16T08:50:56.721176848+09:00",
+  "source_original_files_checked": 645,
+  "manifest_entries_checked": 476,
+  "archive_sha256": "b887a4194a25cf7e191733f9942409fc3f2d39fcd786ede48c7709051740f639",
+  "host_command_receipts_checked": 20,
+  "host_mutations": [
+    {
+      "record": "host-44e610e543a945d4baf9a0eb204e2678-0004-create.completion.json",
+      "argv": [
+        "/usr/bin/podman",
+        "--remote=false",
+        "--cgroup-manager=systemd",
+        "create",
+        "--name=p1-role-b5653943c28b4ae8",
+        "--cidfile=/home/ansible-verify/p1-role-b5653943c28b4ae8/container.cid",
+        "--label=fds.fixture.session=p1-role-b5653943c28b4ae8",
+        "--label=fds.fixture.manifest=cc361f09c33efea6965f126c8ea284342eac8ce6dba3520ea285b0571dc5d7c7",
+        "--pull=never",
+        "--network=none",
+        "--ipc=private",
+        "--pid=private",
+        "--uts=private",
+        "--cgroupns=private",
+        "--userns=keep-id:uid=0,gid=0",
+        "--user=0:0",
+        "--cap-drop=ALL",
+        "--security-opt=no-new-privileges",
+        "--read-only",
+        "--read-only-tmpfs=false",
+        "--cpus=2",
+        "--memory=4g",
+        "--memory-swap=4g",
+        "--pids-limit=512",
+        "--shm-size=64m",
+        "--timeout=3900",
+        "--restart=no",
+        "--stop-timeout=30",
+        "--log-driver=none",
+        "--http-proxy=false",
+        "--unsetenv-all",
+        "--no-hosts",
+        "--env=HOME=/scratch/home",
+        "--env=PATH=/usr/local/bin:/usr/bin:/bin",
+        "--env=LANG=C.UTF-8",
+        "--env=LC_ALL=C.UTF-8",
+        "--env=TMPDIR=/scratch/tmp",
+        "--env=PYTHONDONTWRITEBYTECODE=1",
+        "--env=PIP_NO_INDEX=1",
+        "--env=PIP_DISABLE_PIP_VERSION_CHECK=1",
+        "--env=GIT_OPTIONAL_LOCKS=0",
+        "--env=GIT_CONFIG_NOSYSTEM=1",
+        "--env=GIT_CONFIG_GLOBAL=/dev/null",
+        "--umask=0077",
+        "--workdir=/supply/source",
+        "--tmpfs=/scratch:rw,exec,nosuid,nodev,size=1536m,mode=0700,U",
+        "--tmpfs=/tmp:rw,noexec,nosuid,nodev,size=128m,mode=1777",
+        "--tmpfs=/dev/shm:rw,noexec,nosuid,nodev,size=64m,mode=1777",
+        "--volume=/home/ansible-verify/p1-role-b5653943c28b4ae8/kit:/supply:ro,Z,nodev,nosuid",
+        "--volume=/home/ansible-verify/p1-role-b5653943c28b4ae8/control:/control:ro,Z,nodev,nosuid,noexec",
+        "--volume=/home/ansible-verify/p1-role-b5653943c28b4ae8/results:/results:rw,Z,nodev,nosuid",
+        "--entrypoint=/usr/local/bin/python3",
+        "sha256:e8565fa265f973c06f0515fac7aa9d102edae01b5677d69216900b84029c6ad0",
+        "-I",
+        "-B",
+        "/supply/container_main.py"
+      ],
+      "rc": 0,
+      "started_at_utc": "2026-10-15T23:50:36.159751+00:00",
+      "ended_at_utc": "2026-10-15T23:50:36.234195+00:00"
+    },
+    {
+      "record": "host-44e610e543a945d4baf9a0eb204e2678-0006-start.completion.json",
+      "argv": [
+        "/usr/bin/podman",
+        "--remote=false",
+        "--cgroup-manager=systemd",
+        "start",
+        "d507a95d7392fb9567a58079d108c7cec316db6064b67642f1ca5cd0589684c9"
+      ],
+      "rc": 0,
+      "started_at_utc": "2026-10-15T23:50:36.309006+00:00",
+      "ended_at_utc": "2026-10-15T23:50:36.425577+00:00"
+    },
+    {
+      "record": "host-44e610e543a945d4baf9a0eb204e2678-0016-rm.completion.json",
+      "argv": [
+        "/usr/bin/podman",
+        "--remote=false",
+        "--cgroup-manager=systemd",
+        "rm",
+        "d507a95d7392fb9567a58079d108c7cec316db6064b67642f1ca5cd0589684c9"
+      ],
+      "rc": 0,
+      "started_at_utc": "2026-10-15T23:50:57.146212+00:00",
+      "ended_at_utc": "2026-10-15T23:50:57.213471+00:00"
+    }
+  ],
+  "setup_receipts_rc0": 11,
+  "first_failed_suite": {
+    "label": "mon-2.16.19",
+    "argv": [
+      "/scratch/engines/2.16.19/bin/python",
+      "-B",
+      "/supply/source/tests/run-egress-recovery.py",
+      "--ansible-bin",
+      "/scratch/engines/2.16.19/bin",
+      "--output",
+      "/results/mon-2.16.19"
+    ],
+    "started_at_utc": "2026-10-15T23:50:49.939716+00:00",
+    "status": "RETURNED",
+    "rc": 1,
+    "waits": [
+      {
+        "phase": "initial",
+        "timeout_seconds": 600,
+        "rc": 1
+      }
+    ],
+    "signals": [],
+    "child_exit_observed": 1,
+    "initial_error": null,
+    "elapsed_seconds": 6.7524089709622785
+  },
+  "suites": [
+    {
+      "suite": "mon-2.16.19",
+      "expected_cases": 45,
+      "state": "PARTIAL_FAILED_NO_CASE_SUMMARY",
+      "suite_rc": 1,
+      "accepted_pass_cases": 0
+    },
+    {
+      "suite": "mon-2.21.3",
+      "expected_cases": 45,
+      "state": "NOT_STARTED",
+      "suite_rc": null,
+      "accepted_pass_cases": 0
+    },
+    {
+      "suite": "ntp-legacy",
+      "expected_cases": 48,
+      "state": "NOT_STARTED",
+      "suite_rc": null,
+      "accepted_pass_cases": 0
+    },
+    {
+      "suite": "ntp-flow",
+      "expected_cases": 25,
+      "state": "NOT_STARTED",
+      "suite_rc": null,
+      "accepted_pass_cases": 0
+    },
+    {
+      "suite": "ntp-serial",
+      "expected_cases": 1,
+      "state": "NOT_STARTED",
+      "suite_rc": null,
+      "accepted_pass_cases": 0
+    },
+    {
+      "suite": "ntp-transport",
+      "expected_cases": 2,
+      "state": "NOT_STARTED",
+      "suite_rc": null,
+      "accepted_pass_cases": 0
+    },
+    {
+      "suite": "ntp-wrapper",
+      "expected_cases": 19,
+      "state": "NOT_STARTED",
+      "suite_rc": null,
+      "accepted_pass_cases": 0
+    }
+  ],
+  "role_cases_verified": 0,
+  "role_case_summary_missing": true,
+  "mon_command_logs": [
+    "bash-syntax.log",
+    "changed-proxy.log",
+    "copy-defence-preserves-existing.log",
+    "extra-target.log",
+    "fresh-baseline-can-backup.log",
+    "localhost-cli-preflight.log",
+    "localhost-only.log",
+    "one-proxy.log",
+    "orphan-refused-before-copy.log",
+    "syntax-apply.log",
+    "syntax-precheck.log",
+    "syntax-rollback.log",
+    "syntax-verify.log",
+    "wrong-target.log"
+  ],
+  "mon_per_command_rc_persisted": false,
+  "unreachable_logs": [
+    "copy-defence-preserves-existing.log",
+    "fresh-baseline-can-backup.log",
+    "orphan-refused-before-copy.log"
+  ],
+  "cleanup": {
+    "absence_query_rc": 1,
+    "cid": "d507a95d7392fb9567a58079d108c7cec316db6064b67642f1ca5cd0589684c9",
+    "error": null,
+    "identity_preserved_for_reentry": true,
+    "status": "OWN_CONTAINER_REMOVED"
+  },
+  "post_observation": "observe-20261015T235348074330",
+  "post_observation_at_kst": "2026-10-16T08:53:49.414798+09:00",
+  "controller_count": 0,
+  "exact_exists_rc": 1,
+  "evidence_scope_note": "Host lifecycle evidence complete. MON per-case RESULTS/rc missing; no completed role case count inferred.",
+  "production_runtime": false,
+  "phase1_acceptance": false,
+  "additional_runtime_commands": 0,
+  "collection": "EVIDENCE_COLLECTED-20261015T235358062170.json",
+  "static_engine_excerpts": "ENGINE_SOURCE_EXCERPTS.json"
+}

@@ -1,0 +1,9 @@
+{
+  "at_kst": "2026-10-16T17:22:55.849009+09:00",
+  "scope": "LOCAL_AUDIT_IMPLEMENTATION_CORRECTION_NO_SERVER_OR_ORIGINAL_CHANGE",
+  "old_audit_sha256": "049a784d3ead86b01552504de9e8ee3593e96e37cb5da08541be71397fa7ab0c",
+  "error": "Auditor incorrectly compared NTP observed_sha256 with parser binary hash.",
+  "source": "kit/source/tests/ntp_source/test_migration.py:33-34,585-586",
+  "meaning": "observed_sha256 is fixtures/observed-chrony.conf hash. Parser binary remains separately manifest-bound.",
+  "result_effect": "No runtime failure indicated by this audit assertion; verdict remains pending corrected audit."
+}

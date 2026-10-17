@@ -1,0 +1,21 @@
+{
+  "case": "baseline-invalid-proxy_allowed_clients",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.16.19/baseline-invalid-proxy_allowed_clients.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:09:51.580578+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 763,
+  "sha256": "40925530ed71410a390f795a313e510eee276c52bbe7d9bc9f869cab7c9d75cd",
+  "ended_at_utc": "2026-10-16T08:09:52.236579+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

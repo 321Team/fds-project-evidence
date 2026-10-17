@@ -1,0 +1,22 @@
+
+PLAY [original-lost] ***********************************************************
+
+TASK [Verify every original firewall rule is still present] ********************
+[ERROR]: Task failed: Action failed: Rollback lost an original firewall rule; do not report ROLLED_BACK.
+Origin: /results/mon-2.21.3/original-lost.yml:41:5
+
+39     ansible_python_interpreter: /scratch/engines/2.21.3/bin/python
+40   tasks:
+41   - name: Verify every original firewall rule is still present
+       ^ column 5
+
+fatal: [localhost]: FAILED! => {
+    "assertion": "cr_mon_original_state.firewalld_permanent_rules_before | difference(cr_mon_firewalld_permanent_rules_after.stdout_lines) | length == 0",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Rollback lost an original firewall rule; do not report ROLLED_BACK."
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

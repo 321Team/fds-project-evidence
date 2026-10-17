@@ -1,0 +1,16 @@
+{
+  "case": "backup-apply-originally-absent",
+  "argv": [
+    "/scratch/engines/2.21.3/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.21.3/backup-apply-originally-absent.yml"
+  ],
+  "expected_rc": 0,
+  "started_at_utc": "2026-10-16T08:10:36.555901+00:00",
+  "actual_rc": null,
+  "status": "INTENT_ONLY",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "UNAVAILABLE"
+}

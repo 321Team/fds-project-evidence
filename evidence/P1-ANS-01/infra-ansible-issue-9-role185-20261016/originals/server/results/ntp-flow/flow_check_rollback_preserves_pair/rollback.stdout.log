@@ -1,0 +1,68 @@
+
+PLAY [CR-P1-NTP-01-01 rollback one failed node] ********************************
+
+TASK [Require an explicit rollback target] *************************************
+ok: [unrelated] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate the rollback target exists in inventory] ************************
+ok: [unrelated] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [End non-target hosts without changing them] ******************************
+
+PLAY [CR-P1-NTP-01-01 rollback one failed node] ********************************
+
+TASK [Require an explicit rollback target] *************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate the rollback target exists in inventory] ************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [End non-target hosts without changing them] ******************************
+skipping: [localhost]
+
+TASK [Validate rollback approval token] ****************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Read and validate the immutable CR baseline] *****************************
+skipping: [localhost]
+
+TASK [Restore the original CR baseline] ****************************************
+skipping: [localhost]
+
+TASK [Restore the immutable main and drop-in baseline] *************************
+included: /results/ntp-flow/flow_check_rollback_preserves_pair/roles/ntp_source/tasks/_restore_pair.yml for localhost
+
+TASK [Restore the selected paired recovery point] ******************************
+changed: [localhost]
+
+TASK [Restart chronyd after real paired restoration] ***************************
+skipping: [localhost]
+
+TASK [Require chronyd active after paired restoration] *************************
+skipping: [localhost]
+
+TASK [Read post-rollback chronyc sources] **************************************
+skipping: [localhost]
+
+TASK [Print rollback verdict] **************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=5    changed=1    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+unrelated                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

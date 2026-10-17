@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "/usr/bin/podman",
+    "--remote=false",
+    "--cgroup-manager=systemd",
+    "ps",
+    "-a",
+    "--format",
+    "json"
+  ],
+  "ended_at_utc": "2026-10-16T08:09:25.599120+00:00",
+  "raw_capture": "RETURNED_BYTES",
+  "raw_channels": {
+    "stderr": {
+      "bytes": 0,
+      "capture": "COMPLETE_RETURNED",
+      "file": "host-1bc8e91e77ce48e2953b6b876c6675c7-0002-ps.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stored": true
+    },
+    "stdout": {
+      "bytes": 3,
+      "capture": "COMPLETE_RETURNED",
+      "file": "host-1bc8e91e77ce48e2953b6b876c6675c7-0002-ps.stdout",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "stored": true
+    }
+  },
+  "rc": 0,
+  "started_at_utc": "2026-10-16T08:09:25.538776+00:00",
+  "status": "RETURNED",
+  "stderr": "",
+  "stdout": "[]\n",
+  "text_derivation": "UTF-8 decode with replacement; raw files are authoritative",
+  "timeout_seconds": 30
+}

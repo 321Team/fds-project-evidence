@@ -1,0 +1,135 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [ntp_source : Select the unchanged drop-in-only workflow] *****************
+skipping: [localhost]
+
+TASK [ntp_source : Select the explicit main and drop-in migration workflow] ****
+included: /results/ntp-flow/flow_noop_failure_preserves_installed_pair/roles/ntp_source/tasks/_migration.yml for localhost
+
+TASK [ntp_source : Validate paired migration phase and bounds] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Require the existing CR approval token for a migration apply] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Determine this host's NTP role] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Verify chronyd is installed] ********************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyd service state] **********************
+ok: [localhost]
+
+TASK [ntp_source : Require an active service before migration] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Validate the exact observed or migrated pair without operational writes] ***
+ok: [localhost]
+
+TASK [ntp_source : Report the resolved candidate for the egress evidence comparison] ***
+ok: [localhost] => {
+    "msg": {
+        "client_source_ip": "10.1.93.102",
+        "dropin_sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+        "layout": "migrated",
+        "main_sha256": "e3056fdd2970203012d79fc027336f369e29bc6e1cadf16bf6eaaa7af08b567f",
+        "role": "client",
+        "source_upstreams": [
+            "162.159.200.1",
+            "162.159.200.123",
+            "194.58.200.20"
+        ],
+        "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+        "would_change": false
+    }
+}
+
+TASK [ntp_source : Require a migrated pair for explicit post-change verification] ***
+skipping: [localhost]
+
+TASK [ntp_source : Commit the validated pair with an immutable baseline] *******
+ok: [localhost]
+
+TASK [ntp_source : Require zero predicted changes during the paired idempotency check] ***
+skipping: [localhost]
+
+TASK [ntp_source : Restart chronyd] ********************************************
+skipping: [localhost]
+
+TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation] *******
+skipping: [localhost]
+
+TASK [ntp_source : Verify applied runtime state only after a real migration] ***
+included: /results/ntp-flow/flow_noop_failure_preserves_installed_pair/roles/ntp_source/tasks/verify.yml for localhost
+
+TASK [ntp_source : Read post-run chronyc tracking] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Parse tracking fields without substituting missing values with zero] ***
+ok: [localhost]
+
+TASK [ntp_source : Assert tracking fields were found] **************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Reject non-finite tracking numbers] *************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Set parsed tracking values] *********************************
+ok: [localhost]
+
+TASK [ntp_source : Assert leap status is Normal] *******************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Assert current system correction and last offset meet the threshold] ***
+[ERROR]: Task failed: Action failed: Last offset=0.000001s and current system correction= 0.5s on localhost must both be within the approved 100ms threshold.
+Origin: /results/ntp-flow/flow_noop_failure_preserves_installed_pair/roles/ntp_source/tasks/verify.yml:53:3
+
+51     fail_msg: Leap status on {{ inventory_hostname }} is "{{ cr_ntp_leap_status }}",
+52       not Normal.
+53 - name: Assert current system correction and last offset meet the threshold
+     ^ column 3
+
+fatal: [localhost]: FAILED! => {
+    "assertion": "(cr_ntp_system_time_s | float | abs) <= (cr_ntp_offset_max_ms | int / 1000.0)",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "Last offset=0.000001s and current system correction= 0.5s on localhost must both be within the approved 100ms threshold."
+}
+
+TASK [ntp_source : Restore the invocation pair after service or verification failure] ***
+skipping: [localhost]
+
+TASK [ntp_source : Stop the serial batch after a migration failure] ************
+[ERROR]: Task failed: Action failed: Paired NTP migration failed on localhost. A completed changed commit restores its invocation snapshot after service or verification failure. Module write failures attempt their own pair restoration. A reported restoration failure requires recovery from the immutable baseline; this result is not NTP acceptance.
+Origin: /results/ntp-flow/flow_noop_failure_preserves_installed_pair/roles/ntp_source/tasks/_migration.yml:136:5
+
+134     - cr_ntp_pair_apply.changed | default(false)
+135     - cr_ntp_pair_apply.snapshot is defined
+136   - name: Stop the serial batch after a migration failure
+        ^ column 5
+
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "Paired NTP migration failed on localhost. A completed changed commit restores its invocation snapshot after service or verification failure. Module write failures attempt their own pair restoration. A reported restoration failure requires recovery from the immutable baseline; this result is not NTP acceptance."}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=17   changed=0    unreachable=0    failed=1    skipped=6    rescued=1    ignored=0   
+

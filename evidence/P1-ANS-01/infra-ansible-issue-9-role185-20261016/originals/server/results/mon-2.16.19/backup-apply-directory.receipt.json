@@ -1,0 +1,21 @@
+{
+  "case": "backup-apply-directory",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.16.19/backup-apply-directory.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:09:56.918049+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 1342,
+  "sha256": "3df68b8d4c3bb04ed1831bab91b4ff529d56921a779f23bd49b13efe3a8181af",
+  "ended_at_utc": "2026-10-16T08:09:57.972295+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

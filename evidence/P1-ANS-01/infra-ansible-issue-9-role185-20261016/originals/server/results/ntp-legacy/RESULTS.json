@@ -1,0 +1,514 @@
+{
+  "scope": "LOCAL/MOCK; host commands and chronyd parser replaced; no runtime acceptance",
+  "ansible_playbook": "/scratch/engines/2.21.3/bin/ansible-playbook",
+  "results": [
+    {
+      "name": "dry_run_drift",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "apply_new_delayed_sync",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 1,
+      "polls": 3,
+      "failure_tasks": []
+    },
+    {
+      "name": "apply_existing_delayed_sync",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 1,
+      "polls": 3,
+      "failure_tasks": []
+    },
+    {
+      "name": "source_apply",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 1,
+      "polls": 3,
+      "failure_tasks": []
+    },
+    {
+      "name": "second_real_apply_idempotent",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 1,
+      "polls": 3,
+      "failure_tasks": []
+    },
+    {
+      "name": "manual_rollback_absent_baseline",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 2,
+      "polls": 3,
+      "failure_tasks": []
+    },
+    {
+      "name": "manual_rollback_existing_baseline",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 2,
+      "polls": 3,
+      "failure_tasks": []
+    },
+    {
+      "name": "no_op_apply",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "idempotency_pass",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "idempotency_reject_drift",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Require zero predicted changes during the idempotency check",
+        "TASK [ntp_source : Stop the serial batch after failed apply or check"
+      ]
+    },
+    {
+      "name": "wait_failure_remove_new",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 2,
+      "polls": 30,
+      "failure_tasks": [
+        "TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation",
+        "TASK [ntp_source : Stop the serial batch after failed apply or check"
+      ]
+    },
+    {
+      "name": "wait_failure_restore_existing",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 2,
+      "polls": 30,
+      "failure_tasks": [
+        "TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation",
+        "TASK [ntp_source : Stop the serial batch after failed apply or check"
+      ]
+    },
+    {
+      "name": "restart_failure_restore",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 2,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Restart chronyd",
+        "TASK [ntp_source : Stop the serial batch after failed apply or check"
+      ]
+    },
+    {
+      "name": "rollback_service_failure",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 2,
+      "polls": 30,
+      "failure_tasks": [
+        "TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation",
+        "TASK [ntp_source : Restart chronyd after restoring the original drop-in"
+      ]
+    },
+    {
+      "name": "postverify_failure_restore",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 2,
+      "polls": 3,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert current system correction and last offset meet the threshold",
+        "TASK [ntp_source : Stop the serial batch after failed apply or check"
+      ]
+    },
+    {
+      "name": "no_op_failure_no_restore",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert current system correction and last offset meet the threshold",
+        "TASK [ntp_source : Stop the serial batch after failed apply or check"
+      ]
+    },
+    {
+      "name": "stale_baseline_no_mutation",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Validate restore state identity and schema before any mutation"
+      ]
+    },
+    {
+      "name": "invalid_template_no_mutation",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Render the managed NTP drop-in including check-mode diff",
+        "TASK [ntp_source : Stop the serial batch after failed apply or check"
+      ]
+    },
+    {
+      "name": "layout_confdir",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "layout_include",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "layout_case_and_space",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "layout_hash_comment",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+      ]
+    },
+    {
+      "name": "layout_bang_comment",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+      ]
+    },
+    {
+      "name": "layout_semicolon_comment",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+      ]
+    },
+    {
+      "name": "layout_percent_comment",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+      ]
+    },
+    {
+      "name": "layout_unhandled_layout",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Stop on unexpected chrony.conf layout"
+      ]
+    },
+    {
+      "name": "layout_active_pool",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Stop on unhandled competing sources for client nodes"
+      ]
+    },
+    {
+      "name": "layout_active_peer",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Stop on unhandled competing sources for client nodes"
+      ]
+    },
+    {
+      "name": "layout_active_sourcedir",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Stop on unhandled competing sources for client nodes"
+      ]
+    },
+    {
+      "name": "layout_commented_competitors",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "verify_valid_with_header_separator",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "verify_boundary",
+      "passed": true,
+      "errors": [],
+      "rc": 0,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": []
+    },
+    {
+      "name": "verify_over_boundary",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert current system correction and last offset meet the threshold"
+      ]
+    },
+    {
+      "name": "verify_500ms",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert current system correction and last offset meet the threshold"
+      ]
+    },
+    {
+      "name": "verify_negative_500ms",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert current system correction and last offset meet the threshold"
+      ]
+    },
+    {
+      "name": "verify_missing",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert tracking fields were found"
+      ]
+    },
+    {
+      "name": "verify_duplicate",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert tracking fields were found"
+      ]
+    },
+    {
+      "name": "verify_nan",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert tracking fields were found"
+      ]
+    },
+    {
+      "name": "verify_inf",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert tracking fields were found"
+      ]
+    },
+    {
+      "name": "verify_overflow",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Reject non-finite tracking numbers"
+      ]
+    },
+    {
+      "name": "verify_malformed",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert tracking fields were found"
+      ]
+    },
+    {
+      "name": "verify_bad_last",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert tracking fields were found"
+      ]
+    },
+    {
+      "name": "verify_last_over_threshold",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert current system correction and last offset meet the threshold"
+      ]
+    },
+    {
+      "name": "verify_unsynced",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert leap status is Normal"
+      ]
+    },
+    {
+      "name": "verify_wrong_source",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert the approved source is selected on client nodes"
+      ]
+    },
+    {
+      "name": "verify_regex_impostor",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert the approved source is selected on client nodes"
+      ]
+    },
+    {
+      "name": "verify_two_sources",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert no other source is configured on client nodes"
+      ]
+    },
+    {
+      "name": "verify_unresolved_extra_source",
+      "passed": true,
+      "errors": [],
+      "rc": 2,
+      "restarts": 0,
+      "polls": null,
+      "failure_tasks": [
+        "TASK [ntp_source : Assert no other source is configured on client nodes"
+      ]
+    }
+  ],
+  "passed": 48,
+  "total": 48
+}

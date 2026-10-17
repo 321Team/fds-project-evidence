@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/usr/bin/podman",
+    "--remote=false",
+    "--cgroup-manager=systemd",
+    "info",
+    "--format",
+    "json"
+  ],
+  "ended_at_utc": "2026-10-16T08:09:25.696127+00:00",
+  "raw_capture": "RETURNED_BYTES",
+  "raw_channels": {
+    "stderr": {
+      "bytes": 0,
+      "capture": "COMPLETE_RETURNED",
+      "file": "host-1bc8e91e77ce48e2953b6b876c6675c7-0003-info.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stored": true
+    },
+    "stdout": {
+      "bytes": 4868,
+      "capture": "COMPLETE_RETURNED",
+      "file": "host-1bc8e91e77ce48e2953b6b876c6675c7-0003-info.stdout",
+      "sha256": "a829c0b556730232dbc73623fd77fc8c6b956957e5c6f8f59339ce1e14a44158",
+      "stored": true
+    }
+  },
+  "rc": 0,
+  "started_at_utc": "2026-10-16T08:09:25.600694+00:00",
+  "status": "RETURNED",
+  "stderr": "",
+  "stdout": "{\n  \"host\": {\n    \"arch\": \"amd64\",\n    \"buildahVersion\": \"1.45.0\",\n    \"cgroupManager\": \"systemd\",\n    \"cgroupVersion\": \"v2\",\n    \"cgroupControllers\": [\n      \"cpuset\",\n      \"cpu\",\n      \"io\",\n      \"memory\",\n      \"pids\"\n    ],\n    \"cdiSpecDirs\": [\n      \"/etc/cdi\",\n      \"/var/run/cdi\"\n    ],\n    \"conmon\": {\n      \"package\": \"conmon-2.2.1-4.el10.x86_64\",\n      \"path\": \"/usr/bin/conmon\",\n      \"version\": \"conmon version 2.2.1, commit: \"\n    },\n    \"cpus\": 4,\n    \"cpuUtilization\": {\n      \"userPercent\": 0.27,\n      \"systemPercent\": 0.26,\n      \"idlePercent\": 99.47\n    },\n    \"databaseBackend\": \"sqlite\",\n    \"distribution\": {\n      \"distribution\": \"centos\",\n      \"version\": \"10\"\n    },\n    \"eventLogger\": \"file\",\n    \"freeLocks\": 2048,\n    \"hostname\": \"cicd-runner01\",\n    \"idMappings\": {\n      \"gidmap\": [\n        {\n          \"container_id\": 0,\n          \"host_id\": 1002,\n          \"size\": 1\n        },\n        {\n          \"container_id\": 1,\n          \"host_id\": 589824,\n          \"size\": 65536\n        }\n      ],\n      \"uidmap\": [\n        {\n          \"container_id\": 0,\n          \"host_id\": 1001,\n          \"size\": 1\n        },\n        {\n          \"container_id\": 1,\n          \"host_id\": 589824,\n          \"size\": 65536\n        }\n      ]\n    },\n    \"kernel\": \"6.12.0-275.el10.x86_64\",\n    \"logDriver\": \"journald\",\n    \"memFree\": 9429958656,\n    \"memAvailable\": 10349780992,\n    \"memTotal\": 12235014144,\n    \"networkBackend\": \"netavark\",\n    \"networkBackendInfo\": {\n      \"backend\": \"netavark\",\n      \"version\": \"netavark 2.1.0\",\n      \"package\": \"netavark-2.1.0-1.el10.x86_64\",\n      \"path\": \"/usr/libexec/podman/netavark\",\n      \"dns\": {\n        \"version\": \"aardvark-dns 2.1.0\",\n        \"package\": \"aardvark-dns-2.1.0-1.el10.x86_64\",\n        \"path\": \"/usr/libexec/podman/aardvark-dns\"\n      },\n      \"defaultNetwork\": \"podman\"\n    },\n    \"ociRuntime\": {\n      \"name\": \"crun\",\n      \"package\": \"crun-1.30.1-1.el10.x86_64\",\n      \"path\": \"/usr/bin/crun\",\n      \"version\": \"crun version 1.30.1\\ncommit: 079ff6a7a16d029460af882f9ea44674e6a510b6\\nrundir: /run/user/1001/crun\\nspec: 1.0.0\\n+SYSTEMD +SELINUX +APPARMOR +CAP +SECCOMP +EBPF +CRIU +JSON_C\"\n    },\n    \"os\": \"linux\",\n    \"remoteSocket\": {\n      \"path\": \"/run/user/1001/podman/podman.sock\",\n      \"exists\": true\n    },\n    \"rootlessNetworkCmd\": \"pasta\",\n    \"rootlessPortForwarder\": \"rootlessport\",\n    \"serviceIsRemote\": false,\n    \"security\": {\n      \"apparmorEnabled\": false,\n      \"capabilities\": \"CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_FOWNER,CAP_FSETID,CAP_KILL,CAP_NET_BIND_SERVICE,CAP_SETFCAP,CAP_SETGID,CAP_SETPCAP,CAP_SETUID,CAP_SYS_CHROOT\",\n      \"rootless\": true,\n      \"seccompEnabled\": true,\n      \"seccompProfilePath\": \"/usr/share/containers/seccomp.json\",\n      \"selinuxEnabled\": true\n    },\n    \"pasta\": {\n      \"executable\": \"/usr/bin/pasta\",\n      \"package\": \"passt-0^20260728.gf8df3f1-1.el10.x86_64\",\n      \"version\": \"pasta 0^20260728.gf8df3f1-1.el10.x86_64\\nCopyright Red Hat\\nGNU General Public License, version 2 or later\\n  \\u003chttps://www.gnu.org/licenses/old-licenses/gpl-2.0.html\\u003e\\nThis is free software: you are free to change and redistribute it.\\nThere is NO WARRANTY, to the extent permitted by law.\\n\"\n    },\n    \"swapFree\": 0,\n    \"swapTotal\": 0,\n    \"uptime\": \"0h 49m 23.00s\",\n    \"variant\": \"\",\n    \"linkmode\": \"dynamic\"\n  },\n  \"store\": {\n    \"containerStore\": {\n      \"number\": 0,\n      \"paused\": 0,\n      \"running\": 0,\n      \"stopped\": 0\n    },\n    \"graphDriverName\": \"overlay\",\n    \"graphOptions\": {\n      \"overlay.mountopt\": \"nodev\"\n    },\n    \"graphRoot\": \"/home/ansible-verify/.local/share/containers/storage\",\n    \"graphRootAllocated\": 88097161216,\n    \"graphRootUsed\": 45611216896,\n    \"graphStatus\": {\n      \"Backing Filesystem\": \"xfs\",\n      \"Native Overlay Diff\": \"true\",\n      \"Supports d_type\": \"true\",\n      \"Supports shifting\": \"false\",\n      \"Supports volatile\": \"true\",\n      \"Using metacopy\": \"false\"\n    },\n    \"imageCopyTmpDir\": \"/var/tmp\",\n    \"imageStore\": {\n      \"number\": 36\n    },\n    \"runRoot\": \"/run/user/1001/containers\",\n    \"volumePath\": \"/home/ansible-verify/.local/share/containers/storage/volumes\",\n    \"transientStore\": false\n  },\n  \"registries\": {\n    \"search\": [\n  \"registry.access.redhat.com\",\n  \"registry.redhat.io\",\n  \"docker.io\"\n]\n  },\n  \"plugins\": {\n    \"volume\": [\n      \"local\"\n    ],\n    \"network\": [\n      \"bridge\",\n      \"macvlan\",\n      \"ipvlan\"\n    ],\n    \"log\": [\n      \"k8s-file\",\n      \"none\",\n      \"passthrough\",\n      \"journald\"\n    ],\n    \"authorization\": null\n  },\n  \"version\": {\n    \"APIVersion\": \"6.1.0\",\n    \"Version\": \"6.1.0\",\n    \"GoVersion\": \"go1.26.5 (Red Hat 1.26.5-1.el10)\",\n    \"GitCommit\": \"cade97a52ebdf9dbf9e81de8009015776837a074\",\n    \"BuiltTime\": \"Thu Aug 20 09:00:00 2026\",\n    \"Built\": 1787184000,\n    \"BuildOrigin\": \"builder@centos.org\",\n    \"OsArch\": \"linux/amd64\",\n    \"Os\": \"linux\"\n  }\n}\n",
+  "text_derivation": "UTF-8 decode with replacement; raw files are authoritative",
+  "timeout_seconds": 30
+}

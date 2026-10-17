@@ -1,0 +1,53 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  vars:
+    ansible_python_interpreter: /scratch/engines/2.21.3/bin/python3
+  tasks:
+  - name: Exercise actual fds_ntp_probe transport
+    fds_ntp_probe:
+      source_upstreams: &id001
+      - 162.159.200.1
+      - 129.6.15.28
+      gate: diagnose
+      run_id: fixture-transport
+      source_head: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      input_sha256: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+      inventory_hostname: k8s-control01
+      ansible_host: 10.1.93.102
+      migration_plan:
+        validated: true
+    register: guard_result
+    ignore_errors: true
+  - name: Require provider guard after successful dependency transport
+    ansible.builtin.assert:
+      that:
+      - guard_result is failed
+      - not guard_result.changed
+      - '''Unsupported iburst upstream: 129.6.15.28'' in guard_result.msg'
+  - name: Exercise actual fds_ntp_migration transport
+    fds_ntp_migration:
+      source_upstreams: *id001
+      action: apply
+      main_path: /results/ntp-transport/must-not-exist.conf
+      dropin_path: /results/ntp-transport/must-not-exist.d/ntp.conf
+      state_dir: /results/ntp-transport/must-not-exist-state
+      role: source
+      inventory_hostname: k8s-control01
+      source_ip: 10.1.93.102
+      client_ips:
+      - 10.1.93.103
+      - 10.1.93.104
+      - 10.1.93.105
+      - 10.1.93.107
+      - 10.1.93.108
+      change_id: CR-P1-NTP-01-01
+    register: guard_result
+    ignore_errors: true
+  - name: Require provider guard after successful dependency transport
+    ansible.builtin.assert:
+      that:
+      - guard_result is failed
+      - not guard_result.changed
+      - '''Unsupported iburst upstream: 129.6.15.28'' in guard_result.msg'

@@ -1,0 +1,21 @@
+{
+  "case": "backup-apply-symlink",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.16.19/backup-apply-symlink.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:09:55.844096+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 1342,
+  "sha256": "dbc40de7843e214cfc96777905dfd4f11e78b3f643c63195c5e1fc97d6f95fd2",
+  "ended_at_utc": "2026-10-16T08:09:56.915204+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

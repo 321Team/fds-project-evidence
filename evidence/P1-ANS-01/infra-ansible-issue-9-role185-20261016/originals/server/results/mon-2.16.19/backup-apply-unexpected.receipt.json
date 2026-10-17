@@ -1,0 +1,21 @@
+{
+  "case": "backup-apply-unexpected",
+  "argv": [
+    "/scratch/engines/2.16.19/bin/ansible-playbook",
+    "-i",
+    "localhost,",
+    "/results/mon-2.16.19/backup-apply-unexpected.yml"
+  ],
+  "expected_rc": 2,
+  "started_at_utc": "2026-10-16T08:09:59.030221+00:00",
+  "actual_rc": 2,
+  "status": "RETURNED",
+  "timeout_seconds": 120,
+  "stream": "stdout_stderr_combined",
+  "output_state": "COMPLETE",
+  "bytes": 1284,
+  "sha256": "f61d7d76558852e1f82c21cc22d90d46c4f07a87e911a93347df927f52470178",
+  "ended_at_utc": "2026-10-16T08:10:00.099697+00:00",
+  "primary_error": null,
+  "evidence_errors": []
+}

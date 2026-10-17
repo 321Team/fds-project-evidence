@@ -1,0 +1,81 @@
+
+PLAY [CR-P1-NTP-01-01 rollback one failed node] ********************************
+
+TASK [Require an explicit rollback target] *************************************
+ok: [unrelated] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate the rollback target exists in inventory] ************************
+ok: [unrelated] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [End non-target hosts without changing them] ******************************
+
+PLAY [CR-P1-NTP-01-01 rollback one failed node] ********************************
+
+TASK [Require an explicit rollback target] *************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Validate the rollback target exists in inventory] ************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [End non-target hosts without changing them] ******************************
+skipping: [localhost]
+
+TASK [Validate rollback approval token] ****************************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Read and validate the immutable CR baseline] *****************************
+skipping: [localhost]
+
+TASK [Restore the original CR baseline] ****************************************
+skipping: [localhost]
+
+TASK [Restore the immutable main and drop-in baseline] *************************
+included: /results/ntp-flow/flow_client_targeted_manual_rollback/roles/ntp_source/tasks/_restore_pair.yml for localhost
+
+TASK [Restore the selected paired recovery point] ******************************
+changed: [localhost]
+
+TASK [Restart chronyd after real paired restoration] ***************************
+changed: [localhost]
+
+TASK [Require chronyd active after paired restoration] *************************
+ok: [localhost]
+
+TASK [Read post-rollback chronyc sources] **************************************
+ok: [localhost]
+
+TASK [Print rollback verdict] **************************************************
+ok: [localhost] => {
+    "msg": {
+        "change_id": "CR-P1-NTP-01-01",
+        "chronyd": "active",
+        "dropin_state": "RESTORED",
+        "host": "localhost",
+        "main_state": "RESTORED",
+        "sources": [
+            "MS Name/IP address Stratum Poll Reach LastRx Last sample",
+            "================================================================",
+            "^* 10.1.93.102 3 6 377 23 -1234ns[ -1234ns] +/- 1ms"
+        ]
+    }
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=9    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+unrelated                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

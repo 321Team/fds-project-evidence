@@ -1,0 +1,222 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [ntp_source : Select the unchanged drop-in-only workflow] *****************
+included: /results/ntp-legacy/layout_include/roles/ntp_source/tasks/_legacy.yml for localhost
+
+TASK [ntp_source : Validate CR NTP execution phase and variables] **************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Require explicit approval token for NTP changes] ************
+skipping: [localhost]
+
+TASK [ntp_source : Determine this host's NTP role] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Verify chronyd is installed] ********************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyd service state] **********************
+ok: [localhost]
+
+TASK [ntp_source : Assert chronyd is active before any change] *****************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read existing chrony main config] ***************************
+ok: [localhost]
+
+TASK [ntp_source : Determine whether /etc/chrony.d is included] ****************
+ok: [localhost]
+
+TASK [ntp_source : Stop on unexpected chrony.conf layout] **********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Extract active server/pool directives from the main config] ***
+ok: [localhost]
+
+TASK [ntp_source : Detect whether the main config includes a DHCP-fed sourcedir] ***
+ok: [localhost]
+
+TASK [ntp_source : Stop on unhandled competing sources for client nodes] *******
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read pre-change chronyc tracking] ***************************
+ok: [localhost]
+
+TASK [ntp_source : Read pre-change chronyc sources] ****************************
+ok: [localhost]
+
+TASK [ntp_source : Check for the managed drop-in file] *************************
+ok: [localhost]
+
+TASK [ntp_source : Refuse non-regular or multiply linked managed drop-ins] *****
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read existing drop-in content when present] *****************
+skipping: [localhost]
+
+TASK [ntp_source : Parse the effective chrony configuration before mutation] ***
+ok: [localhost]
+
+TASK [ntp_source : Parse the existing managed fragment for client source ownership] ***
+skipping: [localhost]
+
+TASK [ntp_source : Collect effective and managed client time-source directives] ***
+ok: [localhost]
+
+TASK [ntp_source : Refuse unmanaged or dynamic effective sources on clients] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Capture this invocation's drop-in state before mutation] ****
+skipping: [localhost]
+
+TASK [ntp_source : Validate the rollback state directory before creating or changing it] ***
+skipping: [localhost]
+
+TASK [ntp_source : Create protected CR rollback state directory] ***************
+skipping: [localhost]
+
+TASK [ntp_source : Check preserved state path before writing it] ***************
+skipping: [localhost]
+
+TASK [ntp_source : Refuse unsafe preserved state files] ************************
+skipping: [localhost]
+
+TASK [ntp_source : Preserve original drop-in state once] ***********************
+skipping: [localhost]
+
+TASK [ntp_source : Validate the preserved baseline before changing the drop-in] ***
+skipping: [localhost]
+
+TASK [ntp_source : Render the managed NTP drop-in including check-mode diff] ***
+skipping: [localhost]
+
+TASK [ntp_source : Require zero predicted changes during the idempotency check] ***
+skipping: [localhost]
+
+TASK [ntp_source : Restart chronyd] ********************************************
+skipping: [localhost]
+
+TASK [ntp_source : Wait at most 300 seconds for chronyd synchronisation] *******
+skipping: [localhost]
+
+TASK [ntp_source : Verify applied runtime state only after a real apply] *******
+skipping: [localhost]
+
+TASK [ntp_source : Verify current state for precheck and explicit verify] ******
+included: /results/ntp-legacy/layout_include/roles/ntp_source/tasks/verify.yml for localhost
+
+TASK [ntp_source : Read post-run chronyc tracking] *****************************
+ok: [localhost]
+
+TASK [ntp_source : Parse tracking fields without substituting missing values with zero] ***
+ok: [localhost]
+
+TASK [ntp_source : Assert tracking fields were found] **************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Reject non-finite tracking numbers] *************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Set parsed tracking values] *********************************
+ok: [localhost]
+
+TASK [ntp_source : Assert leap status is Normal] *******************************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Assert current system correction and last offset meet the threshold] ***
+skipping: [localhost]
+
+TASK [ntp_source : Read post-run chronyc sources] ******************************
+ok: [localhost]
+
+TASK [ntp_source : Extract actual source rows from chronyc sources] ************
+ok: [localhost]
+
+TASK [ntp_source : Assert the approved source is selected on client nodes] *****
+skipping: [localhost]
+
+TASK [ntp_source : Assert no other source is configured on client nodes] *******
+skipping: [localhost]
+
+TASK [ntp_source : Read chronyc clients on the source node] ********************
+skipping: [localhost]
+
+TASK [ntp_source : Require exactly the approved upstream set on a migrated source] ***
+skipping: [localhost]
+
+TASK [ntp_source : Read post-run chronyd service state] ************************
+ok: [localhost]
+
+TASK [ntp_source : Assert chronyd is active after the run] *********************
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read post-run kubelet state] ********************************
+ok: [localhost]
+
+TASK [ntp_source : Print CR NTP node verdict] **********************************
+ok: [localhost] => {
+    "msg": {
+        "change_id": "CR-P1-NTP-01-01",
+        "chronyd": [
+            "loaded",
+            "active"
+        ],
+        "host": "localhost",
+        "kubelet": [
+            "loaded",
+            "active"
+        ],
+        "last_offset_s": "0.000001",
+        "leap_status": "Normal",
+        "phase": "precheck",
+        "role": "client",
+        "sources_after": [
+            "^* 10.1.93.102 3 6 377 23 -1234ns[ -1234ns] +/- 1ms"
+        ],
+        "sources_before": [
+            "MS Name/IP address Stratum Poll Reach LastRx Last sample",
+            "================================================================",
+            "^* 10.1.93.102 3 6 377 23 -1234ns[ -1234ns] +/- 1ms"
+        ],
+        "stratum": "3",
+        "system_time_s": "0.000001"
+    }
+}
+
+TASK [ntp_source : Select the explicit main and drop-in migration workflow] ****
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=32   changed=0    unreachable=0    failed=0    skipped=21   rescued=0    ignored=0   
+
