@@ -1,0 +1,28 @@
+{
+  "head": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+  "tracked_dirty": false,
+  "source_hashes": {
+    "ansible.cfg": "73e6f6b5844a7a2dee8cf042b67a1c7b61c3e4b4198f4f7f7b65907e883de90e",
+    "inventory/hosts.yml": "15daf8f9257473772f8ecd7cfaf08369c88fd5c3775cb3bf67fcd95a1122ec0a",
+    "scripts/cr-p1-ntp-01-01-run.sh": "3b89f74e31b000be343e7e512bf12369708b7ab334cd54a7ae1d0c0dcce20171",
+    "scripts/lib/ansible-engine.sh": "aedf6cd8d2fa656784e5f93e4d507582efb39755655d2e2ad0696e6353f316dd",
+    "tools/ntp-workflow-lock.py": "91b7e14272c8bc470ba4d403d1d32aad889aeca8dd14760230da16955b10d218",
+    "playbooks/cr-p1-ntp-01-01-precheck.yml": "be351f4eaddead684be1b240a6b1ab69e708b272ff1f9de5399021342ae9c7ee",
+    "roles/ntp_source/tasks/main.yml": "472555824ede130fed517589c2b4c66dc2c9e5b38b5343aed115db6430a3fe83",
+    "roles/ntp_source/tasks/_migration.yml": "a08b93d3480c7b87a7af6840049594586384af60fc1a87deba57a538ae385d2d",
+    "roles/ntp_source/tasks/verify.yml": "1179ede0c2931df4a822ddffd84aec19c41791d5e6f1a4f21908b2b0ae03734d",
+    "library/fds_ntp_migration.py": "2e1ea06aebf856f42b950242e1cc913b4eda30173ebf19f0dd157f0181d24983",
+    "module_utils/fds_ntp_policy.py": "47ce10e94ea91eaa120d253ee99374502e3427cb83617f372f1a3e0f092e194a"
+  },
+  "inventory_targets": {
+    "k8s-control01": "10.1.93.102",
+    "k8s-control02": "10.1.93.103",
+    "k8s-control03": "10.1.93.104",
+    "k8s-worker01": "10.1.93.105",
+    "k8s-worker02": "10.1.93.107",
+    "k8s-worker03": "10.1.93.108"
+  },
+  "boot_id": "0317c0f8-cdc9-4c5e-a28e-48961c75e62e",
+  "uid": 1000,
+  "gid": 1000
+}

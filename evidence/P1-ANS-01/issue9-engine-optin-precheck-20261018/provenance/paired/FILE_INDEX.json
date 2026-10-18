@@ -1,0 +1,666 @@
+{
+  "work": "/home/server01_ansible/ntp-paired-precheck-20261018-1940",
+  "files": [
+    {
+      "path": "CLAIM.json",
+      "bytes": 433,
+      "sha256": "cac6fc64c18e37b8822df5b66609f79da0b87b956566b003ea6a5e93bf477739",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217613,
+      "mtime_ns": 1792320993779829785
+    },
+    {
+      "path": "LOCAL_TEMP_CLEANUP.json",
+      "bytes": 167,
+      "sha256": "8e5c4e290dc2f166981e06b01575fd70c0c4ba91089b8f7349d52cd9791ec1e3",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217649,
+      "mtime_ns": 1792321014202799857
+    },
+    {
+      "path": "PRECHECK_INTENT.json",
+      "bytes": 383,
+      "sha256": "d8648531f47bcc7c1dd1a60f7545ccb8557886d986db9c276adf1d37ae5c9ffb",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217643,
+      "mtime_ns": 1792320996013525450
+    },
+    {
+      "path": "PRECHECK_RETURN.json",
+      "bytes": 62,
+      "sha256": "080f93526b978463a2c2d7645e98e0932c72f617a95cda9e7125eb280eb45dc9",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217646,
+      "mtime_ns": 1792321012874882933
+    },
+    {
+      "path": "PRECHECK_SPAWN.json",
+      "bytes": 66,
+      "sha256": "37db71159f85c2e4068d9e99553162741a6aa1ad332ef20130b1a6cbda811359",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217645,
+      "mtime_ns": 1792320996014538097
+    },
+    {
+      "path": "RESULT.json",
+      "bytes": 404,
+      "sha256": "18cab8bc6dc570766ffe970f36019836a49f4cb7b4a14fb9ca412896d0a60f02",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217650,
+      "mtime_ns": 1792321014204206656
+    },
+    {
+      "path": "RETURN_PATHS.json",
+      "bytes": 381,
+      "sha256": "366e3dfb200e57cd226d1f2826c55b6ea248e3f47c04f6bd4f02fcadbd3df700",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217648,
+      "mtime_ns": 1792321014201175275
+    },
+    {
+      "path": "RUNTIME_VARS_RECEIPT.json",
+      "bytes": 146,
+      "sha256": "78ce4fce05a9d38a025f1941177bbd1c24ef97307cf4d40d8e9ce1500ebd2250",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217616,
+      "mtime_ns": 1792320993782472345
+    },
+    {
+      "path": "SOURCE_AFTER.json",
+      "bytes": 1581,
+      "sha256": "b1c421bc6dcb4c8191dc59ae65df7edcd8da30fdeb18ea3cf525ad6f6155194e",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217647,
+      "mtime_ns": 1792321014199152158
+    },
+    {
+      "path": "SOURCE_BEFORE.json",
+      "bytes": 1581,
+      "sha256": "b1c421bc6dcb4c8191dc59ae65df7edcd8da30fdeb18ea3cf525ad6f6155194e",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217614,
+      "mtime_ns": 1792320993780846158
+    },
+    {
+      "path": "after/SUMMARY.json",
+      "bytes": 1494,
+      "sha256": "c3ee5590f72a6a81f5d13a3d071b68574bddb51fbc9b43471797d8b931cd3d5e",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736799,
+      "mtime_ns": 1792321014179597150
+    },
+    {
+      "path": "after/k8s-control01.intent.json",
+      "bytes": 765,
+      "sha256": "f3d94ff1a08e77a70913b9dd6e888da3e12252cd70326327f111616cadbbe677",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736775,
+      "mtime_ns": 1792321012875546229
+    },
+    {
+      "path": "after/k8s-control01.json",
+      "bytes": 796,
+      "sha256": "4a9ef13601d59d6eda8956890be85cb15edf8a20b5531dd53a407fa9bd957bb5",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736776,
+      "mtime_ns": 1792321013090383388
+    },
+    {
+      "path": "after/k8s-control01.receipt.json",
+      "bytes": 234,
+      "sha256": "615b192e15faf900c103c9d70770e0e9df27364c92be8daeb627fe560e8a2911",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736778,
+      "mtime_ns": 1792321013091513810
+    },
+    {
+      "path": "after/k8s-control01.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736777,
+      "mtime_ns": 1792321013090383388
+    },
+    {
+      "path": "after/k8s-control02.intent.json",
+      "bytes": 765,
+      "sha256": "c80f6120a62409840f0f62a736698e25a5d1dddd4220655c858d21d86ffb5842",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736779,
+      "mtime_ns": 1792321013092126051
+    },
+    {
+      "path": "after/k8s-control02.json",
+      "bytes": 795,
+      "sha256": "0c21988e0440cbea3bf06ee6f339c60f43469e6deceb569e7cff3d458aeb1ce8",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736780,
+      "mtime_ns": 1792321013302889168
+    },
+    {
+      "path": "after/k8s-control02.receipt.json",
+      "bytes": 234,
+      "sha256": "5d25681e1f3377d394a324bfd86ad456753b6b1840384009481928562a9b8901",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736782,
+      "mtime_ns": 1792321013303747355
+    },
+    {
+      "path": "after/k8s-control02.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736781,
+      "mtime_ns": 1792321013302889168
+    },
+    {
+      "path": "after/k8s-control03.intent.json",
+      "bytes": 765,
+      "sha256": "fc9140b20b939de925e4a2a2a8f806f5e5f19ca88414c28e4f9de7db0cbb8ffb",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736783,
+      "mtime_ns": 1792321013304117980
+    },
+    {
+      "path": "after/k8s-control03.json",
+      "bytes": 795,
+      "sha256": "ba02eabff38d545979d747856c8d4ac50c54c82d6052f7559c206b70519498a4",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736784,
+      "mtime_ns": 1792321013529590732
+    },
+    {
+      "path": "after/k8s-control03.receipt.json",
+      "bytes": 234,
+      "sha256": "11ed71ffe463a24a6534b181ddb998ed7d357c314944b6a51973d03fd7339e0b",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736786,
+      "mtime_ns": 1792321013530537655
+    },
+    {
+      "path": "after/k8s-control03.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736785,
+      "mtime_ns": 1792321013529590732
+    },
+    {
+      "path": "after/k8s-worker01.intent.json",
+      "bytes": 765,
+      "sha256": "691f5af2d5e390d4fd11cd4c5b6523d56fafb69edbdd7e168096c13d6cda2f88",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736787,
+      "mtime_ns": 1792321013531003284
+    },
+    {
+      "path": "after/k8s-worker01.json",
+      "bytes": 794,
+      "sha256": "c0d6fab0ad11fa8ff349e8535c02bb339123475326cd4db0a6994acb5ad4a25b",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736788,
+      "mtime_ns": 1792321013747424249
+    },
+    {
+      "path": "after/k8s-worker01.receipt.json",
+      "bytes": 233,
+      "sha256": "64034c9dd48655d12a805f73fe589ffe00b0be6cf07c17fe12ae4bb21533ea3a",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736790,
+      "mtime_ns": 1792321013748797801
+    },
+    {
+      "path": "after/k8s-worker01.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736789,
+      "mtime_ns": 1792321013747424249
+    },
+    {
+      "path": "after/k8s-worker02.intent.json",
+      "bytes": 765,
+      "sha256": "7910d298a35820648bdfde4bcc61a7a3d385c2cec62b6638442fa75c4b2a5cdb",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736791,
+      "mtime_ns": 1792321013749495524
+    },
+    {
+      "path": "after/k8s-worker02.json",
+      "bytes": 794,
+      "sha256": "049da7a199310e5564a6ff05b14bb7d065fbd4bd4122872e0bcff2430e998447",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736792,
+      "mtime_ns": 1792321013955134153
+    },
+    {
+      "path": "after/k8s-worker02.receipt.json",
+      "bytes": 233,
+      "sha256": "fe9dd4a62bca7a4251763ab015cc141016eb2cc486cbfde79d2bd86adbdade31",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736794,
+      "mtime_ns": 1792321013955948183
+    },
+    {
+      "path": "after/k8s-worker02.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736793,
+      "mtime_ns": 1792321013955244832
+    },
+    {
+      "path": "after/k8s-worker03.intent.json",
+      "bytes": 765,
+      "sha256": "615e9ffffa8f4df6f4a1f82a4c04234f62a8d09f196e5013294bfbbf9760964d",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736795,
+      "mtime_ns": 1792321013956355340
+    },
+    {
+      "path": "after/k8s-worker03.json",
+      "bytes": 794,
+      "sha256": "3bc059957c57c093f6d5ab8aab50f76c3d1dfb845176fba13215bc96ec68dd78",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736796,
+      "mtime_ns": 1792321014177922773
+    },
+    {
+      "path": "after/k8s-worker03.receipt.json",
+      "bytes": 233,
+      "sha256": "5ee7bfd549f90b331a297e073635acd7fe2532af06798123c175e9b79646eea1",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736798,
+      "mtime_ns": 1792321014179028350
+    },
+    {
+      "path": "after/k8s-worker03.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736797,
+      "mtime_ns": 1792321014177922773
+    },
+    {
+      "path": "before/SUMMARY.json",
+      "bytes": 1494,
+      "sha256": "581a872cc12f6b8983c0638bc5b59e0c04cf231629040eecb99b5b9a7b553ef4",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217642,
+      "mtime_ns": 1792320996013005555
+    },
+    {
+      "path": "before/k8s-control01.intent.json",
+      "bytes": 765,
+      "sha256": "f71c234158a55eada9637ebb1c04c0690ee509d0c8f127fed46afca2e5ad705c",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217618,
+      "mtime_ns": 1792320993784242887
+    },
+    {
+      "path": "before/k8s-control01.json",
+      "bytes": 796,
+      "sha256": "e9d3790f174789f66b9e5147903d2f3c577e6459cf74f99b6f1a64b002c934b2",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217619,
+      "mtime_ns": 1792320994144278606
+    },
+    {
+      "path": "before/k8s-control01.receipt.json",
+      "bytes": 234,
+      "sha256": "21bbe52b4034527343cc8ea052799bf7b8d16fc5484a0a39aa8236a86f292bc2",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217621,
+      "mtime_ns": 1792320994145205561
+    },
+    {
+      "path": "before/k8s-control01.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217620,
+      "mtime_ns": 1792320994144278606
+    },
+    {
+      "path": "before/k8s-control02.intent.json",
+      "bytes": 765,
+      "sha256": "7d9c930a35a750d9bc9dd09ba0f69e03d55348343a50d0dd7e8ced18292f6b7c",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217622,
+      "mtime_ns": 1792320994145751344
+    },
+    {
+      "path": "before/k8s-control02.json",
+      "bytes": 795,
+      "sha256": "125fafd0ca5c8028d9025a0757da32cb7399fe547f4c2a11dde4464636217749",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217623,
+      "mtime_ns": 1792320994519952910
+    },
+    {
+      "path": "before/k8s-control02.receipt.json",
+      "bytes": 234,
+      "sha256": "9664cbf48c213b69e0d36dc3b4f0d7866e65cd02bac9117fca88b882db838614",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217625,
+      "mtime_ns": 1792320994521331977
+    },
+    {
+      "path": "before/k8s-control02.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217624,
+      "mtime_ns": 1792320994520024517
+    },
+    {
+      "path": "before/k8s-control03.intent.json",
+      "bytes": 765,
+      "sha256": "4e934b5de15c15d66a7e0e369d6e0002f918890a189957465c705783741f8fb2",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217626,
+      "mtime_ns": 1792320994521922581
+    },
+    {
+      "path": "before/k8s-control03.json",
+      "bytes": 795,
+      "sha256": "7f811b0b29eac9324c9c66e9d4c1088e71b91d8331d874c064f6e0a7e567ff84",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217627,
+      "mtime_ns": 1792320994884292078
+    },
+    {
+      "path": "before/k8s-control03.receipt.json",
+      "bytes": 234,
+      "sha256": "971f6ebd7f1d170a11bd4652ee32140717fe8cb72b66e61015c37f8ebedfd8a3",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217629,
+      "mtime_ns": 1792320994885157449
+    },
+    {
+      "path": "before/k8s-control03.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217628,
+      "mtime_ns": 1792320994884292078
+    },
+    {
+      "path": "before/k8s-worker01.intent.json",
+      "bytes": 765,
+      "sha256": "bc0da7463a16c43c1bb839abc781c0b199a17605fbe2e59b92c513d2919c2227",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217630,
+      "mtime_ns": 1792320994885603228
+    },
+    {
+      "path": "before/k8s-worker01.json",
+      "bytes": 794,
+      "sha256": "071bdf265b3c337725e582195db4e1d319da1ec9e8c7946ce6b3d5824f834265",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217631,
+      "mtime_ns": 1792320995260986415
+    },
+    {
+      "path": "before/k8s-worker01.receipt.json",
+      "bytes": 233,
+      "sha256": "a197f53f7b4b76f75441da051a06eefaf9102fe3cb3b338d08ced62d127d6666",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217633,
+      "mtime_ns": 1792320995261913261
+    },
+    {
+      "path": "before/k8s-worker01.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217632,
+      "mtime_ns": 1792320995260986415
+    },
+    {
+      "path": "before/k8s-worker02.intent.json",
+      "bytes": 765,
+      "sha256": "2324947629bfd7e2c6b41d79ea249a856598640f8ab1062d33b66f5e021071a9",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217634,
+      "mtime_ns": 1792320995262350886
+    },
+    {
+      "path": "before/k8s-worker02.json",
+      "bytes": 794,
+      "sha256": "ab1c782060716d6e287577d19d4958e7456c6ad8b87bc53e939212ca60f45f10",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217635,
+      "mtime_ns": 1792320995609192217
+    },
+    {
+      "path": "before/k8s-worker02.receipt.json",
+      "bytes": 233,
+      "sha256": "6d7d7aa4d243be70b1573cc50d298b59e104e04aa5db41232719e1357bcfa99c",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217637,
+      "mtime_ns": 1792320995610431647
+    },
+    {
+      "path": "before/k8s-worker02.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217636,
+      "mtime_ns": 1792320995609192217
+    },
+    {
+      "path": "before/k8s-worker03.intent.json",
+      "bytes": 765,
+      "sha256": "a485ff45834031e39939bb784898b7b690bbc2b9df01c2aeddbb75de6883771b",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217638,
+      "mtime_ns": 1792320995611264382
+    },
+    {
+      "path": "before/k8s-worker03.json",
+      "bytes": 794,
+      "sha256": "ee933a59c2c8b0838812b437949f89a49206337cc2b3ebdfef07fddf84f30b39",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217639,
+      "mtime_ns": 1792320996011563042
+    },
+    {
+      "path": "before/k8s-worker03.receipt.json",
+      "bytes": 233,
+      "sha256": "1805c70e8ecc588d9f93c918bc4987a5675be58d29272260a03f356b6f3292cc",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217641,
+      "mtime_ns": 1792320996012483753
+    },
+    {
+      "path": "before/k8s-worker03.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217640,
+      "mtime_ns": 1792320996011563042
+    },
+    {
+      "path": "evidence/20261018T195636+0900_precheck.FHrvZ4.txt",
+      "bytes": 17692,
+      "sha256": "850997a5012e80bf62b4245d37395fd143a41f40496d19fd7e97b9a1ee6c0de7",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736773,
+      "mtime_ns": 1792321012797231705
+    },
+    {
+      "path": "evidence/SOURCE_HEAD",
+      "bytes": 41,
+      "sha256": "ec3db757cb98ed1493dcd70827e498f91498b4f26caccbdd59fe6b13f6a2447e",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 37736772,
+      "mtime_ns": 1792320997240212651
+    },
+    {
+      "path": "precheck.log",
+      "bytes": 17692,
+      "sha256": "850997a5012e80bf62b4245d37395fd143a41f40496d19fd7e97b9a1ee6c0de7",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217644,
+      "mtime_ns": 1792321012797231705
+    },
+    {
+      "path": "runtime-vars.json",
+      "bytes": 448,
+      "sha256": "ad2ef8749403de92bda060f9d51f1fb65862d842ab87be60f826fe0490dad6f4",
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "inode": 72217615,
+      "mtime_ns": 1792320993781702425
+    }
+  ],
+  "top_entry_names": [
+    "CLAIM.json",
+    "LOCAL_TEMP_CLEANUP.json",
+    "PRECHECK_INTENT.json",
+    "PRECHECK_RETURN.json",
+    "PRECHECK_SPAWN.json",
+    "RESULT.json",
+    "RETURN_PATHS.json",
+    "RUNTIME_VARS_RECEIPT.json",
+    "SOURCE_AFTER.json",
+    "SOURCE_BEFORE.json",
+    "after",
+    "before",
+    "evidence",
+    "precheck.log",
+    "runtime-vars.json"
+  ],
+  "local_tmp_present": false,
+  "local_cp_present": false,
+  "not_read": [],
+  "total_bytes": 65583
+}

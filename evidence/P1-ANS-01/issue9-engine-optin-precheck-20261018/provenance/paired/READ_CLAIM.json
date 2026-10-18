@@ -1,0 +1,30 @@
+{
+  "started_at_kst": "2026-10-18T19:58:22.784423+09:00",
+  "argv": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "UpdateHostKeys=no",
+    "-o",
+    "ForwardAgent=no",
+    "-o",
+    "ClearAllForwardings=yes",
+    "fds-ansible01",
+    "/usr/bin/python3",
+    "-B",
+    "-I",
+    "-S",
+    "-"
+  ],
+  "source_sha256": "da5f1a695b46da9ccc6bd9f9f32e811637923815c7ce029a54bef7e73c799a46",
+  "authorization": "Central delegated exact completed paired WORK allowlisted log/result/before/after/source/runtime-vars/cleanup/evidence read once; no retry/runtime/code mutation",
+  "max_file_bytes": 4194304,
+  "max_total_bytes": 16777216,
+  "no_retry": true
+}
