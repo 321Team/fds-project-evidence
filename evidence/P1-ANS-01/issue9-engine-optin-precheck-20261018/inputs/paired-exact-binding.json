@@ -1,0 +1,227 @@
+{
+  "at_kst": "2026-10-18T19:55:23.257955+09:00",
+  "status": "PREPARATION_ONLY_NOT_EXECUTED",
+  "script_sha256": "9f9b0ca55eafa22571a6134757eeb326568e689dda46030134b550e5b4996697",
+  "runtime_vars_path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\Ansible\\ntp-layout-current\\RUNTIME_VARS_INPUT.json",
+  "runtime_vars_sha256": "ad2ef8749403de92bda060f9d51f1fb65862d842ab87be60f826fe0490dad6f4",
+  "paired_input_binding_path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\Ansible\\ntp-layout-current\\PAIRED_INPUT_BINDING.json",
+  "paired_input_binding_sha256": "3caeca53b268e76b351f6514a490b690618782ca1f059715d472433a6ce17b48",
+  "app_identity_evidence": {
+    "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\APP\\HARBOR_ENV_INPUTS.json",
+    "sha256": "60cbbe40108643685bdf1e04fc7d45b57f3493123edbc29a7a038e5582e85d18",
+    "point_window": [
+      "2026-10-18T19:02:40.628692+09:00",
+      "2026-10-18T19:02:42.644999+09:00"
+    ]
+  },
+  "target_identity_binding": "Current19:40 six matches shared18:53-root APP; exact runtime before/after checks required",
+  "targets": [
+    {
+      "host": "k8s-control01",
+      "ip": "10.1.93.102",
+      "machine_id": "43795458b5574726af93975cb8625c2b",
+      "boot_id": "8c78b577-62f8-4546-aac1-0b371b707bc5",
+      "files": [
+        {
+          "path": "/etc/chrony.conf",
+          "sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/etc/chrony.d/50-cr-p1-ntp-01-01.conf",
+          "sha256": "5ebb2911e7b1e2a726f0a24dfacb1269c110897af80fd474771c5de1071b716b",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/var/lib/fds-change/CR-P1-NTP-01-01/original-ntp-pair.json",
+          "sha256": "3035851d67a1ec1db89e3e5d2f3d9dc3202fb09393969bc9d8900d09918d88be",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o600"
+        }
+      ]
+    },
+    {
+      "host": "k8s-control02",
+      "ip": "10.1.93.103",
+      "machine_id": "6467ff4113f945a4b100a4ae32647d81",
+      "boot_id": "17c645d2-2707-4c1f-abde-64872f345e54",
+      "files": [
+        {
+          "path": "/etc/chrony.conf",
+          "sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/etc/chrony.d/50-cr-p1-ntp-01-01.conf",
+          "sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/var/lib/fds-change/CR-P1-NTP-01-01/original-ntp-pair.json",
+          "sha256": "a272059d959866ceb9781c29336133efd516400744105e98b6daf1770e643daa",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o600"
+        }
+      ]
+    },
+    {
+      "host": "k8s-control03",
+      "ip": "10.1.93.104",
+      "machine_id": "05447f80fe754454a3c5c8f09f4c9ea6",
+      "boot_id": "1fb52585-01d5-4e6d-9565-04a6396504b0",
+      "files": [
+        {
+          "path": "/etc/chrony.conf",
+          "sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/etc/chrony.d/50-cr-p1-ntp-01-01.conf",
+          "sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/var/lib/fds-change/CR-P1-NTP-01-01/original-ntp-pair.json",
+          "sha256": "98789588dd7b3b822915397e4204107d221b0302035218df62471c5542bc4ccb",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o600"
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker01",
+      "ip": "10.1.93.105",
+      "machine_id": "19fba8c06cfa4ebf876bacbbc3423bb1",
+      "boot_id": "bc7023a8-d697-45cb-afdb-d56b162965ce",
+      "files": [
+        {
+          "path": "/etc/chrony.conf",
+          "sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/etc/chrony.d/50-cr-p1-ntp-01-01.conf",
+          "sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/var/lib/fds-change/CR-P1-NTP-01-01/original-ntp-pair.json",
+          "sha256": "8eb9afd00b1b8f10489236323000c98bcf841d79b25bb6107c1365227fcd9e78",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o600"
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker02",
+      "ip": "10.1.93.107",
+      "machine_id": "bed0e37c3c234c5e85c5b5d352f6fc65",
+      "boot_id": "2747f3a9-6b9d-43ea-a374-d0d38de92ca0",
+      "files": [
+        {
+          "path": "/etc/chrony.conf",
+          "sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/etc/chrony.d/50-cr-p1-ntp-01-01.conf",
+          "sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/var/lib/fds-change/CR-P1-NTP-01-01/original-ntp-pair.json",
+          "sha256": "35638fd246b6408fdbaebf9938a933ecd20689a984b79ac378b0a975cfb7b539",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o600"
+        }
+      ]
+    },
+    {
+      "host": "k8s-worker03",
+      "ip": "10.1.93.108",
+      "machine_id": "0bb03794b5b04dc4bded6bd75d63f701",
+      "boot_id": "2e3c5d9a-b386-4c20-8c0b-f5f7f0e10b0c",
+      "files": [
+        {
+          "path": "/etc/chrony.conf",
+          "sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/etc/chrony.d/50-cr-p1-ntp-01-01.conf",
+          "sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o644"
+        },
+        {
+          "path": "/var/lib/fds-change/CR-P1-NTP-01-01/original-ntp-pair.json",
+          "sha256": "4744a9a0b71f937286059a1608935fea6e732861829f4080da09ae9242a9840d",
+          "uid": 0,
+          "gid": 0,
+          "mode": "0o600"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "path": "/home/server01_ansible/worker02-session-plan-3hetha3t/source",
+    "head": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea"
+  },
+  "source_hashes": {
+    "ansible.cfg": "73e6f6b5844a7a2dee8cf042b67a1c7b61c3e4b4198f4f7f7b65907e883de90e",
+    "inventory/hosts.yml": "15daf8f9257473772f8ecd7cfaf08369c88fd5c3775cb3bf67fcd95a1122ec0a",
+    "scripts/cr-p1-ntp-01-01-run.sh": "3b89f74e31b000be343e7e512bf12369708b7ab334cd54a7ae1d0c0dcce20171",
+    "scripts/lib/ansible-engine.sh": "aedf6cd8d2fa656784e5f93e4d507582efb39755655d2e2ad0696e6353f316dd",
+    "tools/ntp-workflow-lock.py": "91b7e14272c8bc470ba4d403d1d32aad889aeca8dd14760230da16955b10d218",
+    "playbooks/cr-p1-ntp-01-01-precheck.yml": "be351f4eaddead684be1b240a6b1ab69e708b272ff1f9de5399021342ae9c7ee",
+    "roles/ntp_source/tasks/main.yml": "472555824ede130fed517589c2b4c66dc2c9e5b38b5343aed115db6430a3fe83",
+    "roles/ntp_source/tasks/_migration.yml": "a08b93d3480c7b87a7af6840049594586384af60fc1a87deba57a538ae385d2d",
+    "roles/ntp_source/tasks/verify.yml": "1179ede0c2931df4a822ddffd84aec19c41791d5e6f1a4f21908b2b0ae03734d",
+    "library/fds_ntp_migration.py": "2e1ea06aebf856f42b950242e1cc913b4eda30173ebf19f0dd157f0181d24983",
+    "module_utils/fds_ntp_policy.py": "47ce10e94ea91eaa120d253ee99374502e3427cb83617f372f1a3e0f092e194a"
+  },
+  "transport_metadata_source": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\reviews\\shutdown-readiness-20261018\\app-k8s\\shutdown-execution-integration-0305\\PACKET.json",
+  "transport_only_reused": true,
+  "fresh_work": {
+    "root": "/home/server01_ansible/ntp-paired-precheck-20261018-1940",
+    "run_id": "ntp_paired_precheck_20261018_1940",
+    "exists_checked": false,
+    "exclusive_create_required": true,
+    "already_created": false,
+    "runtime_vars_path": "/home/server01_ansible/ntp-paired-precheck-20261018-1940/runtime-vars.json",
+    "evidence_path": "/home/server01_ansible/ntp-paired-precheck-20261018-1940/evidence",
+    "local_tmp_path": "/home/server01_ansible/ntp-paired-precheck-20261018-1940/tmp",
+    "control_path": "/home/server01_ansible/ntp-paired-precheck-20261018-1940/cp"
+  },
+  "explicit_cli_tests_added": 0,
+  "dispatch_owner": "central",
+  "adoption": "Incoming central delegation adopted paired mode and exact runtime SHA within existing precheck permission; no new user approval fabricated"
+}

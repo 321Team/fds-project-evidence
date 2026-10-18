@@ -1,0 +1,10 @@
+{
+  "at_kst": "2026-10-18T20:21:24.369953+09:00",
+  "analysis_and_ready_written": true,
+  "all_analysis_assertions_completed_before_manifest": true,
+  "initial_local_script_rc": 1,
+  "failure": "Manifest hashing prepended Windows extended-path prefix twice; no remote failure",
+  "failed_script_sha256": "e6a4ce08af3cd59229eddcf2a670469f6b6896d229f3f0ee00dc088371aff728",
+  "remedy": "Separate local finalizer verifies saved outputs and emits manifest without rewriting them",
+  "remote_retries": 0
+}

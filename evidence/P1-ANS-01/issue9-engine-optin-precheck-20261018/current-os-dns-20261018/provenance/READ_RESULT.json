@@ -1,0 +1,71 @@
+{
+  "at_kst": "2026-10-18T20:19:14.953061+09:00",
+  "expected_hosts": 6,
+  "attempted": 6,
+  "rows": [
+    {
+      "at_kst": "2026-10-18T20:19:11.412656+09:00",
+      "host": "k8s-control01",
+      "rc": 0,
+      "stdout_sha256": "cf348b0e790404eb99fa11c4ed532551a13d9c1b40a055865fa629aa0dc4e163",
+      "stderr_sha256": "51f82bf31a25d7d141246cf027884ebeb6b8485b8c24aaae5a00b12ae74a393d",
+      "retry": false,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11
+    },
+    {
+      "at_kst": "2026-10-18T20:19:12.169679+09:00",
+      "host": "k8s-control02",
+      "rc": 0,
+      "stdout_sha256": "00e66285575009908f7e46f60786ed55f11ab6fc2f87996662225fa869e698b4",
+      "stderr_sha256": "fff8537112db0a08b743ecda891831488bdd096b7e1f6045df2e49918714e284",
+      "retry": false,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11
+    },
+    {
+      "at_kst": "2026-10-18T20:19:12.858247+09:00",
+      "host": "k8s-control03",
+      "rc": 0,
+      "stdout_sha256": "5d8837e722ba3eb3d4d2703283789f275f893aa267258103293038cdec5dcf19",
+      "stderr_sha256": "e2958b2246d355ecfea23ae376534c3fd2db9afa75f5d3a22465edf76a119861",
+      "retry": false,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11
+    },
+    {
+      "at_kst": "2026-10-18T20:19:13.575099+09:00",
+      "host": "k8s-worker01",
+      "rc": 0,
+      "stdout_sha256": "0f50b7bbd864f21c496793832b3dea5a214c740855dd43435054e9a8b9ed4a4e",
+      "stderr_sha256": "e3330668c6bf8831830c142c4ba66e72e136491509bd569f89f2acdf22450ed6",
+      "retry": false,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11
+    },
+    {
+      "at_kst": "2026-10-18T20:19:14.224866+09:00",
+      "host": "k8s-worker02",
+      "rc": 0,
+      "stdout_sha256": "22a864876e2077b5fd6e6a2429877c00e985c3e60caa2de9928b51eaebfecaa4",
+      "stderr_sha256": "c5b42b95dcc1af207daa9f9274a8f7af48ae1e2218ac8bbcd93bc1eff1be2d6f",
+      "retry": false,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11
+    },
+    {
+      "at_kst": "2026-10-18T20:19:14.939158+09:00",
+      "host": "k8s-worker03",
+      "rc": 0,
+      "stdout_sha256": "e2e18216c0825c79e3cee209106545f173f54b579f8909fa31c7f6776066e721",
+      "stderr_sha256": "de2409f7d4d8e03ad3bab0e692fabd0b1054c80b42a55adc751817b7826cadec",
+      "retry": false,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11
+    }
+  ],
+  "configuration_mutations": 0,
+  "cli_or_role_invocations": 0,
+  "full_issue7_rerun": false,
+  "harbor_stop": false
+}

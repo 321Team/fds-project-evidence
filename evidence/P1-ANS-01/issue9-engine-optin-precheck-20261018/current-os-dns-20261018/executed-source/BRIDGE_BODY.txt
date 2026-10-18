@@ -1,0 +1,21 @@
+
+import json,subprocess,sys
+state={'spawned':False,'child_pid':None,'returned':False,'actual_rc':None,'retry':False}
+def emit(phase):
+ sys.stderr.write('BRIDGE_TRANSPORT '+json.dumps(dict(state,phase=phase))+'\n');sys.stderr.flush()
+exit_code=2
+try:
+ child=subprocess.Popen(INNER,stdin=subprocess.PIPE,stdout=sys.stdout.buffer,stderr=sys.stderr.buffer,start_new_session=True)
+ state.update(spawned=True,child_pid=child.pid)
+ emit('SPAWNED')
+ child.stdin.write(PAYLOAD);child.stdin.close()
+ rc=child.wait()
+ state.update(returned=True,actual_rc=rc) # preserve real return before output can fail
+ emit('RETURNED')
+ exit_code=rc
+except BaseException as error:
+ state.update(status='UNKNOWN_OR_HOLD_NO_RETRY',error_type=type(error).__name__)
+ try:emit('WAIT_OR_RECORD_ERROR')
+ except BaseException:pass
+ # Deliberately no context manager, run(), terminate(), kill(), or respawn.
+raise SystemExit(exit_code)

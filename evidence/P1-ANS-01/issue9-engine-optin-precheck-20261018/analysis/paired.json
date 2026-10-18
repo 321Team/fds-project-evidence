@@ -1,0 +1,487 @@
+{
+  "analyzed_at_kst": "2026-10-18T20:00:56.557990+09:00",
+  "status": "PASS_SCOPED_RUNTIME_PAIRED_PRECHECK_NO_CONFIG_APPLY",
+  "work": "/home/server01_ansible/ntp-paired-precheck-20261018-1940",
+  "source_head": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+  "precheck_started_at_kst": "2026-10-18T19:56:36.013445+09:00",
+  "precheck_returned_at_kst": "2026-10-18T19:56:52.874734+09:00",
+  "completed_at_kst": "2026-10-18T19:56:54.203887+09:00",
+  "precheck_rc": 0,
+  "provenance": {
+    "central_execution": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\Ansible\\ntp-paired-precheck-execution\\result.json",
+    "central_execution_sha256": "2394ef57373589aa17b9e70b840fa7ca83131c31ece2463b75e1fbd312f1075a",
+    "runtime_vars_sha256": "ad2ef8749403de92bda060f9d51f1fb65862d842ab87be60f826fe0490dad6f4",
+    "script_sha256": "9f9b0ca55eafa22571a6134757eeb326568e689dda46030134b550e5b4996697",
+    "collection_sha256": "055ae425c4c745c0212a22d18678b94aa367adc4638de9d8dbd1d941c5cc8790",
+    "read_receipt_sha256": "c3a549b2d917c684d92e31a38ef01757470e8e0d23e6d8a021cab80ca8d280de",
+    "precheck_log_sha256": "850997a5012e80bf62b4245d37395fd143a41f40496d19fd7e97b9a1ee6c0de7",
+    "wrapper_log": "evidence/20261018T195636+0900_precheck.FHrvZ4.txt",
+    "wrapper_log_sha256": "850997a5012e80bf62b4245d37395fd143a41f40496d19fd7e97b9a1ee6c0de7"
+  },
+  "collection": {
+    "files": 64,
+    "bytes": 65583,
+    "all_local_hashes_match": true,
+    "not_read": [],
+    "remote_collection_calls": 1,
+    "remote_action_retries": 0
+  },
+  "recap": {
+    "k8s-control01": {
+      "ok": 23,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 12,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-control02": {
+      "ok": 22,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 13,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-control03": {
+      "ok": 22,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 13,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-worker01": {
+      "ok": 22,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 13,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-worker02": {
+      "ok": 22,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 13,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-worker03": {
+      "ok": 22,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 0,
+      "skipped": 13,
+      "rescued": 0,
+      "ignored": 0
+    }
+  },
+  "plans": {
+    "k8s-control01": {
+      "client_source_ip": "10.1.93.102",
+      "dropin_sha256": "5ebb2911e7b1e2a726f0a24dfacb1269c110897af80fd474771c5de1071b716b",
+      "layout": "migrated",
+      "main_sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+      "role": "source",
+      "source_upstreams": [
+        "162.159.200.1",
+        "162.159.200.123"
+      ],
+      "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+      "would_change": false
+    },
+    "k8s-control02": {
+      "client_source_ip": "10.1.93.102",
+      "dropin_sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+      "layout": "migrated",
+      "main_sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+      "role": "client",
+      "source_upstreams": [
+        "162.159.200.1",
+        "162.159.200.123"
+      ],
+      "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+      "would_change": false
+    },
+    "k8s-control03": {
+      "client_source_ip": "10.1.93.102",
+      "dropin_sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+      "layout": "migrated",
+      "main_sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+      "role": "client",
+      "source_upstreams": [
+        "162.159.200.1",
+        "162.159.200.123"
+      ],
+      "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+      "would_change": false
+    },
+    "k8s-worker01": {
+      "client_source_ip": "10.1.93.102",
+      "dropin_sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+      "layout": "migrated",
+      "main_sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+      "role": "client",
+      "source_upstreams": [
+        "162.159.200.1",
+        "162.159.200.123"
+      ],
+      "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+      "would_change": false
+    },
+    "k8s-worker02": {
+      "client_source_ip": "10.1.93.102",
+      "dropin_sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+      "layout": "migrated",
+      "main_sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+      "role": "client",
+      "source_upstreams": [
+        "162.159.200.1",
+        "162.159.200.123"
+      ],
+      "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+      "would_change": false
+    },
+    "k8s-worker03": {
+      "client_source_ip": "10.1.93.102",
+      "dropin_sha256": "3d516d3aad2498b4fe274a2e9162d3f36f078b78e031c1eac7df92eba816057d",
+      "layout": "migrated",
+      "main_sha256": "949287680df0590a15a68cdf9236f7c7176bd4355eedbbe858f9c66e18e3075e",
+      "role": "client",
+      "source_upstreams": [
+        "162.159.200.1",
+        "162.159.200.123"
+      ],
+      "status": "CANDIDATE_VALIDATED_NOT_APPLIED",
+      "would_change": false
+    }
+  },
+  "node_verdicts": {
+    "k8s-control01": {
+      "change_id": "CR-P1-NTP-01-01",
+      "chronyd": [
+        "loaded",
+        "active"
+      ],
+      "host": "k8s-control01",
+      "kubelet": [
+        "loaded",
+        "active"
+      ],
+      "last_offset_s": "-0.000328311",
+      "leap_status": "Normal",
+      "phase": "precheck",
+      "role": "source",
+      "sources_after": [
+        "^* 162.159.200.1                 3  10   377    13   -649us[ -977us] +/-   70ms",
+        "^+ 162.159.200.123               3  10   377     6  -1069us[-1069us] +/-   71ms"
+      ],
+      "sources_before": [],
+      "stratum": "4",
+      "system_time_s": "0.000392596"
+    },
+    "k8s-control02": {
+      "change_id": "CR-P1-NTP-01-01",
+      "chronyd": [
+        "loaded",
+        "active"
+      ],
+      "host": "k8s-control02",
+      "kubelet": [
+        "loaded",
+        "active"
+      ],
+      "last_offset_s": "-0.000050001",
+      "leap_status": "Normal",
+      "phase": "precheck",
+      "role": "client",
+      "sources_after": [
+        "^* 10.1.93.102                   4   9   377   207   -235us[ -285us] +/-   71ms"
+      ],
+      "sources_before": [],
+      "stratum": "5",
+      "system_time_s": "0.000049687"
+    },
+    "k8s-control03": {
+      "change_id": "CR-P1-NTP-01-01",
+      "chronyd": [
+        "loaded",
+        "active"
+      ],
+      "host": "k8s-control03",
+      "kubelet": [
+        "loaded",
+        "active"
+      ],
+      "last_offset_s": "-0.000097690",
+      "leap_status": "Normal",
+      "phase": "precheck",
+      "role": "client",
+      "sources_after": [
+        "^* 10.1.93.102                   4   9   377   334   -419us[ -516us] +/-   71ms"
+      ],
+      "sources_before": [],
+      "stratum": "5",
+      "system_time_s": "0.000021851"
+    },
+    "k8s-worker01": {
+      "change_id": "CR-P1-NTP-01-01",
+      "chronyd": [
+        "loaded",
+        "active"
+      ],
+      "host": "k8s-worker01",
+      "kubelet": [
+        "loaded",
+        "active"
+      ],
+      "last_offset_s": "-0.000077828",
+      "leap_status": "Normal",
+      "phase": "precheck",
+      "role": "client",
+      "sources_after": [
+        "^* 10.1.93.102                   4   7   377    86    -15us[  -93us] +/-   72ms"
+      ],
+      "sources_before": [],
+      "stratum": "5",
+      "system_time_s": "0.000030175"
+    },
+    "k8s-worker02": {
+      "change_id": "CR-P1-NTP-01-01",
+      "chronyd": [
+        "loaded",
+        "active"
+      ],
+      "host": "k8s-worker02",
+      "kubelet": [
+        "loaded",
+        "active"
+      ],
+      "last_offset_s": "-0.000020379",
+      "leap_status": "Normal",
+      "phase": "precheck",
+      "role": "client",
+      "sources_after": [
+        "^* 10.1.93.102                   4   7   377    30    -47us[  -68us] +/-   72ms"
+      ],
+      "sources_before": [],
+      "stratum": "5",
+      "system_time_s": "0.000033274"
+    },
+    "k8s-worker03": {
+      "change_id": "CR-P1-NTP-01-01",
+      "chronyd": [
+        "loaded",
+        "active"
+      ],
+      "host": "k8s-worker03",
+      "kubelet": [
+        "loaded",
+        "active"
+      ],
+      "last_offset_s": "+0.000001522",
+      "leap_status": "Normal",
+      "phase": "precheck",
+      "role": "client",
+      "sources_after": [
+        "^* 10.1.93.102                   4   7   377     1    -62us[ -145us] +/-   70ms"
+      ],
+      "sources_before": [],
+      "stratum": "5",
+      "system_time_s": "0.000006757"
+    }
+  },
+  "point_observations": [
+    {
+      "host": "k8s-control01",
+      "before_at_kst": "2026-10-18T19:56:34.141394+09:00",
+      "after_at_kst": "2026-10-18T19:56:53.083871+09:00",
+      "boot_id": "8c78b577-62f8-4546-aac1-0b371b707bc5",
+      "machine_id": "43795458b5574726af93975cb8625c2b",
+      "system_correction_ms": "0.392596000",
+      "last_offset_ms": "-0.328311000",
+      "point_values_under_100ms": true,
+      "selected_source": [
+        "162.159.200.1"
+      ],
+      "configured_sources_observed": [
+        "162.159.200.1",
+        "162.159.200.123"
+      ],
+      "chronyd": "active",
+      "kubelet": "active",
+      "not_asserted_as_full_ntp_ac": true
+    },
+    {
+      "host": "k8s-control02",
+      "before_at_kst": "2026-10-18T19:56:34.516711+09:00",
+      "after_at_kst": "2026-10-18T19:56:53.299616+09:00",
+      "boot_id": "17c645d2-2707-4c1f-abde-64872f345e54",
+      "machine_id": "6467ff4113f945a4b100a4ae32647d81",
+      "system_correction_ms": "0.049687000",
+      "last_offset_ms": "-0.050001000",
+      "point_values_under_100ms": true,
+      "selected_source": [
+        "10.1.93.102"
+      ],
+      "configured_sources_observed": [
+        "10.1.93.102"
+      ],
+      "chronyd": "active",
+      "kubelet": "active",
+      "not_asserted_as_full_ntp_ac": true
+    },
+    {
+      "host": "k8s-control03",
+      "before_at_kst": "2026-10-18T19:56:34.880485+09:00",
+      "after_at_kst": "2026-10-18T19:56:53.526158+09:00",
+      "boot_id": "1fb52585-01d5-4e6d-9565-04a6396504b0",
+      "machine_id": "05447f80fe754454a3c5c8f09f4c9ea6",
+      "system_correction_ms": "0.021851000",
+      "last_offset_ms": "-0.097690000",
+      "point_values_under_100ms": true,
+      "selected_source": [
+        "10.1.93.102"
+      ],
+      "configured_sources_observed": [
+        "10.1.93.102"
+      ],
+      "chronyd": "active",
+      "kubelet": "active",
+      "not_asserted_as_full_ntp_ac": true
+    },
+    {
+      "host": "k8s-worker01",
+      "before_at_kst": "2026-10-18T19:56:35.256760+09:00",
+      "after_at_kst": "2026-10-18T19:56:53.744104+09:00",
+      "boot_id": "bc7023a8-d697-45cb-afdb-d56b162965ce",
+      "machine_id": "19fba8c06cfa4ebf876bacbbc3423bb1",
+      "system_correction_ms": "0.030175000",
+      "last_offset_ms": "-0.077828000",
+      "point_values_under_100ms": true,
+      "selected_source": [
+        "10.1.93.102"
+      ],
+      "configured_sources_observed": [
+        "10.1.93.102"
+      ],
+      "chronyd": "active",
+      "kubelet": "active",
+      "not_asserted_as_full_ntp_ac": true
+    },
+    {
+      "host": "k8s-worker02",
+      "before_at_kst": "2026-10-18T19:56:35.605922+09:00",
+      "after_at_kst": "2026-10-18T19:56:53.951806+09:00",
+      "boot_id": "2747f3a9-6b9d-43ea-a374-d0d38de92ca0",
+      "machine_id": "bed0e37c3c234c5e85c5b5d352f6fc65",
+      "system_correction_ms": "0.033274000",
+      "last_offset_ms": "-0.020379000",
+      "point_values_under_100ms": true,
+      "selected_source": [
+        "10.1.93.102"
+      ],
+      "configured_sources_observed": [
+        "10.1.93.102"
+      ],
+      "chronyd": "active",
+      "kubelet": "active",
+      "not_asserted_as_full_ntp_ac": true
+    },
+    {
+      "host": "k8s-worker03",
+      "before_at_kst": "2026-10-18T19:56:36.008744+09:00",
+      "after_at_kst": "2026-10-18T19:56:54.174778+09:00",
+      "boot_id": "2e3c5d9a-b386-4c20-8c0b-f5f7f0e10b0c",
+      "machine_id": "0bb03794b5b04dc4bded6bd75d63f701",
+      "system_correction_ms": "0.006757000",
+      "last_offset_ms": "0.001522000",
+      "point_values_under_100ms": true,
+      "selected_source": [
+        "10.1.93.102"
+      ],
+      "configured_sources_observed": [
+        "10.1.93.102"
+      ],
+      "chronyd": "active",
+      "kubelet": "active",
+      "not_asserted_as_full_ntp_ac": true
+    }
+  ],
+  "file_identity_checks": {
+    "before6_match": true,
+    "after6_match": true,
+    "config_and_baseline18_unchanged": true,
+    "source11_unchanged": true,
+    "runtime_vars_unchanged": true,
+    "matches_1940_and_shared_app_identities": true
+  },
+  "cleanup": {
+    "receipt": {
+      "removed_owned_children": [
+        "tmp",
+        "cp"
+      ],
+      "work_evidence_preserved": true,
+      "remote_temp_absence_claimed": false,
+      "existing_lock_deleted": false
+    },
+    "tmp_absent_on_collection": true,
+    "cp_absent_on_collection": true,
+    "remote_target_temps_absence_claimed": false
+  },
+  "engine_return": {
+    "paths": {
+      "ansible": "/usr/bin/ansible",
+      "ansible-playbook": "/usr/bin/ansible-playbook",
+      "ansible-inventory": "/usr/bin/ansible-inventory",
+      "ansible-config": "/usr/bin/ansible-config"
+    },
+    "cli_executed": false,
+    "versions_reused_from": "2026-10-18 19:27 exact CLI4 return evidence",
+    "global_path_changed": false,
+    "engine_variables_child_only": true
+  },
+  "actual_pass_scope": [
+    "existing paired plan against adopted inputs",
+    "six unchanged migrated pairs with would_change false",
+    "tracking fields present and finite, Leap Normal",
+    "chronyd active",
+    "candidate engine real wrapper call, six hosts",
+    "source/runtime-vars and six target file preservation",
+    "owned controller tmp/cp cleanup"
+  ],
+  "point_observation_only": [
+    "parsed tracking values below100ms at this observation",
+    "source selected162.159.200.1 and upstream pair visible",
+    "client5 selected10.1.93.102 with one source row each",
+    "kubelet loaded/active; Kubernetes Ready not asserted here"
+  ],
+  "not_proven_by_this_run": [
+    "continuous60sx6 or reboot/sync-loss tests",
+    "fresh explicit verify/apply AC assertion for100ms/source selection",
+    "all roles operational migration",
+    "all current OS/DNS details beyond exact shared bindings",
+    "human shared17 acceptance",
+    "whole issue9 acceptance"
+  ],
+  "prior_results_reused": [
+    "185 role tests",
+    "PR87 CI295/syntax78/fixture7",
+    "19:27 selectedCLI4 and default-returnCLI4",
+    "shared17 technical readback"
+  ],
+  "remaining_issue9": [
+    "link this real opt-in call and previousCLI/return/source/APP evidence to existing AC without rerunning completed tests",
+    "receive existing reviewer shared17 direct-read scope/time/result; central6248833059 pending",
+    "central final acceptance of exact operational caller/scope and AC evidence; no mandatory global engine switch inferred",
+    "central publication/status only after final comparison; this review performs no GitHub writes"
+  ],
+  "recommendation": "No apply/rollback/engine/helper changes justified by this successful precheck. Finish evidence linkage and existing human acceptance; add runtime work only if a specific existing AC lacks evidence."
+}

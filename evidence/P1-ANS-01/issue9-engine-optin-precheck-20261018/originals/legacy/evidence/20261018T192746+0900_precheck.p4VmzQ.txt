@@ -1,0 +1,210 @@
+SOURCE_HEAD=0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea
+FDS_ENGINE_EXEC=/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin/ansible-playbook CORE=2.21.3 SSH_USETTY=false
+
+PLAY [CR-P1-NTP-01-01 NTP precheck on all Kubernetes nodes] ********************
+
+TASK [Gathering Facts] *********************************************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-control02]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+
+TASK [ntp_source : Select the unchanged drop-in-only workflow] *****************
+included: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/ntp_source/tasks/_legacy.yml for k8s-control02, k8s-control01, k8s-control03, k8s-worker01, k8s-worker02, k8s-worker03
+
+TASK [ntp_source : Validate CR NTP execution phase and variables] **************
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Require explicit approval token for NTP changes] ************
+skipping: [k8s-control01]
+skipping: [k8s-control02]
+skipping: [k8s-control03]
+skipping: [k8s-worker01]
+skipping: [k8s-worker02]
+skipping: [k8s-worker03]
+
+TASK [ntp_source : Determine this host's NTP role] *****************************
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+
+TASK [ntp_source : Verify chronyd is installed] ********************************
+ok: [k8s-worker02]
+ok: [k8s-control01]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+ok: [k8s-control02]
+
+TASK [ntp_source : Read pre-change chronyd service state] **********************
+ok: [k8s-control01]
+ok: [k8s-worker02]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker03]
+
+TASK [ntp_source : Assert chronyd is active before any change] *****************
+ok: [k8s-control01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-control03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker01] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker02] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [k8s-worker03] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [ntp_source : Read existing chrony main config] ***************************
+ok: [k8s-control03]
+ok: [k8s-control01]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+ok: [k8s-worker01]
+ok: [k8s-control02]
+
+TASK [ntp_source : Determine whether /etc/chrony.d is included] ****************
+ok: [k8s-control01]
+ok: [k8s-control02]
+ok: [k8s-control03]
+ok: [k8s-worker01]
+ok: [k8s-worker02]
+ok: [k8s-worker03]
+
+TASK [ntp_source : Stop on unexpected chrony.conf layout] **********************
+[ERROR]: Task failed: Action failed: /etc/chrony.conf on k8s-control01 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf.
+Origin: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/ntp_source/tasks/_legacy.yml:82:3
+
+80       }}
+81
+82 - name: Stop on unexpected chrony.conf layout
+     ^ column 3
+
+fatal: [k8s-control01]: FAILED! => {
+    "assertion": "cr_ntp_confdir_included | bool",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "/etc/chrony.conf on k8s-control01 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf."
+}
+[ERROR]: Task failed: Action failed: /etc/chrony.conf on k8s-control02 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf.
+Origin: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/ntp_source/tasks/_legacy.yml:82:3
+
+80       }}
+81
+82 - name: Stop on unexpected chrony.conf layout
+     ^ column 3
+
+fatal: [k8s-control02]: FAILED! => {
+    "assertion": "cr_ntp_confdir_included | bool",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "/etc/chrony.conf on k8s-control02 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf."
+}
+[ERROR]: Task failed: Action failed: /etc/chrony.conf on k8s-control03 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf.
+Origin: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/ntp_source/tasks/_legacy.yml:82:3
+
+80       }}
+81
+82 - name: Stop on unexpected chrony.conf layout
+     ^ column 3
+
+fatal: [k8s-control03]: FAILED! => {
+    "assertion": "cr_ntp_confdir_included | bool",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "/etc/chrony.conf on k8s-control03 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf."
+}
+[ERROR]: Task failed: Action failed: /etc/chrony.conf on k8s-worker01 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf.
+Origin: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/ntp_source/tasks/_legacy.yml:82:3
+
+80       }}
+81
+82 - name: Stop on unexpected chrony.conf layout
+     ^ column 3
+
+fatal: [k8s-worker01]: FAILED! => {
+    "assertion": "cr_ntp_confdir_included | bool",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "/etc/chrony.conf on k8s-worker01 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf."
+}
+[ERROR]: Task failed: Action failed: /etc/chrony.conf on k8s-worker02 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf.
+Origin: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/ntp_source/tasks/_legacy.yml:82:3
+
+80       }}
+81
+82 - name: Stop on unexpected chrony.conf layout
+     ^ column 3
+
+fatal: [k8s-worker02]: FAILED! => {
+    "assertion": "cr_ntp_confdir_included | bool",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "/etc/chrony.conf on k8s-worker02 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf."
+}
+[ERROR]: Task failed: Action failed: /etc/chrony.conf on k8s-worker03 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf.
+Origin: /home/server01_ansible/worker02-session-plan-3hetha3t/source/roles/ntp_source/tasks/_legacy.yml:82:3
+
+80       }}
+81
+82 - name: Stop on unexpected chrony.conf layout
+     ^ column 3
+
+fatal: [k8s-worker03]: FAILED! => {
+    "assertion": "cr_ntp_confdir_included | bool",
+    "changed": false,
+    "evaluated_to": false,
+    "msg": "/etc/chrony.conf on k8s-worker03 does not include /etc/chrony.d with a supported active confdir or include *.conf directive. Commented directives do not count. Multiple directories or nested layouts need separate review. This role does not edit /etc/chrony.conf."
+}
+
+PLAY RECAP *********************************************************************
+k8s-control01              : ok=9    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-control02              : ok=9    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-control03              : ok=9    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-worker01               : ok=9    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-worker02               : ok=9    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+k8s-worker03               : ok=9    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+

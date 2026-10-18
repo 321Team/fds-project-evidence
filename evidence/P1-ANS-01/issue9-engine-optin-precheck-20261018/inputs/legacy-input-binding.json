@@ -1,0 +1,354 @@
+{
+  "created_at_kst": "2026-10-18T19:25:59.722960+09:00",
+  "status": "FROZEN_PREPARATION_FOR_CENTRAL_DISPATCH_NOT_EXECUTED",
+  "caller": {
+    "host": "ansible01",
+    "uid": 1000,
+    "euid": 1000,
+    "gid": 1000,
+    "egid": 1000,
+    "boot_id": "0317c0f8-cdc9-4c5e-a28e-48961c75e62e",
+    "machine_id": "17501f5b4e3f4fc1b97cdc82ffc45b83",
+    "python": "3.12.15",
+    "yaml_version": "6.0.1"
+  },
+  "caller_user": "server01_ansible",
+  "gid_source": "os.getgid()/os.getegid(); groups is inventory, not supplementary OS groups",
+  "source": {
+    "path": "/home/server01_ansible/worker02-session-plan-3hetha3t/source",
+    "head": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+    "purpose_adoption": "Central selected existing verified checkout for one NTP precheck only",
+    "operating_checkout_unchanged": "/home/server01_ansible/p1-ans-01",
+    "selected_paths_equal_pr87": "625731f3d45c21b4e0b0f1e328cc9800dd953fff",
+    "evidence": "STATIC_VALIDATION.json"
+  },
+  "action": {
+    "wrapper": "scripts/cr-p1-ntp-01-01-run.sh",
+    "argument": "precheck",
+    "max_invocations": 1,
+    "apply": false,
+    "rollback": false,
+    "runtime_vars": null,
+    "migrate_main": false,
+    "does_not_prove_100ms_or_client_selected_source": true
+  },
+  "config": {
+    "defaults": {
+      "inventory": "./inventory/hosts.yml",
+      "roles_path": "./roles",
+      "library": "./library",
+      "module_utils": "./module_utils",
+      "remote_user": "svc_ansible",
+      "host_key_checking": "True",
+      "retry_files_enabled": "False",
+      "interpreter_python": "auto_silent",
+      "forks": "6",
+      "timeout": "10"
+    }
+  },
+  "config_sha256": "73e6f6b5844a7a2dee8cf042b67a1c7b61c3e4b4198f4f7f7b65907e883de90e",
+  "inventory": "inventory/hosts.yml",
+  "selected_vars_files": [
+    {
+      "metadata": {
+        "path": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/inventory/group_vars/all.yml",
+        "exists": true,
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "regular": true,
+        "directory": false,
+        "symlink": false,
+        "nlink": 1,
+        "size": 3325,
+        "inode": 37730549,
+        "dev": 64770
+      },
+      "selected": {
+        "cr_ntp_change_id": "CR-P1-NTP-01-01",
+        "cr_ntp_source_host": "k8s-control01",
+        "cr_ntp_source_ip": "10.1.93.102",
+        "cr_ntp_client_ips": [
+          "10.1.93.103",
+          "10.1.93.104",
+          "10.1.93.105",
+          "10.1.93.107",
+          "10.1.93.108"
+        ],
+        "cr_ntp_dropin_path": "/etc/chrony.d/50-cr-p1-ntp-01-01.conf",
+        "cr_ntp_state_dir": "/var/lib/fds-change/CR-P1-NTP-01-01",
+        "cr_ntp_migrate_main": false,
+        "cr_ntp_source_upstreams": [],
+        "cr_ntp_offset_max_ms": 100
+      },
+      "unselected_key_count": 14,
+      "dangerous_connection_override_present": true
+    }
+  ],
+  "ssh_common_args_expected_at_execution": [
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "UserKnownHostsFile=%d/.ssh/known_hosts",
+    "-o",
+    "IdentitiesOnly=yes"
+  ],
+  "ssh_common_args_evidence": "Exact selected Git source; script compares actual tokens before CLI. Override presence flag alone is not a risk verdict.",
+  "key_metadata": {
+    "path": "/home/server01_ansible/.ssh/p1_ansible_ed25519",
+    "exists": true,
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o600",
+    "regular": true,
+    "directory": false,
+    "symlink": false,
+    "nlink": 1,
+    "size": 411,
+    "inode": 33557023,
+    "dev": 64770
+  },
+  "host_key_database_metadata": {
+    "path": "/home/server01_ansible/.ssh/known_hosts",
+    "exists": true,
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o600",
+    "regular": true,
+    "directory": false,
+    "symlink": false,
+    "nlink": 1,
+    "size": 13660,
+    "inode": 37713750,
+    "dev": 64770
+  },
+  "credential_contents_read": false,
+  "credential_hashes_read": false,
+  "engine": {
+    "selected_absolute_bin": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin",
+    "selected_core": "2.21.3",
+    "return_core": "2.16.19",
+    "return_path": "/usr/bin:/bin",
+    "global_path_or_rpm_changes": false,
+    "explicit_candidate_cli_count": 4,
+    "existing_wrapper_mandatory_cli_count": 4,
+    "return_cli_count": 4,
+    "old_guarded12_repeated": false,
+    "runtime_status": "NOT_EXECUTED"
+  },
+  "collection_roots": [
+    {
+      "path": "/home/server01_ansible/.ansible/collections",
+      "exists": false
+    },
+    {
+      "path": "/usr/share/ansible/collections",
+      "exists": true,
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o755",
+      "regular": false,
+      "directory": true,
+      "symlink": false,
+      "nlink": 3,
+      "size": 33,
+      "inode": 548437,
+      "dev": 64768
+    },
+    {
+      "path": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/collections",
+      "exists": false
+    }
+  ],
+  "collection_manifests": [],
+  "temp_parent": {
+    "path": "/home/server01_ansible",
+    "exists": true,
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0o700",
+    "regular": false,
+    "directory": true,
+    "symlink": false,
+    "nlink": 499,
+    "size": 65536,
+    "inode": 131,
+    "dev": 64770
+  },
+  "lock_metadata": [
+    {
+      "path": "/home/server01_ansible/.local",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "regular": false,
+      "directory": true,
+      "symlink": false,
+      "nlink": 4,
+      "size": 32,
+      "inode": 67240067,
+      "dev": 64770
+    },
+    {
+      "path": "/home/server01_ansible/.local/state",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "regular": false,
+      "directory": true,
+      "symlink": false,
+      "nlink": 11,
+      "size": 4096,
+      "inode": 33554586,
+      "dev": 64770
+    },
+    {
+      "path": "/home/server01_ansible/.local/state/fds-ntp",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o700",
+      "regular": false,
+      "directory": true,
+      "symlink": false,
+      "nlink": 2,
+      "size": 34,
+      "inode": 2117463,
+      "dev": 64770
+    },
+    {
+      "path": "/home/server01_ansible/.local/state/fds-ntp/CR-P1-NTP-01-01.lock",
+      "exists": true,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": "0o600",
+      "regular": true,
+      "directory": false,
+      "symlink": false,
+      "nlink": 1,
+      "size": 0,
+      "inode": 2117464,
+      "dev": 64770
+    }
+  ],
+  "temporary_scope": {
+    "owned_parent_pattern": "/home/server01_ansible/ntp-precheck-20261018.XXXXXXXX",
+    "local_cleanup_only": [
+      "tmp",
+      "cp"
+    ],
+    "evidence_preserved": [
+      "cli",
+      "evidence",
+      "all receipts/logs"
+    ],
+    "existing_lock_deleted": false,
+    "remote_temp_absence_claimed": false,
+    "source_or_operating_checkout_modified": false
+  },
+  "app_identity_evidence": {
+    "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\APP\\HARBOR_ENV_INPUTS.json",
+    "sha256": "60cbbe40108643685bdf1e04fc7d45b57f3493123edbc29a7a038e5582e85d18",
+    "at_kst": "2026-10-18T19:04:32.000417+09:00",
+    "observation_window": [
+      "2026-10-18T19:02:40.628692+09:00",
+      "2026-10-18T19:02:42.644999+09:00"
+    ],
+    "hosts": [
+      {
+        "host": "k8s-control01",
+        "machine_id": "43795458b5574726af93975cb8625c2b",
+        "boot_id": "8c78b577-62f8-4546-aac1-0b371b707bc5",
+        "node_uid": "75735bd5-937a-463f-a93f-a8e7e51fa7a1",
+        "ready": true,
+        "boot_stable": true,
+        "api_boot_matches": true,
+        "ansible_host": "10.1.93.102"
+      },
+      {
+        "host": "k8s-control02",
+        "machine_id": "6467ff4113f945a4b100a4ae32647d81",
+        "boot_id": "17c645d2-2707-4c1f-abde-64872f345e54",
+        "node_uid": "dc01d1a4-037a-4870-8349-46f8ac8cd666",
+        "ready": true,
+        "boot_stable": true,
+        "api_boot_matches": true,
+        "ansible_host": "10.1.93.103"
+      },
+      {
+        "host": "k8s-control03",
+        "machine_id": "05447f80fe754454a3c5c8f09f4c9ea6",
+        "boot_id": "1fb52585-01d5-4e6d-9565-04a6396504b0",
+        "node_uid": "999f59ae-63fa-4693-aa2a-dea0504c3c7d",
+        "ready": true,
+        "boot_stable": true,
+        "api_boot_matches": true,
+        "ansible_host": "10.1.93.104"
+      },
+      {
+        "host": "k8s-worker01",
+        "machine_id": "19fba8c06cfa4ebf876bacbbc3423bb1",
+        "boot_id": "bc7023a8-d697-45cb-afdb-d56b162965ce",
+        "node_uid": "e36d42b4-edcb-40e4-9ac1-25715bbf60d0",
+        "ready": true,
+        "boot_stable": true,
+        "api_boot_matches": true,
+        "ansible_host": "10.1.93.105"
+      },
+      {
+        "host": "k8s-worker02",
+        "machine_id": "bed0e37c3c234c5e85c5b5d352f6fc65",
+        "boot_id": "2747f3a9-6b9d-43ea-a374-d0d38de92ca0",
+        "node_uid": "4c6eec26-153e-4da5-bf8a-f80223ca3c1b",
+        "ready": true,
+        "boot_stable": true,
+        "api_boot_matches": true,
+        "ansible_host": "10.1.93.107"
+      },
+      {
+        "host": "k8s-worker03",
+        "machine_id": "0bb03794b5b04dc4bded6bd75d63f701",
+        "boot_id": "2e3c5d9a-b386-4c20-8c0b-f5f7f0e10b0c",
+        "node_uid": "28ff4048-68a6-40a8-a893-de6c06ee951d",
+        "ready": true,
+        "boot_stable": true,
+        "api_boot_matches": true,
+        "ansible_host": "10.1.93.108"
+      }
+    ],
+    "queried_again_by_ansible": false,
+    "validity": "Point observation; central binds current no-concurrent-NTP/reboot conditions before dispatch."
+  },
+  "reads": {
+    "input_receipt_sha256": "8c88e60f6f5045e43213a0421f2d56738b8176ea607bd0a794f333b0b7d12dd4",
+    "input_raw_sha256": "8ddc842f6610676f46db8f27d7a3d0b2153ea64dbe7fbca868c76999c02201e8",
+    "share17_receipt_sha256": "a9369845621cdeda3f6d27716f5b4ae82c2415152390e00a3ad929b1ae69400f"
+  },
+  "execution_candidate": {
+    "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\Ansible\\ntp-precheck-preparation\\ntp-precheck-once.sh",
+    "sha256": "1ff51e28ceae6358fcda63bb7da3706ccb0e46bc2d640b3fed0f43b3b28ffeb3",
+    "deployed": false,
+    "executed": false
+  },
+  "central_review": {
+    "status": "CENTRAL_ACCEPTED_EXECUTION_PLAN_AND_CANDIDATE_PENDING_FINAL_HASH_BINDING",
+    "source": "Incoming central delegation in this chat, 2026-10-18; not an invented independent human approval",
+    "confirmed_scope": [
+      "GID1000",
+      "env-i",
+      "one child-scoped engine",
+      "existing wrapper mandatory CLI checks",
+      "owned temporary cleanup"
+    ],
+    "budget": "Read-only observation after 5 minutes; no automatic kill or retry",
+    "concurrency": "Central reports sole NTP writer; Harbor separate namespace native public test",
+    "actual_dispatch_owner": "central"
+  },
+  "pending": [
+    "Central exclusive claim and final hash/current-input binding",
+    "Actual CLI4, precheck1, default return, owned temp cleanup",
+    "Existing reviewer direct shared-original review; AI read is not human acceptance"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "ANSIBLE_NTP_PAIRED_PRECHECK_20261018",
+  "at_kst": "2026-10-18T19:56:33.993511+09:00",
+  "status": "INTENT",
+  "script_sha256": "9f9b0ca55eafa22571a6134757eeb326568e689dda46030134b550e5b4996697",
+  "binding_sha256": "51972b2bb6704e451ed6433e1ef80f316436ebbd9536a4759e0e001298d0260e",
+  "source_head": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+  "scope": "existing paired precheck once K8S6; config/baseline before-after read; owned controller tmp cleanup",
+  "reviewer": "Codex central; full template and exact substitution reviewed",
+  "authorization": "User Phase1 plan execution; current paired mode and historic upstreams adopted by central",
+  "apply_actions": 0,
+  "automatic_retry": false,
+  "automatic_kill": false,
+  "observe_after_seconds": 300,
+  "argv": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "UpdateHostKeys=no",
+    "-o",
+    "ForwardAgent=no",
+    "-o",
+    "ClearAllForwardings=yes",
+    "fds-ansible01",
+    "/usr/bin/env -i HOME=/home/server01_ansible USER=server01_ansible LOGNAME=server01_ansible PATH=/usr/bin:/bin LANG=C.UTF-8 LC_ALL=C.UTF-8 PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -I -B -"
+  ]
+}

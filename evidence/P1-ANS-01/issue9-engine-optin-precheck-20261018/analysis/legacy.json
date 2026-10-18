@@ -1,0 +1,235 @@
+{
+  "analyzed_at_kst": "2026-10-18T19:31:59.333195+09:00",
+  "status": "PARTIAL_RUNTIME_CONFIRMED_PRECHECK_STOPPED_AT_LAYOUT_GUARD",
+  "execution_window": {
+    "STARTED_AT": "2026-10-18T19:27:45+09:00",
+    "PRECHECK_STARTED_AT": "2026-10-18T19:27:46+09:00",
+    "PRECHECK_ENDED_AT": "2026-10-18T19:27:54+09:00",
+    "ENDED_AT": "2026-10-18T19:27:55+09:00"
+  },
+  "work": "/home/server01_ansible/ntp-precheck-20261018.5oKsKblr",
+  "rcs": {
+    "SELECTED_CLI_RC": 0,
+    "PRECHECK_RC": 2,
+    "RETURN_CLI_RC": 0,
+    "LOCAL_TEMP_CLEANUP_RC": 0
+  },
+  "outer_rc": 1,
+  "file_count": 37,
+  "bytes": 25381,
+  "all_file_hashes_verified": true,
+  "failure": {
+    "task": "ntp_source : Stop on unexpected chrony.conf layout",
+    "source": "roles/ntp_source/tasks/_legacy.yml",
+    "line": 82,
+    "assertion": "cr_ntp_confdir_included | bool",
+    "result": false,
+    "hosts": [
+      "k8s-control01",
+      "k8s-control02",
+      "k8s-control03",
+      "k8s-worker01",
+      "k8s-worker02",
+      "k8s-worker03"
+    ],
+    "direct_cause": "No supported active confdir /etc/chrony.d[/] OR include /etc/chrony.d/*.conf line matched the existing predicate on each host. Raw chrony.conf is not in the saved output; actual layout is not determined.",
+    "not_proven": [
+      "chronyd unhealthy",
+      "engine defect",
+      "all include directives absent",
+      "all six current configurations identical"
+    ]
+  },
+  "recap": {
+    "k8s-control01": {
+      "ok": 9,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 1,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-control02": {
+      "ok": 9,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 1,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-control03": {
+      "ok": 9,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 1,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-worker01": {
+      "ok": 9,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 1,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-worker02": {
+      "ok": 9,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 1,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0
+    },
+    "k8s-worker03": {
+      "ok": 9,
+      "changed": 0,
+      "unreachable": 0,
+      "failed": 1,
+      "skipped": 1,
+      "rescued": 0,
+      "ignored": 0
+    }
+  },
+  "cli_versions": [
+    {
+      "mode": "selected",
+      "cli": "ansible",
+      "version": "2.21.3",
+      "rc": 0,
+      "executable": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin/ansible",
+      "config": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/ansible.cfg",
+      "collection": "/home/server01_ansible/.ansible/collections:/usr/share/ansible/collections",
+      "python_module": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/lib64/python3.12/site-packages/ansible",
+      "log_sha256": "c6791123f2a803049d244594b9c5dfcff27068f520b6c971986b1431c1312865"
+    },
+    {
+      "mode": "selected",
+      "cli": "ansible-playbook",
+      "version": "2.21.3",
+      "rc": 0,
+      "executable": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin/ansible-playbook",
+      "config": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/ansible.cfg",
+      "collection": "/home/server01_ansible/.ansible/collections:/usr/share/ansible/collections",
+      "python_module": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/lib64/python3.12/site-packages/ansible",
+      "log_sha256": "d4c2783d33c4f37fd508fc3171b3f72098b893c5d626593e4f408e8fd2c4ed03"
+    },
+    {
+      "mode": "selected",
+      "cli": "ansible-inventory",
+      "version": "2.21.3",
+      "rc": 0,
+      "executable": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin/ansible-inventory",
+      "config": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/ansible.cfg",
+      "collection": "/home/server01_ansible/.ansible/collections:/usr/share/ansible/collections",
+      "python_module": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/lib64/python3.12/site-packages/ansible",
+      "log_sha256": "86ec9113efeae4492f6629b10de90ede53072e29d1491fa159348aa8bf909ba5"
+    },
+    {
+      "mode": "selected",
+      "cli": "ansible-config",
+      "version": "2.21.3",
+      "rc": 0,
+      "executable": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/bin/ansible-config",
+      "config": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/ansible.cfg",
+      "collection": "/home/server01_ansible/.ansible/collections:/usr/share/ansible/collections",
+      "python_module": "/home/server01_ansible/ansible-candidate.8oCqVUwx/result/runtime/venv-2.21.3/lib64/python3.12/site-packages/ansible",
+      "log_sha256": "b9dad41539f8208670414a082401be79bc72d22ed7e41f882903b625d154d1de"
+    },
+    {
+      "mode": "return",
+      "cli": "ansible",
+      "version": "2.16.19",
+      "rc": 0,
+      "executable": "/usr/bin/ansible",
+      "config": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/ansible.cfg",
+      "collection": "/home/server01_ansible/.ansible/collections:/usr/share/ansible/collections",
+      "python_module": "/usr/lib/python3.12/site-packages/ansible",
+      "log_sha256": "e20e0f36262c43246f92ed86dead96a61fb6e32f2252f5ed6b2c7be5538f2048"
+    },
+    {
+      "mode": "return",
+      "cli": "ansible-playbook",
+      "version": "2.16.19",
+      "rc": 0,
+      "executable": "/usr/bin/ansible-playbook",
+      "config": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/ansible.cfg",
+      "collection": "/home/server01_ansible/.ansible/collections:/usr/share/ansible/collections",
+      "python_module": "/usr/lib/python3.12/site-packages/ansible",
+      "log_sha256": "a2e6beb40f63da1edb6a9fb94720de90c40afa866a12ff4ecb0e270771840f04"
+    },
+    {
+      "mode": "return",
+      "cli": "ansible-inventory",
+      "version": "2.16.19",
+      "rc": 0,
+      "executable": "/usr/bin/ansible-inventory",
+      "config": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/ansible.cfg",
+      "collection": "/home/server01_ansible/.ansible/collections:/usr/share/ansible/collections",
+      "python_module": "/usr/lib/python3.12/site-packages/ansible",
+      "log_sha256": "01969207d0dcbc89217a09352af9c47ba849e4673f56642607f78f8b3674dd5f"
+    },
+    {
+      "mode": "return",
+      "cli": "ansible-config",
+      "version": "2.16.19",
+      "rc": 0,
+      "executable": "/usr/bin/ansible-config",
+      "config": "/home/server01_ansible/worker02-session-plan-3hetha3t/source/ansible.cfg",
+      "collection": "/home/server01_ansible/.ansible/collections:/usr/share/ansible/collections",
+      "python_module": "/usr/lib/python3.12/site-packages/ansible",
+      "log_sha256": "05d9ef69b8ff11de8bb71c62fcb0b8abbe7c20ba2b7cd98ee355b442ef35b58a"
+    }
+  ],
+  "confirmed_runtime": [
+    "Selected engine CLI4 rc0 with absolute candidate executables",
+    "Real wrapper using selected ansible-playbook/core2.21.3 and SSH_USETTY=false",
+    "Six hosts Gathering Facts and chronyd installation/active service assertions passed",
+    "Old default engine CLI4 /usr/bin/core2.16.19 confirmed after opt-in removed",
+    "Source HEAD unchanged and tracked dirty0",
+    "Owned tmp/cp cleanup success and readback absent"
+  ],
+  "not_reached": [
+    "Active competing-source validation after layout guard",
+    "Tracking/sources parsing",
+    "100ms offset/selected-source acceptance",
+    "Full NTP precheck completion",
+    "Final issue9 acceptance"
+  ],
+  "source_after": {
+    "head": "0d58598d8a3ce77ccd7eaa9e1dfba820b0a436ea",
+    "tracked_dirty": false
+  },
+  "cleanup": {
+    "removed_owned_children": [
+      "tmp",
+      "cp"
+    ],
+    "work_evidence_preserved": true,
+    "remote_temp_absence_claimed": false
+  },
+  "local_tmp_absent": true,
+  "local_cp_absent": true,
+  "remote_temp_absence_claimed": false,
+  "raw_chrony_conf_preserved_in_logs": false,
+  "role_helper_or_server_changes_by_review": false,
+  "additional_runtime_invocations": 0,
+  "minimum_correction": "Keep engine/role/helper and guard unchanged. Preserve this failed run. Before choosing another role action, central must bind current six-host chrony main/drop-in/include layout and the already adopted NTP operating mode; do not rerun this unchanged legacy precheck.",
+  "central_followup_inputs": [
+    "Current six-host chrony.conf SHA/metadata and active confdir/include/sourcedir layout",
+    "Managed drop-in existence/SHA and baseline identity if paired workflow is adopted",
+    "Existing approved source upstream values if using paired precheck; current source_upstreams is empty"
+  ],
+  "reads": {
+    "collection_sha256": "e5ac89355363932d0f2c531f2e9341d9aef2fcf4d6018277490eec6993c3708c",
+    "receipt_sha256": "c8214219ea33066efc9bed814f06846fb2afba3de83aeb69aeef7ba4466752d9",
+    "precheck_log_sha256": "1c08c6f5c230fb2e8402abe51835fd5587c22cf1571a7eb5197297d9721753a4",
+    "wrapper_evidence_path": "evidence/20261018T192746+0900_precheck.p4VmzQ.txt",
+    "wrapper_evidence_sha256": "1c08c6f5c230fb2e8402abe51835fd5587c22cf1571a7eb5197297d9721753a4"
+  }
+}
