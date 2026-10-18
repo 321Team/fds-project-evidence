@@ -40,3 +40,9 @@ paired control01은 ok23, 나머지5대는 ok22다. tracking 형식/유한값/Le
 남은 것은 기존 공유17 담당자 직접 열람 회신, 기존 AC에 대한 실제 caller/Collection/6대 전환 시점 증적의 최종 연결 및 범위를 명시한 운영 인수다. 생략된 NTP assert를 실행했다고 쓰거나 185 격리 시험을 운영 전체 apply로 바꾸지 않는다. 정상 서비스 변경을 위한 시험·새 공통 Lead GO·Phase2 작업은 추가하지 않는다.
 
 중앙이 다른 완료 결과와 통합 발행할 때 새 수집회차와 registry 한 줄만 편입한다. 기존185/PR243·다른 회차·sources/sealed는 변경하지 않는다. 이 후보의 검토·게시가 완료되기 전에는 PUBLICATION=COMPLETE로 표시하지 않는다.
+
+## 2026-10-18 20:19 OS/DNS 현재 연결 보충
+
+추가 [current-os-dns-20261018](current-os-dns-20261018/README.md)는 6대 기존 paired 전후와 동일한 hostname·machine-id·boot에서 OS/DNS를 한 번씩 읽은 증적이다. 66개 명령 rc0, 자동 재시도0이며 OS 전제·고정 DNS 설정·지정 이름 응답이 해당 기존 기준에 부합했다. 이 범위의 현재 OS/DNS 연결 공백을 보완한다. 전체 #7/엔진 전환·NTP 전체 AC·최종 #9 인수를 의미하지 않으며 원본17 사람 열람 회신과 최종 운영 선택/인수는 여전히 미완료다. 기존 legacy 실패·paired 성공·185/PR243의 판정은 그대로 유지한다.
+
+추가 자료 내부의 PREPARATION_ONLY는 작성 시점 상태다. 중앙은 기존 PR244에 이 원문을 보존하여 게시하며 실제 게시·리뷰·병합 여부는 PR의 현재 HEAD와 기록으로 구분한다.

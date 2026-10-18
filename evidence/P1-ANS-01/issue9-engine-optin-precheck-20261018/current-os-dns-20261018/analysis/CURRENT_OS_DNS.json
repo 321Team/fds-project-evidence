@@ -1,0 +1,379 @@
+{
+  "at_kst": "2026-10-18T20:20:53.017732+09:00",
+  "status": "PASS_SCOPED_CURRENT_OS_DNS_6",
+  "window_kst": [
+    "2026-10-18T20:19:10.747250+09:00",
+    "2026-10-18T20:19:14.502430+09:00"
+  ],
+  "read_batches": 1,
+  "targets": 6,
+  "matching_paired_identities": 6,
+  "commands_rc0": 66,
+  "dns_query_commands_rc0": 30,
+  "automatic_retries": 0,
+  "configuration_service_package_changes": 0,
+  "remote_temp_installs": 0,
+  "token_or_credential_actions": 0,
+  "github_writes": 0,
+  "baseline_head": "357965058cdcaa129b14c29a09b3e4e19215195f",
+  "baseline_report_sha256": "939c69d406e7dedd500f9606ee40c2a04d7ac495fb2f139822ae4e38c8f45aa6",
+  "read_claim_sha256": "ffac2116850f3841002acc221a1203ca5d8a2e24e01c30baceb09f7b4f03e58a",
+  "read_result_sha256": "897912a48261f6142a40e55658fe4257d55a8ada8b48fb93e2cfb05666ad6dcc",
+  "paired_identity_check_sha256": "be980e5a098588930a0f49dbc187f7a4cd48acbdda6778e5333371d01d0faef1",
+  "rows": [
+    {
+      "host": "k8s-control01",
+      "started_at_kst": "2026-10-18T20:19:10.747250+09:00",
+      "ended_at_kst": "2026-10-18T20:19:10.970987+09:00",
+      "machine_id": "43795458b5574726af93975cb8625c2b",
+      "boot_id": "8c78b577-62f8-4546-aac1-0b371b707bc5",
+      "same_paired_boot": true,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11,
+      "dns_query_commands": 5,
+      "answers": {
+        "@10.1.93.52": [
+          "10.1.93.109"
+        ],
+        "@10.1.93.53": [
+          "10.1.93.109"
+        ],
+        "k8s-api.fds.internal": [
+          "10.1.93.109"
+        ],
+        "k8s-api": [
+          "10.1.93.109"
+        ],
+        "github.com": [
+          "20.200.245.247"
+        ]
+      },
+      "os": {
+        "ID": "centos",
+        "NAME": "CentOS Stream",
+        "VERSION_ID": "10",
+        "PRETTY_NAME": "CentOS Stream 10 (Coughlan)"
+      },
+      "dns_profile": {
+        "connection": "fds-k8s-control01",
+        "servers": [
+          "10.1.93.52",
+          "10.1.93.53"
+        ],
+        "search": [
+          "fds.internal"
+        ],
+        "ignore_auto": "yes"
+      },
+      "nss_hosts": [
+        "hosts:      files  dns myhostname"
+      ],
+      "public_file_hashes": {
+        "/etc/os-release": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68",
+        "/etc/resolv.conf": "c452a6013b82f5daeec71cbe4234dc696f9e4948197866ac74788285d934827e",
+        "/etc/nsswitch.conf": "a4b8c9520c76b2667f34dcf5f9909580772020a2f68552dc7b54baf1de9529ed"
+      },
+      "stdout_sha256": "cf348b0e790404eb99fa11c4ed532551a13d9c1b40a055865fa629aa0dc4e163",
+      "stderr_sha256": "51f82bf31a25d7d141246cf027884ebeb6b8485b8c24aaae5a00b12ae74a393d"
+    },
+    {
+      "host": "k8s-control02",
+      "started_at_kst": "2026-10-18T20:19:11.593819+09:00",
+      "ended_at_kst": "2026-10-18T20:19:11.733597+09:00",
+      "machine_id": "6467ff4113f945a4b100a4ae32647d81",
+      "boot_id": "17c645d2-2707-4c1f-abde-64872f345e54",
+      "same_paired_boot": true,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11,
+      "dns_query_commands": 5,
+      "answers": {
+        "@10.1.93.52": [
+          "10.1.93.109"
+        ],
+        "@10.1.93.53": [
+          "10.1.93.109"
+        ],
+        "k8s-api.fds.internal": [
+          "10.1.93.109"
+        ],
+        "k8s-api": [
+          "10.1.93.109"
+        ],
+        "github.com": [
+          "20.200.245.247"
+        ]
+      },
+      "os": {
+        "ID": "centos",
+        "NAME": "CentOS Stream",
+        "VERSION_ID": "10",
+        "PRETTY_NAME": "CentOS Stream 10 (Coughlan)"
+      },
+      "dns_profile": {
+        "connection": "fds-k8s-control02",
+        "servers": [
+          "10.1.93.52",
+          "10.1.93.53"
+        ],
+        "search": [
+          "fds.internal"
+        ],
+        "ignore_auto": "yes"
+      },
+      "nss_hosts": [
+        "hosts:      files  dns myhostname"
+      ],
+      "public_file_hashes": {
+        "/etc/os-release": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68",
+        "/etc/resolv.conf": "c452a6013b82f5daeec71cbe4234dc696f9e4948197866ac74788285d934827e",
+        "/etc/nsswitch.conf": "a4b8c9520c76b2667f34dcf5f9909580772020a2f68552dc7b54baf1de9529ed"
+      },
+      "stdout_sha256": "00e66285575009908f7e46f60786ed55f11ab6fc2f87996662225fa869e698b4",
+      "stderr_sha256": "fff8537112db0a08b743ecda891831488bdd096b7e1f6045df2e49918714e284"
+    },
+    {
+      "host": "k8s-control03",
+      "started_at_kst": "2026-10-18T20:19:12.279908+09:00",
+      "ended_at_kst": "2026-10-18T20:19:12.420174+09:00",
+      "machine_id": "05447f80fe754454a3c5c8f09f4c9ea6",
+      "boot_id": "1fb52585-01d5-4e6d-9565-04a6396504b0",
+      "same_paired_boot": true,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11,
+      "dns_query_commands": 5,
+      "answers": {
+        "@10.1.93.52": [
+          "10.1.93.109"
+        ],
+        "@10.1.93.53": [
+          "10.1.93.109"
+        ],
+        "k8s-api.fds.internal": [
+          "10.1.93.109"
+        ],
+        "k8s-api": [
+          "10.1.93.109"
+        ],
+        "github.com": [
+          "20.200.245.247"
+        ]
+      },
+      "os": {
+        "ID": "centos",
+        "NAME": "CentOS Stream",
+        "VERSION_ID": "10",
+        "PRETTY_NAME": "CentOS Stream 10 (Coughlan)"
+      },
+      "dns_profile": {
+        "connection": "fds-k8s-control03",
+        "servers": [
+          "10.1.93.52",
+          "10.1.93.53"
+        ],
+        "search": [
+          "fds.internal"
+        ],
+        "ignore_auto": "yes"
+      },
+      "nss_hosts": [
+        "hosts:      files  dns myhostname"
+      ],
+      "public_file_hashes": {
+        "/etc/os-release": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68",
+        "/etc/resolv.conf": "c452a6013b82f5daeec71cbe4234dc696f9e4948197866ac74788285d934827e",
+        "/etc/nsswitch.conf": "a4b8c9520c76b2667f34dcf5f9909580772020a2f68552dc7b54baf1de9529ed"
+      },
+      "stdout_sha256": "5d8837e722ba3eb3d4d2703283789f275f893aa267258103293038cdec5dcf19",
+      "stderr_sha256": "e2958b2246d355ecfea23ae376534c3fd2db9afa75f5d3a22465edf76a119861"
+    },
+    {
+      "host": "k8s-worker01",
+      "started_at_kst": "2026-10-18T20:19:13.009277+09:00",
+      "ended_at_kst": "2026-10-18T20:19:13.138134+09:00",
+      "machine_id": "19fba8c06cfa4ebf876bacbbc3423bb1",
+      "boot_id": "bc7023a8-d697-45cb-afdb-d56b162965ce",
+      "same_paired_boot": true,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11,
+      "dns_query_commands": 5,
+      "answers": {
+        "@10.1.93.52": [
+          "10.1.93.109"
+        ],
+        "@10.1.93.53": [
+          "10.1.93.109"
+        ],
+        "k8s-api.fds.internal": [
+          "10.1.93.109"
+        ],
+        "k8s-api": [
+          "10.1.93.109"
+        ],
+        "github.com": [
+          "20.200.245.247"
+        ]
+      },
+      "os": {
+        "ID": "centos",
+        "NAME": "CentOS Stream",
+        "VERSION_ID": "10",
+        "PRETTY_NAME": "CentOS Stream 10 (Coughlan)"
+      },
+      "dns_profile": {
+        "connection": "fds-k8s-worker01",
+        "servers": [
+          "10.1.93.52",
+          "10.1.93.53"
+        ],
+        "search": [
+          "fds.internal"
+        ],
+        "ignore_auto": "yes"
+      },
+      "nss_hosts": [
+        "hosts:      files  dns myhostname"
+      ],
+      "public_file_hashes": {
+        "/etc/os-release": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68",
+        "/etc/resolv.conf": "c452a6013b82f5daeec71cbe4234dc696f9e4948197866ac74788285d934827e",
+        "/etc/nsswitch.conf": "a4b8c9520c76b2667f34dcf5f9909580772020a2f68552dc7b54baf1de9529ed"
+      },
+      "stdout_sha256": "0f50b7bbd864f21c496793832b3dea5a214c740855dd43435054e9a8b9ed4a4e",
+      "stderr_sha256": "e3330668c6bf8831830c142c4ba66e72e136491509bd569f89f2acdf22450ed6"
+    },
+    {
+      "host": "k8s-worker02",
+      "started_at_kst": "2026-10-18T20:19:13.671271+09:00",
+      "ended_at_kst": "2026-10-18T20:19:13.786621+09:00",
+      "machine_id": "bed0e37c3c234c5e85c5b5d352f6fc65",
+      "boot_id": "2747f3a9-6b9d-43ea-a374-d0d38de92ca0",
+      "same_paired_boot": true,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11,
+      "dns_query_commands": 5,
+      "answers": {
+        "@10.1.93.52": [
+          "10.1.93.109"
+        ],
+        "@10.1.93.53": [
+          "10.1.93.109"
+        ],
+        "k8s-api.fds.internal": [
+          "10.1.93.109"
+        ],
+        "k8s-api": [
+          "10.1.93.109"
+        ],
+        "github.com": [
+          "20.200.245.247"
+        ]
+      },
+      "os": {
+        "ID": "centos",
+        "NAME": "CentOS Stream",
+        "VERSION_ID": "10",
+        "PRETTY_NAME": "CentOS Stream 10 (Coughlan)"
+      },
+      "dns_profile": {
+        "connection": "fds-k8s-worker02",
+        "servers": [
+          "10.1.93.52",
+          "10.1.93.53"
+        ],
+        "search": [
+          "fds.internal"
+        ],
+        "ignore_auto": "yes"
+      },
+      "nss_hosts": [
+        "hosts:      files  dns myhostname"
+      ],
+      "public_file_hashes": {
+        "/etc/os-release": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68",
+        "/etc/resolv.conf": "c452a6013b82f5daeec71cbe4234dc696f9e4948197866ac74788285d934827e",
+        "/etc/nsswitch.conf": "a4b8c9520c76b2667f34dcf5f9909580772020a2f68552dc7b54baf1de9529ed"
+      },
+      "stdout_sha256": "22a864876e2077b5fd6e6a2429877c00e985c3e60caa2de9928b51eaebfecaa4",
+      "stderr_sha256": "c5b42b95dcc1af207daa9f9274a8f7af48ae1e2218ac8bbcd93bc1eff1be2d6f"
+    },
+    {
+      "host": "k8s-worker03",
+      "started_at_kst": "2026-10-18T20:19:14.364632+09:00",
+      "ended_at_kst": "2026-10-18T20:19:14.502430+09:00",
+      "machine_id": "0bb03794b5b04dc4bded6bd75d63f701",
+      "boot_id": "2e3c5d9a-b386-4c20-8c0b-f5f7f0e10b0c",
+      "same_paired_boot": true,
+      "status": "PASS_SCOPED_CURRENT_OS_DNS_READ",
+      "commands": 11,
+      "dns_query_commands": 5,
+      "answers": {
+        "@10.1.93.52": [
+          "10.1.93.109"
+        ],
+        "@10.1.93.53": [
+          "10.1.93.109"
+        ],
+        "k8s-api.fds.internal": [
+          "10.1.93.109"
+        ],
+        "k8s-api": [
+          "10.1.93.109"
+        ],
+        "github.com": [
+          "20.200.245.247"
+        ]
+      },
+      "os": {
+        "ID": "centos",
+        "NAME": "CentOS Stream",
+        "VERSION_ID": "10",
+        "PRETTY_NAME": "CentOS Stream 10 (Coughlan)"
+      },
+      "dns_profile": {
+        "connection": "fds-k8s-worker03",
+        "servers": [
+          "10.1.93.52",
+          "10.1.93.53"
+        ],
+        "search": [
+          "fds.internal"
+        ],
+        "ignore_auto": "yes"
+      },
+      "nss_hosts": [
+        "hosts:      files  dns myhostname"
+      ],
+      "public_file_hashes": {
+        "/etc/os-release": "e1e2155608de5325128e091b3fd8e8f11212d62aa19f78294f7e399e135f4c68",
+        "/etc/resolv.conf": "c452a6013b82f5daeec71cbe4234dc696f9e4948197866ac74788285d934827e",
+        "/etc/nsswitch.conf": "a4b8c9520c76b2667f34dcf5f9909580772020a2f68552dc7b54baf1de9529ed"
+      },
+      "stdout_sha256": "e2e18216c0825c79e3cee209106545f173f54b579f8909fa31c7f6776066e721",
+      "stderr_sha256": "de2409f7d4d8e03ad3bab0e692fabd0b1054c80b42a55adc751817b7826cadec"
+    }
+  ],
+  "reused_chronyd_evidence": {
+    "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\Ansible\\ntp-paired-precheck-review\\ANALYSIS.json",
+    "sha256": "e4fefda13afa76ccc2e57054c6bb2c2ae920c69a8a5fea553e040afa0cce13c0",
+    "time": "2026-10-18 19:56 KST",
+    "fresh_service_query": false
+  },
+  "frozen_publication_candidate": {
+    "path": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\Ansible\\ntp-evidence-publication-candidate\\FINAL.json",
+    "sha256": "e6689b1c36a8f89b463ab439f7c2938f0afe7c98a34c0b980213e1c87273b2b6",
+    "modified": false
+  },
+  "prior_turn_remote_actions_before_current_rebind": 0,
+  "excluded": [
+    "Full issue7 CLI/hardening/API-listener rerun",
+    "Role/engine execution or global engine transition",
+    "Package inventory or directory scan",
+    "Harbor credentials/Pull and policy/service change",
+    "Whole issue9 final acceptance and human review"
+  ],
+  "remaining": [
+    "Central may link this current scoped OS/DNS result as supplement without changing frozen candidate",
+    "Original17 human reading/verification response",
+    "Final operating caller/Collection/target selection and acceptance; no new production change required solely for this check"
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "at_kst": "2026-10-18T20:14:47.041884+09:00",
+  "references": [
+    {
+      "repo": "321Team/infra-ansible",
+      "head": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "path": "playbooks/precheck.yml",
+      "sha256": "e3c31bc3b0a3f481852bd6ee27ec5e4e81d07d98c14a7974d756c68653ccf0ff"
+    },
+    {
+      "repo": "321Team/infra-ansible",
+      "head": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "path": "roles/dns_resolver/tasks/main.yml",
+      "sha256": "3b7fa1ae042421c2d0b9352e794cf9e83dcaf5843aa01e69b8a354544daeb4a7"
+    },
+    {
+      "repo": "321Team/infra-ansible",
+      "head": "357965058cdcaa129b14c29a09b3e4e19215195f",
+      "path": "roles/dns_resolver/tasks/verify.yml",
+      "sha256": "f526c67069d6f21dff2c1533bfe950eb22cb60c8832f020a0482a3319b3090e9"
+    }
+  ],
+  "accepted_issue7_report": {
+    "source": "C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\p1-ansible-role-evidence-20261015\\role185-fixture-remediation-20261016\\publication-preparation-20261016\\evi\\evidence\\infra-ansible-issue-7\\combined-20260914-review\\results\\verification\\VERIFICATION_REPORT.json",
+    "sha256": "939c69d406e7dedd500f9606ee40c2a04d7ac495fb2f139822ae4e38c8f45aa6",
+    "overall": "PASS_READONLY_SCOPE",
+    "completed": true,
+    "steps": [
+      {
+        "stage_id": "2.16.19_version",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": null
+      },
+      {
+        "stage_id": "2.16.19_runtime",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": null
+      },
+      {
+        "stage_id": "2.16.19_cli_guards",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": null
+      },
+      {
+        "stage_id": "2.16.19_localhost_tasks",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": null
+      },
+      {
+        "stage_id": "2.16.19_readonly_ssh",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": true
+      },
+      {
+        "stage_id": "2.16.19_hardening_check",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": true
+      },
+      {
+        "stage_id": "2.16.19_main_precheck",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": true
+      },
+      {
+        "stage_id": "2.16.19_dns_verify",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": true
+      },
+      {
+        "stage_id": "2.21.3_version",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": null
+      },
+      {
+        "stage_id": "2.21.3_runtime",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": null
+      },
+      {
+        "stage_id": "2.21.3_cli_guards",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": null
+      },
+      {
+        "stage_id": "2.21.3_localhost_tasks",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": null
+      },
+      {
+        "stage_id": "2.21.3_readonly_ssh",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": true
+      },
+      {
+        "stage_id": "2.21.3_hardening_check",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": true
+      },
+      {
+        "stage_id": "2.21.3_main_precheck",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": true
+      },
+      {
+        "stage_id": "2.21.3_dns_verify",
+        "status": "PASS",
+        "cli_rc": 0,
+        "completed": true
+      }
+    ]
+  },
+  "purpose": "Current same-boot OS/DNS linkage, not rerun of public CLI or role fixtures",
+  "expected": {
+    "os_id": "centos",
+    "os_major": "10",
+    "selinux": "Enforcing",
+    "timezone": "Asia/Seoul",
+    "ntp_synchronized": "yes",
+    "active_swap_entries": 0,
+    "modules": [
+      "overlay",
+      "br_netfilter"
+    ],
+    "sysctl_value": 1,
+    "management_gateway": "10.1.93.58",
+    "dns": [
+      "10.1.93.52",
+      "10.1.93.53"
+    ],
+    "search": [
+      "fds.internal"
+    ],
+    "internal_name": "k8s-api.fds.internal",
+    "short_name": "k8s-api",
+    "internal_expected_ipv4": "10.1.93.109",
+    "external_name": "github.com"
+  },
+  "exclusions": [
+    "API listener request",
+    "Harbor request/credential/Pull",
+    "SSH hardening/key-file read",
+    "package/directory scan",
+    "role or engine execution",
+    "config/service/package/temp-file changes"
+  ],
+  "chronyd_current_reused": "../ntp-paired-precheck-review/ANALYSIS.json",
+  "read_once": true
+}
