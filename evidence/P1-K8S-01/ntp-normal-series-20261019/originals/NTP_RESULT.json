@@ -1,0 +1,663 @@
+{
+  "at_kst": "2026-10-19T12:34:56.315947+09:00",
+  "status": "NORMAL_SERIES_OBSERVED_SCOPED",
+  "error": null,
+  "rounds_returned": 6,
+  "per_host": {
+    "k8s-control01": {
+      "samples": 6,
+      "tracking_interval_seconds": [
+        60.00037092,
+        60.000676106,
+        60.00070596,
+        60.00059731,
+        60.000603957
+      ],
+      "tracking_span_seconds": 300.002954253,
+      "parsed": [
+        {
+          "leap": "Normal",
+          "stratum": 4,
+          "last_offset_ms": -0.40177,
+          "system_time_ms": 0.155312,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "162.159.200.1"
+            },
+            {
+              "mode": "^",
+              "state": "+",
+              "source": "162.159.200.123"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63817318524765,
+          "tracking_started_utc": "2026-10-19T03:29:56.495954+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 4,
+          "last_offset_ms": -0.40177,
+          "system_time_ms": 0.12275599999999999,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "162.159.200.1"
+            },
+            {
+              "mode": "^",
+              "state": "+",
+              "source": "162.159.200.123"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63877318895685,
+          "tracking_started_utc": "2026-10-19T03:30:56.496318+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 4,
+          "last_offset_ms": -0.40177,
+          "system_time_ms": 0.090199,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "162.159.200.1"
+            },
+            {
+              "mode": "^",
+              "state": "+",
+              "source": "162.159.200.123"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63937319571791,
+          "tracking_started_utc": "2026-10-19T03:31:56.496995+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 4,
+          "last_offset_ms": -0.40177,
+          "system_time_ms": 0.057643,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "162.159.200.1"
+            },
+            {
+              "mode": "^",
+              "state": "+",
+              "source": "162.159.200.123"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63997320277751,
+          "tracking_started_utc": "2026-10-19T03:32:56.497687+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 4,
+          "last_offset_ms": -0.40177,
+          "system_time_ms": 0.025086999999999998,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "162.159.200.1"
+            },
+            {
+              "mode": "^",
+              "state": "+",
+              "source": "162.159.200.123"
+            }
+          ],
+          "tracking_started_monotonic_ns": 64057320875061,
+          "tracking_started_utc": "2026-10-19T03:33:56.498298+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 4,
+          "last_offset_ms": -0.40177,
+          "system_time_ms": 0.0,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "162.159.200.1"
+            },
+            {
+              "mode": "^",
+              "state": "+",
+              "source": "162.159.200.123"
+            }
+          ],
+          "tracking_started_monotonic_ns": 64117321479018,
+          "tracking_started_utc": "2026-10-19T03:34:56.498903+00:00"
+        }
+      ]
+    },
+    "k8s-control02": {
+      "samples": 6,
+      "tracking_interval_seconds": [
+        60.001044538,
+        60.000562241,
+        60.000954124,
+        60.000609994,
+        60.00107224
+      ],
+      "tracking_span_seconds": 300.004243137,
+      "parsed": [
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.021001000000000002,
+          "system_time_ms": 0.020321000000000002,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63750607688315,
+          "tracking_started_utc": "2026-10-19T03:29:56.523620+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.048068,
+          "system_time_ms": 0.024255000000000002,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63810608732853,
+          "tracking_started_utc": "2026-10-19T03:30:56.524654+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.037771,
+          "system_time_ms": 0.024467000000000003,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63870609295094,
+          "tracking_started_utc": "2026-10-19T03:31:56.525216+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.002138,
+          "system_time_ms": 0.007658,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63930610249218,
+          "tracking_started_utc": "2026-10-19T03:32:56.526167+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.008254,
+          "system_time_ms": 0.001641,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63990610859212,
+          "tracking_started_utc": "2026-10-19T03:33:56.526780+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.039749,
+          "system_time_ms": 0.032119999999999996,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 64050611931452,
+          "tracking_started_utc": "2026-10-19T03:34:56.527848+00:00"
+        }
+      ]
+    },
+    "k8s-control03": {
+      "samples": 6,
+      "tracking_interval_seconds": [
+        60.000458918,
+        60.000573816,
+        60.001011703,
+        60.001006716,
+        60.001106218
+      ],
+      "tracking_span_seconds": 300.004157371,
+      "parsed": [
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.023071,
+          "system_time_ms": 0.017342,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63684583916406,
+          "tracking_started_utc": "2026-10-19T03:29:56.525047+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.021893,
+          "system_time_ms": 0.005397,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63744584375324,
+          "tracking_started_utc": "2026-10-19T03:30:56.525495+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.010968,
+          "system_time_ms": 0.014738,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63804584949140,
+          "tracking_started_utc": "2026-10-19T03:31:56.526067+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.07556399999999999,
+          "system_time_ms": 0.034279000000000004,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63864585960843,
+          "tracking_started_utc": "2026-10-19T03:32:56.527076+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.017269,
+          "system_time_ms": 0.015458,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63924586967559,
+          "tracking_started_utc": "2026-10-19T03:33:56.528087+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.038878,
+          "system_time_ms": 0.037031,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63984588073777,
+          "tracking_started_utc": "2026-10-19T03:34:56.529189+00:00"
+        }
+      ]
+    },
+    "k8s-worker01": {
+      "samples": 6,
+      "tracking_interval_seconds": [
+        60.000765786,
+        60.000751586,
+        60.000382226,
+        60.000776472,
+        60.000932077
+      ],
+      "tracking_span_seconds": 300.003608147,
+      "parsed": [
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.007534,
+          "system_time_ms": 0.00063,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 65058781326698,
+          "tracking_started_utc": "2026-10-19T03:29:56.504013+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.007534,
+          "system_time_ms": 0.00062,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 65118782092484,
+          "tracking_started_utc": "2026-10-19T03:30:56.504773+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.021721,
+          "system_time_ms": 0.012466999999999999,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 65178782844070,
+          "tracking_started_utc": "2026-10-19T03:31:56.505521+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.00268,
+          "system_time_ms": 0.007228999999999999,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 65238783226296,
+          "tracking_started_utc": "2026-10-19T03:32:56.505907+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.0046110000000000005,
+          "system_time_ms": 0.0022110000000000003,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 65298784002768,
+          "tracking_started_utc": "2026-10-19T03:33:56.506683+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.011083,
+          "system_time_ms": 0.007582,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 65358784934845,
+          "tracking_started_utc": "2026-10-19T03:34:56.507613+00:00"
+        }
+      ]
+    },
+    "k8s-worker02": {
+      "samples": 6,
+      "tracking_interval_seconds": [
+        60.000722768,
+        60.000769956,
+        60.000915287,
+        60.000723101,
+        60.000830582
+      ],
+      "tracking_span_seconds": 300.003961694,
+      "parsed": [
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.051668,
+          "system_time_ms": 0.034969,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63585377383882,
+          "tracking_started_utc": "2026-10-19T03:29:56.481332+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.051668,
+          "system_time_ms": 0.027588,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63645378106650,
+          "tracking_started_utc": "2026-10-19T03:30:56.482047+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.025398,
+          "system_time_ms": 0.045627,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63705378876606,
+          "tracking_started_utc": "2026-10-19T03:31:56.482817+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.025398,
+          "system_time_ms": 0.039458,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63765379791893,
+          "tracking_started_utc": "2026-10-19T03:32:56.483721+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.025398,
+          "system_time_ms": 0.033289,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63825380514994,
+          "tracking_started_utc": "2026-10-19T03:33:56.484456+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.025398,
+          "system_time_ms": 0.027120000000000002,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63885381345576,
+          "tracking_started_utc": "2026-10-19T03:34:56.485287+00:00"
+        }
+      ]
+    },
+    "k8s-worker03": {
+      "samples": 6,
+      "tracking_interval_seconds": [
+        60.001033545,
+        60.000922812,
+        60.000534732,
+        60.000658307,
+        60.000768076
+      ],
+      "tracking_span_seconds": 300.003917472,
+      "parsed": [
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.06296500000000001,
+          "system_time_ms": 0.053562,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63873528038650,
+          "tracking_started_utc": "2026-10-19T03:29:56.539100+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.002727,
+          "system_time_ms": 3.7e-05,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63933529072195,
+          "tracking_started_utc": "2026-10-19T03:30:56.540077+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.019885999999999997,
+          "system_time_ms": 0.01931,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 63993529995007,
+          "tracking_started_utc": "2026-10-19T03:31:56.541046+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.007883999999999999,
+          "system_time_ms": 0.021381999999999998,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 64053530529739,
+          "tracking_started_utc": "2026-10-19T03:32:56.541580+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": -0.007883999999999999,
+          "system_time_ms": 0.014268,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 64113531188046,
+          "tracking_started_utc": "2026-10-19T03:33:56.542234+00:00"
+        },
+        {
+          "leap": "Normal",
+          "stratum": 5,
+          "last_offset_ms": 0.016053,
+          "system_time_ms": 0.00208,
+          "sources": [
+            {
+              "mode": "^",
+              "state": "*",
+              "source": "10.1.93.102"
+            }
+          ],
+          "tracking_started_monotonic_ns": 64173531956122,
+          "tracking_started_utc": "2026-10-19T03:34:56.543005+00:00"
+        }
+      ]
+    }
+  },
+  "total_elapsed_seconds": 300.7649999999994,
+  "remote_files_created": 0,
+  "setting_service_changes": 0,
+  "network_egress_approval_or_sync_loss_or_reboot_or_full_AC": "NOT_ESTABLISHED_BY_THIS_OBSERVATION",
+  "original300s_scope_only": true,
+  "automatic_retry": false,
+  "new_human_approval": false
+}

@@ -1,0 +1,36 @@
+{
+  "at_kst": "2026-10-19T12:38:48.514502+09:00",
+  "task": "WORKER03_EXISTING_SUDO_PUBLIC_CA_BOUNDED_READ_THEN_UNCONSUMED_TLS_ROOT_GET",
+  "references": [
+    {
+      "path": "\\\\?\\C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\Ansible\\ntp-normal-series-preparation-20261019-1215\\TRANSPORT_BINDING.json",
+      "sha256": "43c5d8ee0c4914d5f085320f6f1cf7abc440415ac1839fa0c2ab2bc6fdf97aae"
+    },
+    {
+      "path": "\\\\?\\C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\APP\\postboot-worker03-tls-once-20261019-1231\\FINAL_BINDING.json",
+      "sha256": "bb8efbd24bed44617072b787c89893a7cea26e694101a9c733f604faf6a645f2"
+    },
+    {
+      "path": "\\\\?\\C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\resume-execution-20261018-1853\\APP\\postboot-worker03-tls-once-20261019-1231\\RAW\\WORKER03_TLS.stdout.json",
+      "sha256": "4a2e2b5ae6a21bde6d797093616432c0182c076ca4954ce503b3df5096729db8"
+    },
+    {
+      "path": "\\\\?\\C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\remaining-minimum-execution-20261019-1223\\GW_USER_CONSOLE_RECEIPT.json",
+      "sha256": "a9bcf4697c732b1f35cfb5f51679491ab39affdd09f8eee4195fe0c0267a811a"
+    },
+    {
+      "path": "\\\\?\\C:\\Users\\soldesk\\.codex\\.chatgpt-projects\\g-p-6a85069945708191b56059da202e4461\\deliverables\\phase1-central-control-20261015\\remaining-minimum-execution-20261019-1223\\NTP_ROUND5.stdout.json",
+      "sha256": "5106303dc1909a2502db423fdb298bcc6fbf43f320d07266717fbe35ed2df93e"
+    }
+  ],
+  "access": "Existing svc_ansible -> sudo -n python, root/euid0/SUDO_USER guard",
+  "cause": "Prior nonroot is_file did not distinguish missing paths from parent access restrictions; no HTTP was attempted",
+  "max_public_certificate_files": 64,
+  "max_certificate_bytes": 131072,
+  "max_root_GETs": 1,
+  "private_keys": false,
+  "auth_configuration": false,
+  "trust_import": false,
+  "server_mutations": 0,
+  "automatic_retry": false
+}

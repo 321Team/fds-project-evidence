@@ -1,0 +1,114 @@
+{
+  "at_kst": "2026-10-19T12:39:06.273791+09:00",
+  "status": "NORMAL_SIX_POINT_SERIES_DIRECTLY_RECHECKED_SCOPED",
+  "source_sha256": "0829bdc6fc34c95eff3d2fa73c0f8a71978bae8bc717f3ec75b4ce07f663e1f4",
+  "observations": 36,
+  "chronyc_commands": 72,
+  "command_rc_zero": 72,
+  "relay_returned": 6,
+  "node_ssh_returned": 36,
+  "same_host_machine_boot_all_samples": true,
+  "node_spans_seconds": {
+    "k8s-control01": 300.002954253,
+    "k8s-control02": 300.004243137,
+    "k8s-control03": 300.004157371,
+    "k8s-worker01": 300.003608147,
+    "k8s-worker02": 300.003961694,
+    "k8s-worker03": 300.003917472
+  },
+  "node_intervals_seconds": {
+    "k8s-control01": [
+      60.00037092,
+      60.000676106,
+      60.00070596,
+      60.00059731,
+      60.000603957
+    ],
+    "k8s-control02": [
+      60.001044538,
+      60.000562241,
+      60.000954124,
+      60.000609994,
+      60.00107224
+    ],
+    "k8s-control03": [
+      60.000458918,
+      60.000573816,
+      60.001011703,
+      60.001006716,
+      60.001106218
+    ],
+    "k8s-worker01": [
+      60.000765786,
+      60.000751586,
+      60.000382226,
+      60.000776472,
+      60.000932077
+    ],
+    "k8s-worker02": [
+      60.000722768,
+      60.000769956,
+      60.000915287,
+      60.000723101,
+      60.000830582
+    ],
+    "k8s-worker03": [
+      60.001033545,
+      60.000922812,
+      60.000534732,
+      60.000658307,
+      60.000768076
+    ]
+  },
+  "max_abs_last_offset_ms": 0.40177,
+  "max_abs_system_time_ms": 0.155312,
+  "all_leap_normal": true,
+  "threshold_ms": 100,
+  "expected_selected_source_layout_observed": true,
+  "total_elapsed_seconds": 300.7649999999994,
+  "full_AC_acceptance": false,
+  "sync_loss_and_reboot": "NOT_TESTED",
+  "network_policy_runtime_approval": "NOT_ESTABLISHED",
+  "remote_files_created": 0,
+  "service_setting_changes": 0,
+  "technical_review": "Codex static review and central repair, not human independent approval",
+  "retrospective_payloads": [
+    {
+      "path": "inputs/round0.stdin",
+      "sha256": "f9fa13df5bf23b17e1bbe97bfae1bfc7f850f84eb227ed21de2f3ed6304d1eb2",
+      "actual_dispatch_sha_matched": true,
+      "kind": "POST_EXECUTION_EXACT_RECONSTRUCTION_FROM_FROZEN_SOURCE_AND_CLOCK_RECEIPTS_NOT_PRECAPTURE"
+    },
+    {
+      "path": "inputs/round1.stdin",
+      "sha256": "83cb3a3ddd64316714d348dcd33079a69177c6b0a91f6bdadf716fdfc7479bea",
+      "actual_dispatch_sha_matched": true,
+      "kind": "POST_EXECUTION_EXACT_RECONSTRUCTION_FROM_FROZEN_SOURCE_AND_CLOCK_RECEIPTS_NOT_PRECAPTURE"
+    },
+    {
+      "path": "inputs/round2.stdin",
+      "sha256": "d551f0fa0c18640de2f01587c135bca14c1c780c6fa85a9bc5d5680e291606e5",
+      "actual_dispatch_sha_matched": true,
+      "kind": "POST_EXECUTION_EXACT_RECONSTRUCTION_FROM_FROZEN_SOURCE_AND_CLOCK_RECEIPTS_NOT_PRECAPTURE"
+    },
+    {
+      "path": "inputs/round3.stdin",
+      "sha256": "92de8a1da8253bbc3d2f86ab923655cc57afd530332bbd2b3922014e154bb75d",
+      "actual_dispatch_sha_matched": true,
+      "kind": "POST_EXECUTION_EXACT_RECONSTRUCTION_FROM_FROZEN_SOURCE_AND_CLOCK_RECEIPTS_NOT_PRECAPTURE"
+    },
+    {
+      "path": "inputs/round4.stdin",
+      "sha256": "e772e932251194c445a7805093f3fdbbea463c04c95a32c630e209ddd0109d14",
+      "actual_dispatch_sha_matched": true,
+      "kind": "POST_EXECUTION_EXACT_RECONSTRUCTION_FROM_FROZEN_SOURCE_AND_CLOCK_RECEIPTS_NOT_PRECAPTURE"
+    },
+    {
+      "path": "inputs/round5.stdin",
+      "sha256": "d20615a8c2b6bb35c4fe36ca0fc85fcffadee33735cf9540abfe447a645de549",
+      "actual_dispatch_sha_matched": true,
+      "kind": "POST_EXECUTION_EXACT_RECONSTRUCTION_FROM_FROZEN_SOURCE_AND_CLOCK_RECEIPTS_NOT_PRECAPTURE"
+    }
+  ],
+  "original_copy_count": 40
+}

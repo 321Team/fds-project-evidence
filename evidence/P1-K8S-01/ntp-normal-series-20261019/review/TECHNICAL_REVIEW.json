@@ -1,0 +1,111 @@
+{
+  "at_kst": "2026-10-19T12:30:48.444649+09:00",
+  "status": "R1_RESOLVED_NO_REMAINING_FINDINGS_IN_V2_DELTA",
+  "subject": {
+    "path": "C:/Users/soldesk/.codex/.chatgpt-projects/g-p-6a85069945708191b56059da202e4461/deliverables/phase1-central-control-20261015/remaining-minimum-execution-20261019-1223/ntp_normal_read.v1.py",
+    "bytes": 15445,
+    "sha256": "9202043a5d31391faea34df9a040ccb5536870d6cec80ec2e8dfeebff2feab14"
+  },
+  "prepared_record": {
+    "path": "C:/Users/soldesk/.codex/.chatgpt-projects/g-p-6a85069945708191b56059da202e4461/deliverables/phase1-central-control-20261015/remaining-minimum-execution-20261019-1223/NTP_PREPARED.v1.json",
+    "bytes": 873,
+    "sha256": "f88cf9f9f84a89a11fb3cb6013698ee8b20907fa685ab495e62ab37a11404c66"
+  },
+  "transport": {
+    "path": "C:/Users/soldesk/.codex/.chatgpt-projects/g-p-6a85069945708191b56059da202e4461/deliverables/phase1-central-control-20261015/resume-execution-20261018-1853/Ansible/ntp-normal-series-preparation-20261019-1215/TRANSPORT_BINDING.json",
+    "bytes": 10009,
+    "sha256": "43c5d8ee0c4914d5f085320f6f1cf7abc440415ac1839fa0c2ab2bc6fdf97aae"
+  },
+  "review_type": "Codex 기술 정적 검토. 실제 사람 독립 승인/Runtime 승인 아님.",
+  "scope": [
+    "기존 strict transport·stdin 메모리 payload·relay/node host/user/uid/boot 결속",
+    "원격 명령 두 개의 한정 조회·설정/파일/서비스 변경 없음",
+    "실제 rc/원문·숫자 유한성/중복필드·source 판독",
+    "직전 node monotonic+60초·6표본 최소300초·라운드 실패 시 새 요청 없음",
+    "자동 재시도/강제 kill 없음·소유 chronyc에만 TERM",
+    "정상 관측과 sync-loss/reboot/egress 승인/전체AC 경계"
+  ],
+  "findings": [
+    {
+      "id": "R1",
+      "priority": "P2",
+      "category": "요구된 실패 증적 보존 경로의 실제 누락",
+      "file": "C:/Users/soldesk/.codex/.chatgpt-projects/g-p-6a85069945708191b56059da202e4461/deliverables/phase1-central-control-20261015/remaining-minimum-execution-20261019-1223/ntp_normal_read.v1.py",
+      "line_start": 192,
+      "line_end": 195,
+      "title": "외부 SSH 시간 초과 시 이미 받은 부분 stdout/stderr를 보존해야 한다",
+      "condition": "outer communicate(timeout=110)이 시간 초과됐고 그 전에 SSH 오류문구나 relay 응답 일부가 수신된 경우.",
+      "evidence": "193행은 TimeoutExpired 객체를 바인딩하지 않는다.194행에는 PID와불명상태만 저장하고195행에서탈출한다.정상반환 후의196행 원문 저장에는도달하지 않는다.",
+      "impact": "TimeoutExpired.output/stderr의 부분 원문이 파일에 남지 않는다.불명 상태를 실패/성공으로 오판하지 않는 처리는 맞지만, 장애 원인과 실제 수신 범위를 추적할 증적이 유실된다.",
+      "existing_requirement": "MINIMUM_READ_PLAN의 실패 시 실제 rc/부분 원문/요청·소유 상태 보존. 새 인수조건이 아니다.",
+      "minimum_fix": "예외 객체의 부분 바이트를 별도 partial 파일에 독점 저장하고, 부분 길이/SHA·actual_rc_at_capture(미확인은null)·PID/시각을 UNCERTAIN에 연결한다. 추가 communicate/retry/TERM/KILL은 하지 않는다.",
+      "proposed_diff": "@@ -190,6 +190,20 @@\n         save(O/f'NTP_ROUND{index}_INTENT.json',send)\n         p=subprocess.Popen(outer,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)\n         try:out,err=p.communicate(relay.encode(),timeout=110)\n-        except subprocess.TimeoutExpired:\n-            save(O/f'NTP_ROUND{index}_UNCERTAIN.json',{'at_kst':now(),'outer_pid':p.pid,'status':'OUTER_RETURN_UNCONFIRMED_NO_NEW_REQUESTS','force_termination':False})\n+        except subprocess.TimeoutExpired as exc:\n+            partial_out=exc.output or b''\n+            partial_err=exc.stderr or b''\n+            out_path=O/f'NTP_ROUND{index}.partial.stdout'\n+            err_path=O/f'NTP_ROUND{index}.partial.stderr'\n+            with out_path.open('xb') as f:f.write(partial_out)\n+            with err_path.open('xb') as f:f.write(partial_err)\n+            save(O/f'NTP_ROUND{index}_UNCERTAIN.json',{\n+                'at_kst':now(),'monotonic_ns':time.monotonic_ns(),\n+                'sample':index,'outer_pid':p.pid,'actual_rc_at_capture':p.returncode,\n+                'status':'OUTER_RETURN_UNCONFIRMED_NO_NEW_REQUESTS',\n+                'partial_output_only':True,\n+                'partial_stdout_path':out_path.name,'partial_stderr_path':err_path.name,\n+                'partial_stdout_bytes':len(partial_out),'partial_stderr_bytes':len(partial_err),\n+                'partial_stdout_sha256':sha(partial_out),'partial_stderr_sha256':sha(partial_err),\n+                'force_termination':False,'automatic_retry':False})\n             raise ValueError('OUTER_RETURN_UNCONFIRMED')\n",
+      "not_changed_by_fix": "기존 성공 경로·수집 횟수·조회 명령·권한·일정·원AC·미확인 프로세스 자동 처리 정책은 그대로다.",
+      "minimum_reverification": "수정 분기의 예외 바인딩→partial 파일/해시→UNCERTAIN→HOLD 연결과 exact 새 source SHA만 정적으로 확인한다. 기존 parser7 재실행이나 새 서버 시험·전수 재리뷰는 필요하지 않다.",
+      "applied_by_this_reviewer": false,
+      "resolution": {
+        "status": "RESOLVED_IN_V2",
+        "current_file": "C:/Users/soldesk/.codex/.chatgpt-projects/g-p-6a85069945708191b56059da202e4461/deliverables/phase1-central-control-20261015/remaining-minimum-execution-20261019-1223/ntp_normal_read.py",
+        "line_start": 192,
+        "line_end": 201,
+        "evidence": "TimeoutExpired as exc에서output/stderr를.partial.stdout/.partial.stderr로저장하고SHA·Bytes·PID·p.poll()결과를UNCERTAIN에남긴다.불명상태·새라운드중단·무재시도·비강제방침은유지한다.",
+        "nonblocking_difference_from_proposed_diff": "독점파일open 대신write_bytes를사용하지만기존exclusive action intent와라운드별이름이재실행/동시동일회차를막는다.요구한부분원문보존은충족하며스타일차이를새차단으로만들지않는다.",
+        "additional_delta": "outer communicate 대기를남은420초예산으로clamp했다.음수/시간초과는기존HOLD경로로가며새라운드/자동force를만들지않는다.",
+        "runtime_test_performed": false,
+        "more_reverification_requested": false
+      }
+    }
+  ],
+  "checked_without_additional_findings": [
+    {
+      "lines": "26-76",
+      "result": "두 chronyc argv만 실행하며 identity 전/표본직전/후 검사를 한다.임계값·rc 등 실패 시HOLD이며 query Popen에만terminate를요청한다.SIGKILL은 없다."
+    },
+    {
+      "lines": "79-105",
+      "result": "relay identity가 맞을 때만 기존 INNER를 시작한다.85초 불명 분기도 새 연결/재시도/강제 종료를 하지 않고 보유 PID를 기록한다."
+    },
+    {
+      "lines": "107-133",
+      "result": "수치 필드 유일성·유한성·100ms와 Leap/stratum/client/control source를 판독한다.source 관측을 네트워크 승인으로 표시하지 않는다."
+    },
+    {
+      "lines": "169-227",
+      "result": "exclusive intent로동일실행 재생성을막고각라운드 요청전기록·최대6라운드·node별직전시각+60초를사용한다.어느라운드든검증실패면다음라운드로진행하지않는다.최종결과가전체AC확대를명시적으로부정한다."
+    }
+  ],
+  "prepared_parser_checks": "NTP_PREPARED의 정상1/거부6 기록은 재사용했다. 이 검토자는 다시 실행하지 않았다.",
+  "execution_of_subject": false,
+  "source_modified": false,
+  "new_tests": 0,
+  "runtime_or_server_access": 0,
+  "github_common_writes": 0,
+  "new_conditions_or_owner_decisions": 0,
+  "do_not_expand_review": "R1 수정부 정적 확인으로 마친다. 새 조건/사람 서명/동일 코드 전수 재검토를 추가하지 않는다.",
+  "subject_v1_preserved": {
+    "path": "C:/Users/soldesk/.codex/.chatgpt-projects/g-p-6a85069945708191b56059da202e4461/deliverables/phase1-central-control-20261015/remaining-minimum-execution-20261019-1223/ntp_normal_read.v1.py",
+    "bytes": 15445,
+    "sha256": "9202043a5d31391faea34df9a040ccb5536870d6cec80ec2e8dfeebff2feab14"
+  },
+  "current_subject_v2": {
+    "path": "C:/Users/soldesk/.codex/.chatgpt-projects/g-p-6a85069945708191b56059da202e4461/deliverables/phase1-central-control-20261015/remaining-minimum-execution-20261019-1223/ntp_normal_read.py",
+    "bytes": 15944,
+    "sha256": "0829bdc6fc34c95eff3d2fa73c0f8a71978bae8bc717f3ec75b4ce07f663e1f4"
+  },
+  "current_prepared_v2": {
+    "path": "C:/Users/soldesk/.codex/.chatgpt-projects/g-p-6a85069945708191b56059da202e4461/deliverables/phase1-central-control-20261015/remaining-minimum-execution-20261019-1223/NTP_PREPARED.v2.json",
+    "bytes": 1411,
+    "sha256": "5379ede5ee9888548ffb2fa98915d88b38d2a41813b26833b7d325b0991fb7d8"
+  },
+  "delta_checks": {
+    "v1_preserved_exact_source_sha": "9202043a5d31391faea34df9a040ccb5536870d6cec80ec2e8dfeebff2feab14",
+    "v2_exact_source_sha": "0829bdc6fc34c95eff3d2fa73c0f8a71978bae8bc717f3ec75b4ce07f663e1f4",
+    "NODE_CODE_unchanged": true,
+    "RELAY_CODE_unchanged": true,
+    "parse_sample_unchanged": true,
+    "only_outer_communicate_timeout_and_capture_region_changed": true,
+    "source_diff": "--- ntp_normal_read.v1.py\n+++ ntp_normal_read.py\n@@ -189,9 +189,15 @@\n         send={'at_kst':now(),'monotonic_ns':time.monotonic_ns(),'sample':index,'relay_sha256':sha(relay.encode())}\n         save(O/f'NTP_ROUND{index}_INTENT.json',send)\n         p=subprocess.Popen(outer,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)\n-        try:out,err=p.communicate(relay.encode(),timeout=110)\n-        except subprocess.TimeoutExpired:\n-            save(O/f'NTP_ROUND{index}_UNCERTAIN.json',{'at_kst':now(),'outer_pid':p.pid,'status':'OUTER_RETURN_UNCONFIRMED_NO_NEW_REQUESTS','force_termination':False})\n+        try:out,err=p.communicate(relay.encode(),timeout=min(110,420-(time.monotonic()-start)))\n+        except subprocess.TimeoutExpired as exc:\n+            partial_out=exc.output or b'';partial_err=exc.stderr or b''\n+            (O/f'NTP_ROUND{index}.partial.stdout').write_bytes(partial_out)\n+            (O/f'NTP_ROUND{index}.partial.stderr').write_bytes(partial_err)\n+            save(O/f'NTP_ROUND{index}_UNCERTAIN.json',{'at_kst':now(),'outer_pid':p.pid,'actual_rc':p.poll(),\n+                'status':'OUTER_RETURN_UNCONFIRMED_NO_NEW_REQUESTS','force_termination':False,\n+                'partial_stdout_sha256':sha(partial_out),'partial_stderr_sha256':sha(partial_err),\n+                'partial_stdout_bytes':len(partial_out),'partial_stderr_bytes':len(partial_err)})\n             raise ValueError('OUTER_RETURN_UNCONFIRMED')\n         (O/f'NTP_ROUND{index}.stdout.json').write_bytes(out);(O/f'NTP_ROUND{index}.stderr').write_bytes(err)\n         receipt={'at_kst':now(),'monotonic_ns':time.monotonic_ns(),'sample':index,'pid':p.pid,'actual_rc':p.returncode,\n",
+    "checks_performed": "소스원문/AST 문자열·분기연결의정적대조만.제품코드실행·새selfcheck·서버조회없음."
+  },
+  "remaining_findings": 0
+}
