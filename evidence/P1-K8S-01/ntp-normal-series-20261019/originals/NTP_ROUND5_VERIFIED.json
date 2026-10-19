@@ -1,0 +1,102 @@
+{
+  "at_kst": "2026-10-19T12:34:56.315455+09:00",
+  "sample": 5,
+  "parsed": {
+    "k8s-control01": {
+      "leap": "Normal",
+      "stratum": 4,
+      "last_offset_ms": -0.40177,
+      "system_time_ms": 0.0,
+      "sources": [
+        {
+          "mode": "^",
+          "state": "*",
+          "source": "162.159.200.1"
+        },
+        {
+          "mode": "^",
+          "state": "+",
+          "source": "162.159.200.123"
+        }
+      ],
+      "tracking_started_monotonic_ns": 64117321479018,
+      "tracking_started_utc": "2026-10-19T03:34:56.498903+00:00"
+    },
+    "k8s-control02": {
+      "leap": "Normal",
+      "stratum": 5,
+      "last_offset_ms": 0.039749,
+      "system_time_ms": 0.032119999999999996,
+      "sources": [
+        {
+          "mode": "^",
+          "state": "*",
+          "source": "10.1.93.102"
+        }
+      ],
+      "tracking_started_monotonic_ns": 64050611931452,
+      "tracking_started_utc": "2026-10-19T03:34:56.527848+00:00"
+    },
+    "k8s-control03": {
+      "leap": "Normal",
+      "stratum": 5,
+      "last_offset_ms": -0.038878,
+      "system_time_ms": 0.037031,
+      "sources": [
+        {
+          "mode": "^",
+          "state": "*",
+          "source": "10.1.93.102"
+        }
+      ],
+      "tracking_started_monotonic_ns": 63984588073777,
+      "tracking_started_utc": "2026-10-19T03:34:56.529189+00:00"
+    },
+    "k8s-worker01": {
+      "leap": "Normal",
+      "stratum": 5,
+      "last_offset_ms": -0.011083,
+      "system_time_ms": 0.007582,
+      "sources": [
+        {
+          "mode": "^",
+          "state": "*",
+          "source": "10.1.93.102"
+        }
+      ],
+      "tracking_started_monotonic_ns": 65358784934845,
+      "tracking_started_utc": "2026-10-19T03:34:56.507613+00:00"
+    },
+    "k8s-worker02": {
+      "leap": "Normal",
+      "stratum": 5,
+      "last_offset_ms": 0.025398,
+      "system_time_ms": 0.027120000000000002,
+      "sources": [
+        {
+          "mode": "^",
+          "state": "*",
+          "source": "10.1.93.102"
+        }
+      ],
+      "tracking_started_monotonic_ns": 63885381345576,
+      "tracking_started_utc": "2026-10-19T03:34:56.485287+00:00"
+    },
+    "k8s-worker03": {
+      "leap": "Normal",
+      "stratum": 5,
+      "last_offset_ms": 0.016053,
+      "system_time_ms": 0.00208,
+      "sources": [
+        {
+          "mode": "^",
+          "state": "*",
+          "source": "10.1.93.102"
+        }
+      ],
+      "tracking_started_monotonic_ns": 64173531956122,
+      "tracking_started_utc": "2026-10-19T03:34:56.543005+00:00"
+    }
+  },
+  "status": "ROUND_OBSERVED_SCOPED_NOT_FULL_AC"
+}

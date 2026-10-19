@@ -1,0 +1,22 @@
+{
+  "at_kst": "2026-10-19T12:25:45.731745+09:00",
+  "source_sha256": "9202043a5d31391faea34df9a040ccb5536870d6cec80ec2e8dfeebff2feab14",
+  "transport_sha256": "43c5d8ee0c4914d5f085320f6f1cf7abc440415ac1839fa0c2ab2bc6fdf97aae",
+  "plan_sha256": "b604a88b8080d88bdb7b2b862755e36cda51378d1ca50ca8fce36ed615a83071",
+  "node_code_sha256": "044bd2c13578fe67f97410511278332c2895dd73027e90a167b7c80e05f69309",
+  "relay_code_sha256": "303cf8d6e4c4e046f191d14c4932c6338facf53492f519f70472e54e5cb9e8ad",
+  "local_parser_checks": {
+    "normal_case": 1,
+    "rejected": [
+      "duplicate_field",
+      "nonfinite",
+      "offset_limit",
+      "source_changed",
+      "missing_source",
+      "command_failed"
+    ]
+  },
+  "runtime": "NOT_RUN",
+  "remote_files_created": 0,
+  "scope": "Normal chronyc observation only; no packets/egress/role apply/sync-loss/reboot/fullAC acceptance"
+}

@@ -1,0 +1,40 @@
+{
+  "at_kst": "2026-10-19T12:29:55.558812+09:00",
+  "source_sha256": "0829bdc6fc34c95eff3d2fa73c0f8a71978bae8bc717f3ec75b4ce07f663e1f4",
+  "outer_argv": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "UpdateHostKeys=no",
+    "-o",
+    "ForwardAgent=no",
+    "-o",
+    "ClearAllForwardings=yes",
+    "fds-ansible01",
+    "/usr/bin/python3",
+    "-B",
+    "-I",
+    "-S",
+    "-"
+  ],
+  "hosts": [
+    "k8s-control01",
+    "k8s-control02",
+    "k8s-control03",
+    "k8s-worker01",
+    "k8s-worker02",
+    "k8s-worker03"
+  ],
+  "max_rounds": 6,
+  "max_chronyc_commands": 72,
+  "automatic_retry": false,
+  "authority": "Current user instruction, existing approved read-only paths and original60s-six-point criterion",
+  "remote_file_supply": 0,
+  "service_or_setting_changes": 0
+}
