@@ -1,0 +1,140 @@
+"""One exact d218 successor, retaining adopted-parent claims and failure bytes.
+
+No I/O on import. Every entry checks the local failed-parent evidence and absence.
+Only the separately authorized create entry reserves a per-parent exclusive gate.
+No credential bodies, API calls, deletes, overwrites, or resume of partial gates.
+"""
+import os
+from pathlib import Path
+import time
+import continuation_contract as c
+from successor_pins import PARENT, PARENT_SHA256
+from rotation_contract import need, encoded, parse_json, Stop, timestamp
+import post_expiry_contract as pc
+from post_expiry_ledger import Files, protected_file
+
+def authorization(r):
+    x = r.get('successor_authorization')
+    need(isinstance(x, dict) and set(x) == {'reference', 'parent_final_sha256',
+        'single_successor', 'confirmed_adoptions_acknowledged', 'node_stop_cleanup_acknowledged'}, 'SUCCESSOR_AUTH_FIELDS')
+    pc.ref(x['reference'])
+    need(x['parent_final_sha256'] == PARENT['final_sha256'] and
+         x['single_successor'] is True and x['confirmed_adoptions_acknowledged'] is True and x['node_stop_cleanup_acknowledged'] is True,
+         'SUCCESSOR_AUTH_SCOPE')
+    need(r['successor_parent_sha256'] == PARENT_SHA256 == pc.sha(encoded(PARENT)), 'SUCCESSOR_PARENT_PIN')
+    need(r['continuation_id'] not in tuple(PARENT['preserved_generations']), 'SUCCESSOR_SEPARATE_ID')
+    need(timestamp(r['not_before']) > timestamp(PARENT['supply_until']), 'PARENT_SUPPLY_NOT_EXPIRED')
+    return x
+
+def old_claim_path(host):
+    if host == 'ansible01':
+        return Path('/home/server01_ansible') / ('continuation-claim-' + c.ORIGIN) / 'binding.json'
+    return Path(c.ROOT) / ('continuation-from-' + c.ORIGIN + '-claim.json')
+
+def gate_path(host):
+    base = Path('/home/server01_ansible') if host == 'ansible01' else Path(c.ROOT)
+    # Parent-scoped, never successor-ID-scoped: competing new IDs cannot bypass it.
+    return base / ('successor-from-' + PARENT['id'] + '-claim')
+
+def delivery_gate_path(host):
+    base = Path('/home/server01_ansible') if host == 'ansible01' else Path(c.ROOT)
+    return base / ('successor-delivery-from-' + PARENT['id'] + '-claim')
+
+def delivery_binding(r, host):
+    return {'purpose':'SINGLE_SUCCESSOR_PUBLIC_SUPPLY_RESERVATION',
+        'parent_evidence_sha256':PARENT_SHA256,'continuation_id':r['continuation_id'],
+        'continuation_sha256':pc.sha(encoded(r)),'candidate_sha256':r['candidate_sha256'],
+        'host':host,'boot_id':r['origin']['relay_boot_id'] if host=='ansible01'
+            else r['origin']['plan']['host_boot_ids'][host]}
+
+def check_delivery_gate(r, host):
+    fs = Files(delivery_gate_path(host))
+    need(sorted(p.name for p in fs.path.iterdir()) == ['binding.json'], 'SUCCESSOR_DELIVERY_GATE_INVENTORY')
+    need(fs.get('binding') == delivery_binding(r, host), 'SUCCESSOR_DELIVERY_GATE_BINDING')
+
+def local_new_absences(r, host):
+    if host == 'ansible01':
+        return [Path('/home/server01_ansible')/('hbr-continuation-'+r['continuation_id'])/'ledger']
+    inv = r['continuation_id']
+    values = [Path(c.ROOT)/('continuation-effects-'+inv), Path(c.ROOT)/inv, Path(c.RUN)/inv]
+    if host == c.CP:
+        values += [Path(c.ROOT)/('continuation-observe-'+phase+'-'+inv) for phase in ('before','after')]
+    return values
+
+def absence(paths, code):
+    for p in paths:
+        # lexists also rejects dangling symlinks. Permission errors propagate fail-closed.
+        try:p.lstat()
+        except FileNotFoundError:continue
+        raise Stop(code)
+
+def public_parent_check(r, host):
+    from parent_state import check, Reader, ParentStateError
+    context = 'unconfined_u:object_r:user_home_t:s0' if host == 'ansible01' else 'unconfined_u:object_r:admin_home_t:s0'
+    try:return check(PARENT, host, Reader(os.getuid(), {'directory':context,'file':context}))
+    except ParentStateError as exc:raise Stop(exc.code) from None
+
+def fresh_local(r, host, create):
+    from continuation_host import actor_absence, expected_metadata
+    anchors = public_parent_check(r, host)
+    actor_absence(r)  # exact original, failed parent and new successor; errors stop.
+    metadata_count = 0
+    if create:
+        absence(local_new_absences(r, host), 'SUCCESSOR_RESIDUAL_PRESENT')
+        for row in r['residual_metadata']:
+            if row.get('host', c.CP) == host:
+                expected_metadata(r, host, Path(row['path'])); metadata_count += 1
+        need(metadata_count == (0 if host == 'ansible01' else 4 if host == c.CP else 2),
+             'SUCCESSOR_METADATA_SCOPE')
+    return {'host': host, 'boot_id': r['origin']['relay_boot_id'] if host == 'ansible01'
+            else r['origin']['plan']['host_boot_ids'][host],
+            'observed_at': c.iso(time.time()), 'parent_state': anchors,
+            'related_actors': 0, 'protected_metadata_rows': metadata_count,
+            'credential_body_reads': 0, 'actual_parent_inner_error_captured': True}
+
+def claim(r, host, create=False):
+    # CP observe-before and relay execute reach here before their outer timers.
+    # Reserve only inside the supply window; later reads are bounded by T.
+    c.validate(r, time.time())
+    end = timestamp(r['supply_until'] if create else r['not_after'])
+    from orch_endpoint import deadline
+    with deadline(end - time.time()):
+        return claim_within_deadline(r, host, create, end)
+
+def claim_within_deadline(r, host, create, end):
+    def tick():
+        need(timestamp(r['not_before']) <= time.time() < end, 'SUCCESSOR_CLAIM_DEADLINE')
+    tick()
+    authorization(r)
+    check_delivery_gate(r, host)
+    fresh = fresh_local(r, host, create)
+    tick()  # Fresh reads cannot turn an expired window into a new reservation.
+    expected = {'binding': c.binding(r), 'parent_evidence_sha256': PARENT_SHA256,
+                'authorization_sha256': pc.sha(encoded(r['successor_authorization']))}
+    path = gate_path(host)
+    if create:
+        try:fs = Files(path, create=True)
+        except FileExistsError:raise Stop('SUCCESSOR_ALREADY_CLAIMED') from None
+        try:
+            tick()  # A slow mkdir/fsync consumes budget; preserve its empty gate.
+            fs.put('binding', {**expected, 'fresh_preflight': fresh})
+        except BaseException as exc:
+            failure = Stop(exc.code if isinstance(exc, Stop) else 'SUCCESSOR_CLAIM_WRITE_UNCERTAIN')
+            failure.cleanup_errors = []
+            failure.evidence_errors = ['SUCCESSOR_CLAIM_RETAINED_NO_RETRY']
+            raise failure from None
+    else:fs = Files(path)
+    need(sorted(p.name for p in fs.path.iterdir()) == ['binding.json'], 'SUCCESSOR_GATE_INVENTORY')
+    value = fs.get('binding')
+    need(isinstance(value, dict) and set(value) == set(expected)|{'fresh_preflight'} and
+         all(value[k] == v for k, v in expected.items()), 'SUCCESSOR_CLAIM_BINDING')
+    proof = value['fresh_preflight']
+    need(isinstance(proof, dict) and set(proof) == set(fresh) and proof['host'] == host and
+         proof['boot_id'] == fresh['boot_id'] and proof['parent_state'] == fresh['parent_state'] and proof['related_actors'] == 0 and
+         proof['credential_body_reads'] == 0 and proof['actual_parent_inner_error_captured'] is True and
+         proof['protected_metadata_rows'] == (0 if host == 'ansible01' else 4 if host == c.CP else 2) and
+         timestamp(r['not_before']) <= timestamp(proof['observed_at']) <= time.time(),
+         'SUCCESSOR_FRESH_CLAIM_PROOF')
+    # Reads cannot re-create or repair a missing/partial gate. Old origin claims never change.
+    tick()
+    return value

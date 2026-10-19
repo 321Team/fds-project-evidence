@@ -1,0 +1,48 @@
+"""Local only. Central supplies actual T0 after public supply and console readiness."""
+import argparse,datetime as dt,hashlib,importlib.util,json,pathlib,sys,time
+HERE=pathlib.Path(__file__).resolve().parent
+W=next(p for p in HERE.parents if (p/'AGENTS.md').is_file())
+C=W/'deliverables/p1-harbor-review-publication-20261015/post-reboot-resume-r1-remediation-20261017/candidate'
+def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def sha(b):return hashlib.sha256(b).hexdigest()
+def save(p,v):p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+def main():
+    ap=argparse.ArgumentParser();ap.add_argument('--not-before',required=True);ap.add_argument('--supply-results',required=True,type=pathlib.Path);a=ap.parse_args()
+    t0=dt.datetime.fromisoformat(a.not_before.replace('Z','+00:00'));assert t0.tzinfo is not None
+    observed=time.time();assert t0.timestamp()<=observed<t0.timestamp()+600,'T0_NOT_CURRENT_SUPPLY_WINDOW'
+    prep=read(HERE/'INPUT_PREPARATION.json');new=read(HERE/'public-supply/NEW_ID.json');inventory=read(HERE/'PUBLIC_PAYLOAD_INVENTORY.json')
+    assert sha((C/'candidate-manifest.json').read_bytes())==new['candidate_sha256']==prep['candidate_sha256']
+    for x in inventory['files']:assert sha((C/x['path']).read_bytes())==x['sha256']
+    # Results index is a central-produced map of five actual public receipt paths.
+    paths=read(a.supply_results);assert set(paths)=={x['host'] for x in prep['current_hosts']}
+    supply_refs=[]
+    for host in prep['current_hosts']:
+        p=pathlib.Path(paths[host['host']]);v=read(p)
+        assert v['status']=='PUBLIC_SUPPLIED_VERIFIED_NOT_EXECUTED' and v['kind']=='code' and v['host']==host['host'] and v['boot_id']==host['boot_id'] and v['new_id']==new['new_id'] and v['candidate_sha256']==new['candidate_sha256']
+        parent='/home/server01_ansible' if host['host']=='ansible01' else '/root/fds-hbr-worker-rotation-20261015';code=parent+'/reboot-code-'+new['new_id']
+        assert set(v['files'])=={code+'/'+x['path'] for x in inventory['files']}
+        for x in inventory['files']:
+            m=v['files'][code+'/'+x['path']];assert m['sha256']==x['sha256'] and m['bytes']==x['bytes'] and m['uid']==m['gid']==host['uid'] and m['mode']==0o600 and m['nlink']==1
+        assert dt.datetime.fromisoformat(v['observed_at']).timestamp()<=t0.timestamp()
+        supply_refs.append({'host':host['host'],'path':str(p),'sha256':sha(p.read_bytes())})
+    r=read(C.parent/'CANDIDATE_REQUEST.draft.json');r['state']='BOUND';r['continuation_id']=new['new_id']
+    for field,secs in [('not_before',0),('supply_until',600),('mutation_until',3600),('not_after',4500)]:r[field]=(t0+dt.timedelta(seconds=secs)).isoformat()
+    r['authorization_reference']=prep['authorization_preparation']['authorization_reference']
+    r['execution']={'boot_ids':{x['host']:x['boot_id'] for x in prep['current_hosts'] if x['host']!='ansible01'},'relay_boot_id':prep['current_hosts'][0]['boot_id'],'relay_uid':1000,'source_metadata':prep['source2']['metadata_for_future_execution'],'supply_authorization_reference':prep['authorization_preparation']['supply_authorization_reference'],'custody_reference':prep['authorization_preparation']['custody_reference']}
+    r['preservation']=prep['custody']['preservation'];r['command_audit']=prep['custody']['command_audit']
+    for f in ('source/rotation-adapter-r2','source/rotation-orchestration','continuation','reboot'):sys.path.insert(0,str(C/f))
+    import reboot_contract as contract
+    contract.validate(r,time.time());raw=contract.encoded(r);request_sha=sha(raw)
+    out=HERE/'actual-bound-request';out.mkdir(exist_ok=False);(out/'request.json').write_bytes(raw)
+    spec=importlib.util.spec_from_file_location('public_call_render',HERE/'prepare_supply_calls_parent_fix.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    route=read(HERE.parent/'native-call/worker-r1/run-parent-read/CALL.json');calls=[]
+    for host in prep['current_hosts']:
+        d=out/host['host'];d.mkdir();stdin,call=module.render(host,new['new_id'],{'request.json':raw},'request',route);(d/'stdin.py').write_bytes(stdin);call.update(stdin_file=str(d/'stdin.py'),stdin_sha256=sha(stdin),request_sha256=request_sha);save(d/'CALL.json',call);calls.append({'host':host['host'],'call':str(d/'CALL.json'),'call_sha256':sha((d/'CALL.json').read_bytes())})
+    node='/root/fds-hbr-worker-rotation-20261015';relay='/home/server01_ansible';uid=new['new_id'];pin=new['candidate_sha256']
+    def argv(parent,action,proof=None):
+        args=['/usr/bin/python3','-I','-S','-B',parent+'/reboot-code-'+uid+'/reboot/reboot_launch.py',pin,action,'--request',parent+'/reboot-request-'+uid+'.json','--request-sha256',request_sha]
+        if proof:args+=['--proof',proof,'--proof-sha256','ACTUAL_PROOF_SHA256_REQUIRED']
+        return args
+    save(out/'BOUND_RESULT.json',{'state':'BOUND_LOCAL_ONLY_NOT_DISPATCHED','request_sha256':request_sha,'not_before':r['not_before'],'supply_until':r['supply_until'],'mutation_until':r['mutation_until'],'not_after':r['not_after'],'prior_public_supply_receipts':supply_refs,'request_delivery_calls':calls,'entries':{'observe_before_root_TTY':argv(node,'observe-before'),'execute_relay':argv(relay,'execute',relay+'/reboot-before-'+uid+'.json'),'observe_after_root_TTY':argv(node,'observe-after',node+'/reboot-completion-'+uid+'.json'),'finish_relay':argv(relay,'finish',relay+'/reboot-after-'+uid+'.json')},'actual_proofs_not_synthesized':True,'candidate_changed':False})
+    print(json.dumps({'state':'BOUND_LOCAL_ONLY_NOT_DISPATCHED','request_sha256':request_sha,'path':str(out/'BOUND_RESULT.json')}))
+if __name__=='__main__':main()

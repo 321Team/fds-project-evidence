@@ -1,0 +1,338 @@
+"""LOCAL synthetic boundary tests; no credential, network or server calls."""
+import ast
+import contextlib
+import copy
+import json
+from pathlib import Path
+import sys
+import types
+import unittest
+from unittest.mock import patch
+
+HERE = Path(__file__).resolve().parent
+
+
+def module(path, name):
+    m = types.ModuleType(name);m.__file__ = str(path)
+    exec(compile(path.read_bytes(), str(path), 'exec'), m.__dict__)
+    return m
+
+
+p = module(HERE / 'prepare_local.py', 'prepare_local_tests')
+x = p.x
+c, ep, inventory = p.candidate_modules()
+s = p.load(HERE / 'SCOPE.draft.json')
+# In-memory fixture only; never written as a real BOUND or runtime result.
+s.update(state='BOUND', cleanup_id='a' * 32, not_before='2026-10-18T13:10:00+00:00',
+         not_after='2026-10-18T13:40:00+00:00',
+         authorization_reference='LOCAL_SYNTHETIC_TEST_ONLY', wrapper_sha256=x.sha((HERE / 'cleanup_once.py').read_bytes()))
+NOW = x.timestamp('2026-10-18T13:12:00+00:00')
+
+
+def result(action, host, proof, packet, start=NOW-20, finish=NOW-19):
+    return {'status': 'CONFIRMED', 'binding': x.cleanup_binding(s), 'action': action, 'host': host,
+            'boot_id': s['request']['execution']['boot_ids'][host], 'started_at': x.iso(start),
+            'finished_at': x.iso(finish), 'input_sha256': x.sha(x.encoded(packet)), 'proof': proof}
+
+
+def check_receipts():
+    pairs = [{'path': path, 'present': True, 'kind': 'regular', 'device': 1, 'inode': i+1,
+              'uid': 0, 'gid': 0, 'mode': 0o600, 'nlink': 1, 'bytes': 10, 'context': x.RUN_CONTEXT}
+             for i, path in enumerate(x.pair_paths())]
+    return {h: result('check', h, {'pair': copy.deepcopy(pairs), 'owner_verified': True,
+                    'source_metadata': s['request']['execution']['source_metadata'] if h == x.CP else []}, {},
+                    NOW-40, NOW-39) for h in x.HOSTS}
+
+
+def packet():
+    checks = check_receipts()
+    proof = p.load(p.OP / 'proof-linkage/after/deliver/ACTUAL_PROOF.json')
+    proof['observed_at'] = x.iso(NOW-20)
+    observation = result('observe', x.CP, {'checks_sha256': x.sha(x.encoded(checks)), 'observation': proof},
+                         {'checks': checks}, NOW-30, NOW-19)
+    return {'checks': checks, 'observation': observation, 'retired': []}
+
+
+def append_retired(v, host, n):
+    prior = copy.deepcopy(v)
+    proof = {'state': 'RETIRED_CURRENT_PAIR', 'paths': x.pair_paths(),
+             'checks_sha256': x.sha(x.encoded(v['checks'])),
+             'observation_sha256': x.sha(x.encoded(v['observation'])),
+             'previous_sha256': x.sha(x.encoded(v['retired']))}
+    v['retired'].append(result('retire', host, proof, prior, NOW-18+n*2, NOW-17+n*2))
+
+
+class Boundaries(unittest.TestCase):
+    def rejected(self, fn):
+        with self.assertRaises(Exception):fn()
+
+    def test_original_schema_and_valid_scope(self):
+        x.validate_scope(s, NOW);x.validate_historical_evidence(s,c,ep)
+        self.rejected(lambda:c.validate(s['request'],NOW))  # Original runtime remains expired.
+
+    def test_draft_rejected(self):
+        v=copy.deepcopy(s);v['state']='DRAFT';self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_old_id_rejected(self):
+        v=copy.deepcopy(s);v['cleanup_id']=x.OLD;self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_original_deadline_no_extension(self):
+        v=copy.deepcopy(s);v['original_not_after']=x.iso(x.timestamp(x.ORIGINAL_NOT_AFTER)+1)
+        self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_new_cleanup_window_capped_1800(self):
+        v=copy.deepcopy(s);v['not_after']=x.iso(x.timestamp(v['not_before'])+1800.001)
+        self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_new_cleanup_starts_after_expired_window(self):
+        v=copy.deepcopy(s);v['not_before']=x.iso(x.timestamp(x.ORIGINAL_NOT_AFTER)-1)
+        v['not_after']=x.iso(x.timestamp(v['not_before'])+1800)
+        self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_deadline_boundary(self):
+        x.validate_scope(s,x.timestamp(s['not_after'])-0.001)
+        self.rejected(lambda:x.validate_scope(s,x.timestamp(s['not_after'])))
+
+    def test_no_runtime_old_entries_or_clock_override(self):
+        tree=ast.parse((HERE/'cleanup_once.py').read_bytes())
+        calls=[n for n in ast.walk(tree) if isinstance(n,ast.Call)]
+        self.assertFalse(any(isinstance(n.func,ast.Attribute) and n.func.attr in
+                             ('origin_claim','retire_current','RebootHost') for n in calls))
+        self.assertFalse(any(isinstance(n,ast.Assign) and any(isinstance(t,ast.Attribute) and
+                         isinstance(t.value,ast.Name) and t.value.id=='time' for t in n.targets)
+                         for n in ast.walk(tree)))
+
+    def test_original_request_immutable(self):
+        v=copy.deepcopy(s);v['request']['continuation_id']='b'*32
+        self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_completion_immutable(self):
+        v=copy.deepcopy(s);v['completion']['consumers']={}
+        self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_stop_changed_rejected(self):
+        v=copy.deepcopy(s);v['stop']['first_error']='NOT_STOPPED'
+        self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_candidate_mutation_rejected(self):
+        v=copy.deepcopy(s);v['candidate_files'][0]['sha256']='0'*64
+        self.rejected(lambda:x.validate_scope(v,NOW))
+
+    def test_all_four_checks_required(self):
+        v=packet();v['checks'].pop(x.HOSTS[-1])
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.CP,NOW,(c,)))
+
+    def test_owner_false_rejected(self):
+        v=packet();v['checks'][x.CP]['proof']['owner_verified']=False
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.CP,NOW,(c,)))
+
+    def test_target_scope_rejected(self):
+        v=packet();v['checks'][x.CP]['proof']['pair'][0]['path']='/root/.docker/config.json'
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.CP,NOW,(c,)))
+
+    def test_metadata_hardlink_rejected(self):
+        v=packet();v['checks'][x.CP]['proof']['pair'][0]['nlink']=2
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.CP,NOW,(c,)))
+
+    def test_stale_original_after_rejected(self):
+        v=packet();v['observation']['proof']['observation']=p.load(p.OP/'proof-linkage/after/deliver/ACTUAL_PROOF.json')
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.CP,NOW,(c,)))
+
+    def test_fresh_observation_300_boundary(self):
+        v=packet();x.validate_packet(s,v,'retire',x.CP,NOW+280,(c,))
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.CP,NOW+280.001,(c,)))
+
+    def test_observation_bound_to_checks(self):
+        v=packet();v['observation']['proof']['checks_sha256']='0'*64
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.CP,NOW,(c,)))
+
+    def test_retire_order_and_retain(self):
+        v=packet()
+        for n,h in enumerate(x.HOSTS):
+            x.validate_packet(s,v,'retire',h,NOW,(c,));append_retired(v,h,n)
+        x.validate_packet(s,v,'retain',x.CP,NOW,(c,))
+
+    def test_missing_predecessor_rejected(self):
+        self.rejected(lambda:x.validate_packet(s,packet(),'retire',x.HOSTS[1],NOW,(c,)))
+
+    def test_previous_receipt_hash_tamper(self):
+        v=packet();append_retired(v,x.CP,0);v['retired'][0]['proof']['previous_sha256']='0'*64
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.HOSTS[1],NOW,(c,)))
+
+    def test_receipt_wrong_boot_rejected(self):
+        v=packet();v['checks'][x.CP]['boot_id']='bad'
+        self.rejected(lambda:x.validate_packet(s,v,'retire',x.CP,NOW,(c,)))
+
+    def test_public_result_rejects_extra_body(self):
+        v=packet()['observation'];v['proof']['secret']='SYNTHETIC_NEVER_REAL'
+        self.rejected(lambda:x.validate_public_result(s,v,NOW,(c,)))
+
+    def test_public_observation_exact_schema(self):
+        v=packet()['observation'];x.validate_public_result(s,v,NOW,(c,))
+        v['proof']['observation']['password']='SYNTHETIC'
+        self.rejected(lambda:x.validate_public_result(s,v,NOW,(c,)))
+
+    def test_all_packets_below_original_limit(self):
+        v=packet();self.assertLess(len(x.encoded({'checks':v['checks']})),32768)
+        for n,h in enumerate(x.HOSTS):
+            self.assertLess(len(x.encoded(v)),32768);append_retired(v,h,n)
+        self.assertLess(len(x.encoded(v)),32768)
+
+    def test_render_supply_uses_unchanged_helper(self):
+        raw=x.encoded(s)
+        body=p.supply_remote(s,raw,x.CP,{'scope.json':raw,'cleanup_once.py':(HERE/'cleanup_once.py').read_bytes()},False)
+        ast.parse(body);self.assertIn('fs.write_new',body);self.assertNotIn('chcon',body)
+
+    def test_module_import_has_no_entry_calls(self):
+        tree=ast.parse((HERE/'cleanup_once.py').read_text())
+        self.assertFalse(any(isinstance(n,ast.Expr) and isinstance(n.value,ast.Call) for n in tree.body))
+
+    def test_unresolved_action_cannot_reenter(self):
+        fake=types.SimpleNamespace(directory=lambda *_:self.fail('must not create'))
+        with patch.object(x.os.path,'lexists',side_effect=[False,True]):
+            self.rejected(lambda:x.new_journal(Path('/synthetic'),'retire',(None,None,None,None,None,None,fake)))
+
+    def test_terminal_stop_forbids_next_action(self):
+        fake=types.SimpleNamespace(directory=lambda *_:self.fail('must not create'))
+        with patch.object(x.os.path,'lexists',return_value=True):
+            self.rejected(lambda:x.new_journal(Path('/synthetic'),'retain',(None,None,None,None,None,None,fake)))
+
+    def exercise_retire(self, failure=None, changed=False, forged_local=False, late_stop=False):
+        v=packet();writes=[];effects=[]
+        class J:
+            def write(self,key,value):
+                writes.append((key,copy.deepcopy(value)))
+                if key=='result' and late_stop:raise x.Failure('HOST_DEADLINE')
+        class Pair:
+            def __init__(self,s,mods):effects.append('constructor')
+            def retire_cleanup_pair(self):
+                effects.append('retire_once')
+                if failure:raise x.Failure(failure)
+        RH=types.SimpleNamespace()
+        oe=types.SimpleNamespace(deadline=lambda seconds:contextlib.nullcontext())
+        lh=types.SimpleNamespace(write_new=lambda path,data:writes.append(('global_stop',json.loads(data))))
+        mods=(c,RH,None,oe,None,None,lh,None)
+        def read(path,*_):
+            val=v['checks'][x.CP] if 'check' in str(path) else v['observation']
+            if forged_local:val={}
+            return x.encoded(val)
+        pair=copy.deepcopy(v['checks'][x.CP]['proof']['pair'])
+        if changed:pair[0]['inode']+=1
+        with patch.object(x.socket,'gethostname',return_value=x.CP),patch.object(x.time,'time',return_value=NOW),\
+             patch.object(x,'new_journal',return_value=J()),patch.object(x,'original_host_check'),\
+             patch.object(x,'protected',side_effect=read),patch.object(x,'pair_metadata',return_value=pair),\
+             patch.object(x,'CleanupPair',Pair):
+            out=x.execute(s,'retire',v,mods,Path('/synthetic'),NOW,NOW+60)
+        return out,writes,effects
+
+    def test_retire_calls_cleanup_method_exactly_once(self):
+        out,writes,effects=self.exercise_retire()
+        self.assertEqual(out['status'],'CONFIRMED');self.assertEqual(effects,['constructor','retire_once'])
+        self.assertEqual([k for k,_ in writes],['attempt','result'])
+
+    def test_partial_unlink_stop_no_retry(self):
+        out,writes,effects=self.exercise_retire('RETIRE_TARGET_CHANGED')
+        self.assertEqual(out['status'],'STOPPED');self.assertFalse(out['retry'])
+        self.assertEqual(effects.count('retire_once'),1);self.assertEqual([k for k,_ in writes],['attempt','stopped','global_stop'])
+
+    def test_current_pair_drift_prevents_retire(self):
+        out,_,effects=self.exercise_retire(changed=True)
+        self.assertEqual(out['first_error'],'PAIR_CHANGED_AFTER_CHECK');self.assertEqual(effects,[])
+
+    def test_local_receipt_required(self):
+        out,_,effects=self.exercise_retire(forged_local=True)
+        self.assertEqual(out['first_error'],'LOCAL_CHECK_CHANGED');self.assertEqual(effects,[])
+
+    def exercise_pair_method(self, drift=False, expire_after_first=False):
+        events=[]
+        def identity(*args):events.append('identity')
+        def owner(obj):
+            self.assertIs(obj.request,s['request']);self.assertEqual(obj.plan,c.plan(s['request']))
+            self.assertEqual(obj.inv,x.OLD);events.append('original_owner_method')
+            return {'username':'SYNTHETIC','password':'SYNTHETIC_NEVER_REAL'}
+        rh=types.SimpleNamespace(identity=identity,actor_absence=lambda *_:events.append('actor_check'),
+             RebootHost=types.SimpleNamespace(credential=owner),absent=lambda _:True)
+        lh=types.SimpleNamespace(fsync_parent=lambda path:events.append(('fsync',str(path))))
+        reads={}
+        def metadata(path):
+            path=str(path).replace('\\','/');reads[path]=reads.get(path,0)+1
+            inode=1+(1 if drift and reads[path]>1 else 0)
+            return {'path':path,'inode':inode}
+        mods=(c,rh,None,None,None,None,lh,metadata)
+        clock=[NOW]
+        def unlink(path):
+            events.append(('unlink',path.as_posix()))
+            if expire_after_first:clock[0]=x.timestamp(s['not_after'])
+        with patch.object(x.socket,'gethostname',return_value=x.CP),\
+             patch.object(x.time,'time',side_effect=lambda:clock[0]),patch.object(x,'checked_dir'),\
+             patch.object(x,'protected',return_value=x.encoded(c.plan(s['request']))),\
+             patch.object(x.Path,'unlink',autospec=True,side_effect=unlink):
+            obj=x.CleanupPair(s,mods)
+            if drift or expire_after_first:self.rejected(obj.retire_cleanup_pair)
+            else:obj.retire_cleanup_pair()
+        return events
+
+    def test_same_owner_logic_and_exact_unlink_fsync_only(self):
+        ev=self.exercise_pair_method()
+        self.assertEqual(ev.count('original_owner_method'),1)
+        self.assertEqual([v for v in ev if isinstance(v,tuple)],
+                         [('unlink',x.pair_paths()[0]),('fsync',x.pair_paths()[0]),
+                          ('unlink',x.pair_paths()[1]),('fsync',x.pair_paths()[1])])
+
+    def test_metadata_drift_before_first_unlink(self):
+        ev=self.exercise_pair_method(drift=True)
+        self.assertFalse(any(isinstance(v,tuple) for v in ev))
+
+    def test_new_deadline_stops_second_unlink(self):
+        ev=self.exercise_pair_method(expire_after_first=True)
+        self.assertEqual([v[0] for v in ev if isinstance(v,tuple)],['unlink','fsync'])
+
+    def collected_retire(self, late_stop=False, during_read=False, malformed_stop=False):
+        out,writes,_=self.exercise_retire(late_stop=late_stop)
+        base=Path('/synthetic');files={}
+        for key,value in writes:
+            target=base/'STOPPED.json' if key=='global_stop' else base/'retire'/(key+'.json')
+            files[str(target)]=x.encoded(value)
+        if malformed_stop:files[str(base/'STOPPED.json')]=x.encoded({'status':'STOPPED','secret':'SYNTHETIC'})
+        def read(path,*_):
+            raw=files[str(path)]
+            if during_read and str(path)==str(base/'retire/result.json'):
+                files[str(base/'STOPPED.json')]=x.encoded({'status':'STOPPED','binding':x.cleanup_binding(s),
+                    'action':'retire','host':x.CP,'first_error':'HOST_DEADLINE','preserve':True,
+                    'observed_at':x.iso(NOW),'retry':False})
+            return raw
+        with patch.object(x,'protected',side_effect=read),\
+             patch.object(x.os.path,'lexists',side_effect=lambda path:str(path) in files):
+            return x.collect_action(s,base,'retire',x.CP,NOW,(c,))
+
+    def test_result_then_stop_never_collected_as_success(self):
+        value=self.collected_retire(late_stop=True)
+        self.assertEqual(value['status'],'STOPPED_RECORD_COLLECTED')
+        self.assertTrue(value['result_present']);self.assertFalse(value['execution_success'])
+        self.assertNotIn('result',value)
+
+    def test_collect_is_not_original_process_exit_proof(self):
+        value=self.collected_retire()
+        self.assertEqual(value['status'],'PUBLIC_RESULT_COLLECTED')
+        self.assertEqual(value['original_process_exit'],'NOT_ESTABLISHED_BY_COLLECTION')
+        self.assertIsNone(value['execution_success'])
+
+    def test_stop_written_during_collection_takes_precedence(self):
+        value=self.collected_retire(during_read=True)
+        self.assertEqual(value['status'],'STOPPED_RECORD_COLLECTED');self.assertNotIn('result',value)
+
+    def test_invalid_stop_cannot_fall_back_to_confirmed(self):
+        self.rejected(lambda:self.collected_retire(malformed_stop=True))
+
+
+if __name__=='__main__':
+    suite=unittest.defaultTestLoader.loadTestsFromTestCase(Boundaries)
+    runner=unittest.TextTestRunner(verbosity=2)
+    run=runner.run(suite)
+    result={'state':'LOCAL_SYNTHETIC_BOUNDARY_TESTS_ONLY','tests':run.testsRun,
+            'failures':len(run.failures),'errors':len(run.errors),'passed':run.wasSuccessful(),
+            'remote_calls':0,'real_credential_reads':0,'original_candidate_unchanged':True,
+            'candidate_files_verified':len(inventory['files']),
+            'files':{n:x.sha((HERE/n).read_bytes()) for n in ('cleanup_once.py','prepare_local.py','test_cleanup_local.py')}}
+    (HERE/'TEST_RESULT.json').write_bytes(x.encoded(result))
+    raise SystemExit(0 if run.wasSuccessful() else 1)

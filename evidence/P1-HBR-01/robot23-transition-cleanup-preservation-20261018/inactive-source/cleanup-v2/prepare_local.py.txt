@@ -1,0 +1,258 @@
+"""LOCAL ONLY: drafts and renders reviewed existing transport; never dispatches."""
+import argparse
+import ast
+import base64
+import copy
+import importlib.util
+import json
+from pathlib import Path
+import shlex
+import sys
+import time
+import types
+
+HERE = Path(__file__).resolve().parent
+W = next(p for p in HERE.parents if (p / 'AGENTS.md').is_file())
+H = HERE.parent
+OP = H / 'operational-transition'
+B = W / 'deliverables/p1-harbor-review-publication-20261015'
+C = B / 'post-reboot-resume-r1-remediation-20261017/candidate'
+DEPLOY = B / 'b1-cleanup-preservation-remediation-20261017/delivery-preparation/reviewed_public_deploy.py'
+BRIDGE = W / 'reviews/shutdown-readiness-20261018/app-k8s/shutdown-execution-integration-0305/dispatch_once.py'
+BRIDGE_SHA = '9125c9eaceb23861da455f48567f4ceaf3dd74974834ac5c0b1ffb3096067070'
+
+
+def module(path, name):
+    m = types.ModuleType(name)
+    m.__file__ = str(path)
+    exec(compile(path.read_bytes(), str(path), 'exec'), m.__dict__)
+    return m
+
+
+x = module(HERE / 'cleanup_once.py', 'cleanup_local')
+encoded, sha, need = x.encoded, x.sha, x.need
+
+
+def load(path):
+    return json.loads(Path(path).read_bytes())
+
+
+def write(path, raw):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open('xb') as f:
+        f.write(raw)
+
+
+def candidate_modules():
+    inventory = load(OP / 'PUBLIC_PAYLOAD_INVENTORY.json')
+    for row in inventory['files']:
+        raw = (C / row['path']).read_bytes()
+        need(len(raw) == row['bytes'] and sha(raw) == row['sha256'], 'LOCAL_CANDIDATE_CHANGED')
+    for rel in ('source/rotation-adapter-r2', 'source/rotation-orchestration', 'continuation', 'reboot'):
+        sys.path.insert(0, str(C / rel))
+    import reboot_contract as c
+    import reboot_endpoint as ep
+    return c, ep, inventory
+
+
+def draft():
+    c, ep, inventory = candidate_modules()
+    r = load(OP / 'actual-bound-request/request.json')
+    rawdir = H / 'finish-stop-ledger-read/raw'
+    completion = load(rawdir / 'completion.json')
+    need(sha(encoded(r)) == x.REQUEST_SHA and sha(encoded(completion)) == x.COMPLETION_SHA,
+         'ACTUAL_INPUT_PIN')
+    ep.validate_completion(r, completion)
+    effects = {h: {'binding.json': {'bytes': len(encoded(c.binding(r))),
+                                   'sha256': sha(encoded(c.binding(r)))}} for h in x.HOSTS}
+    # Preserve the exact local effect bytes implied by confirmed public responses.
+    previous = sha(encoded(c.binding(r)))
+    for i, op in enumerate(c.operations()):
+        key = '%03d-' % i + op['key']
+        attempt = load(rawdir / ('attempt-' + key + '.json'))
+        result = load(rawdir / ('result-' + key + '.json'))
+        need(attempt['predecessor_sha256'] == previous and result['attempt_sha256'] == sha(encoded(attempt))
+             and result['status'] == 'CONFIRMED', 'CHAIN_CHANGED')
+        c.public_receipt(r, op, i, previous, result['receipt'], x.timestamp(completion['observed_at']))
+        for name, value in [('attempt-' + key + '.json', {k: v for k, v in attempt.items() if k != 'status'}),
+                            ('result-' + key + '.json', result['receipt'])]:
+            effects[op['host']][name] = {'bytes': len(encoded(value)), 'sha256': sha(encoded(value))}
+        previous = sha(encoded(result))
+    need(previous == completion['ledger_sha256'], 'COMPLETION_CHAIN_CHANGED')
+    values = {'request': r, 'completion': completion, 'stop': load(rawdir / 'stopped.json'),
+              'attempt031': load(rawdir / 'attempt-031-retire-k8s-control01.json')}
+    s = {'version': 2, 'purpose': x.PURPOSE, 'state': 'DRAFT', 'cleanup_id': None, 'not_before': None,
+         'not_after': None, 'original_not_after': r['not_after'], 'total_seconds': 1800,
+         'host_seconds': 60, 'observation_seconds': 300,
+         'authorization_reference': None, 'candidate_files': inventory['files'], **values,
+         'wrapper_sha256': sha((HERE / 'cleanup_once.py').read_bytes()),
+         'original_pins': {k: sha(encoded(v)) for k, v in values.items()}, 'effect_pins': effects}
+    write(HERE / 'SCOPE.draft.json', encoded(s))
+    commands = {'state': 'UNBOUND_NOT_EXECUTABLE', 'binding_by': 'central only',
+                'original_expired_deadline': x.ORIGINAL_NOT_AFTER, 'cleanup_total_seconds': 1800,
+                'new_start_and_deadline': None, 'existing_code_31_unchanged': True,
+                'steps': ['bind actual new cleanup_id/start/reference locally',
+                          'supply scope.json + cleanup_once.py to each four exact hosts; verify returned hashes',
+                          'check four hosts serially; collect actual public receipts',
+                          'supply CP observe-input.json containing actual four checks',
+                          'CP console observe once with existing admin credential; collect public result only',
+                          'retire CP, worker01, worker02, worker03 serially with actual prior receipts',
+                          'retain CP once with four actual retire receipts; collect/public record'],
+                'remote_directory': x.ROOT + '/cleanup-only-<central_cleanup_id>',
+                'console_command': 'sudo /usr/bin/python3 -B -I -S <remote_directory>/cleanup_once.py '
+                                   '<remote_directory>/scope.json <actual_scope_sha256> observe '
+                                   '<remote_directory>/observe-input.json',
+                'stop': 'Any failure/unknown/deadline: no next action, no retry; preserve original and cleanup records.'}
+    write(HERE / 'COMMANDS_UNBOUND.json', encoded(commands))
+    return {'state': 'DRAFT_READY', 'scope_bytes': len(encoded(s)), 'scope_sha256': sha(encoded(s)),
+            'remote_calls': 0, 'actual_id_or_time_created': False}
+
+
+def read_bound(path):
+    raw = Path(path).read_bytes()
+    s = json.loads(raw)
+    need(encoded(s) == raw, 'CANONICAL_SCOPE')
+    x.validate_scope(s, time.time())
+    need(s['wrapper_sha256'] == sha((HERE / 'cleanup_once.py').read_bytes()), 'LOCAL_WRAPPER_CHANGED')
+    return s, raw
+
+
+def bind(args):
+    s = load(HERE / 'SCOPE.draft.json')
+    s.update(state='BOUND', cleanup_id=args.cleanup_id, not_before=args.not_before,
+             not_after=x.iso(x.timestamp(args.not_before) + 1800), authorization_reference=args.reference)
+    need(s['wrapper_sha256'] == sha((HERE / 'cleanup_once.py').read_bytes()), 'LOCAL_WRAPPER_CHANGED')
+    x.validate_scope(s, time.time())
+    write(args.out, encoded(s))
+    return {'state': 'LOCAL_BOUND_ONLY', 'scope_sha256': sha(encoded(s)), 'remote_calls': 0}
+
+
+def bridge_call(host, remote, out, final_command=None, details=None):
+    need(host in x.HOSTS and sha(BRIDGE.read_bytes()) == BRIDGE_SHA, 'BRIDGE_PIN_OR_HOST')
+    route = load(OP / 'public-supply-parent-fix' / host / 'CALL.json')
+    inner = list(route['inner_argv'])
+    if final_command:
+        inner[-1] = final_command
+    bridge = module(BRIDGE, 'existing_bridge')
+    relay = bridge.render_bridge(inner, remote)
+    if isinstance(relay, str):
+        relay = relay.encode()
+    ast.parse(relay)
+    out = Path(out)
+    write(out / 'relay.py', relay)
+    call = {'host': host, 'outer_argv': route['outer_argv'], 'inner_argv': inner,
+            'stdin_path': str((out / 'relay.py').resolve()), 'stdin_sha256': sha(relay),
+            'remote_calls': 0, 'central_dispatch_only': True, 'no_retry': True,
+            'host_seconds': 60, **(details or {})}
+    write(out / 'CALL.json', encoded(call))
+    return call
+
+
+def supply_remote(s, raw, host, payload, existing):
+    """Only thin glue around reviewed LinuxFS; no custom filesystem mutations."""
+    base = x.ROOT + '/cleanup-only-' + s['cleanup_id']
+    helper = DEPLOY.read_bytes()
+    prelude = 'import base64,hashlib,json,os,signal,time,types,resource\n'
+    prelude += 'helper=base64.b64decode(' + repr(base64.b64encode(helper).decode()) + ')\n'
+    prelude += 'assert hashlib.sha256(helper).hexdigest()==' + repr(sha(helper)) + '\n'
+    prelude += "d=types.ModuleType('reviewed_public_deploy');exec(compile(helper,'reviewed_public_deploy.py','exec'),d.__dict__)\n"
+    data = {'host': host, 'boot_id': s['request']['execution']['boot_ids'][host], 'uid': 0, 'gid': 0,
+            'not_before': s['not_before'], 'deadline': s['not_after'], 'parents': {}}
+    prelude += 'r=json.loads(' + repr(encoded(data).decode()) + ')\n'
+    prelude += 'payload=' + repr({k: base64.b64encode(v).decode() for k, v in payload.items()}) + '\n'
+    prelude += 'base=' + repr(base) + '\nexisting=' + repr(existing) + '\nctx=' + repr(x.HOME_CONTEXT) + '\n'
+    prelude += 'scope_sha=' + repr(sha(raw)) + '\ncode_sha=' + repr(sha((HERE / 'cleanup_once.py').read_bytes())) + '\n'
+    prelude += '''fs=None
+try:
+    resource.setrlimit(resource.RLIMIT_CORE,(0,0));os.umask(0o077)
+    start=time.time();r['deadline']=d.dt.datetime.fromtimestamp(min(start+60,d.timestamp(r['deadline'])),d.dt.timezone.utc).isoformat()
+    deadline=d.Deadline(r);fs=d.LinuxFS(r,deadline);fs.identity()
+    def expired(*_):raise d.Stop('DEADLINE')
+    signal.signal(signal.SIGALRM,expired);signal.setitimer(signal.ITIMER_REAL,deadline.seconds())
+    for path in d.chain(d.ROOT):
+        fd=fs.open_dir(path)
+        try:r['parents'][path]=fs.meta(fd)
+        finally:os.close(fd)
+    fs.directory(d.ROOT,0o700,ctx);fs.parent_checks()
+    if existing:
+        fs.directory(base,0o700,ctx)
+        for name,pin in [('scope.json',scope_sha),('cleanup_once.py',code_sha)]:
+            raw,_=fs.read_file(base+'/'+name,ctx);d.need(d.sha(raw)==pin,'EXISTING_PUBLIC_CHANGED')
+        fs.absent(base+'/observe');fs.absent(base+'/STOPPED.json')
+        d.need(set(payload)=={'observe-input.json'},'INPUT_SCOPE')
+        fs.absent(base+'/observe-input.json')
+    else:
+        d.need(set(payload)=={'scope.json','cleanup_once.py'},'SUPPLY_SCOPE')
+        fs.absent(base);fs.mkdir(base,ctx)
+    files={}
+    for name,text in sorted(payload.items()):
+        raw=base64.b64decode(text,validate=True);fs.parent_checks()
+        fs.write_new(base+'/'+name,raw,ctx)
+        actual,meta=fs.read_file(base+'/'+name,ctx);d.need(actual==raw,'PUBLIC_READBACK')
+        files[name]=meta
+    fs.parent_checks();fs.identity();fs.tick()
+    print(d.encoded({'status':'PUBLIC_SUPPLIED','host':r['host'],'boot_id':r['boot_id'],
+         'scope_sha256':scope_sha,'files':files,'created':fs.created,'credential_or_api_actions':0}).decode())
+except BaseException as exc:
+    code=str(exc) if isinstance(exc,d.Stop) else 'SUPPLY_UNCERTAIN'
+    if not d.re.fullmatch('[A-Z0-9_]{1,80}',code):code='SUPPLY_UNCERTAIN'
+    print(d.encoded({'status':'STOPPED','first_error':code,'created':[] if fs is None else fs.created,
+                    'preserve':True,'retry':False}).decode());raise SystemExit(2)
+finally:
+    signal.setitimer(signal.ITIMER_REAL,0)
+'''
+    ast.parse(prelude)
+    return prelude
+
+
+def render(args):
+    s, raw = read_bound(args.scope)
+    if args.kind == 'supply':
+        payload = {'scope.json': raw, 'cleanup_once.py': (HERE / 'cleanup_once.py').read_bytes()}
+        return bridge_call(args.host, supply_remote(s, raw, args.host, payload, False), args.out,
+                           details={'kind': 'public_supply', 'scope_sha256': sha(raw)})
+    c, _, _ = candidate_modules()
+    packet = {} if args.packet is None else load(args.packet)
+    if args.kind == 'observe-input':
+        need(args.host == x.CP, 'CONTROL_ONLY')
+        x.validate_packet(s, packet, 'observe', args.host, time.time(), (c,))
+        need(len(encoded(packet)) <= 32768, 'PACKET_LIMIT')
+        return bridge_call(args.host, supply_remote(s, raw, args.host,
+                           {'observe-input.json': encoded(packet)}, True), args.out,
+                           details={'kind': 'public_observe_input', 'scope_sha256': sha(raw)})
+    need(args.kind == 'call' and args.action in ('check', 'retire', 'retain', 'collect'), 'CALL_ACTION')
+    if args.action == 'check':
+        need(packet == {}, 'CHECK_INPUT')
+    elif args.action != 'collect':
+        x.validate_packet(s, packet, args.action, args.host, time.time(), (c,))
+    need(len(encoded(packet)) <= 32768, 'PACKET_LIMIT')
+    base = x.ROOT + '/cleanup-only-' + s['cleanup_id']
+    argv = ['sudo', '-n', '/usr/bin/python3', '-B', '-I', '-S', base + '/cleanup_once.py',
+            base + '/scope.json', sha(raw), args.action]
+    if args.action == 'collect':
+        need(args.collect in ('check', 'observe', 'retire', 'retain'), 'COLLECT_ACTION')
+        argv.append(args.collect)
+    return bridge_call(args.host, encoded(packet).decode(), args.out, shlex.join(argv),
+                       {'kind': 'cleanup_' + args.action, 'scope_sha256': sha(raw),
+                        'public_input_bytes': len(encoded(packet)), 'public_input_sha256': sha(encoded(packet))})
+
+
+def main():
+    p = argparse.ArgumentParser()
+    sub = p.add_subparsers(dest='command', required=True)
+    sub.add_parser('draft')
+    b = sub.add_parser('bind')
+    for name in ('cleanup-id', 'not-before', 'reference', 'out'):
+        b.add_argument('--' + name, required=True)
+    r = sub.add_parser('render')
+    for name in ('scope', 'kind', 'host', 'out'):
+        r.add_argument('--' + name, required=True)
+    r.add_argument('--action');r.add_argument('--collect');r.add_argument('--packet')
+    a = p.parse_args()
+    result = draft() if a.command == 'draft' else bind(a) if a.command == 'bind' else render(a)
+    print(encoded(result).decode())
+
+
+if __name__ == '__main__':
+    main()

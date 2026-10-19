@@ -1,0 +1,342 @@
+"""Root endpoints for the separate recovery contract. No effects on import."""
+import datetime as dt
+import getpass
+import os
+from pathlib import Path
+import socket
+import stat
+import sys
+import time
+import warnings
+import post_expiry_contract as pc
+from rotation_contract import *
+from orch_contract import ROOT, CP, stages, stage_receipt
+import orch_endpoint as old
+from linux_host import LinuxHost, regular_bytes, write_new, directory, fsync_parent
+from input_supply import import_receipt
+from post_expiry_ledger import Files
+from rotation_adapter import Adapter
+
+def iso(now):return dt.datetime.fromtimestamp(now,dt.timezone.utc).isoformat()
+
+def observation_request(r,now):
+    base={'version','purpose','state','phase','invocation','host_boot_ids','admin_username',
+          'operator','authorization_reference','api_seconds','not_before','not_after'}
+    need(isinstance(r,dict) and r.get('phase') in ('baseline','final'), 'OBSERVATION_PHASE')
+    fields=base if r['phase']=='baseline' else base|{'rotation','completion_sha256'}
+    need(set(r)==fields and r['version']==3 and pc.mode(r) and r['state']=='BOUND',
+         'OBSERVATION_REQUEST')
+    nonce(r['invocation'])
+    need(set(r['host_boot_ids'])==set(pc.HOSTS) and all(isinstance(x,str) and
+         __import__('re').fullmatch('[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}',x)
+         for x in r['host_boot_ids'].values()), 'OBSERVATION_BOOT')
+    need(isinstance(r['admin_username'],str) and
+         __import__('re').fullmatch('[A-Za-z0-9_.@-]{1,80}',r['admin_username']), 'OBSERVATION_ADMIN')
+    pc.ref(r['operator']);pc.ref(r['authorization_reference'])
+    b,e=timestamp(r['not_before']),timestamp(r['not_after'])
+    need(b<=now<e and 0<e-b<=1800, 'OBSERVATION_WINDOW')
+    need(type(r['api_seconds']) is int and 0<r['api_seconds']<=30,'OBSERVATION_API_CAP')
+    if r['phase']=='final':
+        rotation=pc.rotation_request(r['rotation'],now)
+        pc.digest(r['completion_sha256'])
+        need(r['host_boot_ids']==rotation['plan']['host_boot_ids'] and
+             r['invocation']==rotation['plan']['invocation'] and
+             e<=timestamp(rotation['plan']['not_after']), 'FINAL_WINDOW_BINDING')
+    return r
+
+class ReadAPI(old.HarborAPI):
+    def call(self,method,path,body=None):
+        need(method=='GET' and body is None,'OBSERVATION_GET_ONLY')
+        return super().call(method,path)
+
+def metadata_get(api,path):
+    # HarborAPI has already retained the protected raw body. Never project away
+    # an unexpected credential or continue to the next GET/POST after finding it.
+    value=api.call('GET',path)
+    items=value if path==pc.LIST and isinstance(value,list) else [value]
+    need(all(isinstance(x,dict) and 'secret' not in x for x in items),
+         'UNEXPECTED_GET_SECRET')
+    return value
+
+def observe(r,api,j,now=time.time):
+    observation_request(r,now())
+    rows=metadata_get(api,pc.LIST);bodies={'list':api.last_body_sha256};details={}
+    for rid in (2,3):
+        details[rid]=metadata_get(api,'/api/v2.0/robots/'+str(rid));bodies[str(rid)]=api.last_body_sha256
+    if r['phase']=='baseline':
+        result={'status':'OBSERVE_ONLY','purpose':pc.PURPOSE,'invocation':r['invocation'],
+                'host':CP,'boot_id':r['host_boot_ids'][CP],'observed_at':iso(now()),
+                'old':pc.snapshot(rows,details),'body_sha256':bodies,'request_sha256':pc.sha(encoded(r))}
+    else:
+        rotation=r['rotation'];issued=rotation['issue_receipt'];rid=rotation['plan']['new_robot']['id']
+        listed=pc.compare_old(issued['old'],rows,details,rid)
+        new=metadata_get(api,'/api/v2.0/robots/'+str(rid))
+        bodies['new']=api.last_body_sha256
+        need(pc.canonical_metadata(new,rid)==issued['new_detail'] and
+             pc.canonical_metadata(listed[rid],rid)==issued['new_list'], 'FINAL_NEW_METADATA_DRIFT')
+        result={'status':'FINAL_OBSERVED','purpose':pc.PURPOSE,'host':CP,
+                'boot_id':r['host_boot_ids'][CP],'invocation':r['invocation'],
+                'observed_at':iso(now()),'old':issued['old'],'new_detail':issued['new_detail'],
+                'new_list':issued['new_list'],'body_sha256':bodies,
+                'request_sha256':pc.sha(encoded(rotation)),'completion_sha256':r['completion_sha256']}
+    observation_request(r,now());j.write('observation',result)
+    return result
+
+def s1_inventory(j):
+    # Only the exact issuer copies; consumer backups/permanent auth are never traversed.
+    result=[]
+    for name in ('http-4-body.bin','http-4-wire.bin','created-private.json'):
+        p=j.path/name
+        if p.exists():
+            raw,s=regular_bytes(p)
+            result.append({'name':name,'device':s.st_dev,'inode':s.st_ino,'bytes':len(raw),
+                           'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode)})
+    need({x['name'] for x in result}=={'http-4-body.bin','created-private.json'},
+         'S1_SUCCESS_INVENTORY')
+    return result
+
+def issue(r,api,j,now=time.time):
+    pc.prep_request(r,now())
+    rows=metadata_get(api,pc.LIST)
+    details={rid:metadata_get(api,'/api/v2.0/robots/'+str(rid)) for rid in (2,3)}
+    before=r['observation']['old'];pc.compare_old(before,rows,details)
+    j.write('before',before)
+    body=pc.create_body(r['invocation'])
+    j.claim('post',{'purpose':pc.PURPOSE,'status':'ATTEMPTED','prep_sha256':pc.sha(encoded(r)),'body':body})
+    pc.prep_request(r,now());start=now()
+    reply=api.call('POST','/api/v2.0/robots',body);end=now()
+    j.write('created-private',reply)
+    # Identity checked before using returned ID in any URL.
+    need(isinstance(reply,dict) and type(reply.get('id')) is int and reply['id']>3 and
+         reply.get('name')==NEW_USER, 'NEW_POST_ID')
+    new=metadata_get(api,'/api/v2.0/robots/'+str(reply['id']))
+    after={rid:metadata_get(api,'/api/v2.0/robots/'+str(rid)) for rid in (2,3)}
+    rows=metadata_get(api,pc.LIST)
+    listed=pc.compare_old(before,rows,after,reply['id'])
+    robot,projections=pc.verify_new(reply,new,listed[reply['id']],r,start,end,
+                                  timestamp(r['not_after'])+4500)
+    result={'status':'ISSUED_UNQUALIFIED','purpose':pc.PURPOSE,'invocation':r['invocation'],
+        'prep_sha256':pc.sha(encoded(r)),'robot':robot,'verified_at':iso(now()),'old':before,
+        'new_detail':projections[0],'new_list':projections[1],'post_interval':[iso(start),iso(end)],
+        's1_inventory':s1_inventory(j)}
+    pc.prep_request(r,now());j.write('verified',result)
+    return result
+
+def console(action,r,adapter_dir):
+    if action=='issue':pc.prep_request(r,time.time())
+    else:observation_request(r,time.time())
+    need(old.identity(r['host_boot_ids'])==CP and sys.stdin.isatty() and sys.stderr.isatty(),
+         'PRIVATE_CONTROL_CONSOLE_REQUIRED')
+    directory(ROOT)
+    if action=='issue':
+        # Shared exact-name claim blocks both legacy and recovery issuance under a new invocation.
+        write_new(Path(ROOT)/'worker-20261015-r1-issuance-claim.json',
+                  encoded({'purpose':pc.PURPOSE,'invocation':r['invocation'],'prep_sha256':pc.sha(encoded(r))}))
+        path=Path(ROOT)/('issuance-'+r['invocation'])
+    else:path=Path(ROOT)/(r['phase']+'-observation-'+r['invocation'])
+    j=old.Journal(directory(path,exclusive=True));j.write('request',r)
+    api=None;password=None
+    try:
+        with old.deadline(timestamp(r['not_after'])-time.time()):
+            with warnings.catch_warnings():
+                warnings.simplefilter('error',getpass.GetPassWarning)
+                password=getpass.getpass('Harbor admin password (not saved): ')
+            ca,_=regular_bytes(adapter_dir/'public-ca.pem')
+            api=(old.HarborAPI if action=='issue' else ReadAPI)(r,password,ca,j);password=None
+            return issue(r,api,j) if action=='issue' else observe(r,api,j)
+    except BaseException as exc:
+        code=exc.code if isinstance(exc,Stop) else 'CONSOLE_UNCERTAIN_OR_EVIDENCE_FAILURE'
+        try:j.write('stopped',{'status':'STOPPED','purpose':pc.PURPOSE,'first_error':code,
+            'credential_state':pc.QUARANTINE,'location':str(path),
+            'preservation':r.get('preservation',r.get('rotation',{}).get('prep',{}).get('preservation',{}))})
+        except BaseException:pass
+        raise
+    finally:
+        password=None
+        if api is not None:api.forget()
+
+def checkpoint_writer(fs,h,r):
+    def record(key,state,values):
+        safe={}
+        for kind,meta in values.items():
+            if kind in ('before','after'):
+                safe[kind]={k:v for k,v in meta.items() if k in
+                    ('uid','resourceVersion','inode','device','mtime_ns','ctime_ns','gid','mode','context')}
+        fs.put('consumer-'+key+'-'+state.lower().replace('_','-'),{
+            'state':state,'host':h.name,'boot_id':h.boot_id,'plan_sha256':pc.sha(encoded(h.plan)),
+            'request_sha256':pc.sha(encoded(r)),'robot_id':h.plan['new_robot']['id'],**safe,
+            'original_directory':str(h.root/'private')})
+    return record
+
+def partial(fs):
+    result={}
+    for key in pc.CONSUMERS:
+        rows=[]
+        for state in ('ATTEMPTED_UNKNOWN','CHANGED_UNVERIFIED','VERIFIED_NEW','EXTERNAL_DRIFT'):
+            name='consumer-'+key+'-'+state.lower().replace('_','-')
+            if fs.has(name):rows.append(fs.get(name))
+        if rows:
+            combined={}
+            for row in rows:combined.update(row)
+            result[key]=combined
+    return result
+
+def preserved_locations(r,name):
+    inv=r['plan']['invocation']
+    paths=[Path('/run/fds-hbr-worker-rotation-20261015')/inv/'credential.json',
+           Path('/run/fds-hbr-worker-rotation-20261015')/inv/'credential-owner.json',
+           Path(ROOT)/inv/'private',Path(ROOT)/('recovery-effects-'+inv)]
+    if name==CP:paths.append(Path(ROOT)/('issuance-'+inv))
+    rows=[]
+    for p in paths:
+        try:
+            s=p.lstat()
+            rows.append({'path':str(p),'present':True,'device':s.st_dev,'inode':s.st_ino,
+                         'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode)})
+        except FileNotFoundError:rows.append({'path':str(p),'present':False})
+        except BaseException:rows.append({'path':str(p),'present':'UNKNOWN'})
+    return rows
+
+def dispose(r,payload):
+    pc.closeout(r,payload['closeout'],time.time())
+    receipts=payload['retire_receipts']
+    need(set(receipts)==set(pc.HOSTS),'RETIRE_ALL_REQUIRED')
+    for h,value in receipts.items():
+        need(value.get('status')=='CONFIRMED' and value.get('host')==h and
+             value.get('request_sha256')==pc.sha(encoded(r)) and
+             value.get('operation',{}).get('key')=='retire-'+h, 'RETIRE_RECEIPT_BINDING')
+    j=old.Journal(Path(ROOT)/('issuance-'+r['plan']['invocation']))
+    need(j.read('verified')==r['issue_receipt'] and not os.path.lexists(j.path/'stopped.json'),
+         'ISSUER_STOP_OR_CHANGED')
+    expected=r['issue_receipt']['s1_inventory']
+    need(s1_inventory(j)==expected,'S1_INVENTORY_CHANGED')
+    j.claim('s1-disposal',{'request_sha256':pc.sha(encoded(r)),'files':expected})
+    for row in expected:
+        p=j.path/row['name'];_,s=regular_bytes(p)
+        need((s.st_dev,s.st_ino,s.st_uid,s.st_gid,stat.S_IMODE(s.st_mode),s.st_size)==
+             (row['device'],row['inode'],row['uid'],row['gid'],row['mode'],row['bytes']),
+             'S1_FILE_CHANGED')
+        need(time.time()<timestamp(r['plan']['not_after']),'S1_DEADLINE')
+        p.unlink();fsync_parent(p)
+        j.write('disposed-'+row['name'].replace('.','-'),{'name':row['name'],'unlinked':True})
+    j.write('s1-disposed',{'status':'S1_DISPOSED','request_sha256':pc.sha(encoded(r)),
+                         'names':[x['name'] for x in expected],'secure_erase_claim':False})
+    return j.read('s1-disposed')
+
+def remote(r,envelope,adapter_dir):
+    pc.rotation_request(r,time.time());p=r['plan'];name=old.identity(p['host_boot_ids'])
+    ops=pc.sequence()+pc.finish_sequence()
+    need(set(envelope)=={'version','purpose','request_sha256','index','operation','predecessor_sha256','payload'}
+         and envelope['version']==3 and pc.mode(envelope) and
+         envelope['request_sha256']==pc.sha(encoded(r)), 'DISPATCH_ENVELOPE')
+    index=envelope['index'];need(type(index) is int and 0<=index<len(ops),'DISPATCH_INDEX')
+    op=ops[index];need(envelope['operation']==op and op['host']==name,'DISPATCH_SCOPE')
+    pc.digest(envelope['predecessor_sha256']);payload=envelope['payload']
+    base=Path(ROOT)/('recovery-effects-'+p['invocation'])
+    fs=Files(base,create=op['action']=='stage')
+    need(not fs.has('stopped'),'RECOVERY_TERMINAL_STOP')
+    # Every prior local intent must have a confirmed result before any later request.
+    for prior_index,prior in enumerate(ops):
+        if prior['host']!=name:continue
+        key=f'{prior_index:03d}-'+prior['key']
+        if fs.has('attempt-'+key):
+            need(prior_index<index and fs.has('result-'+key),'LOCAL_ATTEMPT_UNKNOWN_OR_REENTRY')
+            need(fs.get('result-'+key).get('status')=='CONFIRMED','LOCAL_PRIOR_NOT_CONFIRMED')
+    key=f'{index:03d}-'+op['key']
+    fs.put('attempt-'+key,{k:v for k,v in envelope.items() if k!='payload'})
+    result={'status':'CONFIRMED','purpose':pc.PURPOSE,'index':index,'operation':op,
+        'predecessor_sha256':envelope['predecessor_sha256'],'request_sha256':pc.sha(encoded(r)),
+        'plan_sha256':pc.sha(encoded(p)),'robot_id':p['new_robot']['id'],'host':name,
+        'boot_id':p['host_boot_ids'][name]}
+    try:
+        action=op['action'];receipt=None
+        if action=='stage':
+            ca,_=regular_bytes(adapter_dir/'public-ca.pem');old.stage(r,ca)
+            receipt=old.stage_status(r)
+        elif action=='stage-status':receipt=old.stage_status(r)
+        elif action=='supply-local':old.local_credential(r,payload);receipt={'status':'TEMP_SUPPLIED'}
+        elif action=='export':
+            result['transfer']=old.export_credential(r,op['key'].removeprefix('export-'),payload)
+            receipt={'status':'TEMP_EXPORTED'}
+        elif action=='receive':old.receive_credential(r,encoded(payload));receipt={'status':'TEMP_SUPPLIED'}
+        elif action=='retire':
+            pc.closeout(r,payload,time.time());old.retire(r,payload);receipt={'status':'RETIRED'}
+        elif action=='dispose':receipt=dispose(r,payload)
+        else:
+            h=LinuxHost(p);h.recovery_dispatch=True;h.consumer_checkpoint=checkpoint_writer(fs,h,r)
+            if action=='import':
+                need(set(payload)=={'key','receipt','receipt_sha256'} and
+                     op['key']=='import-'+payload['key'], 'IMPORT_SCOPE')
+                import_receipt(h,payload['key'],encoded(payload['receipt']),payload['receipt_sha256'])
+                receipt=h.receipt(payload['key'])
+            else:
+                need(payload=={},'ADAPTER_PAYLOAD_SCOPE')
+                raw,s=regular_bytes(h.runroot/'credential.json',32768);c=credential(raw)
+                owner=parse_json(regular_bytes(h.runroot/'credential-owner.json')[0])
+                need(owner=={'invocation':h.inv,'device':s.st_dev,'inode':s.st_ino,'username':NEW_USER,
+                     'private_binding_sha256':pc.sha(encoded({'plan':h.plan,'credential':c}))},
+                     'TEMP_CREDENTIAL_BINDING')
+                a=Adapter(p,h)
+                if action=='node':a.worker_test(c)
+                elif action=='secret':a.patch_secret(op['key'].removeprefix('secret-'),c)
+                elif action=='pod':
+                    pod=op['key'].removeprefix('pod-')
+                    ns,node=pod.rsplit('-k8s-',1);a.test_pod(ns,'k8s-'+node,c)
+                elif action=='worker-file':a.update_worker_file(c)
+                else:raise Stop('RECOVERY_ACTION_SCOPE')
+                receipt=h.receipt(op['key'])
+        result['receipt']=receipt;result['partial']=partial(fs)
+        result['observed_at']=iso(time.time())
+        # Never persist transfer credential in the public operation ledger.
+        fs.put('result-'+key,{k:v for k,v in result.items() if k!='transfer'})
+        return result
+    except BaseException as exc:
+        code=exc.code if isinstance(exc,Stop) else 'RECOVERY_REMOTE_UNCERTAIN'
+        try:state=partial(fs)
+        except BaseException:state={}
+        cleanup_errors=list(getattr(exc,'cleanup_errors',[]))
+        evidence_errors=list(getattr(exc,'evidence_errors',[]))
+        if 'h' in locals():
+            try:
+                proof=h.receipt(op['key'])
+                cleanup_errors=list(dict.fromkeys(cleanup_errors+proof.get('cleanup_errors',[])))
+            except BaseException:pass
+        stopped={**{k:v for k,v in result.items() if k!='transfer'},
+            'status':'STOPPED','first_error':code,'partial':state,'cleanup_errors':cleanup_errors,
+            'evidence_errors':evidence_errors,
+            'credential_state':pc.QUARANTINE,'preservation':r['prep']['preservation'],
+            'preservation_location':str(base),'preserved_locations':preserved_locations(r,name),
+            'observed_at':iso(time.time())}
+        if op['action']=='node' and code=='PUSH_RESULT_UNCERTAIN':
+            stopped['remote_artifact']={'target':deny_tag(p['invocation'],name),
+                'status':'POSSIBLE_NOT_CONFIRMED','automatic_remote_delete':False}
+        try:fs.put('stopped',stopped)
+        except BaseException:
+            stopped['evidence_errors']=list(dict.fromkeys(
+                stopped['evidence_errors']+['REMOTE_STOP_EVIDENCE_WRITE_FAILED']))
+        return stopped
+
+def main(argv,adapter_dir):
+    import argparse
+    a=argparse.ArgumentParser()
+    a.add_argument('action',choices=['baseline','issue','final','operation'])
+    a.add_argument('--request',required=True);a.add_argument('--request-sha256',required=True)
+    a.add_argument('--operation-until')
+    args=a.parse_args(argv);r=old.read_input(args.request,args.request_sha256)
+    need(pc.mode(r),'RECOVERY_PURPOSE_REQUIRED')
+    if args.action!='operation':
+        need(args.action=='issue' or r.get('phase')==args.action,'OBSERVATION_PHASE')
+        return console(args.action,r,adapter_dir)
+    e=parse_json(old.bounded_stdin())
+    need(args.operation_until is not None,'RECOVERY_OPERATION_DEADLINE')
+    op=e.get('operation',{});cap=pc.operation_cap(r,op)
+    if op.get('action')=='export':
+        need(not sys.stdout.isatty() and stat.S_ISFIFO(os.fstat(sys.stdout.fileno()).st_mode),
+             'PRIVATE_PIPE_REQUIRED')
+    end=timestamp(r['plan']['not_after'] if op.get('action') in ('retire','dispose') else
+                  r['supply_until'] if op.get('action') in ('stage','stage-status','supply-local','export','receive')
+                  else r['plan']['mutation_until'])
+    until=timestamp(args.operation_until)
+    need(time.time()<until<=min(end,time.time()+cap),'RECOVERY_OPERATION_DEADLINE')
+    with old.deadline(until-time.time()):return remote(r,e,adapter_dir)
+

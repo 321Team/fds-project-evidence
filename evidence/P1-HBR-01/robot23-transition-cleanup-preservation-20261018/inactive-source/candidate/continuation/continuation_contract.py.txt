@@ -1,0 +1,165 @@
+"""One exact TOKEN_FIELDS continuation. No effects on import."""
+import copy
+import datetime as dt
+from rotation_contract import *
+import post_expiry_contract as pc
+from continuation_pins import ANCHORS_SHA256, PROOF_SHA256, RESIDUAL_SHA256
+
+PURPOSE='TOKEN_FIELDS_ROBOT23_REGISTRY_SUCCESSOR_V3'
+ORIGIN='7fadd8679c964f6497c4c6bfdaeb3a64'
+FINAL='4a961469d717f24e85970610202ade8f4bc536e0d0e5af94d8f276b2c5af3c77'
+REQUEST='afce5046831c6344373202b0b6ce332df48be7ed8ade45283f2bc55e45ad8394'
+PLAN='29d2818bcb4710402dd9149a91bf62aee1518286625a0e8715f4528d0b11c940'
+REVIEW='c6196b9f25a98a220b8ad35b17bfc9b723f4e40139ef553c217a06b7797e8a73'
+HOSTS=pc.HOSTS
+CP=pc.CP
+ROOT='/root/fds-hbr-worker-rotation-20261015'
+RUN='/run/fds-hbr-worker-rotation-20261015'
+
+def iso(t):return dt.datetime.fromtimestamp(t,dt.timezone.utc).isoformat()
+
+def validate(r,now):
+    need(isinstance(r,dict) and set(r)=={'version','purpose','state','continuation_id','origin',
+        'origin_final_sha256','origin_proof','not_before','mutation_until','not_after','supply_until',
+        'preservation','authorization_reference','candidate_sha256','parser_review_sha256',
+        'origin_anchors','residual_metadata','successor_parent_sha256','successor_authorization','command_audit'},'CONTINUATION_FIELDS')
+    need(r['version']==3 and r['purpose']==PURPOSE and r['state']=='BOUND','CONTINUATION_STATE')
+    nonce(r['continuation_id']);need(r['continuation_id']!=ORIGIN,'SEPARATE_ID_REQUIRED')
+    old=r['origin'];need(pc.sha(encoded(old))==REQUEST and old['plan']['invocation']==ORIGIN and
+        pc.sha(encoded(old['plan']))==PLAN and r['origin_final_sha256']==FINAL,'ORIGIN_CHANGED')
+    pc.rotation_request(old,timestamp(old['plan']['not_before'])) # historical validation ONLY
+    proof=r['origin_proof']
+    need(pc.sha(encoded(proof))==PROOF_SHA256 and pc.sha(encoded(r['origin_anchors']))==ANCHORS_SHA256 and
+         pc.sha(encoded(r['residual_metadata']))==RESIDUAL_SHA256,'FROZEN_EVIDENCE_PIN')
+    need(proof.get('status')=='HISTORICAL_PUBLIC_ORIGINALS_VERIFIED' and
+        proof.get('origin_final_sha256')==FINAL and proof.get('origin_request_sha256')==REQUEST and
+        proof.get('confirmed')==15 and proof.get('failed_index')==15 and
+        proof.get('failure_code')=='TOKEN_FIELDS' and proof.get('consumer_attempts')==0 and
+        proof.get('matching_actors')==0 and proof.get('owned_pods_present')==0,'ORIGIN_FAILURE_SCOPE')
+    need(r['parser_review_sha256']==REVIEW,'PARSER_REVIEW_PIN');pc.digest(r['candidate_sha256'])
+    pc.ref(r['authorization_reference'])
+    b,m,e,s=(timestamp(r[k]) for k in ('not_before','mutation_until','not_after','supply_until'))
+    need(b<=now<e and b<m<=e and 0<e-b<=4500 and m-b<=3600 and b<s<=min(m,b+600),'CONTINUATION_WINDOW')
+    need(timestamp(old['plan']['new_robot']['expires_at'])>e,'ROBOT_EXPIRY')
+    p=r['preservation']
+    need(set(p)=={'owner','review_by','next_disposition_reference'} and timestamp(p['review_by'])>e,
+         'CONTINUATION_PRESERVATION')
+    pc.ref(p['owner']);pc.ref(p['next_disposition_reference'])
+    need(set(r['origin_anchors'])=={'ansible01',*HOSTS} and len(r['residual_metadata'])==10,
+         'ORIGIN_ANCHOR_SCOPE')
+    for host,rows in r['origin_anchors'].items():
+        need(isinstance(rows,list) and rows and len({x['path'] for x in rows})==len(rows),'ANCHOR_LIST')
+        for row in rows:
+            need(set(row)=={'path','sha256','bytes'} and type(row['bytes']) is int and row['bytes']>=0,'ANCHOR_FIELDS')
+            pc.digest(row['sha256'])
+            path=row['path']
+            prefix='/home/server01_ansible/hbr-rotation-'+ORIGIN+'/recovery-ledger/' if host=='ansible01' else ROOT+'/'
+            need(isinstance(path,str) and path.startswith(prefix) and '..' not in path and
+                 path.endswith('.json') and not any(x in path for x in ('credential','private','http-')),
+                 'ANCHOR_PATH')
+    from command_audit import policy
+    audit=policy(r['command_audit'],r['not_after'])
+    need(audit['owner']==p['owner'] and audit['review_by']==p['review_by'] and audit['next_disposition_reference']==p['next_disposition_reference'],'COMMAND_AUDIT_PRESERVATION_BINDING')
+    from successor_guard import authorization
+    authorization(r)
+    return r
+
+def plan(r):
+    # This is a NEW adapter execution plan. It is never used to verify/rewrite
+    # the old credential owner. Original issue/prep identity stays in r.origin.
+    p=copy.deepcopy(r['origin']['plan']);p['invocation']=r['continuation_id']
+    for k in ('not_before','mutation_until','not_after'):p[k]=r[k]
+    p['authorization_reference']=r['authorization_reference']
+    return p
+
+def binding(r):
+    return {'purpose':PURPOSE,'continuation_id':r['continuation_id'],'origin_invocation':ORIGIN,
+            'origin_final_sha256':FINAL,'request_sha256':pc.sha(encoded(r)),
+            'plan_sha256':pc.sha(encoded(plan(r))),'robot_id':23,
+            'host_boot_ids':r['origin']['plan']['host_boot_ids'],
+            'relay_boot_id':r['origin']['relay_boot_id'],
+            'successor_parent_sha256':r['successor_parent_sha256'],
+            'successor_authorization_sha256':pc.sha(encoded(r['successor_authorization']))}
+
+def operations():
+    return [{'host':h,'action':'revalidate','key':'revalidate-'+h,'cap':'stage_seconds'} for h in HOSTS]+pc.sequence()[15:]
+
+def finish_operations():return pc.finish_sequence()
+
+def cap(r,op):return pc.operation_cap(r['origin'],op)
+
+def end(r,op):
+    return timestamp(r['not_after'] if op['action'] in ('retire','dispose') else
+                     r['supply_until'] if op['action']=='revalidate' else r['mutation_until'])
+
+def public_receipt(r,op,index,previous,value,now):
+    need(isinstance(value,dict) and value.get('binding')==binding(r) and value.get('operation')==op and
+         value.get('index')==index and value.get('predecessor_sha256')==previous and
+         value.get('host')==op['host'] and
+         value.get('boot_id')==r['origin']['plan']['host_boot_ids'][op['host']], 'CONTINUATION_RECEIPT_BINDING')
+    if value.get('status')=='STOPPED':
+        from command_audit import public_events,report_valid,code,codes
+        need(code(value.get('first_error')),'STOP_ERROR_SCHEMA');public_events(value.get('command_evidence',[]),op['key'].removeprefix('import-'))
+        codes(value.get('evidence_errors',[]));codes(value.get('cleanup_errors',[]))
+        report=value.get('command_audit')
+        if report is not None:
+            report_valid(report,plan(r),op['host'],op['key'])
+            need(report['policy_sha256']==pc.sha(encoded(r['command_audit'])),'AUDIT_POLICY_BINDING')
+        exc=Stop(value.get('first_error','REMOTE_STOP'));exc.command_evidence=value.get('command_evidence',[]);exc.command_audit=report
+        exc.cleanup_errors=value.get('cleanup_errors',[]);exc.evidence_errors=value.get('evidence_errors',[])
+        raise exc
+    need(set(value)=={'status','binding','operation','index','predecessor_sha256','host','boot_id',
+                     'receipt','partial','observed_at'} and value['status']=='CONFIRMED', 'CONTINUATION_RECEIPT_FIELDS')
+    need(timestamp(r['not_before'])<=timestamp(value['observed_at'])<=now,'CONTINUATION_RECEIPT_TIME')
+    action=op['action'];proof=value['receipt']
+    if action in ('node','secret','pod','import'):
+        key=op['key'].removeprefix('import-') if action=='import' else op['key']
+        receipt_binding(plan(r),key,proof,now)
+    elif action=='worker-file':
+        need(set(proof)=={'status','operation','observed_at_epoch','invocation','plan_sha256','robot_id','host',
+                         'purpose','boot_id','prep_sha256','node','cleanup_errors','command_evidence','command_audit','evidence_errors'} and
+             proof.get('purpose')==pc.PURPOSE and proof.get('prep_sha256')==plan(r)['prep_sha256'] and
+             proof.get('cleanup_errors')==[] and proof.get('node')==NODES[0] and
+             timestamp(r['not_before'])<=proof.get('observed_at_epoch',0)<=now and
+             proof.get('status')=='PASS' and proof.get('operation')=='worker01-file' and
+             proof.get('invocation')==r['continuation_id'] and proof.get('plan_sha256')==binding(r)['plan_sha256'] and
+             proof.get('host')==NODES[0] and proof.get('robot_id')==23 and
+             proof.get('boot_id')==plan(r)['host_boot_ids'][NODES[0]],'WORKER_FILE_PROOF')
+        from command_audit import public_events,report_valid
+        need(proof.get('evidence_errors')==[],'COMMAND_EVIDENCE_INCOMPLETE');public_events(proof.get('command_evidence'),op['key'],True)
+        report_valid(proof.get('command_audit'),plan(r),op['host'],op['key'],True)
+        need(proof['command_audit']['files']==len(proof['command_evidence'])*2,'COMMAND_AUDIT_EVENT_COUNT')
+    elif action=='revalidate':
+        need(proof==revalidation_proof(op['host']),'PARENT_REVALIDATION_PROOF')
+    else:
+        need(proof=={'status':{'retire':'RETIRED_ORIGIN_PAIR',
+                              'dispose':'S1_DISPOSED'}[action]},'CONTINUATION_EFFECT_PROOF')
+    if action in ('node','worker-file') or action=='import' and op['key'].startswith('import-node-'):
+        need(proof['command_audit']['policy_sha256']==pc.sha(encoded(r['command_audit'])),'AUDIT_POLICY_BINDING')
+    if action in ('secret','worker-file'):
+        need(value['partial'].get(op['key'],{}).get('state')=='VERIFIED_NEW','CONSUMER_PROOF')
+    return value
+
+def observation(r,value,phase,now,completion=None):
+    need(isinstance(value,dict) and set(value)=={'status','phase','binding','observed_at','old',
+         'new_detail','new_list','body_sha256','completion_sha256'} and value['status']=='OBSERVED' and
+         value['phase']==phase and value['binding']==binding(r),'OBSERVATION_BINDING')
+    i=r['origin']['issue_receipt']
+    need(value['old']==i['old'] and value['new_detail']==i['new_detail'] and value['new_list']==i['new_list'],
+         'ROBOT_METADATA_DRIFT')
+    need(timestamp(r['not_before'])<=timestamp(value['observed_at'])<=now and
+         (now<timestamp(r['supply_until']) if phase=='before' else now-timestamp(value['observed_at'])<=300),
+         'OBSERVATION_TIME')
+    need(value['completion_sha256']==(None if phase=='before' else pc.sha(encoded(completion))),
+         'OBSERVATION_COMPLETION')
+    need(set(value['body_sha256'])=={'list','2','3','23'},'OBSERVATION_GET_COUNT')
+    for v in value['body_sha256'].values():pc.digest(v)
+    return value
+
+def revalidation_proof(host):
+    from successor_pins import PARENT, PARENT_SHA256
+    need(host in PARENT['adoptions'],'PARENT_ADOPTION_SCOPE')
+    return {'status':'PARENT_ADOPTION_PRESERVED_CURRENT_CHECKS_COMPLETE',
+            'parent_evidence_sha256':PARENT_SHA256,
+            'parent_adoption_result_sha256':PARENT['adoptions'][host]['sha256'],
+            'new_plan_initialized':True,'parent_modified':False}

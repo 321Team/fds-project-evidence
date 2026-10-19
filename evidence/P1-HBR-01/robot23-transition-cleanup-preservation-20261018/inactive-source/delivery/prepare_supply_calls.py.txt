@@ -1,0 +1,100 @@
+"""Render one fixed public package with existing LinuxFS/SSH; never dispatch."""
+import base64, hashlib, importlib.util, json, pathlib, uuid
+HERE=pathlib.Path(__file__).resolve().parent
+W=next(p for p in HERE.parents if (p/'AGENTS.md').is_file())
+BASE=W/'deliverables/p1-harbor-review-publication-20261015'
+DEPLOY=BASE/'b1-cleanup-preservation-remediation-20261017/delivery-preparation/reviewed_public_deploy.py'
+BRIDGE=W/'reviews/shutdown-readiness-20261018/app-k8s/shutdown-execution-integration-0305/dispatch_once.py'
+def sha(b):return hashlib.sha256(b).hexdigest()
+def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def save(p,v):p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+# Public LinuxFS primitives below are loaded byte-for-byte from the existing
+# reviewed helper. Its old layout/manifest/entry functions are never invoked.
+# This fixed command changes no runtime candidate or its integrity checks.
+TAIL=r'''
+import base64,types,resource,signal
+resource.setrlimit(resource.RLIMIT_CORE,(0,0));os.umask(0o077)
+need(sha(HELPER.encode())==HELPER_SHA,'HELPER_PIN')
+m=types.ModuleType('unchanged_public_fs');exec(compile(HELPER,'unchanged_public_fs','exec'),m.__dict__)
+fs=None;timer=False
+try:
+    need(set(FILES)==set(PINS),'EXACT_PUBLIC_SCOPE')
+    raw={k:base64.b64decode(v,validate=True) for k,v in FILES.items()}
+    for p,b in raw.items():need(len(b)==PINS[p]['bytes'] and sha(b)==PINS[p]['sha256'],'PAYLOAD_PIN')
+    now=time.time();end=now+60
+    if KIND=='request':
+        request=json.loads(next(iter(raw.values())))
+        need(request['state']=='BOUND' and request['continuation_id']==NEW_ID and request['candidate_sha256']==CANDIDATE,'REQUEST_BINDING')
+        begin=m.timestamp(request['not_before']);end=min(end,m.timestamp(request['supply_until']))
+        need(begin<=now<end,'REQUEST_SUPPLY_WINDOW')
+        need((request['execution']['relay_boot_id'] if HOST=='ansible01' else request['execution']['boot_ids'][HOST])==BOOT,'REQUEST_BOOT')
+    r={'host':HOST,'boot_id':BOOT,'uid':UID,'gid':UID,'parents':{},'not_before':dt.datetime.fromtimestamp(now,dt.timezone.utc).isoformat(),'deadline':dt.datetime.fromtimestamp(end,dt.timezone.utc).isoformat()}
+    deadline=m.Deadline(r);fs=m.LinuxFS(r,deadline);fs.identity()
+    need(signal.getitimer(signal.ITIMER_REAL)==(0.0,0.0),'TIMER_ALREADY_ACTIVE')
+    def expired(*_):raise m.Stop('PUBLIC_SUPPLY_DEADLINE')
+    signal.signal(signal.SIGALRM,expired);signal.setitimer(signal.ITIMER_REAL,deadline.seconds());timer=True
+    # Snapshot actual protected ancestry before any write, retain the identities,
+    # then use the unchanged no-follow FD traversal and equality checks throughout.
+    for p in m.chain(PARENT):
+        fd=fs.open_dir(p)
+        try:r['parents'][p]=fs.meta(fd)
+        finally:os.close(fd)
+    need(r['parents'][PARENT]['uid']==UID and r['parents'][PARENT]['gid']==UID and r['parents'][PARENT]['mode']==0o700 and r['parents'][PARENT]['context']==CONTEXT,'PUBLIC_PARENT_PROTECTION')
+    fs.parent_checks();fs.absent(GATE)
+    for p in ABSENT:fs.absent(p)
+    for p in DIRS:fs.mkdir(p,CONTEXT)
+    for p,b in raw.items():fs.write_new(p,b,CONTEXT)
+    files={}
+    for p in raw:
+        data,meta=fs.read_file(p,CONTEXT);need(data==raw[p],'PUBLIC_READBACK');files[p]=meta
+    for p,names in INVENTORIES.items():need(fs.names(p)==set(names),'EXACT_CODE_INVENTORY')
+    fs.identity();fs.parent_checks();fs.tick()
+    result={'status':'PUBLIC_SUPPLIED_VERIFIED_NOT_EXECUTED','host':HOST,'boot_id':BOOT,'kind':KIND,'new_id':NEW_ID,'files':files,'directories':{p:fs.directory(p,0o700,CONTEXT) for p in DIRS},'created':fs.created,'parent_metadata':r['parents'],'candidate_sha256':CANDIDATE,'credential_actions':0,'runtime_entry_calls':0,'observed_at':dt.datetime.now(dt.timezone.utc).isoformat()}
+    print(json.dumps(result,sort_keys=True));rc=0
+except BaseException as exc:
+    print(json.dumps({'status':'STOP_PRESERVE_PARTIAL','host':HOST,'kind':KIND,'error_code':str(exc) if isinstance(exc,(m.Stop,Stop)) else type(exc).__name__,'created':[] if fs is None else fs.created,'retry':False,'cleanup_performed':False},sort_keys=True));rc=2
+finally:
+    if timer:signal.setitimer(signal.ITIMER_REAL,0)
+raise SystemExit(rc)
+'''
+
+def render(host,new_id,payload,kind,route):
+    relay=host['host']=='ansible01';parent='/home/server01_ansible' if relay else '/root/fds-hbr-worker-rotation-20261015';code=parent+'/reboot-code-'+new_id
+    ctx='unconfined_u:object_r:user_home_t:s0' if relay else 'unconfined_u:object_r:admin_home_t:s0'
+    if kind=='code':
+        files={code+'/'+k:v for k,v in payload.items()};directories={code}
+        for p in files:
+            q=pathlib.PurePosixPath(p).parent
+            while str(q)!=parent:directories.add(str(q));q=q.parent
+        dirs=sorted(directories,key=lambda x:(x.count('/'),x));inventories={d:sorted({pathlib.PurePosixPath(x).relative_to(d).parts[0] for x in set(files)|directories if x.startswith(d+'/')}) for d in dirs};absent=[code,parent+'/reboot-request-'+new_id+'.json']
+    else:
+        assert kind=='request' and set(payload)=={'request.json'}
+        files={parent+'/reboot-request-'+new_id+'.json':payload['request.json']};dirs=[];inventories={};absent=list(files)
+    pins={p:{'bytes':len(v),'sha256':sha(v)} for p,v in files.items()}
+    head={'HOST':host['host'],'BOOT':host['boot_id'],'UID':host['uid'],'PARENT':parent,'CONTEXT':ctx,'CANDIDATE':read(HERE/'INPUT_PREPARATION.json')['candidate_sha256'],'NEW_ID':new_id,'KIND':kind,'DIRS':dirs,'INVENTORIES':inventories,'ABSENT':absent,'GATE':parent+'/post-reboot-from-ff534eafa0de460e9fc838e4df48a8bc-claim','PINS':pins,'FILES':{p:base64.b64encode(v).decode() for p,v in files.items()},'HELPER':DEPLOY.read_text(encoding='utf-8'),'HELPER_SHA':sha(DEPLOY.read_text(encoding='utf-8').encode())}
+    source='import datetime as dt,hashlib,json,os,time\nclass Stop(Exception):pass\ndef need(x,c):\n if not x:raise Stop(c)\ndef sha(b):return hashlib.sha256(b).hexdigest()\n'+''.join(k+'='+repr(v)+'\n' for k,v in head.items())+TAIL
+    compile(source,'public_'+kind+'_'+host['host'],'exec')
+    if relay:stdin=source.encode();inner=None
+    else:
+        spec=importlib.util.spec_from_file_location('existing_bridge_render',BRIDGE);b=importlib.util.module_from_spec(spec);spec.loader.exec_module(b)
+        inner=list(route['inner_argv']);inner[-2]='svc_ansible@'+host['ip'];stdin=b.render_bridge(inner,source)
+        relayboot=read(HERE/'INPUT_PREPARATION.json')['current_hosts'][0]['boot_id']
+        guard="import os,socket\nfrom pathlib import Path\nassert socket.gethostname()=='ansible01' and os.getuid()==os.geteuid()==os.getgid()==os.getegid()==1000,'RELAY_OWNER'\nassert Path('/proc/sys/kernel/random/boot_id').read_text().strip()=="+repr(relayboot)+",'RELAY_BOOT'\n"
+        stdin=guard.encode()+stdin
+    return stdin,{'host':host['host'],'boot_id':host['boot_id'],'kind':kind,'new_id':new_id,'outer_argv':route['outer_argv'],'inner_argv':inner,'files':pins,'directories':dirs,'exclusive_no_overwrite':True,'per_host_existing_stage_cap_seconds':60,'credential_actions':0,'dispatch_performed':False}
+
+def main():
+    out=HERE/'public-supply';out.mkdir(exist_ok=False)
+    prepared=read(HERE/'INPUT_PREPARATION.json');manifest=read(HERE/'PUBLIC_PAYLOAD_INVENTORY.json');root=pathlib.Path(manifest['candidate_root']);payload={x['path']:(root/x['path']).read_bytes() for x in manifest['files']}
+    for row in manifest['files']:assert sha(payload[row['path']])==row['sha256'] and len(payload[row['path']])==row['bytes']
+    new_id=uuid.uuid4().hex
+    route=read(HERE.parent/'native-call/worker-r1/run-parent-read/CALL.json');assert sha(BRIDGE.read_bytes())==route['existing_bridge_sha256']
+    save(out/'NEW_ID.json',{'new_id':new_id,'central_authorization':'Central19:56 explicit allocate new ID for public pre-supply','not_before':None,'supply_until':None,'mutation_until':None,'not_after':None,'candidate_sha256':prepared['candidate_sha256'],'request_created':False})
+    calls=[]
+    for host in prepared['current_hosts']:
+        d=out/host['host'];d.mkdir();stdin,call=render(host,new_id,payload,'code',route);(d/'stdin.py').write_bytes(stdin);call.update(stdin_file=str(d/'stdin.py'),stdin_sha256=sha(stdin));save(d/'CALL.json',call);calls.append({'host':host['host'],'call':str(d/'CALL.json'),'call_sha256':sha((d/'CALL.json').read_bytes()),'stdin_sha256':sha(stdin)})
+    save(out/'PREPARED.json',{'state':'FIVE_PUBLIC_ONLY_CALLS_FROZEN_NOT_DISPATCHED','new_id':new_id,'candidate_sha256':prepared['candidate_sha256'],'public_files_per_host':31,'helper':str(DEPLOY),'helper_file_sha256':sha(DEPLOY.read_bytes()),'helper_memory_source_sha256':sha(DEPLOY.read_text(encoding='utf-8').encode()),'bridge':str(BRIDGE),'bridge_sha256':sha(BRIDGE.read_bytes()),'calls':calls,'runtime_code_delta':0,'new_framework':False,'BOUND_request_created':False})
+    print(json.dumps({'state':'FIVE_PUBLIC_CALLS_PREPARED','new_id':new_id,'calls':len(calls)}))
+
+if __name__=='__main__':main()

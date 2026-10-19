@@ -1,0 +1,47 @@
+{
+  "record_id": "P1-HBR-01",
+  "responsibility_ticket": "https://github.com/321Team/fds-project-baseline/issues/13",
+  "classification": "PRESERVATION_ONLY_EVIDENCE_NOT_ACTIVE_RUNTIME_CODE",
+  "base_repo": "321Team/fds-project-evidence",
+  "base_head": "b46e3e56584980c8e79ed186a91829f7255edbd8",
+  "prepared_at_kst": "2026-10-19T09:42:24.035965+09:00",
+  "central_round156": {
+    "workspace_relative": "deliverables/phase1-central-control-20261015/ROUND156.md",
+    "sha256": "0c50fee07ed21c74a61bd72b31936c2f07cac2a349f67df3e635a8357b78bbac"
+  },
+  "source_repo_review": {
+    "repo": "321Team/infra-harbor-trivy",
+    "pr": 66,
+    "reviewed_head": "4232b94eb40b9c8c46f87e3b25a6b46e97ea0b5b",
+    "merge_and_current_main": "3822b38bfe594a46b2592bc17dfaf1c0480c3629",
+    "scope": "Prior published preparation only; not human approval of subsequent local candidates"
+  },
+  "historical_execution": {
+    "candidate_manifest_sha256": "4b337f9e69c2f01262cc5cd593cb2f6f3df75214143a5d8c1f640439cd3cdfe5",
+    "invocation": "27bef91a07a64a0f92c779fe47bcf66c",
+    "transition_kst": "2026-10-18 20:38:54–20:42:15",
+    "confirmed_operations": 31,
+    "finish_stop": "20:43:43 RELAY_BUDGET_OR_INPUT;37122B input exceeded32768B; not timeout; original attempt/STOP retained",
+    "cleanup_id": "667a9adb4c9f449890b316eaab94f620",
+    "cleanup_scope_sha256": "a38aa9f7b98eed2cc5dd108ba412f81ea823ed748c270d43779278bfdb7b82b5",
+    "cleanup_wrapper_sha256": "c685964c78f6610f42c52b28c600da7ec20182e5f337ff806e94c31f35dbe610",
+    "cleanup_kst": "2026-10-18 22:18:24–22:18:28",
+    "retired_pairs": 4,
+    "retired_files": 8,
+    "protected_worker_source2": "Metadata preservation observed, body excluded; actual final disposition unverified"
+  },
+  "stage_distinctions": {
+    "new_static_byte_validation": true,
+    "new_mock_or_runtime_execution": false,
+    "github_ci": "NOT_RUN",
+    "human_independent_review": "PENDING",
+    "publication_merge": "NOT_PERFORMED",
+    "active_source_adoption": "NOT_PERFORMED",
+    "ac_acceptance": "NOT_PERFORMED",
+    "new_risk_acceptance": "NOT_PERFORMED"
+  },
+  "historical_comparison": "The +3-line change compares the pinned pre-R1 local manifest with4b337, not PR66; actual full main diff is separate.",
+  "non_replayable": true,
+  "private_contents_included": false,
+  "pre_r1_manifest_sha256": "476d386fc8a93e2dde2e72a0ee6e36e281a6c3684875badef14e1ea4b4548911"
+}

@@ -1,0 +1,118 @@
+"""Pinned bootstrap; explicit candidate only. No action on import."""
+import argparse
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import stat
+import sys
+
+def check(ok):
+    if not ok:raise RuntimeError('BOOTSTRAP_REJECTED')
+
+
+def command_failure_detail(request,exc):
+    """Public fallback when the relay STOP cannot be persisted. Never raw text."""
+    from reboot_endpoint import public_command_detail
+    source=getattr(exc,'remote_evidence',{})
+    if not isinstance(source,dict):source={}
+    source={k:source.get(k,getattr(exc,k,None if k=='command_audit' else [])) for k in ('command_evidence','command_audit')}
+    rows=source['command_evidence'];report=source['command_audit'];scope=None
+    if isinstance(report,dict):scope=report.get('scope')
+    if scope is None and isinstance(rows,list) and rows and isinstance(rows[0],dict):
+        match=re.fullmatch(r'command-(node-k8s-worker0[123]|worker01-file)-[0-9]{3}',str(rows[0].get('key','')))
+        if match:scope=match.group(1)
+    if scope is None:
+        return {'command_evidence':[],'command_audit':None},([] if rows==[] and report is None else ['COMMAND_DETAIL_INVALID'])
+    host=scope.removeprefix('node-') if isinstance(scope,str) and scope.startswith('node-') else 'k8s-worker01'
+    return public_command_detail(request,{'key':scope,'host':host},source)
+
+def protected(path):
+    path=Path(path)
+    for p in path.parents:
+        s=p.lstat();check(stat.S_ISDIR(s.st_mode) and s.st_uid in (0,os.getuid()) and not s.st_mode&0o022)
+    fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC)
+    try:
+        s=os.fstat(fd);check(stat.S_ISREG(s.st_mode) and s.st_uid==os.getuid() and s.st_nlink==1 and
+                            stat.S_IMODE(s.st_mode)==0o600 and s.st_size<=1048576)
+        with os.fdopen(os.dup(fd),'rb') as f:raw=f.read(1048577)
+        end=os.fstat(fd);check(len(raw)==s.st_size and all(getattr(s,k)==getattr(end,k) for k in
+                     ('st_dev','st_ino','st_size','st_mtime_ns','st_ctime_ns')))
+        return raw
+    finally:os.close(fd)
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('manifest_sha256')
+    p.add_argument('action',choices=['observe-before','execute','observe-after','finish','operation'])
+    p.add_argument('--request',required=True);p.add_argument('--request-sha256',required=True)
+    p.add_argument('--proof');p.add_argument('--proof-sha256');p.add_argument('--until')
+    args=p.parse_args()
+    try:
+        check(os.name=='posix' and sys.flags.isolated and sys.flags.no_site and sys.flags.dont_write_bytecode)
+        import resource;resource.setrlimit(resource.RLIMIT_CORE,(0,0));os.umask(0o077)
+        root_action=args.action in ('observe-before','observe-after','operation')
+        check((os.geteuid()==os.getegid()==0) if root_action else os.getuid()>0)
+        base=Path(__file__).absolute().parents[1]
+        raw=protected(base/'candidate-manifest.json')
+        check(re.fullmatch('[0-9a-f]{64}',args.manifest_sha256) and hashlib.sha256(raw).hexdigest()==args.manifest_sha256)
+        manifest=json.loads(raw);check(set(manifest)=={'version','files'} and manifest['version']==1)
+        names=[]
+        for row in manifest['files']:
+            name=row['path'];check(isinstance(name,str) and '..' not in name and '\\' not in name and
+                                   not name.startswith('/') and ':' not in name and name not in names)
+            names.append(name);data=protected(base/name)
+            check(len(data)==row['bytes'] and hashlib.sha256(data).hexdigest()==row['sha256'])
+        check('reboot/reboot_launch.py' in names)
+        found=set()
+        for path in base.rglob('*'):
+            s=path.lstat()
+            if stat.S_ISDIR(s.st_mode):
+                check(s.st_uid==os.getuid() and stat.S_IMODE(s.st_mode)==0o700)
+            else:
+                check(stat.S_ISREG(s.st_mode));found.add(path.relative_to(base).as_posix())
+        check(found==set(names)|{'candidate-manifest.json'})
+        os.environ.clear();os.environ.update({'PATH':'/usr/sbin:/usr/bin:/sbin:/bin',
+            'HOME':'/root' if root_action else '/home/server01_ansible','LANG':'C','LC_ALL':'C'})
+        for folder in ('continuation','source/rotation-adapter-r2','source/rotation-orchestration','reboot'):
+            sys.path.insert(0,str(base/folder))
+        from rotation_contract import parse_json,encoded,Stop,need
+        import reboot_contract as c
+        raw=protected(args.request)
+        need(hashlib.sha256(raw).hexdigest()==args.request_sha256,'REQUEST_PIN')
+        r=parse_json(raw);need(raw==encoded(r) and r['candidate_sha256']==args.manifest_sha256,'CANDIDATE_BINDING')
+        import time;c.validate(r,time.time());request_validated=True
+        proof=None
+        if args.proof:
+            raw=protected(args.proof);need(hashlib.sha256(raw).hexdigest()==args.proof_sha256,'PROOF_PIN')
+            proof=parse_json(raw)
+        if args.action=='operation':
+            need(args.until is not None,'UNTIL_REQUIRED')
+            from reboot_endpoint import remote
+            result=remote(r,args.until)
+        elif args.action in ('observe-before','observe-after'):
+            from reboot_endpoint import observe_console
+            result=observe_console(r,'before' if args.action=='observe-before' else 'after',proof)
+        else:
+            need(proof is not None,'PROOF_REQUIRED')
+            from reboot_coordinator import main as coordinate
+            result=coordinate(r,args.action,proof)
+        print(encoded(result).decode())
+        # Structured remote STOP must reach the coordinator's receipt validator.
+        return 0 if args.action=='operation' or result.get('status')!='STOPPED' else 2
+    except BaseException as exc:
+        # Public output contains fixed codes only, never arbitrary exception text.
+        code=getattr(exc,'code','CONTINUATION_BOOTSTRAP_OR_UNEXPECTED_FAILURE')
+        if not isinstance(code,str) or not re.fullmatch('[A-Z0-9_]+',code):code='CONTINUATION_FAILURE'
+        result={'status':'STOPPED','first_error':code,'preserve':True}
+        for key in ('cleanup_errors','evidence_errors'):
+            values=getattr(exc,key,[])
+            result[key]=[v for v in values if isinstance(v,str) and re.fullmatch('[A-Z0-9_]{1,80}',v)][:8]
+        if locals().get('request_validated'):
+            try:
+                detail,errors=command_failure_detail(r,exc);result.update(detail)
+                result['evidence_errors']=list(dict.fromkeys(result['evidence_errors']+errors))
+            except BaseException:result['evidence_errors'].append('COMMAND_DETAIL_INVALID')
+        print(json.dumps(result));return 2
+
+if __name__=='__main__':raise SystemExit(main())

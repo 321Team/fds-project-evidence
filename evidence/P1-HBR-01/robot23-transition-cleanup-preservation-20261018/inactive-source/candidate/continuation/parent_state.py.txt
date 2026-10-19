@@ -1,0 +1,113 @@
+"""Read-only exact d218/ancestor preservation checks shared by supply and runtime.
+
+No credential body, API, mutation or retry. No work on import. Observed metadata
+and inventories are distinguished from initializer-derived required inventories.
+"""
+import hashlib
+import os
+from pathlib import Path
+import stat
+
+class ParentStateError(Exception):
+    def __init__(self,code):self.code=code;super().__init__(code)
+def need(ok,code):
+    if not ok:raise ParentStateError(code)
+def sha(b):return hashlib.sha256(b).hexdigest()
+
+class Reader:
+    def __init__(self,uid,contexts):self.uid=uid;self.contexts=contexts
+    def parent(self,path):
+        p=Path(path);need(p.is_absolute() and '..' not in p.parts,'PARENT_ABSOLUTE_PATH')
+        fd=os.open('/',os.O_RDONLY|os.O_DIRECTORY|os.O_CLOEXEC)
+        try:
+            for part in p.parts[1:-1]:
+                child=os.open(part,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW|os.O_CLOEXEC,dir_fd=fd)
+                os.close(fd);fd=child;s=os.fstat(fd)
+                need(s.st_uid in (0,self.uid) and not stat.S_IMODE(s.st_mode)&0o022,'PARENT_ANCESTRY_PROTECTION')
+            return fd,p.name
+        except BaseException:os.close(fd);raise
+    def open(self,path,flags):
+        parent,name=self.parent(path)
+        try:return os.open(name,flags|os.O_NOFOLLOW|os.O_CLOEXEC,dir_fd=parent)
+        finally:os.close(parent)
+    def metadata_fd(self,fd,path):
+        s=os.fstat(fd)
+        return {'path':path,'present':True,'device':s.st_dev,'inode':s.st_ino,'uid':s.st_uid,'gid':s.st_gid,
+            'mode':stat.S_IMODE(s.st_mode),'bytes':s.st_size,'nlink':s.st_nlink,
+            'kind':'regular' if stat.S_ISREG(s.st_mode) else 'directory' if stat.S_ISDIR(s.st_mode) else 'other',
+            'context':os.getxattr(fd,'security.selinux').decode().rstrip('\0')}
+    def metadata(self,path):
+        fd=self.open(path,os.O_RDONLY|os.O_NONBLOCK)
+        try:return self.metadata_fd(fd,path)
+        finally:os.close(fd)
+    def context(self,path):
+        return 'unconfined_u:object_r:var_run_t:s0' if path.startswith('/run/') else self.contexts['directory']
+    def inventory(self,path):
+        fd=self.open(path,os.O_RDONLY|os.O_DIRECTORY)
+        try:
+            m=self.metadata_fd(fd,path)
+            need(m['kind']=='directory' and m['uid']==m['gid']==self.uid and m['mode']==0o700 and m['context']==self.context(path),'PARENT_DIRECTORY_PROTECTION')
+            names=sorted(os.listdir(fd))
+            need(self.metadata_fd(fd,path)==m and self.metadata(path)==m,'PARENT_DIRECTORY_CHANGED')
+            return names
+        finally:os.close(fd)
+    def public(self,row):
+        path=row['path']
+        need(path.endswith('.json') and not any(x in path for x in ('credential','private','http-')),'PARENT_PUBLIC_SCOPE')
+        fd=self.open(path,os.O_RDONLY|os.O_NONBLOCK)
+        try:
+            m=self.metadata_fd(fd,path)
+            need(m['kind']=='regular' and m['uid']==m['gid']==self.uid and m['mode']==0o600 and m['nlink']==1 and m['context']==self.contexts['file'] and m['bytes']==row['bytes']<=1048576,'PARENT_PUBLIC_PROTECTION')
+            data=bytearray()
+            while block:=os.read(fd,min(65536,1048577-len(data))):
+                data.extend(block);need(len(data)<=1048576,'PARENT_PUBLIC_LIMIT')
+            need(self.metadata_fd(fd,path)==m and self.metadata(path)==m,'PARENT_PUBLIC_CHANGED')
+            need(len(data)==row['bytes'] and sha(data)==row['sha256'],'PARENT_PUBLIC_BYTES_CHANGED')
+        finally:os.close(fd)
+    def absent(self,path):
+        try:parent,name=self.parent(path)
+        except FileNotFoundError:return True
+        try:
+            try:os.stat(name,dir_fd=parent,follow_symlinks=False)
+            except FileNotFoundError:return True
+            return False
+        finally:os.close(parent)
+    def actors(self,ids):
+        ancestors=set();pid=os.getpid()
+        while pid>1 and pid not in ancestors:
+            ancestors.add(pid)
+            pid=int((Path('/proc')/str(pid)/'stat').read_text().rsplit(')',1)[1].split()[1])
+        for p in Path('/proc').iterdir():
+            if not p.name.isdecimal() or int(p.name) in ancestors:continue
+            try:raw=(p/'cmdline').read_bytes()
+            except (FileNotFoundError,ProcessLookupError):continue
+            need(not any(x.encode() in raw for x in ids),'PARENT_ACTOR_PRESENT')
+
+def scope(parent,host):
+    old=parent['ancestor'];rows={}
+    for row in old['public_anchors'][host]+parent['public_anchors'][host]+parent['additional_public_anchors'][host]+parent['derived_public'][host]:
+        if row['path'] in rows:need(rows[row['path']]==row,'PARENT_DUPLICATE_PIN_CONFLICT')
+        rows[row['path']]=row
+    inventories={**(old['relay_inventories'] if host=='ansible01' else {}),**parent['observed_inventories'][host],**parent['derived_inventories'][host]}
+    absent=[]
+    if host!='ansible01':
+        root='/root/fds-hbr-worker-rotation-20261015';run='/run/fds-hbr-worker-rotation-20261015'
+        absent=[root+'/continuation-effects-'+old['id'],root+'/'+old['id'],run+'/'+old['id']]
+        if host!='k8s-control01':absent+=[root+'/continuation-from-'+parent['preserved_generations'][0]+'-claim.json']
+    return {'public':list(rows.values()),'inventories':inventories,'metadata':parent['metadata'][host],'absent':absent}
+
+def check(parent,host,reader):
+    need(host in parent['public_anchors'],'PARENT_HOST')
+    s=scope(parent,host)
+    for row in s['metadata']:need(reader.metadata(row['path'])==row,'PARENT_METADATA_CHANGED')
+    for path,names in s['inventories'].items():need(reader.inventory(path)==names,'PARENT_INVENTORY_CHANGED')
+    for row in s['public']:reader.public(row)
+    for path in s['absent']:need(reader.absent(path),'ANCESTOR_RESIDUAL_PRESENT')
+    reader.actors(parent['preserved_generations'])
+    # The unchanged parent directories are checked again after all reads.
+    for row in s['metadata']:need(reader.metadata(row['path'])==row,'PARENT_METADATA_CHANGED')
+    return {'parent_id':parent['id'],'public_files':len(s['public']),
+        'observed_public_files':len(parent['public_anchors'][host]),
+        'observed_directories':len(parent['observed_inventories'][host]),
+        'required_derived_directories':len(parent['derived_inventories'][host]),
+        'metadata_rows':len(s['metadata']),'related_actors':0,'credential_body_reads':0}

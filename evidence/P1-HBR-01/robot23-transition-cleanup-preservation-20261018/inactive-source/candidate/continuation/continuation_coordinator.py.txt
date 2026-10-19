@@ -1,0 +1,142 @@
+"""Serial one-shot coordinator using the existing protected ledger and transport."""
+import os
+from pathlib import Path
+import shlex
+import socket
+import time
+import continuation_contract as c
+from continuation_host import origin_claim, verify_anchors, actor_absence
+from continuation_endpoint import validate_completion
+from rotation_contract import *
+import post_expiry_contract as pc
+from post_expiry_ledger import Files, Ledger as OriginalLedger
+from orch_relay import exchange, private_read, SSH, KEY, KNOWN
+from orch_contract import IPS
+
+class Ledger(OriginalLedger):
+    def stop(self,code,operation,partial=None,cleanup_errors=None,evidence=None):
+        if not self.fs.has('stopped'):
+            self.fs.put('stopped',{'status':'STOPPED','purpose':c.PURPOSE,'binding':self.binding,
+                'first_error':code,'operation':operation,'partial':partial or {},
+                'cleanup_errors':cleanup_errors or [],'remote_evidence':evidence or {},
+                'preservation':self.preservation,'next':'PRESERVE_NO_RETRY_NO_OLD_ROLLBACK'})
+
+def argv(r,op,until):
+    inv=r['continuation_id']
+    args=['sudo','-n','/usr/bin/python3','-I','-S','-B',
+          c.ROOT+'/continuation-code-'+inv+'/continuation/continuation_launch.py',
+          r['candidate_sha256'],'operation','--request',c.ROOT+'/continuation-request-'+inv+'.json',
+          '--request-sha256',pc.sha(encoded(r)),'--until',until]
+    return [SSH,'-F','/dev/null','-T','-i',KEY,'-o','BatchMode=yes','-o','ConnectTimeout=8',
+            '-o','StrictHostKeyChecking=yes','-o','UserKnownHostsFile='+KNOWN,'-o','IdentitiesOnly=yes',
+            '-o','ForwardAgent=no','-o','ClearAllForwardings=yes','-o','ControlMaster=no',
+            '-o','ControlPath=none','-o','UpdateHostKeys=no','svc_ansible@'+IPS[op['host']],
+            ' '.join(shlex.quote(x) for x in args)]
+
+def continuation_exchange(argv,data,seconds):
+    # This endpoint returns public JSON only. Legacy secret transfers stay opt-out.
+    return exchange(argv,data,seconds,public_failure=True)
+
+def record_outer_stop(ledger,exc,fallback,operation):
+    if getattr(exc,'ledger_stop_attempted',False):return
+    exc.ledger_stop_attempted=True
+    cleanup=list(getattr(exc,'cleanup_errors',[]))
+    errors=list(getattr(exc,'evidence_errors',[]))
+    try:ledger.stop(exc.code if isinstance(exc,Stop) else fallback,operation,
+                    cleanup_errors=cleanup,evidence={'evidence_errors':errors})
+    except BaseException:
+        exc.evidence_errors=list(dict.fromkeys(errors+['LEDGER_STOP_EVIDENCE_WRITE_FAILED']))
+
+class Coordinator:
+    def __init__(self,r,ledger,call=continuation_exchange,wall=time.time):
+        self.r=r;self.ledger=ledger;self.call=call;self.wall=wall
+    def history(self):
+        rows,head=self.ledger.history();previous=pc.sha(encoded(c.binding(self.r)))
+        for row in rows:
+            c.public_receipt(self.r,row['operation'],row['index'],previous,row['receipt'],self.wall())
+            previous=pc.sha(encoded(row))
+        return rows,head
+    def dispatch(self,op,payload):
+        rows,previous=self.history();index=len(rows);r=self.r
+        def invoke(i,prev):
+            now=self.wall();c.validate(r,now)
+            # One absolute deadline: later wall reads may only reduce the budget.
+            end=min(c.end(r,op),now+c.cap(r,op));until=c.iso(end)
+            envelope={'binding':c.binding(r),'index':i,'operation':op,'predecessor_sha256':prev,'payload':payload}
+            command=argv(r,op,until);data=encoded(envelope)
+            seconds=min(c.cap(r,op),end-self.wall())
+            need(seconds>0,'CONTINUATION_DEADLINE')
+            try:return parse_json(self.call(command,data,seconds))
+            except Stop as exc:
+                detail=dict(getattr(exc,'transport_diagnostic',{}))
+                exc.transport_diagnostic={**detail,'operation_until':until,'budget_seconds':seconds,
+                    'operation_receipt_validated':False}
+                raise
+        return self.ledger.dispatch(op,invoke,
+            lambda value:c.public_receipt(r,op,index,previous,value,self.wall()))
+    def execute(self,before):
+        c.observation(self.r,before,'before',self.wall())
+        need(len(self.history()[0])==0,'CONTINUATION_NOT_FRESH')
+        self.ledger.phase_claim('execute');nodes={};last_pod=None
+        try:
+            for op in c.operations():
+                payload={};action=op['action']
+                if action=='revalidate':payload={'before_observation':before}
+                elif action=='import':
+                    key=op['key'].removeprefix('import-')
+                    proof=nodes[key] if key.startswith('node-') else last_pod
+                    need(proof is not None,'IMPORT_PREDECESSOR')
+                    payload={'key':key,'receipt':proof,'receipt_sha256':pc.sha(encoded(proof))}
+                elif op['key']=='secret-fds-app':
+                    need(set(nodes)=={'node-'+n for n in NODES},'ALL_NEW_WORKERS_REQUIRED')
+                value=self.dispatch(op,payload)
+                if action=='node':nodes[op['key']]=value['receipt']
+                if op['key']=='pod-monitoring-node-k8s-worker01':last_pod=value['receipt']
+            rows,head=self.history();consumers=self.ledger.consumers()
+            need(len(rows)==len(c.operations()) and all(x['state']=='VERIFIED_NEW' for x in consumers.values()),
+                 'CONSUMERS_NOT_VERIFIED')
+            result={'status':'CONSUMERS_VERIFIED','binding':c.binding(self.r),'ledger_sha256':head,
+                    'consumers':consumers,'observed_at':c.iso(self.wall()),
+                    'command_audits':{x['operation']['key']:x['receipt']['receipt']['command_audit'] for x in rows if x['operation']['action'] in ('node','worker-file')}}
+            self.ledger.fs.put('completion',result);return result
+        except BaseException as exc:
+            record_outer_stop(self.ledger,exc,'EXECUTE_UNCERTAIN','execute')
+            raise
+    def finish(self,final):
+        try:
+            done=self.ledger.fs.get('completion');validate_completion(self.r,done)
+            c.observation(self.r,final,'after',self.wall(),done)
+            rows,head=self.history()
+            need(len(rows)==len(c.operations()) and head==done['ledger_sha256'],'FINISH_PREDECESSOR')
+            self.ledger.phase_claim('finish');retired={}
+            for op in c.finish_operations():
+                payload={'completion':done,'final_observation':final}
+                if op['action']=='dispose':payload['retired']=retired
+                value=self.dispatch(op,payload)
+                if op['action']=='retire':retired[op['host']]=value
+            rows,head=self.history()
+            result={'status':'CONTINUATION_CLOSED','binding':c.binding(self.r),'ledger_sha256':head,
+                    'operations':len(rows),'credential_pairs_retired':4,'s1_unlinked':2,
+                    'original_failure_preserved':True,'secure_erase_claim':False,'acceptance':False,
+                    'command_audits_retained':done['command_audits'],
+                    'audit_disposition':'PRESERVE_PENDING_OWNER_DISPOSITION',
+                    'audit_policy':self.r['command_audit']}
+            self.ledger.fs.put('finished',result);return result
+        except BaseException as exc:
+            record_outer_stop(self.ledger,exc,'FINISH_UNCERTAIN','finish')
+            raise
+
+def main(r,action,observation):
+    import pwd
+    c.validate(r,time.time());old=r['origin']
+    need(socket.gethostname()=='ansible01' and pwd.getpwuid(os.getuid()).pw_name=='server01_ansible' and
+         os.getuid()==old['relay_uid'] and Path('/proc/sys/kernel/random/boot_id').read_text().strip()==old['relay_boot_id'],
+         'RELAY_IDENTITY')
+    verify_anchors(r,'ansible01',lambda p,limit:(private_read(p),None));actor_absence(r)
+    origin_claim(r,'ansible01',create=action=='execute')
+    fs=Files(Path('/home/server01_ansible')/('hbr-continuation-'+r['continuation_id'])/'ledger',create=action=='execute')
+    ledger=Ledger(fs,c.binding(r),c.operations()+c.finish_operations(),r['preservation'],create=action=='execute')
+    coordinator=Coordinator(r,ledger)
+    from orch_endpoint import deadline
+    with deadline(timestamp(r['not_after'])-time.time()):
+        return coordinator.execute(observation) if action=='execute' else coordinator.finish(observation)

@@ -1,0 +1,91 @@
+"""Wire-preserving scope contract. No I/O or implicit effect interpretation.
+
+The release trust anchor is deliberately absent. A transported profile and its
+own digest are not approval. Filling this anchor requires a separately reviewed
+source/bundle change backed by exact build, serializer and scope evidence.
+"""
+import copy
+import hashlib
+import re
+from rotation_contract import need, encoded
+
+CONTRACT = 'harbor-wire-effect-v1'
+REVIEWED_PROFILE_SHA256 = None
+
+
+def wire_permissions(value):
+    need(type(value) is list, 'PERMISSIONS_TYPE')
+    result = copy.deepcopy(value)
+    for permission in result:
+        need(type(permission) is dict and set(permission) == {'kind', 'namespace', 'access'}, 'PERMISSIONS_FIELDS')
+        need(type(permission['kind']) is str and type(permission['namespace']) is str
+             and type(permission['access']) is list, 'PERMISSIONS_TYPES')
+        for access in permission['access']:
+            need(type(access) is dict and set(access) in
+                 ({'resource', 'action'}, {'resource', 'action', 'effect'}), 'ACCESS_FIELDS')
+            need(type(access['resource']) is str and type(access['action']) is str, 'ACCESS_TYPES')
+            if 'effect' in access:
+                need(type(access['effect']) is str and access['effect'] in ('', 'allow', 'deny'), 'EFFECT_VALUE')
+        # Sorting only: never fill missing keys, merge duplicates or discard deny.
+        permission['access'] = sorted(permission['access'], key=encoded)
+    return sorted(result, key=encoded)
+
+
+def exact_reviewed_scope(observed, expected):
+    need(expected is not None, 'REVIEWED_SCOPE_REQUIRED')
+    result = wire_permissions(observed)
+    need(result == wire_permissions(expected), 'PERMISSION_WIRE_CHANGED')
+    return result
+
+
+def hash_value(value):
+    need(type(value) is str and re.fullmatch('[0-9a-f]{64}', value) is not None, 'EFFECT_HASH')
+    return value
+
+
+def validate_effect_context(context, contract_sha256):
+    """Validate a source-pinned approval, never approve a runtime observation.
+
+Build evidence is an independently reviewed, digest-bound public record. This
+pure function does not claim to inspect a running core image or authenticate a
+review reference. With the current None anchor every operational input stops.
+"""
+    need(type(context) is dict and set(context) == {
+        'version', 'effect_contract_sha256', 'baseline_review_sha256', 'profile',
+        'core_image_digest', 'build_observation_sha256'}, 'EFFECT_CONTEXT_FIELDS')
+    need(type(context['version']) is int and context['version'] == 2, 'EFFECT_CONTEXT_VERSION')
+    need(hash_value(context['effect_contract_sha256']) == hash_value(contract_sha256), 'EFFECT_CONTRACT_PIN')
+    need(REVIEWED_PROFILE_SHA256 is not None, 'EFFECT_PROFILE_UNAPPROVED')
+    need(hash_value(context['baseline_review_sha256']) == hash_value(REVIEWED_PROFILE_SHA256), 'EFFECT_PROFILE_PIN')
+    profile = context['profile']
+    need(type(profile) is dict and set(profile) == {
+        'version', 'state', 'contract', 'core_image_digest', 'build_observation_sha256',
+        'build_provenance_sha256', 'serializer_evidence_sha256', 'scope_evidence_sha256',
+        'review_reference', 'old_scopes', 'new_robot_explicit_allow_preserved'}, 'EFFECT_PROFILE_FIELDS')
+    need(hashlib.sha256(encoded(profile)).hexdigest() == REVIEWED_PROFILE_SHA256, 'EFFECT_PROFILE_CHANGED')
+    need(type(profile['version']) is int and profile['version'] == 1 and
+         profile['state'] == 'REVIEWED' and profile['contract'] == CONTRACT, 'EFFECT_PROFILE_VERSION')
+    need(type(profile['core_image_digest']) is str and
+         re.fullmatch('sha256:[0-9a-f]{64}', profile['core_image_digest']) is not None, 'EFFECT_BUILD_DIGEST')
+    for field in ('build_observation_sha256', 'build_provenance_sha256',
+                  'serializer_evidence_sha256', 'scope_evidence_sha256'):
+        hash_value(profile[field])
+    need(context['core_image_digest'] == profile['core_image_digest'] and
+         hash_value(context['build_observation_sha256']) == profile['build_observation_sha256'], 'EFFECT_BUILD_BINDING')
+    ref = profile['review_reference']
+    need(type(ref) is str and 8 <= len(ref) <= 300 and
+         not any(word in ref.upper() for word in ('TODO', 'PENDING', 'PLACEHOLDER')), 'EFFECT_REVIEW_REFERENCE')
+    need(profile['new_robot_explicit_allow_preserved'] is True, 'NEW_ALLOW_PRESERVATION_UNPROVEN')
+    scopes = profile['old_scopes']
+    need(type(scopes) is dict and set(scopes) == {'2', '3'}, 'EFFECT_OLD_SCOPE_SET')
+    for rid, actions in (('2', ['pull']), ('3', ['pull', 'push'])):
+        value = wire_permissions(scopes[rid])
+        need(len(value) == 1 and value[0]['kind'] == 'project' and
+             value[0]['namespace'] == 'fds', 'EFFECT_OLD_SCOPE')
+        access = value[0]['access']
+        need(len(access) == len(actions) and sorted(row['action'] for row in access) == actions
+             and all(row['resource'] == 'repository' and row.get('effect') != 'deny' for row in access),
+             'EFFECT_OLD_SCOPE')
+        # missing/empty acceptance here comes only from the pinned independent
+        # profile's exact wire scope; it is never converted to explicit allow.
+    return copy.deepcopy(profile)
