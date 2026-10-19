@@ -1,0 +1,595 @@
+"""New cleanup-only authority after original execution expired. Import is inert.
+
+Central supplies reviewed public scope and drives each host serially. Credential
+bytes use unchanged RebootHost.credential, never its expired constructor/finish.
+"""
+import datetime as dt
+import getpass
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import signal
+import socket
+import stat
+import sys
+import time
+import warnings
+
+ROOT = '/root/fds-hbr-worker-rotation-20261015'
+RUN = '/run/fds-hbr-worker-rotation-20261015'
+OLD = '27bef91a07a64a0f92c779fe47bcf66c'
+HOSTS = ('k8s-control01', 'k8s-worker01', 'k8s-worker02', 'k8s-worker03')
+CP = HOSTS[0]
+HOME_CONTEXT = 'unconfined_u:object_r:admin_home_t:s0'
+RUN_CONTEXT = 'unconfined_u:object_r:var_run_t:s0'
+REQUEST_SHA = '5e1057cdd8b67f7b0d2552cdfbd9adf9879d4d70f4dd230cd09f49d3807b573e'
+COMPLETION_SHA = '0da37dec00a6dca3e712e2decf65ffaa8187501d2cead3d98251234d85e6ceaa'
+CANDIDATE_SHA = '4b337f9e69c2f01262cc5cd593cb2f6f3df75214143a5d8c1f640439cd3cdfe5'
+ORIGINAL_NOT_AFTER = '2026-10-18T12:51:59.201653+00:00'
+PURPOSE = 'CLEANUP_ONLY_AFTER_EXPIRED_EXECUTION_V1'
+
+
+class Failure(Exception):
+    def __init__(self, code):
+        self.code = code
+
+
+def need(ok, code):
+    if not ok:
+        raise Failure(code)
+
+
+def encoded(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False, allow_nan=False).encode()
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def timestamp(value):
+    d = dt.datetime.fromisoformat(value)
+    need(d.tzinfo is not None, 'TIMEZONE_REQUIRED')
+    return d.timestamp()
+
+
+def iso(value):
+    return dt.datetime.fromtimestamp(value, dt.timezone.utc).isoformat()
+
+
+def digest(value):
+    need(isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value), 'DIGEST')
+
+
+def pair_paths():
+    return [RUN + '/' + OLD + '/' + n for n in ('credential.json', 'credential-owner.json')]
+
+
+def checked_dir(path, context=None, private=False):
+    p = Path(path)
+    for parent in [*reversed(p.parents), p]:
+        s = parent.lstat()
+        need(stat.S_ISDIR(s.st_mode) and s.st_uid == 0 and not s.st_mode & 0o022,
+             'PARENT_PROTECTION')
+    s = p.lstat()
+    if private:
+        need(s.st_gid == 0 and stat.S_IMODE(s.st_mode) == 0o700, 'DIRECTORY_PROTECTION')
+    if context is not None:
+        need(os.getxattr(p, 'security.selinux', follow_symlinks=False).decode().rstrip('\0') == context,
+             'DIRECTORY_CONTEXT')
+
+
+def protected(path, limit=1048576):
+    p = Path(path)
+    checked_dir(p.parent)
+    fd = os.open(p, os.O_RDONLY | os.O_NOFOLLOW | os.O_CLOEXEC)
+    try:
+        a = os.fstat(fd)
+        need(stat.S_ISREG(a.st_mode) and a.st_uid == a.st_gid == 0 and a.st_nlink == 1 and
+             stat.S_IMODE(a.st_mode) == 0o600 and a.st_size <= limit, 'FILE_PROTECTION')
+        raw = bytearray()
+        while len(raw) <= limit:
+            part = os.read(fd, min(65536, limit + 1 - len(raw)))
+            if not part:
+                break
+            raw.extend(part)
+        b = os.fstat(fd)
+        fields = ('st_dev', 'st_ino', 'st_size', 'st_mtime_ns', 'st_ctime_ns')
+        need(len(raw) <= limit and all(getattr(a, k) == getattr(b, k) for k in fields), 'FILE_CHANGED')
+        s = p.lstat()
+        need((s.st_dev, s.st_ino) == (a.st_dev, a.st_ino), 'PATH_CHANGED')
+        need(os.getxattr(p, 'security.selinux', follow_symlinks=False).decode().rstrip('\0') == HOME_CONTEXT,
+             'FILE_CONTEXT')
+        return bytes(raw)
+    finally:
+        os.close(fd)
+
+
+def validate_scope(s, now):
+    fields = {'version', 'purpose', 'state', 'cleanup_id', 'not_before', 'not_after', 'host_seconds',
+              'observation_seconds', 'authorization_reference', 'candidate_files', 'request',
+              'completion', 'stop', 'attempt031', 'original_pins', 'effect_pins', 'wrapper_sha256',
+              'original_not_after', 'total_seconds'}
+    need(isinstance(s, dict) and set(s) == fields and s['version'] == 2 and s['purpose'] == PURPOSE and
+         s['state'] == 'BOUND', 'SCOPE_NOT_BOUND')
+    need(isinstance(s['cleanup_id'], str) and re.fullmatch('[0-9a-f]{32}', s['cleanup_id']) and
+         s['cleanup_id'] != OLD, 'NEW_CLEANUP_ID_REQUIRED')
+    need(type(s['host_seconds']) is int and s['host_seconds'] == 60 and
+         type(s['observation_seconds']) is int and s['observation_seconds'] == 300 and
+         type(s['total_seconds']) is int and s['total_seconds'] == 1800, 'LIMITS_CHANGED')
+    need(isinstance(s['authorization_reference'], str) and 1 <= len(s['authorization_reference']) <= 2048,
+         'AUTHORIZATION_REFERENCE')
+    r = s['request']
+    digest(s['wrapper_sha256'])
+    need(sha(encoded(r)) == REQUEST_SHA and r['continuation_id'] == OLD and
+         r['candidate_sha256'] == CANDIDATE_SHA, 'ORIGINAL_REQUEST_CHANGED')
+    need(sha(encoded(s['completion'])) == COMPLETION_SHA, 'ORIGINAL_COMPLETION_CHANGED')
+    need(timestamp(s['original_not_after']) == timestamp(r['not_after']) == timestamp(ORIGINAL_NOT_AFTER),
+         'ORIGINAL_DEADLINE_CHANGED')
+    # This is independent cleanup authority. Never edit the expired request or
+    # pass a synthetic current clock into any execution method.
+    start, end = timestamp(s['not_before']), timestamp(s['not_after'])
+    need(timestamp(ORIGINAL_NOT_AFTER) <= start <= now < end <= start + 1800, 'CLEANUP_WINDOW')
+    pins = s['original_pins']
+    need(set(pins) == {'request', 'completion', 'stop', 'attempt031'}, 'ORIGINAL_PINS_SCOPE')
+    for key, pin in pins.items():
+        digest(pin)
+        value = s['attempt031'] if key == 'attempt031' else s[key]
+        need(sha(encoded(value)) == pin, 'ORIGINAL_PIN_CHANGED')
+    stop = s['stop']
+    need(stop['first_error'] == 'RELAY_BUDGET_OR_INPUT' and stop['operation'] == 'retire-' + CP and
+         stop['remote_evidence']['transport_diagnostic']['operation_receipt_validated'] is False,
+         'ORIGINAL_STOP_SCOPE')
+    need(s['attempt031']['operation']['key'] == 'retire-' + CP and s['attempt031']['index'] == 31,
+         'ORIGINAL_ATTEMPT_SCOPE')
+    need(len(s['candidate_files']) == 31 and set(s['effect_pins']) == set(HOSTS), 'DEPENDENCY_SCOPE')
+    for row in s['candidate_files']:
+        path = Path(row['path'])
+        need(not path.is_absolute() and '..' not in path.parts and '\\' not in row['path'], 'DEPENDENCY_PATH')
+        digest(row['sha256'])
+    manifest = [x for x in s['candidate_files'] if x['path'] == 'candidate-manifest.json']
+    core = [x for x in s['candidate_files'] if x['path'] != 'candidate-manifest.json']
+    need(len(manifest) == 1 and len({x['path'] for x in core}) == 30 and
+         sha(encoded({'version': 1, 'files': core})) == manifest[0]['sha256'] == CANDIDATE_SHA,
+         'CANDIDATE_MANIFEST_CHANGED')
+    return s
+
+
+def cleanup_binding(s):
+    return {'purpose': PURPOSE, 'cleanup_id': s['cleanup_id'], 'scope_sha256': sha(encoded(s)),
+            'old_invocation': OLD, 'original_pins': s['original_pins']}
+
+
+def validate_historical_evidence(s, c, endpoint):
+    # Historical validation is explicitly evaluated at the recorded successful
+    # completion time. It grants NO current authority; validate_scope does that.
+    historical_time = timestamp(s['completion']['observed_at'])
+    need(timestamp(s['request']['not_before']) <= historical_time < timestamp(ORIGINAL_NOT_AFTER),
+         'HISTORICAL_COMPLETION_TIME')
+    c.validate(s['request'], historical_time)
+    endpoint.validate_completion(s['request'], s['completion'])
+    need(s['stop']['binding'] == s['attempt031']['binding'] == c.binding(s['request']) and
+         s['attempt031']['predecessor_sha256'] == s['completion']['ledger_sha256'], 'STOP_HISTORY_BINDING')
+
+
+def dependencies(s):
+    base = Path(ROOT) / ('reboot-code-' + OLD)
+    for row in s['candidate_files']:
+        raw = protected(base / row['path'])
+        need(len(raw) == row['bytes'] and sha(raw) == row['sha256'], 'INSTALLED_CANDIDATE_CHANGED')
+    found = set()
+    for p in base.rglob('*'):
+        st = p.lstat()
+        if stat.S_ISDIR(st.st_mode):
+            checked_dir(p, HOME_CONTEXT, True)
+        else:
+            need(stat.S_ISREG(st.st_mode), 'CANDIDATE_OBJECT_KIND')
+            found.add(p.relative_to(base).as_posix())
+    need(found == {row['path'] for row in s['candidate_files']}, 'CANDIDATE_EXTRA_FILES')
+    for rel in ('source/rotation-adapter-r2', 'source/rotation-orchestration', 'continuation', 'reboot'):
+        sys.path.insert(0, str(base / rel))
+    import reboot_contract as c
+    import reboot_host as host
+    import reboot_endpoint as endpoint
+    import orch_endpoint as oe
+    import post_expiry_endpoint as pe
+    import post_expiry_contract as pc
+    import linux_host as lh
+    from continuation_host import metadata
+    validate_historical_evidence(s, c, endpoint)
+    return c, host, endpoint, oe, pe, pc, lh, metadata
+
+
+def original_host_check(s, host, mods):
+    c, rh, _, _, _, _, _, _ = mods
+    r = s['request']
+    rh.identity(r, host)
+    rh.actor_absence(r)
+    rh.verify_anchors(r, host)
+    # Read the original gate as historical evidence only. origin_claim() is an
+    # expired execution entry and is intentionally NOT called or monkeypatched.
+    gate = rh.gate_path(host)
+    checked_dir(gate, HOME_CONTEXT, True)
+    need(sorted(p.name for p in gate.iterdir()) == ['binding.json'], 'ORIGINAL_GATE_INVENTORY')
+    expected_gate = {'binding': c.binding(r), 'host': host,
+                     'current_boot_id': r['execution']['boot_ids'][host]}
+    need(protected(gate / 'binding.json') == encoded(expected_gate), 'ORIGINAL_GATE_CHANGED')
+    # Never call LinuxHost/RebootHost.__init__: it validates expired authority and
+    # can create missing directories. All old paths must already exist.
+    checked_dir(Path(ROOT) / OLD, HOME_CONTEXT, True)
+    checked_dir(Path(RUN) / OLD, RUN_CONTEXT, True)
+    effects = Path(ROOT) / ('continuation-effects-' + OLD)
+    checked_dir(effects, HOME_CONTEXT, True)
+    for name, pin in s['effect_pins'][host].items():
+        need(re.fullmatch(r'(binding|(?:attempt|result)-\d{3}-[a-z0-9-]+)\.json', name), 'EFFECT_PIN_PATH')
+        raw = protected(effects / name)
+        need(len(raw) == pin['bytes'] and sha(raw) == pin['sha256'], 'ORIGINAL_EFFECT_CHANGED')
+    need(rh.absent(effects / 'stopped.json'), 'ORIGINAL_HOST_STOPPED')
+    for index, op in enumerate(c.operations() + c.finish_operations()):
+        if index >= 31 and op['host'] == host:
+            for prefix in ('attempt-', 'result-'):
+                need(rh.absent(effects / (prefix + '%03d-' % index + op['key'] + '.json')),
+                     'OLD_FINISH_EFFECT_PRESENT')
+
+
+def pair_metadata(mods):
+    return [mods[7](p) for p in pair_paths()]
+
+
+class CleanupPair:
+    """Small read-only owner adapter plus exactly two authorized unlink effects.
+
+    Does not inherit LinuxHost or invoke expired origin_claim/retire_current.
+    Attributes below are solely the input contract of unchanged credential().
+    """
+    def __init__(self, s, mods):
+        self.scope = s
+        self.mods = mods
+        self.request = s['request']
+        self.name = socket.gethostname()
+        self.boot_id = self.request['execution']['boot_ids'][self.name]
+        self.inv = OLD
+        self.plan = mods[0].plan(self.request)
+        self.root = Path(ROOT) / OLD
+        self.runroot = Path(RUN) / OLD
+        self.authority()
+        checked_dir(self.root, HOME_CONTEXT, True)
+        checked_dir(self.runroot, RUN_CONTEXT, True)
+        need(protected(self.root / 'plan.json') == encoded(self.plan), 'ORIGINAL_PLAN_CHANGED')
+
+    def authority(self):
+        validate_scope(self.scope, time.time())
+        self.mods[1].identity(self.request, self.name)
+
+    def credential(self):
+        self.authority()
+        # Unmodified owner/plan/boot/device/inode/private-binding comparison.
+        return self.mods[1].RebootHost.credential(self)
+
+    def retire_cleanup_pair(self):
+        self.authority()
+        rh, lh, metadata = self.mods[1], self.mods[6], self.mods[7]
+        rh.actor_absence(self.request)
+        self.credential()
+        rows = [metadata(self.runroot / n) for n in ('credential.json', 'credential-owner.json')]
+        for row in rows:
+            self.authority()  # current new cleanup deadline; original request unchanged
+            need(metadata(row['path']) == row, 'RETIRE_TARGET_CHANGED')
+            Path(row['path']).unlink()
+            lh.fsync_parent(row['path'])
+        need(all(rh.absent(row['path']) for row in rows), 'RETIRE_UNCONFIRMED')
+
+
+def validate_pair(rows):
+    keys = {'path', 'present', 'kind', 'device', 'inode', 'uid', 'gid', 'mode', 'nlink', 'bytes', 'context'}
+    need(isinstance(rows, list) and len(rows) == 2, 'PAIR_SCOPE')
+    for row, path in zip(rows, pair_paths()):
+        need(set(row) == keys and row['path'] == path and row['present'] is True and
+             row['kind'] == 'regular' and row['uid'] == row['gid'] == 0 and row['mode'] == 0o600 and
+             row['nlink'] == 1 and row['context'] == RUN_CONTEXT and
+             all(type(row[k]) is int and row[k] > 0 for k in ('device', 'inode', 'bytes')), 'PAIR_PROTECTION')
+
+
+def validate_result(s, value, action, host, now):
+    need(isinstance(value, dict) and set(value) == {'status', 'binding', 'action', 'host', 'boot_id',
+         'started_at', 'finished_at', 'input_sha256', 'proof'} and value['status'] == 'CONFIRMED' and
+         value['binding'] == cleanup_binding(s) and value['action'] == action and value['host'] == host and
+         value['boot_id'] == s['request']['execution']['boot_ids'][host], 'CLEANUP_RECEIPT_BINDING')
+    a, b = timestamp(value['started_at']), timestamp(value['finished_at'])
+    need(timestamp(s['not_before']) <= a <= b <= now and b < timestamp(s['not_after']) and b - a <= 60,
+         'CLEANUP_RECEIPT_TIME')
+    digest(value['input_sha256'])
+    return value['proof']
+
+
+def validate_checks(s, checks, now):
+    need(isinstance(checks, dict) and set(checks) == set(HOSTS), 'ALL_FOUR_CHECKS_REQUIRED')
+    for host, row in checks.items():
+        proof = validate_result(s, row, 'check', host, now)
+        need(set(proof) == {'pair', 'owner_verified', 'source_metadata'} and proof['owner_verified'] is True,
+             'OWNER_CHECK_REQUIRED')
+        validate_pair(proof['pair'])
+        expected = s['request']['execution']['source_metadata'] if host == CP else []
+        need(proof['source_metadata'] == expected, 'SOURCE_CHECK_SCOPE')
+        need(row['input_sha256'] == sha(encoded({})), 'CHECK_INPUT_BINDING')
+
+
+def validate_public_result(s, value, now, mods):
+    action, host = value.get('action'), value.get('host')
+    need(action in ('check', 'observe', 'retire', 'retain') and host in HOSTS, 'RESULT_SCOPE')
+    proof = validate_result(s, value, action, host, now)
+    if action == 'check':
+        need(set(proof) == {'pair', 'owner_verified', 'source_metadata'} and proof['owner_verified'] is True,
+             'OWNER_CHECK_REQUIRED')
+        validate_pair(proof['pair'])
+        need(proof['source_metadata'] == (s['request']['execution']['source_metadata'] if host == CP else []),
+             'SOURCE_CHECK_SCOPE')
+    elif action == 'observe':
+        need(host == CP and set(proof) == {'checks_sha256', 'observation'}, 'OBSERVATION_RESULT_SCOPE')
+        digest(proof['checks_sha256'])
+        mods[0].observation(s['request'], proof['observation'], 'after', now, s['completion'])
+    elif action == 'retire':
+        need(set(proof) == {'state', 'paths', 'checks_sha256', 'observation_sha256', 'previous_sha256'} and
+             proof['state'] == 'RETIRED_CURRENT_PAIR' and proof['paths'] == pair_paths(), 'RETIRE_RESULT_SCOPE')
+        for key in ('checks_sha256', 'observation_sha256', 'previous_sha256'):
+            digest(proof[key])
+    else:
+        need(host == CP and set(proof) == {'state', 'source_metadata', 'retired_sha256'} and
+             proof['state'] == 'S1_RETAINED_PENDING_OWNER_DISPOSITION' and
+             proof['source_metadata'] == s['request']['execution']['source_metadata'], 'RETAIN_RESULT_SCOPE')
+        digest(proof['retired_sha256'])
+
+
+def collect_action(s, base, action, host, now, mods):
+    """Read public records, never infer original process success from a result file."""
+    def stops():
+        found = []
+        for path in (base / 'STOPPED.json', base / action / 'stopped.json'):
+            if not os.path.lexists(path):
+                continue
+            value = json.loads(protected(path, 32768))
+            keys = {'status', 'binding', 'action', 'host', 'first_error', 'preserve', 'observed_at', 'retry'}
+            need(set(value) in (keys, keys | {'evidence_errors'}) and value['status'] == 'STOPPED' and
+                 value['binding'] == cleanup_binding(s) and value['host'] == host and
+                 value['action'] in ('check', 'observe', 'retire', 'retain') and value['preserve'] is True and
+                 value['retry'] is False and isinstance(value['first_error'], str) and
+                 re.fullmatch('[A-Z0-9_]{1,80}', value['first_error']), 'STOP_RECORD_INVALID')
+            need('evidence_errors' not in value or value['evidence_errors'] == ['STOP_WRITE_UNCONFIRMED'],
+                 'STOP_RECORD_INVALID')
+            timestamp(value['observed_at'])
+            found.append({'path': str(path), 'record': value})
+        return found
+
+    result_path = base / action / 'result.json'
+    stopped = stops()
+    if not stopped:
+        attempt = json.loads(protected(base / action / 'attempt.json', 32768))
+        value = json.loads(protected(result_path, 32768))
+        validate_result(s, value, action, host, now)
+        validate_public_result(s, value, now, mods)
+        expected_attempt = {k: v for k, v in value.items() if k not in ('finished_at', 'proof')}
+        expected_attempt['status'] = 'ATTEMPTED'
+        need(attempt == expected_attempt, 'ACTION_ATTEMPT_RESULT_CHANGED')
+        stopped = stops()  # A STOP written during collection takes precedence.
+    if stopped:
+        return {'status': 'STOPPED_RECORD_COLLECTED', 'binding': cleanup_binding(s),
+                'action': action, 'host': host, 'stops': stopped,
+                'result_present': os.path.lexists(result_path), 'execution_success': False,
+                'next': 'PRESERVE_NO_RETRY_NO_NEXT_ACTION'}
+    return {'status': 'PUBLIC_RESULT_COLLECTED', 'binding': cleanup_binding(s), 'action': action,
+            'host': host, 'result': value, 'result_sha256': sha(encoded(value)),
+            'original_process_exit': 'NOT_ESTABLISHED_BY_COLLECTION',
+            'execution_success': None,
+            'acceptance_requires': 'ACTUAL_ORIGINAL_EXIT_0_AND_TRANSPORT_RETURNED_0_OR_CONSOLE_EXIT_0'}
+
+
+def validate_packet(s, packet, action, host, now, mods):
+    fields = {'checks'} if action == 'observe' else {'checks', 'observation', 'retired'}
+    need(isinstance(packet, dict) and set(packet) == fields, 'PACKET_SCOPE')
+    validate_checks(s, packet['checks'], now)
+    if action == 'observe':
+        need(host == CP, 'CONTROL_ONLY')
+        return
+    obs = packet['observation']
+    proof = validate_result(s, obs, 'observe', CP, now)
+    need(set(proof) == {'checks_sha256', 'observation'} and
+         proof['checks_sha256'] == sha(encoded(packet['checks'])), 'OBSERVATION_CHECK_BINDING')
+    need(obs['input_sha256'] == sha(encoded({'checks': packet['checks']})) and
+         all(timestamp(row['finished_at']) <= timestamp(obs['started_at']) for row in packet['checks'].values()),
+         'OBSERVATION_AFTER_CHECKS')
+    mods[0].observation(s['request'], proof['observation'], 'after', now, s['completion'])
+    expected = HOSTS[:HOSTS.index(host)] if action == 'retire' else HOSTS
+    need(isinstance(packet['retired'], list) and len(packet['retired']) == len(expected), 'RETIRE_ORDER')
+    previous = []
+    for target, receipt in zip(expected, packet['retired']):
+        effect = validate_result(s, receipt, 'retire', target, now)
+        need(effect == {'state': 'RETIRED_CURRENT_PAIR', 'paths': pair_paths(),
+                       'checks_sha256': sha(encoded(packet['checks'])),
+                       'observation_sha256': sha(encoded(obs)), 'previous_sha256': sha(encoded(previous))},
+             'RETIRE_RECEIPT_SCOPE')
+        prior_end = previous[-1]['finished_at'] if previous else obs['finished_at']
+        need(timestamp(prior_end) <= timestamp(receipt['started_at']) and
+             receipt['input_sha256'] == sha(encoded({'checks': packet['checks'], 'observation': obs,
+                                                    'retired': previous})), 'RETIRE_INPUT_ORDER')
+        previous.append(receipt)
+
+
+def new_journal(base, action, mods):
+    oe, lh = mods[3], mods[6]
+    need(not os.path.lexists(base / 'STOPPED.json'), 'CLEANUP_TERMINAL_STOP')
+    need(not os.path.lexists(base / action), 'ACTION_ALREADY_ATTEMPTED')
+    p = lh.directory(base / action, exclusive=True)
+    lh.fsync_parent(p)
+    checked_dir(p, HOME_CONTEXT, True)
+    return oe.Journal(p)
+
+
+def observe(s, packet, j, end, mods):
+    c, _, _, _, pe, pc, lh, _ = mods
+    need(sys.stdin.isatty() and sys.stderr.isatty(), 'PRIVATE_ROOT_TTY_REQUIRED')
+    ca, _ = lh.regular_bytes(Path(ROOT) / c.ORIGIN / 'ca.pem')
+    api = None
+    password = None
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter('error', getpass.GetPassWarning)
+            password = getpass.getpass('Existing Harbor admin password (not saved): ')
+        need(time.time() < end, 'HOST_DEADLINE')
+        r = s['request']
+        api = pe.ReadAPI({'admin_username': r['origin']['prep']['admin_username'], 'invocation': c.ORIGIN,
+                          'not_after': iso(end), 'api_seconds': 30}, password, ca, j)
+        password = None
+        rows = pe.metadata_get(api, pc.LIST)
+        hashes = {'list': api.last_body_sha256}
+        details = {}
+        for rid in (2, 3, 23):
+            need(time.time() < end, 'HOST_DEADLINE')
+            details[rid] = pe.metadata_get(api, '/api/v2.0/robots/' + str(rid))
+            hashes[str(rid)] = api.last_body_sha256
+        listed = pc.compare_old(r['origin']['issue_receipt']['old'], rows, {i: details[i] for i in (2, 3)}, 23)
+        value = {'status': 'OBSERVED', 'phase': 'after', 'binding': c.binding(r), 'observed_at': iso(time.time()),
+                 'old': r['origin']['issue_receipt']['old'], 'new_detail': pc.canonical_metadata(details[23], 23),
+                 'new_list': pc.canonical_metadata(listed[23], 23), 'body_sha256': hashes,
+                 'completion_sha256': sha(encoded(s['completion']))}
+        c.observation(r, value, 'after', time.time(), s['completion'])
+        return {'checks_sha256': sha(encoded(packet['checks'])), 'observation': value}
+    finally:
+        password = None
+        if api is not None:
+            api.forget()
+
+
+def execute(s, action, packet, mods, base, started, end):
+    c, rh, _, _, _, _, lh, _ = mods
+    host = socket.gethostname()
+    need(host in HOSTS and action in ('check', 'observe', 'retire', 'retain'), 'ACTION_SCOPE')
+    need(action != 'retain' or host == CP, 'CONTROL_ONLY')
+    j = new_journal(base, action, mods)
+    result = {'status': 'CONFIRMED', 'binding': cleanup_binding(s), 'action': action, 'host': host,
+              'boot_id': s['request']['execution']['boot_ids'][host], 'started_at': iso(started),
+              'input_sha256': sha(encoded(packet))}
+    j.write('attempt', {**result, 'status': 'ATTEMPTED'})
+    try:
+        original_host_check(s, host, mods)
+        if action == 'check':
+            need(packet == {}, 'CHECK_INPUT')
+            h = CleanupPair(s, mods)
+            h.credential()  # Returned secret remains local/in-memory; not hashed or exported.
+            pair = pair_metadata(mods)
+            validate_pair(pair)
+            proof = {'pair': pair, 'owner_verified': True,
+                     'source_metadata': s['request']['execution']['source_metadata'] if host == CP else []}
+        else:
+            validate_packet(s, packet, action, host, time.time(), mods)
+            local_check = json.loads(protected(base / 'check' / 'result.json'))
+            need(local_check == packet['checks'][host], 'LOCAL_CHECK_CHANGED')
+            if action == 'observe':
+                proof = observe(s, packet, j, end, mods)
+            elif action == 'retire':
+                need(pair_metadata(mods) == local_check['proof']['pair'], 'PAIR_CHANGED_AFTER_CHECK')
+                if host == CP:
+                    need(json.loads(protected(base / 'observe' / 'result.json')) == packet['observation'],
+                         'LOCAL_OBSERVATION_CHANGED')
+                h = CleanupPair(s, mods)
+                need(time.time() < end, 'HOST_DEADLINE')
+                # Owner validation is unchanged; only this separate cleanup method
+                # can unlink, under new cleanup authority and the fresh observation.
+                fresh_end = timestamp(packet['observation']['proof']['observation']['observed_at']) + 300
+                with mods[3].deadline(min(end, fresh_end) - time.time()):
+                    h.retire_cleanup_pair()
+                proof = {'state': 'RETIRED_CURRENT_PAIR', 'paths': pair_paths(),
+                         'checks_sha256': sha(encoded(packet['checks'])),
+                         'observation_sha256': sha(encoded(packet['observation'])),
+                         'previous_sha256': sha(encoded(packet['retired']))}
+            else:
+                local_retire = json.loads(protected(base / 'retire' / 'result.json'))
+                need(local_retire == packet['retired'][0], 'LOCAL_RETIRE_CHANGED')
+                need(all(rh.absent(p) for p in pair_paths()), 'CURRENT_PAIR_REAPPEARED')
+                rh.retain_source(s['request'])
+                proof = {'state': 'S1_RETAINED_PENDING_OWNER_DISPOSITION',
+                         'source_metadata': s['request']['execution']['source_metadata'],
+                         'retired_sha256': sha(encoded(packet['retired']))}
+        need(time.time() < end, 'HOST_DEADLINE')
+        result.update(finished_at=iso(time.time()), proof=proof)
+        validate_public_result(s, result, time.time(), mods)
+        j.write('result', result)
+        need(time.time() < end, 'RESULT_DEADLINE_UNCONFIRMED')
+        return result
+    except BaseException as exc:
+        code = getattr(exc, 'code', 'CLEANUP_UNCERTAIN')
+        if not isinstance(code, str) or not re.fullmatch('[A-Z0-9_]{1,80}', code):
+            code = 'CLEANUP_UNCERTAIN'
+        stop = {'status': 'STOPPED', 'binding': cleanup_binding(s), 'action': action, 'host': host,
+                'first_error': code, 'preserve': True, 'observed_at': iso(time.time()), 'retry': False}
+        try:
+            j.write('stopped', stop)
+            lh.write_new(base / 'STOPPED.json', encoded(stop))
+        except BaseException:
+            stop['evidence_errors'] = ['STOP_WRITE_UNCONFIRMED']
+        return stop
+
+
+def main():
+    started = time.time()
+    need(sys.platform.startswith('linux') and sys.flags.isolated and sys.flags.no_site and
+         sys.flags.dont_write_bytecode and os.getuid() == os.geteuid() == os.getgid() == os.getegid() == 0,
+         'ISOLATED_ROOT_LINUX_REQUIRED')
+    import resource
+    resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
+    os.umask(0o077)
+    def expired(*_):
+        raise Failure('HOST_DEADLINE')
+    signal.signal(signal.SIGALRM, expired)
+    signal.setitimer(signal.ITIMER_REAL, 60)
+    need(len(sys.argv) in (4, 5), 'ARGUMENTS')
+    scope_path, expected, action = sys.argv[1:4]
+    digest(expected)
+    raw = protected(scope_path)
+    s = json.loads(raw)
+    need(sha(raw) == expected and encoded(s) == raw, 'SCOPE_BYTES_CHANGED')
+    validate_scope(s, started)
+    base = Path(ROOT) / ('cleanup-only-' + s['cleanup_id'])
+    need(Path(scope_path) == base / 'scope.json' and Path(__file__) == base / 'cleanup_once.py', 'CLEANUP_PATH')
+    checked_dir(base, HOME_CONTEXT, True)
+    need(sha(protected(__file__)) == s['wrapper_sha256'], 'WRAPPER_CHANGED')
+    os.environ.clear()
+    os.environ.update({'PATH': '/usr/sbin:/usr/bin:/sbin:/bin', 'HOME': '/root', 'LANG': 'C', 'LC_ALL': 'C'})
+    mods = dependencies(s)
+    mods[1].identity(s['request'], socket.gethostname())
+    end = min(started + 60, timestamp(s['not_after']))
+    need(time.time() < end, 'HOST_DEADLINE')
+    with mods[3].deadline(end - time.time()):
+        if action == 'observe':
+            need(len(sys.argv) == 5 and Path(sys.argv[4]) == base / 'observe-input.json', 'OBSERVE_INPUT_PATH')
+            packet = json.loads(protected(sys.argv[4], 32768))
+        elif action == 'collect':
+            need(len(sys.argv) == 5 and sys.argv[4] in ('check', 'observe', 'retire', 'retain'), 'COLLECTION_ALLOWLIST')
+            # A durable CONFIRMED file is not proof that its process exited normally.
+            # Global/action STOP dominates the result; never export it as success.
+            value = collect_action(s, base, sys.argv[4], socket.gethostname(), time.time(), mods)
+            print(encoded(value).decode())
+            if value['status'] == 'STOPPED_RECORD_COLLECTED':
+                raise SystemExit(2)
+            return
+        else:
+            need(len(sys.argv) == 4, 'ARGUMENTS')
+            packet = json.loads(mods[3].bounded_stdin())
+        result = execute(s, action, packet, mods, base, started, end)
+        print(encoded(result).decode())
+        if result['status'] != 'CONFIRMED':
+            raise SystemExit(2)
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except SystemExit:
+        raise
+    except BaseException as error:
+        code = getattr(error, 'code', 'ENTRY_UNCERTAIN')
+        if not isinstance(code, str) or not re.fullmatch('[A-Z0-9_]{1,80}', code):
+            code = 'ENTRY_UNCERTAIN'
+        print(encoded({'status': 'STOPPED', 'first_error': code, 'preserve': True, 'retry': False}).decode())
+        raise SystemExit(2)

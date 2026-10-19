@@ -1,0 +1,171 @@
+"""Explicit Linux backend. Import is inert; no old /run owner is reconstructed."""
+import hmac,os,socket,stat,time
+from pathlib import Path
+import reboot_contract as c
+from reboot_pins import HISTORY,FAILED_ID
+from rotation_contract import *
+import post_expiry_contract as pc
+from linux_host import LinuxHost,regular_bytes,write_new,directory,fsync_parent
+from post_expiry_ledger import Files
+from continuation_host import metadata
+
+def absent(path):
+    try:Path(path).lstat()
+    except FileNotFoundError:return True
+    return False
+def identity(r,host):
+    expected=r['execution']['relay_boot_id'] if host=='ansible01' else r['execution']['boot_ids'][host]
+    need(os.name=='posix' and socket.gethostname()==host and Path('/proc/sys/kernel/random/boot_id').read_text().strip()==expected,'REBOOT_HOST_CHANGED')
+    if host=='ansible01':
+        import pwd
+        need(os.getuid()==os.geteuid()==r['execution']['relay_uid'] and pwd.getpwuid(os.getuid()).pw_name=='server01_ansible','RELAY_IDENTITY')
+    else:need(os.getuid()==os.geteuid()==os.getgid()==os.getegid()==0,'ROOT_IDENTITY')
+    need(Path('/sys/fs/selinux/enforce').read_bytes().strip()==b'1','SELINUX_CHANGED')
+def actor_absence(r):
+    ancestors=set();pid=os.getpid()
+    while pid>1 and pid not in ancestors:
+        ancestors.add(pid)
+        try:pid=int((Path('/proc')/str(pid)/'stat').read_text().rsplit(')',1)[1].split()[1])
+        except FileNotFoundError:break
+    needles=[x.encode() for x in [*HISTORY['preserved_ids'],r['continuation_id']]]
+    for p in Path('/proc').iterdir():
+        if not p.name.isdecimal() or int(p.name) in ancestors:continue
+        try:raw=(p/'cmdline').read_bytes()
+        except (FileNotFoundError,ProcessLookupError):continue
+        need(not any(x in raw for x in needles),'RELATED_ACTOR_PRESENT')
+def verify_anchors(r,host,reader=regular_bytes):
+    # Public bytes/claims remain historical; only ceased volatile locations are
+    # tested for absence. Do not rewrite parent metadata to simulate preservation.
+    from parent_state import Reader,scope
+    from successor_pins import PARENT
+    context='unconfined_u:object_r:user_home_t:s0' if host=='ansible01' else 'unconfined_u:object_r:admin_home_t:s0'
+    pr=Reader(os.getuid(),{'directory':context,'file':context});s=scope(PARENT,host)
+    for row in s['metadata']:
+        if row['path'].startswith(c.RUN+'/'):need(pr.absent(row['path']),'HISTORICAL_RUN_RESIDUAL')
+        else:need(pr.metadata(row['path'])==row,'HISTORICAL_DISK_METADATA_CHANGED')
+    for path,names in s['inventories'].items():
+        if path.startswith(c.RUN+'/'):need(pr.absent(path),'HISTORICAL_RUN_RESIDUAL')
+        else:need(pr.inventory(path)==names,'HISTORICAL_INVENTORY_CHANGED')
+    for row in s['public']:pr.public(row)
+    for path in s['absent']:need(pr.absent(path),'HISTORICAL_UNEXPECTED_RESIDUAL')
+    rows=list(r['origin_anchors'][host])+[{'path':v['remote_path'],'bytes':v['bytes'],'sha256':v['sha256']} for v in HISTORY['failed_public_files'] if v['host']==host]
+    for row in rows:
+        raw,_=reader(row['path'],1048576)
+        need(len(raw)==row['bytes'] and pc.sha(raw)==row['sha256'],'HISTORICAL_PUBLIC_CHANGED')
+    # Source contains the same persistent two paths; actual current inode is bound
+    # independently in execution.source_metadata, never overwritten in history.
+    if host==c.CP:
+        for row in r['execution']['source_metadata']:source_metadata(row)
+    for row in r['residual_metadata']:
+        if row.get('host',c.CP)==host and row['path'].startswith(c.RUN+'/'):
+            need(absent(row['path']),'HISTORICAL_CREDENTIAL_PRESENT')
+    # Retain the historical reader's end-of-read directory identity check.
+    for row in s['metadata']:
+        if row['path'].startswith(c.RUN+'/'):need(pr.absent(row['path']),'HISTORICAL_RUN_RESIDUAL')
+        else:need(pr.metadata(row['path'])==row,'HISTORICAL_DISK_METADATA_CHANGED')
+def source_metadata(row):
+    expected={k:v for k,v in row.items() if k!='host'}
+    need(metadata(row['path'])==expected,'SOURCE_METADATA_CHANGED');return expected
+def gate_path(host):
+    base=Path('/home/server01_ansible') if host=='ansible01' else Path(c.ROOT)
+    return base/('post-reboot-from-'+FAILED_ID+'-claim')
+def origin_claim(r,host,create=False):
+    from orch_endpoint import deadline
+    c.validate(r,time.time());end=timestamp(r['supply_until'] if create else r['not_after'])
+    with deadline(end-time.time()):
+        identity(r,host);actor_absence(r);verify_anchors(r,host,reader=(lambda p,limit:(__import__('orch_relay').private_read(p),None)) if host=='ansible01' else regular_bytes)
+        expected={'binding':c.binding(r),'host':host,'current_boot_id':r['execution']['relay_boot_id'] if host=='ansible01' else r['execution']['boot_ids'][host]}
+        if create:
+            inv=r['continuation_id'];paths=[Path('/home/server01_ansible')/('hbr-reboot-'+inv)] if host=='ansible01' else [Path(c.ROOT)/inv,Path(c.RUN)/inv,Path(c.ROOT)/('continuation-effects-'+inv)]
+            need(all(absent(p) for p in paths),'NEW_NAMESPACE_NOT_ABSENT')
+            need(time.time()<end,'REBOOT_GATE_DEADLINE')
+            fs=Files(gate_path(host),create=True)
+            need(time.time()<end,'REBOOT_GATE_DEADLINE')
+            fs.put('binding',expected)
+        else:fs=Files(gate_path(host))
+        need(sorted(p.name for p in fs.path.iterdir())==['binding.json'] and fs.get('binding')==expected,'REBOOT_GATE_CHANGED')
+        need(time.time()<end,'REBOOT_GATE_DEADLINE')
+
+def verify_pair_bytes(r,first,second):
+    a=parse_json(first);b=parse_json(second)
+    fields={'id','name','secret','creation_time','expires_at'}
+    need(isinstance(a,dict) and isinstance(b,dict) and set(a)==set(b)==fields,'SOURCE_BODY_SCHEMA')
+    need(hmac.compare_digest(encoded(a),encoded(b)),'SOURCE_PAIR_MISMATCH')
+    old=r['origin']['issue_receipt']['new_detail']
+    need(type(a['id']) is int and a['id']==23 and a['name']==NEW_USER and a['creation_time']==old['creation_time'] and a['expires_at']==old['expires_at'],'SOURCE_ISSUE_MISMATCH')
+    need(a['expires_at']>timestamp(r['not_after']),'SOURCE_EXPIRED')
+    return credential(encoded({'username':a['name'],'password':a['secret']}))
+def read_source(r):
+    identity(r,c.CP);need(time.time()<timestamp(r['supply_until']),'SOURCE_WINDOW')
+    raw=[]
+    try:
+        for row in r['execution']['source_metadata']:
+            before=source_metadata(row);b,s=regular_bytes(row['path'],32768)
+            need((s.st_dev,s.st_ino)==(before['device'],before['inode']),'SOURCE_FD_CHANGED')
+            source_metadata(row);raw.append(b)
+        result=verify_pair_bytes(r,*raw)
+        for row in r['execution']['source_metadata']:source_metadata(row)
+        need(time.time()<timestamp(r['supply_until']),'SOURCE_WINDOW')
+        return result
+    finally:raw.clear()  # No claim of guaranteed Python heap zeroization.
+
+class RebootHost(LinuxHost):
+    def __init__(self,r,create=False):
+        c.validate(r,time.time());self.request=r
+        identity(r,socket.gethostname())
+        super().__init__(c.plan(r),create=create);identity(r,self.name);self.recovery_dispatch=True
+    def create_pair(self,secret):
+        c.validate(self.request,time.time());identity(self.request,self.name)
+        need(time.time()<timestamp(self.request['supply_until']),'SUPPLY_DEADLINE')
+        secret=credential(encoded(secret));p=self.runroot/'credential.json';o=self.runroot/'credential-owner.json'
+        need(absent(p) and absent(o),'CURRENT_PAIR_ALREADY_PRESENT')
+        context='unconfined_u:object_r:var_run_t:s0'
+        write_new(p,encoded(secret),context=context)
+        raw,s=regular_bytes(p,32768);need(hmac.compare_digest(raw,encoded(secret)),'CREDENTIAL_READBACK')
+        need(time.time()<timestamp(self.request['supply_until']),'SUPPLY_DEADLINE')
+        owner={'version':1,'binding':c.binding(self.request),'host':self.name,'boot_id':self.boot_id,'device':s.st_dev,'inode':s.st_ino,'username':NEW_USER,'source':c.source_binding(self.request),'private_binding_sha256':pc.sha(encoded({'plan':self.plan,'credential':secret}))}
+        write_new(o,encoded(owner),context=context)
+        self.credential();return c.source_binding(self.request)
+    def credential(self):
+        identity(self.request,self.name)
+        p=self.runroot/'credential.json';o=self.runroot/'credential-owner.json'
+        raw,s=regular_bytes(p,32768);owner_raw,owner_stat=regular_bytes(o,32768)
+        owner=parse_json(owner_raw);secret=credential(raw)
+        expected={'version':1,'binding':c.binding(self.request),'host':self.name,'boot_id':self.boot_id,'device':s.st_dev,'inode':s.st_ino,'username':NEW_USER,'source':c.source_binding(self.request),'private_binding_sha256':pc.sha(encoded({'plan':self.plan,'credential':secret}))}
+        need(hmac.compare_digest(encoded(owner),encoded(expected)),'CURRENT_CREDENTIAL_OWNER')
+        for path,opened in ((p,s),(o,owner_stat)):
+            m=metadata(path);need(m['uid']==m['gid']==0 and m['mode']==0o600 and m['nlink']==1 and m['context']=='unconfined_u:object_r:var_run_t:s0','CURRENT_CREDENTIAL_PROTECTION')
+            need((m['device'],m['inode'])==(opened.st_dev,opened.st_ino),'CURRENT_CREDENTIAL_PATH_CHANGED')
+        need((p.lstat().st_dev,p.lstat().st_ino)==(s.st_dev,s.st_ino),'CURRENT_CREDENTIAL_PATH_CHANGED')
+        return secret
+    def adopt_checks(self):
+        verify_anchors(self.request,self.name);actor_absence(self.request);secret=self.credential()
+        for tool in self.plan['tool_pins'][self.name]:fd=self.open_tool(tool);os.close(fd)
+        generations=[*HISTORY['preserved_ids'],self.inv]
+        if self.name==c.CP:
+            for ns,spec in SCOPE.items():
+                secret_data(self.kube('GET','/api/v1/namespaces/'+ns+'/secrets/'+SECRET_NAME,None,10),ns,OLD_USER)
+                validate_sa(self.kube('GET','/api/v1/namespaces/'+ns+'/serviceaccounts/'+spec['sa'],None,10),ns)
+                for node in spec['nodes']:
+                    for inv in generations:need(self.kube('GET','/api/v1/namespaces/'+ns+'/pods/'+pod_name(pod_nonce(inv,ns,node)),None,10,True) is None,'OWNED_POD_PRESENT')
+        else:
+            for inv in generations:
+                tag=deny_tag(inv,self.name);rc,out,err=self.run_split('nerdctl',['-n','k8s.io','image','inspect','--mode=native','--format',NATIVE_IMAGE_FORMAT,tag],None,None,10)
+                need(type(rc) is int and rc==0 and err==b'' and native_image_target(out,tag,True) is None,'OWNED_TAG_QUERY_UNKNOWN')
+                need(absent(Path(c.RUN)/inv/('auth-node-'+self.name)),'OWNED_AUTH_PRESENT')
+            if self.name==NODES[0]:
+                raw,_=self.read_worker_file();doc=decode_docker(raw);need(set(doc['auths'])==set(FILE_KEYS),'REGISTRY_SCOPE')
+                for key in FILE_KEYS:verify_entry(doc['auths'][key],OLD_USER)
+        secret=None
+    def retire_current(self):
+        actor_absence(self.request);self.credential()
+        # Separate finish phase after full completion and final metadata observation.
+        rows=[metadata(self.runroot/n) for n in ('credential.json','credential-owner.json')]
+        for row in rows:
+            identity(self.request,self.name);need(time.time()<timestamp(self.request['not_after']),'RETIRE_DEADLINE')
+            need(metadata(row['path'])==row,'RETIRE_TARGET_CHANGED')
+            Path(row['path']).unlink();fsync_parent(row['path'])
+        need(all(absent(row['path']) for row in rows),'RETIRE_UNCONFIRMED')
+def retain_source(r):
+    identity(r,c.CP);actor_absence(r)
+    for row in r['execution']['source_metadata']:source_metadata(row)

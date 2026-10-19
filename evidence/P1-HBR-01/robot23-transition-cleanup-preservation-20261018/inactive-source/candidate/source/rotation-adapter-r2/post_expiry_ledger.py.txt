@@ -1,0 +1,160 @@
+"""Append-only intent/result ledger; unknown effects never become retry permission."""
+import os
+import re
+import stat
+from pathlib import Path
+from rotation_contract import need, encoded, parse_json, Stop
+from post_expiry_contract import sha, PURPOSE, FAILURE, CONSUMERS, QUARANTINE
+
+def protected_file(path, owner):
+    fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC)
+    try:
+        s=os.fstat(fd)
+        need(stat.S_ISREG(s.st_mode) and s.st_uid==owner and s.st_nlink==1 and
+             stat.S_IMODE(s.st_mode)==0o600 and s.st_size<=1048576, 'LEDGER_FILE_PROTECTION')
+        with os.fdopen(os.dup(fd),'rb') as f: raw=f.read(1048577)
+        after=os.fstat(fd)
+        need(len(raw)==s.st_size and all(getattr(s,k)==getattr(after,k) for k in
+             ('st_dev','st_ino','st_size','st_mtime_ns','st_ctime_ns')), 'LEDGER_FILE_CHANGED')
+        return raw
+    finally:os.close(fd)
+
+class Files:
+    def __init__(self,path,create=False):
+        self.path=Path(path);self.owner=os.getuid()
+        for p in self.path.parents:
+            s=p.lstat()
+            need(stat.S_ISDIR(s.st_mode) and s.st_uid in (0,self.owner) and not s.st_mode&0o022,
+                 'LEDGER_PARENT_PROTECTION')
+        if create:
+            self.path.mkdir(mode=0o700,exist_ok=False)
+            self.sync(self.path.parent)
+        s=self.path.lstat()
+        need(stat.S_ISDIR(s.st_mode) and s.st_uid==self.owner and stat.S_IMODE(s.st_mode)==0o700,
+             'LEDGER_DIRECTORY')
+    @staticmethod
+    def sync(path):
+        fd=os.open(path,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        try:os.fsync(fd)
+        finally:os.close(fd)
+    def file(self,key):
+        need(re.fullmatch('[a-z0-9-]+',key), 'LEDGER_KEY')
+        return self.path/(key+'.json')
+    def put(self,key,value):
+        p=self.file(key)
+        fd=os.open(p,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW|os.O_CLOEXEC,0o600)
+        try:
+            os.fchmod(fd,0o600)
+            with os.fdopen(os.dup(fd),'wb') as f:f.write(encoded(value));f.flush()
+            os.fsync(fd)
+        finally:os.close(fd)
+        self.sync(self.path)
+    def get(self,key):return parse_json(protected_file(self.file(key),self.owner))
+    def has(self,key):return self.file(key).exists()
+
+class Ledger:
+    def __init__(self,files,binding,ops,preservation,create=False):
+        self.fs=files;self.binding=binding;self.ops=ops;self.preservation=preservation
+        if create:files.put('binding',binding)
+        need(files.get('binding')==binding,'LEDGER_BINDING_CHANGED')
+    def stop(self,code,operation,partial=None,cleanup_errors=None,evidence=None):
+        # If even STOP fsync fails, the already durable ATTEMPTED remains unresolved.
+        if not self.fs.has('stopped'):
+            begun=any(self.fs.has('attempt-'+f'{i:03d}-'+op['key'])
+                      for i,op in enumerate(self.ops) if op['key'] in CONSUMERS)
+            self.fs.put('stopped',{'status':'STOPPED','purpose':PURPOSE,'failure_strategy':FAILURE,
+                'first_error':code,'operation':operation,'partial':partial or {},
+                'cleanup_errors':cleanup_errors or [],
+                'credential_state':'PRESERVED_NEW_PARTIAL_CONSUMERS' if begun else QUARANTINE,
+                'preservation':self.preservation,'binding':self.binding,'remote_evidence':evidence or {}})
+    def history(self):
+        need(self.fs.get('binding')==self.binding,'LEDGER_BINDING_CHANGED')
+        need(not self.fs.has('stopped'),'RECOVERY_TERMINAL_STOP')
+        records=[];previous=sha(encoded(self.binding))
+        for index,op in enumerate(self.ops):
+            key=f'{index:03d}-'+op['key']
+            if not self.fs.has('attempt-'+key):
+                need(not self.fs.has('result-'+key),'LEDGER_ORPHAN_RESULT')
+                # No gaps, including stale results from another invocation.
+                for j in range(index+1,len(self.ops)):
+                    k=f'{j:03d}-'+self.ops[j]['key']
+                    need(not self.fs.has('attempt-'+k) and not self.fs.has('result-'+k),'LEDGER_GAP')
+                return records,previous
+            attempt=self.fs.get('attempt-'+key)
+            need(attempt=={'status':'ATTEMPTED','index':index,'operation':op,
+                'binding':self.binding,'predecessor_sha256':previous},'LEDGER_ATTEMPT_CHANGED')
+            need(self.fs.has('result-'+key),'RECOVERY_ATTEMPT_UNKNOWN')
+            result=self.fs.get('result-'+key)
+            need(result.get('status')=='CONFIRMED' and result.get('attempt_sha256')==sha(encoded(attempt)) and
+                 result.get('index')==index and result.get('operation')==op,'LEDGER_RESULT_CHANGED')
+            previous=sha(encoded(result));records.append(result)
+        return records,previous
+    def phase_claim(self,phase):
+        self.history()
+        self.fs.put('phase-'+phase,{'binding':self.binding})
+    def dispatch(self,op,call,validate):
+        records,previous=self.history();index=len(records)
+        need(index<len(self.ops) and op==self.ops[index],'RECOVERY_OPERATION_ORDER')
+        key=f'{index:03d}-'+op['key']
+        attempt={'status':'ATTEMPTED','index':index,'operation':op,
+                 'binding':self.binding,'predecessor_sha256':previous}
+        # Failure here dispatches nothing; no in-memory retry/rewrite.
+        self.fs.put('attempt-'+key,attempt)
+        try:
+            value=call(index,previous)
+            public=validate(value)
+            result={'status':'CONFIRMED','index':index,'operation':op,
+                    'attempt_sha256':sha(encoded(attempt)),'receipt':public}
+            self.fs.put('result-'+key,result)
+            return value
+        except BaseException as exc:
+            code=exc.code if isinstance(exc,Stop) else 'RECOVERY_UNCERTAIN_OR_EVIDENCE_FAILURE'
+            partial=value.get('partial',{}) if 'value' in locals() and isinstance(value,dict) else {}
+            cleanup=value.get('cleanup_errors',[]) if 'value' in locals() and isinstance(value,dict) else []
+            cleanup=list(dict.fromkeys(list(cleanup)+list(getattr(exc,'cleanup_errors',[]))))
+            evidence={k:value[k] for k in ('preservation_location','preserved_locations','observed_at','remote_artifact','evidence_errors')
+                      if k in value} if 'value' in locals() and isinstance(value,dict) else {}
+            # New command fields cross the relay only after the receipt validator.
+            # Invalid remote fields must not be copied while handling validation failure.
+            if hasattr(exc,'command_evidence'):
+                evidence['command_evidence']=exc.command_evidence
+                evidence['command_audit']=getattr(exc,'command_audit',None)
+            elif 'public' in locals() and isinstance(public,dict) and isinstance(public.get('receipt'),dict):
+                proof=public['receipt']
+                for name in ('command_evidence','command_audit'):
+                    if name in proof:evidence[name]=proof[name]
+            errors=list(dict.fromkeys(list(evidence.get('evidence_errors',[]))+list(getattr(exc,'evidence_errors',[]))))
+            if errors:evidence['evidence_errors']=errors
+            # Only an explicitly public transport attaches this sanitized summary.
+            # It does not validate a receipt or change ATTEMPTED into CONFIRMED.
+            if hasattr(exc,'transport_diagnostic'):
+                evidence['transport_diagnostic']=exc.transport_diagnostic
+            exc.ledger_stop_attempted=True
+            exc.cleanup_errors=cleanup
+            exc.evidence_errors=list(evidence.get('evidence_errors',[]))
+            exc.remote_evidence=evidence
+            try:self.stop(code,op['key'],partial,cleanup,evidence)
+            except BaseException:
+                errors=list(evidence.get('evidence_errors',[]))+['LEDGER_STOP_EVIDENCE_WRITE_FAILED']
+                # The caller receives the original error and separate secondary
+                # codes even when no STOP can be persisted. Intent stays unresolved.
+                exc.cleanup_errors=cleanup
+                exc.evidence_errors=list(dict.fromkeys(errors))
+                exc.remote_evidence={**evidence,'evidence_errors':exc.evidence_errors}
+            raise
+    def consumers(self):
+        result={key:{'state':'NOT_ATTEMPTED'} for key in CONSUMERS}
+        for index,op in enumerate(self.ops):
+            if op['key'] not in result:continue
+            key=f'{index:03d}-'+op['key']
+            if self.fs.has('attempt-'+key):
+                result[op['key']]={'state':'ATTEMPTED_UNKNOWN'}
+                if self.fs.has('result-'+key):
+                    row=self.fs.get('result-'+key)
+                    result[op['key']]={'state':'VERIFIED_NEW','receipt':row['receipt']}
+        if self.fs.has('stopped'):
+            partial=self.fs.get('stopped').get('partial',{})
+            for key,row in partial.items():
+                if key in result:result[key]=row
+        return result
+

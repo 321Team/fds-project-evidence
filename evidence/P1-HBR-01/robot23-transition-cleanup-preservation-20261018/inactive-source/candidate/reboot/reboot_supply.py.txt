@@ -1,0 +1,36 @@
+"""One-use private pipe transfer; all durable outputs are public receipts only."""
+import time
+import reboot_contract as c
+from reboot_host import RebootHost,read_source
+from rotation_contract import need,credential,encoded,timestamp,NODES
+from linux_host import regular_bytes
+def packet(r,target,secret):
+    need(target in NODES,'TRANSFER_TARGET')
+    return {'version':1,'binding':c.binding(r),'source':c.source_binding(r),'target':target,'target_boot_id':r['execution']['boot_ids'][target],'credential':credential(encoded(secret))}
+def accept_packet(r,host,p):
+    need(host in NODES and isinstance(p,dict) and set(p)=={'version','binding','source','target','target_boot_id','credential'} and p['version']==1 and p['binding']==c.binding(r) and p['source']==c.source_binding(r) and p['target']==host and p['target_boot_id']==r['execution']['boot_ids'][host],'TRANSFER_BINDING')
+    return credential(encoded(p['credential']))
+def all_stages(r,rows):
+    need(isinstance(rows,dict) and set(rows)==set(c.HOSTS),'ALL_STAGES_REQUIRED')
+    for op in c.operations()[:4]:c.supply_proof(r,op,rows[op['host']])
+def operation(r,op,payload):
+    c.validate(r,time.time());need(time.time()<timestamp(r['supply_until']),'SUPPLY_DEADLINE')
+    transfer=None;secret=None
+    try:
+        if op['action']=='stage':
+            need(payload=={},'STAGE_PAYLOAD')
+            h=RebootHost(r,create=True)
+            ca,_=regular_bytes(c.ROOT+'/'+c.ORIGIN+'/ca.pem');h.stage(ca)
+        elif op['action']=='supply-local':
+            need(set(payload)=={'stages','before_observation'},'LOCAL_SUPPLY_PAYLOAD');all_stages(r,payload['stages'])
+            c.observation(r,payload['before_observation'],'before',time.time())
+            h=RebootHost(r);need(h.name==c.CP,'SOURCE_HOST_REQUIRED');secret=read_source(r);h.create_pair(secret)
+        elif op['action']=='export':
+            need(set(payload)=={'stages','source_receipt'},'EXPORT_PAYLOAD');all_stages(r,payload['stages'])
+            local=next(x for x in c.operations() if x['action']=='supply-local');c.supply_proof(r,local,payload['source_receipt'])
+            h=RebootHost(r);need(h.name==c.CP,'SOURCE_HOST_REQUIRED');secret=h.credential();transfer=packet(r,op['key'].removeprefix('export-'),secret)
+        elif op['action']=='receive':
+            h=RebootHost(r);secret=accept_packet(r,h.name,payload);h.create_pair(secret)
+        else:need(False,'SUPPLY_ACTION')
+        return c.supply_result(r,op),transfer
+    finally:secret=None

@@ -1,0 +1,251 @@
+"""Separate post-expiry contract. No API, filesystem or credential effects on import."""
+import copy
+import datetime as dt
+import hashlib
+import math
+import re
+from rotation_contract import (need, nonce, timestamp, encoded, NODES, NEW_USER, credential)
+
+PURPOSE = 'POST_EXPIRY_REPLACEMENT_V1'
+FAILURE = 'STOP_PRESERVE_NO_OLD_ROLLBACK'
+CP = 'k8s-control01'
+HOSTS = (CP, *NODES)
+LIST = '/api/v2.0/robots?page=1&page_size=100'
+PERMISSIONS = [{'kind':'project','namespace':'fds','access':[
+    {'resource':'repository','action':'pull','effect':'allow'}]}]
+PLAN_EXTRA = {'purpose','failure_strategy','prep_sha256','issue_receipt_sha256'}
+CONSUMERS = ('secret-fds-app','secret-monitoring-api','secret-monitoring-node','worker01-file')
+QUARANTINE = 'QUARANTINED_NOT_CONSUMABLE'
+
+def sha(raw): return hashlib.sha256(raw).hexdigest()
+def digest(value):
+    need(isinstance(value,str) and re.fullmatch('[0-9a-f]{64}',value), 'RECOVERY_HASH')
+    return value
+def mode(value): return isinstance(value,dict) and value.get('purpose') == PURPOSE
+def ref(value):
+    need(isinstance(value,str) and 8<=len(value)<=300 and
+         not any(s in value.upper() for s in ('TODO','PENDING','PLACEHOLDER')), 'RECOVERY_REFERENCE')
+    return value
+
+def canonical_metadata(obj, rid):
+    """No seven-field truncation or permission meaning inference. Keep duplicates."""
+    need(isinstance(obj,dict) and type(obj.get('id')) is int and obj['id']==rid, 'OBSERVATION_ID')
+    need(obj.get('name') == ({2:'robot$worker',3:'robot$push'}.get(rid,NEW_USER)) and
+         obj.get('level')=='system', 'OBSERVATION_IDENTITY')
+    def walk(x, key=None):
+        if isinstance(x,dict): return {k:walk(v,k) for k,v in sorted(x.items())}
+        if isinstance(x,list):
+            values=[walk(v) for v in x]
+            return sorted(values,key=encoded) if key in ('permissions','access') else values
+        need(x is None or type(x) in (str,int,bool,float), 'OBSERVATION_TYPE')
+        need(not isinstance(x,float) or math.isfinite(x), 'OBSERVATION_NONFINITE')
+        return x
+    return walk({k:v for k,v in obj.items() if k!='secret'})
+
+def list_map(rows, ids):
+    need(isinstance(rows,list) and all(isinstance(x,dict) and type(x.get('id')) is int for x in rows),
+         'OBSERVATION_LIST')
+    need(len(rows)==len(ids) and sorted(x['id'] for x in rows)==sorted(ids), 'OBSERVATION_LIST_CHANGED')
+    return {x['id']:x for x in rows}
+
+def snapshot(rows, details):
+    listed=list_map(rows,[2,3])
+    need(set(details)=={2,3}, 'OBSERVATION_DETAILS')
+    return {str(rid):{'list':canonical_metadata(listed[rid],rid),
+                     'detail':canonical_metadata(details[rid],rid)} for rid in (2,3)}
+
+def compare_old(baseline, rows, details, new_id=None):
+    listed=list_map(rows,[2,3] if new_id is None else [2,3,new_id])
+    need(set(baseline)=={'2','3'} and set(details)=={2,3}, 'OLD_BASELINE_SCOPE')
+    for rid in (2,3):
+        need(set(baseline[str(rid)])=={'list','detail'}, 'OLD_BASELINE_ENDPOINTS')
+        need(canonical_metadata(listed[rid],rid)==baseline[str(rid)]['list'] and
+             canonical_metadata(details[rid],rid)==baseline[str(rid)]['detail'], 'OLD_METADATA_DRIFT')
+    return listed
+
+def validate_clock(c):
+    need(isinstance(c,dict) and set(c)=={'offset_lower_seconds','offset_upper_seconds','timezone',
+         'expiry_rule','observed_at','valid_until','source_sha256','reference'}, 'CLOCK_EVIDENCE_FIELDS')
+    lo,hi=c['offset_lower_seconds'],c['offset_upper_seconds']
+    need(type(lo) in (int,float) and type(hi) in (int,float) and math.isfinite(lo) and
+         math.isfinite(hi) and lo<=hi, 'CLOCK_EVIDENCE_RANGE')
+    # Reject an uncertainty interval wide enough to hide a one-day duration error.
+    need(hi-lo<86400, 'CLOCK_EVIDENCE_TOO_WIDE')
+    need(c['timezone']=='UTC' and c['expiry_rule'] in ('UTC_ELAPSED_SECONDS','UTC_DAY_FLOOR'),
+         'CLOCK_CALENDAR_UNSUPPORTED')
+    need(timestamp(c['observed_at'])<timestamp(c['valid_until']), 'CLOCK_EVIDENCE_WINDOW')
+    digest(c['source_sha256']);ref(c['reference'])
+
+def prep_request(r,now,active=True):
+    fields={'version','purpose','failure_strategy','state','invocation','not_before','not_after',
+        'host_boot_ids','admin_username','operator','authorization_reference','api_seconds',
+        'observation','clock_evidence','preservation'}
+    need(isinstance(r,dict) and set(r)==fields and r['version']==3 and mode(r) and
+         r['failure_strategy']==FAILURE and r['state']=='BOUND', 'RECOVERY_PREP_FIELDS')
+    nonce(r['invocation'])
+    b,e=timestamp(r['not_before']),timestamp(r['not_after'])
+    need(0<e-b<=1800 and (not active or b<=now<e), 'RECOVERY_PREP_WINDOW')
+    need(set(r['host_boot_ids'])==set(HOSTS) and all(
+         isinstance(s,str) and re.fullmatch('[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}',s)
+         for s in r['host_boot_ids'].values()), 'RECOVERY_BOOT_SCOPE')
+    need(isinstance(r['admin_username'],str) and re.fullmatch('[A-Za-z0-9_.@-]{1,80}',r['admin_username']),
+         'RECOVERY_ADMIN')
+    ref(r['operator']);ref(r['authorization_reference'])
+    need(type(r['api_seconds']) is int and 0<r['api_seconds']<=30, 'RECOVERY_API_CAP')
+    validate_clock(r['clock_evidence'])
+    need(timestamp(r['clock_evidence']['observed_at'])<=b and
+         e<=timestamp(r['clock_evidence']['valid_until']), 'CLOCK_PREP_BINDING')
+    o=r['observation']
+    need(isinstance(o,dict) and set(o)=={'status','purpose','invocation','host','boot_id',
+         'observed_at','old','body_sha256','request_sha256'} and o['status']=='OBSERVE_ONLY' and mode(o)
+         and o['invocation']==r['invocation'] and o['host']==CP and
+         o['boot_id']==r['host_boot_ids'][CP] and timestamp(o['observed_at'])<=b, 'BASELINE_OBSERVATION')
+    digest(o['request_sha256'])
+    need(set(o['body_sha256'])=={'list','2','3'}, 'BASELINE_BODIES')
+    for x in o['body_sha256'].values(): digest(x)
+    need(set(o['old'])=={'2','3'}, 'BASELINE_IDS')
+    for rid in (2,3):
+        need(set(o['old'][str(rid)])=={'list','detail'}, 'BASELINE_ENDPOINTS')
+        for obj in o['old'][str(rid)].values(): canonical_metadata(obj,rid)
+    p=r['preservation']
+    need(isinstance(p,dict) and set(p)=={'owner','review_by','next_disposition_reference'}, 'PRESERVATION_FIELDS')
+    ref(p['owner']);ref(p['next_disposition_reference'])
+    need(timestamp(p['review_by'])>e, 'PRESERVATION_DEADLINE')
+    return r
+
+def validate_plan(p,now,legacy):
+    need(mode(p) and p.get('version')==2 and p.get('failure_strategy')==FAILURE and
+         PLAN_EXTRA<=set(p), 'RECOVERY_PLAN_FIELDS')
+    for k in ('prep_sha256','issue_receipt_sha256'):digest(p[k])
+    old={k:v for k,v in p.items() if k not in PLAN_EXTRA};old['version']=1
+    legacy(old,now)  # Keeps all tool/UID/window/new-scope/expiry checks.
+    return p
+
+def rotation_request(r,now):
+    from rotation_contract import validate_plan as vp
+    fields={'version','purpose','failure_strategy','state','prep','plan','issue_receipt',
+        'input_review_reference','relay_boot_id','relay_uid','stage_seconds','transfer_seconds',
+        'retire_seconds','supply_until'}
+    need(isinstance(r,dict) and set(r)==fields and r['version']==3 and mode(r) and
+         r['failure_strategy']==FAILURE and r['state']=='BOUND', 'RECOVERY_ROTATION_FIELDS')
+    prep_request(r['prep'],now,False);p=vp(r['plan'],now);ref(r['input_review_reference'])
+    need(mode(p) and p['invocation']==r['prep']['invocation'] and
+         p['host_boot_ids']==r['prep']['host_boot_ids'] and p['prep_sha256']==sha(encoded(r['prep'])),
+         'RECOVERY_PLAN_BINDING')
+    i=r['issue_receipt']
+    need(set(i)=={'status','purpose','invocation','prep_sha256','robot','verified_at','old',
+         'new_detail','new_list','post_interval','s1_inventory'} and
+         i['status']=='ISSUED_UNQUALIFIED' and mode(i) and i['invocation']==p['invocation'] and
+         i['prep_sha256']==p['prep_sha256'] and i['robot']==p['new_robot'] and
+         p['issue_receipt_sha256']==sha(encoded(i)), 'ISSUE_RECEIPT_BINDING')
+    need(i['old']==r['prep']['observation']['old'],'ISSUE_OLD_BINDING')
+    need(len(i['post_interval'])==2 and timestamp(r['prep']['not_before'])<=
+         timestamp(i['post_interval'][0])<=timestamp(i['post_interval'][1])<=
+         timestamp(i['verified_at'])<=timestamp(r['prep']['not_after']),'ISSUE_POST_INTERVAL')
+    for projection in (i['new_detail'],i['new_list']):
+        m=canonical_metadata(projection,p['new_robot']['id'])
+        need(m.get('permissions')==PERMISSIONS and m.get('duration')==30 and m.get('disable') is False
+             and m.get('description')==create_body(p['invocation'])['description'] and
+             m.get('expires_at')==int(timestamp(p['new_robot']['expires_at'])),'ISSUE_NEW_BINDING')
+    need(timestamp(i['verified_at'])<=timestamp(p['not_before']) and
+         timestamp(r['prep']['not_before'])<=timestamp(p['not_before'])<=timestamp(r['prep']['not_after']),
+         'ISSUE_PHASE_ORDER')
+    need(type(r['relay_uid']) is int and r['relay_uid']>0 and isinstance(r['relay_boot_id'],str) and
+         re.fullmatch('[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}',r['relay_boot_id']), 'RECOVERY_RELAY')
+    for k in ('stage_seconds','transfer_seconds','retire_seconds'):
+        need(type(r[k]) is int and 0<r[k]<=60, 'RECOVERY_RELAY_CAP')
+    need(timestamp(p['not_before'])<timestamp(r['supply_until'])<=min(
+         timestamp(p['mutation_until']),timestamp(p['not_before'])+600), 'RECOVERY_SUPPLY_WINDOW')
+    # Existing independently bound tool pin contract, never sourced from current binaries.
+    from orch_contract import PINS_CANONICAL_SHA
+    need(sha(encoded(p['tool_pins']))==PINS_CANONICAL_SHA, 'RECOVERY_TOOL_PINS')
+    need(timestamp(r['prep']['preservation']['review_by'])>timestamp(p['not_after']),
+         'PRESERVATION_END')
+    return r
+
+def create_body(inv):
+    return {'name':NEW_USER.removeprefix('robot$'),'description':'Phase1 worker rotation '+nonce(inv),
+            'level':'system','disable':False,'duration':30,'permissions':copy.deepcopy(PERMISSIONS)}
+
+def verify_new(reply,detail,listed,prep,start,end,cleanup_end):
+    need(set(reply)=={'id','name','secret','creation_time','expires_at'}, 'NEW_POST_FIELDS')
+    need(type(reply['id']) is int and reply['id']>3 and reply['name']==NEW_USER, 'NEW_POST_ID')
+    credential(encoded({'username':reply['name'],'password':reply['secret']}))
+    c=prep['clock_evidence'];validate_clock(c)
+    need(timestamp(c['observed_at'])<=start<=end<=timestamp(c['valid_until']), 'NEW_CLOCK_STALE')
+    lo,hi=start+c['offset_lower_seconds'],end+c['offset_upper_seconds']
+    creation=timestamp(reply['creation_time'])
+    need(lo<=creation<=hi, 'NEW_CREATION_INTERVAL')
+    if c['expiry_rule']=='UTC_DAY_FLOOR':
+        low_exp=math.floor(lo/86400)*86400+30*86400
+        high_exp=math.floor(hi/86400)*86400+30*86400
+    else:
+        low_exp=math.floor(lo)+30*86400;high_exp=math.floor(hi)+30*86400
+    expiry=reply['expires_at']
+    need(type(expiry) is int and low_exp<=expiry<=high_exp and expiry>cleanup_end,
+         'NEW_DURATION_OR_EXPIRY')
+    body=create_body(prep['invocation'])
+    projections=[]
+    for obj in (detail,listed):
+        m=canonical_metadata(obj,reply['id'])
+        need(m.get('permissions')==PERMISSIONS, 'NEW_EXPLICIT_SCOPE_REQUIRED')
+        need(m.get('duration')==30 and type(m.get('duration')) is int and m.get('disable') is False and
+             m.get('expires_at')==expiry and m.get('description')==body['description'] and
+             m.get('creation_time')==reply['creation_time'], 'NEW_METADATA_MISMATCH')
+        projections.append(m)
+    robot={'id':reply['id'],'name':NEW_USER,'level':'system','project':'fds','resource':'repository',
+           'action':'pull','duration_days':30,'disabled':False,
+           'expires_at':dt.datetime.fromtimestamp(expiry,dt.timezone.utc).isoformat()}
+    return robot,projections
+
+def sequence():
+    ops=[]
+    def add(host,action,key,cap): ops.append({'host':host,'action':action,'key':key,'cap':cap})
+    for h in HOSTS:add(h,'stage','stage-'+h,'stage_seconds')
+    for h in HOSTS:add(h,'stage-status','stage-status-'+h,'read')
+    add(CP,'supply-local','supply-local','transfer_seconds')
+    for h in NODES:
+        add(CP,'export','export-'+h,'transfer_seconds');add(h,'receive','receive-'+h,'transfer_seconds')
+    for h in NODES:
+        add(h,'node','node-'+h,'node');add(CP,'import','import-node-'+h,'read')
+    add(CP,'secret','secret-fds-app','secret')
+    for h in NODES:add(CP,'pod','pod-fds-app-'+h,'pod')
+    add(CP,'secret','secret-monitoring-api','secret')
+    add(CP,'pod','pod-monitoring-api-k8s-worker03','pod')
+    add(CP,'secret','secret-monitoring-node','secret')
+    add(CP,'pod','pod-monitoring-node-k8s-worker01','pod')
+    add(NODES[0],'import','import-pod-monitoring-node-k8s-worker01','read')
+    add(NODES[0],'worker-file','worker01-file','node')
+    return ops
+
+def finish_sequence():
+    return [{'host':h,'action':'retire','key':'retire-'+h,'cap':'retire_seconds'} for h in HOSTS]+[
+        {'host':CP,'action':'dispose','key':'s1-dispose','cap':'cleanup'}]
+
+def operation_cap(r,op):
+    if op['cap']=='secret':return r['plan']['budgets']['write']+2*r['plan']['budgets']['read']
+    return r[op['cap']] if op['cap'] in r else r['plan']['budgets'][op['cap']]
+
+def closeout(r,c,now):
+    rotation_request(r,now)
+    need(isinstance(c,dict) and set(c)=={'version','purpose','state','request_sha256',
+         'completion_sha256','decision_reference','observed_at','credential_users_stopped',
+         'targets','final_observation'} and c['version']==3 and mode(c) and c['state']=='BOUND' and
+         c['request_sha256']==sha(encoded(r)) and c['credential_users_stopped'] is True and
+         c['targets']==list(HOSTS), 'RECOVERY_CLOSEOUT')
+    digest(c['completion_sha256']);ref(c['decision_reference'])
+    need(timestamp(r['plan']['not_before'])<=timestamp(c['observed_at'])<=now and
+         now-timestamp(c['observed_at'])<=300, 'RECOVERY_CLOSEOUT_AGE')
+    f=c['final_observation']
+    need(f.get('status')=='FINAL_OBSERVED' and mode(f) and
+         f.get('request_sha256')==sha(encoded(r)) and
+         f.get('completion_sha256')==c['completion_sha256'] and
+         f.get('host')==CP and f.get('boot_id')==r['plan']['host_boot_ids'][CP] and
+         timestamp(c['observed_at'])<=timestamp(f['observed_at'])<=now, 'FINAL_OBSERVATION_BINDING')
+    need(f.get('old')==r['issue_receipt']['old'] and
+         f.get('new_detail')==r['issue_receipt']['new_detail'] and
+         f.get('new_list')==r['issue_receipt']['new_list'], 'FINAL_METADATA_DRIFT')
+    need(set(f.get('body_sha256',{}))=={'list','2','3','new'}, 'FINAL_BODY_SCOPE')
+    for x in f['body_sha256'].values():digest(x)
+    return c
+

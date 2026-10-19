@@ -1,0 +1,311 @@
+{
+  "at_kst": "2026-10-18T20:46:29.253185+09:00",
+  "status": "ACTUAL_EXECUTE31_CHAIN_VERIFIED_FINISH_STOP_PRESERVED",
+  "verified_results": 31,
+  "ledger_sha256": "408c00c8daeefa96b1ccf361f3e71e2ecfb67b85cc8000ac90a0fbead4e2a135",
+  "worker_nodes_pass": [
+    "k8s-worker01",
+    "k8s-worker02",
+    "k8s-worker03"
+  ],
+  "pod_receipts_pass": [
+    "pod-fds-app-k8s-worker01",
+    "pod-fds-app-k8s-worker02",
+    "pod-fds-app-k8s-worker03",
+    "pod-monitoring-api-k8s-worker03",
+    "pod-monitoring-node-k8s-worker01"
+  ],
+  "secret_receipts_pass": [
+    "secret-fds-app",
+    "secret-monitoring-api",
+    "secret-monitoring-node"
+  ],
+  "worker01_file_pass": true,
+  "finish_first_attempt_recorded": true,
+  "finish_retire_spawned": false,
+  "no_spawn_basis": "exact source orch_relay.exchange input bound check precedes Popen; actual envelope37122, limit32768, captured positive59.998s budget",
+  "temporary_pairs_retired": 0,
+  "source_disposition_complete": false,
+  "final_acceptance": false,
+  "rows": [
+    {
+      "index": 0,
+      "key": "stage-k8s-control01",
+      "host": "k8s-control01",
+      "action": "stage",
+      "observed_at": "2026-10-18T11:38:54.823050+00:00",
+      "receipt_status": "NEW_TOOLS_STAGED",
+      "raw_sha256": "efeb7599cf270553d460a3988b9b8f3c32beeb7dea708a0f4a034d222fdb3b3d"
+    },
+    {
+      "index": 1,
+      "key": "stage-k8s-worker01",
+      "host": "k8s-worker01",
+      "action": "stage",
+      "observed_at": "2026-10-18T11:38:55.617677+00:00",
+      "receipt_status": "NEW_TOOLS_STAGED",
+      "raw_sha256": "e60e978eb28a1b9cd8894dffbe2a5e759d49dd793ac5bb1bbae2ecdfb225fef5"
+    },
+    {
+      "index": 2,
+      "key": "stage-k8s-worker02",
+      "host": "k8s-worker02",
+      "action": "stage",
+      "observed_at": "2026-10-18T11:38:56.265114+00:00",
+      "receipt_status": "NEW_TOOLS_STAGED",
+      "raw_sha256": "0e519857cf922507a38d3ece3b56228d2b66e3a207b130007aee1011dc4ad70b"
+    },
+    {
+      "index": 3,
+      "key": "stage-k8s-worker03",
+      "host": "k8s-worker03",
+      "action": "stage",
+      "observed_at": "2026-10-18T11:38:57.011566+00:00",
+      "receipt_status": "NEW_TOOLS_STAGED",
+      "raw_sha256": "2e77210f8bb7b11a976bd3e5e7fbff486cd525821198ff1d07a7c72ff50c3b31"
+    },
+    {
+      "index": 4,
+      "key": "supply-local",
+      "host": "k8s-control01",
+      "action": "supply-local",
+      "observed_at": "2026-10-18T11:38:57.327117+00:00",
+      "receipt_status": "SOURCE_PAIR_VERIFIED_CURRENT_PAIR_CREATED",
+      "raw_sha256": "4ace5e2c3285741cbd15a2622012aea0acabd8e7918ac9d4ad900b9f55338071"
+    },
+    {
+      "index": 5,
+      "key": "export-k8s-worker01",
+      "host": "k8s-control01",
+      "action": "export",
+      "observed_at": "2026-10-18T11:38:57.619508+00:00",
+      "receipt_status": "PRIVATE_TRANSFER_SENT_ONCE",
+      "raw_sha256": "8b84c88c9264802bae801f98b96196b7a0fb1ebf6d6c64bd1c72621212889ccc"
+    },
+    {
+      "index": 6,
+      "key": "receive-k8s-worker01",
+      "host": "k8s-worker01",
+      "action": "receive",
+      "observed_at": "2026-10-18T11:38:57.939676+00:00",
+      "receipt_status": "CURRENT_PAIR_CREATED",
+      "raw_sha256": "dab5731373bbbfdd96c60ec49d37cb3c7c6e45812137ba47e576867c23c123bc"
+    },
+    {
+      "index": 7,
+      "key": "export-k8s-worker02",
+      "host": "k8s-control01",
+      "action": "export",
+      "observed_at": "2026-10-18T11:38:58.249763+00:00",
+      "receipt_status": "PRIVATE_TRANSFER_SENT_ONCE",
+      "raw_sha256": "be584f45aae4d34d255c4e2137ef630f41cddb3e33708080d24dafef3c9d645a"
+    },
+    {
+      "index": 8,
+      "key": "receive-k8s-worker02",
+      "host": "k8s-worker02",
+      "action": "receive",
+      "observed_at": "2026-10-18T11:38:58.565070+00:00",
+      "receipt_status": "CURRENT_PAIR_CREATED",
+      "raw_sha256": "f3d66f91dfcf9c823e1ca8440c92c6128d72e2a82f196acbbf9631dd8c476a15"
+    },
+    {
+      "index": 9,
+      "key": "export-k8s-worker03",
+      "host": "k8s-control01",
+      "action": "export",
+      "observed_at": "2026-10-18T11:38:58.873261+00:00",
+      "receipt_status": "PRIVATE_TRANSFER_SENT_ONCE",
+      "raw_sha256": "36bd5d1396513f834abbd4c34e3c389b5936d3bdae63e4584e75238bb56e66d8"
+    },
+    {
+      "index": 10,
+      "key": "receive-k8s-worker03",
+      "host": "k8s-worker03",
+      "action": "receive",
+      "observed_at": "2026-10-18T11:38:59.199008+00:00",
+      "receipt_status": "CURRENT_PAIR_CREATED",
+      "raw_sha256": "f63e4478d3dcbf5eae66b900ca696bc5f1159bec82653c21207343a8aaa929a7"
+    },
+    {
+      "index": 11,
+      "key": "revalidate-k8s-control01",
+      "host": "k8s-control01",
+      "action": "revalidate",
+      "observed_at": "2026-10-18T11:39:02.172159+00:00",
+      "receipt_status": "POST_REBOOT_CURRENT_CHECKS_COMPLETE",
+      "raw_sha256": "0eec2c08800dd1daa0ec25404e22ca65dbed90b7646db65206e6cb7725b712c7"
+    },
+    {
+      "index": 12,
+      "key": "revalidate-k8s-worker01",
+      "host": "k8s-worker01",
+      "action": "revalidate",
+      "observed_at": "2026-10-18T11:39:02.729617+00:00",
+      "receipt_status": "POST_REBOOT_CURRENT_CHECKS_COMPLETE",
+      "raw_sha256": "711d9c2881bacb1c8e169aad07ee3e68e02269d55f1bccdf368796d2f0ce6a08"
+    },
+    {
+      "index": 13,
+      "key": "revalidate-k8s-worker02",
+      "host": "k8s-worker02",
+      "action": "revalidate",
+      "observed_at": "2026-10-18T11:39:03.237511+00:00",
+      "receipt_status": "POST_REBOOT_CURRENT_CHECKS_COMPLETE",
+      "raw_sha256": "ac3dfc28c8ee0b0d0e41c97cbde60f08bc95dbff96d194da25d65f62464899bf"
+    },
+    {
+      "index": 14,
+      "key": "revalidate-k8s-worker03",
+      "host": "k8s-worker03",
+      "action": "revalidate",
+      "observed_at": "2026-10-18T11:39:03.771464+00:00",
+      "receipt_status": "POST_REBOOT_CURRENT_CHECKS_COMPLETE",
+      "raw_sha256": "bc5114ea0324171dcfe563fa072d682e4425f8a7b0f49059595c0ca3dcf918d2"
+    },
+    {
+      "index": 15,
+      "key": "node-k8s-worker01",
+      "host": "k8s-worker01",
+      "action": "node",
+      "observed_at": "2026-10-18T11:39:04.825817+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "6e83f8312fc6f111d6858c5bff0733e6e4bdb923ee5ab5bde304f62aa516825e"
+    },
+    {
+      "index": 16,
+      "key": "import-node-k8s-worker01",
+      "host": "k8s-control01",
+      "action": "import",
+      "observed_at": "2026-10-18T11:39:05.148723+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "829cb9882ea0414d73b1600b355aafe099479a3ec931eaf83f420dc746ad0ed9"
+    },
+    {
+      "index": 17,
+      "key": "node-k8s-worker02",
+      "host": "k8s-worker02",
+      "action": "node",
+      "observed_at": "2026-10-18T11:39:06.133520+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "44cf461f04c9069f9c7469247ac9def14549288948ecf1cb6cd51a5c26eb54d2"
+    },
+    {
+      "index": 18,
+      "key": "import-node-k8s-worker02",
+      "host": "k8s-control01",
+      "action": "import",
+      "observed_at": "2026-10-18T11:39:06.451422+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "3e4a85b844b7c61b56341eb85fa4b7000621fe8f7f89699265a32fe175c75020"
+    },
+    {
+      "index": 19,
+      "key": "node-k8s-worker03",
+      "host": "k8s-worker03",
+      "action": "node",
+      "observed_at": "2026-10-18T11:39:07.449452+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "e495c20ddbc00c7217d0ab62f0f45af5d0fe8d62b84ac23fabcc1dcf5e25699b"
+    },
+    {
+      "index": 20,
+      "key": "import-node-k8s-worker03",
+      "host": "k8s-control01",
+      "action": "import",
+      "observed_at": "2026-10-18T11:39:07.774918+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "3863d5fade0525ff4b992943c6fa2b21a04f8066c2abf12e9a3ceb176e8468d0"
+    },
+    {
+      "index": 21,
+      "key": "secret-fds-app",
+      "host": "k8s-control01",
+      "action": "secret",
+      "observed_at": "2026-10-18T11:39:08.360940+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "4a1104003aeee70db5c1dd70350ec1820d200f5221d9dbd9f10f3d0ad2434e26"
+    },
+    {
+      "index": 22,
+      "key": "pod-fds-app-k8s-worker01",
+      "host": "k8s-control01",
+      "action": "pod",
+      "observed_at": "2026-10-18T11:39:47.278837+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "9c8dfd79c356e6fe423efa07f88b3a0fe8409af9a772a8bd72788e4004f13139"
+    },
+    {
+      "index": 23,
+      "key": "pod-fds-app-k8s-worker02",
+      "host": "k8s-control01",
+      "action": "pod",
+      "observed_at": "2026-10-18T11:40:20.830535+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "825e3371972bb08e3188781689fa834986203f278f9448e4b948ecb0635505a7"
+    },
+    {
+      "index": 24,
+      "key": "pod-fds-app-k8s-worker03",
+      "host": "k8s-control01",
+      "action": "pod",
+      "observed_at": "2026-10-18T11:40:56.457845+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "8bcc1279196bc43048739e17fcb4d3255b7064e378be81778b60c138d83e489d"
+    },
+    {
+      "index": 25,
+      "key": "secret-monitoring-api",
+      "host": "k8s-control01",
+      "action": "secret",
+      "observed_at": "2026-10-18T11:40:57.046356+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "b2b2c0e929015492794f231b84843efef5cc415e0b68ea22914e71f24d6a983c"
+    },
+    {
+      "index": 26,
+      "key": "pod-monitoring-api-k8s-worker03",
+      "host": "k8s-control01",
+      "action": "pod",
+      "observed_at": "2026-10-18T11:41:40.266472+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "4e9f9fc205bcea429b11938190b41750011965cbc5d128b8fc8a9f058ed2a45c"
+    },
+    {
+      "index": 27,
+      "key": "secret-monitoring-node",
+      "host": "k8s-control01",
+      "action": "secret",
+      "observed_at": "2026-10-18T11:41:40.843592+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "aad551532f361851a7773dac002b6a0d11a31781256b82e96f4084651e9f1fba"
+    },
+    {
+      "index": 28,
+      "key": "pod-monitoring-node-k8s-worker01",
+      "host": "k8s-control01",
+      "action": "pod",
+      "observed_at": "2026-10-18T11:42:14.431919+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "07caf96a4ff5419a7109fd9b3bdd597fea18e10c91461d6bc81f04b3dfa8a49d"
+    },
+    {
+      "index": 29,
+      "key": "import-pod-monitoring-node-k8s-worker01",
+      "host": "k8s-worker01",
+      "action": "import",
+      "observed_at": "2026-10-18T11:42:14.918563+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "b28163651852569aac02c780d2620a4e326aaa2e1aa294482468f3b33dd0df9a"
+    },
+    {
+      "index": 30,
+      "key": "worker01-file",
+      "host": "k8s-worker01",
+      "action": "worker-file",
+      "observed_at": "2026-10-18T11:42:15.359888+00:00",
+      "receipt_status": "PASS",
+      "raw_sha256": "408c00c8daeefa96b1ccf361f3e71e2ecfb67b85cc8000ac90a0fbead4e2a135"
+    }
+  ]
+}

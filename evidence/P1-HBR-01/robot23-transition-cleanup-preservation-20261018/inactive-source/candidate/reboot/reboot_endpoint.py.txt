@@ -1,0 +1,243 @@
+"""Fixed host operations and GET-only private console. Import has no effects."""
+import getpass
+import os
+from pathlib import Path
+import sys
+import time
+import warnings
+import reboot_contract as c
+from reboot_host import RebootHost as ContinuationHost, verify_anchors, actor_absence, origin_claim, retain_source
+from rotation_contract import *
+import post_expiry_contract as pc
+from post_expiry_ledger import Files
+from post_expiry_endpoint import checkpoint_writer, partial, ReadAPI, metadata_get
+from orch_endpoint import Journal, identity, deadline, bounded_stdin
+from linux_host import directory, regular_bytes
+from rotation_adapter import Adapter
+from input_supply import import_receipt
+
+def public_error_codes(values):
+    # Failure reporting must never serialize raw exception text or private receipt fields.
+    if not isinstance(values,list):return ['ERROR_DETAIL_INVALID']
+    result=[]
+    for value in values:
+        if isinstance(value,str) and __import__('re').fullmatch('[A-Z0-9_]{1,80}',value):
+            if value not in result:result.append(value)
+        elif 'ERROR_DETAIL_INVALID' not in result:result.append('ERROR_DETAIL_INVALID')
+    return result[:16]
+
+
+def public_command_detail(r,op,source):
+    """Validate before serialization, including the local STOP file and stdout."""
+    from command_audit import public_events,report_valid
+    rows=[];audit=None;errors=[]
+    scope=op['key'].removeprefix('import-')
+    host=scope.removeprefix('node-') if scope.startswith('node-') else op['host']
+    try:
+        rows=source.get('command_evidence',[]);public_events(rows,scope)
+    except BaseException:rows=[];errors.append('COMMAND_DETAIL_INVALID')
+    try:
+        audit=source.get('command_audit')
+        if audit is not None:
+            report_valid(audit,c.plan(r),host,scope)
+            need(audit['policy_sha256']==pc.sha(encoded(r['command_audit'])),'AUDIT_POLICY_BINDING')
+    except BaseException:audit=None;errors.append('COMMAND_AUDIT_DETAIL_INVALID')
+    return {'command_evidence':rows,'command_audit':audit},errors
+
+def validate_completion(r,value):
+    need(isinstance(value,dict) and set(value)=={'status','binding','ledger_sha256','consumers','observed_at','command_audits'} and
+         value['status']=='CONSUMERS_VERIFIED' and value['binding']==c.binding(r) and
+         set(value['consumers'])==set(pc.CONSUMERS) and
+         all(x.get('state')=='VERIFIED_NEW' for x in value['consumers'].values()),'COMPLETION_BINDING')
+    from command_audit import report_valid
+    expected={'node-'+n:n for n in NODES};expected['worker01-file']=NODES[0]
+    need(set(value['command_audits'])==set(expected),'AUDIT_COMPLETION_SCOPE')
+    for key,host in expected.items():
+        report=value['command_audits'][key];report_valid(report,c.plan(r),host,key,True)
+        need(report['policy_sha256']==pc.sha(encoded(r['command_audit'])),'AUDIT_POLICY_BINDING')
+    pc.digest(value['ledger_sha256'])
+    need(timestamp(r['not_before'])<=timestamp(value['observed_at'])<timestamp(r['not_after']), 'COMPLETION_TIME')
+
+def observe_console(r,phase,completion=None):
+    c.validate(r,time.time());need(identity(c.plan(r)['host_boot_ids'])==c.CP,'CONTROL_HOST_REQUIRED')
+    need(sys.stdin.isatty() and os.geteuid()==os.getegid()==0,'PRIVATE_ROOT_TTY_REQUIRED')
+    if phase=='after':validate_completion(r,completion)
+    else:need(phase=='before' and time.time()<timestamp(r['supply_until']),'BEFORE_WINDOW')
+    verify_anchors(r,c.CP);actor_absence(r)
+    origin_claim(r,c.CP,create=phase=='before')
+    p=directory(Path(c.ROOT)/('continuation-observe-'+phase+'-'+r['continuation_id']),exclusive=True)
+    j=Journal(p);j.write('binding',c.binding(r));j.claim('observe',{'phase':phase,'maximum_GETs':4})
+    api=None;password=None
+    try:
+        ca,_=regular_bytes(Path(c.ROOT)/c.ORIGIN/'ca.pem')
+        api_input={'admin_username':r['origin']['prep']['admin_username'],'invocation':c.ORIGIN,
+                   'not_after':r['supply_until'] if phase=='before' else r['not_after'],'api_seconds':30}
+        with deadline(timestamp(api_input['not_after'])-time.time()):
+            with warnings.catch_warnings():
+                warnings.simplefilter('error',getpass.GetPassWarning)
+                password=getpass.getpass('Existing Harbor admin password (not saved): ')
+            api=ReadAPI(api_input,password,ca,j);password=None
+            rows=metadata_get(api,pc.LIST);hashes={'list':api.last_body_sha256};details={}
+            for rid in (2,3,23):
+                details[rid]=metadata_get(api,'/api/v2.0/robots/'+str(rid));hashes[str(rid)]=api.last_body_sha256
+            listed=pc.compare_old(r['origin']['issue_receipt']['old'],rows,{i:details[i] for i in (2,3)},23)
+            value={'status':'OBSERVED','phase':phase,'binding':c.binding(r),'observed_at':c.iso(time.time()),
+                   'old':r['origin']['issue_receipt']['old'],'new_detail':pc.canonical_metadata(details[23],23),
+                   'new_list':pc.canonical_metadata(listed[23],23),'body_sha256':hashes,
+                   'completion_sha256':None if phase=='before' else pc.sha(encoded(completion))}
+            c.observation(r,value,phase,time.time(),completion)
+            j.write('observation',value);return value
+    except BaseException as exc:
+        code=exc.code if isinstance(exc,Stop) else 'OBSERVATION_UNCERTAIN'
+        cleanup=public_error_codes(getattr(exc,'cleanup_errors',[]))
+        evidence=public_error_codes(getattr(exc,'evidence_errors',[]))
+        try:j.write('stopped',{'status':'STOPPED','first_error':code,'binding':c.binding(r),
+                             'cleanup_errors':cleanup,'evidence_errors':evidence})
+        except BaseException:evidence=public_error_codes(evidence+['OBSERVATION_STOP_WRITE_FAILED'])
+        failure=Stop(code);failure.cleanup_errors=cleanup;failure.evidence_errors=evidence
+        raise failure from None
+    finally:
+        password=None
+        if api is not None:api.forget()
+
+def verify_finish(r,payload):
+    need(set(payload)>={'completion','final_observation'},'FINISH_PAYLOAD')
+    validate_completion(r,payload['completion'])
+    c.observation(r,payload['final_observation'],'after',time.time(),payload['completion'])
+
+def execute_operation(r,envelope):
+    c.validate(r,time.time());name=identity(c.plan(r)['host_boot_ids'])
+    ops=c.operations()+c.finish_operations()
+    need(isinstance(envelope,dict) and set(envelope)=={'binding','index','operation','predecessor_sha256','payload'},
+         'CONTINUATION_ENVELOPE')
+    index=envelope['index'];need(type(index) is int and 0<=index<len(ops),'OPERATION_INDEX')
+    op=ops[index];need(envelope['binding']==c.binding(r) and envelope['operation']==op and op['host']==name,
+                       'OPERATION_SCOPE')
+    pc.digest(envelope['predecessor_sha256']);payload=envelope['payload']
+    # Identity and envelope are checked before this bound STOP path. Entry failures
+    # (including new successor gates) must reach the ledger without enlarging the
+    # bootstrap allowlist or exposing arbitrary child output.
+    try:return execute_validated_operation(r,envelope,name,ops,index,op,payload)
+    except BaseException as exc:
+        detail,detail_errors=public_command_detail(r,op,{'command_evidence':getattr(exc,'command_evidence',[]),'command_audit':getattr(exc,'command_audit',None)})
+        return {'status':'STOPPED','binding':c.binding(r),'operation':op,'index':index,
+            'predecessor_sha256':envelope['predecessor_sha256'],'host':name,
+            'boot_id':c.plan(r)['host_boot_ids'][name],
+            'first_error':exc.code if isinstance(exc,Stop) else 'LOCAL_ENTRY_UNCERTAIN',
+            'cleanup_errors':public_error_codes(getattr(exc,'cleanup_errors',[])),
+            'evidence_errors':public_error_codes(public_error_codes(getattr(exc,'evidence_errors',[]))+
+                ['LOCAL_ENTRY_STATE_UNCONFIRMED','ENTRY_STOP_NOT_PERSISTED']+detail_errors),
+            **detail,
+            'partial':{},'preservation':r['preservation'],'observed_at':c.iso(time.time())}
+
+def execute_validated_operation(r,envelope,name,ops,index,op,payload):
+    if op['action']=='stage' and name!=c.CP:origin_claim(r,name,create=True)
+    else:origin_claim(r,name)
+    fs=Files(Path(c.ROOT)/('continuation-effects-'+r['continuation_id']),create=op['action']=='stage')
+    need(not fs.has('stopped'),'CONTINUATION_TERMINAL_STOP')
+    if op['action']=='stage':fs.put('binding',c.binding(r))
+    need(fs.get('binding')==c.binding(r),'LOCAL_BINDING_CHANGED')
+    for i,prior in enumerate(ops):
+        if prior['host']!=name:continue
+        key='%03d-'%i+prior['key']
+        if i<index:
+            need(fs.has('attempt-'+key) and fs.has('result-'+key) and fs.get('result-'+key).get('status')=='CONFIRMED','LOCAL_PREDECESSOR_MISSING')
+        if fs.has('attempt-'+key):
+            need(i<index and fs.has('result-'+key) and fs.get('result-'+key).get('status')=='CONFIRMED',
+                 'LOCAL_ATTEMPT_UNKNOWN_OR_REENTRY')
+    key='%03d-'%index+op['key'];fs.put('attempt-'+key,{k:v for k,v in envelope.items() if k!='payload'})
+    result={'status':'CONFIRMED','binding':c.binding(r),'index':index,'operation':op,
+            'predecessor_sha256':envelope['predecessor_sha256'],'host':name,
+            'boot_id':c.plan(r)['host_boot_ids'][name]}
+    evidence_stage=None
+    try:
+        action=op['action'];verify_anchors(r,name)
+        if action in ('stage','supply-local','export','receive'):
+            from reboot_supply import operation
+            proof,transfer=operation(r,op,payload)
+        elif action=='revalidate':
+            need(set(payload)=={'before_observation'},'REVALIDATION_PAYLOAD')
+            c.observation(r,payload['before_observation'],'before',time.time())
+            # Preserve confirmed parent adoption; initialize only this new plan and recheck current prerequisites.
+            h=ContinuationHost(r);h.adopt_checks()
+            proof=c.revalidation_proof(name)
+        elif action in ('retire','retain'):
+            verify_finish(r,payload)
+            if action=='retire':
+                need(set(payload)=={'completion','final_observation'},'RETIRE_PAYLOAD')
+                h=ContinuationHost(r);h.retire_current();proof={'status':'RETIRED_CURRENT_PAIR'}
+            else:
+                need(set(payload)=={'completion','final_observation','retired'} and set(payload['retired'])==set(c.HOSTS),
+                     'RETIRE_ALL_REQUIRED')
+                for host,row in payload['retired'].items():
+                    need(row.get('status')=='CONFIRMED' and row.get('binding')==c.binding(r) and
+                         row.get('host')==host and row.get('operation',{}).get('key')=='retire-'+host and
+                         row.get('receipt')=={'status':'RETIRED_CURRENT_PAIR'},'RETIRE_PROOF')
+                retain_source(r);proof={'status':'S1_RETAINED_PENDING_OWNER_DISPOSITION'}
+        else:
+            h=ContinuationHost(r);h.consumer_checkpoint=checkpoint_writer(fs,h,r)
+            if action=='import':
+                need(set(payload)=={'key','receipt','receipt_sha256'} and op['key']=='import-'+payload['key'],
+                     'IMPORT_PAYLOAD')
+                import_receipt(h,payload['key'],encoded(payload['receipt']),payload['receipt_sha256'])
+            else:
+                need(payload=={},'ADAPTER_PAYLOAD')
+                secret=h.credential();adapter=Adapter(c.plan(r),h)
+                try:
+                    if action=='node':adapter.worker_test(secret)
+                    elif action=='secret':adapter.patch_secret(op['key'].removeprefix('secret-'),secret)
+                    elif action=='pod':
+                        ns,node=op['key'].removeprefix('pod-').rsplit('-k8s-',1)
+                        adapter.test_pod(ns,'k8s-'+node,secret)
+                    elif action=='worker-file':adapter.update_worker_file(secret)
+                    else:raise Stop('CONTINUATION_ACTION')
+                finally:secret=None
+            proof=h.receipt(op['key'].removeprefix('import-') if action=='import' else op['key'])
+        result.update(receipt=proof,partial=partial(fs),observed_at=c.iso(time.time()))
+        evidence_stage='result'
+        fs.put('result-'+key,result)
+        # Private transfer is returned only after the public receipt is durable.
+        # It is never part of fs result/STOP or the relay ledger.
+        return {**result,'transfer':transfer} if action=='export' else result
+    except BaseException as exc:
+        result.update(status='STOPPED',first_error=exc.code if isinstance(exc,Stop) else 'CONTINUATION_UNCERTAIN',
+                      cleanup_errors=public_error_codes(getattr(exc,'cleanup_errors',[])),
+                      evidence_errors=public_error_codes(getattr(exc,'evidence_errors',[])),observed_at=c.iso(time.time()))
+        result.update(command_evidence=getattr(exc,'command_evidence',[]),command_audit=getattr(exc,'command_audit',None))
+        if evidence_stage=='result':
+            result['first_error']='CONTINUATION_RESULT_WRITE_FAILED'
+            result['evidence_errors']=public_error_codes(result['evidence_errors']+['RESULT_WRITE_FAILED'])
+        if 'h' in locals() and op['action'] in ('node','pod','worker-file'):
+            try:
+                recorded=h.receipt(op['key'])
+                result['command_evidence']=recorded.get('command_evidence',result['command_evidence'])
+                result['command_audit']=recorded.get('command_audit',result['command_audit'])
+                result['evidence_errors']=public_error_codes(result['evidence_errors']+recorded.get('evidence_errors',[]))
+                codes=public_error_codes(recorded.get('cleanup_errors',[]))
+                if recorded.get('cleanup_complete') is False:codes+=['OWNED_CLEANUP_INCOMPLETE']
+                result['cleanup_errors']=public_error_codes(result['cleanup_errors']+codes)
+            except FileNotFoundError:pass
+            except Stop as detail:
+                if detail.code!='PREREQUISITE_MISSING':result['evidence_errors'].append('OPERATION_RECEIPT_READ_FAILED')
+            except BaseException:result['evidence_errors'].append('OPERATION_RECEIPT_READ_FAILED')
+        detail,detail_errors=public_command_detail(r,op,result)
+        result.update(detail);result['evidence_errors']=public_error_codes(result['evidence_errors']+detail_errors)
+        result.pop('receipt',None)
+        if op['action']=='node' and (result['first_error']=='PUSH_RESULT_UNCERTAIN' or any(x.get('tool')=='nerdctl' and x.get('termination') in ('SIGNAL','TIMEOUT','INTERRUPTED','UNKNOWN') for x in result['command_evidence'])):
+            result['remote_artifact']={'target':deny_tag(r['continuation_id'],name),
+                'status':'POSSIBLE_NOT_CONFIRMED','automatic_remote_delete':False}
+        try:result['partial']=partial(fs)
+        except BaseException:result['partial']={};result['evidence_errors'].append('PARTIAL_READ_FAILED')
+        result['preservation']=r['preservation']
+        try:fs.put('stopped',result)
+        except BaseException:result['evidence_errors'].append('STOP_WRITE_FAILED')
+        return result
+
+def remote(r,until):
+    end=timestamp(until);started=time.time()
+    need(started<end<=timestamp(r['not_after']),'OPERATION_DEADLINE')
+    # Bound the PIPE read too; a stalled sender must not leave a root reader alive.
+    with deadline(end-started):
+        envelope=parse_json(bounded_stdin());op=envelope.get('operation',{})
+        need(time.time()<end<=min(c.end(r,op),started+c.cap(r,op)),'OPERATION_DEADLINE')
+        return execute_operation(r,envelope)

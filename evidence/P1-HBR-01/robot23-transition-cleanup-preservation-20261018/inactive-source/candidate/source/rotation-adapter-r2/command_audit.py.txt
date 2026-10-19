@@ -1,0 +1,231 @@
+"""Bound command results, private native projection custody, public-only collection.
+
+No I/O on import; no audit disposal is invoked by normal success/STOP/finish.
+"""
+import base64,hashlib,math,os,re,stat,time
+from pathlib import Path
+from rotation_contract import Stop,need,encoded,parse_json,timestamp,NODES,IMAGE,DIGEST,deny_tag
+
+MAX_COMMANDS=24
+FILE_LIMIT=196608
+TOTAL_LIMIT=4*1024*1024
+MANIFEST_LIMIT=65536
+POLICY_FIELDS={'version','owner','review_by','authorization_reference','next_disposition_reference','storage','collection','on_stop','on_finish'}
+EVENT_FIELDS={'key','tool','phase','rc','termination','first_error','evidence_errors','cleanup_errors','stdout_bytes','stderr_bytes'}
+def sha(b):return hashlib.sha256(b).hexdigest()
+def code(v):return isinstance(v,str) and re.fullmatch('[A-Z0-9_]{1,80}',v) is not None
+def codes(values):
+    need(isinstance(values,list) and len(values)<=16 and all(code(x) for x in values),'COMMAND_ERROR_SCHEMA')
+    return list(dict.fromkeys(values))
+def policy(p,end):
+    need(isinstance(p,dict) and set(p)==POLICY_FIELDS and p['version']==1,'COMMAND_AUDIT_POLICY')
+    need(p['storage']=='HOST_LOCAL_PRIVATE_ONLY' and p['collection']=='PUBLIC_MANIFEST_AND_VALIDATED_PROJECTION_ONLY' and p['on_stop']==p['on_finish']=='PRESERVE_PENDING_OWNER_DISPOSITION','COMMAND_AUDIT_CUSTODY')
+    for k in ('owner','authorization_reference','next_disposition_reference'):
+        need(isinstance(p[k],str) and 8<=len(p[k])<=500 and not any(x in p[k] for x in ('\r','\n','\0')),'COMMAND_AUDIT_OWNER')
+    need(timestamp(p['review_by'])>timestamp(end),'COMMAND_AUDIT_REVIEW_BOUND')
+    return p
+def scope_ok(scope,host):
+    return scope=='node-'+host and host in NODES or scope=='worker01-file' and host==NODES[0]
+def validate_event(e):
+    need(isinstance(e,dict) and set(e)==EVENT_FIELDS,'COMMAND_EVENT_SCHEMA')
+    need(isinstance(e['key'],str) and re.fullmatch(r'command-(?:node-k8s-worker0[123]|worker01-file)-[0-9]{3}',e['key']),'COMMAND_KEY')
+    need(e['tool'] in ('nerdctl','crictl') and e['phase'] in ('operation','cleanup'),'COMMAND_EVENT_SCOPE')
+    need(e['rc'] is None or type(e['rc']) is int and -255<=e['rc']<=255,'COMMAND_RC')
+    need(e['termination'] in ('EXITED','SIGNAL','TIMEOUT','OUTPUT_LIMIT','INTERRUPTED','NOT_STARTED','UNKNOWN'),'COMMAND_TERMINATION')
+    need(e['first_error'] is None or code(e['first_error']),'COMMAND_FIRST_ERROR')
+    for k in ('stdout_bytes','stderr_bytes'):need(type(e[k]) is int and 0<=e[k]<=2*1024*1024+65536,'COMMAND_BYTES')
+    codes(e['evidence_errors']);codes(e['cleanup_errors']);return e
+def public_events(rows,scope=None,complete=False):
+    need(isinstance(rows,list) and len(rows)<=MAX_COMMANDS,'COMMAND_COUNT')
+    for row in rows:validate_event(row)
+    need(len({x['key'] for x in rows})==len(rows),'COMMAND_DUPLICATE')
+    if scope is not None:need([x['key'] for x in rows]==['command-'+scope+'-%03d'%i for i in range(1,len(rows)+1)],'COMMAND_SEQUENCE')
+    if complete:need(rows and all(x['first_error'] is None and x['evidence_errors']==x['cleanup_errors']==[] and x['termination']=='EXITED' for x in rows),'COMMAND_NOT_COMPLETE')
+    return rows
+def termination(rc,error):
+    if error=='CHILD_TIMEOUT':return 'TIMEOUT'
+    if error=='CHILD_OUTPUT_LIMIT':return 'OUTPUT_LIMIT'
+    if error=='CHILD_INTERRUPTED':return 'INTERRUPTED'
+    if type(rc) is int and rc<0:return 'SIGNAL'
+    return 'EXITED' if type(rc) is int else 'UNKNOWN'
+def projected(tool,args,inv,host):
+    from rotation_contract import NATIVE_IMAGE_FORMAT
+    return tool=='nerdctl' and len(args)==8 and args[:7]==['-n','k8s.io','image','inspect','--mode=native','--format',NATIVE_IMAGE_FORMAT] and args[7] in (IMAGE,deny_tag(inv,host))
+def args_scope(tool,args,inv,host):
+    from rotation_contract import NEW_USER
+    tag=deny_tag(inv,host)
+    allowed=[('nerdctl',['-n','k8s.io','login','10.1.93.54','--username',NEW_USER,'--password-stdin']),('nerdctl',['-n','k8s.io','--hosts-dir','/etc/containerd/certs.d','pull',IMAGE]),('crictl',['inspecti',IMAGE]),('nerdctl',['-n','k8s.io','tag',IMAGE,tag]),('nerdctl',['-n','k8s.io','--hosts-dir','/etc/containerd/certs.d','push',tag]),('nerdctl',['-n','k8s.io','--kube-hide-dupe=false','image','rm',tag])]
+    need(projected(tool,args,inv,host) or any(tool==t and args==a for t,a in allowed),'COMMAND_FIXED_ARGV')
+
+def report_valid(report,plan,host,scope,require_complete=False):
+    need(isinstance(report,dict) and set(report)=={'version','host','boot_id','invocation','scope','plan_sha256','policy_sha256','directory','manifest_sha256','files','bytes','entries','status','on_stop','on_finish','collection'},'AUDIT_REPORT_SCHEMA')
+    need(report['version']==1 and report['host']==host and report['scope']==scope and scope_ok(scope,host) and report['boot_id']==plan['host_boot_ids'][host] and report['invocation']==plan['invocation'] and report['plan_sha256']==sha(encoded(plan)),'AUDIT_REPORT_BINDING')
+    need(report['directory']=='/root/fds-hbr-worker-rotation-20261015/'+plan['invocation']+'/command-audit/'+scope,'AUDIT_REPORT_PATH')
+    need(re.fullmatch('[0-9a-f]{64}',report['policy_sha256']) and (report['manifest_sha256'] is None or re.fullmatch('[0-9a-f]{64}',report['manifest_sha256'])),'AUDIT_REPORT_PIN')
+    need(type(report['files']) is int and 0<=report['files']<=MAX_COMMANDS*2 and type(report['bytes']) is int and 0<=report['bytes']<=TOTAL_LIMIT,'AUDIT_REPORT_LIMIT')
+    entries=report['entries'];need(isinstance(entries,list) and len(entries)==report['files'] and all(isinstance(x,dict) for x in entries) and len({x.get('name') for x in entries})==len(entries),'AUDIT_REPORT_INVENTORY')
+    for row in entries:
+        need(set(row)=={'name','bytes','sha256','state','projection'} and re.fullmatch(r'command-'+re.escape(scope)+r'-[0-9]{3}-(?:intent|result)\.json',row['name']) and type(row['bytes']) is int and 0<=row['bytes']<=FILE_LIMIT and re.fullmatch('[0-9a-f]{64}',row['sha256']) and row['state'] in ('WRITTEN','WRITE_UNCONFIRMED'),'AUDIT_REPORT_FILE')
+        projection=row['projection']
+        if projection is not None:
+            need(set(projection)=={'reference','target'} and projection['reference'] in (IMAGE,deny_tag(plan['invocation'],host)) and (projection['target'] is None or re.fullmatch('sha256:[0-9a-f]{64}',projection['target'])),'AUDIT_PUBLIC_PROJECTION')
+    need(sum(x['bytes'] for x in entries)==report['bytes'],'AUDIT_REPORT_BYTES')
+    need(report['status'] in ('PRESERVED_COMPLETE','PRESERVED_INCOMPLETE') and report['on_stop']==report['on_finish']=='PRESERVE_PENDING_OWNER_DISPOSITION' and report['collection']=='PUBLIC_MANIFEST_AND_VALIDATED_PROJECTION_ONLY','AUDIT_REPORT_CUSTODY')
+    if report['status']=='PRESERVED_COMPLETE':
+        need(report['manifest_sha256'] is not None and all(x['state']=='WRITTEN' for x in entries),'AUDIT_NOT_COMPLETE')
+        paired_inventory(entries,scope)
+    if require_complete:need(report['status']=='PRESERVED_COMPLETE','AUDIT_NOT_COMPLETE')
+    return report
+
+def paired_inventory(rows,scope):
+    need(isinstance(rows,list) and 0<len(rows)<=2*MAX_COMMANDS and len(rows)%2==0,'AUDIT_PAIR_COUNT')
+    expected=['command-'+scope+'-%03d-'%i+kind+'.json' for i in range(1,len(rows)//2+1) for kind in ('intent','result')]
+    need([x['name'] for x in rows]==expected,'AUDIT_PAIR_SEQUENCE')
+
+class Session:
+    """Backend writes are separate from command outcomes; partial files stay visible."""
+    def __init__(self,host,scope,store):
+        need(scope_ok(scope,host.name),'AUDIT_SCOPE');self.h=host;self.scope=scope;self.store=store;self.rows=[];self.errors=[];self.sequence=0;self.total=0;self.manifest_sha=None;self.finished=False;self.collected=None
+        self.policy=policy(host.request['command_audit'],host.request['not_after'])
+        self.binding={'host':host.name,'boot_id':host.boot_id,'invocation':host.inv,'scope':scope,'plan_sha256':sha(encoded(host.plan)),'policy_sha256':sha(encoded(self.policy))}
+        store.create(self.binding,self.policy)
+    def persist(self,name,value):
+        raw=encoded(value);need(len(raw)<=FILE_LIMIT and self.total+len(raw)<=TOTAL_LIMIT,'COMMAND_AUDIT_LIMIT')
+        self.total+=len(raw)
+        # Record exact intended file even if creation/write/fsync has uncertain outcome.
+        row={'name':name,'bytes':len(raw),'sha256':sha(raw),'state':'WRITE_UNCONFIRMED'};self.rows.append(row)
+        try:self.store.put(name,raw);row['state']='WRITTEN'
+        except BaseException:
+            self.errors=list(dict.fromkeys(self.errors+['COMMAND_EVIDENCE_WRITE_FAILED']));raise Stop('COMMAND_EVIDENCE_WRITE_FAILED') from None
+    def run(self,tool,args,stdin,env,timeout,phase):
+        need(not self.finished and self.sequence<MAX_COMMANDS,'COMMAND_AUDIT_COUNT');args_scope(tool,args,self.h.inv,self.h.name)
+        self.sequence+=1;key='command-'+self.scope+'-%03d'%self.sequence
+        event={'key':key,'tool':tool,'phase':phase,'rc':None,'termination':'NOT_STARTED','first_error':None,'evidence_errors':[],'cleanup_errors':[],'stdout_bytes':0,'stderr_bytes':0}
+        meta={**self.binding,'command_key':key,'tool':tool,'tool_sha256':self.h.plan['tool_pins'][self.h.name][tool]['sha256'],'args':args,'started_at_epoch':self.h.wall_time(),'timeout_seconds':timeout,'stdin_recorded':False,'environment_recorded':False}
+        try:self.persist(key+'-intent.json',meta)
+        except BaseException:return {'event':{**event,'evidence_errors':['COMMAND_EVIDENCE_WRITE_FAILED']},'stdout':b'','stderr':b'','error':'COMMAND_INTENT_WRITE_FAILED'}
+        rc=None;out=b'';err=b'';failure=None
+        try:rc,out,err=self.h.run_split(tool,args,stdin,env,timeout)
+        except BaseException as exc:
+            failure=exc.code if isinstance(exc,Stop) and code(exc.code) else 'CHILD_INTERRUPTED'
+            rc,out,err=getattr(exc,'command_result',(None,b'',b''))
+            event['cleanup_errors']=codes(getattr(exc,'command_cleanup_errors',[]))
+            if failure=='CHILD_CLEANUP_UNCERTAIN' and type(rc) is int:failure=None
+        event.update(rc=rc,termination=termination(rc,failure),stdout_bytes=len(out),stderr_bytes=len(err))
+        row={**meta,'ended_at_epoch':self.h.wall_time(),'rc':rc,'child_error':failure,'cleanup_errors':event['cleanup_errors'],'termination':event['termination'],'stdout_bytes':len(out),'stderr_bytes':len(err),'raw_policy':'METADATA_ONLY'}
+        if projected(tool,args,self.h.inv,self.h.name):
+            if len(out)<=131072 and len(err)<=4096:
+                row.update(raw_policy='NATIVE_PROJECTION_PRIVATE',stdout_b64=base64.b64encode(out).decode(),stderr_b64=base64.b64encode(err).decode())
+            else:event['evidence_errors'].append('COMMAND_PROJECTION_LIMIT')
+        try:self.persist(key+'-result.json',row)
+        except BaseException:event['evidence_errors'].append('COMMAND_EVIDENCE_WRITE_FAILED')
+        event['evidence_errors']=codes(event['evidence_errors']);self.errors=codes(self.errors+event['evidence_errors'])
+        return {'event':event,'stdout':out,'stderr':err,'error':failure}
+    def finish(self):
+        if not self.finished:
+            self.finished=True
+            value={'version':1,'binding':self.binding,'policy':self.policy,'files':self.rows,'evidence_errors':self.errors,'disposition':'PRESERVE_PENDING_OWNER_DISPOSITION'}
+            raw=encoded(value)
+            try:
+                need(len(raw)<=MANIFEST_LIMIT,'AUDIT_MANIFEST_LIMIT');self.store.check_inventory(self.rows)
+            except BaseException:self.errors=codes(self.errors+['AUDIT_INVENTORY_UNCONFIRMED'])
+            else:
+                try:self.store.put('manifest.json',raw);self.manifest_sha=sha(raw)
+                except BaseException:self.errors=codes(self.errors+['AUDIT_MANIFEST_WRITE_FAILED'])
+            if self.manifest_sha is not None:
+                try:self.collected=self.store.collect_public(self.manifest_sha)
+                except BaseException:self.errors=codes(self.errors+['AUDIT_COLLECTION_UNCONFIRMED'])
+        return self.report()
+    def report(self):
+        entries=self.collected['files'] if self.collected is not None else [{**x,'projection':None} for x in self.rows]
+        r={'version':1,**self.binding,'directory':str(self.store.path),'manifest_sha256':self.manifest_sha,'files':len(self.rows),'bytes':self.total,'entries':entries,'status':'PRESERVED_INCOMPLETE' if self.errors or self.manifest_sha is None else 'PRESERVED_COMPLETE','on_stop':self.policy['on_stop'],'on_finish':self.policy['on_finish'],'collection':self.policy['collection']}
+        return report_valid(r,self.h.plan,self.h.name,self.scope)
+
+class LinuxStore:
+    """Private host-local files; collect exports only validated metadata/projection."""
+    CONTEXT='unconfined_u:object_r:admin_home_t:s0'
+    def __init__(self,host,scope):
+        self.host=host;self.scope=scope;self.path=host.root/'command-audit'/scope
+    def identity(self):
+        need(os.getuid()==os.geteuid()==os.getgid()==os.getegid()==0 and os.uname().nodename==self.host.name and Path('/proc/sys/kernel/random/boot_id').read_text().strip()==self.host.boot_id and Path('/sys/fs/selinux/enforce').read_bytes().strip()==b'1','AUDIT_HOST_IDENTITY')
+    def directory_check(self):
+        from linux_host import protected_parents
+        self.identity();protected_parents(self.path/'check')
+        for p in (self.path.parent,self.path):
+            s=p.lstat();need(stat.S_ISDIR(s.st_mode) and s.st_uid==s.st_gid==0 and stat.S_IMODE(s.st_mode)==0o700 and os.getxattr(p,'security.selinux',follow_symlinks=False).decode().rstrip('\0')==self.CONTEXT,'AUDIT_DIRECTORY_PROTECTION')
+    def create(self,binding,p):
+        from linux_host import directory,fsync_parent
+        self.identity();directory(self.path.parent);directory(self.path,exclusive=True);fsync_parent(self.path);self.directory_check()
+    def put(self,name,raw):
+        from linux_host import write_new
+        need(name in ('manifest.json','disposition-intent.json','disposition-result.json') or re.fullmatch(r'command-'+re.escape(self.scope)+r'-[0-9]{3}-(?:intent|result)\.json',name),'AUDIT_FILE_NAME')
+        self.directory_check();need(len(raw)<=FILE_LIMIT,'AUDIT_FILE_LIMIT');write_new(self.path/name,raw)
+        need(self.read(name,FILE_LIMIT)==raw,'AUDIT_WRITE_READBACK')
+    def read(self,name,limit):
+        from linux_host import regular_bytes
+        need('/' not in name and '\\' not in name and name.endswith('.json'),'AUDIT_NAME')
+        self.directory_check();p=self.path/name;raw,s=regular_bytes(p,limit)
+        current=p.lstat()
+        need(all(getattr(current,k)==getattr(s,k) for k in ('st_dev','st_ino','st_size','st_mtime_ns','st_ctime_ns','st_nlink','st_mode')),'AUDIT_FILE_PATH_CHANGED')
+        need(s.st_uid==s.st_gid==0 and os.getxattr(p,'security.selinux',follow_symlinks=False).decode().rstrip('\0')==self.CONTEXT,'AUDIT_FILE_PROTECTION');return raw
+    def check_inventory(self,rows):
+        self.directory_check();need(len(rows)<=2*MAX_COMMANDS and len({x['name'] for x in rows})==len(rows),'AUDIT_INVENTORY')
+        need({p.name for p in self.path.iterdir()}=={x['name'] for x in rows},'AUDIT_UNEXPECTED_FILE')
+        for x in rows:
+            raw=self.read(x['name'],FILE_LIMIT);need(x['state']=='WRITTEN' and len(raw)==x['bytes'] and sha(raw)==x['sha256'],'AUDIT_FILE_CHANGED')
+    def collect_public(self,expected_sha):
+        from rotation_contract import native_image_target
+        raw=self.read('manifest.json',MANIFEST_LIMIT);need(sha(raw)==expected_sha,'AUDIT_MANIFEST_PIN');m=parse_json(raw)
+        expected={'host':self.host.name,'boot_id':self.host.boot_id,'invocation':self.host.inv,'scope':self.scope,'plan_sha256':sha(encoded(self.host.plan)),'policy_sha256':sha(encoded(self.host.request['command_audit']))}
+        need(set(m)=={'version','binding','policy','files','evidence_errors','disposition'} and m['version']==1 and m['binding']==expected and m['policy']==self.host.request['command_audit'] and m['evidence_errors']==[] and m['disposition']=='PRESERVE_PENDING_OWNER_DISPOSITION','AUDIT_MANIFEST_BINDING')
+        rows=m['files'];paired_inventory(rows,self.scope)
+        for x in rows:
+            need(set(x)=={'name','bytes','sha256','state'} and x['state']=='WRITTEN' and type(x['bytes']) is int and 0<=x['bytes']<=FILE_LIMIT and isinstance(x['sha256'],str) and re.fullmatch('[0-9a-f]{64}',x['sha256']),'AUDIT_ROW_SCOPE')
+        need({p.name for p in self.path.iterdir()}=={'manifest.json',*(x['name'] for x in rows)},'AUDIT_UNEXPECTED_FILE')
+        need(sum(x['bytes'] for x in rows)<=TOTAL_LIMIT,'AUDIT_TOTAL_LIMIT');out=[]
+        for x in rows:
+            need(set(x)=={'name','bytes','sha256','state'} and x['state']=='WRITTEN' and re.fullmatch(r'command-'+re.escape(self.scope)+r'-[0-9]{3}-(?:intent|result)\.json',x['name']),'AUDIT_ROW_SCOPE')
+            b=self.read(x['name'],FILE_LIMIT);need(len(b)==x['bytes'] and sha(b)==x['sha256'],'AUDIT_FILE_CHANGED');v=parse_json(b)
+            need(all(v.get(k)==val for k,val in expected.items()),'AUDIT_ROW_BINDING')
+            item={**x,'projection':None}
+            if v.get('raw_policy')=='NATIVE_PROJECTION_PRIVATE' and type(v.get('rc')) is int and v['rc']==0 and v.get('child_error') is None:
+                need(projected(v['tool'],v['args'],self.host.inv,self.host.name),'AUDIT_PROJECTION_SCOPE')
+                stdout=base64.b64decode(v['stdout_b64'],validate=True);stderr=base64.b64decode(v['stderr_b64'],validate=True)
+                need(len(stdout)<=131072 and len(stderr)<=4096 and v['stdout_bytes']==len(stdout) and v['stderr_bytes']==len(stderr),'AUDIT_PROJECTION_LENGTH')
+                if not stderr:
+                    args_scope(v['tool'],v['args'],self.host.inv,self.host.name);ref=v['args'][-1]
+                    # A malformed CLI response remains valid failure evidence, not
+                    # a manifest-write failure. Withhold its public projection.
+                    try:target=native_image_target(stdout,ref,True)
+                    except Stop:pass
+                    else:item['projection']={'reference':ref,'target':target}
+            out.append(item)
+        self.directory_check()
+        return {'binding':expected,'manifest_sha256':expected_sha,'files':out,'raw_exported':False,'private_originals_retained':True,'disposition':'PRESERVE_PENDING_OWNER_DISPOSITION'}
+    def dispose_exact(self,a):
+        """Separate explicit owner decision, never called by finish. No export or retry."""
+        need(set(a)=={'state','purpose','host','boot_id','scope','manifest_sha256','owner_reference','not_before','deadline'} and a['state']=='BOUND' and a['purpose']=='COMMAND_AUDIT_EXACT_DISPOSE','AUDIT_DISPOSITION_AUTHORITY')
+        need(a['host']==self.host.name and a['boot_id']==self.host.boot_id and a['scope']==self.scope and isinstance(a['owner_reference'],str) and len(a['owner_reference'])>=8,'AUDIT_DISPOSITION_SCOPE')
+        def tick():need(timestamp(a['not_before'])<=time.time()<timestamp(a['deadline']),'AUDIT_DISPOSITION_WINDOW')
+        tick();snapshot=self.collect_public(a['manifest_sha256']);removed=[];attempted=[]
+        self.put('disposition-intent.json',encoded({'authority':a,'files':snapshot['files'],'status':'NO_RETRY'}))
+        try:
+            for row in snapshot['files']:
+                tick();self.identity();self.directory_check();name=row['name'];d=os.open(self.path,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW);fd=None
+                try:
+                    fd=os.open(name,os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC,dir_fd=d);s=os.fstat(fd)
+                    need(stat.S_ISREG(s.st_mode) and s.st_nlink==1 and s.st_uid==s.st_gid==0 and stat.S_IMODE(s.st_mode)==0o600 and s.st_size==row['bytes'],'AUDIT_DISPOSITION_METADATA')
+                    need(os.getxattr(fd,'security.selinux').decode().rstrip('\0')==self.CONTEXT,'AUDIT_DISPOSITION_PROTECTION')
+                    raw=os.read(fd,FILE_LIMIT+1);current=os.stat(name,dir_fd=d,follow_symlinks=False)
+                    need(sha(raw)==row['sha256'] and (current.st_dev,current.st_ino)==(s.st_dev,s.st_ino),'AUDIT_DISPOSITION_CHANGED')
+                    attempted.append(name);os.unlink(name,dir_fd=d);os.fsync(d);need(os.fstat(fd).st_nlink==0,'AUDIT_DISPOSITION_UNCONFIRMED');removed.append(name)
+                finally:
+                    if fd is not None:os.close(fd)
+                    os.close(d)
+            status='EXACT_AUDIT_FILES_UNLINKED'
+        except BaseException:status='STOP_PRESERVE_PARTIAL'
+        result={'status':status,'attempted':attempted,'removed':removed,'manifest_preserved':True,'secure_erase_claim':False,'automatic_retry':False}
+        # Result recording is attempted even after mutation deadline; no more unlink.
+        try:self.put('disposition-result.json',encoded(result))
+        except BaseException:result['evidence_errors']=['AUDIT_DISPOSITION_RESULT_WRITE_FAILED']
+        return result

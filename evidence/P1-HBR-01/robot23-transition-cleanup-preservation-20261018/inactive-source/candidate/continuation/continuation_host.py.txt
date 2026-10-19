@@ -1,0 +1,162 @@
+"""Linux connection for a separate continuation; never called during local prep."""
+import hmac
+import datetime as dt
+import json
+import re
+import os
+import socket
+import stat
+import time
+from pathlib import Path
+from types import SimpleNamespace
+import continuation_contract as c
+from rotation_contract import *
+import post_expiry_contract as pc
+from linux_host import LinuxHost, regular_bytes, write_new, directory, fsync_parent
+
+def verify_anchors(r,host,reader=regular_bytes):
+    for row in r['origin_anchors'][host]:
+        raw,_=reader(row['path'],1048576)
+        need(len(raw)==row['bytes'] and pc.sha(raw)==row['sha256'],'ORIGINAL_PUBLIC_BYTES_CHANGED')
+
+def actor_absence(r):
+    """Read only exact invocation-related actors, excluding our own ancestor chain."""
+    ancestors=set();pid=os.getpid()
+    while pid>1 and pid not in ancestors:
+        ancestors.add(pid)
+        raw=Path('/proc')/str(pid)/'stat'
+        try:pid=int(raw.read_text().rsplit(')',1)[1].split()[1])
+        except FileNotFoundError:break
+    from successor_pins import PARENT
+    needles=(c.ORIGIN.encode(),PARENT['id'].encode(),r['continuation_id'].encode())
+    for p in Path('/proc').iterdir():
+        if not p.name.isdecimal() or int(p.name) in ancestors:continue
+        try:raw=(p/'cmdline').read_bytes()
+        except FileNotFoundError:continue
+        need(not any(n in raw for n in needles),'CONTINUATION_ACTOR_PRESENT')
+
+def origin_claim(r,host,create=False):
+    # Successor gates preserve, rather than replace, the fixed failed-parent claims.
+    from successor_guard import claim
+    return claim(r,host,create)
+
+def metadata(path):
+    p=Path(path);s=p.lstat()
+    need(stat.S_ISREG(s.st_mode),'RESIDUAL_NOT_REGULAR')
+    return {'path':str(p),'present':True,'kind':'regular','device':s.st_dev,'inode':s.st_ino,
+            'uid':s.st_uid,'gid':s.st_gid,'mode':stat.S_IMODE(s.st_mode),'nlink':s.st_nlink,
+            'bytes':s.st_size,'context':os.getxattr(p,'security.selinux',follow_symlinks=False).decode().rstrip('\0')}
+
+def expected_metadata(r,host,path):
+    rows=[x for x in r['residual_metadata'] if x['path']==str(path) and
+          x.get('host',c.CP)==host]
+    need(len(rows)==1,'RESIDUAL_SCOPE')
+    expected={k:v for k,v in rows[0].items() if k!='host'}
+    need(metadata(path)==expected,'RESIDUAL_METADATA_CHANGED')
+    return expected
+
+def verify_origin_credential(old_plan,raw,owner,s):
+    secret=credential(raw)
+    expected={'invocation':c.ORIGIN,'device':s.st_dev,'inode':s.st_ino,'username':NEW_USER}
+    need(set(owner)==set(expected)|{'private_binding_sha256'} and
+         all(owner[k]==v for k,v in expected.items()),'ORIGIN_CREDENTIAL_OWNER')
+    digest=pc.sha(encoded({'plan':old_plan,'credential':secret}))
+    need(isinstance(owner['private_binding_sha256'],str) and
+         hmac.compare_digest(owner['private_binding_sha256'],digest),'ORIGIN_PRIVATE_BINDING')
+    return secret
+
+def nerdctl_exact_absent(rc,stdout,stderr,tag):
+    """Narrow nerdctl v2.4.0 dockercompat one-identifier/logrus text contract.
+
+    Unknown formatting, extra diagnostics, signal, wrong tag: never absence.
+    Source-backed proposal; actual pinned-binary response remains unobserved.
+    """
+    if type(rc) is not int or rc!=1 or stdout!=b'' or len(stderr)>4096:return False
+    if not isinstance(tag,str) or not re.fullmatch(r'[A-Za-z0-9./:_-]{1,512}',tag):return False
+    m=re.fullmatch(rb'time="([0-9T:.+Z-]+)" level=fatal msg=("[^\r\n]*")\n',stderr)
+    if m is None:return False
+    try:
+        value=m.group(1).decode('ascii')
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?(?:Z|[+-]\d{2}:\d{2})',value):return False
+        if dt.datetime.fromisoformat(value).utcoffset() is None:return False
+        expected=json.dumps('1 errors:\nno such image: '+tag,ensure_ascii=True).encode('ascii')
+        return m.group(2)==expected
+    except (UnicodeError,ValueError):return False
+
+class ContinuationHost(LinuxHost):
+    def __init__(self,r,create=False):
+        self.request=c.validate(r,time.time())
+        super().__init__(c.plan(r),create=create)
+        self.recovery_dispatch=True
+        self.originroot=Path(c.ROOT)/c.ORIGIN
+        self.originrun=Path(c.RUN)/c.ORIGIN
+        raw,_=regular_bytes(self.originroot/'plan.json')
+        need(raw==encoded(r['origin']['plan']),'ORIGIN_PLAN_CHANGED')
+        if create:
+            ca,_=regular_bytes(self.originroot/'ca.pem')
+            import ssl
+            need(pc.sha(ssl.PEM_cert_to_DER_cert(ca.decode()))==CA_DER_SHA256,'CA_PIN_MISMATCH')
+            write_new(self.root/'ca.pem',ca)
+
+    def open_tool(self,tool):
+        # Existing detached tool bytes remain at the original protected path.
+        # Only read them; new auth directories and Adapter claims use new roots.
+        proxy=SimpleNamespace(plan=self.request['origin']['plan'],name=self.name,runroot=self.originrun)
+        return LinuxHost.open_tool(proxy,tool)
+
+    def credential(self):
+        path=self.originrun/'credential.json';ownerpath=self.originrun/'credential-owner.json'
+        expected_metadata(self.request,self.name,path);expected_metadata(self.request,self.name,ownerpath)
+        raw,s=regular_bytes(path,32768);owner=parse_json(regular_bytes(ownerpath)[0])
+        return verify_origin_credential(self.request['origin']['plan'],raw,owner,s)
+
+    def adopt_checks(self):
+        from successor_pins import PARENT
+        verify_anchors(self.request,self.name);actor_absence(self.request)
+        secret=self.credential()
+        for tool in self.plan['tool_pins'][self.name]:
+            fd=self.open_tool(tool);os.close(fd)
+        if self.name==c.CP:
+            for row in self.request['origin']['issue_receipt']['s1_inventory']:
+                expected_metadata(self.request,self.name,Path(c.ROOT)/('issuance-'+c.ORIGIN)/row['name'])
+            for ns,spec in SCOPE.items():
+                raw=secret_data(self.kube('GET','/api/v1/namespaces/'+ns+'/secrets/'+SECRET_NAME,None,10),ns,OLD_USER)
+                del raw
+                for node in spec['nodes']:
+                    for inv in (c.ORIGIN,PARENT['id'],self.inv):
+                        path='/api/v1/namespaces/'+ns+'/pods/'+pod_name(pod_nonce(inv,ns,node))
+                        need(self.kube('GET',path,None,10,True) is None,'OWNED_POD_PRESENT')
+        else:
+            for inv in (c.ORIGIN,PARENT['id'],self.inv):
+                tag=deny_tag(inv,self.name)
+                rc,out,err=self.run_split('nerdctl',['-n','k8s.io','image','inspect','--mode=native','--format',NATIVE_IMAGE_FORMAT,tag],None,None,10)
+                need(type(rc) is int and rc==0 and err==b'' and native_image_target(out,tag,True) is None,'OWNED_TAG_QUERY_UNKNOWN')
+            for inv in (c.ORIGIN,PARENT['id'],self.inv):
+                need(not os.path.lexists(Path(c.RUN)/inv/('auth-node-'+self.name)),'OWNED_AUTH_PRESENT')
+            if self.name==NODES[0]:
+                raw,_=self.read_worker_file();doc=decode_docker(raw)
+                # Match the exact consumer replacement contract before any consumer changes.
+                need(set(doc['auths'])==set(FILE_KEYS),'REGISTRY_SCOPE')
+                for key in FILE_KEYS:verify_entry(doc['auths'][key],OLD_USER)
+        del secret
+
+    def retire_original(self):
+        actor_absence(self.request);self.credential()
+        for name in ('credential.json','credential-owner.json'):
+            path=self.originrun/name;expected_metadata(self.request,self.name,path)
+            need(time.time()<timestamp(self.request['not_after']),'RETIRE_DEADLINE')
+            path.unlink();fsync_parent(path)
+        need(not any(os.path.lexists(self.originrun/name) for name in ('credential.json','credential-owner.json')),
+             'RETIRE_UNCONFIRMED')
+
+def dispose_original(r):
+    actor_absence(r)
+    rows=r['origin']['issue_receipt']['s1_inventory']
+    need(len(rows)==2 and {x['name'] for x in rows}=={'http-4-body.bin','created-private.json'},'S1_SCOPE')
+    for row in rows:
+        path=Path(c.ROOT)/('issuance-'+c.ORIGIN)/row['name']
+        expected_metadata(r,c.CP,path)
+        need(time.time()<timestamp(r['not_after']),'S1_DEADLINE')
+        path.unlink();fsync_parent(path)
+    need(not any(os.path.lexists(Path(c.ROOT)/('issuance-'+c.ORIGIN)/row['name']) for row in rows),
+         'S1_UNCONFIRMED')
