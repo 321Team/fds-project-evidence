@@ -1,0 +1,29 @@
+START_UTC=2026-10-19T13:25:12+00:00
+SOURCE=f3042f6228c4d5bdcde59c13330ceb90b287987a
+Client Version: 4.22.17
+Kustomize Version: v5.7.1
+Console URL: https://api.fds-rosa-hcp.khht.p3.openshiftapps.com:443/console
+Authentication required for https://api.fds-rosa-hcp.khht.p3.openshiftapps.com:443 (openshift)
+Username: gwonuk
+Password: 
+Login successful.
+
+You have access to the following projects and can switch between them with 'oc project <projectname>':
+
+  * ci-cd
+    fds-app
+    monitoring-api
+
+Using project "ci-cd".
+USER=gwonuk
+SERVER=https://api.fds-rosa-hcp.khht.p3.openshiftapps.com:443
+can-i get pods -n fds-app => yes (rc=0)
+can-i create deployments -n fds-app => no (rc=1)
+Warning: resource 'nodes' is not namespace scoped
+
+can-i list nodes => no (rc=1)
+can-i get secrets -n fds-app => no (rc=1)
+can-i create servicemonitors.monitoring.coreos.com -n fds-app => no (rc=1)
+can-i create prometheusrules.monitoring.coreos.com -n fds-app => no (rc=1)
+TEMP_KUBECONFIG_CLEANED=YES
+OWN_LOGOUT_RC=0
