@@ -1,0 +1,42 @@
+﻿**********************
+Windows PowerShell 기록 시작
+시작 시간: 20261019221505
+사용자 이름: SERVER08\soldesk
+RunAs 사용자: SERVER08\soldesk
+구성 이름: 
+Machine: SERVER08 (Microsoft Windows NT 10.0.19045.0)
+호스트 응용 프로그램: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\soldesk\AppData\Local\Temp\claude\C-----------09------\107b808e-9cec-4a78-bc25-61e52f7a12cc\scratchpad\oc-4.22.17\run-d11d-window.ps1
+프로세스 ID: 18172
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+START_KST=2026-10-19 22:15:05
+oc: C:\Users\soldesk\AppData\Local\Temp\claude\C-----------09------\107b808e-9cec-4a78-bc25-61e52f7a12cc\scratchpad\oc-4.22.17\bin\oc.exe
+Console URL: https://api.fds-rosa-hcp.khht.p3.openshiftapps.com:443/console
+Authentication required for https://api.fds-rosa-hcp.khht.p3.openshiftapps.com:443 (openshift)
+Username: jaehwan
+Password:
+Login failed (401 Unauthorized)
+Verify you have provided the correct credentials.
+D-11d RESULT: FAIL
+>> 종료 오류(): "STOP: 로그인 실패"
+>> 종료 오류(): "STOP: 로그인 실패"
+STOP: 로그인 실패
+STOP: 로그인 실패
+위치 C:\Users\soldesk\AppData\Local\Temp\claude\C-----------09------\107b808e-9cec-4a78-bc25-61e52f7a12cc\scratchpad\oc
+-4.22.17\d11d-jaehwan.ps1:15 문자:30
++   if ($LASTEXITCODE -ne 0) { throw "STOP: 로그인 실패" }
++                              ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (STOP: 로그인 실패:String) [], RuntimeException
+    + FullyQualifiedErrorId : STOP: 로그인 실패
+
+**********************
+Windows PowerShell 기록 끝
+종료 시간: 20261019221603
+**********************

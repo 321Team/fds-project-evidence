@@ -11,7 +11,7 @@
 | run7 bootstrap | `wrapper_rc=3 log_rc=0`(정책 승인 대기). 요청 시험 31건 중 30건 기대 일치, A-09 NOT_RUN(승인 Route host 미정). `CLASSIFY: PENDING_POLICY=20`, UNEXPECTED 0. 자동 회수 `REVOKE_VERIFIED` 2026-10-19T12:09:27Z, receipt `STATUS=POLICY_PENDING` | `rosa5-run4-7-20261019.tgz` 안 `run7/` | [6266875343](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6266875343) |
 | 정책 | 플랫폼 기본 binding 20행, [infra-rosa PR#47](https://github.com/321Team/infra-rosa/pull/47) 승인·병합 `f3042f6228c4d5bdcde59c13330ceb90b287987a` | (소스 저장소) | — |
 | ⑫ post-revoke-check | `D-11 RESULT: PASS`(rc=0), 2026-10-19T12:53:14Z. 승인 정책으로 ⑩-b 재판정 OK, 회수 전·새 세션 관리자 권한 없음, namespace UID 3개 일치, 관리면 ABSENT | `rosa5-run7-d11-20261019.tgz` | [6267698337](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6267698337) |
-| D-11d 이재환 | PASS 6/6 (22:17~22:18 KST) | **미수신** — 생산자 PC 보존(아래) | [6268210444](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6268210444) |
+| D-11d 이재환 | PASS 6/6 (22:17~22:18 KST). 1차 22:15 401(입력 실수) 기록 포함 | `d11d-jaehwan-20261019/` (2026-10-20 수신) | [6268210444](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6268210444) |
 | D-11d 이권욱 | PASS 6/6 (22:25 KST) | **미수신** — 생산자 로컬 보존(아래) | [6268659431](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6268659431) |
 
 ## 실행 코드(infra-rosa, 모두 이권욱 승인·병합)
@@ -46,6 +46,7 @@
 | `rosa5-run3-20261019.tgz` | 50,695 | `02544ea5…bd99e` | `a3d76e8b…fb68` | run3 + `closure.txt` + `run3-SHA256SUMS` |
 | `rosa5-run4-7-20261019.tgz` | 243,537 | `b7ed9d6b…901e` | `30683f8f…057ed` | run4~run7(각 `bootstrap.log`·`run-start/status`·`evidence-*`) + `run4-7-SHA256SUMS` |
 | `rosa5-run7-d11-20261019.tgz` | 4,249 | `17ec2606…77bc` | `4a4df21b…bfee` | ⑫ `run7/d11-20261019T125233/`(자체 SHA256SUMS) + `post-revoke.log` |
+| `d11d-jaehwan-20261019/` | 6개 | — | — | D-11d 이재환 원본(아래) |
 | `*.tgz.sha256` | | | | 묶음 SHA-256 sidecar |
 | `SHA256SUMS` | | | | 이 폴더 파일 해시 |
 
@@ -53,17 +54,30 @@
 
 - run1 묶음: 다운로드 사본(이 파일)과 CloudShell 재생성본(`f8cc0b12…`, 10,195 B)은 묶은 시각만 다르고, 목록(`TZ=UTC tar -tvzf` 해시 `ee62eb95…239d`)과 내부 `run1-p6-SHA256SUMS`(`c86c32ab…41be0`)가 같다([#5 6263257612](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6263257612)).
 
+## D-11d 이재환 원본 (`d11d-jaehwan-20261019/`, 2026-10-20 수신)
+생산자(이재환)가 공유 폴더 `d11d-jaehwan-20261019\`에 올린 6개를 바이트 그대로 옮겼다. 생산자 `SHA256SUMS` 4/4 일치, 각 파일 SHA-256이 [#5 6268210444](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6268210444)의 보고값과 같다.
+
+| 파일 | 크기 | SHA-256 | 내용 |
+|---|---:|---|---|
+| `d11d-jaehwan-20261019T221505.log` | 1,980 | `52a5da28e28a032ec8a0884ec343568d4865e25a15f6414e608b289bf39a8985` | 1차 transcript, 22:15:05~22:16:03 KST, `Login failed (401 Unauthorized)` → FAIL(입력 실수, 권한 질의 전 STOP) |
+| `d11d-jaehwan-20261019T221702.log` | 1,939 | `ab61f033cfa68a838de714b258f21d7d888bc9d4afbd33e4d9a1e62b602c70ea` | 2차 transcript, 22:17:02~22:18:08 KST, `USER=jaehwan`, 승인 API, can-i 6개 기대값 일치, `D-11d RESULT: PASS` |
+| `d11d-jaehwan.ps1` | 2,591 | `4f70ce1543299df84f6b7ebb1287f0106c53d65dbdf94a1df23154843a754c15` | 실행 파일(infra-rosa main `f3042f6` README d11d-ps 블록 + `$API_URL`·`$EXPECTED_USER`·oc 경로) |
+| `run-d11d-window.ps1` | 406 | `23c1bae17e348129cc9417f13135c0ea95a28ed9caa92271d887cfc2a82da91b` | 별도 콘솔 창 실행·`Start-Transcript` 실행기 |
+| `README.md` | 1,808 | `5be5106d38d598164f3e5e03336088c6338a4b9456796e5bf6711b9f6b399b25` | 생산자 설명 |
+| `SHA256SUMS` | 367 | `b8b013a7bc22eabc61ef5adc9dfaacef9447b2ff0a0fa6294c5e6d45aebf8f2e` | 생산자 Manifest(위 4개 파일) |
+
+- 비밀값 검사: 비밀번호·토큰·kubeconfig 0건. transcript에는 `Password:` 프롬프트만 있고 입력값은 없다.
+- 생산자 기록: 22:13 시도는 입력 전 취소돼 transcript가 없고, `list nodes`의 scope 경고는 transcript에 들어가지 않았다.
+
 ## 미수신 (Pending)
 | 항목 | 생산자 보고 해시 | 위치 |
 |---|---|---|
-| D-11d 이재환 transcript 1차(401, 입력 실수) | `52a5da28e28a032ec8a0884ec343568d4865e25a15f6414e608b289bf39a8985` (1,980 B) | 재환 PC |
-| D-11d 이재환 transcript 2차(PASS) | `ab61f033cfa68a838de714b258f21d7d888bc9d4afbd33e4d9a1e62b602c70ea` (1,939 B) | 재환 PC |
-| D-11d 이권욱 `gwonuk-d11d-20261019T132512Z.tgz`(PASS) | `3741810af9e648870eea96a60f7e7f6fc8d3a0044fccbfe80332883226e799dd` (851 B) | 권욱 로컬 |
+| D-11d 이권욱 `gwonuk-d11d-20261019T132512Z.tgz`(PASS) | `3741810af9e648870eea96a60f7e7f6fc8d3a0044fccbfe80332883226e799dd` (851 B) | 권욱 로컬(공유 폴더 게시 확인, 미편입) |
 
-공유 폴더로 받으면 이 PR(병합 전) 또는 같은 Record ID 아래 새 수집회차 폴더로 편입한다.
+받으면 이 PR(병합 전) 또는 같은 Record ID 아래 새 수집회차 폴더로 편입한다.
 
 ## 판정 범위
-`RUN7=WRAPPER_RC3(POLICY_PENDING) / POLICY=PR47_MERGED / D-11=PASS / D-11d=PASS(2/2, 원본 미수신) / A-09=NOT_RUN / D-10=NOT_RUN / CI(infra-rosa)=NOT_RUN(check-runs 0)`
+`RUN7=WRAPPER_RC3(POLICY_PENDING) / POLICY=PR47_MERGED / D-11=PASS / D-11d=PASS(2/2; 재환 원본 편입, 권욱 원본 미편입) / A-09=NOT_RUN / D-10=NOT_RUN / CI(infra-rosa)=NOT_RUN(check-runs 0)`
 
 #5 첫 설정 단계의 실행 증적이다. #4/#38 Full, P2-ROSA-01 전체 AC 완료, 티켓 종결이 아니다. 해시 일치는 무결성 확인이며 시험 PASS의 단독 근거가 아니다.
 
