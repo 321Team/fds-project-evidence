@@ -49,4 +49,4 @@ attempt1-auth-failure는 로그인 401로 6개 질의가 NOT_RUN이었습니다(
 
 `D-11d(gwonuk)=PASS(attempt2) / attempt1=FAIL(401, 보존) / ORIGINALS=RECEIVED(TGZ 2/2, 내부 6/6 일치) / RECIPIENT_ACK=이하영 2026-10-20`
 
-해시 일치는 무결성 확인이며 시험 PASS의 단독 근거가 아닙니다. 독립 사람 리뷰는 이 PR에서 이권욱이 합니다. 생산자 본인 자료이므로, 독립성 판단은 리뷰어가 합니다.
+해시 일치는 무결성 확인이며 시험 PASS의 단독 근거가 아닙니다. 권욱 원본 6개의 독립 검토는 이재환이 HEAD `dd081077cef8f70c55e146ad8af51f1b41275474`에서 수행했습니다([독립 리뷰5582661460](https://github.com/321Team/fds-project-evidence/pull/249#pullrequestreview-5582661460)). 권욱의 검토 범위는 재환 원본과 공통 편입 구조이며, 권욱 본인 원본의 자체 확인은 독립 검토와 구분합니다. 이 문구 정정은 권욱이 수행하며, 기존 원본 12개와 생산자 manifest는 바꾸지 않습니다. 생산자 본인 자료이므로, 독립성 판단은 리뷰어가 합니다.
