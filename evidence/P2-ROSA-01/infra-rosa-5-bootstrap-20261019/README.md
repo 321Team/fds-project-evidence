@@ -12,7 +12,7 @@
 | 정책 | 플랫폼 기본 binding 20행, [infra-rosa PR#47](https://github.com/321Team/infra-rosa/pull/47) 승인·병합 `f3042f6228c4d5bdcde59c13330ceb90b287987a` | (소스 저장소) | — |
 | ⑫ post-revoke-check | `D-11 RESULT: PASS`(rc=0), 2026-10-19T12:53:14Z. 승인 정책으로 ⑩-b 재판정 OK, 회수 전·새 세션 관리자 권한 없음, namespace UID 3개 일치, 관리면 ABSENT | `rosa5-run7-d11-20261019.tgz` | [6267698337](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6267698337) |
 | D-11d 이재환 | PASS 6/6 (22:17~22:18 KST). 1차 22:15 401(입력 실수) 기록 포함 | `d11d-jaehwan-20261019/` (2026-10-20 수신) | [6268210444](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6268210444) |
-| D-11d 이권욱 | PASS 6/6 (22:25 KST) | **미수신** — 생산자 로컬 보존(아래) | [6268659431](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6268659431) |
+| D-11d 이권욱 | PASS 6/6 (22:25 KST). 1차 22:05~22:19 401 기록 포함 | 별도 수집회차 `../rosa5-d11d-gwonuk-20261019/` (2026-10-20 수신) | [6268659431](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6268659431) |
 
 ## 실행 코드(infra-rosa, 모두 이권욱 승인·병합)
 | 회차 | 실행본 | 비고 |
@@ -69,15 +69,20 @@
 - 비밀값 검사: 비밀번호·토큰·kubeconfig 0건. transcript에는 `Password:` 프롬프트만 있고 입력값은 없다.
 - 생산자 기록: 22:13 시도는 입력 전 취소돼 transcript가 없고, `list nodes`의 scope 경고는 transcript에 들어가지 않았다.
 
-## 미수신 (Pending)
-| 항목 | 생산자 보고 해시 | 위치 |
-|---|---|---|
-| D-11d 이권욱 `gwonuk-d11d-20261019T132512Z.tgz`(PASS) | `3741810af9e648870eea96a60f7e7f6fc8d3a0044fccbfe80332883226e799dd` (851 B) | 권욱 로컬(공유 폴더 게시 확인, 미편입) |
+## D-11d 이권욱 원본 (`../rosa5-d11d-gwonuk-20261019/`, 2026-10-20 수신)
+생산자(이권욱)가 공유 폴더에 둔 편입 준비 폴더를 **생산자 구성 그대로** 별도 수집회차로 넣었다. 원본 TGZ는 생산자 결정대로 공유 폴더에 보존하고 Git에는 넣지 않았다.
 
-받으면 이 PR(병합 전) 또는 같은 Record ID 아래 새 수집회차 폴더로 편입한다.
+| 원본 TGZ(공유 폴더) | 크기 | SHA-256 | 회차 |
+|---|---:|---|---|
+| `gwonuk-d11d-20261019T130514Z.tgz` | 643 | `54abb5a9c4a92fe5fa8f8e03cf756bd12eb947bfe3a4f4663d1e83cc5137db20` | attempt1 22:05:14~22:19:47 KST, 로그인 401, 6개 질의 NOT_RUN |
+| `gwonuk-d11d-20261019T132512Z.tgz` | 851 | `3741810af9e648870eea96a60f7e7f6fc8d3a0044fccbfe80332883226e799dd` | attempt2 22:25:12~22:25:35 KST, 6/6 기대값 일치, PASS |
+
+- 수신 검증: 두 TGZ의 SHA-256이 공유 폴더 sidecar와 [#5 6268659431](https://github.com/321Team/infra-rosa/issues/5#issuecomment-6268659431) 보고값과 같다. 각 TGZ를 풀어 나온 파일 3개씩(`D11d.log`, `run-status.txt`, `SHA256SUMS`)이 편입 폴더의 `attempt1-auth-failure/`·`attempt2-pass/` 파일과 바이트 단위로 같고, 회차별 `SHA256SUMS` 2/2가 일치한다.
+- 비밀값 검사 0건. 생산자 `README.md`·`SOURCE_MANIFEST.json`의 범위·한계 기술(부모 kubeconfig 전후 해시 미수집, attempt1 `OWN_LOGOUT_RC=1`, 독립 리뷰 미완료)을 그대로 따른다.
+- 대장 등록 4줄은 생산자가 준비한 `REGISTRY_ENTRIES.pending.txt` 그대로다.
 
 ## 판정 범위
-`RUN7=WRAPPER_RC3(POLICY_PENDING) / POLICY=PR47_MERGED / D-11=PASS / D-11d=PASS(2/2; 재환 원본 편입, 권욱 원본 미편입) / A-09=NOT_RUN / D-10=NOT_RUN / CI(infra-rosa)=NOT_RUN(check-runs 0)`
+`RUN7=WRAPPER_RC3(POLICY_PENDING) / POLICY=PR47_MERGED / D-11=PASS / D-11d=PASS(2/2; 원본 2/2 편입) / A-09=NOT_RUN / D-10=NOT_RUN / CI(infra-rosa)=NOT_RUN(check-runs 0)`
 
 #5 첫 설정 단계의 실행 증적이다. #4/#38 Full, P2-ROSA-01 전체 AC 완료, 티켓 종결이 아니다. 해시 일치는 무결성 확인이며 시험 PASS의 단독 근거가 아니다.
 
