@@ -1,0 +1,44 @@
+Script started on 2026-10-20 09:25:31+00:00 [TERM="screen-256color" TTY="/dev/pts/2" COLUMNS="277" LINES="44"]
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ aws ssm start-session --profile netop --region ap-northeast-2 --target i-05e4b63d31d8d5ac5
+[?2004l
+Starting session with SessionId: 321team-jaehwan-xp5z36epuiiitxxyur735cngoe
+[?2004hsh-5.1$ [Ksh-5.1$ date -u +%FT%TZ; ls -l --time-style=full-iso /home/ssm-user/rpm-before-20261020T1730.txt /home/ssm-user/rpm-after-20261020T1730.txt; cat /home/ssm-user/rpm-before-20261020T1730.txt /home/ssm-user/rpm-after-20261020T1730.txt; sudo dnf history list 2>&1 | head -5; sudo dnf history info last 2>&1 | head -30; rpm -q tcpdump libpcap libibverbs; rpm -qa | sort | sha256sum
+[?2004l2026-10-20T09:25:43Z
+-rw-r--r--. 1 ssm-user ssm-user 68 2026-10-20 08:19:29.040466558 +0000 /home/ssm-user/rpm-after-20261020T1730.txt
+-rw-r--r--. 1 ssm-user ssm-user 68 2026-10-20 08:18:59.449248584 +0000 /home/ssm-user/rpm-before-20261020T1730.txt
+7330c6e0f9c1732da2aed9a8724193d0f9997d5b2293c869264fe88fd1979b9b  -
+d598cb4b8977f19a9564bfc358c45bae2e84ecff4e78ccb3f7386baabf68ed36  -
+ID     | Command line                                                                                                                                                                                                                   | Date and time    | Action(s)      | Altered
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     7 | history undo -y 6                                                                                                                                                                                                              | 2026-10-20 08:33 | Removed        |    3   
+     6 | install -y tcpdump                                                                                                                                                                                                             | 2026-10-20 08:19 | Install        |    3   
+     5 | -y --setopt=timeout=15 --setopt=retries=1 --setopt=localpkg_gpgcheck=0 --setopt=*.gpgcheck=1 --setopt=*.sslverify=1 install /var/tmp/fds-agent-ROYIQI/agent.rpm                                                                | 2026-10-12 08:20 | Install        |    1 EE
+Transaction ID : 7
+Begin time     : Tue 20 Oct 2026 08:33:31 AM UTC
+Begin rpmdb    : 1dc924ae0066bb2759f4719d2bdaf202fd59b61085da00834ea5b314cdeb2b57
+End time       : Tue 20 Oct 2026 08:33:32 AM UTC (1 seconds)
+End rpmdb      : 3ca1d51d1194da63a5e74d27df58d5e0b17e67d4700e510f66a6e5de36ef139c
+User           : System <unset>
+Return-Code    : Success
+Releasever     : 9
+Command Line   : history undo -y 6
+Persistence    : Persist
+Comment        : 
+Packages Altered:
+    Removed libibverbs-61.0-3.el9.x86_64   @@System
+    Removed libpcap-14:1.10.0-5.el9.x86_64 @@System
+    Removed tcpdump-14:4.99.0-9.el9.x86_64 @@System
+package tcpdump is not installed
+package libpcap is not installed
+package libibverbs is not installed
+7330c6e0f9c1732da2aed9a8724193d0f9997d5b2293c869264fe88fd1979b9b  -
+[?2004hsh-5.1$ exit
+[?2004lexit
+
+
+Exiting session with sessionId: 321team-jaehwan-xp5z36epuiiitxxyur735cngoe.
+
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ exit
+[?2004lexit
+
+Script done on 2026-10-20 09:25:58+00:00 [COMMAND_EXIT_CODE="0"]

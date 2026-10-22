@@ -1,0 +1,140 @@
+Script started on 2026-10-20 05:34:46+00:00 [TERM="screen-256color" TTY="/dev/pts/2" COLUMNS="277" LINES="44"]
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ date -u +%FT%TZ; aws sts get-caller-identity --query Arn --output text; aws ec2 describe-network-interfaces --region ap-northeast-2 --filters Name=subnet-id,Values=subnet-044ced60c3c705ac6 --query 'NetworkInterfaces[].[NetworkInterfaceId,Status,InterfaceType,Description,RequesterId,Attachment.InstanceId,PrivateIpAddress]' --output text | sort > eni-20261020T1430-G.tsv; echo rc=$?; wc -l eni-20261020T1430-G.tsv; cat eni-20261020T1430-G.tsv
+[?2004l2026-10-20T05:34:53Z
+[?1h=arn:aws:iam::774055931866:user/321team-jaehwan[m
+[K[?1l>rc=0
+4 eni-20261020T1430-G.tsv
+eni-05e5527e99eccfcf1	in-use	interface		None	i-0bdd224e46482cf9e	10.20.10.36
+eni-065e10a75f32ffa0f	in-use	interface		None	i-0e23f5643942ac551	10.20.10.177
+eni-0c0492d33bf7ec880	in-use	vpc_endpoint	VPC Endpoint Interface vpce-09fb63ef9544e3209	727180483921	None	10.20.10.206
+eni-0cb96d8aa70753f41	in-use	interface		None	i-0a2b6f708d749f7ff	10.20.10.169
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ aws ssm describe-sessions --state Active --region ap-northeast-2 --query 'Sessions[].[SessionId,Target,Status,StartDate]' --output text; echo rc=$?; aws ssm describe-sessions --state History --region ap-northeast-2 --query "Sessions[?starts_with(SessionId,'321team-jaehwan-5rfcx2p4')].[SessionId,Status,StartDate,EndDate]" --output text; echo rc=$?
+[?2004lrc=0
+[?1h=321team-jaehwan-5rfcx2p4jhrdrbkscq9jb2lz9e      Terminating     2026-10-14T01:50:07.648000+00:00        2026-10-14T01:51:55.220000+00:00[m
+[K[?1l>rc=0
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ aws ssm start-session --target i-05e4b63d31d8d5ac5 --region ap-northeast-2
+[?2004l
+aws: [ERROR]: An error occurred (AccessDeniedException) when calling the StartSession operation: User: arn:aws:iam::774055931866:user/321team-jaehwan is not authorized to perform: ssm:StartSession on resource: arn:aws:ssm:ap-northeast-2:774055931866:document/SSM-SessionManagerRunShell because no identity-based policy allows the ssm:StartSession action
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ aws configure list-profiles; aws sts get-caller-identity --profile netop --query Arn --output text
+[?2004lnetop
+Enter MFA code for arn:aws:iam::774055931866:mfa/jaehwan-phone: 
+[?1h=arn:aws:sts::774055931866:assumed-role/FDS-Network-Operator/321team-jaehwan[m
+[K[?1l>kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ aws ssm start-session --profile netop --target i-05e4b63d31d8d5ac5 --region ap-northeast-2
+[?2004l
+Starting session with SessionId: 321team-jaehwan-5rv4y67p96hbd38bsd7pba6ag8
+[?2004hsh-5.1$ [Ksh-5.1$ date -u +%FT%TZ; hostname; sudo find / -xdev -maxdepth 4 -name p2vpn.sh 2>/dev/null
+[?2004l2026-10-20T05:40:41Z
+ip-10-20-110-10.ap-northeast-2.compute.internal
+[?2004hsh-5.1$ sudo find /home /root /tmp -maxdepth 6 \( -name p2vpn.sh -o -name 'p2-vpn-01-stageb.tgz' \) 2>/dev/null; ls -la ~ 2>/dev/null | head -20
+[?2004l/home/ssm-user/p2vpn-b1-202610141540/p2-vpn-01/p2vpn.sh
+/home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01-stageb.tgz
+/home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh
+total 56
+drwx------. 4 ssm-user ssm-user   162 Oct 15 02:27 .
+drwxr-xr-x. 4 root     root        38 Oct 12 09:34 ..
+-rw-------. 1 ssm-user ssm-user 40771 Oct 15 02:27 .bash_history
+-rw-r--r--. 1 ssm-user ssm-user    18 Feb 15  2024 .bash_logout
+-rw-r--r--. 1 ssm-user ssm-user   141 Feb 15  2024 .bash_profile
+-rw-r--r--. 1 ssm-user ssm-user   492 Feb 15  2024 .bashrc
+-rw-------. 1 ssm-user ssm-user    20 Oct 14 06:46 .lesshst
+drwxr-xr-x. 3 ssm-user ssm-user    87 Oct 14 06:45 p2vpn-b1-202610141540
+drwxr-xr-x. 3 ssm-user ssm-user   118 Oct 15 02:07 p2vpn-stageb-20261015T1100
+[?2004hsh-5.1$ 
+[?2004l[?2004hsh-5.1$ ][K
+[?2004l[?2004hsh-5.1$ cd ~/p2vpn-stageb-20261015T1100 && sha256sum p2-vpn-01-stageb.tgz && sha256sum -c p2-vpn-01/SHA256SUMS 2>&1 | tail -3; sudo bash p2-vpn-01/p2vpn.sh relay check 2>&1 | tail -30
+[?2004l358624f5a380e341b7095ccd13357d03f9bf6d346a8d4c331f0552a212b0bbaf  p2-vpn-01-stageb.tgz
+p2-vpn-01/nft/relay.nft.tmpl: OK
+p2-vpn-01/nft/vpn-gw01.nft.tmpl: OK
+p2-vpn-01/systemd/fds-p2-vpn-forward.service: OK
+== identity / versions
+ip-10-20-110-10
+lo 127.0.0.1/8
+eth0 10.20.110.10/24
+libreswan-4.15-10.el9.x86_64
+nftables-1.0.9-9.el9.x86_64
+firewalld-1.3.4-21.el9.noarch
+5.14.0-687.el9.x86_64
+libreswan_major=4
+== sysctl
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.rp_filter = 0
+/etc/sysctl.d/90-fds-relay-bootstrap.conf:net.ipv4.ip_forward = 0
+== firewalld
+default_zone=public forward=yes
+ports: 
+== installed files (sha256)
+absent /etc/ipsec.d/fds-p2-vpn.conf
+absent /etc/fds-p2-vpn/forward.nft
+absent /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: absent
+== unit / table
+unit=inactive enabled=
+nft table: absent
+== ipsec
+ipsec.service=inactive enabled=disabled
+trafficstatus: fds-p2-vpn 없음
+[?2004hsh-5.1$ date -u +%FT%TZ; TOKEN=$(curl -s -X PUT http://169.254.169.254/latest/api/token -H 'X-aws-ec2-metadata-token-ttl-seconds: 60'); curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/public-ipv4; echo; sudo bash p2-vpn-01/p2vpn.sh relay psk 20261020T1430
+[?2004l2026-10-20T05:42:54Z
+3.36.239.132
+PSK 입력(표시 안 됨): 
+PSK 다시 입력: 
+secrets: present owner=root:root mode=600 size>0=yes
+psk_receipt=/root/fds-p2-vpn/psk-receipts/20261020T1430 owner=20261020T1430
+[?2004hsh-5.1$ date -u +%FT%TZ; sudo bash p2-vpn-01/p2vpn.sh relay apply 20261020T1430 2>&1 | tail -25
+[?2004l2026-10-20T05:45:14Z
+rendered role=relay libreswan=4 harbor=off eip=n/a -> /root/fds-p2-vpn/20261020T1430/staged
+== backup (실패하면 호스트를 바꾸기 전에 멈춘다)
+backup /etc/sysctl.d/90-fds-relay-bootstrap.conf
+zone=public
+ip_forward_runtime=0
+zone_forward=yes
+port_500=no
+port_4500=no
+ipsec_active=inactive
+ipsec_enabled=disabled
+== persistent ip_forward=0 (fail-closed; 유닛이 허용표 적재 뒤에만 켠다)
+== firewalld (permanent만 바꾸고, 바꾼 것이 있을 때만 reload)
+firewalld_changed=yes
+== install
+== ipsec
+002 forgetting secrets
+002 loading secrets from "/etc/ipsec.secrets"
+002 loading secrets from "/etc/ipsec.d/fds-p2-vpn.secrets"
+946cba4c6cd40d0fbd36e393d187c69c0eef2919bbd2c70bd2145a232c386529  /etc/ipsec.d/fds-p2-vpn.conf
+d8c1f567216337d27f27fbd5309132ca3b6cd4647594e257c0036096bc8e5785  /etc/fds-p2-vpn/forward.nft
+f402613878a04d66078ab8636323f28217cd238621aa1440a2d707f3cf325815  /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: present owner=root:root mode=600 size>0=yes
+APPLY_OK role=relay run=20261020T1430 state=/root/fds-p2-vpn/20261020T1430
+[?2004hsh-5.1$ date -u +%FT%TZ; sudo bash p2-vpn-01/p2vpn.sh relay status 2>&1 | tail -30
+[?2004l2026-10-20T05:46:15Z
+	 replay_window 128, bitmap-length 4
+src 10.20.110.10 dst 121.160.42.93
+	proto esp spi <redacted> reqid 16401 mode tunnel
+	replay-window 0 flag af-unspec esn
+	encap type espinudp sport 4500 dport 64916 addr 0.0.0.0
+	anti-replay esn context:
+	 replay_window 128, bitmap-length 4
+== forward table
+table inet fds_p2_vpn {
+	chain forward {
+		type filter hook forward priority filter + 10; policy drop;
+		ip saddr 10.20.0.0/16 ip daddr 10.1.93.0/24 jump to_onprem
+		ip saddr 10.1.93.0/24 ip daddr 10.20.0.0/16 jump from_onprem
+		counter packets 0 bytes 0 comment "그 밖의 포워딩은 policy drop"
+	}
+
+	chain to_onprem {
+		rt ipsec missing counter packets 0 bytes 0 drop comment "SA 없음 - 평문 우회 차단"
+		ct state established,related accept
+		ip saddr 10.20.10.0/24 ip daddr 10.1.93.55 tcp dport 5432 ct state new counter packets 0 bytes 0 accept comment "worker -> db01 5432"
+		counter packets 0 bytes 0 drop comment "승인 밖 목적지·포트"
+	}
+
+	chain from_onprem {
+		meta ipsec missing counter packets 0 bytes 0 drop comment "복호화되지 않은 패킷"
+		ct state established,related accept
+		counter packets 0 bytes 0 drop comment "On-Prem 개시 새 연결"
+	}
+}
+ip_forward=1 unit=active
+[?2004hsh-5.1$ 

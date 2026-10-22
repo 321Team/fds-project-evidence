@@ -1,0 +1,32 @@
+== 2026-10-20 17:28:11 KST db01 mode=pre-rollback run=20261020T1730
+-- rich rule [rule family="ipv4" source address="10.20.10.0/24" port port="5432" protocol="tcp" accept]: runtime=present permanent=absent
+-- apply.sh 비교 RUNTIME_PERMANENT_MATCH=NO
+-- runtime interfaces=[ens160 ens192 ]
+-- 복귀 경로 10.20.0.0/16: runtime=present [10.20.0.0/16 via 10.1.93.51 dev ens192 ]
+-- ip route get 10.20.10.10: 10.20.10.10 via 10.1.93.51 dev ens192 src 10.1.93.55 uid 1001 \    cache 
+-- ip route get 10.1.93.51: 10.1.93.51 dev ens192 src 10.1.93.55 uid 1001 \    cache  (on-link=YES)
+-- NM connection(dev ens192)=[physical-lan] uuid=[b6ea295a-9740-43dc-ae95-fb9600c82524] ipv4.routes=[10.250.10.0/24 10.1.93.58] 영구 경로=absent
+-- runtime rich rule 목록 sha256: 248a18acc4bd45634f254d4a1f29c1d1f60477093bf6e725c3f59696f857191d
+-- RUN receipt: 5줄, W1 기준 17:09:48 경과 18분 / 상한 120분(자동 만료 아님)
+-- pg_hba.conf sha256: 80eb1e515d1fdbc8fae268ff5f6a1a606a7f6b8c568124bcd1dacae22e3c8fa5  대상 줄 수(파일): 0
+-- 서버 hba_file 일치=YES, pg_hba_file_rules 오류=0, 10.20.10.0/24 규칙=0
+-- 10.20.0.0/16 출발지 세션 수: 0
+-- 연결 여유: max_connections=100 superuser_reserved=3 sessions=9 authentication_timeout=1min
+-- 10.20.10.x에 매칭될 수 있는 pg_hba 허용 줄(넓은 범위 포함, reject 제외): 없음
+success
+== 2026-10-20 17:28:14 KST db01 mode=pre-rollback run=20261020T1730
+-- rich rule [rule family="ipv4" source address="10.20.10.0/24" port port="5432" protocol="tcp" accept]: runtime=absent permanent=absent
+-- apply.sh 비교 RUNTIME_PERMANENT_MATCH=YES
+-- runtime interfaces=[ens160 ens192 ]
+-- 복귀 경로 10.20.0.0/16: runtime=absent
+-- ip route get 10.20.10.10: 10.20.10.10 via 10.1.93.254 dev ens192 src 10.1.93.55 uid 1001 \    cache 
+-- ip route get 10.1.93.51: 10.1.93.51 dev ens192 src 10.1.93.55 uid 1001 \    cache  (on-link=YES)
+-- NM connection(dev ens192)=[physical-lan] uuid=[b6ea295a-9740-43dc-ae95-fb9600c82524] ipv4.routes=[10.250.10.0/24 10.1.93.58] 영구 경로=absent
+-- runtime rich rule 목록 sha256: c7dc1f370de15845eceb34064f60e8e175363ab770ad515160e59e295f716ca6
+-- RUN receipt: 5줄, W1 기준 17:09:48 경과 18분 / 상한 120분(자동 만료 아님)
+-- pg_hba.conf sha256: 80eb1e515d1fdbc8fae268ff5f6a1a606a7f6b8c568124bcd1dacae22e3c8fa5  대상 줄 수(파일): 0
+-- 서버 hba_file 일치=YES, pg_hba_file_rules 오류=0, 10.20.10.0/24 규칙=0
+-- 10.20.0.0/16 출발지 세션 수: 0
+-- 연결 여유: max_connections=100 superuser_reserved=3 sessions=9 authentication_timeout=1min
+-- 10.20.10.x에 매칭될 수 있는 pg_hba 허용 줄(넓은 범위 포함, reject 제외): 없음
+RESULT pre-rollback=OK 17:28:17 — W0·W3 대조 일치
