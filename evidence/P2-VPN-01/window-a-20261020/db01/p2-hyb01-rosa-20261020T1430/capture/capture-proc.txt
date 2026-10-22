@@ -1,0 +1,2 @@
+    PID                  STARTED COMMAND
+  15232 화 10월 20 16:08:09 2026 tcpdump -nn -tttt -l -i any -s 96 tcp dst port 5432 and src net 10.20.0.0/16 and (tcp[tcpflags] & tcp-syn) != 0 and (tcp[tcpflags] & tcp-ack) == 0

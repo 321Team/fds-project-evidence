@@ -1,0 +1,33 @@
+== 실행 환경
+-- script sha256: db01-rosa.sh=3f7f95f6380e34faecce9272635319dfccab09ea600fef51ed4f7d2f9e3870d8 apply.sh=c893d05868c91bc074683ae3d677fd309b319c5780348f38b23db850723eb245
+-- identity: hostname=db01 zone=public interfaces=[ens160 ens192 ] gw_dev=ens192
+-- versions: firewalld=2.4.3 iproute=ip utility, iproute2-7.0.0, libbpf 1.7.0 nmcli=nmcli 도구, 버전 1.58.0-1.el10 postgres=16.14
+-- ip -4 route show table main sha256: e55a9d2d553d16c5aec4417d6b15f4f72f9f5afb5246d0e87d3b58469f2b9ef9
+== 2026-10-20 14:57:02 KST db01 mode=check run=20261020T1430
+-- rich rule [rule family="ipv4" source address="10.20.10.0/24" port port="5432" protocol="tcp" accept]: runtime=absent permanent=absent
+-- apply.sh 비교 RUNTIME_PERMANENT_MATCH=YES
+-- runtime interfaces=[ens160 ens192 ]
+-- 복귀 경로 10.20.0.0/16: runtime=absent
+-- ip route get 10.20.10.10: 10.20.10.10 via 10.1.93.254 dev ens192 src 10.1.93.55 uid 1001 \    cache 
+-- ip route get 10.1.93.51: 10.1.93.51 dev ens192 src 10.1.93.55 uid 1001 \    cache  (on-link=YES)
+-- NM connection(dev ens192)=[physical-lan] uuid=[b6ea295a-9740-43dc-ae95-fb9600c82524] ipv4.routes=[10.250.10.0/24 10.1.93.58] 영구 경로=absent
+-- runtime rich rule 목록 sha256: c7dc1f370de15845eceb34064f60e8e175363ab770ad515160e59e295f716ca6
+-- pg_hba.conf sha256: 80eb1e515d1fdbc8fae268ff5f6a1a606a7f6b8c568124bcd1dacae22e3c8fa5  대상 줄 수(파일): 0
+-- 서버 hba_file 일치=YES, pg_hba_file_rules 오류=0, 10.20.10.0/24 규칙=0
+-- 10.20.0.0/16 출발지 세션 수: 0
+-- 연결 여유: max_connections=100 superuser_reserved=3 sessions=9 authentication_timeout=1min
+-- 10.20.10.x에 매칭될 수 있는 pg_hba 허용 줄(넓은 범위 포함, reject 제외): 없음
+-- pg_hba_file_rules
+113|local|all|all|||peer
+115|host|all|all|127.0.0.1|255.255.255.255|scram-sha-256
+117|host|all|all|::1|ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff|ident
+120|local|replication|all|||peer
+121|host|replication|all|127.0.0.1|255.255.255.255|ident
+122|host|replication|all|::1|ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff|ident
+125|hostssl|fdsdb|fds_app|10.1.93.105|255.255.255.255|scram-sha-256
+126|hostssl|fdsdb|fds_app|10.1.93.107|255.255.255.255|scram-sha-256
+127|hostssl|fdsdb|fds_app|10.1.93.108|255.255.255.255|scram-sha-256
+W0_READY(pre-apply)=YES
+== 적용 예정
+pre-apply : runtime + rule family="ipv4" source address="10.20.10.0/24" port port="5432" protocol="tcp" accept / ip route add 10.20.0.0/16 via 10.1.93.51 (pg_hba 불변)
+a2-apply  : 위 경로를 NM 영구 + runtime, rule permanent + reload, pg_hba 줄 'hostssl fdsdb fds_app 10.20.10.0/24 scram-sha-256' 삽입

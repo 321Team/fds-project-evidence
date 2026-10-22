@@ -1,0 +1,78 @@
+Script started on 2026-10-20 09:09:50+00:00 [TERM="screen-256color" TTY="/dev/pts/2" COLUMNS="277" LINES="44"]
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ aws ssm start-session --profile netop --region ap-northeast-2 --target i-05e4b63d31d8d5ac5
+[?2004lEnter MFA code for arn:aws:iam::774055931866:mfa/jaehwan-phone: 
+
+Starting session with SessionId: 321team-jaehwan-ogo2oyzgyq5feoovgz9zlq7yj4
+[?2004hsh-5.1$ [Ksh-5.1$ date -u +%FT%TZ; sudo -n env -u P2VPN_PREFIX -u LIBRESWAN_MAJOR -u FDS_HARBOR bash /home/ssm-user/p2vpn-stageb-20261015T1100/p2-vpn-01/p2vpn.sh relay rollback 20261020T1430 2>&1 | tail -30
+[?2004l2026-10-20T09:10:13Z
+유닛: inactive/disabled 확인
+허용표: 부재 확인
+ROLLBACK_DONE role=relay run=20261020T1430
+== identity / versions
+ip-10-20-110-10
+lo 127.0.0.1/8
+eth0 10.20.110.10/24
+libreswan-4.15-10.el9.x86_64
+nftables-1.0.9-9.el9.x86_64
+firewalld-1.3.4-21.el9.noarch
+5.14.0-687.el9.x86_64
+libreswan_major=4
+== sysctl
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.rp_filter = 0
+/etc/sysctl.d/90-fds-relay-bootstrap.conf:net.ipv4.ip_forward = 0
+== firewalld
+default_zone=public forward=yes
+ports: 
+== installed files (sha256)
+absent /etc/ipsec.d/fds-p2-vpn.conf
+absent /etc/fds-p2-vpn/forward.nft
+absent /etc/systemd/system/fds-p2-vpn-forward.service
+secrets: absent
+== unit / table
+unit=inactive enabled=
+nft table: absent
+== ipsec
+ipsec.service=inactive enabled=disabled
+trafficstatus: fds-p2-vpn 없음
+[?2004hsh-5.1$ cd /home/ssm-user; sha256sum t6-relay-eth0-20261020T1730.txt t6-journal-relay-20261020T1730.txt rpm-before-20261020T1730.txt rpm-after-20261020T1730.txt; for f in t6-relay-eth0-20261020T1730.txt t6-journal-relay-20261020T1730.txt; do echo "=== $f"; cat "$f"; done
+[?2004lbe7bbc2b87f585317329c094782734601b74881edf30e8ec544b149ea5035e52  t6-relay-eth0-20261020T1730.txt
+d2b838a9242fccf7cec778546442c08938901dc57f20c49a4bd454b4c71af0b6  t6-journal-relay-20261020T1730.txt
+79460262f61a7f5e037440c001ffc8ed5722704162e631752dbdfd4e07fa3684  rpm-before-20261020T1730.txt
+215a7e3b56c7ed6cee7b87e2da06e025450e70945fbad8a7be525134f4fd2a26  rpm-after-20261020T1730.txt
+=== t6-relay-eth0-20261020T1730.txt
+dropped privs to tcpdump
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+08:24:36.774223 IP 10.20.10.150.44288 > 10.1.93.55.5432: Flags [S], seq 3842380317, win 62727, options [mss 8961,sackOK,TS val 2860174450 ecr 0,nop,wscale 9], length 0
+08:24:37.795092 IP 10.20.10.150.44288 > 10.1.93.55.5432: Flags [S], seq 3842380317, win 62727, options [mss 8961,sackOK,TS val 2860175471 ecr 0,nop,wscale 9], length 0
+08:24:38.835088 IP 10.20.10.150.44288 > 10.1.93.55.5432: Flags [S], seq 3842380317, win 62727, options [mss 8961,sackOK,TS val 2860176511 ecr 0,nop,wscale 9], length 0
+08:24:39.875166 IP 10.20.10.150.44288 > 10.1.93.55.5432: Flags [S], seq 3842380317, win 62727, options [mss 8961,sackOK,TS val 2860177551 ecr 0,nop,wscale 9], length 0
+08:24:40.915099 IP 10.20.10.150.44288 > 10.1.93.55.5432: Flags [S], seq 3842380317, win 62727, options [mss 8961,sackOK,TS val 2860178591 ecr 0,nop,wscale 9], length 0
+
+5 packets captured
+5 packets received by filter
+0 packets dropped by kernel
+=== t6-journal-relay-20261020T1730.txt
+2026-10-20T08:24:07.718018+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[2] 121.160.42.93 #9: ESP traffic information: in=0B out=0B
+2026-10-20T08:24:07.728945+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[2] 121.160.42.93 #1: deleting state (STATE_V2_ESTABLISHED_IKE_SA) aged 9479.691301s and NOT sending notification
+2026-10-20T08:24:07.729205+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[2] 121.160.42.93: deleting connection instance with peer 121.160.42.93 {isakmp=#0/ipsec=#0}
+2026-10-20T08:25:02.979893+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[6] 121.160.42.93 #10: proposal 1:IKE=AES_CBC_256-HMAC_SHA2_256-HMAC_SHA2_256_128-MODP2048 chosen from remote proposals 1:IKE:ENCR=AES_CBC_256;PRF=HMAC_SHA2_256;INTEG=HMAC_SHA2_256_128;DH=MODP2048[first-match]
+2026-10-20T08:25:02.981614+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[6] 121.160.42.93 #10: sent IKE_SA_INIT reply {cipher=AES_CBC_256 integ=HMAC_SHA2_256_128 prf=HMAC_SHA2_256 group=MODP2048}
+2026-10-20T08:25:02.986384+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[6] 121.160.42.93 #10: processing decrypted IKE_AUTH request: SK{IDi,IDr,AUTH,SA,TSi,TSr}
+2026-10-20T08:25:02.986494+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[6] 121.160.42.93 #10: responder established IKE SA; authenticated peer using authby=secret and ID_FQDN '@fds-vpn-gw01'
+2026-10-20T08:25:02.986696+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[6] 121.160.42.93 #11: proposal 1:ESP=AES_CBC_256-HMAC_SHA2_256_128-ENABLED SPI=SPI_REDACTED chosen from remote proposals 1:ESP:ENCR=AES_CBC_256;INTEG=HMAC_SHA2_256_128;ESN=ENABLED;ESN=DISABLED[first-match]
+2026-10-20T08:25:03.027132+0000 ip-10-20-110-10.ap-northeast-2.compute.internal pluto[62152]: "fds-p2-vpn"[6] 121.160.42.93 #11: responder established Child SA using #10; IPsec tunnel [10.20.0.0-10.20.255.255:0-65535 0] -> [10.1.93.0-10.1.93.255:0-65535 0] {ESPinUDP/ESN=>0xSPI_REDACTED <0xSPI_REDACTED xfrm=AES_CBC_256-HMAC_SHA2_256_128 NATD=121.160.42.93:64916 DPD=active}
+[?2004hsh-5.1$ exit
+[?2004lexit
+
+
+Exiting session with sessionId: 321team-jaehwan-ogo2oyzgyq5feoovgz9zlq7yj4.
+
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ date -u +%FT%TZ; aws ssm describe-sessions --profile netop --region ap-northeast-2 --state Active --query 'Sessions[].[SessionId,Target,Owner,StartDate,Status]' --output text; echo ACTIVE_END
+[?2004l2026-10-20T09:11:39Z
+ACTIVE_END
+kcloudshell-user@:~/p37-windowA-20261020T1430\[?2004hp37-windowA-20261020T1430 $ exit
+[?2004lexit
+
+Script done on 2026-10-20 09:11:47+00:00 [COMMAND_EXIT_CODE="0"]

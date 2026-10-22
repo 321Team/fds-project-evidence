@@ -1,0 +1,12 @@
+2026-10-20T08:24:07.716875+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn": initiating delete of connection's IKE SA #1 (and Child SA #6)
+2026-10-20T08:24:07.717051+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #1: sent INFORMATIONAL request to delete IKE SA
+2026-10-20T08:24:07.734642+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #6: ESP traffic information: in=0B out=0B
+2026-10-20T08:24:07.734846+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #1: deleting IKE SA (established IKE SA)
+2026-10-20T08:24:17.048617+00:00 vpn-gw01 pluto[1286]: systemd watchdog: sending action: watchdog, status 0
+2026-10-20T08:25:02.976412+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #7: initiating IKEv2 connection to 3.36.239.132 using UDP
+2026-10-20T08:25:02.977546+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #7: sent IKE_SA_INIT request to 3.36.239.132:UDP/500
+2026-10-20T08:25:02.984497+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #7: processed IKE_SA_INIT response from 3.36.239.132:UDP/500 {cipher=AES_CBC_256 integ=HMAC_SHA2_256_128 prf=HMAC_SHA2_256 ke=MODP2048}, initiating IKE_AUTH
+2026-10-20T08:25:02.984723+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #7: sent IKE_AUTH request to 3.36.239.132:UDP/4500 with shared-key-mac and FQDN '@fds-vpn-gw01'; Child SA #8 {ESPinUDP <0xSPI_REDACTED} [10.1.93.0/24===10.20.0.0/16]
+2026-10-20T08:25:03.029338+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #7: processing IKE_AUTH response from 3.36.239.132:UDP/4500 containing SK{IDr,AUTH,SA,TSi,TSr}
+2026-10-20T08:25:03.029402+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #7: initiator established IKE SA; authenticated peer using authby=secret and FQDN '@fds-aws-relay01'
+2026-10-20T08:25:03.049682+00:00 vpn-gw01 pluto[1286]: "fds-p2-vpn" #8: initiator established Child SA using #7; IPsec tunnel [10.1.93.0/24===10.20.0.0/16] {ESPinUDP/ESN=>0xSPI_REDACTED <0xSPI_REDACTED xfrm=AES_CBC_256-HMAC_SHA2_256_128 NATD=3.36.239.132:4500 DPD=active}
