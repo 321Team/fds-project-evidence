@@ -1,0 +1,539 @@
+{
+ "account_prefix": "SIM_p2_202610221209_",
+ "base_url": "https://fds-api.apps.rosa.fds-rosa-hcp.khht.p3.openshiftapps.com",
+ "cafile_sha256": null,
+ "cases": [
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B1",
+   "id": "P01",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P01",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": [
+     "R02"
+    ]
+   },
+   "group": "B1",
+   "id": "P02",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P02",
+    "amount": 3000000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B1",
+   "id": "P03-1",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P03",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "withdrawal"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B1",
+   "id": "P03-2",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P03",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "withdrawal"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B1",
+   "id": "P03-3",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P03",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "withdrawal"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": [
+     "R01"
+    ]
+   },
+   "group": "B1",
+   "id": "P03-4",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P03",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "withdrawal"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B1",
+   "id": "P04-1",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P04",
+    "amount": 700000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "transfer"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B1",
+   "id": "P04-2",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P04",
+    "amount": 700000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "transfer"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B1",
+   "id": "P04-3",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P04",
+    "amount": 700000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "transfer"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": [
+     "R07"
+    ]
+   },
+   "group": "B1",
+   "id": "P04-4",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P04",
+    "amount": 700000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "transfer"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": [
+     "R04"
+    ]
+   },
+   "group": "B1",
+   "id": "P05",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_P05",
+    "amount": 1500000,
+    "currency": "KRW",
+    "occurred_at": "2026-10-22T02:30:00+09:00",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N01",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N01",
+    "amount": 2999999,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N02",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N02",
+    "amount": 1500000,
+    "currency": "KRW",
+    "occurred_at": "2026-10-22T05:00:00+09:00",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N03",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N03",
+    "amount": 999999,
+    "currency": "KRW",
+    "occurred_at": "2026-10-22T02:30:00+09:00",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N04-1",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N04",
+    "amount": 100000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "transfer"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N04-2",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N04",
+    "amount": 100000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "transfer"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N04-3",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N04",
+    "amount": 100000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "transfer"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N04-4",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N04",
+    "amount": 100000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "transfer"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N05-1",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N05",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N05-2",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N05",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N05-3",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N05",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B2",
+   "id": "N05-4",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N05",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "http422"
+   },
+   "group": "B2",
+   "id": "N06",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N06",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "refund"
+   }
+  },
+  {
+   "expect": {
+    "kind": "http422"
+   },
+   "group": "B2",
+   "id": "N07",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_N07",
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "not200"
+   },
+   "group": "B2",
+   "id": "X01",
+   "method": "GET",
+   "path": "/metrics",
+   "payload": null
+  },
+  {
+   "expect": {
+    "kind": "info"
+   },
+   "group": "B2",
+   "id": "I01",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_I01",
+    "amount": 1500000,
+    "currency": "KRW",
+    "occurred_at": "2026-10-22T02:30:00",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "failopen"
+   },
+   "group": "B3E",
+   "id": "E01",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_E01",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "failopen"
+   },
+   "group": "B3E",
+   "id": "E02",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_E02",
+    "amount": 3000000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": [
+     "R02"
+    ]
+   },
+   "group": "B3E-POST",
+   "id": "E03",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_E03",
+    "amount": 3000000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  },
+  {
+   "expect": {
+    "kind": "rules",
+    "rules": []
+   },
+   "group": "B3D-POST",
+   "id": "D01",
+   "method": "POST",
+   "path": "/api/v1/transactions",
+   "payload": {
+    "account_id": "SIM_p2_202610221209_D01",
+    "amount": 10000,
+    "currency": "KRW",
+    "source_ip": "198.51.100.10",
+    "transaction_type": "deposit"
+   }
+  }
+ ],
+ "common": [
+  "201 응답(B1·B2·POST 사례)은 fds_evaluation_skipped=false, fds_detected=(트리거 있음)",
+  "B3E는 201, fds_evaluation_skipped=true, fds_detected=null, fds_rules=null",
+  "X01: Route로 /metrics가 200이면 FAIL(노출). 연결 실패도 판정 근거가 아니므로 FAIL",
+  "I01은 시간대 없는 occurred_at이라 판정 제외(INFO). 5xx·연결 실패면 FAIL",
+  "재시도 없음. 같은 사례군을 두 번 보내지 않는다(ledger.jsonl)"
+ ],
+ "db_query": "select account_id, transaction_id, transaction_type, amount, fds_detected, fds_evaluation_skipped, coalesce((select string_agg(r->>'rule_id', ',' order by r->>'rule_id') from jsonb_array_elements(coalesce(nullif(fds_rules, 'null'::jsonb), '[]'::jsonb)) r where (r->>'triggered')::bool), '-'), occurred_at from transactions where account_id like 'SIM\\_p2\\_202610221209\\_%' order by received_at;",
+ "fixture_date": "2026-10-22",
+ "groups": {
+  "B1": "정상 + 4 Rule(R01·R02·R04·R07). engine 정상, DB 연결 정상 상태에서 실행",
+  "B2": "경계값·입력 오류(422)·Route 비노출 경로(/metrics). engine 정상 상태에서 실행",
+  "B3D-POST": "DB 경로 복구 뒤 1건. 201·DB 저장 재개. 장애 중 /readyz 503·Endpoint 제외는 Pod·EndpointSlice로 따로 관측",
+  "B3E": "fds-engine 0개 상태(장애 주입은 도구 밖에서 확인한 뒤 실행). 201·skipped=true·DB 저장",
+  "B3E-POST": "fds-engine 복구 뒤 1건. skipped=false·R02 정상 평가"
+ },
+ "run": "202610221209",
+ "schema": 1,
+ "source_ip": "198.51.100.10",
+ "tool": "p2e2e.py",
+ "tool_sha256": "a00ae029b69782040fa0e120d8a8b763e81325055cb70ca26c6d8d30ce88a07d"
+}
