@@ -1,0 +1,95 @@
+{
+  "at_kst": "2026-10-26T03:43:22.023731+09:00",
+  "status": "A3_NORMAL_DEPLOY_ROLLOUT_FINISH_OBSERVED_NOT_FULL_GATE",
+  "native_run": 40220786672,
+  "attempt": 1,
+  "native_conclusion": "success",
+  "native_completed_at": "2026-10-25T18:35:21Z",
+  "workflow_commit": "3ede2f75eb760843114156cb9d5d52012aa700a7",
+  "reviewed_head": "862a22de8035ca04d24095a2aa773dedd43dba6d",
+  "pr": 158,
+  "t0": "2026-10-26T03:20:33.499237+09:00",
+  "window_end": "2026-10-26T05:20:00+09:00",
+  "acknowledged_objects": 6,
+  "rollout": [
+    "transaction-api",
+    "fds-engine"
+  ],
+  "session_status": "SESSION_COMPLETED",
+  "completion": "RECORDED",
+  "fence": "RELEASED",
+  "cleanup_errors": [],
+  "serialized_runtime": "NOT_VERIFIED",
+  "delivery_gate": "NOT_VERIFIED",
+  "health_e2e": "NOT_VERIFIED",
+  "pod_image_id": "NOT_VERIFIED",
+  "finish_original_sha256": "cb1b4cd6dfe391d63dddd7e7dd31fbcd4c4d0a8fd7c55346a66608f13605b9b1",
+  "complete_last_checkpoint_sha256": "33d4fc16ed91129e1526bd4647e469dccbdcd879adff8a9807d33754d64ec21b",
+  "post_readback": {
+    "status": "SIX_UIDS_MATCH_APPROVED_RENDER_APP_READY",
+    "source": "DERIVED_FROM_PRESERVED_POST_READBACK_AND_HASH_VERIFIED_APPROVED_RENDER",
+    "observation_at": "2026-10-26T03:36:05.383608+09:00",
+    "original_status": "CURRENT_STATE_REQUIRES_REVIEW",
+    "original_result_sha256": "a7be8eca25aa0d8173095235a840e7375fbd9b085b9e750ef5f2c934fb75d1cb",
+    "classification_correction": "POST_HELPER_ASSUMED_ONE_REPLICA_INSTEAD_OF_APPROVED_RENDER_REPLICAS",
+    "approved_render": {
+      "approved_render_sha256": "3c8b6fe17d9a4705fd57158ec426294fe2a24413c83091aa3a568912b7263516",
+      "expected_replicas": {
+        "fds-engine": 3,
+        "transaction-api": 3
+      }
+    },
+    "deployments": [
+      {
+        "name": "transaction-api",
+        "uid": "d74bb62e-083d-4b5e-9e26-c188ba3ffe8e",
+        "generation": 7,
+        "desired_replicas": 3,
+        "actual_replicas": 3,
+        "ready_replicas": 3,
+        "approved_ready": true
+      },
+      {
+        "name": "fds-engine",
+        "uid": "f4a39bb4-ea74-4d97-964b-57667ce04839",
+        "generation": 5,
+        "desired_replicas": 3,
+        "actual_replicas": 3,
+        "ready_replicas": 3,
+        "approved_ready": true
+      }
+    ],
+    "pod_count": 6,
+    "six_uid_spec_metadata_match": true,
+    "cleanup": {
+      "oauth_logout_rc": 0,
+      "post_logout_whoami_rc": 1,
+      "memfd_closed": true,
+      "provider_closed": true
+    },
+    "new_cluster_reads": false,
+    "workload_writes": 0,
+    "runtime_rerun": false,
+    "evaluation_failure_cases_checked": true
+  },
+  "previous_a1_a2_claim_journals_preserved": true,
+  "a2_reconcile": "OWN_ACTIVE_ONLY_REMOVED_AFTER_PRECHECK_WITH_MANUAL_ABANDON_MARKER",
+  "actual_dispatches": 1,
+  "additional_runtime_retries": 0,
+  "app_scale_down_performed": false,
+  "db_changes": 0,
+  "iam_rbac_changes": 0,
+  "independent_human_runtime_evidence_review": "PENDING",
+  "full_issue46_acceptance": "NOT_COMPLETE",
+  "unverified_remaining": [
+    "Test/Scan failure deploy blocking Runtime",
+    "Rollback to prior approved digest and Health",
+    "Pod imageID runtime digest",
+    "Health/Rule smoke R01/R02/R04/R07"
+  ],
+  "consumption_end": "2026-10-26T08:30:00+09:00",
+  "final_cleanup_end": "2026-10-26T12:00:00+09:00",
+  "source_pat_management_id": 21758739,
+  "source_pat_manual_delete_before": "2026-10-26T12:00:00+09:00",
+  "source_pat_ui_expiry": "2026-10-27"
+}

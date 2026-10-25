@@ -1,0 +1,144 @@
+{
+  "scope": "POST_EXPECTED_UNIT_FAILURE_POD_COMPARE_AND_LIVE_P2_READER_REJECTION",
+  "started_at": "2026-10-26T04:09:33.336786+09:00",
+  "status": "POST_B1_READY_IMAGES_AND_ACTUAL_NATIVE_REJECTION_OBSERVED",
+  "rbac_changes": 0,
+  "sa_token_requests": 0,
+  "workload_writes": 0,
+  "checks": [
+    {
+      "native_get": "clusterversions/version",
+      "allowed": true,
+      "cluster_uuid_matches": true
+    },
+    {
+      "native_get": "namespaces/fds-app",
+      "allowed": true,
+      "namespace_uid_matches": true
+    }
+  ],
+  "actor": "gwonuk",
+  "wildcard_can_i": {
+    "rc": 1,
+    "answer": "no"
+  },
+  "cluster_admin_effective": false,
+  "target": {
+    "cluster_uuid": "37eecf03-b7bc-45e1-8089-5a14a47fccd9",
+    "namespace_uid": "222bf961-73d9-4743-972f-2d44da216af2",
+    "sa_uid": "6a4c1f9f-1291-4f1d-b999-b4dbc5d179c2"
+  },
+  "pod_imageID": [
+    {
+      "pod": "fds-engine-5fb758c7d8-522gh",
+      "pod_uid": "d1d4ad5e-5dd2-4e9f-ac23-4269adc9b564",
+      "replicaset_uid": "7c7340ea-33fa-4f00-9054-a03fd5b78666",
+      "deployment": "fds-engine",
+      "deployment_uid": "f4a39bb4-ea74-4d97-964b-57667ce04839",
+      "requested_image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://c44288cddd538efccf5cec1991e64104232833c43f5ab3e1d8ad82297fa8670a",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "fds-engine-5fb758c7d8-dvp45",
+      "pod_uid": "4bd0f615-ff2d-4381-aeee-9690b494cb04",
+      "replicaset_uid": "7c7340ea-33fa-4f00-9054-a03fd5b78666",
+      "deployment": "fds-engine",
+      "deployment_uid": "f4a39bb4-ea74-4d97-964b-57667ce04839",
+      "requested_image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://bac3d25dc007d3879292f5540683a852c6f46d65c4947641694a32a5b8255fa0",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "fds-engine-5fb758c7d8-j6g2n",
+      "pod_uid": "5649ef84-3145-49ce-94d5-67e4d3c48e13",
+      "replicaset_uid": "7c7340ea-33fa-4f00-9054-a03fd5b78666",
+      "deployment": "fds-engine",
+      "deployment_uid": "f4a39bb4-ea74-4d97-964b-57667ce04839",
+      "requested_image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://1b36d102447054923126f6f0ca35aaf0b48802e83aa3eab311289a045a7065da",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "transaction-api-844949ddcf-6tsb2",
+      "pod_uid": "28b9d902-587e-4d64-beca-6e2ed5196b53",
+      "replicaset_uid": "e931bafe-0099-4bf5-9752-5049d3d16d81",
+      "deployment": "transaction-api",
+      "deployment_uid": "d74bb62e-083d-4b5e-9e26-c188ba3ffe8e",
+      "requested_image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://2f9c8d500bfca7dda7b68cd2b5449344df90b8cc467522ff178f5f776c24b099",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "transaction-api-844949ddcf-cz74s",
+      "pod_uid": "28720186-230d-4de7-b0c1-b16acda449c8",
+      "replicaset_uid": "e931bafe-0099-4bf5-9752-5049d3d16d81",
+      "deployment": "transaction-api",
+      "deployment_uid": "d74bb62e-083d-4b5e-9e26-c188ba3ffe8e",
+      "requested_image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://0c41e60050753549402874d66442a001bcd15a1f0606c0b5498f9dc3d278fca8",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "transaction-api-844949ddcf-tkwf9",
+      "pod_uid": "fed9a2d9-5fb9-4421-b120-54042ed9f66e",
+      "replicaset_uid": "e931bafe-0099-4bf5-9752-5049d3d16d81",
+      "deployment": "transaction-api",
+      "deployment_uid": "d74bb62e-083d-4b5e-9e26-c188ba3ffe8e",
+      "requested_image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://a548d5075b072ae230c6666ab44df28c00b1bd78a908f925c1a1d6cb16ec5a14",
+      "exact_digest_matches": true
+    }
+  ],
+  "imageID_exact_match": true,
+  "deployment_ready": true,
+  "route_health": {
+    "observed_at": "2026-10-26T04:10:32.406445+09:00",
+    "url": "https://fds-api.apps.rosa.fds-rosa-hcp.khht.p3.openshiftapps.com/readyz",
+    "status": 200,
+    "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+    "body": {
+      "status": "ready"
+    }
+  },
+  "failed_producer_gate": {
+    "at": "2026-10-26T04:10:33.623840+09:00",
+    "failed_run": 40224325708,
+    "native_sha256": "d787921410b643b16c133db34bde6adac88d8b2e328f048a985a8e22dc8ee5db",
+    "actual_production_class": "ActionsRunSource.inspect",
+    "result_code": "ACTIONS_RUN_NOT_SUCCESSFUL",
+    "rejected": true,
+    "negative_test_selection_only": true,
+    "adopted_site_changed": false,
+    "sa_issue_requests": 0,
+    "claim_acquisitions": 0,
+    "rosadeploy_requests": 0,
+    "binding_key": "5a5940c26cf11b62a82e5aecccd6acfd43cca7b6b8a0b0251078d1df34204ae2"
+  },
+  "cleanup": {
+    "oauth_logout_rc": 0,
+    "post_logout_whoami_rc": 1,
+    "memfd_closed": true,
+    "provider_closed": true,
+    "source_credential_closed": true
+  },
+  "ended_at": "2026-10-26T04:10:33.983102+09:00"
+}

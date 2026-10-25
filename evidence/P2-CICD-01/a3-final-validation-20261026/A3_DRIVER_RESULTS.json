@@ -1,0 +1,56 @@
+[
+  {
+    "dispatch_configured": true,
+    "execution_authorized": false,
+    "runtime": "NOT_RUN",
+    "schema": "P2-CICD-job-1",
+    "status": "CONFIGURED_NOT_VERIFIED"
+  },
+  {
+    "execution_authorized": false,
+    "job": {
+      "attempt": 1,
+      "command": "deploy",
+      "repository": "321Team/infra-cicd",
+      "run_id": "40220786672",
+      "workflow_sha": "3ede2f75eb760843114156cb9d5d52012aa700a7"
+    },
+    "result": {
+      "cleanup_errors": [],
+      "completion": "RECORDED",
+      "delivery_gate": "NOT_VERIFIED",
+      "diagnostics": "NONE",
+      "error_code": null,
+      "execution_authorized": false,
+      "fence": "RELEASED",
+      "receipt": {
+        "acknowledged": [
+          "v1/Service/transaction-api",
+          "v1/Service/fds-engine",
+          "apps/v1/Deployment/transaction-api",
+          "apps/v1/Deployment/fds-engine",
+          "route.openshift.io/v1/Route/transaction-api-api",
+          "route.openshift.io/v1/Route/transaction-api-readyz"
+        ],
+        "binding_key": "5a5940c26cf11b62a82e5aecccd6acfd43cca7b6b8a0b0251078d1df34204ae2",
+        "delivery_gate": "NOT_VERIFIED",
+        "error_code": null,
+        "health_e2e": "NOT_VERIFIED",
+        "pending": null,
+        "pod_image_id": "NOT_VERIFIED",
+        "rollout": [
+          "transaction-api",
+          "fds-engine"
+        ],
+        "schema": "P2-CICD-apply-core-1",
+        "status": "ROLLOUT_OBSERVED"
+      },
+      "runtime": "NOT_VERIFIED",
+      "schema": "P2-CICD-session-1",
+      "status": "SESSION_COMPLETED"
+    },
+    "runtime": "NOT_VERIFIED",
+    "schema": "P2-CICD-job-1",
+    "status": "SESSION_COMPLETED"
+  }
+]
