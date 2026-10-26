@@ -1,0 +1,41 @@
+{
+  "schema": "P46-actual-negative-observation-1",
+  "before_observed_at": "2026-10-26T03:58:06.024571+09:00",
+  "failure_native_created_at": "2026-10-25T19:05:08Z",
+  "failure_native_updated_at": "2026-10-25T19:05:40Z",
+  "after_observed_at": "2026-10-26T04:10:33.983102+09:00",
+  "native_run": 40224325708,
+  "actual_unit_failure": true,
+  "production_native_reader_rejected": true,
+  "deployments": [
+    {
+      "app": "transaction-api",
+      "uid_equal": true,
+      "generation_equal": true,
+      "resource_version_equal": true,
+      "spec_equal": true,
+      "managed_fields_equal": true,
+      "replicas": 3
+    },
+    {
+      "app": "fds-engine",
+      "uid_equal": true,
+      "generation_equal": true,
+      "resource_version_equal": true,
+      "spec_equal": true,
+      "managed_fields_equal": true,
+      "replicas": 3
+    }
+  ],
+  "all_pod_identity_image_restart_ready_equal": true,
+  "pod_count": 6,
+  "route_health_equal": true,
+  "before_archive_sha256": "72d60e94940deaf9a4b14a54cc499f516a5c7b47d9ff6e17356086b29a55f69c",
+  "after_archive_sha256": "2c16832b815c0a97eb7888ffca085635cbca358d3638c8c233b015362dc67955",
+  "negative_workflow_deploy_job_exists": false,
+  "no_skipped_job_claim": true,
+  "production_SITE_modified": false,
+  "test_negative_selection_only": true,
+  "full_A_to_B_native_dispatch_chain_verified": false,
+  "observed_unchanged": true
+}

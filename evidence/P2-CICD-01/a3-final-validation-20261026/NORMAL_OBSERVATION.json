@@ -1,0 +1,393 @@
+{
+  "scope": "IMAGE_ID_HEALTH_RULE_SMOKE_NO_WORKLOAD_MUTATION",
+  "started_at": "2026-10-26T03:56:39.754567+09:00",
+  "status": "IMAGE_HEALTH_ENGINE_RULES_OBSERVED",
+  "rbac_changes": 0,
+  "sa_token_requests": 0,
+  "workload_writes": 0,
+  "checks": [
+    {
+      "native_get": "clusterversions/version",
+      "allowed": true,
+      "cluster_uuid_matches": true
+    },
+    {
+      "native_get": "namespaces/fds-app",
+      "allowed": true,
+      "namespace_uid_matches": true
+    }
+  ],
+  "actor": "gwonuk",
+  "wildcard_can_i": {
+    "rc": 1,
+    "answer": "no"
+  },
+  "cluster_admin_effective": false,
+  "target": {
+    "cluster_uuid": "37eecf03-b7bc-45e1-8089-5a14a47fccd9",
+    "namespace_uid": "222bf961-73d9-4743-972f-2d44da216af2",
+    "sa_uid": "6a4c1f9f-1291-4f1d-b999-b4dbc5d179c2"
+  },
+  "pod_imageID": [
+    {
+      "pod": "fds-engine-5fb758c7d8-522gh",
+      "pod_uid": "d1d4ad5e-5dd2-4e9f-ac23-4269adc9b564",
+      "replicaset_uid": "7c7340ea-33fa-4f00-9054-a03fd5b78666",
+      "deployment": "fds-engine",
+      "deployment_uid": "f4a39bb4-ea74-4d97-964b-57667ce04839",
+      "requested_image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://c44288cddd538efccf5cec1991e64104232833c43f5ab3e1d8ad82297fa8670a",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "fds-engine-5fb758c7d8-dvp45",
+      "pod_uid": "4bd0f615-ff2d-4381-aeee-9690b494cb04",
+      "replicaset_uid": "7c7340ea-33fa-4f00-9054-a03fd5b78666",
+      "deployment": "fds-engine",
+      "deployment_uid": "f4a39bb4-ea74-4d97-964b-57667ce04839",
+      "requested_image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://bac3d25dc007d3879292f5540683a852c6f46d65c4947641694a32a5b8255fa0",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "fds-engine-5fb758c7d8-j6g2n",
+      "pod_uid": "5649ef84-3145-49ce-94d5-67e4d3c48e13",
+      "replicaset_uid": "7c7340ea-33fa-4f00-9054-a03fd5b78666",
+      "deployment": "fds-engine",
+      "deployment_uid": "f4a39bb4-ea74-4d97-964b-57667ce04839",
+      "requested_image": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "imageID": "10.1.93.54/fds/fds-engine@sha256:8b257adb08b6d381f72b66d3386efea6112a8f072ecfafcbcd463bcd1c3be89d",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://1b36d102447054923126f6f0ca35aaf0b48802e83aa3eab311289a045a7065da",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "transaction-api-844949ddcf-6tsb2",
+      "pod_uid": "28b9d902-587e-4d64-beca-6e2ed5196b53",
+      "replicaset_uid": "e931bafe-0099-4bf5-9752-5049d3d16d81",
+      "deployment": "transaction-api",
+      "deployment_uid": "d74bb62e-083d-4b5e-9e26-c188ba3ffe8e",
+      "requested_image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://2f9c8d500bfca7dda7b68cd2b5449344df90b8cc467522ff178f5f776c24b099",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "transaction-api-844949ddcf-cz74s",
+      "pod_uid": "28720186-230d-4de7-b0c1-b16acda449c8",
+      "replicaset_uid": "e931bafe-0099-4bf5-9752-5049d3d16d81",
+      "deployment": "transaction-api",
+      "deployment_uid": "d74bb62e-083d-4b5e-9e26-c188ba3ffe8e",
+      "requested_image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://0c41e60050753549402874d66442a001bcd15a1f0606c0b5498f9dc3d278fca8",
+      "exact_digest_matches": true
+    },
+    {
+      "pod": "transaction-api-844949ddcf-tkwf9",
+      "pod_uid": "fed9a2d9-5fb9-4421-b120-54042ed9f66e",
+      "replicaset_uid": "e931bafe-0099-4bf5-9752-5049d3d16d81",
+      "deployment": "transaction-api",
+      "deployment_uid": "d74bb62e-083d-4b5e-9e26-c188ba3ffe8e",
+      "requested_image": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "imageID": "10.1.93.54/fds/transaction-api@sha256:338b8a2871507ce8b42deedc916b26e350577ee6efd18df23d7ff2dd4b17dff0",
+      "ready": true,
+      "restartCount": 0,
+      "containerID": "cri-o://a548d5075b072ae230c6666ab44df28c00b1bd78a908f925c1a1d6cb16ec5a14",
+      "exact_digest_matches": true
+    }
+  ],
+  "imageID_exact_match": true,
+  "deployment_ready": true,
+  "route_health": {
+    "observed_at": "2026-10-26T03:58:05.124915+09:00",
+    "url": "https://fds-api.apps.rosa.fds-rosa-hcp.khht.p3.openshiftapps.com/readyz",
+    "status": 200,
+    "body_sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd",
+    "body": {
+      "status": "ready"
+    }
+  },
+  "internal_health_rules": {
+    "scope": "INTERNAL_STATELESS_ENGINE_RULE_SMOKE_NO_DB_WRITES",
+    "observed_at": "2026-10-25T18:58:05.580330+00:00",
+    "health": {
+      "/livez": {
+        "status": 200,
+        "body": {
+          "status": "ok"
+        }
+      },
+      "/readyz": {
+        "status": 200,
+        "body": {
+          "status": "ok"
+        }
+      }
+    },
+    "rules": [
+      {
+        "case": "normal",
+        "request": {
+          "transaction_id": "p46-a3-engine-normal",
+          "account_id": "p46-a3-engine-smoke",
+          "amount": 1000,
+          "currency": "KRW",
+          "transaction_type": "deposit",
+          "source_ip": "192.0.2.46",
+          "occurred_at": "2026-10-26T12:00:00+09:00",
+          "received_at": "2026-10-25T18:58:05.607204+00:00",
+          "context": {}
+        },
+        "response": {
+          "status": 200,
+          "body": {
+            "transaction_id": "p46-a3-engine-normal",
+            "fds_detected": false,
+            "fds_rules": [
+              {
+                "rule_id": "R01",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R02",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R04",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R07",
+                "triggered": false,
+                "detail": null
+              }
+            ],
+            "evaluated_at": "2026-10-25T18:58:05.616502+00:00"
+          }
+        },
+        "expected": [],
+        "passed": true
+      },
+      {
+        "case": "R01",
+        "request": {
+          "transaction_id": "p46-a3-engine-R01",
+          "account_id": "p46-a3-engine-smoke",
+          "amount": 1000,
+          "currency": "KRW",
+          "transaction_type": "withdrawal",
+          "source_ip": "192.0.2.46",
+          "occurred_at": "2026-10-26T12:00:00+09:00",
+          "received_at": "2026-10-25T18:58:05.617071+00:00",
+          "context": {
+            "recent_withdrawal_count_10m": 3
+          }
+        },
+        "response": {
+          "status": 200,
+          "body": {
+            "transaction_id": "p46-a3-engine-R01",
+            "fds_detected": true,
+            "fds_rules": [
+              {
+                "rule_id": "R01",
+                "triggered": true,
+                "detail": "10분 내 인출 3회 (threshold 3)"
+              },
+              {
+                "rule_id": "R02",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R04",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R07",
+                "triggered": false,
+                "detail": null
+              }
+            ],
+            "evaluated_at": "2026-10-25T18:58:05.626111+00:00"
+          }
+        },
+        "expected": [
+          "R01"
+        ],
+        "passed": true
+      },
+      {
+        "case": "R02",
+        "request": {
+          "transaction_id": "p46-a3-engine-R02",
+          "account_id": "p46-a3-engine-smoke",
+          "amount": 3000000,
+          "currency": "KRW",
+          "transaction_type": "deposit",
+          "source_ip": "192.0.2.46",
+          "occurred_at": "2026-10-26T12:00:00+09:00",
+          "received_at": "2026-10-25T18:58:05.626489+00:00",
+          "context": {}
+        },
+        "response": {
+          "status": 200,
+          "body": {
+            "transaction_id": "p46-a3-engine-R02",
+            "fds_detected": true,
+            "fds_rules": [
+              {
+                "rule_id": "R01",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R02",
+                "triggered": true,
+                "detail": "고액 거래 3,000,000원 (threshold 3,000,000원)"
+              },
+              {
+                "rule_id": "R04",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R07",
+                "triggered": false,
+                "detail": null
+              }
+            ],
+            "evaluated_at": "2026-10-25T18:58:05.673076+00:00"
+          }
+        },
+        "expected": [
+          "R02"
+        ],
+        "passed": true
+      },
+      {
+        "case": "R04",
+        "request": {
+          "transaction_id": "p46-a3-engine-R04",
+          "account_id": "p46-a3-engine-smoke",
+          "amount": 1000000,
+          "currency": "KRW",
+          "transaction_type": "deposit",
+          "source_ip": "192.0.2.46",
+          "occurred_at": "2026-10-26T03:00:00+09:00",
+          "received_at": "2026-10-25T18:58:05.673567+00:00",
+          "context": {}
+        },
+        "response": {
+          "status": 200,
+          "body": {
+            "transaction_id": "p46-a3-engine-R04",
+            "fds_detected": true,
+            "fds_rules": [
+              {
+                "rule_id": "R01",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R02",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R04",
+                "triggered": true,
+                "detail": "심야(KST 03시) 고액 거래 1,000,000원"
+              },
+              {
+                "rule_id": "R07",
+                "triggered": false,
+                "detail": null
+              }
+            ],
+            "evaluated_at": "2026-10-25T18:58:05.682603+00:00"
+          }
+        },
+        "expected": [
+          "R04"
+        ],
+        "passed": true
+      },
+      {
+        "case": "R07",
+        "request": {
+          "transaction_id": "p46-a3-engine-R07",
+          "account_id": "p46-a3-engine-smoke",
+          "amount": 1000,
+          "currency": "KRW",
+          "transaction_type": "transfer",
+          "source_ip": "192.0.2.46",
+          "occurred_at": "2026-10-26T12:00:00+09:00",
+          "received_at": "2026-10-25T18:58:05.683042+00:00",
+          "context": {
+            "recent_transfer_count_1h": 3,
+            "recent_transfer_sum_1h": 2000000
+          }
+        },
+        "response": {
+          "status": 200,
+          "body": {
+            "transaction_id": "p46-a3-engine-R07",
+            "fds_detected": true,
+            "fds_rules": [
+              {
+                "rule_id": "R01",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R02",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R04",
+                "triggered": false,
+                "detail": null
+              },
+              {
+                "rule_id": "R07",
+                "triggered": true,
+                "detail": "1시간 내 소액 분산 이체 3건 / 합산 2,000,000원"
+              }
+            ],
+            "evaluated_at": "2026-10-25T18:58:05.692162+00:00"
+          }
+        },
+        "expected": [
+          "R07"
+        ],
+        "passed": true
+      }
+    ],
+    "all_pass": true
+  },
+  "cleanup": {
+    "oauth_logout_rc": 0,
+    "post_logout_whoami_rc": 1,
+    "memfd_closed": true,
+    "provider_closed": true
+  },
+  "ended_at": "2026-10-26T03:58:06.024571+09:00"
+}

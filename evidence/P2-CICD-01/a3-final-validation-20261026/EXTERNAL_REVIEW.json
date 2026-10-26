@@ -1,0 +1,58 @@
+{
+  "resources": {
+    "claude": {
+      "requested_model": "claude-opus-5-5",
+      "requested_effort": "high",
+      "actual_model": [
+        "claude-opus-5-5"
+      ],
+      "actual_effort": null,
+      "rc": 0,
+      "is_error": false,
+      "response_received": true,
+      "seconds": 40.02,
+      "prompt_sha256": "59610ce58864f6c5290bf54da80681a93f60de49da91b42645fa4e34e8a7f7f2"
+    },
+    "grok": {
+      "requested_model": "grok-4.7",
+      "requested_effort": "high",
+      "actual_model": [
+        "grok-4.7-build"
+      ],
+      "actual_effort": null,
+      "rc": 0,
+      "is_error": null,
+      "response_received": true,
+      "seconds": 153.81,
+      "prompt_sha256": "a71d82bc179d9de3b5c744a278a3183bb7d136824fec351d8d32e18ea9e63831"
+    },
+    "antigravity": {
+      "requested_model": "gemini-4-argon-high",
+      "requested_effort": "high",
+      "actual_model": "gemini-4-argon-high",
+      "actual_effort": null,
+      "rc": 0,
+      "response_received": true,
+      "seconds": 43.33
+    }
+  },
+  "disposition": {
+    "adopted": [
+      "Pod→ReplicaSet→Deployment UID와 Pod6 전체 imageID 결속",
+      "TLS 검증·실제 HTTP 본문/시각/RC 보존",
+      "전용 시험 데이터와 Unit fixture의 범위 분리",
+      "실제 Unit 실패·P2 reader 거부·ROSA 불변을 각각 판정",
+      "같은 digest 재적용을 버전 rollback 성공으로 표시하지 않음"
+    ],
+    "not_adopted_or_scoped": [
+      "GitOps selfHeal·서명 admission 필수는 확인된 현 환경 사실이 아니므로 추가 요구로 만들지 않음",
+      "Secret을 6객체 배포에 포함한다는 일반 예시는 현행 Service2/Deployment2/Route2에 적용하지 않음",
+      "외부 AI에 운영 raw를 제공하지 않은 것을 실제 ROSA가 대체 환경이라는 판단으로 확대하지 않음",
+      "API201·이력 의존 Rule 실제 응답을 기록하고 DB 직접 SELECT10행 검증으로 표시하지 않음",
+      "RV 불변은 이번 관측 사실로 기록하며 일반적인 health status 갱신을 자동 실패로 삼지 않음"
+    ],
+    "actual_effort_metadata": "NOT_PROVIDED_REQUESTED_HIGH_EXPLICIT",
+    "first_agy": "150s timeout/empty response; second bounded call responded",
+    "internal_subagents": 0
+  }
+}

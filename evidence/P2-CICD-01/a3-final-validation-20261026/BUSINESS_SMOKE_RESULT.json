@@ -1,0 +1,467 @@
+{
+  "scope": "ACTUAL_HTTPS_API_ENGINE_DB_RULE_SMOKE",
+  "started_at": "2026-10-26T03:59:15.416427+09:00",
+  "fixture_data": true,
+  "account_prefix": "p46-a3-20261026-0355",
+  "automatic_retries": 0,
+  "schema_changes": 0,
+  "request_count": 10,
+  "cases": [
+    {
+      "case": "R01-1",
+      "at": "2026-10-26T03:59:15.539048+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-withdrawal",
+        "amount": 1000,
+        "currency": "KRW",
+        "transaction_type": "withdrawal",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:59:15.539048+09:00"
+      },
+      "expected": [],
+      "http": 201,
+      "response": {
+        "transaction_id": "a9acd777-5a1c-4bc8-8e23-2bbfd1365216",
+        "fds_detected": false,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "0ec6e885e4546ba5f04ac234a6ca01df37f6a8bfe65332543f2f8b2b1f678180",
+      "passed": true
+    },
+    {
+      "case": "R01-2",
+      "at": "2026-10-26T03:59:15.631924+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-withdrawal",
+        "amount": 1000,
+        "currency": "KRW",
+        "transaction_type": "withdrawal",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:59:15.539048+09:00"
+      },
+      "expected": [],
+      "http": 201,
+      "response": {
+        "transaction_id": "1288e861-6320-4046-a667-6d1a53a76fa3",
+        "fds_detected": false,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "8c3515cf5bb9de1a673c33af5392b3c2e9ad8954cd329485f000cb8e12e21677",
+      "passed": true
+    },
+    {
+      "case": "R01-3",
+      "at": "2026-10-26T03:59:15.705431+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-withdrawal",
+        "amount": 1000,
+        "currency": "KRW",
+        "transaction_type": "withdrawal",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:59:15.539048+09:00"
+      },
+      "expected": [],
+      "http": 201,
+      "response": {
+        "transaction_id": "ad9b62cc-37b4-410e-8b4e-ee2851880c90",
+        "fds_detected": false,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "7ebc99fa0e958c04f4f5066dcfa0772214b064a591c706e619774577194c7b7a",
+      "passed": true
+    },
+    {
+      "case": "R01-4",
+      "at": "2026-10-26T03:59:15.798805+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-withdrawal",
+        "amount": 1000,
+        "currency": "KRW",
+        "transaction_type": "withdrawal",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:59:15.539048+09:00"
+      },
+      "expected": [
+        "R01"
+      ],
+      "http": 201,
+      "response": {
+        "transaction_id": "71930404-dd27-46b4-b782-caccc6554b3d",
+        "fds_detected": true,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": true,
+            "detail": "10분 내 인출 3회 (threshold 3)"
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "053d9ae572fdf8562d88823b0f4774035c893c10592f36c0f027cb965612f68a",
+      "passed": true
+    },
+    {
+      "case": "R07-1",
+      "at": "2026-10-26T03:59:15.876781+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-transfer",
+        "amount": 700000,
+        "currency": "KRW",
+        "transaction_type": "transfer",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:59:15.539048+09:00"
+      },
+      "expected": [],
+      "http": 201,
+      "response": {
+        "transaction_id": "c9812b4e-d990-4fa1-9763-01c32f624fa2",
+        "fds_detected": false,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "111a9a8b81ff8a6f2f3c6077895ab134b08c79a4863002ff52e26ec512400872",
+      "passed": true
+    },
+    {
+      "case": "R07-2",
+      "at": "2026-10-26T03:59:15.944824+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-transfer",
+        "amount": 700000,
+        "currency": "KRW",
+        "transaction_type": "transfer",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:59:15.539048+09:00"
+      },
+      "expected": [],
+      "http": 201,
+      "response": {
+        "transaction_id": "ef217edc-1ae0-415d-bac3-5ad805f2c920",
+        "fds_detected": false,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "39c336332fbd62aa2d03e2c0e9fcc98aa25e8aeaa488084db1fd7758808a7843",
+      "passed": true
+    },
+    {
+      "case": "R07-3",
+      "at": "2026-10-26T03:59:16.040681+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-transfer",
+        "amount": 700000,
+        "currency": "KRW",
+        "transaction_type": "transfer",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:59:15.539048+09:00"
+      },
+      "expected": [],
+      "http": 201,
+      "response": {
+        "transaction_id": "f9fe0433-fda3-4780-8eae-ac2b47c4e286",
+        "fds_detected": false,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "973582506bdebb278d8c32935931146aec247160d880f5cd108a5093a9c00203",
+      "passed": true
+    },
+    {
+      "case": "R07-4",
+      "at": "2026-10-26T03:59:16.129273+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-transfer",
+        "amount": 700000,
+        "currency": "KRW",
+        "transaction_type": "transfer",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:59:15.539048+09:00"
+      },
+      "expected": [
+        "R07"
+      ],
+      "http": 201,
+      "response": {
+        "transaction_id": "641691d1-780b-4d43-b917-8ba258fa95c0",
+        "fds_detected": true,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": true,
+            "detail": "1시간 내 소액 분산 이체 3건 / 합산 2,100,000원"
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "6fb099e3264f13af48835314c95320982c3c5d8743166a29954f52ca46941284",
+      "passed": true
+    },
+    {
+      "case": "R02",
+      "at": "2026-10-26T03:59:16.197817+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-R02",
+        "amount": 3000000,
+        "currency": "KRW",
+        "transaction_type": "deposit",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T12:00:00+09:00"
+      },
+      "expected": [
+        "R02"
+      ],
+      "http": 201,
+      "response": {
+        "transaction_id": "4fdc7441-8e32-404a-bd5e-b2370a87e5d4",
+        "fds_detected": true,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": true,
+            "detail": "고액 거래 3,000,000원 (threshold 3,000,000원)"
+          },
+          {
+            "rule_id": "R04",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "c2e93e8bb36f526f85994c0b0003107aa36a4e13e8162e741603f1ddc1925d2a",
+      "passed": true
+    },
+    {
+      "case": "R04",
+      "at": "2026-10-26T03:59:16.248476+09:00",
+      "request": {
+        "account_id": "p46-a3-20261026-0355-R04",
+        "amount": 1000000,
+        "currency": "KRW",
+        "transaction_type": "deposit",
+        "source_ip": "192.0.2.46",
+        "occurred_at": "2026-10-26T03:00:00+09:00"
+      },
+      "expected": [
+        "R04"
+      ],
+      "http": 201,
+      "response": {
+        "transaction_id": "1bef04fc-0698-4017-9c3a-f89379ad71d4",
+        "fds_detected": true,
+        "fds_rules": [
+          {
+            "rule_id": "R01",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R02",
+            "triggered": false,
+            "detail": null
+          },
+          {
+            "rule_id": "R04",
+            "triggered": true,
+            "detail": "심야(KST 03시) 고액 거래 1,000,000원"
+          },
+          {
+            "rule_id": "R07",
+            "triggered": false,
+            "detail": null
+          }
+        ],
+        "fds_evaluation_skipped": false
+      },
+      "body_sha256": "0d967f8c0ce0d48e503bf8447e070154c74350a910a0fd32aa2ba86127446a20",
+      "passed": true
+    }
+  ],
+  "status": "API_ENGINE_DB_RULE_SMOKE_OBSERVED",
+  "initial_health": {
+    "at": "2026-10-26T03:59:15.539048+09:00",
+    "http": 200,
+    "body": {
+      "status": "ready"
+    },
+    "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd"
+  },
+  "final_health": {
+    "at": "2026-10-26T03:59:16.365813+09:00",
+    "http": 200,
+    "body": {
+      "status": "ready"
+    },
+    "sha256": "31bf75f4c0a97cc1f7b60df824fa390b3be9ba014f29b63c87c698ba63d9a9fd"
+  },
+  "ended_at": "2026-10-26T03:59:16.365813+09:00"
+}

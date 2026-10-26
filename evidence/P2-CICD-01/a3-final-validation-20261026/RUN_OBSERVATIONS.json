@@ -1,0 +1,87 @@
+{
+  "at_kst": "2026-10-26T04:16:19.631913+09:00",
+  "A3_run": 40220786672,
+  "A3_workflow_sha": "3ede2f75eb760843114156cb9d5d52012aa700a7",
+  "image_source_sha": "affbc69beef9967f7977d09a6fec14f7fb6c0e94",
+  "render_source_sha": "69e28c494a120c388afe18d901043d05333d7c7c",
+  "pod_imageID": "SIX_PODS_EXACT_APPROVED_DIGEST_MATCH",
+  "health": "EXTERNAL_DB_READYZ_AND_INTERNAL_ENGINE_HEALTH_OBSERVED",
+  "engine_rule_smoke": "NORMAL_AND_FOUR_RULES_OBSERVED_STATELESS",
+  "business_rule_smoke": "TEN_ACTUAL_API_201_RESPONSES_AND_FOUR_RULE_BEHAVIORS_OBSERVED",
+  "direct_db_sql_rows_verified": false,
+  "test_fixture_account_prefix": "p46-a3-20261026-0355",
+  "test_transaction_ids": [
+    "a9acd777-5a1c-4bc8-8e23-2bbfd1365216",
+    "1288e861-6320-4046-a667-6d1a53a76fa3",
+    "ad9b62cc-37b4-410e-8b4e-ee2851880c90",
+    "71930404-dd27-46b4-b782-caccc6554b3d",
+    "c9812b4e-d990-4fa1-9763-01c32f624fa2",
+    "ef217edc-1ae0-415d-bac3-5ad805f2c920",
+    "f9fe0433-fda3-4780-8eae-ac2b47c4e286",
+    "641691d1-780b-4d43-b917-8ba258fa95c0",
+    "4fdc7441-8e32-404a-bd5e-b2370a87e5d4",
+    "1bef04fc-0698-4017-9c3a-f89379ad71d4"
+  ],
+  "negative_native_run": 40224325708,
+  "negative_unit": "EXPECTED_FAILURE_OBSERVED_CID_REMOVED",
+  "failed_native_producer_gate": "ACTIONS_RUN_NOT_SUCCESSFUL_LIVE_PRIVATE_TLS",
+  "ROSA_unchanged": true,
+  "negative_workflow_has_deploy_job": false,
+  "linked_native_deploy_job_skipped_verified": false,
+  "failed_gate_AC": "PARTIAL_PENDING_HUMAN_SCOPE_ACCEPTANCE",
+  "rollback": "NOT_EXECUTED_NO_DISTINCT_APPROVED_P2_PREVIOUS_DIGEST",
+  "same_digest_reapplication": false,
+  "new_app_release_created": false,
+  "credential_or_permission_expansion": false,
+  "sa_token_requests": 0,
+  "workload_mutations": 0,
+  "business_test_api_writes": 10,
+  "app_replicas": {
+    "transaction-api": 3,
+    "fds-engine": 3
+  },
+  "independent_runtime_evidence_review": "PENDING",
+  "issue46_overall": "IN_PROGRESS_NOT_COMPLETE",
+  "support_window_end": "2026-10-26T05:20:00+09:00",
+  "consumption_end": "2026-10-26T08:30:00+09:00",
+  "final_cleanup_end": "2026-10-26T12:00:00+09:00",
+  "source_PAT_management_id": 21758739,
+  "source_PAT_manual_delete_before": "2026-10-26T12:00:00+09:00",
+  "external_resources": {
+    "claude": {
+      "requested_model": "claude-opus-5-5",
+      "requested_effort": "high",
+      "actual_model": [
+        "claude-opus-5-5"
+      ],
+      "actual_effort": null,
+      "rc": 0,
+      "is_error": false,
+      "response_received": true,
+      "seconds": 40.02,
+      "prompt_sha256": "59610ce58864f6c5290bf54da80681a93f60de49da91b42645fa4e34e8a7f7f2"
+    },
+    "grok": {
+      "requested_model": "grok-4.7",
+      "requested_effort": "high",
+      "actual_model": [
+        "grok-4.7-build"
+      ],
+      "actual_effort": null,
+      "rc": 0,
+      "is_error": null,
+      "response_received": true,
+      "seconds": 153.81,
+      "prompt_sha256": "a71d82bc179d9de3b5c744a278a3183bb7d136824fec351d8d32e18ea9e63831"
+    },
+    "antigravity": {
+      "requested_model": "gemini-4-argon-high",
+      "requested_effort": "high",
+      "actual_model": "gemini-4-argon-high",
+      "actual_effort": null,
+      "rc": 0,
+      "response_received": true,
+      "seconds": 43.33
+    }
+  }
+}
